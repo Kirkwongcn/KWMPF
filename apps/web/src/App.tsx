@@ -74,6 +74,9 @@ export function App({ apiUrl }: { apiUrl: string }) {
             <button type="submit">搜尋</button>
           </div>
         </form>
+        <p>
+          <a href="/schemes">比較強積金計劃</a>
+        </p>
         {results.length > 0 && (
           <ul aria-label="搜尋結果" className="search-results">
             {results.map((result) => (

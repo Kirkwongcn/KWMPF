@@ -79,6 +79,57 @@ app.get("/search", async (context) => {
   return context.json(results);
 });
 
+app.get("/schemes", async (context) => {
+  const rows = await context.env.DB.prepare(
+    `SELECT f.payload
+     FROM current_publication c
+     JOIN fund_class_versions f ON f.snapshot_id = c.snapshot_id
+     WHERE c.singleton = 1`,
+  ).all<{ payload: string }>();
+  const schemes = new Map<
+    string,
+    {
+      schemeName: string;
+      trusteeName: string;
+      fundClassCount: number;
+      fundTypes: string[];
+      riskClassDistribution: Record<string, number>;
+      fundClassIds: string[];
+    }
+  >();
+
+  for (const row of rows.results) {
+    const { fundClass } = JSON.parse(row.payload) as {
+      fundClass: {
+        id: string;
+        schemeName: string;
+        trusteeName: string;
+        fundType: string;
+        riskClass: number;
+        verificationStatus: string;
+      };
+    };
+    if (fundClass.verificationStatus !== "verified") continue;
+    const scheme = schemes.get(fundClass.schemeName) ?? {
+      schemeName: fundClass.schemeName,
+      trusteeName: fundClass.trusteeName,
+      fundClassCount: 0,
+      fundTypes: [],
+      riskClassDistribution: {},
+      fundClassIds: [],
+    };
+    scheme.fundClassCount += 1;
+    if (!scheme.fundTypes.includes(fundClass.fundType))
+      scheme.fundTypes.push(fundClass.fundType);
+    const risk = String(fundClass.riskClass);
+    scheme.riskClassDistribution[risk] =
+      (scheme.riskClassDistribution[risk] ?? 0) + 1;
+    scheme.fundClassIds.push(fundClass.id);
+    schemes.set(fundClass.schemeName, scheme);
+  }
+  return context.json([...schemes.values()]);
+});
+
 app.notFound((context) => context.json({ error: "Not found" }, 404));
 
 export default app;

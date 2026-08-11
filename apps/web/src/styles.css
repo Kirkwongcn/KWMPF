@@ -147,6 +147,33 @@ h1 {
   font-size: 0.85rem;
 }
 
+.scheme-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.scheme-card {
+  width: auto;
+  padding: 1.25rem;
+  border: 1px solid #cad3c6;
+  border-radius: 0.9rem;
+  background: #f8faf6;
+}
+
+.scheme-card h2 {
+  margin: 0;
+}
+
+.scheme-card p {
+  color: #526158;
+}
+
+.scheme-card ul {
+  margin: 1rem 0 0;
+  padding-left: 1.25rem;
+}
+
 .status-list div {
   padding: 1rem;
   border-radius: 0.8rem;
