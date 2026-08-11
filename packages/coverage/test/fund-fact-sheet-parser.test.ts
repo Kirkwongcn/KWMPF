@@ -3,11 +3,23 @@ import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { parseFundFactSheet } from "../src/fund-fact-sheet-parser";
 import { mergeFundFactSheetReturns } from "../src/fund-fact-sheet-merge";
+import { parseAiaFundFactSheet } from "../src/aia-fund-fact-sheet-parser";
 
 const fixture = readFileSync(join(import.meta.dirname, "fixtures", "bea-fund-fact-sheet.txt"), "utf8");
+const aiaFixture = readFileSync(join(import.meta.dirname, "fixtures", "aia-mt00172-layout.txt"), "utf8");
 const bcomFixture = `BCOM Joyful Retirement MPF Scheme\nBCOM Joyful Retirement MPF Scheme Fund Fact Sheet\n(As of : 31/12/2025)\n\\f\nBCOM Stable Growth (CF) Fund\nAnnualised Rate of Return 1 year 3 years 5 years 10 years\nFund 2.01% 2.85% 1.86% 1.40%`;
 
 describe("official fund fact sheet parser", () => {
+  it("parses AIA layout text without confusing cumulative and annualized returns", () => {
+    const result = parseAiaFundFactSheet(aiaFixture, "https://www.mpfa.org.hk/assets/FF/MT00172.pdf");
+    expect(result.length).toBeGreaterThan(10);
+    expect(result.slice(0, 3)).toEqual([
+      expect.objectContaining({ constituentFundName: "Core Accumulation Fund", annualizedReturn3Year: 11.18 }),
+      expect.objectContaining({ constituentFundName: "Age 65 Plus Fund", annualizedReturn3Year: 4.62 }),
+      expect.objectContaining({ constituentFundName: "American Fund", annualizedReturn3Year: 18.39 }),
+    ]);
+    expect(result.every((item) => item.dataAsOf === "2025-11-30")).toBe(true);
+  });
   it("extracts the official three-year annualized return without estimating", () => {
     expect(parseFundFactSheet(fixture, "https://www.mpfa.org.hk/assets/FF/MT00571.pdf")).toEqual([
       {
