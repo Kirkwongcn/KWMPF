@@ -30,4 +30,22 @@ bun coverage:fetch-platform \
 
 加入後續官方來源時重複 `--source`；需要偵測新增、移除或身份改變時，加入 `--previous <上一份覆蓋清單>`。
 
+第二批官方來源的固定快照產物由以下指令重建；它同時載入第一批作回歸核對，避免第二批發布時遺失既有 verified 狀態：
+
+```sh
+bun coverage:second-batch \
+  --platform data/sources/2026-08-11/mpf-fund-platform.json \
+  --scheme data/sources/2026-08-11/official-scheme-batch-01.json \
+  --scheme data/sources/2026-08-11/official-scheme-batch-02.json \
+  --trustee data/sources/2026-08-11/trustee-01.json \
+  --trustee data/sources/2026-08-11/trustee-02.json \
+  --trustee data/sources/2026-08-11/trustee-03.json \
+  --trustee data/sources/2026-08-11/trustee-04.json \
+  --trustee data/sources/2026-08-11/trustee-05.json \
+  --trustee data/sources/2026-08-11/trustee-06.json \
+  --trustee data/sources/2026-08-11/trustee-07.json \
+  --trustee data/sources/2026-08-11/trustee-08.json \
+  --output data/coverage/second-official-batch.json
+```
+
 來源及限制詳見 `docs/research/2026-08-11-current-mpf-coverage-sources.md`。

@@ -12,6 +12,7 @@
     "check:shell": "bash -n scripts/*.sh && bash scripts/test-render-staging-config.sh",
     "coverage:build": "bun packages/coverage/src/cli.ts",
     "coverage:first-batch": "bun packages/coverage/src/build-first-batch.ts",
+    "coverage:second-batch": "bun packages/coverage/src/build-second-batch.ts",
     "coverage:fetch-platform": "bun packages/coverage/src/fetch-platform.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",

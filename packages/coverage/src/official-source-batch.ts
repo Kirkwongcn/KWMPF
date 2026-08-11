@@ -56,26 +56,30 @@ export function loadOfficialBatch(
   };
 }
 
-export function buildFirstOfficialBatchCoverage(
+export function buildOfficialBatchCoverage(
   platformSource: SourceSnapshot,
-  schemeSource: SourceSnapshot,
+  schemeSources: SourceSnapshot | SourceSnapshot[],
   trusteeSources: SourceSnapshot[],
   previous?: Parameters<typeof buildCoverage>[1],
 ) {
   if (platformSource.sourceType !== "mpf_fund_platform") {
     throw new Error(`Expected mpf_fund_platform but received ${platformSource.sourceType}`);
   }
+  const normalizedSchemeSources = Array.isArray(schemeSources) ? schemeSources : [schemeSources];
   const trustees = trusteeSources.flatMap((source) => source.scopeTrustees ?? []);
   if (new Set(trustees).size !== trusteeSources.length) {
-    throw new Error("First official batch must contain one distinct trustee per source");
+    throw new Error("Official batch must contain one distinct trustee per source");
   }
-  for (const trustee of trustees) loadOfficialBatch(
-    trustee,
-    trusteeSources.find((source) => source.scopeTrustees?.includes(trustee))!,
-    schemeSource,
-  );
+  for (const trustee of trustees) {
+    const trusteeSource = trusteeSources.find((source) => source.scopeTrustees?.includes(trustee));
+    const schemeSource = normalizedSchemeSources.find((source) => source.records.some((record) => record.identity.trusteeName === trustee));
+    if (!trusteeSource || !schemeSource) throw new Error(`Missing official source for ${trustee}`);
+    loadOfficialBatch(trustee, trusteeSource, schemeSource);
+  }
   return buildCoverage(
-    [platformSource, ...trusteeSources, schemeSource],
+    [platformSource, ...trusteeSources, ...normalizedSchemeSources],
     previous,
   );
 }
+
+export const buildFirstOfficialBatchCoverage = buildOfficialBatchCoverage;
