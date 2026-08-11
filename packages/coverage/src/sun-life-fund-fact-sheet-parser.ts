@@ -39,7 +39,7 @@ export function parseSunLifeFundFactSheetXml(xml: string, sourceUrl: string): Fu
   const names = texts
     .filter((item) => item.top >= 400 && item.top <= 450 && item.left < 600 && /Sun Life MPF .* Fund(?:\s+[–-]\s+Class [A-Z])?$/.test(item.text))
     .map((item) => ({ name: item.text, top: item.top }))
-    .filter((item, index, all) => all.findIndex((candidate) => candidate.name === item.name) === index);
+    .filter((item, index, all) => all.findIndex((candidate) => candidate.name === item.name && candidate.top === item.top) === index);
   const performanceRows = [...new Set(texts.filter((item) => item.top >= 500 && item.top <= 555 && item.left < 680 && item.left + item.width > 600).map((item) => item.top))]
     .sort((a, b) => a - b)
     .map((top) => texts.filter((item) => item.top === top && item.left < 680 && item.left + item.width > 570).sort((a, b) => a.left - b.left).map((item) => item.text).join(" "))
@@ -66,7 +66,7 @@ export function parseSunLifeFundFactSheetXml(xml: string, sourceUrl: string): Fu
   }
 
   if (results.length === 0) throw new Error("Sun Life annualized three-year return rows not found");
-  if (new Set(results.map((result) => result.constituentFundName)).size !== results.length) {
+  if (new Set(results.map((result) => `${result.constituentFundName}\u0000${result.fundClassName ?? ""}`)).size !== results.length) {
     throw new Error("Sun Life fund performance rows are ambiguous");
   }
   return results;
