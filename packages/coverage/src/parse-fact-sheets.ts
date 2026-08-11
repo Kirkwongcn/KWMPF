@@ -1,6 +1,7 @@
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
 import { join } from "node:path";
 import { parseAiaFundFactSheet } from "./aia-fund-fact-sheet-parser";
 import { parseAmtdFundFactSheet } from "./amtd-fund-fact-sheet-parser";
@@ -31,11 +32,7 @@ function parser(scheme: string, text: string, url: string): FundFactSheetReturn[
 
 for (const entry of manifest.entries) {
   if (entry.status !== "downloaded") continue;
-  const id = entry.sha256?.slice(0, 16);
-  if (!id) {
-    failures.push({ scheme: entry.scheme, error: "downloaded entry has no SHA-256" });
-    continue;
-  }
+  const id = createHash("sha256").update(entry.scheme).digest("hex").slice(0, 16);
   try {
     const pdfPath = join(pdfRoot, `${id}.pdf`);
     const { stdout } = await exec("pdftotext", ["-layout", pdfPath, "-"]);
