@@ -15,6 +15,7 @@
     "coverage:second-batch": "bun packages/coverage/src/build-second-batch.ts",
     "coverage:remaining-batch": "bun packages/coverage/src/build-remaining-batch.ts",
     "coverage:fetch-platform": "bun packages/coverage/src/fetch-platform.ts",
+    "coverage:retry-platform": "bun packages/coverage/src/retry-platform.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "bun run --filter '*' test",
