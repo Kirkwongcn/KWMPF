@@ -26,6 +26,13 @@ jobs:
         env:
           D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
         run: scripts/render-staging-config.sh "$D1_DATABASE_ID" apps/api/wrangler.staging.json
+      - name: Apply D1 migrations
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: apps/api
+          command: d1 migrations apply kwmpf-staging --remote --config wrangler.staging.json
       - name: Deploy Worker
         id: deploy-worker
         uses: cloudflare/wrangler-action@v4
@@ -37,7 +44,7 @@ jobs:
       - name: Build web against deployed API
         run: bun run --filter @kwmpf/web build
         env:
-          VITE_API_URL: ${{ steps.deploy-worker.outputs.deployment-url }}/health
+          VITE_API_URL: ${{ steps.deploy-worker.outputs.deployment-url }}
       - name: Deploy Pages
         uses: cloudflare/wrangler-action@v4
         with:

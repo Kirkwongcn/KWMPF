@@ -1,0 +1,26 @@
+{
+  "batchId": "mpfa-cf-429-2026-06-30",
+  "source": {
+    "url": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=429",
+    "retrievedAt": "2026-08-11T00:00:00Z"
+  },
+  "fundClass": {
+    "id": "mpfa-cf-429-class-i",
+    "trusteeName": "Bank Consortium Trust Company Limited",
+    "schemeName": "BCT MPF Scheme Series 800",
+    "constituentFundName": "Principal Hong Kong Equity Fund",
+    "fundClassName": "Class I",
+    "fundType": "Equity Fund",
+    "fundCategory": "Hong Kong Equity Fund",
+    "dataAsOf": "2026-06-30",
+    "fundSizeHkdMillion": 3344.42,
+    "annualizedReturn1y": 6.09,
+    "cumulativeReturn1y": 6.09,
+    "riskClass": 6,
+    "fundRiskIndicator": 20.73,
+    "latestFer": 1.30424,
+    "managementFee": 1.03,
+    "oci1yHkd": 15,
+    "verificationStatus": "verified"
+  }
+}
