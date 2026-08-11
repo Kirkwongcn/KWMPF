@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pdf2xml SYSTEM "pdf2xml.dtd">
+
+<pdf2xml producer="poppler" version="22.12.0">
+<page number="23" position="absolute" top="0" left="0" height="1262" width="892">
+	<fontspec id="0" size="12" family="LNDLVB+NotoSansCJKtc" color="#231f20"/>
+	<fontspec id="1" size="12" family="PYRJZT+SunLifeNewText" color="#231f20"/>
+	<fontspec id="2" size="11" family="LNDLVB+NotoSansCJKtc" color="#231f20"/>
+	<fontspec id="3" size="11" family="PYRJZT+SunLifeNewText" color="#231f20"/>
+	<fontspec id="4" size="12" family="PYRJZT+SunLifeNewText" color="#231f20"/>
+	<fontspec id="5" size="14" family="LNDLVB+NotoSerifCJKtc" color="#ffffff"/>
+	<fontspec id="6" size="8" family="PYRJZT+SunLifeNewDisplay" color="#ffffff"/>
+	<fontspec id="7" size="8" family="PYRJZT+SunLifeNewText" color="#231f20"/>
+	<fontspec id="8" size="11" family="PYRJZT+SunLifeNewText" color="#231f20"/>
+	<fontspec id="9" size="9" family="PYRJZT+SunLifeNewText" color="#231f20"/>
+	<fontspec id="10" size="9" family="LNDLVB+NotoSansCJKtc" color="#231f20"/>
+	<fontspec id="11" size="11" family="LNDLVB+Agenda-Medium" color="#231f20"/>
+	<fontspec id="12" size="12" family="LNDLVB+NotoSansCJKtc" color="#231f20"/>
+	<fontspec id="13" size="14" family="PYRJZT+SunLifeNewDisplay" color="#ffffff"/>
+	<fontspec id="14" size="8" family="PYRJZT+SunLifeNewText" color="#231f20"/>
+	<fontspec id="15" size="11" family="LNDLVB+NotoSansCJKtc-Light" color="#231f20"/>
+	<fontspec id="16" size="9" family="LNDLVB+NotoSansCJKtc-Light" color="#231f20"/>
+	<fontspec id="17" size="9" family="PYRJZT+SunLifeNewText" color="#231f20"/>
+	<fontspec id="18" size="15" family="IPZTFH+NotoSerifCJKtc" color="#231f20"/>
+	<fontspec id="19" size="15" family="PYRJZT+SunLifeNewDisplay" color="#231f20"/>
+	<fontspec id="20" size="14" family="IPZTFH+NotoSerifCJKtc" color="#ffffff"/>
+	<fontspec id="21" size="27" family="IPZTFH+NotoSerifCJKtc" color="#0b1f27"/>
+	<fontspec id="22" size="27" family="PYRJZT+SunLifeNewDisplay" color="#0b1f27"/>
+	<fontspec id="23" size="12" family="IPZTFH+NotoSerifCJKtc" color="#231f20"/>
+	<fontspec id="24" size="12" family="PYRJZT+SunLifeNewDisplay" color="#231f20"/>
+	<fontspec id="25" size="11" family="IPZTFH+NotoSansCJKtc-Light" color="#231f20"/>
+	<fontspec id="26" size="10" family="IPZTFH+ArialMT" color="#231f20"/>
+	<fontspec id="27" size="10" family="IPZTFH+Agenda-Light" color="#231f20"/>
+	<fontspec id="28" size="11" family="IPZTFH+NotoSansCJKtc-Light" color="#231f20"/>
+	<fontspec id="29" size="11" family="PYRJZT+SunLifeNewText" color="#231f20"/>
+	<fontspec id="30" size="11" family="IPZTFH+NotoSansCJKtc" color="#231f20"/>
+	<fontspec id="31" size="12" family="IPZTFH+SunLifeNewText" color="#231f20"/>
+	<fontspec id="32" size="12" family="KFTFHD+NotoSansCJKtc" color="#231f20"/>
+	<fontspec id="33" size="10" family="KFTFHD+NotoSansCJKtc" color="#231f20"/>
+	<fontspec id="34" size="10" family="PYRJZT+SunLifeNewText" color="#231f20"/>
+	<fontspec id="35" size="13" family="KFTFHD+NotoSerifCJKtc" color="#ffffff"/>
+	<fontspec id="36" size="7" family="PYRJZT+SunLifeNewDisplay" color="#ffffff"/>
+	<fontspec id="37" size="7" family="PYRJZT+SunLifeNewText" color="#231f20"/>
+	<fontspec id="38" size="10" family="PYRJZT+SunLifeNewText" color="#231f20"/>
+	<fontspec id="39" size="9" family="KFTFHD+NotoSansCJKtc" color="#231f20"/>
+	<fontspec id="40" size="12" family="KFTFHD+NotoSansCJKtc" color="#231f20"/>
+	<fontspec id="41" size="13" family="PYRJZT+SunLifeNewDisplay" color="#ffffff"/>
+	<fontspec id="42" size="7" family="PYRJZT+SunLifeNewText" color="#231f20"/>
+	<fontspec id="43" size="10" family="KFTFHD+NotoSansCJKtc-Light" color="#231f20"/>
+	<fontspec id="44" size="9" family="KFTFHD+NotoSansCJKtc-Light" color="#231f20"/>
+	<fontspec id="45" size="13" family="IPZTFH+NotoSerifCJKtc" color="#ffffff"/>
+	<fontspec id="46" size="10" family="IPZTFH+NotoSansCJKtc-Light" color="#231f20"/>
+	<fontspec id="47" size="8" family="IPZTFH+Agenda-Light" color="#231f20"/>
+	<fontspec id="48" size="6" family="PYRJZT+SunLifeNewText" color="#231f20"/>
+	<fontspec id="49" size="10" family="IPZTFH+NotoSansCJKtc-Light" color="#231f20"/>
+	<fontspec id="50" size="10" family="PYRJZT+SunLifeNewText" color="#231f20"/>
+	<fontspec id="51" size="6" family="IPZTFH+NotoSansCJKtc-Light" color="#231f20"/>
+	<fontspec id="52" size="9" family="IPZTFH+NotoSansCJKtc-Light" color="#231f20"/>
+	<fontspec id="53" size="7" family="IPZTFH+NotoSansCJKtc-Light" color="#231f20"/>
+	<fontspec id="54" size="4" family="IPZTFH+NotoSansCJKtc-Light" color="#231f20"/>
+<text top="478" left="625" width="63" height="17" font="0"><b>年率化回報 </b></text>
+<text top="478" left="688" width="106" height="15" font="1"><b>Annualized Return</b></text>
+<text top="500" left="797" width="42" height="15" font="2">成立至今</text>
+<text top="514" left="790" width="57" height="13" font="3">Since Launch</text>
+<text top="500" left="640" width="21" height="15" font="2">三年</text>
+<text top="514" left="635" width="31" height="13" font="3">3 Years</text>
+<text top="500" left="748" width="21" height="15" font="2">十年</text>
+<text top="514" left="741" width="36" height="13" font="3">10 Years</text>
+<text top="500" left="693" width="21" height="15" font="2">五年</text>
+<text top="514" left="688" width="31" height="13" font="3">5 Years</text>
+<text top="648" left="583" width="32" height="15" font="4">9.72%</text>
+<text top="648" left="631" width="42" height="15" font="4">-14.87%</text>
+<text top="648" left="802" width="38" height="15" font="4">13.39%</text>
+<text top="648" left="687" width="37" height="15" font="4">13.28%</text>
+<text top="648" left="747" width="31" height="15" font="4">9.81%</text>
+<text top="619" left="585" width="25" height="15" font="4">2021</text>
+<text top="619" left="637" width="27" height="15" font="4">2022</text>
+<text top="619" left="803" width="28" height="15" font="4">2025</text>
+<text top="619" left="690" width="28" height="15" font="4">2023</text>
+<text top="619" left="744" width="28" height="15" font="4">2024</text>
+<text top="479" left="288" width="51" height="17" font="0"><b>累積回報 </b></text>
+<text top="479" left="339" width="108" height="15" font="1"><b>Cumulative Return</b></text>
+<text top="499" left="518" width="42" height="15" font="2">成立至今</text>
+<text top="513" left="510" width="57" height="13" font="3">Since Launch</text>
+<text top="499" left="304" width="21" height="15" font="2">一年</text>
+<text top="513" left="302" width="25" height="13" font="3">1 Year</text>
+<text top="499" left="359" width="21" height="15" font="2">三年</text>
+<text top="513" left="354" width="31" height="13" font="3">3 Years</text>
+<text top="499" left="416" width="21" height="15" font="2">五年</text>
+<text top="513" left="411" width="31" height="13" font="3">5 Years</text>
+<text top="499" left="469" width="21" height="15" font="2">十年</text>
+<text top="513" left="462" width="36" height="13" font="3">10 Years</text>
+<text top="648" left="184" width="34" height="15" font="4">6.44%</text>
+<text top="648" left="243" width="32" height="15" font="4">0.18%</text>
+<text top="648" left="409" width="37" height="15" font="4">23.41%</text>
+<text top="648" left="297" width="34" height="15" font="4">6.44%</text>
+<text top="648" left="352" width="38" height="15" font="4">18.58%</text>
+<text top="648" left="471" width="22" height="15" font="4">N/A</text>
+<text top="648" left="520" width="38" height="15" font="4">38.51%</text>
+<text top="457" left="54" width="54" height="20" font="5"><b>基金表現</b></text>
+<text top="457" left="108" width="4" height="9" font="6"><b>4</b></text>
+<text top="457" left="115" width="129" height="20" font="5"><b>Fund Performance</b></text>
+<text top="457" left="245" width="4" height="9" font="6"><b>4</b></text>
+<text top="596" left="171" width="84" height="17" font="0"><b>平均成本法回報</b></text>
+<text top="596" left="255" width="5" height="10" font="7"><b>6</b></text>
+<text top="598" left="262" width="132" height="13" font="8"><b>Dollar Cost Averaging Return</b></text>
+<text top="596" left="394" width="5" height="10" font="7"><b>6</b></text>
+<text top="599" left="400" width="3" height="12" font="9"><b>(</b></text>
+<text top="599" left="403" width="49" height="13" font="10"><b>僅作舉例用途</b></text>
+<text top="599" left="454" width="116" height="12" font="9"><b>For illustrative purposes only)</b></text>
+<text top="619" left="288" width="51" height="17" font="0"><b>累積回報 </b></text>
+<text top="619" left="339" width="108" height="15" font="1"><b>Cumulative Return</b></text>
+<text top="597" left="624" width="51" height="17" font="0"><b>年度回報 </b></text>
+<text top="598" left="675" width="123" height="15" font="1"><b>Calendar Year Return</b></text>
+<text top="500" left="587" width="21" height="15" font="2">一年</text>
+<text top="514" left="585" width="25" height="13" font="3">1 Year</text>
+<text top="498" left="181" width="42" height="15" font="2">年初至今</text>
+<text top="513" left="175" width="54" height="13" font="3">Year to Date</text>
+<text top="499" left="243" width="32" height="15" font="2">三個月</text>
+<text top="513" left="239" width="40" height="13" font="3">3 Months</text>
+<text top="537" left="184" width="38" height="15" font="4">13.39%</text>
+<text top="537" left="242" width="34" height="15" font="4">2.08%</text>
+<text top="537" left="295" width="38" height="15" font="4">13.39%</text>
+<text top="537" left="352" width="39" height="15" font="4">41.06%</text>
+<text top="537" left="408" width="37" height="15" font="4">31.76%</text>
+<text top="537" left="468" width="22" height="15" font="4">N/A</text>
+<text top="537" left="520" width="40" height="15" font="4">74.49%</text>
+<text top="537" left="580" width="88" height="15" font="4">13.39% 12.14%</text>
+<text top="537" left="688" width="32" height="15" font="4">5.67%</text>
+<text top="537" left="750" width="22" height="15" font="4">N/A</text>
+<text top="537" left="809" width="33" height="15" font="4">6.56%</text>
+<text top="569" left="184" width="38" height="15" font="4">13.56%</text>
+<text top="569" left="242" width="34" height="15" font="4">2.03%</text>
+<text top="569" left="295" width="38" height="15" font="4">13.56%</text>
+<text top="569" left="352" width="38" height="15" font="4">41.85%</text>
+<text top="569" left="406" width="40" height="15" font="4">29.89%</text>
+<text top="569" left="468" width="22" height="15" font="4">N/A</text>
+<text top="569" left="521" width="38" height="15" font="4">76.10%</text>
+<text top="569" left="580" width="89" height="15" font="4">13.56% 12.36%</text>
+<text top="569" left="688" width="32" height="15" font="4">5.37%</text>
+<text top="569" left="750" width="22" height="15" font="4">N/A</text>
+<text top="569" left="809" width="34" height="15" font="4">6.68%</text>
+<text top="539" left="52" width="89" height="13" font="3">Sun Life MPF Core</text>
+<text top="549" left="52" width="93" height="13" font="3">Accumulation Fund</text>
+<text top="528" left="52" width="116" height="15" font="2">永明強積金核心累積基金</text>
+<text top="566" left="54" width="68" height="15" font="2">參考投資組合*</text>
+<text top="577" left="54" width="97" height="13" font="3">Reference Portfolio*</text>
+<text top="651" left="52" width="78" height="12" font="11">Sun Life MPF Core</text>
+<text top="659" left="52" width="83" height="12" font="11">Accumulation Fund</text>
+<text top="639" left="52" width="116" height="15" font="2">永明強積金核心累積基金</text>
+<text top="246" left="318" width="108" height="17" font="12">混合資產基金 – 環球</text>
+<text top="261" left="330" width="97" height="17" font="12">股票投資最高65%</text>
+<text top="273" left="276" width="150" height="15" font="4">Mixed Assets Fund – Global</text>
+<text top="285" left="240" width="187" height="15" font="4">Maximum equity investments 65%</text>
+<text top="347" left="373" width="53" height="15" font="4">0.77042%</text>
+<text top="124" left="53" width="57" height="20" font="5"><b>基本資料 </b></text>
+<text top="124" left="110" width="111" height="17" font="13"><b>Basic Information</b></text>
+<text top="148" left="48" width="48" height="17" font="12">成立日期</text>
+<text top="162" left="48" width="68" height="15" font="4">Launch Date</text>
+<text top="180" left="48" width="155" height="17" font="12">基金資產值 (以百萬港元計算)</text>
+<text top="195" left="48" width="140" height="15" font="4">Fund Size (HK$ in Million)</text>
+<text top="213" left="48" width="83" height="17" font="12">基金價格 (港元)</text>
+<text top="229" left="48" width="93" height="15" font="4">Fund Price (HK$)</text>
+<text top="259" left="48" width="72" height="17" font="12">基金類型描述</text>
+<text top="274" left="48" width="88" height="15" font="4">Fund Descriptor</text>
+<text top="340" left="48" width="72" height="17" font="12">基金開支比率</text>
+<text top="341" left="120" width="4" height="9" font="14">2</text>
+<text top="356" left="48" width="108" height="15" font="4">Fund Expense Ratio</text>
+<text top="356" left="155" width="4" height="9" font="14">2</text>
+<text top="153" left="365" width="61" height="15" font="4">01/04/2017</text>
+<text top="186" left="379" width="45" height="15" font="4">16,585.4</text>
+<text top="219" left="390" width="34" height="15" font="4">1.7449</text>
+<text top="305" left="48" width="48" height="17" font="12">投資經理</text>
+<text top="321" left="48" width="112" height="15" font="4">Investment Manager</text>
+<text top="305" left="268" width="158" height="17" font="12">永明資產管理 (香港) 有限公司</text>
+<text top="319" left="201" width="225" height="15" font="4">Sun Life Asset Management (HK) Limited</text>
+<text top="376" left="48" width="48" height="17" font="12">風險程度</text>
+<text top="376" left="96" width="4" height="9" font="14">3</text>
+<text top="391" left="48" width="75" height="15" font="4">Risk Indicator</text>
+<text top="392" left="122" width="4" height="9" font="14">3</text>
+<text top="381" left="391" width="35" height="15" font="4">8.00%</text>
+<text top="410" left="48" width="48" height="17" font="12">風險級別</text>
+<text top="411" left="96" width="4" height="9" font="14">5</text>
+<text top="426" left="48" width="55" height="15" font="4">Risk Class</text>
+<text top="426" left="102" width="4" height="9" font="14">5</text>
+<text top="416" left="419" width="7" height="15" font="4">4</text>
+<text top="710" left="43" width="378" height="15" font="15">全球股市於第 4 季度錄得正回報，受惠於通脹壓力緩和、貨幣政策預期變化以及投</text>
+<text top="727" left="43" width="379" height="15" font="15">資者風險偏好持續改善。隨著季度進展，股市領漲動能從高估值科技股逐步擴散至</text>
+<text top="744" left="43" width="379" height="15" font="15">其他板塊，而新興市場股市整體表現大致與已發展市場相若，甚至略為跑贏。政府</text>
+<text top="761" left="43" width="379" height="15" font="15">債券市場於季度內呈現分化走勢，美國短年期國債孳息率在寬鬆預期升溫下回落，</text>
+<text top="777" left="43" width="379" height="15" font="15">長期孳息率則上升，使孳息率曲線變得更陡峭；英國及歐元區政府債受財政因素及</text>
+<text top="794" left="43" width="263" height="15" font="15">供給壓力拖累，而日本政府債因孳息率上升而表現不佳。</text>
+<text top="811" left="43" width="379" height="15" font="15">整體經濟環境仍然偏向有利。全球股市估值亦維持在相對高位，尤其是美國市場，</text>
+<text top="828" left="43" width="379" height="15" font="15">其表現仍高度依賴少數大型企業。對減息的預期已大致反映在孳息率曲線的前端，</text>
+<text top="845" left="43" width="105" height="15" font="15">而通脹預期仍然溫和。</text>
+<text top="869" left="43" width="383" height="13" font="3">Global shares delivered positive return over the fourth quarter, supported by</text>
+<text top="881" left="43" width="383" height="13" font="3">easing inflation pressures, evolving monetary policy expectations and continued</text>
+<text top="893" left="43" width="383" height="13" font="3">investor risk appetite. Equity leadership broadened beyond the most highly</text>
+<text top="905" left="43" width="383" height="13" font="3">valued technology stocks as the quarter progressed, while emerging market</text>
+<text top="917" left="43" width="383" height="13" font="3">equities broadly matched or modestly outperformed developed markets.</text>
+<text top="929" left="43" width="383" height="13" font="3">Government bond markets recorded mixed outcomes over the quarter. Shorter-</text>
+<text top="941" left="43" width="383" height="13" font="3">dated US Treasury yields declined as expectations for policy easing</text>
+<text top="953" left="43" width="383" height="13" font="3">strengthened, while longer-dated yields rose, resulting in curve steepening. UK</text>
+<text top="965" left="43" width="383" height="13" font="3">and eurozone government bonds were pressured by fiscal concerns and supply</text>
+<text top="977" left="43" width="365" height="13" font="3">dynamics, while Japanese government bonds underperformed as yields rose.</text>
+<text top="989" left="43" width="383" height="13" font="3">The economic backdrop remains generally supportive. Valuations across equity</text>
+<text top="1001" left="43" width="383" height="13" font="3">markets also remain elevated, particularly in the US where performance</text>
+<text top="1013" left="43" width="383" height="13" font="3">continues to be heavily influenced by a small number of large stocks.</text>
+<text top="1025" left="43" width="383" height="13" font="3">Expectations for rate cuts have largely been reflected at the front end of the</text>
+<text top="1037" left="43" width="269" height="13" font="3">yield curve, while inflation expectations remain subdued.</text>
+<text top="1221" left="45" width="434" height="13" font="16">永明強積金核心累積基金的首個交易日為03/04/2017，這項成分基金的業績表現資料由03/04/2017開始計算。</text>
+<text top="1229" left="45" width="687" height="11" font="17">The first dealing day of Sun Life MPF Core Accumulation Fund is on 03/04/2017 and the performance information of this constituent fund is calculated from 03/04/2017.</text>
+<text top="17" left="46" width="169" height="22" font="18"><b>永明彩虹強積金計劃季報 </b></text>
+<text top="17" left="215" width="341" height="19" font="19"><b>Sun Life Rainbow MPF Scheme Quarterly Update</b></text>
+<text top="685" left="479" width="81" height="20" font="20"><b>投資組合分布</b></text>
+<text top="685" left="564" width="124" height="17" font="13"><b>Portfolio Allocation</b></text>
+<text top="53" left="45" width="298" height="39" font="21"><b>永明強積金核心累積基金</b></text>
+<text top="82" left="45" width="492" height="34" font="22"><b>Sun Life MPF Core Accumulation Fund</b></text>
+<text top="18" left="732" width="27" height="17" font="23"><b>截至 </b></text>
+<text top="18" left="759" width="91" height="15" font="24"><b>As at 31/12/2025</b></text>
+<text top="884" left="479" width="81" height="20" font="20"><b>十大主要證券</b></text>
+<text top="884" left="560" width="4" height="9" font="6"><b>7</b></text>
+<text top="884" left="568" width="101" height="17" font="13"><b>Top 10 Holdings</b></text>
+<text top="884" left="668" width="4" height="9" font="6"><b>7</b></text>
+<text top="912" left="824" width="23" height="13" font="3">2.6%</text>
+<text top="912" left="473" width="61" height="13" font="3">NVIDIA Corp</text>
+<text top="933" left="824" width="23" height="13" font="3">2.2%</text>
+<text top="933" left="473" width="105" height="13" font="3">Alphabet Inc - Class A</text>
+<text top="954" left="824" width="23" height="13" font="3">2.2%</text>
+<text top="954" left="473" width="73" height="13" font="3">Microsoft Corp</text>
+<text top="975" left="825" width="21" height="13" font="3">1.9%</text>
+<text top="975" left="473" width="44" height="13" font="3">Apple Inc</text>
+<text top="997" left="825" width="21" height="13" font="3">1.9%</text>
+<text top="996" left="473" width="127" height="13" font="3">iShares Core S&amp;P 500 ETF</text>
+<text top="1018" left="825" width="21" height="13" font="3">1.9%</text>
+<text top="1017" left="473" width="210" height="13" font="3">NEXT FUNDS TOPIX Exchange Traded Fund</text>
+<text top="1039" left="825" width="21" height="13" font="3">1.4%</text>
+<text top="1038" left="473" width="192" height="13" font="3">US Government Bond 3.5% 31-Jan-2028</text>
+<text top="1060" left="825" width="21" height="13" font="3">1.4%</text>
+<text top="1059" left="473" width="207" height="13" font="3">US Government Bond 0.875% 15-Nov-2030</text>
+<text top="1081" left="825" width="21" height="13" font="3">1.4%</text>
+<text top="1080" left="473" width="87" height="13" font="3">SPDR Gold Shares</text>
+<text top="1102" left="826" width="21" height="13" font="3">1.3%</text>
+<text top="1101" left="473" width="79" height="13" font="3">Amazon.com Inc</text>
+<text top="85" left="670" width="42" height="15" font="25">市場預測</text>
+<text top="83" left="712" width="3" height="9" font="14">1</text>
+<text top="100" left="670" width="78" height="13" font="3">Market Forecast</text>
+<text top="98" left="748" width="3" height="9" font="14">1</text>
+<text top="1230" left="16" width="13" height="15" font="4">22</text>
+<text top="81" left="812" width="9" height="13" font="26">^^</text>
+<text top="95" left="787" width="20" height="12" font="27"> N/A</text>
+<text top="94" left="807" width="9" height="13" font="26">^^</text>
+<text top="152" left="476" width="105" height="15" font="25">為成員提供資本增長。</text>
+<text top="165" left="476" width="171" height="13" font="3">Provide capital growth to members.</text>
+<text top="233" left="480" width="57" height="20" font="20"><b>基金表現 </b></text>
+<text top="233" left="538" width="116" height="17" font="13"><b>Fund Performance</b></text>
+<text top="125" left="482" width="54" height="20" font="20"><b>投資目標</b></text>
+<text top="125" left="543" width="135" height="17" font="13"><b>Investment Objective</b></text>
+<text top="424" left="487" width="116" height="15" font="25">永明強積金核心累積基金</text>
+<text top="434" left="488" width="184" height="13" font="3">Sun Life MPF Core Accumulation Fund</text>
+<text top="351" left="482" width="0" height="15" font="28">指數化 </text>
+<text top="317" left="482" width="0" height="13" font="29">Indexed</text>
+<text top="685" left="52" width="81" height="20" font="20"><b>基金經理評論</b></text>
+<text top="685" left="136" width="146" height="17" font="13"><b>Manager’s Commentary</b></text>
+<text top="425" left="739" width="68" height="15" font="25">參考投資組合*</text>
+<text top="435" left="739" width="97" height="13" font="3">Reference Portfolio*</text>
+<text top="533" left="462" width="34" height="16" font="30">不�用</text>
+<text top="543" left="468" width="22" height="15" font="31">N/A</text>
+<text top="533" left="741" width="34" height="16" font="30">不�用</text>
+<text top="543" left="747" width="22" height="15" font="31">N/A</text>
+<text top="565" left="462" width="34" height="16" font="30">不�用</text>
+<text top="575" left="468" width="22" height="15" font="31">N/A</text>
+<text top="643" left="462" width="34" height="16" font="30">不�用</text>
+<text top="653" left="468" width="22" height="15" font="31">N/A</text>
+<text top="565" left="741" width="34" height="16" font="30">不�用</text>
+<text top="575" left="747" width="22" height="15" font="31">N/A</text>
+<text top="489" left="622" width="63" height="17" font="32"><b>年率化回報 </b></text>
+<text top="489" left="685" width="105" height="15" font="1"><b>Annualized Return</b></text>
+<text top="509" left="798" width="42" height="15" font="33">成立至今</text>
+<text top="523" left="791" width="57" height="13" font="34">Since Launch</text>
+<text top="509" left="642" width="21" height="15" font="33">三年</text>
+<text top="523" left="636" width="31" height="13" font="34">3 Years</text>
+<text top="509" left="750" width="21" height="15" font="33">十年</text>
+<text top="523" left="742" width="36" height="13" font="34">10 Years</text>
+<text top="509" left="695" width="21" height="15" font="33">五年</text>
+<text top="523" left="690" width="31" height="13" font="34">5 Years</text>
+<text top="636" left="590" width="22" height="15" font="4">N/A</text>
+<text top="636" left="643" width="22" height="15" font="4">N/A</text>
+<text top="636" left="801" width="38" height="15" font="4">19.92%</text>
+<text top="636" left="690" width="33" height="15" font="4">5.93%</text>
+<text top="636" left="743" width="37" height="15" font="4">13.92%</text>
+<text top="606" left="588" width="25" height="15" font="4">2021</text>
+<text top="606" left="640" width="27" height="15" font="4">2022</text>
+<text top="606" left="804" width="28" height="15" font="4">2025</text>
+<text top="606" left="693" width="27" height="15" font="4">2023</text>
+<text top="606" left="746" width="28" height="15" font="4">2024</text>
+<text top="490" left="286" width="51" height="17" font="32"><b>累積回報 </b></text>
+<text top="490" left="336" width="108" height="15" font="1"><b>Cumulative Return</b></text>
+<text top="509" left="520" width="42" height="15" font="33">成立至今</text>
+<text top="523" left="513" width="57" height="13" font="34">Since Launch</text>
+<text top="509" left="308" width="21" height="15" font="33">一年</text>
+<text top="523" left="305" width="25" height="13" font="34">1 Year</text>
+<text top="509" left="363" width="21" height="15" font="33">三年</text>
+<text top="523" left="358" width="31" height="13" font="34">3 Years</text>
+<text top="509" left="418" width="21" height="15" font="33">五年</text>
+<text top="523" left="413" width="31" height="13" font="34">5 Years</text>
+<text top="507" left="473" width="21" height="15" font="33">十年</text>
+<text top="521" left="466" width="36" height="13" font="34">10 Years</text>
+<text top="636" left="187" width="33" height="15" font="4">9.95%</text>
+<text top="636" left="246" width="31" height="15" font="4">1.56%</text>
+<text top="636" left="419" width="22" height="15" font="4">N/A</text>
+<text top="636" left="302" width="33" height="15" font="4">9.95%</text>
+<text top="636" left="362" width="22" height="15" font="4">N/A</text>
+<text top="636" left="473" width="22" height="15" font="4">N/A</text>
+<text top="636" left="523" width="37" height="15" font="4">23.51%</text>
+<text top="466" left="56" width="54" height="20" font="35"><b>基金表現</b></text>
+<text top="467" left="110" width="4" height="9" font="36"><b>4</b></text>
+<text top="466" left="117" width="129" height="20" font="35"><b>Fund Performance</b></text>
+<text top="467" left="247" width="4" height="9" font="36"><b>4</b></text>
+<text top="606" left="286" width="51" height="17" font="32"><b>累積回報 </b></text>
+<text top="606" left="336" width="108" height="15" font="1"><b>Cumulative Return</b></text>
+<text top="580" left="174" width="84" height="17" font="32"><b>平均成本法回報</b></text>
+<text top="581" left="258" width="4" height="10" font="37"><b>6</b></text>
+<text top="582" left="264" width="132" height="13" font="38"><b>Dollar Cost Averaging Return</b></text>
+<text top="581" left="396" width="4" height="10" font="37"><b>6</b></text>
+<text top="583" left="401" width="3" height="12" font="9"><b>(</b></text>
+<text top="583" left="404" width="49" height="13" font="39"><b>僅作舉例用途</b></text>
+<text top="583" left="455" width="116" height="12" font="9"><b>For illustrative purposes only)</b></text>
+<text top="580" left="621" width="51" height="17" font="32"><b>年度回報 </b></text>
+<text top="580" left="672" width="122" height="15" font="1"><b>Calendar Year Return</b></text>
+<text top="509" left="589" width="21" height="15" font="33">一年</text>
+<text top="523" left="587" width="25" height="13" font="34">1 Year</text>
+<text top="509" left="184" width="42" height="15" font="33">年初至今</text>
+<text top="524" left="178" width="54" height="13" font="34">Year to Date</text>
+<text top="509" left="248" width="31" height="15" font="33">三個月</text>
+<text top="523" left="243" width="40" height="13" font="34">3 Months</text>
+<text top="547" left="186" width="38" height="15" font="4">19.92%</text>
+<text top="547" left="245" width="33" height="15" font="4">4.33%</text>
+<text top="547" left="298" width="38" height="15" font="4">19.92%</text>
+<text top="547" left="363" width="22" height="15" font="4">N/A</text>
+<text top="547" left="418" width="22" height="15" font="4">N/A</text>
+<text top="547" left="473" width="22" height="15" font="4">N/A</text>
+<text top="547" left="523" width="39" height="15" font="4">44.72%</text>
+<text top="547" left="580" width="38" height="15" font="4">19.92%</text>
+<text top="547" left="641" width="22" height="15" font="4">N/A</text>
+<text top="547" left="695" width="22" height="15" font="4">N/A</text>
+<text top="547" left="751" width="22" height="15" font="4">N/A</text>
+<text top="547" left="802" width="38" height="15" font="4">15.43%</text>
+<text top="549" left="50" width="118" height="13" font="34">Sun Life MPF Global Low</text>
+<text top="559" left="50" width="90" height="13" font="34">Carbon Index Fund</text>
+<text top="537" left="50" width="115" height="15" font="33">永明強積金環球低碳指數</text>
+<text top="638" left="52" width="118" height="13" font="34">Sun Life MPF Global Low</text>
+<text top="648" left="52" width="90" height="13" font="34">Carbon Index Fund</text>
+<text top="626" left="52" width="115" height="15" font="33">永明強積金環球低碳指數</text>
+<text top="260" left="323" width="106" height="17" font="40">股票基金 - 環球股票</text>
+<text top="272" left="277" width="151" height="15" font="4">Equity Fund – Global Equity</text>
+<text top="347" left="382" width="46" height="15" font="4">1.19123%</text>
+<text top="125" left="55" width="57" height="20" font="35"><b>基本資料 </b></text>
+<text top="125" left="113" width="111" height="17" font="41"><b>Basic Information</b></text>
+<text top="149" left="50" width="48" height="17" font="40">成立日期</text>
+<text top="163" left="50" width="68" height="15" font="4">Launch Date</text>
+<text top="181" left="50" width="155" height="17" font="40">基金資產值 (以百萬港元計算)</text>
+<text top="196" left="50" width="139" height="15" font="4">Fund Size (HK$ in Million)</text>
+<text top="214" left="50" width="83" height="17" font="40">基金價格 (港元)</text>
+<text top="229" left="50" width="93" height="15" font="4">Fund Price (HK$)</text>
+<text top="260" left="50" width="72" height="17" font="40">基金類型描述</text>
+<text top="275" left="50" width="88" height="15" font="4">Fund Descriptor</text>
+<text top="340" left="50" width="72" height="17" font="40">基金開支比率</text>
+<text top="341" left="122" width="4" height="9" font="42">2</text>
+<text top="356" left="50" width="108" height="15" font="4">Fund Expense Ratio</text>
+<text top="356" left="158" width="4" height="9" font="42">2</text>
+<text top="153" left="362" width="66" height="15" font="4">05/06/2023</text>
+<text top="186" left="388" width="38" height="15" font="4">4,155.3</text>
+<text top="219" left="392" width="34" height="15" font="4">1.4472</text>
+<text top="306" left="50" width="48" height="17" font="40">投資經理</text>
+<text top="321" left="50" width="112" height="15" font="4">Investment Manager</text>
+<text top="305" left="271" width="157" height="17" font="40">永明資產管理 (香港) 有限公司</text>
+<text top="319" left="203" width="225" height="15" font="4">Sun Life Asset Management (HK) Limited</text>
+<text top="376" left="50" width="48" height="17" font="40">風險程度</text>
+<text top="376" left="98" width="4" height="9" font="42">3</text>
+<text top="392" left="50" width="75" height="15" font="4">Risk Indicator</text>
+<text top="392" left="125" width="4" height="9" font="42">3</text>
+<text top="381" left="406" width="22" height="15" font="4">N/A</text>
+<text top="410" left="50" width="48" height="17" font="40">風險級別</text>
+<text top="411" left="98" width="4" height="9" font="42">5</text>
+<text top="426" left="50" width="55" height="15" font="4">Risk Class</text>
+<text top="426" left="105" width="4" height="9" font="42">5</text>
+<text top="416" left="406" width="22" height="15" font="4">N/A</text>
+<text top="709" left="46" width="378" height="15" font="43">截至2025年12月31日為止的三個月，永明強積金環球低碳指數基金錄得+4.3%的回</text>
+<text top="726" left="46" width="373" height="15" font="43">報。本基金分別於10月、11月及12月錄得 +1.4% 、+1.1% 及 +1.8% 的回報。季內</text>
+<text top="743" left="46" width="378" height="15" font="43">基金表現最大正面貢獻的個股為強生公司、思科和默克藥廠。季內基金表現最大的</text>
+<text top="760" left="46" width="245" height="15" font="43">拖累因素則為微軟、ServiceNow公司和家得寶公司。</text>
+<text top="784" left="46" width="382" height="13" font="34">For the three months ended 31 December 2025, Sun Life MPF Global Low</text>
+<text top="796" left="46" width="382" height="13" font="34">Carbon Index Fund returned +4.3%. The fund delivered returns of +1.4%, +1.1%</text>
+<text top="808" left="46" width="382" height="13" font="34">and +1.8% for the months of October, November and December respectively.</text>
+<text top="820" left="46" width="382" height="13" font="34">Among the top positive contributing stocks in the fund during the quarter were</text>
+<text top="832" left="46" width="382" height="13" font="34">Johnson &amp; Johnson, CISCO System and Merck. The biggest detractors from</text>
+<text top="844" left="46" width="382" height="13" font="34">portfolio performance over the quarter were Microsoft, ServiceNow and Home</text>
+<text top="856" left="46" width="32" height="13" font="34">Depot.</text>
+<text top="1125" left="47" width="810" height="13" font="44">永明資產管理環球低碳指數基金(永明資產管理基金的子基金) (基礎基金)由永明資產管理 (香港) 有限公司獨自設立。基礎基金並無以任何方式與London Stock Exchange Group plc及其集團企業 (統稱為「倫</text>
+<text top="1135" left="47" width="810" height="13" font="44">交所集團」) 有任何聯繫，亦非獲其以任何方式保薦、認許、銷售或推廣。富時羅素為若干倫交所集團公司的商業名稱。FTSE Custom MPF Developed Selected Countries ESG Low Carbon Select Hedged</text>
+<text top="1144" left="47" width="810" height="13" font="44">Index (基礎指數) 中的所有權利均歸屬擁有該指數的相關倫交所集團公司。「FTSE®」、「Russell®」、「FTSE Russell®」是相關倫交所集團公司的商標，並由其他倫交所集團公司根據許可使用。基礎指數由</text>
+<text top="1154" left="47" width="804" height="13" font="44">富時國際有限公司或其聯屬公司、代理人或合作夥伴計算或代其計算。倫交所集團概不就(a)使用、依賴指數或指數的任何錯誤或(b)基礎基金的投資或運作而對任何人士負上任何責任。倫交所集團概不就基</text>
+<text top="1164" left="47" width="478" height="13" font="44">礎基金所取得的業績或基礎指數是否適合永明資產管理 (香港) 有限公司所聲稱之目的作出任何聲稱、預測、保證或陳述。</text>
+<text top="1173" left="47" width="810" height="11" font="17">The Sun Life AM Global Low Carbon Index Fund (“Underlying Fund”), a sub-fund of the Sun Life Asset Management Funds, has been developed solely by Sun Life Asset Management (HK) Limited. The</text>
+<text top="1180" left="47" width="810" height="11" font="17">Underlying Fund is not in any way connected to or sponsored, endorsed, sold or promoted by the London Stock Exchange Group plc and its group undertakings (collectively, the “LSE Group”). FTSE</text>
+<text top="1187" left="47" width="810" height="11" font="17">Russell is a trading name of certain of the LSE Group companies. All rights in the FTSE Custom MPF Developed Selected Countries ESG Low Carbon Select Hedged Index (Underlying Index) vest in</text>
+<text top="1194" left="47" width="810" height="11" font="17">the relevant LSE Group company which owns the index. “FTSE®”, “Russell®”, “FTSE Russell®” are trademarks of the relevant LSE Group company and are used by any other LSE Group company under</text>
+<text top="1202" left="47" width="810" height="11" font="17">license. The Underlying Index is calculated by or on behalf of FTSE International Limited or its affiliate, agent or partner. The LSE Group does not accept any liability whatsoever to any person arising</text>
+<text top="1209" left="47" width="810" height="11" font="17">out of (a) the use of, reliance on or any error in the index or (b) investment in or operation of the Underlying Fund. The LSE Group makes no claim, prediction, warranty or representation either as to</text>
+<text top="1216" left="47" width="727" height="11" font="17">the results to be obtained from the Underlying Fund or the suitability of the Underlying Index for the purposes to which it is being put by Sun Life Asset Management (HK) Limited.</text>
+<text top="1226" left="47" width="451" height="13" font="44">永明強積金環球低碳指數基金的首個交易日為05/06/2023，這項成分基金的業績表現資料由05/06/2023開始計算。</text>
+<text top="1235" left="47" width="713" height="11" font="17">The first dealing day of Sun Life MPF Global Low Carbon Index Fund is on 05/06/2023 and the performance information of this constituent fund is calculated from 05/06/2023.</text>
+<text top="18" left="49" width="169" height="22" font="18"><b>永明彩虹強積金計劃季報 </b></text>
+<text top="18" left="217" width="340" height="19" font="19"><b>Sun Life Rainbow MPF Scheme Quarterly Update</b></text>
+<text top="684" left="480" width="81" height="20" font="45"><b>投資組合分布</b></text>
+<text top="684" left="565" width="124" height="17" font="41"><b>Portfolio Allocation</b></text>
+<text top="54" left="47" width="351" height="39" font="21"><b>永明強積金環球低碳指數基金</b></text>
+<text top="83" left="47" width="565" height="34" font="22"><b>Sun Life MPF Global Low Carbon Index Fund</b></text>
+<text top="19" left="733" width="27" height="17" font="23"><b>截至 </b></text>
+<text top="19" left="760" width="91" height="15" font="24"><b>As at 31/12/2025</b></text>
+<text top="1229" left="869" width="11" height="15" font="4">13</text>
+<text top="883" left="481" width="81" height="20" font="45"><b>十大主要證券</b></text>
+<text top="883" left="562" width="4" height="9" font="36"><b>7</b></text>
+<text top="883" left="569" width="101" height="17" font="41"><b>Top 10 Holdings</b></text>
+<text top="883" left="670" width="4" height="9" font="36"><b>7</b></text>
+<text top="911" left="825" width="22" height="13" font="34">7.8%</text>
+<text top="911" left="475" width="72" height="13" font="34">Microsoft Corp</text>
+<text top="932" left="825" width="22" height="13" font="34">7.2%</text>
+<text top="932" left="475" width="81" height="13" font="34">Visa Inc - Class A</text>
+<text top="953" left="824" width="24" height="13" font="34">6.0%</text>
+<text top="953" left="475" width="93" height="13" font="34">Johnson &amp; Johnson</text>
+<text top="974" left="825" width="22" height="13" font="34">3.7%</text>
+<text top="974" left="475" width="86" height="13" font="34">Cisco Systems Inc</text>
+<text top="995" left="824" width="23" height="13" font="34">3.4%</text>
+<text top="995" left="475" width="61" height="13" font="34">NVIDIA Corp</text>
+<text top="1016" left="825" width="22" height="13" font="34">2.7%</text>
+<text top="1016" left="475" width="44" height="13" font="34">Apple Inc</text>
+<text top="1037" left="826" width="21" height="13" font="34">1.9%</text>
+<text top="1037" left="475" width="166" height="13" font="34">Mitsubishi UFJ Financial Group Inc</text>
+<text top="1058" left="827" width="20" height="13" font="34">1.7%</text>
+<text top="1058" left="475" width="62" height="13" font="34">Citigroup Inc</text>
+<text top="1079" left="827" width="20" height="13" font="34">1.7%</text>
+<text top="1079" left="475" width="71" height="13" font="34">Merck &amp; Co Inc</text>
+<text top="1100" left="826" width="21" height="13" font="34">1.5%</text>
+<text top="1100" left="475" width="78" height="13" font="34">Amazon.com Inc</text>
+<text top="85" left="671" width="42" height="15" font="46">市場預測</text>
+<text top="84" left="713" width="3" height="9" font="42">1</text>
+<text top="100" left="671" width="78" height="13" font="34">Market Forecast</text>
+<text top="99" left="749" width="3" height="9" font="42">1</text>
+<text top="104" left="804" width="25" height="9" font="47"> Positive</text>
+<text top="152" left="477" width="367" height="15" font="46">尋求向成員提供於扣除費用和開支前緊貼 FTSE Custom MPF Developed</text>
+<text top="167" left="477" width="353" height="15" font="46">Selected Countries ESG Low Carbon Select Hedged Index表現的投資回報。</text>
+<text top="180" left="477" width="367" height="13" font="34">Seeks to provide members with investment results that, before fees and</text>
+<text top="192" left="477" width="367" height="13" font="34">expenses, closely track the performance of the FTSE Custom MPF Developed</text>
+<text top="204" left="477" width="277" height="13" font="34">Selected Countries ESG Low Carbon Select Hedged Index.</text>
+<text top="233" left="482" width="57" height="20" font="45"><b>基金表現 </b></text>
+<text top="234" left="539" width="116" height="17" font="41"><b>Fund Performance</b></text>
+<text top="126" left="483" width="54" height="20" font="45"><b>投資目標</b></text>
+<text top="126" left="544" width="134" height="17" font="41"><b>Investment Objective</b></text>
+<text top="424" left="488" width="136" height="15" font="46">永明強積金環球低碳指數基金</text>
+<text top="424" left="625" width="3" height="8" font="48">4</text>
+<text top="435" left="490" width="211" height="13" font="34">Sun Life MPF Global Low Carbon Index Fund</text>
+<text top="435" left="701" width="3" height="8" font="48">4</text>
+<text top="351" left="483" width="0" height="15" font="49">指數化 </text>
+<text top="317" left="483" width="0" height="13" font="50">Indexed</text>
+<text top="447" left="473" width="6" height="9" font="51">§</text>
+<text top="450" left="479" width="128" height="13" font="52"> 資料來源：富時國際有限公司。</text>
+<text top="450" left="607" width="170" height="11" font="17">Index Source: FTSE International Limited.</text>
+<text top="684" left="55" width="81" height="20" font="45"><b>基金經理評論</b></text>
+<text top="684" left="139" width="146" height="17" font="41"><b>Manager’s Commentary</b></text>
+<text top="425" left="740" width="180" height="11" font="53">FTSE Custom MPF Developed Selected Countries ESG</text>
+<text top="440" left="749" width="112" height="11" font="53">Low Carbon Select Hedged Index</text>
+<text top="439" left="860" width="4" height="7" font="54">§</text>
+</page>
+</pdf2xml>

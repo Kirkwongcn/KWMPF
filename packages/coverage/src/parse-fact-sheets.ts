@@ -8,6 +8,7 @@ import { parseAmtdFundFactSheet } from "./amtd-fund-fact-sheet-parser";
 import { parseBctFundFactSheet } from "./bct-fund-fact-sheet-parser";
 import { parseFundFactSheet } from "./fund-fact-sheet-parser";
 import { parsePrincipalFundFactSheet, parsePrincipal800FundFactSheet } from "./principal-fund-fact-sheet-parser";
+import { parseSunLifeFundFactSheetXml } from "./sun-life-fund-fact-sheet-parser";
 import type { FundFactSheetReturn } from "./fund-fact-sheet-parser";
 
 const exec = promisify(execFile);
@@ -37,8 +38,13 @@ for (const entry of manifest.entries) {
   const id = createHash("sha256").update(entry.scheme).digest("hex").slice(0, 16);
   try {
     const pdfPath = join(pdfRoot, `${id}.pdf`);
-    const { stdout } = await exec("pdftotext", ["-layout", pdfPath, "-"]);
-    returns.push(...parser(entry.scheme, stdout, entry.factSheetUrl));
+    if (entry.scheme.startsWith("Sun Life")) {
+      const { stdout } = await exec("pdftohtml", ["-xml", "-stdout", pdfPath]);
+      returns.push(...parseSunLifeFundFactSheetXml(stdout, entry.factSheetUrl));
+    } else {
+      const { stdout } = await exec("pdftotext", ["-layout", pdfPath, "-"]);
+      returns.push(...parser(entry.scheme, stdout, entry.factSheetUrl));
+    }
   } catch (error) {
     failures.push({ scheme: entry.scheme, error: error instanceof Error ? error.message : String(error) });
   }

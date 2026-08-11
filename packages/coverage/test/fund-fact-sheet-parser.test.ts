@@ -7,6 +7,7 @@ import { parseAiaFundFactSheet } from "../src/aia-fund-fact-sheet-parser";
 import { parseAmtdFundFactSheet } from "../src/amtd-fund-fact-sheet-parser";
 import { parseBctFundFactSheet } from "../src/bct-fund-fact-sheet-parser";
 import { parsePrincipal800FundFactSheet, parsePrincipalFundFactSheet } from "../src/principal-fund-fact-sheet-parser";
+import { parseSunLifeFundFactSheetXml } from "../src/sun-life-fund-fact-sheet-parser";
 
 const fixture = readFileSync(join(import.meta.dirname, "fixtures", "bea-fund-fact-sheet.txt"), "utf8");
 const aiaFixture = readFileSync(join(import.meta.dirname, "fixtures", "aia-mt00172-layout.txt"), "utf8");
@@ -15,6 +16,7 @@ const amtdFixture = `AMTD MPF Scheme\nAMTD Allianz Choice Dynamic Allocation Fun
 const bctFixture = `BCT (MPF) Industry Choice\nBCT (Industry) China and Hong Kong Equity Fund\nFund Performance Fact Sheet\nas at 截至 31/12/2025\nConstituent Fund Performance 成份基金表現\nAnnualised Return 年率化回報 (p.a.)\n1 Year 一年 3 Years 三年 5 Years 五年 10 Years 十年 Since Launch\n30.67% 8.27% -2.94% 3.67% 6.69%\nDollar Cost Averaging Return (For illustration only)`;
 const principalFixture = `Principal MPF - Simple Plan Quarterly\nFund Fact Sheet\nData as of 數據截至 31/12/2025\n\\f\nPrincipal Age 65 Plus Fund (MA65F)\nAnnualized Return 年度回報 (%) N/A 7.75 7.75 5.98 0.69`;
 const principal800Fixture = `信安中國股票基金\nPrincipal China Equity Fund\n截至2025年12月31日 As at 31/12/2025\n年均表現 Annualized Return6 (%)\nD類單位 Class D 30.63 30.63 9.16 -4.48 3.34 2.59`;
+const sunLifeXmlFixture = readFileSync(join(import.meta.dirname, "fixtures", "sun-life-page-23.xml"), "utf8");
 
 describe("official fund fact sheet parser", () => {
   it("parses AIA layout text without confusing cumulative and annualized returns", () => {
@@ -87,6 +89,17 @@ describe("official fund fact sheet parser", () => {
   it("parses Principal 800 annualized three-year returns", () => {
     expect(parsePrincipal800FundFactSheet(principal800Fixture, "https://example.test/800.pdf", "BCT MPF Scheme Series 800")).toEqual([
       expect.objectContaining({ constituentFundName: "信安中國股票基金", dataAsOf: "2025-12-31", annualizedReturn3Year: 9.16 }),
+    ]);
+  });
+
+  it("parses Sun Life XML coordinates without confusing adjacent report columns", () => {
+    expect(parseSunLifeFundFactSheetXml(sunLifeXmlFixture, "https://www.mpfa.org.hk/assets/FF/MT00067.pdf")).toEqual([
+      expect.objectContaining({
+        schemeName: "Sun Life Rainbow MPF Scheme",
+        constituentFundName: "Sun Life MPF Core Accumulation Fund",
+        dataAsOf: "2025-12-31",
+        annualizedReturn3Year: 12.14,
+      }),
     ]);
   });
 
