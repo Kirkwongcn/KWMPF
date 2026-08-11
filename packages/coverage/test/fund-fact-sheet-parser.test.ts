@@ -4,10 +4,12 @@ import { describe, expect, it } from "vitest";
 import { parseFundFactSheet } from "../src/fund-fact-sheet-parser";
 import { mergeFundFactSheetReturns } from "../src/fund-fact-sheet-merge";
 import { parseAiaFundFactSheet } from "../src/aia-fund-fact-sheet-parser";
+import { parseAmtdFundFactSheet } from "../src/amtd-fund-fact-sheet-parser";
 
 const fixture = readFileSync(join(import.meta.dirname, "fixtures", "bea-fund-fact-sheet.txt"), "utf8");
 const aiaFixture = readFileSync(join(import.meta.dirname, "fixtures", "aia-mt00172-layout.txt"), "utf8");
 const bcomFixture = `BCOM Joyful Retirement MPF Scheme\nBCOM Joyful Retirement MPF Scheme Fund Fact Sheet\n(As of : 31/12/2025)\n\\f\nBCOM Stable Growth (CF) Fund\nAnnualised Rate of Return 1 year 3 years 5 years 10 years\nFund 2.01% 2.85% 1.86% 1.40%`;
+const amtdFixture = `AMTD MPF Scheme\nAMTD Allianz Choice Dynamic Allocation Fund\nAs at 31-Dec-2025 截至 2025 年 12 月 31 日\nAnnualized Return 年率化回報 (% p.a.)\n1 yr 3 yrs 5 yrs 10 yrs\n8.77% 5.12% 2.68% 3.23%`;
 
 describe("official fund fact sheet parser", () => {
   it("parses AIA layout text without confusing cumulative and annualized returns", () => {
@@ -48,6 +50,16 @@ describe("official fund fact sheet parser", () => {
         annualizedReturn3Year: 2.85,
       }),
     ]);
+  });
+
+  it("parses AMTD quarterly fund summary annualized returns", () => {
+    expect(parseAmtdFundFactSheet(amtdFixture, "https://www.mpfa.org.hk/assets/FF/MT00539.pdf")).toEqual([
+      expect.objectContaining({ constituentFundName: "AMTD Allianz Choice Dynamic Allocation Fund", dataAsOf: "2025-12-31", annualizedReturn3Year: 5.12 }),
+    ]);
+  });
+
+  it("fails closed when AMTD annualized return data is absent", () => {
+    expect(() => parseAmtdFundFactSheet(amtdFixture.replace("5.12%", "N/A"), "https://example.test/amtd.pdf")).toThrow("AMTD annualized return row is incomplete");
   });
 
   it("fails closed when the performance row is missing", () => {
