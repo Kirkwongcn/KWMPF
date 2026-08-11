@@ -52,6 +52,23 @@ export function parseFundDetail(html: string, cfId: number): SourceRecord {
     return value;
   };
 
+  const returns: SourceRecord["returns"] = {};
+  for (const years of [1, 3, 5, 10] as const) {
+    const label = new RegExp(
+      `Annualized Return / Cumulative Return \\(${years} Year\\) \\(as at [^)]+\\)`,
+      "i",
+    );
+    const row = $("tr")
+      .toArray()
+      .map((element) => $(element).text().replace(/\s+/g, " ").trim())
+      .find((text) => label.test(text));
+    if (!row) continue;
+    const date = sourceDate(row, cfId);
+    const values = [...row.matchAll(/([+-]?\d+(?:\.\d+)?)%/g)].map((match) => Number(match[1]));
+    if (values.length < 2) throw new Error(`Return values are missing from cf_id ${cfId} (${years} Year)`);
+    returns[years] = { annualized: values[0], cumulative: values[1], dataAsOf: date };
+  }
+
   return {
     fundClassId: `mpfa-cf-${cfId}`,
     identity: {
@@ -63,5 +80,6 @@ export function parseFundDetail(html: string, cfId: number): SourceRecord {
     current: true,
     dataAsOf: sourceDate(required("Fund size (HKD Million)"), cfId),
     sourceUrl: `${detailBaseUrl}${cfId}`,
+    returns,
   };
 }

@@ -53,6 +53,29 @@ function optionalStringArray(value: unknown, path: string) {
   return value.map((item, index) => string(item, `${path}[${index}]`));
 }
 
+function parseReturns(value: unknown, path: string) {
+  if (value === undefined) return undefined;
+  const item = object(value, path);
+  return Object.fromEntries(
+    ([1, 3, 5, 10] as const).flatMap((period) => {
+      const observation = item[period];
+      if (observation === undefined) return [];
+      const parsed = object(observation, `${path}.${period}`);
+      if (parsed.annualized !== undefined && typeof parsed.annualized !== "number") {
+        throw new Error(`${path}.${period}.annualized must be a number`);
+      }
+      if (parsed.cumulative !== undefined && typeof parsed.cumulative !== "number") {
+        throw new Error(`${path}.${period}.cumulative must be a number`);
+      }
+      return [[period, {
+        ...(parsed.annualized === undefined ? {} : { annualized: parsed.annualized }),
+        ...(parsed.cumulative === undefined ? {} : { cumulative: parsed.cumulative }),
+        dataAsOf: string(parsed.dataAsOf, `${path}.${period}.dataAsOf`),
+      }]];
+    }),
+  );
+}
+
 export function parseSourceSnapshot(value: unknown): SourceSnapshot {
   const root = object(value, "source snapshot");
   const sourceType = string(root.sourceType, "sourceType") as SourceType;
@@ -105,6 +128,9 @@ export function parseSourceSnapshot(value: unknown): SourceSnapshot {
         dataAsOf: string(item.dataAsOf, `records[${index}].dataAsOf`),
         ...(item.sourceUrl
           ? { sourceUrl: string(item.sourceUrl, `records[${index}].sourceUrl`) }
+          : {}),
+        ...(item.returns
+          ? { returns: parseReturns(item.returns, `records[${index}].returns`) }
           : {}),
       };
     }),
