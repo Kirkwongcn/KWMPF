@@ -25,7 +25,7 @@ for (const link of links) {
   if (entries.some((entry) => entry.scheme === link.scheme && entry.status === "downloaded")) continue;
   const retrievedAt = new Date().toISOString();
   try {
-    const response = await fetch(link.factSheetUrl, { signal: AbortSignal.timeout(60_000) });
+    const response = await fetch(link.factSheetUrl, { signal: AbortSignal.timeout(15_000) });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const bytes = new Uint8Array(await response.arrayBuffer());
     if (bytes.length < 10_000 || String.fromCharCode(...bytes.slice(0, 4)) !== "%PDF") throw new Error("response is not a PDF");
