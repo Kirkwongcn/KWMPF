@@ -1,0 +1,22 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "kwmpf-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-08-08",
+  "vars": {
+    "RELEASE_VERSION": "development",
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "kwmpf-staging",
+      "database_id": "00000000-0000-0000-0000-000000000000",
+    },
+  ],
+  "r2_buckets": [
+    {
+      "binding": "RAW_ARCHIVE",
+      "bucket_name": "kwmpf-staging-raw",
+    },
+  ],
+}

@@ -1,0 +1,20 @@
+{
+  "name": "kwmpf",
+  "private": true,
+  "packageManager": "bun@1.3.11",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "bun run --filter '*' build",
+    "check": "bun run format:check && bun run typecheck && bun run test && bun run build",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "bun run --filter '*' test",
+    "typecheck": "bun run --filter '*' typecheck"
+  },
+  "devDependencies": {
+    "prettier": "3.9.6",
+    "typescript": "7.0.2"
+  }
+}
