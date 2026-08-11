@@ -7,7 +7,8 @@
   ],
   "scripts": {
     "build": "bun run --filter '*' build",
-    "check": "bun run format:check && bun run typecheck && bun run test && bun run build",
+    "check": "bun run format:check && bun run check:shell && bun run typecheck && bun run test && bun run build",
+    "check:shell": "bash -n scripts/*.sh",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "bun run --filter '*' test",
