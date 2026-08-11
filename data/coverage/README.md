@@ -48,4 +48,6 @@ bun coverage:second-batch \
   --output data/coverage/second-official-batch.json
 ```
 
+餘下三名受託人使用 `coverage:remaining-batch`，完整重建三批來源後產生 `remaining-official-batch.json`；若任何來源缺失或身份不一致，該項會保留為 `pending_verification`，不會被靜默標成 verified。
+
 來源及限制詳見 `docs/research/2026-08-11-current-mpf-coverage-sources.md`。

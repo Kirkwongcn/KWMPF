@@ -110,4 +110,35 @@ describe("official source batches", () => {
     expect(result.records.filter((record) => record.status === "pending_verification")).toHaveLength(55);
     expect(result.records.filter((record) => record.identity.trusteeName === "AIA Company (Trustee) Limited").every((record) => record.status === "verified")).toBe(true);
   });
+
+  it.each([
+    ["Standard Chartered Trustee (Hong Kong) Limited", "trustee-09.json", 10],
+    ["Sun Life Trustee Company Limited", "trustee-10.json", 31],
+    ["YF Life Trustees Limited", "trustee-11.json", 14],
+  ])("loads the fixed remaining-source contract for %s", async (trustee, trusteeFile, count) => {
+    const batch = loadOfficialBatch(
+      trustee,
+      await readSnapshot(trusteeFile),
+      await readSnapshot("official-scheme-batch-03.json"),
+    );
+    expect(batch.records).toHaveLength(count);
+    expect(batch.records.every((record) => record.identity.trusteeName === trustee)).toBe(true);
+    expect(batch.records.every((record) => record.sourceUrl?.startsWith("https://"))).toBe(true);
+  });
+
+  it("publishes all three batches without unclassified or duplicate fund classes", async () => {
+    const platform = await readSnapshot("mpf-fund-platform.json");
+    const schemes = await Promise.all([
+      readSnapshot("official-scheme-batch-01.json"),
+      readSnapshot("official-scheme-batch-02.json"),
+      readSnapshot("official-scheme-batch-03.json"),
+    ]);
+    const trustees = await Promise.all(
+      Array.from({ length: 11 }, (_, index) => readSnapshot(`trustee-${String(index + 1).padStart(2, "0")}.json`)),
+    );
+    const result = buildOfficialBatchCoverage(platform, schemes, trustees);
+    expect(result.records).toHaveLength(451);
+    expect(new Set(result.records.map((record) => record.fundClassId)).size).toBe(451);
+    expect(result.records.every((record) => record.status === "verified" && record.rankingEligible)).toBe(true);
+  });
 });
