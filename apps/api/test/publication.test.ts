@@ -60,4 +60,22 @@ describe("publication snapshot", () => {
       },
     });
   });
+
+  it("searches the current publication by fund, scheme, or trustee name", async () => {
+    const archived = await archiveCandidate(bindings, fundFixture);
+    await publishCandidate(bindings, fundFixture, archived);
+
+    const response = await SELF.fetch("https://kwmpf.test/search?q=Principal");
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual([
+      {
+        id: fundFixture.fundClass.id,
+        fundClassName: fundFixture.fundClass.fundClassName,
+        constituentFundName: fundFixture.fundClass.constituentFundName,
+        schemeName: fundFixture.fundClass.schemeName,
+        trusteeName: fundFixture.fundClass.trusteeName,
+      },
+    ]);
+  });
 });

@@ -82,6 +82,71 @@ h1 {
   font-weight: 700;
 }
 
+.disclaimer {
+  font-weight: 650;
+}
+
+.search-form {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 2rem;
+}
+
+.search-form label {
+  font-weight: 700;
+}
+
+.search-form div {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search-form input {
+  min-width: 0;
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #aab9ac;
+  border-radius: 0.5rem;
+  background: white;
+  font: inherit;
+}
+
+.search-form button {
+  padding: 0.75rem 1rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background: #205b3d;
+  color: white;
+  font: inherit;
+  font-weight: 700;
+}
+
+.search-results {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.search-results li {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.9rem;
+  border: 1px solid #cad3c6;
+  border-radius: 0.7rem;
+}
+
+.search-results a {
+  color: #205b3d;
+  font-weight: 700;
+}
+
+.search-results span {
+  color: #66736b;
+  font-size: 0.85rem;
+}
+
 .status-list div {
   padding: 1rem;
   border-radius: 0.8rem;
