@@ -1,0 +1,2060 @@
+{
+  "sourceType": "trustee_fund_list",
+  "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/",
+  "retrievedAt": "2026-08-11T00:00:00+08:00",
+  "scopeTrustees": ["Bank Consortium Trust Company Limited"],
+  "records": [
+    {
+      "fundClassId": "mpfa-cf-147",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF - Smart Plan",
+        "constituentFundName": "Principal Dynamic Global Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-148",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF - Smart Plan",
+        "constituentFundName": "Principal Growth Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-149",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF - Smart Plan",
+        "constituentFundName": "Principal Balanced Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-150",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF - Smart Plan",
+        "constituentFundName": "Principal Cash Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-151",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF - Smart Plan",
+        "constituentFundName": "Principal - MPF Conservative Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-158",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF - Smart Plan",
+        "constituentFundName": "Principal Stable Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-160",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF - Simple Plan",
+        "constituentFundName": "Principal Dynamic Asia Pacific Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-161",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF - Simple Plan",
+        "constituentFundName": "Principal Dynamic Global Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-162",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF - Simple Plan",
+        "constituentFundName": "Principal Dynamic Global Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-163",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF - Simple Plan",
+        "constituentFundName": "Principal Stable Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-165",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF - Simple Plan",
+        "constituentFundName": "Principal - MPF Conservative Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-166",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF - Simple Plan",
+        "constituentFundName": "Principal Dynamic Hong Kong Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-167",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF - Simple Plan",
+        "constituentFundName": "Principal Balanced Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-168",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF - Simple Plan",
+        "constituentFundName": "Principal Growth Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-173",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Industry Choice",
+        "constituentFundName": "BCT (Industry) Global Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-174",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Industry Choice",
+        "constituentFundName": "BCT (Industry) E70 Mixed Asset Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-175",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Industry Choice",
+        "constituentFundName": "BCT (Industry) Flexi Mixed Asset Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-176",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Industry Choice",
+        "constituentFundName": "BCT (Industry) China and Hong Kong Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-177",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Industry Choice",
+        "constituentFundName": "BCT (Industry) Global Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-178",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Industry Choice",
+        "constituentFundName": "BCT (Industry) Asian Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-179",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Industry Choice",
+        "constituentFundName": "BCT (Industry) MPF Conservative Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-180",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Industry Choice",
+        "constituentFundName": "BCT (Industry) E30 Mixed Asset Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-181",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Industry Choice",
+        "constituentFundName": "BCT (Industry) E50 Mixed Asset Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-182",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) MPF Conservative Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-183",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) Global Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-184",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) E70 Mixed Asset Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-185",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) E50 Mixed Asset Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-187",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) Asian Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-188",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) E30 Mixed Asset Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-189",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) Flexi Mixed Asset Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-190",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) Global Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-191",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco Capital Stable Fund",
+        "fundClassName": "Unit Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-192",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco Capital Stable Fund",
+        "fundClassName": "Unit Class H"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-193",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco MPF Conservative Fund",
+        "fundClassName": "Unit Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-194",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco MPF Conservative Fund",
+        "fundClassName": "Unit Class H"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-195",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco Hong Kong and China Equity Fund",
+        "fundClassName": "Unit Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-196",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco Hong Kong and China Equity Fund",
+        "fundClassName": "Unit Class H"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-198",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco Balanced Fund",
+        "fundClassName": "Unit Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-199",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco Balanced Fund",
+        "fundClassName": "Unit Class H"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-200",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco Growth Fund",
+        "fundClassName": "Unit Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-201",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco Growth Fund",
+        "fundClassName": "Unit Class H"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-202",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco Global Bond Fund",
+        "fundClassName": "Unit Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-203",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco Global Bond Fund",
+        "fundClassName": "Unit Class H"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-244",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Hong Kong Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-245",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Hong Kong Fund",
+        "fundClassName": "Class B"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-246",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Hong Kong Fund",
+        "fundClassName": "Class T"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-247",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Asian Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-248",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Asian Fund",
+        "fundClassName": "Class B"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-249",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Asian Fund",
+        "fundClassName": "Class T"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-250",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Balanced Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-251",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Balanced Fund",
+        "fundClassName": "Class B"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-252",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Balanced Fund",
+        "fundClassName": "Class T"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-253",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Flexi Balanced Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-254",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Flexi Balanced Fund",
+        "fundClassName": "Class B"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-255",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Flexi Balanced Fund",
+        "fundClassName": "Class T"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-256",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Stable Growth Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-257",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Stable Growth Fund",
+        "fundClassName": "Class B"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-258",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Stable Growth Fund",
+        "fundClassName": "Class T"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-259",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Capital Stable Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-260",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Capital Stable Fund",
+        "fundClassName": "Class B"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-261",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Capital Stable Fund",
+        "fundClassName": "Class T"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-262",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz MPF Conservative Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-263",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz MPF Conservative Fund",
+        "fundClassName": "Class B"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-264",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz MPF Conservative Fund",
+        "fundClassName": "Class T"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-265",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Growth Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-266",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Growth Fund",
+        "fundClassName": "Class B"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-267",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Growth Fund",
+        "fundClassName": "Class T"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-426",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal International Bond Fund",
+        "fundClassName": "Class D"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-427",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal International Bond Fund",
+        "fundClassName": "Class I"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-428",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal Hong Kong Equity Fund",
+        "fundClassName": "Class D"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-429",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal Hong Kong Equity Fund",
+        "fundClassName": "Class I"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-430",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal International Equity Fund",
+        "fundClassName": "Class D"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-431",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal International Equity Fund",
+        "fundClassName": "Class I"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-432",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal Asian Equity Fund",
+        "fundClassName": "Class D"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-433",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal Asian Equity Fund",
+        "fundClassName": "Class I"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-434",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal Long Term Accumulation Fund",
+        "fundClassName": "Class D"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-435",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal Long Term Accumulation Fund",
+        "fundClassName": "Class I"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-438",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal Stable Yield Fund",
+        "fundClassName": "Class D"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-440",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal US Equity Fund",
+        "fundClassName": "Class D"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-441",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal US Equity Fund",
+        "fundClassName": "Class I"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-444",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal MPF Conservative Fund",
+        "fundClassName": "Class N"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-446",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal Global Growth Fund",
+        "fundClassName": "Class D"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-447",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal Global Growth Fund",
+        "fundClassName": "Class I"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-450",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal HK Dollar Savings Fund",
+        "fundClassName": "Class D"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-451",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal HK Dollar Savings Fund",
+        "fundClassName": "Class I"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-619",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal China Equity Fund",
+        "fundClassName": "Class D"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-620",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal China Equity Fund",
+        "fundClassName": "Class I"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-627",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco Asian Equity Fund",
+        "fundClassName": "Unit Class H"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-628",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco Asian Equity Fund",
+        "fundClassName": "Unit Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-659",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) China and Hong Kong Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-660",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) European Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-696",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal Stable Yield Fund",
+        "fundClassName": "Class I"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-701",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) E90 Mixed Asset Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-703",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) SaveEasy 2025 Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-705",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) SaveEasy 2030 Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-707",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) SaveEasy 2035 Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-710",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) SaveEasy 2040 Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-769",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "AMTD MPF Scheme",
+        "constituentFundName": "AMTD Allianz Choice Dynamic Allocation Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-770",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "AMTD MPF Scheme",
+        "constituentFundName": "AMTD Allianz Choice Capital Stable Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-771",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "AMTD MPF Scheme",
+        "constituentFundName": "AMTD Allianz Choice Stable Growth Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-772",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "AMTD MPF Scheme",
+        "constituentFundName": "AMTD Allianz Choice Balanced Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-773",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "AMTD MPF Scheme",
+        "constituentFundName": "AMTD Allianz Choice Growth Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-774",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "AMTD MPF Scheme",
+        "constituentFundName": "AMTD Invesco Target Retirement Now Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-775",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "AMTD MPF Scheme",
+        "constituentFundName": "AMTD Invesco Target 2028 Retirement Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-776",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "AMTD MPF Scheme",
+        "constituentFundName": "AMTD Invesco Target 2038 Retirement Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-777",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "AMTD MPF Scheme",
+        "constituentFundName": "AMTD Invesco Target 2048 Retirement Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-778",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "AMTD MPF Scheme",
+        "constituentFundName": "AMTD Invesco Asia Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-779",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "AMTD MPF Scheme",
+        "constituentFundName": "AMTD Invesco Europe Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-780",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "AMTD MPF Scheme",
+        "constituentFundName": "AMTD Invesco Hong Kong and China Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-781",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "AMTD MPF Scheme",
+        "constituentFundName": "AMTD Invesco MPF Conservative Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-782",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "AMTD MPF Scheme",
+        "constituentFundName": "AMTD Invesco Global Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-799",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) Hong Kong Dollar Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-800",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) Hang Seng Index Tracking Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-838",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF - Smart Plan",
+        "constituentFundName": "Principal Dynamic Asia Pacific Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-839",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF - Smart Plan",
+        "constituentFundName": "Principal Dynamic Global Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-841",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF - Smart Plan",
+        "constituentFundName": "Principal Dynamic Hong Kong Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-889",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Greater China Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-890",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Greater China Fund",
+        "fundClassName": "Class B"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-891",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Greater China Fund",
+        "fundClassName": "Class T"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-892",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Oriental Pacific Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-893",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Oriental Pacific Fund",
+        "fundClassName": "Class B"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-894",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz Oriental Pacific Fund",
+        "fundClassName": "Class T"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-902",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal Hang Seng Index Tracking Fund",
+        "fundClassName": "Class N"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-903",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal Hong Kong Bond Fund",
+        "fundClassName": "Class N"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-908",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) World Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-909",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) Greater China Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-917",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF - Smart Plan",
+        "constituentFundName": "Principal Dynamic Greater China Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-918",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF - Smart Plan",
+        "constituentFundName": "Principal Dynamic Asian Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1099",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Industry Choice",
+        "constituentFundName": "BCT (Industry) RMB Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1100",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) RMB Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1101",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco RMB Bond Fund",
+        "fundClassName": "Unit Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1102",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco RMB Bond Fund",
+        "fundClassName": "Unit Class H"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1179",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz RMB Money Market Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1180",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz RMB Money Market Fund",
+        "fundClassName": "Class B"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1181",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz RMB Money Market Fund",
+        "fundClassName": "Class T"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1339",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco Hang Seng Index Tracking Fund",
+        "fundClassName": "Unit Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1340",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco Hang Seng Index Tracking Fund",
+        "fundClassName": "Unit Class H"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1379",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF - Smart Plan",
+        "constituentFundName": "Principal - Hang Seng Index Tracking Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1491",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal Core Accumulation Fund",
+        "fundClassName": "Class N"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1492",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal Age 65 Plus Fund",
+        "fundClassName": "Class N"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1493",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF - Simple Plan",
+        "constituentFundName": "Principal Core Accumulation Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1494",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF - Simple Plan",
+        "constituentFundName": "Principal Age 65 Plus Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1495",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF - Smart Plan",
+        "constituentFundName": "Principal Core Accumulation Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1496",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF - Smart Plan",
+        "constituentFundName": "Principal Age 65 Plus Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1523",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz MPF Core Accumulation Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1524",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz MPF Core Accumulation Fund",
+        "fundClassName": "Class B"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1525",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz MPF Core Accumulation Fund",
+        "fundClassName": "Class T"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1526",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz MPF Age 65 Plus Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1527",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz MPF Age 65 Plus Fund",
+        "fundClassName": "Class B"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1528",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "Manulife RetireChoice (MPF) Scheme",
+        "constituentFundName": "Allianz MPF Age 65 Plus Fund",
+        "fundClassName": "Class T"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1529",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "AMTD MPF Scheme",
+        "constituentFundName": "AMTD Invesco Core Accumulation Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1530",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "AMTD MPF Scheme",
+        "constituentFundName": "AMTD Invesco Age 65 Plus Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1531",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Industry Choice",
+        "constituentFundName": "BCT (Industry) Core Accumulation Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1532",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Industry Choice",
+        "constituentFundName": "BCT (Industry) Age 65 Plus Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1533",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) Core Accumulation Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1534",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) Age 65 Plus Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1557",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco Core Accumulation Fund",
+        "fundClassName": "Unit Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1558",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco Core Accumulation Fund",
+        "fundClassName": "Unit Class H"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1559",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco Age 65 Plus Fund",
+        "fundClassName": "Unit Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1560",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco Age 65 Plus Fund",
+        "fundClassName": "Unit Class H"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1739",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal Aggressive Strategy Fund",
+        "fundClassName": "Class D"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1740",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal Aggressive Strategy Fund",
+        "fundClassName": "Class I"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1741",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT MPF Scheme Series 800",
+        "constituentFundName": "Principal Asian Bond Fund",
+        "fundClassName": "Class N"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1819",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) SaveEasy 2045 Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1820",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) SaveEasy 2050 Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1821",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) U.S. Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1859",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT (MPF) Pro Choice",
+        "constituentFundName": "BCT (Pro) Asian Income Retirement Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-2066",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco Global Index Tracking Fund",
+        "fundClassName": "Unit Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-2067",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco Global Index Tracking Fund",
+        "fundClassName": "Unit Class H"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-2068",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco US Index Tracking Fund",
+        "fundClassName": "Unit Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    },
+    {
+      "fundClassId": "mpfa-cf-2069",
+      "identity": {
+        "trusteeName": "Bank Consortium Trust Company Limited",
+        "schemeName": "BCT Strategic MPF Scheme",
+        "constituentFundName": "Invesco US Index Tracking Fund",
+        "fundClassName": "Unit Class H"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-11",
+      "sourceUrl": "https://www.bcthk.com/en/mpf-orso/fund-information/fund-performance/"
+    }
+  ]
+}

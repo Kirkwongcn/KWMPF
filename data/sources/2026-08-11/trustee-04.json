@@ -1,0 +1,176 @@
+{
+  "sourceType": "trustee_fund_list",
+  "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/shtml/trust/en/2600850/2600851/2600852/2600941/2600943/list.shtml?channelId=2600850",
+  "retrievedAt": "2026-08-11T00:00:00+08:00",
+  "scopeTrustees": ["Bank of Communications Trustee Limited"],
+  "records": [
+    {
+      "fundClassId": "mpfa-cf-206",
+      "identity": {
+        "trusteeName": "Bank of Communications Trustee Limited",
+        "schemeName": "BCOM Joyful Retirement MPF Scheme",
+        "constituentFundName": "BCOM Guaranteed  (CF) Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/shtml/trust/en/2600850/2600851/2600852/2600941/2600943/list.shtml?channelId=2600850"
+    },
+    {
+      "fundClassId": "mpfa-cf-207",
+      "identity": {
+        "trusteeName": "Bank of Communications Trustee Limited",
+        "schemeName": "BCOM Joyful Retirement MPF Scheme",
+        "constituentFundName": "BCOM Balanced (CF) Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/shtml/trust/en/2600850/2600851/2600852/2600941/2600943/list.shtml?channelId=2600850"
+    },
+    {
+      "fundClassId": "mpfa-cf-208",
+      "identity": {
+        "trusteeName": "Bank of Communications Trustee Limited",
+        "schemeName": "BCOM Joyful Retirement MPF Scheme",
+        "constituentFundName": "BCOM Dynamic Growth (CF) Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/shtml/trust/en/2600850/2600851/2600852/2600941/2600943/list.shtml?channelId=2600850"
+    },
+    {
+      "fundClassId": "mpfa-cf-209",
+      "identity": {
+        "trusteeName": "Bank of Communications Trustee Limited",
+        "schemeName": "BCOM Joyful Retirement MPF Scheme",
+        "constituentFundName": "BCOM Stable Growth (CF) Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/shtml/trust/en/2600850/2600851/2600852/2600941/2600943/list.shtml?channelId=2600850"
+    },
+    {
+      "fundClassId": "mpfa-cf-210",
+      "identity": {
+        "trusteeName": "Bank of Communications Trustee Limited",
+        "schemeName": "BCOM Joyful Retirement MPF Scheme",
+        "constituentFundName": "BCOM Asian Dynamic Equity (CF) Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/shtml/trust/en/2600850/2600851/2600852/2600941/2600943/list.shtml?channelId=2600850"
+    },
+    {
+      "fundClassId": "mpfa-cf-211",
+      "identity": {
+        "trusteeName": "Bank of Communications Trustee Limited",
+        "schemeName": "BCOM Joyful Retirement MPF Scheme",
+        "constituentFundName": "BCOM MPF Conservative Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/shtml/trust/en/2600850/2600851/2600852/2600941/2600943/list.shtml?channelId=2600850"
+    },
+    {
+      "fundClassId": "mpfa-cf-653",
+      "identity": {
+        "trusteeName": "Bank of Communications Trustee Limited",
+        "schemeName": "BCOM Joyful Retirement MPF Scheme",
+        "constituentFundName": "BCOM Hong Kong Dynamic Equity (CF) Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/shtml/trust/en/2600850/2600851/2600852/2600941/2600943/list.shtml?channelId=2600850"
+    },
+    {
+      "fundClassId": "mpfa-cf-697",
+      "identity": {
+        "trusteeName": "Bank of Communications Trustee Limited",
+        "schemeName": "BCOM Joyful Retirement MPF Scheme",
+        "constituentFundName": "BCOM China Dynamic Equity (CF) Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/shtml/trust/en/2600850/2600851/2600852/2600941/2600943/list.shtml?channelId=2600850"
+    },
+    {
+      "fundClassId": "mpfa-cf-798",
+      "identity": {
+        "trusteeName": "Bank of Communications Trustee Limited",
+        "schemeName": "BCOM Joyful Retirement MPF Scheme",
+        "constituentFundName": "BCOM HSI ESG Tracking (CF) Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/shtml/trust/en/2600850/2600851/2600852/2600941/2600943/list.shtml?channelId=2600850"
+    },
+    {
+      "fundClassId": "mpfa-cf-830",
+      "identity": {
+        "trusteeName": "Bank of Communications Trustee Limited",
+        "schemeName": "BCOM Joyful Retirement MPF Scheme",
+        "constituentFundName": "BCOM Global Bond (CF) Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/shtml/trust/en/2600850/2600851/2600852/2600941/2600943/list.shtml?channelId=2600850"
+    },
+    {
+      "fundClassId": "mpfa-cf-831",
+      "identity": {
+        "trusteeName": "Bank of Communications Trustee Limited",
+        "schemeName": "BCOM Joyful Retirement MPF Scheme",
+        "constituentFundName": "BCOM Greater China Equity (CF) Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/shtml/trust/en/2600850/2600851/2600852/2600941/2600943/list.shtml?channelId=2600850"
+    },
+    {
+      "fundClassId": "mpfa-cf-1521",
+      "identity": {
+        "trusteeName": "Bank of Communications Trustee Limited",
+        "schemeName": "BCOM Joyful Retirement MPF Scheme",
+        "constituentFundName": "BCOM Core Accumulation Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/shtml/trust/en/2600850/2600851/2600852/2600941/2600943/list.shtml?channelId=2600850"
+    },
+    {
+      "fundClassId": "mpfa-cf-1522",
+      "identity": {
+        "trusteeName": "Bank of Communications Trustee Limited",
+        "schemeName": "BCOM Joyful Retirement MPF Scheme",
+        "constituentFundName": "BCOM Age 65 Plus Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/shtml/trust/en/2600850/2600851/2600852/2600941/2600943/list.shtml?channelId=2600850"
+    },
+    {
+      "fundClassId": "mpfa-cf-1979",
+      "identity": {
+        "trusteeName": "Bank of Communications Trustee Limited",
+        "schemeName": "BCOM Joyful Retirement MPF Scheme",
+        "constituentFundName": "BCOM North American Equity (CF) Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/shtml/trust/en/2600850/2600851/2600852/2600941/2600943/list.shtml?channelId=2600850"
+    }
+  ]
+}

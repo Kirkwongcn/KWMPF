@@ -1,0 +1,176 @@
+{
+  "sourceType": "trustee_fund_list",
+  "sourceUrl": "https://www.yflife.com/en/product/mpf-hongkong/useful-information/ksid/",
+  "retrievedAt": "2026-08-11T00:00:00+08:00",
+  "scopeTrustees": ["YF Life Trustees Limited"],
+  "records": [
+    {
+      "fundClassId": "mpfa-cf-383",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "Global Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.yflife.com/en/product/mpf-hongkong/useful-information/ksid/"
+    },
+    {
+      "fundClassId": "mpfa-cf-384",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "Asian Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.yflife.com/en/product/mpf-hongkong/useful-information/ksid/"
+    },
+    {
+      "fundClassId": "mpfa-cf-385",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "Global Stable Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.yflife.com/en/product/mpf-hongkong/useful-information/ksid/"
+    },
+    {
+      "fundClassId": "mpfa-cf-386",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "MPF Conservative Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.yflife.com/en/product/mpf-hongkong/useful-information/ksid/"
+    },
+    {
+      "fundClassId": "mpfa-cf-387",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "Global Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.yflife.com/en/product/mpf-hongkong/useful-information/ksid/"
+    },
+    {
+      "fundClassId": "mpfa-cf-388",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "Guaranteed Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.yflife.com/en/product/mpf-hongkong/useful-information/ksid/"
+    },
+    {
+      "fundClassId": "mpfa-cf-389",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "Hong Kong Equities Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.yflife.com/en/product/mpf-hongkong/useful-information/ksid/"
+    },
+    {
+      "fundClassId": "mpfa-cf-390",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "European Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.yflife.com/en/product/mpf-hongkong/useful-information/ksid/"
+    },
+    {
+      "fundClassId": "mpfa-cf-391",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "US Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.yflife.com/en/product/mpf-hongkong/useful-information/ksid/"
+    },
+    {
+      "fundClassId": "mpfa-cf-392",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "Asian Pacific Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.yflife.com/en/product/mpf-hongkong/useful-information/ksid/"
+    },
+    {
+      "fundClassId": "mpfa-cf-394",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "Global Growth Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.yflife.com/en/product/mpf-hongkong/useful-information/ksid/"
+    },
+    {
+      "fundClassId": "mpfa-cf-874",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "Greater China Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.yflife.com/en/product/mpf-hongkong/useful-information/ksid/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1487",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "Core Accumulation Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.yflife.com/en/product/mpf-hongkong/useful-information/ksid/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1488",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "Age 65 Plus Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.yflife.com/en/product/mpf-hongkong/useful-information/ksid/"
+    }
+  ]
+}

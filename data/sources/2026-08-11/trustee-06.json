@@ -1,0 +1,128 @@
+{
+  "sourceType": "trustee_fund_list",
+  "sourceUrl": "https://trustee.chinalife.com.hk/mpf/dailyPrices?request_locale=en",
+  "retrievedAt": "2026-08-11T00:00:00+08:00",
+  "scopeTrustees": ["China Life Trustees Limited"],
+  "records": [
+    {
+      "fundClassId": "mpfa-cf-236",
+      "identity": {
+        "trusteeName": "China Life Trustees Limited",
+        "schemeName": "China Life MPF Master Trust Scheme",
+        "constituentFundName": "China Life Balanced Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00083_China_Life_MPF_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-237",
+      "identity": {
+        "trusteeName": "China Life Trustees Limited",
+        "schemeName": "China Life MPF Master Trust Scheme",
+        "constituentFundName": "China Life Growth Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00083_China_Life_MPF_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-238",
+      "identity": {
+        "trusteeName": "China Life Trustees Limited",
+        "schemeName": "China Life MPF Master Trust Scheme",
+        "constituentFundName": "China Life MPF Conservative Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00083_China_Life_MPF_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-603",
+      "identity": {
+        "trusteeName": "China Life Trustees Limited",
+        "schemeName": "China Life MPF Master Trust Scheme",
+        "constituentFundName": "China Life Joyful Retirement Guaranteed Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00083_China_Life_MPF_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-606",
+      "identity": {
+        "trusteeName": "China Life Trustees Limited",
+        "schemeName": "China Life MPF Master Trust Scheme",
+        "constituentFundName": "China Life Retire-Easy Global Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00083_China_Life_MPF_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-895",
+      "identity": {
+        "trusteeName": "China Life Trustees Limited",
+        "schemeName": "China Life MPF Master Trust Scheme",
+        "constituentFundName": "China Life Hong Kong Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00083_China_Life_MPF_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1545",
+      "identity": {
+        "trusteeName": "China Life Trustees Limited",
+        "schemeName": "China Life MPF Master Trust Scheme",
+        "constituentFundName": "China Life Core Accumulation Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00083_China_Life_MPF_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1546",
+      "identity": {
+        "trusteeName": "China Life Trustees Limited",
+        "schemeName": "China Life MPF Master Trust Scheme",
+        "constituentFundName": "China Life Age 65 Plus Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00083_China_Life_MPF_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1839",
+      "identity": {
+        "trusteeName": "China Life Trustees Limited",
+        "schemeName": "China Life MPF Master Trust Scheme",
+        "constituentFundName": "China Life Greater China Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00083_China_Life_MPF_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1840",
+      "identity": {
+        "trusteeName": "China Life Trustees Limited",
+        "schemeName": "China Life MPF Master Trust Scheme",
+        "constituentFundName": "China Life US Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00083_China_Life_MPF_Master_Trust_Scheme_EN.pdf"
+    }
+  ]
+}

@@ -1,0 +1,356 @@
+{
+  "sourceType": "trustee_fund_list",
+  "sourceUrl": "https://www.manulife.com.hk/en/corporations/products/mpf/fund-information.html",
+  "retrievedAt": "2026-08-11T00:00:00+08:00",
+  "scopeTrustees": ["Manulife Provident Funds Trust Company Limited"],
+  "records": [
+    {
+      "fundClassId": "mpfa-cf-362",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF Hong Kong Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-363",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF Growth Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-364",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF Stable Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-365",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF Interest Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-366",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF Conservative Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-367",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF Hong Kong Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-368",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF International Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-369",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF European Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-370",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF Pacific Asia Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-371",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF Japan Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-372",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF International Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-373",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF Fidelity Growth Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-374",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF Fidelity Stable Growth Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-375",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF China Value Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-376",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF Aggressive Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-377",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF North American Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-695",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF Healthcare Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-842",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF Smart Retirement Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-844",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF 2025 Retirement Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-845",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF 2030 Retirement Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-846",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF 2035 Retirement Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-847",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF 2040 Retirement Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-848",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF 2045 Retirement Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-906",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF Sustainable Pacific Asia Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-907",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF Hang Seng Index ESG Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1219",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF RMB Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1485",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF Core Accumulation Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1486",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF Age 65 Plus Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1719",
+      "identity": {
+        "trusteeName": "Manulife Provident Funds Trust Company Limited",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "constituentFundName": "Manulife MPF Retirement Income Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00482_Manulife_Global_Select_%28MPF%29_Scheme_EN.pdf"
+    }
+  ]
+}

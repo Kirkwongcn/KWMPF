@@ -1,0 +1,416 @@
+{
+  "sourceType": "trustee_fund_list",
+  "sourceUrl": "https://www.bocpt.com/homepage/en/",
+  "retrievedAt": "2026-08-11T00:00:00+08:00",
+  "scopeTrustees": ["BOCI-Prudential Trustee Limited"],
+  "records": [
+    {
+      "fundClassId": "mpfa-cf-226",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "BOC-Prudential Japan Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/fund-zone/management-fees/"
+    },
+    {
+      "fundClassId": "mpfa-cf-227",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "BOC-Prudential Growth Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/fund-zone/management-fees/"
+    },
+    {
+      "fundClassId": "mpfa-cf-228",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "BOC-Prudential Balanced Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/fund-zone/management-fees/"
+    },
+    {
+      "fundClassId": "mpfa-cf-229",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "BOC-Prudential Stable Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/fund-zone/management-fees/"
+    },
+    {
+      "fundClassId": "mpfa-cf-230",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "BOC-Prudential MPF Conservative Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/fund-zone/management-fees/"
+    },
+    {
+      "fundClassId": "mpfa-cf-231",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "BOC-Prudential Global Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/fund-zone/management-fees/"
+    },
+    {
+      "fundClassId": "mpfa-cf-232",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "BOC-Prudential Hong Kong Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/fund-zone/management-fees/"
+    },
+    {
+      "fundClassId": "mpfa-cf-233",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "BOC-Prudential Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/fund-zone/management-fees/"
+    },
+    {
+      "fundClassId": "mpfa-cf-234",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "BOC-Prudential Asia Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/fund-zone/management-fees/"
+    },
+    {
+      "fundClassId": "mpfa-cf-654",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "BOC-Prudential China Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/fund-zone/management-fees/"
+    },
+    {
+      "fundClassId": "mpfa-cf-816",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "My Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "My Choice Growth Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/my-choice-mpf/scheme-information-and-fund-choice/"
+    },
+    {
+      "fundClassId": "mpfa-cf-817",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "My Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "My Choice Balanced Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/my-choice-mpf/scheme-information-and-fund-choice/"
+    },
+    {
+      "fundClassId": "mpfa-cf-818",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "My Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "My Choice Stable Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/my-choice-mpf/scheme-information-and-fund-choice/"
+    },
+    {
+      "fundClassId": "mpfa-cf-819",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "My Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "My Choice Global Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/my-choice-mpf/scheme-information-and-fund-choice/"
+    },
+    {
+      "fundClassId": "mpfa-cf-820",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "My Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "My Choice Asia Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/my-choice-mpf/scheme-information-and-fund-choice/"
+    },
+    {
+      "fundClassId": "mpfa-cf-821",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "My Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "My Choice China Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/my-choice-mpf/scheme-information-and-fund-choice/"
+    },
+    {
+      "fundClassId": "mpfa-cf-822",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "My Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "My Choice Hong Kong Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/my-choice-mpf/scheme-information-and-fund-choice/"
+    },
+    {
+      "fundClassId": "mpfa-cf-824",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "My Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "My Choice Hong Kong Tracking Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/my-choice-mpf/scheme-information-and-fund-choice/"
+    },
+    {
+      "fundClassId": "mpfa-cf-825",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "My Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "My Choice Global Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/my-choice-mpf/scheme-information-and-fund-choice/"
+    },
+    {
+      "fundClassId": "mpfa-cf-826",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "My Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "My Choice HKD Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/my-choice-mpf/scheme-information-and-fund-choice/"
+    },
+    {
+      "fundClassId": "mpfa-cf-827",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "My Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "My Choice MPF Conservative Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/my-choice-mpf/scheme-information-and-fund-choice/"
+    },
+    {
+      "fundClassId": "mpfa-cf-999",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "BOC-Prudential CSI HK 100 Tracker Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/fund-zone/management-fees/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1000",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "BOC-Prudential North America Index Tracking Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/fund-zone/management-fees/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1001",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "BOC-Prudential European Index Tracking Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/fund-zone/management-fees/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1119",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "BOC-Prudential MPF RMB & HKD Money Market Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/fund-zone/management-fees/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1359",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "My Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "My Choice RMB & HKD Money Market Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/my-choice-mpf/scheme-information-and-fund-choice/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1541",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "BOC-Prudential Core Accumulation Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/fund-zone/management-fees/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1542",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "BOC-Prudential Age 65 Plus Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/fund-zone/management-fees/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1543",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "My Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "My Choice Core Accumulation Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/my-choice-mpf/scheme-information-and-fund-choice/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1544",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "My Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "My Choice Age 65 Plus Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/my-choice-mpf/scheme-information-and-fund-choice/"
+    },
+    {
+      "fundClassId": "mpfa-cf-1959",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "BOC-Prudential Hong Kong Stable Retirement Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/fund-zone/management-fees/"
+    },
+    {
+      "fundClassId": "mpfa-cf-2399",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "My Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "My Choice European Quality Tracker Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/my-choice-mpf/scheme-information-and-fund-choice/"
+    },
+    {
+      "fundClassId": "mpfa-cf-2400",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "My Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "My Choice Chinese Government and Policy Bank Bond Index Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/my-choice-mpf/scheme-information-and-fund-choice/"
+    },
+    {
+      "fundClassId": "mpfa-cf-2401",
+      "identity": {
+        "trusteeName": "BOCI-Prudential Trustee Limited",
+        "schemeName": "My Choice Mandatory Provident Fund Scheme",
+        "constituentFundName": "My Choice Americas Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.bocpt.com/homepage/en/my-choice-mpf/scheme-information-and-fund-choice/"
+    }
+  ]
+}
