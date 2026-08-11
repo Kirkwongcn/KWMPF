@@ -68,7 +68,7 @@
 
 ### 部署及模組邊界
 
-- GitHub Private repository 是唯一程式碼來源。
+- GitHub Public repository 是唯一程式碼來源；main branch 強制通過 CI，秘密及正式資源識別碼不得寫入 repository。
 - Cloudflare Pages 負責前端，Workers 負責 API、Cron 及發布控制，D1 保存標準化資料、排名及發布狀態，R2 保存原始文件、候選 artifact、manifest 及備份。
 - GitHub Actions 負責擷取、PDF 解析、標準化、交叉核對及產生候選批次。
 - Source adapters、raw archive、normalizer、validator、publication snapshot 及 comparison engine 是分開的模組。

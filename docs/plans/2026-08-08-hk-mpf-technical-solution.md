@@ -13,13 +13,13 @@
 - 資料庫：Cloudflare D1，保存關聯、版本及查詢索引
 - 原始檔案：Cloudflare R2，保存 HTML、PDF、JSON 及擷取紀錄
 - 更新工作流程：GitHub Actions 處理擷取及重型解析；Cloudflare Workers Cron 負責觸發、檢查及發布
-- 部署：Cloudflare Pages 負責網站，Cloudflare Workers 負責 API；GitHub Private repository 作為唯一程式碼來源
+- 部署：Cloudflare Pages 負責網站，Cloudflare Workers 負責 API；GitHub Public repository 作為唯一程式碼來源
 
 網站框架及具體 Cloudflare 設定在真正建立專案前再決定；目前不應因工具選擇而改變資料邊界。
 
 ## 已確認部署決定
 
-- GitHub Private repository 保存程式碼及 GitHub Actions workflow。
+- GitHub Public repository 保存程式碼及 GitHub Actions workflow；秘密及正式資源識別碼只保存於受保護的 GitHub environment。
 - GitHub Actions 負責擷取、PDF 解析、標準化及交叉核對。
 - Cloudflare Pages 發布前端；Cloudflare Workers 提供 API。
 - Cloudflare D1 保存標準化資料及排名結果；Cloudflare R2 保存原始文件及版本。
