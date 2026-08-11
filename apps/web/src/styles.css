@@ -59,6 +59,29 @@ h1 {
   margin: 0;
 }
 
+.provenance {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #cad3c6;
+  color: #526158;
+}
+
+.provenance h2 {
+  color: #17251f;
+  font-size: 1.15rem;
+}
+
+.provenance p {
+  margin: 0.45rem 0;
+}
+
+.provenance a {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: #205b3d;
+  font-weight: 700;
+}
+
 .status-list div {
   padding: 1rem;
   border-radius: 0.8rem;

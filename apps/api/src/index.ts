@@ -1,15 +1,14 @@
 import { Hono } from "hono";
 import { cors } from "hono/cors";
+import type { PublicationBindings } from "./publication";
 
-type Bindings = {
-  DB: D1Database;
-  RAW_ARCHIVE: R2Bucket;
+type Bindings = PublicationBindings & {
   RELEASE_VERSION: string;
 };
 
 const app = new Hono<{ Bindings: Bindings }>();
 
-app.use("/health", cors());
+app.use("*", cors());
 
 app.get("/health", (context) =>
   context.json({
@@ -21,6 +20,20 @@ app.get("/health", (context) =>
     },
   }),
 );
+
+app.get("/fund-classes/:id", async (context) => {
+  const row = await context.env.DB.prepare(
+    `SELECT f.payload
+     FROM current_publication c
+     JOIN fund_class_versions f ON f.snapshot_id = c.snapshot_id
+     WHERE c.singleton = 1 AND f.fund_class_id = ?`,
+  )
+    .bind(context.req.param("id"))
+    .first<{ payload: string }>();
+
+  if (!row) return context.json({ error: "Fund class not found" }, 404);
+  return context.json(JSON.parse(row.payload));
+});
 
 app.notFound((context) => context.json({ error: "Not found" }, 404));
 
