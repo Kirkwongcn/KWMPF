@@ -5,6 +5,7 @@ import { parseFundFactSheet } from "../src/fund-fact-sheet-parser";
 import { mergeFundFactSheetReturns } from "../src/fund-fact-sheet-merge";
 
 const fixture = readFileSync(join(import.meta.dirname, "fixtures", "bea-fund-fact-sheet.txt"), "utf8");
+const bcomFixture = `BCOM Joyful Retirement MPF Scheme\nBCOM Joyful Retirement MPF Scheme Fund Fact Sheet\n(As of : 31/12/2025)\n\\f\nBCOM Stable Growth (CF) Fund\nAnnualised Rate of Return 1 year 3 years 5 years 10 years\nFund 2.01% 2.85% 1.86% 1.40%`;
 
 describe("official fund fact sheet parser", () => {
   it("extracts the official three-year annualized return without estimating", () => {
@@ -23,6 +24,17 @@ describe("official fund fact sheet parser", () => {
         sourceUrl: "https://www.mpfa.org.hk/assets/FF/MT00571.pdf",
         annualizedReturn3Year: 14.01,
       },
+    ]);
+  });
+
+  it("accepts the alternate official rate-of-return label", () => {
+    expect(parseFundFactSheet(bcomFixture, "https://example.test/bcom.pdf")).toEqual([
+      expect.objectContaining({
+        schemeName: "BCOM Joyful Retirement MPF Scheme",
+        constituentFundName: "BCOM Stable Growth (CF) Fund",
+        dataAsOf: "2025-12-31",
+        annualizedReturn3Year: 2.85,
+      }),
     ]);
   });
 
