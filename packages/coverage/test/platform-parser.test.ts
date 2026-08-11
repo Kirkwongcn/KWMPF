@@ -40,4 +40,10 @@ describe("MPF Fund Platform parser", () => {
       ),
     ).toThrow("Fund Class is missing from cf_id 429");
   });
+
+  it("does not treat a protection page as a fund detail page", () => {
+    expect(() => parseFundDetail("This page can't be displayed. incident ID: N/A", 466)).toThrow(
+      "Name of MPF trustee is missing from cf_id 466",
+    );
+  });
 });
