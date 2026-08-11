@@ -78,4 +78,21 @@ describe("publication snapshot", () => {
       },
     ]);
   });
+
+  it("summarizes only verified fund classes by scheme", async () => {
+    const archived = await archiveCandidate(bindings, fundFixture);
+    await publishCandidate(bindings, fundFixture, archived);
+    const response = await SELF.fetch("https://kwmpf.test/schemes");
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual([
+      {
+        schemeName: fundFixture.fundClass.schemeName,
+        trusteeName: fundFixture.fundClass.trusteeName,
+        fundClassCount: 1,
+        fundTypes: [fundFixture.fundClass.fundType],
+        riskClassDistribution: { "6": 1 },
+        fundClassIds: [fundFixture.fundClass.id],
+      },
+    ]);
+  });
 });
