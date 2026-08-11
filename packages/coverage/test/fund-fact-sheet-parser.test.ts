@@ -58,6 +58,11 @@ describe("official fund fact sheet parser", () => {
     ]);
   });
 
+  it("accepts AMTD bilingual spacing between headers and values", () => {
+    const fixture = amtdFixture.replace("1 yr 3 yrs 5 yrs 10 yrs", "1 yr 3 yrs 5 yrs 10 yrs\n\nFund performance notes");
+    expect(parseAmtdFundFactSheet(fixture, "https://example.test/amtd.pdf")[0]?.annualizedReturn3Year).toBe(5.12);
+  });
+
   it("fails closed when AMTD annualized return data is absent", () => {
     expect(() => parseAmtdFundFactSheet(amtdFixture.replace("5.12%", "N/A"), "https://example.test/amtd.pdf")).toThrow("AMTD annualized return row is incomplete");
   });
