@@ -31,11 +31,14 @@ async function fetchHtml(url: string) {
       if (Buffer.byteLength(html) > MAX_HTML_BYTES) {
         throw new Error(`${url} exceeds 5 MiB`);
       }
+      if (/This page can't be displayed|incident ID:/i.test(html)) {
+        throw new Error(`${url} returned a platform protection page`);
+      }
       return html;
     } catch (error) {
       lastError = error;
       if (attempt < 4) {
-        await new Promise((resolve) => setTimeout(resolve, 500 * attempt));
+        await new Promise((resolve) => setTimeout(resolve, 1500 * attempt));
       }
     }
   }
@@ -70,6 +73,7 @@ const outputPath = argument("--output");
 const rawDirectory = argument("--raw-dir");
 const expectedCountsSource = argument("--expected-counts-source");
 const runId = argument("--run-id") ?? new Date().toISOString().replaceAll(":", "-");
+const concurrency = Number(argument("--concurrency") ?? 2);
 const expectedCounts = {
   fundClasses: Number(argument("--expected-fund-classes")),
   constituentFunds: Number(argument("--expected-constituent-funds")),
@@ -80,6 +84,9 @@ if (!outputPath || !rawDirectory || !expectedCountsSource) {
   throw new Error(
     "Usage: bun coverage:fetch-platform --output <snapshot.json> --raw-dir <archive-directory> --expected-counts-source <asset-size-document-url> --expected-fund-classes <n> --expected-constituent-funds <n> --expected-schemes <n> --expected-trustees <n> [--run-id <immutable-version>]",
   );
+}
+if (!Number.isInteger(concurrency) || concurrency < 1 || concurrency > 4) {
+  throw new Error("Concurrency must be an integer between 1 and 4");
 }
 for (const [name, value] of Object.entries(expectedCounts)) {
   if (!Number.isSafeInteger(value) || value <= 0) {
@@ -114,7 +121,7 @@ if (fundClassIds.length !== expectedCounts.fundClasses) {
 
 let records: SourceRecord[];
 try {
-  records = await parallelMap(fundClassIds, 4, async (cfId) => {
+    records = await parallelMap(fundClassIds, concurrency, async (cfId) => {
     const url = detailUrl(cfId);
     const relativePath = `details/${cfId}.html`;
     let html: string;
