@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { parseSourceSnapshot } from "../src/input";
-import { buildFirstOfficialBatchCoverage, loadOfficialBatch } from "../src/official-source-batch";
+import { buildOfficialBatchCoverage, buildFirstOfficialBatchCoverage, loadOfficialBatch } from "../src/official-source-batch";
 
 const root = join(import.meta.dirname, "../../..");
 const readSnapshot = async (name: string) =>
@@ -10,7 +10,7 @@ const readSnapshot = async (name: string) =>
     JSON.parse(await readFile(join(root, "data/sources/2026-08-11", name), "utf8")),
   );
 
-describe("first official source batch", () => {
+describe("official source batches", () => {
   it.each([
     ["AIA Company (Trustee) Limited", "trustee-01.json", 21],
     ["BOCI-Prudential Trustee Limited", "trustee-02.json", 34],
@@ -66,5 +66,48 @@ describe("first official source batch", () => {
     expect(result.records).toHaveLength(451);
     expect(result.records.filter((record) => record.status === "verified")).toHaveLength(240);
     expect(result.records.filter((record) => record.status === "pending_verification")).toHaveLength(211);
+  });
+
+  it.each([
+    ["Bank of East Asia (Trustees) Limited", "trustee-05.json", 40],
+    ["China Life Trustees Limited", "trustee-06.json", 10],
+    ["HSBC Provident Fund Trustee (Hong Kong) Limited", "trustee-07.json", 77],
+    ["Manulife Provident Funds Trust Company Limited", "trustee-08.json", 29],
+  ])("loads the fixed second-batch contract for %s", async (trustee, trusteeFile, count) => {
+    const batch = loadOfficialBatch(
+      trustee,
+      await readSnapshot(trusteeFile),
+      await readSnapshot("official-scheme-batch-02.json"),
+    );
+    expect(batch.records).toHaveLength(count);
+    expect(batch.records.every((record) => record.identity.trusteeName === trustee)).toBe(true);
+    expect(batch.records.every((record) => record.sourceUrl?.startsWith("https://"))).toBe(true);
+  });
+
+  it("publishes the second trustee batch while retaining pending records and first-batch regressions", async () => {
+    const platform = await readSnapshot("mpf-fund-platform.json");
+    const firstScheme = await readSnapshot("official-scheme-batch-01.json");
+    const secondScheme = await readSnapshot("official-scheme-batch-02.json");
+    const firstTrustees = await Promise.all([
+      readSnapshot("trustee-01.json"),
+      readSnapshot("trustee-02.json"),
+      readSnapshot("trustee-03.json"),
+      readSnapshot("trustee-04.json"),
+    ]);
+    const secondTrustees = await Promise.all([
+      readSnapshot("trustee-05.json"),
+      readSnapshot("trustee-06.json"),
+      readSnapshot("trustee-07.json"),
+      readSnapshot("trustee-08.json"),
+    ]);
+    const result = buildOfficialBatchCoverage(
+      platform,
+      [firstScheme, secondScheme],
+      [...firstTrustees, ...secondTrustees],
+    );
+    expect(result.records).toHaveLength(451);
+    expect(result.records.filter((record) => record.status === "verified")).toHaveLength(396);
+    expect(result.records.filter((record) => record.status === "pending_verification")).toHaveLength(55);
+    expect(result.records.filter((record) => record.identity.trusteeName === "AIA Company (Trustee) Limited").every((record) => record.status === "verified")).toBe(true);
   });
 });
