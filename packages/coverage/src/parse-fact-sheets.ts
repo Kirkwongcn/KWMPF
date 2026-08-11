@@ -1,7 +1,7 @@
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
-import { dirname, join } from "node:path";
+import { join } from "node:path";
 import { parseAiaFundFactSheet } from "./aia-fund-fact-sheet-parser";
 import { parseAmtdFundFactSheet } from "./amtd-fund-fact-sheet-parser";
 import { parseBctFundFactSheet } from "./bct-fund-fact-sheet-parser";
@@ -14,7 +14,7 @@ const manifestPath = process.argv[2];
 const outputPath = process.argv[3];
 if (!manifestPath || !outputPath) throw new Error("Usage: bun parse-fact-sheets.ts <manifest.json> <returns.json>");
 const manifest = JSON.parse(await readFile(manifestPath, "utf8")) as { entries: Array<{ scheme: string; factSheetUrl: string; status: string; sha256?: string }> };
-const pdfRoot = dirname(manifestPath);
+const pdfRoot = manifestPath.replace(/\.json$/, "");
 const returns: FundFactSheetReturn[] = [];
 const failures: Array<{ scheme: string; error: string }> = [];
 
