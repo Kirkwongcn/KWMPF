@@ -24,6 +24,11 @@ describe("MPF Fund Platform parser", () => {
       dataAsOf: "2026-06-30",
       sourceUrl:
         "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=429",
+      returns: {
+        1: { annualized: 6.09, cumulative: 6.09, dataAsOf: "2026-06-30" },
+        5: { annualized: -3.92, cumulative: -18.1, dataAsOf: "2026-06-30" },
+        10: { annualized: 1.23, cumulative: 13.04, dataAsOf: "2026-06-30" },
+      },
     });
   });
 

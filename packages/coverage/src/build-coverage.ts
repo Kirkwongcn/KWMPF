@@ -16,6 +16,11 @@ export type SourceRecord = {
   current: boolean;
   dataAsOf: string;
   sourceUrl?: string;
+  returns?: Partial<Record<1 | 3 | 5 | 10, {
+    annualized?: number;
+    cumulative?: number;
+    dataAsOf: string;
+  }>>;
 };
 
 export type SourceSnapshot = {
@@ -203,6 +208,7 @@ export function buildCoverage(
       return {
         fundClassId,
         identity: baseline.identity,
+        ...(baseline.returns ? { returns: baseline.returns } : {}),
         status: current ? ("verified" as const) : ("pending_verification" as const),
         current,
         rankingEligible: current,
