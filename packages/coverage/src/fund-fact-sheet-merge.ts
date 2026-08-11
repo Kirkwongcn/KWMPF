@@ -2,7 +2,8 @@ import type { SourceRecord } from "./build-coverage";
 import type { FundFactSheetReturn } from "./fund-fact-sheet-parser";
 
 function key(schemeName: string, constituentFundName: string) {
-  return `${schemeName}\u0000${constituentFundName}`.toLocaleLowerCase();
+  const normalizedFund = constituentFundName.replace(/^principal\s*-?\s+/i, "");
+  return `${schemeName}\u0000${normalizedFund}`.toLocaleLowerCase();
 }
 
 export type FundFactSheetMergeResult = {
