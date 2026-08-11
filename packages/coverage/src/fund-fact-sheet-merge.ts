@@ -2,7 +2,26 @@ import type { SourceRecord } from "./build-coverage";
 import type { FundFactSheetReturn } from "./fund-fact-sheet-parser";
 
 function key(schemeName: string, constituentFundName: string) {
-  const normalizedFund = constituentFundName.replace(/^principal\s*-?\s+/i, "");
+  const bilingualAliases: Record<string, string> = {
+    "信安中國股票基金": "Principal China Equity Fund",
+    "信安恒指基金": "Principal Hang Seng Index Tracking Fund",
+    "信安香港股票基金": "Principal Hong Kong Equity Fund",
+    "信安亞洲股票基金": "Principal Asian Equity Fund",
+    "信安美國股票基金": "Principal US Equity Fund",
+    "信安國際股票基金": "Principal International Equity Fund",
+    "信安進取策略基金": "Principal Aggressive Strategy Fund",
+    "信安環球增長基金": "Principal Global Growth Fund",
+    "信安長線增值基金": "Principal Long Term Accumulation Fund",
+    "信安核心累積基金": "Principal Core Accumulation Fund",
+    "信安平穩回報基金": "Principal Stable Yield Fund",
+    "信安65歲後基金": "Principal Age 65 Plus Fund",
+    "信安國際債券基金": "Principal International Bond Fund",
+    "信安亞洲債券基金": "Principal Asian Bond Fund",
+    "信安香港債券基金": "Principal Hong Kong Bond Fund",
+    "信安港元儲蓄基金": "Principal HK Dollar Savings Fund",
+    "信安強積金保守基金": "Principal MPF Conservative Fund",
+  };
+  const normalizedFund = (bilingualAliases[constituentFundName] ?? constituentFundName).replace(/^principal\s*-?\s+/i, "");
   return `${schemeName}\u0000${normalizedFund}`.toLocaleLowerCase();
 }
 
