@@ -39,15 +39,19 @@ export function mergeFundFactSheetReturns(
 ): FundFactSheetMergeResult {
   const byFund = new Map<string, SourceRecord[]>();
   for (const record of records) {
-    const identityKey = key(record.identity.schemeName, record.identity.constituentFundName);
-    byFund.set(identityKey, [...(byFund.get(identityKey) ?? []), record]);
+    const baseKey = key(record.identity.schemeName, record.identity.constituentFundName);
+    const classKey = `${baseKey}\u0000${record.identity.fundClassName ?? ""}`.toLocaleLowerCase();
+    byFund.set(baseKey, [...(byFund.get(baseKey) ?? []), record]);
+    byFund.set(classKey, [...(byFund.get(classKey) ?? []), record]);
   }
   const applied = new Map(records.map((record) => [record.fundClassId, record]));
   const unmatched: FundFactSheetReturn[] = [];
   const ambiguous: FundFactSheetReturn[] = [];
 
   for (const factSheet of factSheets) {
-    const matches = byFund.get(key(factSheet.schemeName, factSheet.constituentFundName)) ?? [];
+    const baseKey = key(factSheet.schemeName, factSheet.constituentFundName);
+    const identityKey = factSheet.fundClassName ? `${baseKey}\u0000${factSheet.fundClassName}`.toLocaleLowerCase() : baseKey;
+    const matches = byFund.get(identityKey) ?? [];
     if (matches.length === 0) {
       unmatched.push(factSheet);
       continue;

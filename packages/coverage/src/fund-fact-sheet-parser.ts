@@ -1,6 +1,7 @@
 export type FundFactSheetReturn = {
   schemeName: string;
   constituentFundName: string;
+  fundClassName?: string;
   dataAsOf: string;
   sourceUrl: string;
   annualizedReturn3Year: number;

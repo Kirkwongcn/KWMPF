@@ -37,9 +37,16 @@ export function parsePrincipal800FundFactSheet(text: string, sourceUrl: string, 
     if (performanceIndex < 0) continue;
     const name = page.match(/^\s*(.+基金)\s*$/m)?.[1]?.trim();
     if (!name) throw new Error("Principal 800 fund name is missing");
-    const values = page.slice(performanceIndex).split("\n").slice(0, 14).map(numberValues).find((candidate) => candidate.length >= 4);
-    if (!values || values[2] === undefined) throw new Error("Principal 800 three-year return is missing");
-    results.push({ schemeName, constituentFundName: name, dataAsOf, sourceUrl, annualizedReturn3Year: values[2] });
+    const performanceLines = page.slice(performanceIndex).split("\n");
+    for (const [index, line] of performanceLines.entries()) {
+      const inlineClass = line.match(/Class\s+(D|I)/i);
+      const nextClass = performanceLines[index + 1]?.match(/Class\s+(D|I)/i);
+      const classMatch = inlineClass ?? (nextClass && numberValues(line).length >= 4 ? nextClass : null);
+      if (!classMatch) continue;
+      const values = performanceLines.slice(Math.max(0, index - 3), index + 14).map(numberValues).find((candidate) => candidate.length >= 4);
+      if (!values || values[2] === undefined) continue;
+      results.push({ schemeName, constituentFundName: name, fundClassName: `Class ${classMatch[1]!.toUpperCase()}`, dataAsOf, sourceUrl, annualizedReturn3Year: values[2] });
+    }
   }
   if (results.length === 0) throw new Error("No Principal 800 performance blocks found");
   return results;
