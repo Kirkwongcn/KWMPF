@@ -1,0 +1,672 @@
+{
+  "sourceType": "official_scheme_document",
+  "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes",
+  "retrievedAt": "2026-08-11T00:00:00+08:00",
+  "scopeSchemes": [
+    "SHKP MPF Employer Sponsored Scheme",
+    "Sun Life Rainbow MPF Scheme",
+    "MASS Mandatory Provident Fund Scheme"
+  ],
+  "records": [
+    {
+      "fundClassId": "mpfa-cf-383",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "Global Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-07-28",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000004"
+    },
+    {
+      "fundClassId": "mpfa-cf-384",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "Asian Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-07-28",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000004"
+    },
+    {
+      "fundClassId": "mpfa-cf-385",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "Global Stable Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-07-28",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000004"
+    },
+    {
+      "fundClassId": "mpfa-cf-386",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "MPF Conservative Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-07-28",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000004"
+    },
+    {
+      "fundClassId": "mpfa-cf-387",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "Global Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-07-28",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000004"
+    },
+    {
+      "fundClassId": "mpfa-cf-388",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "Guaranteed Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-07-28",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000004"
+    },
+    {
+      "fundClassId": "mpfa-cf-389",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "Hong Kong Equities Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-07-28",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000004"
+    },
+    {
+      "fundClassId": "mpfa-cf-390",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "European Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-07-28",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000004"
+    },
+    {
+      "fundClassId": "mpfa-cf-391",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "US Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-07-28",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000004"
+    },
+    {
+      "fundClassId": "mpfa-cf-392",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "Asian Pacific Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-07-28",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000004"
+    },
+    {
+      "fundClassId": "mpfa-cf-394",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "Global Growth Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-07-28",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000004"
+    },
+    {
+      "fundClassId": "mpfa-cf-459",
+      "identity": {
+        "trusteeName": "Standard Chartered Trustee (Hong Kong) Limited",
+        "schemeName": "SHKP MPF Employer Sponsored Scheme",
+        "constituentFundName": "Manulife Career Average Guaranteed Fund - SHKP",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-07-27",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000034"
+    },
+    {
+      "fundClassId": "mpfa-cf-460",
+      "identity": {
+        "trusteeName": "Standard Chartered Trustee (Hong Kong) Limited",
+        "schemeName": "SHKP MPF Employer Sponsored Scheme",
+        "constituentFundName": "Fidelity Balanced Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-07-27",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000034"
+    },
+    {
+      "fundClassId": "mpfa-cf-462",
+      "identity": {
+        "trusteeName": "Standard Chartered Trustee (Hong Kong) Limited",
+        "schemeName": "SHKP MPF Employer Sponsored Scheme",
+        "constituentFundName": "SHKP MPF Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-07-27",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000034"
+    },
+    {
+      "fundClassId": "mpfa-cf-463",
+      "identity": {
+        "trusteeName": "Standard Chartered Trustee (Hong Kong) Limited",
+        "schemeName": "SHKP MPF Employer Sponsored Scheme",
+        "constituentFundName": "Fidelity Stable Growth Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-07-27",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000034"
+    },
+    {
+      "fundClassId": "mpfa-cf-464",
+      "identity": {
+        "trusteeName": "Standard Chartered Trustee (Hong Kong) Limited",
+        "schemeName": "SHKP MPF Employer Sponsored Scheme",
+        "constituentFundName": "Allianz Choice Stable Growth Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-07-27",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000034"
+    },
+    {
+      "fundClassId": "mpfa-cf-466",
+      "identity": {
+        "trusteeName": "Standard Chartered Trustee (Hong Kong) Limited",
+        "schemeName": "SHKP MPF Employer Sponsored Scheme",
+        "constituentFundName": "Invesco MPF Conservative Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-07-27",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000034"
+    },
+    {
+      "fundClassId": "mpfa-cf-498",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Stable Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-499",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Stable Fund",
+        "fundClassName": "Class B"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-500",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Balanced Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-501",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Balanced Fund",
+        "fundClassName": "Class B"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-502",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Hong Kong Equity Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-503",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Hong Kong Equity Fund",
+        "fundClassName": "Class B"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-504",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Hong Kong Dollar Bond Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-505",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Hong Kong Dollar Bond Fund",
+        "fundClassName": "Class B"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-506",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Conservative Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-507",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Conservative Fund",
+        "fundClassName": "Class B"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-508",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Growth Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-509",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Growth Fund",
+        "fundClassName": "Class B"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-689",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Asian Equity Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-690",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Asian Equity Fund",
+        "fundClassName": "Class B"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-691",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Multi-Sector Equity Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-692",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Multi-Sector Equity Fund",
+        "fundClassName": "Class B"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-693",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Greater China Equity Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-694",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Greater China Equity Fund",
+        "fundClassName": "Class B"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-809",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Global Bond Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-810",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Global Bond Fund",
+        "fundClassName": "Class B"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-815",
+      "identity": {
+        "trusteeName": "Standard Chartered Trustee (Hong Kong) Limited",
+        "schemeName": "SHKP MPF Employer Sponsored Scheme",
+        "constituentFundName": "Allianz Choice Balanced Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-07-27",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000034"
+    },
+    {
+      "fundClassId": "mpfa-cf-874",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "Greater China Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-07-28",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000004"
+    },
+    {
+      "fundClassId": "mpfa-cf-910",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF RMB and HKD Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-911",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF RMB and HKD Fund",
+        "fundClassName": "Class B"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-1199",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life FTSE MPF Hong Kong Index Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-1200",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life FTSE MPF Hong Kong Index Fund",
+        "fundClassName": "Class B"
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-1399",
+      "identity": {
+        "trusteeName": "Standard Chartered Trustee (Hong Kong) Limited",
+        "schemeName": "SHKP MPF Employer Sponsored Scheme",
+        "constituentFundName": "Invesco Global Stable Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-07-27",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000034"
+    },
+    {
+      "fundClassId": "mpfa-cf-1487",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "Core Accumulation Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-07-28",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000004"
+    },
+    {
+      "fundClassId": "mpfa-cf-1488",
+      "identity": {
+        "trusteeName": "YF Life Trustees Limited",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "constituentFundName": "Age 65 Plus Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-07-28",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000004"
+    },
+    {
+      "fundClassId": "mpfa-cf-1497",
+      "identity": {
+        "trusteeName": "Standard Chartered Trustee (Hong Kong) Limited",
+        "schemeName": "SHKP MPF Employer Sponsored Scheme",
+        "constituentFundName": "Schroder MPF Core Accumulation Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-07-27",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000034"
+    },
+    {
+      "fundClassId": "mpfa-cf-1498",
+      "identity": {
+        "trusteeName": "Standard Chartered Trustee (Hong Kong) Limited",
+        "schemeName": "SHKP MPF Employer Sponsored Scheme",
+        "constituentFundName": "Schroder MPF Age 65 Plus Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-07-27",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000034"
+    },
+    {
+      "fundClassId": "mpfa-cf-1503",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Core Accumulation Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-1505",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Age 65 Plus Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-2063",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF US Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-2064",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF European Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-2065",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Global Low Carbon Index Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-2099",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF US & Hong Kong Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    },
+    {
+      "fundClassId": "mpfa-cf-2239",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Income Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-08-09",
+      "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes/detail?schId=SCH000000000035"
+    }
+  ]
+}

@@ -1,0 +1,488 @@
+{
+  "sourceType": "trustee_fund_list",
+  "sourceUrl": "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes",
+  "retrievedAt": "2026-08-11T00:00:00+08:00",
+  "scopeTrustees": ["Bank of East Asia (Trustees) Limited"],
+  "records": [
+    {
+      "fundClassId": "mpfa-cf-212",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Industry Scheme",
+        "constituentFundName": "BEA (Industry Scheme) Balanced Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/IS00025_BEA_%28MPF%29_Industry_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-213",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Industry Scheme",
+        "constituentFundName": "BEA (Industry Scheme) MPF Conservative Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/IS00025_BEA_%28MPF%29_Industry_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-214",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Industry Scheme",
+        "constituentFundName": "BEA (Industry Scheme) Stable Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/IS00025_BEA_%28MPF%29_Industry_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-215",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Industry Scheme",
+        "constituentFundName": "BEA (Industry Scheme) Growth Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/IS00025_BEA_%28MPF%29_Industry_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-216",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Master Trust Scheme",
+        "constituentFundName": "BEA (MPF) Balanced Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00202_BEA_%28MPF%29_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-217",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Master Trust Scheme",
+        "constituentFundName": "BEA (MPF) Japan Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00202_BEA_%28MPF%29_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-218",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Master Trust Scheme",
+        "constituentFundName": "BEA (MPF) Greater China Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00202_BEA_%28MPF%29_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-219",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Master Trust Scheme",
+        "constituentFundName": "BEA (MPF) Global Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00202_BEA_%28MPF%29_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-220",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Master Trust Scheme",
+        "constituentFundName": "BEA (MPF) Hong Kong Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00202_BEA_%28MPF%29_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-221",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Master Trust Scheme",
+        "constituentFundName": "BEA (MPF) Asian Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00202_BEA_%28MPF%29_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-223",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Master Trust Scheme",
+        "constituentFundName": "BEA (MPF) Stable Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00202_BEA_%28MPF%29_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-224",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Master Trust Scheme",
+        "constituentFundName": "BEA (MPF) Growth Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00202_BEA_%28MPF%29_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-225",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Master Trust Scheme",
+        "constituentFundName": "BEA (MPF) Conservative Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00202_BEA_%28MPF%29_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-811",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Industry Scheme",
+        "constituentFundName": "BEA (Industry Scheme) Hong Kong Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/IS00025_BEA_%28MPF%29_Industry_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-812",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Industry Scheme",
+        "constituentFundName": "BEA (Industry Scheme) Greater China Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/IS00025_BEA_%28MPF%29_Industry_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-813",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Master Trust Scheme",
+        "constituentFundName": "BEA (MPF) Global Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00202_BEA_%28MPF%29_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-814",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Master Trust Scheme",
+        "constituentFundName": "BEA (MPF) European Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00202_BEA_%28MPF%29_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-896",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Master Trust Scheme",
+        "constituentFundName": "BEA (MPF) North American Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00202_BEA_%28MPF%29_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-897",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Master Trust Scheme",
+        "constituentFundName": "BEA China Tracker Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00202_BEA_%28MPF%29_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-898",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Master Trust Scheme",
+        "constituentFundName": "BEA Hong Kong Tracker Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00202_BEA_%28MPF%29_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-899",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Industry Scheme",
+        "constituentFundName": "BEA (Industry Scheme) Asian Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/IS00025_BEA_%28MPF%29_Industry_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-900",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Industry Scheme",
+        "constituentFundName": "BEA China Tracker Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/IS00025_BEA_%28MPF%29_Industry_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-901",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Industry Scheme",
+        "constituentFundName": "BEA Hong Kong Tracker Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/IS00025_BEA_%28MPF%29_Industry_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-912",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Master Trust Scheme",
+        "constituentFundName": "BEA (MPF) RMB & HKD Money Market Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00202_BEA_%28MPF%29_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-913",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Industry Scheme",
+        "constituentFundName": "BEA (Industry Scheme) RMB & HKD Money Market Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/IS00025_BEA_%28MPF%29_Industry_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1039",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Value Scheme",
+        "constituentFundName": "BEA MPF Conservative Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2025-12",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00571_BEA_%28MPF%29_Value_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1040",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Value Scheme",
+        "constituentFundName": "BEA Growth Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2025-12",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00571_BEA_%28MPF%29_Value_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1041",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Value Scheme",
+        "constituentFundName": "BEA Balanced Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2025-12",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00571_BEA_%28MPF%29_Value_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1042",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Value Scheme",
+        "constituentFundName": "BEA Stable Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2025-12",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00571_BEA_%28MPF%29_Value_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1043",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Value Scheme",
+        "constituentFundName": "BEA Global Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2025-12",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00571_BEA_%28MPF%29_Value_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1044",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Value Scheme",
+        "constituentFundName": "BEA Asian Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2025-12",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00571_BEA_%28MPF%29_Value_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1045",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Value Scheme",
+        "constituentFundName": "BEA Greater China Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2025-12",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00571_BEA_%28MPF%29_Value_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1047",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Value Scheme",
+        "constituentFundName": "BEA Hong Kong Tracker Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2025-12",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00571_BEA_%28MPF%29_Value_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1048",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Value Scheme",
+        "constituentFundName": "BEA Global Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2025-12",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00571_BEA_%28MPF%29_Value_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1535",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Industry Scheme",
+        "constituentFundName": "BEA (Industry Scheme) Core Accumulation Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/IS00025_BEA_%28MPF%29_Industry_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1536",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Industry Scheme",
+        "constituentFundName": "BEA (Industry Scheme) Age 65 Plus Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/IS00025_BEA_%28MPF%29_Industry_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1537",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Master Trust Scheme",
+        "constituentFundName": "BEA (MPF) Core Accumulation Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00202_BEA_%28MPF%29_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1538",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Master Trust Scheme",
+        "constituentFundName": "BEA (MPF) Age 65 Plus Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00202_BEA_%28MPF%29_Master_Trust_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1539",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Value Scheme",
+        "constituentFundName": "BEA Core Accumulation Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2025-12",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00571_BEA_%28MPF%29_Value_Scheme_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1540",
+      "identity": {
+        "trusteeName": "Bank of East Asia (Trustees) Limited",
+        "schemeName": "BEA (MPF) Value Scheme",
+        "constituentFundName": "BEA Age 65 Plus Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2025-12",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00571_BEA_%28MPF%29_Value_Scheme_EN.pdf"
+    }
+  ]
+}

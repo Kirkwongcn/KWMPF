@@ -1,0 +1,128 @@
+{
+  "sourceType": "trustee_fund_list",
+  "sourceUrl": "https://www.shkp.com/Html/MPF/Key_Scheme_Information_Document_EN_202507.pdf",
+  "retrievedAt": "2026-08-11T00:00:00+08:00",
+  "scopeTrustees": ["Standard Chartered Trustee (Hong Kong) Limited"],
+  "records": [
+    {
+      "fundClassId": "mpfa-cf-459",
+      "identity": {
+        "trusteeName": "Standard Chartered Trustee (Hong Kong) Limited",
+        "schemeName": "SHKP MPF Employer Sponsored Scheme",
+        "constituentFundName": "Manulife Career Average Guaranteed Fund - SHKP",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.shkp.com/Html/MPF/Key_Scheme_Information_Document_EN_202507.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-460",
+      "identity": {
+        "trusteeName": "Standard Chartered Trustee (Hong Kong) Limited",
+        "schemeName": "SHKP MPF Employer Sponsored Scheme",
+        "constituentFundName": "Fidelity Balanced Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.shkp.com/Html/MPF/Key_Scheme_Information_Document_EN_202507.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-462",
+      "identity": {
+        "trusteeName": "Standard Chartered Trustee (Hong Kong) Limited",
+        "schemeName": "SHKP MPF Employer Sponsored Scheme",
+        "constituentFundName": "SHKP MPF Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.shkp.com/Html/MPF/Key_Scheme_Information_Document_EN_202507.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-463",
+      "identity": {
+        "trusteeName": "Standard Chartered Trustee (Hong Kong) Limited",
+        "schemeName": "SHKP MPF Employer Sponsored Scheme",
+        "constituentFundName": "Fidelity Stable Growth Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.shkp.com/Html/MPF/Key_Scheme_Information_Document_EN_202507.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-464",
+      "identity": {
+        "trusteeName": "Standard Chartered Trustee (Hong Kong) Limited",
+        "schemeName": "SHKP MPF Employer Sponsored Scheme",
+        "constituentFundName": "Allianz Choice Stable Growth Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.shkp.com/Html/MPF/Key_Scheme_Information_Document_EN_202507.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-466",
+      "identity": {
+        "trusteeName": "Standard Chartered Trustee (Hong Kong) Limited",
+        "schemeName": "SHKP MPF Employer Sponsored Scheme",
+        "constituentFundName": "Invesco MPF Conservative Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.shkp.com/Html/MPF/Key_Scheme_Information_Document_EN_202507.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-815",
+      "identity": {
+        "trusteeName": "Standard Chartered Trustee (Hong Kong) Limited",
+        "schemeName": "SHKP MPF Employer Sponsored Scheme",
+        "constituentFundName": "Allianz Choice Balanced Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.shkp.com/Html/MPF/Key_Scheme_Information_Document_EN_202507.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1399",
+      "identity": {
+        "trusteeName": "Standard Chartered Trustee (Hong Kong) Limited",
+        "schemeName": "SHKP MPF Employer Sponsored Scheme",
+        "constituentFundName": "Invesco Global Stable Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.shkp.com/Html/MPF/Key_Scheme_Information_Document_EN_202507.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1497",
+      "identity": {
+        "trusteeName": "Standard Chartered Trustee (Hong Kong) Limited",
+        "schemeName": "SHKP MPF Employer Sponsored Scheme",
+        "constituentFundName": "Schroder MPF Core Accumulation Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.shkp.com/Html/MPF/Key_Scheme_Information_Document_EN_202507.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1498",
+      "identity": {
+        "trusteeName": "Standard Chartered Trustee (Hong Kong) Limited",
+        "schemeName": "SHKP MPF Employer Sponsored Scheme",
+        "constituentFundName": "Schroder MPF Age 65 Plus Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.shkp.com/Html/MPF/Key_Scheme_Information_Document_EN_202507.pdf"
+    }
+  ]
+}

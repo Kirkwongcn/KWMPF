@@ -1,0 +1,260 @@
+{
+  "sourceType": "trustee_fund_list",
+  "sourceUrl": "https://www.aia.com.hk/en/products/mpf/list",
+  "retrievedAt": "2026-08-11T00:00:00+08:00",
+  "scopeTrustees": ["AIA Company (Trustee) Limited"],
+  "records": [
+    {
+      "fundClassId": "mpfa-cf-102",
+      "identity": {
+        "trusteeName": "AIA Company (Trustee) Limited",
+        "schemeName": "AIA MPF - Prime Value Choice",
+        "constituentFundName": "Greater China Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.aia.com.hk/en/products/mpf/list"
+    },
+    {
+      "fundClassId": "mpfa-cf-131",
+      "identity": {
+        "trusteeName": "AIA Company (Trustee) Limited",
+        "schemeName": "AIA MPF - Prime Value Choice",
+        "constituentFundName": "Capital Stable Portfolio",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.aia.com.hk/en/products/mpf/list"
+    },
+    {
+      "fundClassId": "mpfa-cf-132",
+      "identity": {
+        "trusteeName": "AIA Company (Trustee) Limited",
+        "schemeName": "AIA MPF - Prime Value Choice",
+        "constituentFundName": "Balanced Portfolio",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.aia.com.hk/en/products/mpf/list"
+    },
+    {
+      "fundClassId": "mpfa-cf-133",
+      "identity": {
+        "trusteeName": "AIA Company (Trustee) Limited",
+        "schemeName": "AIA MPF - Prime Value Choice",
+        "constituentFundName": "Growth Portfolio",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.aia.com.hk/en/products/mpf/list"
+    },
+    {
+      "fundClassId": "mpfa-cf-134",
+      "identity": {
+        "trusteeName": "AIA Company (Trustee) Limited",
+        "schemeName": "AIA MPF - Prime Value Choice",
+        "constituentFundName": "MPF Conservative Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.aia.com.hk/en/products/mpf/list"
+    },
+    {
+      "fundClassId": "mpfa-cf-137",
+      "identity": {
+        "trusteeName": "AIA Company (Trustee) Limited",
+        "schemeName": "AIA MPF - Prime Value Choice",
+        "constituentFundName": "Asian Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.aia.com.hk/en/products/mpf/list"
+    },
+    {
+      "fundClassId": "mpfa-cf-141",
+      "identity": {
+        "trusteeName": "AIA Company (Trustee) Limited",
+        "schemeName": "AIA MPF - Prime Value Choice",
+        "constituentFundName": "Green Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.aia.com.hk/en/products/mpf/list"
+    },
+    {
+      "fundClassId": "mpfa-cf-142",
+      "identity": {
+        "trusteeName": "AIA Company (Trustee) Limited",
+        "schemeName": "AIA MPF - Prime Value Choice",
+        "constituentFundName": "North American Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.aia.com.hk/en/products/mpf/list"
+    },
+    {
+      "fundClassId": "mpfa-cf-145",
+      "identity": {
+        "trusteeName": "AIA Company (Trustee) Limited",
+        "schemeName": "AIA MPF - Prime Value Choice",
+        "constituentFundName": "European Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.aia.com.hk/en/products/mpf/list"
+    },
+    {
+      "fundClassId": "mpfa-cf-146",
+      "identity": {
+        "trusteeName": "AIA Company (Trustee) Limited",
+        "schemeName": "AIA MPF - Prime Value Choice",
+        "constituentFundName": "Guaranteed Portfolio",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.aia.com.hk/en/products/mpf/list"
+    },
+    {
+      "fundClassId": "mpfa-cf-657",
+      "identity": {
+        "trusteeName": "AIA Company (Trustee) Limited",
+        "schemeName": "AIA MPF - Prime Value Choice",
+        "constituentFundName": "Global Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.aia.com.hk/en/products/mpf/list"
+    },
+    {
+      "fundClassId": "mpfa-cf-658",
+      "identity": {
+        "trusteeName": "AIA Company (Trustee) Limited",
+        "schemeName": "AIA MPF - Prime Value Choice",
+        "constituentFundName": "World Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.aia.com.hk/en/products/mpf/list"
+    },
+    {
+      "fundClassId": "mpfa-cf-699",
+      "identity": {
+        "trusteeName": "AIA Company (Trustee) Limited",
+        "schemeName": "AIA MPF - Prime Value Choice",
+        "constituentFundName": "Manager's Choice Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.aia.com.hk/en/products/mpf/list"
+    },
+    {
+      "fundClassId": "mpfa-cf-875",
+      "identity": {
+        "trusteeName": "AIA Company (Trustee) Limited",
+        "schemeName": "AIA MPF - Prime Value Choice",
+        "constituentFundName": "Asian Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.aia.com.hk/en/products/mpf/list"
+    },
+    {
+      "fundClassId": "mpfa-cf-876",
+      "identity": {
+        "trusteeName": "AIA Company (Trustee) Limited",
+        "schemeName": "AIA MPF - Prime Value Choice",
+        "constituentFundName": "Eurasia Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.aia.com.hk/en/products/mpf/list"
+    },
+    {
+      "fundClassId": "mpfa-cf-877",
+      "identity": {
+        "trusteeName": "AIA Company (Trustee) Limited",
+        "schemeName": "AIA MPF - Prime Value Choice",
+        "constituentFundName": "Hong Kong and China Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.aia.com.hk/en/products/mpf/list"
+    },
+    {
+      "fundClassId": "mpfa-cf-878",
+      "identity": {
+        "trusteeName": "AIA Company (Trustee) Limited",
+        "schemeName": "AIA MPF - Prime Value Choice",
+        "constituentFundName": "American Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.aia.com.hk/en/products/mpf/list"
+    },
+    {
+      "fundClassId": "mpfa-cf-1519",
+      "identity": {
+        "trusteeName": "AIA Company (Trustee) Limited",
+        "schemeName": "AIA MPF - Prime Value Choice",
+        "constituentFundName": "Core Accumulation Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.aia.com.hk/en/products/mpf/list"
+    },
+    {
+      "fundClassId": "mpfa-cf-1520",
+      "identity": {
+        "trusteeName": "AIA Company (Trustee) Limited",
+        "schemeName": "AIA MPF - Prime Value Choice",
+        "constituentFundName": "Age 65 Plus Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.aia.com.hk/en/products/mpf/list"
+    },
+    {
+      "fundClassId": "mpfa-cf-1579",
+      "identity": {
+        "trusteeName": "AIA Company (Trustee) Limited",
+        "schemeName": "AIA MPF - Prime Value Choice",
+        "constituentFundName": "China HK Dynamic Asset Allocation Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.aia.com.hk/en/products/mpf/list"
+    },
+    {
+      "fundClassId": "mpfa-cf-2379",
+      "identity": {
+        "trusteeName": "AIA Company (Trustee) Limited",
+        "schemeName": "AIA MPF - Prime Value Choice",
+        "constituentFundName": "Retirement Income Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.aia.com.hk/en/products/mpf/list"
+    }
+  ]
+}

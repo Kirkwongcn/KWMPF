@@ -1,0 +1,932 @@
+{
+  "sourceType": "trustee_fund_list",
+  "sourceUrl": "https://www.hsbc.com.hk/mpf/funds/",
+  "retrievedAt": "2026-08-11T00:00:00+08:00",
+  "scopeTrustees": ["HSBC Provident Fund Trustee (Hong Kong) Limited"],
+  "records": [
+    {
+      "fundClassId": "mpfa-cf-268",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Fidelity Retirement Master Trust",
+        "constituentFundName": "Growth Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00288_Fidelity_Retirement_Master_Trust_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-270",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Fidelity Retirement Master Trust",
+        "constituentFundName": "World Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00288_Fidelity_Retirement_Master_Trust_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-271",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Fidelity Retirement Master Trust",
+        "constituentFundName": "Stable Growth Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00288_Fidelity_Retirement_Master_Trust_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-272",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Fidelity Retirement Master Trust",
+        "constituentFundName": "Capital Stable Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00288_Fidelity_Retirement_Master_Trust_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-273",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Fidelity Retirement Master Trust",
+        "constituentFundName": "Hong Kong Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00288_Fidelity_Retirement_Master_Trust_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-274",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Fidelity Retirement Master Trust",
+        "constituentFundName": "MPF Conservative Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00288_Fidelity_Retirement_Master_Trust_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-275",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Fidelity Retirement Master Trust",
+        "constituentFundName": "Global Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00288_Fidelity_Retirement_Master_Trust_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-276",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Fidelity Retirement Master Trust",
+        "constituentFundName": "Hong Kong Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00288_Fidelity_Retirement_Master_Trust_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-278",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Fidelity Retirement Master Trust",
+        "constituentFundName": "Asia Pacific Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00288_Fidelity_Retirement_Master_Trust_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-280",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Fidelity Retirement Master Trust",
+        "constituentFundName": "Balanced Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00288_Fidelity_Retirement_Master_Trust_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-282",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Haitong MPF Retirement Fund",
+        "constituentFundName": "Haitong Asia Pacific Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00121_Haitong_MPF_Retirement_Fund_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-283",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Haitong MPF Retirement Fund",
+        "constituentFundName": "Haitong Asia Pacific Fund",
+        "fundClassName": "Class T"
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00121_Haitong_MPF_Retirement_Fund_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-284",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Haitong MPF Retirement Fund",
+        "constituentFundName": "Haitong Korea Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00121_Haitong_MPF_Retirement_Fund_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-285",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Haitong MPF Retirement Fund",
+        "constituentFundName": "Haitong Korea Fund",
+        "fundClassName": "Class T"
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00121_Haitong_MPF_Retirement_Fund_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-286",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Haitong MPF Retirement Fund",
+        "constituentFundName": "Haitong Global Diversification Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00121_Haitong_MPF_Retirement_Fund_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-287",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Haitong MPF Retirement Fund",
+        "constituentFundName": "Haitong Global Diversification Fund",
+        "fundClassName": "Class T"
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00121_Haitong_MPF_Retirement_Fund_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-288",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Haitong MPF Retirement Fund",
+        "constituentFundName": "Haitong MPF Conservative Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00121_Haitong_MPF_Retirement_Fund_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-289",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Haitong MPF Retirement Fund",
+        "constituentFundName": "Haitong MPF Conservative Fund",
+        "fundClassName": "Class T"
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00121_Haitong_MPF_Retirement_Fund_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-290",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Haitong MPF Retirement Fund",
+        "constituentFundName": "Haitong Hong Kong SAR Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00121_Haitong_MPF_Retirement_Fund_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-291",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Haitong MPF Retirement Fund",
+        "constituentFundName": "Haitong Hong Kong SAR Fund",
+        "fundClassName": "Class T"
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00121_Haitong_MPF_Retirement_Fund_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-302",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Hang Seng Index Tracking Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00253_Hang_Seng_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-303",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Asia Pacific Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00253_Hang_Seng_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-304",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Core Accumulation Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00253_Hang_Seng_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-305",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Guaranteed Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00253_Hang_Seng_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-306",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "MPF Conservative Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00253_Hang_Seng_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-307",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "European Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00253_Hang_Seng_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-308",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "North American Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00253_Hang_Seng_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-309",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Hong Kong and Chinese Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00253_Hang_Seng_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-310",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Balanced Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00253_Hang_Seng_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-311",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Growth Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00253_Hang_Seng_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-317",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Growth Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00245_HSBC_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-318",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Core Accumulation Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00245_HSBC_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-319",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "MPF Conservative Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00245_HSBC_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-320",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Guaranteed Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00245_HSBC_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-321",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Hong Kong and Chinese Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00245_HSBC_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-322",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Balanced Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00245_HSBC_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-323",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "North American Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00245_HSBC_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-324",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Asia Pacific Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00245_HSBC_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-325",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Hang Seng Index Tracking Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00245_HSBC_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-326",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "European Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00245_HSBC_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-706",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Fidelity Retirement Master Trust",
+        "constituentFundName": "Fidelity SaveEasy 2025 Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00288_Fidelity_Retirement_Master_Trust_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-708",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Fidelity Retirement Master Trust",
+        "constituentFundName": "Fidelity SaveEasy 2030 Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00288_Fidelity_Retirement_Master_Trust_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-709",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Fidelity Retirement Master Trust",
+        "constituentFundName": "Fidelity SaveEasy 2035 Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00288_Fidelity_Retirement_Master_Trust_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-711",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Fidelity Retirement Master Trust",
+        "constituentFundName": "Fidelity SaveEasy 2040 Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00288_Fidelity_Retirement_Master_Trust_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-801",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Global Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00245_HSBC_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-802",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Age 65 Plus Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00245_HSBC_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-803",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Stable Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00245_HSBC_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-804",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Chinese Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00245_HSBC_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-805",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Global Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00253_Hang_Seng_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-806",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Age 65 Plus Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00253_Hang_Seng_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-807",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Stable Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00253_Hang_Seng_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-808",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Chinese Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00253_Hang_Seng_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1159",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Fidelity Retirement Master Trust",
+        "constituentFundName": "Fidelity Hong Kong Tracker Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00288_Fidelity_Retirement_Master_Trust_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1419",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Fidelity Retirement Master Trust",
+        "constituentFundName": "Fidelity SaveEasy 2045 Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00288_Fidelity_Retirement_Master_Trust_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1420",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Fidelity Retirement Master Trust",
+        "constituentFundName": "Fidelity SaveEasy 2050 Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00288_Fidelity_Retirement_Master_Trust_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1439",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Fidelity Retirement Master Trust",
+        "constituentFundName": "RMB Bond Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00288_Fidelity_Retirement_Master_Trust_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1551",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Fidelity Retirement Master Trust",
+        "constituentFundName": "Core Accumulation Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00288_Fidelity_Retirement_Master_Trust_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1552",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Fidelity Retirement Master Trust",
+        "constituentFundName": "Age 65 Plus Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00288_Fidelity_Retirement_Master_Trust_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1553",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Haitong MPF Retirement Fund",
+        "constituentFundName": "Haitong Core Accumulation Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00121_Haitong_MPF_Retirement_Fund_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1554",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Haitong MPF Retirement Fund",
+        "constituentFundName": "Haitong Core Accumulation Fund",
+        "fundClassName": "Class T"
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00121_Haitong_MPF_Retirement_Fund_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1555",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Haitong MPF Retirement Fund",
+        "constituentFundName": "Haitong Age 65 Plus Fund",
+        "fundClassName": "Class A"
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00121_Haitong_MPF_Retirement_Fund_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1556",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Haitong MPF Retirement Fund",
+        "constituentFundName": "Haitong Age 65 Plus Fund",
+        "fundClassName": "Class T"
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00121_Haitong_MPF_Retirement_Fund_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1619",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Global Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00245_HSBC_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1620",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Hang Seng China Enterprises Index Tracking Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00245_HSBC_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1621",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "ValueChoice Asia Pacific Equity Tracker Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00245_HSBC_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1622",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "ValueChoice Balanced Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00245_HSBC_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1624",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "ValueChoice North America Equity Tracker Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00245_HSBC_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1625",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Global Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00253_Hang_Seng_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1626",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "Hang Seng China Enterprises Index Tracking Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00253_Hang_Seng_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1627",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "ValueChoice Asia Pacific Equity Tracker Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00253_Hang_Seng_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1628",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "ValueChoice Balanced Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00253_Hang_Seng_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1629",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "ValueChoice Europe Equity Tracker Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00253_Hang_Seng_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1630",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "ValueChoice North America Equity Tracker Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00253_Hang_Seng_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1631",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+        "constituentFundName": "ValueChoice Europe Equity Tracker Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00245_HSBC_Mandatory_Provident_Fund_-_SuperTrust_Plus_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-1799",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Fidelity Retirement Master Trust",
+        "constituentFundName": "RetireEasy Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00288_Fidelity_Retirement_Master_Trust_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-2079",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Fidelity Retirement Master Trust",
+        "constituentFundName": "Americas Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00288_Fidelity_Retirement_Master_Trust_EN.pdf"
+    },
+    {
+      "fundClassId": "mpfa-cf-2080",
+      "identity": {
+        "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+        "schemeName": "Fidelity Retirement Master Trust",
+        "constituentFundName": "European Equity Fund",
+        "fundClassName": "n.a."
+      },
+      "current": true,
+      "dataAsOf": "2026-04",
+      "sourceUrl": "https://www.mpfa.org.hk/assets/OD/MT00288_Fidelity_Retirement_Master_Trust_EN.pdf"
+    }
+  ]
+}
