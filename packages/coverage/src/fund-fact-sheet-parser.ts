@@ -29,7 +29,7 @@ export function parseFundFactSheet(text: string, sourceUrl: string): FundFactShe
   const lines = normalized.split("\n").map(normalize);
   const schemeName = lines.find((line) => /MPF Scheme$/.test(line) && line.length < 80 && !line.includes("Fund Fact Sheet"))
     ?? lines.find((line) => line.endsWith("Fund Fact Sheet"))?.replace(/ Fund Fact Sheet$/, "");
-  const dateMatch = normalized.match(/(?:As of|截至 As of\s*:?)\s*:?[ ]*(\d{1,2}\/\d{1,2}\/\d{4})/i);
+  const dateMatch = normalized.match(/(?:As of|截至 As of)[^\d]{0,30}(\d{1,2}\/\d{1,2}\/\d{4})/i);
   if (!schemeName || !dateMatch?.[1]) throw new Error("Fund fact sheet header is missing");
   const dataAsOf = parseDate(dateMatch[1]);
   const results: FundFactSheetReturn[] = [];
@@ -44,7 +44,8 @@ export function parseFundFactSheet(text: string, sourceUrl: string): FundFactShe
     if (!fundName) continue;
     const performanceRow = lines
       .slice(performanceIndex + 1, performanceIndex + 12)
-      .find((line) => /\bFund\b.*[+-]?\d+(?:\.\d+)?%/.test(line));
+      .find((line) => /\bFund\b.*[+-]?\d+(?:\.\d+)?%/.test(line))
+      ?? lines.slice(performanceIndex + 1, performanceIndex + 8).join(" ");
     const values = performanceRow?.match(/[+-]?\d+(?:\.\d+)?%/g);
     if (!fundName || !values || values.length < 3) {
       throw new Error(`Annualized return row is incomplete for ${fundName || "unknown fund"}`);
