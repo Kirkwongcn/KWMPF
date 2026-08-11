@@ -17,6 +17,7 @@
     "coverage:merge-fact-sheets": "bun packages/coverage/src/merge-fact-sheet-returns.ts",
     "coverage:fact-sheet-index": "bun packages/coverage/src/build-fact-sheet-index.ts",
     "coverage:fetch-fact-sheets": "bun packages/coverage/src/fetch-fact-sheets.ts",
+    "coverage:parse-fact-sheets": "bun packages/coverage/src/parse-fact-sheets.ts",
     "coverage:fetch-platform": "bun packages/coverage/src/fetch-platform.ts",
     "coverage:retry-platform": "bun packages/coverage/src/retry-platform.ts",
     "format": "prettier --write .",
