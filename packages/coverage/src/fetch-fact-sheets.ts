@@ -7,15 +7,22 @@ type Entry = Link & { status: "downloaded" | "failed"; retrievedAt: string; sha2
 const input = process.argv[2];
 const output = process.argv[3];
 if (!input || !output) throw new Error("Usage: bun fetch-fact-sheets.ts <links.json> <manifest.json>");
+const manifestPath = output;
 
 const links = JSON.parse(await readFile(input, "utf8")) as Link[];
 const root = output.replace(/\.json$/, "");
 await mkdir(root, { recursive: true });
-const entries: Entry[] = [];
+const existing = await readFile(manifestPath, "utf8").then((value) => JSON.parse(value).entries as Entry[]).catch(() => [] as Entry[]);
+const entries: Entry[] = [...existing];
+
+async function save() {
+  await writeFile(manifestPath, `${JSON.stringify({ generatedAt: new Date().toISOString(), entries }, null, 2)}\n`);
+}
 
 for (const link of links) {
   const id = createHash("sha256").update(link.scheme).digest("hex").slice(0, 16);
   const file = `${root}/${id}.pdf`;
+  if (entries.some((entry) => entry.scheme === link.scheme && entry.status === "downloaded")) continue;
   const retrievedAt = new Date().toISOString();
   try {
     const response = await fetch(link.factSheetUrl, { signal: AbortSignal.timeout(60_000) });
@@ -29,7 +36,8 @@ for (const link of links) {
   } catch (error) {
     entries.push({ ...link, status: "failed", retrievedAt, error: error instanceof Error ? error.message : String(error) });
   }
+  await save();
 }
 
-await writeFile(output, `${JSON.stringify({ generatedAt: new Date().toISOString(), entries }, null, 2)}\n`);
+await save();
 console.log(JSON.stringify({ output, downloaded: entries.filter((entry) => entry.status === "downloaded").length, failed: entries.filter((entry) => entry.status === "failed").length }));
