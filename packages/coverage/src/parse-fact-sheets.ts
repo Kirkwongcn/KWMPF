@@ -23,7 +23,8 @@ function parser(scheme: string, text: string, url: string): FundFactSheetReturn[
   if (scheme.startsWith("AIA")) return parseAiaFundFactSheet(text, url);
   if (scheme.startsWith("AMTD")) return parseAmtdFundFactSheet(text, url);
   if (scheme === "BCT (MPF) Industry Choice") return parseBctFundFactSheet(text, url);
-  if (scheme === "BCT MPF - Simple Plan" || scheme === "BCT MPF - Smart Plan" || scheme === "BCT MPF Scheme Series 800") return parseBctFundFactSheet(text, url);
+  if (scheme === "BCT MPF - Simple Plan" || scheme === "BCT MPF - Smart Plan") return parsePrincipalFundFactSheet(text, url, scheme);
+  if (scheme === "BCT MPF Scheme Series 800") return parsePrincipal800FundFactSheet(text, url, scheme);
   if (scheme.startsWith("BCT")) throw new Error("No 3-year official return parser for this BCT scheme");
   if (scheme.startsWith("Principal")) return parsePrincipalFundFactSheet(text, url, scheme);
   if (scheme.includes("Series 800")) return parsePrincipal800FundFactSheet(text, url, scheme);
