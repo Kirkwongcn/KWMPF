@@ -11,14 +11,14 @@ describe("official fund fact sheet parser", () => {
   it("extracts the official three-year annualized return without estimating", () => {
     expect(parseFundFactSheet(fixture, "https://www.mpfa.org.hk/assets/FF/MT00571.pdf")).toEqual([
       {
-        schemeName: "BEA (MPF) Value Scheme Fund Fact Sheet",
+        schemeName: "BEA (MPF) Value Scheme",
         constituentFundName: "BEA Growth Fund",
         dataAsOf: "2025-09-30",
         sourceUrl: "https://www.mpfa.org.hk/assets/FF/MT00571.pdf",
         annualizedReturn3Year: 14.82,
       },
       {
-        schemeName: "BEA (MPF) Value Scheme Fund Fact Sheet",
+        schemeName: "BEA (MPF) Value Scheme",
         constituentFundName: "BEA Core Accumulation Fund",
         dataAsOf: "2025-09-30",
         sourceUrl: "https://www.mpfa.org.hk/assets/FF/MT00571.pdf",
@@ -52,7 +52,7 @@ describe("official fund fact sheet parser", () => {
           fundClassId: "bea-growth-class-i",
           identity: {
             trusteeName: "The Bank of East Asia, Limited",
-            schemeName: "BEA (MPF) Value Scheme Fund Fact Sheet",
+            schemeName: "BEA (MPF) Value Scheme",
             constituentFundName: "BEA Growth Fund",
             fundClassName: "Class I",
           },
