@@ -37,7 +37,7 @@ export function parseSunLifeFundFactSheetXml(xml: string, sourceUrl: string): Fu
   const texts = readTexts(xml);
   const dataAsOf = parseDate(xml);
   const names = texts
-    .filter((item) => item.top >= 400 && item.top <= 450 && item.left < 600 && /Sun Life MPF .* Fund/.test(item.text))
+    .filter((item) => item.top >= 400 && item.top <= 450 && item.left < 600 && /Sun Life MPF .* Fund(?:\s+[–-]\s+Class [A-Z])?$/.test(item.text))
     .map((item) => ({ name: item.text, top: item.top }))
     .filter((item, index, all) => all.findIndex((candidate) => candidate.name === item.name) === index);
   const performanceRows = [...new Set(texts.filter((item) => item.top >= 500 && item.top <= 555 && item.left < 680 && item.left + item.width > 600).map((item) => item.top))]
@@ -53,9 +53,12 @@ export function parseSunLifeFundFactSheetXml(xml: string, sourceUrl: string): Fu
     const values = percentValues(row.text);
     const annualizedReturn3Year = values.length >= 2 ? values[1] : undefined;
     if (annualizedReturn3Year === undefined) continue;
+    const classMatch = name.name.match(/\s+[–-]\s+(Class [A-Z])$/);
+    const constituentFundName = name.name.replace(/\s+[–-]\s+Class [A-Z]$/, "");
     results.push({
       schemeName: "Sun Life Rainbow MPF Scheme",
-      constituentFundName: name.name,
+      constituentFundName,
+      ...(classMatch?.[1] ? { fundClassName: classMatch[1] } : {}),
       dataAsOf,
       sourceUrl,
       annualizedReturn3Year,
