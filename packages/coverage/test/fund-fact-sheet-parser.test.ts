@@ -110,6 +110,13 @@ describe("official fund fact sheet parser", () => {
     ]);
   });
 
+  it("separates an official class suffix instead of treating it as part of the fund name", () => {
+    const classFixture = sunLifeXmlFixture.replace("<text top=\"434\" left=\"488\" width=\"184\" height=\"13\" font=\"3\">Sun Life MPF Core Accumulation Fund</text>", "<text top=\"434\" left=\"488\" width=\"184\" height=\"13\" font=\"3\">Sun Life MPF Core Accumulation Fund – Class B</text>");
+    expect(parseSunLifeFundFactSheetXml(classFixture, "https://www.mpfa.org.hk/assets/FF/MT00067.pdf")[0]).toEqual(
+      expect.objectContaining({ constituentFundName: "Sun Life MPF Core Accumulation Fund", fundClassName: "Class B" }),
+    );
+  });
+
   it("fails closed when the performance row is missing", () => {
     expect(() => parseFundFactSheet(fixture.replace("15.45% 14.82% 5.67% 6.59% 5.44%", "N/A N/A N/A N/A N/A"), "https://example.test/fact-sheet.pdf")).toThrow(
       "Annualized return row is incomplete",
