@@ -19,6 +19,12 @@ async function save() {
   await writeFile(manifestPath, `${JSON.stringify({ generatedAt: new Date().toISOString(), entries }, null, 2)}\n`);
 }
 
+function record(entry: Entry) {
+  const index = entries.findIndex((current) => current.scheme === entry.scheme);
+  if (index === -1) entries.push(entry);
+  else entries[index] = entry;
+}
+
 for (const link of links) {
   const id = createHash("sha256").update(link.scheme).digest("hex").slice(0, 16);
   const file = `${root}/${id}.pdf`;
@@ -32,9 +38,9 @@ for (const link of links) {
     await writeFile(file, bytes, { flag: "wx" }).catch(async (error: NodeJS.ErrnoException) => {
       if (error.code !== "EEXIST") throw error;
     });
-    entries.push({ ...link, status: "downloaded", retrievedAt, sha256: createHash("sha256").update(bytes).digest("hex") });
+    record({ ...link, status: "downloaded", retrievedAt, sha256: createHash("sha256").update(bytes).digest("hex") });
   } catch (error) {
-    entries.push({ ...link, status: "failed", retrievedAt, error: error instanceof Error ? error.message : String(error) });
+    record({ ...link, status: "failed", retrievedAt, error: error instanceof Error ? error.message : String(error) });
   }
   await save();
 }
