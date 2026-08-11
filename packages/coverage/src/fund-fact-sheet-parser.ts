@@ -25,10 +25,10 @@ function parsePercent(value: string) {
   return parsed;
 }
 
-export function parseFundFactSheet(text: string, sourceUrl: string): FundFactSheetReturn[] {
+export function parseFundFactSheet(text: string, sourceUrl: string, schemeNameOverride?: string): FundFactSheetReturn[] {
   const normalized = text.replace(/\r/g, "");
   const lines = normalized.split("\n").map(normalize);
-  const schemeName = lines.find((line) => /MPF Scheme$/.test(line) && line.length < 80 && !line.includes("Fund Fact Sheet"))
+  const schemeName = schemeNameOverride ?? lines.find((line) => /MPF Scheme$/.test(line) && line.length < 80 && !line.includes("Fund Fact Sheet"))
     ?? lines.find((line) => line.endsWith("Fund Fact Sheet"))?.replace(/ Fund Fact Sheet$/, "");
   const dateMatch = normalized.match(/(?:As of|截至 As of)[^\d]{0,30}(\d{1,2}\/\d{1,2}\/\d{4})/i);
   if (!schemeName || !dateMatch?.[1]) throw new Error("Fund fact sheet header is missing");
@@ -41,13 +41,12 @@ export function parseFundFactSheet(text: string, sourceUrl: string): FundFactShe
     if (performanceIndex < 1) continue;
     const fundName = lines
       .slice(0, performanceIndex)
-      .findLast((line) => /Fund$/.test(line) && !/Fact Sheet|Fund Performance/i.test(line));
+      .map((line) => ({ line, match: line.match(/\b([A-Za-z][A-Za-z0-9 &'()/-]*Fund)\b/)?.[1] }))
+      .findLast(({ line, match }) => Boolean(match) && line.length < 80 && !/Fact Sheet|Fund Performance/i.test(line))
+      ?.match;
     if (!fundName) continue;
-    const performanceRow = lines
-      .slice(performanceIndex + 1, performanceIndex + 12)
-      .find((line) => /\bFund\b.*[+-]?\d+(?:\.\d+)?%/.test(line))
-      ?? lines.slice(performanceIndex + 1, performanceIndex + 8).join(" ");
-    const values = performanceRow?.match(/[+-]?\d+(?:\.\d+)?%/g);
+    const performanceSection = lines.slice(performanceIndex + 1).join(" ").split(/Cumulative Return|累積回報/i)[0]!;
+    const values = performanceSection.match(/[+-]?\d+(?:\.\d+)?%/g);
     if (!fundName || !values || values.length < 3) {
       throw new Error(`Annualized return row is incomplete for ${fundName || "unknown fund"}`);
     }
