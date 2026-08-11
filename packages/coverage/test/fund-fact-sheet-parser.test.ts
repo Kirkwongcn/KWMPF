@@ -17,6 +17,7 @@ const bctFixture = `BCT (MPF) Industry Choice\nBCT (Industry) China and Hong Kon
 const principalFixture = `Principal MPF - Simple Plan Quarterly\nFund Fact Sheet\nData as of 數據截至 31/12/2025\n\\f\nPrincipal Age 65 Plus Fund (MA65F)\nAnnualized Return 年度回報 (%) N/A 7.75 7.75 5.98 0.69`;
 const principal800Fixture = `信安中國股票基金\nPrincipal China Equity Fund\n截至2025年12月31日 As at 31/12/2025\n年均表現 Annualized Return6 (%)\nD類單位 Class D 30.63 30.63 9.16 -4.48 3.34 2.59`;
 const sunLifeXmlFixture = readFileSync(join(import.meta.dirname, "fixtures", "sun-life-page-23.xml"), "utf8");
+const sunLifePage24XmlFixture = readFileSync(join(import.meta.dirname, "fixtures", "sun-life-page-24.xml"), "utf8");
 
 describe("official fund fact sheet parser", () => {
   it("parses AIA layout text without confusing cumulative and annualized returns", () => {
@@ -100,6 +101,12 @@ describe("official fund fact sheet parser", () => {
         dataAsOf: "2025-12-31",
         annualizedReturn3Year: 12.14,
       }),
+    ]);
+  });
+
+  it("handles the next Sun Life page layout and keeps the annualized column isolated", () => {
+    expect(parseSunLifeFundFactSheetXml(sunLifePage24XmlFixture, "https://www.mpfa.org.hk/assets/FF/MT00067.pdf")).toEqual([
+      expect.objectContaining({ constituentFundName: "Sun Life MPF Age 65 Plus Fund", annualizedReturn3Year: 5.4 }),
     ]);
   });
 

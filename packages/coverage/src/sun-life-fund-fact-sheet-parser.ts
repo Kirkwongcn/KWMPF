@@ -40,7 +40,11 @@ export function parseSunLifeFundFactSheetXml(xml: string, sourceUrl: string): Fu
     .filter((item) => item.top >= 400 && item.top <= 450 && item.left < 600 && /Sun Life MPF .* Fund/.test(item.text))
     .map((item) => ({ name: item.text, top: item.top }))
     .filter((item, index, all) => all.findIndex((candidate) => candidate.name === item.name) === index);
-  const performanceRows = texts.filter((item) => item.top >= 500 && item.top <= 555 && item.left < 680 && item.left + item.width > 600 && percentValues(item.text).length > 0);
+  const performanceRows = [...new Set(texts.filter((item) => item.top >= 500 && item.top <= 555 && item.left < 680 && item.left + item.width > 600).map((item) => item.top))]
+    .sort((a, b) => a - b)
+    .map((top) => texts.filter((item) => item.top === top && item.left < 680 && item.left + item.width > 570).sort((a, b) => a.left - b.left).map((item) => item.text).join(" "))
+    .filter((text) => percentValues(text).length > 0)
+    .map((text, index) => ({ top: index, text }));
   const results: FundFactSheetReturn[] = [];
 
   for (const [index, name] of names.entries()) {
