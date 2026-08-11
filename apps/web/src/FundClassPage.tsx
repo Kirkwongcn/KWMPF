@@ -12,6 +12,8 @@ type PublishedFundClass = {
     annualizedReturn1y: number;
     riskClass: number;
     latestFer: number;
+    managementFee: number;
+    oci1yHkd: number;
   };
   provenance: {
     sourceUrl: string;
@@ -81,6 +83,22 @@ export function FundClassPage({
           </div>
         </dl>
         <div className="provenance">
+          <h2>費用及資料限制</h2>
+          <dl className="status-list">
+            <div>
+              <dt>基金開支比率（歷史財政期）</dt>
+              <dd>{fundClass.latestFer.toFixed(5)}%</dd>
+            </div>
+            <div>
+              <dt>當前管理費</dt>
+              <dd>{fundClass.managementFee.toFixed(2)}%</dd>
+            </div>
+            <div>
+              <dt>其他費用（OCI）</dt>
+              <dd>HK${fundClass.oci1yHkd.toFixed(2)}</dd>
+            </div>
+          </dl>
+          <p>配置及持倉資料的截至日期可能不同，使用時請留意可比性限制。</p>
           <h2>資料來源及驗證</h2>
           <p>資料截至：{provenance.dataAsOf}</p>
           <p>擷取版本：{provenance.retrievedAt}</p>
@@ -91,6 +109,9 @@ export function FundClassPage({
           <a href={provenance.sourceUrl} rel="noreferrer" target="_blank">
             積金局原始資料
           </a>
+          <p className="disclaimer">
+            資料比較不代表投資建議；過往表現不代表未來結果。請查閱受託人最新文件。
+          </p>
         </div>
       </section>
     </main>

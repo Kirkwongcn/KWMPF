@@ -35,6 +35,50 @@ app.get("/fund-classes/:id", async (context) => {
   return context.json(JSON.parse(row.payload));
 });
 
+app.get("/search", async (context) => {
+  const query = context.req.query("q")?.trim().toLocaleLowerCase();
+  if (!query) return context.json([]);
+
+  const rows = await context.env.DB.prepare(
+    `SELECT f.payload
+     FROM current_publication c
+     JOIN fund_class_versions f ON f.snapshot_id = c.snapshot_id
+     WHERE c.singleton = 1`,
+  ).all<{ payload: string }>();
+
+  const results = rows.results
+    .map(
+      (row) =>
+        JSON.parse(row.payload) as {
+          fundClass: {
+            id: string;
+            fundClassName: string;
+            constituentFundName: string;
+            schemeName: string;
+            trusteeName: string;
+          };
+        },
+    )
+    .filter(({ fundClass }) =>
+      [
+        fundClass.fundClassName,
+        fundClass.constituentFundName,
+        fundClass.schemeName,
+        fundClass.trusteeName,
+      ].some((value) => value.toLocaleLowerCase().includes(query)),
+    )
+    .slice(0, 50)
+    .map(({ fundClass }) => ({
+      id: fundClass.id,
+      fundClassName: fundClass.fundClassName,
+      constituentFundName: fundClass.constituentFundName,
+      schemeName: fundClass.schemeName,
+      trusteeName: fundClass.trusteeName,
+    }));
+
+  return context.json(results);
+});
+
 app.notFound((context) => context.json({ error: "Not found" }, 404));
 
 export default app;

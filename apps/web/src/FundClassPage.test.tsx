@@ -42,6 +42,11 @@ describe("fund class page", () => {
     expect(screen.getByText("資料截至：2026-06-30")).toBeVisible();
     expect(screen.getByText("擷取版本：2026-08-11T00:00:00Z")).toBeVisible();
     expect(screen.getByText("驗證狀態：已驗證")).toBeVisible();
+    expect(screen.getByText("基金開支比率（歷史財政期）")).toBeVisible();
+    expect(screen.getByText("當前管理費")).toBeVisible();
+    expect(screen.getByText("其他費用（OCI）")).toBeVisible();
+    expect(screen.getByText(/資料比較不代表投資建議/)).toBeVisible();
+    expect(screen.getByText(/配置及持倉資料的截至日期可能不同/)).toBeVisible();
     expect(screen.getByText("snapshot-mpfa-cf-429-2026-06-30")).toBeVisible();
     expect(
       screen.getByRole("link", { name: "積金局原始資料" }),

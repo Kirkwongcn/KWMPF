@@ -1,4 +1,12 @@
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
+
+type SearchResult = {
+  id: string;
+  fundClassName: string;
+  constituentFundName: string;
+  schemeName: string;
+  trusteeName: string;
+};
 
 type Health = {
   version: string;
@@ -7,6 +15,8 @@ type Health = {
 
 export function App({ apiUrl }: { apiUrl: string }) {
   const [health, setHealth] = useState<Health | null>(null);
+  const [query, setQuery] = useState("");
+  const [results, setResults] = useState<SearchResult[]>([]);
 
   useEffect(() => {
     fetch(apiUrl)
@@ -17,6 +27,15 @@ export function App({ apiUrl }: { apiUrl: string }) {
       .then(setHealth)
       .catch(() => setHealth({ version: "未能取得", status: "error" }));
   }, [apiUrl]);
+
+  function search(event: FormEvent) {
+    event.preventDefault();
+    if (!query.trim()) return setResults([]);
+    fetch(`${new URL(apiUrl).origin}/search?q=${encodeURIComponent(query)}`)
+      .then((response) => response.json() as Promise<SearchResult[]>)
+      .then(setResults)
+      .catch(() => setResults([]));
+  }
 
   const apiStatus =
     health?.status === "ok"
@@ -43,6 +62,32 @@ export function App({ apiUrl }: { apiUrl: string }) {
             <dd>API：{apiStatus}</dd>
           </div>
         </dl>
+        <form className="search-form" onSubmit={search}>
+          <label htmlFor="fund-search">搜尋基金、計劃或受託人</label>
+          <div>
+            <input
+              id="fund-search"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="例如：Principal、BCT"
+            />
+            <button type="submit">搜尋</button>
+          </div>
+        </form>
+        {results.length > 0 && (
+          <ul aria-label="搜尋結果" className="search-results">
+            {results.map((result) => (
+              <li key={result.id}>
+                <a href={`/fund-classes/${encodeURIComponent(result.id)}`}>
+                  {result.constituentFundName} · {result.fundClassName}
+                </a>
+                <span>
+                  {result.schemeName}／{result.trusteeName}
+                </span>
+              </li>
+            ))}
+          </ul>
+        )}
       </section>
     </main>
   );
