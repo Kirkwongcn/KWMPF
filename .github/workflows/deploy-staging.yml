@@ -33,6 +33,20 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: apps/api
           command: d1 migrations apply kwmpf-staging --remote --config wrangler.staging.json
+      - name: Archive fixed staging fixture
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: apps/api
+          command: r2 object put kwmpf-staging-raw/candidates/mpfa-cf-429-2026-06-30/e5b707db8e224a584706d6e39ae8ada06efd23d7d7709320275a5118b7c48182.json --remote --file ../../fixtures/mpfa/cf-429.json
+      - name: Publish fixed staging fixture
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: apps/api
+          command: d1 execute kwmpf-staging --remote --config wrangler.staging.json --file ../../fixtures/mpfa/cf-429-staging.sql
       - name: Deploy Worker
         id: deploy-worker
         uses: cloudflare/wrangler-action@v4
