@@ -9,6 +9,7 @@ import { parseBctFundFactSheet } from "../src/bct-fund-fact-sheet-parser";
 import { parsePrincipal800FundFactSheet, parsePrincipalFundFactSheet } from "../src/principal-fund-fact-sheet-parser";
 import { parseSunLifeFundFactSheetXml } from "../src/sun-life-fund-fact-sheet-parser";
 import { parseChinaLifeFundPerformance } from "../src/china-life-fund-performance-parser";
+import { parseHsbcFundFactSheet } from "../src/hsbc-fund-fact-sheet-parser";
 
 const fixture = readFileSync(join(import.meta.dirname, "fixtures", "bea-fund-fact-sheet.txt"), "utf8");
 const aiaFixture = readFileSync(join(import.meta.dirname, "fixtures", "aia-mt00172-layout.txt"), "utf8");
@@ -20,6 +21,7 @@ const principal800Fixture = `信安中國股票基金\nPrincipal China Equity Fu
 const sunLifeXmlFixture = readFileSync(join(import.meta.dirname, "fixtures", "sun-life-page-23.xml"), "utf8");
 const sunLifePage24XmlFixture = readFileSync(join(import.meta.dirname, "fixtures", "sun-life-page-24.xml"), "utf8");
 const chinaLifeFixture = `\fChina Life Greater China Equity Fund 中國人壽大中華股票基金\nFund Performance 基金表現\nAnnualized 年率化 (%) - - 30.16 8.44 - - 0.13\fChina Life MPF Conservative Fund 中國人壽強積金保守基金\nAnnualized 年率化 (%) - - 2.00 2.88 1.93 1.19 0.76`;
+const hsbcFixture = `所載資料截至 All information as at 31/03/2026\fCore Accumulation Fund\nFund Performance Information (%)\nAnnualised return 1 yr 3 yrs 5 yrs 10 yrs\nThis Fund\n12.30 9.42 5.08 6.38`;
 
 describe("official fund fact sheet parser", () => {
   it("parses China Life quarterly performance annualized three-year returns", () => {
@@ -37,6 +39,12 @@ describe("official fund fact sheet parser", () => {
     expect(result.unmatched).toHaveLength(0);
     expect(result.ambiguous).toHaveLength(0);
     expect(result.records[0]?.returns?.[3]).toEqual({ annualized: 4.2, dataAsOf: "2026-05-31" });
+  });
+
+  it("parses HSBC annualized three-year return rows", () => {
+    expect(parseHsbcFundFactSheet(hsbcFixture, "https://example.test/hsbc.pdf")).toEqual([
+      expect.objectContaining({ constituentFundName: "Core Accumulation Fund", dataAsOf: "2026-03-31", annualizedReturn3Year: 9.42 }),
+    ]);
   });
   it("parses AIA layout text without confusing cumulative and annualized returns", () => {
     const result = parseAiaFundFactSheet(aiaFixture, "https://www.mpfa.org.hk/assets/FF/MT00172.pdf");

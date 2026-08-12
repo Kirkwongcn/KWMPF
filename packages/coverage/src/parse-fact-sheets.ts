@@ -10,6 +10,7 @@ import { parseFundFactSheet } from "./fund-fact-sheet-parser";
 import { parsePrincipalFundFactSheet, parsePrincipal800FundFactSheet } from "./principal-fund-fact-sheet-parser";
 import { parseSunLifeFundFactSheetXml } from "./sun-life-fund-fact-sheet-parser";
 import { parseChinaLifeFundPerformance } from "./china-life-fund-performance-parser";
+import { parseHsbcFundFactSheet } from "./hsbc-fund-fact-sheet-parser";
 import type { FundFactSheetReturn } from "./fund-fact-sheet-parser";
 
 const exec = promisify(execFile);
@@ -23,6 +24,7 @@ const failures: Array<{ scheme: string; error: string }> = [];
 
 function parser(scheme: string, text: string, url: string): FundFactSheetReturn[] {
   if (scheme.startsWith("China Life")) return parseChinaLifeFundPerformance(text, url);
+  if (scheme.startsWith("HSBC")) return parseHsbcFundFactSheet(text, url);
   if (scheme.startsWith("AIA")) return parseAiaFundFactSheet(text, url);
   if (scheme.startsWith("AMTD")) return parseAmtdFundFactSheet(text, url);
   if (scheme === "BCT (MPF) Industry Choice") return parseBctFundFactSheet(text, url);
