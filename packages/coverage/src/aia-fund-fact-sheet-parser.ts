@@ -35,7 +35,7 @@ export function parseAiaFundFactSheet(text: string, sourceUrl: string): FundFact
     if (fundLine < 0) throw new Error(`AIA annualized return row is missing for ${name}`);
     const row = performanceLines.slice(fundLine, fundLine + 3).join(" ");
     const values = numberValues(row.slice(row.indexOf("基金 Fund") + "基金 Fund".length));
-    if (values.length < 3) throw new Error(`AIA annualized return row is incomplete for ${name}`);
+    if (values.length < 3) continue;
     results.push({ schemeName: "AIA MPF - Prime Value Choice", constituentFundName: name, dataAsOf, sourceUrl, annualizedReturn3Year: values[1]! });
   }
   if (results.length === 0) throw new Error("No AIA fund performance blocks found");
