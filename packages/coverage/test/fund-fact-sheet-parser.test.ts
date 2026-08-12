@@ -13,6 +13,7 @@ import { parseHsbcFundFactSheet } from "../src/hsbc-fund-fact-sheet-parser";
 import { parseBocPrudentialFundPerformance } from "../src/boc-prudential-fund-performance-parser";
 import { parseHaitongFundPerformance } from "../src/haitong-fund-performance-parser";
 import { parseMyChoiceFundPerformance } from "../src/my-choice-fund-performance-parser";
+import { parseMassFundPerformance } from "../src/mass-fund-performance-parser";
 
 const fixture = readFileSync(join(import.meta.dirname, "fixtures", "bea-fund-fact-sheet.txt"), "utf8");
 const aiaFixture = readFileSync(join(import.meta.dirname, "fixtures", "aia-mt00172-layout.txt"), "utf8");
@@ -29,6 +30,7 @@ const hangSengFixture = `所載資料截至 All information as at 31/12/2025\fVa
 const bocFixture = `BOC-Prudential Hong Kong Equity Fund ◆\nAnnualized Return N/A N/A 11.01 8.22 -2.37 3.92 6.87\fBOC-Prudential MPF Conservative Fund\nAnnualized Return N/A N/A N/A N/A 0.50 0.60`;
 const haitongFixture = `as of 31/12/2025\fHAITONG HONG KONG SAR FUND\nFUND PERFORMANCE\nA 30.82% 7.97% -0.72% 6.43%\nT 30.92% 8.05% -0.64% 6.51%`;
 const myChoiceFixture = `As at 30/9/2025\fMY CHOICE GROWTH FUND\nPERFORMANCE IN HKD\nAnnualized Return (%)\n1 Year 3 Years 5 Years 10 Years\n3 Years 3 Years 5.20`;
+const massFixture = `MASS Mandatory Provident Fund Scheme\fAge 65 Plus Fund Risk Low\nAnnualized Return 平均每年收益率\n1 year 3 years 5 years Since launch\nFund 基金 3.83% -1.54% 1.04% 1.96%`;
 
 describe("official fund fact sheet parser", () => {
   it("parses China Life quarterly performance annualized three-year returns", () => {
@@ -82,6 +84,11 @@ describe("official fund fact sheet parser", () => {
   it("parses My Choice three-year annualized returns", () => {
     expect(parseMyChoiceFundPerformance(myChoiceFixture, "https://example.test/my-choice.pdf")).toEqual([
       expect.objectContaining({ constituentFundName: "My Choice GROWTH FUND", dataAsOf: "2025-09-30", annualizedReturn3Year: 5.2 }),
+    ]);
+  });
+  it("parses MASS three-year annualized returns", () => {
+    expect(parseMassFundPerformance(massFixture, "https://example.test/mass.pdf")).toEqual([
+      expect.objectContaining({ constituentFundName: "Age 65 Plus Fund", dataAsOf: "2024-12-31", annualizedReturn3Year: -1.54 }),
     ]);
   });
   it("parses AIA layout text without confusing cumulative and annualized returns", () => {
