@@ -25,7 +25,8 @@ function key(schemeName: string, constituentFundName: string) {
     .replace(/[’‘]/g, "'")
     .replace(/^principal\s*-?\s+/i, "")
     .replace(/^-\s+/, "");
-  return `${schemeName}\u0000${normalizedFund}`.toLocaleLowerCase();
+  const normalizedScheme = schemeName.replace(/[–—]/g, "-");
+  return `${normalizedScheme}\u0000${normalizedFund}`.toLocaleLowerCase();
 }
 
 export type FundFactSheetMergeResult = {
