@@ -28,6 +28,16 @@ describe("official fund fact sheet parser", () => {
       expect.objectContaining({ constituentFundName: "China Life MPF Conservative Fund", annualizedReturn3Year: 2.88 }),
     ]);
   });
+
+  it("matches official curly apostrophes without fuzzy matching", () => {
+    const result = mergeFundFactSheetReturns(
+      [{ fundClassId: "aia-manager", identity: { trusteeName: "AIA", schemeName: "AIA MPF - Prime Value Choice", constituentFundName: "Manager's Choice Fund", fundClassName: "n.a." }, current: true, dataAsOf: "2026-06-30" }],
+      [{ schemeName: "AIA MPF - Prime Value Choice", constituentFundName: "Manager’s Choice Fund", dataAsOf: "2026-05-31", sourceUrl: "https://example.test/aia.pdf", annualizedReturn3Year: 4.2 }],
+    );
+    expect(result.unmatched).toHaveLength(0);
+    expect(result.ambiguous).toHaveLength(0);
+    expect(result.records[0]?.returns?.[3]).toEqual({ annualized: 4.2, dataAsOf: "2026-05-31" });
+  });
   it("parses AIA layout text without confusing cumulative and annualized returns", () => {
     const result = parseAiaFundFactSheet(aiaFixture, "https://www.mpfa.org.hk/assets/FF/MT00172.pdf");
     expect(result.length).toBeGreaterThan(10);

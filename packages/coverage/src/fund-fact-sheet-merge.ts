@@ -22,6 +22,7 @@ function key(schemeName: string, constituentFundName: string) {
     "信安強積金保守基金": "Principal MPF Conservative Fund",
   };
   const normalizedFund = (bilingualAliases[constituentFundName] ?? constituentFundName)
+    .replace(/[’‘]/g, "'")
     .replace(/^principal\s*-?\s+/i, "")
     .replace(/^-\s+/, "");
   return `${schemeName}\u0000${normalizedFund}`.toLocaleLowerCase();
