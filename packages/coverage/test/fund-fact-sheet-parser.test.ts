@@ -12,6 +12,7 @@ import { parseChinaLifeFundPerformance } from "../src/china-life-fund-performanc
 import { parseHsbcFundFactSheet } from "../src/hsbc-fund-fact-sheet-parser";
 import { parseBocPrudentialFundPerformance } from "../src/boc-prudential-fund-performance-parser";
 import { parseHaitongFundPerformance } from "../src/haitong-fund-performance-parser";
+import { parseMyChoiceFundPerformance } from "../src/my-choice-fund-performance-parser";
 
 const fixture = readFileSync(join(import.meta.dirname, "fixtures", "bea-fund-fact-sheet.txt"), "utf8");
 const aiaFixture = readFileSync(join(import.meta.dirname, "fixtures", "aia-mt00172-layout.txt"), "utf8");
@@ -27,6 +28,7 @@ const hsbcFixture = `所載資料截至 All information as at 31/03/2026\fCore A
 const hangSengFixture = `所載資料截至 All information as at 31/12/2025\fValueChoice Asia Pacific Equity Tracker Fund\nFund Performance Information (%)\nAnnualised return 1 yr 3 yrs 5 yrs 10 yrs\nThis Fund\n28.58 14.54 4.54 0.00`;
 const bocFixture = `BOC-Prudential Hong Kong Equity Fund ◆\nAnnualized Return N/A N/A 11.01 8.22 -2.37 3.92 6.87\fBOC-Prudential MPF Conservative Fund\nAnnualized Return N/A N/A N/A N/A 0.50 0.60`;
 const haitongFixture = `as of 31/12/2025\fHAITONG HONG KONG SAR FUND\nFUND PERFORMANCE\nA 30.82% 7.97% -0.72% 6.43%\nT 30.92% 8.05% -0.64% 6.51%`;
+const myChoiceFixture = `As at 30/9/2025\fMY CHOICE GROWTH FUND\nPERFORMANCE IN HKD\nAnnualized Return (%)\n1 Year 3 Years 5 Years 10 Years\n3 Years 3 Years 5.20`;
 
 describe("official fund fact sheet parser", () => {
   it("parses China Life quarterly performance annualized three-year returns", () => {
@@ -75,6 +77,11 @@ describe("official fund fact sheet parser", () => {
     expect(parseHaitongFundPerformance(haitongFixture, "https://example.test/haitong.pdf")).toEqual([
       expect.objectContaining({ constituentFundName: "Haitong Hong Kong SAR Fund", fundClassName: "A", dataAsOf: "2025-12-31", annualizedReturn3Year: 7.97 }),
       expect.objectContaining({ fundClassName: "T", annualizedReturn3Year: 8.05 }),
+    ]);
+  });
+  it("parses My Choice three-year annualized returns", () => {
+    expect(parseMyChoiceFundPerformance(myChoiceFixture, "https://example.test/my-choice.pdf")).toEqual([
+      expect.objectContaining({ constituentFundName: "My Choice GROWTH FUND", dataAsOf: "2025-09-30", annualizedReturn3Year: 5.2 }),
     ]);
   });
   it("parses AIA layout text without confusing cumulative and annualized returns", () => {

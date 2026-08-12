@@ -13,6 +13,7 @@ import { parseChinaLifeFundPerformance } from "./china-life-fund-performance-par
 import { parseHsbcFundFactSheet } from "./hsbc-fund-fact-sheet-parser";
 import { parseBocPrudentialFundPerformance } from "./boc-prudential-fund-performance-parser";
 import { parseHaitongFundPerformance } from "./haitong-fund-performance-parser";
+import { parseMyChoiceFundPerformance } from "./my-choice-fund-performance-parser";
 import type { FundFactSheetReturn } from "./fund-fact-sheet-parser";
 
 const exec = promisify(execFile);
@@ -30,6 +31,7 @@ function parser(scheme: string, text: string, url: string): FundFactSheetReturn[
   if (scheme.startsWith("Hang Seng")) return parseHsbcFundFactSheet(text, url, "Hang Seng Mandatory Provident Fund – SuperTrust Plus");
   if (scheme.startsWith("BOC-Prudential")) return parseBocPrudentialFundPerformance(text, url);
   if (scheme.startsWith("Haitong")) return parseHaitongFundPerformance(text, url);
+  if (scheme.startsWith("My Choice")) return parseMyChoiceFundPerformance(text, url);
   if (scheme.startsWith("AIA")) return parseAiaFundFactSheet(text, url);
   if (scheme.startsWith("AMTD")) return parseAmtdFundFactSheet(text, url);
   if (scheme === "BCT (MPF) Industry Choice") return parseBctFundFactSheet(text, url);
