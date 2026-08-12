@@ -11,5 +11,6 @@ describe("MPF Fund Platform comparison evidence", () => {
   it("omits records with missing or unsupported official classification", () => {
     expect(comparisonEvidenceFromPlatformRecord(base)).toBeUndefined();
     expect(buildPlatformComparisonEvidence([{ ...base, fundType: "Unclassified Fund", fundTypeDescriptor: "Unknown" }])).toEqual([]);
+    expect(buildPlatformComparisonEvidence([{ ...base, fundType: "Mixed Assets Fund", fundTypeDescriptor: "n.a." }])).toEqual([]);
   });
 });
