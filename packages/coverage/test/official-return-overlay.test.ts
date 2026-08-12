@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { applyOfficialReturnOverlay, normalizeFundFactSheetReturns } from "../src/official-return-overlay";
+import { applyOfficialReturnOverlay, normalizeFundFactSheetReturns, validateOfficialReturnObservations } from "../src/official-return-overlay";
 
 const record = {
   fundClassId: "fidelity-1",
@@ -23,6 +23,16 @@ const observation = (periodYears: 1 | 3 | 5 | 10, annualized: number) => ({
 });
 
 describe("official return overlay", () => {
+  it("validates dates, sources, values, and duplicate period observations", () => {
+    const result = validateOfficialReturnObservations(
+      [observation(3, 3.2), { ...observation(3, 4.2), sourceUrl: "http://insecure.test/returns.pdf" }, { ...observation(5, Number.NaN) }, { ...observation(10, 1.2), dataAsOf: "2026-12-31" }],
+      "2026-08-12",
+    );
+    expect(result.valid).toHaveLength(1);
+    expect(result.invalid).toHaveLength(3);
+    expect(result.coverageByPeriod).toEqual({ 1: 0, 3: 1, 5: 0, 10: 0 });
+  });
+
   it("normalizes a legacy official parser result only when identity is unique", () => {
     const result = normalizeFundFactSheetReturns(
       [record],
