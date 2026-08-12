@@ -37,6 +37,7 @@ export function comparisonEvidenceFromPlatformRecord(
   record: SourceRecord,
 ): ComparisonGroupEvidence | undefined {
   if (!record.fundType || !record.fundTypeDescriptor || !record.sourceUrl) return undefined;
+  if (/^n\.a\.?$/i.test(record.fundTypeDescriptor.trim())) return undefined;
   const type = Object.entries(fundTypes).find(([label]) => record.fundType!.toLocaleLowerCase().startsWith(label))?.[1];
   if (!type) return undefined;
   return {
