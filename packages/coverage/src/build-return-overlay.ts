@@ -1,5 +1,5 @@
 import { readFile, writeFile } from "node:fs/promises";
-import { applyOfficialReturnOverlay, type OfficialReturnObservation } from "./official-return-overlay";
+import { applyOfficialReturnOverlay, type OfficialReturnObservation, validateOfficialReturnObservations } from "./official-return-overlay";
 
 function argument(name: string) {
   const index = process.argv.indexOf(name);
@@ -15,7 +15,11 @@ if (!coveragePath || !observationsPath || !outputPath) {
 
 const coverage = JSON.parse(await readFile(coveragePath, "utf8")) as { records: Parameters<typeof applyOfficialReturnOverlay>[0] };
 const observations = JSON.parse(await readFile(observationsPath, "utf8")) as OfficialReturnObservation[];
-const result = applyOfficialReturnOverlay(coverage.records, observations);
+const validation = validateOfficialReturnObservations(observations);
+if (validation.invalid.length > 0) {
+  throw new Error(`Return observation validation failed for ${validation.invalid.length} observation(s)`);
+}
+const result = applyOfficialReturnOverlay(coverage.records, validation.valid);
 await writeFile(outputPath, `${JSON.stringify({
   baseCoverage: coveragePath,
   generatedAt: new Date().toISOString(),
@@ -24,6 +28,7 @@ await writeFile(outputPath, `${JSON.stringify({
     applied: result.applied.length,
     unmatched: result.unmatched.length,
     conflicts: result.conflicts.length,
+    coverageByPeriod: validation.coverageByPeriod,
   },
 }, null, 2)}\n`);
-console.log(JSON.stringify({ outputPath, applied: result.applied.length, unmatched: result.unmatched.length, conflicts: result.conflicts.length }));
+console.log(JSON.stringify({ outputPath, applied: result.applied.length, unmatched: result.unmatched.length, conflicts: result.conflicts.length, coverageByPeriod: validation.coverageByPeriod }));
