@@ -48,6 +48,12 @@ describe("official fund fact sheet parser", () => {
     ]);
   });
 
+  it("uses the report As at date instead of a historical name-change date", () => {
+    expect(parseChinaLifeFundPerformance(`As at 31 December 2025${chinaLifeFixture}\nChina Life Joyful Retirement Guaranteed Fund was formerly known as China Life Retire-Easy Guarantee Fund, with change of name effective on 4 December 2020.`, "https://example.test/china-life.pdf")[0]).toEqual(
+      expect.objectContaining({ dataAsOf: "2025-12-31" }),
+    );
+  });
+
   it("matches official curly apostrophes without fuzzy matching", () => {
     const result = mergeFundFactSheetReturns(
       [{ fundClassId: "aia-manager", identity: { trusteeName: "AIA", schemeName: "AIA MPF - Prime Value Choice", constituentFundName: "Manager's Choice Fund", fundClassName: "n.a." }, current: true, dataAsOf: "2026-06-30" }],

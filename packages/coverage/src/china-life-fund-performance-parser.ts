@@ -6,7 +6,8 @@ function normalize(value: string) {
 
 function parseDate(text: string) {
   const matches = [...text.matchAll(/(?:As at\s+)?(\d{1,2})\s+(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{4})/gi)];
-  const match = matches.findLast((candidate) => candidate[3] === "2026") ?? matches.at(-1);
+  const asAt = matches.filter((candidate) => /^As at\s+/i.test(candidate[0]));
+  const match = asAt.at(0) ?? matches.find((candidate) => Number(candidate[3]) >= 2025) ?? matches.at(-1);
   if (!match?.[1] || !match[2] || !match[3]) throw new Error("China Life report date is missing");
   const month = new Date(`${match[2]} 1, 2000`).getMonth() + 1;
   return `${match[3]}-${String(month).padStart(2, "0")}-${match[1].padStart(2, "0")}`;
