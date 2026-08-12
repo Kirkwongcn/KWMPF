@@ -14,6 +14,37 @@ export type ClassifiedFundClass = SourceRecord & {
   comparisonGroupEvidence?: ComparisonGroupEvidence[];
 };
 
+const fundTypes: Record<string, ComparisonGroupEvidence["fundType"]> = {
+  "equity fund": "equity",
+  "bond fund": "bond",
+  "mixed assets fund": "mixed",
+  "money market fund": "money_market",
+  "mpf conservative fund": "guaranteed",
+  "guaranteed fund": "guaranteed",
+};
+
+export function comparisonEvidenceFromPlatformRecord(
+  record: SourceRecord,
+): ComparisonGroupEvidence | undefined {
+  if (!record.fundType || !record.fundTypeDescriptor || !record.sourceUrl) return undefined;
+  const type = Object.entries(fundTypes).find(([label]) => record.fundType!.toLocaleLowerCase().startsWith(label))?.[1];
+  if (!type) return undefined;
+  return {
+    fundClassId: record.fundClassId,
+    fundType: type,
+    allocationProfile: record.fundTypeDescriptor,
+    sourceUrl: record.sourceUrl,
+    dataAsOf: record.dataAsOf,
+  };
+}
+
+export function buildPlatformComparisonEvidence(records: SourceRecord[]) {
+  return records.flatMap((record) => {
+    const evidence = comparisonEvidenceFromPlatformRecord(record);
+    return evidence ? [evidence] : [];
+  });
+}
+
 export function classifyComparisonGroups(
   records: SourceRecord[],
   evidence: ComparisonGroupEvidence[],
