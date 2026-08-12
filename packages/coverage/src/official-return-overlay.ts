@@ -23,6 +23,36 @@ export type NormalizedReturnResult = {
   ambiguous: FundFactSheetReturn[];
 };
 
+export type ReturnObservationValidation = {
+  valid: OfficialReturnObservation[];
+  invalid: OfficialReturnObservation[];
+  coverageByPeriod: Record<1 | 3 | 5 | 10, number>;
+};
+
+export function validateOfficialReturnObservations(
+  observations: OfficialReturnObservation[],
+  today = new Date().toISOString().slice(0, 10),
+): ReturnObservationValidation {
+  const valid: OfficialReturnObservation[] = [];
+  const invalid: OfficialReturnObservation[] = [];
+  const seen = new Set<string>();
+  for (const observation of observations) {
+    const periodValid = [1, 3, 5, 10].includes(observation.periodYears);
+    const dateValid = /^\d{4}-\d{2}-\d{2}$/.test(observation.dataAsOf) && observation.dataAsOf <= today;
+    const valueValid = Number.isFinite(observation.annualized);
+    const sourceValid = /^https:\/\//.test(observation.sourceUrl);
+    const key = `${observation.fundClassId}\u0000${observation.periodYears}`;
+    if (!periodValid || !dateValid || !valueValid || !sourceValid || seen.has(key)) invalid.push(observation);
+    else {
+      seen.add(key);
+      valid.push(observation);
+    }
+  }
+  const coverageByPeriod = { 1: 0, 3: 0, 5: 0, 10: 0 } as Record<1 | 3 | 5 | 10, number>;
+  for (const observation of valid) coverageByPeriod[observation.periodYears] += 1;
+  return { valid, invalid, coverageByPeriod };
+}
+
 function identityKey(schemeName: string, constituentFundName: string) {
   const aliases: Record<string, string> = {
     "信安中國股票基金": "Principal China Equity Fund",
