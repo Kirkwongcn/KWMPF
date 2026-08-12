@@ -38,6 +38,13 @@ describe("official fund fact sheet parser", () => {
     ]);
     expect(result.every((item) => item.dataAsOf === "2025-11-30")).toBe(true);
   });
+
+  it("keeps other AIA funds when one fund lacks a three-year value", () => {
+    const incomplete = aiaFixture.replace("基金 Fund                           1.13 0.23 0.15 0.15 0.15", "基金 Fund                           -");
+    const result = parseAiaFundFactSheet(incomplete, "https://example.test/aia.pdf");
+    expect(result.length).toBeGreaterThan(10);
+    expect(result.every((item) => Number.isFinite(item.annualizedReturn3Year))).toBe(true);
+  });
   it("extracts the official three-year annualized return without estimating", () => {
     expect(parseFundFactSheet(fixture, "https://www.mpfa.org.hk/assets/FF/MT00571.pdf")).toEqual([
       {
