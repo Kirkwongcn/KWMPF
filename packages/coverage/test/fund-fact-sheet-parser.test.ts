@@ -15,6 +15,7 @@ import { parseHaitongFundPerformance } from "../src/haitong-fund-performance-par
 import { parseMyChoiceFundPerformance } from "../src/my-choice-fund-performance-parser";
 import { parseMassFundPerformance } from "../src/mass-fund-performance-parser";
 import { parseShkpFundPerformance } from "../src/shkp-fund-performance-parser";
+import { parseFidelityFundPerformance } from "../src/fidelity-fund-performance-parser";
 
 const fixture = readFileSync(join(import.meta.dirname, "fixtures", "bea-fund-fact-sheet.txt"), "utf8");
 const aiaFixture = readFileSync(join(import.meta.dirname, "fixtures", "aia-mt00172-layout.txt"), "utf8");
@@ -33,6 +34,7 @@ const haitongFixture = `as of 31/12/2025\fHAITONG HONG KONG SAR FUND\nFUND PERFO
 const myChoiceFixture = `As at 30/9/2025\fMY CHOICE GROWTH FUND\nPERFORMANCE IN HKD\nAnnualized Return (%)\n1 Year 3 Years 5 Years 10 Years\n3 Years 3 Years 5.20`;
 const massFixture = `MASS Mandatory Provident Fund Scheme\fAge 65 Plus Fund Risk Low\nAnnualized Return 平均每年收益率\n1 year 3 years 5 years Since launch\nFund 基金 3.83% -1.54% 1.04% 1.96%`;
 const shkpFixture = `SHKP MPF Employer Sponsored Scheme\nAs at 31 March 2026\fAllianz Choice Balanced FundNote 1\nPerformance Note 2 & 3\nLast 3 years (p.a.%)+ 8.99 %`;
+const fidelityFixture = `Fidelity Retirement Master Trust - MPF Conservative Fund *As of 截至 30/06/2025\nCumulative Performance 累積表現\nN/A N/A 2.98% 8.15% 8.15% 9.53% 20.81%\nAnnualised Performance 年率化表現\nN/A N/A 2.98% 2.64% 1.58% 0.91% 0.77%`;
 
 describe("official fund fact sheet parser", () => {
   it("parses China Life quarterly performance annualized three-year returns", () => {
@@ -96,6 +98,11 @@ describe("official fund fact sheet parser", () => {
   it("parses SHKP employer-sponsored three-year returns", () => {
     expect(parseShkpFundPerformance(shkpFixture, "https://example.test/shkp.pdf")).toEqual([
       expect.objectContaining({ constituentFundName: "Allianz Choice Balanced Fund", dataAsOf: "2026-03-31", annualizedReturn3Year: 8.99 }),
+    ]);
+  });
+  it("parses Fidelity annualized performance instead of cumulative performance", () => {
+    expect(parseFidelityFundPerformance(fidelityFixture, "https://www.mpfa.org.hk/assets/FF/MT00288.pdf")).toEqual([
+      expect.objectContaining({ schemeName: "Fidelity Retirement Master Trust", constituentFundName: "MPF Conservative Fund", dataAsOf: "2025-06-30", annualizedReturn3Year: 2.64 }),
     ]);
   });
   it("parses AIA layout text without confusing cumulative and annualized returns", () => {
