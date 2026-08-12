@@ -7,19 +7,26 @@ function parseDate(text: string) {
 }
 
 export function parseFidelityFundPerformance(text: string, sourceUrl: string): FundFactSheetReturn[] {
-  const dataAsOf = parseDate(text);
-  const results: FundFactSheetReturn[] = [];
+  const results: Array<FundFactSheetReturn & { dateKey: string }> = [];
   for (const page of text.replace(/\r/g, "").split(/\\f|\f/)) {
     const header = page.match(/Fidelity Retirement Master Trust\s*-\s*([^\n]+?Fund)\b/i);
     if (!header?.[1]) continue;
+    let dataAsOf: string;
+    try {
+      dataAsOf = parseDate(page);
+    } catch {
+      continue;
+    }
     const annualizedIndex = page.search(/Annualised Performance/i);
     if (annualizedIndex < 0) continue;
     const section = page.slice(annualizedIndex).split(/(?:Dollar Cost Averaging|Calendar Year Performance)/i)[0]!;
     const values = section.match(/(?:N\/A|[+-]?\d+(?:\.\d+)?)\s*%?/gi) ?? [];
     if (values.length < 4 || /^N\/A$/i.test(values[3]!)) continue;
-    results.push({ schemeName: "Fidelity Retirement Master Trust", constituentFundName: header[1].replace(/\s+/g, " ").trim(), dataAsOf, sourceUrl, annualizedReturn3Year: Number(values[3]!.replace("%", "")) });
+    results.push({ schemeName: "Fidelity Retirement Master Trust", constituentFundName: header[1].replace(/\s+/g, " ").trim(), dataAsOf, sourceUrl, annualizedReturn3Year: Number(values[3]!.replace("%", "")), dateKey: dataAsOf });
   }
   if (results.length === 0) throw new Error("No Fidelity annualized return blocks found");
-  if (new Set(results.map((result) => result.constituentFundName)).size !== results.length) throw new Error("Fidelity fund names are ambiguous");
-  return results;
+  const latestDate = results.reduce((latest, result) => result.dateKey > latest ? result.dateKey : latest, results[0]!.dateKey);
+  const latest = results.filter((result) => result.dateKey === latestDate);
+  if (new Set(latest.map((result) => result.constituentFundName)).size !== latest.length) throw new Error("Fidelity fund names are ambiguous");
+  return latest.map(({ dateKey: _dateKey, ...result }) => result);
 }
