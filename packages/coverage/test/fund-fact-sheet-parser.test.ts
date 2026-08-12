@@ -41,6 +41,16 @@ describe("official fund fact sheet parser", () => {
     expect(result.records[0]?.returns?.[3]).toEqual({ annualized: 4.2, dataAsOf: "2026-05-31" });
   });
 
+  it("matches official en dash scheme names exactly", () => {
+    const result = mergeFundFactSheetReturns(
+      [{ fundClassId: "hsbc-core", identity: { trusteeName: "HSBC", schemeName: "HSBC Mandatory Provident Fund - SuperTrust Plus", constituentFundName: "Core Accumulation Fund", fundClassName: "n.a." }, current: true, dataAsOf: "2026-06-30" }],
+      [{ schemeName: "HSBC Mandatory Provident Fund – SuperTrust Plus", constituentFundName: "Core Accumulation Fund", dataAsOf: "2025-12-31", sourceUrl: "https://example.test/hsbc.pdf", annualizedReturn3Year: 6.06 }],
+    );
+    expect(result.unmatched).toHaveLength(0);
+    expect(result.ambiguous).toHaveLength(0);
+    expect(result.records[0]?.returns?.[3]).toEqual({ annualized: 6.06, dataAsOf: "2025-12-31" });
+  });
+
   it("parses HSBC annualized three-year return rows", () => {
     expect(parseHsbcFundFactSheet(hsbcFixture, "https://example.test/hsbc.pdf")).toEqual([
       expect.objectContaining({ constituentFundName: "Core Accumulation Fund", dataAsOf: "2026-03-31", annualizedReturn3Year: 9.42 }),
