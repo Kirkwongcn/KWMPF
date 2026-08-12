@@ -14,6 +14,7 @@ import { parseBocPrudentialFundPerformance } from "../src/boc-prudential-fund-pe
 import { parseHaitongFundPerformance } from "../src/haitong-fund-performance-parser";
 import { parseMyChoiceFundPerformance } from "../src/my-choice-fund-performance-parser";
 import { parseMassFundPerformance } from "../src/mass-fund-performance-parser";
+import { parseShkpFundPerformance } from "../src/shkp-fund-performance-parser";
 
 const fixture = readFileSync(join(import.meta.dirname, "fixtures", "bea-fund-fact-sheet.txt"), "utf8");
 const aiaFixture = readFileSync(join(import.meta.dirname, "fixtures", "aia-mt00172-layout.txt"), "utf8");
@@ -31,6 +32,7 @@ const bocFixture = `BOC-Prudential Hong Kong Equity Fund ◆\nAnnualized Return 
 const haitongFixture = `as of 31/12/2025\fHAITONG HONG KONG SAR FUND\nFUND PERFORMANCE\nA 30.82% 7.97% -0.72% 6.43%\nT 30.92% 8.05% -0.64% 6.51%`;
 const myChoiceFixture = `As at 30/9/2025\fMY CHOICE GROWTH FUND\nPERFORMANCE IN HKD\nAnnualized Return (%)\n1 Year 3 Years 5 Years 10 Years\n3 Years 3 Years 5.20`;
 const massFixture = `MASS Mandatory Provident Fund Scheme\fAge 65 Plus Fund Risk Low\nAnnualized Return 平均每年收益率\n1 year 3 years 5 years Since launch\nFund 基金 3.83% -1.54% 1.04% 1.96%`;
+const shkpFixture = `SHKP MPF Employer Sponsored Scheme\nAs at 31 March 2026\fAllianz Choice Balanced FundNote 1\nPerformance Note 2 & 3\nLast 3 years (p.a.%)+ 8.99 %`;
 
 describe("official fund fact sheet parser", () => {
   it("parses China Life quarterly performance annualized three-year returns", () => {
@@ -89,6 +91,11 @@ describe("official fund fact sheet parser", () => {
   it("parses MASS three-year annualized returns", () => {
     expect(parseMassFundPerformance(massFixture, "https://example.test/mass.pdf")).toEqual([
       expect.objectContaining({ constituentFundName: "Age 65 Plus Fund", dataAsOf: "2024-12-31", annualizedReturn3Year: -1.54 }),
+    ]);
+  });
+  it("parses SHKP employer-sponsored three-year returns", () => {
+    expect(parseShkpFundPerformance(shkpFixture, "https://example.test/shkp.pdf")).toEqual([
+      expect.objectContaining({ constituentFundName: "Allianz Choice Balanced Fund", dataAsOf: "2026-03-31", annualizedReturn3Year: 8.99 }),
     ]);
   });
   it("parses AIA layout text without confusing cumulative and annualized returns", () => {
