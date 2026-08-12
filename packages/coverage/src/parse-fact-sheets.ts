@@ -25,6 +25,7 @@ const failures: Array<{ scheme: string; error: string }> = [];
 function parser(scheme: string, text: string, url: string): FundFactSheetReturn[] {
   if (scheme.startsWith("China Life")) return parseChinaLifeFundPerformance(text, url);
   if (scheme.startsWith("HSBC")) return parseHsbcFundFactSheet(text, url);
+  if (scheme.startsWith("Hang Seng")) return parseHsbcFundFactSheet(text, url, "Hang Seng Mandatory Provident Fund – SuperTrust Plus");
   if (scheme.startsWith("AIA")) return parseAiaFundFactSheet(text, url);
   if (scheme.startsWith("AMTD")) return parseAmtdFundFactSheet(text, url);
   if (scheme === "BCT (MPF) Industry Choice") return parseBctFundFactSheet(text, url);
