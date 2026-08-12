@@ -8,6 +8,7 @@ import { parseAmtdFundFactSheet } from "../src/amtd-fund-fact-sheet-parser";
 import { parseBctFundFactSheet } from "../src/bct-fund-fact-sheet-parser";
 import { parsePrincipal800FundFactSheet, parsePrincipalFundFactSheet } from "../src/principal-fund-fact-sheet-parser";
 import { parseSunLifeFundFactSheetXml } from "../src/sun-life-fund-fact-sheet-parser";
+import { parseChinaLifeFundPerformance } from "../src/china-life-fund-performance-parser";
 
 const fixture = readFileSync(join(import.meta.dirname, "fixtures", "bea-fund-fact-sheet.txt"), "utf8");
 const aiaFixture = readFileSync(join(import.meta.dirname, "fixtures", "aia-mt00172-layout.txt"), "utf8");
@@ -18,8 +19,15 @@ const principalFixture = `Principal MPF - Simple Plan Quarterly\nFund Fact Sheet
 const principal800Fixture = `信安中國股票基金\nPrincipal China Equity Fund\n截至2025年12月31日 As at 31/12/2025\n年均表現 Annualized Return6 (%)\nD類單位 Class D 30.63 30.63 9.16 -4.48 3.34 2.59`;
 const sunLifeXmlFixture = readFileSync(join(import.meta.dirname, "fixtures", "sun-life-page-23.xml"), "utf8");
 const sunLifePage24XmlFixture = readFileSync(join(import.meta.dirname, "fixtures", "sun-life-page-24.xml"), "utf8");
+const chinaLifeFixture = `\fChina Life Greater China Equity Fund 中國人壽大中華股票基金\nFund Performance 基金表現\nAnnualized 年率化 (%) - - 30.16 8.44 - - 0.13\fChina Life MPF Conservative Fund 中國人壽強積金保守基金\nAnnualized 年率化 (%) - - 2.00 2.88 1.93 1.19 0.76`;
 
 describe("official fund fact sheet parser", () => {
+  it("parses China Life quarterly performance annualized three-year returns", () => {
+    expect(parseChinaLifeFundPerformance(`As at 31 March 2026${chinaLifeFixture}`, "https://example.test/china-life.pdf")).toEqual([
+      expect.objectContaining({ constituentFundName: "China Life Greater China Equity Fund", dataAsOf: "2026-03-31", annualizedReturn3Year: 8.44 }),
+      expect.objectContaining({ constituentFundName: "China Life MPF Conservative Fund", annualizedReturn3Year: 2.88 }),
+    ]);
+  });
   it("parses AIA layout text without confusing cumulative and annualized returns", () => {
     const result = parseAiaFundFactSheet(aiaFixture, "https://www.mpfa.org.hk/assets/FF/MT00172.pdf");
     expect(result.length).toBeGreaterThan(10);
