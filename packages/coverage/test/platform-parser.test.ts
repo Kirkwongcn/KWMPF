@@ -20,6 +20,8 @@ describe("MPF Fund Platform parser", () => {
         constituentFundName: "Principal Hong Kong Equity Fund",
         fundClassName: "Class I",
       },
+      fundType: "Equity Fund - Hong Kong Equity Fund",
+      fundTypeDescriptor: "Equity Fund - Hong Kong Equity Fund",
       current: true,
       dataAsOf: "2026-06-30",
       sourceUrl:

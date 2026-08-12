@@ -77,6 +77,8 @@ export function parseFundDetail(html: string, cfId: number): SourceRecord {
       constituentFundName: required("Name of the constituent fund"),
       fundClassName: required("Fund Class"),
     },
+    fundType: required("Fund Type"),
+    fundTypeDescriptor: required("Fund Type - Full Descriptor"),
     current: true,
     dataAsOf: sourceDate(required("Fund size (HKD Million)"), cfId),
     sourceUrl: `${detailBaseUrl}${cfId}`,
