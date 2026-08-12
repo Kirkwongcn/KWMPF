@@ -1,5 +1,6 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
+import { downloadPdfInRanges } from "./resumable-download";
 
 type Link = { scheme: string; factSheetUrl: string };
 type Entry = Link & { status: "downloaded" | "failed"; retrievedAt: string; sha256?: string; error?: string };
@@ -31,13 +32,7 @@ for (const link of links) {
   if (entries.some((entry) => entry.scheme === link.scheme && entry.status === "downloaded")) continue;
   const retrievedAt = new Date().toISOString();
   try {
-    const response = await fetch(link.factSheetUrl, { signal: AbortSignal.timeout(15_000) });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const bytes = new Uint8Array(await response.arrayBuffer());
-    if (bytes.length < 10_000 || String.fromCharCode(...bytes.slice(0, 4)) !== "%PDF") throw new Error("response is not a PDF");
-    await writeFile(file, bytes, { flag: "wx" }).catch(async (error: NodeJS.ErrnoException) => {
-      if (error.code !== "EEXIST") throw error;
-    });
+    const bytes = await downloadPdfInRanges(link.factSheetUrl, file);
     record({ ...link, status: "downloaded", retrievedAt, sha256: createHash("sha256").update(bytes).digest("hex") });
   } catch (error) {
     record({ ...link, status: "failed", retrievedAt, error: error instanceof Error ? error.message : String(error) });

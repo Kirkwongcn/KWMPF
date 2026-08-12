@@ -16,6 +16,7 @@ import { parseMyChoiceFundPerformance } from "../src/my-choice-fund-performance-
 import { parseMassFundPerformance } from "../src/mass-fund-performance-parser";
 import { parseShkpFundPerformance } from "../src/shkp-fund-performance-parser";
 import { parseFidelityFundPerformance } from "../src/fidelity-fund-performance-parser";
+import { downloadPdfInRanges } from "../src/resumable-download";
 
 const fixture = readFileSync(join(import.meta.dirname, "fixtures", "bea-fund-fact-sheet.txt"), "utf8");
 const aiaFixture = readFileSync(join(import.meta.dirname, "fixtures", "aia-mt00172-layout.txt"), "utf8");
@@ -37,6 +38,9 @@ const shkpFixture = `SHKP MPF Employer Sponsored Scheme\nAs at 31 March 2026\fAl
 const fidelityFixture = `Fidelity Retirement Master Trust - MPF Conservative Fund *As of 截至 30/06/2025\nCumulative Performance 累積表現\nN/A N/A 2.98% 8.15% 8.15% 9.53% 20.81%\nAnnualised Performance 年率化表現\nN/A N/A 2.98% 2.64% 1.58% 0.91% 0.77%`;
 
 describe("official fund fact sheet parser", () => {
+  it("exposes the resumable PDF downloader seam", () => {
+    expect(downloadPdfInRanges).toEqual(expect.any(Function));
+  });
   it("parses China Life quarterly performance annualized three-year returns", () => {
     expect(parseChinaLifeFundPerformance(`As at 31 March 2026${chinaLifeFixture}`, "https://example.test/china-life.pdf")).toEqual([
       expect.objectContaining({ constituentFundName: "China Life Greater China Equity Fund", dataAsOf: "2026-03-31", annualizedReturn3Year: 8.44 }),
