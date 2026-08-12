@@ -14,7 +14,7 @@ function numbers(value: string) {
   return [...value.matchAll(/[+-]?\d+(?:\.\d+)?/g)].map((match) => Number(match[0]));
 }
 
-export function parseHsbcFundFactSheet(text: string, sourceUrl: string): FundFactSheetReturn[] {
+export function parseHsbcFundFactSheet(text: string, sourceUrl: string, schemeName = "HSBC Mandatory Provident Fund – SuperTrust Plus"): FundFactSheetReturn[] {
   const dataAsOf = parseDate(text);
   const results: FundFactSheetReturn[] = [];
   for (const rawPage of text.replace(/\r/g, "").split(/\f/)) {
@@ -34,7 +34,7 @@ export function parseHsbcFundFactSheet(text: string, sourceUrl: string): FundFac
     const valueLine = lines.slice(thisFundIndex + 1, thisFundIndex + 5).find((line) => numbers(line).length >= 4);
     const values = valueLine ? numbers(valueLine) : [];
     if (values.length < 4) continue;
-    results.push({ schemeName: "HSBC Mandatory Provident Fund – SuperTrust Plus", constituentFundName: fundName, dataAsOf, sourceUrl, annualizedReturn3Year: values[1]! });
+    results.push({ schemeName, constituentFundName: fundName, dataAsOf, sourceUrl, annualizedReturn3Year: values[1]! });
   }
   if (results.length === 0) throw new Error("No HSBC annualized return blocks found");
   if (new Set(results.map((result) => result.constituentFundName)).size !== results.length) throw new Error("HSBC fund names are ambiguous");

@@ -22,6 +22,7 @@ const sunLifeXmlFixture = readFileSync(join(import.meta.dirname, "fixtures", "su
 const sunLifePage24XmlFixture = readFileSync(join(import.meta.dirname, "fixtures", "sun-life-page-24.xml"), "utf8");
 const chinaLifeFixture = `\fChina Life Greater China Equity Fund 中國人壽大中華股票基金\nFund Performance 基金表現\nAnnualized 年率化 (%) - - 30.16 8.44 - - 0.13\fChina Life MPF Conservative Fund 中國人壽強積金保守基金\nAnnualized 年率化 (%) - - 2.00 2.88 1.93 1.19 0.76`;
 const hsbcFixture = `所載資料截至 All information as at 31/03/2026\fCore Accumulation Fund\nFund Performance Information (%)\nAnnualised return 1 yr 3 yrs 5 yrs 10 yrs\nThis Fund\n12.30 9.42 5.08 6.38`;
+const hangSengFixture = `所載資料截至 All information as at 31/12/2025\fValueChoice Asia Pacific Equity Tracker Fund\nFund Performance Information (%)\nAnnualised return 1 yr 3 yrs 5 yrs 10 yrs\nThis Fund\n28.58 14.54 4.54 0.00`;
 
 describe("official fund fact sheet parser", () => {
   it("parses China Life quarterly performance annualized three-year returns", () => {
@@ -54,6 +55,11 @@ describe("official fund fact sheet parser", () => {
   it("parses HSBC annualized three-year return rows", () => {
     expect(parseHsbcFundFactSheet(hsbcFixture, "https://example.test/hsbc.pdf")).toEqual([
       expect.objectContaining({ constituentFundName: "Core Accumulation Fund", dataAsOf: "2026-03-31", annualizedReturn3Year: 9.42 }),
+    ]);
+  });
+  it("parses Hang Seng documents using the same verified layout", () => {
+    expect(parseHsbcFundFactSheet(hangSengFixture, "https://example.test/hang-seng.pdf", "Hang Seng Mandatory Provident Fund – SuperTrust Plus")).toEqual([
+      expect.objectContaining({ constituentFundName: "ValueChoice Asia Pacific Equity Tracker Fund", dataAsOf: "2025-12-31", annualizedReturn3Year: 14.54 }),
     ]);
   });
   it("parses AIA layout text without confusing cumulative and annualized returns", () => {
