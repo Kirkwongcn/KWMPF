@@ -5,6 +5,7 @@ import {
   archiveHtml,
   createRunArchive,
   failedFetchArtifact,
+  readArchivedHtml,
   type RawArtifact,
   writeArchiveManifest,
 } from "./raw-archive";
@@ -96,7 +97,7 @@ for (const [name, value] of Object.entries(expectedCounts)) {
 
 const runDirectory = await createRunArchive(rawDirectory, runId);
 const artifacts: RawArtifact[] = [];
-const listHtml = await fetchHtml(listUrl);
+const listHtml = (await readArchivedHtml(runDirectory, "fund-information-table.html")) ?? (await fetchHtml(listUrl));
 const listRetrievedAt = new Date().toISOString();
 let fundClassIds: number[];
 try {
@@ -124,9 +125,9 @@ try {
     records = await parallelMap(fundClassIds, concurrency, async (cfId) => {
     const url = detailUrl(cfId);
     const relativePath = `details/${cfId}.html`;
-    let html: string;
+    let html = await readArchivedHtml(runDirectory, relativePath);
     try {
-      html = await fetchHtml(url);
+      html ??= await fetchHtml(url);
     } catch (error) {
       artifacts.push(
         failedFetchArtifact(relativePath, url, new Date().toISOString()),
