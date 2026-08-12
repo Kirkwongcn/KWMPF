@@ -48,4 +48,12 @@ describe("MPF Fund Platform parser", () => {
       "Name of MPF trustee is missing from cf_id 466",
     );
   });
+
+  it("skips an explicitly unavailable return period", () => {
+    const html = fixture("fund-detail.html").replace(
+      "+1.23% p.a. / +13.04%",
+      "n.a. / n.a.",
+    );
+    expect(parseFundDetail(html, 429).returns?.[10]).toBeUndefined();
+  });
 });

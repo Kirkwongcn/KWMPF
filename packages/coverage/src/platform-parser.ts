@@ -65,7 +65,10 @@ export function parseFundDetail(html: string, cfId: number): SourceRecord {
     if (!row) continue;
     const date = sourceDate(row, cfId);
     const values = [...row.matchAll(/([+-]?\d+(?:\.\d+)?)%/g)].map((match) => Number(match[1]));
-    if (values.length < 2) throw new Error(`Return values are missing from cf_id ${cfId} (${years} Year)`);
+    if (values.length < 2) {
+      if (/n\.a\./i.test(row)) continue;
+      throw new Error(`Return values are missing from cf_id ${cfId} (${years} Year)`);
+    }
     returns[years] = { annualized: values[0], cumulative: values[1], dataAsOf: date };
   }
 
