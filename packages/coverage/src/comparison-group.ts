@@ -14,6 +14,16 @@ export type ClassifiedFundClass = SourceRecord & {
   comparisonGroupEvidence?: ComparisonGroupEvidence[];
 };
 
+export function normalizeComparisonProfile(value: string) {
+  return value
+    .normalize("NFKC")
+    .replace(/[–—−]/g, "-")
+    .replace(/[\[\]():,]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLocaleLowerCase();
+}
+
 const fundTypes: Record<string, ComparisonGroupEvidence["fundType"]> = {
   "equity fund": "equity",
   "bond fund": "bond",
@@ -56,7 +66,7 @@ export function classifyComparisonGroups(
 
   return records.map((record) => {
     const matches = byId.get(record.fundClassId) ?? [];
-    const distinctGroups = new Set(matches.map((item) => `${item.fundType}:${item.allocationProfile}`));
+    const distinctGroups = new Set(matches.map((item) => `${item.fundType}:${normalizeComparisonProfile(item.allocationProfile)}`));
     if (matches.length === 0) return { ...record, comparisonGroupStatus: "insufficient" };
     if (distinctGroups.size !== 1 || matches.some((item) => !/^https:\/\//.test(item.sourceUrl))) {
       return { ...record, comparisonGroupStatus: "conflict", comparisonGroupEvidence: matches };
