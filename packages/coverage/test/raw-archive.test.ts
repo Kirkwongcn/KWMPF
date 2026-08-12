@@ -6,6 +6,7 @@ import {
   archiveHtml,
   createRunArchive,
   failedFetchArtifact,
+  readArchivedHtml,
   writeArchiveManifest,
 } from "../src/raw-archive";
 
@@ -45,10 +46,9 @@ describe("raw acquisition archive", () => {
         "2026-08-11T00:01:00Z",
         "parsed",
       ),
-    ).rejects.toMatchObject({ code: "EEXIST" });
-    await expect(createRunArchive(root, "run-1")).rejects.toMatchObject({
-      code: "EEXIST",
-    });
+    ).resolves.toMatchObject({ bytes: 16 });
+    expect(await readArchivedHtml(run, "details/1.html")).toBe("<html>one</html>");
+    expect(await createRunArchive(root, "run-1")).toBe(run);
   });
 
   it("records a failed fetch without inventing content evidence", () => {
