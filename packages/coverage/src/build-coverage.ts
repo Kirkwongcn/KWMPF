@@ -21,6 +21,7 @@ export type SourceRecord = {
   fundType?: string;
   fundTypeDescriptor?: string;
   fundOverview?: Record<string, unknown>;
+  unavailableFields?: string[];
   currentStatus?: "verified" | "stale" | "failed_with_last_verified";
   fundOverviewStatus?: "verified" | "stale" | "failed_with_last_verified";
   returns?: Partial<Record<1 | 3 | 5 | 10, {

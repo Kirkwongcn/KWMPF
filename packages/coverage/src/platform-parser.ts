@@ -53,6 +53,7 @@ export function parseFundDetail(html: string, cfId: number): SourceRecord {
   };
 
   const returns: SourceRecord["returns"] = {};
+  const unavailableFields: string[] = [];
   for (const years of [1, 3, 5, 10] as const) {
     const label = new RegExp(
       `Annualized Return / Cumulative Return \\(${years} Year\\) \\(as at [^)]+\\)`,
@@ -66,22 +67,28 @@ export function parseFundDetail(html: string, cfId: number): SourceRecord {
     const date = sourceDate(row, cfId);
     const values = [...row.matchAll(/([+-]?\d+(?:\.\d+)?)%/g)].map((match) => Number(match[1]));
     if (values.length < 2) {
-      if (/n\.a\./i.test(row)) continue;
+      if (/n\.a\./i.test(row)) {
+        unavailableFields.push(`annualizedReturn${years}y`);
+        continue;
+      }
       throw new Error(`Return values are missing from cf_id ${cfId} (${years} Year)`);
     }
     returns[years] = { annualized: values[0], cumulative: values[1], dataAsOf: date };
   }
 
-  const numberField = (label: string) => {
+  const numberField = (label: string, publicName: string) => {
     const value = fields.get(label);
-    if (!value || /n\.a\./i.test(value)) return undefined;
+    if (!value || /n\.a\./i.test(value)) {
+      if (value && /n\.a\./i.test(value)) unavailableFields.push(publicName);
+      return undefined;
+    }
     const match = value.match(/[+-]?\d+(?:\.\d+)?/);
     return match ? Number(match[0]) : undefined;
   };
-  const riskClass = numberField("Risk Class");
-  const latestFer = numberField("Latest FER");
-  const managementFee = numberField("Management Fee");
-  const oci1yHkd = numberField("On-going Cost Illustration (OCI) – 1 Year");
+  const riskClass = numberField("Risk Class", "riskClass");
+  const latestFer = numberField("Latest FER", "latestFer");
+  const managementFee = numberField("Management Fee", "managementFee");
+  const oci1yHkd = numberField("On-going Cost Illustration (OCI) – 1 Year", "oci1yHkd");
 
   return {
     fundClassId: `mpfa-cf-${cfId}`,
@@ -97,6 +104,7 @@ export function parseFundDetail(html: string, cfId: number): SourceRecord {
     dataAsOf: sourceDate(required("Fund size (HKD Million)"), cfId),
     sourceUrl: `${detailBaseUrl}${cfId}`,
     returns,
+    ...(unavailableFields.length ? { unavailableFields } : {}),
     ...([riskClass, latestFer, managementFee, oci1yHkd].some(
       (value) => value !== undefined,
     )
