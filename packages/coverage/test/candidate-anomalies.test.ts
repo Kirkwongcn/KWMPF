@@ -1,0 +1,24 @@
+import { describe, expect, it } from "vitest";
+import { detectCandidateAnomalies } from "../src/candidate-anomalies";
+
+const identity = { trusteeName: "T", schemeName: "S", constituentFundName: "F", fundClassName: "I" };
+const base = { fundClassId: "a", identity, current: true, dataAsOf: "2026-06-30", returns: { 3: { annualized: 5, dataAsOf: "2026-06-30" } }, fundOverview: { fee: 0.8, monthlyReturn: 35, allocationTotal: 102 } };
+
+describe("candidate anomaly report", () => {
+  it("reports all configured data anomalies and versions the policy", () => {
+    const result = detectCandidateAnomalies(
+      [{ ...base, identity: { ...identity, fundClassName: "II" }, returns: { 3: { annualized: 6, dataAsOf: "2026-06-30" } }, fundOverview: { fee: 1, monthlyReturn: 35, allocationTotal: 102 } }],
+      [base],
+      [{ sourceType: "trustee_fund_list", consecutiveFailures: 2 }],
+    );
+    expect(result.policyVersion).toBe("2026-08-13.v1");
+    expect(result.requiresReview).toBe(true);
+    expect(new Set(result.anomalies.map((item) => item.kind))).toEqual(new Set(["identity_changed", "same_date_value_revised", "large_monthly_return", "allocation_total_out_of_range", "fee_changed", "source_failed_twice"]));
+  });
+
+  it("does not trigger review for a clean candidate", () => {
+    const clean = { ...base, fundOverview: { fee: 0.8, monthlyReturn: 2, allocationTotal: 100 } };
+    const result = detectCandidateAnomalies([clean], [clean], [{ sourceType: "trustee_fund_list", consecutiveFailures: 1 }]);
+    expect(result).toEqual({ policyVersion: "2026-08-13.v1", anomalies: [], requiresReview: false });
+  });
+});
