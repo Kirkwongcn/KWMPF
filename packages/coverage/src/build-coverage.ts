@@ -1,3 +1,5 @@
+import { applyFreshnessStatuses } from "./data-freshness";
+
 export type SourceType =
   | "mpf_fund_platform"
   | "trustee_fund_list"
@@ -112,6 +114,7 @@ function allocateTrusteeBatches(
 export function buildCoverage(
   sources: SourceSnapshot[],
   previous: PreviousCoverage = { records: [] },
+  today = new Date().toISOString().slice(0, 10),
 ) {
   for (const source of sources) {
     const expected = source.expectedCounts?.fundClasses;
@@ -214,6 +217,7 @@ export function buildCoverage(
       return {
         fundClassId,
         identity: baseline.identity,
+        dataAsOf: baseline.dataAsOf,
         ...(baseline.returns ? { returns: baseline.returns } : {}),
         status: current ? ("verified" as const) : ("pending_verification" as const),
         current,
@@ -222,18 +226,19 @@ export function buildCoverage(
         attestations,
       };
     });
+  const freshRecords = applyFreshnessStatuses(records, today);
   const currentById = new Map(
-    records.map((record) => [record.fundClassId, record]),
+    freshRecords.map((record) => [record.fundClassId, record]),
   );
   const previousById = new Map(
     previous.records.map((record) => [record.fundClassId, record]),
   );
   const trustees = [
-    ...new Set(records.map((record) => record.identity.trusteeName)),
+    ...new Set(freshRecords.map((record) => record.identity.trusteeName)),
   ].sort();
 
   return {
-    records,
+    records: freshRecords,
     changes: {
       added: ids.filter((id) => !previousById.has(id)),
       removed: [...previousById.keys()].filter((id) => !currentById.has(id)).sort(),
