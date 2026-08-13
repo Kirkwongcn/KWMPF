@@ -5,6 +5,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json --noEmit",
     "fetch:platform": "bun src/fetch-platform.ts",
+    "readiness": "bun src/build-publication-readiness.ts",
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },

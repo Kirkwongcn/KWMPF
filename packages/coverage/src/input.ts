@@ -129,6 +129,16 @@ export function parseSourceSnapshot(value: unknown): SourceSnapshot {
         ...(item.sourceUrl
           ? { sourceUrl: string(item.sourceUrl, `records[${index}].sourceUrl`) }
           : {}),
+        ...(typeof item.fundType === "string" ? { fundType: item.fundType } : {}),
+        ...(typeof item.fundTypeDescriptor === "string"
+          ? { fundTypeDescriptor: item.fundTypeDescriptor }
+          : {}),
+        ...(item.fundOverview && typeof item.fundOverview === "object"
+          ? { fundOverview: item.fundOverview as Record<string, unknown> }
+          : {}),
+        ...(item.unavailableFields
+          ? { unavailableFields: optionalStringArray(item.unavailableFields, `records[${index}].unavailableFields`) }
+          : {}),
         ...(item.returns
           ? { returns: parseReturns(item.returns, `records[${index}].returns`) }
           : {}),
