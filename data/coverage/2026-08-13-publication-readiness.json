@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-13T12:51:56.775Z",
+  "generatedAt": "2026-08-13T13:26:11.610Z",
   "sourceSnapshot": "data/sources/2026-08-13/mpf-fund-platform.json",
   "sourceDataAsOf": "2026-07-31",
   "report": {
@@ -19,6 +19,767 @@
       "oci1yHkd": 32,
       "riskClass": 16
     },
+    "blockedDetails": [
+      {
+        "fundClassId": "mpfa-cf-134",
+        "identity": {
+          "trusteeName": "AIA Company (Trustee) Limited",
+          "schemeName": "AIA MPF - Prime Value Choice",
+          "constituentFundName": "MPF Conservative Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=134",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-151",
+        "identity": {
+          "trusteeName": "Bank Consortium Trust Company Limited",
+          "schemeName": "BCT MPF - Smart Plan",
+          "constituentFundName": "Principal - MPF Conservative Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=151",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-165",
+        "identity": {
+          "trusteeName": "Bank Consortium Trust Company Limited",
+          "schemeName": "BCT MPF - Simple Plan",
+          "constituentFundName": "Principal - MPF Conservative Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=165",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-179",
+        "identity": {
+          "trusteeName": "Bank Consortium Trust Company Limited",
+          "schemeName": "BCT (MPF) Industry Choice",
+          "constituentFundName": "BCT (Industry) MPF Conservative Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=179",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-182",
+        "identity": {
+          "trusteeName": "Bank Consortium Trust Company Limited",
+          "schemeName": "BCT (MPF) Pro Choice",
+          "constituentFundName": "BCT (Pro) MPF Conservative Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=182",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-193",
+        "identity": {
+          "trusteeName": "Bank Consortium Trust Company Limited",
+          "schemeName": "BCT Strategic MPF Scheme",
+          "constituentFundName": "Invesco MPF Conservative Fund",
+          "fundClassName": "Unit Class A"
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=193",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-194",
+        "identity": {
+          "trusteeName": "Bank Consortium Trust Company Limited",
+          "schemeName": "BCT Strategic MPF Scheme",
+          "constituentFundName": "Invesco MPF Conservative Fund",
+          "fundClassName": "Unit Class H"
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=194",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-211",
+        "identity": {
+          "trusteeName": "Bank of Communications Trustee Limited",
+          "schemeName": "BCOM Joyful Retirement MPF Scheme",
+          "constituentFundName": "BCOM MPF Conservative Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=211",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-213",
+        "identity": {
+          "trusteeName": "Bank of East Asia (Trustees) Limited",
+          "schemeName": "BEA (MPF) Industry Scheme",
+          "constituentFundName": "BEA (Industry Scheme) MPF Conservative Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=213",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-225",
+        "identity": {
+          "trusteeName": "Bank of East Asia (Trustees) Limited",
+          "schemeName": "BEA (MPF) Master Trust Scheme",
+          "constituentFundName": "BEA (MPF) Conservative Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=225",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-230",
+        "identity": {
+          "trusteeName": "BOCI-Prudential Trustee Limited",
+          "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+          "constituentFundName": "BOC-Prudential MPF Conservative Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=230",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-238",
+        "identity": {
+          "trusteeName": "China Life Trustees Limited",
+          "schemeName": "China Life MPF Master Trust Scheme",
+          "constituentFundName": "China Life MPF Conservative Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=238",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-262",
+        "identity": {
+          "trusteeName": "Bank Consortium Trust Company Limited",
+          "schemeName": "Manulife RetireChoice (MPF) Scheme",
+          "constituentFundName": "Allianz MPF Conservative Fund",
+          "fundClassName": "Class A"
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=262",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-263",
+        "identity": {
+          "trusteeName": "Bank Consortium Trust Company Limited",
+          "schemeName": "Manulife RetireChoice (MPF) Scheme",
+          "constituentFundName": "Allianz MPF Conservative Fund",
+          "fundClassName": "Class B"
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=263",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-264",
+        "identity": {
+          "trusteeName": "Bank Consortium Trust Company Limited",
+          "schemeName": "Manulife RetireChoice (MPF) Scheme",
+          "constituentFundName": "Allianz MPF Conservative Fund",
+          "fundClassName": "Class T"
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=264",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-274",
+        "identity": {
+          "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+          "schemeName": "Fidelity Retirement Master Trust",
+          "constituentFundName": "MPF Conservative Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=274",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-306",
+        "identity": {
+          "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+          "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+          "constituentFundName": "MPF Conservative Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=306",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-319",
+        "identity": {
+          "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+          "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+          "constituentFundName": "MPF Conservative Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=319",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-366",
+        "identity": {
+          "trusteeName": "Manulife Provident Funds Trust Company Limited",
+          "schemeName": "Manulife Global Select (MPF) Scheme",
+          "constituentFundName": "Manulife MPF Conservative Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=366",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-386",
+        "identity": {
+          "trusteeName": "YF Life Trustees Limited",
+          "schemeName": "MASS Mandatory Provident Fund Scheme",
+          "constituentFundName": "MPF Conservative Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=386",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-444",
+        "identity": {
+          "trusteeName": "Bank Consortium Trust Company Limited",
+          "schemeName": "BCT MPF Scheme Series 800",
+          "constituentFundName": "Principal MPF Conservative Fund",
+          "fundClassName": "Class N"
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=444",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-466",
+        "identity": {
+          "trusteeName": "Standard Chartered Trustee (Hong Kong) Limited",
+          "schemeName": "SHKP MPF Employer Sponsored Scheme",
+          "constituentFundName": "Invesco MPF Conservative Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=466",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-506",
+        "identity": {
+          "trusteeName": "Sun Life Trustee Company Limited",
+          "schemeName": "Sun Life Rainbow MPF Scheme",
+          "constituentFundName": "Sun Life MPF Conservative Fund",
+          "fundClassName": "Class A"
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=506",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-507",
+        "identity": {
+          "trusteeName": "Sun Life Trustee Company Limited",
+          "schemeName": "Sun Life Rainbow MPF Scheme",
+          "constituentFundName": "Sun Life MPF Conservative Fund",
+          "fundClassName": "Class B"
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=507",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-781",
+        "identity": {
+          "trusteeName": "Bank Consortium Trust Company Limited",
+          "schemeName": "AMTD MPF Scheme",
+          "constituentFundName": "AMTD Invesco MPF Conservative Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=781",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-827",
+        "identity": {
+          "trusteeName": "BOCI-Prudential Trustee Limited",
+          "schemeName": "My Choice Mandatory Provident Fund Scheme",
+          "constituentFundName": "My Choice MPF Conservative Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=827",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-1039",
+        "identity": {
+          "trusteeName": "Bank of East Asia (Trustees) Limited",
+          "schemeName": "BEA (MPF) Value Scheme",
+          "constituentFundName": "BEA MPF Conservative Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1039",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-1979",
+        "identity": {
+          "trusteeName": "Bank of Communications Trustee Limited",
+          "schemeName": "BCOM Joyful Retirement MPF Scheme",
+          "constituentFundName": "BCOM North American Equity (CF) Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1979",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "riskClass"
+        ],
+        "officialUnavailable": [
+          "riskClass"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2063",
+        "identity": {
+          "trusteeName": "Sun Life Trustee Company Limited",
+          "schemeName": "Sun Life Rainbow MPF Scheme",
+          "constituentFundName": "Sun Life MPF US Equity Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2063",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "riskClass"
+        ],
+        "officialUnavailable": [
+          "riskClass"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2064",
+        "identity": {
+          "trusteeName": "Sun Life Trustee Company Limited",
+          "schemeName": "Sun Life Rainbow MPF Scheme",
+          "constituentFundName": "Sun Life MPF European Equity Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2064",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "riskClass"
+        ],
+        "officialUnavailable": [
+          "riskClass"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2065",
+        "identity": {
+          "trusteeName": "Sun Life Trustee Company Limited",
+          "schemeName": "Sun Life Rainbow MPF Scheme",
+          "constituentFundName": "Sun Life MPF Global Low Carbon Index Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2065",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "riskClass"
+        ],
+        "officialUnavailable": [
+          "riskClass"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2066",
+        "identity": {
+          "trusteeName": "Bank Consortium Trust Company Limited",
+          "schemeName": "BCT Strategic MPF Scheme",
+          "constituentFundName": "Invesco Global Index Tracking Fund",
+          "fundClassName": "Unit Class A"
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2066",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "riskClass"
+        ],
+        "officialUnavailable": [
+          "riskClass"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2067",
+        "identity": {
+          "trusteeName": "Bank Consortium Trust Company Limited",
+          "schemeName": "BCT Strategic MPF Scheme",
+          "constituentFundName": "Invesco Global Index Tracking Fund",
+          "fundClassName": "Unit Class H"
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2067",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "riskClass"
+        ],
+        "officialUnavailable": [
+          "riskClass"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2068",
+        "identity": {
+          "trusteeName": "Bank Consortium Trust Company Limited",
+          "schemeName": "BCT Strategic MPF Scheme",
+          "constituentFundName": "Invesco US Index Tracking Fund",
+          "fundClassName": "Unit Class A"
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2068",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "riskClass"
+        ],
+        "officialUnavailable": [
+          "riskClass"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2069",
+        "identity": {
+          "trusteeName": "Bank Consortium Trust Company Limited",
+          "schemeName": "BCT Strategic MPF Scheme",
+          "constituentFundName": "Invesco US Index Tracking Fund",
+          "fundClassName": "Unit Class H"
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2069",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "riskClass"
+        ],
+        "officialUnavailable": [
+          "riskClass"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2079",
+        "identity": {
+          "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+          "schemeName": "Fidelity Retirement Master Trust",
+          "constituentFundName": "Americas Equity Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2079",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "riskClass"
+        ],
+        "officialUnavailable": [
+          "riskClass"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2080",
+        "identity": {
+          "trusteeName": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+          "schemeName": "Fidelity Retirement Master Trust",
+          "constituentFundName": "European Equity Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2080",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "riskClass"
+        ],
+        "officialUnavailable": [
+          "riskClass"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2099",
+        "identity": {
+          "trusteeName": "Sun Life Trustee Company Limited",
+          "schemeName": "Sun Life Rainbow MPF Scheme",
+          "constituentFundName": "Sun Life MPF US & Hong Kong Equity Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2099",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "riskClass"
+        ],
+        "officialUnavailable": [
+          "riskClass"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2239",
+        "identity": {
+          "trusteeName": "Sun Life Trustee Company Limited",
+          "schemeName": "Sun Life Rainbow MPF Scheme",
+          "constituentFundName": "Sun Life MPF Income Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2239",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "riskClass",
+          "latestFer",
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "riskClass",
+          "latestFer",
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2379",
+        "identity": {
+          "trusteeName": "AIA Company (Trustee) Limited",
+          "schemeName": "AIA MPF - Prime Value Choice",
+          "constituentFundName": "Retirement Income Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2379",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "annualizedReturn1y",
+          "riskClass",
+          "latestFer",
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "annualizedReturn1y",
+          "riskClass",
+          "latestFer",
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2399",
+        "identity": {
+          "trusteeName": "BOCI-Prudential Trustee Limited",
+          "schemeName": "My Choice Mandatory Provident Fund Scheme",
+          "constituentFundName": "My Choice European Quality Tracker Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2399",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "annualizedReturn1y",
+          "riskClass",
+          "latestFer",
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "annualizedReturn1y",
+          "riskClass",
+          "latestFer",
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2400",
+        "identity": {
+          "trusteeName": "BOCI-Prudential Trustee Limited",
+          "schemeName": "My Choice Mandatory Provident Fund Scheme",
+          "constituentFundName": "My Choice Chinese Government and Policy Bank Bond Index Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2400",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "annualizedReturn1y",
+          "riskClass",
+          "latestFer",
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "annualizedReturn1y",
+          "riskClass",
+          "latestFer",
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2401",
+        "identity": {
+          "trusteeName": "BOCI-Prudential Trustee Limited",
+          "schemeName": "My Choice Mandatory Provident Fund Scheme",
+          "constituentFundName": "My Choice Americas Equity Fund",
+          "fundClassName": "n.a."
+        },
+        "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2401",
+        "dataAsOf": "2026-07-31",
+        "missing": [
+          "annualizedReturn1y",
+          "riskClass",
+          "latestFer",
+          "oci1yHkd"
+        ],
+        "officialUnavailable": [
+          "annualizedReturn1y",
+          "riskClass",
+          "latestFer",
+          "oci1yHkd"
+        ]
+      }
+    ],
     "issues": [
       {
         "fundClassId": "mpfa-cf-134",
