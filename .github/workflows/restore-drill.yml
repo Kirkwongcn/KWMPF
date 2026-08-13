@@ -40,8 +40,8 @@ jobs:
           test "$(jq -r '.databaseName' restore-drill/manifest.json)" = "kwmpf-staging"
       - name: Restore to local D1
         run: |
-          bunx wrangler d1 execute kwmpf-restore-drill --local --file restore-drill/d1.sql
-          bunx wrangler d1 execute kwmpf-restore-drill --local --command 'SELECT snapshot_id FROM current_publication WHERE singleton = 1' --json | tee restore-drill/query.json
+          bunx wrangler d1 execute RESTORE_DB --local --config apps/api/wrangler.restore.jsonc --file restore-drill/d1.sql
+          bunx wrangler d1 execute RESTORE_DB --local --config apps/api/wrangler.restore.jsonc --command 'SELECT snapshot_id FROM current_publication WHERE singleton = 1' --json | tee restore-drill/query.json
           test "$(jq -r '.[0].results | length' restore-drill/query.json)" = "1"
       - uses: actions/upload-artifact@v4
         with:
