@@ -55,4 +55,36 @@ describe("fund class page", () => {
       "https://api.test/fund-classes/mpfa-cf-429-class-i",
     );
   });
+
+  it("shows official unavailability instead of crashing on absent fields", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-missing-fields",
+          fundClass: {
+            ...fixture.fundClass,
+            riskClass: undefined,
+            latestFer: undefined,
+            oci1yHkd: undefined,
+          },
+          provenance: {
+            sourceUrl: fixture.source.url,
+            dataAsOf: "2026-07-31",
+            retrievedAt: "2026-08-13T00:00:00Z",
+            verificationStatus: "verified",
+          },
+        }),
+      ),
+    );
+
+    render(
+      <FundClassPage
+        apiBaseUrl="https://api.test"
+        fundClassId="missing-fields"
+      />,
+    );
+
+    expect(await screen.findAllByText("官方未提供")).toHaveLength(4);
+  });
 });

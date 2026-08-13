@@ -10,10 +10,10 @@ type PublishedFundClass = {
     fundType: string;
     fundCategory: string;
     annualizedReturn1y: number;
-    riskClass: number;
-    latestFer: number;
+    riskClass?: number;
+    latestFer?: number;
     managementFee: number;
-    oci1yHkd: number;
+    oci1yHkd?: number;
   };
   provenance: {
     sourceUrl: string;
@@ -30,6 +30,15 @@ export function FundClassPage({
   apiBaseUrl: string;
   fundClassId: string;
 }) {
+  const unavailable = "官方未提供";
+  const formatNumber = (
+    value: number | undefined,
+    digits: number,
+    suffix = "",
+  ) =>
+    typeof value === "number"
+      ? `${value.toFixed(digits)}${suffix}`
+      : unavailable;
   const [publication, setPublication] = useState<PublishedFundClass | null>(
     null,
   );
@@ -75,11 +84,11 @@ export function FundClassPage({
           </div>
           <div>
             <dt>風險級別</dt>
-            <dd>{fundClass.riskClass}</dd>
+            <dd>{fundClass.riskClass ?? unavailable}</dd>
           </div>
           <div>
             <dt>基金開支比率</dt>
-            <dd>{fundClass.latestFer.toFixed(5)}%</dd>
+            <dd>{formatNumber(fundClass.latestFer, 5, "%")}</dd>
           </div>
         </dl>
         <div className="provenance">
@@ -87,15 +96,19 @@ export function FundClassPage({
           <dl className="status-list">
             <div>
               <dt>基金開支比率（歷史財政期）</dt>
-              <dd>{fundClass.latestFer.toFixed(5)}%</dd>
+              <dd>{formatNumber(fundClass.latestFer, 5, "%")}</dd>
             </div>
             <div>
               <dt>當前管理費</dt>
-              <dd>{fundClass.managementFee.toFixed(2)}%</dd>
+              <dd>{formatNumber(fundClass.managementFee, 2, "%")}</dd>
             </div>
             <div>
               <dt>其他費用（OCI）</dt>
-              <dd>HK${fundClass.oci1yHkd.toFixed(2)}</dd>
+              <dd>
+                {typeof fundClass.oci1yHkd === "number"
+                  ? `HK$${fundClass.oci1yHkd.toFixed(2)}`
+                  : unavailable}
+              </dd>
             </div>
           </dl>
           <p>配置及持倉資料的截至日期可能不同，使用時請留意可比性限制。</p>
