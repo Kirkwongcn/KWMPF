@@ -26,7 +26,7 @@ describe("health page", () => {
     render(<App apiUrl="https://api.test/health" />);
 
     expect(
-      screen.getByRole("heading", { name: "KWMPF 正在建立中" }),
+      screen.getByRole("heading", { name: "用可追溯資料，讀懂強積金選擇" }),
     ).toBeVisible();
     expect(await screen.findByText("test-release")).toBeVisible();
     expect(await screen.findByText("API：正常")).toBeVisible();
