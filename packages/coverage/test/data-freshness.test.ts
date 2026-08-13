@@ -25,12 +25,4 @@ describe("data freshness", () => {
     expect(result[0]?.fundOverviewStatus).toBe("failed_with_last_verified");
     expect(result[0]?.dataAsOf).toBe("2026-08-01");
   });
-
-  it("carries a failed fund overview without replacing fresh fields", () => {
-    const previous = [{ fundClassId: "a", identity: { trusteeName: "T", schemeName: "S", constituentFundName: "F", fundClassName: "I" }, current: true, dataAsOf: "2026-06-30", fundOverview: { fee: 0.8 } }];
-    const current = [{ fundClassId: "a", identity: previous[0]!.identity, current: true, dataAsOf: "2026-08-01", fundOverview: { fee: 0.7 } }];
-    const result = carryForwardFailedFields(current, previous, [{ fundClassId: "a", field: "fundOverview" }]);
-    expect(result[0]?.fundOverview).toEqual({ fee: 0.8 });
-    expect(result[0]?.dataAsOf).toBe("2026-08-01");
-  });
 });

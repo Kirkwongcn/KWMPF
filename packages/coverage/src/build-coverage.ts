@@ -19,10 +19,13 @@ export type SourceRecord = {
   fundType?: string;
   fundTypeDescriptor?: string;
   fundOverview?: Record<string, unknown>;
+  currentStatus?: "verified" | "stale" | "failed_with_last_verified";
+  fundOverviewStatus?: "verified" | "stale" | "failed_with_last_verified";
   returns?: Partial<Record<1 | 3 | 5 | 10, {
     annualized?: number;
     cumulative?: number;
     dataAsOf: string;
+    status?: "verified" | "stale" | "failed_with_last_verified";
   }>>;
 };
 
