@@ -1,0 +1,291 @@
+{
+  "generatedAt": "2026-08-13T12:38:39.771Z",
+  "sourceSnapshot": "data/sources/2026-08-13/mpf-fund-platform.json",
+  "sourceDataAsOf": "2026-07-31",
+  "report": {
+    "ready": false,
+    "inputRecords": 451,
+    "acceptedRecords": 408,
+    "blockedRecords": 43,
+    "missingByField": {
+      "annualizedReturn1y": 4,
+      "latestFer": 5,
+      "oci1yHkd": 32,
+      "riskClass": 16
+    },
+    "issues": [
+      {
+        "fundClassId": "mpfa-cf-134",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-151",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-165",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-179",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-182",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-193",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-194",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-211",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-213",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-225",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-230",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-238",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-262",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-263",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-264",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-274",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-306",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-319",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-366",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-386",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-444",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-466",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-506",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-507",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-781",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-827",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-1039",
+        "missing": [
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-1979",
+        "missing": [
+          "riskClass"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2063",
+        "missing": [
+          "riskClass"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2064",
+        "missing": [
+          "riskClass"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2065",
+        "missing": [
+          "riskClass"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2066",
+        "missing": [
+          "riskClass"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2067",
+        "missing": [
+          "riskClass"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2068",
+        "missing": [
+          "riskClass"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2069",
+        "missing": [
+          "riskClass"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2079",
+        "missing": [
+          "riskClass"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2080",
+        "missing": [
+          "riskClass"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2099",
+        "missing": [
+          "riskClass"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2239",
+        "missing": [
+          "riskClass",
+          "latestFer",
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2379",
+        "missing": [
+          "annualizedReturn1y",
+          "riskClass",
+          "latestFer",
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2399",
+        "missing": [
+          "annualizedReturn1y",
+          "riskClass",
+          "latestFer",
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2400",
+        "missing": [
+          "annualizedReturn1y",
+          "riskClass",
+          "latestFer",
+          "oci1yHkd"
+        ]
+      },
+      {
+        "fundClassId": "mpfa-cf-2401",
+        "missing": [
+          "annualizedReturn1y",
+          "riskClass",
+          "latestFer",
+          "oci1yHkd"
+        ]
+      }
+    ]
+  }
+}
