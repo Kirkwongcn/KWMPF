@@ -12,6 +12,7 @@ export type ReturnObservation = {
   value: number;
   dataAsOf: string;
   stale?: boolean;
+  status?: "verified" | "stale" | "failed_with_last_verified";
   comparable?: boolean;
 };
 
@@ -60,7 +61,7 @@ function exclusionReason(fund: ReturnRankingFund, observation?: ReturnObservatio
   if (!observation) return "insufficient";
   if (fund.verificationStatus === "pending_verification") return "pending_verification";
   if (fund.verificationStatus === "source_conflict") return "source_conflict";
-  if (observation.stale) return "stale";
+  if (observation.stale || observation.status === "stale" || observation.status === "failed_with_last_verified") return "stale";
   if (observation.comparable === false) return "not_comparable";
   if (!Number.isFinite(observation.value)) return "insufficient";
   return undefined;

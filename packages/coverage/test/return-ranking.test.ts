@@ -31,4 +31,12 @@ describe("default return rankings", () => {
       expect.objectContaining({ fundClassId: "e", periodYears: 3, reason: "insufficient" }),
     ]));
   });
+
+  it("excludes an explicitly carried-forward observation while retaining its value metadata", () => {
+    const result = rankDefaultReturns([
+      { fundClassId: "carried", fundClassName: "Carried Equity", comparisonGroup: "equity", verificationStatus: "verified", returns: { 1: { value: 7.25, dataAsOf: "2026-06-30", status: "failed_with_last_verified" } } },
+    ]);
+    expect(result.rankings).toHaveLength(0);
+    expect(result.exclusions).toContainEqual(expect.objectContaining({ fundClassId: "carried", reason: "stale" }));
+  });
 });
