@@ -17,6 +17,7 @@ import { parseMyChoiceFundPerformance } from "./my-choice-fund-performance-parse
 import { parseMassFundPerformance } from "./mass-fund-performance-parser";
 import { parseShkpFundPerformance } from "./shkp-fund-performance-parser";
 import { parseFidelityFundPerformance } from "./fidelity-fund-performance-parser";
+import { parseManulifeGlobalSelect } from "./manulife-global-select-parser";
 import type { FundFactSheetReturn } from "./fund-fact-sheet-parser";
 
 const exec = promisify(execFile);
@@ -38,6 +39,7 @@ function parser(scheme: string, text: string, url: string): FundFactSheetReturn[
   if (scheme.startsWith("MASS")) return parseMassFundPerformance(text, url);
   if (scheme.startsWith("SHKP")) return parseShkpFundPerformance(text, url);
   if (scheme.startsWith("Fidelity")) return parseFidelityFundPerformance(text, url);
+  if (scheme === "Manulife Global Select (MPF) Scheme") return parseManulifeGlobalSelect(text, url);
   if (scheme.startsWith("AIA")) return parseAiaFundFactSheet(text, url);
   if (scheme.startsWith("AMTD")) return parseAmtdFundFactSheet(text, url);
   if (scheme === "BCT (MPF) Industry Choice") return parseBctFundFactSheet(text, url);
