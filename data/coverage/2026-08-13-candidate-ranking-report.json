@@ -2,7 +2,7 @@
   "coveragePath": "data/sources/2026-08-13/mpf-fund-platform.json",
   "evidencePath": "data/coverage/2026-08-13-comparison-evidence-input.json",
   "observationsPath": "data/coverage/2026-08-13-official-return-observations-partial.json",
-  "generatedAt": "2026-08-13T03:30:56.285Z",
+  "generatedAt": "2026-08-13T03:36:41.750Z",
   "records": [
     {
       "fundClassId": "mpfa-cf-1000",
@@ -730,6 +730,10 @@
           "value": 6.68,
           "dataAsOf": "2026-07-31"
         },
+        "3": {
+          "value": 4.94,
+          "dataAsOf": "2026-03-31"
+        },
         "5": {
           "value": 1.13,
           "dataAsOf": "2026-07-31"
@@ -1162,6 +1166,10 @@
           "value": 11.93,
           "dataAsOf": "2026-07-31"
         },
+        "3": {
+          "value": 9.76,
+          "dataAsOf": "2026-03-31"
+        },
         "5": {
           "value": 5.64,
           "dataAsOf": "2026-07-31"
@@ -1177,6 +1185,10 @@
         "1": {
           "value": 4.32,
           "dataAsOf": "2026-07-31"
+        },
+        "3": {
+          "value": 4.03,
+          "dataAsOf": "2026-03-31"
         },
         "5": {
           "value": 0.44,
@@ -6450,6 +6462,10 @@
           "value": 12.8,
           "dataAsOf": "2026-07-31"
         },
+        "3": {
+          "value": 7.3,
+          "dataAsOf": "2026-03-31"
+        },
         "5": {
           "value": 2.25,
           "dataAsOf": "2026-07-31"
@@ -6469,6 +6485,10 @@
         "1": {
           "value": 8.47,
           "dataAsOf": "2026-07-31"
+        },
+        "3": {
+          "value": 12.86,
+          "dataAsOf": "2026-03-31"
         },
         "5": {
           "value": 0.7,
@@ -6490,6 +6510,10 @@
           "value": 9.07,
           "dataAsOf": "2026-07-31"
         },
+        "3": {
+          "value": 5.59,
+          "dataAsOf": "2026-03-31"
+        },
         "5": {
           "value": 0.74,
           "dataAsOf": "2026-07-31"
@@ -6509,6 +6533,10 @@
         "1": {
           "value": 11.04,
           "dataAsOf": "2026-07-31"
+        },
+        "3": {
+          "value": 6.84,
+          "dataAsOf": "2026-03-31"
         },
         "5": {
           "value": 2.53,
@@ -8149,6 +8177,10 @@
         "1": {
           "value": 15.45,
           "dataAsOf": "2026-07-31"
+        },
+        "3": {
+          "value": 8.99,
+          "dataAsOf": "2026-03-31"
         },
         "5": {
           "value": 4.42,
@@ -16000,6 +16032,18 @@
         "sortDirection": "descending"
       },
       {
+        "fundClassId": "mpfa-cf-1498",
+        "fundClassName": "n.a.",
+        "comparisonGroup": "mixed:mixed assets fund - global - maximum equity 25%",
+        "periodYears": 3,
+        "value": 4.03,
+        "displayValue": "4.03%",
+        "rank": 3,
+        "dataAsOf": "2026-03-31",
+        "metric": "annualized_return",
+        "sortDirection": "descending"
+      },
+      {
         "fundClassId": "mpfa-cf-131",
         "fundClassName": "n.a.",
         "comparisonGroup": "mixed:mixed assets fund - global - maximum equity 45%",
@@ -16048,6 +16092,18 @@
         "sortDirection": "descending"
       },
       {
+        "fundClassId": "mpfa-cf-464",
+        "fundClassName": "n.a.",
+        "comparisonGroup": "mixed:mixed assets fund - global - maximum equity 60%",
+        "periodYears": 3,
+        "value": 6.84,
+        "displayValue": "6.84%",
+        "rank": 1,
+        "dataAsOf": "2026-03-31",
+        "metric": "annualized_return",
+        "sortDirection": "descending"
+      },
+      {
         "fundClassId": "mpfa-cf-1551",
         "fundClassName": "n.a.",
         "comparisonGroup": "mixed:mixed assets fund - global - maximum equity 65%",
@@ -16072,14 +16128,38 @@
         "sortDirection": "descending"
       },
       {
+        "fundClassId": "mpfa-cf-1497",
+        "fundClassName": "n.a.",
+        "comparisonGroup": "mixed:mixed assets fund - global - maximum equity 65%",
+        "periodYears": 3,
+        "value": 9.76,
+        "displayValue": "9.76%",
+        "rank": 3,
+        "dataAsOf": "2026-03-31",
+        "metric": "annualized_return",
+        "sortDirection": "descending"
+      },
+      {
         "fundClassId": "mpfa-cf-132",
         "fundClassName": "n.a.",
         "comparisonGroup": "mixed:mixed assets fund - global - maximum equity 65%",
         "periodYears": 3,
         "value": 8.17,
         "displayValue": "8.17%",
-        "rank": 3,
+        "rank": 4,
         "dataAsOf": "2025-11-30",
+        "metric": "annualized_return",
+        "sortDirection": "descending"
+      },
+      {
+        "fundClassId": "mpfa-cf-815",
+        "fundClassName": "n.a.",
+        "comparisonGroup": "mixed:mixed assets fund - global - maximum equity 80%",
+        "periodYears": 3,
+        "value": 8.99,
+        "displayValue": "8.99%",
+        "rank": 1,
+        "dataAsOf": "2026-03-31",
         "metric": "annualized_return",
         "sortDirection": "descending"
       },
@@ -16240,6 +16320,18 @@
         "sortDirection": "descending"
       },
       {
+        "fundClassId": "mpfa-cf-462",
+        "fundClassName": "n.a.",
+        "comparisonGroup": "mixed:mixed assets fund - global - maximum equity around 67%",
+        "periodYears": 3,
+        "value": 12.86,
+        "displayValue": "12.86%",
+        "rank": 1,
+        "dataAsOf": "2026-03-31",
+        "metric": "annualized_return",
+        "sortDirection": "descending"
+      },
+      {
         "fundClassId": "mpfa-cf-280",
         "fundClassName": "n.a.",
         "comparisonGroup": "mixed:mixed assets fund - global - maximum equity around 70%",
@@ -16368,6 +16460,42 @@
         "displayValue": "8.30%",
         "rank": 6,
         "dataAsOf": "2025-11-30",
+        "metric": "annualized_return",
+        "sortDirection": "descending"
+      },
+      {
+        "fundClassId": "mpfa-cf-1399",
+        "fundClassName": "n.a.",
+        "comparisonGroup": "mixed:mixed assets fund - global - maximum equity normally 30%",
+        "periodYears": 3,
+        "value": 4.94,
+        "displayValue": "4.94%",
+        "rank": 1,
+        "dataAsOf": "2026-03-31",
+        "metric": "annualized_return",
+        "sortDirection": "descending"
+      },
+      {
+        "fundClassId": "mpfa-cf-463",
+        "fundClassName": "n.a.",
+        "comparisonGroup": "mixed:mixed assets fund - global - maximum equity normally 50%",
+        "periodYears": 3,
+        "value": 5.59,
+        "displayValue": "5.59%",
+        "rank": 1,
+        "dataAsOf": "2026-03-31",
+        "metric": "annualized_return",
+        "sortDirection": "descending"
+      },
+      {
+        "fundClassId": "mpfa-cf-460",
+        "fundClassName": "n.a.",
+        "comparisonGroup": "mixed:mixed assets fund - global - maximum equity normally 70%",
+        "periodYears": 3,
+        "value": 7.3,
+        "displayValue": "7.30%",
+        "rank": 1,
+        "dataAsOf": "2026-03-31",
         "metric": "annualized_return",
         "sortDirection": "descending"
       },
@@ -26459,13 +26587,6 @@
         "reason": "insufficient"
       },
       {
-        "fundClassId": "mpfa-cf-1399",
-        "fundClassName": "n.a.",
-        "comparisonGroup": "mixed:mixed assets fund - global - maximum equity normally 30%",
-        "periodYears": 3,
-        "reason": "insufficient"
-      },
-      {
         "fundClassId": "mpfa-cf-146",
         "fundClassName": "n.a.",
         "comparisonGroup": "guaranteed:guaranteed fund",
@@ -26511,20 +26632,6 @@
         "fundClassId": "mpfa-cf-1492",
         "fundClassName": "Class N",
         "comparisonGroup": "mixed:mixed assets fund - global - equity around 20%",
-        "periodYears": 3,
-        "reason": "insufficient"
-      },
-      {
-        "fundClassId": "mpfa-cf-1497",
-        "fundClassName": "n.a.",
-        "comparisonGroup": "mixed:mixed assets fund - global - maximum equity 65%",
-        "periodYears": 3,
-        "reason": "insufficient"
-      },
-      {
-        "fundClassId": "mpfa-cf-1498",
-        "fundClassName": "n.a.",
-        "comparisonGroup": "mixed:mixed assets fund - global - maximum equity 25%",
         "periodYears": 3,
         "reason": "insufficient"
       },
@@ -27565,34 +27672,6 @@
         "reason": "insufficient"
       },
       {
-        "fundClassId": "mpfa-cf-460",
-        "fundClassName": "n.a.",
-        "comparisonGroup": "mixed:mixed assets fund - global - maximum equity normally 70%",
-        "periodYears": 3,
-        "reason": "insufficient"
-      },
-      {
-        "fundClassId": "mpfa-cf-462",
-        "fundClassName": "n.a.",
-        "comparisonGroup": "mixed:mixed assets fund - global - maximum equity around 67%",
-        "periodYears": 3,
-        "reason": "insufficient"
-      },
-      {
-        "fundClassId": "mpfa-cf-463",
-        "fundClassName": "n.a.",
-        "comparisonGroup": "mixed:mixed assets fund - global - maximum equity normally 50%",
-        "periodYears": 3,
-        "reason": "insufficient"
-      },
-      {
-        "fundClassId": "mpfa-cf-464",
-        "fundClassName": "n.a.",
-        "comparisonGroup": "mixed:mixed assets fund - global - maximum equity 60%",
-        "periodYears": 3,
-        "reason": "insufficient"
-      },
-      {
         "fundClassId": "mpfa-cf-466",
         "fundClassName": "n.a.",
         "comparisonGroup": "money_market:money market fund - hong kong",
@@ -27904,13 +27983,6 @@
         "fundClassId": "mpfa-cf-813",
         "fundClassName": "n.a.",
         "comparisonGroup": "equity:equity fund - global",
-        "periodYears": 3,
-        "reason": "insufficient"
-      },
-      {
-        "fundClassId": "mpfa-cf-815",
-        "fundClassName": "n.a.",
-        "comparisonGroup": "mixed:mixed assets fund - global - maximum equity 80%",
         "periodYears": 3,
         "reason": "insufficient"
       },
@@ -29013,9 +29085,9 @@
     "classified": 450,
     "insufficientGroups": 1,
     "conflictingGroups": 0,
-    "validObservations": 185,
+    "validObservations": 193,
     "invalidObservations": 0,
-    "appliedObservations": 185,
+    "appliedObservations": 193,
     "unmatchedObservations": 0,
     "conflictingObservations": 0
   }
