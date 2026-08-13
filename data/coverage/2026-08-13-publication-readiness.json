@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-13T12:38:39.771Z",
+  "generatedAt": "2026-08-13T12:51:56.775Z",
   "sourceSnapshot": "data/sources/2026-08-13/mpf-fund-platform.json",
   "sourceDataAsOf": "2026-07-31",
   "report": {
@@ -8,6 +8,12 @@
     "acceptedRecords": 408,
     "blockedRecords": 43,
     "missingByField": {
+      "annualizedReturn1y": 4,
+      "latestFer": 5,
+      "oci1yHkd": 32,
+      "riskClass": 16
+    },
+    "unavailableByField": {
       "annualizedReturn1y": 4,
       "latestFer": 5,
       "oci1yHkd": 32,
