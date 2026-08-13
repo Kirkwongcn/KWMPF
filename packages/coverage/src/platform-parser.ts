@@ -28,7 +28,7 @@ export function parseFundIds(html: string) {
 }
 
 function sourceDate(text: string, cfId: number) {
-  const match = text.match(/as at (\d{1,2}) ([A-Za-z]+) (\d{4})/);
+  const match = text.match(/as at (\d{1,2}) ([A-Za-z]+) (\d{4})/i);
   const month = match?.[2] ? months[match[2]] : undefined;
   if (!match?.[1] || !match[3] || !month) {
     throw new Error(`Data date is missing from cf_id ${cfId}`);
@@ -72,6 +72,17 @@ export function parseFundDetail(html: string, cfId: number): SourceRecord {
     returns[years] = { annualized: values[0], cumulative: values[1], dataAsOf: date };
   }
 
+  const numberField = (label: string) => {
+    const value = fields.get(label);
+    if (!value || /n\.a\./i.test(value)) return undefined;
+    const match = value.match(/[+-]?\d+(?:\.\d+)?/);
+    return match ? Number(match[0]) : undefined;
+  };
+  const riskClass = numberField("Risk Class");
+  const latestFer = numberField("Latest FER");
+  const managementFee = numberField("Management Fee");
+  const oci1yHkd = numberField("On-going Cost Illustration (OCI) – 1 Year");
+
   return {
     fundClassId: `mpfa-cf-${cfId}`,
     identity: {
@@ -86,5 +97,17 @@ export function parseFundDetail(html: string, cfId: number): SourceRecord {
     dataAsOf: sourceDate(required("Fund size (HKD Million)"), cfId),
     sourceUrl: `${detailBaseUrl}${cfId}`,
     returns,
+    ...([riskClass, latestFer, managementFee, oci1yHkd].some(
+      (value) => value !== undefined,
+    )
+      ? {
+          fundOverview: {
+            ...(riskClass === undefined ? {} : { riskClass }),
+            ...(latestFer === undefined ? {} : { latestFer }),
+            ...(managementFee === undefined ? {} : { managementFee }),
+            ...(oci1yHkd === undefined ? {} : { oci1yHkd }),
+          },
+        }
+      : {}),
   };
 }

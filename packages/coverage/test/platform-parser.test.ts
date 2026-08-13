@@ -34,6 +34,29 @@ describe("MPF Fund Platform parser", () => {
     });
   });
 
+  it("extracts risk and public cost fields without inferring missing values", () => {
+    const html = `<table>
+      <tr><td>Name of MPF trustee</td><td>Trustee</td></tr>
+      <tr><td>Name of MPF scheme</td><td>Scheme</td></tr>
+      <tr><td>Name of the constituent fund</td><td>Fund</td></tr>
+      <tr><td>Fund Class</td><td>Class I</td></tr>
+      <tr><td>Fund Type</td><td>Equity</td></tr>
+      <tr><td>Fund Type - Full Descriptor</td><td>Equity Fund</td></tr>
+      <tr><td>Fund size (HKD Million)</td><td>As at 31 July 2026 10</td></tr>
+      <tr><td>Risk Class</td><td>6</td></tr>
+      <tr><td>Latest FER</td><td>1.30424%</td></tr>
+      <tr><td>Management Fee</td><td>1.03% p.a.</td></tr>
+      <tr><td>On-going Cost Illustration (OCI) – 1 Year</td><td>HKD 15</td></tr>
+    </table>`;
+
+    expect(parseFundDetail(html, 429).fundOverview).toEqual({
+      riskClass: 6,
+      latestFer: 1.30424,
+      managementFee: 1.03,
+      oci1yHkd: 15,
+    });
+  });
+
   it("fails explicitly when the platform removes a required label", () => {
     expect(() =>
       parseFundDetail(
