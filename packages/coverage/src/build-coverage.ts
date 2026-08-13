@@ -18,6 +18,7 @@ export type SourceRecord = {
   sourceUrl?: string;
   fundType?: string;
   fundTypeDescriptor?: string;
+  fundOverview?: Record<string, unknown>;
   returns?: Partial<Record<1 | 3 | 5 | 10, {
     annualized?: number;
     cumulative?: number;

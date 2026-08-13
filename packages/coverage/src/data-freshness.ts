@@ -48,6 +48,9 @@ export function carryForwardFailedFields(
       ) as SourceRecord["returns"];
     }
     if (failed.has(`${record.fundClassId}\u0000current`)) next.current = old.current;
+    if (failed.has(`${record.fundClassId}\u0000fundOverview`) && old.fundOverview) {
+      next.fundOverview = { ...old.fundOverview };
+    }
     return next;
   });
 }
