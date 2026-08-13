@@ -1,0 +1,37 @@
+name: Configure staging domain
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  configure:
+    environment: staging
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Attach staging custom domain
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          DOMAIN: kwmpf.kirkwongcn.com
+          PROJECT: kwmpf-web-staging
+        run: |
+          set -euo pipefail
+          api="https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/pages/projects/${PROJECT}/domains"
+          current="$(curl --fail-with-body --silent --show-error \
+            --header "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+            "${api}")"
+          if jq -e --arg domain "${DOMAIN}" '.result[]? | select(.name == $domain)' <<<"${current}" >/dev/null; then
+            echo "Custom domain is already attached."
+            exit 0
+          fi
+          curl --fail-with-body --silent --show-error \
+            --request POST \
+            --header "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+            --header "Content-Type: application/json" \
+            --data "$(jq -cn --arg name "${DOMAIN}" '{name: $name}')" \
+            "${api}" | jq -e '.success == true' >/dev/null
+          echo "Custom domain attachment requested."
