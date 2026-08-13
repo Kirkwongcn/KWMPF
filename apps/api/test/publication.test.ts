@@ -123,4 +123,17 @@ describe("publication snapshot", () => {
       },
     ]);
   });
+
+  it("keeps verified fund classes with unavailable risk data in scheme summaries", async () => {
+    const { riskClass: _riskClass, ...fundClassWithoutRisk } =
+      fundFixture.fundClass;
+    const incomplete = { ...fundFixture, fundClass: fundClassWithoutRisk };
+    const archived = await archiveCandidate(bindings, incomplete);
+    await publishCandidate(bindings, incomplete, archived);
+    const response = await SELF.fetch("https://kwmpf.test/schemes");
+
+    expect(await response.json()).toEqual([
+      expect.objectContaining({ riskClassDistribution: {} }),
+    ]);
+  });
 });

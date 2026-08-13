@@ -105,7 +105,7 @@ app.get("/schemes", async (context) => {
         schemeName: string;
         trusteeName: string;
         fundType: string;
-        riskClass: number;
+        riskClass?: number;
         verificationStatus: string;
       };
     };
@@ -121,9 +121,11 @@ app.get("/schemes", async (context) => {
     scheme.fundClassCount += 1;
     if (!scheme.fundTypes.includes(fundClass.fundType))
       scheme.fundTypes.push(fundClass.fundType);
-    const risk = String(fundClass.riskClass);
-    scheme.riskClassDistribution[risk] =
-      (scheme.riskClassDistribution[risk] ?? 0) + 1;
+    if (typeof fundClass.riskClass === "number") {
+      const risk = String(fundClass.riskClass);
+      scheme.riskClassDistribution[risk] =
+        (scheme.riskClassDistribution[risk] ?? 0) + 1;
+    }
     scheme.fundClassIds.push(fundClass.id);
     schemes.set(fundClass.schemeName, scheme);
   }
