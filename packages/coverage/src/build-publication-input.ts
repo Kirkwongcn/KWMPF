@@ -1,0 +1,30 @@
+import type { SourceRecord } from "./build-coverage";
+import type { PublicationInput } from "./publication-preflight";
+
+export function buildPublicationInputs(records: SourceRecord[]): PublicationInput[] {
+  return records.map((record) => ({
+    fundClassId: record.fundClassId,
+    identity: record.identity,
+    current: record.current,
+    status: record.currentStatus ?? (record.current ? "verified" : "stale"),
+    dataAsOf: record.dataAsOf,
+    sourceUrl: record.sourceUrl,
+    publicFields: {
+      ...(typeof record.returns?.[1]?.annualized === "number"
+        ? { annualizedReturn1y: record.returns[1].annualized }
+        : {}),
+      ...(typeof record.fundOverview?.riskClass === "number"
+        ? { riskClass: record.fundOverview.riskClass }
+        : {}),
+      ...(typeof record.fundOverview?.latestFer === "number"
+        ? { latestFer: record.fundOverview.latestFer }
+        : {}),
+      ...(typeof record.fundOverview?.managementFee === "number"
+        ? { managementFee: record.fundOverview.managementFee }
+        : {}),
+      ...(typeof record.fundOverview?.oci1yHkd === "number"
+        ? { oci1yHkd: record.fundOverview.oci1yHkd }
+        : {}),
+    },
+  }));
+}
