@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { carryForwardFailedFields, classifyFreshness } from "../src/data-freshness";
+import { applyFreshnessStatuses, carryForwardFailedFields, classifyFreshness } from "../src/data-freshness";
 
 describe("data freshness", () => {
   it("uses the canonical expiry windows", () => {
@@ -15,6 +15,13 @@ describe("data freshness", () => {
     expect(result[0]?.current).toBe(true);
     expect(result[0]?.returns?.[3]).toEqual({ annualized: 4.2, dataAsOf: "2026-06-30", status: "failed_with_last_verified" });
     expect(result[0]?.currentStatus).toBe("failed_with_last_verified");
+  });
+
+  it("applies field-specific freshness statuses to a source record", () => {
+    const [result] = applyFreshnessStatuses([{ fundClassId: "a", identity: { trusteeName: "T", schemeName: "S", constituentFundName: "F", fundClassName: "I" }, current: true, dataAsOf: "2026-08-08", fundOverview: { fee: 0.7 }, returns: { 3: { annualized: 4.2, dataAsOf: "2026-06-01" } } }], "2026-08-14");
+    expect(result?.currentStatus).toBe("verified");
+    expect(result?.fundOverviewStatus).toBe("verified");
+    expect(result?.returns?.[3]?.status).toBe("stale");
   });
 
   it("carries a failed fund overview without replacing fresh fields", () => {

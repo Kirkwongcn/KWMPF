@@ -26,6 +26,26 @@ export function classifyFreshness(policy: FreshnessPolicy): FreshnessStatus {
   return age > graceDays ? "stale" : "verified";
 }
 
+export function applyFreshnessStatuses(records: SourceRecord[], today: string) {
+  return records.map((record) => ({
+    ...record,
+    currentStatus: classifyFreshness({ kind: "current_status", asOf: record.dataAsOf, today }),
+    ...(record.fundOverview
+      ? { fundOverviewStatus: classifyFreshness({ kind: "fund_overview", asOf: record.dataAsOf, today }) }
+      : {}),
+    ...(record.returns
+      ? {
+          returns: Object.fromEntries(
+            Object.entries(record.returns).map(([period, observation]) => [
+              period,
+              { ...observation, status: classifyFreshness({ kind: "monthly", asOf: observation!.dataAsOf, today }) },
+            ]),
+          ) as SourceRecord["returns"],
+        }
+      : {}),
+  }));
+}
+
 export type FailedField = {
   fundClassId: string;
   field: "returns" | "current" | "fundOverview";
