@@ -58,7 +58,7 @@ for (const entry of manifest.entries) {
   try {
     const pdfPath = join(pdfRoot, `${id}.pdf`);
     if (entry.scheme.startsWith("Sun Life")) {
-      const { stdout } = await exec("pdftohtml", ["-xml", "-stdout", pdfPath]);
+      const { stdout } = await exec("pdftohtml", ["-xml", "-stdout", pdfPath], { maxBuffer: 32 * 1024 * 1024 });
       returns.push(...parseSunLifeFundFactSheetXml(stdout, entry.factSheetUrl));
     } else {
       const { stdout } = await exec("pdftotext", ["-layout", pdfPath, "-"]);
