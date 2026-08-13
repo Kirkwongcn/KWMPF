@@ -86,5 +86,6 @@ describe("fund class page", () => {
     );
 
     expect(await screen.findAllByText("官方未提供")).toHaveLength(4);
+    expect(screen.getByText(/適用披露規則/)).toBeVisible();
   });
 });
