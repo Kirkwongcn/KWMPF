@@ -47,13 +47,9 @@ export function carryForwardFailedFields(
         Object.entries(old.returns).map(([period, observation]) => [period, { ...observation, status: "failed_with_last_verified" }]),
       ) as SourceRecord["returns"];
     }
-    if (failed.has(`${record.fundClassId}\u0000current`)) {
-      next.current = old.current;
-      next.currentStatus = "failed_with_last_verified";
-    }
+    if (failed.has(`${record.fundClassId}\u0000current`)) next.current = old.current;
     if (failed.has(`${record.fundClassId}\u0000fundOverview`) && old.fundOverview) {
       next.fundOverview = { ...old.fundOverview };
-      next.fundOverviewStatus = "failed_with_last_verified";
     }
     return next;
   });
