@@ -28,4 +28,10 @@ describe("custom return and volatility rankings", () => {
     expect(rankLowerVolatility([volatilityFund("low", 0.01), volatilityFund("high", 0.03)], "high_to_low").rows.map((row) => row.fundClassId)).toEqual(["high", "low"]);
     expect(rankLowerVolatility([volatilityFund("short", 0.01)].map((fund) => ({ ...fund, monthlyReturns: fund.monthlyReturns.slice(1) })).concat([])).exclusions).toEqual([{ fundClassId: "short", reason: "missing_month" }]);
   });
+
+  it("excludes a 36-row series when its months are not consecutive", () => {
+    const fund = volatilityFund("gap", 0.02);
+    fund.monthlyReturns[12] = { month: "2024-02", value: 0.02 };
+    expect(rankLowerVolatility([fund]).exclusions).toEqual([{ fundClassId: "gap", reason: "missing_month" }]);
+  });
 });

@@ -79,11 +79,16 @@ function standardDeviation(values: number[]) {
   return Math.sqrt(values.reduce((sum, value) => sum + (value - mean) ** 2, 0) / values.length);
 }
 
+function hasConsecutiveMonths(months: string[]) {
+  const sorted = months.toSorted();
+  return sorted.every((month, index) => index === 0 || monthIndex(month) === monthIndex(sorted[index - 1]!) + 1);
+}
+
 export function rankLowerVolatility(funds: VolatilityFund[], direction: "low_to_high" | "high_to_low" = "low_to_high") {
   const rows: VolatilityRow[] = [];
   const exclusions: Array<{ fundClassId: string; reason: "missing_month" }> = [];
   for (const fund of funds) {
-    if (fund.monthlyReturns.length !== 36 || new Set(fund.monthlyReturns.map((item) => item.month)).size !== 36) {
+    if (fund.monthlyReturns.length !== 36 || new Set(fund.monthlyReturns.map((item) => item.month)).size !== 36 || !hasConsecutiveMonths(fund.monthlyReturns.map((item) => item.month))) {
       exclusions.push({ fundClassId: fund.fundClassId, reason: "missing_month" });
       continue;
     }
