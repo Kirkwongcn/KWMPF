@@ -24,6 +24,21 @@ export function buildPublicationReadinessReport(records: PublicationInput[]) {
     unavailableByField: Object.fromEntries(
       [...unavailableByField.entries()].sort(([a], [b]) => a.localeCompare(b)),
     ),
+    blockedDetails: preflight.issues.map((issue) => {
+      const record = records.find(
+        (candidate) => candidate.fundClassId === issue.fundClassId,
+      );
+      return {
+        fundClassId: issue.fundClassId,
+        identity: record?.identity,
+        sourceUrl: record?.sourceUrl,
+        dataAsOf: record?.dataAsOf,
+        missing: issue.missing,
+        officialUnavailable: issue.missing.filter((field) =>
+          record?.unavailableFields?.includes(field),
+        ),
+      };
+    }),
     issues: preflight.issues,
   };
 }

@@ -25,6 +25,12 @@ describe("publication readiness report", () => {
       riskClass: 1,
     });
     expect(result.issues).toHaveLength(1);
+    expect(result.blockedDetails[0]).toMatchObject({
+      fundClassId: "fund-a",
+      sourceUrl: "https://example.test/fund-a",
+      dataAsOf: "2026-06-30",
+      missing: expect.arrayContaining(["oci1yHkd"]),
+    });
   });
 
   it("separates official unavailable fields from generic missing fields", () => {
