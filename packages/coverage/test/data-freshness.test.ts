@@ -11,9 +11,10 @@ describe("data freshness", () => {
   it("carries only failed fields and preserves the previous date", () => {
     const previous = [{ fundClassId: "a", identity: { trusteeName: "T", schemeName: "S", constituentFundName: "F", fundClassName: "I" }, current: true, dataAsOf: "2026-06-30", returns: { 3: { annualized: 4.2, dataAsOf: "2026-06-30" } } }];
     const current = [{ fundClassId: "a", identity: previous[0]!.identity, current: false, dataAsOf: "2026-08-01", returns: { 3: { annualized: 9.9, dataAsOf: "2026-08-01" } } }];
-    const result = carryForwardFailedFields(current, previous, [{ fundClassId: "a", field: "returns" }]);
-    expect(result[0]?.current).toBe(false);
+    const result = carryForwardFailedFields(current, previous, [{ fundClassId: "a", field: "returns" }, { fundClassId: "a", field: "current" }]);
+    expect(result[0]?.current).toBe(true);
     expect(result[0]?.returns?.[3]).toEqual({ annualized: 4.2, dataAsOf: "2026-06-30", status: "failed_with_last_verified" });
+    expect(result[0]?.currentStatus).toBe("failed_with_last_verified");
   });
 
   it("carries a failed fund overview without replacing fresh fields", () => {
@@ -21,6 +22,7 @@ describe("data freshness", () => {
     const current = [{ fundClassId: "a", identity: previous[0]!.identity, current: true, dataAsOf: "2026-08-01", fundOverview: { fee: 0.7 } }];
     const result = carryForwardFailedFields(current, previous, [{ fundClassId: "a", field: "fundOverview" }]);
     expect(result[0]?.fundOverview).toEqual({ fee: 0.8 });
+    expect(result[0]?.fundOverviewStatus).toBe("failed_with_last_verified");
     expect(result[0]?.dataAsOf).toBe("2026-08-01");
   });
 });
