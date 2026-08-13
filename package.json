@@ -19,6 +19,7 @@
     "coverage:fetch-fact-sheets": "bun packages/coverage/src/fetch-fact-sheets.ts",
     "coverage:parse-fact-sheets": "bun packages/coverage/src/parse-fact-sheets.ts",
     "coverage:build-return-overlay": "bun packages/coverage/src/build-return-overlay.ts",
+    "coverage:build-comparison-evidence": "bun packages/coverage/src/build-comparison-evidence.ts",
     "coverage:build-candidate-ranking-report": "bun packages/coverage/src/build-candidate-ranking-report.ts",
     "coverage:fetch-platform": "bun packages/coverage/src/fetch-platform.ts",
     "coverage:retry-platform": "bun packages/coverage/src/retry-platform.ts",
