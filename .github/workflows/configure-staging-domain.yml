@@ -18,8 +18,38 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           DOMAIN: kwmpf.kirkwongcn.com
           PROJECT: kwmpf-web-staging
+          ZONE: kirkwongcn.com
         run: |
           set -euo pipefail
+          zone_id="$(curl --fail-with-body --silent --show-error \
+            --get \
+            --header "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+            --data-urlencode "name=${ZONE}" \
+            "https://api.cloudflare.com/client/v4/zones" | jq -er '.result | if length == 1 then .[0].id else error("Expected one matching zone") end')"
+          dns_api="https://api.cloudflare.com/client/v4/zones/${zone_id}/dns_records"
+          records="$(curl --fail-with-body --silent --show-error \
+            --get \
+            --header "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+            --data-urlencode "name=${DOMAIN}" \
+            "${dns_api}")"
+          record_count="$(jq '.result | length' <<<"${records}")"
+          if [[ "${record_count}" == "0" ]]; then
+            curl --fail-with-body --silent --show-error \
+              --request POST \
+              --header "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+              --header "Content-Type: application/json" \
+              --data "$(jq -cn --arg name "${DOMAIN}" --arg content "${PROJECT}.pages.dev" \
+                '{type: "CNAME", name: $name, content: $content, proxied: true, ttl: 1}')" \
+              "${dns_api}" | jq -e '.success == true' >/dev/null
+            echo "Staging DNS record created."
+          elif jq -e --arg content "${PROJECT}.pages.dev" \
+            '.result | length == 1 and .[0].type == "CNAME" and .[0].content == $content and .[0].proxied == true' \
+            <<<"${records}" >/dev/null; then
+            echo "Staging DNS record is already correct."
+          else
+            echo "Refusing to overwrite an existing DNS record for ${DOMAIN}." >&2
+            exit 1
+          fi
           api="https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/pages/projects/${PROJECT}/domains"
           current="$(curl --fail-with-body --silent --show-error \
             --header "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
