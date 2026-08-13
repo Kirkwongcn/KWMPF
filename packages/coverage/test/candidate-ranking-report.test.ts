@@ -32,4 +32,14 @@ describe("candidate ranking report", () => {
     expect(result.ranking.rankings).toHaveLength(0);
     expect(result.ranking.exclusions).toEqual(expect.arrayContaining([expect.objectContaining({ periodYears: 3, reason: "insufficient" })]));
   });
+
+  it("excludes carried-forward returns through the real report seam", () => {
+    const carried = {
+      ...record,
+      returns: { 3: { annualized: 6.25, dataAsOf: "2025-12-31", status: "failed_with_last_verified" as const } },
+    };
+    const result = buildCandidateRankingReport([carried], [evidence], [], "2026-08-13");
+    expect(result.ranking.rankings).toHaveLength(0);
+    expect(result.ranking.exclusions).toContainEqual(expect.objectContaining({ periodYears: 3, reason: "stale" }));
+  });
 });
