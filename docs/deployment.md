@@ -1,5 +1,7 @@
 # Staging deployment
 
+正式網站網域規劃為 `KWMPF.kirkwongcn.com`。目前只作為網域方案記錄；DNS、正式 custom domain 及公開發布必須另行確認後才會設定。
+
 The `Deploy staging` GitHub Actions workflow publishes the API Worker and health page from `main`. Both deployments receive the commit SHA as their release identifier. It remains manually triggered until the required Cloudflare resources and secrets are configured; the `staging` environment requires approval from the repository owner.
 
 ## Cloudflare resources
