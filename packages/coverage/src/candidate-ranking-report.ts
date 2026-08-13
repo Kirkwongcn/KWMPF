@@ -46,7 +46,7 @@ export function buildCandidateRankingReport(
     returns: Object.fromEntries(
       Object.entries(record.returns ?? {}).map(([period, value]) => [
         Number(period),
-        { value: value?.annualized ?? Number.NaN, dataAsOf: value?.dataAsOf ?? "" },
+        { value: value?.annualized ?? Number.NaN, dataAsOf: value?.dataAsOf ?? "", ...(value?.status ? { status: value.status } : {}) },
       ]),
     ) as ReturnRankingFund["returns"],
   }));
