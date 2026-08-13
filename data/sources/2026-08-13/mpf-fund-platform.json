@@ -1,7 +1,7 @@
 {
   "sourceType": "mpf_fund_platform",
   "sourceUrl": "https://mfp.mpfa.org.hk/eng/mpp_list.jsp",
-  "retrievedAt": "2026-08-13T12:35:30.090Z",
+  "retrievedAt": "2026-08-13T12:51:56.734Z",
   "sourceDataAsOf": "2026-07-31",
   "expectedCounts": {
     "fundClasses": 451,
@@ -189,6 +189,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 0.77859,
@@ -558,6 +559,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 0.94915,
@@ -779,6 +781,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 0.99716,
@@ -1148,6 +1151,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 0.93538,
@@ -1258,6 +1262,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 0.89473,
@@ -1627,6 +1632,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 0.68966,
@@ -1663,6 +1669,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 0.68831,
@@ -2180,6 +2187,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 0.94146,
@@ -2253,6 +2261,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 0.80767,
@@ -2659,6 +2668,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 0.80857,
@@ -2843,6 +2853,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 0.8144,
@@ -3101,6 +3112,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 0.88142,
@@ -3803,6 +3815,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 1.02664,
@@ -3839,6 +3852,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 1.02656,
@@ -3875,6 +3889,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 0.99646,
@@ -4207,6 +4222,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 0.97549,
@@ -4909,6 +4925,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 0.76782,
@@ -5204,6 +5221,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 0.76764,
@@ -5647,6 +5665,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 0.7679,
@@ -6201,6 +6220,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 0.79713,
@@ -6977,6 +6997,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 0.92683,
@@ -7346,6 +7367,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 0.66355,
@@ -7678,6 +7700,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 0.89756,
@@ -7714,6 +7737,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 0.89723,
@@ -9415,6 +9439,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 1.07379,
@@ -10524,6 +10549,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 0.74161,
@@ -12188,6 +12214,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["oci1yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "latestFer": 0.78556,
@@ -13255,6 +13282,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.75345,
@@ -13287,6 +13315,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 3,
         "latestFer": 0.7564,
@@ -13319,6 +13348,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.75892,
@@ -13351,6 +13381,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 3,
         "latestFer": 0.76249,
@@ -13383,6 +13414,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.77623,
@@ -13415,6 +13447,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.79493,
@@ -13447,6 +13480,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.80191,
@@ -13479,6 +13513,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.83067,
@@ -13511,6 +13546,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.7788,
@@ -13543,6 +13579,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.7928,
@@ -13575,6 +13612,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.58185,
@@ -13607,6 +13645,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.60948,
@@ -13639,6 +13678,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.77537,
@@ -13671,6 +13711,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.7688,
@@ -13703,6 +13744,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.7928,
@@ -13735,6 +13777,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.79562,
@@ -13767,6 +13810,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.81293,
@@ -13799,6 +13843,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.81547,
@@ -13831,6 +13876,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.77134,
@@ -13863,6 +13909,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.77151,
@@ -13895,6 +13942,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.77162,
@@ -13927,6 +13975,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.74478,
@@ -13959,6 +14008,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.74459,
@@ -13991,6 +14041,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.74451,
@@ -14023,6 +14074,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.86864,
@@ -14055,6 +14107,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.86585,
@@ -14087,6 +14140,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.82417,
@@ -14119,6 +14173,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.8241,
@@ -14151,6 +14206,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.77229,
@@ -14183,6 +14239,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.77251,
@@ -14215,6 +14272,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.77687,
@@ -14247,6 +14305,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.77571,
@@ -14279,6 +14338,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.77948,
@@ -14311,6 +14371,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.78021,
@@ -14343,6 +14404,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.82147,
@@ -14375,6 +14437,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.84302,
@@ -14407,6 +14470,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.75835,
@@ -14439,6 +14503,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 3,
         "latestFer": 0.76808,
@@ -14471,6 +14536,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.80511,
@@ -14503,6 +14569,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.7694,
@@ -14535,6 +14602,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.81279,
@@ -14567,6 +14635,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.81131,
@@ -14599,6 +14668,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.7913,
@@ -14631,6 +14701,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.8055,
@@ -14663,6 +14734,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 6,
         "latestFer": 0.92544,
@@ -14695,6 +14767,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 6,
         "latestFer": 0.92562,
@@ -14727,6 +14800,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.92894,
@@ -14759,6 +14833,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.9296,
@@ -14791,6 +14866,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.80026,
@@ -14823,6 +14899,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.79675,
@@ -14855,6 +14932,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.80013,
@@ -14887,6 +14965,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.7993,
@@ -14919,6 +14998,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "latestFer": 1.24314,
@@ -14951,6 +15031,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "latestFer": 0.81583,
@@ -14983,6 +15064,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 6,
         "latestFer": 0.88434,
@@ -15015,6 +15097,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "latestFer": 0.87284,
@@ -15047,6 +15130,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.90995,
@@ -15079,6 +15163,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "latestFer": 0.81844,
@@ -15111,6 +15196,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "latestFer": 0.81568,
@@ -15143,6 +15229,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 6,
         "latestFer": 0.88336,
@@ -15175,6 +15262,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "latestFer": 0.87194,
@@ -15207,6 +15295,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 0.90872,
@@ -15239,6 +15328,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "latestFer": 0.8543,
@@ -15271,6 +15361,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "latestFer": 0.81885,
@@ -15303,6 +15394,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "latestFer": 0.85491,
@@ -15335,6 +15427,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 1.35156,
@@ -15367,6 +15460,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "latestFer": 1.23254,
@@ -15399,6 +15493,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "latestFer": 1.3431,
@@ -15431,6 +15526,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 3,
         "latestFer": 0.99557,
@@ -15458,6 +15554,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn5y", "annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "latestFer": 1.19527,
@@ -15485,6 +15582,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn5y", "annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "latestFer": 1.495,
@@ -15512,6 +15610,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn5y", "annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "latestFer": 1.46953,
@@ -15539,6 +15638,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn5y", "annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "latestFer": 0.95214,
@@ -15566,6 +15666,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn5y", "annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 6,
         "latestFer": 1.2088,
@@ -15593,6 +15694,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn5y", "annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "latestFer": 0.89341,
@@ -15620,6 +15722,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn5y", "annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 3,
         "latestFer": 1.46902,
@@ -15647,6 +15750,7 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": ["annualizedReturn5y", "annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 3,
         "latestFer": 1.49913,
@@ -15674,6 +15778,11 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": [
+        "annualizedReturn5y",
+        "annualizedReturn10y",
+        "riskClass"
+      ],
       "fundOverview": {
         "latestFer": 1.06103,
         "managementFee": 0.99,
@@ -15700,6 +15809,11 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": [
+        "annualizedReturn5y",
+        "annualizedReturn10y",
+        "riskClass"
+      ],
       "fundOverview": {
         "latestFer": 1.30729,
         "managementFee": 1.205,
@@ -15726,6 +15840,11 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": [
+        "annualizedReturn5y",
+        "annualizedReturn10y",
+        "riskClass"
+      ],
       "fundOverview": {
         "latestFer": 1.37499,
         "managementFee": 1.225,
@@ -15752,6 +15871,11 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": [
+        "annualizedReturn5y",
+        "annualizedReturn10y",
+        "riskClass"
+      ],
       "fundOverview": {
         "latestFer": 1.16948,
         "managementFee": 1.02,
@@ -15778,6 +15902,11 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": [
+        "annualizedReturn5y",
+        "annualizedReturn10y",
+        "riskClass"
+      ],
       "fundOverview": {
         "latestFer": 1.15221,
         "managementFee": 1.02,
@@ -15804,6 +15933,11 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": [
+        "annualizedReturn5y",
+        "annualizedReturn10y",
+        "riskClass"
+      ],
       "fundOverview": {
         "latestFer": 1.14993,
         "managementFee": 1.02,
@@ -15830,6 +15964,11 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": [
+        "annualizedReturn5y",
+        "annualizedReturn10y",
+        "riskClass"
+      ],
       "fundOverview": {
         "latestFer": 1.04145,
         "managementFee": 0.92,
@@ -15856,6 +15995,11 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": [
+        "annualizedReturn5y",
+        "annualizedReturn10y",
+        "riskClass"
+      ],
       "fundOverview": {
         "latestFer": 1.03905,
         "managementFee": 0.92,
@@ -15882,6 +16026,11 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": [
+        "annualizedReturn5y",
+        "annualizedReturn10y",
+        "riskClass"
+      ],
       "fundOverview": {
         "latestFer": 1.38237,
         "managementFee": 1.28,
@@ -15908,6 +16057,11 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": [
+        "annualizedReturn5y",
+        "annualizedReturn10y",
+        "riskClass"
+      ],
       "fundOverview": {
         "latestFer": 1.53465,
         "managementFee": 1.28,
@@ -15934,6 +16088,11 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": [
+        "annualizedReturn5y",
+        "annualizedReturn10y",
+        "riskClass"
+      ],
       "fundOverview": {
         "latestFer": 1.09791,
         "managementFee": 0.843,
@@ -15960,6 +16119,13 @@
           "dataAsOf": "2026-07-31"
         }
       },
+      "unavailableFields": [
+        "annualizedReturn5y",
+        "annualizedReturn10y",
+        "riskClass",
+        "latestFer",
+        "oci1yHkd"
+      ],
       "fundOverview": {
         "managementFee": 1.11
       }
@@ -15978,6 +16144,14 @@
       "dataAsOf": "2026-07-31",
       "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2379",
       "returns": {},
+      "unavailableFields": [
+        "annualizedReturn1y",
+        "annualizedReturn5y",
+        "annualizedReturn10y",
+        "riskClass",
+        "latestFer",
+        "oci1yHkd"
+      ],
       "fundOverview": {
         "managementFee": 1.03
       }
@@ -15996,6 +16170,14 @@
       "dataAsOf": "2026-07-31",
       "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2399",
       "returns": {},
+      "unavailableFields": [
+        "annualizedReturn1y",
+        "annualizedReturn5y",
+        "annualizedReturn10y",
+        "riskClass",
+        "latestFer",
+        "oci1yHkd"
+      ],
       "fundOverview": {
         "managementFee": 0.87
       }
@@ -16014,6 +16196,14 @@
       "dataAsOf": "2026-07-31",
       "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2400",
       "returns": {},
+      "unavailableFields": [
+        "annualizedReturn1y",
+        "annualizedReturn5y",
+        "annualizedReturn10y",
+        "riskClass",
+        "latestFer",
+        "oci1yHkd"
+      ],
       "fundOverview": {
         "managementFee": 0.74
       }
@@ -16032,6 +16222,14 @@
       "dataAsOf": "2026-07-31",
       "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2401",
       "returns": {},
+      "unavailableFields": [
+        "annualizedReturn1y",
+        "annualizedReturn5y",
+        "annualizedReturn10y",
+        "riskClass",
+        "latestFer",
+        "oci1yHkd"
+      ],
       "fundOverview": {
         "managementFee": 0.88
       }
