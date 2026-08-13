@@ -13,4 +13,11 @@ describe("MPF Fund Platform comparison evidence", () => {
     expect(buildPlatformComparisonEvidence([{ ...base, fundType: "Unclassified Fund", fundTypeDescriptor: "Unknown" }])).toEqual([]);
     expect(buildPlatformComparisonEvidence([{ ...base, fundType: "Mixed Assets Fund", fundTypeDescriptor: "n.a." }])).toEqual([]);
   });
+
+  it("preserves only evidence that can be rebuilt from the platform snapshot", () => {
+    expect(buildPlatformComparisonEvidence([
+      { ...base, fundType: "Equity Fund", fundTypeDescriptor: "Global Equity" },
+      { ...base, fundClassId: "fund-b", fundType: "Unclassified Fund", fundTypeDescriptor: "n.a." },
+    ])).toEqual([{ fundClassId: "fund-a", fundType: "equity", allocationProfile: "Global Equity", sourceUrl: base.sourceUrl, dataAsOf: "2026-06-30" }]);
+  });
 });
