@@ -23,7 +23,7 @@ jobs:
       - run: bun install --frozen-lockfile
       - run: bun run check
       - name: Build full staging publication seed
-        run: bun run --filter @kwmpf/coverage staging-seed -- --source data/sources/2026-08-13/mpf-fund-platform.json --output /tmp/kwmpf-staging.sql
+        run: bun run --filter @kwmpf/coverage staging-seed -- --source ../../data/sources/2026-08-13/mpf-fund-platform.json --output /tmp/kwmpf-staging.sql
       - name: Prepare staging Worker configuration
         env:
           D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
