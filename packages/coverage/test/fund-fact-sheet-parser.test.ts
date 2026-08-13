@@ -33,7 +33,7 @@ const hangSengFixture = `所載資料截至 All information as at 31/12/2025\fVa
 const bocFixture = `BOC-Prudential Hong Kong Equity Fund ◆\nAnnualized Return N/A N/A 11.01 8.22 -2.37 3.92 6.87\fBOC-Prudential MPF Conservative Fund\nAnnualized Return N/A N/A N/A N/A 0.50 0.60`;
 const haitongFixture = `as of 31/12/2025\fHAITONG HONG KONG SAR FUND\nFUND PERFORMANCE\nA 30.82% 7.97% -0.72% 6.43%\nT 30.92% 8.05% -0.64% 6.51%`;
 const myChoiceFixture = `As at 30/9/2025\fMY CHOICE GROWTH FUND\nPERFORMANCE IN HKD\nAnnualized Return (%)\n1 Year 3 Years 5 Years 10 Years\n3 Years 3 Years 5.20`;
-const massFixture = `MASS Mandatory Provident Fund Scheme\fAge 65 Plus Fund Risk Low\nAnnualized Return 平均每年收益率\n1 year 3 years 5 years Since launch\nFund 基金 3.83% -1.54% 1.04% 1.96%`;
+const massFixture = `YF Life Trustees Ltd.\nAsian Pacific Equity Fund                                                                 Published in February 2026\nFund Data as at                      December 31, 2025\nFund Performance 1 year 3 years 5 years 10 years Since launch\nAnnualized Return 30.27% 14.34% 2.61% 4.48% 3.86%`;
 const shkpFixture = `SHKP MPF Employer Sponsored Scheme\nAs at 31 March 2026\fAllianz Choice Balanced FundNote 1\nPerformance Note 2 & 3\nLast 3 years (p.a.%)+ 8.99 %`;
 const fidelityFixture = `Fidelity Retirement Master Trust - MPF Conservative Fund *As of 截至 30/06/2025\nCumulative Performance 累積表現\nN/A N/A 2.98% 8.15% 8.15% 9.53% 20.81%\nAnnualised Performance 年率化表現\nN/A N/A 2.98% 2.64% 1.58% 0.91% 0.77%`;
 
@@ -102,7 +102,7 @@ describe("official fund fact sheet parser", () => {
   });
   it("parses MASS three-year annualized returns", () => {
     expect(parseMassFundPerformance(massFixture, "https://example.test/mass.pdf")).toEqual([
-      expect.objectContaining({ constituentFundName: "Age 65 Plus Fund", dataAsOf: "2024-12-31", annualizedReturn3Year: -1.54 }),
+      expect.objectContaining({ constituentFundName: "Asian Pacific Equity Fund", dataAsOf: "2025-12-31", annualizedReturn3Year: 14.34 }),
     ]);
   });
   it("parses SHKP employer-sponsored three-year returns", () => {
