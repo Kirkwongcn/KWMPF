@@ -1,0 +1,30 @@
+type PublicFields = {
+  annualizedReturn1y?: number;
+  riskClass?: number;
+  latestFer?: number;
+  managementFee?: number;
+  oci1yHkd?: number;
+};
+
+type PublicationInput = {
+  fundClassId: string;
+  identity: { trusteeName: string; schemeName: string; constituentFundName: string; fundClassName: string };
+  current: boolean;
+  status: string;
+  dataAsOf?: string;
+  sourceUrl?: string;
+  publicFields?: PublicFields;
+};
+
+const requiredFields = ["annualizedReturn1y", "riskClass", "latestFer", "managementFee", "oci1yHkd"] as const;
+
+export function buildPublicationPreflight(records: PublicationInput[]) {
+  const issues = records.flatMap((record) => {
+    const missing = requiredFields.filter((field) => typeof record.publicFields?.[field] !== "number");
+    if (!record.sourceUrl) missing.push("sourceUrl" as never);
+    if (!record.dataAsOf) missing.push("dataAsOf" as never);
+    if (!record.current || record.status !== "verified") missing.push("verifiedCurrent" as never);
+    return missing.length > 0 ? [{ fundClassId: record.fundClassId, missing }] : [];
+  });
+  return { ready: issues.length === 0, accepted: records.length - issues.length, blocked: issues.length, issues };
+}
