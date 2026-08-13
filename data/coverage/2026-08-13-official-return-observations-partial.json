@@ -1,0 +1,298 @@
+[
+  {
+    "fundClassId": "mpfa-cf-1519",
+    "periodYears": 3,
+    "annualized": 11.18,
+    "dataAsOf": "2025-11-30",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00172.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-1520",
+    "periodYears": 3,
+    "annualized": 4.62,
+    "dataAsOf": "2025-11-30",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00172.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-878",
+    "periodYears": 3,
+    "annualized": 18.39,
+    "dataAsOf": "2025-11-30",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00172.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-876",
+    "periodYears": 3,
+    "annualized": 13.44,
+    "dataAsOf": "2025-11-30",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00172.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-877",
+    "periodYears": 3,
+    "annualized": 14.77,
+    "dataAsOf": "2025-11-30",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00172.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-658",
+    "periodYears": 3,
+    "annualized": 16.66,
+    "dataAsOf": "2025-11-30",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00172.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-875",
+    "periodYears": 3,
+    "annualized": 4.73,
+    "dataAsOf": "2025-11-30",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00172.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-657",
+    "periodYears": 3,
+    "annualized": 3.35,
+    "dataAsOf": "2025-11-30",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00172.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-1579",
+    "periodYears": 3,
+    "annualized": 7.6,
+    "dataAsOf": "2025-11-30",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00172.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-699",
+    "periodYears": 3,
+    "annualized": 8.3,
+    "dataAsOf": "2025-11-30",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00172.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-137",
+    "periodYears": 3,
+    "annualized": 15.43,
+    "dataAsOf": "2025-11-30",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00172.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-145",
+    "periodYears": 3,
+    "annualized": 15.78,
+    "dataAsOf": "2025-11-30",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00172.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-102",
+    "periodYears": 3,
+    "annualized": 14.39,
+    "dataAsOf": "2025-11-30",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00172.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-142",
+    "periodYears": 3,
+    "annualized": 16.84,
+    "dataAsOf": "2025-11-30",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00172.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-141",
+    "periodYears": 3,
+    "annualized": 17.75,
+    "dataAsOf": "2025-11-30",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00172.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-133",
+    "periodYears": 3,
+    "annualized": 13.59,
+    "dataAsOf": "2025-11-30",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00172.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-132",
+    "periodYears": 3,
+    "annualized": 8.17,
+    "dataAsOf": "2025-11-30",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00172.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-131",
+    "periodYears": 3,
+    "annualized": 6.08,
+    "dataAsOf": "2025-11-30",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00172.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-769",
+    "periodYears": 3,
+    "annualized": 5.12,
+    "dataAsOf": "2025-12-31",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-770",
+    "periodYears": 3,
+    "annualized": 5.98,
+    "dataAsOf": "2025-12-31",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-771",
+    "periodYears": 3,
+    "annualized": 8.62,
+    "dataAsOf": "2025-12-31",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-772",
+    "periodYears": 3,
+    "annualized": 11.1,
+    "dataAsOf": "2025-12-31",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-773",
+    "periodYears": 3,
+    "annualized": 13.73,
+    "dataAsOf": "2025-12-31",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-780",
+    "periodYears": 3,
+    "annualized": 5.61,
+    "dataAsOf": "2025-12-31",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-778",
+    "periodYears": 3,
+    "annualized": 10.63,
+    "dataAsOf": "2025-12-31",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-779",
+    "periodYears": 3,
+    "annualized": 14.85,
+    "dataAsOf": "2025-12-31",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-782",
+    "periodYears": 3,
+    "annualized": 3.52,
+    "dataAsOf": "2025-12-31",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-774",
+    "periodYears": 3,
+    "annualized": 3.75,
+    "dataAsOf": "2025-12-31",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-775",
+    "periodYears": 3,
+    "annualized": 6.9,
+    "dataAsOf": "2025-12-31",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-776",
+    "periodYears": 3,
+    "annualized": 8.63,
+    "dataAsOf": "2025-12-31",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-777",
+    "periodYears": 3,
+    "annualized": 10.08,
+    "dataAsOf": "2025-12-31",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-781",
+    "periodYears": 3,
+    "annualized": 2.56,
+    "dataAsOf": "2025-12-31",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-1529",
+    "periodYears": 3,
+    "annualized": 3.75,
+    "dataAsOf": "2025-12-31",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-1530",
+    "periodYears": 3,
+    "annualized": 6.07,
+    "dataAsOf": "2025-12-31",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-209",
+    "periodYears": 3,
+    "annualized": 7.03,
+    "dataAsOf": "2025-12-31",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00393.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-208",
+    "periodYears": 3,
+    "annualized": 3.75,
+    "dataAsOf": "2025-12-31",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00393.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-1522",
+    "periodYears": 3,
+    "annualized": 6.46,
+    "dataAsOf": "2025-12-31",
+    "sourceUrl": "https://www.mpfa.org.hk/assets/FF/MT00393.pdf",
+    "retrievedAt": "2026-08-13T02:37:22.706Z"
+  }
+]
