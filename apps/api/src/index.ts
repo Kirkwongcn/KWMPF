@@ -132,6 +132,90 @@ app.get("/schemes", async (context) => {
   return context.json([...schemes.values()]);
 });
 
+app.get("/rankings", async (context) => {
+  if (context.req.query("period") !== "1") {
+    return context.json({ error: "Unsupported ranking period" }, 400);
+  }
+  const rows = await context.env.DB.prepare(
+    `SELECT c.snapshot_id, f.payload
+     FROM current_publication c
+     JOIN fund_class_versions f ON f.snapshot_id = c.snapshot_id
+     WHERE c.singleton = 1`,
+  ).all<{ snapshot_id: string; payload: string }>();
+  const eligible = rows.results.flatMap((row) => {
+    const publication = JSON.parse(row.payload) as {
+      fundClass: {
+        id: string;
+        fundClassName: string;
+        constituentFundName: string;
+        schemeName: string;
+        trusteeName: string;
+        fundCategory: string;
+        annualizedReturn1y?: number;
+        dataAsOf: string;
+        verificationStatus: string;
+      };
+      provenance: {
+        sourceUrl: string;
+        dataAsOf: string;
+        verificationStatus: string;
+      };
+    };
+    const value = publication.fundClass.annualizedReturn1y;
+    if (
+      publication.fundClass.verificationStatus !== "verified" ||
+      publication.provenance.verificationStatus !== "verified" ||
+      typeof value !== "number" ||
+      !Number.isFinite(value)
+    ) {
+      return [];
+    }
+    return [{ snapshotId: row.snapshot_id, publication, value }];
+  });
+  const groups = Map.groupBy(
+    eligible,
+    ({ publication }) => publication.fundClass.fundCategory,
+  );
+  const rankings = [...groups.entries()].flatMap(([comparisonGroup, funds]) => {
+    funds.sort(
+      (a, b) => Number(b.value.toFixed(2)) - Number(a.value.toFixed(2)),
+    );
+    let previousValue: number | undefined;
+    let previousRank = 0;
+    return funds.map(({ publication, value }, index) => {
+      const displayed = Number(value.toFixed(2));
+      const rank = displayed === previousValue ? previousRank : index + 1;
+      previousValue = displayed;
+      previousRank = rank;
+      return {
+        fundClassId: publication.fundClass.id,
+        fundClassName: publication.fundClass.fundClassName,
+        constituentFundName: publication.fundClass.constituentFundName,
+        schemeName: publication.fundClass.schemeName,
+        trusteeName: publication.fundClass.trusteeName,
+        comparisonGroup,
+        value,
+        displayValue: `${value.toFixed(2)}%`,
+        rank,
+        dataAsOf: publication.provenance.dataAsOf,
+        sourceUrl: publication.provenance.sourceUrl,
+      };
+    });
+  });
+
+  return context.json({
+    snapshotId: rows.results[0]?.snapshot_id ?? null,
+    periodYears: 1,
+    methodology: {
+      metric: "annualized_return",
+      grouping: "comparison_group",
+      sortDirection: "descending",
+      displayPrecision: 2,
+    },
+    rankings,
+  });
+});
+
 app.notFound((context) => context.json({ error: "Not found" }, 404));
 
 export default app;

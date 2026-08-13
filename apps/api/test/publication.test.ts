@@ -136,4 +136,83 @@ describe("publication snapshot", () => {
       expect.objectContaining({ riskClassDistribution: {} }),
     ]);
   });
+
+  it("ranks one-year returns within the same comparison group using displayed precision", async () => {
+    const snapshotId = "snapshot-ranking-test";
+    await bindings.DB.prepare(
+      "INSERT INTO publication_snapshots (snapshot_id, published_at) VALUES (?, ?)",
+    )
+      .bind(snapshotId, "2026-08-13T00:00:00Z")
+      .run();
+    const funds = [
+      { id: "fund-a", name: "基金 A", value: 8.124 },
+      { id: "fund-b", name: "基金 B", value: 8.123 },
+      { id: "fund-c", name: "基金 C", value: 7.5 },
+    ];
+    for (const fund of funds) {
+      await bindings.DB.prepare(
+        "INSERT INTO fund_class_versions (snapshot_id, fund_class_id, payload) VALUES (?, ?, ?)",
+      )
+        .bind(
+          snapshotId,
+          fund.id,
+          JSON.stringify({
+            snapshotId,
+            fundClass: {
+              id: fund.id,
+              fundClassName: fund.name,
+              constituentFundName: fund.name,
+              schemeName: "測試計劃",
+              trusteeName: "測試受託人",
+              fundCategory: "環球股票基金",
+              annualizedReturn1y: fund.value,
+              dataAsOf: "2026-07-31",
+              verificationStatus: "verified",
+            },
+            provenance: {
+              sourceUrl: `https://example.test/${fund.id}`,
+              dataAsOf: "2026-07-31",
+              verificationStatus: "verified",
+            },
+          }),
+        )
+        .run();
+    }
+    await bindings.DB.prepare(
+      "INSERT INTO current_publication (singleton, snapshot_id) VALUES (1, ?)",
+    )
+      .bind(snapshotId)
+      .run();
+
+    const response = await SELF.fetch("https://kwmpf.test/rankings?period=1");
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({
+      snapshotId,
+      periodYears: 1,
+      methodology: {
+        metric: "annualized_return",
+        grouping: "comparison_group",
+        sortDirection: "descending",
+        displayPrecision: 2,
+      },
+      rankings: [
+        expect.objectContaining({
+          fundClassId: "fund-a",
+          displayValue: "8.12%",
+          rank: 1,
+        }),
+        expect.objectContaining({
+          fundClassId: "fund-b",
+          displayValue: "8.12%",
+          rank: 1,
+        }),
+        expect.objectContaining({
+          fundClassId: "fund-c",
+          displayValue: "7.50%",
+          rank: 3,
+        }),
+      ],
+    });
+  });
 });
