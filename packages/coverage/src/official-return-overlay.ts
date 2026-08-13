@@ -96,13 +96,17 @@ export function normalizeFundFactSheetReturns(
   for (const item of returns) {
     const candidates = matches.get(identityKey(item.schemeName, item.constituentFundName)) ?? [];
     const filtered = item.fundClassName
-      ? candidates.filter((record) => record.identity.fundClassName.toLocaleLowerCase() === item.fundClassName!.toLocaleLowerCase())
+      ? candidates.filter((record) => normalizeClassName(record.identity.fundClassName) === normalizeClassName(item.fundClassName!))
       : candidates;
     if (filtered.length === 0) unmatched.push(item);
     else if (filtered.length !== 1) ambiguous.push(item);
     else observations.push({ fundClassId: filtered[0]!.fundClassId, periodYears: 3, annualized: item.annualizedReturn3Year, dataAsOf: item.dataAsOf, sourceUrl: item.sourceUrl, retrievedAt });
   }
   return { observations, unmatched, ambiguous };
+}
+
+function normalizeClassName(value: string) {
+  return value.replace(/^class\s+/i, "").trim().toLocaleLowerCase();
 }
 
 export function applyOfficialReturnOverlay(
