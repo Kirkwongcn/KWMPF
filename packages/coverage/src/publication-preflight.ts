@@ -6,7 +6,7 @@ type PublicFields = {
   oci1yHkd?: number;
 };
 
-type PublicationInput = {
+export type PublicationInput = {
   fundClassId: string;
   identity: { trusteeName: string; schemeName: string; constituentFundName: string; fundClassName: string };
   current: boolean;
