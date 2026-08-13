@@ -75,6 +75,23 @@ describe("coverage manifest", () => {
     ]);
   });
 
+  it("applies freshness status while building the coverage snapshot", () => {
+    const record = { ...{
+      fundClassId: "fund-a-class-i",
+      identity,
+      current: true,
+      dataAsOf: "2026-06-01",
+      returns: { 3: { annualized: 4.2, dataAsOf: "2026-06-01" } },
+    } };
+    const result = buildCoverage([
+      source("mpf_fund_platform", [record]),
+      source("trustee_fund_list", [record]),
+      source("official_scheme_document", [record]),
+    ], undefined, "2026-08-14");
+    expect(result.records[0]?.currentStatus).toBe("stale");
+    expect(result.records[0]?.returns?.[3]?.status).toBe("stale");
+  });
+
   it("detects coverage changes and assigns every trustee to one stable batch of at most four", () => {
     const currentRecords = Array.from({ length: 9 }, (_, index) => ({
       fundClassId: `fund-${index + 1}`,
