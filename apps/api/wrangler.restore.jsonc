@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "kwmpf-restore-drill",
+  "compatibility_date": "2026-08-08",
+  "d1_databases": [
+    {
+      "binding": "RESTORE_DB",
+      "database_name": "kwmpf-restore-drill",
+      "database_id": "00000000-0000-0000-0000-000000000000"
+    }
+  ]
+}
