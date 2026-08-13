@@ -79,4 +79,18 @@ describe("MPF Fund Platform parser", () => {
     );
     expect(parseFundDetail(html, 429).returns?.[10]).toBeUndefined();
   });
+
+  it("preserves an official zero return while skipping an unavailable period", () => {
+    const html = fixture("fund-detail.html")
+      .replace("+6.09% p.a. / +6.09%", "0% p.a. / 0%")
+      .replace("+1.23% p.a. / +13.04%", "n.a. / n.a.");
+    const result = parseFundDetail(html, 219);
+
+    expect(result.returns?.[1]).toEqual({
+      annualized: 0,
+      cumulative: 0,
+      dataAsOf: "2026-06-30",
+    });
+    expect(result.returns?.[10]).toBeUndefined();
+  });
 });
