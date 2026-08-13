@@ -55,9 +55,10 @@ export function App({ apiUrl }: { apiUrl: string }) {
               <strong>KWMPF</strong>
             </span>
           </a>
-          <a className="kw-muted" href="/schemes">
-            計劃比較
-          </a>
+          <nav className="kw-nav" aria-label="主要導覽">
+            <a href="/rankings">基金排名</a>
+            <a href="/schemes">計劃比較</a>
+          </nav>
         </div>
       </header>
       <section className="kw-hero" aria-labelledby="page-title">
@@ -107,6 +108,9 @@ export function App({ apiUrl }: { apiUrl: string }) {
                 </div>
               </form>
               <p>
+                <a className="kw-button" href="/rankings">
+                  查看基金排名
+                </a>{" "}
                 <a className="kw-button" href="/schemes">
                   比較強積金計劃
                 </a>
