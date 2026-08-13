@@ -25,7 +25,6 @@ if (!payload.ready) {
 
 const sqlString = (value: string) => `'${value.replaceAll("'", "''")}'`;
 const statements = [
-  "BEGIN TRANSACTION;",
   "DELETE FROM current_publication;",
   "DELETE FROM fund_class_versions;",
   "DELETE FROM publication_snapshots;",
@@ -58,7 +57,6 @@ const statements = [
     return `INSERT INTO fund_class_versions (snapshot_id, fund_class_id, payload) VALUES (${sqlString(snapshotId)}, ${sqlString(record.fundClassId)}, ${sqlString(body)});`;
   }),
   `INSERT INTO current_publication (singleton, snapshot_id) VALUES (1, ${sqlString(snapshotId)});`,
-  "COMMIT;",
 ];
 await writeFile(outputPath, `${statements.join("\n")}\n`);
 console.log(JSON.stringify({ outputPath, snapshotId, records: payload.records.length }));
