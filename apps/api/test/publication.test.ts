@@ -61,6 +61,34 @@ describe("publication snapshot", () => {
     });
   });
 
+  it("does not publish an anomalous candidate without matching reviewer approval", async () => {
+    const anomalous = {
+      ...fundFixture,
+      anomalyReport: { requiresReview: true, policyVersion: "2026-08-13.v1" },
+    };
+    const archived = await archiveCandidate(bindings, anomalous);
+    await expect(
+      publishCandidate(bindings, anomalous, archived),
+    ).rejects.toThrow("requires reviewer approval");
+    expect(
+      await SELF.fetch("https://kwmpf.test/fund-classes/mpfa-cf-429-class-i"),
+    ).toHaveProperty("status", 404);
+  });
+
+  it("publishes an anomalous candidate only with matching reviewer approval", async () => {
+    const anomalous = {
+      ...fundFixture,
+      anomalyReport: { requiresReview: true, policyVersion: "2026-08-13.v1" },
+    };
+    const archived = await archiveCandidate(bindings, anomalous);
+    await expect(
+      publishCandidate(bindings, anomalous, archived, {
+        reviewer: "required-reviewer",
+        policyVersion: "2026-08-13.v1",
+      }),
+    ).resolves.toBe("snapshot-mpfa-cf-429-2026-06-30");
+  });
+
   it("searches the current publication by fund, scheme, or trustee name", async () => {
     const archived = await archiveCandidate(bindings, fundFixture);
     await publishCandidate(bindings, fundFixture, archived);

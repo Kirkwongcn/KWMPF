@@ -6,6 +6,7 @@ export type PublicationBindings = {
 export type FundClassFixture = {
   batchId: string;
   source: { url: string; retrievedAt: string };
+  anomalyReport?: { requiresReview: boolean; policyVersion: string };
   fundClass: {
     id: string;
     trusteeName: string;
@@ -19,6 +20,8 @@ export type FundClassFixture = {
     [key: string]: string | number;
   };
 };
+
+export type PublicationApproval = { reviewer: string; policyVersion: string };
 
 export async function archiveCandidate(
   bindings: PublicationBindings,
@@ -52,12 +55,21 @@ export async function publishCandidate(
   bindings: PublicationBindings,
   fixture: FundClassFixture,
   archived: ArchivedCandidate,
+  approval?: PublicationApproval,
 ) {
   if (
     archived.batchId !== fixture.batchId ||
     fixture.fundClass.verificationStatus !== "verified"
   ) {
     throw new Error("Only the matching verified candidate can be published");
+  }
+  if (
+    fixture.anomalyReport?.requiresReview &&
+    (!approval ||
+      approval.reviewer.trim() === "" ||
+      approval.policyVersion !== fixture.anomalyReport.policyVersion)
+  ) {
+    throw new Error("Candidate anomaly report requires reviewer approval");
   }
 
   const candidate = await bindings.DB.prepare(
