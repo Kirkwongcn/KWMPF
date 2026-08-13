@@ -22,6 +22,8 @@ jobs:
           bun-version: 1.3.11
       - run: bun install --frozen-lockfile
       - run: bun run check
+      - name: Build full staging publication seed
+        run: bun run --filter @kwmpf/coverage staging-seed -- --source data/sources/2026-08-13/mpf-fund-platform.json --output /tmp/kwmpf-staging.sql
       - name: Prepare staging Worker configuration
         env:
           D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
@@ -33,20 +35,20 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: apps/api
           command: d1 migrations apply kwmpf-staging --remote --config wrangler.staging.json
-      - name: Archive fixed staging fixture
+      - name: Archive staging source snapshot
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: apps/api
-          command: r2 object put kwmpf-staging-raw/candidates/mpfa-cf-429-2026-06-30/e5b707db8e224a584706d6e39ae8ada06efd23d7d7709320275a5118b7c48182.json --remote --file ../../fixtures/mpfa/cf-429.json
-      - name: Publish fixed staging fixture
+          command: r2 object put kwmpf-staging-raw/candidates/mpfa-platform-2026-07-31/2026-08-13-mpf-fund-platform.json --remote --file ../../data/sources/2026-08-13/mpf-fund-platform.json
+      - name: Publish full staging snapshot
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: apps/api
-          command: d1 execute kwmpf-staging --remote --config wrangler.staging.json --file ../../fixtures/mpfa/cf-429-staging.sql
+          command: d1 execute kwmpf-staging --remote --config wrangler.staging.json --file /tmp/kwmpf-staging.sql
       - name: Deploy Worker
         id: deploy-worker
         uses: cloudflare/wrangler-action@v4
