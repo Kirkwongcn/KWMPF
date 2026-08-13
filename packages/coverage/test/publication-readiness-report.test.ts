@@ -12,7 +12,7 @@ const record = {
 };
 
 describe("publication readiness report", () => {
-  it("counts every missing publication field without making partial data ready", () => {
+  it("counts every genuinely missing publication field without making partial data ready", () => {
     const result = buildPublicationReadinessReport([record]);
 
     expect(result.ready).toBe(false);
@@ -31,6 +31,19 @@ describe("publication readiness report", () => {
       dataAsOf: "2026-06-30",
       missing: expect.arrayContaining(["oci1yHkd"]),
     });
+  });
+
+  it("accepts official unavailable fields without treating them as fabricated values", () => {
+    const result = buildPublicationReadinessReport([
+      {
+        ...record,
+        unavailableFields: ["riskClass", "latestFer", "managementFee", "oci1yHkd"],
+      },
+    ]);
+
+    expect(result.ready).toBe(true);
+    expect(result.acceptedRecords).toBe(1);
+    expect(result.blockedRecords).toBe(0);
   });
 
   it("separates official unavailable fields from generic missing fields", () => {
