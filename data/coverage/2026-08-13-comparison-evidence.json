@@ -1,0 +1,3161 @@
+{
+  "coveragePath": "/tmp/kwmpf-platform-451.json",
+  "generatedAt": "2026-08-13T02:32:18.845Z",
+  "evidence": [
+    {
+      "fundClassId": "mpfa-cf-1000",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund (North America)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1000",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1001",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund (Europe)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1001",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-102",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Greater China Region",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=102",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1039",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1039",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1040",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maxmium 90% in equity",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1040",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1041",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maxmium 60% in equity",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1041",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1042",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maxmium 40% in equity",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1042",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1043",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1043",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1044",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Asia ex Japan",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1044",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1045",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Greater China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1045",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1047",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1047",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1048",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1048",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1099",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund [China]",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1099",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1100",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund [China]",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1100",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1101",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1101",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1102",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1102",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1119",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund (Hong Kong and China)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1119",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1159",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1159",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1179",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1179",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1180",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1180",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1181",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1181",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1199",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1199",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1200",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1200",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1219",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1219",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-131",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity 45%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=131",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-132",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity 65%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=132",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-133",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity 100%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=133",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1339",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1339",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-134",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=134",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1340",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1340",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1359",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - China & Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1359",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-137",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Asia-Pacific",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=137",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1379",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1379",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1399",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity normally 30%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1399",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-141",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=141",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1419",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1419",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-142",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - North America",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=142",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1420",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1420",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1439",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Hong Kong and China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1439",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-145",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Europe",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=145",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-146",
+      "fundType": "guaranteed",
+      "allocationProfile": "Guaranteed Fund",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=146",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-147",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=147",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-148",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity 100%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=148",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1485",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global – around 60% in higher risk assets and 40% in lower risk assets",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1485",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1486",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global – around 20% in higher risk assets and 80% in lower risk assets",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1486",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1487",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global – Maximum equity around 65%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1487",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1488",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global – Maximum equity around 25%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1488",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-149",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity 85%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=149",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1491",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Equity around 60%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1491",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1492",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Equity around 20%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1492",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1493",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Equity around 60%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1493",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1494",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Equity around 20%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1494",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1495",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Equity around 60%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1495",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1496",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Equity around 20%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1496",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1497",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global – maximum equity 65%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1497",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1498",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global – maximum equity 25%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1498",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-150",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=150",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1503",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund (Global) - Equity: Maximum 65%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1503",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1505",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund (Global) - Equity: Maximum 25%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1505",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-151",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=151",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1519",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity 65%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1519",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1520",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity 25%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1520",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1521",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund (Global) - Maximum 65% in Higher Risk Assets (such as global equities)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1521",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1522",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund (Global) - Maximum 25% in Higher Risk Assets (such as global equities)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1522",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1523",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global – Maximum equity around 65%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1523",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1524",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global – Maximum equity around 65%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1524",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1525",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global – Maximum equity around 65%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1525",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1526",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global – Maximum equity around 25%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1526",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1527",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global – Maximum equity around 25%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1527",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1528",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global – Maximum equity around 25%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1528",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1529",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity around 65%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1529",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1530",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity around 25%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1530",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1531",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Asset Fund [Global] Equity: maximum 65%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1531",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1532",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Asset Fund [Global] Equity: maximum 25%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1532",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1533",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Asset Fund [Global] Equity: maximum 65%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1533",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1534",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Asset Fund [Global] Equity: maximum 25%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1534",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1535",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maxmium 65% in higher risk assets (such as global equities)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1535",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1536",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maxmium 25% in higher risk assets (such as global equities)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1536",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1537",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maxmium 65% in higher risk assets (such as global equities)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1537",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1538",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maxmium 25% in higher risk assets (such as global equities)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1538",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1539",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maxmium 65% in higher risk assets (such as global equities)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1539",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1540",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maxmium 25% in higher risk assets (such as global equities)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1540",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1541",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund (Global) Maximum equity - 65%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1541",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1542",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund (Global) Maximum equity - 25%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1542",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1543",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity - 65%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1543",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1544",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity - 25%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1544",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1545",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund(Global) - Maximum Equity (namely, higher risk assets) - 65%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1545",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1546",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund(Global) - Maximum Equity (namely, higher risk assets) - 25%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1546",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1551",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global – Maximum equity 65%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1551",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1552",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global – Maximum equity 25%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1552",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1553",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund –Global (Maximum Equity ~ 65%)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1553",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1554",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund –Global (Maximum Equity ~ 65%)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1554",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1555",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund –Global (Maximum Equity ~ 25%)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1555",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1556",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund –Global (Maximum Equity ~ 25%)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1556",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1557",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum Equity - 65%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1557",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1558",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum Equity - 65%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1558",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1559",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum Equity - 25%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1559",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1560",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum Equity - 25%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1560",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1579",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - China and Hong Kong - Maximum equity around 90%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1579",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-158",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity 45%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=158",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-160",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Asia Pacific",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=160",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-161",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=161",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1619",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1619",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-162",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=162",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1620",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - mainland China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1620",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1621",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Asia-Pacific, excluding Japan",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1621",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1622",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund [Global] - Maximum equity around 80%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1622",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1624",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - North America",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1624",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1625",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1625",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1626",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - mainland China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1626",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1627",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Asia Pacific, excluding Japan",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1627",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1628",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund [Global] - Maximum equity around 80%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1628",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1629",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - European countries",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1629",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-163",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity 45%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=163",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1630",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - North America",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1630",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1631",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - European countries",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1631",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-165",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=165",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-166",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=166",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-167",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity 85%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=167",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-168",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity 100%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=168",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1719",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global – Around 20% to 60% in equities and equity-related investments",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1719",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-173",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund [Global]",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=173",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1739",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity around 90%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1739",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-174",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund [Global] Equity : around 70%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=174",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1740",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity around 90%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1740",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1741",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Asia",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1741",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-175",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund [Global] Equity : 0-50%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=175",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-176",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund [China & Hong Kong]",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=176",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-177",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund [Global]",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=177",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-178",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund [Asia ex-Japan]",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=178",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-179",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund [Hong Kong]",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=179",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1799",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global – Maximum equity 50%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1799",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-180",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund [Global] Equity : around 30%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=180",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-181",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund [Global] Equity : around 50%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=181",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1819",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Asset Fund [Global] Equity : Initially around 100% with greater exposure to bonds and cash as the target year of 2045 approaches",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1819",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-182",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund [Hong Kong]",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=182",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1820",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Asset Fund [Global] Equity : Initially around 100% with greater exposure to bonds and cash as the target year of 2050 approaches",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1820",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1821",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund [U.S.]",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1821",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-183",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund [Global]",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=183",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1839",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund (Greater China Region)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1839",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-184",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund [Global] Equity : around 70%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=184",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1840",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund (U.S.)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1840",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-185",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund [Global] Equity : around 50%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=185",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1859",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Asset Fund [Asia] Equity: maximum 30%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1859",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-187",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund [Asia ex-Japan]",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=187",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-188",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund [Global] Equity : around 30%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=188",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-189",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund [Global] Equity : 0-50%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=189",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-190",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund [Global]",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=190",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-191",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum Equity around - 30%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=191",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-192",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum Equity around - 30%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=192",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-193",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=193",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-194",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=194",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-195",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong and China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=195",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1959",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund(Hong Kong) Maximum equity - 25%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1959",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-196",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong and China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=196",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-1979",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - North America",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1979",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-198",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum Equity around - 70%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=198",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-199",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum Equity around - 70%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=199",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-200",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity 100%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=200",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-201",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity 100%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=201",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-202",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=202",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-203",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=203",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-206",
+      "fundType": "guaranteed",
+      "allocationProfile": "Guaranteed Fund (guarantee payable conditionally)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=206",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-2063",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - United States",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2063",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-2064",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Europe",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2064",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-2065",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Global Equity",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2065",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-2066",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2066",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-2067",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2067",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-2068",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - US",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2068",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-2069",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - US",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2069",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-207",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund (Global)-Equity：Maximum 85%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=207",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-2079",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund – North America",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2079",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-208",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund (Global)-Equity：Maximum 100%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=208",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-2080",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund – Europe",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2080",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-209",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund (Global)-Equity：Maximum 60%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=209",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-2099",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - United States and Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2099",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-210",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund-Asia Pacific (ex-Japan)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=210",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-211",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund (Hong Kong)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=211",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-212",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maxmium 60% in equity",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=212",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-213",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=213",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-214",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maxmium 40% in equity",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=214",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-215",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maxmium 90% in equity",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=215",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-216",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maxmium 60% in equity",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=216",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-217",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Japan",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=217",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-218",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Greater China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=218",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-219",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=219",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-220",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=220",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-221",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Asia ex Japan",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=221",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-223",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maxmium 40% in equity",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=223",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-2239",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund (Global) - Equity: Maximum 60%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2239",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-224",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maxmium 90% in equity",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=224",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-225",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=225",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-226",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund (Japan)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=226",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-227",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund (Global) Maximum equity - 100%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=227",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-228",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund (Global) Maximum equity - 80%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=228",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-229",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund (Global) Maximum equity - 50%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=229",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-230",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund (Hong Kong)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=230",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-231",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund (Global)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=231",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-232",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund (Hong Kong)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=232",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-233",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund (Global)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=233",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-234",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund (Asia ex Japan)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=234",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-236",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund(Global) - Maximum equity around 70%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=236",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-237",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund(Global) - Maximum equity around 90%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=237",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-238",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund (Hong Kong)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=238",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-2399",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Europe",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2399",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-2400",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2400",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-2401",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - North America",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2401",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-244",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=244",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-245",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=245",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-246",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=246",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-247",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Asia – ex–Japan",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=247",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-248",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Asia – ex–Japan",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=248",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-249",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Asia – ex–Japan",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=249",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-250",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global – Maximum equity 80%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=250",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-251",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global – Maximum equity 80%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=251",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-252",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global – Maximum equity 80%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=252",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-253",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global – Maximum equity 50%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=253",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-254",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global – Maximum equity 50%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=254",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-255",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global – Maximum equity 50%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=255",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-256",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global – Maximum equity 60%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=256",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-257",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global – Maximum equity 60%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=257",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-258",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global – Maximum equity 60%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=258",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-259",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global – Maximum equity 40%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=259",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-260",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global – Maximum equity 40%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=260",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-261",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global – Maximum equity 40%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=261",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-262",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=262",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-263",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=263",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-264",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=264",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-265",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global – Maximum equity 100%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=265",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-266",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global – Maximum equity 100%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=266",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-267",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global – Maximum equity 100%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=267",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-268",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global – Maximum equity around 90%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=268",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-270",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=270",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-271",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global – Maximum equity around 50%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=271",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-272",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global – Maximum equity around 30%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=272",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-273",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=273",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-274",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=274",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-275",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=275",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-276",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=276",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-278",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Asia Pacific",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=278",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-280",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global – Maximum equity around 70%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=280",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-282",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Asia Pacific",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=282",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-283",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Asia Pacific",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=283",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-284",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Korea",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=284",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-285",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Korea",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=285",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-286",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=286",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-287",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=287",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-288",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=288",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-289",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=289",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-290",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=290",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-291",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=291",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-302",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=302",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-303",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Asia Pacific, excluding Japan",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=303",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-304",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund [Global] - Maximum equity around 65%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=304",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-305",
+      "fundType": "guaranteed",
+      "allocationProfile": "Guaranteed Fund - When accrued benefits are transferred/withdrawn, Members will get the greater of the Guaranteed Balance or the Actual Balance (the value of the units held in the Guaranteed Fund) under the Guarantee Conditions.",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=305",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-306",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=306",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-307",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - European countries",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=307",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-308",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - North America",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=308",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-309",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - mainland China and Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=309",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-310",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund [Global] - Maximum equity around 85%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=310",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-311",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund [Global] - Maximum equity around 100%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=311",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-317",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund [Global] - Maximum equity around 100%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=317",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-318",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund [Global] - Maximum equity around 65%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=318",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-319",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=319",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-320",
+      "fundType": "guaranteed",
+      "allocationProfile": "Guaranteed Fund - When accrued benefits are transferred/withdrawn, Members will get the greater of the Guaranteed Balance or the Actual Balance (the value of the units held in the Guaranteed Fund) under the Guarantee Conditions.",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=320",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-321",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - mainland China and Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=321",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-322",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund [Global] - Maximum equity around 85%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=322",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-323",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - North America",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=323",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-324",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Asia-Pacific, excluding Japan",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=324",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-325",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=325",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-326",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - European countries",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=326",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-362",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=362",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-363",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Around 50% to 90% in equities and equity-related investments",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=363",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-364",
+      "fundType": "guaranteed",
+      "allocationProfile": "Guaranteed Fund - Interest Guarantee",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=364",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-365",
+      "fundType": "guaranteed",
+      "allocationProfile": "Guaranteed Fund - Capital Guarantee",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=365",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-366",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=366",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-367",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=367",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-368",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=368",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-369",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Europe",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=369",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-370",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Pacific Asia",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=370",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-371",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Japan",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=371",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-372",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=372",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-373",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Approximately 90% in equities",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=373",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-374",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Approximately 50% in equities",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=374",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-375",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Greater China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=375",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-376",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Mainly in equities and equity-related investments",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=376",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-377",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - North America",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=377",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-383",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund – Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=383",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-384",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund – Asia",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=384",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-385",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global – Maximum equity around 50%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=385",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-386",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund – Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=386",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-387",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund – Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=387",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-388",
+      "fundType": "guaranteed",
+      "allocationProfile": "Guaranteed Fund – Conditionally guarantee payable",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=388",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-389",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=389",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-390",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Europe",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=390",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-391",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - U.S.",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=391",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-392",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Asian Pacific",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=392",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-394",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global – Maximum equity around 70%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=394",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-426",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=426",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-427",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=427",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-428",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=428",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-429",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=429",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-430",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=430",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-431",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=431",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-432",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Asia",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=432",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-433",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Asia",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=433",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-434",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity around 80%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=434",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-435",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity around 80%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=435",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-438",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity around 60%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=438",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-440",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - U.S.",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=440",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-441",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - U.S.",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=441",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-444",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=444",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-446",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity around 90%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=446",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-447",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity around 90%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=447",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-450",
+      "fundType": "money_market",
+      "allocationProfile": "Uncategorised Fund - U.S., Hong Kong and Other",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=450",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-451",
+      "fundType": "money_market",
+      "allocationProfile": "Uncategorised Fund - U.S., Hong Kong and Other",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=451",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-459",
+      "fundType": "guaranteed",
+      "allocationProfile": "Guaranteed Fund - guarantee features: please refer to Guarantee Conditions in Fund Fact Sheet",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=459",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-460",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity normally 70%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=460",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-462",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity around 67%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=462",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-463",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity normally 50%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=463",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-464",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity 60%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=464",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-466",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=466",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-498",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund (Global) - Equity: Maximum 50%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=498",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-499",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund (Global) - Equity: Maximum 50%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=499",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-500",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund (Global) - Equity: Maximum 70%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=500",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-501",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund (Global) - Equity: Maximum 70%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=501",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-502",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=502",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-503",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=503",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-504",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=504",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-505",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=505",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-506",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=506",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-507",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=507",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-508",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund (Global) - Equity: Maximum 90%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=508",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-509",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund (Global) - Equity: Maximum 90%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=509",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-603",
+      "fundType": "guaranteed",
+      "allocationProfile": "Guaranteed Fund",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=603",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-606",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund (Global)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=606",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-619",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=619",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-620",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=620",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-627",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Asian (ex Japan)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=627",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-628",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Asian (ex Japan)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=628",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-653",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund-Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=653",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-654",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund (China)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=654",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-657",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=657",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-658",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=658",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-659",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund [China & Hong Kong]",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=659",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-660",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund [Europe]",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=660",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-689",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Asia ex Japan",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=689",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-690",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Asia ex Japan",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=690",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-691",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Global Equities",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=691",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-692",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Global Equities",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=692",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-693",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Greater China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=693",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-694",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Greater China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=694",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-695",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Healthcare Sector",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=695",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-696",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity around 60%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=696",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-697",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund-China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=697",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-699",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity around 90%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=699",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-701",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Asset Fund [Global] Equity : around 90%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=701",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-703",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Asset Fund [Global] Equity : Initially around 97% with greater exposure to bonds and cash as the target year of 2025 approaches",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=703",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-705",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Asset Fund [Global] Equity : Initially around 99% with greater exposure to bonds and cash as the target year of 2030 approaches",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=705",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-706",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=706",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-707",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Asset Fund [Global] Equity : Initially around 100% with greater exposure to bonds and cash as the target year of 2035 approaches",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=707",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-708",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=708",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-709",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=709",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-710",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Asset Fund [Global] Equity : Initially around 100% with greater exposure to bonds and cash as the target year of 2040 approaches",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=710",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-711",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=711",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-769",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity - 50%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=769",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-770",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity around 40%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=770",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-771",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity around 60%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=771",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-772",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity around 80%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=772",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-773",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity - 100%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=773",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-774",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity around 30%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=774",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-775",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity around 48%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=775",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-776",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity around 65%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=776",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-777",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity around 82%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=777",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-778",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Asia (excluding Japan)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=778",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-779",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Europe (including the United Kingdom)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=779",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-780",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong & China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=780",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-781",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=781",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-782",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=782",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-798",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund-Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=798",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-799",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund [Hong Kong]",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=799",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-800",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund [Hong Kong]",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=800",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-801",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=801",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-802",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund [Global] - Maximum equity around 25%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=802",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-803",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund [Global] - Maximum equity around 45%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=803",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-804",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - mainland China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=804",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-805",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=805",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-806",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund [Global] - Maximum equity around 25%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=806",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-807",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund [Global] - Maximum equity around 45%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=807",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-808",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - mainland China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=808",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-809",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=809",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-810",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=810",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-811",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=811",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-812",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Greater China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=812",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-813",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=813",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-814",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Europe",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=814",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-815",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity 80%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=815",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-816",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity around 90%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=816",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-817",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity - 85%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=817",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-818",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund - Global - Maximum equity - 60%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=818",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-819",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=819",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-820",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Asia Pacific",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=820",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-821",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=821",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-822",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=822",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-824",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=824",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-825",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=825",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-826",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=826",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-827",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=827",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-830",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=830",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-831",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Greater China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=831",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-838",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Asia Pacific",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=838",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-839",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Global",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=839",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-841",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=841",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-842",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global – max. 65% in equities",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=842",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-844",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global – max. 95% in equities",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=844",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-845",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global – max. 95% in equities",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=845",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-846",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global – max. 100% in equities",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=846",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-847",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global – max. 100% in equities",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=847",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-848",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Global – max. 100% in equities",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=848",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-874",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Greater China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=874",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-875",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Asia-Pacific",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=875",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-876",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - European and Asia Pacific",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=876",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-877",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong and China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=877",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-878",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - North America",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=878",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-889",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund – Greater China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=889",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-890",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund – Greater China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=890",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-891",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund – Greater China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=891",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-892",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Asia Pacific – Maximum equity 100%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=892",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-893",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Asia Pacific – Maximum equity 100%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=893",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-894",
+      "fundType": "mixed",
+      "allocationProfile": "Mixed Assets Fund – Asia Pacific – Maximum equity 100%",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=894",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-895",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund (Hong Kong)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=895",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-896",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - North America",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=896",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-897",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=897",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-898",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=898",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-899",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Asia ex Japan",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=899",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-900",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=900",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-901",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=901",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-902",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=902",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-903",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=903",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-906",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund – Pacific Asia",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=906",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-907",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=907",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-908",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund [Global]",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=908",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-909",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund [Greater China]",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=909",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-910",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Mainland China and Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=910",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-911",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - Mainland China and Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=911",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-912",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - China and Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=912",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-913",
+      "fundType": "money_market",
+      "allocationProfile": "Money Market Fund - China and Hong Kong",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=913",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-917",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund - Greater China",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=917",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-918",
+      "fundType": "bond",
+      "allocationProfile": "Bond Fund - Asia Pacific",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=918",
+      "dataAsOf": "2026-07-31"
+    },
+    {
+      "fundClassId": "mpfa-cf-999",
+      "fundType": "equity",
+      "allocationProfile": "Equity Fund (Hong Kong)",
+      "sourceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=999",
+      "dataAsOf": "2026-07-31"
+    }
+  ],
+  "report": {
+    "inputRecords": 451,
+    "evidenceRecords": 450,
+    "insufficientRecords": 1
+  }
+}
