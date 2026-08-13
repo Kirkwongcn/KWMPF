@@ -21,7 +21,11 @@ const requiredFields = ["annualizedReturn1y", "riskClass", "latestFer", "managem
 
 export function buildPublicationPreflight(records: PublicationInput[]) {
   const issues = records.flatMap((record) => {
-    const missing = requiredFields.filter((field) => typeof record.publicFields?.[field] !== "number");
+    const missing = requiredFields.filter(
+      (field) =>
+        typeof record.publicFields?.[field] !== "number" &&
+        !record.unavailableFields?.includes(field),
+    );
     if (!record.sourceUrl) missing.push("sourceUrl" as never);
     if (!record.dataAsOf) missing.push("dataAsOf" as never);
     if (!record.current || record.status !== "verified") missing.push("verifiedCurrent" as never);
