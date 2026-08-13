@@ -112,6 +112,13 @@ export function FundClassPage({
             </div>
           </dl>
           <p>配置及持倉資料的截至日期可能不同，使用時請留意可比性限制。</p>
+          {(fundClass.riskClass === undefined ||
+            fundClass.latestFer === undefined ||
+            fundClass.oci1yHkd === undefined) && (
+            <p role="note">
+              顯示「官方未提供」代表積金局資料按適用披露規則沒有該欄位；常見原因包括基金運作年期不足或保證／資本保存安排。網站不會以估算值補足。
+            </p>
+          )}
           <h2>資料來源及驗證</h2>
           <p>資料截至：{provenance.dataAsOf}</p>
           <p>擷取版本：{provenance.retrievedAt}</p>
