@@ -10,10 +10,13 @@ export type FreshnessPolicy = {
 };
 
 function daysBetween(start: string, end: string) {
-  const startTime = Date.parse(`${start}T00:00:00Z`);
+  const normalizedStart = /^\d{4}-\d{2}$/.test(start)
+    ? `${start}-${new Date(Date.UTC(Number(start.slice(0, 4)), Number(start.slice(5, 7)), 0)).getUTCDate().toString().padStart(2, "0")}`
+    : start;
+  const startTime = Date.parse(`${normalizedStart}T00:00:00Z`);
   const endTime = Date.parse(`${end}T00:00:00Z`);
   if (!Number.isFinite(startTime) || !Number.isFinite(endTime)) {
-    throw new Error("freshness dates must be ISO calendar dates");
+    throw new Error(`freshness dates must be ISO calendar dates: ${start} -> ${normalizedStart}, ${end}`);
   }
   return Math.floor((endTime - startTime) / 86_400_000);
 }
@@ -26,7 +29,16 @@ export function classifyFreshness(policy: FreshnessPolicy): FreshnessStatus {
   return age > graceDays ? "stale" : "verified";
 }
 
-export function applyFreshnessStatuses(records: SourceRecord[], today: string) {
+export function applyFreshnessStatuses<T extends SourceRecord>(
+  records: T[],
+  today: string,
+): Array<
+  Omit<T, "returns"> & {
+    currentStatus: FreshnessStatus;
+    fundOverviewStatus?: FreshnessStatus;
+    returns?: SourceRecord["returns"];
+  }
+> {
   return records.map((record) => ({
     ...record,
     currentStatus: classifyFreshness({ kind: "current_status", asOf: record.dataAsOf, today }),
@@ -43,7 +55,13 @@ export function applyFreshnessStatuses(records: SourceRecord[], today: string) {
           ) as SourceRecord["returns"],
         }
       : {}),
-  }));
+  })) as Array<
+    Omit<T, "returns"> & {
+      currentStatus: FreshnessStatus;
+      fundOverviewStatus?: FreshnessStatus;
+      returns?: SourceRecord["returns"];
+    }
+  >;
 }
 
 export type FailedField = {
