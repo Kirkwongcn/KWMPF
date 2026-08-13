@@ -9,6 +9,7 @@ export function buildPublicationInputs(records: SourceRecord[]): PublicationInpu
     status: record.currentStatus ?? (record.current ? "verified" : "stale"),
     dataAsOf: record.dataAsOf,
     sourceUrl: record.sourceUrl,
+    unavailableFields: record.unavailableFields,
     publicFields: {
       ...(typeof record.returns?.[1]?.annualized === "number"
         ? { annualizedReturn1y: record.returns[1].annualized }

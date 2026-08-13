@@ -13,6 +13,7 @@ export type PublicationInput = {
   status: string;
   dataAsOf?: string;
   sourceUrl?: string;
+  unavailableFields?: string[];
   publicFields?: PublicFields;
 };
 

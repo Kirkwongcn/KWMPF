@@ -26,4 +26,12 @@ describe("publication readiness report", () => {
     });
     expect(result.issues).toHaveLength(1);
   });
+
+  it("separates official unavailable fields from generic missing fields", () => {
+    const result = buildPublicationReadinessReport([
+      { ...record, unavailableFields: ["latestFer", "oci1yHkd"] },
+    ]);
+
+    expect(result.unavailableByField).toEqual({ latestFer: 1, oci1yHkd: 1 });
+  });
 });

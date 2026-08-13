@@ -3,9 +3,13 @@ import { buildPublicationPreflight, type PublicationInput } from "./publication-
 export function buildPublicationReadinessReport(records: PublicationInput[]) {
   const preflight = buildPublicationPreflight(records);
   const missingByField = new Map<string, number>();
+  const unavailableByField = new Map<string, number>();
   for (const issue of preflight.issues) {
     for (const field of issue.missing) {
       missingByField.set(field, (missingByField.get(field) ?? 0) + 1);
+      if (records.find((record) => record.fundClassId === issue.fundClassId)?.unavailableFields?.includes(field)) {
+        unavailableByField.set(field, (unavailableByField.get(field) ?? 0) + 1);
+      }
     }
   }
 
@@ -16,6 +20,9 @@ export function buildPublicationReadinessReport(records: PublicationInput[]) {
     blockedRecords: preflight.blocked,
     missingByField: Object.fromEntries(
       [...missingByField.entries()].sort(([a], [b]) => a.localeCompare(b)),
+    ),
+    unavailableByField: Object.fromEntries(
+      [...unavailableByField.entries()].sort(([a], [b]) => a.localeCompare(b)),
     ),
     issues: preflight.issues,
   };
