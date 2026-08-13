@@ -64,6 +64,15 @@ describe("official return overlay", () => {
     expect(result.applied).toHaveLength(2);
   });
 
+  it("matches official short class labels to platform Class labels", () => {
+    const result = normalizeFundFactSheetReturns(
+      [{ ...record, identity: { ...record.identity, fundClassName: "Class A" } }],
+      [{ schemeName: record.identity.schemeName, constituentFundName: record.identity.constituentFundName, fundClassName: "A", dataAsOf: "2025-12-31", sourceUrl: "https://official.test/returns.pdf", annualizedReturn3Year: 3.2 }],
+      "2026-08-13T00:00:00Z",
+    );
+    expect(result.observations).toHaveLength(1);
+  });
+
   it("keeps unknown and duplicate observations out of the candidate overlay", () => {
     const result = applyOfficialReturnOverlay(
       [record],
