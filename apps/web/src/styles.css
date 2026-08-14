@@ -79,6 +79,22 @@ body {
   font: 600 18px/1.2 var(--kw-font-display);
   letter-spacing: 0.02em;
 }
+.kw-nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.kw-nav a {
+  color: #d3e0eb;
+  text-decoration: none;
+}
+.kw-nav a:hover,
+.kw-nav a[aria-current="page"] {
+  color: var(--kw-white);
+  text-decoration: underline;
+  text-decoration-color: var(--kw-gold);
+  text-underline-offset: 6px;
+}
 
 .kw-hero {
   width: 100%;
@@ -123,6 +139,7 @@ body {
   padding: 28px 5vw 70px;
 }
 .kw-section {
+  min-width: 0;
   margin-block: 35px;
 }
 .kw-section__heading {
@@ -185,8 +202,35 @@ body {
   color: var(--kw-ink);
   font: inherit;
 }
+.kw-ranking-controls {
+  display: grid;
+  grid-template-columns: auto minmax(240px, 440px) 1fr;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.kw-ranking-controls > * {
+  min-width: 0;
+  max-width: 100%;
+}
+.kw-ranking-controls .kw-muted {
+  margin: 0;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+.kw-table td small {
+  display: block;
+  color: var(--kw-muted);
+}
+.kw-rank,
+.kw-return {
+  color: var(--kw-navy);
+  font-weight: 700;
+  white-space: nowrap;
+}
 
 .kw-table-wrap {
+  width: 100%;
   max-width: 100%;
   overflow-x: auto;
 }
@@ -366,6 +410,12 @@ body {
   .search-form > div {
     align-items: stretch;
     flex-direction: column;
+  }
+  .kw-ranking-controls {
+    grid-template-columns: 1fr;
+  }
+  .kw-ranking-controls .kw-muted {
+    text-align: left;
   }
 }
 
