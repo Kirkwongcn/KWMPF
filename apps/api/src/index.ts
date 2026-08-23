@@ -94,7 +94,13 @@ app.get("/schemes", async (context) => {
       fundClassCount: number;
       fundTypes: string[];
       riskClassDistribution: Record<string, number>;
-      fundClassIds: string[];
+      funds: {
+        id: string;
+        constituentFundName: string;
+        fundClassName: string;
+        fundType: string;
+        riskClass?: number;
+      }[];
     }
   >();
 
@@ -104,6 +110,8 @@ app.get("/schemes", async (context) => {
         id: string;
         schemeName: string;
         trusteeName: string;
+        constituentFundName: string;
+        fundClassName: string;
         fundType: string;
         riskClass?: number;
         verificationStatus: string;
@@ -116,7 +124,7 @@ app.get("/schemes", async (context) => {
       fundClassCount: 0,
       fundTypes: [],
       riskClassDistribution: {},
-      fundClassIds: [],
+      funds: [],
     };
     scheme.fundClassCount += 1;
     if (!scheme.fundTypes.includes(fundClass.fundType))
@@ -126,7 +134,15 @@ app.get("/schemes", async (context) => {
       scheme.riskClassDistribution[risk] =
         (scheme.riskClassDistribution[risk] ?? 0) + 1;
     }
-    scheme.fundClassIds.push(fundClass.id);
+    scheme.funds.push({
+      id: fundClass.id,
+      constituentFundName: fundClass.constituentFundName,
+      fundClassName: fundClass.fundClassName,
+      fundType: fundClass.fundType,
+      ...(typeof fundClass.riskClass === "number"
+        ? { riskClass: fundClass.riskClass }
+        : {}),
+    });
     schemes.set(fundClass.schemeName, scheme);
   }
   return context.json([...schemes.values()]);
