@@ -119,7 +119,15 @@ describe("publication snapshot", () => {
         fundClassCount: 1,
         fundTypes: [fundFixture.fundClass.fundType],
         riskClassDistribution: { "6": 1 },
-        fundClassIds: [fundFixture.fundClass.id],
+        funds: [
+          {
+            id: fundFixture.fundClass.id,
+            constituentFundName: fundFixture.fundClass.constituentFundName,
+            fundClassName: fundFixture.fundClass.fundClassName,
+            fundType: fundFixture.fundClass.fundType,
+            riskClass: fundFixture.fundClass.riskClass,
+          },
+        ],
       },
     ]);
   });
