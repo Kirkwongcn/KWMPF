@@ -79,6 +79,60 @@ app.get("/search", async (context) => {
   return context.json(results);
 });
 
+app.get("/summary", async (context) => {
+  const current = await context.env.DB.prepare(
+    `SELECT snapshot_id FROM current_publication WHERE singleton = 1`,
+  ).first<{ snapshot_id: string }>();
+
+  if (!current)
+    return context.json({
+      snapshotId: null,
+      fundClassCount: 0,
+      schemeCount: 0,
+      trusteeCount: 0,
+      dataAsOf: null,
+    });
+
+  const rows = await context.env.DB.prepare(
+    `SELECT payload FROM fund_class_versions WHERE snapshot_id = ?`,
+  )
+    .bind(current.snapshot_id)
+    .all<{ payload: string }>();
+
+  const schemes = new Set<string>();
+  const trustees = new Set<string>();
+  const dates: string[] = [];
+  let fundClassCount = 0;
+
+  for (const row of rows.results) {
+    const { fundClass } = JSON.parse(row.payload) as {
+      fundClass: {
+        schemeName: string;
+        trusteeName: string;
+        dataAsOf?: string;
+        verificationStatus: string;
+      };
+    };
+    if (fundClass.verificationStatus !== "verified") continue;
+    fundClassCount += 1;
+    schemes.add(fundClass.schemeName);
+    trustees.add(fundClass.trusteeName);
+    if (fundClass.dataAsOf) dates.push(fundClass.dataAsOf);
+  }
+
+  dates.sort();
+  return context.json({
+    snapshotId: current.snapshot_id,
+    fundClassCount,
+    schemeCount: schemes.size,
+    trusteeCount: trustees.size,
+    dataAsOf:
+      dates.length > 0
+        ? { earliest: dates[0], latest: dates[dates.length - 1] }
+        : null,
+  });
+});
+
 app.get("/schemes", async (context) => {
   const rows = await context.env.DB.prepare(
     `SELECT f.payload
