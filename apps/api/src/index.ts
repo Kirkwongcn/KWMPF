@@ -148,10 +148,29 @@ app.get("/schemes", async (context) => {
   return context.json([...schemes.values()]);
 });
 
+const rankingReturnFields = {
+  1: "annualizedReturn1y",
+  5: "annualizedReturn5y",
+  10: "annualizedReturn10y",
+} as const;
+
+type RankingPeriod = keyof typeof rankingReturnFields;
+
 app.get("/rankings", async (context) => {
-  if (context.req.query("period") !== "1") {
-    return context.json({ error: "Unsupported ranking period" }, 400);
+  const requested = Number(context.req.query("period"));
+  if (!(requested in rankingReturnFields)) {
+    return context.json(
+      {
+        error: "Unsupported ranking period",
+        supportedPeriods: [1, 5, 10],
+        reason:
+          "官方強積金基金平台沒有提供三年年率化回報，網站不會自行由其他期間推算。",
+      },
+      400,
+    );
   }
+  const periodYears = requested as RankingPeriod;
+  const returnField = rankingReturnFields[periodYears];
   const rows = await context.env.DB.prepare(
     `SELECT c.snapshot_id, f.payload
      FROM current_publication c
@@ -168,6 +187,8 @@ app.get("/rankings", async (context) => {
         trusteeName: string;
         fundCategory: string;
         annualizedReturn1y?: number;
+        annualizedReturn5y?: number;
+        annualizedReturn10y?: number;
         dataAsOf: string;
         verificationStatus: string;
       };
@@ -177,7 +198,7 @@ app.get("/rankings", async (context) => {
         verificationStatus: string;
       };
     };
-    const value = publication.fundClass.annualizedReturn1y;
+    const value = publication.fundClass[returnField];
     if (
       publication.fundClass.verificationStatus !== "verified" ||
       publication.provenance.verificationStatus !== "verified" ||
@@ -221,7 +242,7 @@ app.get("/rankings", async (context) => {
 
   return context.json({
     snapshotId: rows.results[0]?.snapshot_id ?? null,
-    periodYears: 1,
+    periodYears,
     methodology: {
       metric: "annualized_return",
       grouping: "comparison_group",
