@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import fixture from "../../../fixtures/mpfa/cf-429.json";
 import { FundClassPage } from "./FundClassPage";
@@ -224,7 +224,9 @@ describe("fund class page", () => {
         name: "Principal Hong Kong Equity Fund",
       }),
     ).toBeVisible();
-    expect(document.title).toBe("Principal Hong Kong Equity Fund｜KWMPF");
+    await waitFor(() =>
+      expect(document.title).toBe("Principal Hong Kong Equity Fund｜KWMPF"),
+    );
   });
 
   it("links to the fund's own comparison group ranking", async () => {
