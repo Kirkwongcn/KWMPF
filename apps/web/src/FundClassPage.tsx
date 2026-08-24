@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { SiteChrome } from "./SiteChrome";
+import { fundClassLabel, joinFundParts } from "./fundClassLabel";
 
 type PublishedFundClass = {
   snapshotId: string;
@@ -85,7 +86,10 @@ export function FundClassPage({
     <SiteChrome
       eyebrow={fundClass.schemeName}
       title={fundClass.constituentFundName}
-      subtitle={`${fundClass.fundClassName} · ${fundClass.fundType}／${fundClass.fundCategory}`}
+      subtitle={joinFundParts(
+        fundClassLabel(fundClass.fundClassName),
+        `${fundClass.fundType}／${fundClass.fundCategory}`,
+      )}
     >
       <section className="kw-section" aria-labelledby="fund-figures-title">
         <h2 className="kw-section__heading" id="fund-figures-title">

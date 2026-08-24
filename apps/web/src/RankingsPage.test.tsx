@@ -385,3 +385,48 @@ describe("published return rankings", () => {
     expect(screen.getByLabelText("排序指標")).toHaveValue("return");
   });
 });
+
+describe("ranked funds without a separate class", () => {
+  afterEach(() => {
+    cleanup();
+    vi.unstubAllGlobals();
+  });
+
+  it("omits the official n.a. placeholder from the ranking row", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-2026-07-31",
+          periodYears: 1,
+          methodology: {
+            metric: "annualized_return",
+            grouping: "comparison_group",
+            sortDirection: "descending",
+            displayPrecision: 2,
+          },
+          rankings: [
+            {
+              fundClassId: "fund-na",
+              fundClassName: "n.a.",
+              constituentFundName: "North America Fund",
+              schemeName: "Scheme One",
+              trusteeName: "Trustee One",
+              comparisonGroup: "Equity Fund (North America)",
+              value: 17.21,
+              displayValue: "17.21%",
+              rank: 1,
+              dataAsOf: "2026-07-31",
+              sourceUrl: "https://example.test/fund-na",
+            },
+          ],
+        }),
+      ),
+    );
+
+    render(<RankingsPage apiBaseUrl="https://api.test" />);
+
+    expect(await screen.findByText("Scheme One")).toBeVisible();
+    expect(screen.queryByText(/n\.a\./i)).not.toBeInTheDocument();
+  });
+});

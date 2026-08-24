@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { SiteChrome } from "./SiteChrome";
+import { fundClassLabel, joinFundParts } from "./fundClassLabel";
 
 type FundSummary = {
   id: string;
@@ -234,7 +235,12 @@ export function FundsPage({
                         >
                           {fund.constituentFundName}
                         </a>
-                        <span className="kw-muted"> {fund.fundClassName}</span>
+                        {fundClassLabel(fund.fundClassName) && (
+                          <span className="kw-muted">
+                            {" "}
+                            {fundClassLabel(fund.fundClassName)}
+                          </span>
+                        )}
                       </th>
                       <td className="kw-return">
                         {percent(fund.annualizedReturn1y)}

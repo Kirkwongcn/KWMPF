@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { SiteChrome } from "./SiteChrome";
+import { fundClassLabel, joinFundParts } from "./fundClassLabel";
 
 type RankingRow = {
   fundClassId: string;
@@ -205,7 +206,10 @@ export function RankingsPage({
                             {row.constituentFundName}
                           </a>
                           <small>
-                            {row.fundClassName} · {row.schemeName}
+                            {joinFundParts(
+                              fundClassLabel(row.fundClassName),
+                              row.schemeName,
+                            )}
                           </small>
                         </td>
                         <td className="kw-return">{row.displayValue}</td>

@@ -182,3 +182,33 @@ describe("health page", () => {
     expect(screen.getByText("未能取得")).toBeVisible();
   });
 });
+
+describe("funds without a separate class", () => {
+  afterEach(() => {
+    cleanup();
+    vi.unstubAllGlobals();
+  });
+
+  it("omits the official n.a. placeholder from search results", async () => {
+    stubSearch(() =>
+      Promise.resolve(
+        Response.json([
+          {
+            id: "fund-na",
+            fundClassName: "n.a.",
+            constituentFundName: "港股基金",
+            schemeName: "計劃甲",
+            trusteeName: "受託人甲",
+          },
+        ]),
+      ),
+    );
+
+    render(<App apiUrl="https://api.test/health" />);
+    await submitSearch("基金");
+
+    const link = await screen.findByRole("link", { name: "港股基金" });
+    expect(link).toBeVisible();
+    expect(screen.queryByText(/n\.a\./i)).not.toBeInTheDocument();
+  });
+});

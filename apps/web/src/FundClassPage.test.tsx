@@ -316,3 +316,48 @@ describe("fund class page", () => {
     expect(screen.queryByText("資料過期")).not.toBeInTheDocument();
   });
 });
+
+describe("fund class page without a separate class", () => {
+  afterEach(() => {
+    cleanup();
+    vi.unstubAllGlobals();
+  });
+
+  it("omits the official n.a. placeholder from the subtitle", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-mpfa-cf-429-2026-06-30",
+          fundClass: { ...fixture.fundClass, fundClassName: "n.a." },
+          provenance: {
+            sourceUrl: fixture.source.url,
+            dataAsOf: fixture.fundClass.dataAsOf,
+            retrievedAt: fixture.source.retrievedAt,
+            rawSha256: "a".repeat(64),
+            verificationStatus: "verified",
+          },
+        }),
+      ),
+    );
+
+    render(
+      <FundClassPage
+        apiBaseUrl="https://api.test"
+        fundClassId="mpfa-cf-429-class-i"
+      />,
+    );
+
+    expect(
+      await screen.findByRole("heading", {
+        name: fixture.fundClass.constituentFundName,
+      }),
+    ).toBeVisible();
+    expect(
+      screen.getByText(
+        `${fixture.fundClass.fundType}／${fixture.fundClass.fundCategory}`,
+      ),
+    ).toBeVisible();
+    expect(screen.queryByText(/n\.a\./i)).not.toBeInTheDocument();
+  });
+});

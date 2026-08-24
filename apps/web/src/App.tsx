@@ -1,5 +1,6 @@
 import { FormEvent, useEffect, useState } from "react";
 import { SiteChrome } from "./SiteChrome";
+import { fundClassLabel, joinFundParts } from "./fundClassLabel";
 
 type SearchResult = {
   id: string;
@@ -135,7 +136,10 @@ export function App({ apiUrl }: { apiUrl: string }) {
                 {results.map((result) => (
                   <li key={result.id}>
                     <a href={`/fund-classes/${encodeURIComponent(result.id)}`}>
-                      {result.constituentFundName} · {result.fundClassName}
+                      {joinFundParts(
+                        result.constituentFundName,
+                        fundClassLabel(result.fundClassName),
+                      )}
                     </a>
                     <span>
                       {result.schemeName}／{result.trusteeName}
