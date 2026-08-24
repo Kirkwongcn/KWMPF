@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { SiteChrome } from "./SiteChrome";
 
 type RankingRow = {
   fundClassId: string;
@@ -51,123 +52,100 @@ export function RankingsPage({ apiBaseUrl }: { apiBaseUrl: string }) {
         );
 
   return (
-    <>
-      <header className="kw-header">
-        <div className="kw-shell kw-header__inner">
-          <a className="kw-brand" href="/" aria-label="KWMPF 首頁">
-            <span className="kw-brand__mark">kW</span>
-            <span>
-              <small>Kirk Wong Research</small>
-              <strong>KWMPF</strong>
-            </span>
-          </a>
-          <nav className="kw-nav" aria-label="主要導覽">
-            <a href="/rankings" aria-current="page">
-              基金排名
-            </a>
-            <a href="/schemes">計劃比較</a>
-          </nav>
-        </div>
-      </header>
-      <section className="kw-hero" aria-labelledby="rankings-title">
-        <div className="kw-hero__inner">
-          <p className="kw-eyebrow">同組基金比較</p>
-          <h1 id="rankings-title">一年回報排名</h1>
-          <p className="kw-hero__subtitle">
-            只比較相同基金種類及配置組別，名次按官方一年年率化回報排列。
+    <SiteChrome
+      current="rankings"
+      eyebrow="同組基金比較"
+      title="一年回報排名"
+      subtitle="只比較相同基金種類及配置組別，名次按官方一年年率化回報排列。"
+    >
+      <section className="kw-section" aria-labelledby="ranking-table-title">
+        <h2 className="kw-section__heading" id="ranking-table-title">
+          已發布基金排名
+        </h2>
+        {failed ? (
+          <p className="kw-status kw-status--negative">
+            暫時未能取得排名，現有公開快照不受影響，請稍後再試。
           </p>
-        </div>
-      </section>
-      <main className="kw-main">
-        <section className="kw-section" aria-labelledby="ranking-table-title">
-          <h2 className="kw-section__heading" id="ranking-table-title">
-            已發布基金排名
-          </h2>
-          {failed ? (
-            <p className="kw-status kw-status--negative">
-              暫時未能取得排名，現有公開快照不受影響，請稍後再試。
-            </p>
-          ) : !publication ? (
-            <p className="kw-status">正在載入已發布排名…</p>
-          ) : (
-            <>
-              <div className="kw-ranking-controls">
-                <label htmlFor="comparison-group">比較組別</label>
-                <select
-                  className="kw-control"
-                  id="comparison-group"
-                  value={comparisonGroup}
-                  onChange={(event) => setComparisonGroup(event.target.value)}
-                >
-                  <option value="all">全部比較組別</option>
-                  {comparisonGroups.map((group) => (
-                    <option key={group} value={group}>
-                      {group}
-                    </option>
-                  ))}
-                </select>
-                <p className="kw-muted">
-                  公開快照：<code>{publication.snapshotId}</code>
-                </p>
-              </div>
-              {rankings?.length ? (
-                <div className="kw-table-wrap">
-                  <table className="kw-table">
-                    <thead>
-                      <tr>
-                        <th scope="col">名次</th>
-                        <th scope="col">基金</th>
-                        <th scope="col">比較組別</th>
-                        <th scope="col">一年回報</th>
-                        <th scope="col">截至日期</th>
-                        <th scope="col">來源</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {rankings.map((row) => (
-                        <tr key={row.fundClassId}>
-                          <td className="kw-rank">第 {row.rank}</td>
-                          <td>
-                            <a
-                              href={`/fund-classes/${encodeURIComponent(row.fundClassId)}`}
-                              aria-label={`查看 ${row.constituentFundName} 詳情`}
-                            >
-                              {row.constituentFundName}
-                            </a>
-                            <small>
-                              {row.fundClassName} · {row.schemeName}
-                            </small>
-                          </td>
-                          <td>{row.comparisonGroup}</td>
-                          <td className="kw-return">{row.displayValue}</td>
-                          <td>{row.dataAsOf}</td>
-                          <td>
-                            <a
-                              href={row.sourceUrl}
-                              target="_blank"
-                              rel="noreferrer"
-                              aria-label={`${row.constituentFundName} 官方來源`}
-                            >
-                              官方來源
-                            </a>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              ) : (
-                <p className="kw-status kw-status--warning">
-                  這個比較組別目前沒有合資格的一年回報資料。
-                </p>
-              )}
-              <p className="disclaimer">
-                排名只反映同一比較組別內的單一歷史回報指標，不代表基金推薦；過往表現不代表未來結果。
+        ) : !publication ? (
+          <p className="kw-status">正在載入已發布排名…</p>
+        ) : (
+          <>
+            <div className="kw-ranking-controls">
+              <label htmlFor="comparison-group">比較組別</label>
+              <select
+                className="kw-control"
+                id="comparison-group"
+                value={comparisonGroup}
+                onChange={(event) => setComparisonGroup(event.target.value)}
+              >
+                <option value="all">全部比較組別</option>
+                {comparisonGroups.map((group) => (
+                  <option key={group} value={group}>
+                    {group}
+                  </option>
+                ))}
+              </select>
+              <p className="kw-muted">
+                公開快照：<code>{publication.snapshotId}</code>
               </p>
-            </>
-          )}
-        </section>
-      </main>
-    </>
+            </div>
+            {rankings?.length ? (
+              <div className="kw-table-wrap">
+                <table className="kw-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">名次</th>
+                      <th scope="col">基金</th>
+                      <th scope="col">比較組別</th>
+                      <th scope="col">一年回報</th>
+                      <th scope="col">截至日期</th>
+                      <th scope="col">來源</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {rankings.map((row) => (
+                      <tr key={row.fundClassId}>
+                        <td className="kw-rank">第 {row.rank}</td>
+                        <td>
+                          <a
+                            href={`/fund-classes/${encodeURIComponent(row.fundClassId)}`}
+                            aria-label={`查看 ${row.constituentFundName} 詳情`}
+                          >
+                            {row.constituentFundName}
+                          </a>
+                          <small>
+                            {row.fundClassName} · {row.schemeName}
+                          </small>
+                        </td>
+                        <td>{row.comparisonGroup}</td>
+                        <td className="kw-return">{row.displayValue}</td>
+                        <td>{row.dataAsOf}</td>
+                        <td>
+                          <a
+                            href={row.sourceUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label={`${row.constituentFundName} 官方來源`}
+                          >
+                            官方來源
+                          </a>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <p className="kw-status kw-status--warning">
+                這個比較組別目前沒有合資格的一年回報資料。
+              </p>
+            )}
+            <p className="disclaimer">
+              排名只反映同一比較組別內的單一歷史回報指標，不代表基金推薦；過往表現不代表未來結果。
+            </p>
+          </>
+        )}
+      </section>
+    </SiteChrome>
   );
 }

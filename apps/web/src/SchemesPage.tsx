@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { SiteChrome } from "./SiteChrome";
 
 type Scheme = {
   schemeName: string;
@@ -19,18 +20,27 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
   }, [apiBaseUrl]);
 
   return (
-    <main>
-      <section aria-labelledby="schemes-title">
-        <p className="eyebrow">香港強積金比較</p>
-        <h1 id="schemes-title">強積金計劃比較</h1>
-        <p className="intro">
-          只統計同一發布快照內已核實的基金類別；每項統計均可追查至基金詳情。
-        </p>
-        <div className="scheme-list">
+    <SiteChrome
+      current="schemes"
+      eyebrow="香港強積金比較"
+      title="強積金計劃比較"
+      subtitle="只統計同一發布快照內已核實的基金類別；每項統計均可追查至基金詳情。"
+    >
+      <section className="kw-section" aria-labelledby="schemes-title">
+        <h2 className="kw-section__heading" id="schemes-title">
+          計劃概覽
+        </h2>
+        {schemes === null && <p className="kw-status">正在載入計劃資料…</p>}
+        {schemes !== null && schemes.length === 0 && (
+          <p className="kw-status kw-status--warning">
+            目前沒有已發布的計劃資料。
+          </p>
+        )}
+        <div className="kw-grid scheme-list">
           {schemes?.map((scheme) => (
-            <article key={scheme.schemeName} className="scheme-card">
-              <h2>{scheme.schemeName}</h2>
-              <p>{scheme.trusteeName}</p>
+            <article key={scheme.schemeName} className="kw-card scheme-card">
+              <h3>{scheme.schemeName}</h3>
+              <p className="kw-muted">{scheme.trusteeName}</p>
               <dl className="status-list">
                 <div>
                   <dt>基金類別數量</dt>
@@ -60,6 +70,6 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
           ))}
         </div>
       </section>
-    </main>
+    </SiteChrome>
   );
 }

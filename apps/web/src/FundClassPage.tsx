@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { SiteChrome } from "./SiteChrome";
 
 type PublishedFundClass = {
   snapshotId: string;
@@ -56,27 +57,32 @@ export function FundClassPage({
 
   if (failed)
     return (
-      <main>
-        <p>未能取得基金資料。</p>
-      </main>
+      <SiteChrome eyebrow="基金詳情" title="未能取得基金資料">
+        <section className="kw-section">
+          <p className="kw-status kw-status--negative">未能取得基金資料。</p>
+        </section>
+      </SiteChrome>
     );
   if (!publication)
     return (
-      <main>
-        <p>正在載入基金資料…</p>
-      </main>
+      <SiteChrome eyebrow="基金詳情" title="載入中">
+        <section className="kw-section">
+          <p className="kw-status">正在載入基金資料…</p>
+        </section>
+      </SiteChrome>
     );
 
   const { fundClass, provenance, snapshotId } = publication;
   return (
-    <main>
-      <section aria-labelledby="fund-title">
-        <p className="eyebrow">{fundClass.schemeName}</p>
-        <h1 id="fund-title">{fundClass.constituentFundName}</h1>
-        <p className="intro">
-          {fundClass.fundClassName} · {fundClass.fundType}／
-          {fundClass.fundCategory}
-        </p>
+    <SiteChrome
+      eyebrow={fundClass.schemeName}
+      title={fundClass.constituentFundName}
+      subtitle={`${fundClass.fundClassName} · ${fundClass.fundType}／${fundClass.fundCategory}`}
+    >
+      <section className="kw-section" aria-labelledby="fund-figures-title">
+        <h2 className="kw-section__heading" id="fund-figures-title">
+          主要數據
+        </h2>
         <dl className="status-list">
           <div>
             <dt>一年回報</dt>
@@ -91,8 +97,12 @@ export function FundClassPage({
             <dd>{formatNumber(fundClass.latestFer, 5, "%")}</dd>
           </div>
         </dl>
-        <div className="provenance">
-          <h2>費用及資料限制</h2>
+      </section>
+      <section className="kw-section" aria-labelledby="fund-fees-title">
+        <h2 className="kw-section__heading" id="fund-fees-title">
+          費用及資料限制
+        </h2>
+        <div className="kw-card provenance">
           <dl className="status-list">
             <div>
               <dt>基金開支比率（歷史財政期）</dt>
@@ -119,7 +129,13 @@ export function FundClassPage({
               顯示「官方未提供」代表積金局資料按適用披露規則沒有該欄位；常見原因包括基金運作年期不足或保證／資本保存安排。網站不會以估算值補足。
             </p>
           )}
-          <h2>資料來源及驗證</h2>
+        </div>
+      </section>
+      <section className="kw-section" aria-labelledby="fund-source-title">
+        <h2 className="kw-section__heading" id="fund-source-title">
+          資料來源及驗證
+        </h2>
+        <div className="kw-card provenance">
           <p>資料截至：{provenance.dataAsOf}</p>
           <p>擷取版本：{provenance.retrievedAt}</p>
           <p>驗證狀態：已驗證</p>
@@ -134,6 +150,6 @@ export function FundClassPage({
           </p>
         </div>
       </section>
-    </main>
+    </SiteChrome>
   );
 }

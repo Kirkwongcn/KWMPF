@@ -56,6 +56,47 @@ describe("fund class page", () => {
     );
   });
 
+  it("keeps site navigation and the sitewide disclaimer available", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-mpfa-cf-429-2026-06-30",
+          fundClass: fixture.fundClass,
+          provenance: {
+            sourceUrl: fixture.source.url,
+            dataAsOf: fixture.fundClass.dataAsOf,
+            retrievedAt: fixture.source.retrievedAt,
+            verificationStatus: "verified",
+          },
+        }),
+      ),
+    );
+
+    render(
+      <FundClassPage
+        apiBaseUrl="https://api.test"
+        fundClassId="mpfa-cf-429-class-i"
+      />,
+    );
+
+    expect(
+      await screen.findByRole("heading", {
+        name: "Principal Hong Kong Equity Fund",
+      }),
+    ).toBeVisible();
+    expect(
+      screen.getByRole("navigation", { name: "主要導覽" }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "計劃比較" })).toHaveAttribute(
+      "href",
+      "/schemes",
+    );
+    expect(
+      screen.getByText(/本網站只提供資料比較及投資教育，不構成投資建議/),
+    ).toBeVisible();
+  });
+
   it("shows official unavailability instead of crashing on absent fields", async () => {
     vi.stubGlobal(
       "fetch",
