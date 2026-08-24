@@ -14,6 +14,9 @@ type PublishedFundClass = {
     annualizedReturn1y: number;
     annualizedReturn5y?: number;
     annualizedReturn10y?: number;
+    cumulativeReturn1y?: number;
+    cumulativeReturn5y?: number;
+    cumulativeReturn10y?: number;
     riskClass?: number;
     latestFer?: number;
     managementFee: number;
@@ -95,28 +98,57 @@ export function FundClassPage({
         <h2 className="kw-section__heading" id="fund-figures-title">
           主要數據
         </h2>
+        <div className="kw-table-scroll">
+          <table className="kw-table" aria-label="回報">
+            <thead>
+              <tr>
+                <th scope="col">期間</th>
+                <th scope="col">年率化回報</th>
+                <th scope="col">累積回報</th>
+              </tr>
+            </thead>
+            <tbody>
+              {(
+                [
+                  [
+                    "一年",
+                    fundClass.annualizedReturn1y,
+                    fundClass.cumulativeReturn1y,
+                  ],
+                  [
+                    "五年",
+                    fundClass.annualizedReturn5y,
+                    fundClass.cumulativeReturn5y,
+                  ],
+                  [
+                    "十年",
+                    fundClass.annualizedReturn10y,
+                    fundClass.cumulativeReturn10y,
+                  ],
+                ] as const
+              ).map(([horizon, annualized, cumulative]) => (
+                <tr key={horizon}>
+                  <th scope="row">{horizon}</th>
+                  <td className="kw-return">
+                    {formatNumber(annualized, 2, "%")}
+                  </td>
+                  <td className="kw-return">
+                    {formatNumber(cumulative, 2, "%")}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
         <dl className="status-list">
-          <div>
-            <dt>一年年率化回報</dt>
-            <dd>{fundClass.annualizedReturn1y.toFixed(2)}%</dd>
-          </div>
-          <div>
-            <dt>五年年率化回報</dt>
-            <dd>{formatNumber(fundClass.annualizedReturn5y, 2, "%")}</dd>
-          </div>
-          <div>
-            <dt>十年年率化回報</dt>
-            <dd>{formatNumber(fundClass.annualizedReturn10y, 2, "%")}</dd>
-          </div>
           <div>
             <dt>風險級別</dt>
             <dd>{fundClass.riskClass ?? unavailable}</dd>
           </div>
-          <div>
-            <dt>基金開支比率</dt>
-            <dd>{formatNumber(fundClass.latestFer, 5, "%")}</dd>
-          </div>
         </dl>
+        <p className="kw-muted" role="note">
+          年率化回報是每年平均變幅，適合與其他基金比較；累積回報是整段期間的總變幅，反映同一筆本金實際增減。兩者均為積金局公布數值，網站不會自行換算。
+        </p>
       </section>
       <section className="kw-section" aria-labelledby="fund-fees-title">
         <h2 className="kw-section__heading" id="fund-fees-title">

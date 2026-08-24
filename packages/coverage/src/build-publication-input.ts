@@ -20,6 +20,15 @@ export function buildPublicationInputs(records: SourceRecord[]): PublicationInpu
       ...(typeof record.returns?.[10]?.annualized === "number"
         ? { annualizedReturn10y: record.returns[10].annualized }
         : {}),
+      ...(typeof record.returns?.[1]?.cumulative === "number"
+        ? { cumulativeReturn1y: record.returns[1].cumulative }
+        : {}),
+      ...(typeof record.returns?.[5]?.cumulative === "number"
+        ? { cumulativeReturn5y: record.returns[5].cumulative }
+        : {}),
+      ...(typeof record.returns?.[10]?.cumulative === "number"
+        ? { cumulativeReturn10y: record.returns[10].cumulative }
+        : {}),
       ...(typeof record.fundOverview?.riskClass === "number"
         ? { riskClass: record.fundOverview.riskClass }
         : {}),

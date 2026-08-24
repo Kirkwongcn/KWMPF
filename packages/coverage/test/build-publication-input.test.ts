@@ -77,4 +77,76 @@ describe("publication input builder", () => {
     expect(result.publicFields).not.toHaveProperty("annualizedReturn5y");
     expect(result.publicFields).not.toHaveProperty("annualizedReturn10y");
   });
+
+  it("carries official cumulative returns for the long horizons", () => {
+    const result = buildPublicationInputs([
+      {
+        fundClassId: "fund-d",
+        identity: {
+          trusteeName: "T",
+          schemeName: "S",
+          constituentFundName: "F",
+          fundClassName: "C",
+        },
+        current: true,
+        dataAsOf: "2026-07-31",
+        sourceUrl: "https://example.test/fund-d",
+        returns: {
+          1: { annualized: 29.58, cumulative: 29.58, dataAsOf: "2026-07-31" },
+          5: { annualized: 4.2, cumulative: 22.85, dataAsOf: "2026-07-31" },
+          10: { annualized: 9.41, cumulative: 145.86, dataAsOf: "2026-07-31" },
+        },
+      },
+    ])[0]!;
+
+    expect(result.publicFields).toMatchObject({
+      cumulativeReturn5y: 22.85,
+      cumulativeReturn10y: 145.86,
+    });
+  });
+
+  it("carries the one year cumulative return the source publishes", () => {
+    const result = buildPublicationInputs([
+      {
+        fundClassId: "fund-e",
+        identity: {
+          trusteeName: "T",
+          schemeName: "S",
+          constituentFundName: "F",
+          fundClassName: "C",
+        },
+        current: true,
+        dataAsOf: "2026-07-31",
+        sourceUrl: "https://example.test/fund-e",
+        returns: {
+          1: { annualized: 29.58, cumulative: 29.58, dataAsOf: "2026-07-31" },
+        },
+      },
+    ])[0]!;
+
+    expect(result.publicFields).toMatchObject({ cumulativeReturn1y: 29.58 });
+  });
+
+  it("omits cumulative returns the source never published", () => {
+    const result = buildPublicationInputs([
+      {
+        fundClassId: "fund-f",
+        identity: {
+          trusteeName: "T",
+          schemeName: "S",
+          constituentFundName: "F",
+          fundClassName: "C",
+        },
+        current: true,
+        dataAsOf: "2026-07-31",
+        sourceUrl: "https://example.test/fund-f",
+        returns: {
+          5: { annualized: 6.1, dataAsOf: "2026-07-31" },
+        },
+      },
+    ])[0]!;
+
+    expect(result.publicFields).toMatchObject({ annualizedReturn5y: 6.1 });
+    expect(result.publicFields).not.toHaveProperty("cumulativeReturn5y");
+  });
 });

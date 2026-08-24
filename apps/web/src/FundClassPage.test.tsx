@@ -1,4 +1,10 @@
-import { cleanup, render, screen, waitFor } from "@testing-library/react";
+import {
+  cleanup,
+  render,
+  screen,
+  waitFor,
+  within,
+} from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import fixture from "../../../fixtures/mpfa/cf-429.json";
 import { FundClassPage } from "./FundClassPage";
@@ -126,12 +132,14 @@ describe("fund class page", () => {
       />,
     );
 
-    expect(await screen.findByText("一年年率化回報")).toBeVisible();
-    expect(screen.getByText("4.20%")).toBeVisible();
-    expect(screen.getByText("五年年率化回報")).toBeVisible();
-    expect(screen.getByText("6.14%")).toBeVisible();
-    expect(screen.getByText("十年年率化回報")).toBeVisible();
-    expect(screen.getByText("5.37%")).toBeVisible();
+    const table = await screen.findByRole("table", { name: "回報" });
+    const row = (horizon: string) =>
+      within(table)
+        .getAllByRole("row")
+        .find((candidate) => candidate.textContent?.startsWith(horizon))!;
+    expect(within(row("一年")).getByText("4.20%")).toBeVisible();
+    expect(within(row("五年")).getByText("6.14%")).toBeVisible();
+    expect(within(row("十年")).getByText("5.37%")).toBeVisible();
   });
 
   it("marks long horizon returns the official source never published", async () => {
@@ -158,9 +166,17 @@ describe("fund class page", () => {
       />,
     );
 
-    expect(await screen.findByText("五年年率化回報")).toBeVisible();
-    expect(screen.getByText("十年年率化回報")).toBeVisible();
-    expect(screen.getAllByText("官方未提供").length).toBeGreaterThanOrEqual(2);
+    const table = await screen.findByRole("table", { name: "回報" });
+    const rows = within(table).getAllByRole("row");
+    expect(
+      rows.find((row) => row.textContent?.startsWith("五年")),
+    ).toBeVisible();
+    expect(
+      rows.find((row) => row.textContent?.startsWith("十年")),
+    ).toBeVisible();
+    expect(
+      within(table).getAllByText("官方未提供").length,
+    ).toBeGreaterThanOrEqual(2);
   });
 
   it("shows official unavailability instead of crashing on absent fields", async () => {
@@ -192,7 +208,7 @@ describe("fund class page", () => {
       />,
     );
 
-    expect(await screen.findAllByText("官方未提供")).toHaveLength(6);
+    expect(await screen.findAllByText("官方未提供")).toHaveLength(7);
     expect(screen.getByText(/適用披露規則/)).toBeVisible();
   });
   it("titles the browser tab with the fund being viewed", async () => {
@@ -299,9 +315,14 @@ describe("fund class page", () => {
         new RegExp(`超出官方披露寬限期.*${fixture.fundClass.dataAsOf}`),
       ),
     ).toBeVisible();
+    const oneYear = within(screen.getByRole("table", { name: "回報" }))
+      .getAllByRole("row")
+      .find((row) => row.textContent?.startsWith("一年"))!;
     expect(
-      screen.getByText(`${fixture.fundClass.annualizedReturn1y.toFixed(2)}%`),
-    ).toBeVisible();
+      within(oneYear).getAllByText(
+        `${fixture.fundClass.annualizedReturn1y.toFixed(2)}%`,
+      ).length,
+    ).toBeGreaterThan(0);
   });
 
   it("shows a verified status when the data is inside the grace period", async () => {
@@ -359,5 +380,91 @@ describe("fund class page without a separate class", () => {
       ),
     ).toBeVisible();
     expect(screen.queryByText(/n\.a\./i)).not.toBeInTheDocument();
+  });
+});
+
+describe("cumulative returns", () => {
+  afterEach(() => {
+    cleanup();
+    vi.unstubAllGlobals();
+  });
+
+  const renderWithFields = (extra: Record<string, number | undefined>) => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-mpfa-cf-429-2026-06-30",
+          fundClass: { ...fixture.fundClass, ...extra },
+          provenance: {
+            sourceUrl: fixture.source.url,
+            dataAsOf: fixture.fundClass.dataAsOf,
+            retrievedAt: fixture.source.retrievedAt,
+            rawSha256: "a".repeat(64),
+            verificationStatus: "verified",
+          },
+        }),
+      ),
+    );
+    render(
+      <FundClassPage
+        apiBaseUrl="https://api.test"
+        fundClassId="mpfa-cf-429-class-i"
+      />,
+    );
+  };
+
+  it("puts each horizon's annualized and cumulative figures on the same row", async () => {
+    renderWithFields({
+      annualizedReturn1y: 29.58,
+      cumulativeReturn1y: 29.58,
+      annualizedReturn5y: 4.2,
+      cumulativeReturn5y: 22.85,
+      annualizedReturn10y: 9.41,
+      cumulativeReturn10y: 145.86,
+    });
+
+    const table = await screen.findByRole("table", { name: "回報" });
+    const rows = within(table).getAllByRole("row");
+    expect(rows[0]).toHaveTextContent("年率化回報");
+    expect(rows[0]).toHaveTextContent("累積回報");
+
+    const tenYear = rows.find((row) => row.textContent?.startsWith("十年"))!;
+    expect(within(tenYear).getByText("9.41%")).toBeVisible();
+    expect(within(tenYear).getByText("145.86%")).toBeVisible();
+
+    const fiveYear = rows.find((row) => row.textContent?.startsWith("五年"))!;
+    expect(within(fiveYear).getByText("4.20%")).toBeVisible();
+    expect(within(fiveYear).getByText("22.85%")).toBeVisible();
+  });
+
+  it("does not invent a cumulative figure the official source omits", async () => {
+    renderWithFields({
+      annualizedReturn5y: 4.2,
+      annualizedReturn10y: undefined,
+      cumulativeReturn5y: undefined,
+      cumulativeReturn10y: undefined,
+    });
+
+    const table = await screen.findByRole("table", { name: "回報" });
+    const fiveYear = within(table)
+      .getAllByRole("row")
+      .find((row) => row.textContent?.startsWith("五年"))!;
+    expect(within(fiveYear).getByText("4.20%")).toBeVisible();
+    expect(within(fiveYear).getByText("官方未提供")).toBeVisible();
+    expect(screen.queryByText("22.85%")).not.toBeInTheDocument();
+  });
+
+  it("explains how the annualized and cumulative figures differ", async () => {
+    renderWithFields({
+      annualizedReturn10y: 9.41,
+      cumulativeReturn10y: 145.86,
+    });
+
+    expect(
+      await screen.findByText(
+        /年率化回報是每年平均.*累積回報是整段期間的總變幅/,
+      ),
+    ).toBeVisible();
   });
 });
