@@ -197,4 +197,45 @@ describe("scheme comparison page", () => {
         .map((node) => node.textContent),
     ).toEqual(["Cheap Scheme", "Pricey Scheme", "Unknown Fee Scheme"]);
   });
+  it("leads each card with the fee and keeps long fund type lists collapsed", async () => {
+    const fundTypes = Array.from(
+      { length: 12 },
+      (_, index) => `Mixed Assets Fund - Long Descriptor ${index}`,
+    );
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json([
+          {
+            schemeName: "Wide Scheme",
+            trusteeName: "T",
+            fundClassCount: 21,
+            fundTypes,
+            riskClassDistribution: { "4": 21 },
+            managementFee: {
+              min: 0.65,
+              median: 1.03,
+              max: 1.31,
+              fundCount: 21,
+            },
+            funds: [],
+          },
+        ]),
+      ),
+    );
+
+    render(<SchemesPage apiBaseUrl="https://api.test" />);
+
+    const card = (await screen.findByRole("heading", { level: 3 })).closest(
+      "article",
+    );
+    const terms = Array.from(card?.querySelectorAll("dt") ?? []).map(
+      (node) => node.textContent,
+    );
+    expect(terms[0]).toBe("官方管理費");
+
+    const fundTypeSummary = screen.getByText("基金種類（12）");
+    expect(fundTypeSummary.closest("details")).not.toHaveAttribute("open");
+    expect(fundTypeSummary.closest("details")).toHaveTextContent(fundTypes[0]!);
+  });
 });

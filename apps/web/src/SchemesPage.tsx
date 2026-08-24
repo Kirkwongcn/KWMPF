@@ -86,14 +86,6 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
               <p className="kw-muted">{scheme.trusteeName}</p>
               <dl className="status-list">
                 <div>
-                  <dt>基金類別數量</dt>
-                  <dd>{scheme.fundClassCount}</dd>
-                </div>
-                <div>
-                  <dt>基金種類</dt>
-                  <dd>{scheme.fundTypes.join("、")}</dd>
-                </div>
-                <div>
                   <dt>官方管理費</dt>
                   <dd>
                     {scheme.managementFee ? (
@@ -114,6 +106,10 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
                   </dd>
                 </div>
                 <div>
+                  <dt>基金類別數量</dt>
+                  <dd>{scheme.fundClassCount}</dd>
+                </div>
+                <div>
                   <dt>風險級別分布</dt>
                   <dd>
                     {Object.entries(scheme.riskClassDistribution)
@@ -122,6 +118,10 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
                   </dd>
                 </div>
               </dl>
+              <details className="kw-disclosure">
+                <summary>基金種類（{scheme.fundTypes.length}）</summary>
+                <p className="kw-muted">{scheme.fundTypes.join("、")}</p>
+              </details>
               <ul className="kw-fund-list">
                 {scheme.funds.map((fund) => (
                   <li key={fund.id}>
