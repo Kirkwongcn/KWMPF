@@ -97,6 +97,72 @@ describe("fund class page", () => {
     ).toBeVisible();
   });
 
+  it("shows the official five and ten year returns alongside the one year figure", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-mpfa-cf-429-2026-06-30",
+          fundClass: {
+            ...fixture.fundClass,
+            annualizedReturn1y: 4.2,
+            annualizedReturn5y: 6.14,
+            annualizedReturn10y: 5.37,
+          },
+          provenance: {
+            sourceUrl: fixture.source.url,
+            dataAsOf: fixture.fundClass.dataAsOf,
+            retrievedAt: fixture.source.retrievedAt,
+            verificationStatus: "verified",
+          },
+        }),
+      ),
+    );
+
+    render(
+      <FundClassPage
+        apiBaseUrl="https://api.test"
+        fundClassId="mpfa-cf-429-class-i"
+      />,
+    );
+
+    expect(await screen.findByText("一年年率化回報")).toBeVisible();
+    expect(screen.getByText("4.20%")).toBeVisible();
+    expect(screen.getByText("五年年率化回報")).toBeVisible();
+    expect(screen.getByText("6.14%")).toBeVisible();
+    expect(screen.getByText("十年年率化回報")).toBeVisible();
+    expect(screen.getByText("5.37%")).toBeVisible();
+  });
+
+  it("marks long horizon returns the official source never published", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-mpfa-cf-429-2026-06-30",
+          fundClass: { ...fixture.fundClass, annualizedReturn1y: 4.2 },
+          provenance: {
+            sourceUrl: fixture.source.url,
+            dataAsOf: fixture.fundClass.dataAsOf,
+            retrievedAt: fixture.source.retrievedAt,
+            verificationStatus: "verified",
+          },
+        }),
+      ),
+    );
+
+    render(
+      <FundClassPage
+        apiBaseUrl="https://api.test"
+        fundClassId="mpfa-cf-429-class-i"
+      />,
+    );
+
+    expect(await screen.findByText("五年年率化回報")).toBeVisible();
+    expect(screen.getByText("十年年率化回報")).toBeVisible();
+    expect(screen.getAllByText("官方未提供").length).toBeGreaterThanOrEqual(2);
+  });
+
   it("shows official unavailability instead of crashing on absent fields", async () => {
     vi.stubGlobal(
       "fetch",
@@ -126,7 +192,7 @@ describe("fund class page", () => {
       />,
     );
 
-    expect(await screen.findAllByText("官方未提供")).toHaveLength(4);
+    expect(await screen.findAllByText("官方未提供")).toHaveLength(6);
     expect(screen.getByText(/適用披露規則/)).toBeVisible();
   });
 });

@@ -16,6 +16,18 @@ describe("publication preflight", () => {
     expect(buildPublicationPreflight([complete])).toEqual({ ready: true, accepted: 1, blocked: 0, issues: [] });
   });
 
+  it("does not require long horizon returns to publish", () => {
+    expect(buildPublicationPreflight([complete]).ready).toBe(true);
+    expect(
+      buildPublicationPreflight([
+        {
+          ...complete,
+          publicFields: { ...complete.publicFields, annualizedReturn5y: 6.1 },
+        },
+      ]).ready,
+    ).toBe(true);
+  });
+
   it("blocks records with missing public fields instead of creating partial payloads", () => {
     const result = buildPublicationPreflight([{ ...complete, publicFields: { annualizedReturn1y: 4.2 } }]);
     expect(result.ready).toBe(false);
