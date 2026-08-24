@@ -49,6 +49,7 @@ export function FundsPage({
   const [query, setQuery] = useState(initialQuery);
   const [submittedQuery, setSubmittedQuery] = useState(initialQuery);
   const [results, setResults] = useState<FundSummary[] | null>(null);
+  const [totalMatches, setTotalMatches] = useState(0);
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
@@ -88,13 +89,16 @@ export function FundsPage({
 
     setFailed(false);
     fetch(`${apiBaseUrl}/search?${params.toString()}`)
-      .then((response) => {
+      .then(async (response) => {
         if (!response.ok) throw new Error("Search unavailable");
-        return response.json() as Promise<FundSummary[]>;
+        const total = Number(response.headers.get("X-Total-Matches"));
+        const payload = (await response.json()) as FundSummary[];
+        setResults(payload);
+        setTotalMatches(Number.isFinite(total) ? total : payload.length);
       })
-      .then(setResults)
       .catch(() => {
         setResults(null);
+        setTotalMatches(0);
         setFailed(true);
       });
   }, [apiBaseUrl, hasCriteria, submittedQuery, fundType, trustee, riskClass]);
@@ -204,7 +208,9 @@ export function FundsPage({
         ) : (
           <>
             <p className="kw-muted">
-              共 {results.length} 隻已發布基金（每次最多顯示 50 隻）。
+              {totalMatches > results.length
+                ? `共 ${totalMatches} 隻符合條件，以下顯示首 ${results.length} 隻。可加入更多篩選條件收窄範圍。`
+                : `共 ${results.length} 隻已發布基金。`}
             </p>
             <div className="kw-table-wrap">
               <table className="kw-table">

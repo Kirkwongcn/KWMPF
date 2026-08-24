@@ -27,6 +27,9 @@ export function App({ apiUrl }: { apiUrl: string }) {
   const [summary, setSummary] = useState<Summary | null>(null);
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
+  const [searched, setSearched] = useState<string | null>(null);
+  const [totalMatches, setTotalMatches] = useState(0);
+  const [searchFailed, setSearchFailed] = useState(false);
 
   useEffect(() => {
     fetch(apiUrl)
@@ -50,11 +53,28 @@ export function App({ apiUrl }: { apiUrl: string }) {
 
   function search(event: FormEvent) {
     event.preventDefault();
-    if (!query.trim()) return setResults([]);
-    fetch(`${new URL(apiUrl).origin}/search?q=${encodeURIComponent(query)}`)
-      .then((response) => response.json() as Promise<SearchResult[]>)
-      .then(setResults)
-      .catch(() => setResults([]));
+    const term = query.trim();
+    setSearchFailed(false);
+    if (!term) {
+      setResults([]);
+      setTotalMatches(0);
+      return setSearched(null);
+    }
+    fetch(`${new URL(apiUrl).origin}/search?q=${encodeURIComponent(term)}`)
+      .then(async (response) => {
+        if (!response.ok) throw new Error("Search failed");
+        const total = Number(response.headers.get("X-Total-Matches"));
+        const payload = (await response.json()) as SearchResult[];
+        setResults(payload);
+        setTotalMatches(Number.isFinite(total) ? total : payload.length);
+        setSearched(term);
+      })
+      .catch(() => {
+        setResults([]);
+        setTotalMatches(0);
+        setSearched(null);
+        setSearchFailed(true);
+      });
   }
 
   const apiStatus =
@@ -91,19 +111,39 @@ export function App({ apiUrl }: { apiUrl: string }) {
               </button>
             </div>
           </form>
+          {searchFailed && (
+            <p className="kw-status kw-status--warning">
+              暫時無法搜尋已發布資料，請稍後再試。
+            </p>
+          )}
+          {searched !== null && results.length === 0 && (
+            <p className="kw-status kw-status--warning">
+              沒有符合「{searched}」的已發布基金。
+            </p>
+          )}
           {results.length > 0 && (
-            <ul aria-label="搜尋結果" className="search-results">
-              {results.map((result) => (
-                <li key={result.id}>
-                  <a href={`/fund-classes/${encodeURIComponent(result.id)}`}>
-                    {result.constituentFundName} · {result.fundClassName}
+            <>
+              {totalMatches > results.length && (
+                <p className="kw-muted">
+                  共 {totalMatches} 項符合，以下顯示首 {results.length} 項。{" "}
+                  <a href={`/funds?q=${encodeURIComponent(searched ?? "")}`}>
+                    按條件瀏覽全部結果
                   </a>
-                  <span>
-                    {result.schemeName}／{result.trusteeName}
-                  </span>
-                </li>
-              ))}
-            </ul>
+                </p>
+              )}
+              <ul aria-label="搜尋結果" className="search-results">
+                {results.map((result) => (
+                  <li key={result.id}>
+                    <a href={`/fund-classes/${encodeURIComponent(result.id)}`}>
+                      {result.constituentFundName} · {result.fundClassName}
+                    </a>
+                    <span>
+                      {result.schemeName}／{result.trusteeName}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </>
           )}
           <p className="kw-home-actions">
             <a className="kw-button" href="/funds">

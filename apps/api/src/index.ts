@@ -14,7 +14,9 @@ type Bindings = PublicationBindings & {
 
 const app = new Hono<{ Bindings: Bindings }>();
 
-app.use("*", cors());
+const SEARCH_RESULT_LIMIT = 50;
+
+app.use("*", cors({ origin: "*", exposeHeaders: ["X-Total-Matches"] }));
 
 app.get("/health", (context) =>
   context.json({
@@ -97,10 +99,12 @@ app.get("/search", async (context) => {
     trustee ||
     (riskClass !== undefined && Number.isFinite(riskClass)),
   );
-  if (!query && !hasFilter) return context.json([]);
+  if (!query && !hasFilter) {
+    return context.json([], { headers: { "X-Total-Matches": "0" } });
+  }
 
-  const results = (await loadPublishedFundClasses(context.env.DB))
-    .filter((fundClass) => {
+  const matches = (await loadPublishedFundClasses(context.env.DB)).filter(
+    (fundClass) => {
       if (
         query &&
         ![
@@ -121,24 +125,27 @@ app.get("/search", async (context) => {
       )
         return false;
       return true;
-    })
-    .slice(0, 50)
-    .map((fundClass) => ({
-      id: fundClass.id,
-      fundClassName: fundClass.fundClassName,
-      constituentFundName: fundClass.constituentFundName,
-      schemeName: fundClass.schemeName,
-      trusteeName: fundClass.trusteeName,
-      fundType: fundClass.fundType,
-      fundCategory: fundClass.fundCategory,
-      riskClass: fundClass.riskClass,
-      annualizedReturn1y: fundClass.annualizedReturn1y,
-      managementFee: fundClass.managementFee,
-      latestFer: fundClass.latestFer,
-      dataAsOf: fundClass.dataAsOf,
-    }));
+    },
+  );
 
-  return context.json(results);
+  const results = matches.slice(0, SEARCH_RESULT_LIMIT).map((fundClass) => ({
+    id: fundClass.id,
+    fundClassName: fundClass.fundClassName,
+    constituentFundName: fundClass.constituentFundName,
+    schemeName: fundClass.schemeName,
+    trusteeName: fundClass.trusteeName,
+    fundType: fundClass.fundType,
+    fundCategory: fundClass.fundCategory,
+    riskClass: fundClass.riskClass,
+    annualizedReturn1y: fundClass.annualizedReturn1y,
+    managementFee: fundClass.managementFee,
+    latestFer: fundClass.latestFer,
+    dataAsOf: fundClass.dataAsOf,
+  }));
+
+  return context.json(results, {
+    headers: { "X-Total-Matches": String(matches.length) },
+  });
 });
 
 app.get("/filters", async (context) => {
