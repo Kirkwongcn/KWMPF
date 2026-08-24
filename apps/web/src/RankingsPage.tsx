@@ -17,6 +17,8 @@ type RankingRow = {
 type PublishedRankings = {
   snapshotId: string;
   periodYears: number;
+  excludedStaleCount?: number;
+  methodology?: { freshness?: { graceDays: number; evaluatedOn: string } };
   rankings: RankingRow[];
 };
 
@@ -173,6 +175,11 @@ export function RankingsPage({
                 公開快照：<code>{publication.snapshotId}</code>
               </p>
             </div>
+            {publication.excludedStaleCount ? (
+              <p className="kw-status kw-status--warning">
+                {`有 ${publication.excludedStaleCount} 隻基金的資料已超出官方披露寬限期（${publication.methodology?.freshness?.graceDays ?? 45} 日），暫不列入排名。這些數值仍可在各基金詳情頁連同原截至日期查看。`}
+              </p>
+            ) : null}
             {rankings?.length ? (
               <div className="kw-table-wrap">
                 <table className="kw-table">

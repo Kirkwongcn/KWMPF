@@ -24,6 +24,12 @@ type PublishedFundClass = {
     retrievedAt: string;
     verificationStatus: "verified";
   };
+  freshness?: {
+    status: "verified" | "stale";
+    dataAsOf: string;
+    graceDays: number;
+    ageDays: number | null;
+  };
 };
 
 export function FundClassPage({
@@ -74,7 +80,7 @@ export function FundClassPage({
       </SiteChrome>
     );
 
-  const { fundClass, provenance, snapshotId } = publication;
+  const { fundClass, provenance, snapshotId, freshness } = publication;
   return (
     <SiteChrome
       eyebrow={fundClass.schemeName}
@@ -149,6 +155,24 @@ export function FundClassPage({
           <p>資料截至：{provenance.dataAsOf}</p>
           <p>擷取版本：{provenance.retrievedAt}</p>
           <p>驗證狀態：已驗證</p>
+          {freshness && (
+            <>
+              <p
+                className={
+                  freshness.status === "stale"
+                    ? "kw-status kw-status--warning"
+                    : "kw-status kw-status--positive"
+                }
+              >
+                {freshness.status === "stale" ? "資料過期" : "資料現行"}
+              </p>
+              <p>
+                {freshness.status === "stale"
+                  ? `這項資料已超出官方披露寬限期（${freshness.graceDays} 日），截至日期仍為 ${freshness.dataAsOf}。數值繼續顯示以供參考，但不會參與排名。`
+                  : `資料在官方披露寬限期（${freshness.graceDays} 日）之內。`}
+              </p>
+            </>
+          )}
           <p>
             公開快照：<code>{snapshotId}</code>
           </p>

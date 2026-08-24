@@ -259,4 +259,60 @@ describe("fund class page", () => {
       `/rankings?period=1&group=${encodeURIComponent(fixture.fundClass.fundCategory)}`,
     );
   });
+
+  const renderWithFreshness = (freshness: unknown) => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-mpfa-cf-429-2026-06-30",
+          fundClass: fixture.fundClass,
+          provenance: {
+            sourceUrl: fixture.source.url,
+            dataAsOf: fixture.fundClass.dataAsOf,
+            retrievedAt: fixture.source.retrievedAt,
+            verificationStatus: "verified",
+          },
+          freshness,
+        }),
+      ),
+    );
+    render(
+      <FundClassPage
+        apiBaseUrl="https://api.test"
+        fundClassId="mpfa-cf-429-class-i"
+      />,
+    );
+  };
+
+  it("marks a stale figure without hiding it or its original date", async () => {
+    renderWithFreshness({
+      status: "stale",
+      dataAsOf: fixture.fundClass.dataAsOf,
+      graceDays: 45,
+      ageDays: 200,
+    });
+
+    expect(await screen.findByText("資料過期")).toBeVisible();
+    expect(
+      screen.getByText(
+        new RegExp(`超出官方披露寬限期.*${fixture.fundClass.dataAsOf}`),
+      ),
+    ).toBeVisible();
+    expect(
+      screen.getByText(`${fixture.fundClass.annualizedReturn1y.toFixed(2)}%`),
+    ).toBeVisible();
+  });
+
+  it("shows a verified status when the data is inside the grace period", async () => {
+    renderWithFreshness({
+      status: "verified",
+      dataAsOf: fixture.fundClass.dataAsOf,
+      graceDays: 45,
+      ageDays: 20,
+    });
+
+    expect(await screen.findByText("資料現行")).toBeVisible();
+    expect(screen.queryByText("資料過期")).not.toBeInTheDocument();
+  });
 });

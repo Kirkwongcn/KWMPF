@@ -1,4 +1,8 @@
 import { readFile, writeFile } from "node:fs/promises";
+import {
+  FUND_OVERVIEW_GRACE_DAYS,
+  MONTHLY_GRACE_DAYS,
+} from "./data-freshness";
 import { buildPublicationInputs } from "./build-publication-input";
 import { buildPublicationPayload } from "./build-publication-payload";
 import { parseSourceSnapshot } from "./input";
@@ -52,6 +56,10 @@ const statements = [
         dataAsOf: record.dataAsOf,
         retrievedAt: snapshot.retrievedAt,
         verificationStatus: record.status,
+        freshnessPolicy: {
+          returnsGraceDays: MONTHLY_GRACE_DAYS,
+          fundOverviewGraceDays: FUND_OVERVIEW_GRACE_DAYS,
+        },
       },
     });
     return `INSERT INTO fund_class_versions (snapshot_id, fund_class_id, payload) VALUES (${sqlString(snapshotId)}, ${sqlString(record.fundClassId)}, ${sqlString(body)});`;

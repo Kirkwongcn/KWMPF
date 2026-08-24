@@ -2,6 +2,10 @@ import type { SourceRecord } from "./build-coverage";
 
 export type FreshnessStatus = "verified" | "stale" | "failed_with_last_verified";
 
+export const MONTHLY_GRACE_DAYS = 45;
+export const FUND_OVERVIEW_GRACE_DAYS = 30;
+export const CURRENT_STATUS_GRACE_DAYS = 7;
+
 export type FreshnessPolicy = {
   kind: "monthly" | "current_status" | "fund_overview";
   asOf: string;
@@ -24,8 +28,11 @@ function daysBetween(start: string, end: string) {
 export function classifyFreshness(policy: FreshnessPolicy): FreshnessStatus {
   const age = daysBetween(policy.asOf, policy.today);
   if (age < 0) throw new Error("data date cannot be in the future");
-  if (policy.kind === "current_status") return age > 7 ? "stale" : "verified";
-  const graceDays = policy.graceDays ?? (policy.kind === "monthly" ? 45 : 30);
+  if (policy.kind === "current_status")
+    return age > CURRENT_STATUS_GRACE_DAYS ? "stale" : "verified";
+  const graceDays =
+    policy.graceDays ??
+    (policy.kind === "monthly" ? MONTHLY_GRACE_DAYS : FUND_OVERVIEW_GRACE_DAYS);
   return age > graceDays ? "stale" : "verified";
 }
 
