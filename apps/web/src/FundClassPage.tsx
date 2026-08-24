@@ -11,6 +11,8 @@ type PublishedFundClass = {
     fundType: string;
     fundCategory: string;
     annualizedReturn1y: number;
+    annualizedReturn5y?: number;
+    annualizedReturn10y?: number;
     riskClass?: number;
     latestFer?: number;
     managementFee: number;
@@ -85,8 +87,16 @@ export function FundClassPage({
         </h2>
         <dl className="status-list">
           <div>
-            <dt>一年回報</dt>
+            <dt>一年年率化回報</dt>
             <dd>{fundClass.annualizedReturn1y.toFixed(2)}%</dd>
+          </div>
+          <div>
+            <dt>五年年率化回報</dt>
+            <dd>{formatNumber(fundClass.annualizedReturn5y, 2, "%")}</dd>
+          </div>
+          <div>
+            <dt>十年年率化回報</dt>
+            <dd>{formatNumber(fundClass.annualizedReturn10y, 2, "%")}</dd>
           </div>
           <div>
             <dt>風險級別</dt>
