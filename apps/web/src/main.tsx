@@ -26,6 +26,11 @@ const requestedPeriod = params.get("period");
 const initialPeriod =
   requestedPeriod === "5" || requestedPeriod === "10" ? requestedPeriod : "1";
 const initialComparisonGroup = params.get("group") ?? "all";
+const requestedMetric = params.get("metric");
+const initialMetric =
+  requestedMetric === "fee" || requestedMetric === "risk"
+    ? requestedMetric
+    : "return";
 
 createRoot(root).render(
   <StrictMode>
@@ -46,6 +51,7 @@ createRoot(root).render(
         apiBaseUrl={apiBaseUrl}
         initialPeriod={initialPeriod}
         initialComparisonGroup={initialComparisonGroup}
+        initialMetric={initialMetric}
       />
     ) : (
       <App apiUrl={`${apiBaseUrl}/health`} />

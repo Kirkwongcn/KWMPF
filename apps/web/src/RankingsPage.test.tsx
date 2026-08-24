@@ -228,4 +228,108 @@ describe("published return rankings", () => {
     expect(await screen.findByText(/沒有合資格的十年回報資料/)).toBeVisible();
     expect(screen.getByLabelText("比較組別")).toHaveValue("Guaranteed Fund");
   });
+
+  const metricResponse = (metric: string) =>
+    Response.json({
+      snapshotId: "snapshot-2026-07-31",
+      metric,
+      periodYears: metric === "return" ? 1 : null,
+      rankings: [
+        {
+          fundClassId: "fund-a",
+          fundClassName: "Class A",
+          constituentFundName: "North America Fund",
+          schemeName: "Scheme One",
+          trusteeName: "Trustee One",
+          comparisonGroup: "Equity Fund (North America)",
+          displayValue:
+            metric === "fee" ? "0.65%" : metric === "risk" ? "3" : "17.21%",
+          rank: 1,
+          dataAsOf: "2026-07-31",
+          sourceUrl: "https://example.test/fund-a",
+        },
+      ],
+    });
+
+  it("lets the reader rank by management fee instead of return", async () => {
+    const fetchMock = vi
+      .fn()
+      .mockImplementation((url: string) =>
+        Promise.resolve(
+          metricResponse(url.includes("metric=fee") ? "fee" : "return"),
+        ),
+      );
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<RankingsPage apiBaseUrl="https://api.test" />);
+
+    expect(await screen.findByText("17.21%")).toBeVisible();
+
+    fireEvent.change(screen.getByLabelText("排序指標"), {
+      target: { value: "fee" },
+    });
+
+    expect(await screen.findByText("0.65%")).toBeVisible();
+    expect(fetchMock).toHaveBeenCalledWith(
+      "https://api.test/rankings?metric=fee",
+    );
+    expect(screen.getByRole("heading", { name: "管理費排名" })).toBeVisible();
+    expect(screen.getByRole("columnheader", { name: "管理費" })).toBeVisible();
+    expect(screen.queryByLabelText("回報期間")).not.toBeInTheDocument();
+  });
+
+  it("ranks official risk classes as a separate lower volatility view", async () => {
+    const fetchMock = vi
+      .fn()
+      .mockImplementation((url: string) =>
+        Promise.resolve(
+          metricResponse(url.includes("metric=risk") ? "risk" : "return"),
+        ),
+      );
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<RankingsPage apiBaseUrl="https://api.test" initialMetric="risk" />);
+
+    expect(await screen.findByText("3")).toBeVisible();
+    expect(fetchMock).toHaveBeenCalledWith(
+      "https://api.test/rankings?metric=risk",
+    );
+    expect(screen.getByLabelText("排序指標")).toHaveValue("risk");
+    expect(screen.getByRole("heading", { name: "風險級別排名" })).toBeVisible();
+    expect(
+      screen.getByRole("columnheader", { name: "風險級別" }),
+    ).toBeVisible();
+    expect(
+      screen.getByText(/風險級別由官方公布，數字越低代表過往波幅越低/),
+    ).toBeVisible();
+  });
+
+  it("puts the ranked value before the long comparison group column", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockImplementation(() => Promise.resolve(metricResponse("fee"))),
+    );
+
+    render(<RankingsPage apiBaseUrl="https://api.test" initialMetric="fee" />);
+
+    expect(await screen.findByText("0.65%")).toBeVisible();
+    expect(
+      screen.getAllByRole("columnheader").map((cell) => cell.textContent),
+    ).toEqual(["名次", "基金", "管理費", "比較組別", "截至日期", "來源"]);
+  });
+
+  it("keeps the return metric link format unchanged", async () => {
+    const fetchMock = vi
+      .fn()
+      .mockImplementation(() => Promise.resolve(metricResponse("return")));
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<RankingsPage apiBaseUrl="https://api.test" />);
+
+    expect(await screen.findByText("17.21%")).toBeVisible();
+    expect(fetchMock).toHaveBeenCalledWith(
+      "https://api.test/rankings?period=1",
+    );
+    expect(screen.getByLabelText("排序指標")).toHaveValue("return");
+  });
 });

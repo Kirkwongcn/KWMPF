@@ -446,6 +446,7 @@ describe("publication snapshot", () => {
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({
       snapshotId,
+      metric: "return",
       periodYears: 1,
       methodology: {
         metric: "annualized_return",
@@ -546,6 +547,138 @@ describe("publication snapshot", () => {
       supportedPeriods: [1, 5, 10],
       reason:
         "官方強積金基金平台沒有提供三年年率化回報，網站不會自行由其他期間推算。",
+    });
+  });
+
+  const seedCostAndRiskSnapshot = async (snapshotId: string) => {
+    await bindings.DB.prepare(
+      "INSERT INTO publication_snapshots (snapshot_id, published_at) VALUES (?, ?)",
+    )
+      .bind(snapshotId, "2026-08-13T00:00:00Z")
+      .run();
+    const funds = [
+      { id: "fund-a", managementFee: 1.205, riskClass: 6 },
+      { id: "fund-b", managementFee: 0.65, riskClass: 3 },
+      { id: "fund-c", managementFee: 0.6504, riskClass: 3 },
+      { id: "fund-d", managementFee: undefined, riskClass: undefined },
+    ];
+    for (const fund of funds) {
+      await bindings.DB.prepare(
+        "INSERT INTO fund_class_versions (snapshot_id, fund_class_id, payload) VALUES (?, ?, ?)",
+      )
+        .bind(
+          snapshotId,
+          fund.id,
+          JSON.stringify({
+            snapshotId,
+            fundClass: {
+              id: fund.id,
+              fundClassName: fund.id,
+              constituentFundName: fund.id,
+              schemeName: "測試計劃",
+              trusteeName: "測試受託人",
+              fundCategory: "環球股票基金",
+              annualizedReturn1y: 1,
+              managementFee: fund.managementFee,
+              riskClass: fund.riskClass,
+              dataAsOf: "2026-07-31",
+              verificationStatus: "verified",
+            },
+            provenance: {
+              sourceUrl: `https://example.test/${fund.id}`,
+              dataAsOf: "2026-07-31",
+              verificationStatus: "verified",
+            },
+          }),
+        )
+        .run();
+    }
+    await bindings.DB.prepare(
+      "INSERT INTO current_publication (singleton, snapshot_id) VALUES (1, ?)",
+    )
+      .bind(snapshotId)
+      .run();
+  };
+
+  it("ranks management fees from low to high without mixing in returns", async () => {
+    await seedCostAndRiskSnapshot("snapshot-fee");
+
+    const response = await SELF.fetch("https://kwmpf.test/rankings?metric=fee");
+
+    expect(response.status).toBe(200);
+    const body = (await response.json()) as {
+      metric: string;
+      periodYears: number | null;
+      methodology: Record<string, unknown>;
+      rankings: { fundClassId: string; displayValue: string; rank: number }[];
+    };
+    expect(body.metric).toBe("fee");
+    expect(body.periodYears).toBeNull();
+    expect(body.methodology).toEqual({
+      metric: "management_fee",
+      grouping: "comparison_group",
+      sortDirection: "ascending",
+      displayPrecision: 2,
+    });
+    expect(
+      body.rankings.map((row) => [row.fundClassId, row.displayValue, row.rank]),
+    ).toEqual([
+      ["fund-b", "0.65%", 1],
+      ["fund-c", "0.65%", 1],
+      ["fund-a", "1.21%", 3],
+    ]);
+  });
+
+  it("ranks official risk classes from low to high as a separate volatility view", async () => {
+    await seedCostAndRiskSnapshot("snapshot-risk");
+
+    const response = await SELF.fetch(
+      "https://kwmpf.test/rankings?metric=risk",
+    );
+
+    expect(response.status).toBe(200);
+    const body = (await response.json()) as {
+      metric: string;
+      methodology: Record<string, unknown>;
+      rankings: { fundClassId: string; displayValue: string; rank: number }[];
+    };
+    expect(body.metric).toBe("risk");
+    expect(body.methodology).toEqual({
+      metric: "official_risk_class",
+      grouping: "comparison_group",
+      sortDirection: "ascending",
+      displayPrecision: 0,
+    });
+    expect(
+      body.rankings.map((row) => [row.fundClassId, row.displayValue, row.rank]),
+    ).toEqual([
+      ["fund-b", "3", 1],
+      ["fund-c", "3", 1],
+      ["fund-a", "6", 3],
+    ]);
+  });
+
+  it("keeps the return metric as the default so existing links stay stable", async () => {
+    await seedCostAndRiskSnapshot("snapshot-default-metric");
+
+    const body = (await (
+      await SELF.fetch("https://kwmpf.test/rankings?period=1")
+    ).json()) as { metric: string; periodYears: number };
+
+    expect(body.metric).toBe("return");
+    expect(body.periodYears).toBe(1);
+  });
+
+  it("rejects an unsupported ranking metric instead of guessing one", async () => {
+    const response = await SELF.fetch(
+      "https://kwmpf.test/rankings?metric=total_score",
+    );
+
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({
+      error: "Unsupported ranking metric",
+      supportedMetrics: ["return", "fee", "risk"],
+      reason: "回報、費用及風險級別分開排序，網站不會合成單一推薦總分。",
     });
   });
 });

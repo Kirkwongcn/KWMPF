@@ -289,6 +289,12 @@ body {
   color: var(--kw-muted-strong);
   font-size: 12px;
 }
+.kw-table th[scope="col"] {
+  white-space: nowrap;
+}
+.kw-table__name {
+  min-width: 170px;
+}
 
 .kw-figure-grid {
   display: grid;
