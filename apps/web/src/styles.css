@@ -360,6 +360,42 @@ body {
 .scheme-card {
   min-width: 0;
 }
+.kw-fund-list {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+}
+.kw-fund-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 16px;
+  padding: 10px 0;
+  border-top: 1px solid rgba(15, 40, 35, 0.1);
+}
+.kw-fund-list a {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  text-decoration: none;
+}
+.kw-fund-list a strong {
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--kw-gold);
+  text-underline-offset: 3px;
+}
+.kw-fund-list small {
+  color: rgba(15, 40, 35, 0.6);
+  font-size: 0.82rem;
+}
+.kw-fund-list .kw-muted {
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
 .provenance {
   margin-top: 24px;
 }

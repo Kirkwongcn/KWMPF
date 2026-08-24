@@ -7,7 +7,13 @@ type Scheme = {
   fundClassCount: number;
   fundTypes: string[];
   riskClassDistribution: Record<string, number>;
-  fundClassIds: string[];
+  funds: {
+    id: string;
+    constituentFundName: string;
+    fundClassName: string;
+    fundType: string;
+    riskClass?: number;
+  }[];
 };
 
 export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
@@ -59,10 +65,20 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
                   </dd>
                 </div>
               </dl>
-              <ul>
-                {scheme.fundClassIds.map((id) => (
-                  <li key={id}>
-                    <a href={`/fund-classes/${encodeURIComponent(id)}`}>{id}</a>
+              <ul className="kw-fund-list">
+                {scheme.funds.map((fund) => (
+                  <li key={fund.id}>
+                    <a href={`/fund-classes/${encodeURIComponent(fund.id)}`}>
+                      <strong>{fund.constituentFundName}</strong>
+                      <small>
+                        {fund.fundClassName} · {fund.fundType}
+                      </small>
+                    </a>
+                    <span className="kw-muted">
+                      {typeof fund.riskClass === "number"
+                        ? `風險級別 ${fund.riskClass}`
+                        : "風險級別官方未提供"}
+                    </span>
                   </li>
                 ))}
               </ul>
