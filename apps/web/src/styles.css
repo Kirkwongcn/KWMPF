@@ -353,6 +353,15 @@ body {
   color: var(--kw-muted);
   font-size: 12px;
 }
+.kw-home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0 0;
+}
+.kw-home-actions a {
+  text-decoration: none;
+}
 .scheme-list {
   display: grid;
   gap: 18px;

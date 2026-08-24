@@ -107,6 +107,35 @@ describe("publication snapshot", () => {
     ]);
   });
 
+  it("summarizes the published coverage for the landing page", async () => {
+    const archived = await archiveCandidate(bindings, fundFixture);
+    await publishCandidate(bindings, fundFixture, archived);
+
+    const response = await SELF.fetch("https://kwmpf.test/summary");
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({
+      snapshotId: expect.any(String),
+      fundClassCount: 1,
+      schemeCount: 1,
+      trusteeCount: 1,
+      dataAsOf: { earliest: "2026-06-30", latest: "2026-06-30" },
+    });
+  });
+
+  it("reports an empty summary when nothing is published", async () => {
+    const response = await SELF.fetch("https://kwmpf.test/summary");
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({
+      snapshotId: null,
+      fundClassCount: 0,
+      schemeCount: 0,
+      trusteeCount: 0,
+      dataAsOf: null,
+    });
+  });
+
   it("summarizes only verified fund classes by scheme", async () => {
     const archived = await archiveCandidate(bindings, fundFixture);
     await publishCandidate(bindings, fundFixture, archived);
