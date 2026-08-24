@@ -195,4 +195,35 @@ describe("fund class page", () => {
     expect(await screen.findAllByText("官方未提供")).toHaveLength(6);
     expect(screen.getByText(/適用披露規則/)).toBeVisible();
   });
+  it("titles the browser tab with the fund being viewed", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-mpfa-cf-429-2026-06-30",
+          fundClass: fixture.fundClass,
+          provenance: {
+            sourceUrl: fixture.source.url,
+            dataAsOf: fixture.fundClass.dataAsOf,
+            retrievedAt: fixture.source.retrievedAt,
+            verificationStatus: "verified",
+          },
+        }),
+      ),
+    );
+
+    render(
+      <FundClassPage
+        apiBaseUrl="https://api.test"
+        fundClassId="mpfa-cf-429-class-i"
+      />,
+    );
+
+    expect(
+      await screen.findByRole("heading", {
+        name: "Principal Hong Kong Equity Fund",
+      }),
+    ).toBeVisible();
+    expect(document.title).toBe("Principal Hong Kong Equity Fund｜KWMPF");
+  });
 });

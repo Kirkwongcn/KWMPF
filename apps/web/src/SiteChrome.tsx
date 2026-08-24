@@ -1,20 +1,40 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 
 type NavKey = "rankings" | "schemes";
+
+const siteName = "KWMPF";
+const homeDescription =
+  "以積金局及受託人官方資料比較香港強積金計劃及基金，每項數值均可追溯來源及截至日期。";
 
 export function SiteChrome({
   eyebrow,
   title,
   subtitle,
   current,
+  isHome,
   children,
 }: {
   eyebrow: string;
   title: string;
   subtitle?: string;
   current?: NavKey;
+  isHome?: boolean;
   children: ReactNode;
 }) {
+  useEffect(() => {
+    document.title = isHome
+      ? `${siteName}｜香港強積金比較`
+      : `${title}｜${siteName}`;
+    const description = subtitle ?? homeDescription;
+    let meta = document.querySelector('meta[name="description"]');
+    if (!meta) {
+      meta = document.createElement("meta");
+      meta.setAttribute("name", "description");
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute("content", description);
+  }, [title, subtitle, isHome]);
+
   return (
     <>
       <header className="kw-header">
