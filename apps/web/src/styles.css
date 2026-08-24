@@ -369,6 +369,27 @@ body {
 .scheme-card {
   min-width: 0;
 }
+.kw-fee-note {
+  display: block;
+  margin-top: 2px;
+  color: var(--kw-muted);
+  font-size: 0.78rem;
+  font-weight: 400;
+}
+.kw-disclosure {
+  border-top: 1px solid var(--kw-line);
+  padding-top: 12px;
+}
+.kw-disclosure summary {
+  cursor: pointer;
+  color: var(--kw-muted);
+  font-size: 12px;
+}
+.kw-disclosure p {
+  margin: 8px 0 0;
+  font-size: 0.82rem;
+  overflow-wrap: anywhere;
+}
 .kw-fund-list {
   list-style: none;
   margin: 18px 0 0;

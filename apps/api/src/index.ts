@@ -148,6 +148,7 @@ app.get("/schemes", async (context) => {
       fundClassCount: number;
       fundTypes: string[];
       riskClassDistribution: Record<string, number>;
+      managementFees: number[];
       funds: {
         id: string;
         constituentFundName: string;
@@ -168,6 +169,7 @@ app.get("/schemes", async (context) => {
         fundClassName: string;
         fundType: string;
         riskClass?: number;
+        managementFee?: number;
         verificationStatus: string;
       };
     };
@@ -178,6 +180,7 @@ app.get("/schemes", async (context) => {
       fundClassCount: 0,
       fundTypes: [],
       riskClassDistribution: {},
+      managementFees: [],
       funds: [],
     };
     scheme.fundClassCount += 1;
@@ -188,6 +191,8 @@ app.get("/schemes", async (context) => {
       scheme.riskClassDistribution[risk] =
         (scheme.riskClassDistribution[risk] ?? 0) + 1;
     }
+    if (typeof fundClass.managementFee === "number")
+      scheme.managementFees.push(fundClass.managementFee);
     scheme.funds.push({
       id: fundClass.id,
       constituentFundName: fundClass.constituentFundName,
@@ -199,8 +204,28 @@ app.get("/schemes", async (context) => {
     });
     schemes.set(fundClass.schemeName, scheme);
   }
-  return context.json([...schemes.values()]);
+  return context.json(
+    [...schemes.values()].map(({ managementFees, ...scheme }) => ({
+      ...scheme,
+      managementFee: summarizeFees(managementFees),
+    })),
+  );
 });
+
+function summarizeFees(fees: number[]) {
+  if (fees.length === 0) return null;
+  const sorted = [...fees].sort((a, b) => a - b);
+  const middle = Math.floor(sorted.length / 2);
+  return {
+    min: sorted[0]!,
+    median:
+      sorted.length % 2 === 0
+        ? (sorted[middle - 1]! + sorted[middle]!) / 2
+        : sorted[middle]!,
+    max: sorted[sorted.length - 1]!,
+    fundCount: sorted.length,
+  };
+}
 
 const rankingReturnFields = {
   1: "annualizedReturn1y",

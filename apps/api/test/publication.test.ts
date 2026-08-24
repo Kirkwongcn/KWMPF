@@ -148,6 +148,12 @@ describe("publication snapshot", () => {
         fundClassCount: 1,
         fundTypes: [fundFixture.fundClass.fundType],
         riskClassDistribution: { "6": 1 },
+        managementFee: {
+          min: fundFixture.fundClass.managementFee,
+          median: fundFixture.fundClass.managementFee,
+          max: fundFixture.fundClass.managementFee,
+          fundCount: 1,
+        },
         funds: [
           {
             id: fundFixture.fundClass.id,
@@ -159,6 +165,94 @@ describe("publication snapshot", () => {
         ],
       },
     ]);
+  });
+
+  it("summarizes official management fees per scheme over funds that publish one", async () => {
+    const snapshotId = "snapshot-fee-test";
+    await bindings.DB.prepare(
+      "INSERT INTO publication_snapshots (snapshot_id, published_at) VALUES (?, ?)",
+    )
+      .bind(snapshotId, "2026-08-13T00:00:00Z")
+      .run();
+    const funds = [
+      { id: "fund-a", fee: 0.75 },
+      { id: "fund-b", fee: 1.55 },
+      { id: "fund-c", fee: 1.05 },
+      { id: "fund-d", fee: undefined },
+    ];
+    for (const fund of funds) {
+      await bindings.DB.prepare(
+        "INSERT INTO fund_class_versions (snapshot_id, fund_class_id, payload) VALUES (?, ?, ?)",
+      )
+        .bind(
+          snapshotId,
+          fund.id,
+          JSON.stringify({
+            snapshotId,
+            fundClass: {
+              id: fund.id,
+              schemeName: "費用測試計劃",
+              trusteeName: "測試受託人",
+              constituentFundName: fund.id,
+              fundClassName: "Class A",
+              fundType: "Equity Fund",
+              managementFee: fund.fee,
+              verificationStatus: "verified",
+            },
+          }),
+        )
+        .run();
+    }
+    await bindings.DB.prepare(
+      "INSERT INTO current_publication (singleton, snapshot_id) VALUES (1, ?)",
+    )
+      .bind(snapshotId)
+      .run();
+
+    const schemes = (await (
+      await SELF.fetch("https://kwmpf.test/schemes")
+    ).json()) as {
+      managementFee: {
+        min: number;
+        median: number;
+        max: number;
+        fundCount: number;
+      } | null;
+    }[];
+
+    expect(schemes[0]!.managementFee).toEqual({
+      min: 0.75,
+      median: 1.05,
+      max: 1.55,
+      fundCount: 3,
+    });
+  });
+
+  it("reports no management fee summary when no fund publishes one", async () => {
+    const archived = await archiveCandidate(bindings, {
+      ...fundFixture,
+      fundClass: (() => {
+        const { managementFee: _fee, ...rest } = fundFixture.fundClass;
+        return rest as typeof fundFixture.fundClass;
+      })(),
+    });
+    await publishCandidate(
+      bindings,
+      {
+        ...fundFixture,
+        fundClass: (() => {
+          const { managementFee: _fee, ...rest } = fundFixture.fundClass;
+          return rest as typeof fundFixture.fundClass;
+        })(),
+      },
+      archived,
+    );
+
+    const schemes = (await (
+      await SELF.fetch("https://kwmpf.test/schemes")
+    ).json()) as { managementFee: unknown }[];
+
+    expect(schemes[0]!.managementFee).toBeNull();
   });
 
   it("keeps verified fund classes with unavailable risk data in scheme summaries", async () => {
