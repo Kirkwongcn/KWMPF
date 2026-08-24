@@ -137,4 +137,95 @@ describe("published return rankings", () => {
     expect(await screen.findByText(/官方沒有提供三年年率化回報/)).toBeVisible();
     expect(screen.getByLabelText("回報期間")).toBeVisible();
   });
+  it("opens on the comparison group and period named in the link", async () => {
+    const fetchMock = vi.fn().mockImplementation((url: string) =>
+      Promise.resolve(
+        Response.json({
+          snapshotId: "snapshot-2026-07-31",
+          periodYears: Number(new URL(url).searchParams.get("period")),
+          rankings: [
+            {
+              fundClassId: "fund-a",
+              fundClassName: "Class A",
+              constituentFundName: "North America Fund",
+              schemeName: "Scheme One",
+              trusteeName: "Trustee One",
+              comparisonGroup: "Equity Fund (North America)",
+              displayValue: "17.21%",
+              rank: 1,
+              dataAsOf: "2026-07-31",
+              sourceUrl: "https://example.test/fund-a",
+            },
+            {
+              fundClassId: "fund-b",
+              fundClassName: "Class B",
+              constituentFundName: "Money Market Fund",
+              schemeName: "Scheme Two",
+              trusteeName: "Trustee Two",
+              comparisonGroup: "Money Market Fund - Hong Kong",
+              displayValue: "1.91%",
+              rank: 1,
+              dataAsOf: "2026-07-31",
+              sourceUrl: "https://example.test/fund-b",
+            },
+          ],
+        }),
+      ),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(
+      <RankingsPage
+        apiBaseUrl="https://api.test"
+        initialPeriod="5"
+        initialComparisonGroup="Money Market Fund - Hong Kong"
+      />,
+    );
+
+    expect(await screen.findByText("1.91%")).toBeVisible();
+    expect(screen.queryByText("17.21%")).not.toBeInTheDocument();
+    expect(fetchMock).toHaveBeenCalledWith(
+      "https://api.test/rankings?period=5",
+    );
+    expect(screen.getByLabelText("回報期間")).toHaveValue("5");
+    expect(screen.getByLabelText("比較組別")).toHaveValue(
+      "Money Market Fund - Hong Kong",
+    );
+  });
+  it("keeps showing a linked group that has no eligible funds for the period", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-2026-07-31",
+          periodYears: 10,
+          rankings: [
+            {
+              fundClassId: "fund-a",
+              fundClassName: "Class A",
+              constituentFundName: "North America Fund",
+              schemeName: "Scheme One",
+              trusteeName: "Trustee One",
+              comparisonGroup: "Equity Fund (North America)",
+              displayValue: "8.02%",
+              rank: 1,
+              dataAsOf: "2026-07-31",
+              sourceUrl: "https://example.test/fund-a",
+            },
+          ],
+        }),
+      ),
+    );
+
+    render(
+      <RankingsPage
+        apiBaseUrl="https://api.test"
+        initialPeriod="10"
+        initialComparisonGroup="Guaranteed Fund"
+      />,
+    );
+
+    expect(await screen.findByText(/沒有合資格的十年回報資料/)).toBeVisible();
+    expect(screen.getByLabelText("比較組別")).toHaveValue("Guaranteed Fund");
+  });
 });

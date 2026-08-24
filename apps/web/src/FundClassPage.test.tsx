@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import fixture from "../../../fixtures/mpfa/cf-429.json";
 import { FundClassPage } from "./FundClassPage";
@@ -224,6 +224,39 @@ describe("fund class page", () => {
         name: "Principal Hong Kong Equity Fund",
       }),
     ).toBeVisible();
-    expect(document.title).toBe("Principal Hong Kong Equity Fund｜KWMPF");
+    await waitFor(() =>
+      expect(document.title).toBe("Principal Hong Kong Equity Fund｜KWMPF"),
+    );
+  });
+
+  it("links to the fund's own comparison group ranking", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-mpfa-cf-429-2026-06-30",
+          fundClass: fixture.fundClass,
+          provenance: {
+            sourceUrl: fixture.source.url,
+            dataAsOf: fixture.fundClass.dataAsOf,
+            retrievedAt: fixture.source.retrievedAt,
+            verificationStatus: "verified",
+          },
+        }),
+      ),
+    );
+
+    render(
+      <FundClassPage
+        apiBaseUrl="https://api.test"
+        fundClassId="mpfa-cf-429-class-i"
+      />,
+    );
+
+    const link = await screen.findByRole("link", { name: /同組基金排名/ });
+    expect(link).toHaveAttribute(
+      "href",
+      `/rankings?period=1&group=${encodeURIComponent(fixture.fundClass.fundCategory)}`,
+    );
   });
 });
