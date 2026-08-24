@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { SiteChrome } from "./SiteChrome";
+import { fundClassLabel, joinFundParts } from "./fundClassLabel";
 
 type Scheme = {
   schemeName: string;
@@ -128,7 +129,10 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
                     <a href={`/fund-classes/${encodeURIComponent(fund.id)}`}>
                       <strong>{fund.constituentFundName}</strong>
                       <small>
-                        {fund.fundClassName} · {fund.fundType}
+                        {joinFundParts(
+                          fundClassLabel(fund.fundClassName),
+                          fund.fundType,
+                        )}
                       </small>
                     </a>
                     <span className="kw-muted">

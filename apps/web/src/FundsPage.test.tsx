@@ -192,3 +192,27 @@ describe("fund browse page", () => {
     ).toBeVisible();
   });
 });
+
+describe("fund browse page without a separate class", () => {
+  afterEach(() => {
+    cleanup();
+    vi.unstubAllGlobals();
+  });
+
+  it("omits the official n.a. placeholder next to the fund name", async () => {
+    stubFetch((url) =>
+      url.includes("/filters")
+        ? filters
+        : [{ ...equityResults[0], fundClassName: "n.a." }],
+    );
+
+    render(<FundsPage apiBaseUrl="https://api.test" />);
+
+    fireEvent.change(await screen.findByLabelText("基金種類"), {
+      target: { value: "Equity Fund" },
+    });
+
+    expect(await screen.findByRole("link", { name: "港股基金" })).toBeVisible();
+    expect(screen.queryByText(/n\.a\./i)).not.toBeInTheDocument();
+  });
+});

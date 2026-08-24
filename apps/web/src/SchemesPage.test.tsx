@@ -239,3 +239,44 @@ describe("scheme comparison page", () => {
     expect(fundTypeSummary.closest("details")).toHaveTextContent(fundTypes[0]!);
   });
 });
+
+describe("scheme funds without a separate class", () => {
+  afterEach(() => {
+    cleanup();
+    vi.unstubAllGlobals();
+  });
+
+  it("omits the official n.a. placeholder from the fund list", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json([
+          {
+            schemeName: "Scheme One",
+            trusteeName: "Trustee One",
+            fundClassCount: 1,
+            fundTypes: ["Equity Fund"],
+            riskClassDistribution: { "5": 1 },
+            funds: [
+              {
+                id: "fund-na",
+                constituentFundName: "Growth Fund",
+                fundClassName: "n.a.",
+                fundType: "Equity Fund",
+                riskClass: 5,
+              },
+            ],
+          },
+        ]),
+      ),
+    );
+
+    render(<SchemesPage apiBaseUrl="https://api.test" />);
+
+    const fundLink = await screen.findByRole("link", { name: /Growth Fund/ });
+    expect(fundLink).toBeVisible();
+    expect(fundLink).toHaveTextContent("Equity Fund");
+    expect(fundLink).not.toHaveTextContent(/n\.a\./i);
+    expect(screen.queryByText(/n\.a\./i)).not.toBeInTheDocument();
+  });
+});
