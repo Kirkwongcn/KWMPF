@@ -66,6 +66,7 @@ export function App({ apiUrl }: { apiUrl: string }) {
 
   return (
     <SiteChrome
+      isHome
       eyebrow="香港強積金研究"
       title="用可追溯資料，讀懂強積金選擇"
       subtitle="基金類別、比較組別、官方來源與截至日期，放在同一個清晰框架內。"

@@ -102,4 +102,11 @@ describe("scheme comparison page", () => {
     expect(screen.getByText("風險級別官方未提供")).toBeVisible();
     expect(screen.queryByText("fund-a")).not.toBeInTheDocument();
   });
+  it("titles the browser tab with the scheme comparison page", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(Response.json([])));
+
+    render(<SchemesPage apiBaseUrl="https://api.test" />);
+
+    expect(document.title).toBe("強積金計劃比較｜KWMPF");
+  });
 });
