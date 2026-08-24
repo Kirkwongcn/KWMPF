@@ -214,6 +214,70 @@ describe("publication snapshot", () => {
     expect(results.map((result) => result.id)).toEqual(["bond-fund"]);
   });
 
+  it("reports the true match count when the result list is capped", async () => {
+    const snapshotId = "snapshot-capped-search";
+    await bindings.DB.prepare(
+      "INSERT INTO publication_snapshots (snapshot_id, published_at) VALUES (?, ?)",
+    )
+      .bind(snapshotId, "2026-08-13T00:00:00Z")
+      .run();
+    for (let index = 0; index < 62; index += 1) {
+      const id = `capped-${String(index).padStart(3, "0")}`;
+      await bindings.DB.prepare(
+        "INSERT INTO fund_class_versions (snapshot_id, fund_class_id, payload) VALUES (?, ?, ?)",
+      )
+        .bind(
+          snapshotId,
+          id,
+          JSON.stringify({
+            snapshotId,
+            fundClass: {
+              id,
+              fundClassName: "Class A",
+              constituentFundName: `寬度測試基金 ${index}`,
+              schemeName: "測試計劃",
+              trusteeName: "測試受託人",
+              fundType: "Equity Fund",
+              fundCategory: "環球股票基金",
+              riskClass: 5,
+              dataAsOf: "2026-07-31",
+              verificationStatus: "verified",
+            },
+            provenance: {
+              sourceUrl: `https://example.test/${id}`,
+              dataAsOf: "2026-07-31",
+              verificationStatus: "verified",
+            },
+          }),
+        )
+        .run();
+    }
+    await bindings.DB.prepare(
+      "INSERT INTO current_publication (singleton, snapshot_id) VALUES (1, ?)",
+    )
+      .bind(snapshotId)
+      .run();
+
+    const response = await SELF.fetch(
+      "https://kwmpf.test/search?q=" + encodeURIComponent("寬度測試基金"),
+    );
+
+    expect(response.headers.get("X-Total-Matches")).toBe("62");
+    expect(((await response.json()) as unknown[]).length).toBe(50);
+  });
+
+  it("lets a browser on the site origin read the match count header", async () => {
+    await publishBrowseFixture();
+
+    const response = await SELF.fetch(
+      "https://kwmpf.test/search?fundType=Equity+Fund",
+    );
+
+    expect(
+      response.headers.get("Access-Control-Expose-Headers")?.toLowerCase(),
+    ).toContain("x-total-matches");
+  });
+
   it("returns nothing when neither a search term nor a filter is given", async () => {
     await publishBrowseFixture();
 

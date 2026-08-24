@@ -123,6 +123,61 @@ describe("fund browse page", () => {
     expect(await screen.findByText(/沒有符合條件的已發布基金/)).toBeVisible();
   });
 
+  it("states the true number of matches when the list is capped", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn((input: RequestInfo | URL) => {
+        const url = String(input);
+        if (url.includes("/filters"))
+          return Promise.resolve(Response.json(filters));
+        const cappedPage = Array.from({ length: 50 }, (_, index) => ({
+          ...equityResults[0],
+          id: `equity-${index}`,
+        }));
+        return Promise.resolve(
+          Response.json(cappedPage, {
+            headers: { "X-Total-Matches": "137" },
+          }),
+        );
+      }),
+    );
+
+    render(<FundsPage apiBaseUrl="https://api.test" />);
+
+    fireEvent.change(await screen.findByLabelText("基金種類"), {
+      target: { value: "Equity Fund" },
+    });
+
+    expect(
+      await screen.findByText(/共 137 隻符合條件，以下顯示首 50 隻/),
+    ).toBeVisible();
+  });
+
+  it("does not claim a cap when every match is shown", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn((input: RequestInfo | URL) => {
+        const url = String(input);
+        if (url.includes("/filters"))
+          return Promise.resolve(Response.json(filters));
+        return Promise.resolve(
+          Response.json(equityResults, {
+            headers: { "X-Total-Matches": "1" },
+          }),
+        );
+      }),
+    );
+
+    render(<FundsPage apiBaseUrl="https://api.test" />);
+
+    fireEvent.change(await screen.findByLabelText("基金種類"), {
+      target: { value: "Equity Fund" },
+    });
+
+    expect(await screen.findByText(/共 1 隻已發布基金/)).toBeVisible();
+    expect(screen.queryByText(/顯示首 50 隻/)).not.toBeInTheDocument();
+  });
+
   it("keeps site navigation and the sitewide disclaimer available", async () => {
     stubFetch((url) => (url.includes("/filters") ? filters : []));
 
