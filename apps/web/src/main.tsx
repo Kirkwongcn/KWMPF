@@ -19,6 +19,11 @@ const fundClassMatch = window.location.pathname.match(
 const fundClassId = fundClassMatch?.[1];
 const isSchemesPage = window.location.pathname === "/schemes";
 const isRankingsPage = window.location.pathname === "/rankings";
+const params = new URLSearchParams(window.location.search);
+const requestedPeriod = params.get("period");
+const initialPeriod =
+  requestedPeriod === "5" || requestedPeriod === "10" ? requestedPeriod : "1";
+const initialComparisonGroup = params.get("group") ?? "all";
 
 createRoot(root).render(
   <StrictMode>
@@ -27,7 +32,11 @@ createRoot(root).render(
     ) : isSchemesPage ? (
       <SchemesPage apiBaseUrl={apiBaseUrl} />
     ) : isRankingsPage ? (
-      <RankingsPage apiBaseUrl={apiBaseUrl} />
+      <RankingsPage
+        apiBaseUrl={apiBaseUrl}
+        initialPeriod={initialPeriod}
+        initialComparisonGroup={initialComparisonGroup}
+      />
     ) : (
       <App apiUrl={`${apiBaseUrl}/health`} />
     )}
