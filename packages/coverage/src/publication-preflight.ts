@@ -1,5 +1,7 @@
 type PublicFields = {
   annualizedReturn1y?: number;
+  annualizedReturn5y?: number;
+  annualizedReturn10y?: number;
   riskClass?: number;
   latestFer?: number;
   managementFee?: number;

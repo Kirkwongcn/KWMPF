@@ -14,6 +14,12 @@ export function buildPublicationInputs(records: SourceRecord[]): PublicationInpu
       ...(typeof record.returns?.[1]?.annualized === "number"
         ? { annualizedReturn1y: record.returns[1].annualized }
         : {}),
+      ...(typeof record.returns?.[5]?.annualized === "number"
+        ? { annualizedReturn5y: record.returns[5].annualized }
+        : {}),
+      ...(typeof record.returns?.[10]?.annualized === "number"
+        ? { annualizedReturn10y: record.returns[10].annualized }
+        : {}),
       ...(typeof record.fundOverview?.riskClass === "number"
         ? { riskClass: record.fundOverview.riskClass }
         : {}),
