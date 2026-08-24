@@ -195,4 +195,34 @@ describe("fund class page", () => {
     expect(await screen.findAllByText("官方未提供")).toHaveLength(6);
     expect(screen.getByText(/適用披露規則/)).toBeVisible();
   });
+  it("links to the fund's own comparison group ranking", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-mpfa-cf-429-2026-06-30",
+          fundClass: fixture.fundClass,
+          provenance: {
+            sourceUrl: fixture.source.url,
+            dataAsOf: fixture.fundClass.dataAsOf,
+            retrievedAt: fixture.source.retrievedAt,
+            verificationStatus: "verified",
+          },
+        }),
+      ),
+    );
+
+    render(
+      <FundClassPage
+        apiBaseUrl="https://api.test"
+        fundClassId="mpfa-cf-429-class-i"
+      />,
+    );
+
+    const link = await screen.findByRole("link", { name: /同組基金排名/ });
+    expect(link).toHaveAttribute(
+      "href",
+      `/rankings?period=1&group=${encodeURIComponent(fixture.fundClass.fundCategory)}`,
+    );
+  });
 });

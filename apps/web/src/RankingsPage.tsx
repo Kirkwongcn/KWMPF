@@ -22,13 +22,23 @@ type PublishedRankings = {
 
 const periodLabels = { "1": "一年", "5": "五年", "10": "十年" } as const;
 
-export function RankingsPage({ apiBaseUrl }: { apiBaseUrl: string }) {
+export function RankingsPage({
+  apiBaseUrl,
+  initialPeriod = "1",
+  initialComparisonGroup = "all",
+}: {
+  apiBaseUrl: string;
+  initialPeriod?: "1" | "5" | "10";
+  initialComparisonGroup?: string;
+}) {
   const [publication, setPublication] = useState<PublishedRankings | null>(
     null,
   );
   const [failed, setFailed] = useState(false);
-  const [comparisonGroup, setComparisonGroup] = useState("all");
-  const [period, setPeriod] = useState<"1" | "5" | "10">("1");
+  const [comparisonGroup, setComparisonGroup] = useState(
+    initialComparisonGroup,
+  );
+  const [period, setPeriod] = useState<"1" | "5" | "10">(initialPeriod);
 
   useEffect(() => {
     setPublication(null);
@@ -45,9 +55,12 @@ export function RankingsPage({ apiBaseUrl }: { apiBaseUrl: string }) {
   const comparisonGroups = useMemo(
     () =>
       [
-        ...new Set(publication?.rankings.map((row) => row.comparisonGroup)),
+        ...new Set([
+          ...(publication?.rankings.map((row) => row.comparisonGroup) ?? []),
+          ...(comparisonGroup === "all" ? [] : [comparisonGroup]),
+        ]),
       ].sort((a, b) => a.localeCompare(b)),
-    [publication],
+    [publication, comparisonGroup],
   );
   const rankings =
     comparisonGroup === "all"

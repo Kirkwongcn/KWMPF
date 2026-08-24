@@ -160,6 +160,25 @@ export function FundClassPage({
           </p>
         </div>
       </section>
+      <section className="kw-section" aria-labelledby="fund-peers-title">
+        <h2 className="kw-section__heading" id="fund-peers-title">
+          同組比較
+        </h2>
+        <div className="kw-card">
+          <p>
+            這隻基金的比較組別是 <strong>{fundClass.fundCategory}</strong>
+            。排名只在同一組別內進行，不會與其他基金種類混合。
+          </p>
+          <p className="kw-home-actions">
+            <a
+              className="kw-button"
+              href={`/rankings?period=1&group=${encodeURIComponent(fundClass.fundCategory)}`}
+            >
+              查看同組基金排名
+            </a>
+          </p>
+        </div>
+      </section>
     </SiteChrome>
   );
 }
