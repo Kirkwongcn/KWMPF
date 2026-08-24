@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import {
   evaluateFreshness,
+  fundOverviewGraceDays,
   returnsGraceDays,
   type FreshnessPolicy,
 } from "./freshness";
@@ -329,9 +330,39 @@ const rankingReturnFields = {
 
 type RankingPeriod = keyof typeof rankingReturnFields;
 
+const rankingMetrics = {
+  fee: {
+    field: "managementFee",
+    methodology: "management_fee",
+    sortDirection: "ascending",
+    displayPrecision: 2,
+    unit: "%",
+  },
+  risk: {
+    field: "riskClass",
+    methodology: "official_risk_class",
+    sortDirection: "ascending",
+    displayPrecision: 0,
+    unit: "",
+  },
+} as const;
+
+type RankingMetric = "return" | keyof typeof rankingMetrics;
+
 app.get("/rankings", async (context) => {
+  const metric = (context.req.query("metric") ?? "return") as RankingMetric;
+  if (metric !== "return" && !(metric in rankingMetrics)) {
+    return context.json(
+      {
+        error: "Unsupported ranking metric",
+        supportedMetrics: ["return", "fee", "risk"],
+        reason: "回報、費用及風險級別分開排序，網站不會合成單一推薦總分。",
+      },
+      400,
+    );
+  }
   const requested = Number(context.req.query("period"));
-  if (!(requested in rankingReturnFields)) {
+  if (metric === "return" && !(requested in rankingReturnFields)) {
     return context.json(
       {
         error: "Unsupported ranking period",
@@ -342,8 +373,18 @@ app.get("/rankings", async (context) => {
       400,
     );
   }
-  const periodYears = requested as RankingPeriod;
-  const returnField = rankingReturnFields[periodYears];
+  const periodYears = metric === "return" ? (requested as RankingPeriod) : null;
+  const selected =
+    metric === "return"
+      ? {
+          field: rankingReturnFields[periodYears as RankingPeriod],
+          methodology: "annualized_return",
+          sortDirection: "descending" as const,
+          displayPrecision: 2,
+          unit: "%",
+        }
+      : rankingMetrics[metric];
+  const valueField = selected.field;
   const rows = await context.env.DB.prepare(
     `SELECT c.snapshot_id, f.payload
      FROM current_publication c
@@ -363,6 +404,8 @@ app.get("/rankings", async (context) => {
         annualizedReturn1y?: number;
         annualizedReturn5y?: number;
         annualizedReturn10y?: number;
+        managementFee?: number;
+        riskClass?: number;
         dataAsOf: string;
         verificationStatus: string;
       };
@@ -374,13 +417,15 @@ app.get("/rankings", async (context) => {
       };
     },
   }));
-  const graceDays = returnsGraceDays(
-    parsed[0]?.publication.provenance.freshnessPolicy,
-  );
+  const policy = parsed[0]?.publication.provenance.freshnessPolicy;
+  const graceDays =
+    metric === "return"
+      ? returnsGraceDays(policy)
+      : fundOverviewGraceDays(policy);
   const evaluatedAt = new Date();
   let excludedStaleCount = 0;
   const eligible = parsed.flatMap(({ snapshotId, publication }) => {
-    const value = publication.fundClass[returnField];
+    const value = publication.fundClass[valueField];
     if (
       publication.fundClass.verificationStatus !== "verified" ||
       publication.provenance.verificationStatus !== "verified" ||
@@ -402,14 +447,22 @@ app.get("/rankings", async (context) => {
     eligible,
     ({ publication }) => publication.fundClass.fundCategory,
   );
+  const precision = selected.displayPrecision;
+  const direction = selected.sortDirection === "ascending" ? 1 : -1;
   const rankings = [...groups.entries()].flatMap(([comparisonGroup, funds]) => {
-    funds.sort(
-      (a, b) => Number(b.value.toFixed(2)) - Number(a.value.toFixed(2)),
-    );
+    funds.sort((a, b) => {
+      const ordered =
+        direction *
+        (Number(a.value.toFixed(precision)) -
+          Number(b.value.toFixed(precision)));
+      return ordered !== 0
+        ? ordered
+        : a.publication.fundClass.id.localeCompare(b.publication.fundClass.id);
+    });
     let previousValue: number | undefined;
     let previousRank = 0;
     return funds.map(({ publication, value }, index) => {
-      const displayed = Number(value.toFixed(2));
+      const displayed = Number(value.toFixed(precision));
       const rank = displayed === previousValue ? previousRank : index + 1;
       previousValue = displayed;
       previousRank = rank;
@@ -421,7 +474,7 @@ app.get("/rankings", async (context) => {
         trusteeName: publication.fundClass.trusteeName,
         comparisonGroup,
         value,
-        displayValue: `${value.toFixed(2)}%`,
+        displayValue: `${value.toFixed(precision)}${selected.unit}`,
         rank,
         dataAsOf: publication.provenance.dataAsOf,
         sourceUrl: publication.provenance.sourceUrl,
@@ -431,13 +484,14 @@ app.get("/rankings", async (context) => {
 
   return context.json({
     snapshotId: rows.results[0]?.snapshot_id ?? null,
+    metric,
     periodYears,
     excludedStaleCount,
     methodology: {
-      metric: "annualized_return",
+      metric: selected.methodology,
       grouping: "comparison_group",
-      sortDirection: "descending",
-      displayPrecision: 2,
+      sortDirection: selected.sortDirection,
+      displayPrecision: precision,
       freshness: {
         graceDays,
         evaluatedOn: evaluatedAt.toISOString().slice(0, 10),
