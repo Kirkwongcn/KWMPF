@@ -1,5 +1,10 @@
 import { Hono } from "hono";
 import { cors } from "hono/cors";
+import {
+  evaluateFreshness,
+  returnsGraceDays,
+  type FreshnessPolicy,
+} from "./freshness";
 import type { PublicationBindings } from "./publication";
 
 type Bindings = PublicationBindings & {
@@ -32,7 +37,16 @@ app.get("/fund-classes/:id", async (context) => {
     .first<{ payload: string }>();
 
   if (!row) return context.json({ error: "Fund class not found" }, 404);
-  return context.json(JSON.parse(row.payload));
+  const published = JSON.parse(row.payload) as {
+    provenance: { dataAsOf: string; freshnessPolicy?: FreshnessPolicy };
+  };
+  return context.json({
+    ...published,
+    freshness: evaluateFreshness(
+      published.provenance.dataAsOf,
+      returnsGraceDays(published.provenance.freshnessPolicy),
+    ),
+  });
 });
 
 type BrowseFundClass = {
@@ -336,8 +350,9 @@ app.get("/rankings", async (context) => {
      JOIN fund_class_versions f ON f.snapshot_id = c.snapshot_id
      WHERE c.singleton = 1`,
   ).all<{ snapshot_id: string; payload: string }>();
-  const eligible = rows.results.flatMap((row) => {
-    const publication = JSON.parse(row.payload) as {
+  const parsed = rows.results.map((row) => ({
+    snapshotId: row.snapshot_id,
+    publication: JSON.parse(row.payload) as {
       fundClass: {
         id: string;
         fundClassName: string;
@@ -355,8 +370,16 @@ app.get("/rankings", async (context) => {
         sourceUrl: string;
         dataAsOf: string;
         verificationStatus: string;
+        freshnessPolicy?: FreshnessPolicy;
       };
-    };
+    },
+  }));
+  const graceDays = returnsGraceDays(
+    parsed[0]?.publication.provenance.freshnessPolicy,
+  );
+  const evaluatedAt = new Date();
+  let excludedStaleCount = 0;
+  const eligible = parsed.flatMap(({ snapshotId, publication }) => {
     const value = publication.fundClass[returnField];
     if (
       publication.fundClass.verificationStatus !== "verified" ||
@@ -366,7 +389,14 @@ app.get("/rankings", async (context) => {
     ) {
       return [];
     }
-    return [{ snapshotId: row.snapshot_id, publication, value }];
+    if (
+      evaluateFreshness(publication.provenance.dataAsOf, graceDays, evaluatedAt)
+        .status !== "verified"
+    ) {
+      excludedStaleCount += 1;
+      return [];
+    }
+    return [{ snapshotId, publication, value }];
   });
   const groups = Map.groupBy(
     eligible,
@@ -402,11 +432,17 @@ app.get("/rankings", async (context) => {
   return context.json({
     snapshotId: rows.results[0]?.snapshot_id ?? null,
     periodYears,
+    excludedStaleCount,
     methodology: {
       metric: "annualized_return",
       grouping: "comparison_group",
       sortDirection: "descending",
       displayPrecision: 2,
+      freshness: {
+        graceDays,
+        evaluatedOn: evaluatedAt.toISOString().slice(0, 10),
+        rule: "資料截至日期超出官方披露寬限期的數值不參與排名，但仍可在基金詳情頁連同原截至日期查看。",
+      },
     },
     rankings,
   });

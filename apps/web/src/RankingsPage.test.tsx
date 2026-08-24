@@ -228,4 +228,56 @@ describe("published return rankings", () => {
     expect(await screen.findByText(/沒有合資格的十年回報資料/)).toBeVisible();
     expect(screen.getByLabelText("比較組別")).toHaveValue("Guaranteed Fund");
   });
+
+  it("explains how many funds are held out of the ranking as stale", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-2026-07-31",
+          periodYears: 1,
+          excludedStaleCount: 12,
+          methodology: {
+            metric: "annualized_return",
+            grouping: "comparison_group",
+            sortDirection: "descending",
+            displayPrecision: 2,
+            freshness: {
+              graceDays: 45,
+              evaluatedOn: "2026-08-24",
+              rule: "測試規則",
+            },
+          },
+          rankings: [],
+        }),
+      ),
+    );
+
+    render(<RankingsPage apiBaseUrl="https://api.test" />);
+
+    expect(
+      await screen.findByText(
+        /12 隻基金的資料已超出官方披露寬限期（45 日），暫不列入排名/,
+      ),
+    ).toBeVisible();
+  });
+
+  it("says nothing about stale funds when none are held out", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-2026-07-31",
+          periodYears: 1,
+          excludedStaleCount: 0,
+          rankings: [],
+        }),
+      ),
+    );
+
+    render(<RankingsPage apiBaseUrl="https://api.test" />);
+
+    expect(await screen.findByLabelText("比較組別")).toBeVisible();
+    expect(screen.queryByText(/暫不列入排名/)).not.toBeInTheDocument();
+  });
 });

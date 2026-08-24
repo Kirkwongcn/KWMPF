@@ -58,6 +58,10 @@ describe("publication snapshot", () => {
         rawSha256: archived.sha256,
         verificationStatus: "verified",
       },
+      freshness: expect.objectContaining({
+        dataAsOf: fixture.fundClass.dataAsOf,
+        graceDays: 45,
+      }),
     });
   });
 
@@ -447,11 +451,13 @@ describe("publication snapshot", () => {
     expect(await response.json()).toEqual({
       snapshotId,
       periodYears: 1,
+      excludedStaleCount: 0,
       methodology: {
         metric: "annualized_return",
         grouping: "comparison_group",
         sortDirection: "descending",
         displayPrecision: 2,
+        freshness: expect.objectContaining({ graceDays: 45 }),
       },
       rankings: [
         expect.objectContaining({
@@ -547,5 +553,129 @@ describe("publication snapshot", () => {
       reason:
         "官方強積金基金平台沒有提供三年年率化回報，網站不會自行由其他期間推算。",
     });
+  });
+
+  const isoDaysAgo = (days: number) =>
+    new Date(Date.now() - days * 86_400_000).toISOString().slice(0, 10);
+
+  const publishFreshnessFixture = async (
+    funds: {
+      id: string;
+      dataAsOf: string;
+      freshnessPolicy?: { returnsGraceDays?: number };
+    }[],
+  ) => {
+    const snapshotId = "snapshot-freshness";
+    await bindings.DB.prepare(
+      "INSERT INTO publication_snapshots (snapshot_id, published_at) VALUES (?, ?)",
+    )
+      .bind(snapshotId, "2026-08-13T00:00:00Z")
+      .run();
+    for (const fund of funds) {
+      await bindings.DB.prepare(
+        "INSERT INTO fund_class_versions (snapshot_id, fund_class_id, payload) VALUES (?, ?, ?)",
+      )
+        .bind(
+          snapshotId,
+          fund.id,
+          JSON.stringify({
+            snapshotId,
+            fundClass: {
+              id: fund.id,
+              fundClassName: fund.id,
+              constituentFundName: fund.id,
+              schemeName: "測試計劃",
+              trusteeName: "測試受託人",
+              fundCategory: "環球股票基金",
+              annualizedReturn1y: 9.99,
+              dataAsOf: fund.dataAsOf,
+              verificationStatus: "verified",
+            },
+            provenance: {
+              sourceUrl: `https://example.test/${fund.id}`,
+              dataAsOf: fund.dataAsOf,
+              verificationStatus: "verified",
+              ...(fund.freshnessPolicy
+                ? { freshnessPolicy: fund.freshnessPolicy }
+                : {}),
+            },
+          }),
+        )
+        .run();
+    }
+    await bindings.DB.prepare(
+      "INSERT INTO current_publication (singleton, snapshot_id) VALUES (1, ?)",
+    )
+      .bind(snapshotId)
+      .run();
+  };
+
+  it("keeps a stale figure readable on the fund page but out of the ranking", async () => {
+    await publishFreshnessFixture([
+      { id: "fresh-fund", dataAsOf: isoDaysAgo(20) },
+      { id: "stale-fund", dataAsOf: isoDaysAgo(200) },
+    ]);
+
+    const rankings = (await (
+      await SELF.fetch("https://kwmpf.test/rankings?period=1")
+    ).json()) as {
+      methodology: { freshness: { graceDays: number; evaluatedOn: string } };
+      rankings: { fundClassId: string }[];
+    };
+    expect(rankings.rankings.map((row) => row.fundClassId)).toEqual([
+      "fresh-fund",
+    ]);
+    expect(rankings.methodology.freshness.graceDays).toBe(45);
+    expect(rankings.methodology.freshness.evaluatedOn).toMatch(
+      /^\d{4}-\d{2}-\d{2}$/,
+    );
+    expect(rankings).toMatchObject({ excludedStaleCount: 1 });
+
+    const detail = (await (
+      await SELF.fetch("https://kwmpf.test/fund-classes/stale-fund")
+    ).json()) as {
+      fundClass: { annualizedReturn1y: number };
+      freshness: { status: string; dataAsOf: string; graceDays: number };
+    };
+    expect(detail.fundClass.annualizedReturn1y).toBe(9.99);
+    expect(detail.freshness).toMatchObject({
+      status: "stale",
+      dataAsOf: isoDaysAgo(200),
+      graceDays: 45,
+    });
+  });
+
+  it("marks a fresh fund verified on its detail page", async () => {
+    await publishFreshnessFixture([
+      { id: "fresh-fund", dataAsOf: isoDaysAgo(20) },
+    ]);
+
+    const detail = (await (
+      await SELF.fetch("https://kwmpf.test/fund-classes/fresh-fund")
+    ).json()) as { freshness: { status: string } };
+
+    expect(detail.freshness.status).toBe("verified");
+  });
+
+  it("honours the freshness policy carried in the published snapshot", async () => {
+    await publishFreshnessFixture([
+      {
+        id: "long-grace-fund",
+        dataAsOf: isoDaysAgo(200),
+        freshnessPolicy: { returnsGraceDays: 400 },
+      },
+    ]);
+
+    const rankings = (await (
+      await SELF.fetch("https://kwmpf.test/rankings?period=1")
+    ).json()) as {
+      methodology: { freshness: { graceDays: number } };
+      rankings: { fundClassId: string }[];
+    };
+
+    expect(rankings.rankings.map((row) => row.fundClassId)).toEqual([
+      "long-grace-fund",
+    ]);
+    expect(rankings.methodology.freshness.graceDays).toBe(400);
   });
 });
