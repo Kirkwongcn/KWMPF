@@ -240,6 +240,105 @@ describe("scheme comparison page", () => {
   });
 });
 
+describe("scheme fund returns", () => {
+  afterEach(() => {
+    cleanup();
+    vi.unstubAllGlobals();
+  });
+
+  const schemeWithReturns = [
+    {
+      schemeName: "Return Scheme",
+      trusteeName: "Trustee One",
+      fundClassCount: 2,
+      fundTypes: ["Equity Fund", "Bond Fund"],
+      riskClassDistribution: { "5": 1 },
+      managementFee: { min: 0.8, median: 0.9, max: 1.0, fundCount: 2 },
+      funds: [
+        {
+          id: "fund-full",
+          constituentFundName: "Growth Fund",
+          fundClassName: "Class A",
+          fundType: "Equity Fund",
+          riskClass: 5,
+          annualizedReturn1y: 6.09,
+          annualizedReturn5y: 4.2,
+          annualizedReturn10y: 9.41,
+        },
+        {
+          id: "fund-short",
+          constituentFundName: "New Fund",
+          fundClassName: "Class B",
+          fundType: "Bond Fund",
+          annualizedReturn1y: 2.5,
+        },
+      ],
+    },
+  ];
+
+  it("shows each fund's one-year annualized return by default", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(Response.json(schemeWithReturns)),
+    );
+
+    render(<SchemesPage apiBaseUrl="https://api.test" />);
+
+    expect(await screen.findByText("一年年率化 6.09%")).toBeVisible();
+    expect(screen.getByText("一年年率化 2.50%")).toBeVisible();
+  });
+
+  it("switches every fund to the selected return horizon", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(Response.json(schemeWithReturns)),
+    );
+
+    render(<SchemesPage apiBaseUrl="https://api.test" />);
+
+    expect(await screen.findByLabelText("回報期間")).toBeVisible();
+    fireEvent.change(screen.getByLabelText("回報期間"), {
+      target: { value: "10" },
+    });
+
+    expect(screen.getByText("十年年率化 9.41%")).toBeVisible();
+    expect(screen.getByText("十年年率化官方未提供")).toBeVisible();
+    expect(screen.queryByText(/一年年率化/)).not.toBeInTheDocument();
+  });
+
+  it("says how many funds carry the selected horizon", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(Response.json(schemeWithReturns)),
+    );
+
+    render(<SchemesPage apiBaseUrl="https://api.test" />);
+
+    expect(await screen.findByText("2 隻基金中 2 隻有一年回報")).toBeVisible();
+
+    fireEvent.change(screen.getByLabelText("回報期間"), {
+      target: { value: "5" },
+    });
+
+    expect(screen.getByText("2 隻基金中 1 隻有五年回報")).toBeVisible();
+  });
+
+  it("warns that returns across different fund types are not comparable", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(Response.json(schemeWithReturns)),
+    );
+
+    render(<SchemesPage apiBaseUrl="https://api.test" />);
+
+    expect(
+      await screen.findByText(
+        /不同基金種類的回報不能直接比較.*同組比較請使用基金排名/,
+      ),
+    ).toBeVisible();
+  });
+});
+
 describe("scheme funds without a separate class", () => {
   afterEach(() => {
     cleanup();

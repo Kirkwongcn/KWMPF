@@ -257,6 +257,9 @@ app.get("/schemes", async (context) => {
         fundClassName: string;
         fundType: string;
         riskClass?: number;
+        annualizedReturn1y?: number;
+        annualizedReturn5y?: number;
+        annualizedReturn10y?: number;
       }[];
     }
   >();
@@ -272,6 +275,9 @@ app.get("/schemes", async (context) => {
         fundType: string;
         riskClass?: number;
         managementFee?: number;
+        annualizedReturn1y?: number;
+        annualizedReturn5y?: number;
+        annualizedReturn10y?: number;
         verificationStatus: string;
       };
     };
@@ -303,6 +309,7 @@ app.get("/schemes", async (context) => {
       ...(typeof fundClass.riskClass === "number"
         ? { riskClass: fundClass.riskClass }
         : {}),
+      ...definedReturns(fundClass),
     });
     schemes.set(fundClass.schemeName, scheme);
   }
@@ -313,6 +320,24 @@ app.get("/schemes", async (context) => {
     })),
   );
 });
+
+function definedReturns(fundClass: {
+  annualizedReturn1y?: number;
+  annualizedReturn5y?: number;
+  annualizedReturn10y?: number;
+}) {
+  return {
+    ...(typeof fundClass.annualizedReturn1y === "number"
+      ? { annualizedReturn1y: fundClass.annualizedReturn1y }
+      : {}),
+    ...(typeof fundClass.annualizedReturn5y === "number"
+      ? { annualizedReturn5y: fundClass.annualizedReturn5y }
+      : {}),
+    ...(typeof fundClass.annualizedReturn10y === "number"
+      ? { annualizedReturn10y: fundClass.annualizedReturn10y }
+      : {}),
+  };
+}
 
 function summarizeFees(fees: number[]) {
   if (fees.length === 0) return null;
