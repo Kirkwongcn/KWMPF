@@ -106,6 +106,9 @@ export function App({ apiUrl }: { apiUrl: string }) {
             </ul>
           )}
           <p className="kw-home-actions">
+            <a className="kw-button" href="/funds">
+              按條件瀏覽基金
+            </a>{" "}
             <a className="kw-button" href="/rankings">
               查看基金排名
             </a>{" "}

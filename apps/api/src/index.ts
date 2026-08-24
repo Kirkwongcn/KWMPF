@@ -35,48 +35,128 @@ app.get("/fund-classes/:id", async (context) => {
   return context.json(JSON.parse(row.payload));
 });
 
-app.get("/search", async (context) => {
-  const query = context.req.query("q")?.trim().toLocaleLowerCase();
-  if (!query) return context.json([]);
+type BrowseFundClass = {
+  id: string;
+  fundClassName: string;
+  constituentFundName: string;
+  schemeName: string;
+  trusteeName: string;
+  fundType: string;
+  fundCategory?: string;
+  riskClass?: number;
+  annualizedReturn1y?: number;
+  managementFee?: number;
+  latestFer?: number;
+  dataAsOf?: string;
+};
 
-  const rows = await context.env.DB.prepare(
-    `SELECT f.payload
+async function loadPublishedFundClasses(
+  db: PublicationBindings["DB"],
+): Promise<BrowseFundClass[]> {
+  const rows = await db
+    .prepare(
+      `SELECT f.payload
      FROM current_publication c
      JOIN fund_class_versions f ON f.snapshot_id = c.snapshot_id
      WHERE c.singleton = 1`,
-  ).all<{ payload: string }>();
+    )
+    .all<{ payload: string }>();
 
-  const results = rows.results
-    .map(
-      (row) =>
-        JSON.parse(row.payload) as {
-          fundClass: {
-            id: string;
-            fundClassName: string;
-            constituentFundName: string;
-            schemeName: string;
-            trusteeName: string;
-          };
-        },
-    )
-    .filter(({ fundClass }) =>
-      [
-        fundClass.fundClassName,
-        fundClass.constituentFundName,
-        fundClass.schemeName,
-        fundClass.trusteeName,
-      ].some((value) => value.toLocaleLowerCase().includes(query)),
-    )
+  return rows.results.map(
+    (row) =>
+      (JSON.parse(row.payload) as { fundClass: BrowseFundClass }).fundClass,
+  );
+}
+
+app.get("/search", async (context) => {
+  const query = context.req.query("q")?.trim().toLocaleLowerCase();
+  const fundType = context.req.query("fundType")?.trim();
+  const fundCategory = context.req.query("fundCategory")?.trim();
+  const trustee = context.req.query("trustee")?.trim();
+  const riskClassParam = context.req.query("riskClass")?.trim();
+  const riskClass = riskClassParam ? Number(riskClassParam) : undefined;
+
+  const hasFilter = Boolean(
+    fundType ||
+    fundCategory ||
+    trustee ||
+    (riskClass !== undefined && Number.isFinite(riskClass)),
+  );
+  if (!query && !hasFilter) return context.json([]);
+
+  const results = (await loadPublishedFundClasses(context.env.DB))
+    .filter((fundClass) => {
+      if (
+        query &&
+        ![
+          fundClass.fundClassName,
+          fundClass.constituentFundName,
+          fundClass.schemeName,
+          fundClass.trusteeName,
+        ].some((value) => value.toLocaleLowerCase().includes(query))
+      )
+        return false;
+      if (fundType && fundClass.fundType !== fundType) return false;
+      if (fundCategory && fundClass.fundCategory !== fundCategory) return false;
+      if (trustee && fundClass.trusteeName !== trustee) return false;
+      if (
+        riskClass !== undefined &&
+        Number.isFinite(riskClass) &&
+        fundClass.riskClass !== riskClass
+      )
+        return false;
+      return true;
+    })
     .slice(0, 50)
-    .map(({ fundClass }) => ({
+    .map((fundClass) => ({
       id: fundClass.id,
       fundClassName: fundClass.fundClassName,
       constituentFundName: fundClass.constituentFundName,
       schemeName: fundClass.schemeName,
       trusteeName: fundClass.trusteeName,
+      fundType: fundClass.fundType,
+      fundCategory: fundClass.fundCategory,
+      riskClass: fundClass.riskClass,
+      annualizedReturn1y: fundClass.annualizedReturn1y,
+      managementFee: fundClass.managementFee,
+      latestFer: fundClass.latestFer,
+      dataAsOf: fundClass.dataAsOf,
     }));
 
   return context.json(results);
+});
+
+app.get("/filters", async (context) => {
+  const current = await context.env.DB.prepare(
+    `SELECT snapshot_id FROM current_publication WHERE singleton = 1`,
+  ).first<{ snapshot_id: string }>();
+
+  if (!current)
+    return context.json({
+      snapshotId: null,
+      fundTypes: [],
+      trustees: [],
+      riskClasses: [],
+    });
+
+  const fundClasses = await loadPublishedFundClasses(context.env.DB);
+  const fundTypes = new Set<string>();
+  const trustees = new Set<string>();
+  const riskClasses = new Set<number>();
+
+  for (const fundClass of fundClasses) {
+    if (fundClass.fundType) fundTypes.add(fundClass.fundType);
+    if (fundClass.trusteeName) trustees.add(fundClass.trusteeName);
+    if (typeof fundClass.riskClass === "number")
+      riskClasses.add(fundClass.riskClass);
+  }
+
+  return context.json({
+    snapshotId: current.snapshot_id,
+    fundTypes: [...fundTypes].sort((a, b) => a.localeCompare(b)),
+    trustees: [...trustees].sort((a, b) => a.localeCompare(b)),
+    riskClasses: [...riskClasses].sort((a, b) => a - b),
+  });
 });
 
 app.get("/summary", async (context) => {
