@@ -355,10 +355,83 @@ describe("publication snapshot", () => {
             fundClassName: fundFixture.fundClass.fundClassName,
             fundType: fundFixture.fundClass.fundType,
             riskClass: fundFixture.fundClass.riskClass,
+            annualizedReturn1y: fundFixture.fundClass.annualizedReturn1y,
           },
         ],
       },
     ]);
+  });
+
+  it("exposes every published return horizon on each scheme fund", async () => {
+    const snapshotId = "snapshot-scheme-returns";
+    await bindings.DB.prepare(
+      "INSERT INTO publication_snapshots (snapshot_id, published_at) VALUES (?, ?)",
+    )
+      .bind(snapshotId, "2026-08-24T00:00:00Z")
+      .run();
+    const funds = [
+      { id: "fund-full", returns: { 1: 6.09, 5: 4.2, 10: 9.41 } },
+      { id: "fund-short", returns: { 1: 2.5 } },
+      { id: "fund-none", returns: {} },
+    ] as { id: string; returns: Partial<Record<1 | 5 | 10, number>> }[];
+    for (const fund of funds) {
+      await bindings.DB.prepare(
+        "INSERT INTO fund_class_versions (snapshot_id, fund_class_id, payload) VALUES (?, ?, ?)",
+      )
+        .bind(
+          snapshotId,
+          fund.id,
+          JSON.stringify({
+            snapshotId,
+            fundClass: {
+              id: fund.id,
+              schemeName: "回報測試計劃",
+              trusteeName: "測試受託人",
+              constituentFundName: fund.id,
+              fundClassName: "Class A",
+              fundType: "Equity Fund",
+              verificationStatus: "verified",
+              ...(fund.returns[1] === undefined
+                ? {}
+                : { annualizedReturn1y: fund.returns[1] }),
+              ...(fund.returns[5] === undefined
+                ? {}
+                : { annualizedReturn5y: fund.returns[5] }),
+              ...(fund.returns[10] === undefined
+                ? {}
+                : { annualizedReturn10y: fund.returns[10] }),
+            },
+          }),
+        )
+        .run();
+    }
+    await bindings.DB.prepare(
+      "INSERT INTO current_publication (singleton, snapshot_id) VALUES (1, ?)",
+    )
+      .bind(snapshotId)
+      .run();
+
+    const schemes = (await (
+      await SELF.fetch("https://kwmpf.test/schemes")
+    ).json()) as {
+      funds: {
+        id: string;
+        annualizedReturn1y?: number;
+        annualizedReturn5y?: number;
+        annualizedReturn10y?: number;
+      }[];
+    }[];
+
+    const byId = new Map(schemes[0]!.funds.map((fund) => [fund.id, fund]));
+    expect(byId.get("fund-full")).toMatchObject({
+      annualizedReturn1y: 6.09,
+      annualizedReturn5y: 4.2,
+      annualizedReturn10y: 9.41,
+    });
+    expect(byId.get("fund-short")).toMatchObject({ annualizedReturn1y: 2.5 });
+    expect(byId.get("fund-short")).not.toHaveProperty("annualizedReturn5y");
+    expect(byId.get("fund-short")).not.toHaveProperty("annualizedReturn10y");
+    expect(byId.get("fund-none")).not.toHaveProperty("annualizedReturn1y");
   });
 
   it("summarizes official management fees per scheme over funds that publish one", async () => {

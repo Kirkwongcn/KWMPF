@@ -455,6 +455,7 @@ body {
   display: grid;
   gap: 2px;
   min-width: 0;
+  color: var(--kw-action);
   text-decoration: none;
 }
 .kw-fund-list a strong {
@@ -469,6 +470,19 @@ body {
 }
 .kw-fund-list .kw-muted {
   font-size: 0.82rem;
+  white-space: nowrap;
+}
+.kw-fund-list .kw-fund-metrics {
+  display: grid;
+  gap: 2px;
+  justify-items: end;
+  margin-inline-start: auto;
+  text-align: right;
+}
+.kw-fund-return {
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 .provenance {
