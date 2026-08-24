@@ -103,8 +103,134 @@ describe("publication snapshot", () => {
         constituentFundName: fundFixture.fundClass.constituentFundName,
         schemeName: fundFixture.fundClass.schemeName,
         trusteeName: fundFixture.fundClass.trusteeName,
+        fundType: fundFixture.fundClass.fundType,
+        fundCategory: fundFixture.fundClass.fundCategory,
+        riskClass: fundFixture.fundClass.riskClass,
+        annualizedReturn1y: fundFixture.fundClass.annualizedReturn1y,
+        managementFee: fundFixture.fundClass.managementFee,
+        latestFer: fundFixture.fundClass.latestFer,
+        dataAsOf: fundFixture.fundClass.dataAsOf,
       },
     ]);
+  });
+
+  async function publishBrowseFixture() {
+    const snapshotId = "snapshot-browse-test";
+    await bindings.DB.prepare(
+      "INSERT INTO publication_snapshots (snapshot_id, published_at) VALUES (?, ?)",
+    )
+      .bind(snapshotId, "2026-08-13T00:00:00Z")
+      .run();
+    const funds = [
+      {
+        id: "equity-low",
+        constituentFundName: "港股基金",
+        fundType: "Equity Fund",
+        fundCategory: "Hong Kong Equity Fund",
+        trusteeName: "受託人甲",
+        riskClass: 6,
+      },
+      {
+        id: "equity-high",
+        constituentFundName: "環球股票基金",
+        fundType: "Equity Fund",
+        fundCategory: "Global Equity Fund",
+        trusteeName: "受託人乙",
+        riskClass: 5,
+      },
+      {
+        id: "bond-fund",
+        constituentFundName: "債券基金",
+        fundType: "Bond Fund",
+        fundCategory: "Global Bond Fund",
+        trusteeName: "受託人甲",
+        riskClass: 3,
+      },
+    ];
+    for (const fund of funds) {
+      await bindings.DB.prepare(
+        "INSERT INTO fund_class_versions (snapshot_id, fund_class_id, payload) VALUES (?, ?, ?)",
+      )
+        .bind(
+          snapshotId,
+          fund.id,
+          JSON.stringify({
+            snapshotId,
+            fundClass: {
+              ...fund,
+              schemeName: "瀏覽測試計劃",
+              fundClassName: "Class A",
+              dataAsOf: "2026-06-30",
+              verificationStatus: "verified",
+            },
+          }),
+        )
+        .run();
+    }
+    await bindings.DB.prepare(
+      "INSERT INTO current_publication (singleton, snapshot_id) VALUES (1, ?)",
+    )
+      .bind(snapshotId)
+      .run();
+  }
+
+  it("browses the published funds by filter without a search term", async () => {
+    await publishBrowseFixture();
+
+    const results = (await (
+      await SELF.fetch("https://kwmpf.test/search?fundType=Equity+Fund")
+    ).json()) as { id: string }[];
+
+    expect(results.map((result) => result.id).sort()).toEqual([
+      "equity-high",
+      "equity-low",
+    ]);
+  });
+
+  it("combines filters with a search term", async () => {
+    await publishBrowseFixture();
+
+    const results = (await (
+      await SELF.fetch(
+        "https://kwmpf.test/search?q=基金&fundType=Equity+Fund&trustee=" +
+          encodeURIComponent("受託人甲"),
+      )
+    ).json()) as { id: string }[];
+
+    expect(results.map((result) => result.id)).toEqual(["equity-low"]);
+  });
+
+  it("filters by official risk class", async () => {
+    await publishBrowseFixture();
+
+    const results = (await (
+      await SELF.fetch("https://kwmpf.test/search?riskClass=3")
+    ).json()) as { id: string }[];
+
+    expect(results.map((result) => result.id)).toEqual(["bond-fund"]);
+  });
+
+  it("returns nothing when neither a search term nor a filter is given", async () => {
+    await publishBrowseFixture();
+
+    const response = await SELF.fetch("https://kwmpf.test/search");
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual([]);
+  });
+
+  it("lists the filter values available in the current publication", async () => {
+    await publishBrowseFixture();
+
+    const response = await SELF.fetch("https://kwmpf.test/filters");
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({
+      snapshotId: "snapshot-browse-test",
+      fundTypes: ["Bond Fund", "Equity Fund"],
+      trustees: ["受託人乙", "受託人甲"],
+      riskClasses: [3, 5, 6],
+    });
   });
 
   it("summarizes the published coverage for the landing page", async () => {

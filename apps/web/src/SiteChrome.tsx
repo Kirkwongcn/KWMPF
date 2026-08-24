@@ -1,6 +1,6 @@
 import { ReactNode, useEffect } from "react";
 
-type NavKey = "rankings" | "schemes";
+type NavKey = "funds" | "rankings" | "schemes";
 
 const siteName = "KWMPF";
 const homeDescription =
@@ -47,6 +47,12 @@ export function SiteChrome({
             </span>
           </a>
           <nav className="kw-nav" aria-label="主要導覽">
+            <a
+              href="/funds"
+              aria-current={current === "funds" ? "page" : undefined}
+            >
+              基金瀏覽
+            </a>
             <a
               href="/rankings"
               aria-current={current === "rankings" ? "page" : undefined}
