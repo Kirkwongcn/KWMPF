@@ -20,22 +20,27 @@ type PublishedRankings = {
   rankings: RankingRow[];
 };
 
+const periodLabels = { "1": "一年", "5": "五年", "10": "十年" } as const;
+
 export function RankingsPage({ apiBaseUrl }: { apiBaseUrl: string }) {
   const [publication, setPublication] = useState<PublishedRankings | null>(
     null,
   );
   const [failed, setFailed] = useState(false);
   const [comparisonGroup, setComparisonGroup] = useState("all");
+  const [period, setPeriod] = useState<"1" | "5" | "10">("1");
 
   useEffect(() => {
-    fetch(`${apiBaseUrl}/rankings?period=1`)
+    setPublication(null);
+    setFailed(false);
+    fetch(`${apiBaseUrl}/rankings?period=${period}`)
       .then((response) => {
         if (!response.ok) throw new Error("Rankings unavailable");
         return response.json() as Promise<PublishedRankings>;
       })
       .then(setPublication)
       .catch(() => setFailed(true));
-  }, [apiBaseUrl]);
+  }, [apiBaseUrl, period]);
 
   const comparisonGroups = useMemo(
     () =>
@@ -55,13 +60,31 @@ export function RankingsPage({ apiBaseUrl }: { apiBaseUrl: string }) {
     <SiteChrome
       current="rankings"
       eyebrow="同組基金比較"
-      title="一年回報排名"
-      subtitle="只比較相同基金種類及配置組別，名次按官方一年年率化回報排列。"
+      title={`${periodLabels[period]}回報排名`}
+      subtitle={`只比較相同基金種類及配置組別，名次按官方${periodLabels[period]}年率化回報排列。`}
     >
       <section className="kw-section" aria-labelledby="ranking-table-title">
         <h2 className="kw-section__heading" id="ranking-table-title">
           已發布基金排名
         </h2>
+        <div className="kw-ranking-controls">
+          <label htmlFor="ranking-period">回報期間</label>
+          <select
+            className="kw-control"
+            id="ranking-period"
+            value={period}
+            onChange={(event) =>
+              setPeriod(event.target.value as "1" | "5" | "10")
+            }
+          >
+            <option value="1">一年</option>
+            <option value="5">五年</option>
+            <option value="10">十年</option>
+          </select>
+          <p className="kw-muted">
+            官方沒有提供三年年率化回報，本站不會由其他期間推算。
+          </p>
+        </div>
         {failed ? (
           <p className="kw-status kw-status--negative">
             暫時未能取得排名，現有公開快照不受影響，請稍後再試。
@@ -97,7 +120,7 @@ export function RankingsPage({ apiBaseUrl }: { apiBaseUrl: string }) {
                       <th scope="col">名次</th>
                       <th scope="col">基金</th>
                       <th scope="col">比較組別</th>
-                      <th scope="col">一年回報</th>
+                      <th scope="col">{periodLabels[period]}回報</th>
                       <th scope="col">截至日期</th>
                       <th scope="col">來源</th>
                     </tr>
@@ -137,7 +160,7 @@ export function RankingsPage({ apiBaseUrl }: { apiBaseUrl: string }) {
               </div>
             ) : (
               <p className="kw-status kw-status--warning">
-                這個比較組別目前沒有合資格的一年回報資料。
+                這個比較組別目前沒有合資格的{periodLabels[period]}回報資料。
               </p>
             )}
             <p className="disclaimer">

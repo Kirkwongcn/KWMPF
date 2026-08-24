@@ -76,4 +76,65 @@ describe("published return rankings", () => {
     expect(screen.getByText("Hong Kong Money Market Fund")).toBeVisible();
     expect(fetch).toHaveBeenCalledWith("https://api.test/rankings?period=1");
   });
+  it("lets the reader switch the ranking period and refetches from the API", async () => {
+    const fetchMock = vi.fn().mockImplementation((url: string) =>
+      Promise.resolve(
+        Response.json({
+          snapshotId: "snapshot-2026-07-31",
+          periodYears: url.includes("period=5") ? 5 : 1,
+          rankings: [
+            {
+              fundClassId: url.includes("period=5") ? "fund-long" : "fund-a",
+              fundClassName: "Class A",
+              constituentFundName: url.includes("period=5")
+                ? "Long Horizon Fund"
+                : "North America Fund",
+              schemeName: "Scheme One",
+              trusteeName: "Trustee One",
+              comparisonGroup: "Equity Fund (North America)",
+              displayValue: url.includes("period=5") ? "6.14%" : "17.21%",
+              rank: 1,
+              dataAsOf: "2026-07-31",
+              sourceUrl: "https://example.test/fund",
+            },
+          ],
+        }),
+      ),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<RankingsPage apiBaseUrl="https://api.test" />);
+
+    expect(await screen.findByText("17.21%")).toBeVisible();
+    expect(fetchMock).toHaveBeenCalledWith(
+      "https://api.test/rankings?period=1",
+    );
+
+    fireEvent.change(screen.getByLabelText("回報期間"), {
+      target: { value: "5" },
+    });
+
+    expect(await screen.findByText("6.14%")).toBeVisible();
+    expect(fetchMock).toHaveBeenCalledWith(
+      "https://api.test/rankings?period=5",
+    );
+  });
+
+  it("tells the reader the official source publishes no three year return", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-2026-07-31",
+          periodYears: 1,
+          rankings: [],
+        }),
+      ),
+    );
+
+    render(<RankingsPage apiBaseUrl="https://api.test" />);
+
+    expect(await screen.findByText(/官方沒有提供三年年率化回報/)).toBeVisible();
+    expect(screen.getByLabelText("回報期間")).toBeVisible();
+  });
 });
