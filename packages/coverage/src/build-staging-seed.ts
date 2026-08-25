@@ -17,7 +17,7 @@ const outputPath = argument("--output");
 const snapshotId = argument("--snapshot") ?? "snapshot-mpfa-platform-2026-07-31";
 if (!sourcePath || !outputPath) {
   throw new Error(
-    "Usage: bun coverage:staging-seed --source <platform-snapshot.json> --output <seed.sql> [--snapshot <id>]",
+    "Usage: bun coverage:publication-seed --source <platform-snapshot.json> --output <seed.sql> [--snapshot <id>]",
   );
 }
 

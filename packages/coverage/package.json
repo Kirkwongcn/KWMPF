@@ -6,7 +6,7 @@
     "build": "tsc -p tsconfig.json --noEmit",
     "fetch:platform": "bun src/fetch-platform.ts",
     "readiness": "bun src/build-publication-readiness.ts",
-    "staging-seed": "bun src/build-staging-seed.ts",
+    "publication-seed": "bun src/build-staging-seed.ts",
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
