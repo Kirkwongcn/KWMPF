@@ -2,6 +2,11 @@ name: Configure staging domain
 
 on:
   workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type "move-domain-to-staging" to point the public domain back at staging'
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -12,6 +17,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      - name: Require an explicit confirmation
+        run: |
+          if [ "${{ inputs.confirm }}" != "move-domain-to-staging" ]; then
+            echo "Confirmation phrase did not match; refusing to move the domain." >&2
+            exit 1
+          fi
       - name: Attach staging custom domain
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
