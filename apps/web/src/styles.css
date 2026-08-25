@@ -518,6 +518,27 @@ body {
   .kw-header {
     min-height: 62px;
   }
+  .kw-header__inner {
+    gap: 12px;
+  }
+  .kw-brand {
+    gap: 10px;
+  }
+  .kw-brand small {
+    font-size: 9px;
+    letter-spacing: 0.08em;
+  }
+  .kw-brand strong {
+    font-size: 16px;
+  }
+  .kw-nav {
+    gap: 10px;
+  }
+  .kw-nav a {
+    font-size: 13px;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
   .kw-hero {
     padding: 32px 6vw 38px;
   }
