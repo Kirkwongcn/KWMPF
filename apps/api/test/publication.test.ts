@@ -760,8 +760,75 @@ describe("publication snapshot", () => {
     expect(tenYear.rankings.map((row) => row.fundClassId)).toEqual(["fund-a"]);
   });
 
+  it("defaults to the one year period when the caller omits it", async () => {
+    const snapshotId = "snapshot-default-period";
+    await bindings.DB.prepare(
+      "INSERT INTO publication_snapshots (snapshot_id, published_at) VALUES (?, ?)",
+    )
+      .bind(snapshotId, "2026-08-13T00:00:00Z")
+      .run();
+    await bindings.DB.prepare(
+      "INSERT INTO fund_class_versions (snapshot_id, fund_class_id, payload) VALUES (?, ?, ?)",
+    )
+      .bind(
+        snapshotId,
+        "fund-a",
+        JSON.stringify({
+          snapshotId,
+          fundClass: {
+            id: "fund-a",
+            fundClassName: "fund-a",
+            constituentFundName: "fund-a",
+            schemeName: "測試計劃",
+            trusteeName: "測試受託人",
+            fundCategory: "環球股票基金",
+            annualizedReturn1y: 4.2,
+            annualizedReturn5y: 6.1,
+            annualizedReturn10y: 5.4,
+            dataAsOf: "2026-07-31",
+            verificationStatus: "verified",
+          },
+          provenance: {
+            sourceUrl: "https://example.test/fund-a",
+            dataAsOf: "2026-07-31",
+            verificationStatus: "verified",
+          },
+        }),
+      )
+      .run();
+    await bindings.DB.prepare(
+      "INSERT INTO current_publication (singleton, snapshot_id) VALUES (1, ?)",
+    )
+      .bind(snapshotId)
+      .run();
+
+    const response = await SELF.fetch("https://kwmpf.test/rankings");
+
+    expect(response.status).toBe(200);
+    const body = (await response.json()) as {
+      periodYears: number;
+      rankings: { fundClassId: string; displayValue: string }[];
+    };
+    expect(body.periodYears).toBe(1);
+    expect(body.rankings).toEqual([
+      expect.objectContaining({ fundClassId: "fund-a", displayValue: "4.20%" }),
+    ]);
+  });
+
   it("explains that the official platform publishes no three year return", async () => {
     const response = await SELF.fetch("https://kwmpf.test/rankings?period=3");
+
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({
+      error: "Unsupported ranking period",
+      supportedPeriods: [1, 5, 10],
+      reason:
+        "官方強積金基金平台沒有提供三年年率化回報，網站不會自行由其他期間推算。",
+    });
+  });
+
+  it("rejects a period the caller supplied but the source cannot answer", async () => {
+    const response = await SELF.fetch("https://kwmpf.test/rankings?period=1y");
 
     expect(response.status).toBe(400);
     expect(await response.json()).toEqual({

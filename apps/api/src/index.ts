@@ -379,6 +379,8 @@ const rankingReturnFields = {
 
 type RankingPeriod = keyof typeof rankingReturnFields;
 
+const defaultRankingPeriod = 1 satisfies RankingPeriod;
+
 const rankingMetrics = {
   fee: {
     field: "managementFee",
@@ -410,7 +412,9 @@ app.get("/rankings", async (context) => {
       400,
     );
   }
-  const requested = Number(context.req.query("period"));
+  const periodParam = context.req.query("period");
+  const requested =
+    periodParam === undefined ? defaultRankingPeriod : Number(periodParam);
   if (metric === "return" && !(requested in rankingReturnFields)) {
     return context.json(
       {
