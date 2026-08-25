@@ -20,4 +20,4 @@ bun "$root/packages/coverage/src/build-staging-seed.ts" \
 cd "$root/apps/api"
 bunx wrangler d1 migrations apply kwmpf-staging --local --persist-to "$state/d1"
 bunx wrangler d1 execute kwmpf-staging --local --persist-to "$state/d1" --file "$state/seed.sql"
-exec bunx wrangler dev --local --persist-to "$state/d1" --port "$port"
+exec bunx wrangler dev --local --persist-to "$state/d1" --ip 127.0.0.1 --port "$port"
