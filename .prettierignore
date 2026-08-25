@@ -5,3 +5,5 @@ coverage
 playwright-report
 test-results
 docs
+dist-e2e
+.e2e-state
