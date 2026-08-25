@@ -38,6 +38,9 @@ jobs:
           bun-version: 1.3.11
       - run: bun install --frozen-lockfile
       - run: bun run check
+      - name: Install Playwright browser
+        run: node node_modules/@playwright/test/cli.js install --with-deps chromium
+        working-directory: apps/e2e
       - run: bun run e2e
       - name: Confirm the requested source snapshot exists
         run: test -f "data/sources/${{ inputs.source_snapshot }}"
