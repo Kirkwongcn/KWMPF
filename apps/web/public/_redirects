@@ -1,1 +1,13 @@
-/* /index.html 200
+# Cloudflare Pages does not support 404 rewrites in _redirects, so a catch-all
+# `/* /index.html 200` answers a missing hashed asset with the HTML shell. A
+# browser holding a stale index.html then executes HTML as JavaScript and
+# renders a blank page. List the real SPA routes instead, so that everything
+# else — including /assets/ misses — falls through to 404.html.
+#
+# The rewrite target must be `/`, not `/index.html`: Pages normalises
+# `/index.html` back to `/`, which turns these rules into 308 redirects and
+# makes the splat rule look like an infinite loop, so Pages drops it.
+/schemes / 200
+/rankings / 200
+/funds / 200
+/fund-classes/* / 200
