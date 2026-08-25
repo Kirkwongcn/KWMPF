@@ -1,5 +1,6 @@
 import { Hono } from "hono";
 import { cors } from "hono/cors";
+import { publicationCache } from "./caching";
 import {
   evaluateFreshness,
   fundOverviewGraceDays,
@@ -17,6 +18,7 @@ const app = new Hono<{ Bindings: Bindings }>();
 const SEARCH_RESULT_LIMIT = 50;
 
 app.use("*", cors({ origin: "*", exposeHeaders: ["X-Total-Matches"] }));
+app.use("*", publicationCache());
 
 app.get("/health", (context) =>
   context.json({

@@ -23,6 +23,11 @@ export type FundClassFixture = {
 
 export type PublicationApproval = { reviewer: string; policyVersion: string };
 
+export const snapshotIdForBatch = (batchId: string): string =>
+  `snapshot-${batchId}`;
+
+export const SNAPSHOT_ID_BATCH_JOIN = `('snapshot-' || b.batch_id) = c.snapshot_id`;
+
 export async function archiveCandidate(
   bindings: PublicationBindings,
   fixture: FundClassFixture,
@@ -87,7 +92,7 @@ export async function publishCandidate(
     );
   }
 
-  const snapshotId = `snapshot-${fixture.batchId}`;
+  const snapshotId = snapshotIdForBatch(fixture.batchId);
   const payload = JSON.stringify({
     snapshotId,
     fundClass: fixture.fundClass,

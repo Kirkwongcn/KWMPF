@@ -805,7 +805,7 @@ describe("publication snapshot", () => {
       freshnessPolicy?: { returnsGraceDays?: number };
     }[],
   ) => {
-    const snapshotId = "snapshot-freshness";
+    const snapshotId = `snapshot-freshness-${crypto.randomUUID()}`;
     await insertPublication(
       snapshotId,
       funds.map((fund) => ({
