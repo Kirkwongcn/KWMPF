@@ -485,6 +485,12 @@ body {
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
+.kw-fund-list .kw-fund-asof {
+  display: block;
+  color: var(--kw-muted);
+  font-size: 0.78rem;
+  font-weight: 400;
+}
 .provenance {
   margin-top: 24px;
 }

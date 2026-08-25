@@ -348,6 +348,10 @@ describe("publication snapshot", () => {
           max: fundFixture.fundClass.managementFee,
           fundCount: 1,
         },
+        dataAsOf: {
+          earliest: fundFixture.fundClass.dataAsOf,
+          latest: fundFixture.fundClass.dataAsOf,
+        },
         funds: [
           {
             id: fundFixture.fundClass.id,
@@ -355,6 +359,7 @@ describe("publication snapshot", () => {
             fundClassName: fundFixture.fundClass.fundClassName,
             fundType: fundFixture.fundClass.fundType,
             riskClass: fundFixture.fundClass.riskClass,
+            dataAsOf: fundFixture.fundClass.dataAsOf,
             annualizedReturn1y: fundFixture.fundClass.annualizedReturn1y,
           },
         ],
@@ -432,6 +437,80 @@ describe("publication snapshot", () => {
     expect(byId.get("fund-short")).not.toHaveProperty("annualizedReturn5y");
     expect(byId.get("fund-short")).not.toHaveProperty("annualizedReturn10y");
     expect(byId.get("fund-none")).not.toHaveProperty("annualizedReturn1y");
+  });
+
+  it("reports the data-as-of range of each scheme and the date behind each fund", async () => {
+    const snapshotId = "snapshot-scheme-dates";
+    await bindings.DB.prepare(
+      "INSERT INTO publication_snapshots (snapshot_id, published_at) VALUES (?, ?)",
+    )
+      .bind(snapshotId, "2026-08-24T00:00:00Z")
+      .run();
+    const funds = [
+      { id: "fund-june", scheme: "混合日期計劃", dataAsOf: "2026-06-30" },
+      { id: "fund-july", scheme: "混合日期計劃", dataAsOf: "2026-07-31" },
+      { id: "fund-may", scheme: "混合日期計劃", dataAsOf: "2026-05-31" },
+      { id: "fund-single", scheme: "單一日期計劃", dataAsOf: "2026-07-31" },
+      { id: "fund-undated", scheme: "無日期計劃", dataAsOf: undefined },
+    ];
+    for (const fund of funds) {
+      await bindings.DB.prepare(
+        "INSERT INTO fund_class_versions (snapshot_id, fund_class_id, payload) VALUES (?, ?, ?)",
+      )
+        .bind(
+          snapshotId,
+          fund.id,
+          JSON.stringify({
+            snapshotId,
+            fundClass: {
+              id: fund.id,
+              schemeName: fund.scheme,
+              trusteeName: "測試受託人",
+              constituentFundName: fund.id,
+              fundClassName: "Class A",
+              fundType: "Equity Fund",
+              verificationStatus: "verified",
+              ...(fund.dataAsOf === undefined
+                ? {}
+                : { dataAsOf: fund.dataAsOf }),
+            },
+          }),
+        )
+        .run();
+    }
+    await bindings.DB.prepare(
+      "INSERT INTO current_publication (singleton, snapshot_id) VALUES (1, ?)",
+    )
+      .bind(snapshotId)
+      .run();
+
+    const schemes = (await (
+      await SELF.fetch("https://kwmpf.test/schemes")
+    ).json()) as {
+      schemeName: string;
+      dataAsOf: { earliest: string; latest: string } | null;
+      funds: { id: string; dataAsOf?: string }[];
+    }[];
+    const byScheme = new Map(
+      schemes.map((scheme) => [scheme.schemeName, scheme]),
+    );
+
+    expect(byScheme.get("混合日期計劃")!.dataAsOf).toEqual({
+      earliest: "2026-05-31",
+      latest: "2026-07-31",
+    });
+    expect(byScheme.get("單一日期計劃")!.dataAsOf).toEqual({
+      earliest: "2026-07-31",
+      latest: "2026-07-31",
+    });
+    expect(byScheme.get("無日期計劃")!.dataAsOf).toBeNull();
+
+    const mixedFunds = new Map(
+      byScheme.get("混合日期計劃")!.funds.map((fund) => [fund.id, fund]),
+    );
+    expect(mixedFunds.get("fund-june")!.dataAsOf).toBe("2026-06-30");
+    expect(mixedFunds.get("fund-july")!.dataAsOf).toBe("2026-07-31");
+    expect(byScheme.get("無日期計劃")!.funds[0]).not.toHaveProperty("dataAsOf");
   });
 
   it("summarizes official management fees per scheme over funds that publish one", async () => {

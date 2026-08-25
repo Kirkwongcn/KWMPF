@@ -251,12 +251,14 @@ app.get("/schemes", async (context) => {
       fundTypes: string[];
       riskClassDistribution: Record<string, number>;
       managementFees: number[];
+      dataAsOfDates: string[];
       funds: {
         id: string;
         constituentFundName: string;
         fundClassName: string;
         fundType: string;
         riskClass?: number;
+        dataAsOf?: string;
         annualizedReturn1y?: number;
         annualizedReturn5y?: number;
         annualizedReturn10y?: number;
@@ -275,6 +277,7 @@ app.get("/schemes", async (context) => {
         fundType: string;
         riskClass?: number;
         managementFee?: number;
+        dataAsOf?: string;
         annualizedReturn1y?: number;
         annualizedReturn5y?: number;
         annualizedReturn10y?: number;
@@ -289,6 +292,7 @@ app.get("/schemes", async (context) => {
       fundTypes: [],
       riskClassDistribution: {},
       managementFees: [],
+      dataAsOfDates: [],
       funds: [],
     };
     scheme.fundClassCount += 1;
@@ -301,6 +305,7 @@ app.get("/schemes", async (context) => {
     }
     if (typeof fundClass.managementFee === "number")
       scheme.managementFees.push(fundClass.managementFee);
+    if (fundClass.dataAsOf) scheme.dataAsOfDates.push(fundClass.dataAsOf);
     scheme.funds.push({
       id: fundClass.id,
       constituentFundName: fundClass.constituentFundName,
@@ -309,17 +314,27 @@ app.get("/schemes", async (context) => {
       ...(typeof fundClass.riskClass === "number"
         ? { riskClass: fundClass.riskClass }
         : {}),
+      ...(fundClass.dataAsOf ? { dataAsOf: fundClass.dataAsOf } : {}),
       ...definedReturns(fundClass),
     });
     schemes.set(fundClass.schemeName, scheme);
   }
   return context.json(
-    [...schemes.values()].map(({ managementFees, ...scheme }) => ({
-      ...scheme,
-      managementFee: summarizeFees(managementFees),
-    })),
+    [...schemes.values()].map(
+      ({ managementFees, dataAsOfDates, ...scheme }) => ({
+        ...scheme,
+        managementFee: summarizeFees(managementFees),
+        dataAsOf: summarizeDates(dataAsOfDates),
+      }),
+    ),
   );
 });
+
+function summarizeDates(dates: string[]) {
+  if (dates.length === 0) return null;
+  const sorted = [...dates].sort();
+  return { earliest: sorted[0]!, latest: sorted[sorted.length - 1]! };
+}
 
 function definedReturns(fundClass: {
   annualizedReturn1y?: number;
