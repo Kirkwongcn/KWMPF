@@ -379,3 +379,131 @@ describe("scheme funds without a separate class", () => {
     expect(screen.queryByText(/n\.a\./i)).not.toBeInTheDocument();
   });
 });
+
+describe("scheme data-as-of dates", () => {
+  afterEach(() => {
+    cleanup();
+    vi.unstubAllGlobals();
+  });
+
+  const schemes = [
+    {
+      schemeName: "Mixed Dates Scheme",
+      trusteeName: "Trustee One",
+      fundClassCount: 2,
+      fundTypes: ["Equity Fund"],
+      riskClassDistribution: { "5": 2 },
+      managementFee: { min: 0.8, median: 0.9, max: 1, fundCount: 2 },
+      dataAsOf: { earliest: "2026-05-31", latest: "2026-07-31" },
+      funds: [
+        {
+          id: "fund-early",
+          constituentFundName: "Growth Fund",
+          fundClassName: "Class A",
+          fundType: "Equity Fund",
+          riskClass: 5,
+          dataAsOf: "2026-05-31",
+          annualizedReturn1y: 6.09,
+        },
+        {
+          id: "fund-late",
+          constituentFundName: "Stable Fund",
+          fundClassName: "Class B",
+          fundType: "Equity Fund",
+          riskClass: 5,
+          dataAsOf: "2026-07-31",
+          annualizedReturn1y: 2.5,
+        },
+      ],
+    },
+    {
+      schemeName: "Single Date Scheme",
+      trusteeName: "Trustee Two",
+      fundClassCount: 1,
+      fundTypes: ["Bond Fund"],
+      riskClassDistribution: { "3": 1 },
+      managementFee: null,
+      dataAsOf: { earliest: "2026-07-31", latest: "2026-07-31" },
+      funds: [
+        {
+          id: "fund-single",
+          constituentFundName: "Bond Fund One",
+          fundClassName: "Class A",
+          fundType: "Bond Fund",
+          riskClass: 3,
+          dataAsOf: "2026-07-31",
+        },
+      ],
+    },
+    {
+      schemeName: "Undated Scheme",
+      trusteeName: "Trustee Three",
+      fundClassCount: 1,
+      fundTypes: ["Equity Fund"],
+      riskClassDistribution: {},
+      managementFee: null,
+      dataAsOf: null,
+      funds: [
+        {
+          id: "fund-undated",
+          constituentFundName: "Unknown Fund",
+          fundClassName: "Class A",
+          fundType: "Equity Fund",
+        },
+      ],
+    },
+  ];
+
+  it("shows one date when every fund in a scheme shares it", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(Response.json(schemes)));
+
+    render(<SchemesPage apiBaseUrl="https://api.test" />);
+
+    expect(await screen.findByText("2026-07-31")).toBeVisible();
+    expect(screen.getAllByText("資料截至").length).toBe(3);
+  });
+
+  it("shows a date range when funds in a scheme carry different dates", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(Response.json(schemes)));
+
+    render(<SchemesPage apiBaseUrl="https://api.test" />);
+
+    expect(await screen.findByText("2026-05-31 – 2026-07-31")).toBeVisible();
+  });
+
+  it("states when the scheme has no official date at all", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(Response.json(schemes)));
+
+    render(<SchemesPage apiBaseUrl="https://api.test" />);
+
+    expect(await screen.findByText("官方未提供日期")).toBeVisible();
+  });
+
+  it("does not repeat the date on every fund when the scheme states one date", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(Response.json(schemes)));
+
+    render(<SchemesPage apiBaseUrl="https://api.test" />);
+
+    const fundItem = (
+      await screen.findByRole("link", { name: /Bond Fund One/ })
+    ).closest("li")!;
+    expect(fundItem).not.toHaveTextContent("截至");
+  });
+
+  it("labels each published return with the date it was measured on", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(Response.json(schemes)));
+
+    render(<SchemesPage apiBaseUrl="https://api.test" />);
+
+    const fundItem = (
+      await screen.findByRole("link", { name: /Growth Fund/ })
+    ).closest("li")!;
+    expect(fundItem).toHaveTextContent("6.09%");
+    expect(fundItem).toHaveTextContent("截至 2026-05-31");
+
+    const undated = screen
+      .getByRole("link", { name: /Unknown Fund/ })
+      .closest("li")!;
+    expect(undated).not.toHaveTextContent("截至");
+  });
+});
