@@ -17,7 +17,7 @@ describe("candidate audit report", () => {
       [record],
       [{ ...record, identity: { ...record.identity, fundClassName: "Class II" } }],
       [{ sourceType: "trustee-fund-list", consecutiveFailures: 2 }],
-      { version: "test.v1", monthlyReturnAbsolutePercent: 30, allocationMinimumPercent: 99, allocationMaximumPercent: 101, consecutiveSourceFailures: 2 },
+      { version: "test.v1", monthlyReturnAbsolutePercent: 30, allocationMinimumPercent: 99, allocationMaximumPercent: 101, consecutiveSourceFailures: 2, feeFields: ["fee"] },
       [{ url: "https://official.test/fund-a", dataAsOf: "2026-06-30", retrievedAt: "2026-08-13T00:00:00Z" }],
     );
 

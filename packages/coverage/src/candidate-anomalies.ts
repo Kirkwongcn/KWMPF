@@ -12,6 +12,7 @@ export type CandidateAnomaly = {
   kind: CandidateAnomalyKind;
   fundClassId?: string;
   sourceType?: string;
+  field?: string;
   detail: string;
 };
 
@@ -21,18 +22,32 @@ export type CandidateAnomalyPolicy = {
   allocationMinimumPercent: number;
   allocationMaximumPercent: number;
   consecutiveSourceFailures: number;
+  feeFields: string[];
 };
 
 export const DEFAULT_CANDIDATE_ANOMALY_POLICY: CandidateAnomalyPolicy = {
-  version: "2026-08-13.v1",
+  version: "2026-08-27.v2",
   monthlyReturnAbsolutePercent: 30,
   allocationMinimumPercent: 99,
   allocationMaximumPercent: 101,
   consecutiveSourceFailures: 2,
+  feeFields: ["fee", "managementFee", "latestFer", "oci1yHkd"],
 };
 
+function normalizeIdentity(identity: SourceRecord["identity"]) {
+  return Object.fromEntries(
+    Object.entries(identity).map(([key, value]) => [
+      key,
+      value.replace(/\s+/g, " ").trim(),
+    ]),
+  );
+}
+
 function sameIdentity(a: SourceRecord, b: SourceRecord) {
-  return JSON.stringify(a.identity) === JSON.stringify(b.identity);
+  return (
+    JSON.stringify(normalizeIdentity(a.identity)) ===
+    JSON.stringify(normalizeIdentity(b.identity))
+  );
 }
 
 export function detectCandidateAnomalies(
@@ -61,8 +76,12 @@ export function detectCandidateAnomalies(
     if (typeof allocationTotal === "number" && (allocationTotal < policy.allocationMinimumPercent || allocationTotal > policy.allocationMaximumPercent)) {
       anomalies.push({ kind: "allocation_total_out_of_range", fundClassId: record.fundClassId, detail: `配置合計 ${allocationTotal}% 超出範圍` });
     }
-    if (old.fundOverview?.fee !== record.fundOverview?.fee && old.fundOverview?.fee !== undefined && record.fundOverview?.fee !== undefined) {
-      anomalies.push({ kind: "fee_changed", fundClassId: record.fundClassId, detail: "費率已改變" });
+    for (const field of policy.feeFields) {
+      const oldFee = old.fundOverview?.[field];
+      const newFee = record.fundOverview?.[field];
+      if (oldFee !== undefined && newFee !== undefined && oldFee !== newFee) {
+        anomalies.push({ kind: "fee_changed", fundClassId: record.fundClassId, field, detail: `${field} 由 ${String(oldFee)} 改為 ${String(newFee)}` });
+      }
     }
   }
   for (const failure of sourceFailures) {

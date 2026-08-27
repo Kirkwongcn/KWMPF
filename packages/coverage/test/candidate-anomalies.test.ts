@@ -11,14 +11,28 @@ describe("candidate anomaly report", () => {
       [base],
       [{ sourceType: "trustee_fund_list", consecutiveFailures: 2 }],
     );
-    expect(result.policyVersion).toBe("2026-08-13.v1");
+    expect(result.policyVersion).toBe("2026-08-27.v2");
     expect(result.requiresReview).toBe(true);
     expect(new Set(result.anomalies.map((item) => item.kind))).toEqual(new Set(["identity_changed", "same_date_value_revised", "large_monthly_return", "allocation_total_out_of_range", "fee_changed", "source_failed_twice"]));
+  });
+
+  it("treats a whitespace-only source rewrite as the same identity", () => {
+    const renamed = { ...base, identity: { ...identity, constituentFundName: " F  A " } };
+    const original = { ...base, identity: { ...identity, constituentFundName: "F A" } };
+    const result = detectCandidateAnomalies([renamed], [original], []);
+    expect(result.anomalies.filter((item) => item.kind === "identity_changed")).toEqual([]);
+  });
+
+  it("reports a fee change on every configured platform fee field", () => {
+    const before = { ...base, fundOverview: { managementFee: 1.2, latestFer: 1.67, oci1yHkd: 18 } };
+    const after = { ...base, fundOverview: { managementFee: 1.2, latestFer: 1.71, oci1yHkd: 19 } };
+    const result = detectCandidateAnomalies([after], [before], []);
+    expect(result.anomalies.map((item) => item.field)).toEqual(["latestFer", "oci1yHkd"]);
   });
 
   it("does not trigger review for a clean candidate", () => {
     const clean = { ...base, fundOverview: { fee: 0.8, monthlyReturn: 2, allocationTotal: 100 } };
     const result = detectCandidateAnomalies([clean], [clean], [{ sourceType: "trustee_fund_list", consecutiveFailures: 1 }]);
-    expect(result).toEqual({ policyVersion: "2026-08-13.v1", anomalies: [], requiresReview: false });
+    expect(result).toEqual({ policyVersion: "2026-08-27.v2", anomalies: [], requiresReview: false });
   });
 });
