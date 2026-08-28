@@ -9,6 +9,7 @@ import {
   assertCategoryCoverage,
   loadCategoryLookup,
 } from "./category-map-lookup";
+import { publicationSnapshotId } from "./publication-snapshot-id";
 import { parseSourceSnapshot } from "./input";
 
 function argument(name: string) {
@@ -18,7 +19,6 @@ function argument(name: string) {
 
 const sourcePath = argument("--source");
 const outputPath = argument("--output");
-const snapshotId = argument("--snapshot") ?? "snapshot-mpfa-platform-2026-07-31";
 if (!sourcePath || !outputPath) {
   throw new Error(
     "Usage: bun coverage:publication-seed --source <platform-snapshot.json> --output <seed.sql> [--snapshot <id>]",
@@ -26,6 +26,7 @@ if (!sourcePath || !outputPath) {
 }
 
 const snapshot = parseSourceSnapshot(JSON.parse(await readFile(sourcePath, "utf8")));
+const snapshotId = argument("--snapshot") ?? publicationSnapshotId(snapshot);
 const payload = buildPublicationPayload(buildPublicationInputs(snapshot.records));
 if (!payload.ready) {
   throw new Error(`Publication preflight blocked ${payload.preflight.blocked} records`);

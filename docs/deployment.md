@@ -1,6 +1,8 @@
 # Deployment
 
-正式網站網域規劃為 `KWMPF.kirkwongcn.com`。目前只作為網域方案記錄；DNS、正式 custom domain 及公開發布必須另行確認後才會設定。
+正式網站是 `https://kwmpf.kirkwongcn.com`，由 Cloudflare Pages 專案 `kwmpf-web-production` 提供，
+DNS 以 proxied CNAME 指向 `kwmpf-web-production.pages.dev`，前端讀取 Worker `kwmpf-api-production`。
+更換網域或改變公開發布狀態，一律要先取得使用者確認。
 
 ## Staging
 
@@ -41,22 +43,45 @@ fund class，並且 `Cache-Control` 必須是 `public, max-age=300, stale-while-
 
 ### Cloudflare resources
 
-正式部署前必須先建立以下 production 資源（目前**尚未建立**）：
+以下 production 資源已經建立並在服務中：
 
 - D1 database: `kwmpf-production`
 - R2 bucket: `kwmpf-production-raw`
 - Pages project: `kwmpf-web-production`
-- Worker 會以 `kwmpf-api-production` 名義部署，與 staging 的 `kwmpf-api` 分開。
+- Worker 以 `kwmpf-api-production` 名義部署，與 staging 的 `kwmpf-api` 分開。
 
-並在受保護的 GitHub `production` environment 設定同名 secrets
+受保護的 GitHub `production` environment 設有同名 secrets
 （`CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID`、`CLOUDFLARE_D1_DATABASE_ID`），
 其值指向 production 資源。Environment secrets 會覆蓋 repository secrets，
 所以 staging 與 production 不會互相污染。
 
+發布快照識別碼由來源快照的 `sourceDataAsOf` 推導（例如 `snapshot-mpfa-platform-2026-07-31`），
+不再硬編在種子腳本內。ADR 0002 的 edge cache 以此識別碼分界，所以每個官方截至日期
+都會得到自己的快取世代。
+
+## 來源更新
+
+`Refresh source snapshot` 每星期三 03:00（香港時間）自動執行，也可以手動觸發。它只產生
+候選批次，**永遠不會改動公開網站**：
+
+1. 以 `data/sources/` 之下最新的目錄作為上一批次，讀取它的獨立數量核對值。
+2. 擷取官方強積金基金平台，寫出候選快照及原始 HTML 封存（上載為 workflow artifact，保留 30 日）。
+3. 產生發布前檢查報告及異常核對報告，判斷結果為
+   `no_new_data`、`blocked`、`needs_review` 或 `ready`。
+4. 若官方截至日期沒有改變，就此結束，不開 PR。
+5. 否則把候選快照及報告提交到 `data/source-snapshot-<截至日期>` 分支並開 PR，
+   PR 內文列出數量核對、被阻擋記錄及異常分類。
+
+合併 PR 等於接受該批次成為下一次比較的基準，所以只應合併你打算採用的批次。
+發布仍然是獨立步驟：合併之後手動觸發 `Deploy production`，並在 `source_snapshot`
+填入新的快照路徑。
+
+數量守門是刻意的。基金類別數量改變時擷取會失敗並自動開 issue，要求先在官方資產規模文件
+核對現行數量，再以 `workflow_dispatch` 填入新數量重跑。不要為了令 workflow 通過而
+放寬這個檢查。
+
 ### 尚未處理
 
-- `KWMPF.kirkwongcn.com` 的 DNS 及 custom domain 未設定。
-- 上述 Cloudflare production 資源未建立。
-
-在這兩項完成前，`Deploy production` 可以合併及審查，但執行必然失敗。這是刻意的：
-workflow 先落地並經 review，正式開通才是獨立的、需要明確批准的決定。
+- 已發布快照的原始 HTML 只保留在 workflow artifact（30 日），未按規格長期存入 R2；
+  `Deploy production` 目前只把來源 JSON 封存到 R2。
+- `D1 Restore Drill` 只有手動觸發，未有每季執行的紀錄。
