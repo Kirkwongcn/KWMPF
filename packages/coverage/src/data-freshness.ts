@@ -3,7 +3,11 @@ import type { SourceRecord } from "./build-coverage";
 export type FreshnessStatus = "verified" | "stale" | "failed_with_last_verified";
 
 export const MONTHLY_GRACE_DAYS = 45;
-export const FUND_OVERVIEW_GRACE_DAYS = 30;
+// 規格的 30 日是由每個計劃的法定基金概覽披露期限起算，但現時唯一來源是每月一次的官方
+// 基金平台，只帶得出月結截至日期。由月結日起算 30 日會令風險級別及費用在下一輪官方
+// 資料發布之前約兩星期就轉為 stale，並把整個費用及風險排名清空。在收集到各計劃財政
+// 年結日之前，先與月度週期看齊。
+export const FUND_OVERVIEW_GRACE_DAYS = 45;
 export const CURRENT_STATUS_GRACE_DAYS = 7;
 
 export type FreshnessPolicy = {
