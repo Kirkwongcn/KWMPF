@@ -2,6 +2,14 @@ import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { SchemesPage } from "./SchemesPage";
 
+// jsdom 不會因為點擊 summary 而開合 details，測試直接展開所有基金列表。
+function expandFundLists() {
+  for (const disclosure of document.querySelectorAll<HTMLDetailsElement>(
+    "details.kw-fund-disclosure",
+  ))
+    disclosure.open = true;
+}
+
 describe("scheme comparison page", () => {
   afterEach(() => {
     cleanup();
@@ -94,8 +102,9 @@ describe("scheme comparison page", () => {
     render(<SchemesPage apiBaseUrl="https://api.test" />);
 
     const growth = await screen.findByRole("link", {
-      name: /Growth Fund/,
+      name: "Growth Fund 基金詳情",
     });
+    expandFundLists();
     expect(growth).toHaveAttribute("href", "/fund-classes/fund-a");
     expect(growth).toHaveTextContent("Class A");
     expect(screen.getByText("風險級別 5")).toBeVisible();
@@ -284,7 +293,9 @@ describe("scheme fund returns", () => {
 
     render(<SchemesPage apiBaseUrl="https://api.test" />);
 
-    expect(await screen.findByText("一年年率化 6.09%")).toBeVisible();
+    expect(await screen.findByText("一年年率化 6.09%")).toBeInTheDocument();
+    expandFundLists();
+    expect(screen.getByText("一年年率化 6.09%")).toBeVisible();
     expect(screen.getByText("一年年率化 2.50%")).toBeVisible();
   });
 
@@ -301,6 +312,7 @@ describe("scheme fund returns", () => {
       target: { value: "10" },
     });
 
+    expandFundLists();
     expect(screen.getByText("十年年率化 9.41%")).toBeVisible();
     expect(screen.getByText("十年年率化官方未提供")).toBeVisible();
     expect(screen.queryByText(/一年年率化/)).not.toBeInTheDocument();
@@ -372,7 +384,10 @@ describe("scheme funds without a separate class", () => {
 
     render(<SchemesPage apiBaseUrl="https://api.test" />);
 
-    const fundLink = await screen.findByRole("link", { name: /Growth Fund/ });
+    const fundLink = await screen.findByRole("link", {
+      name: "Growth Fund 基金詳情",
+    });
+    expandFundLists();
     expect(fundLink).toBeVisible();
     expect(fundLink).toHaveTextContent("Equity Fund");
     expect(fundLink).not.toHaveTextContent(/n\.a\./i);
@@ -485,7 +500,7 @@ describe("scheme data-as-of dates", () => {
     render(<SchemesPage apiBaseUrl="https://api.test" />);
 
     const fundItem = (
-      await screen.findByRole("link", { name: /Bond Fund One/ })
+      await screen.findByRole("link", { name: "Bond Fund One 基金詳情" })
     ).closest("li")!;
     expect(fundItem).not.toHaveTextContent("截至");
   });
@@ -496,14 +511,115 @@ describe("scheme data-as-of dates", () => {
     render(<SchemesPage apiBaseUrl="https://api.test" />);
 
     const fundItem = (
-      await screen.findByRole("link", { name: /Growth Fund/ })
+      await screen.findByRole("link", { name: "Growth Fund 基金詳情" })
     ).closest("li")!;
     expect(fundItem).toHaveTextContent("6.09%");
     expect(fundItem).toHaveTextContent("截至 2026-05-31");
 
     const undated = screen
-      .getByRole("link", { name: /Unknown Fund/ })
+      .getByRole("link", { name: "Unknown Fund 基金詳情" })
       .closest("li")!;
     expect(undated).not.toHaveTextContent("截至");
+  });
+});
+
+describe("scheme fund list disclosure", () => {
+  afterEach(() => {
+    cleanup();
+    vi.unstubAllGlobals();
+  });
+
+  const scheme = [
+    {
+      schemeName: "Disclosure Scheme",
+      trusteeName: "Trustee One",
+      fundClassCount: 3,
+      fundTypes: ["Equity Fund"],
+      riskClassDistribution: { "5": 3 },
+      managementFee: { min: 0.8, median: 0.9, max: 1, fundCount: 3 },
+      dataAsOf: { earliest: "2026-07-31", latest: "2026-07-31" },
+      funds: [
+        {
+          id: "fund-middle",
+          constituentFundName: "Middle Fund",
+          fundClassName: "Class A",
+          fundType: "Equity Fund",
+          riskClass: 5,
+          annualizedReturn1y: 4.5,
+          annualizedReturn5y: 9.9,
+          sourceUrl: "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2",
+        },
+        {
+          id: "fund-missing",
+          constituentFundName: "Quiet Fund",
+          fundClassName: "Class B",
+          fundType: "Equity Fund",
+          riskClass: 5,
+        },
+        {
+          id: "fund-best",
+          constituentFundName: "Top Fund",
+          fundClassName: "Class C",
+          fundType: "Equity Fund",
+          riskClass: 5,
+          annualizedReturn1y: 12.3,
+          annualizedReturn5y: 1.1,
+        },
+      ],
+    },
+  ];
+
+  it("keeps the fund list collapsed until the reader opens it", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(Response.json(scheme)));
+
+    render(<SchemesPage apiBaseUrl="https://api.test" />);
+
+    const summary = await screen.findByText("基金列表（3）");
+    expect(summary).toBeVisible();
+    expect(summary.closest("details")).not.toHaveAttribute("open");
+    expect(
+      screen.getByRole("link", { name: "Top Fund 基金詳情" }),
+    ).not.toBeVisible();
+  });
+
+  it("orders funds by the selected horizon return and keeps unknown returns last", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(Response.json(scheme)));
+
+    render(<SchemesPage apiBaseUrl="https://api.test" />);
+
+    await screen.findByText("基金列表（3）");
+    expandFundLists();
+    expect(
+      screen
+        .getAllByRole("link", { name: /基金詳情$/ })
+        .map((node) => node.querySelector("strong")?.textContent),
+    ).toEqual(["Top Fund", "Middle Fund", "Quiet Fund"]);
+
+    fireEvent.change(screen.getByLabelText("回報期間"), {
+      target: { value: "5" },
+    });
+    expandFundLists();
+    expect(
+      screen
+        .getAllByRole("link", { name: /基金詳情$/ })
+        .map((node) => node.querySelector("strong")?.textContent),
+    ).toEqual(["Middle Fund", "Top Fund", "Quiet Fund"]);
+  });
+
+  it("links each fund to the official platform record when one is published", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(Response.json(scheme)));
+
+    render(<SchemesPage apiBaseUrl="https://api.test" />);
+
+    await screen.findByText("基金列表（3）");
+    expect(
+      screen.getByRole("link", { name: "Middle Fund 積金局基金資料" }),
+    ).toHaveAttribute(
+      "href",
+      "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=2",
+    );
+    expect(
+      screen.queryByRole("link", { name: "Quiet Fund 積金局基金資料" }),
+    ).not.toBeInTheDocument();
   });
 });

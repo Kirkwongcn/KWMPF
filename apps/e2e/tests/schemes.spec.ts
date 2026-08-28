@@ -53,12 +53,31 @@ test("按管理費中位數排序後由低至高排列", async ({ page }) => {
   }
 });
 
+test("計劃的基金列表預設收起，展開後按回報由高至低排列", async ({ page }) => {
+  await page.goto("/schemes");
+  const card = cardsOf(page).first();
+  const summary = card.locator("details.kw-fund-disclosure > summary");
+  await expect(summary).toBeVisible();
+  await expect(card.locator(".kw-fund-list a").first()).toBeHidden();
+
+  await summary.click();
+  const returns = await card
+    .locator(".kw-fund-list .kw-fund-return")
+    .allTextContents();
+  const published = returns
+    .filter((text) => !text.includes("官方未提供"))
+    .map((text) => Number(/-?\d+\.\d{2}(?=%)/.exec(text)?.[0]));
+  expect(published.length).toBeGreaterThan(1);
+  for (let index = 1; index < published.length; index += 1) {
+    expect(published[index]!).toBeLessThanOrEqual(published[index - 1]!);
+  }
+});
+
 test("由計劃比較頁可追查至個別基金詳情", async ({ page }) => {
   await page.goto("/schemes");
-  const firstFundLink = cardsOf(page)
-    .first()
-    .locator(".kw-fund-list a")
-    .first();
+  const card = cardsOf(page).first();
+  await card.locator("details.kw-fund-disclosure > summary").click();
+  const firstFundLink = card.locator(".kw-fund-list a").first();
   await expect(firstFundLink).toBeVisible();
   await firstFundLink.click();
 

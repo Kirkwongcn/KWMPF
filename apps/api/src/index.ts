@@ -118,6 +118,12 @@ async function loadClassification(
     : null;
 }
 
+function knownReturn(value: number | undefined) {
+  return typeof value === "number" && Number.isFinite(value)
+    ? value
+    : undefined;
+}
+
 app.get("/search", async (context) => {
   const query = context.req.query("q")?.trim().toLocaleLowerCase();
   const category = context.req.query("category")?.trim();
@@ -164,6 +170,18 @@ app.get("/search", async (context) => {
       return true;
     },
   );
+
+  // 先按官方一年年率化回報由高至低排序，讓被截斷的結果仍然是表現最好的一批；
+  // 官方未提供回報的基金排在最後，同值再以識別碼穩定排序。
+  matches.sort((a, b) => {
+    const left = knownReturn(a.annualizedReturn1y);
+    const right = knownReturn(b.annualizedReturn1y);
+    if (left !== undefined && right !== undefined && left !== right)
+      return right - left;
+    if ((left === undefined) !== (right === undefined))
+      return left === undefined ? 1 : -1;
+    return a.id.localeCompare(b.id);
+  });
 
   const results = matches.slice(0, SEARCH_RESULT_LIMIT).map((fundClass) => {
     const group = comparisonGroupFor(fundClass);
@@ -309,6 +327,7 @@ app.get("/schemes", async (context) => {
         comparisonGroup: string;
         riskClass?: number;
         dataAsOf?: string;
+        sourceUrl?: string;
         annualizedReturn1y?: number;
         annualizedReturn5y?: number;
         annualizedReturn10y?: number;
@@ -317,7 +336,8 @@ app.get("/schemes", async (context) => {
   >();
 
   for (const row of rows.results) {
-    const { fundClass } = JSON.parse(row.payload) as {
+    const { fundClass, provenance } = JSON.parse(row.payload) as {
+      provenance?: { sourceUrl?: string };
       fundClass: {
         id: string;
         schemeName: string;
@@ -372,6 +392,7 @@ app.get("/schemes", async (context) => {
         ? { riskClass: fundClass.riskClass }
         : {}),
       ...(fundClass.dataAsOf ? { dataAsOf: fundClass.dataAsOf } : {}),
+      ...(provenance?.sourceUrl ? { sourceUrl: provenance.sourceUrl } : {}),
       ...definedReturns(fundClass),
     });
     schemes.set(fundClass.schemeName, scheme);

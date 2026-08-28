@@ -409,6 +409,7 @@ describe("publication snapshot", () => {
             comparisonGroup: "Hong Kong Equity",
             riskClass: fundFixture.fundClass.riskClass,
             dataAsOf: fundFixture.fundClass.dataAsOf,
+            sourceUrl: fundFixture.source.url,
             annualizedReturn1y: fundFixture.fundClass.annualizedReturn1y,
           },
         ],

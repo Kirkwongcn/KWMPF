@@ -2,6 +2,19 @@ import { useEffect, useMemo, useState } from "react";
 import { SiteChrome } from "./SiteChrome";
 import { fundClassLabel, joinFundParts } from "./fundClassLabel";
 
+type SchemeFund = {
+  id: string;
+  constituentFundName: string;
+  fundClassName: string;
+  fundType: string;
+  riskClass?: number;
+  dataAsOf?: string;
+  sourceUrl?: string;
+  annualizedReturn1y?: number;
+  annualizedReturn5y?: number;
+  annualizedReturn10y?: number;
+};
+
 type Scheme = {
   schemeName: string;
   trusteeName: string;
@@ -15,17 +28,7 @@ type Scheme = {
     fundCount: number;
   } | null;
   dataAsOf: { earliest: string; latest: string } | null;
-  funds: {
-    id: string;
-    constituentFundName: string;
-    fundClassName: string;
-    fundType: string;
-    riskClass?: number;
-    dataAsOf?: string;
-    annualizedReturn1y?: number;
-    annualizedReturn5y?: number;
-    annualizedReturn10y?: number;
-  }[];
+  funds: SchemeFund[];
 };
 
 type Horizon = "1" | "5" | "10";
@@ -36,12 +39,27 @@ const horizons = {
   "10": { label: "十年", field: "annualizedReturn10y" },
 } as const satisfies Record<
   Horizon,
-  { label: string; field: keyof Scheme["funds"][number] }
+  { label: string; field: keyof SchemeFund }
 >;
 
-function horizonReturn(fund: Scheme["funds"][number], horizon: Horizon) {
+function horizonReturn(fund: SchemeFund, horizon: Horizon) {
   const value = fund[horizons[horizon].field];
-  return typeof value === "number" ? value : undefined;
+  return typeof value === "number" && Number.isFinite(value)
+    ? value
+    : undefined;
+}
+
+/** 官方未提供該期間回報的基金排在最後，不會被當成 0% 混進排序。 */
+function byHorizonReturnDescending(horizon: Horizon) {
+  return (a: SchemeFund, b: SchemeFund) => {
+    const left = horizonReturn(a, horizon);
+    const right = horizonReturn(b, horizon);
+    if (left !== undefined && right !== undefined && left !== right)
+      return right - left;
+    if ((left === undefined) !== (right === undefined))
+      return left === undefined ? 1 : -1;
+    return a.constituentFundName.localeCompare(b.constituentFundName);
+  };
 }
 
 function dataAsOfLabel(dataAsOf: Scheme["dataAsOf"]) {
@@ -86,38 +104,49 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
         <h2 className="kw-section__heading" id="schemes-title">
           計劃概覽
         </h2>
-        <div className="kw-ranking-controls">
-          <label htmlFor="scheme-sort">排序</label>
-          <select
-            className="kw-control"
-            id="scheme-sort"
-            value={sortBy}
-            onChange={(event) =>
-              setSortBy(event.target.value as "name" | "fee")
-            }
-          >
-            <option value="name">按計劃名稱</option>
-            <option value="fee">按官方管理費中位數</option>
-          </select>
-          <label htmlFor="scheme-horizon">回報期間</label>
-          <select
-            className="kw-control"
-            id="scheme-horizon"
-            value={horizon}
-            onChange={(event) => setHorizon(event.target.value as Horizon)}
-          >
-            {Object.entries(horizons).map(([value, { label }]) => (
-              <option key={value} value={value}>
-                {label}
-              </option>
-            ))}
-          </select>
-          <p className="kw-muted">
-            管理費不等於總開支；基金開支比率（FER）才反映完整成本，請於基金詳情查閱。
-          </p>
-          <p className="kw-muted">
-            回報為官方年率化數值。不同基金種類的回報不能直接比較，同組比較請使用基金排名。
-          </p>
+        <div className="kw-toolbar">
+          <div className="kw-toolbar__controls">
+            <p className="kw-field">
+              <label htmlFor="scheme-sort">排序</label>
+              <select
+                className="kw-control"
+                id="scheme-sort"
+                value={sortBy}
+                onChange={(event) =>
+                  setSortBy(event.target.value as "name" | "fee")
+                }
+              >
+                <option value="name">按計劃名稱</option>
+                <option value="fee">按官方管理費中位數</option>
+              </select>
+            </p>
+            <p className="kw-field">
+              <label htmlFor="scheme-horizon">回報期間</label>
+              <select
+                className="kw-control"
+                id="scheme-horizon"
+                value={horizon}
+                onChange={(event) => setHorizon(event.target.value as Horizon)}
+              >
+                {Object.entries(horizons).map(([value, { label }]) => (
+                  <option key={value} value={value}>
+                    {label}
+                  </option>
+                ))}
+              </select>
+            </p>
+          </div>
+          <div className="kw-toolbar__notes">
+            <p className="kw-muted">
+              計劃內的基金按所選期間的官方年率化回報由高至低排列，官方未提供回報的排在最後。
+            </p>
+            <p className="kw-muted">
+              管理費不等於總開支；基金開支比率（FER）才反映完整成本，請於基金詳情查閱。
+            </p>
+            <p className="kw-muted">
+              回報為官方年率化數值。不同基金種類的回報不能直接比較，同組比較請使用基金排名。
+            </p>
+          </div>
         </div>
         {schemes === null && <p className="kw-status">正在載入計劃資料…</p>}
         {schemes !== null && schemes.length === 0 && (
@@ -131,18 +160,28 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
               scheme.dataAsOf &&
               scheme.dataAsOf.earliest !== scheme.dataAsOf.latest,
             );
+            const funds = [...scheme.funds].sort(
+              byHorizonReturnDescending(horizon),
+            );
+            const withReturn = funds.filter(
+              (fund) => horizonReturn(fund, horizon) !== undefined,
+            ).length;
             return (
               <article key={scheme.schemeName} className="kw-card scheme-card">
                 <h3>{scheme.schemeName}</h3>
-                <p className="kw-muted">{scheme.trusteeName}</p>
+                <p className="kw-muted scheme-card__trustee">
+                  {scheme.trusteeName}
+                </p>
                 <dl className="status-list">
                   <div>
                     <dt>官方管理費</dt>
                     <dd>
                       {scheme.managementFee ? (
                         <>
-                          {scheme.managementFee.min.toFixed(2)}% –{" "}
-                          {scheme.managementFee.max.toFixed(2)}%
+                          <span className="kw-nowrap">
+                            {scheme.managementFee.min.toFixed(2)}% –{" "}
+                            {scheme.managementFee.max.toFixed(2)}%
+                          </span>
                           <small className="kw-fee-note">
                             中位數 {scheme.managementFee.median.toFixed(2)}%
                           </small>
@@ -159,7 +198,9 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
                   <div>
                     <dt>資料截至</dt>
                     <dd>
-                      {dataAsOfLabel(scheme.dataAsOf)}
+                      <span className="kw-nowrap">
+                        {dataAsOfLabel(scheme.dataAsOf)}
+                      </span>
                       {mixedDates && (
                         <small className="kw-fee-note">
                           同一計劃內基金的官方截至日期不同，比較時請留意。
@@ -167,16 +208,22 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
                       )}
                     </dd>
                   </div>
-                  <div>
+                  <div className="status-list--wide">
                     <dt>基金類別數量</dt>
                     <dd>{scheme.fundClassCount}</dd>
                   </div>
-                  <div>
+                  <div className="status-list--wide">
                     <dt>風險級別分布</dt>
                     <dd>
-                      {Object.entries(scheme.riskClassDistribution)
-                        .map(([risk, count]) => `級別 ${risk}: ${count}`)
-                        .join("、")}
+                      <span className="kw-riskbar">
+                        {Object.entries(scheme.riskClassDistribution).map(
+                          ([risk, count]) => (
+                            <span key={risk}>
+                              級別 {risk}: {count}
+                            </span>
+                          ),
+                        )}
+                      </span>
                     </dd>
                   </div>
                 </dl>
@@ -184,55 +231,67 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
                   <summary>基金種類（{scheme.fundTypes.length}）</summary>
                   <p className="kw-muted">{scheme.fundTypes.join("、")}</p>
                 </details>
-                {scheme.funds.length > 0 && (
-                  <p className="kw-fee-note kw-muted">
-                    {scheme.fundClassCount} 隻基金中{" "}
-                    {
-                      scheme.funds.filter(
-                        (fund) => horizonReturn(fund, horizon) !== undefined,
-                      ).length
-                    }{" "}
-                    隻有{horizons[horizon].label}回報
-                  </p>
-                )}
-                <ul className="kw-fund-list">
-                  {scheme.funds.map((fund) => {
-                    const value = horizonReturn(fund, horizon);
-                    return (
-                      <li key={fund.id}>
-                        <a
-                          href={`/fund-classes/${encodeURIComponent(fund.id)}`}
-                        >
-                          <strong>{fund.constituentFundName}</strong>
-                          <small>
-                            {joinFundParts(
-                              fundClassLabel(fund.fundClassName),
-                              fund.fundType,
-                            )}
-                          </small>
-                        </a>
-                        <span className="kw-fund-metrics">
-                          <span className="kw-fund-return">
-                            {horizons[horizon].label}年率化
-                            {value === undefined
-                              ? "官方未提供"
-                              : ` ${value.toFixed(2)}%`}
-                            {mixedDates && fund.dataAsOf && (
-                              <small className="kw-fund-asof">
-                                截至 {fund.dataAsOf}
+                {funds.length > 0 && (
+                  <details className="kw-disclosure kw-fund-disclosure">
+                    <summary>
+                      <span>基金列表（{funds.length}）</span>
+                      <small className="kw-fee-note">
+                        {scheme.fundClassCount} 隻基金中 {withReturn} 隻有
+                        {horizons[horizon].label}回報
+                      </small>
+                    </summary>
+                    <ul className="kw-fund-list">
+                      {funds.map((fund) => {
+                        const value = horizonReturn(fund, horizon);
+                        return (
+                          <li key={fund.id}>
+                            <a
+                              href={`/fund-classes/${encodeURIComponent(fund.id)}`}
+                              aria-label={`${fund.constituentFundName} 基金詳情`}
+                            >
+                              <strong>{fund.constituentFundName}</strong>
+                              <small>
+                                {joinFundParts(
+                                  fundClassLabel(fund.fundClassName),
+                                  fund.fundType,
+                                )}
                               </small>
-                            )}
-                          </span>
-                          <span className="kw-muted">
-                            {typeof fund.riskClass === "number"
-                              ? `風險級別 ${fund.riskClass}`
-                              : "風險級別官方未提供"}
-                          </span>
-                        </span>
-                      </li>
-                    );
-                  })}
-                </ul>
+                            </a>
+                            <span className="kw-fund-metrics">
+                              <span className="kw-fund-return">
+                                {horizons[horizon].label}年率化
+                                {value === undefined
+                                  ? "官方未提供"
+                                  : ` ${value.toFixed(2)}%`}
+                                {mixedDates && fund.dataAsOf && (
+                                  <small className="kw-fund-asof">
+                                    截至 {fund.dataAsOf}
+                                  </small>
+                                )}
+                              </span>
+                              <span className="kw-muted">
+                                {typeof fund.riskClass === "number"
+                                  ? `風險級別 ${fund.riskClass}`
+                                  : "風險級別官方未提供"}
+                              </span>
+                              {fund.sourceUrl && (
+                                <a
+                                  className="kw-fund-source"
+                                  href={fund.sourceUrl}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  aria-label={`${fund.constituentFundName} 積金局基金資料`}
+                                >
+                                  積金局基金資料
+                                </a>
+                              )}
+                            </span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </details>
+                )}
               </article>
             );
           })}
