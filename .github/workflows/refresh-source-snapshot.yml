@@ -124,10 +124,14 @@ jobs:
         id: report
         run: |
           set -euo pipefail
+          batch_directory="$(date -u +%F)"
+          echo "batch_directory=${batch_directory}" >> "$GITHUB_OUTPUT"
           bun run coverage:refresh-report \
             --candidate /tmp/candidate/mpf-fund-platform.json \
             --previous "${{ steps.previous.outputs.snapshot }}" \
             --batch "candidate-${GITHUB_RUN_ID}" \
+            --publish-path "data/sources/${batch_directory}/mpf-fund-platform.json" \
+            --deploy-input "${batch_directory}/mpf-fund-platform.json" \
             --output-json /tmp/candidate/refresh-report.json \
             --output-markdown /tmp/candidate/refresh-summary.md \
             | tee /tmp/refresh-outcome.json
@@ -148,7 +152,7 @@ jobs:
               "另一次擷取再次產生 ${CANDIDATE_DATA_AS_OF} 的候選批次。此 PR 的分支未被覆寫，請繼續在這裡核對。Run：${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
             exit 0
           fi
-          directory="data/sources/$(date -u +%F)"
+          directory="data/sources/${{ steps.report.outputs.batch_directory }}"
           mkdir -p "${directory}"
           cp /tmp/candidate/mpf-fund-platform.json "${directory}/mpf-fund-platform.json"
           cp /tmp/candidate/refresh-report.json "${directory}/refresh-report.json"

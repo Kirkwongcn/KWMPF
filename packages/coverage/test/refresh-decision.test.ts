@@ -130,4 +130,23 @@ describe("refresh decision", () => {
     expect(markdown).toContain("公開網站在此 PR 合併後仍然不會改變");
     expect(markdown).toContain("mpp_download_asset_size.jsp");
   });
+
+  it("prints the exact value the deploy input expects, not the候選檔案路徑", () => {
+    const markdown = renderRefreshSummary(
+      decideRefresh({
+        previousDataAsOf: "2026-07-31",
+        candidateDataAsOf: "2026-08-31",
+        readiness: readyReadiness,
+        audit: cleanAudit,
+      }),
+      {
+        readiness: readyReadiness,
+        audit: cleanAudit,
+        snapshotPath: "data/sources/2026-09-02/mpf-fund-platform.json",
+        deployInput: "2026-09-02/mpf-fund-platform.json",
+      },
+    );
+    expect(markdown).toContain("`source_snapshot` 應填：`2026-09-02/mpf-fund-platform.json`");
+    expect(markdown).not.toContain("/tmp/candidate");
+  });
 });

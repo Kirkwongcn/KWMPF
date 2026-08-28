@@ -58,7 +58,8 @@ const decision = decideRefresh({
 const markdown = renderRefreshSummary(decision, {
   readiness,
   audit,
-  snapshotPath: candidatePath,
+  snapshotPath: argument("--publish-path") ?? candidatePath,
+  deployInput: argument("--deploy-input"),
   expectedCounts: candidate.expectedCounts,
   expectedCountsSource: candidate.expectedCountsSource,
 });

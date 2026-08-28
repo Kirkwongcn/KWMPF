@@ -116,6 +116,7 @@ export function renderRefreshSummary(
     readiness: RefreshReadiness;
     audit: RefreshAudit;
     snapshotPath: string;
+    deployInput?: string;
     expectedCounts?: Record<string, number>;
     expectedCountsSource?: string;
   },
@@ -129,6 +130,11 @@ export function renderRefreshSummary(
     `- 發布前檢查：${readiness.acceptedRecords} 個可發布 / ${readiness.inputRecords} 個輸入，${readiness.blockedRecords} 個被阻擋`,
     `- 異常核對（政策 ${audit.policyVersion}）：${audit.anomalies.length} 項異常，涉及 ${audit.affectedFundClassIds.length} 個基金類別`,
   ];
+  if (details.deployInput) {
+    lines.push(
+      `- \`Deploy production\` 的 \`source_snapshot\` 應填：\`${details.deployInput}\``,
+    );
+  }
   if (details.expectedCounts) {
     const counts = Object.entries(details.expectedCounts)
       .sort(([a], [b]) => a.localeCompare(b))
@@ -153,7 +159,7 @@ export function renderRefreshSummary(
     "### 下一步",
     "",
     decision.publishable
-      ? "審批並合併此 PR，然後手動觸發 `Deploy production`，並在 `source_snapshot` 填入上述候選快照路徑。"
+      ? `審批並合併此 PR，然後手動觸發 \`Deploy production\`，並在 \`source_snapshot\` 填入 \`${details.deployInput ?? details.snapshotPath}\`（相對於 \`data/sources/\`，不要加上該前綴）。`
       : decision.outcome === "no_new_data"
         ? "官方來源未有新批次，不需要任何操作。"
         : "先核對上述異常或阻擋原因；未解釋清楚之前不要合併，也不要發布。",
