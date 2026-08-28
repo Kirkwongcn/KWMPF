@@ -12,6 +12,7 @@
     "fundClassName": "Class I",
     "fundType": "Equity Fund",
     "fundCategory": "Hong Kong Equity Fund",
+    "lipperCategory": "Hong Kong Equity",
     "dataAsOf": "2026-06-30",
     "fundSizeHkdMillion": 3344.42,
     "annualizedReturn1y": 6.09,

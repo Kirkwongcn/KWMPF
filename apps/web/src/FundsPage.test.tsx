@@ -4,6 +4,12 @@ import { FundsPage } from "./FundsPage";
 
 const filters = {
   snapshotId: "snapshot-1",
+  categories: ["Global Bond", "Hong Kong Equity"],
+  classification: {
+    provider: "Lipper",
+    dataset: "Hong Kong Pension Fund Classification",
+    capturedAt: "2026-08-27",
+  },
   fundTypes: ["Bond Fund", "Equity Fund"],
   trustees: ["Trustee One", "Trustee Two"],
   riskClasses: [3, 5, 6],
@@ -18,6 +24,8 @@ const equityResults = [
     trusteeName: "Trustee One",
     fundType: "Equity Fund",
     fundCategory: "Hong Kong Equity Fund",
+    comparisonGroup: "Hong Kong Equity",
+    comparisonGroupSource: "lipper",
     riskClass: 6,
     annualizedReturn1y: 8.12,
     managementFee: 1.25,
@@ -45,7 +53,7 @@ describe("fund browse page", () => {
 
     render(<FundsPage apiBaseUrl="https://api.test" />);
 
-    const fundType = await screen.findByLabelText("基金種類");
+    const fundType = await screen.findByLabelText("官方基金種類");
     expect(
       screen.getByRole("option", { name: "Equity Fund" }),
     ).toBeInTheDocument();
@@ -56,6 +64,61 @@ describe("fund browse page", () => {
     expect(screen.getByRole("option", { name: "風險級別 3" })).toBeVisible();
   });
 
+  it("filters by the Lipper comparison category and names its non-official source", async () => {
+    const fetchMock = stubFetch((url) =>
+      url.includes("/filters") ? filters : equityResults,
+    );
+
+    render(<FundsPage apiBaseUrl="https://api.test" />);
+
+    fireEvent.change(await screen.findByLabelText("同類比較分類"), {
+      target: { value: "Hong Kong Equity" },
+    });
+
+    expect(await screen.findByText("港股基金")).toBeVisible();
+    expect(
+      fetchMock.mock.calls
+        .map((call) => String(call[0]))
+        .find((url) => url.includes("/search")),
+    ).toContain("category=Hong+Kong+Equity");
+    expect(screen.getByText(/Lipper/)).toBeVisible();
+    expect(screen.getByText(/期別 2026-08-27/)).toBeVisible();
+  });
+
+  it("shows the comparison group rather than the platform descriptor", async () => {
+    stubFetch((url) => (url.includes("/filters") ? filters : equityResults));
+
+    render(<FundsPage apiBaseUrl="https://api.test" />);
+
+    fireEvent.change(await screen.findByLabelText("同類比較分類"), {
+      target: { value: "Hong Kong Equity" },
+    });
+
+    expect(
+      await screen.findByRole("cell", { name: "Hong Kong Equity" }),
+    ).toBeVisible();
+    expect(
+      screen.queryByRole("cell", { name: "Hong Kong Equity Fund" }),
+    ).toBeNull();
+  });
+
+  it("keeps the old fundType URL working alongside the new category filter", async () => {
+    const fetchMock = stubFetch((url) =>
+      url.includes("/filters") ? filters : equityResults,
+    );
+
+    render(
+      <FundsPage apiBaseUrl="https://api.test" initialFundType="Equity Fund" />,
+    );
+
+    expect(await screen.findByText("港股基金")).toBeVisible();
+    expect(
+      fetchMock.mock.calls
+        .map((call) => String(call[0]))
+        .find((url) => url.includes("/search")),
+    ).toContain("fundType=Equity+Fund");
+  });
+
   it("browses by filter alone, without a search term", async () => {
     const fetchMock = stubFetch((url) =>
       url.includes("/filters") ? filters : equityResults,
@@ -63,7 +126,7 @@ describe("fund browse page", () => {
 
     render(<FundsPage apiBaseUrl="https://api.test" />);
 
-    fireEvent.change(await screen.findByLabelText("基金種類"), {
+    fireEvent.change(await screen.findByLabelText("官方基金種類"), {
       target: { value: "Equity Fund" },
     });
 
@@ -80,7 +143,7 @@ describe("fund browse page", () => {
 
     render(<FundsPage apiBaseUrl="https://api.test" />);
 
-    fireEvent.change(await screen.findByLabelText("基金種類"), {
+    fireEvent.change(await screen.findByLabelText("官方基金種類"), {
       target: { value: "Equity Fund" },
     });
 
@@ -100,7 +163,7 @@ describe("fund browse page", () => {
 
     render(<FundsPage apiBaseUrl="https://api.test" />);
 
-    expect(await screen.findByLabelText("基金種類")).toBeVisible();
+    expect(await screen.findByLabelText("官方基金種類")).toBeVisible();
     expect(
       screen.getByText(/先選擇一項篩選條件或輸入關鍵字/),
     ).toBeInTheDocument();
@@ -144,7 +207,7 @@ describe("fund browse page", () => {
 
     render(<FundsPage apiBaseUrl="https://api.test" />);
 
-    fireEvent.change(await screen.findByLabelText("基金種類"), {
+    fireEvent.change(await screen.findByLabelText("官方基金種類"), {
       target: { value: "Equity Fund" },
     });
 
@@ -170,7 +233,7 @@ describe("fund browse page", () => {
 
     render(<FundsPage apiBaseUrl="https://api.test" />);
 
-    fireEvent.change(await screen.findByLabelText("基金種類"), {
+    fireEvent.change(await screen.findByLabelText("官方基金種類"), {
       target: { value: "Equity Fund" },
     });
 
@@ -183,7 +246,7 @@ describe("fund browse page", () => {
 
     render(<FundsPage apiBaseUrl="https://api.test" />);
 
-    await screen.findByLabelText("基金種類");
+    await screen.findByLabelText("官方基金種類");
     expect(
       screen.getByRole("navigation", { name: "主要導覽" }),
     ).toBeInTheDocument();
@@ -208,7 +271,7 @@ describe("fund browse page without a separate class", () => {
 
     render(<FundsPage apiBaseUrl="https://api.test" />);
 
-    fireEvent.change(await screen.findByLabelText("基金種類"), {
+    fireEvent.change(await screen.findByLabelText("官方基金種類"), {
       target: { value: "Equity Fund" },
     });
 

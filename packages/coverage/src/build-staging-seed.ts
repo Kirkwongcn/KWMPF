@@ -5,6 +5,10 @@ import {
 } from "./data-freshness";
 import { buildPublicationInputs } from "./build-publication-input";
 import { buildPublicationPayload } from "./build-publication-payload";
+import {
+  assertCategoryCoverage,
+  loadCategoryLookup,
+} from "./category-map-lookup";
 import { parseSourceSnapshot } from "./input";
 
 function argument(name: string) {
@@ -27,6 +31,12 @@ if (!payload.ready) {
   throw new Error(`Publication preflight blocked ${payload.preflight.blocked} records`);
 }
 
+const categories = await loadCategoryLookup(argument("--category-map"));
+assertCategoryCoverage(
+  categories,
+  payload.records.map((record) => record.fundClassId),
+);
+
 const sqlString = (value: string) => `'${value.replaceAll("'", "''")}'`;
 const statements = [
   "DELETE FROM current_publication;",
@@ -42,6 +52,7 @@ const statements = [
       ...record.identity,
       fundType: sourceRecord?.fundType ?? "",
       fundCategory: sourceRecord?.fundTypeDescriptor ?? "",
+      lipperCategory: categories.categoryOf(record.fundClassId),
       annualizedReturn1y: record.publicFields?.annualizedReturn1y,
       ...record.publicFields,
       unavailableFields: record.unavailableFields ?? [],
@@ -51,6 +62,12 @@ const statements = [
     const body = JSON.stringify({
       snapshotId,
       fundClass,
+      classification: {
+        provider: "Lipper",
+        dataset: "Hong Kong Pension Fund Classification",
+        capturedAt: categories.capturedAt,
+        official: false,
+      },
       provenance: {
         sourceUrl: record.sourceUrl,
         dataAsOf: record.dataAsOf,

@@ -18,8 +18,16 @@ type RankingRow = {
 type PublishedRankings = {
   snapshotId: string;
   periodYears: number;
+  comparisonGroups?: string[];
   excludedStaleCount?: number;
-  methodology?: { freshness?: { graceDays: number; evaluatedOn: string } };
+  methodology?: {
+    freshness?: { graceDays: number; evaluatedOn: string };
+    classification?: {
+      provider: string;
+      dataset: string;
+      capturedAt: string;
+    } | null;
+  };
   rankings: RankingRow[];
 };
 
@@ -67,21 +75,31 @@ export function RankingsPage({
       .catch(() => setFailed(true));
   }, [apiBaseUrl, period, metric]);
 
+  // 舊網址可能帶著已停用的平台分類組別。快照內完全沒有這個組別時退回「全部」，
+  // 並說明分類口徑已改；組別仍然存在但今期沒有合資格數值的情況維持原狀。
+  const retiredGroup =
+    publication?.comparisonGroups &&
+    comparisonGroup !== "all" &&
+    !publication.comparisonGroups.includes(comparisonGroup)
+      ? comparisonGroup
+      : null;
+  const effectiveGroup = retiredGroup ? "all" : comparisonGroup;
   const comparisonGroups = useMemo(
     () =>
       [
         ...new Set([
+          ...(publication?.comparisonGroups ?? []),
           ...(publication?.rankings.map((row) => row.comparisonGroup) ?? []),
-          ...(comparisonGroup === "all" ? [] : [comparisonGroup]),
+          ...(effectiveGroup === "all" ? [] : [effectiveGroup]),
         ]),
       ].sort((a, b) => a.localeCompare(b)),
-    [publication, comparisonGroup],
+    [publication, effectiveGroup],
   );
   const rankings =
-    comparisonGroup === "all"
+    effectiveGroup === "all"
       ? publication?.rankings
       : publication?.rankings.filter(
-          (row) => row.comparisonGroup === comparisonGroup,
+          (row) => row.comparisonGroup === effectiveGroup,
         );
 
   const valueLabel =
@@ -162,7 +180,7 @@ export function RankingsPage({
               <select
                 className="kw-control"
                 id="comparison-group"
-                value={comparisonGroup}
+                value={effectiveGroup}
                 onChange={(event) => setComparisonGroup(event.target.value)}
               >
                 <option value="all">全部比較組別</option>
@@ -175,7 +193,17 @@ export function RankingsPage({
               <p className="kw-muted">
                 公開快照：<code>{publication.snapshotId}</code>
               </p>
+              <p className="kw-muted">
+                {publication.methodology?.classification
+                  ? `比較組別採用 ${publication.methodology.classification.provider}「${publication.methodology.classification.dataset}」（期別 ${publication.methodology.classification.capturedAt}），屬非官方來源；排名數值全部來自官方平台。`
+                  : "比較組別分類屬非官方來源；排名數值全部來自官方平台。"}
+              </p>
             </div>
+            {retiredGroup ? (
+              <p className="kw-status kw-status--warning">
+                {`比較組別已改用同類基金分類，「${retiredGroup}」不再是獨立組別，現顯示全部組別。`}
+              </p>
+            ) : null}
             {publication.excludedStaleCount ? (
               <p className="kw-status kw-status--warning">
                 {`有 ${publication.excludedStaleCount} 隻基金的資料已超出官方披露寬限期（${publication.methodology?.freshness?.graceDays ?? 45} 日），暫不列入排名。這些數值仍可在各基金詳情頁連同原截至日期查看。`}

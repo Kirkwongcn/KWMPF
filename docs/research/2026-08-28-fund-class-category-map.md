@@ -72,7 +72,26 @@
 並與現有檔案比較，輸出 `diff`（`added` / `removed` / `recategorized`）及 `requiresReview` 旗標。
 有未配對項目時指令以非零狀態結束。未覆核不得發布。
 
+## 接入網站（#194 範圍第 3 點）
+
+seed 產生時把 `lipperCategory` 寫入每筆 `fund_class_versions` payload，並附上
+`classification`（提供者、資料集、期別）。API 以 `comparisonGroupFor()` 統一決定比較組別：
+有 Lipper 分類就用 Lipper，否則用平台 `fundType` 加「平台分類：」前綴自成一組。
+前綴是必需的——Lipper 同平台都有 `Guaranteed Fund` 一名，冇前綴會把 SHKP 那隻靜默併入 Lipper 組。
+
+接入後的比較組別由原本 200 多個平台 `fundTypeDescriptor` 收斂為 32 個
+（25 個 Lipper + 7 個平台分類），451 隻基金全部仍然入榜，冇任何一隻被剔走。
+
+`/search` 新增 `category` 篩選、`/filters` 新增 `categories` 及 `classification`、
+`/schemes` 每個計劃新增 `categories`、`/rankings` 新增 `comparisonGroups` 及
+每行 `comparisonGroupSource`。
+
+### 舊網址
+
+網站的分類篩選一直是查詢參數（`/funds?fundType=`、`/rankings?group=`），冇分類頁 slug，
+所以冇 301 可做。改為保留 `fundType` 篩選繼續有效，舊 `/funds?fundType=` 連結原樣運作；
+`/rankings?group=` 帶著已停用的平台分類時，排名頁退回「全部組別」並說明分類口徑已改。
+
 ## 未做
 
-- API 與前端改用 `lipperCategory` 分組、舊 `fundType` 網址 301 對應（#194 範圍第 3 點）。
 - `Other Fund` 再細分（另開票）。
