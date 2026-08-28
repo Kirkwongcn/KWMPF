@@ -1,5 +1,7 @@
 export const DEFAULT_RETURNS_GRACE_DAYS = 45;
-export const DEFAULT_FUND_OVERVIEW_GRACE_DAYS = 30;
+// 與 packages/coverage 的 FUND_OVERVIEW_GRACE_DAYS 一致；只在已發布資料沒有帶出
+// freshnessPolicy 時才會用到這個預設值。
+export const DEFAULT_FUND_OVERVIEW_GRACE_DAYS = 45;
 
 export type FreshnessPolicy = {
   returnsGraceDays?: number;

@@ -8,6 +8,12 @@ describe("data freshness", () => {
     expect(classifyFreshness({ kind: "current_status", asOf: "2026-08-01", today: "2026-08-14" })).toBe("stale");
   });
 
+  it("keeps a fund overview usable until the next official monthly release can arrive", () => {
+    // 官方平台在月結後約 13 日才發布，所以一份概覽在被取代之前最多會舊到約 44 日。
+    expect(classifyFreshness({ kind: "fund_overview", asOf: "2026-07-31", today: "2026-09-13" })).toBe("verified");
+    expect(classifyFreshness({ kind: "fund_overview", asOf: "2026-07-31", today: "2026-09-16" })).toBe("stale");
+  });
+
   it("carries only failed fields and preserves the previous date", () => {
     const previous = [{ fundClassId: "a", identity: { trusteeName: "T", schemeName: "S", constituentFundName: "F", fundClassName: "I" }, current: true, dataAsOf: "2026-06-30", returns: { 3: { annualized: 4.2, dataAsOf: "2026-06-30" } } }];
     const current = [{ fundClassId: "a", identity: previous[0]!.identity, current: false, dataAsOf: "2026-08-01", returns: { 3: { annualized: 9.9, dataAsOf: "2026-08-01" } } }];
