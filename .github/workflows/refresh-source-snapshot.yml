@@ -46,9 +46,16 @@ jobs:
         id: previous
         run: |
           set -euo pipefail
-          directory="$(ls data/sources | sort | tail -1)"
+          directory="$(ls data/sources | grep -E '^[0-9]{4}-[0-9]{2}-[0-9]{2}$' | sort | tail -1)"
+          if [ -z "${directory}" ]; then
+            echo "data/sources 之下沒有日期目錄，無法決定上一個批次。" >&2
+            exit 1
+          fi
           snapshot="data/sources/${directory}/mpf-fund-platform.json"
-          test -f "${snapshot}"
+          if [ ! -f "${snapshot}" ]; then
+            echo "上一個批次目錄 ${directory} 缺少 mpf-fund-platform.json。" >&2
+            exit 1
+          fi
           {
             echo "snapshot=${snapshot}"
             echo "data_as_of=$(jq -er '.sourceDataAsOf' "${snapshot}")"
