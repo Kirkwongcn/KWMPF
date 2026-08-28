@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc -p tsconfig.json --noEmit",
+    "category-map": "bun src/build-fund-class-category-map.ts",
     "fetch:platform": "bun src/fetch-platform.ts",
     "readiness": "bun src/build-publication-readiness.ts",
     "publication-seed": "bun src/build-staging-seed.ts",
