@@ -1,0 +1,2316 @@
+{
+  "taxonomy": "lipper-hk-pension-funds",
+  "sourceFile": "data/sources/lipper/2026-08-27-mpf-navigator-portfolio-change.xlsx",
+  "sourceSheet": "Sheet2",
+  "capturedAt": "2026-08-27",
+  "note": "使用者沿用的基金分類。Asset Universe = Pension Funds 的行；名稱為 Lipper 截斷格式（約 50 字元），未對應 fundClassId。",
+  "categories": [
+    {
+      "name": "Asia Pacific ex Japan Equity",
+      "fundCount": 19
+    },
+    {
+      "name": "Asia ex Japan Equity",
+      "fundCount": 14
+    },
+    {
+      "name": "Asian Bond",
+      "fundCount": 5
+    },
+    {
+      "name": "China Equity",
+      "fundCount": 10
+    },
+    {
+      "name": "Default Investment Strategy - Age 65 Plus Fund",
+      "fundCount": 27
+    },
+    {
+      "name": "Default Investment Strategy - Core Accumulation Fd",
+      "fundCount": 27
+    },
+    {
+      "name": "European Equity",
+      "fundCount": 14
+    },
+    {
+      "name": "Global Bond",
+      "fundCount": 22
+    },
+    {
+      "name": "Global Equity",
+      "fundCount": 26
+    },
+    {
+      "name": "Greater China Equity",
+      "fundCount": 16
+    },
+    {
+      "name": "Guaranteed Fund",
+      "fundCount": 8
+    },
+    {
+      "name": "Hong Kong Dollar Bond",
+      "fundCount": 7
+    },
+    {
+      "name": "Hong Kong Dollar Money Market",
+      "fundCount": 3
+    },
+    {
+      "name": "Hong Kong Equity",
+      "fundCount": 27
+    },
+    {
+      "name": "Hong Kong Equity (Index Tracking)",
+      "fundCount": 18
+    },
+    {
+      "name": "Japanese Equity",
+      "fundCount": 3
+    },
+    {
+      "name": "Lifestyle - (>20-40% Equity)",
+      "fundCount": 22
+    },
+    {
+      "name": "Lifestyle - (>40-60% Equity)",
+      "fundCount": 20
+    },
+    {
+      "name": "Lifestyle - (>60-80% Equity)",
+      "fundCount": 27
+    },
+    {
+      "name": "Lifestyle - (>80-100% Equity)",
+      "fundCount": 21
+    },
+    {
+      "name": "MPF Conservative Fund",
+      "fundCount": 28
+    },
+    {
+      "name": "Other Fund",
+      "fundCount": 45
+    },
+    {
+      "name": "RMB Bond Fund",
+      "fundCount": 6
+    },
+    {
+      "name": "RMB and HKD Money Market",
+      "fundCount": 6
+    },
+    {
+      "name": "United States Equity",
+      "fundCount": 20
+    }
+  ],
+  "funds": [
+    {
+      "category": "Asia ex Japan Equity",
+      "sourceName": "AMTD MPF-AMTD Invesco Asia",
+      "seq": 2
+    },
+    {
+      "category": "Asia ex Japan Equity",
+      "sourceName": "BCT (MPF) Industry Choice-BCT (Ind) Asian Equity",
+      "seq": 3
+    },
+    {
+      "category": "Asia ex Japan Equity",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) Asian Equity",
+      "seq": 4
+    },
+    {
+      "category": "Asia ex Japan Equity",
+      "sourceName": "BCT Strategic MPF-Invesco Asian Equity A",
+      "seq": 5
+    },
+    {
+      "category": "Asia ex Japan Equity",
+      "sourceName": "BCT Strategic MPF-Invesco Asian Equity H",
+      "seq": 6
+    },
+    {
+      "category": "Asia ex Japan Equity",
+      "sourceName": "BEA (MPF) Industry-BEA (Ind S) Asian Equity",
+      "seq": 7
+    },
+    {
+      "category": "Asia ex Japan Equity",
+      "sourceName": "BEA (MPF) MT-BEA (MPF) Asian Equity",
+      "seq": 8
+    },
+    {
+      "category": "Asia ex Japan Equity",
+      "sourceName": "BEA (MPF) Value-BEA Asian Equity",
+      "seq": 9
+    },
+    {
+      "category": "Asia ex Japan Equity",
+      "sourceName": "Manulife RC (MPF)-Allianz Asian A",
+      "seq": 10
+    },
+    {
+      "category": "Asia ex Japan Equity",
+      "sourceName": "Manulife RC (MPF)-Allianz Asian B",
+      "seq": 11
+    },
+    {
+      "category": "Asia ex Japan Equity",
+      "sourceName": "Manulife RC (MPF)-Allianz Asian T",
+      "seq": 12
+    },
+    {
+      "category": "Asia ex Japan Equity",
+      "sourceName": "MASS MPF-Asian Pacific Equity",
+      "seq": 13
+    },
+    {
+      "category": "Asia ex Japan Equity",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF Asian Equity A",
+      "seq": 14
+    },
+    {
+      "category": "Asia ex Japan Equity",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF Asian Equity B",
+      "seq": 15
+    },
+    {
+      "category": "Asia Pacific ex Japan Equity",
+      "sourceName": "AIA MPF-Prime Value Choice-Asian Equity",
+      "seq": 16
+    },
+    {
+      "category": "Asia Pacific ex Japan Equity",
+      "sourceName": "BCOM Joyful Ret MPF-BCOM Asian Dynamic Equity (CF)",
+      "seq": 17
+    },
+    {
+      "category": "Asia Pacific ex Japan Equity",
+      "sourceName": "BCT MPF S800-Principal Asian Equity D",
+      "seq": 18
+    },
+    {
+      "category": "Asia Pacific ex Japan Equity",
+      "sourceName": "BCT MPF S800-Principal Asian Equity I",
+      "seq": 19
+    },
+    {
+      "category": "Asia Pacific ex Japan Equity",
+      "sourceName": "BCT MPF-Simple-Principal Dynamic AsiaPac Eq",
+      "seq": 20
+    },
+    {
+      "category": "Asia Pacific ex Japan Equity",
+      "sourceName": "BCT MPF-Smart-Principal Dynamic AsiaPac Eq",
+      "seq": 21
+    },
+    {
+      "category": "Asia Pacific ex Japan Equity",
+      "sourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru Asia Equity",
+      "seq": 22
+    },
+    {
+      "category": "Asia Pacific ex Japan Equity",
+      "sourceName": "Fidelity Retirement MT-Asia Pacific Equity",
+      "seq": 23
+    },
+    {
+      "category": "Asia Pacific ex Japan Equity",
+      "sourceName": "Haitong MPF Retire Fd-Haitong Asia Pacific A",
+      "seq": 24
+    },
+    {
+      "category": "Asia Pacific ex Japan Equity",
+      "sourceName": "Haitong MPF Retire Fd-Haitong Asia Pacific T",
+      "seq": 25
+    },
+    {
+      "category": "Asia Pacific ex Japan Equity",
+      "sourceName": "Hang Seng MPF-SuperTrust Plus-Asia Pacific Equity",
+      "seq": 26
+    },
+    {
+      "category": "Asia Pacific ex Japan Equity",
+      "sourceName": "Hang Seng MPF-SuperTrust Plus-ValChce AsPc Eq Trkr",
+      "seq": 27
+    },
+    {
+      "category": "Asia Pacific ex Japan Equity",
+      "sourceName": "HSBC MPF-SuperTrust Plus-Asia Pacific Equity",
+      "seq": 28
+    },
+    {
+      "category": "Asia Pacific ex Japan Equity",
+      "sourceName": "HSBC MPF-SuperTrust Plus-ValueChoice AsPac Eq Trkr",
+      "seq": 29
+    },
+    {
+      "category": "Asia Pacific ex Japan Equity",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF Pacific Asia Eq",
+      "seq": 30
+    },
+    {
+      "category": "Asia Pacific ex Japan Equity",
+      "sourceName": "Manulife RC (MPF)-Allianz Oriental Pacific A",
+      "seq": 31
+    },
+    {
+      "category": "Asia Pacific ex Japan Equity",
+      "sourceName": "Manulife RC (MPF)-Allianz Oriental Pacific B",
+      "seq": 32
+    },
+    {
+      "category": "Asia Pacific ex Japan Equity",
+      "sourceName": "Manulife RC (MPF)-Allianz Oriental Pacific T",
+      "seq": 33
+    },
+    {
+      "category": "Asia Pacific ex Japan Equity",
+      "sourceName": "My Choice MPF-My Choice Asia Equity",
+      "seq": 34
+    },
+    {
+      "category": "Asian Bond",
+      "sourceName": "AIA MPF-Prime Value Choice-Asian Bond",
+      "seq": 35
+    },
+    {
+      "category": "Asian Bond",
+      "sourceName": "BCT MPF S800-Principal Asian Bond N",
+      "seq": 36
+    },
+    {
+      "category": "Asian Bond",
+      "sourceName": "BCT MPF-Smart-Principal Dynamic Asian Bd",
+      "seq": 37
+    },
+    {
+      "category": "Asian Bond",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF Sust Pac Asia Bd",
+      "seq": 38
+    },
+    {
+      "category": "Asian Bond",
+      "sourceName": "MASS MPF-Asian Bond",
+      "seq": 39
+    },
+    {
+      "category": "China Equity",
+      "sourceName": "BCOM Joyful Ret MPF-BCOM China Dynamic Equity (CF)",
+      "seq": 40
+    },
+    {
+      "category": "China Equity",
+      "sourceName": "BCT MPF S800-Principal China Equity D",
+      "seq": 41
+    },
+    {
+      "category": "China Equity",
+      "sourceName": "BCT MPF S800-Principal China Equity I",
+      "seq": 42
+    },
+    {
+      "category": "China Equity",
+      "sourceName": "BEA (MPF) Industry-BEA China Tracker",
+      "seq": 43
+    },
+    {
+      "category": "China Equity",
+      "sourceName": "BEA (MPF) MT-BEA China Tracker",
+      "seq": 44
+    },
+    {
+      "category": "China Equity",
+      "sourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru China Equity",
+      "seq": 45
+    },
+    {
+      "category": "China Equity",
+      "sourceName": "Hang Seng MPF-SuperTrust Plus-Chinese Equity",
+      "seq": 46
+    },
+    {
+      "category": "China Equity",
+      "sourceName": "Hang Seng MPF-SuperTrust Plus-HS CN Etprs Idx Trck",
+      "seq": 47
+    },
+    {
+      "category": "China Equity",
+      "sourceName": "HSBC MPF-SuperTrust Plus-Chinese Equity",
+      "seq": 48
+    },
+    {
+      "category": "China Equity",
+      "sourceName": "HSBC MPF-SuperTrust Plus-HS China Entpr Idx Trkg",
+      "seq": 49
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "AIA MPF-Prime Value Choice-Age 65 Plus",
+      "seq": 50
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "AMTD MPF-AMTD Invesco Age 65 Plus",
+      "seq": 51
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "BCOM Joyful Ret MPF-BCOM Age 65 Plus",
+      "seq": 52
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "BCT (MPF) Industry Choice-BCT (Ind) Age 65 Plus",
+      "seq": 53
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) Age 65 Plus",
+      "seq": 54
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "BCT MPF S800-Principal Age 65 Plus N",
+      "seq": 55
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "BCT MPF-Simple-Principal Age 65 Plus",
+      "seq": 56
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "BCT MPF-Smart-Principal Age 65 Plus",
+      "seq": 57
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "BCT Strategic MPF-Invesco Age 65 Plus A",
+      "seq": 58
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "BCT Strategic MPF-Invesco Age 65 Plus H",
+      "seq": 59
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "BEA (MPF) Industry-BEA (Ind S) Age 65 Plus",
+      "seq": 60
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "BEA (MPF) MT-BEA (MPF) Age 65 Plus",
+      "seq": 61
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "BEA (MPF) Value-BEA Age 65 Plus",
+      "seq": 62
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru Age 65 Plus",
+      "seq": 63
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "China Life MPF MT-China Life Age 65 Plus",
+      "seq": 64
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "Fidelity Retirement MT-Age 65 Plus",
+      "seq": 65
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "Haitong MPF Retire Fd-Haitong Age 65 Plus A",
+      "seq": 66
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "Haitong MPF Retire Fd-Haitong Age 65 Plus T",
+      "seq": 67
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "Hang Seng MPF-SuperTrust Plus-Age 65 Plus",
+      "seq": 68
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "HSBC MPF-SuperTrust Plus-Age 65 Plus",
+      "seq": 69
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF Age 65 Plus",
+      "seq": 70
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "Manulife RC (MPF)-Allianz MPF Age 65 Plus A",
+      "seq": 71
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "Manulife RC (MPF)-Allianz MPF Age 65 Plus B",
+      "seq": 72
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "Manulife RC (MPF)-Allianz MPF Age 65 Plus T",
+      "seq": 73
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "MASS MPF-Age 65 Plus",
+      "seq": 74
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "My Choice MPF-My Choice Age 65 Plus",
+      "seq": 75
+    },
+    {
+      "category": "Default Investment Strategy - Age 65 Plus Fund",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF Age 65 Plus",
+      "seq": 76
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "AIA MPF-Prime Value Choice-Core Accumulation",
+      "seq": 77
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "AMTD MPF-AMTD Invesco Core Acc",
+      "seq": 78
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "BCOM Joyful Ret MPF-BCOM Core Accumulation",
+      "seq": 79
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "BCT (MPF) Industry Choice-BCT (Ind) Core Acc",
+      "seq": 80
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) Core Accumulation",
+      "seq": 81
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "BCT MPF S800-Principal Core Accumulation N",
+      "seq": 82
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "BCT MPF-Simple-Principal Core Accumulation",
+      "seq": 83
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "BCT MPF-Smart-Principal Core Acc",
+      "seq": 84
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "BCT Strategic MPF-Invesco Core Accumulation A",
+      "seq": 85
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "BCT Strategic MPF-Invesco Core Accumulation H",
+      "seq": 86
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "BEA (MPF) Industry-BEA (Ind S) Core Accumulation",
+      "seq": 87
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "BEA (MPF) MT-BEA (MPF) Core Accumulation",
+      "seq": 88
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "BEA (MPF) Value-BEA Core Accumulation",
+      "seq": 89
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru Core Acc",
+      "seq": 90
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "China Life MPF MT-China Life Core Accumulation",
+      "seq": 91
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "Fidelity Retirement MT-Core Accumulation",
+      "seq": 92
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "Haitong MPF Retire Fd-Haitong Core Accumulation A",
+      "seq": 93
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "Haitong MPF Retire Fd-Haitong Core Accumulation T",
+      "seq": 94
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "Hang Seng MPF-SuperTrust Plus-Core Accumulation",
+      "seq": 95
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "HSBC MPF-SuperTrust Plus-Core Accumulation",
+      "seq": 96
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF Core Accumulation",
+      "seq": 97
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "Manulife RC (MPF)-Allianz MPF Core Acc A",
+      "seq": 98
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "Manulife RC (MPF)-Allianz MPF Core Acc B",
+      "seq": 99
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "Manulife RC (MPF)-Allianz MPF Core Acc T",
+      "seq": 100
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "MASS MPF-Core Accumulation",
+      "seq": 101
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "My Choice MPF-My Choice Core Accumulation",
+      "seq": 102
+    },
+    {
+      "category": "Default Investment Strategy - Core Accumulation Fd",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF Core Acc",
+      "seq": 103
+    },
+    {
+      "category": "European Equity",
+      "sourceName": "AIA MPF-Prime Value Choice-European Equity",
+      "seq": 105
+    },
+    {
+      "category": "European Equity",
+      "sourceName": "AMTD MPF-AMTD Invesco Europe",
+      "seq": 106
+    },
+    {
+      "category": "European Equity",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) European Equity",
+      "seq": 107
+    },
+    {
+      "category": "European Equity",
+      "sourceName": "BEA (MPF) MT-BEA (MPF) European Equity",
+      "seq": 108
+    },
+    {
+      "category": "European Equity",
+      "sourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru Europn Idx Trkg",
+      "seq": 109
+    },
+    {
+      "category": "European Equity",
+      "sourceName": "Fidelity Retirement MT-European Equity",
+      "seq": 110
+    },
+    {
+      "category": "European Equity",
+      "sourceName": "Hang Seng MPF-SuperTrust Plus-European Equity",
+      "seq": 111
+    },
+    {
+      "category": "European Equity",
+      "sourceName": "Hang Seng MPF-SuperTrust Plus-ValChce Euro Eq Trkr",
+      "seq": 112
+    },
+    {
+      "category": "European Equity",
+      "sourceName": "HSBC MPF-SuperTrust Plus-European Equity",
+      "seq": 113
+    },
+    {
+      "category": "European Equity",
+      "sourceName": "HSBC MPF-SuperTrust Plus-ValueChoice Eu Eqty Trkr",
+      "seq": 114
+    },
+    {
+      "category": "European Equity",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF European Equity",
+      "seq": 115
+    },
+    {
+      "category": "European Equity",
+      "sourceName": "MASS MPF-European Equity",
+      "seq": 116
+    },
+    {
+      "category": "European Equity",
+      "sourceName": "My Choice MPF-My Choice European Quality Tracker",
+      "seq": 117
+    },
+    {
+      "category": "European Equity",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF European Equity",
+      "seq": 118
+    },
+    {
+      "category": "Global Bond",
+      "sourceName": "AIA MPF-Prime Value Choice-Global Bond",
+      "seq": 120
+    },
+    {
+      "category": "Global Bond",
+      "sourceName": "AMTD MPF-AMTD Invesco Global Bond",
+      "seq": 121
+    },
+    {
+      "category": "Global Bond",
+      "sourceName": "BCOM Joyful Ret MPF-BCOM Global Bond (CF)",
+      "seq": 122
+    },
+    {
+      "category": "Global Bond",
+      "sourceName": "BCT (MPF) Industry Choice-BCT (Ind) Global Bond",
+      "seq": 123
+    },
+    {
+      "category": "Global Bond",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) Global Bond",
+      "seq": 124
+    },
+    {
+      "category": "Global Bond",
+      "sourceName": "BCT MPF S800-Principal International Bond D",
+      "seq": 125
+    },
+    {
+      "category": "Global Bond",
+      "sourceName": "BCT MPF S800-Principal International Bond I",
+      "seq": 126
+    },
+    {
+      "category": "Global Bond",
+      "sourceName": "BCT MPF-Simple-Principal Dynamic Global Bd",
+      "seq": 127
+    },
+    {
+      "category": "Global Bond",
+      "sourceName": "BCT MPF-Smart-Principal Dynamic Global Bd",
+      "seq": 128
+    },
+    {
+      "category": "Global Bond",
+      "sourceName": "BCT Strategic MPF-Invesco Global Bond A",
+      "seq": 129
+    },
+    {
+      "category": "Global Bond",
+      "sourceName": "BCT Strategic MPF-Invesco Global Bond H",
+      "seq": 130
+    },
+    {
+      "category": "Global Bond",
+      "sourceName": "BEA (MPF) MT-BEA (MPF) Global Bond",
+      "seq": 131
+    },
+    {
+      "category": "Global Bond",
+      "sourceName": "BEA (MPF) Value-BEA Global Bond",
+      "seq": 132
+    },
+    {
+      "category": "Global Bond",
+      "sourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru Bond",
+      "seq": 133
+    },
+    {
+      "category": "Global Bond",
+      "sourceName": "Fidelity Retirement MT-World Bond",
+      "seq": 134
+    },
+    {
+      "category": "Global Bond",
+      "sourceName": "Hang Seng MPF-SuperTrust Plus-Global Bond",
+      "seq": 135
+    },
+    {
+      "category": "Global Bond",
+      "sourceName": "HSBC MPF-SuperTrust Plus-Global Bond",
+      "seq": 136
+    },
+    {
+      "category": "Global Bond",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF International Bd",
+      "seq": 137
+    },
+    {
+      "category": "Global Bond",
+      "sourceName": "MASS MPF-Global Bond",
+      "seq": 138
+    },
+    {
+      "category": "Global Bond",
+      "sourceName": "My Choice MPF-My Choice Global Bond",
+      "seq": 139
+    },
+    {
+      "category": "Global Bond",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF Global Bond A",
+      "seq": 140
+    },
+    {
+      "category": "Global Bond",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF Global Bond B",
+      "seq": 141
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "AIA MPF-Prime Value Choice-Green",
+      "seq": 143
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "AIA MPF-Prime Value Choice-World",
+      "seq": 144
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "BCT (MPF) Industry Choice-BCT (Ind) Global Equity",
+      "seq": 145
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) Global Equity",
+      "seq": 146
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) World Equity",
+      "seq": 147
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "BCT MPF S800-Principal International Equity D",
+      "seq": 148
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "BCT MPF S800-Principal International Equity I",
+      "seq": 149
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "BCT MPF-Simple-Principal Dynamic Global Eq",
+      "seq": 150
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "BCT MPF-Smart-Principal Dynamic Global Eq",
+      "seq": 151
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "BCT Strategic MPF-Invesco Global Index Tracking A",
+      "seq": 152
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "BCT Strategic MPF-Invesco Global Index Tracking H",
+      "seq": 153
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "BEA (MPF) MT-BEA (MPF) Global Equity",
+      "seq": 154
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "BEA (MPF) Value-BEA Global Equity",
+      "seq": 155
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru Global Equity",
+      "seq": 156
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "China Life MPF MT-China Life Retire-Easy Glbl Eq",
+      "seq": 157
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "Fidelity Retirement MT-Global Equity",
+      "seq": 158
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "Haitong MPF Retire Fd-Haitong Global Diversif A",
+      "seq": 159
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "Haitong MPF Retire Fd-Haitong Global Diversif T",
+      "seq": 160
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "Hang Seng MPF-SuperTrust Plus-Global Equity",
+      "seq": 161
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "HSBC MPF-SuperTrust Plus-Global Equity",
+      "seq": 162
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF International Eq",
+      "seq": 163
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "MASS MPF-Global Equity",
+      "seq": 164
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "My Choice MPF-My Choice Global Equity",
+      "seq": 165
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF Gl Low Crbon Idx",
+      "seq": 166
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF Multi-Sec Eq A",
+      "seq": 167
+    },
+    {
+      "category": "Global Equity",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF Multi-Sec Eq B",
+      "seq": 168
+    },
+    {
+      "category": "Greater China Equity",
+      "sourceName": "AIA MPF-Prime Value Choice-Greater China Equity",
+      "seq": 169
+    },
+    {
+      "category": "Greater China Equity",
+      "sourceName": "BCOM Joyful Ret MPF-BCOM Greater China Equity (CF)",
+      "seq": 170
+    },
+    {
+      "category": "Greater China Equity",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) Greater China Eq",
+      "seq": 171
+    },
+    {
+      "category": "Greater China Equity",
+      "sourceName": "BCT MPF-Smart-Principal Dynamic Gr China Eq",
+      "seq": 172
+    },
+    {
+      "category": "Greater China Equity",
+      "sourceName": "BEA (MPF) Industry-BEA (Ind S) Grtr China Equity",
+      "seq": 173
+    },
+    {
+      "category": "Greater China Equity",
+      "sourceName": "BEA (MPF) MT-BEA (MPF) Greater China Equity",
+      "seq": 174
+    },
+    {
+      "category": "Greater China Equity",
+      "sourceName": "BEA (MPF) Value-BEA Greater China Equity",
+      "seq": 175
+    },
+    {
+      "category": "Greater China Equity",
+      "sourceName": "China Life MPF MT-China Life Greater China Eq",
+      "seq": 176
+    },
+    {
+      "category": "Greater China Equity",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF China Value",
+      "seq": 177
+    },
+    {
+      "category": "Greater China Equity",
+      "sourceName": "Manulife RC (MPF)-Allianz Greater China A",
+      "seq": 178
+    },
+    {
+      "category": "Greater China Equity",
+      "sourceName": "Manulife RC (MPF)-Allianz Greater China B",
+      "seq": 179
+    },
+    {
+      "category": "Greater China Equity",
+      "sourceName": "Manulife RC (MPF)-Allianz Greater China T",
+      "seq": 180
+    },
+    {
+      "category": "Greater China Equity",
+      "sourceName": "MASS MPF-Greater China Equity",
+      "seq": 181
+    },
+    {
+      "category": "Greater China Equity",
+      "sourceName": "My Choice MPF-My Choice China Equity",
+      "seq": 182
+    },
+    {
+      "category": "Greater China Equity",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF Gr China Eq A",
+      "seq": 183
+    },
+    {
+      "category": "Greater China Equity",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF Gr China Eq B",
+      "seq": 184
+    },
+    {
+      "category": "Guaranteed Fund",
+      "sourceName": "AIA MPF-Prime Value Choice-Guaranteed Portfolio",
+      "seq": 186
+    },
+    {
+      "category": "Guaranteed Fund",
+      "sourceName": "BCOM Joyful Ret MPF-BCOM Guaranteed (CF)",
+      "seq": 187
+    },
+    {
+      "category": "Guaranteed Fund",
+      "sourceName": "China Life MPF MT-China Life Joyful Retire Gteed",
+      "seq": 188
+    },
+    {
+      "category": "Guaranteed Fund",
+      "sourceName": "Hang Seng MPF-SuperTrust Plus-Guaranteed",
+      "seq": 189
+    },
+    {
+      "category": "Guaranteed Fund",
+      "sourceName": "HSBC MPF-SuperTrust Plus-Guaranteed",
+      "seq": 190
+    },
+    {
+      "category": "Guaranteed Fund",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF Interest",
+      "seq": 191
+    },
+    {
+      "category": "Guaranteed Fund",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF Stable",
+      "seq": 192
+    },
+    {
+      "category": "Guaranteed Fund",
+      "sourceName": "MASS MPF-Guaranteed",
+      "seq": 193
+    },
+    {
+      "category": "Hong Kong Dollar Bond",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) HK Dollar Bond",
+      "seq": 195
+    },
+    {
+      "category": "Hong Kong Dollar Bond",
+      "sourceName": "BCT MPF S800-Principal Hong Kong Bond N",
+      "seq": 196
+    },
+    {
+      "category": "Hong Kong Dollar Bond",
+      "sourceName": "Fidelity Retirement MT-Hong Kong Bond",
+      "seq": 197
+    },
+    {
+      "category": "Hong Kong Dollar Bond",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF Hong Kong Bond",
+      "seq": 198
+    },
+    {
+      "category": "Hong Kong Dollar Bond",
+      "sourceName": "My Choice MPF-My Choice HKD Bond",
+      "seq": 199
+    },
+    {
+      "category": "Hong Kong Dollar Bond",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF HK Dollar Bd A",
+      "seq": 200
+    },
+    {
+      "category": "Hong Kong Dollar Bond",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF HK Dollar Bd B",
+      "seq": 201
+    },
+    {
+      "category": "Hong Kong Dollar Money Market",
+      "sourceName": "BCT MPF S800-Principal HK Dollar Savings D",
+      "seq": 202
+    },
+    {
+      "category": "Hong Kong Dollar Money Market",
+      "sourceName": "BCT MPF S800-Principal HK Dollar Savings I",
+      "seq": 203
+    },
+    {
+      "category": "Hong Kong Dollar Money Market",
+      "sourceName": "BCT MPF-Smart-Principal Cash",
+      "seq": 204
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "AMTD MPF-AMTD Invesco HK and China",
+      "seq": 206
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "BCOM Joyful Ret MPF-BCOM HK Dynamic Equity (CF)",
+      "seq": 207
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "BCT (MPF) Industry Choice-BCT (Ind) China & HK Eq",
+      "seq": 208
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) China & HK Equity",
+      "seq": 209
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "BCT MPF S800-Principal Hong Kong Equity D",
+      "seq": 210
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "BCT MPF S800-Principal Hong Kong Equity I",
+      "seq": 211
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "BCT MPF-Simple-Principal Dynamic HK Equity",
+      "seq": 212
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "BCT MPF-Smart-Principal Dynamic HK Equity",
+      "seq": 213
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "BCT Strategic MPF-Invesco HK and China Equity A",
+      "seq": 214
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "BCT Strategic MPF-Invesco HK and China Equity H",
+      "seq": 215
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "BEA (MPF) Industry-BEA (Ind S) Hong Kong Equity",
+      "seq": 216
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "BEA (MPF) MT-BEA (MPF) Hong Kong Equity",
+      "seq": 217
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru Hong Kong Equity",
+      "seq": 218
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "China Life MPF MT-China Life Hong Kong Equity",
+      "seq": 219
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "Fidelity Retirement MT-Hong Kong Equity",
+      "seq": 220
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "Haitong MPF Retire Fd-Haitong Hong Kong SAR A",
+      "seq": 221
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "Haitong MPF Retire Fd-Haitong Hong Kong SAR T",
+      "seq": 222
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "Hang Seng MPF-SuperTrust Plus-HK & Chinese Equity",
+      "seq": 223
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "HSBC MPF-SuperTrust Plus-HK & Chinese Equity",
+      "seq": 224
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF Hong Kong Equity",
+      "seq": 225
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "Manulife RC (MPF)-Allianz Hong Kong A",
+      "seq": 226
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "Manulife RC (MPF)-Allianz Hong Kong B",
+      "seq": 227
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "Manulife RC (MPF)-Allianz Hong Kong T",
+      "seq": 228
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "MASS MPF-Hong Kong Equities",
+      "seq": 229
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "My Choice MPF-My Choice Hong Kong Equity",
+      "seq": 230
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF Hong Kong Eq A",
+      "seq": 231
+    },
+    {
+      "category": "Hong Kong Equity",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF Hong Kong Eq B",
+      "seq": 232
+    },
+    {
+      "category": "Hong Kong Equity (Index Tracking)",
+      "sourceName": "AIA MPF-Prime Value Choice-Hong Kong and China",
+      "seq": 233
+    },
+    {
+      "category": "Hong Kong Equity (Index Tracking)",
+      "sourceName": "BCOM Joyful Ret MPF-BCOM HSI ESG Tracking (CF)",
+      "seq": 234
+    },
+    {
+      "category": "Hong Kong Equity (Index Tracking)",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) HS Index Tracking",
+      "seq": 235
+    },
+    {
+      "category": "Hong Kong Equity (Index Tracking)",
+      "sourceName": "BCT MPF S800-Principal HS Index Tracking N",
+      "seq": 236
+    },
+    {
+      "category": "Hong Kong Equity (Index Tracking)",
+      "sourceName": "BCT MPF-Smart-Principal-Hang Seng Idx Track",
+      "seq": 237
+    },
+    {
+      "category": "Hong Kong Equity (Index Tracking)",
+      "sourceName": "BCT Strategic MPF-Invesco Hang Seng Index Trkg A",
+      "seq": 238
+    },
+    {
+      "category": "Hong Kong Equity (Index Tracking)",
+      "sourceName": "BCT Strategic MPF-Invesco Hang Seng Index Trkg H",
+      "seq": 239
+    },
+    {
+      "category": "Hong Kong Equity (Index Tracking)",
+      "sourceName": "BEA (MPF) Industry-BEA Hong Kong Tracker",
+      "seq": 240
+    },
+    {
+      "category": "Hong Kong Equity (Index Tracking)",
+      "sourceName": "BEA (MPF) MT-BEA Hong Kong Tracker",
+      "seq": 241
+    },
+    {
+      "category": "Hong Kong Equity (Index Tracking)",
+      "sourceName": "BEA (MPF) Value-BEA Hong Kong Tracker",
+      "seq": 242
+    },
+    {
+      "category": "Hong Kong Equity (Index Tracking)",
+      "sourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru CSI HK 100 Trk",
+      "seq": 243
+    },
+    {
+      "category": "Hong Kong Equity (Index Tracking)",
+      "sourceName": "Fidelity Retirement MT-Fidelity Hong Kong Tracker",
+      "seq": 244
+    },
+    {
+      "category": "Hong Kong Equity (Index Tracking)",
+      "sourceName": "Hang Seng MPF-SuperTrust Plus-HS Index Tracking",
+      "seq": 245
+    },
+    {
+      "category": "Hong Kong Equity (Index Tracking)",
+      "sourceName": "HSBC MPF-SuperTrust Plus-Hang Seng Index Tracking",
+      "seq": 246
+    },
+    {
+      "category": "Hong Kong Equity (Index Tracking)",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF HS Index ESG",
+      "seq": 247
+    },
+    {
+      "category": "Hong Kong Equity (Index Tracking)",
+      "sourceName": "My Choice MPF-My Choice Hong Kong Tracking",
+      "seq": 248
+    },
+    {
+      "category": "Hong Kong Equity (Index Tracking)",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life FTSE MPF HK Idx A",
+      "seq": 249
+    },
+    {
+      "category": "Hong Kong Equity (Index Tracking)",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life FTSE MPF HK Idx B",
+      "seq": 250
+    },
+    {
+      "category": "Japanese Equity",
+      "sourceName": "BEA (MPF) MT-BEA (MPF) Japan Equity",
+      "seq": 251
+    },
+    {
+      "category": "Japanese Equity",
+      "sourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru Japan Equity",
+      "seq": 252
+    },
+    {
+      "category": "Japanese Equity",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF Japan Equity",
+      "seq": 253
+    },
+    {
+      "category": "Lifestyle - (>20-40% Equity)",
+      "sourceName": "AIA MPF-Prime Value Choice-Capital Stable Pf",
+      "seq": 255
+    },
+    {
+      "category": "Lifestyle - (>20-40% Equity)",
+      "sourceName": "AMTD MPF-AMTD Allianz Choice Capital Stable",
+      "seq": 256
+    },
+    {
+      "category": "Lifestyle - (>20-40% Equity)",
+      "sourceName": "BCT (MPF) Industry Choice-BCT (Ind) E30 Mixed Asst",
+      "seq": 257
+    },
+    {
+      "category": "Lifestyle - (>20-40% Equity)",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) E30 Mixed Asset",
+      "seq": 258
+    },
+    {
+      "category": "Lifestyle - (>20-40% Equity)",
+      "sourceName": "BCT MPF S800-Principal Stable Yield D",
+      "seq": 259
+    },
+    {
+      "category": "Lifestyle - (>20-40% Equity)",
+      "sourceName": "BCT MPF S800-Principal Stable Yield I",
+      "seq": 260
+    },
+    {
+      "category": "Lifestyle - (>20-40% Equity)",
+      "sourceName": "BCT MPF-Simple-Principal Stable",
+      "seq": 261
+    },
+    {
+      "category": "Lifestyle - (>20-40% Equity)",
+      "sourceName": "BCT MPF-Smart-Principal Stable",
+      "seq": 262
+    },
+    {
+      "category": "Lifestyle - (>20-40% Equity)",
+      "sourceName": "BCT Strategic MPF-Invesco Capital Stable A",
+      "seq": 263
+    },
+    {
+      "category": "Lifestyle - (>20-40% Equity)",
+      "sourceName": "BCT Strategic MPF-Invesco Capital Stable H",
+      "seq": 264
+    },
+    {
+      "category": "Lifestyle - (>20-40% Equity)",
+      "sourceName": "BEA (MPF) Industry-BEA (Ind S) Stable",
+      "seq": 265
+    },
+    {
+      "category": "Lifestyle - (>20-40% Equity)",
+      "sourceName": "BEA (MPF) MT-BEA (MPF) Stable",
+      "seq": 266
+    },
+    {
+      "category": "Lifestyle - (>20-40% Equity)",
+      "sourceName": "BEA (MPF) Value-BEA Stable",
+      "seq": 267
+    },
+    {
+      "category": "Lifestyle - (>20-40% Equity)",
+      "sourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru Stable",
+      "seq": 268
+    },
+    {
+      "category": "Lifestyle - (>20-40% Equity)",
+      "sourceName": "Fidelity Retirement MT-Capital Stable",
+      "seq": 269
+    },
+    {
+      "category": "Lifestyle - (>20-40% Equity)",
+      "sourceName": "Hang Seng MPF-SuperTrust Plus-Stable",
+      "seq": 270
+    },
+    {
+      "category": "Lifestyle - (>20-40% Equity)",
+      "sourceName": "HSBC MPF-SuperTrust Plus-Stable",
+      "seq": 271
+    },
+    {
+      "category": "Lifestyle - (>20-40% Equity)",
+      "sourceName": "Manulife RC (MPF)-Allianz Capital Stable A",
+      "seq": 272
+    },
+    {
+      "category": "Lifestyle - (>20-40% Equity)",
+      "sourceName": "Manulife RC (MPF)-Allianz Capital Stable B",
+      "seq": 273
+    },
+    {
+      "category": "Lifestyle - (>20-40% Equity)",
+      "sourceName": "Manulife RC (MPF)-Allianz Capital Stable T",
+      "seq": 274
+    },
+    {
+      "category": "Lifestyle - (>20-40% Equity)",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF Stable A",
+      "seq": 275
+    },
+    {
+      "category": "Lifestyle - (>20-40% Equity)",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF Stable B",
+      "seq": 276
+    },
+    {
+      "category": "Lifestyle - (>40-60% Equity)",
+      "sourceName": "AIA MPF-Prime Value Choice-Balanced Portfolio",
+      "seq": 278
+    },
+    {
+      "category": "Lifestyle - (>40-60% Equity)",
+      "sourceName": "AMTD MPF-AMTD Allianz Choice Stable Growth",
+      "seq": 279
+    },
+    {
+      "category": "Lifestyle - (>40-60% Equity)",
+      "sourceName": "BCOM Joyful Ret MPF-BCOM Stable Growth (CF)",
+      "seq": 280
+    },
+    {
+      "category": "Lifestyle - (>40-60% Equity)",
+      "sourceName": "BCT (MPF) Industry Choice-BCT (Ind) E50 Mixed Asst",
+      "seq": 281
+    },
+    {
+      "category": "Lifestyle - (>40-60% Equity)",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) E50 Mixed Asset",
+      "seq": 282
+    },
+    {
+      "category": "Lifestyle - (>40-60% Equity)",
+      "sourceName": "BCT MPF S800-Principal Long Term Acc D",
+      "seq": 283
+    },
+    {
+      "category": "Lifestyle - (>40-60% Equity)",
+      "sourceName": "BCT MPF S800-Principal Long Term Acc I",
+      "seq": 284
+    },
+    {
+      "category": "Lifestyle - (>40-60% Equity)",
+      "sourceName": "BEA (MPF) Industry-BEA (Ind S) Balanced",
+      "seq": 285
+    },
+    {
+      "category": "Lifestyle - (>40-60% Equity)",
+      "sourceName": "BEA (MPF) MT-BEA (MPF) Balanced",
+      "seq": 286
+    },
+    {
+      "category": "Lifestyle - (>40-60% Equity)",
+      "sourceName": "BEA (MPF) Value-BEA Balanced",
+      "seq": 287
+    },
+    {
+      "category": "Lifestyle - (>40-60% Equity)",
+      "sourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru Balanced",
+      "seq": 288
+    },
+    {
+      "category": "Lifestyle - (>40-60% Equity)",
+      "sourceName": "Fidelity Retirement MT-Stable Growth",
+      "seq": 289
+    },
+    {
+      "category": "Lifestyle - (>40-60% Equity)",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF Fidelity Stb Gr",
+      "seq": 290
+    },
+    {
+      "category": "Lifestyle - (>40-60% Equity)",
+      "sourceName": "Manulife RC (MPF)-Allianz Stable Growth A",
+      "seq": 291
+    },
+    {
+      "category": "Lifestyle - (>40-60% Equity)",
+      "sourceName": "Manulife RC (MPF)-Allianz Stable Growth B",
+      "seq": 292
+    },
+    {
+      "category": "Lifestyle - (>40-60% Equity)",
+      "sourceName": "Manulife RC (MPF)-Allianz Stable Growth T",
+      "seq": 293
+    },
+    {
+      "category": "Lifestyle - (>40-60% Equity)",
+      "sourceName": "MASS MPF-Global Stable",
+      "seq": 294
+    },
+    {
+      "category": "Lifestyle - (>40-60% Equity)",
+      "sourceName": "My Choice MPF-My Choice Stable",
+      "seq": 295
+    },
+    {
+      "category": "Lifestyle - (>40-60% Equity)",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF Balanced A",
+      "seq": 296
+    },
+    {
+      "category": "Lifestyle - (>40-60% Equity)",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF Balanced B",
+      "seq": 297
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "AMTD MPF-AMTD Allianz Choice Balanced",
+      "seq": 299
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "BCOM Joyful Ret MPF-BCOM Balanced (CF)",
+      "seq": 300
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "BCT (MPF) Industry Choice-BCT (Ind) E70 Mixed Asst",
+      "seq": 301
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) E70 Mixed Asset",
+      "seq": 302
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "BCT MPF S800-Principal Global Growth D",
+      "seq": 303
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "BCT MPF S800-Principal Global Growth I",
+      "seq": 304
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "BCT MPF-Simple-Principal Balanced",
+      "seq": 305
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "BCT MPF-Smart-Principal Balanced",
+      "seq": 306
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "BCT Strategic MPF-Invesco Balanced A",
+      "seq": 307
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "BCT Strategic MPF-Invesco Balanced H",
+      "seq": 308
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "BEA (MPF) Industry-BEA (Ind S) Growth",
+      "seq": 309
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "BEA (MPF) MT-BEA (MPF) Growth",
+      "seq": 310
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "BEA (MPF) Value-BEA Growth",
+      "seq": 311
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "China Life MPF MT-China Life Balanced",
+      "seq": 312
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "Fidelity Retirement MT-Balanced",
+      "seq": 313
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "Hang Seng MPF-SuperTrust Plus-Balanced",
+      "seq": 314
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "Hang Seng MPF-SuperTrust Plus-ValChce Balanced",
+      "seq": 315
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "HSBC MPF-SuperTrust Plus-Balanced",
+      "seq": 316
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "HSBC MPF-SuperTrust Plus-ValueChoice Balanced",
+      "seq": 317
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF Growth",
+      "seq": 318
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "Manulife RC (MPF)-Allianz Balanced A",
+      "seq": 319
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "Manulife RC (MPF)-Allianz Balanced B",
+      "seq": 320
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "Manulife RC (MPF)-Allianz Balanced T",
+      "seq": 321
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "MASS MPF-Global Growth",
+      "seq": 322
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "My Choice MPF-My Choice Balanced",
+      "seq": 323
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF Growth A",
+      "seq": 324
+    },
+    {
+      "category": "Lifestyle - (>60-80% Equity)",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF Growth B",
+      "seq": 325
+    },
+    {
+      "category": "Lifestyle - (>80-100% Equity)",
+      "sourceName": "AIA MPF-Prime Value Choice-Growth Portfolio",
+      "seq": 327
+    },
+    {
+      "category": "Lifestyle - (>80-100% Equity)",
+      "sourceName": "AMTD MPF-AMTD Allianz Choice Growth",
+      "seq": 328
+    },
+    {
+      "category": "Lifestyle - (>80-100% Equity)",
+      "sourceName": "BCOM Joyful Ret MPF-BCOM Dynamic Growth (CF)",
+      "seq": 329
+    },
+    {
+      "category": "Lifestyle - (>80-100% Equity)",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) E90 Mixed Asset",
+      "seq": 330
+    },
+    {
+      "category": "Lifestyle - (>80-100% Equity)",
+      "sourceName": "BCT MPF S800-Principal Aggressive Strategy D",
+      "seq": 331
+    },
+    {
+      "category": "Lifestyle - (>80-100% Equity)",
+      "sourceName": "BCT MPF S800-Principal Aggressive Strategy I",
+      "seq": 332
+    },
+    {
+      "category": "Lifestyle - (>80-100% Equity)",
+      "sourceName": "BCT MPF-Simple-Principal Growth",
+      "seq": 333
+    },
+    {
+      "category": "Lifestyle - (>80-100% Equity)",
+      "sourceName": "BCT MPF-Smart-Principal Growth",
+      "seq": 334
+    },
+    {
+      "category": "Lifestyle - (>80-100% Equity)",
+      "sourceName": "BCT Strategic MPF-Invesco Growth A",
+      "seq": 335
+    },
+    {
+      "category": "Lifestyle - (>80-100% Equity)",
+      "sourceName": "BCT Strategic MPF-Invesco Growth H",
+      "seq": 336
+    },
+    {
+      "category": "Lifestyle - (>80-100% Equity)",
+      "sourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru Growth",
+      "seq": 337
+    },
+    {
+      "category": "Lifestyle - (>80-100% Equity)",
+      "sourceName": "China Life MPF MT-China Life Growth",
+      "seq": 338
+    },
+    {
+      "category": "Lifestyle - (>80-100% Equity)",
+      "sourceName": "Fidelity Retirement MT-Growth",
+      "seq": 339
+    },
+    {
+      "category": "Lifestyle - (>80-100% Equity)",
+      "sourceName": "Hang Seng MPF-SuperTrust Plus-Growth",
+      "seq": 340
+    },
+    {
+      "category": "Lifestyle - (>80-100% Equity)",
+      "sourceName": "HSBC MPF-SuperTrust Plus-Growth",
+      "seq": 341
+    },
+    {
+      "category": "Lifestyle - (>80-100% Equity)",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF Aggressive",
+      "seq": 342
+    },
+    {
+      "category": "Lifestyle - (>80-100% Equity)",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF Fidelity Growth",
+      "seq": 343
+    },
+    {
+      "category": "Lifestyle - (>80-100% Equity)",
+      "sourceName": "Manulife RC (MPF)-Allianz Growth A",
+      "seq": 344
+    },
+    {
+      "category": "Lifestyle - (>80-100% Equity)",
+      "sourceName": "Manulife RC (MPF)-Allianz Growth B",
+      "seq": 345
+    },
+    {
+      "category": "Lifestyle - (>80-100% Equity)",
+      "sourceName": "Manulife RC (MPF)-Allianz Growth T",
+      "seq": 346
+    },
+    {
+      "category": "Lifestyle - (>80-100% Equity)",
+      "sourceName": "My Choice MPF-My Choice Growth",
+      "seq": 347
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "AIA MPF-Prime Value Choice-MPF Conservative",
+      "seq": 349
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "AMTD MPF-AMTD Invesco MPF Conservative",
+      "seq": 350
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "BCOM Joyful Ret MPF-BCOM MPF Conservative",
+      "seq": 351
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "BCT (MPF) Industry Choice-BCT (Ind) MPF Consv",
+      "seq": 352
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) MPF Conservative",
+      "seq": 353
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "BCT MPF S800-Principal MPF Conservative N",
+      "seq": 354
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "BCT MPF-Simple-Principal-MPF Conservative",
+      "seq": 355
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "BCT MPF-Smart-Principal-MPF Conservative",
+      "seq": 356
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "BCT Strategic MPF-Invesco MPF Conservative A",
+      "seq": 357
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "BCT Strategic MPF-Invesco MPF Conservative H",
+      "seq": 358
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "BEA (MPF) Industry-BEA (Ind S) MPF Conservative",
+      "seq": 359
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "BEA (MPF) MT-BEA (MPF) Conservative",
+      "seq": 360
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "BEA (MPF) Value-BEA MPF Conservative",
+      "seq": 361
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru MPF Conservative",
+      "seq": 362
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "China Life MPF MT-China Life MPF Conservative",
+      "seq": 363
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "Fidelity Retirement MT-MPF Conservative",
+      "seq": 364
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "Haitong MPF Retire Fd-Haitong MPF Conservative A",
+      "seq": 365
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "Haitong MPF Retire Fd-Haitong MPF Conservative T",
+      "seq": 366
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "Hang Seng MPF-SuperTrust Plus-MPF Conservative",
+      "seq": 367
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "HSBC MPF-SuperTrust Plus-MPF Conservative",
+      "seq": 368
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF Conservative",
+      "seq": 369
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "Manulife RC (MPF)-Allianz MPF Conservative A",
+      "seq": 370
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "Manulife RC (MPF)-Allianz MPF Conservative B",
+      "seq": 371
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "Manulife RC (MPF)-Allianz MPF Conservative T",
+      "seq": 372
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "MASS MPF-MPF Conservative",
+      "seq": 373
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "My Choice MPF-My Choice MPF Conservative",
+      "seq": 374
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF Conservative A",
+      "seq": 375
+    },
+    {
+      "category": "MPF Conservative Fund",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF Conservative B",
+      "seq": 376
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "AIA MPF-Prime Value Choice-China HK Dyn Asset Allo",
+      "seq": 377
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "AIA MPF-Prime Value Choice-Eurasia",
+      "seq": 378
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "AIA MPF-Prime Value Choice-Manager's Choice",
+      "seq": 379
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "AIA MPF-Prime Value Choice-Retirement Income",
+      "seq": 380
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "AMTD MPF-AMTD Allianz Choice Dynamic Allocation",
+      "seq": 381
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "AMTD MPF-AMTD Invesco Target 2028 Retirement",
+      "seq": 382
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "AMTD MPF-AMTD Invesco Target 2038 Retirement",
+      "seq": 383
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "AMTD MPF-AMTD Invesco Target 2048 Retirement",
+      "seq": 384
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "AMTD MPF-AMTD Invesco Target Retirement Now",
+      "seq": 385
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "BCT (MPF) Industry Choice-BCT (Ind) Flexi Mix Asst",
+      "seq": 386
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) Asian Inc Retire",
+      "seq": 387
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) Flexi Mixed Asset",
+      "seq": 388
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) SaveEasy 2025",
+      "seq": 389
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) SaveEasy 2030",
+      "seq": 390
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) SaveEasy 2035",
+      "seq": 391
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) SaveEasy 2040",
+      "seq": 392
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) SaveEasy 2045",
+      "seq": 393
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) SaveEasy 2050",
+      "seq": 394
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru HK Stable Retire",
+      "seq": 395
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "Fidelity Retirement MT-Fidelity SaveEasy 2025",
+      "seq": 396
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "Fidelity Retirement MT-Fidelity SaveEasy 2030",
+      "seq": 397
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "Fidelity Retirement MT-Fidelity SaveEasy 2035",
+      "seq": 398
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "Fidelity Retirement MT-Fidelity SaveEasy 2040",
+      "seq": 399
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "Fidelity Retirement MT-Fidelity SaveEasy 2045",
+      "seq": 400
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "Fidelity Retirement MT-Fidelity SaveEasy 2050",
+      "seq": 401
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "Fidelity Retirement MT-RetireEasy",
+      "seq": 402
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "Haitong MPF Retire Fd-Haitong Korea A",
+      "seq": 403
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "Haitong MPF Retire Fd-Haitong Korea T",
+      "seq": 404
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF 2025 Retirement",
+      "seq": 405
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF 2030 Retirement",
+      "seq": 406
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF 2035 Retirement",
+      "seq": 407
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF 2040 Retirement",
+      "seq": 408
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF 2045 Retirement",
+      "seq": 409
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF Healthcare",
+      "seq": 410
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF Retire Income",
+      "seq": 411
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF Smart Retirement",
+      "seq": 412
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "Manulife RC (MPF)-Allianz Flexi Balanced A",
+      "seq": 413
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "Manulife RC (MPF)-Allianz Flexi Balanced B",
+      "seq": 414
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "Manulife RC (MPF)-Allianz Flexi Balanced T",
+      "seq": 415
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "Manulife RC (MPF)-Allianz RMB Money Market A",
+      "seq": 416
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "Manulife RC (MPF)-Allianz RMB Money Market B",
+      "seq": 417
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "Manulife RC (MPF)-Allianz RMB Money Market T",
+      "seq": 418
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "My Choice MPF-My Choice Chinese Gv & Pol Bk Bd Idx",
+      "seq": 419
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF Income",
+      "seq": 420
+    },
+    {
+      "category": "Other Fund",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF US&Hong Kong Eq",
+      "seq": 421
+    },
+    {
+      "category": "RMB and HKD Money Market",
+      "sourceName": "BEA (MPF) Industry-BEA (Ind S) RMB & HKD Mny Mkt",
+      "seq": 422
+    },
+    {
+      "category": "RMB and HKD Money Market",
+      "sourceName": "BEA (MPF) MT-BEA (MPF) RMB & HKD Money Market",
+      "seq": 423
+    },
+    {
+      "category": "RMB and HKD Money Market",
+      "sourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru MPF RMB & HKD MMkt",
+      "seq": 424
+    },
+    {
+      "category": "RMB and HKD Money Market",
+      "sourceName": "My Choice MPF-My Choice RMB & HKD Money Market",
+      "seq": 425
+    },
+    {
+      "category": "RMB and HKD Money Market",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF RMB and HKD A",
+      "seq": 426
+    },
+    {
+      "category": "RMB and HKD Money Market",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF RMB and HKD B",
+      "seq": 427
+    },
+    {
+      "category": "RMB Bond Fund",
+      "sourceName": "BCT (MPF) Industry Choice-BCT (Ind) RMB Bond",
+      "seq": 428
+    },
+    {
+      "category": "RMB Bond Fund",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) RMB Bond",
+      "seq": 429
+    },
+    {
+      "category": "RMB Bond Fund",
+      "sourceName": "BCT Strategic MPF-Invesco RMB Bond A",
+      "seq": 430
+    },
+    {
+      "category": "RMB Bond Fund",
+      "sourceName": "BCT Strategic MPF-Invesco RMB Bond H",
+      "seq": 431
+    },
+    {
+      "category": "RMB Bond Fund",
+      "sourceName": "Fidelity Retirement MT-RMB Bond",
+      "seq": 432
+    },
+    {
+      "category": "RMB Bond Fund",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF RMB Bond",
+      "seq": 433
+    },
+    {
+      "category": "United States Equity",
+      "sourceName": "AIA MPF-Prime Value Choice-American",
+      "seq": 435
+    },
+    {
+      "category": "United States Equity",
+      "sourceName": "AIA MPF-Prime Value Choice-North American Equity",
+      "seq": 436
+    },
+    {
+      "category": "United States Equity",
+      "sourceName": "BCOM Joyful Ret MPF-BCOM North American Eq (CF)",
+      "seq": 437
+    },
+    {
+      "category": "United States Equity",
+      "sourceName": "BCT (MPF) Pro Choice-BCT (Pro) U.S. Equity",
+      "seq": 438
+    },
+    {
+      "category": "United States Equity",
+      "sourceName": "BCT MPF S800-Principal US Equity D",
+      "seq": 439
+    },
+    {
+      "category": "United States Equity",
+      "sourceName": "BCT MPF S800-Principal US Equity I",
+      "seq": 440
+    },
+    {
+      "category": "United States Equity",
+      "sourceName": "BCT Strategic MPF-Invesco US Index Tracking A",
+      "seq": 441
+    },
+    {
+      "category": "United States Equity",
+      "sourceName": "BCT Strategic MPF-Invesco US Index Tracking H",
+      "seq": 442
+    },
+    {
+      "category": "United States Equity",
+      "sourceName": "BEA (MPF) MT-BEA (MPF) North American Equity",
+      "seq": 443
+    },
+    {
+      "category": "United States Equity",
+      "sourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru N Amer Idx Trkg",
+      "seq": 444
+    },
+    {
+      "category": "United States Equity",
+      "sourceName": "China Life MPF MT-China Life US Equity",
+      "seq": 445
+    },
+    {
+      "category": "United States Equity",
+      "sourceName": "Fidelity Retirement MT-Americas Equity",
+      "seq": 446
+    },
+    {
+      "category": "United States Equity",
+      "sourceName": "Hang Seng MPF-SuperTrust Plus-North American Eq",
+      "seq": 447
+    },
+    {
+      "category": "United States Equity",
+      "sourceName": "Hang Seng MPF-SuperTrust Plus-ValChce NAm Eq Trkr",
+      "seq": 448
+    },
+    {
+      "category": "United States Equity",
+      "sourceName": "HSBC MPF-SuperTrust Plus-North American Equity",
+      "seq": 449
+    },
+    {
+      "category": "United States Equity",
+      "sourceName": "HSBC MPF-SuperTrust Plus-ValueChoice N Am Eq Trkr",
+      "seq": 450
+    },
+    {
+      "category": "United States Equity",
+      "sourceName": "Manulife GS (MPF)-Manulife MPF North American Eq",
+      "seq": 451
+    },
+    {
+      "category": "United States Equity",
+      "sourceName": "MASS MPF-US Equity",
+      "seq": 452
+    },
+    {
+      "category": "United States Equity",
+      "sourceName": "My Choice MPF-My Choice Americas Equity",
+      "seq": 453
+    },
+    {
+      "category": "United States Equity",
+      "sourceName": "Sun Life Rainbow MPF-Sun Life MPF US Equity",
+      "seq": 454
+    }
+  ]
+}
