@@ -51,6 +51,8 @@ describe("publication snapshot", () => {
     expect(await response.json()).toEqual({
       snapshotId,
       fundClass: fixture.fundClass,
+      comparisonGroup: "Hong Kong Equity",
+      comparisonGroupSource: "lipper",
       provenance: {
         sourceUrl: fixture.source.url,
         dataAsOf: fixture.fundClass.dataAsOf,
@@ -109,6 +111,8 @@ describe("publication snapshot", () => {
         trusteeName: fundFixture.fundClass.trusteeName,
         fundType: fundFixture.fundClass.fundType,
         fundCategory: fundFixture.fundClass.fundCategory,
+        comparisonGroup: "Hong Kong Equity",
+        comparisonGroupSource: "lipper",
         riskClass: fundFixture.fundClass.riskClass,
         annualizedReturn1y: fundFixture.fundClass.annualizedReturn1y,
         managementFee: fundFixture.fundClass.managementFee,
@@ -131,6 +135,7 @@ describe("publication snapshot", () => {
         constituentFundName: "港股基金",
         fundType: "Equity Fund",
         fundCategory: "Hong Kong Equity Fund",
+        lipperCategory: "Hong Kong Equity",
         trusteeName: "受託人甲",
         riskClass: 6,
       },
@@ -139,10 +144,12 @@ describe("publication snapshot", () => {
         constituentFundName: "環球股票基金",
         fundType: "Equity Fund",
         fundCategory: "Global Equity Fund",
+        lipperCategory: "Global Equity",
         trusteeName: "受託人乙",
         riskClass: 5,
       },
       {
+        // 計劃不在 Lipper 來源內，改以平台分類自成一組。
         id: "bond-fund",
         constituentFundName: "債券基金",
         fundType: "Bond Fund",
@@ -160,6 +167,12 @@ describe("publication snapshot", () => {
           fund.id,
           JSON.stringify({
             snapshotId,
+            classification: {
+              provider: "Lipper",
+              dataset: "Hong Kong Pension Fund Classification",
+              capturedAt: "2026-08-27",
+              official: false,
+            },
             fundClass: {
               ...fund,
               schemeName: "瀏覽測試計劃",
@@ -239,6 +252,7 @@ describe("publication snapshot", () => {
               trusteeName: "測試受託人",
               fundType: "Equity Fund",
               fundCategory: "環球股票基金",
+              lipperCategory: "Global Equity",
               riskClass: 5,
               dataAsOf: "2026-07-31",
               verificationStatus: "verified",
@@ -295,9 +309,42 @@ describe("publication snapshot", () => {
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({
       snapshotId: "snapshot-browse-test",
+      categories: ["Global Equity", "Hong Kong Equity", "平台分類：Bond Fund"],
+      classification: {
+        provider: "Lipper",
+        dataset: "Hong Kong Pension Fund Classification",
+        capturedAt: "2026-08-27",
+        official: false,
+      },
       fundTypes: ["Bond Fund", "Equity Fund"],
       trustees: ["受託人乙", "受託人甲"],
       riskClasses: [3, 5, 6],
+    });
+  });
+
+  it("filters by Lipper category and keeps schemes outside the source in their own group", async () => {
+    await publishBrowseFixture();
+
+    const grouped = (await (
+      await SELF.fetch("https://kwmpf.test/search?category=Hong+Kong+Equity")
+    ).json()) as { id: string; comparisonGroupSource: string }[];
+    expect(grouped).toHaveLength(1);
+    expect(grouped[0]).toMatchObject({
+      id: "equity-low",
+      comparisonGroup: "Hong Kong Equity",
+      comparisonGroupSource: "lipper",
+    });
+
+    const unmapped = (await (
+      await SELF.fetch(
+        "https://kwmpf.test/search?category=" +
+          encodeURIComponent("平台分類：Bond Fund"),
+      )
+    ).json()) as { id: string; comparisonGroupSource: string }[];
+    expect(unmapped).toHaveLength(1);
+    expect(unmapped[0]).toMatchObject({
+      id: "bond-fund",
+      comparisonGroupSource: "platform",
     });
   });
 
@@ -340,6 +387,7 @@ describe("publication snapshot", () => {
         schemeName: fundFixture.fundClass.schemeName,
         trusteeName: fundFixture.fundClass.trusteeName,
         fundClassCount: 1,
+        categories: ["Hong Kong Equity"],
         fundTypes: [fundFixture.fundClass.fundType],
         riskClassDistribution: { "6": 1 },
         managementFee: {
@@ -358,6 +406,7 @@ describe("publication snapshot", () => {
             constituentFundName: fundFixture.fundClass.constituentFundName,
             fundClassName: fundFixture.fundClass.fundClassName,
             fundType: fundFixture.fundClass.fundType,
+            comparisonGroup: "Hong Kong Equity",
             riskClass: fundFixture.fundClass.riskClass,
             dataAsOf: fundFixture.fundClass.dataAsOf,
             annualizedReturn1y: fundFixture.fundClass.annualizedReturn1y,
@@ -642,6 +691,7 @@ describe("publication snapshot", () => {
               schemeName: "測試計劃",
               trusteeName: "測試受託人",
               fundCategory: "環球股票基金",
+              lipperCategory: "Global Equity",
               annualizedReturn1y: fund.value,
               dataAsOf: "2026-07-31",
               verificationStatus: "verified",
@@ -666,12 +716,14 @@ describe("publication snapshot", () => {
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({
       snapshotId,
+      comparisonGroups: ["Global Equity"],
       metric: "return",
       periodYears: 1,
       excludedStaleCount: 0,
       methodology: {
         metric: "annualized_return",
         grouping: "comparison_group",
+        classification: null,
         sortDirection: "descending",
         displayPrecision: 2,
         freshness: expect.objectContaining({ graceDays: 45 }),
@@ -679,6 +731,8 @@ describe("publication snapshot", () => {
       rankings: [
         expect.objectContaining({
           fundClassId: "fund-a",
+          comparisonGroup: "Global Equity",
+          comparisonGroupSource: "lipper",
           displayValue: "8.12%",
           rank: 1,
         }),
@@ -723,6 +777,7 @@ describe("publication snapshot", () => {
               schemeName: "測試計劃",
               trusteeName: "測試受託人",
               fundCategory: "環球股票基金",
+              lipperCategory: "Global Equity",
               annualizedReturn1y: 1,
               annualizedReturn5y: fund.return5y,
               annualizedReturn10y: fund.return10y,
@@ -782,6 +837,7 @@ describe("publication snapshot", () => {
             schemeName: "測試計劃",
             trusteeName: "測試受託人",
             fundCategory: "環球股票基金",
+            lipperCategory: "Global Equity",
             annualizedReturn1y: 4.2,
             annualizedReturn5y: 6.1,
             annualizedReturn10y: 5.4,
@@ -886,6 +942,7 @@ describe("publication snapshot", () => {
             schemeName: "測試計劃",
             trusteeName: "測試受託人",
             fundCategory: "環球股票基金",
+            lipperCategory: "Global Equity",
             annualizedReturn1y: 9.99,
             dataAsOf: fund.dataAsOf,
             verificationStatus: "verified",
@@ -930,6 +987,7 @@ describe("publication snapshot", () => {
             schemeName: "測試計劃",
             trusteeName: "測試受託人",
             fundCategory: "環球股票基金",
+            lipperCategory: "Global Equity",
             annualizedReturn1y: 1,
             managementFee: fund.managementFee,
             riskClass: fund.riskClass,

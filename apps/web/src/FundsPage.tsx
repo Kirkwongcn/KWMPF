@@ -10,6 +10,7 @@ type FundSummary = {
   trusteeName: string;
   fundType: string;
   fundCategory?: string;
+  comparisonGroup?: string;
   riskClass?: number;
   annualizedReturn1y?: number;
   managementFee?: number;
@@ -17,8 +18,16 @@ type FundSummary = {
   dataAsOf?: string;
 };
 
+type Classification = {
+  provider: string;
+  dataset: string;
+  capturedAt: string;
+};
+
 type PublishedFilters = {
   snapshotId: string | null;
+  categories?: string[];
+  classification?: Classification | null;
   fundTypes: string[];
   trustees: string[];
   riskClasses: number[];
@@ -26,24 +35,33 @@ type PublishedFilters = {
 
 const unavailable = "官方未提供";
 
+export function classificationNote(classification: Classification | null) {
+  return classification
+    ? `同類比較分類採用 ${classification.provider}「${classification.dataset}」（期別 ${classification.capturedAt}），屬非官方來源，與官方平台的基金種類分開列示。`
+    : "同類比較分類屬非官方來源，與官方平台的基金種類分開列示。";
+}
+
 function percent(value?: number) {
   return typeof value === "number" ? `${value.toFixed(2)}%` : unavailable;
 }
 
 export function FundsPage({
   apiBaseUrl,
+  initialCategory = "all",
   initialFundType = "all",
   initialTrustee = "all",
   initialRiskClass = "all",
   initialQuery = "",
 }: {
   apiBaseUrl: string;
+  initialCategory?: string;
   initialFundType?: string;
   initialTrustee?: string;
   initialRiskClass?: string;
   initialQuery?: string;
 }) {
   const [filters, setFilters] = useState<PublishedFilters | null>(null);
+  const [category, setCategory] = useState(initialCategory);
   const [fundType, setFundType] = useState(initialFundType);
   const [trustee, setTrustee] = useState(initialTrustee);
   const [riskClass, setRiskClass] = useState(initialRiskClass);
@@ -63,6 +81,8 @@ export function FundsPage({
       .catch(() =>
         setFilters({
           snapshotId: null,
+          categories: [],
+          classification: null,
           fundTypes: [],
           trustees: [],
           riskClasses: [],
@@ -71,6 +91,7 @@ export function FundsPage({
   }, [apiBaseUrl]);
 
   const hasCriteria =
+    category !== "all" ||
     fundType !== "all" ||
     trustee !== "all" ||
     riskClass !== "all" ||
@@ -84,6 +105,7 @@ export function FundsPage({
     }
     const params = new URLSearchParams();
     if (submittedQuery.trim()) params.set("q", submittedQuery.trim());
+    if (category !== "all") params.set("category", category);
     if (fundType !== "all") params.set("fundType", fundType);
     if (trustee !== "all") params.set("trustee", trustee);
     if (riskClass !== "all") params.set("riskClass", riskClass);
@@ -102,7 +124,15 @@ export function FundsPage({
         setTotalMatches(0);
         setFailed(true);
       });
-  }, [apiBaseUrl, hasCriteria, submittedQuery, fundType, trustee, riskClass]);
+  }, [
+    apiBaseUrl,
+    hasCriteria,
+    submittedQuery,
+    category,
+    fundType,
+    trustee,
+    riskClass,
+  ]);
 
   return (
     <SiteChrome
@@ -124,7 +154,23 @@ export function FundsPage({
             }}
           >
             <p className="kw-filter">
-              <label htmlFor="filter-fund-type">基金種類</label>
+              <label htmlFor="filter-category">同類比較分類</label>
+              <select
+                className="kw-control"
+                id="filter-category"
+                value={category}
+                onChange={(event) => setCategory(event.target.value)}
+              >
+                <option value="all">全部同類比較分類</option>
+                {filters?.categories?.map((value) => (
+                  <option key={value} value={value}>
+                    {value}
+                  </option>
+                ))}
+              </select>
+            </p>
+            <p className="kw-filter">
+              <label htmlFor="filter-fund-type">官方基金種類</label>
               <select
                 className="kw-control"
                 id="filter-fund-type"
@@ -187,6 +233,9 @@ export function FundsPage({
               </span>
             </p>
           </form>
+          <p className="kw-muted">
+            {classificationNote(filters?.classification ?? null)}
+          </p>
         </div>
       </section>
 
@@ -254,7 +303,11 @@ export function FundsPage({
                         <br />
                         <span className="kw-muted">{fund.trusteeName}</span>
                       </td>
-                      <td>{fund.fundCategory ?? fund.fundType}</td>
+                      <td>
+                        {fund.comparisonGroup ??
+                          fund.fundCategory ??
+                          fund.fundType}
+                      </td>
                       <td className="kw-nowrap">
                         {fund.dataAsOf ?? unavailable}
                       </td>

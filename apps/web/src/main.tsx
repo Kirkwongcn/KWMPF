@@ -39,6 +39,7 @@ createRoot(root).render(
     ) : isFundsPage ? (
       <FundsPage
         apiBaseUrl={apiBaseUrl}
+        initialCategory={params.get("category") ?? "all"}
         initialFundType={params.get("fundType") ?? "all"}
         initialTrustee={params.get("trustee") ?? "all"}
         initialRiskClass={params.get("riskClass") ?? "all"}

@@ -2,6 +2,12 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { publicationCache } from "./caching";
 import {
+  classificationOf,
+  comparisonGroupFor,
+  comparisonGroupSourceOf,
+  type Classification,
+} from "./comparison-group";
+import {
   evaluateFreshness,
   fundOverviewGraceDays,
   returnsGraceDays,
@@ -43,10 +49,14 @@ app.get("/fund-classes/:id", async (context) => {
 
   if (!row) return context.json({ error: "Fund class not found" }, 404);
   const published = JSON.parse(row.payload) as {
+    fundClass: BrowseFundClass;
     provenance: { dataAsOf: string; freshnessPolicy?: FreshnessPolicy };
   };
+  const group = comparisonGroupFor(published.fundClass);
   return context.json({
     ...published,
+    comparisonGroup: group.name,
+    comparisonGroupSource: group.source,
     freshness: evaluateFreshness(
       published.provenance.dataAsOf,
       returnsGraceDays(published.provenance.freshnessPolicy),
@@ -62,6 +72,7 @@ type BrowseFundClass = {
   trusteeName: string;
   fundType: string;
   fundCategory?: string;
+  lipperCategory?: string;
   riskClass?: number;
   annualizedReturn1y?: number;
   managementFee?: number;
@@ -87,8 +98,29 @@ async function loadPublishedFundClasses(
   );
 }
 
+async function loadClassification(
+  db: PublicationBindings["DB"],
+): Promise<Classification | null> {
+  const row = await db
+    .prepare(
+      `SELECT f.payload
+     FROM current_publication c
+     JOIN fund_class_versions f ON f.snapshot_id = c.snapshot_id
+     WHERE c.singleton = 1
+     LIMIT 1`,
+    )
+    .first<{ payload: string }>();
+
+  return row
+    ? classificationOf(
+        JSON.parse(row.payload) as { classification?: Classification },
+      )
+    : null;
+}
+
 app.get("/search", async (context) => {
   const query = context.req.query("q")?.trim().toLocaleLowerCase();
+  const category = context.req.query("category")?.trim();
   const fundType = context.req.query("fundType")?.trim();
   const fundCategory = context.req.query("fundCategory")?.trim();
   const trustee = context.req.query("trustee")?.trim();
@@ -96,6 +128,7 @@ app.get("/search", async (context) => {
   const riskClass = riskClassParam ? Number(riskClassParam) : undefined;
 
   const hasFilter = Boolean(
+    category ||
     fundType ||
     fundCategory ||
     trustee ||
@@ -117,6 +150,8 @@ app.get("/search", async (context) => {
         ].some((value) => value.toLocaleLowerCase().includes(query))
       )
         return false;
+      if (category && comparisonGroupFor(fundClass).name !== category)
+        return false;
       if (fundType && fundClass.fundType !== fundType) return false;
       if (fundCategory && fundClass.fundCategory !== fundCategory) return false;
       if (trustee && fundClass.trusteeName !== trustee) return false;
@@ -130,20 +165,25 @@ app.get("/search", async (context) => {
     },
   );
 
-  const results = matches.slice(0, SEARCH_RESULT_LIMIT).map((fundClass) => ({
-    id: fundClass.id,
-    fundClassName: fundClass.fundClassName,
-    constituentFundName: fundClass.constituentFundName,
-    schemeName: fundClass.schemeName,
-    trusteeName: fundClass.trusteeName,
-    fundType: fundClass.fundType,
-    fundCategory: fundClass.fundCategory,
-    riskClass: fundClass.riskClass,
-    annualizedReturn1y: fundClass.annualizedReturn1y,
-    managementFee: fundClass.managementFee,
-    latestFer: fundClass.latestFer,
-    dataAsOf: fundClass.dataAsOf,
-  }));
+  const results = matches.slice(0, SEARCH_RESULT_LIMIT).map((fundClass) => {
+    const group = comparisonGroupFor(fundClass);
+    return {
+      id: fundClass.id,
+      fundClassName: fundClass.fundClassName,
+      constituentFundName: fundClass.constituentFundName,
+      schemeName: fundClass.schemeName,
+      trusteeName: fundClass.trusteeName,
+      fundType: fundClass.fundType,
+      fundCategory: fundClass.fundCategory,
+      comparisonGroup: group.name,
+      comparisonGroupSource: group.source,
+      riskClass: fundClass.riskClass,
+      annualizedReturn1y: fundClass.annualizedReturn1y,
+      managementFee: fundClass.managementFee,
+      latestFer: fundClass.latestFer,
+      dataAsOf: fundClass.dataAsOf,
+    };
+  });
 
   return context.json(results, {
     headers: { "X-Total-Matches": String(matches.length) },
@@ -158,17 +198,21 @@ app.get("/filters", async (context) => {
   if (!current)
     return context.json({
       snapshotId: null,
+      categories: [],
+      classification: null,
       fundTypes: [],
       trustees: [],
       riskClasses: [],
     });
 
   const fundClasses = await loadPublishedFundClasses(context.env.DB);
+  const categories = new Set<string>();
   const fundTypes = new Set<string>();
   const trustees = new Set<string>();
   const riskClasses = new Set<number>();
 
   for (const fundClass of fundClasses) {
+    categories.add(comparisonGroupFor(fundClass).name);
     if (fundClass.fundType) fundTypes.add(fundClass.fundType);
     if (fundClass.trusteeName) trustees.add(fundClass.trusteeName);
     if (typeof fundClass.riskClass === "number")
@@ -177,6 +221,8 @@ app.get("/filters", async (context) => {
 
   return context.json({
     snapshotId: current.snapshot_id,
+    categories: [...categories].sort((a, b) => a.localeCompare(b)),
+    classification: await loadClassification(context.env.DB),
     fundTypes: [...fundTypes].sort((a, b) => a.localeCompare(b)),
     trustees: [...trustees].sort((a, b) => a.localeCompare(b)),
     riskClasses: [...riskClasses].sort((a, b) => a - b),
@@ -250,6 +296,7 @@ app.get("/schemes", async (context) => {
       schemeName: string;
       trusteeName: string;
       fundClassCount: number;
+      categories: string[];
       fundTypes: string[];
       riskClassDistribution: Record<string, number>;
       managementFees: number[];
@@ -259,6 +306,7 @@ app.get("/schemes", async (context) => {
         constituentFundName: string;
         fundClassName: string;
         fundType: string;
+        comparisonGroup: string;
         riskClass?: number;
         dataAsOf?: string;
         annualizedReturn1y?: number;
@@ -277,6 +325,8 @@ app.get("/schemes", async (context) => {
         constituentFundName: string;
         fundClassName: string;
         fundType: string;
+        fundCategory?: string;
+        lipperCategory?: string;
         riskClass?: number;
         managementFee?: number;
         dataAsOf?: string;
@@ -291,13 +341,17 @@ app.get("/schemes", async (context) => {
       schemeName: fundClass.schemeName,
       trusteeName: fundClass.trusteeName,
       fundClassCount: 0,
+      categories: [],
       fundTypes: [],
       riskClassDistribution: {},
       managementFees: [],
       dataAsOfDates: [],
       funds: [],
     };
+    const comparisonGroup = comparisonGroupFor(fundClass).name;
     scheme.fundClassCount += 1;
+    if (!scheme.categories.includes(comparisonGroup))
+      scheme.categories.push(comparisonGroup);
     if (!scheme.fundTypes.includes(fundClass.fundType))
       scheme.fundTypes.push(fundClass.fundType);
     if (typeof fundClass.riskClass === "number") {
@@ -313,6 +367,7 @@ app.get("/schemes", async (context) => {
       constituentFundName: fundClass.constituentFundName,
       fundClassName: fundClass.fundClassName,
       fundType: fundClass.fundType,
+      comparisonGroup,
       ...(typeof fundClass.riskClass === "number"
         ? { riskClass: fundClass.riskClass }
         : {}),
@@ -447,13 +502,16 @@ app.get("/rankings", async (context) => {
   const parsed = rows.results.map((row) => ({
     snapshotId: row.snapshot_id,
     publication: JSON.parse(row.payload) as {
+      classification?: Classification;
       fundClass: {
         id: string;
         fundClassName: string;
         constituentFundName: string;
         schemeName: string;
         trusteeName: string;
+        fundType?: string;
         fundCategory: string;
+        lipperCategory?: string;
         annualizedReturn1y?: number;
         annualizedReturn5y?: number;
         annualizedReturn10y?: number;
@@ -498,7 +556,7 @@ app.get("/rankings", async (context) => {
   });
   const groups = Map.groupBy(
     eligible,
-    ({ publication }) => publication.fundClass.fundCategory,
+    ({ publication }) => comparisonGroupFor(publication.fundClass).name,
   );
   const precision = selected.displayPrecision;
   const direction = selected.sortDirection === "ascending" ? 1 : -1;
@@ -526,6 +584,7 @@ app.get("/rankings", async (context) => {
         schemeName: publication.fundClass.schemeName,
         trusteeName: publication.fundClass.trusteeName,
         comparisonGroup,
+        comparisonGroupSource: comparisonGroupSourceOf(comparisonGroup),
         value,
         displayValue: `${value.toFixed(precision)}${selected.unit}`,
         rank,
@@ -537,12 +596,20 @@ app.get("/rankings", async (context) => {
 
   return context.json({
     snapshotId: rows.results[0]?.snapshot_id ?? null,
+    comparisonGroups: [
+      ...new Set(
+        parsed.map(
+          ({ publication }) => comparisonGroupFor(publication.fundClass).name,
+        ),
+      ),
+    ].sort((a, b) => a.localeCompare(b)),
     metric,
     periodYears,
     excludedStaleCount,
     methodology: {
       metric: selected.methodology,
       grouping: "comparison_group",
+      classification: classificationOf(parsed[0]?.publication),
       sortDirection: selected.sortDirection,
       displayPrecision: precision,
       freshness: {

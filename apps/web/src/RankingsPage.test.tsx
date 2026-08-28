@@ -229,6 +229,57 @@ describe("published return rankings", () => {
     expect(screen.getByLabelText("比較組別")).toHaveValue("Guaranteed Fund");
   });
 
+  it("falls back to every group when an old link names a retired platform category", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-2026-07-31",
+          periodYears: 1,
+          comparisonGroups: ["Global Equity", "Hong Kong Equity"],
+          methodology: {
+            classification: {
+              provider: "Lipper",
+              dataset: "Hong Kong Pension Fund Classification",
+              capturedAt: "2026-08-27",
+            },
+          },
+          rankings: [
+            {
+              fundClassId: "fund-a",
+              fundClassName: "Class A",
+              constituentFundName: "港股基金",
+              schemeName: "Scheme One",
+              trusteeName: "Trustee One",
+              comparisonGroup: "Hong Kong Equity",
+              comparisonGroupSource: "lipper",
+              displayValue: "8.02%",
+              rank: 1,
+              dataAsOf: "2026-07-31",
+              sourceUrl: "https://example.test/fund-a",
+            },
+          ],
+        }),
+      ),
+    );
+
+    render(
+      <RankingsPage
+        apiBaseUrl="https://api.test"
+        initialComparisonGroup="Equity Fund (North America)"
+      />,
+    );
+
+    expect(
+      await screen.findByText(
+        /「Equity Fund \(North America\)」不再是獨立組別/,
+      ),
+    ).toBeVisible();
+    expect(screen.getByLabelText("比較組別")).toHaveValue("all");
+    expect(screen.getByText("港股基金")).toBeVisible();
+    expect(screen.getByText(/期別 2026-08-27/)).toBeVisible();
+  });
+
   it("explains how many funds are held out of the ranking as stale", async () => {
     vi.stubGlobal(
       "fetch",

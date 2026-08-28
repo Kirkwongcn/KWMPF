@@ -4,7 +4,14 @@ import { fundClassLabel, joinFundParts } from "./fundClassLabel";
 
 type PublishedFundClass = {
   snapshotId: string;
+  comparisonGroup?: string;
+  classification?: {
+    provider: string;
+    dataset: string;
+    capturedAt: string;
+  } | null;
   fundClass: {
+    lipperCategory?: string;
     trusteeName: string;
     schemeName: string;
     constituentFundName: string;
@@ -85,6 +92,7 @@ export function FundClassPage({
     );
 
   const { fundClass, provenance, snapshotId, freshness } = publication;
+  const comparisonGroup = publication.comparisonGroup ?? fundClass.fundCategory;
   return (
     <SiteChrome
       eyebrow={fundClass.schemeName}
@@ -226,13 +234,18 @@ export function FundClassPage({
         </h2>
         <div className="kw-card">
           <p>
-            這隻基金的比較組別是 <strong>{fundClass.fundCategory}</strong>
+            這隻基金的比較組別是 <strong>{comparisonGroup}</strong>
             。排名只在同一組別內進行，不會與其他基金種類混合。
+          </p>
+          <p className="kw-muted">
+            {publication.classification
+              ? `分類來自 ${publication.classification.provider}「${publication.classification.dataset}」（期別 ${publication.classification.capturedAt}），屬非官方來源。官方平台基金種類為 ${fundClass.fundType}／${fundClass.fundCategory}。`
+              : `官方平台基金種類為 ${fundClass.fundType}／${fundClass.fundCategory}。`}
           </p>
           <p className="kw-home-actions">
             <a
               className="kw-button"
-              href={`/rankings?period=1&group=${encodeURIComponent(fundClass.fundCategory)}`}
+              href={`/rankings?period=1&group=${encodeURIComponent(comparisonGroup)}`}
             >
               查看同組基金排名
             </a>
