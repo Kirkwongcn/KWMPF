@@ -19,7 +19,10 @@
 ## Reference datasets
 
 `data/reference/` 存放使用者提供、非官方來源的參考資料，原始檔留在 `data/sources/`。
-目前只有 Lipper 香港退休基金分類（`lipper-hk-pension-categories.json`，見 #194）。
+目前有 Lipper 香港退休基金分類（`lipper-hk-pension-categories.json`，見 #194）
+及由它產生的基金對照表（`fund-class-category-map.json`）。對照表由
+`bun --filter @kwmpf/coverage category-map <平台快照路徑>` 重建，會一併輸出與舊版的差異報告；
+未能配對的基金會報錯，不可靜默回退到平台 `fundType`。
 這些數據屬非官方來源，顯示時須標明出處及期別，不可與官方平台數據混為一談。
 MPF Navigator 檔案的 Sheet1（風險取向配置比重）不在範圍內，不要入庫或引用。
 

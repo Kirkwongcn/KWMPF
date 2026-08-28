@@ -1,0 +1,5410 @@
+{
+  "generatedAt": "2026-08-28",
+  "lipperSource": "data/reference/lipper-hk-pension-categories.json",
+  "lipperCapturedAt": "2026-08-27",
+  "platformSnapshot": "data/sources/2026-08-13/mpf-fund-platform.json",
+  "platformDataAsOf": "2026-07-31",
+  "categoryCount": 25,
+  "entries": [
+    {
+      "fundClassId": "mpfa-cf-1000",
+      "lipperCategory": "United States Equity",
+      "platformFundType": "Equity Fund - United States Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru N Amer Idx Trkg",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1001",
+      "lipperCategory": "European Equity",
+      "platformFundType": "Equity Fund - Europe Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru Europn Idx Trkg",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-102",
+      "lipperCategory": "Greater China Equity",
+      "platformFundType": "Equity Fund - Greater China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AIA MPF-Prime Value Choice-Greater China Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1039",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) Value-BEA MPF Conservative",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1040",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) Value-BEA Growth",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1041",
+      "lipperCategory": "Lifestyle - (>40-60% Equity)",
+      "platformFundType": "Mixed Assets Fund - 41% to 60% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) Value-BEA Balanced",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1042",
+      "lipperCategory": "Lifestyle - (>20-40% Equity)",
+      "platformFundType": "Mixed Assets Fund - 21% to 40% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) Value-BEA Stable",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1043",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) Value-BEA Global Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1044",
+      "lipperCategory": "Asia ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) Value-BEA Asian Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1045",
+      "lipperCategory": "Greater China Equity",
+      "platformFundType": "Equity Fund - Greater China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) Value-BEA Greater China Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1047",
+      "lipperCategory": "Hong Kong Equity (Index Tracking)",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund (Index Tracking)",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) Value-BEA Hong Kong Tracker",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1048",
+      "lipperCategory": "Global Bond",
+      "platformFundType": "Bond Fund - Global Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) Value-BEA Global Bond",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1099",
+      "lipperCategory": "RMB Bond Fund",
+      "platformFundType": "Bond Fund - RMB Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Industry Choice-BCT (Ind) RMB Bond",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1100",
+      "lipperCategory": "RMB Bond Fund",
+      "platformFundType": "Bond Fund - RMB Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) RMB Bond",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1101",
+      "lipperCategory": "RMB Bond Fund",
+      "platformFundType": "Bond Fund - RMB Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco RMB Bond A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1102",
+      "lipperCategory": "RMB Bond Fund",
+      "platformFundType": "Bond Fund - RMB Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco RMB Bond H",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1119",
+      "lipperCategory": "RMB and HKD Money Market",
+      "platformFundType": "Money Market Fund - Other than MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru MPF RMB & HKD MMkt",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1159",
+      "lipperCategory": "Hong Kong Equity (Index Tracking)",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund (Index Tracking)",
+      "matchMethod": "auto",
+      "lipperSourceName": "Fidelity Retirement MT-Fidelity Hong Kong Tracker",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1179",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Money Market Fund - Other than MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz RMB Money Market A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1180",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Money Market Fund - Other than MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz RMB Money Market B",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1181",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Money Market Fund - Other than MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz RMB Money Market T",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1199",
+      "lipperCategory": "Hong Kong Equity (Index Tracking)",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund (Index Tracking)",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life FTSE MPF HK Idx A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1200",
+      "lipperCategory": "Hong Kong Equity (Index Tracking)",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund (Index Tracking)",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life FTSE MPF HK Idx B",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1219",
+      "lipperCategory": "RMB Bond Fund",
+      "platformFundType": "Bond Fund - RMB Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF RMB Bond",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-131",
+      "lipperCategory": "Lifestyle - (>20-40% Equity)",
+      "platformFundType": "Mixed Assets Fund - 21% to 40% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "AIA MPF-Prime Value Choice-Capital Stable Pf",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-132",
+      "lipperCategory": "Lifestyle - (>40-60% Equity)",
+      "platformFundType": "Mixed Assets Fund - 41% to 60% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "AIA MPF-Prime Value Choice-Balanced Portfolio",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-133",
+      "lipperCategory": "Lifestyle - (>80-100% Equity)",
+      "platformFundType": "Mixed Assets Fund - 81% to 100% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "AIA MPF-Prime Value Choice-Growth Portfolio",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1339",
+      "lipperCategory": "Hong Kong Equity (Index Tracking)",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund (Index Tracking)",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco Hang Seng Index Trkg A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-134",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AIA MPF-Prime Value Choice-MPF Conservative",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1340",
+      "lipperCategory": "Hong Kong Equity (Index Tracking)",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund (Index Tracking)",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco Hang Seng Index Trkg H",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1359",
+      "lipperCategory": "RMB and HKD Money Market",
+      "platformFundType": "Money Market Fund - Other than MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "My Choice MPF-My Choice RMB & HKD Money Market",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-137",
+      "lipperCategory": "Asia Pacific ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AIA MPF-Prime Value Choice-Asian Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1379",
+      "lipperCategory": "Hong Kong Equity (Index Tracking)",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund (Index Tracking)",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF-Smart-Principal-Hang Seng Idx Track",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-141",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AIA MPF-Prime Value Choice-Green",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1419",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Fidelity Retirement MT-Fidelity SaveEasy 2045",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-142",
+      "lipperCategory": "United States Equity",
+      "platformFundType": "Equity Fund - United States Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AIA MPF-Prime Value Choice-North American Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1420",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Fidelity Retirement MT-Fidelity SaveEasy 2050",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1439",
+      "lipperCategory": "RMB Bond Fund",
+      "platformFundType": "Bond Fund - RMB Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Fidelity Retirement MT-RMB Bond",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-145",
+      "lipperCategory": "European Equity",
+      "platformFundType": "Equity Fund - Europe Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AIA MPF-Prime Value Choice-European Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-146",
+      "lipperCategory": "Guaranteed Fund",
+      "platformFundType": "Guaranteed Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AIA MPF-Prime Value Choice-Guaranteed Portfolio",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-147",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF-Smart-Principal Dynamic Global Eq",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-148",
+      "lipperCategory": "Lifestyle - (>80-100% Equity)",
+      "platformFundType": "Mixed Assets Fund - 81% to 100% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF-Smart-Principal Growth",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1485",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF Core Accumulation",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1486",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF Age 65 Plus",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1487",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "MASS MPF-Core Accumulation",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1488",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "MASS MPF-Age 65 Plus",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-149",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF-Smart-Principal Balanced",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1491",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal Core Accumulation N",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1492",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal Age 65 Plus N",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1493",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF-Simple-Principal Core Accumulation",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1494",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF-Simple-Principal Age 65 Plus",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1495",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF-Smart-Principal Core Acc",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1496",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF-Smart-Principal Age 65 Plus",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-150",
+      "lipperCategory": "Hong Kong Dollar Money Market",
+      "platformFundType": "Money Market Fund - Other than MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF-Smart-Principal Cash",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1503",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF Core Acc",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1505",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF Age 65 Plus",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-151",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF-Smart-Principal-MPF Conservative",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1519",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AIA MPF-Prime Value Choice-Core Accumulation",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1520",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AIA MPF-Prime Value Choice-Age 65 Plus",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1521",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCOM Joyful Ret MPF-BCOM Core Accumulation",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1522",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCOM Joyful Ret MPF-BCOM Age 65 Plus",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1523",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz MPF Core Acc A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1524",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz MPF Core Acc B",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1525",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz MPF Core Acc T",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1526",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz MPF Age 65 Plus A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1527",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz MPF Age 65 Plus B",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1528",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz MPF Age 65 Plus T",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1529",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AMTD MPF-AMTD Invesco Core Acc",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1530",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AMTD MPF-AMTD Invesco Age 65 Plus",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1531",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Industry Choice-BCT (Ind) Core Acc",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1532",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Industry Choice-BCT (Ind) Age 65 Plus",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1533",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) Core Accumulation",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1534",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) Age 65 Plus",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1535",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) Industry-BEA (Ind S) Core Accumulation",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1536",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) Industry-BEA (Ind S) Age 65 Plus",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1537",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) MT-BEA (MPF) Core Accumulation",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1538",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) MT-BEA (MPF) Age 65 Plus",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1539",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) Value-BEA Core Accumulation",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1540",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) Value-BEA Age 65 Plus",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1541",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru Core Acc",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1542",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru Age 65 Plus",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1543",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "My Choice MPF-My Choice Core Accumulation",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1544",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "My Choice MPF-My Choice Age 65 Plus",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1545",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "China Life MPF MT-China Life Core Accumulation",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1546",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "China Life MPF MT-China Life Age 65 Plus",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1551",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Fidelity Retirement MT-Core Accumulation",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1552",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Fidelity Retirement MT-Age 65 Plus",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1553",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Haitong MPF Retire Fd-Haitong Core Accumulation A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1554",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Haitong MPF Retire Fd-Haitong Core Accumulation T",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1555",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Haitong MPF Retire Fd-Haitong Age 65 Plus A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1556",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Haitong MPF Retire Fd-Haitong Age 65 Plus T",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1557",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco Core Accumulation A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1558",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco Core Accumulation H",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1559",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco Age 65 Plus A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1560",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco Age 65 Plus H",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1579",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AIA MPF-Prime Value Choice-China HK Dyn Asset Allo",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-158",
+      "lipperCategory": "Lifestyle - (>20-40% Equity)",
+      "platformFundType": "Mixed Assets Fund - 21% to 40% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF-Smart-Principal Stable",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-160",
+      "lipperCategory": "Asia Pacific ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF-Simple-Principal Dynamic AsiaPac Eq",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-161",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF-Simple-Principal Dynamic Global Eq",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1619",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "HSBC MPF-SuperTrust Plus-Global Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-162",
+      "lipperCategory": "Global Bond",
+      "platformFundType": "Bond Fund - Global Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF-Simple-Principal Dynamic Global Bd",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1620",
+      "lipperCategory": "China Equity",
+      "platformFundType": "Equity Fund - China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "HSBC MPF-SuperTrust Plus-HS China Entpr Idx Trkg",
+      "score": 0.8333
+    },
+    {
+      "fundClassId": "mpfa-cf-1621",
+      "lipperCategory": "Asia Pacific ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "HSBC MPF-SuperTrust Plus-ValueChoice AsPac Eq Trkr",
+      "score": 0.6667
+    },
+    {
+      "fundClassId": "mpfa-cf-1622",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "HSBC MPF-SuperTrust Plus-ValueChoice Balanced",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1624",
+      "lipperCategory": "United States Equity",
+      "platformFundType": "Equity Fund - United States Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "HSBC MPF-SuperTrust Plus-ValueChoice N Am Eq Trkr",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1625",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Hang Seng MPF-SuperTrust Plus-Global Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1626",
+      "lipperCategory": "China Equity",
+      "platformFundType": "Equity Fund - China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Hang Seng MPF-SuperTrust Plus-HS CN Etprs Idx Trck",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1627",
+      "lipperCategory": "Asia Pacific ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Hang Seng MPF-SuperTrust Plus-ValChce AsPc Eq Trkr",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1628",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Hang Seng MPF-SuperTrust Plus-ValChce Balanced",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1629",
+      "lipperCategory": "European Equity",
+      "platformFundType": "Equity Fund - Europe Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Hang Seng MPF-SuperTrust Plus-ValChce Euro Eq Trkr",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-163",
+      "lipperCategory": "Lifestyle - (>20-40% Equity)",
+      "platformFundType": "Mixed Assets Fund - 21% to 40% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF-Simple-Principal Stable",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1630",
+      "lipperCategory": "United States Equity",
+      "platformFundType": "Equity Fund - United States Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Hang Seng MPF-SuperTrust Plus-ValChce NAm Eq Trkr",
+      "score": 0.6667
+    },
+    {
+      "fundClassId": "mpfa-cf-1631",
+      "lipperCategory": "European Equity",
+      "platformFundType": "Equity Fund - Europe Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "HSBC MPF-SuperTrust Plus-ValueChoice Eu Eqty Trkr",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-165",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF-Simple-Principal-MPF Conservative",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-166",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF-Simple-Principal Dynamic HK Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-167",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF-Simple-Principal Balanced",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-168",
+      "lipperCategory": "Lifestyle - (>80-100% Equity)",
+      "platformFundType": "Mixed Assets Fund - 81% to 100% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF-Simple-Principal Growth",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1719",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF Retire Income",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-173",
+      "lipperCategory": "Global Bond",
+      "platformFundType": "Bond Fund - Global Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Industry Choice-BCT (Ind) Global Bond",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1739",
+      "lipperCategory": "Lifestyle - (>80-100% Equity)",
+      "platformFundType": "Mixed Assets Fund - 81% to 100% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal Aggressive Strategy D",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-174",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Industry Choice-BCT (Ind) E70 Mixed Asst",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1740",
+      "lipperCategory": "Lifestyle - (>80-100% Equity)",
+      "platformFundType": "Mixed Assets Fund - 81% to 100% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal Aggressive Strategy I",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1741",
+      "lipperCategory": "Asian Bond",
+      "platformFundType": "Bond Fund - Asia Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal Asian Bond N",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-175",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Industry Choice-BCT (Ind) Flexi Mix Asst",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-176",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Industry Choice-BCT (Ind) China & HK Eq",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-177",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Industry Choice-BCT (Ind) Global Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-178",
+      "lipperCategory": "Asia ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Industry Choice-BCT (Ind) Asian Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-179",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Industry Choice-BCT (Ind) MPF Consv",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1799",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Fidelity Retirement MT-RetireEasy",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-180",
+      "lipperCategory": "Lifestyle - (>20-40% Equity)",
+      "platformFundType": "Mixed Assets Fund - 21% to 40% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Industry Choice-BCT (Ind) E30 Mixed Asst",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-181",
+      "lipperCategory": "Lifestyle - (>40-60% Equity)",
+      "platformFundType": "Mixed Assets Fund - 41% to 60% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Industry Choice-BCT (Ind) E50 Mixed Asst",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1819",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) SaveEasy 2045",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-182",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) MPF Conservative",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1820",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) SaveEasy 2050",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1821",
+      "lipperCategory": "United States Equity",
+      "platformFundType": "Equity Fund - United States Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) U.S. Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-183",
+      "lipperCategory": "Global Bond",
+      "platformFundType": "Bond Fund - Global Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) Global Bond",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1839",
+      "lipperCategory": "Greater China Equity",
+      "platformFundType": "Equity Fund - Greater China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "China Life MPF MT-China Life Greater China Eq",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-184",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) E70 Mixed Asset",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1840",
+      "lipperCategory": "United States Equity",
+      "platformFundType": "Equity Fund - United States Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "China Life MPF MT-China Life US Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-185",
+      "lipperCategory": "Lifestyle - (>40-60% Equity)",
+      "platformFundType": "Mixed Assets Fund - 41% to 60% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) E50 Mixed Asset",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1859",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) Asian Inc Retire",
+      "score": 0.8
+    },
+    {
+      "fundClassId": "mpfa-cf-187",
+      "lipperCategory": "Asia ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) Asian Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-188",
+      "lipperCategory": "Lifestyle - (>20-40% Equity)",
+      "platformFundType": "Mixed Assets Fund - 21% to 40% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) E30 Mixed Asset",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-189",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) Flexi Mixed Asset",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-190",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) Global Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-191",
+      "lipperCategory": "Lifestyle - (>20-40% Equity)",
+      "platformFundType": "Mixed Assets Fund - 21% to 40% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco Capital Stable A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-192",
+      "lipperCategory": "Lifestyle - (>20-40% Equity)",
+      "platformFundType": "Mixed Assets Fund - 21% to 40% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco Capital Stable H",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-193",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco MPF Conservative A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-194",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco MPF Conservative H",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-195",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco HK and China Equity A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1959",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru HK Stable Retire",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-196",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco HK and China Equity H",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-1979",
+      "lipperCategory": "United States Equity",
+      "platformFundType": "Equity Fund - United States Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCOM Joyful Ret MPF-BCOM North American Eq (CF)",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-198",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco Balanced A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-199",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco Balanced H",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-200",
+      "lipperCategory": "Lifestyle - (>80-100% Equity)",
+      "platformFundType": "Mixed Assets Fund - 81% to 100% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco Growth A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-201",
+      "lipperCategory": "Lifestyle - (>80-100% Equity)",
+      "platformFundType": "Mixed Assets Fund - 81% to 100% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco Growth H",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-202",
+      "lipperCategory": "Global Bond",
+      "platformFundType": "Bond Fund - Global Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco Global Bond A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-203",
+      "lipperCategory": "Global Bond",
+      "platformFundType": "Bond Fund - Global Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco Global Bond H",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-206",
+      "lipperCategory": "Guaranteed Fund",
+      "platformFundType": "Guaranteed Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCOM Joyful Ret MPF-BCOM Guaranteed (CF)",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-2063",
+      "lipperCategory": "United States Equity",
+      "platformFundType": "Equity Fund - United States Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF US Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-2064",
+      "lipperCategory": "European Equity",
+      "platformFundType": "Equity Fund - Europe Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF European Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-2065",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF Gl Low Crbon Idx",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-2066",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco Global Index Tracking A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-2067",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco Global Index Tracking H",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-2068",
+      "lipperCategory": "United States Equity",
+      "platformFundType": "Equity Fund - United States Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco US Index Tracking A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-2069",
+      "lipperCategory": "United States Equity",
+      "platformFundType": "Equity Fund - United States Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco US Index Tracking H",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-207",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCOM Joyful Ret MPF-BCOM Balanced (CF)",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-2079",
+      "lipperCategory": "United States Equity",
+      "platformFundType": "Equity Fund - United States Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Fidelity Retirement MT-Americas Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-208",
+      "lipperCategory": "Lifestyle - (>80-100% Equity)",
+      "platformFundType": "Mixed Assets Fund - 81% to 100% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCOM Joyful Ret MPF-BCOM Dynamic Growth (CF)",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-2080",
+      "lipperCategory": "European Equity",
+      "platformFundType": "Equity Fund - Europe Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Fidelity Retirement MT-European Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-209",
+      "lipperCategory": "Lifestyle - (>40-60% Equity)",
+      "platformFundType": "Mixed Assets Fund - 41% to 60% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCOM Joyful Ret MPF-BCOM Stable Growth (CF)",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-2099",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Equity Fund - Uncategorized Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF US&Hong Kong Eq",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-210",
+      "lipperCategory": "Asia Pacific ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCOM Joyful Ret MPF-BCOM Asian Dynamic Equity (CF)",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-211",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCOM Joyful Ret MPF-BCOM MPF Conservative",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-212",
+      "lipperCategory": "Lifestyle - (>40-60% Equity)",
+      "platformFundType": "Mixed Assets Fund - 41% to 60% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) Industry-BEA (Ind S) Balanced",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-213",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) Industry-BEA (Ind S) MPF Conservative",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-214",
+      "lipperCategory": "Lifestyle - (>20-40% Equity)",
+      "platformFundType": "Mixed Assets Fund - 21% to 40% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) Industry-BEA (Ind S) Stable",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-215",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) Industry-BEA (Ind S) Growth",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-216",
+      "lipperCategory": "Lifestyle - (>40-60% Equity)",
+      "platformFundType": "Mixed Assets Fund - 41% to 60% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) MT-BEA (MPF) Balanced",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-217",
+      "lipperCategory": "Japanese Equity",
+      "platformFundType": "Equity Fund - Japan Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) MT-BEA (MPF) Japan Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-218",
+      "lipperCategory": "Greater China Equity",
+      "platformFundType": "Equity Fund - Greater China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) MT-BEA (MPF) Greater China Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-219",
+      "lipperCategory": "Global Bond",
+      "platformFundType": "Bond Fund - Global Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) MT-BEA (MPF) Global Bond",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-220",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) MT-BEA (MPF) Hong Kong Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-221",
+      "lipperCategory": "Asia ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) MT-BEA (MPF) Asian Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-223",
+      "lipperCategory": "Lifestyle - (>20-40% Equity)",
+      "platformFundType": "Mixed Assets Fund - 21% to 40% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) MT-BEA (MPF) Stable",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-2239",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF Income",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-224",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) MT-BEA (MPF) Growth",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-225",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) MT-BEA (MPF) Conservative",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-226",
+      "lipperCategory": "Japanese Equity",
+      "platformFundType": "Equity Fund - Japan Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru Japan Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-227",
+      "lipperCategory": "Lifestyle - (>80-100% Equity)",
+      "platformFundType": "Mixed Assets Fund - 81% to 100% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru Growth",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-228",
+      "lipperCategory": "Lifestyle - (>40-60% Equity)",
+      "platformFundType": "Mixed Assets Fund - 41% to 60% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru Balanced",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-229",
+      "lipperCategory": "Lifestyle - (>20-40% Equity)",
+      "platformFundType": "Mixed Assets Fund - 21% to 40% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru Stable",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-230",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru MPF Conservative",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-231",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru Global Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-232",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru Hong Kong Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-233",
+      "lipperCategory": "Global Bond",
+      "platformFundType": "Bond Fund - Global Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru Bond",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-234",
+      "lipperCategory": "Asia Pacific ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru Asia Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-236",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "China Life MPF MT-China Life Balanced",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-237",
+      "lipperCategory": "Lifestyle - (>80-100% Equity)",
+      "platformFundType": "Mixed Assets Fund - 81% to 100% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "China Life MPF MT-China Life Growth",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-2379",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AIA MPF-Prime Value Choice-Retirement Income",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-238",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "China Life MPF MT-China Life MPF Conservative",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-2399",
+      "lipperCategory": "European Equity",
+      "platformFundType": "Equity Fund - Europe Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "My Choice MPF-My Choice European Quality Tracker",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-2400",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Bond Fund - RMB Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "My Choice MPF-My Choice Chinese Gv & Pol Bk Bd Idx",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-2401",
+      "lipperCategory": "United States Equity",
+      "platformFundType": "Equity Fund - United States Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "My Choice MPF-My Choice Americas Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-244",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Hong Kong A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-245",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Hong Kong B",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-246",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Hong Kong T",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-247",
+      "lipperCategory": "Asia ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Asian A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-248",
+      "lipperCategory": "Asia ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Asian B",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-249",
+      "lipperCategory": "Asia ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Asian T",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-250",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Balanced A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-251",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Balanced B",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-252",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Balanced T",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-253",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Flexi Balanced A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-254",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Flexi Balanced B",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-255",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Flexi Balanced T",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-256",
+      "lipperCategory": "Lifestyle - (>40-60% Equity)",
+      "platformFundType": "Mixed Assets Fund - 41% to 60% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Stable Growth A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-257",
+      "lipperCategory": "Lifestyle - (>40-60% Equity)",
+      "platformFundType": "Mixed Assets Fund - 41% to 60% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Stable Growth B",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-258",
+      "lipperCategory": "Lifestyle - (>40-60% Equity)",
+      "platformFundType": "Mixed Assets Fund - 41% to 60% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Stable Growth T",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-259",
+      "lipperCategory": "Lifestyle - (>20-40% Equity)",
+      "platformFundType": "Mixed Assets Fund - 21% to 40% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Capital Stable A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-260",
+      "lipperCategory": "Lifestyle - (>20-40% Equity)",
+      "platformFundType": "Mixed Assets Fund - 21% to 40% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Capital Stable B",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-261",
+      "lipperCategory": "Lifestyle - (>20-40% Equity)",
+      "platformFundType": "Mixed Assets Fund - 21% to 40% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Capital Stable T",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-262",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz MPF Conservative A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-263",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz MPF Conservative B",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-264",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz MPF Conservative T",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-265",
+      "lipperCategory": "Lifestyle - (>80-100% Equity)",
+      "platformFundType": "Mixed Assets Fund - 81% to 100% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Growth A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-266",
+      "lipperCategory": "Lifestyle - (>80-100% Equity)",
+      "platformFundType": "Mixed Assets Fund - 81% to 100% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Growth B",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-267",
+      "lipperCategory": "Lifestyle - (>80-100% Equity)",
+      "platformFundType": "Mixed Assets Fund - 81% to 100% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Growth T",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-268",
+      "lipperCategory": "Lifestyle - (>80-100% Equity)",
+      "platformFundType": "Mixed Assets Fund - 81% to 100% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Fidelity Retirement MT-Growth",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-270",
+      "lipperCategory": "Global Bond",
+      "platformFundType": "Bond Fund - Global Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Fidelity Retirement MT-World Bond",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-271",
+      "lipperCategory": "Lifestyle - (>40-60% Equity)",
+      "platformFundType": "Mixed Assets Fund - 41% to 60% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Fidelity Retirement MT-Stable Growth",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-272",
+      "lipperCategory": "Lifestyle - (>20-40% Equity)",
+      "platformFundType": "Mixed Assets Fund - 21% to 40% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Fidelity Retirement MT-Capital Stable",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-273",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Fidelity Retirement MT-Hong Kong Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-274",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Fidelity Retirement MT-MPF Conservative",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-275",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Fidelity Retirement MT-Global Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-276",
+      "lipperCategory": "Hong Kong Dollar Bond",
+      "platformFundType": "Bond Fund - Hong Kong Dollar Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Fidelity Retirement MT-Hong Kong Bond",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-278",
+      "lipperCategory": "Asia Pacific ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Fidelity Retirement MT-Asia Pacific Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-280",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Fidelity Retirement MT-Balanced",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-282",
+      "lipperCategory": "Asia Pacific ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Haitong MPF Retire Fd-Haitong Asia Pacific A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-283",
+      "lipperCategory": "Asia Pacific ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Haitong MPF Retire Fd-Haitong Asia Pacific T",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-284",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Equity Fund - Uncategorized Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Haitong MPF Retire Fd-Haitong Korea A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-285",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Equity Fund - Uncategorized Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Haitong MPF Retire Fd-Haitong Korea T",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-286",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Haitong MPF Retire Fd-Haitong Global Diversif A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-287",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Haitong MPF Retire Fd-Haitong Global Diversif T",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-288",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Haitong MPF Retire Fd-Haitong MPF Conservative A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-289",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Haitong MPF Retire Fd-Haitong MPF Conservative T",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-290",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Haitong MPF Retire Fd-Haitong Hong Kong SAR A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-291",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Haitong MPF Retire Fd-Haitong Hong Kong SAR T",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-302",
+      "lipperCategory": "Hong Kong Equity (Index Tracking)",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund (Index Tracking)",
+      "matchMethod": "auto",
+      "lipperSourceName": "Hang Seng MPF-SuperTrust Plus-HS Index Tracking",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-303",
+      "lipperCategory": "Asia Pacific ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Hang Seng MPF-SuperTrust Plus-Asia Pacific Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-304",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Hang Seng MPF-SuperTrust Plus-Core Accumulation",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-305",
+      "lipperCategory": "Guaranteed Fund",
+      "platformFundType": "Guaranteed Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Hang Seng MPF-SuperTrust Plus-Guaranteed",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-306",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Hang Seng MPF-SuperTrust Plus-MPF Conservative",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-307",
+      "lipperCategory": "European Equity",
+      "platformFundType": "Equity Fund - Europe Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Hang Seng MPF-SuperTrust Plus-European Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-308",
+      "lipperCategory": "United States Equity",
+      "platformFundType": "Equity Fund - United States Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Hang Seng MPF-SuperTrust Plus-North American Eq",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-309",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Hang Seng MPF-SuperTrust Plus-HK & Chinese Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-310",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Hang Seng MPF-SuperTrust Plus-Balanced",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-311",
+      "lipperCategory": "Lifestyle - (>80-100% Equity)",
+      "platformFundType": "Mixed Assets Fund - 81% to 100% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Hang Seng MPF-SuperTrust Plus-Growth",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-317",
+      "lipperCategory": "Lifestyle - (>80-100% Equity)",
+      "platformFundType": "Mixed Assets Fund - 81% to 100% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "HSBC MPF-SuperTrust Plus-Growth",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-318",
+      "lipperCategory": "Default Investment Strategy - Core Accumulation Fd",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "HSBC MPF-SuperTrust Plus-Core Accumulation",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-319",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "HSBC MPF-SuperTrust Plus-MPF Conservative",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-320",
+      "lipperCategory": "Guaranteed Fund",
+      "platformFundType": "Guaranteed Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "HSBC MPF-SuperTrust Plus-Guaranteed",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-321",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "HSBC MPF-SuperTrust Plus-HK & Chinese Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-322",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "HSBC MPF-SuperTrust Plus-Balanced",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-323",
+      "lipperCategory": "United States Equity",
+      "platformFundType": "Equity Fund - United States Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "HSBC MPF-SuperTrust Plus-North American Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-324",
+      "lipperCategory": "Asia Pacific ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "HSBC MPF-SuperTrust Plus-Asia Pacific Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-325",
+      "lipperCategory": "Hong Kong Equity (Index Tracking)",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund (Index Tracking)",
+      "matchMethod": "auto",
+      "lipperSourceName": "HSBC MPF-SuperTrust Plus-Hang Seng Index Tracking",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-326",
+      "lipperCategory": "European Equity",
+      "platformFundType": "Equity Fund - Europe Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "HSBC MPF-SuperTrust Plus-European Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-362",
+      "lipperCategory": "Hong Kong Dollar Bond",
+      "platformFundType": "Bond Fund - Hong Kong Dollar Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF Hong Kong Bond",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-363",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF Growth",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-364",
+      "lipperCategory": "Guaranteed Fund",
+      "platformFundType": "Guaranteed Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF Stable",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-365",
+      "lipperCategory": "Guaranteed Fund",
+      "platformFundType": "Guaranteed Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF Interest",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-366",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF Conservative",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-367",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF Hong Kong Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-368",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF International Eq",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-369",
+      "lipperCategory": "European Equity",
+      "platformFundType": "Equity Fund - Europe Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF European Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-370",
+      "lipperCategory": "Asia Pacific ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF Pacific Asia Eq",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-371",
+      "lipperCategory": "Japanese Equity",
+      "platformFundType": "Equity Fund - Japan Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF Japan Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-372",
+      "lipperCategory": "Global Bond",
+      "platformFundType": "Bond Fund - Global Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF International Bd",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-373",
+      "lipperCategory": "Lifestyle - (>80-100% Equity)",
+      "platformFundType": "Mixed Assets Fund - 81% to 100% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF Fidelity Growth",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-374",
+      "lipperCategory": "Lifestyle - (>40-60% Equity)",
+      "platformFundType": "Mixed Assets Fund - 41% to 60% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF Fidelity Stb Gr",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-375",
+      "lipperCategory": "Greater China Equity",
+      "platformFundType": "Equity Fund - Greater China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF China Value",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-376",
+      "lipperCategory": "Lifestyle - (>80-100% Equity)",
+      "platformFundType": "Mixed Assets Fund - 81% to 100% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF Aggressive",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-377",
+      "lipperCategory": "United States Equity",
+      "platformFundType": "Equity Fund - United States Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF North American Eq",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-383",
+      "lipperCategory": "Global Bond",
+      "platformFundType": "Bond Fund - Global Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "MASS MPF-Global Bond",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-384",
+      "lipperCategory": "Asian Bond",
+      "platformFundType": "Bond Fund - Asia Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "MASS MPF-Asian Bond",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-385",
+      "lipperCategory": "Lifestyle - (>40-60% Equity)",
+      "platformFundType": "Mixed Assets Fund - 41% to 60% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "MASS MPF-Global Stable",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-386",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "MASS MPF-MPF Conservative",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-387",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "MASS MPF-Global Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-388",
+      "lipperCategory": "Guaranteed Fund",
+      "platformFundType": "Guaranteed Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "MASS MPF-Guaranteed",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-389",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "MASS MPF-Hong Kong Equities",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-390",
+      "lipperCategory": "European Equity",
+      "platformFundType": "Equity Fund - Europe Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "MASS MPF-European Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-391",
+      "lipperCategory": "United States Equity",
+      "platformFundType": "Equity Fund - United States Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "MASS MPF-US Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-392",
+      "lipperCategory": "Asia ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "MASS MPF-Asian Pacific Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-394",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "MASS MPF-Global Growth",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-426",
+      "lipperCategory": "Global Bond",
+      "platformFundType": "Bond Fund - Global Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal International Bond D",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-427",
+      "lipperCategory": "Global Bond",
+      "platformFundType": "Bond Fund - Global Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal International Bond I",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-428",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal Hong Kong Equity D",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-429",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal Hong Kong Equity I",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-430",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal International Equity D",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-431",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal International Equity I",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-432",
+      "lipperCategory": "Asia Pacific ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal Asian Equity D",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-433",
+      "lipperCategory": "Asia Pacific ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal Asian Equity I",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-434",
+      "lipperCategory": "Lifestyle - (>40-60% Equity)",
+      "platformFundType": "Mixed Assets Fund - 41% to 60% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal Long Term Acc D",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-435",
+      "lipperCategory": "Lifestyle - (>40-60% Equity)",
+      "platformFundType": "Mixed Assets Fund - 41% to 60% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal Long Term Acc I",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-438",
+      "lipperCategory": "Lifestyle - (>20-40% Equity)",
+      "platformFundType": "Mixed Assets Fund - 21% to 40% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal Stable Yield D",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-440",
+      "lipperCategory": "United States Equity",
+      "platformFundType": "Equity Fund - United States Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal US Equity D",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-441",
+      "lipperCategory": "United States Equity",
+      "platformFundType": "Equity Fund - United States Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal US Equity I",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-444",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal MPF Conservative N",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-446",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal Global Growth D",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-447",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal Global Growth I",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-450",
+      "lipperCategory": "Hong Kong Dollar Money Market",
+      "platformFundType": "Money Market Fund - Other than MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal HK Dollar Savings D",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-451",
+      "lipperCategory": "Hong Kong Dollar Money Market",
+      "platformFundType": "Money Market Fund - Other than MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal HK Dollar Savings I",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-498",
+      "lipperCategory": "Lifestyle - (>20-40% Equity)",
+      "platformFundType": "Mixed Assets Fund - 21% to 40% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF Stable A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-499",
+      "lipperCategory": "Lifestyle - (>20-40% Equity)",
+      "platformFundType": "Mixed Assets Fund - 21% to 40% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF Stable B",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-500",
+      "lipperCategory": "Lifestyle - (>40-60% Equity)",
+      "platformFundType": "Mixed Assets Fund - 41% to 60% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF Balanced A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-501",
+      "lipperCategory": "Lifestyle - (>40-60% Equity)",
+      "platformFundType": "Mixed Assets Fund - 41% to 60% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF Balanced B",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-502",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF Hong Kong Eq A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-503",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF Hong Kong Eq B",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-504",
+      "lipperCategory": "Hong Kong Dollar Bond",
+      "platformFundType": "Bond Fund - Hong Kong Dollar Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF HK Dollar Bd A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-505",
+      "lipperCategory": "Hong Kong Dollar Bond",
+      "platformFundType": "Bond Fund - Hong Kong Dollar Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF HK Dollar Bd B",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-506",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF Conservative A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-507",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF Conservative B",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-508",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF Growth A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-509",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF Growth B",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-603",
+      "lipperCategory": "Guaranteed Fund",
+      "platformFundType": "Guaranteed Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "China Life MPF MT-China Life Joyful Retire Gteed",
+      "score": 0.8
+    },
+    {
+      "fundClassId": "mpfa-cf-606",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "China Life MPF MT-China Life Retire-Easy Glbl Eq",
+      "score": 0.8333
+    },
+    {
+      "fundClassId": "mpfa-cf-619",
+      "lipperCategory": "China Equity",
+      "platformFundType": "Equity Fund - China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal China Equity D",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-620",
+      "lipperCategory": "China Equity",
+      "platformFundType": "Equity Fund - China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal China Equity I",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-627",
+      "lipperCategory": "Asia ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco Asian Equity H",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-628",
+      "lipperCategory": "Asia ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT Strategic MPF-Invesco Asian Equity A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-653",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCOM Joyful Ret MPF-BCOM HK Dynamic Equity (CF)",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-654",
+      "lipperCategory": "China Equity",
+      "platformFundType": "Equity Fund - China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru China Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-657",
+      "lipperCategory": "Global Bond",
+      "platformFundType": "Bond Fund - Global Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AIA MPF-Prime Value Choice-Global Bond",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-658",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AIA MPF-Prime Value Choice-World",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-659",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) China & HK Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-660",
+      "lipperCategory": "European Equity",
+      "platformFundType": "Equity Fund - Europe Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) European Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-689",
+      "lipperCategory": "Asia ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF Asian Equity A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-690",
+      "lipperCategory": "Asia ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF Asian Equity B",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-691",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF Multi-Sec Eq A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-692",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF Multi-Sec Eq B",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-693",
+      "lipperCategory": "Greater China Equity",
+      "platformFundType": "Equity Fund - Greater China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF Gr China Eq A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-694",
+      "lipperCategory": "Greater China Equity",
+      "platformFundType": "Equity Fund - Greater China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF Gr China Eq B",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-695",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Equity Fund - Uncategorized Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF Healthcare",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-696",
+      "lipperCategory": "Lifestyle - (>20-40% Equity)",
+      "platformFundType": "Mixed Assets Fund - 21% to 40% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal Stable Yield I",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-697",
+      "lipperCategory": "China Equity",
+      "platformFundType": "Equity Fund - China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCOM Joyful Ret MPF-BCOM China Dynamic Equity (CF)",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-699",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AIA MPF-Prime Value Choice-Manager's Choice",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-701",
+      "lipperCategory": "Lifestyle - (>80-100% Equity)",
+      "platformFundType": "Mixed Assets Fund - 81% to 100% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) E90 Mixed Asset",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-703",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) SaveEasy 2025",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-705",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) SaveEasy 2030",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-706",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Fidelity Retirement MT-Fidelity SaveEasy 2025",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-707",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) SaveEasy 2035",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-708",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Fidelity Retirement MT-Fidelity SaveEasy 2030",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-709",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Fidelity Retirement MT-Fidelity SaveEasy 2035",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-710",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) SaveEasy 2040",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-711",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Fidelity Retirement MT-Fidelity SaveEasy 2040",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-769",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AMTD MPF-AMTD Allianz Choice Dynamic Allocation",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-770",
+      "lipperCategory": "Lifestyle - (>20-40% Equity)",
+      "platformFundType": "Mixed Assets Fund - 21% to 40% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "AMTD MPF-AMTD Allianz Choice Capital Stable",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-771",
+      "lipperCategory": "Lifestyle - (>40-60% Equity)",
+      "platformFundType": "Mixed Assets Fund - 41% to 60% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "AMTD MPF-AMTD Allianz Choice Stable Growth",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-772",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "AMTD MPF-AMTD Allianz Choice Balanced",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-773",
+      "lipperCategory": "Lifestyle - (>80-100% Equity)",
+      "platformFundType": "Mixed Assets Fund - 81% to 100% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "AMTD MPF-AMTD Allianz Choice Growth",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-774",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - 21% to 40% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "AMTD MPF-AMTD Invesco Target Retirement Now",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-775",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AMTD MPF-AMTD Invesco Target 2028 Retirement",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-776",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AMTD MPF-AMTD Invesco Target 2038 Retirement",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-777",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AMTD MPF-AMTD Invesco Target 2048 Retirement",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-778",
+      "lipperCategory": "Asia ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AMTD MPF-AMTD Invesco Asia",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-779",
+      "lipperCategory": "European Equity",
+      "platformFundType": "Equity Fund - Europe Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AMTD MPF-AMTD Invesco Europe",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-780",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AMTD MPF-AMTD Invesco HK and China",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-781",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AMTD MPF-AMTD Invesco MPF Conservative",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-782",
+      "lipperCategory": "Global Bond",
+      "platformFundType": "Bond Fund - Global Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AMTD MPF-AMTD Invesco Global Bond",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-798",
+      "lipperCategory": "Hong Kong Equity (Index Tracking)",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund (Index Tracking)",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCOM Joyful Ret MPF-BCOM HSI ESG Tracking (CF)",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-799",
+      "lipperCategory": "Hong Kong Dollar Bond",
+      "platformFundType": "Bond Fund - Hong Kong Dollar Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) HK Dollar Bond",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-800",
+      "lipperCategory": "Hong Kong Equity (Index Tracking)",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund (Index Tracking)",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) HS Index Tracking",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-801",
+      "lipperCategory": "Global Bond",
+      "platformFundType": "Bond Fund - Global Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "HSBC MPF-SuperTrust Plus-Global Bond",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-802",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "HSBC MPF-SuperTrust Plus-Age 65 Plus",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-803",
+      "lipperCategory": "Lifestyle - (>20-40% Equity)",
+      "platformFundType": "Mixed Assets Fund - 21% to 40% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "HSBC MPF-SuperTrust Plus-Stable",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-804",
+      "lipperCategory": "China Equity",
+      "platformFundType": "Equity Fund - China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "HSBC MPF-SuperTrust Plus-Chinese Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-805",
+      "lipperCategory": "Global Bond",
+      "platformFundType": "Bond Fund - Global Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Hang Seng MPF-SuperTrust Plus-Global Bond",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-806",
+      "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Hang Seng MPF-SuperTrust Plus-Age 65 Plus",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-807",
+      "lipperCategory": "Lifestyle - (>20-40% Equity)",
+      "platformFundType": "Mixed Assets Fund - 21% to 40% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Hang Seng MPF-SuperTrust Plus-Stable",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-808",
+      "lipperCategory": "China Equity",
+      "platformFundType": "Equity Fund - China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Hang Seng MPF-SuperTrust Plus-Chinese Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-809",
+      "lipperCategory": "Global Bond",
+      "platformFundType": "Bond Fund - Global Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF Global Bond A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-810",
+      "lipperCategory": "Global Bond",
+      "platformFundType": "Bond Fund - Global Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF Global Bond B",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-811",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) Industry-BEA (Ind S) Hong Kong Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-812",
+      "lipperCategory": "Greater China Equity",
+      "platformFundType": "Equity Fund - Greater China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) Industry-BEA (Ind S) Grtr China Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-813",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) MT-BEA (MPF) Global Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-814",
+      "lipperCategory": "European Equity",
+      "platformFundType": "Equity Fund - Europe Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) MT-BEA (MPF) European Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-816",
+      "lipperCategory": "Lifestyle - (>80-100% Equity)",
+      "platformFundType": "Mixed Assets Fund - 81% to 100% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "My Choice MPF-My Choice Growth",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-817",
+      "lipperCategory": "Lifestyle - (>60-80% Equity)",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "My Choice MPF-My Choice Balanced",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-818",
+      "lipperCategory": "Lifestyle - (>40-60% Equity)",
+      "platformFundType": "Mixed Assets Fund - 41% to 60% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "My Choice MPF-My Choice Stable",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-819",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "My Choice MPF-My Choice Global Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-820",
+      "lipperCategory": "Asia Pacific ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "My Choice MPF-My Choice Asia Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-821",
+      "lipperCategory": "Greater China Equity",
+      "platformFundType": "Equity Fund - Greater China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "My Choice MPF-My Choice China Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-822",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "My Choice MPF-My Choice Hong Kong Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-824",
+      "lipperCategory": "Hong Kong Equity (Index Tracking)",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund (Index Tracking)",
+      "matchMethod": "auto",
+      "lipperSourceName": "My Choice MPF-My Choice Hong Kong Tracking",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-825",
+      "lipperCategory": "Global Bond",
+      "platformFundType": "Bond Fund - Global Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "My Choice MPF-My Choice Global Bond",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-826",
+      "lipperCategory": "Hong Kong Dollar Bond",
+      "platformFundType": "Bond Fund - Hong Kong Dollar Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "My Choice MPF-My Choice HKD Bond",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-827",
+      "lipperCategory": "MPF Conservative Fund",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "My Choice MPF-My Choice MPF Conservative",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-830",
+      "lipperCategory": "Global Bond",
+      "platformFundType": "Bond Fund - Global Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCOM Joyful Ret MPF-BCOM Global Bond (CF)",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-831",
+      "lipperCategory": "Greater China Equity",
+      "platformFundType": "Equity Fund - Greater China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCOM Joyful Ret MPF-BCOM Greater China Equity (CF)",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-838",
+      "lipperCategory": "Asia Pacific ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF-Smart-Principal Dynamic AsiaPac Eq",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-839",
+      "lipperCategory": "Global Bond",
+      "platformFundType": "Bond Fund - Global Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF-Smart-Principal Dynamic Global Bd",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-841",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF-Smart-Principal Dynamic HK Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-842",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - 41% to 60% Equity",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF Smart Retirement",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-844",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF 2025 Retirement",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-845",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF 2030 Retirement",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-846",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF 2035 Retirement",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-847",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF 2040 Retirement",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-848",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF 2045 Retirement",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-874",
+      "lipperCategory": "Greater China Equity",
+      "platformFundType": "Equity Fund - Greater China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "MASS MPF-Greater China Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-875",
+      "lipperCategory": "Asian Bond",
+      "platformFundType": "Bond Fund - Asia Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AIA MPF-Prime Value Choice-Asian Bond",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-876",
+      "lipperCategory": "Other Fund",
+      "platformFundType": "Equity Fund - Uncategorized Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AIA MPF-Prime Value Choice-Eurasia",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-877",
+      "lipperCategory": "Hong Kong Equity (Index Tracking)",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AIA MPF-Prime Value Choice-Hong Kong and China",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-878",
+      "lipperCategory": "United States Equity",
+      "platformFundType": "Equity Fund - United States Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "AIA MPF-Prime Value Choice-American",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-889",
+      "lipperCategory": "Greater China Equity",
+      "platformFundType": "Equity Fund - Greater China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Greater China A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-890",
+      "lipperCategory": "Greater China Equity",
+      "platformFundType": "Equity Fund - Greater China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Greater China B",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-891",
+      "lipperCategory": "Greater China Equity",
+      "platformFundType": "Equity Fund - Greater China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Greater China T",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-892",
+      "lipperCategory": "Asia Pacific ex Japan Equity",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Oriental Pacific A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-893",
+      "lipperCategory": "Asia Pacific ex Japan Equity",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Oriental Pacific B",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-894",
+      "lipperCategory": "Asia Pacific ex Japan Equity",
+      "platformFundType": "Mixed Assets Fund - Uncategorized Mixed Asset Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife RC (MPF)-Allianz Oriental Pacific T",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-895",
+      "lipperCategory": "Hong Kong Equity",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "China Life MPF MT-China Life Hong Kong Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-896",
+      "lipperCategory": "United States Equity",
+      "platformFundType": "Equity Fund - United States Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) MT-BEA (MPF) North American Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-897",
+      "lipperCategory": "China Equity",
+      "platformFundType": "Equity Fund - China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) MT-BEA China Tracker",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-898",
+      "lipperCategory": "Hong Kong Equity (Index Tracking)",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund (Index Tracking)",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) MT-BEA Hong Kong Tracker",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-899",
+      "lipperCategory": "Asia ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) Industry-BEA (Ind S) Asian Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-900",
+      "lipperCategory": "China Equity",
+      "platformFundType": "Equity Fund - China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) Industry-BEA China Tracker",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-901",
+      "lipperCategory": "Hong Kong Equity (Index Tracking)",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund (Index Tracking)",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) Industry-BEA Hong Kong Tracker",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-902",
+      "lipperCategory": "Hong Kong Equity (Index Tracking)",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund (Index Tracking)",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal HS Index Tracking N",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-903",
+      "lipperCategory": "Hong Kong Dollar Bond",
+      "platformFundType": "Bond Fund - Hong Kong Dollar Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF S800-Principal Hong Kong Bond N",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-906",
+      "lipperCategory": "Asian Bond",
+      "platformFundType": "Bond Fund - Asia Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF Sust Pac Asia Bd",
+      "score": 0.8333
+    },
+    {
+      "fundClassId": "mpfa-cf-907",
+      "lipperCategory": "Hong Kong Equity (Index Tracking)",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund (Index Tracking)",
+      "matchMethod": "auto",
+      "lipperSourceName": "Manulife GS (MPF)-Manulife MPF HS Index ESG",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-908",
+      "lipperCategory": "Global Equity",
+      "platformFundType": "Equity Fund - Global Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) World Equity",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-909",
+      "lipperCategory": "Greater China Equity",
+      "platformFundType": "Equity Fund - Greater China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT (MPF) Pro Choice-BCT (Pro) Greater China Eq",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-910",
+      "lipperCategory": "RMB and HKD Money Market",
+      "platformFundType": "Money Market Fund - Other than MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF RMB and HKD A",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-911",
+      "lipperCategory": "RMB and HKD Money Market",
+      "platformFundType": "Money Market Fund - Other than MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Sun Life Rainbow MPF-Sun Life MPF RMB and HKD B",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-912",
+      "lipperCategory": "RMB and HKD Money Market",
+      "platformFundType": "Money Market Fund - Other than MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) MT-BEA (MPF) RMB & HKD Money Market",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-913",
+      "lipperCategory": "RMB and HKD Money Market",
+      "platformFundType": "Money Market Fund - Other than MPF Conservative Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BEA (MPF) Industry-BEA (Ind S) RMB & HKD Mny Mkt",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-917",
+      "lipperCategory": "Greater China Equity",
+      "platformFundType": "Equity Fund - Greater China Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF-Smart-Principal Dynamic Gr China Eq",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-918",
+      "lipperCategory": "Asian Bond",
+      "platformFundType": "Bond Fund - Asia Bond Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "BCT MPF-Smart-Principal Dynamic Asian Bd",
+      "score": 1
+    },
+    {
+      "fundClassId": "mpfa-cf-999",
+      "lipperCategory": "Hong Kong Equity (Index Tracking)",
+      "platformFundType": "Equity Fund - Hong Kong Equity Fund (Index Tracking)",
+      "matchMethod": "auto",
+      "lipperSourceName": "BOC-Pru Easy-Choice MPF-BOC-Pru CSI HK 100 Trk",
+      "score": 1
+    }
+  ],
+  "unmappedFundClasses": [
+    {
+      "fundClassId": "mpfa-cf-459",
+      "schemeName": "SHKP MPF Employer Sponsored Scheme",
+      "constituentFundName": "Manulife Career Average Guaranteed Fund - SHKP",
+      "fundClassName": "n.a.",
+      "platformFundType": "Guaranteed Fund",
+      "reason": "scheme_not_in_source"
+    },
+    {
+      "fundClassId": "mpfa-cf-460",
+      "schemeName": "SHKP MPF Employer Sponsored Scheme",
+      "constituentFundName": "Fidelity Balanced Fund",
+      "fundClassName": "n.a.",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "reason": "scheme_not_in_source"
+    },
+    {
+      "fundClassId": "mpfa-cf-462",
+      "schemeName": "SHKP MPF Employer Sponsored Scheme",
+      "constituentFundName": "SHKP MPF Fund",
+      "fundClassName": "n.a.",
+      "platformFundType": "Mixed Assets Fund - 41% to 60% Equity",
+      "reason": "scheme_not_in_source"
+    },
+    {
+      "fundClassId": "mpfa-cf-463",
+      "schemeName": "SHKP MPF Employer Sponsored Scheme",
+      "constituentFundName": "Fidelity Stable Growth Fund",
+      "fundClassName": "n.a.",
+      "platformFundType": "Mixed Assets Fund - 41% to 60% Equity",
+      "reason": "scheme_not_in_source"
+    },
+    {
+      "fundClassId": "mpfa-cf-464",
+      "schemeName": "SHKP MPF Employer Sponsored Scheme",
+      "constituentFundName": "Allianz Choice Stable Growth Fund",
+      "fundClassName": "n.a.",
+      "platformFundType": "Mixed Assets Fund - 41% to 60% Equity",
+      "reason": "scheme_not_in_source"
+    },
+    {
+      "fundClassId": "mpfa-cf-466",
+      "schemeName": "SHKP MPF Employer Sponsored Scheme",
+      "constituentFundName": "Invesco MPF Conservative Fund",
+      "fundClassName": "n.a.",
+      "platformFundType": "Money Market Fund - MPF Conservative Fund",
+      "reason": "scheme_not_in_source"
+    },
+    {
+      "fundClassId": "mpfa-cf-815",
+      "schemeName": "SHKP MPF Employer Sponsored Scheme",
+      "constituentFundName": "Allianz Choice Balanced Fund",
+      "fundClassName": "n.a.",
+      "platformFundType": "Mixed Assets Fund - 61% to 80% Equity",
+      "reason": "scheme_not_in_source"
+    },
+    {
+      "fundClassId": "mpfa-cf-1399",
+      "schemeName": "SHKP MPF Employer Sponsored Scheme",
+      "constituentFundName": "Invesco Global Stable Fund",
+      "fundClassName": "n.a.",
+      "platformFundType": "Mixed Assets Fund - 21% to 40% Equity",
+      "reason": "scheme_not_in_source"
+    },
+    {
+      "fundClassId": "mpfa-cf-1497",
+      "schemeName": "SHKP MPF Employer Sponsored Scheme",
+      "constituentFundName": "Schroder MPF Core Accumulation Fund",
+      "fundClassName": "n.a.",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+      "reason": "scheme_not_in_source"
+    },
+    {
+      "fundClassId": "mpfa-cf-1498",
+      "schemeName": "SHKP MPF Employer Sponsored Scheme",
+      "constituentFundName": "Schroder MPF Age 65 Plus Fund",
+      "fundClassName": "n.a.",
+      "platformFundType": "Mixed Assets Fund - Default Investment Strategy - Age 65 Plus Fund",
+      "reason": "scheme_not_in_source"
+    }
+  ],
+  "unmatchedLipperFunds": [],
+  "reviewRequired": [
+    {
+      "fundClassId": "mpfa-cf-1621",
+      "lipperCategory": "Asia Pacific ex Japan Equity",
+      "platformFundType": "Equity Fund - Asia Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "HSBC MPF-SuperTrust Plus-ValueChoice AsPac Eq Trkr",
+      "score": 0.6667
+    },
+    {
+      "fundClassId": "mpfa-cf-1630",
+      "lipperCategory": "United States Equity",
+      "platformFundType": "Equity Fund - United States Equity Fund",
+      "matchMethod": "auto",
+      "lipperSourceName": "Hang Seng MPF-SuperTrust Plus-ValChce NAm Eq Trkr",
+      "score": 0.6667
+    }
+  ],
+  "diff": {
+    "added": [
+      {
+        "fundClassId": "mpfa-cf-1000",
+        "lipperCategory": "United States Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-1001",
+        "lipperCategory": "European Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-102",
+        "lipperCategory": "Greater China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-1039",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1040",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-1041",
+        "lipperCategory": "Lifestyle - (>40-60% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-1042",
+        "lipperCategory": "Lifestyle - (>20-40% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-1043",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-1044",
+        "lipperCategory": "Asia ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-1045",
+        "lipperCategory": "Greater China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-1047",
+        "lipperCategory": "Hong Kong Equity (Index Tracking)"
+      },
+      {
+        "fundClassId": "mpfa-cf-1048",
+        "lipperCategory": "Global Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-1099",
+        "lipperCategory": "RMB Bond Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1100",
+        "lipperCategory": "RMB Bond Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1101",
+        "lipperCategory": "RMB Bond Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1102",
+        "lipperCategory": "RMB Bond Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1119",
+        "lipperCategory": "RMB and HKD Money Market"
+      },
+      {
+        "fundClassId": "mpfa-cf-1159",
+        "lipperCategory": "Hong Kong Equity (Index Tracking)"
+      },
+      {
+        "fundClassId": "mpfa-cf-1179",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1180",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1181",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1199",
+        "lipperCategory": "Hong Kong Equity (Index Tracking)"
+      },
+      {
+        "fundClassId": "mpfa-cf-1200",
+        "lipperCategory": "Hong Kong Equity (Index Tracking)"
+      },
+      {
+        "fundClassId": "mpfa-cf-1219",
+        "lipperCategory": "RMB Bond Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-131",
+        "lipperCategory": "Lifestyle - (>20-40% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-132",
+        "lipperCategory": "Lifestyle - (>40-60% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-133",
+        "lipperCategory": "Lifestyle - (>80-100% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-1339",
+        "lipperCategory": "Hong Kong Equity (Index Tracking)"
+      },
+      {
+        "fundClassId": "mpfa-cf-134",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1340",
+        "lipperCategory": "Hong Kong Equity (Index Tracking)"
+      },
+      {
+        "fundClassId": "mpfa-cf-1359",
+        "lipperCategory": "RMB and HKD Money Market"
+      },
+      {
+        "fundClassId": "mpfa-cf-137",
+        "lipperCategory": "Asia Pacific ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-1379",
+        "lipperCategory": "Hong Kong Equity (Index Tracking)"
+      },
+      {
+        "fundClassId": "mpfa-cf-141",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-1419",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-142",
+        "lipperCategory": "United States Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-1420",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1439",
+        "lipperCategory": "RMB Bond Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-145",
+        "lipperCategory": "European Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-146",
+        "lipperCategory": "Guaranteed Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-147",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-148",
+        "lipperCategory": "Lifestyle - (>80-100% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-1485",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-1486",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1487",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-1488",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-149",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-1491",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-1492",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1493",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-1494",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1495",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-1496",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-150",
+        "lipperCategory": "Hong Kong Dollar Money Market"
+      },
+      {
+        "fundClassId": "mpfa-cf-1503",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-1505",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-151",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1519",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-1520",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1521",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-1522",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1523",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-1524",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-1525",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-1526",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1527",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1528",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1529",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-1530",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1531",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-1532",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1533",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-1534",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1535",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-1536",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1537",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-1538",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1539",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-1540",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1541",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-1542",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1543",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-1544",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1545",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-1546",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1551",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-1552",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1553",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-1554",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-1555",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1556",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1557",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-1558",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-1559",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1560",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1579",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-158",
+        "lipperCategory": "Lifestyle - (>20-40% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-160",
+        "lipperCategory": "Asia Pacific ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-161",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-1619",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-162",
+        "lipperCategory": "Global Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-1620",
+        "lipperCategory": "China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-1621",
+        "lipperCategory": "Asia Pacific ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-1622",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-1624",
+        "lipperCategory": "United States Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-1625",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-1626",
+        "lipperCategory": "China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-1627",
+        "lipperCategory": "Asia Pacific ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-1628",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-1629",
+        "lipperCategory": "European Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-163",
+        "lipperCategory": "Lifestyle - (>20-40% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-1630",
+        "lipperCategory": "United States Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-1631",
+        "lipperCategory": "European Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-165",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-166",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-167",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-168",
+        "lipperCategory": "Lifestyle - (>80-100% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-1719",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-173",
+        "lipperCategory": "Global Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-1739",
+        "lipperCategory": "Lifestyle - (>80-100% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-174",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-1740",
+        "lipperCategory": "Lifestyle - (>80-100% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-1741",
+        "lipperCategory": "Asian Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-175",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-176",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-177",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-178",
+        "lipperCategory": "Asia ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-179",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1799",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-180",
+        "lipperCategory": "Lifestyle - (>20-40% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-181",
+        "lipperCategory": "Lifestyle - (>40-60% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-1819",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-182",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1820",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1821",
+        "lipperCategory": "United States Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-183",
+        "lipperCategory": "Global Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-1839",
+        "lipperCategory": "Greater China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-184",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-1840",
+        "lipperCategory": "United States Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-185",
+        "lipperCategory": "Lifestyle - (>40-60% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-1859",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-187",
+        "lipperCategory": "Asia ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-188",
+        "lipperCategory": "Lifestyle - (>20-40% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-189",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-190",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-191",
+        "lipperCategory": "Lifestyle - (>20-40% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-192",
+        "lipperCategory": "Lifestyle - (>20-40% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-193",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-194",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-195",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-1959",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-196",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-1979",
+        "lipperCategory": "United States Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-198",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-199",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-200",
+        "lipperCategory": "Lifestyle - (>80-100% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-201",
+        "lipperCategory": "Lifestyle - (>80-100% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-202",
+        "lipperCategory": "Global Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-203",
+        "lipperCategory": "Global Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-206",
+        "lipperCategory": "Guaranteed Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-2063",
+        "lipperCategory": "United States Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-2064",
+        "lipperCategory": "European Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-2065",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-2066",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-2067",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-2068",
+        "lipperCategory": "United States Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-2069",
+        "lipperCategory": "United States Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-207",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-2079",
+        "lipperCategory": "United States Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-208",
+        "lipperCategory": "Lifestyle - (>80-100% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-2080",
+        "lipperCategory": "European Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-209",
+        "lipperCategory": "Lifestyle - (>40-60% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-2099",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-210",
+        "lipperCategory": "Asia Pacific ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-211",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-212",
+        "lipperCategory": "Lifestyle - (>40-60% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-213",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-214",
+        "lipperCategory": "Lifestyle - (>20-40% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-215",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-216",
+        "lipperCategory": "Lifestyle - (>40-60% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-217",
+        "lipperCategory": "Japanese Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-218",
+        "lipperCategory": "Greater China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-219",
+        "lipperCategory": "Global Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-220",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-221",
+        "lipperCategory": "Asia ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-223",
+        "lipperCategory": "Lifestyle - (>20-40% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-2239",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-224",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-225",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-226",
+        "lipperCategory": "Japanese Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-227",
+        "lipperCategory": "Lifestyle - (>80-100% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-228",
+        "lipperCategory": "Lifestyle - (>40-60% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-229",
+        "lipperCategory": "Lifestyle - (>20-40% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-230",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-231",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-232",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-233",
+        "lipperCategory": "Global Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-234",
+        "lipperCategory": "Asia Pacific ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-236",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-237",
+        "lipperCategory": "Lifestyle - (>80-100% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-2379",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-238",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-2399",
+        "lipperCategory": "European Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-2400",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-2401",
+        "lipperCategory": "United States Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-244",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-245",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-246",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-247",
+        "lipperCategory": "Asia ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-248",
+        "lipperCategory": "Asia ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-249",
+        "lipperCategory": "Asia ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-250",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-251",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-252",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-253",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-254",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-255",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-256",
+        "lipperCategory": "Lifestyle - (>40-60% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-257",
+        "lipperCategory": "Lifestyle - (>40-60% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-258",
+        "lipperCategory": "Lifestyle - (>40-60% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-259",
+        "lipperCategory": "Lifestyle - (>20-40% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-260",
+        "lipperCategory": "Lifestyle - (>20-40% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-261",
+        "lipperCategory": "Lifestyle - (>20-40% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-262",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-263",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-264",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-265",
+        "lipperCategory": "Lifestyle - (>80-100% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-266",
+        "lipperCategory": "Lifestyle - (>80-100% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-267",
+        "lipperCategory": "Lifestyle - (>80-100% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-268",
+        "lipperCategory": "Lifestyle - (>80-100% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-270",
+        "lipperCategory": "Global Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-271",
+        "lipperCategory": "Lifestyle - (>40-60% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-272",
+        "lipperCategory": "Lifestyle - (>20-40% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-273",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-274",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-275",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-276",
+        "lipperCategory": "Hong Kong Dollar Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-278",
+        "lipperCategory": "Asia Pacific ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-280",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-282",
+        "lipperCategory": "Asia Pacific ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-283",
+        "lipperCategory": "Asia Pacific ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-284",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-285",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-286",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-287",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-288",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-289",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-290",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-291",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-302",
+        "lipperCategory": "Hong Kong Equity (Index Tracking)"
+      },
+      {
+        "fundClassId": "mpfa-cf-303",
+        "lipperCategory": "Asia Pacific ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-304",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-305",
+        "lipperCategory": "Guaranteed Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-306",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-307",
+        "lipperCategory": "European Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-308",
+        "lipperCategory": "United States Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-309",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-310",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-311",
+        "lipperCategory": "Lifestyle - (>80-100% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-317",
+        "lipperCategory": "Lifestyle - (>80-100% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-318",
+        "lipperCategory": "Default Investment Strategy - Core Accumulation Fd"
+      },
+      {
+        "fundClassId": "mpfa-cf-319",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-320",
+        "lipperCategory": "Guaranteed Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-321",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-322",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-323",
+        "lipperCategory": "United States Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-324",
+        "lipperCategory": "Asia Pacific ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-325",
+        "lipperCategory": "Hong Kong Equity (Index Tracking)"
+      },
+      {
+        "fundClassId": "mpfa-cf-326",
+        "lipperCategory": "European Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-362",
+        "lipperCategory": "Hong Kong Dollar Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-363",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-364",
+        "lipperCategory": "Guaranteed Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-365",
+        "lipperCategory": "Guaranteed Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-366",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-367",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-368",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-369",
+        "lipperCategory": "European Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-370",
+        "lipperCategory": "Asia Pacific ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-371",
+        "lipperCategory": "Japanese Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-372",
+        "lipperCategory": "Global Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-373",
+        "lipperCategory": "Lifestyle - (>80-100% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-374",
+        "lipperCategory": "Lifestyle - (>40-60% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-375",
+        "lipperCategory": "Greater China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-376",
+        "lipperCategory": "Lifestyle - (>80-100% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-377",
+        "lipperCategory": "United States Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-383",
+        "lipperCategory": "Global Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-384",
+        "lipperCategory": "Asian Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-385",
+        "lipperCategory": "Lifestyle - (>40-60% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-386",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-387",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-388",
+        "lipperCategory": "Guaranteed Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-389",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-390",
+        "lipperCategory": "European Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-391",
+        "lipperCategory": "United States Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-392",
+        "lipperCategory": "Asia ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-394",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-426",
+        "lipperCategory": "Global Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-427",
+        "lipperCategory": "Global Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-428",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-429",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-430",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-431",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-432",
+        "lipperCategory": "Asia Pacific ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-433",
+        "lipperCategory": "Asia Pacific ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-434",
+        "lipperCategory": "Lifestyle - (>40-60% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-435",
+        "lipperCategory": "Lifestyle - (>40-60% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-438",
+        "lipperCategory": "Lifestyle - (>20-40% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-440",
+        "lipperCategory": "United States Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-441",
+        "lipperCategory": "United States Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-444",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-446",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-447",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-450",
+        "lipperCategory": "Hong Kong Dollar Money Market"
+      },
+      {
+        "fundClassId": "mpfa-cf-451",
+        "lipperCategory": "Hong Kong Dollar Money Market"
+      },
+      {
+        "fundClassId": "mpfa-cf-498",
+        "lipperCategory": "Lifestyle - (>20-40% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-499",
+        "lipperCategory": "Lifestyle - (>20-40% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-500",
+        "lipperCategory": "Lifestyle - (>40-60% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-501",
+        "lipperCategory": "Lifestyle - (>40-60% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-502",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-503",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-504",
+        "lipperCategory": "Hong Kong Dollar Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-505",
+        "lipperCategory": "Hong Kong Dollar Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-506",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-507",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-508",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-509",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-603",
+        "lipperCategory": "Guaranteed Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-606",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-619",
+        "lipperCategory": "China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-620",
+        "lipperCategory": "China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-627",
+        "lipperCategory": "Asia ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-628",
+        "lipperCategory": "Asia ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-653",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-654",
+        "lipperCategory": "China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-657",
+        "lipperCategory": "Global Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-658",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-659",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-660",
+        "lipperCategory": "European Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-689",
+        "lipperCategory": "Asia ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-690",
+        "lipperCategory": "Asia ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-691",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-692",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-693",
+        "lipperCategory": "Greater China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-694",
+        "lipperCategory": "Greater China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-695",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-696",
+        "lipperCategory": "Lifestyle - (>20-40% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-697",
+        "lipperCategory": "China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-699",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-701",
+        "lipperCategory": "Lifestyle - (>80-100% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-703",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-705",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-706",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-707",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-708",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-709",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-710",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-711",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-769",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-770",
+        "lipperCategory": "Lifestyle - (>20-40% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-771",
+        "lipperCategory": "Lifestyle - (>40-60% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-772",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-773",
+        "lipperCategory": "Lifestyle - (>80-100% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-774",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-775",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-776",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-777",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-778",
+        "lipperCategory": "Asia ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-779",
+        "lipperCategory": "European Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-780",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-781",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-782",
+        "lipperCategory": "Global Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-798",
+        "lipperCategory": "Hong Kong Equity (Index Tracking)"
+      },
+      {
+        "fundClassId": "mpfa-cf-799",
+        "lipperCategory": "Hong Kong Dollar Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-800",
+        "lipperCategory": "Hong Kong Equity (Index Tracking)"
+      },
+      {
+        "fundClassId": "mpfa-cf-801",
+        "lipperCategory": "Global Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-802",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-803",
+        "lipperCategory": "Lifestyle - (>20-40% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-804",
+        "lipperCategory": "China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-805",
+        "lipperCategory": "Global Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-806",
+        "lipperCategory": "Default Investment Strategy - Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-807",
+        "lipperCategory": "Lifestyle - (>20-40% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-808",
+        "lipperCategory": "China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-809",
+        "lipperCategory": "Global Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-810",
+        "lipperCategory": "Global Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-811",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-812",
+        "lipperCategory": "Greater China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-813",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-814",
+        "lipperCategory": "European Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-816",
+        "lipperCategory": "Lifestyle - (>80-100% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-817",
+        "lipperCategory": "Lifestyle - (>60-80% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-818",
+        "lipperCategory": "Lifestyle - (>40-60% Equity)"
+      },
+      {
+        "fundClassId": "mpfa-cf-819",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-820",
+        "lipperCategory": "Asia Pacific ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-821",
+        "lipperCategory": "Greater China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-822",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-824",
+        "lipperCategory": "Hong Kong Equity (Index Tracking)"
+      },
+      {
+        "fundClassId": "mpfa-cf-825",
+        "lipperCategory": "Global Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-826",
+        "lipperCategory": "Hong Kong Dollar Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-827",
+        "lipperCategory": "MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-830",
+        "lipperCategory": "Global Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-831",
+        "lipperCategory": "Greater China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-838",
+        "lipperCategory": "Asia Pacific ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-839",
+        "lipperCategory": "Global Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-841",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-842",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-844",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-845",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-846",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-847",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-848",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-874",
+        "lipperCategory": "Greater China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-875",
+        "lipperCategory": "Asian Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-876",
+        "lipperCategory": "Other Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-877",
+        "lipperCategory": "Hong Kong Equity (Index Tracking)"
+      },
+      {
+        "fundClassId": "mpfa-cf-878",
+        "lipperCategory": "United States Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-889",
+        "lipperCategory": "Greater China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-890",
+        "lipperCategory": "Greater China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-891",
+        "lipperCategory": "Greater China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-892",
+        "lipperCategory": "Asia Pacific ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-893",
+        "lipperCategory": "Asia Pacific ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-894",
+        "lipperCategory": "Asia Pacific ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-895",
+        "lipperCategory": "Hong Kong Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-896",
+        "lipperCategory": "United States Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-897",
+        "lipperCategory": "China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-898",
+        "lipperCategory": "Hong Kong Equity (Index Tracking)"
+      },
+      {
+        "fundClassId": "mpfa-cf-899",
+        "lipperCategory": "Asia ex Japan Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-900",
+        "lipperCategory": "China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-901",
+        "lipperCategory": "Hong Kong Equity (Index Tracking)"
+      },
+      {
+        "fundClassId": "mpfa-cf-902",
+        "lipperCategory": "Hong Kong Equity (Index Tracking)"
+      },
+      {
+        "fundClassId": "mpfa-cf-903",
+        "lipperCategory": "Hong Kong Dollar Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-906",
+        "lipperCategory": "Asian Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-907",
+        "lipperCategory": "Hong Kong Equity (Index Tracking)"
+      },
+      {
+        "fundClassId": "mpfa-cf-908",
+        "lipperCategory": "Global Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-909",
+        "lipperCategory": "Greater China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-910",
+        "lipperCategory": "RMB and HKD Money Market"
+      },
+      {
+        "fundClassId": "mpfa-cf-911",
+        "lipperCategory": "RMB and HKD Money Market"
+      },
+      {
+        "fundClassId": "mpfa-cf-912",
+        "lipperCategory": "RMB and HKD Money Market"
+      },
+      {
+        "fundClassId": "mpfa-cf-913",
+        "lipperCategory": "RMB and HKD Money Market"
+      },
+      {
+        "fundClassId": "mpfa-cf-917",
+        "lipperCategory": "Greater China Equity"
+      },
+      {
+        "fundClassId": "mpfa-cf-918",
+        "lipperCategory": "Asian Bond"
+      },
+      {
+        "fundClassId": "mpfa-cf-999",
+        "lipperCategory": "Hong Kong Equity (Index Tracking)"
+      }
+    ],
+    "removed": [],
+    "recategorized": []
+  },
+  "requiresReview": true
+}
