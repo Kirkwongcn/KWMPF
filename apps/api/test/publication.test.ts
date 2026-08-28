@@ -906,6 +906,10 @@ describe("publication snapshot", () => {
   const seedCostAndRiskSnapshot = async (
     snapshotId: string,
     dataAsOf = "2026-07-31",
+    freshnessPolicy?: {
+      returnsGraceDays?: number;
+      fundOverviewGraceDays?: number;
+    },
   ) => {
     const funds = [
       { id: "fund-a", managementFee: 1.205, riskClass: 6 },
@@ -936,6 +940,7 @@ describe("publication snapshot", () => {
             sourceUrl: `https://example.test/${fund.id}`,
             dataAsOf,
             verificationStatus: "verified",
+            ...(freshnessPolicy ? { freshnessPolicy } : {}),
           },
         },
       })),
@@ -1069,8 +1074,11 @@ describe("publication snapshot", () => {
     ]);
   });
 
-  it("applies the shorter fund overview grace period to fee and risk rankings", async () => {
-    await seedCostAndRiskSnapshot("snapshot-overview-grace", isoDaysAgo(40));
+  it("applies the fund overview grace period, not the returns one, to fee and risk rankings", async () => {
+    await seedCostAndRiskSnapshot("snapshot-overview-grace", isoDaysAgo(30), {
+      returnsGraceDays: 45,
+      fundOverviewGraceDays: 20,
+    });
 
     const fee = (await (
       await SELF.fetch("https://kwmpf.test/rankings?metric=fee")
@@ -1080,9 +1088,32 @@ describe("publication snapshot", () => {
       rankings: unknown[];
     };
 
-    expect(fee.methodology.freshness.graceDays).toBe(30);
+    expect(fee.methodology.freshness.graceDays).toBe(20);
     expect(fee.rankings).toEqual([]);
     expect(fee.excludedStaleCount).toBe(3);
+
+    const returns = (await (
+      await SELF.fetch("https://kwmpf.test/rankings?metric=return&period=1")
+    ).json()) as {
+      methodology: { freshness: { graceDays: number } };
+      excludedStaleCount: number;
+      rankings: unknown[];
+    };
+
+    expect(returns.methodology.freshness.graceDays).toBe(45);
+    expect(returns.excludedStaleCount).toBe(0);
+    expect(returns.rankings.length).toBeGreaterThan(0);
+  });
+
+  it("keeps fund overview figures ranking through a full official release cycle", async () => {
+    await seedCostAndRiskSnapshot("snapshot-overview-cycle", isoDaysAgo(44));
+
+    const fee = (await (
+      await SELF.fetch("https://kwmpf.test/rankings?metric=fee")
+    ).json()) as { excludedStaleCount: number; rankings: unknown[] };
+
+    expect(fee.excludedStaleCount).toBe(0);
+    expect(fee.rankings.length).toBeGreaterThan(0);
   });
 
   it("keeps the return metric as the default so existing links stay stable", async () => {
