@@ -20,7 +20,24 @@ test("基金詳情頁顯示逐期回報、費用及可追溯來源", async ({ pa
   await expect(
     page.getByRole("heading", { name: "費用及資料限制" }),
   ).toBeVisible();
-  await expect(page.getByText("當前管理費")).toBeVisible();
+  // 費用按官方披露分成三組，每組都要有欄位，不可只顯示一個總數。
+  const recurringFees = page.getByRole("table", { name: "經常性費用" });
+  await expect(
+    recurringFees.getByRole("rowheader", { name: "管理費", exact: true }),
+  ).toBeVisible();
+  await expect(
+    recurringFees.getByRole("rowheader", { name: "積金易平台費" }),
+  ).toBeVisible();
+  await expect(
+    page
+      .getByRole("table", { name: "一次性及交易收費" })
+      .getByRole("rowheader", { name: "加入費" }),
+  ).toBeVisible();
+  await expect(
+    page
+      .getByRole("table", { name: "持續成本說明" })
+      .getByRole("rowheader", { name: "三年" }),
+  ).toBeVisible();
 
   // 基金概況及年度回報在官方未提供時仍要顯示欄位，不可靜默消失。
   const profile = page.getByRole("region", { name: "基金概況" });
