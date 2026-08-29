@@ -319,6 +319,11 @@ app.get("/schemes", async (context) => {
       riskClassDistribution: Record<string, number>;
       managementFees: number[];
       dataAsOfDates: string[];
+      factSheet: {
+        url: string;
+        capturedAt: string;
+        registerUrl: string;
+      } | null;
       funds: {
         id: string;
         constituentFundName: string;
@@ -336,8 +341,15 @@ app.get("/schemes", async (context) => {
   >();
 
   for (const row of rows.results) {
-    const { fundClass, provenance } = JSON.parse(row.payload) as {
+    const { fundClass, provenance, schemeFactSheet } = JSON.parse(
+      row.payload,
+    ) as {
       provenance?: { sourceUrl?: string };
+      schemeFactSheet?: {
+        url?: string;
+        capturedAt?: string;
+        registerUrl?: string;
+      };
       fundClass: {
         id: string;
         schemeName: string;
@@ -366,6 +378,16 @@ app.get("/schemes", async (context) => {
       riskClassDistribution: {},
       managementFees: [],
       dataAsOfDates: [],
+      factSheet:
+        schemeFactSheet?.url &&
+        schemeFactSheet.capturedAt &&
+        schemeFactSheet.registerUrl
+          ? {
+              url: schemeFactSheet.url,
+              capturedAt: schemeFactSheet.capturedAt,
+              registerUrl: schemeFactSheet.registerUrl,
+            }
+          : null,
       funds: [],
     };
     const comparisonGroup = comparisonGroupFor(fundClass).name;

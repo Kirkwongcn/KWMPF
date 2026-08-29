@@ -489,6 +489,19 @@ body {
   font-size: 0.78rem;
   font-weight: 400;
 }
+.kw-scheme-factsheet {
+  margin: 0 0 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--kw-line);
+}
+.kw-scheme-factsheet a {
+  color: var(--kw-action);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--kw-gold);
+  text-underline-offset: 3px;
+}
 .kw-disclosure {
   border-top: 1px solid var(--kw-line);
   padding-top: 12px;
