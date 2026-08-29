@@ -422,7 +422,7 @@ export function FundClassPage({
               <p className="kw-muted">
                 以下項目不是單一費率，官方以文字披露，原文照錄：
               </p>
-              <dl className="status-list">
+              <dl className="status-list fee-disclosures">
                 {feeDisclosureRows.map(([field, text]) => (
                   <div key={field}>
                     <dt>{feeLabels[field] ?? field}</dt>

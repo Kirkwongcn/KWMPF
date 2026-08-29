@@ -271,6 +271,42 @@ describe("fund class page", () => {
     expect(screen.getAllByText("官方未提供").length).toBeGreaterThan(0);
   });
 
+  it("keeps the official line breaks in a text fee disclosure", async () => {
+    const annualFee = [
+      "(Based on Number of Members)",
+      "1 to 14, Up to HKD3,000",
+      "15 to 29, Up to HKD1,500",
+      "30 or more HKD0",
+    ].join("\n");
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-disclosure",
+          fundClass: { ...fixture.fundClass, feeDisclosures: { annualFee } },
+          provenance: {
+            sourceUrl: fixture.source.url,
+            dataAsOf: "2026-07-31",
+            retrievedAt: "2026-08-13T00:00:00Z",
+            verificationStatus: "verified",
+          },
+        }),
+      ),
+    );
+
+    render(
+      <FundClassPage apiBaseUrl="https://api.test" fundClassId="disclosure" />,
+    );
+
+    const value = await screen.findByText(
+      (_, element) =>
+        element?.tagName === "DD" && element.textContent === annualFee,
+    );
+    // 分行要留在 DOM，並靠 pre-line 顯示；擠成一行會讀成 `HKD3,00015 to 29`。
+    expect(value.textContent).toContain("HKD3,000\n15 to 29");
+    expect(value.closest("dl")).toHaveClass("fee-disclosures");
+  });
+
   it("shows fund size, launch date and calendar year returns", async () => {
     vi.stubGlobal(
       "fetch",
