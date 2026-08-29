@@ -28,6 +28,13 @@ type PublishedFundClass = {
     latestFer?: number;
     managementFee: number;
     oci1yHkd?: number;
+    fundSizeHkdMillion?: number;
+    fundSizeAsOf?: string;
+    returnsAsOf?: string;
+    launchDate?: string;
+    calendarYearReturns?: Record<string, number>;
+    sinceLaunchReturnAnnualized?: number;
+    sinceLaunchReturnCumulative?: number;
   };
   provenance: {
     sourceUrl: string;
@@ -36,6 +43,12 @@ type PublishedFundClass = {
     verificationStatus: "verified";
   };
   freshness?: {
+    status: "verified" | "stale";
+    dataAsOf: string;
+    graceDays: number;
+    ageDays: number | null;
+  };
+  fundSizeFreshness?: {
     status: "verified" | "stale";
     dataAsOf: string;
     graceDays: number;
@@ -93,6 +106,15 @@ export function FundClassPage({
 
   const { fundClass, provenance, snapshotId, freshness } = publication;
   const comparisonGroup = publication.comparisonGroup ?? fundClass.fundCategory;
+  const fundSizeFreshness = publication.fundSizeFreshness;
+  const calendarYears = Object.keys(fundClass.calendarYearReturns ?? {}).sort(
+    (a, b) => Number(b) - Number(a),
+  );
+  const datesDiffer = Boolean(
+    fundClass.fundSizeAsOf &&
+    fundClass.returnsAsOf &&
+    fundClass.fundSizeAsOf !== fundClass.returnsAsOf,
+  );
   return (
     <SiteChrome
       eyebrow={fundClass.schemeName}
@@ -102,6 +124,48 @@ export function FundClassPage({
         `${fundClass.fundType}／${fundClass.fundCategory}`,
       )}
     >
+      <section className="kw-section" aria-labelledby="fund-profile-title">
+        <h2 className="kw-section__heading" id="fund-profile-title">
+          基金概況
+        </h2>
+        <div className="kw-card">
+          <dl className="status-list">
+            <div>
+              <dt>基金規模</dt>
+              <dd>
+                {typeof fundClass.fundSizeHkdMillion === "number"
+                  ? `HK$${fundClass.fundSizeHkdMillion.toLocaleString("en-US", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })} 百萬`
+                  : unavailable}
+                {fundClass.fundSizeAsOf
+                  ? `（截至 ${fundClass.fundSizeAsOf}）`
+                  : ""}
+              </dd>
+            </div>
+            <div>
+              <dt>成立日期</dt>
+              <dd>{fundClass.launchDate ?? unavailable}</dd>
+            </div>
+          </dl>
+          {fundSizeFreshness?.status === "stale" && (
+            <p className="kw-status kw-status--warning">
+              基金規模已超出官方披露寬限期（{fundSizeFreshness.graceDays}{" "}
+              日），截至日期仍為 {fundSizeFreshness.dataAsOf}。
+            </p>
+          )}
+          {datesDiffer && (
+            <p className="kw-muted" role="note">
+              基金規模截至 {fundClass.fundSizeAsOf}，回報截至{" "}
+              {fundClass.returnsAsOf}，兩者期別不同，並非完全可比。
+            </p>
+          )}
+          <p className="kw-muted">
+            成立日期是靜態事實，不設過期；基金規模按月披露，沿用月度寬限期。
+          </p>
+        </div>
+      </section>
       <section className="kw-section" aria-labelledby="fund-figures-title">
         <h2 className="kw-section__heading" id="fund-figures-title">
           主要數據
@@ -133,6 +197,11 @@ export function FundClassPage({
                     fundClass.annualizedReturn10y,
                     fundClass.cumulativeReturn10y,
                   ],
+                  [
+                    "成立至今",
+                    fundClass.sinceLaunchReturnAnnualized,
+                    fundClass.sinceLaunchReturnCumulative,
+                  ],
                 ] as const
               ).map(([horizon, annualized, cumulative]) => (
                 <tr key={horizon}>
@@ -156,6 +225,42 @@ export function FundClassPage({
         </dl>
         <p className="kw-muted" role="note">
           年率化回報是每年平均變幅，適合與其他基金比較；累積回報是整段期間的總變幅，反映同一筆本金實際增減。兩者均為積金局公布數值，網站不會自行換算。
+        </p>
+      </section>
+      <section className="kw-section" aria-labelledby="fund-calendar-title">
+        <h2 className="kw-section__heading" id="fund-calendar-title">
+          年度回報
+        </h2>
+        {calendarYears.length === 0 ? (
+          <p className="kw-status">官方未提供年度回報。</p>
+        ) : (
+          <div className="kw-table-scroll">
+            <table className="kw-table" aria-label="年度回報">
+              <thead>
+                <tr>
+                  <th scope="col">年度</th>
+                  <th scope="col">曆年回報</th>
+                </tr>
+              </thead>
+              <tbody>
+                {calendarYears.map((year) => (
+                  <tr key={year}>
+                    <th scope="row">{year}</th>
+                    <td className="kw-return">
+                      {formatNumber(
+                        fundClass.calendarYearReturns?.[year],
+                        2,
+                        "%",
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+        <p className="kw-muted" role="note">
+          年度回報是該個曆年的累積回報，不是年率化回報，不可與上表的年率化數字直接比較。官方沒有公布的年度不會顯示。
         </p>
       </section>
       <section className="kw-section" aria-labelledby="fund-fees-title">

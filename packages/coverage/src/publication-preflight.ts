@@ -9,6 +9,13 @@ type PublicFields = {
   latestFer?: number;
   managementFee?: number;
   oci1yHkd?: number;
+  fundSizeHkdMillion?: number;
+  fundSizeAsOf?: string;
+  returnsAsOf?: string;
+  launchDate?: string;
+  calendarYearReturns?: Record<string, number>;
+  sinceLaunchReturnAnnualized?: number;
+  sinceLaunchReturnCumulative?: number;
 };
 
 export type PublicationInput = {

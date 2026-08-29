@@ -149,4 +149,66 @@ describe("publication input builder", () => {
     expect(result.publicFields).toMatchObject({ annualizedReturn5y: 6.1 });
     expect(result.publicFields).not.toHaveProperty("cumulativeReturn5y");
   });
+
+  it("carries fund size, launch date and calendar year returns", () => {
+    const result = buildPublicationInputs([
+      {
+        fundClassId: "fund-g",
+        identity: {
+          trusteeName: "T",
+          schemeName: "S",
+          constituentFundName: "F",
+          fundClassName: "C",
+        },
+        current: true,
+        dataAsOf: "2026-07-31",
+        sourceUrl: "https://example.test/fund-g",
+        returns: { 1: { annualized: 4.2, dataAsOf: "2026-07-31" } },
+        fundSizeHkdMillion: 12974.87,
+        fundSizeAsOf: "2026-06-30",
+        launchDate: "2012-09-03",
+        calendarYearReturns: { 2024: 21.9, 2025: 16.49 },
+        sinceLaunchReturn: {
+          annualized: 12.39,
+          cumulative: 407.79,
+          dataAsOf: "2026-07-31",
+        },
+      },
+    ])[0]!;
+
+    expect(result.publicFields).toMatchObject({
+      fundSizeHkdMillion: 12974.87,
+      fundSizeAsOf: "2026-06-30",
+      returnsAsOf: "2026-07-31",
+      launchDate: "2012-09-03",
+      calendarYearReturns: { 2024: 21.9, 2025: 16.49 },
+      sinceLaunchReturnAnnualized: 12.39,
+      sinceLaunchReturnCumulative: 407.79,
+    });
+  });
+
+  it("omits fund size and launch fields the source never published", () => {
+    const result = buildPublicationInputs([
+      {
+        fundClassId: "fund-h",
+        identity: {
+          trusteeName: "T",
+          schemeName: "S",
+          constituentFundName: "F",
+          fundClassName: "C",
+        },
+        current: true,
+        dataAsOf: "2026-07-31",
+        sourceUrl: "https://example.test/fund-h",
+        returns: { 1: { annualized: 4.2, dataAsOf: "2026-07-31" } },
+      },
+    ])[0]!;
+
+    expect(result.publicFields).not.toHaveProperty("fundSizeHkdMillion");
+    expect(result.publicFields).not.toHaveProperty("launchDate");
+    expect(result.publicFields).not.toHaveProperty("calendarYearReturns");
+    expect(result.publicFields).not.toHaveProperty(
+      "sinceLaunchReturnAnnualized",
+    );
+  });
 });

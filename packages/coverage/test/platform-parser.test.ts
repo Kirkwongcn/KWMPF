@@ -31,7 +31,57 @@ describe("MPF Fund Platform parser", () => {
         5: { annualized: -3.92, cumulative: -18.1, dataAsOf: "2026-06-30" },
         10: { annualized: 1.23, cumulative: 13.04, dataAsOf: "2026-06-30" },
       },
+      fundSizeHkdMillion: 3344.42,
+      fundSizeAsOf: "2026-06-30",
+      launchDate: "2006-09-01",
+      calendarYearReturns: {
+        2022: -21.22,
+        2023: -12.7,
+        2024: 15.08,
+        2025: 34.98,
+      },
+      sinceLaunchReturn: {
+        annualized: 5.72,
+        cumulative: 203.2,
+        dataAsOf: "2026-06-30",
+      },
+      unavailableFields: ["calendarYearReturn2021"],
     });
+  });
+
+  it("keeps the fund size date apart from the return dates", () => {
+    const html = fixture("fund-detail.html").replace(
+      "3,344.42 (as at 30 June 2026)",
+      "3,344.42 (as at 31 May 2026)",
+    );
+    const result = parseFundDetail(html, 429);
+
+    expect(result.fundSizeAsOf).toBe("2026-05-31");
+    expect(result.returns?.[1]?.dataAsOf).toBe("2026-06-30");
+  });
+
+  it("records an unavailable calendar year instead of treating it as zero", () => {
+    const result = parseFundDetail(fixture("fund-detail.html"), 429);
+
+    expect(result.calendarYearReturns?.["2021"]).toBeUndefined();
+    expect(result.unavailableFields).toContain("calendarYearReturn2021");
+  });
+
+  it("reads a launch date written with a short month name", () => {
+    const html = fixture("fund-detail.html").replace(
+      "1 Sep 2006",
+      "17 February 2025",
+    );
+
+    expect(parseFundDetail(html, 429).launchDate).toBe("2025-02-17");
+  });
+
+  it("fails loudly when the launch date is unreadable", () => {
+    const html = fixture("fund-detail.html").replace("1 Sep 2006", "Sept 2006");
+
+    expect(() => parseFundDetail(html, 429)).toThrow(
+      "Launch Date is unreadable on cf_id 429",
+    );
   });
 
   it("extracts risk and public cost fields without inferring missing values", () => {

@@ -208,8 +208,96 @@ describe("fund class page", () => {
       />,
     );
 
-    expect(await screen.findAllByText("官方未提供")).toHaveLength(7);
+    expect(await screen.findAllByText("官方未提供")).toHaveLength(10);
     expect(screen.getByText(/適用披露規則/)).toBeVisible();
+    expect(screen.getByText("官方未提供年度回報。")).toBeVisible();
+  });
+
+  it("shows fund size, launch date and calendar year returns", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-profile",
+          fundClass: {
+            ...fixture.fundClass,
+            fundSizeHkdMillion: 12974.87,
+            fundSizeAsOf: "2026-07-31",
+            returnsAsOf: "2026-07-31",
+            launchDate: "2012-09-03",
+            calendarYearReturns: { 2023: 24.3, 2024: 21.9, 2025: 16.49 },
+            sinceLaunchReturnAnnualized: 12.39,
+            sinceLaunchReturnCumulative: 407.79,
+          },
+          provenance: {
+            sourceUrl: fixture.source.url,
+            dataAsOf: "2026-07-31",
+            retrievedAt: "2026-08-13T00:00:00Z",
+            verificationStatus: "verified",
+          },
+        }),
+      ),
+    );
+
+    render(
+      <FundClassPage apiBaseUrl="https://api.test" fundClassId="profile" />,
+    );
+
+    expect(
+      await screen.findByText("HK$12,974.87 百萬（截至 2026-07-31）"),
+    ).toBeVisible();
+    expect(screen.getByText("2012-09-03")).toBeVisible();
+
+    const calendar = screen.getByRole("table", { name: "年度回報" });
+    const years = within(calendar)
+      .getAllByRole("rowheader")
+      .map((cell) => cell.textContent);
+    expect(years).toEqual(["2025", "2024", "2023"]);
+    expect(within(calendar).getByText("16.49%")).toBeVisible();
+
+    const returns = screen.getByRole("table", { name: "回報" });
+    const sinceLaunch = within(returns).getByRole("rowheader", {
+      name: "成立至今",
+    }).parentElement!;
+    expect(within(sinceLaunch).getByText("12.39%")).toBeVisible();
+    expect(within(sinceLaunch).getByText("407.79%")).toBeVisible();
+    expect(screen.getByText(/年度回報是該個曆年的累積回報/)).toBeVisible();
+  });
+
+  it("flags a fund size measured on a different date from the returns", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-mixed-dates",
+          fundClass: {
+            ...fixture.fundClass,
+            fundSizeHkdMillion: 3344.42,
+            fundSizeAsOf: "2026-05-31",
+            returnsAsOf: "2026-07-31",
+          },
+          provenance: {
+            sourceUrl: fixture.source.url,
+            dataAsOf: "2026-07-31",
+            retrievedAt: "2026-08-13T00:00:00Z",
+            verificationStatus: "verified",
+          },
+          fundSizeFreshness: {
+            status: "stale",
+            dataAsOf: "2026-05-31",
+            graceDays: 45,
+            ageDays: 90,
+          },
+        }),
+      ),
+    );
+
+    render(
+      <FundClassPage apiBaseUrl="https://api.test" fundClassId="mixed-dates" />,
+    );
+
+    expect(await screen.findByText(/並非完全可比/)).toBeVisible();
+    expect(screen.getByText(/基金規模已超出官方披露寬限期/)).toBeVisible();
   });
   it("titles the browser tab with the fund being viewed", async () => {
     vi.stubGlobal(

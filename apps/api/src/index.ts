@@ -53,6 +53,7 @@ app.get("/fund-classes/:id", async (context) => {
     provenance: { dataAsOf: string; freshnessPolicy?: FreshnessPolicy };
   };
   const group = comparisonGroupFor(published.fundClass);
+  const fundSizeAsOf = published.fundClass.fundSizeAsOf;
   return context.json({
     ...published,
     comparisonGroup: group.name,
@@ -61,6 +62,15 @@ app.get("/fund-classes/:id", async (context) => {
       published.provenance.dataAsOf,
       returnsGraceDays(published.provenance.freshnessPolicy),
     ),
+    // 基金規模按月披露，沿用回報的月度寬限期；成立日期是靜態事實，不設過期。
+    ...(fundSizeAsOf
+      ? {
+          fundSizeFreshness: evaluateFreshness(
+            fundSizeAsOf,
+            returnsGraceDays(published.provenance.freshnessPolicy),
+          ),
+        }
+      : {}),
   });
 });
 
@@ -78,6 +88,10 @@ type BrowseFundClass = {
   managementFee?: number;
   latestFer?: number;
   dataAsOf?: string;
+  fundSizeHkdMillion?: number;
+  fundSizeAsOf?: string;
+  returnsAsOf?: string;
+  launchDate?: string;
 };
 
 async function loadPublishedFundClasses(
