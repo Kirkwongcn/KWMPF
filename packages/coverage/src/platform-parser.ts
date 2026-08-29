@@ -34,6 +34,18 @@ function normalizeLabel(label: string) {
     .replaceAll(/\s+/g, "");
 }
 
+// 官方以 `<br>` 分行披露多行收費（例如按成員人數分級的年費）。cheerio 的 `.text()`
+// 不會在分行位置留下任何分隔字元，`HKD3,000` 接 `15 to 29` 會變成 `HKD3,00015 to 29`，
+// 即係把原文改寫成另一個金額，所以要先把分行還原成換行才收斂空白。
+function collapseLines(text: string) {
+  return text
+    .replaceAll(/[^\S\n]+/g, " ")
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line !== "")
+    .join("\n");
+}
+
 function monthNumber(name: string) {
   const full = Object.keys(months).find(
     (month) => month.toLowerCase() === name.toLowerCase(),
@@ -60,8 +72,15 @@ export function parseFundDetail(html: string, cfId: number): SourceRecord {
     const cells = $(row)
       .children("th, td")
       .toArray()
-      .map((cell) => $(cell).text().replace(/\s+/g, " ").trim());
-    if (cells.length === 2 && cells[0]) fields.set(cells[0], cells[1] ?? "");
+      .map((cell) => {
+        const content = $(cell).clone();
+        content.find("br").replaceWith("\n");
+        content.find("div, p, li").append("\n");
+        return collapseLines(content.text());
+      });
+    // 標籤一定是單行，換行還原成空格才對得上既有的標籤鍵。
+    if (cells.length === 2 && cells[0])
+      fields.set(cells[0].replaceAll("\n", " "), cells[1] ?? "");
   });
   const required = (label: string) => {
     const value = fields.get(label);

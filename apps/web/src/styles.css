@@ -405,6 +405,12 @@ body {
   font-weight: 650;
   overflow-wrap: anywhere;
 }
+/* 官方文字披露是逐行列明的收費階梯及註腳，原文的分行要照樣顯示，
+   否則多行內容擠成一行會再次讀成另一個金額。 */
+.fee-disclosures dd {
+  white-space: pre-line;
+  font-weight: 500;
+}
 .search-form {
   display: grid;
   gap: 10px;

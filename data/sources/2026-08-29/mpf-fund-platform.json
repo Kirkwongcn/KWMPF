@@ -2242,7 +2242,7 @@
         "offerSpread": 0,
         "withdrawalCharge": 0,
         "feeDisclosures": {
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -2309,7 +2309,7 @@
         "oci3yHkd": 47,
         "oci5yHkd": 81,
         "feeDisclosures": {
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -2376,7 +2376,7 @@
         "oci3yHkd": 49,
         "oci5yHkd": 85,
         "feeDisclosures": {
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -2443,7 +2443,7 @@
         "oci3yHkd": 49,
         "oci5yHkd": 85,
         "feeDisclosures": {
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -2510,7 +2510,7 @@
         "oci3yHkd": 52,
         "oci5yHkd": 90,
         "feeDisclosures": {
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -2577,7 +2577,7 @@
         "oci3yHkd": 49,
         "oci5yHkd": 84,
         "feeDisclosures": {
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -2645,7 +2645,7 @@
         "oci5yHkd": 76,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -2712,7 +2712,7 @@
         "oci3yHkd": 48,
         "oci5yHkd": 84,
         "feeDisclosures": {
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -2779,7 +2779,7 @@
         "oci3yHkd": 41,
         "oci5yHkd": 72,
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -2846,7 +2846,7 @@
         "oci3yHkd": 38,
         "oci5yHkd": 65,
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -2915,7 +2915,7 @@
         "offerSpread": 0,
         "withdrawalCharge": 0,
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -2984,7 +2984,7 @@
         "offerSpread": 0,
         "withdrawalCharge": 0,
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -3051,7 +3051,7 @@
         "oci3yHkd": 41,
         "oci5yHkd": 71,
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -3118,7 +3118,7 @@
         "oci3yHkd": 37,
         "oci5yHkd": 64,
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -3185,7 +3185,7 @@
         "oci3yHkd": 42,
         "oci5yHkd": 73,
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -3252,7 +3252,7 @@
         "oci3yHkd": 38,
         "oci5yHkd": 66,
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -3319,7 +3319,7 @@
         "oci3yHkd": 42,
         "oci5yHkd": 73,
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -3386,7 +3386,7 @@
         "oci3yHkd": 38,
         "oci5yHkd": 66,
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -3453,7 +3453,7 @@
         "oci3yHkd": 41,
         "oci5yHkd": 71,
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -3520,7 +3520,7 @@
         "oci3yHkd": 37,
         "oci5yHkd": 64,
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -5627,7 +5627,7 @@
         "oci5yHkd": 80,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -5695,7 +5695,7 @@
         "oci5yHkd": 69,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -5763,7 +5763,7 @@
         "oci5yHkd": 67,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -5831,7 +5831,7 @@
         "oci5yHkd": 82,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -5899,7 +5899,7 @@
         "oci5yHkd": 71,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -5967,7 +5967,7 @@
         "oci5yHkd": 69,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -6035,7 +6035,7 @@
         "oci5yHkd": 84,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -6103,7 +6103,7 @@
         "oci5yHkd": 73,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -6171,7 +6171,7 @@
         "oci5yHkd": 71,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -6239,7 +6239,7 @@
         "oci5yHkd": 81,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -6307,7 +6307,7 @@
         "oci5yHkd": 70,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -6375,7 +6375,7 @@
         "oci5yHkd": 69,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -6443,7 +6443,7 @@
         "oci5yHkd": 83,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -6511,7 +6511,7 @@
         "oci5yHkd": 72,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -6579,7 +6579,7 @@
         "oci5yHkd": 71,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -6647,7 +6647,7 @@
         "oci5yHkd": 83,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -6715,7 +6715,7 @@
         "oci5yHkd": 73,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -6783,7 +6783,7 @@
         "oci5yHkd": 71,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -6853,7 +6853,7 @@
         "withdrawalCharge": 0,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -6923,7 +6923,7 @@
         "withdrawalCharge": 0,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -6993,7 +6993,7 @@
         "withdrawalCharge": 0,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -7061,7 +7061,7 @@
         "oci5yHkd": 85,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -7129,7 +7129,7 @@
         "oci5yHkd": 74,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -7197,7 +7197,7 @@
         "oci5yHkd": 72,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -7265,7 +7265,7 @@
         "oci5yHkd": 86,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "N/A for Self-employed MemberHKD250 per SVC MemberN/A for TVC MemberHKD50,000 per Participating Employer or HKD250 per Employee or both"
+          "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
       }
     },
@@ -7333,7 +7333,7 @@
         "oci5yHkd": 85,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "N/A for Self-employed MemberHKD250 per SVC MemberN/A for TVC MemberHKD50,000 per Participating Employer or HKD250 per Employee or both"
+          "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
       }
     },
@@ -7401,7 +7401,7 @@
         "oci5yHkd": 86,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "N/A for Self-employed MemberHKD250 per SVC MemberN/A for TVC MemberHKD50,000 per Participating Employer or HKD250 per Employee or both"
+          "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
       }
     },
@@ -7469,7 +7469,7 @@
         "oci5yHkd": 86,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "N/A for Self-employed MemberHKD250 per SVC MemberN/A for TVC MemberHKD50,000 per Participating Employer or HKD250 per Employee or both"
+          "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
       }
     },
@@ -7537,7 +7537,7 @@
         "oci5yHkd": 85,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "N/A for Self-employed MemberHKD250 per SVC MemberN/A for TVC MemberHKD50,000 per Participating Employer or HKD250 per Employee or both"
+          "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
       }
     },
@@ -7606,7 +7606,7 @@
         "offerSpread": 0,
         "withdrawalCharge": 0,
         "feeDisclosures": {
-          "joiningFee": "N/A for Self-employed MemberHKD250 per SVC MemberN/A for TVC MemberHKD50,000 per Participating Employer or HKD250 per Employee or both"
+          "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
       }
     },
@@ -7674,7 +7674,7 @@
         "oci5yHkd": 85,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "N/A for Self-employed MemberHKD250 per SVC MemberN/A for TVC MemberHKD50,000 per Participating Employer or HKD250 per Employee or both"
+          "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
       }
     },
@@ -7742,7 +7742,7 @@
         "oci5yHkd": 71,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "N/A for Self-employed MemberHKD250 per SVC MemberN/A for TVC MemberHKD50,000 per Participating Employer or HKD250 per Employee or both"
+          "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
       }
     },
@@ -7810,7 +7810,7 @@
         "oci5yHkd": 87,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "N/A for Self-employed MemberHKD250 per SVC MemberN/A for TVC MemberHKD50,000 per Participating Employer or HKD250 per Employee or both"
+          "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
       }
     },
@@ -7878,7 +7878,7 @@
         "oci5yHkd": 86,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "N/A for Self-employed MemberHKD250 per SVC MemberN/A for TVC MemberHKD50,000 per Participating Employer or HKD250 per Employee or both"
+          "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
       }
     },
@@ -11685,7 +11685,7 @@
         "oci3yHkd": 43,
         "oci5yHkd": 74,
         "feeDisclosures": {
-          "annualFee": "For members who are not Former S600 Members:(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0And(Based on Contribution Amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 NegotiableFor Members who are Former S600 Members:(Based on contribution amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 Negotiable(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "For members who are not Former S600 Members:\n(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nAnd\n(Based on Contribution Amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\nFor Members who are Former S600 Members:\n(Based on contribution amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -11752,7 +11752,7 @@
         "oci3yHkd": 43,
         "oci5yHkd": 74,
         "feeDisclosures": {
-          "annualFee": "(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0For members who are Former S600 Members:Nil(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nFor members who are Former S600 Members:\nNil\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -11819,7 +11819,7 @@
         "oci3yHkd": 43,
         "oci5yHkd": 74,
         "feeDisclosures": {
-          "annualFee": "For members who are not Former S600 Members:(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0And(Based on Contribution Amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 NegotiableFor Members who are Former S600 Members:(Based on contribution amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 Negotiable(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "For members who are not Former S600 Members:\n(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nAnd\n(Based on Contribution Amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\nFor Members who are Former S600 Members:\n(Based on contribution amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -11886,7 +11886,7 @@
         "oci3yHkd": 46,
         "oci5yHkd": 80,
         "feeDisclosures": {
-          "annualFee": "(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0For members who are Former S600 Members:Nil(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nFor members who are Former S600 Members:\nNil\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -11953,7 +11953,7 @@
         "oci3yHkd": 43,
         "oci5yHkd": 74,
         "feeDisclosures": {
-          "annualFee": "For members who are not Former S600 Members:(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0And(Based on Contribution Amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 NegotiableFor Members who are Former S600 Members:(Based on contribution amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 Negotiable(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "For members who are not Former S600 Members:\n(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nAnd\n(Based on Contribution Amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\nFor Members who are Former S600 Members:\n(Based on contribution amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -12020,7 +12020,7 @@
         "oci3yHkd": 49,
         "oci5yHkd": 85,
         "feeDisclosures": {
-          "annualFee": "(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0For members who are Former S600 Members:Nil(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nFor members who are Former S600 Members:\nNil\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -12087,7 +12087,7 @@
         "oci3yHkd": 44,
         "oci5yHkd": 76,
         "feeDisclosures": {
-          "annualFee": "For members who are not Former S600 Members:(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0And(Based on Contribution Amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 NegotiableFor Members who are Former S600 Members:(Based on contribution amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 Negotiable(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "For members who are not Former S600 Members:\n(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nAnd\n(Based on Contribution Amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\nFor Members who are Former S600 Members:\n(Based on contribution amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -12154,7 +12154,7 @@
         "oci3yHkd": 50,
         "oci5yHkd": 86,
         "feeDisclosures": {
-          "annualFee": "(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0For members who are Former S600 Members:Nil(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nFor members who are Former S600 Members:\nNil\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -12221,7 +12221,7 @@
         "oci3yHkd": 43,
         "oci5yHkd": 75,
         "feeDisclosures": {
-          "annualFee": "For members who are not Former S600 Members:(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0And(Based on Contribution Amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 NegotiableFor Members who are Former S600 Members:(Based on contribution amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 Negotiable(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "For members who are not Former S600 Members:\n(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nAnd\n(Based on Contribution Amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\nFor Members who are Former S600 Members:\n(Based on contribution amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -12288,7 +12288,7 @@
         "oci3yHkd": 50,
         "oci5yHkd": 86,
         "feeDisclosures": {
-          "annualFee": "(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0For members who are Former S600 Members:Nil(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nFor members who are Former S600 Members:\nNil\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -12355,7 +12355,7 @@
         "oci3yHkd": 43,
         "oci5yHkd": 74,
         "feeDisclosures": {
-          "annualFee": "For members who are not Former S600 Members:(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0And(Based on Contribution Amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 NegotiableFor Members who are Former S600 Members:(Based on contribution amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 Negotiable(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "For members who are not Former S600 Members:\n(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nAnd\n(Based on Contribution Amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\nFor Members who are Former S600 Members:\n(Based on contribution amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -12422,7 +12422,7 @@
         "oci3yHkd": 42,
         "oci5yHkd": 73,
         "feeDisclosures": {
-          "annualFee": "For members who are not Former S600 Members:(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0And(Based on Contribution Amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 NegotiableFor Members who are Former S600 Members:(Based on contribution amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 Negotiable(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "For members who are not Former S600 Members:\n(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nAnd\n(Based on Contribution Amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\nFor Members who are Former S600 Members:\n(Based on contribution amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -12489,7 +12489,7 @@
         "oci3yHkd": 48,
         "oci5yHkd": 83,
         "feeDisclosures": {
-          "annualFee": "(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0For members who are Former S600 Members:Nil(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nFor members who are Former S600 Members:\nNil\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -12558,7 +12558,7 @@
         "offerSpread": 0,
         "withdrawalCharge": 0,
         "feeDisclosures": {
-          "annualFee": "For members who are not Former S600 Members:(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0And(Based on Contribution Amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 NegotiableFor Members who are Former S600 Members:(Based on contribution amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 NegotiableOr(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0For members who are Former S600 Members:Nil(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "For members who are not Former S600 Members:\n(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nAnd\n(Based on Contribution Amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\nFor Members who are Former S600 Members:\n(Based on contribution amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\nOr\n(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nFor members who are Former S600 Members:\nNil\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -12625,7 +12625,7 @@
         "oci3yHkd": 43,
         "oci5yHkd": 75,
         "feeDisclosures": {
-          "annualFee": "For members who are not Former S600 Members:(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0And(Based on Contribution Amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 NegotiableFor Members who are Former S600 Members:(Based on contribution amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 Negotiable(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "For members who are not Former S600 Members:\n(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nAnd\n(Based on Contribution Amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\nFor Members who are Former S600 Members:\n(Based on contribution amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -12692,7 +12692,7 @@
         "oci3yHkd": 50,
         "oci5yHkd": 86,
         "feeDisclosures": {
-          "annualFee": "(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0For members who are Former S600 Members:Nil(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nFor members who are Former S600 Members:\nNil\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -12759,7 +12759,7 @@
         "oci3yHkd": 33,
         "oci5yHkd": 57,
         "feeDisclosures": {
-          "annualFee": "For members who are not Former S600 Members:(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0And(Based on Contribution Amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 NegotiableFor Members who are Former S600 Members:(Based on contribution amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 Negotiable(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "For members who are not Former S600 Members:\n(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nAnd\n(Based on Contribution Amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\nFor Members who are Former S600 Members:\n(Based on contribution amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -12826,7 +12826,7 @@
         "oci3yHkd": 34,
         "oci5yHkd": 59,
         "feeDisclosures": {
-          "annualFee": "(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0For members who are Former S600 Members:Nil(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nFor members who are Former S600 Members:\nNil\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -14219,7 +14219,7 @@
         "oci3yHkd": 43,
         "oci5yHkd": 75,
         "feeDisclosures": {
-          "annualFee": "For members who are not Former S600 Members:(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0And(Based on Contribution Amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 NegotiableFor Members who are Former S600 Members:(Based on contribution amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 Negotiable(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "For members who are not Former S600 Members:\n(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nAnd\n(Based on Contribution Amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\nFor Members who are Former S600 Members:\n(Based on contribution amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -14286,7 +14286,7 @@
         "oci3yHkd": 49,
         "oci5yHkd": 85,
         "feeDisclosures": {
-          "annualFee": "(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0For members who are Former S600 Members:Nil(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nFor members who are Former S600 Members:\nNil\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -14353,7 +14353,7 @@
         "oci3yHkd": 39,
         "oci5yHkd": 67,
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -14420,7 +14420,7 @@
         "oci3yHkd": 43,
         "oci5yHkd": 74,
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -14749,7 +14749,7 @@
         "oci3yHkd": 48,
         "oci5yHkd": 84,
         "feeDisclosures": {
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -14816,7 +14816,7 @@
         "oci3yHkd": 51,
         "oci5yHkd": 88,
         "feeDisclosures": {
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -15345,7 +15345,7 @@
         "oci3yHkd": 49,
         "oci5yHkd": 85,
         "feeDisclosures": {
-          "annualFee": "(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0For members who are Former S600 Members:Nil(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nFor members who are Former S600 Members:\nNil\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -15543,7 +15543,7 @@
         "oci3yHkd": 49,
         "oci5yHkd": 85,
         "feeDisclosures": {
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -15611,7 +15611,7 @@
         "oci5yHkd": 70,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -15679,7 +15679,7 @@
         "oci5yHkd": 84,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -15747,7 +15747,7 @@
         "oci5yHkd": 74,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "N/A for Self-employed MemberHKD250 per SVC MemberN/A for TVC MemberHKD50,000 per Participating Employer or HKD250 per Employee or both"
+          "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
       }
     },
@@ -15815,7 +15815,7 @@
         "oci5yHkd": 84,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -15883,7 +15883,7 @@
         "oci5yHkd": 88,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "N/A for Self-employed MemberHKD250 per SVC MemberN/A for TVC MemberHKD50,000 per Participating Employer or HKD250 per Employee or both"
+          "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
       }
     },
@@ -15951,7 +15951,7 @@
         "oci5yHkd": 88,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "N/A for Self-employed MemberHKD250 per SVC MemberN/A for TVC MemberHKD50,000 per Participating Employer or HKD250 per Employee or both"
+          "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
       }
     },
@@ -16019,7 +16019,7 @@
         "oci5yHkd": 83,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -16087,7 +16087,7 @@
         "oci5yHkd": 87,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "N/A for Self-employed MemberHKD250 per SVC MemberN/A for TVC MemberHKD50,000 per Participating Employer or HKD250 per Employee or both"
+          "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
       }
     },
@@ -16155,7 +16155,7 @@
         "oci5yHkd": 68,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)Withdrawal of special voluntary contribution:HK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.Such charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
+          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)\nWithdrawal of special voluntary contribution:\nHK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.\nSuch charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
         }
       }
     },
@@ -16223,7 +16223,7 @@
         "oci5yHkd": 69,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)Withdrawal of special voluntary contribution:HK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.Such charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
+          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)\nWithdrawal of special voluntary contribution:\nHK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.\nSuch charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
         }
       }
     },
@@ -16291,7 +16291,7 @@
         "oci5yHkd": 68,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)Withdrawal of special voluntary contribution:HK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.Such charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
+          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)\nWithdrawal of special voluntary contribution:\nHK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.\nSuch charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
         }
       }
     },
@@ -16359,7 +16359,7 @@
         "oci5yHkd": 69,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)Withdrawal of special voluntary contribution:HK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.Such charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
+          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)\nWithdrawal of special voluntary contribution:\nHK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.\nSuch charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
         }
       }
     },
@@ -16427,7 +16427,7 @@
         "oci5yHkd": 69,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)Withdrawal of special voluntary contribution:HK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.Such charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
+          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)\nWithdrawal of special voluntary contribution:\nHK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.\nSuch charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
         }
       }
     },
@@ -16494,7 +16494,7 @@
         "oci3yHkd": 57,
         "oci5yHkd": 99,
         "feeDisclosures": {
-          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)Withdrawal of special voluntary contribution:HK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.Such charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
+          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)\nWithdrawal of special voluntary contribution:\nHK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.\nSuch charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
         }
       }
     },
@@ -16561,7 +16561,7 @@
         "oci3yHkd": 51,
         "oci5yHkd": 88,
         "feeDisclosures": {
-          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)Withdrawal of special voluntary contribution:HK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.Such charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
+          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)\nWithdrawal of special voluntary contribution:\nHK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.\nSuch charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
         }
       }
     },
@@ -16628,7 +16628,7 @@
         "oci3yHkd": 47,
         "oci5yHkd": 82,
         "feeDisclosures": {
-          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)Withdrawal of special voluntary contribution:HK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.Such charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
+          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)\nWithdrawal of special voluntary contribution:\nHK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.\nSuch charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
         }
       }
     },
@@ -16695,7 +16695,7 @@
         "oci3yHkd": 49,
         "oci5yHkd": 84,
         "feeDisclosures": {
-          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)Withdrawal of special voluntary contribution:HK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.Such charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
+          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)\nWithdrawal of special voluntary contribution:\nHK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.\nSuch charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
         }
       }
     },
@@ -16762,7 +16762,7 @@
         "oci3yHkd": 42,
         "oci5yHkd": 73,
         "feeDisclosures": {
-          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)Withdrawal of special voluntary contribution:HK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.Such charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
+          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)\nWithdrawal of special voluntary contribution:\nHK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.\nSuch charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
         }
       }
     },
@@ -16829,7 +16829,7 @@
         "oci3yHkd": 43,
         "oci5yHkd": 75,
         "feeDisclosures": {
-          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)Withdrawal of special voluntary contribution:HK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.Such charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
+          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)\nWithdrawal of special voluntary contribution:\nHK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.\nSuch charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
         }
       }
     },
@@ -16896,7 +16896,7 @@
         "oci3yHkd": 39,
         "oci5yHkd": 68,
         "feeDisclosures": {
-          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)Withdrawal of special voluntary contribution:HK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.Such charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
+          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)\nWithdrawal of special voluntary contribution:\nHK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.\nSuch charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
         }
       }
     },
@@ -16965,7 +16965,7 @@
         "bidSpread": 0,
         "offerSpread": 0,
         "feeDisclosures": {
-          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)Withdrawal of special voluntary contribution:HK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.Such charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
+          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)\nWithdrawal of special voluntary contribution:\nHK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.\nSuch charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
         }
       }
     },
@@ -17032,7 +17032,7 @@
         "oci3yHkd": 42,
         "oci5yHkd": 73,
         "feeDisclosures": {
-          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)Withdrawal of special voluntary contribution:HK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.Such charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
+          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)\nWithdrawal of special voluntary contribution:\nHK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.\nSuch charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
         }
       }
     },
@@ -17164,7 +17164,7 @@
         "oci3yHkd": 35,
         "oci5yHkd": 61,
         "feeDisclosures": {
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -17232,7 +17232,7 @@
         "feeCaps": ["trusteeCustodianFee", "investmentManagementFee"],
         "feeDisclosures": {
           "managementFee": "0.6% p.a. - 0.608% p.a.",
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -20056,7 +20056,7 @@
         "oci5yHkd": 82,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -20124,7 +20124,7 @@
         "oci5yHkd": 71,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -20192,7 +20192,7 @@
         "oci5yHkd": 70,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -20260,7 +20260,7 @@
         "oci5yHkd": 87,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -20328,7 +20328,7 @@
         "oci5yHkd": 76,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -20396,7 +20396,7 @@
         "oci5yHkd": 74,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -20940,7 +20940,7 @@
           "investmentManagementFee"
         ],
         "feeDisclosures": {
-          "annualFee": "For members who are not Former S600 Members:(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0And(Based on Contribution Amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 NegotiableFor Members who are Former S600 Members:(Based on contribution amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 NegotiableOr(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0For members who are Former S600 Members:Nil(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "For members who are not Former S600 Members:\n(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nAnd\n(Based on Contribution Amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\nFor Members who are Former S600 Members:\n(Based on contribution amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\nOr\n(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nFor members who are Former S600 Members:\nNil\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -21007,7 +21007,7 @@
         "oci3yHkd": 34,
         "oci5yHkd": 59,
         "feeDisclosures": {
-          "annualFee": "For members who are not Former S600 Members:(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0And(Based on Contribution Amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 NegotiableFor Members who are Former S600 Members:(Based on contribution amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 NegotiableOr(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0For members who are Former S600 Members:Nil(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "For members who are not Former S600 Members:\n(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nAnd\n(Based on Contribution Amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\nFor Members who are Former S600 Members:\n(Based on contribution amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\nOr\n(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nFor members who are Former S600 Members:\nNil\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -21205,7 +21205,7 @@
         "oci5yHkd": 58,
         "feeCaps": ["managementFee", "investmentManagementFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -21273,7 +21273,7 @@
         "oci5yHkd": 63,
         "feeCaps": ["managementFee", "investmentManagementFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -22580,7 +22580,7 @@
         "oci3yHkd": 40,
         "oci5yHkd": 70,
         "feeDisclosures": {
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -22647,7 +22647,7 @@
         "oci3yHkd": 41,
         "oci5yHkd": 70,
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -22714,7 +22714,7 @@
         "oci3yHkd": 37,
         "oci5yHkd": 64,
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -22851,7 +22851,7 @@
           "investmentManagementFee"
         ],
         "feeDisclosures": {
-          "joiningFee": "N/A for Self-employed MemberHKD250 per SVC MemberN/A for TVC MemberHKD50,000 per Participating Employer or HKD250 per Employee or both"
+          "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
       }
     },
@@ -22919,7 +22919,7 @@
         "oci5yHkd": 67,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -22987,7 +22987,7 @@
         "oci5yHkd": 67,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -23055,7 +23055,7 @@
         "oci5yHkd": 65,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -23324,7 +23324,7 @@
           "investmentManagementFee"
         ],
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -23396,7 +23396,7 @@
           "investmentManagementFee"
         ],
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -23665,7 +23665,7 @@
         "oci5yHkd": 92,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "N/A for Self-employed MemberHKD250 per SVC MemberN/A for TVC MemberHKD50,000 per Participating Employer or HKD250 per Employee or both"
+          "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
       }
     },
@@ -23733,7 +23733,7 @@
         "oci5yHkd": 90,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "N/A for Self-employed MemberHKD250 per SVC MemberN/A for TVC MemberHKD50,000 per Participating Employer or HKD250 per Employee or both"
+          "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
       }
     },
@@ -23801,7 +23801,7 @@
         "oci5yHkd": 74,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "N/A for Self-employed MemberHKD250 per SVC MemberN/A for TVC MemberHKD50,000 per Participating Employer or HKD250 per Employee or both"
+          "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
       }
     },
@@ -24108,7 +24108,7 @@
         "oci3yHkd": 26,
         "oci5yHkd": 45,
         "feeDisclosures": {
-          "annualFee": "For members who are not Former S600 Members:(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0And(Based on Contribution Amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 NegotiableFor Members who are Former S600 Members:(Based on contribution amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 NegotiableOr(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0For members who are Former S600 Members:Nil(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "For members who are not Former S600 Members:\n(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nAnd\n(Based on Contribution Amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\nFor Members who are Former S600 Members:\n(Based on contribution amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\nOr\n(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nFor members who are Former S600 Members:\nNil\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -24171,7 +24171,7 @@
         "oci3yHkd": 26,
         "oci5yHkd": 45,
         "feeDisclosures": {
-          "annualFee": "For members who are not Former S600 Members:(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0And(Based on Contribution Amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 NegotiableFor Members who are Former S600 Members:(Based on contribution amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 NegotiableOr(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0For members who are Former S600 Members:Nil(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "For members who are not Former S600 Members:\n(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nAnd\n(Based on Contribution Amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\nFor Members who are Former S600 Members:\n(Based on contribution amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\nOr\n(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nFor members who are Former S600 Members:\nNil\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -24973,7 +24973,7 @@
         "oci5yHkd": 44,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -25037,7 +25037,7 @@
         "oci5yHkd": 44,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -25101,7 +25101,7 @@
         "oci5yHkd": 44,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -25165,7 +25165,7 @@
         "oci5yHkd": 43,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -25229,7 +25229,7 @@
         "oci5yHkd": 43,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -25293,7 +25293,7 @@
         "oci5yHkd": 43,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer: up to HKD50,000 *Self-employed person: up to HKD5,000 ** Subject to the discretion of the trustee/sponsor to waive from time to time."
+          "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
       }
     },
@@ -25356,7 +25356,7 @@
         "oci3yHkd": 28,
         "oci5yHkd": 49,
         "feeDisclosures": {
-          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)Withdrawal of special voluntary contribution:HK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.Such charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
+          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)\nWithdrawal of special voluntary contribution:\nHK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.\nSuch charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
         }
       }
     },
@@ -25419,7 +25419,7 @@
         "oci3yHkd": 28,
         "oci5yHkd": 49,
         "feeDisclosures": {
-          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)Withdrawal of special voluntary contribution:HK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.Such charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
+          "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)\nWithdrawal of special voluntary contribution:\nHK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.\nSuch charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
         }
       }
     },
@@ -25604,7 +25604,7 @@
         "oci3yHkd": 26,
         "oci5yHkd": 44,
         "feeDisclosures": {
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -25667,7 +25667,7 @@
         "oci3yHkd": 26,
         "oci5yHkd": 44,
         "feeDisclosures": {
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -26467,7 +26467,7 @@
           "investmentManagementFee"
         ],
         "feeDisclosures": {
-          "joiningFee": "N/A for Self-employed MemberHKD250 per SVC MemberN/A for TVC MemberHKD50,000 per Participating Employer or HKD250 per Employee or both"
+          "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
       }
     },
@@ -26535,7 +26535,7 @@
           "investmentManagementFee"
         ],
         "feeDisclosures": {
-          "joiningFee": "N/A for Self-employed MemberHKD250 per SVC MemberN/A for TVC MemberHKD50,000 per Participating Employer or HKD250 per Employee or both"
+          "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
       }
     },
@@ -26846,7 +26846,7 @@
         "oci3yHkd": 26,
         "oci5yHkd": 46,
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -26909,7 +26909,7 @@
         "oci3yHkd": 26,
         "oci5yHkd": 45,
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -26972,7 +26972,7 @@
         "oci3yHkd": 26,
         "oci5yHkd": 46,
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -27035,7 +27035,7 @@
         "oci3yHkd": 26,
         "oci5yHkd": 46,
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -27956,7 +27956,7 @@
         "oci3yHkd": 43,
         "oci5yHkd": 75,
         "feeDisclosures": {
-          "annualFee": "For members who are not Former S600 Members:(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0And(Based on Contribution Amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 NegotiableFor Members who are Former S600 Members:(Based on contribution amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 Negotiable(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "For members who are not Former S600 Members:\n(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nAnd\n(Based on Contribution Amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\nFor Members who are Former S600 Members:\n(Based on contribution amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -28019,7 +28019,7 @@
         "oci3yHkd": 50,
         "oci5yHkd": 85,
         "feeDisclosures": {
-          "annualFee": "(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0For members who are Former S600 Members:Nil(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nFor members who are Former S600 Members:\nNil\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -28082,7 +28082,7 @@
         "oci3yHkd": 34,
         "oci5yHkd": 59,
         "feeDisclosures": {
-          "annualFee": "For members who are not Former S600 Members:(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0And(Based on Contribution Amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 NegotiableFor Members who are Former S600 Members:(Based on contribution amount)First HKD250,000, Up to 3.5%Next HKD250,000, Up to 3.0%Next HKD500,000, Up to 2.5%Excess, Up to 2.0%>= HKD1,000,000 NegotiableOr(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0For members who are Former S600 Members:Nil(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
+          "annualFee": "For members who are not Former S600 Members:\n(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nAnd\n(Based on Contribution Amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\nFor Members who are Former S600 Members:\n(Based on contribution amount)\nFirst HKD250,000, Up to 3.5%\nNext HKD250,000, Up to 3.0%\nNext HKD500,000, Up to 2.5%\nExcess, Up to 2.0%\n>= HKD1,000,000 Negotiable\nOr\n(Based on Number of Members)\n1 to 14, Up to HKD3,000\n15 to 29, Up to HKD1,500\n30 or more HKD0\nFor members who are Former S600 Members:\nNil\n(Payable by: Participating employer and self-employed person*) (By separated billing, not directly deducted from member’s contribution)\n* No annual fee shall be charged to or imposed on a Self-Employed Person who has all or part of his / her accrued benefits invested in the Principal Core Accumulation Fund and/ or Principal Age 65 Plus Fund as at the time when the annual fee is otherwise payable."
         }
       }
     },
@@ -28144,7 +28144,7 @@
         "oci5yHkd": 74,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "N/A for Self-employed MemberHKD250 per SVC MemberN/A for TVC MemberHKD50,000 per Participating Employer or HKD250 per Employee or both"
+          "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
       }
     },
@@ -28206,7 +28206,7 @@
         "oci5yHkd": 87,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -28268,7 +28268,7 @@
         "oci5yHkd": 85,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -28330,7 +28330,7 @@
         "oci5yHkd": 54,
         "feeCaps": ["managementFee", "investmentManagementFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -28511,7 +28511,7 @@
         "oci5yHkd": 88,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waivedSelf-employed Person: HK$500 ** The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -28873,7 +28873,7 @@
         "oci5yHkd": 65,
         "feeCaps": ["managementFee", "investmentManagementFee"],
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -28935,7 +28935,7 @@
         "oci5yHkd": 65,
         "feeCaps": ["managementFee", "investmentManagementFee"],
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -28997,7 +28997,7 @@
         "oci5yHkd": 59,
         "feeCaps": ["managementFee", "investmentManagementFee"],
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -29059,7 +29059,7 @@
         "oci5yHkd": 59,
         "feeCaps": ["managementFee", "investmentManagementFee"],
         "feeDisclosures": {
-          "joiningFee": "Up to $8,000 ** The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
+          "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
       }
     },
@@ -29121,7 +29121,7 @@
         "oci5yHkd": 78,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "N/A for Self-employed MemberHKD250 per SVC MemberN/A for TVC MemberHKD50,000 per Participating Employer or HKD250 per Employee or both"
+          "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
       }
     },
@@ -29183,7 +29183,7 @@
         "oci5yHkd": 80,
         "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
-          "joiningFee": "N/A for Self-employed MemberHKD250 per SVC MemberN/A for TVC MemberHKD50,000 per Participating Employer or HKD250 per Employee or both"
+          "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
       }
     },

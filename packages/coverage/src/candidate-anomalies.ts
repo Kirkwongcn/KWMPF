@@ -26,7 +26,7 @@ export type CandidateAnomalyPolicy = {
 };
 
 export const DEFAULT_CANDIDATE_ANOMALY_POLICY: CandidateAnomalyPolicy = {
-  version: "2026-08-29.v3",
+  version: "2026-08-29.v4",
   monthlyReturnAbsolutePercent: 30,
   allocationMinimumPercent: 99,
   allocationMaximumPercent: 101,

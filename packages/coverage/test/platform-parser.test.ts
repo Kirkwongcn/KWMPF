@@ -64,8 +64,12 @@ describe("MPF Fund Platform parser", () => {
         oci3yHkd: 46,
         feeCaps: ["trusteeCustodianFee"],
         feeDisclosures: {
-          annualFee:
-            "(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0",
+          annualFee: [
+            "(Based on Number of Members)",
+            "1 to 14, Up to HKD3,000",
+            "15 to 29, Up to HKD1,500",
+            "30 or more HKD0",
+          ].join("\n"),
         },
       },
     });
@@ -88,6 +92,41 @@ describe("MPF Fund Platform parser", () => {
 
     expect(overview.annualFee).toBeUndefined();
     expect(overview.feeDisclosures?.annualFee).toContain("Based on Number of Members");
+  });
+
+  it("keeps the official line breaks so a tier boundary never merges into the amount above it", () => {
+    const overview = parseFundDetail(fixture("fund-detail.html"), 429)
+      .fundOverview as { feeDisclosures?: Record<string, string> };
+    const annualFee = overview.feeDisclosures?.annualFee ?? "";
+
+    expect(annualFee.split("\n")).toEqual([
+      "(Based on Number of Members)",
+      "1 to 14, Up to HKD3,000",
+      "15 to 29, Up to HKD1,500",
+      "30 or more HKD0",
+    ]);
+    expect(annualFee).not.toContain("HKD3,00015");
+    expect(annualFee).not.toContain("HKD1,50030");
+  });
+
+  it("keeps a footnote marker apart from the line it annotates", () => {
+    const html = fixture("fund-detail.html").replace(
+      "<tr><td>Joining Fee</td><td>0%</td></tr>",
+      '<tr><td>Joining Fee</td><td align="center"><div align="left">Employer: Currently waived<br>Self-employed Person: HK$500 *<br>* The Trustee shall have full discretion to waive the joining fee.</div></td></tr>',
+    );
+    const overview = parseFundDetail(html, 429).fundOverview as {
+      joiningFee?: number;
+      feeDisclosures?: Record<string, string>;
+    };
+
+    expect(overview.joiningFee).toBeUndefined();
+    expect(overview.feeDisclosures?.joiningFee).toBe(
+      [
+        "Employer: Currently waived",
+        "Self-employed Person: HK$500 *",
+        "* The Trustee shall have full discretion to waive the joining fee.",
+      ].join("\n"),
+    );
   });
 
   it("records an unavailable fee component instead of treating it as zero", () => {

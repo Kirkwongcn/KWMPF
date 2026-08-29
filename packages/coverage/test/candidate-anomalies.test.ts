@@ -11,7 +11,7 @@ describe("candidate anomaly report", () => {
       [base],
       [{ sourceType: "trustee_fund_list", consecutiveFailures: 2 }],
     );
-    expect(result.policyVersion).toBe("2026-08-29.v3");
+    expect(result.policyVersion).toBe("2026-08-29.v4");
     expect(result.requiresReview).toBe(true);
     expect(new Set(result.anomalies.map((item) => item.kind))).toEqual(new Set(["identity_changed", "same_date_value_revised", "large_monthly_return", "allocation_total_out_of_range", "fee_changed", "source_failed_twice"]));
   });
@@ -62,6 +62,6 @@ describe("candidate anomaly report", () => {
   it("does not trigger review for a clean candidate", () => {
     const clean = { ...base, fundOverview: { fee: 0.8, monthlyReturn: 2, allocationTotal: 100 } };
     const result = detectCandidateAnomalies([clean], [clean], [{ sourceType: "trustee_fund_list", consecutiveFailures: 1 }]);
-    expect(result).toEqual({ policyVersion: "2026-08-29.v3", anomalies: [], requiresReview: false });
+    expect(result).toEqual({ policyVersion: "2026-08-29.v4", anomalies: [], requiresReview: false });
   });
 });
