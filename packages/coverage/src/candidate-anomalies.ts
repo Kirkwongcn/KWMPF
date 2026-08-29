@@ -26,12 +26,30 @@ export type CandidateAnomalyPolicy = {
 };
 
 export const DEFAULT_CANDIDATE_ANOMALY_POLICY: CandidateAnomalyPolicy = {
-  version: "2026-08-27.v2",
+  version: "2026-08-29.v3",
   monthlyReturnAbsolutePercent: 30,
   allocationMinimumPercent: 99,
   allocationMaximumPercent: 101,
   consecutiveSourceFailures: 2,
-  feeFields: ["fee", "managementFee", "latestFer", "oci1yHkd"],
+  feeFields: [
+    "fee",
+    "managementFee",
+    "latestFer",
+    "oci1yHkd",
+    "oci3yHkd",
+    "oci5yHkd",
+    "trusteeCustodianFee",
+    "empfPlatformFee",
+    "memberServicingFee",
+    "investmentManagementFee",
+    "guaranteeCharge",
+    "joiningFee",
+    "annualFee",
+    "contributionCharge",
+    "bidSpread",
+    "offerSpread",
+    "withdrawalCharge",
+  ],
 };
 
 function normalizeIdentity(identity: SourceRecord["identity"]) {
@@ -48,6 +66,18 @@ function sameIdentity(a: SourceRecord, b: SourceRecord) {
     JSON.stringify(normalizeIdentity(a.identity)) ===
     JSON.stringify(normalizeIdentity(b.identity))
   );
+}
+
+// 一個費用欄位的已披露內容：能化成數字的用數字，官方以文字披露的用原文，兩者皆無就是未知。
+function disclosedFee(record: SourceRecord, field: string) {
+  const value = record.fundOverview?.[field];
+  if (value !== undefined) return value;
+  const disclosures = record.fundOverview?.feeDisclosures;
+  if (disclosures && typeof disclosures === "object") {
+    const text = (disclosures as Record<string, unknown>)[field];
+    if (typeof text === "string") return text;
+  }
+  return undefined;
 }
 
 export function detectCandidateAnomalies(
@@ -77,10 +107,17 @@ export function detectCandidateAnomalies(
       anomalies.push({ kind: "allocation_total_out_of_range", fundClassId: record.fundClassId, detail: `配置合計 ${allocationTotal}% 超出範圍` });
     }
     for (const field of policy.feeFields) {
-      const oldFee = old.fundOverview?.[field];
-      const newFee = record.fundOverview?.[field];
-      if (oldFee !== undefined && newFee !== undefined && oldFee !== newFee) {
-        anomalies.push({ kind: "fee_changed", fundClassId: record.fundClassId, field, detail: `${field} 由 ${String(oldFee)} 改為 ${String(newFee)}` });
+      const oldFee = disclosedFee(old, field);
+      const newFee = disclosedFee(record, field);
+      // 由未知變成已知是新增覆蓋（例如 parser 擴充），不當成費率改變；
+      // 已披露的費用改值、由數字變成文字區間，或整個消失，都要人手核對。
+      if (oldFee !== undefined && oldFee !== newFee) {
+        anomalies.push({
+          kind: "fee_changed",
+          fundClassId: record.fundClassId,
+          field,
+          detail: `${field} 由 ${String(oldFee)} 改為 ${newFee === undefined ? "官方未再披露" : String(newFee)}`,
+        });
       }
     }
   }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-29T11:01:58.475Z",
+  "generatedAt": "2026-08-29T15:23:50.123Z",
   "decision": {
     "previousDataAsOf": "2026-07-31",
     "candidateDataAsOf": "2026-07-31",
@@ -24,6 +24,8 @@
       "calendarYearReturn2025": 5,
       "latestFer": 5,
       "oci1yHkd": 32,
+      "oci3yHkd": 32,
+      "oci5yHkd": 32,
       "riskClass": 16,
       "sinceLaunchReturn": 4
     },
@@ -31,20 +33,141 @@
     "issues": []
   },
   "audit": {
-    "batchId": "reparse-2026-08-29",
-    "policyVersion": "2026-08-27.v2",
-    "requiresReview": false,
+    "batchId": "reparse-fee-breakdown-2026-08-29",
+    "policyVersion": "2026-08-29.v3",
+    "requiresReview": true,
     "inputRecords": 451,
     "previousRecords": 451,
-    "generatedAt": "2026-08-29T11:01:58.474Z",
-    "anomalies": [],
-    "affectedFundClassIds": [],
+    "generatedAt": "2026-08-29T15:23:50.123Z",
+    "anomalies": [
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-212",
+        "field": "managementFee",
+        "detail": "managementFee 由 1.18 改為 1.18% p.a. - 1.8% p.a."
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-214",
+        "field": "managementFee",
+        "detail": "managementFee 由 1.18 改為 1.18% p.a. - 1.8% p.a."
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-215",
+        "field": "managementFee",
+        "detail": "managementFee 由 1.18 改為 1.18% p.a. - 1.8% p.a."
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-216",
+        "field": "managementFee",
+        "detail": "managementFee 由 1.18 改為 1.18% p.a. - 1.8% p.a."
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-220",
+        "field": "managementFee",
+        "detail": "managementFee 由 1.18 改為 1.18% p.a. - 1.28% p.a."
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-221",
+        "field": "managementFee",
+        "detail": "managementFee 由 1.18 改為 1.18% p.a. - 1.92% p.a."
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-223",
+        "field": "managementFee",
+        "detail": "managementFee 由 1.18 改為 1.18% p.a. - 1.8% p.a."
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-224",
+        "field": "managementFee",
+        "detail": "managementFee 由 1.18 改為 1.18% p.a. - 1.8% p.a."
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-800",
+        "field": "managementFee",
+        "detail": "managementFee 由 0.6 改為 0.6% p.a. - 0.608% p.a."
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-811",
+        "field": "managementFee",
+        "detail": "managementFee 由 1.18 改為 1.18% p.a. - 1.28% p.a."
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-812",
+        "field": "managementFee",
+        "detail": "managementFee 由 1.18 改為 1.18% p.a. - 1.92% p.a."
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-813",
+        "field": "managementFee",
+        "detail": "managementFee 由 1.155 改為 1.155% p.a. - 1.755% p.a."
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-814",
+        "field": "managementFee",
+        "detail": "managementFee 由 1.275 改為 1.275% p.a. - 1.775% p.a."
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-830",
+        "field": "managementFee",
+        "detail": "managementFee 由 0.84 改為 0.84% p.a. - 0.96% p.a."
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-896",
+        "field": "managementFee",
+        "detail": "managementFee 由 1.195 改為 1.195% p.a. - 1.255% p.a."
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-899",
+        "field": "managementFee",
+        "detail": "managementFee 由 1.18 改為 1.18% p.a. - 1.92% p.a."
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1979",
+        "field": "managementFee",
+        "detail": "managementFee 由 0.99 改為 0.99% p.a. - 1.04% p.a."
+      }
+    ],
+    "affectedFundClassIds": [
+      "mpfa-cf-1979",
+      "mpfa-cf-212",
+      "mpfa-cf-214",
+      "mpfa-cf-215",
+      "mpfa-cf-216",
+      "mpfa-cf-220",
+      "mpfa-cf-221",
+      "mpfa-cf-223",
+      "mpfa-cf-224",
+      "mpfa-cf-800",
+      "mpfa-cf-811",
+      "mpfa-cf-812",
+      "mpfa-cf-813",
+      "mpfa-cf-814",
+      "mpfa-cf-830",
+      "mpfa-cf-896",
+      "mpfa-cf-899"
+    ],
     "sourceFailures": [],
     "sources": [
       {
         "url": "https://mfp.mpfa.org.hk/eng/mpp_list.jsp",
         "dataAsOf": "2026-07-31",
-        "retrievedAt": "2026-08-29T11:01:46.896Z"
+        "retrievedAt": "2026-08-29T15:20:59.706Z"
       }
     ]
   }

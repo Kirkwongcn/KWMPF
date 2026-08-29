@@ -27,6 +27,13 @@ export function parseFundIds(html: string) {
   return [...new Set(ids)].sort((a, b) => a - b);
 }
 
+function normalizeLabel(label: string) {
+  return label
+    .toLowerCase()
+    .replaceAll(/[‐-―]/g, "-")
+    .replaceAll(/\s+/g, "");
+}
+
 function monthNumber(name: string) {
   const full = Object.keys(months).find(
     (month) => month.toLowerCase() === name.toLowerCase(),
@@ -104,10 +111,104 @@ export function parseFundDetail(html: string, cfId: number): SourceRecord {
     const match = value.match(/[+-]?\d+(?:\.\d+)?/);
     return match ? Number(match[0]) : undefined;
   };
+
+  // 平台在不同基金之間的標籤間距及破折號寫法不一致（例如 `Trustee Fee/ Custodian Fee`
+  // 與 `On-going Cost Illustration (OCI) – 3 Year`），所以逐個標籤先試原文，再試正規化字鍵。
+  const normalizedLabels = new Map<string, string>();
+  for (const [label, value] of fields) {
+    normalizedLabels.set(normalizeLabel(label), value);
+  }
+  const labelValue = (label: string) =>
+    fields.get(label) ?? normalizedLabels.get(normalizeLabel(label));
+
+  // 帶 `Up to` 的披露是上限而非實際費率，數值照樣抽出，但要記低邊幾個欄位是上限。
+  const feeCaps: string[] = [];
+  // 非單一費率的披露（例如按成員人數分級的年費）原文保留，不砌成數字。
+  const feeDisclosures: Record<string, string> = {};
+
+  const rateField = (label: string, publicName: string) => {
+    const value = labelValue(label);
+    if (value === undefined || value === "") return undefined;
+    if (/n\.a\./i.test(value)) {
+      unavailableFields.push(publicName);
+      return undefined;
+    }
+    const rate = value.match(
+      /^(up to\s+)?([+-]?\d+(?:\.\d+)?)\s*%(\s*p\.a\.)?$/i,
+    );
+    if (!rate?.[2]) {
+      feeDisclosures[publicName] = value;
+      return undefined;
+    }
+    if (rate[1]) feeCaps.push(publicName);
+    return Number(rate[2]);
+  };
+
+  const amountField = (label: string, publicName: string) => {
+    const value = labelValue(label);
+    if (value === undefined || value === "") return undefined;
+    if (/n\.a\./i.test(value)) {
+      unavailableFields.push(publicName);
+      return undefined;
+    }
+    const amount = value.match(/^(up to\s+)?HKD\s*([\d,]+(?:\.\d+)?)$/i);
+    if (!amount?.[2]) {
+      feeDisclosures[publicName] = value;
+      return undefined;
+    }
+    if (amount[1]) feeCaps.push(publicName);
+    return Number(amount[2].replaceAll(",", ""));
+  };
+
   const riskClass = numberField("Risk Class", "riskClass");
-  const latestFer = numberField("Latest FER", "latestFer");
-  const managementFee = numberField("Management Fee", "managementFee");
-  const oci1yHkd = numberField("On-going Cost Illustration (OCI) – 1 Year", "oci1yHkd");
+  const latestFer = rateField("Latest FER", "latestFer");
+  const recurringFees = {
+    managementFee: rateField("Management Fee", "managementFee"),
+    trusteeCustodianFee: rateField(
+      "Trustee Fee/ Custodian Fee",
+      "trusteeCustodianFee",
+    ),
+    empfPlatformFee: rateField("eMPF Platform Fee", "empfPlatformFee"),
+    memberServicingFee: rateField(
+      "Member Servicing Fee",
+      "memberServicingFee",
+    ),
+    investmentManagementFee: rateField(
+      "Investment Management Fee",
+      "investmentManagementFee",
+    ),
+    guaranteeCharge: rateField("Guarantee Charge", "guaranteeCharge"),
+  };
+  const oneOffCharges = {
+    joiningFee: rateField("Joining Fee", "joiningFee"),
+    annualFee: rateField("Annual Fee", "annualFee"),
+    contributionCharge: rateField(
+      "Contribution Charge",
+      "contributionCharge",
+    ),
+    bidSpread: rateField("Bid Spread", "bidSpread"),
+    offerSpread: rateField("Offer Spread", "offerSpread"),
+    withdrawalCharge: rateField("Withdrawal Charge", "withdrawalCharge"),
+  };
+  const ongoingCostIllustration = {
+    oci1yHkd: amountField(
+      "On-going Cost Illustration (OCI) – 1 Year",
+      "oci1yHkd",
+    ),
+    oci3yHkd: amountField(
+      "On-going Cost Illustration (OCI) – 3 Year",
+      "oci3yHkd",
+    ),
+    oci5yHkd: amountField(
+      "On-going Cost Illustration (OCI) – 5 Year",
+      "oci5yHkd",
+    ),
+  };
+  const fees = {
+    ...recurringFees,
+    ...oneOffCharges,
+    ...ongoingCostIllustration,
+  };
 
   const fundSizeText = required("Fund size (HKD Million)");
   const fundSizeMatch = fundSizeText.match(/([\d,]+(?:\.\d+)?)\s*\(as at /i);
@@ -188,15 +289,23 @@ export function parseFundDetail(html: string, cfId: number): SourceRecord {
       : {}),
     ...(sinceLaunchReturn === undefined ? {} : { sinceLaunchReturn }),
     ...(unavailableFields.length ? { unavailableFields } : {}),
-    ...([riskClass, latestFer, managementFee, oci1yHkd].some(
-      (value) => value !== undefined,
-    )
+    ...(riskClass !== undefined ||
+    latestFer !== undefined ||
+    Object.values(fees).some((value) => value !== undefined) ||
+    Object.keys(feeDisclosures).length > 0
       ? {
           fundOverview: {
             ...(riskClass === undefined ? {} : { riskClass }),
             ...(latestFer === undefined ? {} : { latestFer }),
-            ...(managementFee === undefined ? {} : { managementFee }),
-            ...(oci1yHkd === undefined ? {} : { oci1yHkd }),
+            ...Object.fromEntries(
+              Object.entries(fees).filter(
+                ([, value]) => value !== undefined,
+              ),
+            ),
+            ...(feeCaps.length ? { feeCaps } : {}),
+            ...(Object.keys(feeDisclosures).length
+              ? { feeDisclosures }
+              : {}),
           },
         }
       : {}),

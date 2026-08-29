@@ -10,6 +10,33 @@ function returnsAsOf(record: SourceRecord) {
   );
 }
 
+// 官方詳情頁已披露的費用組成部分，逐個原樣帶入 payload；缺失的欄位留空，不補 0。
+const feeFields = [
+  "oci1yHkd",
+  "oci3yHkd",
+  "oci5yHkd",
+  "trusteeCustodianFee",
+  "empfPlatformFee",
+  "memberServicingFee",
+  "investmentManagementFee",
+  "guaranteeCharge",
+  "joiningFee",
+  "annualFee",
+  "contributionCharge",
+  "bidSpread",
+  "offerSpread",
+  "withdrawalCharge",
+] as const;
+
+function numericFundOverviewFields(record: SourceRecord) {
+  return Object.fromEntries(
+    feeFields.flatMap((field) => {
+      const value = record.fundOverview?.[field];
+      return typeof value === "number" ? [[field, value]] : [];
+    }),
+  );
+}
+
 export function buildPublicationInputs(records: SourceRecord[]): PublicationInput[] {
   return records.map((record) => ({
     fundClassId: record.fundClassId,
@@ -47,8 +74,17 @@ export function buildPublicationInputs(records: SourceRecord[]): PublicationInpu
       ...(typeof record.fundOverview?.managementFee === "number"
         ? { managementFee: record.fundOverview.managementFee }
         : {}),
-      ...(typeof record.fundOverview?.oci1yHkd === "number"
-        ? { oci1yHkd: record.fundOverview.oci1yHkd }
+      ...numericFundOverviewFields(record),
+      ...(Array.isArray(record.fundOverview?.feeCaps)
+        ? { feeCaps: record.fundOverview.feeCaps as string[] }
+        : {}),
+      ...(record.fundOverview?.feeDisclosures
+        ? {
+            feeDisclosures: record.fundOverview.feeDisclosures as Record<
+              string,
+              string
+            >,
+          }
         : {}),
       ...(typeof record.fundSizeHkdMillion === "number"
         ? { fundSizeHkdMillion: record.fundSizeHkdMillion }
