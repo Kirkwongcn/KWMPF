@@ -126,46 +126,82 @@ export function RankingsPage({
         <h2 className="kw-section__heading" id="ranking-table-title">
           已發布基金排名
         </h2>
-        <div className="kw-ranking-controls">
-          <label htmlFor="ranking-metric">排序指標</label>
-          <select
-            className="kw-control"
-            id="ranking-metric"
-            value={metric}
-            onChange={(event) => setMetric(event.target.value as RankingMetric)}
-          >
-            {Object.entries(metricLabels).map(([value, label]) => (
-              <option key={value} value={value}>
-                {label}
-              </option>
-            ))}
-          </select>
-          {metric === "return" ? (
-            <>
-              <label htmlFor="ranking-period">回報期間</label>
+        <div className="kw-toolbar">
+          <div className="kw-toolbar__controls">
+            <p className="kw-field">
+              <label htmlFor="ranking-metric">排序指標</label>
               <select
                 className="kw-control"
-                id="ranking-period"
-                value={period}
+                id="ranking-metric"
+                value={metric}
                 onChange={(event) =>
-                  setPeriod(event.target.value as "1" | "5" | "10")
+                  setMetric(event.target.value as RankingMetric)
                 }
               >
-                <option value="1">一年</option>
-                <option value="5">五年</option>
-                <option value="10">十年</option>
+                {Object.entries(metricLabels).map(([value, label]) => (
+                  <option key={value} value={value}>
+                    {label}
+                  </option>
+                ))}
               </select>
-              <p className="kw-muted">
-                官方沒有提供三年年率化回報，本站不會由其他期間推算。
-              </p>
-            </>
-          ) : (
-            <p className="kw-muted">
-              {metric === "fee"
-                ? "管理費為官方公布的當前費率，不包括基金開支比率所涵蓋的歷史費用。"
-                : "風險級別由官方公布，數字越低代表過往波幅越低，不代表回報較佳。"}
             </p>
-          )}
+            {metric === "return" && (
+              <p className="kw-field">
+                <label htmlFor="ranking-period">回報期間</label>
+                <select
+                  className="kw-control"
+                  id="ranking-period"
+                  value={period}
+                  onChange={(event) =>
+                    setPeriod(event.target.value as "1" | "5" | "10")
+                  }
+                >
+                  <option value="1">一年</option>
+                  <option value="5">五年</option>
+                  <option value="10">十年</option>
+                </select>
+              </p>
+            )}
+            {publication && (
+              <p className="kw-field">
+                <label htmlFor="comparison-group">比較組別</label>
+                <select
+                  className="kw-control"
+                  id="comparison-group"
+                  value={effectiveGroup}
+                  onChange={(event) => setComparisonGroup(event.target.value)}
+                >
+                  <option value="all">全部比較組別</option>
+                  {comparisonGroups.map((group) => (
+                    <option key={group} value={group}>
+                      {group}
+                    </option>
+                  ))}
+                </select>
+              </p>
+            )}
+          </div>
+          <div className="kw-toolbar__notes">
+            <p className="kw-muted">
+              {metric === "return"
+                ? "官方沒有提供三年年率化回報，本站不會由其他期間推算。同一比較組別內按回報由高至低排列。"
+                : metric === "fee"
+                  ? "管理費為官方公布的當前費率，不包括基金開支比率所涵蓋的歷史費用。"
+                  : "風險級別由官方公布，數字越低代表過往波幅越低，不代表回報較佳。"}
+            </p>
+            {publication && (
+              <>
+                <p className="kw-muted">
+                  公開快照：<code>{publication.snapshotId}</code>
+                </p>
+                <p className="kw-muted">
+                  {publication.methodology?.classification
+                    ? `比較組別採用 ${publication.methodology.classification.provider}「${publication.methodology.classification.dataset}」（期別 ${publication.methodology.classification.capturedAt}），屬非官方來源；排名數值全部來自官方平台。`
+                    : "比較組別分類屬非官方來源；排名數值全部來自官方平台。"}
+                </p>
+              </>
+            )}
+          </div>
         </div>
         {failed ? (
           <p className="kw-status kw-status--negative">
@@ -175,30 +211,6 @@ export function RankingsPage({
           <p className="kw-status">正在載入已發布排名…</p>
         ) : (
           <>
-            <div className="kw-ranking-controls">
-              <label htmlFor="comparison-group">比較組別</label>
-              <select
-                className="kw-control"
-                id="comparison-group"
-                value={effectiveGroup}
-                onChange={(event) => setComparisonGroup(event.target.value)}
-              >
-                <option value="all">全部比較組別</option>
-                {comparisonGroups.map((group) => (
-                  <option key={group} value={group}>
-                    {group}
-                  </option>
-                ))}
-              </select>
-              <p className="kw-muted">
-                公開快照：<code>{publication.snapshotId}</code>
-              </p>
-              <p className="kw-muted">
-                {publication.methodology?.classification
-                  ? `比較組別採用 ${publication.methodology.classification.provider}「${publication.methodology.classification.dataset}」（期別 ${publication.methodology.classification.capturedAt}），屬非官方來源；排名數值全部來自官方平台。`
-                  : "比較組別分類屬非官方來源；排名數值全部來自官方平台。"}
-              </p>
-            </div>
             {retiredGroup ? (
               <p className="kw-status kw-status--warning">
                 {`比較組別已改用同類基金分類，「${retiredGroup}」不再是獨立組別，現顯示全部組別。`}
@@ -242,8 +254,8 @@ export function RankingsPage({
                         </td>
                         <td className="kw-return">{row.displayValue}</td>
                         <td>{row.comparisonGroup}</td>
-                        <td>{row.dataAsOf}</td>
-                        <td>
+                        <td className="kw-nowrap">{row.dataAsOf}</td>
+                        <td className="kw-nowrap">
                           <a
                             href={row.sourceUrl}
                             target="_blank"
