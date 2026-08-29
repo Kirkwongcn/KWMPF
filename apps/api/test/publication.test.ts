@@ -400,6 +400,7 @@ describe("publication snapshot", () => {
           earliest: fundFixture.fundClass.dataAsOf,
           latest: fundFixture.fundClass.dataAsOf,
         },
+        factSheet: null,
         funds: [
           {
             id: fundFixture.fundClass.id,
@@ -487,6 +488,70 @@ describe("publication snapshot", () => {
     expect(byId.get("fund-short")).not.toHaveProperty("annualizedReturn5y");
     expect(byId.get("fund-short")).not.toHaveProperty("annualizedReturn10y");
     expect(byId.get("fund-none")).not.toHaveProperty("annualizedReturn1y");
+  });
+
+  it("carries the official fact sheet the seed recorded for each scheme", async () => {
+    const snapshotId = "snapshot-scheme-fact-sheets";
+    await bindings.DB.prepare(
+      "INSERT INTO publication_snapshots (snapshot_id, published_at) VALUES (?, ?)",
+    )
+      .bind(snapshotId, "2026-08-28T00:00:00Z")
+      .run();
+    const schemesWithSheets = [
+      {
+        id: "listed-fund",
+        schemeName: "已登記計劃",
+        schemeFactSheet: {
+          url: "https://www.mpfa.org.hk/assets/FF/MT00016.pdf",
+          capturedAt: "2026-08-28",
+          registerUrl:
+            "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes",
+        },
+      },
+      { id: "unlisted-fund", schemeName: "未有便覽的計劃" },
+    ];
+    for (const fund of schemesWithSheets) {
+      await bindings.DB.prepare(
+        "INSERT INTO fund_class_versions (snapshot_id, fund_class_id, payload) VALUES (?, ?, ?)",
+      )
+        .bind(
+          snapshotId,
+          fund.id,
+          JSON.stringify({
+            snapshotId,
+            ...(fund.schemeFactSheet
+              ? { schemeFactSheet: fund.schemeFactSheet }
+              : {}),
+            fundClass: {
+              id: fund.id,
+              schemeName: fund.schemeName,
+              trusteeName: "測試受託人",
+              constituentFundName: fund.id,
+              fundClassName: "Class A",
+              fundType: "Equity Fund",
+              verificationStatus: "verified",
+            },
+          }),
+        )
+        .run();
+    }
+    await bindings.DB.prepare(
+      "INSERT INTO current_publication (singleton, snapshot_id) VALUES (1, ?)",
+    )
+      .bind(snapshotId)
+      .run();
+
+    const schemes = (await (
+      await SELF.fetch("https://kwmpf.test/schemes")
+    ).json()) as { schemeName: string; factSheet: unknown }[];
+    const byScheme = new Map(
+      schemes.map((scheme) => [scheme.schemeName, scheme.factSheet]),
+    );
+
+    expect(byScheme.get("已登記計劃")).toEqual(
+      schemesWithSheets[0]!.schemeFactSheet,
+    );
+    expect(byScheme.get("未有便覽的計劃")).toBeNull();
   });
 
   it("reports the data-as-of range of each scheme and the date behind each fund", async () => {

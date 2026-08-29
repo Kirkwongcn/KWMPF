@@ -86,3 +86,19 @@ test("由計劃比較頁可追查至個別基金詳情", async ({ page }) => {
     page.getByRole("heading", { name: "資料來源及驗證" }),
   ).toBeVisible();
 });
+
+test("每個計劃都連到積金局的官方基金便覽", async ({ page }) => {
+  await page.goto("/schemes");
+  const cards = cardsOf(page);
+  await expect(cards.first()).toBeVisible();
+
+  const links = page.locator(".kw-scheme-factsheet a");
+  await expect(links).toHaveCount(24);
+  for (const href of await links.evaluateAll((nodes) =>
+    nodes.map((node) => (node as HTMLAnchorElement).href),
+  )) {
+    expect(href).toMatch(
+      /^https:\/\/www\.mpfa\.org\.hk\/assets\/FF\/\w+\.pdf$/,
+    );
+  }
+});

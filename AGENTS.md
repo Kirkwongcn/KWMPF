@@ -28,6 +28,16 @@
 `apps/api/src/comparison-group.ts` 統一決定；計劃不在 Lipper 來源內的基金以「平台分類：」前綴自成一組。
 MPF Navigator 檔案的 Sheet1（風險取向配置比重）不在範圍內，不要入庫或引用。
 
+## Official scheme fact sheets
+
+積金局的「基金便覽」按計劃發布，連結抄錄自〈註冊強積金計劃及成分基金〉登記冊，存放於
+`data/sources/<YYYY-MM-DD>/fund-fact-sheet-links.json`。`packages/coverage/src/fact-sheet-lookup.ts`
+只認 `YYYY-MM-DD` 目錄，取最新一個帶有該檔案的批次，並在 `publication-seed` 時把
+`schemeFactSheet`（連結、抄錄日期、登記冊網址）寫入每筆快照 payload。
+快照內有計劃在連結檔中找不到就會報錯，不可靜默略過。
+檔案編號的前綴代表計劃類型（`MT` 集成信託、`IS` 行業、`ES` 僱主營辦），不可由編號推算。
+更新做法：開新的日期目錄，由登記冊重新抄錄全部計劃，再重跑 seed。
+
 ## End-to-end tests
 
 `bun run e2e` 會用 `scripts/e2e-serve-api.sh` 把已發布快照載入本機 D1，啟動本機 Worker 及 `vite preview`，再以 Playwright 在桌面及手機兩個 project 跑跨頁流程。首次執行前需安裝瀏覽器：`cd apps/e2e && node node_modules/@playwright/test/cli.js install chromium`。E2E 不屬於 `bun run check`，在 CI 由獨立 job 執行。

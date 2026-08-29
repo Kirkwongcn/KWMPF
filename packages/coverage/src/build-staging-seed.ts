@@ -9,6 +9,10 @@ import {
   assertCategoryCoverage,
   loadCategoryLookup,
 } from "./category-map-lookup";
+import {
+  assertFactSheetCoverage,
+  loadFactSheetLookup,
+} from "./fact-sheet-lookup";
 import { publicationSnapshotId } from "./publication-snapshot-id";
 import { parseSourceSnapshot } from "./input";
 
@@ -36,6 +40,12 @@ const categories = await loadCategoryLookup(argument("--category-map"));
 assertCategoryCoverage(
   categories,
   payload.records.map((record) => record.fundClassId),
+);
+
+const factSheets = await loadFactSheetLookup(argument("--fact-sheet-sources"));
+assertFactSheetCoverage(
+  factSheets,
+  payload.records.map((record) => record.identity.schemeName),
 );
 
 const sqlString = (value: string) => `'${value.replaceAll("'", "''")}'`;
@@ -68,6 +78,11 @@ const statements = [
         dataset: "Hong Kong Pension Fund Classification",
         capturedAt: categories.capturedAt,
         official: false,
+      },
+      schemeFactSheet: {
+        url: factSheets.urlOf(record.identity.schemeName),
+        capturedAt: factSheets.capturedAt,
+        registerUrl: factSheets.registerUrl,
       },
       provenance: {
         sourceUrl: record.sourceUrl,

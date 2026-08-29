@@ -28,6 +28,11 @@ type Scheme = {
     fundCount: number;
   } | null;
   dataAsOf: { earliest: string; latest: string } | null;
+  factSheet: {
+    url: string;
+    capturedAt: string;
+    registerUrl: string;
+  } | null;
   funds: SchemeFund[];
 };
 
@@ -227,6 +232,23 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
                     </dd>
                   </div>
                 </dl>
+                {scheme.factSheet && (
+                  <p className="kw-scheme-factsheet">
+                    <a
+                      href={scheme.factSheet.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`${scheme.schemeName} 積金局基金便覽 PDF`}
+                    >
+                      積金局基金便覽（PDF）
+                    </a>
+                    <small className="kw-fee-note">
+                      連結取自積金局註冊強積金計劃登記冊（
+                      {scheme.factSheet.capturedAt}
+                      ），文件按計劃發布，涵蓋計劃內全部成分基金。
+                    </small>
+                  </p>
+                )}
                 <details className="kw-disclosure">
                   <summary>基金種類（{scheme.fundTypes.length}）</summary>
                   <p className="kw-muted">{scheme.fundTypes.join("、")}</p>

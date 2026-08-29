@@ -623,3 +623,67 @@ describe("scheme fund list disclosure", () => {
     ).not.toBeInTheDocument();
   });
 });
+
+describe("scheme fact sheet link", () => {
+  afterEach(() => {
+    cleanup();
+    vi.unstubAllGlobals();
+  });
+
+  const schemes = [
+    {
+      schemeName: "有便覽的計劃",
+      trusteeName: "Trustee One",
+      fundClassCount: 1,
+      fundTypes: ["Equity Fund"],
+      riskClassDistribution: { "5": 1 },
+      managementFee: null,
+      dataAsOf: null,
+      factSheet: {
+        url: "https://www.mpfa.org.hk/assets/FF/MT00016.pdf",
+        capturedAt: "2026-08-28",
+        registerUrl:
+          "https://www.mpfa.org.hk/en/info-centre/public-registers/registered-mpf-schemes",
+      },
+      funds: [],
+    },
+    {
+      schemeName: "未有便覽的計劃",
+      trusteeName: "Trustee Two",
+      fundClassCount: 1,
+      fundTypes: ["Bond Fund"],
+      riskClassDistribution: {},
+      managementFee: null,
+      dataAsOf: null,
+      factSheet: null,
+      funds: [],
+    },
+  ];
+
+  it("links the official fact sheet and says where the link came from", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(Response.json(schemes)));
+
+    render(<SchemesPage apiBaseUrl="https://api.test" />);
+
+    const link = await screen.findByRole("link", {
+      name: "有便覽的計劃 積金局基金便覽 PDF",
+    });
+    expect(link).toHaveAttribute(
+      "href",
+      "https://www.mpfa.org.hk/assets/FF/MT00016.pdf",
+    );
+    expect(link).toHaveAttribute("target", "_blank");
+    expect(
+      screen.getByText(/積金局註冊強積金計劃登記冊（2026-08-28）/),
+    ).toBeVisible();
+  });
+
+  it("says nothing rather than guessing when a scheme has no published fact sheet", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(Response.json(schemes)));
+
+    render(<SchemesPage apiBaseUrl="https://api.test" />);
+
+    await screen.findByRole("heading", { name: "未有便覽的計劃" });
+    expect(screen.getAllByText(/積金局基金便覽/)).toHaveLength(1);
+  });
+});
