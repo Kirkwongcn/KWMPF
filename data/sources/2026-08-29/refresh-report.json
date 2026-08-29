@@ -5,9 +5,7 @@
     "candidateDataAsOf": "2026-07-31",
     "outcome": "no_new_data",
     "publishable": false,
-    "reasons": [
-      "官方來源截至日期仍然是 2026-07-31，沒有新批次。"
-    ]
+    "reasons": ["官方來源截至日期仍然是 2026-07-31，沒有新批次。"]
   },
   "readiness": {
     "ready": true,
