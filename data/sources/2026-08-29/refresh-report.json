@@ -1,0 +1,53 @@
+{
+  "generatedAt": "2026-08-29T11:01:58.475Z",
+  "decision": {
+    "previousDataAsOf": "2026-07-31",
+    "candidateDataAsOf": "2026-07-31",
+    "outcome": "no_new_data",
+    "publishable": false,
+    "reasons": [
+      "官方來源截至日期仍然是 2026-07-31，沒有新批次。"
+    ]
+  },
+  "readiness": {
+    "ready": true,
+    "inputRecords": 451,
+    "acceptedRecords": 451,
+    "blockedRecords": 0,
+    "missingByField": {},
+    "unavailableByField": {
+      "annualizedReturn10y": 93,
+      "annualizedReturn1y": 4,
+      "annualizedReturn5y": 24,
+      "calendarYearReturn2021": 46,
+      "calendarYearReturn2022": 18,
+      "calendarYearReturn2023": 16,
+      "calendarYearReturn2024": 5,
+      "calendarYearReturn2025": 5,
+      "latestFer": 5,
+      "oci1yHkd": 32,
+      "riskClass": 16,
+      "sinceLaunchReturn": 4
+    },
+    "blockedDetails": [],
+    "issues": []
+  },
+  "audit": {
+    "batchId": "reparse-2026-08-29",
+    "policyVersion": "2026-08-27.v2",
+    "requiresReview": false,
+    "inputRecords": 451,
+    "previousRecords": 451,
+    "generatedAt": "2026-08-29T11:01:58.474Z",
+    "anomalies": [],
+    "affectedFundClassIds": [],
+    "sourceFailures": [],
+    "sources": [
+      {
+        "url": "https://mfp.mpfa.org.hk/eng/mpp_list.jsp",
+        "dataAsOf": "2026-07-31",
+        "retrievedAt": "2026-08-29T11:01:46.896Z"
+      }
+    ]
+  }
+}

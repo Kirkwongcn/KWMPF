@@ -76,6 +76,34 @@ function parseReturns(value: unknown, path: string) {
   );
 }
 
+function number(value: unknown, path: string) {
+  if (typeof value !== "number" || !Number.isFinite(value)) {
+    throw new Error(`${path} must be a finite number`);
+  }
+  return value;
+}
+
+function parseCalendarYearReturns(value: unknown, path: string) {
+  const item = object(value, path);
+  return Object.fromEntries(
+    Object.entries(item).map(([year, observation]) => {
+      if (!/^\d{4}$/.test(year)) {
+        throw new Error(`${path} keys must be four-digit years, got ${year}`);
+      }
+      return [year, number(observation, `${path}.${year}`)];
+    }),
+  );
+}
+
+function parseSinceLaunchReturn(value: unknown, path: string) {
+  const item = object(value, path);
+  return {
+    annualized: number(item.annualized, `${path}.annualized`),
+    cumulative: number(item.cumulative, `${path}.cumulative`),
+    dataAsOf: string(item.dataAsOf, `${path}.dataAsOf`),
+  };
+}
+
 export function parseSourceSnapshot(value: unknown): SourceSnapshot {
   const root = object(value, "source snapshot");
   const sourceType = string(root.sourceType, "sourceType") as SourceType;
@@ -142,6 +170,46 @@ export function parseSourceSnapshot(value: unknown): SourceSnapshot {
         ...(item.returns
           ? { returns: parseReturns(item.returns, `records[${index}].returns`) }
           : {}),
+        ...(item.fundSizeHkdMillion === undefined
+          ? {}
+          : {
+              fundSizeHkdMillion: number(
+                item.fundSizeHkdMillion,
+                `records[${index}].fundSizeHkdMillion`,
+              ),
+            }),
+        ...(item.fundSizeAsOf === undefined
+          ? {}
+          : {
+              fundSizeAsOf: string(
+                item.fundSizeAsOf,
+                `records[${index}].fundSizeAsOf`,
+              ),
+            }),
+        ...(item.launchDate === undefined
+          ? {}
+          : {
+              launchDate: string(
+                item.launchDate,
+                `records[${index}].launchDate`,
+              ),
+            }),
+        ...(item.calendarYearReturns === undefined
+          ? {}
+          : {
+              calendarYearReturns: parseCalendarYearReturns(
+                item.calendarYearReturns,
+                `records[${index}].calendarYearReturns`,
+              ),
+            }),
+        ...(item.sinceLaunchReturn === undefined
+          ? {}
+          : {
+              sinceLaunchReturn: parseSinceLaunchReturn(
+                item.sinceLaunchReturn,
+                `records[${index}].sinceLaunchReturn`,
+              ),
+            }),
       };
     }),
   };
