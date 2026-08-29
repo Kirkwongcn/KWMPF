@@ -27,9 +27,19 @@ export function parseFundIds(html: string) {
   return [...new Set(ids)].sort((a, b) => a - b);
 }
 
+function monthNumber(name: string) {
+  const full = Object.keys(months).find(
+    (month) => month.toLowerCase() === name.toLowerCase(),
+  );
+  if (full) return months[full];
+  return Object.entries(months).find(
+    ([month]) => month.slice(0, 3).toLowerCase() === name.toLowerCase(),
+  )?.[1];
+}
+
 function sourceDate(text: string, cfId: number) {
   const match = text.match(/as at (\d{1,2}) ([A-Za-z]+) (\d{4})/i);
-  const month = match?.[2] ? months[match[2]] : undefined;
+  const month = match?.[2] ? monthNumber(match[2]) : undefined;
   if (!match?.[1] || !match[3] || !month) {
     throw new Error(`Data date is missing from cf_id ${cfId}`);
   }
@@ -51,6 +61,15 @@ export function parseFundDetail(html: string, cfId: number): SourceRecord {
     if (!value) throw new Error(`${label} is missing from cf_id ${cfId}`);
     return value;
   };
+
+  const identity = {
+    trusteeName: required("Name of MPF trustee"),
+    schemeName: required("Name of MPF scheme"),
+    constituentFundName: required("Name of the constituent fund"),
+    fundClassName: required("Fund Class"),
+  };
+  const fundType = required("Fund Type");
+  const fundTypeDescriptor = required("Fund Type - Full Descriptor");
 
   const returns: SourceRecord["returns"] = {};
   const unavailableFields: string[] = [];
@@ -90,20 +109,84 @@ export function parseFundDetail(html: string, cfId: number): SourceRecord {
   const managementFee = numberField("Management Fee", "managementFee");
   const oci1yHkd = numberField("On-going Cost Illustration (OCI) – 1 Year", "oci1yHkd");
 
+  const fundSizeText = required("Fund size (HKD Million)");
+  const fundSizeMatch = fundSizeText.match(/([\d,]+(?:\.\d+)?)\s*\(as at /i);
+  const fundSizeHkdMillion = fundSizeMatch?.[1]
+    ? Number(fundSizeMatch[1].replaceAll(",", ""))
+    : undefined;
+  if (fundSizeHkdMillion === undefined && /n\.a\./i.test(fundSizeText)) {
+    unavailableFields.push("fundSizeHkdMillion");
+  }
+
+  const launchDateText = fields.get("Launch Date");
+  let launchDate: string | undefined;
+  if (launchDateText && /n\.a\./i.test(launchDateText)) {
+    unavailableFields.push("launchDate");
+  } else if (launchDateText) {
+    const match = launchDateText.match(/^(\d{1,2}) ([A-Za-z]+) (\d{4})$/);
+    const month = match?.[2] ? monthNumber(match[2]) : undefined;
+    if (!match?.[1] || !match[3] || !month) {
+      throw new Error(`Launch Date is unreadable on cf_id ${cfId}`);
+    }
+    launchDate = `${match[3]}-${month}-${match[1].padStart(2, "0")}`;
+  }
+
+  const calendarYearReturns: Record<string, number> = {};
+  for (const [label, value] of fields) {
+    const year = label.match(/^Calendar year return: (\d{4})$/)?.[1];
+    if (!year) continue;
+    if (/n\.a\./i.test(value)) {
+      unavailableFields.push(`calendarYearReturn${year}`);
+      continue;
+    }
+    const parsed = value.match(/[+-]?\d+(?:\.\d+)?/);
+    if (parsed) calendarYearReturns[year] = Number(parsed[0]);
+  }
+
+  const sinceLaunchRow = $("tr")
+    .toArray()
+    .map((element) => $(element).text().replace(/\s+/g, " ").trim())
+    .find((text) =>
+      /Annualized Return \/ Cumulative Return \(Since Launch\) \(as at [^)]+\)/i.test(
+        text,
+      ),
+    );
+  let sinceLaunchReturn:
+    | { annualized: number; cumulative: number; dataAsOf: string }
+    | undefined;
+  if (sinceLaunchRow && !/n\.a\./i.test(sinceLaunchRow)) {
+    const values = [...sinceLaunchRow.matchAll(/([+-]?\d+(?:\.\d+)?)%/g)].map(
+      (match) => Number(match[1]),
+    );
+    if (values.length < 2) {
+      throw new Error(`Since-launch return is unreadable on cf_id ${cfId}`);
+    }
+    sinceLaunchReturn = {
+      annualized: values[0]!,
+      cumulative: values[1]!,
+      dataAsOf: sourceDate(sinceLaunchRow, cfId),
+    };
+  } else if (sinceLaunchRow) {
+    unavailableFields.push("sinceLaunchReturn");
+  }
+
   return {
     fundClassId: `mpfa-cf-${cfId}`,
-    identity: {
-      trusteeName: required("Name of MPF trustee"),
-      schemeName: required("Name of MPF scheme"),
-      constituentFundName: required("Name of the constituent fund"),
-      fundClassName: required("Fund Class"),
-    },
-    fundType: required("Fund Type"),
-    fundTypeDescriptor: required("Fund Type - Full Descriptor"),
+    identity,
+    fundType,
+    fundTypeDescriptor,
     current: true,
-    dataAsOf: sourceDate(required("Fund size (HKD Million)"), cfId),
+    dataAsOf: sourceDate(fundSizeText, cfId),
     sourceUrl: `${detailBaseUrl}${cfId}`,
     returns,
+    ...(fundSizeHkdMillion === undefined
+      ? {}
+      : { fundSizeHkdMillion, fundSizeAsOf: sourceDate(fundSizeText, cfId) }),
+    ...(launchDate === undefined ? {} : { launchDate }),
+    ...(Object.keys(calendarYearReturns).length
+      ? { calendarYearReturns }
+      : {}),
+    ...(sinceLaunchReturn === undefined ? {} : { sinceLaunchReturn }),
     ...(unavailableFields.length ? { unavailableFields } : {}),
     ...([riskClass, latestFer, managementFee, oci1yHkd].some(
       (value) => value !== undefined,

@@ -30,6 +30,18 @@ export type SourceRecord = {
     dataAsOf: string;
     status?: "verified" | "stale" | "failed_with_last_verified";
   }>>;
+  // 基金規模按月更新，截至日期由平台獨立標示，未必等於回報的截至日期。
+  fundSizeHkdMillion?: number;
+  fundSizeAsOf?: string;
+  // 成立日期是靜態事實，不設過期。
+  launchDate?: string;
+  // 曆年累積回報（年份對百分比），不是年率化回報。
+  calendarYearReturns?: Record<string, number>;
+  sinceLaunchReturn?: {
+    annualized: number;
+    cumulative: number;
+    dataAsOf: string;
+  };
 };
 
 export type SourceSnapshot = {

@@ -67,6 +67,49 @@ describe("publication snapshot", () => {
     });
   });
 
+  it("ages the fund size against its own as-at date, not the return date", async () => {
+    const withFundSizeDate = {
+      ...fundFixture,
+      fundClass: {
+        ...fundFixture.fundClass,
+        fundSizeAsOf: "2024-01-31",
+        returnsAsOf: fundFixture.fundClass.dataAsOf,
+        launchDate: "2006-09-01",
+      },
+    };
+    const archived = await archiveCandidate(bindings, withFundSizeDate);
+    await publishCandidate(bindings, withFundSizeDate, archived);
+
+    const body = (await (
+      await SELF.fetch("https://kwmpf.test/fund-classes/mpfa-cf-429-class-i")
+    ).json()) as {
+      fundSizeFreshness: {
+        status: string;
+        dataAsOf: string;
+        graceDays: number;
+      };
+      fundClass: { launchDate: string };
+    };
+
+    expect(body.fundSizeFreshness).toMatchObject({
+      status: "stale",
+      dataAsOf: "2024-01-31",
+      graceDays: 45,
+    });
+    expect(body.fundClass.launchDate).toBe("2006-09-01");
+  });
+
+  it("omits fund size freshness when the snapshot carries no fund size date", async () => {
+    const archived = await archiveCandidate(bindings, fundFixture);
+    await publishCandidate(bindings, fundFixture, archived);
+
+    const body = (await (
+      await SELF.fetch("https://kwmpf.test/fund-classes/mpfa-cf-429-class-i")
+    ).json()) as Record<string, unknown>;
+
+    expect(body).not.toHaveProperty("fundSizeFreshness");
+  });
+
   it("does not publish an anomalous candidate without matching reviewer approval", async () => {
     const anomalous = {
       ...fundFixture,

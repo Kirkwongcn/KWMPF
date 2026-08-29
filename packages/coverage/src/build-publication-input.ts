@@ -1,6 +1,15 @@
 import type { SourceRecord } from "./build-coverage";
 import type { PublicationInput } from "./publication-preflight";
 
+function returnsAsOf(record: SourceRecord) {
+  return (
+    record.returns?.[1]?.dataAsOf ??
+    record.returns?.[5]?.dataAsOf ??
+    record.returns?.[10]?.dataAsOf ??
+    record.sinceLaunchReturn?.dataAsOf
+  );
+}
+
 export function buildPublicationInputs(records: SourceRecord[]): PublicationInput[] {
   return records.map((record) => ({
     fundClassId: record.fundClassId,
@@ -40,6 +49,22 @@ export function buildPublicationInputs(records: SourceRecord[]): PublicationInpu
         : {}),
       ...(typeof record.fundOverview?.oci1yHkd === "number"
         ? { oci1yHkd: record.fundOverview.oci1yHkd }
+        : {}),
+      ...(typeof record.fundSizeHkdMillion === "number"
+        ? { fundSizeHkdMillion: record.fundSizeHkdMillion }
+        : {}),
+      ...(record.fundSizeAsOf ? { fundSizeAsOf: record.fundSizeAsOf } : {}),
+      ...(returnsAsOf(record) ? { returnsAsOf: returnsAsOf(record) } : {}),
+      ...(record.launchDate ? { launchDate: record.launchDate } : {}),
+      ...(record.calendarYearReturns &&
+      Object.keys(record.calendarYearReturns).length
+        ? { calendarYearReturns: record.calendarYearReturns }
+        : {}),
+      ...(record.sinceLaunchReturn
+        ? {
+            sinceLaunchReturnAnnualized: record.sinceLaunchReturn.annualized,
+            sinceLaunchReturnCumulative: record.sinceLaunchReturn.cumulative,
+          }
         : {}),
     },
   }));
