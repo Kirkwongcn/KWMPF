@@ -9,6 +9,23 @@ type PublicFields = {
   latestFer?: number;
   managementFee?: number;
   oci1yHkd?: number;
+  trusteeCustodianFee?: number;
+  empfPlatformFee?: number;
+  memberServicingFee?: number;
+  investmentManagementFee?: number;
+  guaranteeCharge?: number;
+  joiningFee?: number;
+  annualFee?: number;
+  contributionCharge?: number;
+  bidSpread?: number;
+  offerSpread?: number;
+  withdrawalCharge?: number;
+  oci3yHkd?: number;
+  oci5yHkd?: number;
+  // 帶 `Up to` 前綴的費用欄位名稱：披露的是上限，不是實際費率。
+  feeCaps?: string[];
+  // 非單一費率的費用披露原文（例如按成員人數分級的年費）。
+  feeDisclosures?: Record<string, string>;
   fundSizeHkdMillion?: number;
   fundSizeAsOf?: string;
   returnsAsOf?: string;
@@ -36,6 +53,9 @@ export function buildPublicationPreflight(records: PublicationInput[]) {
     const missing = requiredFields.filter(
       (field) =>
         typeof record.publicFields?.[field] !== "number" &&
+        // 官方以文字披露的費用（例如 `1.18% p.a. - 1.8% p.a.` 這類區間）是已知資料，
+        // 只是不能化成單一數字，照樣可以發布。
+        typeof record.publicFields?.feeDisclosures?.[field] !== "string" &&
         !record.unavailableFields?.includes(field),
     );
     if (!record.sourceUrl) missing.push("sourceUrl" as never);

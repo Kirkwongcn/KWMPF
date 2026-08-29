@@ -26,8 +26,23 @@ type PublishedFundClass = {
     cumulativeReturn10y?: number;
     riskClass?: number;
     latestFer?: number;
-    managementFee: number;
+    managementFee?: number;
     oci1yHkd?: number;
+    oci3yHkd?: number;
+    oci5yHkd?: number;
+    trusteeCustodianFee?: number;
+    empfPlatformFee?: number;
+    memberServicingFee?: number;
+    investmentManagementFee?: number;
+    guaranteeCharge?: number;
+    joiningFee?: number;
+    annualFee?: number;
+    contributionCharge?: number;
+    bidSpread?: number;
+    offerSpread?: number;
+    withdrawalCharge?: number;
+    feeCaps?: string[];
+    feeDisclosures?: Record<string, string>;
     fundSizeHkdMillion?: number;
     fundSizeAsOf?: string;
     returnsAsOf?: string;
@@ -55,6 +70,53 @@ type PublishedFundClass = {
     ageDays: number | null;
   };
 };
+
+type FeeField =
+  | "managementFee"
+  | "trusteeCustodianFee"
+  | "empfPlatformFee"
+  | "memberServicingFee"
+  | "investmentManagementFee"
+  | "guaranteeCharge"
+  | "joiningFee"
+  | "annualFee"
+  | "contributionCharge"
+  | "bidSpread"
+  | "offerSpread"
+  | "withdrawalCharge"
+  | "oci1yHkd"
+  | "oci3yHkd"
+  | "oci5yHkd";
+
+const recurringFeeRows: Array<[string, FeeField]> = [
+  ["管理費", "managementFee"],
+  ["受託人／保管人費", "trusteeCustodianFee"],
+  ["積金易平台費", "empfPlatformFee"],
+  ["成員服務費", "memberServicingFee"],
+  ["投資管理費", "investmentManagementFee"],
+  ["保證費", "guaranteeCharge"],
+];
+
+const oneOffChargeRows: Array<[string, FeeField]> = [
+  ["加入費", "joiningFee"],
+  ["年費", "annualFee"],
+  ["供款收費", "contributionCharge"],
+  ["買入差價", "bidSpread"],
+  ["賣出差價", "offerSpread"],
+  ["提取收費", "withdrawalCharge"],
+];
+
+const ociRows: Array<[string, FeeField]> = [
+  ["一年", "oci1yHkd"],
+  ["三年", "oci3yHkd"],
+  ["五年", "oci5yHkd"],
+];
+
+const feeLabels: Record<string, string> = Object.fromEntries(
+  [...recurringFeeRows, ...oneOffChargeRows, ...ociRows].map(
+    ([label, field]) => [field, label],
+  ),
+);
 
 export function FundClassPage({
   apiBaseUrl,
@@ -110,6 +172,24 @@ export function FundClassPage({
   const calendarYears = Object.keys(fundClass.calendarYearReturns ?? {}).sort(
     (a, b) => Number(b) - Number(a),
   );
+  const feeCaps = fundClass.feeCaps ?? [];
+  const feeDisclosureRows = Object.entries(fundClass.feeDisclosures ?? {});
+  const capSuffix = (field: FeeField) =>
+    feeCaps.includes(field) ? "（上限）" : "";
+  // 官方費率的小數位數由披露本身決定（例如 1.205%、0.575%），
+  // 固定成兩位小數會把披露值改寫成另一個數字，所以照原值顯示。
+  const feeRate = (field: FeeField) => {
+    const value = fundClass[field];
+    if (typeof value !== "number")
+      return fundClass.feeDisclosures?.[field] ? "見下方文字披露" : unavailable;
+    return `${value}%${capSuffix(field)}`;
+  };
+  const feeAmount = (field: FeeField) => {
+    const value = fundClass[field];
+    if (typeof value !== "number")
+      return fundClass.feeDisclosures?.[field] ? "見下方文字披露" : unavailable;
+    return `HK$${value.toLocaleString("en-US")}${capSuffix(field)}`;
+  };
   const datesDiffer = Boolean(
     fundClass.fundSizeAsOf &&
     fundClass.returnsAsOf &&
@@ -273,27 +353,89 @@ export function FundClassPage({
               <dt>基金開支比率（歷史財政期）</dt>
               <dd>{formatNumber(fundClass.latestFer, 5, "%")}</dd>
             </div>
-            <div>
-              <dt>當前管理費</dt>
-              <dd>{formatNumber(fundClass.managementFee, 2, "%")}</dd>
-            </div>
-            <div>
-              <dt>其他費用（OCI）</dt>
-              <dd>
-                {typeof fundClass.oci1yHkd === "number"
-                  ? `HK$${fundClass.oci1yHkd.toFixed(2)}`
-                  : unavailable}
-              </dd>
-            </div>
           </dl>
-          <p>配置及持倉資料的截至日期可能不同，使用時請留意可比性限制。</p>
-          {(fundClass.riskClass === undefined ||
-            fundClass.latestFer === undefined ||
-            fundClass.oci1yHkd === undefined) && (
-            <p role="note">
-              顯示「官方未提供」代表積金局資料按適用披露規則沒有該欄位；常見原因包括基金運作年期不足或保證／資本保存安排。網站不會以估算值補足。
+          <div className="kw-table-scroll">
+            <table className="kw-table" aria-label="經常性費用">
+              <caption>經常性費用（每年）</caption>
+              <thead>
+                <tr>
+                  <th scope="col">項目</th>
+                  <th scope="col">披露費率</th>
+                </tr>
+              </thead>
+              <tbody>
+                {recurringFeeRows.map(([label, field]) => (
+                  <tr key={field}>
+                    <th scope="row">{label}</th>
+                    <td className="kw-return">{feeRate(field)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="kw-table-scroll">
+            <table className="kw-table" aria-label="一次性及交易收費">
+              <caption>一次性及交易收費</caption>
+              <thead>
+                <tr>
+                  <th scope="col">項目</th>
+                  <th scope="col">披露收費</th>
+                </tr>
+              </thead>
+              <tbody>
+                {oneOffChargeRows.map(([label, field]) => (
+                  <tr key={field}>
+                    <th scope="row">{label}</th>
+                    <td className="kw-return">{feeRate(field)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="kw-table-scroll">
+            <table className="kw-table" aria-label="持續成本說明">
+              <caption>持續成本說明（OCI）</caption>
+              <thead>
+                <tr>
+                  <th scope="col">期間</th>
+                  <th scope="col">每 HK$1,000 投資的成本</th>
+                </tr>
+              </thead>
+              <tbody>
+                {ociRows.map(([label, field]) => (
+                  <tr key={field}>
+                    <th scope="row">{label}</th>
+                    <td className="kw-return">{feeAmount(field)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          {feeCaps.length > 0 && (
+            <p className="kw-muted" role="note">
+              標示「上限」的項目，官方原文寫的是 <code>Up to</code>
+              ，即披露的是收費上限而非實際費率；實際扣費可能較低。
             </p>
           )}
+          {feeDisclosureRows.length > 0 && (
+            <div>
+              <p className="kw-muted">
+                以下項目不是單一費率，官方以文字披露，原文照錄：
+              </p>
+              <dl className="status-list">
+                {feeDisclosureRows.map(([field, text]) => (
+                  <div key={field}>
+                    <dt>{feeLabels[field] ?? field}</dt>
+                    <dd>{text}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          )}
+          <p>配置及持倉資料的截至日期可能不同，使用時請留意可比性限制。</p>
+          <p role="note">
+            顯示「官方未提供」代表積金局資料按適用披露規則沒有該欄位；常見原因包括基金運作年期不足或保證／資本保存安排。網站不會以估算值補足。
+          </p>
         </div>
       </section>
       <section className="kw-section" aria-labelledby="fund-source-title">

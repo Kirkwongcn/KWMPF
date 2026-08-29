@@ -45,8 +45,69 @@ describe("MPF Fund Platform parser", () => {
         cumulative: 203.2,
         dataAsOf: "2026-06-30",
       },
-      unavailableFields: ["calendarYearReturn2021"],
+      unavailableFields: ["oci5yHkd", "calendarYearReturn2021"],
+      fundOverview: {
+        riskClass: 6,
+        latestFer: 1.30424,
+        managementFee: 1.03,
+        trusteeCustodianFee: 0.14,
+        empfPlatformFee: 0.29,
+        memberServicingFee: 0.2,
+        investmentManagementFee: 0.4,
+        guaranteeCharge: 0,
+        joiningFee: 0,
+        contributionCharge: 0,
+        bidSpread: 0,
+        offerSpread: 0,
+        withdrawalCharge: 0,
+        oci1yHkd: 15,
+        oci3yHkd: 46,
+        feeCaps: ["trusteeCustodianFee"],
+        feeDisclosures: {
+          annualFee:
+            "(Based on Number of Members)1 to 14, Up to HKD3,00015 to 29, Up to HKD1,50030 or more HKD0",
+        },
+      },
     });
+  });
+
+  it("keeps an `Up to` disclosure as a cap rather than an actual rate", () => {
+    const html = fixture("fund-detail.html").replace(
+      "<td>1.03% p.a.</td>",
+      "<td>Up to 1.205% p.a.</td>",
+    );
+    const overview = parseFundDetail(html, 429).fundOverview;
+
+    expect(overview?.managementFee).toBe(1.205);
+    expect(overview?.feeCaps).toContain("managementFee");
+  });
+
+  it("keeps a tiered fee disclosure as text instead of reading a tier boundary as the rate", () => {
+    const overview = parseFundDetail(fixture("fund-detail.html"), 429)
+      .fundOverview as { annualFee?: number; feeDisclosures?: Record<string, string> };
+
+    expect(overview.annualFee).toBeUndefined();
+    expect(overview.feeDisclosures?.annualFee).toContain("Based on Number of Members");
+  });
+
+  it("records an unavailable fee component instead of treating it as zero", () => {
+    const result = parseFundDetail(fixture("fund-detail.html"), 429);
+
+    expect(result.fundOverview?.oci5yHkd).toBeUndefined();
+    expect(result.unavailableFields).toContain("oci5yHkd");
+  });
+
+  it("reads a fee label whose spacing or dash differs from the usual layout", () => {
+    const html = fixture("fund-detail.html")
+      .replace("Trustee Fee/ Custodian Fee", "Trustee Fee / Custodian Fee")
+      .replace(
+        "On-going Cost Illustration (OCI) – 3 Year",
+        "On-going Cost Illustration (OCI) - 3 Year",
+      );
+    const overview = parseFundDetail(html, 429).fundOverview;
+
+    expect(overview?.trusteeCustodianFee).toBe(0.14);
+    expect(overview?.oci3yHkd).toBe(46);
   });
 
   it("keeps the fund size date apart from the return dates", () => {

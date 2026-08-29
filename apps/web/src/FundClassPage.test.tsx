@@ -49,8 +49,10 @@ describe("fund class page", () => {
     expect(screen.getByText("擷取版本：2026-08-11T00:00:00Z")).toBeVisible();
     expect(screen.getByText("驗證狀態：已驗證")).toBeVisible();
     expect(screen.getByText("基金開支比率（歷史財政期）")).toBeVisible();
-    expect(screen.getByText("當前管理費")).toBeVisible();
-    expect(screen.getByText("其他費用（OCI）")).toBeVisible();
+    expect(screen.getByText("經常性費用（每年）")).toBeVisible();
+    expect(screen.getByText("一次性及交易收費")).toBeVisible();
+    expect(screen.getByText("持續成本說明（OCI）")).toBeVisible();
+    expect(screen.getByRole("rowheader", { name: "管理費" })).toBeVisible();
     expect(screen.getByText(/資料比較不代表投資建議/)).toBeVisible();
     expect(screen.getByText(/配置及持倉資料的截至日期可能不同/)).toBeVisible();
     expect(screen.getByText("snapshot-mpfa-cf-429-2026-06-30")).toBeVisible();
@@ -208,9 +210,65 @@ describe("fund class page", () => {
       />,
     );
 
-    expect(await screen.findAllByText("官方未提供")).toHaveLength(10);
+    expect(await screen.findAllByText("官方未提供")).toHaveLength(23);
     expect(screen.getByText(/適用披露規則/)).toBeVisible();
     expect(screen.getByText("官方未提供年度回報。")).toBeVisible();
+  });
+
+  it("groups the disclosed fee components and marks `Up to` rates as caps", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-fee-breakdown",
+          fundClass: {
+            ...fixture.fundClass,
+            managementFee: 1.205,
+            trusteeCustodianFee: 0.14,
+            empfPlatformFee: 0.29,
+            memberServicingFee: 0.2,
+            investmentManagementFee: 0.4,
+            guaranteeCharge: 0,
+            joiningFee: 0,
+            contributionCharge: 0,
+            bidSpread: 0,
+            offerSpread: 0,
+            withdrawalCharge: 0,
+            oci1yHkd: 15,
+            oci3yHkd: 46,
+            feeCaps: ["managementFee"],
+            feeDisclosures: {
+              annualFee: "(Based on Number of Members) 1 to 14, Up to HKD3,000",
+            },
+          },
+          provenance: {
+            sourceUrl: fixture.source.url,
+            dataAsOf: "2026-07-31",
+            retrievedAt: "2026-08-13T00:00:00Z",
+            verificationStatus: "verified",
+          },
+        }),
+      ),
+    );
+
+    render(
+      <FundClassPage
+        apiBaseUrl="https://api.test"
+        fundClassId="fee-breakdown"
+      />,
+    );
+
+    // 官方披露 1.205%，顯示時不可四捨五入成 1.21%。
+    expect(await screen.findByText("1.205%（上限）")).toBeVisible();
+    expect(screen.getByText(/披露的是收費上限而非實際費率/)).toBeVisible();
+    expect(screen.getByText("HK$46")).toBeVisible();
+    expect(
+      screen.getByText("(Based on Number of Members) 1 to 14, Up to HKD3,000"),
+    ).toBeVisible();
+    // 年費是文字披露，不可當成缺失，也不可讀成分級門檻的數字。
+    expect(screen.getByText("見下方文字披露")).toBeVisible();
+    // 官方未提供五年 OCI，仍然顯示為未提供而不是 0。
+    expect(screen.getAllByText("官方未提供").length).toBeGreaterThan(0);
   });
 
   it("shows fund size, launch date and calendar year returns", async () => {
