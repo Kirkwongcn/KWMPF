@@ -64,7 +64,7 @@ fund class，並且 `Cache-Control` 必須是 `public, max-age=300, stale-while-
 `Refresh source snapshot` 每星期三 03:00（香港時間）自動執行，也可以手動觸發。它只產生
 候選批次，**永遠不會改動公開網站**：
 
-1. 以 `data/sources/` 之下最新的日期目錄（`YYYY-MM-DD`）作為上一批次，讀取它的獨立數量核對值。
+1. 以 `scripts/resolve-previous-snapshot.sh` 找出 `data/sources/` 之下最新、而且真正帶有 `mpf-fund-platform.json` 的日期目錄（`YYYY-MM-DD`）作為上一批次，讀取它的獨立數量核對值。只放其他官方檔案的日期目錄（例如基金便覽連結批次）會被略過。
    其他名稱的目錄（例如存放使用者提供資料的 `data/sources/lipper/`）不會被當成批次。
 2. 擷取官方強積金基金平台，寫出候選快照及原始 HTML 封存（上載為 workflow artifact，保留 30 日）。
 3. 產生發布前檢查報告及異常核對報告，判斷結果為
