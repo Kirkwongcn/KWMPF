@@ -51,6 +51,9 @@ app.get("/fund-classes/:id", async (context) => {
   const published = JSON.parse(row.payload) as {
     fundClass: BrowseFundClass;
     provenance: { dataAsOf: string; freshnessPolicy?: FreshnessPolicy };
+    // 便覽的配置及十大持倉原文照錄，帶住自己的 `factSheetAsOf`（比平台快照落後幾個月）。
+    // 配對唔到或者官方以圖表披露的基金冇呢一段，唔可以留白當零。
+    factSheetDisclosure?: FactSheetDisclosure;
   };
   const group = comparisonGroupFor(published.fundClass);
   const fundSizeAsOf = published.fundClass.fundSizeAsOf;
@@ -73,6 +76,21 @@ app.get("/fund-classes/:id", async (context) => {
       : {}),
   });
 });
+
+type FactSheetDisclosure = {
+  schemeName: string;
+  constituentFundName: string;
+  factSheetFile: string;
+  factSheetAsOf: string;
+  allocations: {
+    heading: string;
+    entries: { label: string; percent: number }[];
+  }[];
+  // 官方只列名次同證券名、冇披露持有量時 `percent` 會缺席，唔可以當成 0。
+  topHoldings: { rank: number; security: string; percent?: number }[];
+  unavailableFields: string[];
+  unavailableReasons: Record<string, string>;
+};
 
 type BrowseFundClass = {
   id: string;

@@ -596,6 +596,29 @@ describe("pairing to platform constituent funds", () => {
     expect(result.unpairedDisclosures).toEqual([]);
   });
 
+  it("carries the disclosure verbatim beside the counted summary", () => {
+    // 覆蓋報告只需要數目，發布 payload 要原文，所以兩份輸出同時出，唔可以由數目倒推。
+    const section = disclosure("Asian Equity Fund");
+    const result = pairFactSheetDisclosures(
+      [platformFund("BCT (Pro) Asian Equity Fund")],
+      [section],
+      /^BCT \((?:Industry|Pro)\)\s+/,
+    );
+
+    expect(result.pairedDisclosures).toEqual([
+      { fundClassIds: ["mpfa-cf-1", "mpfa-cf-2"], disclosure: section },
+    ]);
+  });
+
+  it("leaves out the disclosure of a fund it refused to pair", () => {
+    const result = pairFactSheetDisclosures(
+      [platformFund("Asian Equity Fund")],
+      [disclosure("Asian Equity Fund"), disclosure("Asian Equity Fund")],
+    );
+
+    expect(result.pairedDisclosures).toEqual([]);
+  });
+
   it("refuses to pick a side when two sections share a fund name", () => {
     // 同一個名出現兩次代表區段切錯，隨便揀一個就可能配到另一隻基金的持倉。
     const result = pairFactSheetDisclosures(

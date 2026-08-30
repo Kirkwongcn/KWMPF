@@ -9,6 +9,7 @@ import {
   assertCategoryCoverage,
   loadCategoryLookup,
 } from "./category-map-lookup";
+import { loadFactSheetDisclosureLookup } from "./fact-sheet-disclosure-lookup";
 import {
   assertFactSheetCoverage,
   loadFactSheetLookup,
@@ -48,6 +49,12 @@ assertFactSheetCoverage(
   payload.records.map((record) => record.identity.schemeName),
 );
 
+// 配置及十大持倉的覆蓋本來就唔齊（圖表式披露抽唔到、個別基金便覽未收錄），
+// 所以只逐個基金類別查，查唔到就唔寫入 payload，唔做覆蓋率斷言。
+const disclosures = await loadFactSheetDisclosureLookup(
+  argument("--fact-sheet-disclosures"),
+);
+
 const sqlString = (value: string) => `'${value.replaceAll("'", "''")}'`;
 const statements = [
   "DELETE FROM current_publication;",
@@ -70,6 +77,7 @@ const statements = [
       verificationStatus: record.status,
       dataAsOf: record.dataAsOf,
     };
+    const factSheetDisclosure = disclosures.disclosureOf(record.fundClassId);
     const body = JSON.stringify({
       snapshotId,
       fundClass,
@@ -84,6 +92,7 @@ const statements = [
         capturedAt: factSheets.capturedAt,
         registerUrl: factSheets.registerUrl,
       },
+      ...(factSheetDisclosure ? { factSheetDisclosure } : {}),
       provenance: {
         sourceUrl: record.sourceUrl,
         dataAsOf: record.dataAsOf,

@@ -84,6 +84,19 @@ MPF Navigator 檔案的 Sheet1（風險取向配置比重）不在範圍內，�
 餘下缺口主要是圖表式披露：宏利環球精選的配置畫成條形圖、永明畫成圓環圖、
 我的強積金的圓餅圖標註共用基線，全部走 `unavailableFields` 並寫明原因。
 
+同一條指令加 `--disclosures <fund-fact-sheet-disclosures.json>` 會另出一份披露檔：覆蓋報告
+只收數目，發布要原文，所以兩份各自輸出，不可由報告的數目倒推。披露檔存放在來源批次目錄
+（現時 `data/sources/2026-08-28/`），由 `fact-sheet-disclosure-lookup.ts` 讀取——同 `fact-sheet-lookup.ts`
+一樣只認 `YYYY-MM-DD` 目錄、取最新一個帶有該檔的批次。`publication-seed` 逐個基金類別查，
+查到就把 `factSheetDisclosure` 寫入 payload，`/fund-classes/:id` 原樣送出。
+451 個基金類別中 446 個有披露。
+
+配置及持倉的覆蓋本來就不齊，所以**不設**覆蓋率斷言（對照 `assertFactSheetCoverage`：便覽連結
+必須齊 24 個計劃）。查不到就不寫入 payload，不可拿同計劃另一隻基金的披露頂上。
+一個基金類別對應多過一份披露會報錯，因為靜默覆蓋等於把另一隻基金的持倉貼落去。
+便覽的 `factSheetAsOf` 比平台快照落後四至八個月，每筆各自保留自己的日期，
+不可沿用平台的 `dataAsOf`；詳情頁要同時顯示兩個日期並標示非完全可比。
+
 ## Fund size, launch date and calendar year returns
 
 官方平台詳情頁另有 `Fund size (HKD Million)`（連自己的截至日期）、`Launch Date`、

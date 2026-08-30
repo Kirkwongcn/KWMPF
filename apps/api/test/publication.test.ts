@@ -598,6 +598,83 @@ describe("publication snapshot", () => {
     expect(byScheme.get("未有便覽的計劃")).toBeNull();
   });
 
+  it("serves the fact sheet allocation and holdings verbatim, with their own as-of date", async () => {
+    const snapshotId = "snapshot-fact-sheet-disclosures";
+    const factSheetDisclosure = {
+      schemeName: "BCT (MPF) Pro Choice",
+      constituentFundName: "Asian Equity Fund",
+      factSheetFile: "MT00016.pdf",
+      // 便覽落後平台快照幾個月，兩個日期各自保留，詳情頁先可以標示非完全可比。
+      factSheetAsOf: "2025-12-31",
+      allocations: [
+        {
+          heading: "ASSET ALLOCATION 資產分佈",
+          entries: [{ label: "中國China", percent: 62.61 }],
+        },
+      ],
+      topHoldings: [
+        { rank: 1, security: "騰訊控股TENCENT HOLDINGS LTD", percent: 9.36 },
+      ],
+      unavailableFields: [],
+      unavailableReasons: {},
+    };
+    await bindings.DB.prepare(
+      "INSERT INTO publication_snapshots (snapshot_id, published_at) VALUES (?, ?)",
+    )
+      .bind(snapshotId, "2026-08-29T00:00:00Z")
+      .run();
+    const funds = [
+      { id: "fund-disclosed", factSheetDisclosure },
+      { id: "fund-undisclosed" },
+    ];
+    for (const fund of funds) {
+      await bindings.DB.prepare(
+        "INSERT INTO fund_class_versions (snapshot_id, fund_class_id, payload) VALUES (?, ?, ?)",
+      )
+        .bind(
+          snapshotId,
+          fund.id,
+          JSON.stringify({
+            snapshotId,
+            ...(fund.factSheetDisclosure
+              ? { factSheetDisclosure: fund.factSheetDisclosure }
+              : {}),
+            fundClass: {
+              id: fund.id,
+              schemeName: "BCT (MPF) Pro Choice",
+              trusteeName: "測試受託人",
+              constituentFundName: fund.id,
+              fundClassName: "Class A",
+              fundType: "Equity Fund",
+              dataAsOf: "2026-07-31",
+              verificationStatus: "verified",
+            },
+            provenance: { dataAsOf: "2026-07-31" },
+          }),
+        )
+        .run();
+    }
+    await bindings.DB.prepare(
+      "INSERT INTO current_publication (singleton, snapshot_id) VALUES (1, ?)",
+    )
+      .bind(snapshotId)
+      .run();
+
+    const disclosed = (await (
+      await SELF.fetch("https://kwmpf.test/fund-classes/fund-disclosed")
+    ).json()) as {
+      factSheetDisclosure: unknown;
+      fundClass: { dataAsOf: string };
+    };
+    const undisclosed = await (
+      await SELF.fetch("https://kwmpf.test/fund-classes/fund-undisclosed")
+    ).json();
+
+    expect(disclosed.factSheetDisclosure).toEqual(factSheetDisclosure);
+    expect(disclosed.fundClass.dataAsOf).toBe("2026-07-31");
+    expect(undisclosed).not.toHaveProperty("factSheetDisclosure");
+  });
+
   it("reports the data-as-of range of each scheme and the date behind each fund", async () => {
     const snapshotId = "snapshot-scheme-dates";
     await bindings.DB.prepare(
