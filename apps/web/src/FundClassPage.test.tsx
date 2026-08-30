@@ -710,4 +710,122 @@ describe("cumulative returns", () => {
       ),
     ).toBeVisible();
   });
+
+  function renderWithDisclosure(factSheetDisclosure: unknown) {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-fact-sheet",
+          fundClass: fixture.fundClass,
+          provenance: {
+            sourceUrl: fixture.source.url,
+            dataAsOf: "2026-07-31",
+            retrievedAt: "2026-08-29T00:00:00Z",
+            verificationStatus: "verified",
+          },
+          ...(factSheetDisclosure ? { factSheetDisclosure } : {}),
+        }),
+      ),
+    );
+    render(
+      <FundClassPage apiBaseUrl="https://api.test" fundClassId="disclosed" />,
+    );
+  }
+
+  const disclosure = {
+    factSheetFile: "MT00172.pdf",
+    factSheetAsOf: "2025-11-30",
+    allocations: [
+      {
+        heading: "ASSET ALLOCATION 資產分佈",
+        entries: [
+          { label: "中國China", percent: 62.61 },
+          { label: "現金及其他Cash and Others", percent: 0.7 },
+        ],
+      },
+    ],
+    topHoldings: [
+      { rank: 1, security: "騰訊控股TENCENT HOLDINGS LTD", percent: 9.36 },
+    ],
+    unavailableFields: [],
+    unavailableReasons: {},
+    unavailableKinds: {},
+  };
+
+  it("shows the fact sheet allocation and holdings under their own headings", async () => {
+    renderWithDisclosure(disclosure);
+
+    const allocation = await screen.findByRole("table", {
+      name: "ASSET ALLOCATION 資產分佈",
+    });
+    expect(
+      within(allocation).getByRole("rowheader", { name: "中國China" }),
+    ).toBeVisible();
+    expect(within(allocation).getByText("62.61%")).toBeVisible();
+    // 披露寫 0.7，補成 0.70 就係改寫官方數字。
+    expect(within(allocation).getByText("0.7%")).toBeVisible();
+
+    const holdings = screen.getByRole("table", { name: "十大持倉" });
+    expect(
+      within(holdings).getByText("騰訊控股TENCENT HOLDINGS LTD"),
+    ).toBeVisible();
+    expect(within(holdings).getByText("9.36%")).toBeVisible();
+  });
+
+  it("marks the fact sheet and platform dates as not fully comparable", async () => {
+    renderWithDisclosure(disclosure);
+
+    expect(
+      await screen.findByText(
+        /便覽截至 2025-11-30，平台數據截至 2026-07-31，兩者期別不同，並非完全可比/,
+      ),
+    ).toBeVisible();
+    expect(screen.getByText(/文件編號 MT00172\.pdf/)).toBeVisible();
+  });
+
+  it("says the official disclosure is a chart rather than calling it unavailable", async () => {
+    renderWithDisclosure({
+      ...disclosure,
+      allocations: [],
+      unavailableFields: ["allocation"],
+      unavailableReasons: {
+        allocation:
+          "the bar chart's labels and percentages are drawn as vector art, not text",
+      },
+      unavailableKinds: { allocation: "chart-only" },
+    });
+
+    expect(await screen.findByText(/資產配置：官方以圖表披露/)).toBeVisible();
+    expect(
+      screen.queryByRole("table", { name: "ASSET ALLOCATION 資產分佈" }),
+    ).not.toBeInTheDocument();
+    // 診斷用的英文原因唔應該原封不動出街。
+    expect(screen.queryByText(/vector art/)).not.toBeInTheDocument();
+  });
+
+  it("keeps calling a block the fact sheet never carried officially unavailable", async () => {
+    renderWithDisclosure({
+      ...disclosure,
+      topHoldings: [],
+      unavailableFields: ["topHoldings"],
+      unavailableReasons: {
+        topHoldings: "no holdings rows in the disclosed block",
+      },
+      unavailableKinds: { topHoldings: "not-disclosed" },
+    });
+
+    expect(await screen.findByText(/十大持倉：官方未提供/)).toBeVisible();
+  });
+
+  it("says so when no fact sheet disclosure pairs with the fund at all", async () => {
+    renderWithDisclosure(undefined);
+
+    expect(
+      await screen.findByText(/這隻基金未有可對應的計劃便覽披露/),
+    ).toBeVisible();
+    expect(
+      screen.queryByRole("table", { name: "十大持倉" }),
+    ).not.toBeInTheDocument();
+  });
 });

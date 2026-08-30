@@ -451,6 +451,7 @@ describe("overlaid text layers", () => {
     expect(disclosure?.unavailableReasons.topHoldings).toMatch(
       /overlays another fund's table/,
     );
+    expect(disclosure?.unavailableKinds.topHoldings).toBe("overlaid-text-layer");
   });
 });
 
@@ -553,6 +554,40 @@ describe("unextractable blocks", () => {
     expect(disclosure?.unavailableReasons.allocation).toBe(
       "the chart's labels are drawn as vector art, not text",
     );
+    // 原因是診斷用的英文長句，網站唔可以靠字串比對反推分類，所以另附代號。
+    expect(disclosure?.unavailableKinds.allocation).toBe("chart-only");
+  });
+
+  it("tells a block the fact sheet never carried apart from one it could not read", () => {
+    const pages = pdf(
+      page(1, [
+        { top: 10, left: 30, text: "As at 31/12/2025", width: 110 },
+        { top: 20, left: 30, text: "Core Fund", size: 18, width: 90 },
+        { top: 60, left: 310, text: "Portfolio allocation", width: 110 },
+        { top: 90, left: 420, text: "41.7%", width: 30 },
+        { top: 90, left: 455, text: "Equities", width: 60 },
+      ]),
+    );
+    const [disclosure] = parseFactSheetDisclosures(pages, hsbcShaped);
+
+    expect(disclosure?.unavailableKinds.topHoldings).toBe("not-disclosed");
+    expect(disclosure?.unavailableFields).toContain("topHoldings");
+    expect(disclosure?.unavailableKinds.allocation).toBeUndefined();
+  });
+
+  it("classifies a block whose values lost their names", () => {
+    const pages = pdf(
+      page(1, [
+        { top: 10, left: 30, text: "As at 31/12/2025", width: 110 },
+        { top: 20, left: 30, text: "Core Fund", size: 18, width: 90 },
+        { top: 60, left: 310, text: "Portfolio allocation", width: 110 },
+        { top: 90, left: 420, text: "41.7%", width: 30 },
+      ]),
+    );
+    const [disclosure] = parseFactSheetDisclosures(pages, hsbcShaped);
+
+    expect(disclosure?.allocations).toEqual([]);
+    expect(disclosure?.unavailableKinds.allocation).toBe("values-without-names");
   });
 });
 
@@ -565,6 +600,7 @@ describe("pairing to platform constituent funds", () => {
     topHoldings: [],
     unavailableFields: ["topHoldings"],
     unavailableReasons: { topHoldings: "no holdings rows in the disclosed block" },
+    unavailableKinds: { topHoldings: "not-disclosed" },
   });
 
   const platformFund = (constituentFundName: string) => ({

@@ -70,7 +70,54 @@ type PublishedFundClass = {
     graceDays: number;
     ageDays: number | null;
   };
+  factSheetDisclosure?: FactSheetDisclosure;
 };
+
+/**
+ * 計劃便覽披露的配置及十大持倉。維度標題、標籤及證券名稱一律原文照錄，
+ * 百分比的小數位數沿用披露本身，不固定成兩位小數。
+ */
+type FactSheetDisclosure = {
+  factSheetFile: string;
+  factSheetAsOf: string;
+  allocations: {
+    heading: string;
+    entries: { label: string; percent: number }[];
+  }[];
+  topHoldings: { rank: number; security: string; percent?: number }[];
+  unavailableFields: string[];
+  unavailableReasons: Record<string, string>;
+  /** 帶代號之前發布的快照沒有這一欄。 */
+  unavailableKinds?: Record<string, FactSheetUnavailableKind>;
+};
+
+type FactSheetUnavailableKind =
+  | "not-disclosed"
+  | "chart-only"
+  | "values-without-names"
+  | "overlaid-text-layer";
+
+/**
+ * 「官方未提供」同「官方以圖表披露」是兩回事，票 #210 要求分開講。
+ * 抽取層在知道分別那一刻記下代號，這裡只做對照，不靠原因文字反推。
+ */
+const unavailableWording: Record<FactSheetUnavailableKind, string> = {
+  "not-disclosed": "官方未提供。這份便覽沒有披露這一項。",
+  "chart-only":
+    "官方以圖表披露。便覽把這一項畫成圖表，文件內沒有可讀取的文字數值，本網站不會靠圖片估算。",
+  "values-without-names":
+    "官方以圖表披露。便覽有百分比，但項目名稱畫成圖形而非文字；只列出讀得到的部分會令名單短一截，等同改寫官方披露，所以整項不顯示。",
+  "overlaid-text-layer":
+    "官方文件無法可靠讀取。便覽的文字層把另一隻基金的同一張表疊印在同一位置，分不清哪個數值屬哪一隻基金。",
+};
+
+function unavailableNote(field: string, disclosure: FactSheetDisclosure) {
+  if (!disclosure.unavailableFields.includes(field)) return undefined;
+  // 帶代號之前發布的快照沒有這一欄，當「未提供」處理，好過留白。
+  return unavailableWording[
+    disclosure.unavailableKinds?.[field] ?? "not-disclosed"
+  ];
+}
 
 type FeeField =
   | "managementFee"
@@ -195,6 +242,12 @@ export function FundClassPage({
     fundClass.fundSizeAsOf &&
     fundClass.returnsAsOf &&
     fundClass.fundSizeAsOf !== fundClass.returnsAsOf,
+  );
+  const factSheetDisclosure = publication.factSheetDisclosure;
+  // 便覽比平台快照落後幾個月，兩個截至日期各自保留，唔同期就要講明並非完全可比。
+  const factSheetDatesDiffer = Boolean(
+    factSheetDisclosure &&
+    factSheetDisclosure.factSheetAsOf !== provenance.dataAsOf,
   );
   return (
     <SiteChrome
@@ -449,6 +502,94 @@ export function FundClassPage({
           <p role="note">
             顯示「官方未提供」代表積金局資料按適用披露規則沒有該欄位；常見原因包括基金運作年期不足或保證／資本保存安排。網站不會以估算值補足。
           </p>
+        </div>
+      </section>
+      <section className="kw-section" aria-labelledby="fund-fact-sheet-title">
+        <h2 className="kw-section__heading" id="fund-fact-sheet-title">
+          投資組合披露
+        </h2>
+        <div className="kw-card">
+          {factSheetDisclosure ? (
+            <>
+              <p>
+                資料來自計劃便覽（文件編號 {factSheetDisclosure.factSheetFile}
+                ），截至 {factSheetDisclosure.factSheetAsOf}
+                ；本頁其他數據來自積金局基金平台，截至 {provenance.dataAsOf}。
+              </p>
+              {factSheetDatesDiffer && (
+                <p className="kw-muted" role="note">
+                  便覽截至 {factSheetDisclosure.factSheetAsOf}，平台數據截至{" "}
+                  {provenance.dataAsOf}，兩者期別不同，並非完全可比。
+                </p>
+              )}
+              {factSheetDisclosure.allocations.map((dimension) => (
+                <div className="kw-table-scroll" key={dimension.heading}>
+                  <table className="kw-table" aria-label={dimension.heading}>
+                    <caption>{dimension.heading}</caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">項目</th>
+                        <th scope="col">比重</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {dimension.entries.map((entry) => (
+                        <tr key={entry.label}>
+                          <th scope="row">{entry.label}</th>
+                          <td className="kw-return">{entry.percent}%</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ))}
+              {unavailableNote("allocation", factSheetDisclosure) && (
+                <p className="kw-muted" role="note">
+                  資產配置：{unavailableNote("allocation", factSheetDisclosure)}
+                </p>
+              )}
+              {factSheetDisclosure.topHoldings.length > 0 && (
+                <div className="kw-table-scroll">
+                  <table className="kw-table" aria-label="十大持倉">
+                    <caption>十大持倉</caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">排名</th>
+                        <th scope="col">證券</th>
+                        <th scope="col">比重</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {factSheetDisclosure.topHoldings.map((holding) => (
+                        <tr key={`${holding.rank}-${holding.security}`}>
+                          <th scope="row">{holding.rank}</th>
+                          <td>{holding.security}</td>
+                          <td className="kw-return">
+                            {typeof holding.percent === "number"
+                              ? `${holding.percent}%`
+                              : unavailable}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+              {unavailableNote("topHoldings", factSheetDisclosure) && (
+                <p className="kw-muted" role="note">
+                  十大持倉：
+                  {unavailableNote("topHoldings", factSheetDisclosure)}
+                </p>
+              )}
+              <p className="kw-muted">
+                維度標題、項目名稱及證券名稱一律照便覽原文，比重的小數位數沿用披露本身；本網站不作正規化，亦不與其他計劃的維度對應。
+              </p>
+            </>
+          ) : (
+            <p className="kw-muted" role="note">
+              官方未提供：這隻基金未有可對應的計劃便覽披露。
+            </p>
+          )}
         </div>
       </section>
       <section className="kw-section" aria-labelledby="fund-source-title">
