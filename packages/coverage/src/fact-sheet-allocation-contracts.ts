@@ -11,6 +11,9 @@ const AS_OF_SLASH = /(?:As of|As at|Data as of|Fund Data as at)[^0-9]{0,16}(\d{1
 const AS_OF_LONG = /As at\s+(\d{1,2}\s+[A-Za-z]{3,}\s+\d{4})/i;
 const AS_OF_MONTH_FIRST = /As at\s+([A-Za-z]{3,}\s+\d{1,2},\s*\d{4})/i;
 
+/** 新地印在基金名稱之後的腳註（`Note 1`、`Note *, 1 and 6`），不屬名稱。 */
+const SHKP_NOTE = /\s*Note\s*[\d*,\s and]*$/;
+
 const beaTitle = {
   pattern: /^BEA .*Fund$/,
   fontSize: [21],
@@ -452,24 +455,45 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
   {
     scheme: "SHKP MPF Employer Sponsored Scheme",
     title: {
-      // 基金名稱後面直接印住腳註編號（例如 `Allianz Choice Stable Growth FundNote 1`）。
-      pattern: /Fund(?:Note ?\d+)?$/,
+      // 基金名稱後面直接印住腳註編號，寫法有三種：`Allianz Choice Balanced FundNote 1`、
+      // `Invesco MPF Conservative Fund Note *, 1 and 6`、`Manulife Career Average
+      // Guaranteed Fund - SHKPNote 1`（「- SHKP」是基金名稱本身的一部分）。
+      pattern: /Fund(?:\s*-\s*SHKP)?(?:\s*Note\s*[\d*,\s and]*)?$/,
       fontSize: [12],
-      fontFamily: /ArialMT/,
-      minLeft: 40,
+      // 標題用 `Arial`，內文用 `ArialMT`。逐頁的左邊界會漂移十幾 pt（32 至 53），
+      // 所以靠 `maxTop` 把頁首的基金名同頁內的「基金類型描述」分開，而不是靠左界。
+      fontFamily: /Arial/,
+      minLeft: 30,
       maxLeft: 60,
-      name: (text) => text.replace(/Note ?\d+$/, "").trim(),
+      maxTop: 160,
+      name: (text) => text.replace(SHKP_NOTE, "").trim(),
     },
     allocation: {
       // 新地披露的是基礎基金而非成分基金本身，標題必須保留這個分別。
       heading: /^Asset Allocation of (?:Underlying Fund|the Fund)/,
       headingLabel: (text) => text.replace(/\^$/, "").trim(),
-      band: { minLeft: 508, maxLeft: 900 },
-      ignore: /^Total|總數/,
+      // 左邊的基金概覽欄（基金規模、成立日期、開支比率）同配置表在同一水平帶，
+      // 要靠左界隔開；但腳註標記排喺標籤再左邊（left≈496），所以留到 490。
+      band: { minLeft: 490, maxLeft: 900 },
+      valueMinLeft: 800,
+      // 剔走概覽欄漏入的純數字（`1,772.48`、`02/07/2002`、`0.66262%`）及自成一段的腳註標記。
+      labelIgnore: /^[\d,.]+\s*%?$|^\d{2}\/\d{2}\/\d{4}$/,
+      labelStrip: /^\d{1,2}\s+/,
+      // 中英對照的兩欄相距 30 至 65 pt，而欄內的字緊貼（「香港」「/」「中國股票」）。
+      labelColumnGap: 20,
+      // 「亞太區股票」那一列的名稱換行，數值垂直置中排在兩段名稱之間；
+      // 列距 16 至 21 pt，所以容差要細過 16，否則會連下一列一齊吞埋。
+      rowGap: 12,
+      joinTrailingLabels: true,
+      // 十大持倉在配置之下，橫跨成版，百分比落在配置那一欄的右界之內。
+      // 配置表以「Total 總數」收尾，就用它做下界；用 `ignore` 只會讓表格一路讀到持倉。
+      stopAt: /^Total|總數/,
     },
     holdings: {
       heading: /^Top Ten Holdings of Underlying Fund/,
-      band: { minLeft: 40, maxLeft: 900 },
+      // 標題置中（left≈274）而證券名靠左（left≈32 至 46），自動欄界會由標題往左讓
+      // 30 pt，剛好切走名稱只剩百分比，所以要明確劃開整版。
+      band: { minLeft: 20, maxLeft: 900 },
     },
     asOf: { pattern: AS_OF_LONG },
   },

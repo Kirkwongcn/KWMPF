@@ -94,6 +94,19 @@ export type BlockSelector = {
   /** 由名稱剔除的段落，例如圓餅圖的色塊字符。剔除的是圖例符號，不是原文用字。 */
   labelIgnore?: RegExp;
   /**
+   * 由名稱剔除的腳註標記。版面上它是名稱左邊的邊注，但 `pdftohtml` 有時把它同名稱
+   * 併成同一段文字（新地一份便覽寫成 `4 Hong Kong/China Equities`），`labelIgnore`
+   * 剔不走。剔的是標記本身，不是原文用字。
+   */
+  labelStrip?: RegExp;
+  /**
+   * 中英對照標籤的分欄間距。標籤換行時逐行讀會把兩種語文交錯（新地的
+   * 「亞太區股票(日 Japan/HK) 本、香港除外)」）。設咗就按水平空隙分欄——空隙大過
+   * 這個值就當成另一欄——先逐欄由上至下併，再由左至右接駁，還原成「英文 中文」。
+   * 欄界由版面自己決定，唔使逐頁寫死座標。
+   */
+  labelColumnGap?: number;
+  /**
    * 同一列的文字被拆成多行時（名稱換行，而數值垂直置中落在中間那行），
    * 相鄰行的 `top` 距離會明顯細過列距。細過這個值就當成同一列先合併再讀數。
    */
@@ -160,6 +173,29 @@ function joinLabel(left: string, right: string) {
 }
 
 /**
+ * 同一視覺行的容差。中英對照的標籤各用一款字體，基線會差一兩 pt
+ * （新地的「香港」在 top 232、中間的「/」在 top 231）。
+ */
+const SAME_ROW = 4;
+
+/**
+ * 把一列的文字段落排成閱讀次序：先分行，再行內由左至右。
+ *
+ * 淨係按 `top` 排會出事：同一視覺行的段落 `top` 差一兩 pt，於是新地那個夾在
+ * 「香港」與「中國股票」之間的「/」會排到成行之前，變成
+ * `/Hong Kong/China Equities 香港 中國股票`，等於改寫原文。
+ */
+function inReadingOrder(items: PdfTextItem[]) {
+  const rows: PdfTextItem[][] = [];
+  for (const item of items.toSorted((a, b) => a.top - b.top)) {
+    const row = rows.at(-1);
+    if (row?.[0] && Math.abs(item.top - row[0].top) <= SAME_ROW) row.push(item);
+    else rows.push([item]);
+  }
+  return rows.flatMap((row) => row.toSorted((a, b) => a.left - b.left));
+}
+
+/**
  * 由同一列的文字段落砌出名稱。同一行的用水平空隙決定要唔要空格（中銀保誠會把
  * 一個數字拆成幾段）；跨行的用 `joinLabel`（換行的中文標籤唔應該加空格）。
  */
@@ -168,7 +204,7 @@ function joinLabelItems(items: PdfTextItem[]) {
   let previous: PdfTextItem | undefined;
   for (const item of items) {
     if (previous === undefined) text = item.text;
-    else if (Math.abs(item.top - previous.top) <= 4) {
+    else if (Math.abs(item.top - previous.top) <= SAME_ROW) {
       text += item.left - (previous.left + previous.width) > 1 ? ` ${item.text}` : item.text;
     } else text = joinLabel(text, item.text);
     previous = item;
@@ -351,7 +387,9 @@ function blockLines(
 ): PdfLine[] {
   const collected: PdfLine[] = [];
 
-  for (const page of pages) {
+  // `stopAt` 要跳出兩層迴圈而不是提早 return，否則下面的 `callouts` 及 `rowGap`
+  // 後處理會被略過，換行拆散的一列就併唔返（新地的「亞太區股票」數值排在兩段名稱之間）。
+  pages: for (const page of pages) {
     if (page.number < heading.page) continue;
     if (page.number > section.end.page) break;
     if (page.number > heading.page && !selector.continueOnNextPage) break;
@@ -367,7 +405,7 @@ function blockLines(
       if (page.number === heading.page && line.top <= heading.top) continue;
       if (page.number === heading.page && line.top >= bottom) continue;
       if (page.number === section.end.page && line.top >= section.end.top) continue;
-      if (selector.stopAt?.test(line.text)) return collected;
+      if (selector.stopAt?.test(line.text)) break pages;
       if (selector.ignore?.test(line.text)) continue;
       collected.push(line);
     }
@@ -462,6 +500,29 @@ function mergeRows(lines: PdfLine[], rowGap: number): PdfLine[] {
   return merged;
 }
 
+function stripFootnote(label: string, selector: BlockSelector) {
+  return selector.labelStrip ? label.replace(selector.labelStrip, "").trim() : label;
+}
+
+/**
+ * 砌出一列的名稱。冇聲明 `labelColumns` 就照閱讀次序讀；聲明咗就逐欄由上至下讀，
+ * 再由左至右接駁——中英對照的標籤換行時，逐行讀會把兩種語文交錯。
+ */
+function joinLabelColumns(items: PdfTextItem[], selector: BlockSelector) {
+  const gap = selector.labelColumnGap;
+  if (gap === undefined) return joinLabelItems(inReadingOrder(items));
+  const columns: PdfTextItem[][] = [];
+  let right = Number.NEGATIVE_INFINITY;
+  for (const item of items.toSorted((a, b) => a.left - b.left)) {
+    if (columns.length === 0 || item.left - right > gap) columns.push([]);
+    columns.at(-1)?.push(item);
+    right = Math.max(right, item.left + item.width);
+  }
+  return columns
+    .map((column) => joinLabelItems(inReadingOrder(column)))
+    .reduce(joinLabel, "");
+}
+
 function readValue(line: PdfLine, selector: BlockSelector) {
   const format = selector.numberFormat ?? "percent";
   const pattern = format === "bare" ? BARE_NUMBER_ITEM : PERCENT_ITEM;
@@ -479,9 +540,8 @@ function readValue(line: PdfLine, selector: BlockSelector) {
           index !== valueIndex &&
           (selector.labelMaxLeft === undefined || item.left <= selector.labelMaxLeft) &&
           !selector.labelIgnore?.test(item.text),
-      )
-      .toSorted((a, b) => a.top - b.top || a.left - b.left);
-    const label = joinLabelItems(labelItems);
+      );
+    const label = stripFootnote(joinLabelColumns(labelItems, selector), selector);
     // 名稱可以是空的：換行的列由 `rowGap` 或 `joinWrappedLabels` 在外層補回，
     // 由呼叫者決定整列有冇名稱。
     if (raw !== undefined) return { label, percent: Number(raw) };
@@ -492,7 +552,7 @@ function readValue(line: PdfLine, selector: BlockSelector) {
     format === "bare" ? BARE_TRAILING : PERCENT_TRAILING,
   );
   if (trailing?.[1] && trailing[2]) {
-    const label = trailing[1].trim();
+    const label = stripFootnote(trailing[1].trim(), selector);
     if (label !== "") return { label, percent: Number(trailing[2]) };
   }
   return undefined;
@@ -511,6 +571,7 @@ function readAllocation(
     const bottom = bottomOf(heading, items, contract, band, contract.allocation);
     const entries: AllocationEntry[] = [];
     let wrapped = "";
+    let previousLine: PdfLine | undefined;
     for (const line of blockLines(
       pages,
       section,
@@ -523,11 +584,19 @@ function readAllocation(
       if (!value) {
         if (contract.allocation.joinWrappedLabels) wrapped = line.text;
         const previous = entries.at(-1);
-        if (contract.allocation.joinTrailingLabels && previous) {
-          previous.label = joinLabel(previous.label, line.text);
+        if (contract.allocation.joinTrailingLabels && previous && previousLine) {
+          // 併返上一行再重讀，而唔係直接接駁文字：換行的中英對照標籤要按欄併返
+          // （新地的「(ex USD, ex HKD) (美元及港元除外)」分屬兩欄的續行）。
+          previousLine = {
+            ...previousLine,
+            items: [...previousLine.items, ...line.items],
+          };
+          const rejoined = readValue(previousLine, contract.allocation);
+          if (rejoined) previous.label = rejoined.label;
         }
         continue;
       }
+      previousLine = line;
       const label = joinLabel(wrapped, value.label);
       wrapped = "";
       if (label === "") {

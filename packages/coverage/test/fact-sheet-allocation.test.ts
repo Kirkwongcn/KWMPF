@@ -195,6 +195,130 @@ describe("table blocks", () => {
   });
 });
 
+/**
+ * 新地版面：中英對照分兩欄，左邊仲有基金概覽欄，腳註標記排在標籤左邊，
+ * 配置表以「Total 總數」收尾，而十大持倉喺同一欄之下。
+ */
+const shkpShaped: FactSheetContract = {
+  scheme: "Test Scheme",
+  title: { pattern: /Fund(?:\s*Note\s*\d+)?$/, fontSize: [18] },
+  allocation: {
+    heading: /^Asset Allocation of Underlying Fund/,
+    band: { minLeft: 490, maxLeft: 900 },
+    valueMinLeft: 800,
+    labelIgnore: /^[\d,.]+\s*%?$/,
+    labelStrip: /^\d{1,2}\s+/,
+    labelColumnGap: 20,
+    rowGap: 12,
+    joinTrailingLabels: true,
+    stopAt: /^Total|總數/,
+  },
+  holdings: { heading: /^never$/ },
+  asOf: { pattern: /As at\s+(\d{1,2}\/\d{1,2}\/\d{4})/i },
+};
+
+describe("bilingual two-column tables", () => {
+  it("keeps a run whose baseline sits a point lower in its place on the row", () => {
+    // 「香港」「/」「中國股票」係同一行，但斜線的基線低一點。淨係按 `top` 排會變成
+    // 「香港 中國股票 /」，等於改寫原文。
+    const pages = pdf(
+      page(1, [
+        { top: 10, left: 30, text: "As at 31/03/2026", width: 110 },
+        { top: 20, left: 30, text: "Balanced Fund", size: 18, width: 90 },
+        { top: 60, left: 531, text: "Asset Allocation of Underlying Fund", width: 220 },
+        { top: 84, left: 531, text: "Hong Kong/China Equities", width: 144 },
+        { top: 84, left: 706, text: "香港", width: 24 },
+        { top: 85, left: 730, text: "/", width: 3 },
+        { top: 84, left: 733, text: "中國股票", width: 48 },
+        { top: 80, left: 848, text: "26%", width: 27 },
+      ]),
+    );
+    const [disclosure] = parseFactSheetDisclosures(pages, shkpShaped);
+
+    expect(disclosure?.allocations[0]?.entries).toEqual([
+      { label: "Hong Kong/China Equities 香港/中國股票", percent: 26 },
+    ]);
+  });
+
+  it("merges a row split around its value even when the table ends at a stop line", () => {
+    // 名稱換行，數值垂直置中排在兩段名稱之間。`stopAt` 提早收表時仍然要合併，
+    // 否則整塊會因為「有數值、冇名稱」而當成官方未提供。
+    const pages = pdf(
+      page(1, [
+        { top: 10, left: 30, text: "As at 31/03/2026", width: 110 },
+        { top: 20, left: 30, text: "Core Fund", size: 18, width: 90 },
+        { top: 60, left: 539, text: "Asset Allocation of Underlying Fund", width: 224 },
+        { top: 80, left: 439, text: "1,772.48", width: 83 },
+        { top: 100, left: 539, text: "Asia Pacific Equity (ex", width: 122 },
+        { top: 101, left: 726, text: "亞太區股票(日", width: 72 },
+        { top: 108, left: 853, text: "12.00%", width: 44 },
+        { top: 115, left: 539, text: "Japan/HK)", width: 60 },
+        { top: 117, left: 726, text: "本、香港除外)", width: 84 },
+        { top: 140, left: 539, text: "Total", width: 30 },
+        { top: 140, left: 833, text: "100.00%", width: 51 },
+      ]),
+    );
+    const [disclosure] = parseFactSheetDisclosures(pages, shkpShaped);
+
+    // 逐欄併返，唔可以交錯成「亞太區股票(日 Japan/HK) 本、香港除外)」。
+    expect(disclosure?.allocations[0]?.entries).toEqual([
+      {
+        label: "Asia Pacific Equity (ex Japan/HK) 亞太區股票(日本、香港除外)",
+        percent: 12,
+      },
+    ]);
+    expect(disclosure?.unavailableFields).not.toContain("allocation");
+  });
+
+  it("drops a footnote marker the extractor glued onto the label", () => {
+    // 腳註標記印在標籤左邊的邊注，`pdftohtml` 有時把它同標籤併成同一段文字。
+    const pages = pdf(
+      page(1, [
+        { top: 10, left: 30, text: "As at 31/03/2026", width: 110 },
+        { top: 20, left: 30, text: "Core Fund", size: 18, width: 90 },
+        { top: 60, left: 539, text: "Asset Allocation of Underlying Fund", width: 224 },
+        { top: 84, left: 497, text: "4 Hong Kong/China Equities", width: 186 },
+        { top: 88, left: 726, text: "香港/中國股票", width: 78 },
+        { top: 87, left: 845, text: "1.94%", width: 39 },
+        { top: 110, left: 539, text: "Japan Equities", width: 82 },
+        { top: 110, left: 496, text: "5", width: 26 },
+        { top: 111, left: 726, text: "日本股票", width: 48 },
+        { top: 110, left: 845, text: "4.58%", width: 39 },
+      ]),
+    );
+    const [disclosure] = parseFactSheetDisclosures(pages, shkpShaped);
+
+    expect(disclosure?.allocations[0]?.entries).toEqual([
+      { label: "Hong Kong/China Equities 香港/中國股票", percent: 1.94 },
+      { label: "Japan Equities 日本股票", percent: 4.58 },
+    ]);
+  });
+
+  it("re-reads a wrapped label by column instead of appending the whole line", () => {
+    // 續行同樣分中英兩欄，直接接駁整行會變成「國際貨幣債券 (ex USD, ex HKD) (美元及港元除外)」。
+    const pages = pdf(
+      page(1, [
+        { top: 10, left: 30, text: "As at 31/03/2026", width: 110 },
+        { top: 20, left: 30, text: "Core Fund", size: 18, width: 90 },
+        { top: 60, left: 539, text: "Asset Allocation of Underlying Fund", width: 224 },
+        { top: 84, left: 539, text: "Global Currencies Bonds", width: 137 },
+        { top: 84, left: 708, text: "國際貨幣債券", width: 72 },
+        { top: 83, left: 839, text: "42.44%", width: 45 },
+        { top: 105, left: 539, text: "(ex USD, ex HKD)", width: 96 },
+        { top: 105, left: 708, text: "(美元及港元除外)", width: 102 },
+      ]),
+    );
+    const [disclosure] = parseFactSheetDisclosures(pages, shkpShaped);
+
+    expect(disclosure?.allocations[0]?.entries).toEqual([
+      {
+        label: "Global Currencies Bonds (ex USD, ex HKD) 國際貨幣債券 (美元及港元除外)",
+        percent: 42.44,
+      },
+    ]);
+  });
+});
+
 /** 中銀保誠及交銀版面：圓餅圖旁邊的置中標註，中文名、英文名、百分比同一個中心 x。 */
 const calloutShaped: FactSheetContract = {
   scheme: "Test Scheme",
