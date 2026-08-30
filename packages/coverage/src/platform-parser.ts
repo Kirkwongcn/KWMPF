@@ -179,7 +179,27 @@ export function parseFundDetail(html: string, cfId: number): SourceRecord {
     return Number(amount[2].replaceAll(",", ""));
   };
 
+  // 風險指標是年度化標準差，不是收費，所以不走 `rateField`：它沒有 `Up to` 上限，
+  // 也不應該在對不上格式時退回 `feeDisclosures`，對不上就要報錯。
+  const percentField = (label: string, publicName: string) => {
+    const value = labelValue(label);
+    if (value === undefined || value === "") return undefined;
+    if (/n\.a\./i.test(value)) {
+      unavailableFields.push(publicName);
+      return undefined;
+    }
+    const percent = value.match(/^([+-]?\d+(?:\.\d+)?)\s*%$/);
+    if (!percent?.[1]) {
+      throw new Error(`${label} is unreadable on cf_id ${cfId}: ${value}`);
+    }
+    return Number(percent[1]);
+  };
+
   const riskClass = numberField("Risk Class", "riskClass");
+  const fundRiskIndicator = percentField(
+    "Fund Risk Indicator",
+    "fundRiskIndicator",
+  );
   const latestFer = rateField("Latest FER", "latestFer");
   const recurringFees = {
     managementFee: rateField("Management Fee", "managementFee"),
@@ -309,12 +329,16 @@ export function parseFundDetail(html: string, cfId: number): SourceRecord {
     ...(sinceLaunchReturn === undefined ? {} : { sinceLaunchReturn }),
     ...(unavailableFields.length ? { unavailableFields } : {}),
     ...(riskClass !== undefined ||
+    fundRiskIndicator !== undefined ||
     latestFer !== undefined ||
     Object.values(fees).some((value) => value !== undefined) ||
     Object.keys(feeDisclosures).length > 0
       ? {
           fundOverview: {
             ...(riskClass === undefined ? {} : { riskClass }),
+            ...(fundRiskIndicator === undefined
+              ? {}
+              : { fundRiskIndicator }),
             ...(latestFer === undefined ? {} : { latestFer }),
             ...Object.fromEntries(
               Object.entries(fees).filter(

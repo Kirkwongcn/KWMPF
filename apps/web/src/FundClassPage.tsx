@@ -25,6 +25,7 @@ type PublishedFundClass = {
     cumulativeReturn5y?: number;
     cumulativeReturn10y?: number;
     riskClass?: number;
+    fundRiskIndicator?: number;
     latestFer?: number;
     managementFee?: number;
     oci1yHkd?: number;
@@ -302,7 +303,19 @@ export function FundClassPage({
             <dt>風險級別</dt>
             <dd>{fundClass.riskClass ?? unavailable}</dd>
           </div>
+          <div>
+            <dt>基金風險指標</dt>
+            <dd>
+              {typeof fundClass.fundRiskIndicator === "number"
+                ? formatNumber(fundClass.fundRiskIndicator, 2, "%")
+                : unavailable}
+            </dd>
+          </div>
         </dl>
+        <p className="kw-muted" role="note">
+          基金風險指標是過去三年的年度化標準差，數字越高代表過往價格波動越大；風險級別是積金局按該指標劃分的
+          1 至 7 級。成立不足三年的基金官方不會提供指標。
+        </p>
         <p className="kw-muted" role="note">
           年率化回報是每年平均變幅，適合與其他基金比較；累積回報是整段期間的總變幅，反映同一筆本金實際增減。兩者均為積金局公布數值，網站不會自行換算。
         </p>

@@ -49,6 +49,19 @@ MPF Navigator 檔案的 Sheet1（風險取向配置比重）不在範圍內，�
 另行計算；成立日期是靜態事實，不設過期。年度回報是曆年累積回報，顯示時不可與年率化數字混為一談，
 官方寫 `n.a.` 的年度走 `unavailableFields`，不可當成 0。
 
+## Fund risk indicator
+
+官方平台詳情頁的 `Fund Risk Indicator` 是年度化標準差，`platform-parser.ts` 抽為
+`fundRiskIndicator`（451 頁全部有此欄位，435 隻有數值、16 隻 `n.a.`）。
+`/rankings?metric=risk` 用它做波幅排序（`sortDirection: ascending`、兩位小數、單位 `%`），
+不用 `riskClass`——風險級別只有 1 至 7 級，是同一指標的分級摘要，451 隻基金擠在 7 個值裡
+會大量並列。風險級別仍然保留作 `/search?riskClass=` 的篩選條件，兩者不可互換。
+
+它不是收費：抽取走 `percentField` 而非 `rateField`，沒有 `Up to` 上限語義，對不上百分比格式
+就報錯，不會退回 `feeDisclosures`。官方寫 `n.a.` 的走 `unavailableFields`，不當成 0，
+亦不會用風險級別補位，該基金不參與波幅排名。指標每月隨市況變動屬正常，所以**不要**把它加入
+`candidate-anomalies.ts` 的 `feeFields`，否則每次更新都會觸發無意義的人手核對。
+
 ## Fee breakdown
 
 官方平台詳情頁披露一整組費用組成部分，`platform-parser.ts` 全部抽入 `fundOverview`：

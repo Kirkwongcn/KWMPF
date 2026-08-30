@@ -181,6 +181,67 @@ describe("fund class page", () => {
     ).toBeGreaterThanOrEqual(2);
   });
 
+  it("shows the fund risk indicator next to the risk class without conflating them", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-risk-indicator",
+          fundClass: {
+            ...fixture.fundClass,
+            riskClass: 6,
+            fundRiskIndicator: 20.73,
+          },
+          provenance: {
+            sourceUrl: fixture.source.url,
+            dataAsOf: "2026-07-31",
+            retrievedAt: "2026-08-13T00:00:00Z",
+            verificationStatus: "verified",
+          },
+        }),
+      ),
+    );
+
+    render(
+      <FundClassPage
+        apiBaseUrl="https://api.test"
+        fundClassId="risk-indicator"
+      />,
+    );
+
+    expect(await screen.findByText("基金風險指標")).toBeVisible();
+    expect(screen.getByText("20.73%")).toBeVisible();
+    expect(screen.getByText(/過去三年的年度化標準差/)).toBeVisible();
+  });
+
+  it("marks an absent fund risk indicator as officially unavailable", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-no-risk-indicator",
+          fundClass: { ...fixture.fundClass, fundRiskIndicator: undefined },
+          provenance: {
+            sourceUrl: fixture.source.url,
+            dataAsOf: "2026-07-31",
+            retrievedAt: "2026-08-13T00:00:00Z",
+            verificationStatus: "verified",
+          },
+        }),
+      ),
+    );
+
+    render(
+      <FundClassPage
+        apiBaseUrl="https://api.test"
+        fundClassId="no-indicator"
+      />,
+    );
+
+    const indicator = (await screen.findByText("基金風險指標")).closest("div");
+    expect(indicator).toHaveTextContent("官方未提供");
+  });
+
   it("shows official unavailability instead of crashing on absent fields", async () => {
     vi.stubGlobal(
       "fetch",
