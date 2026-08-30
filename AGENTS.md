@@ -38,6 +38,39 @@ MPF Navigator 檔案的 Sheet1（風險取向配置比重）不在範圍內，�
 檔案編號的前綴代表計劃類型（`MT` 集成信託、`IS` 行業、`ES` 僱主營辦），不可由編號推算。
 更新做法：開新的日期目錄，由登記冊重新抄錄全部計劃，再重跑 seed。
 
+## Fact sheet allocation and top holdings
+
+便覽的「配置」及「十大持倉」由 `packages/coverage/src/fact-sheet-allocation.ts` 抽取，
+24 個計劃各自一份契約寫在 `fact-sheet-allocation-contracts.ts`。抽取靠座標：便覽是多欄
+雙語版面，`pdftotext -layout` 會把相鄰欄位併成同一行，所以一律行 `pdftohtml -xml`
+（`pdf-xml.ts`）。契約只描述「去邊度攞」，不描述「點樣改寫」——維度標題、標籤及證券名稱
+一律原文照錄，不做正規化或跨計劃映射（跨計劃比較是另一張票 #211）。
+
+四條不可繞過的規則：
+
+- **有數值、冇名稱就整塊當官方未提供**。宏利環球精選有部分證券名稱畫成向量而非文字，
+  靜默丟走這些行會令名單短一截、排名整體移位，等於改寫官方披露。走 `unavailableFields`，
+  並把原因（連同落單那幾行的原文）寫入 `unavailableReasons`。
+- **抽唔到成表就明講**。`BlockSelector.unextractable` 用嚟聲明「版面上有呢一塊，但抽唔到」，
+  例如宏利環球精選的條形圖標籤是向量、我的強積金的圓餅圖標註共用基線又有數值離群。
+  設咗就一律走 `unavailableFields`，唔會出局部資料。
+- **接駁文字唔可以加多咗空格**。同一行的文字段落用水平空隙決定要唔要空格（`joinItems`：
+  中銀保誠把 `8.4%` 拆成 `8` `.` `4` `%` 四段緊貼的文字）；跨行的中文標籤兩邊都係中文時
+  唔加空格，中英對照之間就要加。
+- **配對唔做模糊比對**。`fact-sheet-allocation-pairing.ts` 只做大小寫、彎引號、破折號
+  正規化，加上契約聲明的 `platformNamePrefix`（平台寫「BCT (Pro) …」，便覽冇呢個前綴）。
+  同名兩個區段就報唔配對，唔可以隨便揀一個。一隻成分基金的多個基金類別共用同一份披露。
+
+三種版面各有一個抽取原語，唔好夾硬用錯：一般表格逐行讀；`rowGap` 把換行拆散的一列併返
+（宏利自在人生的數值垂直置中排在兩段名稱之間）；`callouts` 按中心 x 分組圓餅圖標註
+（中銀保誠、交銀的幾個扇形百分比會落在同一條基線上，逐行讀必然配錯對），標註以百分比作結。
+
+覆蓋報告：`bun run coverage:fact-sheet-allocation-report --platform <平台快照> --links
+<fund-fact-sheet-links.json> --fact-sheets <PDF 目錄> --output <report.json>`。報告逐個計劃
+列出已配對數、未配對清單及原因、以及配對到但官方未披露的原因。2026-08-30 以積金局便覽庫
+的 24 份 PDF 跑：382 隻成分基金中 366 隻配對到，255 隻有配置、289 隻有十大持倉。
+配置覆蓋率低過持倉，主因是幾份便覽把配置畫成圖表。
+
 ## Fund size, launch date and calendar year returns
 
 官方平台詳情頁另有 `Fund size (HKD Million)`（連自己的截至日期）、`Launch Date`、
