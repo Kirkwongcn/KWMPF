@@ -422,6 +422,38 @@ describe("pie-chart callouts", () => {
   });
 });
 
+describe("overlaid text layers", () => {
+  it("refuses to attribute a row that carries two values in the value column", () => {
+    // 永明那份便覽的文字層把另一隻基金的同一張表疊印在同一個位置，只差幾 pt。
+    // 靠左界猜邊個屬邊隻基金就有機會配錯，寧可明講抽唔到。
+    const pages = pdf(
+      page(1, [
+        { top: 10, left: 30, text: "As at 31/12/2025", width: 110 },
+        { top: 20, left: 30, text: "Core Fund", size: 18, width: 90 },
+        { top: 60, left: 566, text: "Top 10 holdings", width: 101 },
+        { top: 90, left: 472, text: "Banco Santander S.A. Hong Kong", width: 244 },
+        { top: 90, left: 475, text: "Microsoft Corp", width: 72 },
+        { top: 90, left: 822, text: "3.5%", width: 23 },
+        { top: 90, left: 825, text: "7.8%", width: 22 },
+      ]),
+    );
+    const [disclosure] = parseFactSheetDisclosures(pages, {
+      ...hsbcShaped,
+      holdings: {
+        heading: /^Top 10 holdings$/,
+        band: { minLeft: 460, maxLeft: 900 },
+        valueMinLeft: 780,
+        rejectOverlaidRows: true,
+      },
+    });
+
+    expect(disclosure?.topHoldings).toEqual([]);
+    expect(disclosure?.unavailableReasons.topHoldings).toMatch(
+      /overlays another fund's table/,
+    );
+  });
+});
+
 describe("unextractable blocks", () => {
   it("records why a block was skipped instead of publishing partial rows", () => {
     const pages = pdf(

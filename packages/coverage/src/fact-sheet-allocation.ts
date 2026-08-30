@@ -89,6 +89,12 @@ export type BlockSelector = {
   /** 略過符合這個式樣的行。 */
   ignore?: RegExp;
   /**
+   * 同一行有多過一個數值就當成疊印，整塊走 `unavailableFields`。永明那份便覽的
+   * 文字層把另一隻基金的同一張表疊印在同一個位置（只差兩至七 pt，印出嚟只見到一份），
+   * 分唔清邊個數值屬邊隻基金；靠左界猜就有機會出錯配對，所以寧可明講抽唔到。
+   */
+  rejectOverlaidRows?: boolean;
+  /**
    * 圓餅圖旁邊的置中標註。呢類版面唔可以逐行讀：幾個扇形的百分比會落在同一條基線上
    * （中銀保誠的 `4.4%` 同 `2.1%` 都在 top 745），併行就會配錯對。但每個標註的中文名、
    * 英文名同百分比係**置中對齊**的，中心 x 完全一致，按中心分組就配得準。
@@ -396,6 +402,17 @@ function bottomOf(
     : Number.POSITIVE_INFINITY;
 }
 
+/** 一行之內，數值欄裡符合數值格式的段落。 */
+function valueItems(line: PdfLine, selector: BlockSelector) {
+  const pattern = selector.numberFormat === "bare" ? BARE_NUMBER_ITEM : PERCENT_ITEM;
+  return line.items.filter(
+    (item) =>
+      pattern.test(item.text) &&
+      (selector.valueMinLeft === undefined || item.left >= selector.valueMinLeft) &&
+      (selector.valueMaxLeft === undefined || item.left <= selector.valueMaxLeft),
+  );
+}
+
 function blockLines(
   pages: PdfPage[],
   section: FactSheetSection,
@@ -582,9 +599,10 @@ function readAllocation(
   section: FactSheetSection,
   items: PdfTextItem[],
   contract: FactSheetContract,
-): { dimensions: AllocationDimension[]; orphanValues: string[] } {
+): { dimensions: AllocationDimension[]; orphanValues: string[]; overlaidRows: string[] } {
   const dimensions: AllocationDimension[] = [];
   const orphanValues: string[] = [];
+  const overlaidRows: string[] = [];
   for (const heading of headingsIn(items, contract.allocation)) {
     const band = bandFor(heading, items, contract, contract.allocation, pages);
     const bottom = bottomOf(heading, items, contract, band, contract.allocation);
@@ -599,6 +617,10 @@ function readAllocation(
       contract.allocation,
       bottom,
     )) {
+      if (contract.allocation.rejectOverlaidRows && valueItems(line, contract.allocation).length > 1) {
+        overlaidRows.push(line.text);
+        continue;
+      }
       const value = readValue(line, contract.allocation);
       if (!value) {
         if (contract.allocation.joinWrappedLabels) wrapped = line.text;
@@ -632,7 +654,7 @@ function readAllocation(
     if (existing) existing.entries.push(...entries);
     else dimensions.push({ heading: label, entries });
   }
-  return { dimensions, orphanValues };
+  return { dimensions, orphanValues, overlaidRows };
 }
 
 function readHoldings(
@@ -640,9 +662,10 @@ function readHoldings(
   section: FactSheetSection,
   items: PdfTextItem[],
   contract: FactSheetContract,
-): { holdings: TopHolding[]; orphanValues: string[] } {
+): { holdings: TopHolding[]; orphanValues: string[]; overlaidRows: string[] } {
   const holdings: TopHolding[] = [];
   const orphanValues: string[] = [];
+  const overlaidRows: string[] = [];
   for (const heading of headingsIn(items, contract.holdings)) {
     const band = bandFor(heading, items, contract, contract.holdings, pages);
     const bottom = bottomOf(heading, items, contract, band, contract.holdings);
@@ -655,6 +678,10 @@ function readHoldings(
       contract.holdings,
       bottom,
     )) {
+      if (contract.holdings.rejectOverlaidRows && valueItems(line, contract.holdings).length > 1) {
+        overlaidRows.push(line.text);
+        continue;
+      }
       const value = readValue(line, contract.holdings);
       if (!value) {
         if (contract.holdings.joinWrappedLabels) wrapped = line.text;
@@ -679,7 +706,7 @@ function readHoldings(
       });
     }
   }
-  return { holdings: holdings.slice(0, 10), orphanValues };
+  return { holdings: holdings.slice(0, 10), orphanValues, overlaidRows };
 }
 
 export function findFactSheetAsOf(pages: PdfPage[], contract: FactSheetContract) {
@@ -713,6 +740,10 @@ function describe(lines: string[]) {
   return lines.slice(0, 3).map((line) => JSON.stringify(line)).join(", ");
 }
 
+function overlaidReason(lines: string[]) {
+  return `${lines.length} rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: ${describe(lines)}`;
+}
+
 export function parseFactSheetDisclosures(
   pages: PdfPage[],
   contract: FactSheetContract,
@@ -726,10 +757,10 @@ export function parseFactSheetDisclosures(
   const disclosures = sections.map((section) => {
     const items = sectionItems(pages, section);
     const allocation = contract.allocation.unextractable
-      ? { dimensions: [], orphanValues: [] }
+      ? { dimensions: [], orphanValues: [], overlaidRows: [] }
       : readAllocation(pages, section, items, contract);
     const holdings = contract.holdings.unextractable
-      ? { holdings: [], orphanValues: [] }
+      ? { holdings: [], orphanValues: [], overlaidRows: [] }
       : readHoldings(pages, section, items, contract);
     const unavailableFields: string[] = [];
     const unavailableReasons: Record<string, string> = {};
@@ -737,24 +768,34 @@ export function parseFactSheetDisclosures(
     // 有數值但抽唔到名稱，代表該份便覽把名稱畫成向量而非文字（宏利環球精選）。
     // 靜默丟走這些行會令餘下的名單短一截、排名整體移位，等同改寫官方披露，
     // 所以整塊當作官方未提供，唔出局部名單。
-    const allocations = allocation.orphanValues.length > 0 ? [] : allocation.dimensions;
-    const topHoldings = holdings.orphanValues.length > 0 ? [] : holdings.holdings;
+    const allocations =
+      allocation.orphanValues.length > 0 || allocation.overlaidRows.length > 0
+        ? []
+        : allocation.dimensions;
+    const topHoldings =
+      holdings.orphanValues.length > 0 || holdings.overlaidRows.length > 0
+        ? []
+        : holdings.holdings;
 
     if (allocations.length === 0) {
       unavailableFields.push("allocation");
       unavailableReasons.allocation =
         contract.allocation.unextractable ??
-        (allocation.orphanValues.length > 0
-          ? `${allocation.orphanValues.length} rows disclose a percentage without an extractable label: ${describe(allocation.orphanValues)}`
-          : "no allocation rows in the disclosed block");
+        (allocation.overlaidRows.length > 0
+          ? overlaidReason(allocation.overlaidRows)
+          : allocation.orphanValues.length > 0
+            ? `${allocation.orphanValues.length} rows disclose a percentage without an extractable label: ${describe(allocation.orphanValues)}`
+            : "no allocation rows in the disclosed block");
     }
     if (topHoldings.length === 0) {
       unavailableFields.push("topHoldings");
       unavailableReasons.topHoldings =
         contract.holdings.unextractable ??
-        (holdings.orphanValues.length > 0
-          ? `${holdings.orphanValues.length} rows disclose a percentage without an extractable security name: ${describe(holdings.orphanValues)}`
-          : "no holdings rows in the disclosed block");
+        (holdings.overlaidRows.length > 0
+          ? overlaidReason(holdings.overlaidRows)
+          : holdings.orphanValues.length > 0
+            ? `${holdings.orphanValues.length} rows disclose a percentage without an extractable security name: ${describe(holdings.orphanValues)}`
+            : "no holdings rows in the disclosed block");
     }
 
     return {

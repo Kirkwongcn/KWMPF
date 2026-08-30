@@ -554,8 +554,20 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
     allocation: {
       heading: /^Portfolio Allocation$/,
       headingLabel: () => "Portfolio Allocation 投資組合分佈",
+      // 圓環圖的圖例（「現金及存款 Cash & Deposit 83.2%」）連同百分比全部畫成向量，
+      // 文字層一個字都冇。不設這個聲明的話，會由頁面其他地方讀到不相干的百分比。
+      unextractable:
+        "the donut chart's legend and percentages are drawn as vector art, not text",
     },
-    holdings: { heading: /^Top 10 Holdings$/ },
+    holdings: {
+      heading: /^Top 10 Holdings$/,
+      // 標題置中（left≈566）而證券名靠左（left≈472），自動欄界會切走名稱只剩百分比。
+      band: { minLeft: 460, maxLeft: 900 },
+      valueMinLeft: 780,
+      // 文字層把「環球低碳指數基金」及「強積金保守基金」的同一張表疊印在大部分頁面，
+      // 只差兩至七 pt，印出嚟只見到一份。分唔清邊個百分比屬邊隻基金，所以整塊當抽唔到。
+      rejectOverlaidRows: true,
+    },
     asOf: { pattern: AS_OF_SLASH },
   },
 ];
