@@ -176,7 +176,7 @@ export type FactSheetSection = {
 const PERCENT_ITEM = /^\(?([+-]?\d+(?:\.\d+)?)\s*%\)?$/;
 const BARE_NUMBER_ITEM = /^\(?([+-]?\d+(?:\.\d+)?)\)?$/;
 const PERCENT_TRAILING = /^(.*?)[\s.·]*([+-]?\d+(?:\.\d+)?)\s*%$/;
-const BARE_TRAILING = /^(.*?[^\d.\s])[\s.·]+([+-]?\d+\.\d+)$/;
+const BARE_TRAILING = /^(.*?\S)[\s.·]+([+-]?\d+\.\d+)$/;
 // 名次可以係「1.」「1、」或者淨係「1 」。要求數字後面有分隔或空白，
 // 否則會把「3M Co」的 3 當成名次。
 const RANK_PREFIX = /^(\d{1,2})(?:\s*[.、)．]\s*|\s+)/;
@@ -462,12 +462,13 @@ function blockLines(
 }
 
 /**
- * 把散落的置中標註按中心 x 分組，每組還原成一「行」交返俾 `readValue`。
- * 同一組內按 top 排，最後一段通常就是百分比。
+ * 把散落的標註分組，每組還原成一「行」交返俾 `readValue`。預設按中心 x 分組
+ * （中銀保誠、交銀），`overlap` 則按水平範圍相交（MASS）。同一組內按 top 排，
+ * 最後一段通常就是百分比。
  */
 function groupCallouts(
   lines: PdfLine[],
-  options: { centreTolerance?: number; maxGap?: number },
+  options: NonNullable<BlockSelector["callouts"]>,
   isValue: (item: PdfTextItem) => boolean,
 ): PdfLine[] {
   const tolerance = options.centreTolerance ?? 14;

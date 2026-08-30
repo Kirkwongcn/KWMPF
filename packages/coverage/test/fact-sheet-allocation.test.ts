@@ -454,6 +454,42 @@ describe("overlaid text layers", () => {
   });
 });
 
+describe("values read off the end of a line", () => {
+  it("reads a bare number off a row whose name ends in a date", () => {
+    // BCT Simple／Smart 有部分列的數值同名稱併成同一段文字，而名稱以年份結尾
+    // （`… 15/08/2027 4.13`）。要求名稱唔可以以數字結尾就會整列讀唔到。
+    const pages = pdf(
+      page(1, [
+        { top: 10, left: 30, text: "As at 31/12/2025", width: 110 },
+        { top: 20, left: 30, text: "Core Fund", size: 18, width: 90 },
+        { top: 60, left: 34, text: "Top 10 holdings", width: 102 },
+        {
+          top: 90,
+          left: 34,
+          text: "UNITED STATES TREASURY NOTE/BOND 2.25% 15/08/2027 4.13",
+          width: 288,
+        },
+      ]),
+    );
+    const [disclosure] = parseFactSheetDisclosures(pages, {
+      ...hsbcShaped,
+      holdings: {
+        heading: /^Top 10 holdings$/,
+        band: { minLeft: 20, maxLeft: 330 },
+        numberFormat: "bare",
+      },
+    });
+
+    expect(disclosure?.topHoldings).toEqual([
+      {
+        rank: 1,
+        security: "UNITED STATES TREASURY NOTE/BOND 2.25% 15/08/2027",
+        percent: 4.13,
+      },
+    ]);
+  });
+});
+
 describe("callouts grouped by horizontal overlap", () => {
   it("pairs a right-aligned callout with its own percentage", () => {
     // MASS 的餅圖標註在餅左邊靠右對齊、右邊靠左對齊，中心對唔上；

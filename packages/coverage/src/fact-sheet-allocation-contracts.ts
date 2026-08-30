@@ -79,21 +79,46 @@ const series800Blocks = {
   },
 } as const;
 
-/** BCT Simple／Smart Plan（前信安）：右邊資產類別投資分布，左邊十大主要投資項目。 */
+/**
+ * BCT Simple／Smart Plan（前信安）：右邊資產類別投資分布，左邊十大主要投資項目。
+ * 逐隻基金按類型披露不同維度，股票基金用地區、債券基金用信貸評級（官方串錯成
+ * `Crediting Rating`，原文照錄）。
+ */
+const PRINCIPAL_DIMENSION =
+  /^(?:Fund Allocation by Asset Class|Geographical Breakdown|Crediting Rating Breakdown)$/;
+const PRINCIPAL_DIMENSION_ZH: Record<string, string> = {
+  "Fund Allocation by Asset Class": "資產類別投資分布",
+  "Geographical Breakdown": "地區投資分布",
+  "Crediting Rating Breakdown": "信貸評級投資分布",
+};
+
 const principalBlocks = {
   allocation: {
-    heading: /^Fund Allocation by Asset Class$/,
-    headingLabel: () => "Fund Allocation by Asset Class 資產類別投資分布",
+    heading: PRINCIPAL_DIMENSION,
+    headingLabel: (text: string) => `${text} ${PRINCIPAL_DIMENSION_ZH[text] ?? ""}`.trim(),
     band: { minLeft: 315, maxLeft: 900 },
     numberFormat: "bare",
     valueMinLeft: 650,
+    // 表格之下冇另一個標題，會一路讀到頁腳；頁碼排在 left≈865，會被當成一個數值。
+    valueMaxLeft: 800,
+    // 表格最長約 150 pt，而頁底的基金評論最少喺標題之下 230 pt，評論入面的年份
+    // 會被當成數值（`受益於市場風險=2025`）。
+    maxDepth: 180,
   },
   holdings: {
     heading: /^Top 10 Holdings$/,
-    band: { minLeft: 20, maxLeft: 460 },
+    // 右界要收窄到 330：右欄的分佈表標題（left≈341）落在寬欄界之內，會被當成
+    // 十大投資項目的下界，令表格喺三幾行就收咗尾，甚至一行都讀唔到。
+    band: { minLeft: 20, maxLeft: 330 },
     numberFormat: "bare",
-    valueMinLeft: 250,
+    // 唔設數值欄左界：證券名有中文對照時，數值緊貼住中文名排（left 由 55 至 300 不等，
+    // 視乎名稱長度），而且同名稱之間冇空隙，靠行尾抽數字抽唔到。
     joinWrappedLabels: true,
+    // 頁碼喺左右頁交替排（單數頁 left≈865、雙數頁 left≈30），落喺名稱那一欄，
+    // 冇欄界隔到；證券名唔會淨係一兩個位數字。
+    ignore: /^\d{1,2}$/,
+    // 十大投資項目之下係頁底的基金評論，以「^」起首，橫跨成版。
+    stopAt: /^\^/,
   },
 } as const;
 
