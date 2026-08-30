@@ -33,8 +33,15 @@ export type UnpairedDisclosure = {
   reason: string;
 };
 
+/** 配對到的披露原文，供發布 payload 使用；覆蓋報告只收數目，唔會帶住成份披露。 */
+export type PairedDisclosure = {
+  fundClassIds: string[];
+  disclosure: FactSheetDisclosure;
+};
+
 export type PairingResult = {
   paired: PairedFund[];
+  pairedDisclosures: PairedDisclosure[];
   unpairedPlatformFunds: UnpairedPlatformFund[];
   unpairedDisclosures: UnpairedDisclosure[];
 };
@@ -54,6 +61,7 @@ export function pairFactSheetDisclosures(
   platformNamePrefix?: RegExp,
 ): PairingResult {
   const paired: PairedFund[] = [];
+  const pairedDisclosures: PairedDisclosure[] = [];
   const unpairedPlatformFunds: UnpairedPlatformFund[] = [];
   const unpairedDisclosures: UnpairedDisclosure[] = [];
   const used = new Set<FactSheetDisclosure>();
@@ -89,6 +97,7 @@ export function pairFactSheetDisclosures(
 
     const disclosure = matches[0]!;
     used.add(disclosure);
+    pairedDisclosures.push({ fundClassIds: fund.fundClassIds, disclosure });
     paired.push({
       fundClassIds: fund.fundClassIds,
       schemeName: fund.schemeName,
@@ -110,5 +119,5 @@ export function pairFactSheetDisclosures(
     });
   }
 
-  return { paired, unpairedPlatformFunds, unpairedDisclosures };
+  return { paired, pairedDisclosures, unpairedPlatformFunds, unpairedDisclosures };
 }
