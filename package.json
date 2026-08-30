@@ -23,6 +23,7 @@
     "coverage:build-comparison-evidence": "bun packages/coverage/src/build-comparison-evidence.ts",
     "coverage:build-candidate-ranking-report": "bun packages/coverage/src/build-candidate-ranking-report.ts",
     "coverage:build-candidate-audit-report": "bun packages/coverage/src/build-candidate-audit-report.ts",
+    "coverage:fact-sheet-allocation-report": "bun packages/coverage/src/build-fact-sheet-allocation-report.ts",
     "coverage:refresh-report": "bun packages/coverage/src/build-refresh-report.ts",
     "coverage:fetch-platform": "bun packages/coverage/src/fetch-platform.ts",
     "coverage:retry-platform": "bun packages/coverage/src/retry-platform.ts",
