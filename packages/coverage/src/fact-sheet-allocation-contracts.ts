@@ -466,8 +466,14 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       fontColor: ["#00b8f1"],
     },
     allocation: {
+      // 餅圖旁邊的標註：標籤一行、百分比一行，餅左邊的靠右對齊、右邊的靠左對齊，
+      // 所以中心對唔上，要按水平範圍相交分組。標註以百分比作結。
       heading: /^Portfolio Asset Allocation/,
       headingLabel: () => "Portfolio Asset Allocation 投資組合分佈",
+      band: { minLeft: 390, maxLeft: 900 },
+      callouts: { overlap: true },
+      // 餅圖之下係資料來源及曆年回報表，唔屬於投資組合分佈。
+      maxDepth: 260,
     },
     holdings: { heading: /^Top 10 Holdings/ },
     asOf: { pattern: /(\d{4}\s*年\s*\d{1,2}\s*月\s*\d{1,2}\s*日)/ },

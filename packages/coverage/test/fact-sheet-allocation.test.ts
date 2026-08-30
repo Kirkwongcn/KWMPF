@@ -454,6 +454,46 @@ describe("overlaid text layers", () => {
   });
 });
 
+describe("callouts grouped by horizontal overlap", () => {
+  it("pairs a right-aligned callout with its own percentage", () => {
+    // MASS 的餅圖標註在餅左邊靠右對齊、右邊靠左對齊，中心對唔上；
+    // 但每個標籤同佢自己個百分比一定橫向相交。
+    const pages = pdf(
+      page(1, [
+        { top: 10, left: 30, text: "As at 31/12/2025", width: 110 },
+        { top: 20, left: 30, text: "Core Fund", size: 18, width: 90 },
+        { top: 60, left: 393, text: "Asset Allocation", width: 100 },
+        // 餅右邊，靠左對齊
+        { top: 100, left: 748, text: "Other equities", width: 31 },
+        { top: 110, left: 748, text: "0.2%", width: 15 },
+        // 餅左邊，靠右對齊；標籤由三段文字組成
+        { top: 111, left: 425, text: "Other Asia", width: 8 },
+        { top: 111, left: 433, text: "Pacific", width: 39 },
+        { top: 111, left: 472, text: "equities", width: 16 },
+        { top: 121, left: 474, text: "1.3%", width: 15 },
+        { top: 132, left: 456, text: "Japan", width: 16 },
+        { top: 132, left: 472, text: "equities", width: 16 },
+        { top: 142, left: 474, text: "1.3%", width: 15 },
+      ]),
+    );
+    const [disclosure] = parseFactSheetDisclosures(pages, {
+      ...calloutShaped,
+      allocation: {
+        heading: /^Asset Allocation$/,
+        band: { minLeft: 390, maxLeft: 900 },
+        callouts: { overlap: true },
+      },
+    });
+
+    expect(disclosure?.allocations[0]?.entries).toEqual([
+      { label: "Other equities", percent: 0.2 },
+      { label: "Other AsiaPacificequities", percent: 1.3 },
+      // 標註以百分比作結；不封組的話「日本股票」會被上一個標註吸走。
+      { label: "Japanequities", percent: 1.3 },
+    ]);
+  });
+});
+
 describe("unextractable blocks", () => {
   it("records why a block was skipped instead of publishing partial rows", () => {
     const pages = pdf(

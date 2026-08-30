@@ -99,7 +99,15 @@ export type BlockSelector = {
    * （中銀保誠的 `4.4%` 同 `2.1%` 都在 top 745），併行就會配錯對。但每個標註的中文名、
    * 英文名同百分比係**置中對齊**的，中心 x 完全一致，按中心分組就配得準。
    */
-  callouts?: { centreTolerance?: number; maxGap?: number };
+  callouts?: {
+    centreTolerance?: number;
+    maxGap?: number;
+    /**
+     * 按水平範圍相交分組，而唔係按中心。MASS 的餅圖標註在餅左邊靠右對齊、
+     * 在餅右邊靠左對齊，中心對唔上；但標籤同佢自己個百分比一定橫向相交。
+     */
+    overlap?: boolean;
+  };
   /** 部分計劃的數字不帶 `%`（標題已寫 `(%)`）。 */
   numberFormat?: "percent" | "bare";
   /** 數值欄的左界，用來把腳註編號、圖表刻度等雜訊排除在數值之外。 */
@@ -468,6 +476,8 @@ function groupCallouts(
 
   type Cluster = {
     centre: number;
+    left: number;
+    right: number;
     page: number;
     bottom: number;
     closed: boolean;
@@ -481,17 +491,23 @@ function groupCallouts(
       (candidate) =>
         !candidate.closed &&
         candidate.page === item.page &&
-        Math.abs(candidate.centre - itemCentre) <= tolerance &&
+        (options.overlap
+          ? item.left <= candidate.right + 1 && item.left + item.width >= candidate.left - 1
+          : Math.abs(candidate.centre - itemCentre) <= tolerance) &&
         item.top - candidate.bottom <= maxGap,
     );
     if (cluster) {
       cluster.items.push(item);
+      cluster.left = Math.min(cluster.left, item.left);
+      cluster.right = Math.max(cluster.right, item.left + item.width);
       cluster.bottom = item.top;
       cluster.closed = isValue(item);
       continue;
     }
     clusters.push({
       centre: itemCentre,
+      left: item.left,
+      right: item.left + item.width,
       page: item.page,
       bottom: item.top,
       closed: isValue(item),
