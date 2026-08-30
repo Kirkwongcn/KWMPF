@@ -6,6 +6,9 @@ type PublicFields = {
   cumulativeReturn5y?: number;
   cumulativeReturn10y?: number;
   riskClass?: number;
+  // 官方的基金風險指標（年度化標準差）。成立不足三年的基金官方寫 `n.a.`，
+  // 會走 `unavailableFields`，所以不列入 `requiredFields`。
+  fundRiskIndicator?: number;
   latestFer?: number;
   managementFee?: number;
   oci1yHkd?: number;

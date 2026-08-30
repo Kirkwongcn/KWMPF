@@ -157,6 +157,7 @@ describe("publication snapshot", () => {
         comparisonGroup: "Hong Kong Equity",
         comparisonGroupSource: "lipper",
         riskClass: fundFixture.fundClass.riskClass,
+        fundRiskIndicator: fundFixture.fundClass.fundRiskIndicator,
         annualizedReturn1y: fundFixture.fundClass.annualizedReturn1y,
         managementFee: fundFixture.fundClass.managementFee,
         latestFer: fundFixture.fundClass.latestFer,
@@ -1077,11 +1078,33 @@ describe("publication snapshot", () => {
       fundOverviewGraceDays?: number;
     },
   ) => {
+    // fund-b 與 fund-c 的風險級別同為 3，但風險指標不同：波幅排序要分得開它們，
+    // 這正是改用風險指標而非風險級別的理由。fund-d 沒有指標（例如成立不足三年）。
     const funds = [
-      { id: "fund-a", managementFee: 1.205, riskClass: 6 },
-      { id: "fund-b", managementFee: 0.65, riskClass: 3 },
-      { id: "fund-c", managementFee: 0.6504, riskClass: 3 },
-      { id: "fund-d", managementFee: undefined, riskClass: undefined },
+      {
+        id: "fund-a",
+        managementFee: 1.205,
+        riskClass: 6,
+        fundRiskIndicator: 18.49,
+      },
+      {
+        id: "fund-b",
+        managementFee: 0.65,
+        riskClass: 3,
+        fundRiskIndicator: 4.7,
+      },
+      {
+        id: "fund-c",
+        managementFee: 0.6504,
+        riskClass: 3,
+        fundRiskIndicator: 2.31,
+      },
+      {
+        id: "fund-d",
+        managementFee: undefined,
+        riskClass: undefined,
+        fundRiskIndicator: undefined,
+      },
     ];
     await insertPublication(
       snapshotId,
@@ -1100,6 +1123,7 @@ describe("publication snapshot", () => {
             annualizedReturn1y: 1,
             managementFee: fund.managementFee,
             riskClass: fund.riskClass,
+            fundRiskIndicator: fund.fundRiskIndicator,
             dataAsOf,
             verificationStatus: "verified",
           },
@@ -1212,7 +1236,7 @@ describe("publication snapshot", () => {
     ]);
   });
 
-  it("ranks official risk classes from low to high as a separate volatility view", async () => {
+  it("ranks the official fund risk indicator from low to high as a separate volatility view", async () => {
     await seedCostAndRiskSnapshot("snapshot-risk", isoDaysAgo(10));
 
     const response = await SELF.fetch(
@@ -1227,18 +1251,40 @@ describe("publication snapshot", () => {
     };
     expect(body.metric).toBe("risk");
     expect(body.methodology).toMatchObject({
-      metric: "official_risk_class",
+      metric: "fund_risk_indicator",
       grouping: "comparison_group",
       sortDirection: "ascending",
-      displayPrecision: 0,
+      displayPrecision: 2,
     });
+    // 風險級別會把 fund-b 與 fund-c 並列第一；風險指標把它們分開，這是本票的重點。
     expect(
       body.rankings.map((row) => [row.fundClassId, row.displayValue, row.rank]),
     ).toEqual([
-      ["fund-b", "3", 1],
-      ["fund-c", "3", 1],
-      ["fund-a", "6", 3],
+      ["fund-c", "2.31%", 1],
+      ["fund-b", "4.70%", 2],
+      ["fund-a", "18.49%", 3],
     ]);
+  });
+
+  it("leaves a fund without an official risk indicator out of the volatility ranking", async () => {
+    await seedCostAndRiskSnapshot("snapshot-risk-missing", isoDaysAgo(10));
+
+    const body = (await (
+      await SELF.fetch("https://kwmpf.test/rankings?metric=risk")
+    ).json()) as { rankings: { fundClassId: string }[] };
+
+    // fund-d 沒有指標，不可當成 0 排第一，也不可用風險級別補位。
+    expect(body.rankings.map((row) => row.fundClassId)).not.toContain("fund-d");
+  });
+
+  it("keeps the risk class filter working after the ranking switched metric", async () => {
+    await seedCostAndRiskSnapshot("snapshot-risk-filter", isoDaysAgo(10));
+
+    const body = (await (
+      await SELF.fetch("https://kwmpf.test/search?riskClass=3")
+    ).json()) as { id: string }[];
+
+    expect(body.map((row) => row.id).sort()).toEqual(["fund-b", "fund-c"]);
   });
 
   it("applies the fund overview grace period, not the returns one, to fee and risk rankings", async () => {

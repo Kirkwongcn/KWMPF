@@ -38,7 +38,7 @@ type RankingMetric = "return" | "fee" | "risk";
 const metricLabels = {
   return: "年率化回報",
   fee: "管理費（低至高）",
-  risk: "風險級別（低至高）",
+  risk: "波幅（低至高）",
 } as const;
 
 export function RankingsPage({
@@ -107,13 +107,13 @@ export function RankingsPage({
       ? `${periodLabels[period]}回報`
       : metric === "fee"
         ? "管理費"
-        : "風險級別";
+        : "波幅";
   const subtitle =
     metric === "return"
       ? `只比較相同基金種類及配置組別，名次按官方${periodLabels[period]}年率化回報排列。`
       : metric === "fee"
         ? "只比較相同基金種類及配置組別，名次按官方當前管理費由低至高排列。"
-        : "只比較相同基金種類及配置組別，名次按官方風險級別由低至高排列。";
+        : "只比較相同基金種類及配置組別，名次按官方基金風險指標（年度化標準差）由低至高排列。";
 
   return (
     <SiteChrome
@@ -187,7 +187,7 @@ export function RankingsPage({
                 ? "官方沒有提供三年年率化回報，本站不會由其他期間推算。同一比較組別內按回報由高至低排列。"
                 : metric === "fee"
                   ? "管理費為官方公布的當前費率，不包括基金開支比率所涵蓋的歷史費用。"
-                  : "風險級別由官方公布，數字越低代表過往波幅越低，不代表回報較佳。"}
+                  : "波幅用官方公布的基金風險指標，即過去三年的年度化標準差。數字越低代表過往價格波動越小，不代表基金較佳或較適合你。成立不足三年的基金官方沒有這項數據，不會出現在此排名。"}
             </p>
             {publication && (
               <>

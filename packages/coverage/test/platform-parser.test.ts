@@ -48,6 +48,7 @@ describe("MPF Fund Platform parser", () => {
       unavailableFields: ["oci5yHkd", "calendarYearReturn2021"],
       fundOverview: {
         riskClass: 6,
+        fundRiskIndicator: 18.49,
         latestFer: 1.30424,
         managementFee: 1.03,
         trusteeCustodianFee: 0.14,
@@ -205,6 +206,44 @@ describe("MPF Fund Platform parser", () => {
       managementFee: 1.03,
       oci1yHkd: 15,
     });
+  });
+
+  const riskIndicatorHtml = (value: string) => `<table>
+      <tr><td>Name of MPF trustee</td><td>Trustee</td></tr>
+      <tr><td>Name of MPF scheme</td><td>Scheme</td></tr>
+      <tr><td>Name of the constituent fund</td><td>Fund</td></tr>
+      <tr><td>Fund Class</td><td>Class I</td></tr>
+      <tr><td>Fund Type</td><td>Equity</td></tr>
+      <tr><td>Fund Type - Full Descriptor</td><td>Equity Fund</td></tr>
+      <tr><td>Fund size (HKD Million)</td><td>As at 31 July 2026 10</td></tr>
+      <tr><td>Risk Class</td><td>6</td></tr>
+      <tr><td><a href="mpp_glossary.jsp#fund_risk_indicator " target="_blank">Fund Risk Indicator</a></td><td><div align="left">${value}</div></td></tr>
+    </table>`;
+
+  it("reads the fund risk indicator as an annualized standard deviation percentage", () => {
+    expect(
+      parseFundDetail(riskIndicatorHtml("6.51%"), 429).fundOverview,
+    ).toEqual({ riskClass: 6, fundRiskIndicator: 6.51 });
+  });
+
+  it("keeps a platform zero risk indicator as zero rather than dropping it", () => {
+    expect(
+      parseFundDetail(riskIndicatorHtml("0.00%"), 429).fundOverview,
+    ).toEqual({ riskClass: 6, fundRiskIndicator: 0 });
+  });
+
+  // 成立不足三年的基金官方寫 `n.a.`，要走「資料不足」，不可當成 0 或用風險級別代替。
+  it("records an unavailable risk indicator instead of substituting a number", () => {
+    const record = parseFundDetail(riskIndicatorHtml("n.a."), 429);
+    expect(record.fundOverview).toEqual({ riskClass: 6 });
+    expect(record.unavailableFields).toContain("fundRiskIndicator");
+  });
+
+  // 風險指標不是收費，對不上格式不可退回 feeDisclosures，要報錯。
+  it("fails explicitly when the risk indicator is not a percentage", () => {
+    expect(() => parseFundDetail(riskIndicatorHtml("Up to 6.51%"), 429)).toThrow(
+      /Fund Risk Indicator is unreadable on cf_id 429/,
+    );
   });
 
   it("fails explicitly when the platform removes a required label", () => {

@@ -68,6 +68,9 @@ export function buildPublicationInputs(records: SourceRecord[]): PublicationInpu
       ...(typeof record.fundOverview?.riskClass === "number"
         ? { riskClass: record.fundOverview.riskClass }
         : {}),
+      ...(typeof record.fundOverview?.fundRiskIndicator === "number"
+        ? { fundRiskIndicator: record.fundOverview.fundRiskIndicator }
+        : {}),
       ...(typeof record.fundOverview?.latestFer === "number"
         ? { latestFer: record.fundOverview.latestFer }
         : {}),

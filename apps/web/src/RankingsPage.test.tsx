@@ -346,7 +346,7 @@ describe("published return rankings", () => {
           trusteeName: "Trustee One",
           comparisonGroup: "Equity Fund (North America)",
           displayValue:
-            metric === "fee" ? "0.65%" : metric === "risk" ? "3" : "17.21%",
+            metric === "fee" ? "0.65%" : metric === "risk" ? "4.70%" : "17.21%",
           rank: 1,
           dataAsOf: "2026-07-31",
           sourceUrl: "https://example.test/fund-a",
@@ -381,7 +381,7 @@ describe("published return rankings", () => {
     expect(screen.queryByLabelText("回報期間")).not.toBeInTheDocument();
   });
 
-  it("ranks official risk classes as a separate lower volatility view", async () => {
+  it("ranks the official fund risk indicator as a separate lower volatility view", async () => {
     const fetchMock = vi
       .fn()
       .mockImplementation((url: string) =>
@@ -393,18 +393,18 @@ describe("published return rankings", () => {
 
     render(<RankingsPage apiBaseUrl="https://api.test" initialMetric="risk" />);
 
-    expect(await screen.findByText("3")).toBeVisible();
+    expect(await screen.findByText("4.70%")).toBeVisible();
     expect(fetchMock).toHaveBeenCalledWith(
       "https://api.test/rankings?metric=risk",
     );
     expect(screen.getByLabelText("排序指標")).toHaveValue("risk");
-    expect(screen.getByRole("heading", { name: "風險級別排名" })).toBeVisible();
+    expect(screen.getByRole("heading", { name: "波幅排名" })).toBeVisible();
+    expect(screen.getByRole("columnheader", { name: "波幅" })).toBeVisible();
+    // 標示必須講明這是波幅，不是「風險較低較好」。
     expect(
-      screen.getByRole("columnheader", { name: "風險級別" }),
+      screen.getByText(/基金風險指標，即過去三年的年度化標準差/),
     ).toBeVisible();
-    expect(
-      screen.getByText(/風險級別由官方公布，數字越低代表過往波幅越低/),
-    ).toBeVisible();
+    expect(screen.getByText(/不代表基金較佳或較適合你/)).toBeVisible();
   });
 
   it("puts the ranked value before the long comparison group column", async () => {

@@ -84,6 +84,7 @@ type BrowseFundClass = {
   fundCategory?: string;
   lipperCategory?: string;
   riskClass?: number;
+  fundRiskIndicator?: number;
   annualizedReturn1y?: number;
   managementFee?: number;
   latestFer?: number;
@@ -210,6 +211,7 @@ app.get("/search", async (context) => {
       comparisonGroup: group.name,
       comparisonGroupSource: group.source,
       riskClass: fundClass.riskClass,
+      fundRiskIndicator: fundClass.fundRiskIndicator,
       annualizedReturn1y: fundClass.annualizedReturn1y,
       managementFee: fundClass.managementFee,
       latestFer: fundClass.latestFer,
@@ -501,12 +503,15 @@ const rankingMetrics = {
     displayPrecision: 2,
     unit: "%",
   },
+  // 波幅排序用官方的基金風險指標（年度化標準差），不用風險級別。風險級別只有 1 至 7 級，
+  // 451 隻基金擠在 7 個值裡，同組大量並列，達不到 CONTEXT.md 對「較低波幅排序」的定義。
+  // 風險級別仍然保留作 `/search?riskClass=` 的篩選條件。
   risk: {
-    field: "riskClass",
-    methodology: "official_risk_class",
+    field: "fundRiskIndicator",
+    methodology: "fund_risk_indicator",
     sortDirection: "ascending",
-    displayPrecision: 0,
-    unit: "",
+    displayPrecision: 2,
+    unit: "%",
   },
 } as const;
 
@@ -574,6 +579,7 @@ app.get("/rankings", async (context) => {
         annualizedReturn10y?: number;
         managementFee?: number;
         riskClass?: number;
+        fundRiskIndicator?: number;
         dataAsOf: string;
         verificationStatus: string;
       };
