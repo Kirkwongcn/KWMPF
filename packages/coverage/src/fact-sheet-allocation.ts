@@ -61,6 +61,11 @@ export type TitleSelector = {
 export type BlockSelector = {
   heading: RegExp;
   /**
+   * 標題的字級。便覽後面的附錄有時把同一批表縮細再印一次（富達用 4 級字），
+   * 最後一個區段一直讀到文件結尾就會連附錄一齊讀。
+   */
+  headingFontSize?: number[];
+  /**
    * 版面上有呢一塊，但抽唔到成一張表。兩種情況：披露係圓餅圖旁邊的散落標註
    * （同一條水平線上的幾個百分比分屬唔同扇形，逐行讀必然配錯對），或者標籤畫成
    * 向量而唔係文字。設咗就一律走 `unavailableFields` 並附上原因，唔出局部資料。
@@ -70,6 +75,11 @@ export type BlockSelector = {
   headingLabel?: (text: string) => string;
   /** 自動推欄界時，向左預留的容差。 */
   leftSlack?: number;
+  /**
+   * 欄闊。自動推欄界只識向右數到下一個更右的標題；同一行冇另一個標題時
+   * （富達的「行業投資分佈」右邊係註腳而不是另一塊披露），就要靠欄闊收窄。
+   */
+  columnWidth?: number;
   /** 明確欄界，覆蓋自動推斷。 */
   band?: { minLeft: number; maxLeft: number };
   /** 由標題往下最多幾多 pt；預設到區段結尾。 */
@@ -79,11 +89,25 @@ export type BlockSelector = {
   /** 略過符合這個式樣的行。 */
   ignore?: RegExp;
   /**
+   * 同一行有多過一個數值就當成疊印，整塊走 `unavailableFields`。永明那份便覽的
+   * 文字層把另一隻基金的同一張表疊印在同一個位置（只差兩至七 pt，印出嚟只見到一份），
+   * 分唔清邊個數值屬邊隻基金；靠左界猜就有機會出錯配對，所以寧可明講抽唔到。
+   */
+  rejectOverlaidRows?: boolean;
+  /**
    * 圓餅圖旁邊的置中標註。呢類版面唔可以逐行讀：幾個扇形的百分比會落在同一條基線上
    * （中銀保誠的 `4.4%` 同 `2.1%` 都在 top 745），併行就會配錯對。但每個標註的中文名、
    * 英文名同百分比係**置中對齊**的，中心 x 完全一致，按中心分組就配得準。
    */
-  callouts?: { centreTolerance?: number; maxGap?: number };
+  callouts?: {
+    centreTolerance?: number;
+    maxGap?: number;
+    /**
+     * 按水平範圍相交分組，而唔係按中心。MASS 的餅圖標註在餅左邊靠右對齊、
+     * 在餅右邊靠左對齊，中心對唔上；但標籤同佢自己個百分比一定橫向相交。
+     */
+    overlap?: boolean;
+  };
   /** 部分計劃的數字不帶 `%`（標題已寫 `(%)`）。 */
   numberFormat?: "percent" | "bare";
   /** 數值欄的左界，用來把腳註編號、圖表刻度等雜訊排除在數值之外。 */
@@ -93,6 +117,19 @@ export type BlockSelector = {
   labelMaxLeft?: number;
   /** 由名稱剔除的段落，例如圓餅圖的色塊字符。剔除的是圖例符號，不是原文用字。 */
   labelIgnore?: RegExp;
+  /**
+   * 由名稱剔除的腳註標記。版面上它是名稱左邊的邊注，但 `pdftohtml` 有時把它同名稱
+   * 併成同一段文字（新地一份便覽寫成 `4 Hong Kong/China Equities`），`labelIgnore`
+   * 剔不走。剔的是標記本身，不是原文用字。
+   */
+  labelStrip?: RegExp;
+  /**
+   * 中英對照標籤的分欄間距。標籤換行時逐行讀會把兩種語文交錯（新地的
+   * 「亞太區股票(日 Japan/HK) 本、香港除外)」）。設咗就按水平空隙分欄——空隙大過
+   * 這個值就當成另一欄——先逐欄由上至下併，再由左至右接駁，還原成「英文 中文」。
+   * 欄界由版面自己決定，唔使逐頁寫死座標。
+   */
+  labelColumnGap?: number;
   /**
    * 同一列的文字被拆成多行時（名稱換行，而數值垂直置中落在中間那行），
    * 相鄰行的 `top` 距離會明顯細過列距。細過這個值就當成同一列先合併再讀數。
@@ -139,7 +176,7 @@ export type FactSheetSection = {
 const PERCENT_ITEM = /^\(?([+-]?\d+(?:\.\d+)?)\s*%\)?$/;
 const BARE_NUMBER_ITEM = /^\(?([+-]?\d+(?:\.\d+)?)\)?$/;
 const PERCENT_TRAILING = /^(.*?)[\s.·]*([+-]?\d+(?:\.\d+)?)\s*%$/;
-const BARE_TRAILING = /^(.*?[^\d.\s])[\s.·]+([+-]?\d+\.\d+)$/;
+const BARE_TRAILING = /^(.*?\S)[\s.·]+([+-]?\d+\.\d+)$/;
 // 名次可以係「1.」「1、」或者淨係「1 」。要求數字後面有分隔或空白，
 // 否則會把「3M Co」的 3 當成名次。
 const RANK_PREFIX = /^(\d{1,2})(?:\s*[.、)．]\s*|\s+)/;
@@ -160,6 +197,29 @@ function joinLabel(left: string, right: string) {
 }
 
 /**
+ * 同一視覺行的容差。中英對照的標籤各用一款字體，基線會差一兩 pt
+ * （新地的「香港」在 top 232、中間的「/」在 top 231）。
+ */
+const SAME_ROW = 4;
+
+/**
+ * 把一列的文字段落排成閱讀次序：先分行，再行內由左至右。
+ *
+ * 淨係按 `top` 排會出事：同一視覺行的段落 `top` 差一兩 pt，於是新地那個夾在
+ * 「香港」與「中國股票」之間的「/」會排到成行之前，變成
+ * `/Hong Kong/China Equities 香港 中國股票`，等於改寫原文。
+ */
+function inReadingOrder(items: PdfTextItem[]) {
+  const rows: PdfTextItem[][] = [];
+  for (const item of items.toSorted((a, b) => a.top - b.top)) {
+    const row = rows.at(-1);
+    if (row?.[0] && Math.abs(item.top - row[0].top) <= SAME_ROW) row.push(item);
+    else rows.push([item]);
+  }
+  return rows.flatMap((row) => row.toSorted((a, b) => a.left - b.left));
+}
+
+/**
  * 由同一列的文字段落砌出名稱。同一行的用水平空隙決定要唔要空格（中銀保誠會把
  * 一個數字拆成幾段）；跨行的用 `joinLabel`（換行的中文標籤唔應該加空格）。
  */
@@ -168,7 +228,7 @@ function joinLabelItems(items: PdfTextItem[]) {
   let previous: PdfTextItem | undefined;
   for (const item of items) {
     if (previous === undefined) text = item.text;
-    else if (Math.abs(item.top - previous.top) <= 4) {
+    else if (Math.abs(item.top - previous.top) <= SAME_ROW) {
       text += item.left - (previous.left + previous.width) > 1 ? ` ${item.text}` : item.text;
     } else text = joinLabel(text, item.text);
     previous = item;
@@ -285,7 +345,12 @@ function sectionItems(pages: PdfPage[], section: FactSheetSection) {
 }
 
 function headingsIn(items: PdfTextItem[], selector: BlockSelector) {
-  return items.filter((item) => selector.heading.test(item.text));
+  return items.filter(
+    (item) =>
+      selector.heading.test(item.text) &&
+      (selector.headingFontSize === undefined ||
+        selector.headingFontSize.includes(item.fontSize)),
+  );
 }
 
 /**
@@ -312,7 +377,11 @@ function bandFor(
   const pageWidth =
     pages.find((page) => page.number === heading.page)?.width ?? Number.MAX_SAFE_INTEGER;
   const right = others.length > 0 ? Math.min(...others.map((item) => item.left)) - 1 : pageWidth;
-  return { minLeft: heading.left - slack, maxLeft: right };
+  const width = selector.columnWidth;
+  return {
+    minLeft: heading.left - slack,
+    maxLeft: width === undefined ? right : Math.min(right, heading.left + width),
+  };
 }
 
 /**
@@ -341,6 +410,17 @@ function bottomOf(
     : Number.POSITIVE_INFINITY;
 }
 
+/** 一行之內，數值欄裡符合數值格式的段落。 */
+function valueItems(line: PdfLine, selector: BlockSelector) {
+  const pattern = selector.numberFormat === "bare" ? BARE_NUMBER_ITEM : PERCENT_ITEM;
+  return line.items.filter(
+    (item) =>
+      pattern.test(item.text) &&
+      (selector.valueMinLeft === undefined || item.left >= selector.valueMinLeft) &&
+      (selector.valueMaxLeft === undefined || item.left <= selector.valueMaxLeft),
+  );
+}
+
 function blockLines(
   pages: PdfPage[],
   section: FactSheetSection,
@@ -351,7 +431,9 @@ function blockLines(
 ): PdfLine[] {
   const collected: PdfLine[] = [];
 
-  for (const page of pages) {
+  // `stopAt` 要跳出兩層迴圈而不是提早 return，否則下面的 `callouts` 及 `rowGap`
+  // 後處理會被略過，換行拆散的一列就併唔返（新地的「亞太區股票」數值排在兩段名稱之間）。
+  pages: for (const page of pages) {
     if (page.number < heading.page) continue;
     if (page.number > section.end.page) break;
     if (page.number > heading.page && !selector.continueOnNextPage) break;
@@ -367,7 +449,7 @@ function blockLines(
       if (page.number === heading.page && line.top <= heading.top) continue;
       if (page.number === heading.page && line.top >= bottom) continue;
       if (page.number === section.end.page && line.top >= section.end.top) continue;
-      if (selector.stopAt?.test(line.text)) return collected;
+      if (selector.stopAt?.test(line.text)) break pages;
       if (selector.ignore?.test(line.text)) continue;
       collected.push(line);
     }
@@ -380,12 +462,13 @@ function blockLines(
 }
 
 /**
- * 把散落的置中標註按中心 x 分組，每組還原成一「行」交返俾 `readValue`。
- * 同一組內按 top 排，最後一段通常就是百分比。
+ * 把散落的標註分組，每組還原成一「行」交返俾 `readValue`。預設按中心 x 分組
+ * （中銀保誠、交銀），`overlap` 則按水平範圍相交（MASS）。同一組內按 top 排，
+ * 最後一段通常就是百分比。
  */
 function groupCallouts(
   lines: PdfLine[],
-  options: { centreTolerance?: number; maxGap?: number },
+  options: NonNullable<BlockSelector["callouts"]>,
   isValue: (item: PdfTextItem) => boolean,
 ): PdfLine[] {
   const tolerance = options.centreTolerance ?? 14;
@@ -394,6 +477,8 @@ function groupCallouts(
 
   type Cluster = {
     centre: number;
+    left: number;
+    right: number;
     page: number;
     bottom: number;
     closed: boolean;
@@ -407,17 +492,23 @@ function groupCallouts(
       (candidate) =>
         !candidate.closed &&
         candidate.page === item.page &&
-        Math.abs(candidate.centre - itemCentre) <= tolerance &&
+        (options.overlap
+          ? item.left <= candidate.right + 1 && item.left + item.width >= candidate.left - 1
+          : Math.abs(candidate.centre - itemCentre) <= tolerance) &&
         item.top - candidate.bottom <= maxGap,
     );
     if (cluster) {
       cluster.items.push(item);
+      cluster.left = Math.min(cluster.left, item.left);
+      cluster.right = Math.max(cluster.right, item.left + item.width);
       cluster.bottom = item.top;
       cluster.closed = isValue(item);
       continue;
     }
     clusters.push({
       centre: itemCentre,
+      left: item.left,
+      right: item.left + item.width,
       page: item.page,
       bottom: item.top,
       closed: isValue(item),
@@ -462,6 +553,29 @@ function mergeRows(lines: PdfLine[], rowGap: number): PdfLine[] {
   return merged;
 }
 
+function stripFootnote(label: string, selector: BlockSelector) {
+  return selector.labelStrip ? label.replace(selector.labelStrip, "").trim() : label;
+}
+
+/**
+ * 砌出一列的名稱。冇聲明 `labelColumns` 就照閱讀次序讀；聲明咗就逐欄由上至下讀，
+ * 再由左至右接駁——中英對照的標籤換行時，逐行讀會把兩種語文交錯。
+ */
+function joinLabelColumns(items: PdfTextItem[], selector: BlockSelector) {
+  const gap = selector.labelColumnGap;
+  if (gap === undefined) return joinLabelItems(inReadingOrder(items));
+  const columns: PdfTextItem[][] = [];
+  let right = Number.NEGATIVE_INFINITY;
+  for (const item of items.toSorted((a, b) => a.left - b.left)) {
+    if (columns.length === 0 || item.left - right > gap) columns.push([]);
+    columns.at(-1)?.push(item);
+    right = Math.max(right, item.left + item.width);
+  }
+  return columns
+    .map((column) => joinLabelItems(inReadingOrder(column)))
+    .reduce(joinLabel, "");
+}
+
 function readValue(line: PdfLine, selector: BlockSelector) {
   const format = selector.numberFormat ?? "percent";
   const pattern = format === "bare" ? BARE_NUMBER_ITEM : PERCENT_ITEM;
@@ -479,9 +593,8 @@ function readValue(line: PdfLine, selector: BlockSelector) {
           index !== valueIndex &&
           (selector.labelMaxLeft === undefined || item.left <= selector.labelMaxLeft) &&
           !selector.labelIgnore?.test(item.text),
-      )
-      .toSorted((a, b) => a.top - b.top || a.left - b.left);
-    const label = joinLabelItems(labelItems);
+      );
+    const label = stripFootnote(joinLabelColumns(labelItems, selector), selector);
     // 名稱可以是空的：換行的列由 `rowGap` 或 `joinWrappedLabels` 在外層補回，
     // 由呼叫者決定整列有冇名稱。
     if (raw !== undefined) return { label, percent: Number(raw) };
@@ -492,7 +605,7 @@ function readValue(line: PdfLine, selector: BlockSelector) {
     format === "bare" ? BARE_TRAILING : PERCENT_TRAILING,
   );
   if (trailing?.[1] && trailing[2]) {
-    const label = trailing[1].trim();
+    const label = stripFootnote(trailing[1].trim(), selector);
     if (label !== "") return { label, percent: Number(trailing[2]) };
   }
   return undefined;
@@ -503,14 +616,16 @@ function readAllocation(
   section: FactSheetSection,
   items: PdfTextItem[],
   contract: FactSheetContract,
-): { dimensions: AllocationDimension[]; orphanValues: string[] } {
+): { dimensions: AllocationDimension[]; orphanValues: string[]; overlaidRows: string[] } {
   const dimensions: AllocationDimension[] = [];
   const orphanValues: string[] = [];
+  const overlaidRows: string[] = [];
   for (const heading of headingsIn(items, contract.allocation)) {
     const band = bandFor(heading, items, contract, contract.allocation, pages);
     const bottom = bottomOf(heading, items, contract, band, contract.allocation);
     const entries: AllocationEntry[] = [];
     let wrapped = "";
+    let previousLine: PdfLine | undefined;
     for (const line of blockLines(
       pages,
       section,
@@ -519,15 +634,27 @@ function readAllocation(
       contract.allocation,
       bottom,
     )) {
+      if (contract.allocation.rejectOverlaidRows && valueItems(line, contract.allocation).length > 1) {
+        overlaidRows.push(line.text);
+        continue;
+      }
       const value = readValue(line, contract.allocation);
       if (!value) {
         if (contract.allocation.joinWrappedLabels) wrapped = line.text;
         const previous = entries.at(-1);
-        if (contract.allocation.joinTrailingLabels && previous) {
-          previous.label = joinLabel(previous.label, line.text);
+        if (contract.allocation.joinTrailingLabels && previous && previousLine) {
+          // 併返上一行再重讀，而唔係直接接駁文字：換行的中英對照標籤要按欄併返
+          // （新地的「(ex USD, ex HKD) (美元及港元除外)」分屬兩欄的續行）。
+          previousLine = {
+            ...previousLine,
+            items: [...previousLine.items, ...line.items],
+          };
+          const rejoined = readValue(previousLine, contract.allocation);
+          if (rejoined) previous.label = rejoined.label;
         }
         continue;
       }
+      previousLine = line;
       const label = joinLabel(wrapped, value.label);
       wrapped = "";
       if (label === "") {
@@ -544,7 +671,7 @@ function readAllocation(
     if (existing) existing.entries.push(...entries);
     else dimensions.push({ heading: label, entries });
   }
-  return { dimensions, orphanValues };
+  return { dimensions, orphanValues, overlaidRows };
 }
 
 function readHoldings(
@@ -552,9 +679,10 @@ function readHoldings(
   section: FactSheetSection,
   items: PdfTextItem[],
   contract: FactSheetContract,
-): { holdings: TopHolding[]; orphanValues: string[] } {
+): { holdings: TopHolding[]; orphanValues: string[]; overlaidRows: string[] } {
   const holdings: TopHolding[] = [];
   const orphanValues: string[] = [];
+  const overlaidRows: string[] = [];
   for (const heading of headingsIn(items, contract.holdings)) {
     const band = bandFor(heading, items, contract, contract.holdings, pages);
     const bottom = bottomOf(heading, items, contract, band, contract.holdings);
@@ -567,6 +695,10 @@ function readHoldings(
       contract.holdings,
       bottom,
     )) {
+      if (contract.holdings.rejectOverlaidRows && valueItems(line, contract.holdings).length > 1) {
+        overlaidRows.push(line.text);
+        continue;
+      }
       const value = readValue(line, contract.holdings);
       if (!value) {
         if (contract.holdings.joinWrappedLabels) wrapped = line.text;
@@ -591,7 +723,7 @@ function readHoldings(
       });
     }
   }
-  return { holdings: holdings.slice(0, 10), orphanValues };
+  return { holdings: holdings.slice(0, 10), orphanValues, overlaidRows };
 }
 
 export function findFactSheetAsOf(pages: PdfPage[], contract: FactSheetContract) {
@@ -625,6 +757,10 @@ function describe(lines: string[]) {
   return lines.slice(0, 3).map((line) => JSON.stringify(line)).join(", ");
 }
 
+function overlaidReason(lines: string[]) {
+  return `${lines.length} rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: ${describe(lines)}`;
+}
+
 export function parseFactSheetDisclosures(
   pages: PdfPage[],
   contract: FactSheetContract,
@@ -638,10 +774,10 @@ export function parseFactSheetDisclosures(
   const disclosures = sections.map((section) => {
     const items = sectionItems(pages, section);
     const allocation = contract.allocation.unextractable
-      ? { dimensions: [], orphanValues: [] }
+      ? { dimensions: [], orphanValues: [], overlaidRows: [] }
       : readAllocation(pages, section, items, contract);
     const holdings = contract.holdings.unextractable
-      ? { holdings: [], orphanValues: [] }
+      ? { holdings: [], orphanValues: [], overlaidRows: [] }
       : readHoldings(pages, section, items, contract);
     const unavailableFields: string[] = [];
     const unavailableReasons: Record<string, string> = {};
@@ -649,24 +785,34 @@ export function parseFactSheetDisclosures(
     // 有數值但抽唔到名稱，代表該份便覽把名稱畫成向量而非文字（宏利環球精選）。
     // 靜默丟走這些行會令餘下的名單短一截、排名整體移位，等同改寫官方披露，
     // 所以整塊當作官方未提供，唔出局部名單。
-    const allocations = allocation.orphanValues.length > 0 ? [] : allocation.dimensions;
-    const topHoldings = holdings.orphanValues.length > 0 ? [] : holdings.holdings;
+    const allocations =
+      allocation.orphanValues.length > 0 || allocation.overlaidRows.length > 0
+        ? []
+        : allocation.dimensions;
+    const topHoldings =
+      holdings.orphanValues.length > 0 || holdings.overlaidRows.length > 0
+        ? []
+        : holdings.holdings;
 
     if (allocations.length === 0) {
       unavailableFields.push("allocation");
       unavailableReasons.allocation =
         contract.allocation.unextractable ??
-        (allocation.orphanValues.length > 0
-          ? `${allocation.orphanValues.length} rows disclose a percentage without an extractable label: ${describe(allocation.orphanValues)}`
-          : "no allocation rows in the disclosed block");
+        (allocation.overlaidRows.length > 0
+          ? overlaidReason(allocation.overlaidRows)
+          : allocation.orphanValues.length > 0
+            ? `${allocation.orphanValues.length} rows disclose a percentage without an extractable label: ${describe(allocation.orphanValues)}`
+            : "no allocation rows in the disclosed block");
     }
     if (topHoldings.length === 0) {
       unavailableFields.push("topHoldings");
       unavailableReasons.topHoldings =
         contract.holdings.unextractable ??
-        (holdings.orphanValues.length > 0
-          ? `${holdings.orphanValues.length} rows disclose a percentage without an extractable security name: ${describe(holdings.orphanValues)}`
-          : "no holdings rows in the disclosed block");
+        (holdings.overlaidRows.length > 0
+          ? overlaidReason(holdings.overlaidRows)
+          : holdings.orphanValues.length > 0
+            ? `${holdings.orphanValues.length} rows disclose a percentage without an extractable security name: ${describe(holdings.orphanValues)}`
+            : "no holdings rows in the disclosed block");
     }
 
     return {

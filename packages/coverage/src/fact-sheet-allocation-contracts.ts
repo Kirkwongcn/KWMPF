@@ -11,6 +11,21 @@ const AS_OF_SLASH = /(?:As of|As at|Data as of|Fund Data as at)[^0-9]{0,16}(\d{1
 const AS_OF_LONG = /As at\s+(\d{1,2}\s+[A-Za-z]{3,}\s+\d{4})/i;
 const AS_OF_MONTH_FIRST = /As at\s+([A-Za-z]{3,}\s+\d{1,2},\s*\d{4})/i;
 
+/** 富達逐隻基金披露不同維度，中文標題是版面上另一段文字，逐個對照。 */
+const FIDELITY_DIMENSION =
+  /^(?:Fund Allocation by Asset Class|Industry Breakdown|Geographical Breakdown|Currency Breakdown|S&P\/Moody’s Credit Ratings?)$/;
+const FIDELITY_DIMENSION_ZH: Record<string, string> = {
+  "Fund Allocation by Asset Class": "資產類別投資分配",
+  "Industry Breakdown": "行業投資分佈",
+  "Geographical Breakdown": "地區分佈",
+  "Currency Breakdown": "貨幣分佈",
+  "S&P/Moody’s Credit Rating": "標準普爾／穆廸信用評級",
+  "S&P/Moody’s Credit Ratings": "標準普爾／穆廸信用評級",
+};
+
+/** 新地印在基金名稱之後的腳註（`Note 1`、`Note *, 1 and 6`），不屬名稱。 */
+const SHKP_NOTE = /\s*Note\s*[\d*,\s and]*$/;
+
 const beaTitle = {
   pattern: /^BEA .*Fund$/,
   fontSize: [21],
@@ -64,21 +79,46 @@ const series800Blocks = {
   },
 } as const;
 
-/** BCT Simple／Smart Plan（前信安）：右邊資產類別投資分布，左邊十大主要投資項目。 */
+/**
+ * BCT Simple／Smart Plan（前信安）：右邊資產類別投資分布，左邊十大主要投資項目。
+ * 逐隻基金按類型披露不同維度，股票基金用地區、債券基金用信貸評級（官方串錯成
+ * `Crediting Rating`，原文照錄）。
+ */
+const PRINCIPAL_DIMENSION =
+  /^(?:Fund Allocation by Asset Class|Geographical Breakdown|Crediting Rating Breakdown)$/;
+const PRINCIPAL_DIMENSION_ZH: Record<string, string> = {
+  "Fund Allocation by Asset Class": "資產類別投資分布",
+  "Geographical Breakdown": "地區投資分布",
+  "Crediting Rating Breakdown": "信貸評級投資分布",
+};
+
 const principalBlocks = {
   allocation: {
-    heading: /^Fund Allocation by Asset Class$/,
-    headingLabel: () => "Fund Allocation by Asset Class 資產類別投資分布",
+    heading: PRINCIPAL_DIMENSION,
+    headingLabel: (text: string) => `${text} ${PRINCIPAL_DIMENSION_ZH[text] ?? ""}`.trim(),
     band: { minLeft: 315, maxLeft: 900 },
     numberFormat: "bare",
     valueMinLeft: 650,
+    // 表格之下冇另一個標題，會一路讀到頁腳；頁碼排在 left≈865，會被當成一個數值。
+    valueMaxLeft: 800,
+    // 表格最長約 150 pt，而頁底的基金評論最少喺標題之下 230 pt，評論入面的年份
+    // 會被當成數值（`受益於市場風險=2025`）。
+    maxDepth: 180,
   },
   holdings: {
     heading: /^Top 10 Holdings$/,
-    band: { minLeft: 20, maxLeft: 460 },
+    // 右界要收窄到 330：右欄的分佈表標題（left≈341）落在寬欄界之內，會被當成
+    // 十大投資項目的下界，令表格喺三幾行就收咗尾，甚至一行都讀唔到。
+    band: { minLeft: 20, maxLeft: 330 },
     numberFormat: "bare",
-    valueMinLeft: 250,
+    // 唔設數值欄左界：證券名有中文對照時，數值緊貼住中文名排（left 由 55 至 300 不等，
+    // 視乎名稱長度），而且同名稱之間冇空隙，靠行尾抽數字抽唔到。
     joinWrappedLabels: true,
+    // 頁碼喺左右頁交替排（單數頁 left≈865、雙數頁 left≈30），落喺名稱那一欄，
+    // 冇欄界隔到；證券名唔會淨係一兩個位數字。
+    ignore: /^\d{1,2}$/,
+    // 十大投資項目之下係頁底的基金評論，以「^」起首，橫跨成版。
+    stopAt: /^\^/,
   },
 } as const;
 
@@ -240,11 +280,20 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
     allocation: {
       heading: /^Asset Allocation\* \(%\)$/,
       headingLabel: () => "Asset Allocation (%) 資產分佈",
+      // 三欄版面：左邊市場評論、中間資產分佈（標籤 357、值 574）、右邊十大投資
+      // （標籤 612、值 841）。自動欄界由標題往左讓 30 pt，會切走中文標籤，
+      // 又會把右欄的證券名當成資產分佈的標籤。
+      band: { minLeft: 350, maxLeft: 600 },
+      valueMinLeft: 560,
       numberFormat: "bare",
+      // 資產分佈表之下係風險指標及基金開支比率，同一欄，不設下界就會一路讀落去。
+      stopAt: /^風險指標|^Risk Indicator/,
       ignore: /Summation|總和|rounding/i,
     },
     holdings: {
       heading: /^Top Ten Holdings \(%\)$/,
+      band: { minLeft: 605, maxLeft: 900 },
+      valueMinLeft: 800,
       numberFormat: "bare",
     },
     asOf: { pattern: AS_OF_LONG },
@@ -309,15 +358,38 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
   {
     scheme: "Fidelity Retirement Master Trust",
     title: {
-      pattern: /Fund$/,
-      fontSize: [12],
-      fontFamily: /NeuzeitGro-Reg/,
+      // 每隻基金一頁，頁首寫「計劃名 - 基金名」。前面幾頁的基金表現總表用同一批
+      // 基金名但係細字，認錯咗就會把 22 個區段全部切在總表上面，一行都抽唔到。
+      pattern: /^Fidelity Retirement Master Trust - .*Fund$/,
+      fontSize: [29],
+      fontFamily: /NeuzeitGro-Bol/,
+      name: (text) => text.replace(/^Fidelity Retirement Master Trust - /, "").trim(),
     },
     allocation: {
-      heading: /^Asset Allocation$/,
-      headingLabel: () => "Asset Allocation 資產分配",
+      // 富達冇統一的「資產分佈」標題：逐隻基金按類型披露不同維度，股票基金用行業，
+      // 混合基金用資產類別，債券基金另加貨幣及信用評級。維度標題原文照錄。
+      heading: FIDELITY_DIMENSION,
+      // 便覽最後幾頁的附錄用 4 級字把同一批表再縮印一次，最後一個區段會讀埋落去。
+      headingFontSize: [13],
+      headingLabel: (text) => `${text} ${FIDELITY_DIMENSION_ZH[text] ?? ""}`.trim(),
+      // 「行業投資分佈」在中欄，右邊係註腳而唔係另一塊披露，自動欄界推唔到右界。
+      columnWidth: 250,
+      // 左邊評論欄的斷字連字符排到 left 338，預設 30 pt 容差會把它收入欄內。
+      leftSlack: 20,
     },
-    holdings: { heading: /^Top 10 Holdings$/ },
+    holdings: {
+      heading: /^Top 10 Holdings$/,
+      headingFontSize: [13],
+      // 證券名換行時，百分比垂直置中排在兩段名稱之間（相距 5 至 6 pt），
+      // 而列與列之間相距 12 pt，所以容差要細過 12。
+      rowGap: 8,
+      // 部分基金（例如香港盈富基金）右邊冇另一塊披露，只有註腳，自動欄界推唔到右界。
+      columnWidth: 250,
+      // 十大投資項目以「TOTAL 總和」收尾，總和唔係一項投資。
+      stopAt: /^TOTAL|總和/,
+      // 左邊評論欄的斷字連字符排到 left 338，收入欄內會多出一行，令相鄰兩列併埋一齊。
+      leftSlack: 20,
+    },
     asOf: { pattern: AS_OF_SLASH },
   },
   {
@@ -419,8 +491,14 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       fontColor: ["#00b8f1"],
     },
     allocation: {
+      // 餅圖旁邊的標註：標籤一行、百分比一行，餅左邊的靠右對齊、右邊的靠左對齊，
+      // 所以中心對唔上，要按水平範圍相交分組。標註以百分比作結。
       heading: /^Portfolio Asset Allocation/,
       headingLabel: () => "Portfolio Asset Allocation 投資組合分佈",
+      band: { minLeft: 390, maxLeft: 900 },
+      callouts: { overlap: true },
+      // 餅圖之下係資料來源及曆年回報表，唔屬於投資組合分佈。
+      maxDepth: 260,
     },
     holdings: { heading: /^Top 10 Holdings/ },
     asOf: { pattern: /(\d{4}\s*年\s*\d{1,2}\s*月\s*\d{1,2}\s*日)/ },
@@ -452,24 +530,45 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
   {
     scheme: "SHKP MPF Employer Sponsored Scheme",
     title: {
-      // 基金名稱後面直接印住腳註編號（例如 `Allianz Choice Stable Growth FundNote 1`）。
-      pattern: /Fund(?:Note ?\d+)?$/,
+      // 基金名稱後面直接印住腳註編號，寫法有三種：`Allianz Choice Balanced FundNote 1`、
+      // `Invesco MPF Conservative Fund Note *, 1 and 6`、`Manulife Career Average
+      // Guaranteed Fund - SHKPNote 1`（「- SHKP」是基金名稱本身的一部分）。
+      pattern: /Fund(?:\s*-\s*SHKP)?(?:\s*Note\s*[\d*,\s and]*)?$/,
       fontSize: [12],
-      fontFamily: /ArialMT/,
-      minLeft: 40,
+      // 標題用 `Arial`，內文用 `ArialMT`。逐頁的左邊界會漂移十幾 pt（32 至 53），
+      // 所以靠 `maxTop` 把頁首的基金名同頁內的「基金類型描述」分開，而不是靠左界。
+      fontFamily: /Arial/,
+      minLeft: 30,
       maxLeft: 60,
-      name: (text) => text.replace(/Note ?\d+$/, "").trim(),
+      maxTop: 160,
+      name: (text) => text.replace(SHKP_NOTE, "").trim(),
     },
     allocation: {
       // 新地披露的是基礎基金而非成分基金本身，標題必須保留這個分別。
       heading: /^Asset Allocation of (?:Underlying Fund|the Fund)/,
       headingLabel: (text) => text.replace(/\^$/, "").trim(),
-      band: { minLeft: 508, maxLeft: 900 },
-      ignore: /^Total|總數/,
+      // 左邊的基金概覽欄（基金規模、成立日期、開支比率）同配置表在同一水平帶，
+      // 要靠左界隔開；但腳註標記排喺標籤再左邊（left≈496），所以留到 490。
+      band: { minLeft: 490, maxLeft: 900 },
+      valueMinLeft: 800,
+      // 剔走概覽欄漏入的純數字（`1,772.48`、`02/07/2002`、`0.66262%`）及自成一段的腳註標記。
+      labelIgnore: /^[\d,.]+\s*%?$|^\d{2}\/\d{2}\/\d{4}$/,
+      labelStrip: /^\d{1,2}\s+/,
+      // 中英對照的兩欄相距 30 至 65 pt，而欄內的字緊貼（「香港」「/」「中國股票」）。
+      labelColumnGap: 20,
+      // 「亞太區股票」那一列的名稱換行，數值垂直置中排在兩段名稱之間；
+      // 列距 16 至 21 pt，所以容差要細過 16，否則會連下一列一齊吞埋。
+      rowGap: 12,
+      joinTrailingLabels: true,
+      // 十大持倉在配置之下，橫跨成版，百分比落在配置那一欄的右界之內。
+      // 配置表以「Total 總數」收尾，就用它做下界；用 `ignore` 只會讓表格一路讀到持倉。
+      stopAt: /^Total|總數/,
     },
     holdings: {
       heading: /^Top Ten Holdings of Underlying Fund/,
-      band: { minLeft: 40, maxLeft: 900 },
+      // 標題置中（left≈274）而證券名靠左（left≈32 至 46），自動欄界會由標題往左讓
+      // 30 pt，剛好切走名稱只剩百分比，所以要明確劃開整版。
+      band: { minLeft: 20, maxLeft: 900 },
     },
     asOf: { pattern: AS_OF_LONG },
   },
@@ -486,8 +585,20 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
     allocation: {
       heading: /^Portfolio Allocation$/,
       headingLabel: () => "Portfolio Allocation 投資組合分佈",
+      // 圓環圖的圖例（「現金及存款 Cash & Deposit 83.2%」）連同百分比全部畫成向量，
+      // 文字層一個字都冇。不設這個聲明的話，會由頁面其他地方讀到不相干的百分比。
+      unextractable:
+        "the donut chart's legend and percentages are drawn as vector art, not text",
     },
-    holdings: { heading: /^Top 10 Holdings$/ },
+    holdings: {
+      heading: /^Top 10 Holdings$/,
+      // 標題置中（left≈566）而證券名靠左（left≈472），自動欄界會切走名稱只剩百分比。
+      band: { minLeft: 460, maxLeft: 900 },
+      valueMinLeft: 780,
+      // 文字層把「環球低碳指數基金」及「強積金保守基金」的同一張表疊印在大部分頁面，
+      // 只差兩至七 pt，印出嚟只見到一份。分唔清邊個百分比屬邊隻基金，所以整塊當抽唔到。
+      rejectOverlaidRows: true,
+    },
     asOf: { pattern: AS_OF_SLASH },
   },
 ];
