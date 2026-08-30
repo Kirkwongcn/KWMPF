@@ -28,6 +28,21 @@ export type AllocationDimension = { heading: string; entries: AllocationEntry[] 
 
 export type TopHolding = { rank: number; security: string; percent?: number };
 
+/**
+ * 「點解冇呢一塊」的四種情況。原因文字係診斷用的英文長句，網站唔可以靠字串比對
+ * 反推分類——所以喺知道分別嗰一刻就記低代號，畀頁面直接對照措辭。
+ *
+ * - `not-disclosed`：便覽該區段根本冇呢一塊，即官方未提供。
+ * - `chart-only`：契約聲明版面上有，但畫成圖表／向量，唔係文字。
+ * - `values-without-names`：有百分比但名稱畫成向量，出局部名單等於改寫官方披露。
+ * - `overlaid-text-layer`：文字層把另一隻基金的同一張表疊印上去，分唔清邊個數值屬邊隻。
+ */
+export type FactSheetUnavailableKind =
+  | "not-disclosed"
+  | "chart-only"
+  | "values-without-names"
+  | "overlaid-text-layer";
+
 export type FactSheetDisclosure = {
   schemeName: string;
   constituentFundName: string;
@@ -38,6 +53,8 @@ export type FactSheetDisclosure = {
   unavailableFields: string[];
   /** 走 `unavailableFields` 的原因，逐項寫明，供配對報告逐份列出。 */
   unavailableReasons: Record<string, string>;
+  /** 逐項的分類代號，同 `unavailableReasons` 同一批 key。 */
+  unavailableKinds: Record<string, FactSheetUnavailableKind>;
 };
 
 export type TitleSelector = {
@@ -781,6 +798,7 @@ export function parseFactSheetDisclosures(
       : readHoldings(pages, section, items, contract);
     const unavailableFields: string[] = [];
     const unavailableReasons: Record<string, string> = {};
+    const unavailableKinds: Record<string, FactSheetUnavailableKind> = {};
 
     // 有數值但抽唔到名稱，代表該份便覽把名稱畫成向量而非文字（宏利環球精選）。
     // 靜默丟走這些行會令餘下的名單短一截、排名整體移位，等同改寫官方披露，
@@ -796,23 +814,35 @@ export function parseFactSheetDisclosures(
 
     if (allocations.length === 0) {
       unavailableFields.push("allocation");
-      unavailableReasons.allocation =
-        contract.allocation.unextractable ??
-        (allocation.overlaidRows.length > 0
-          ? overlaidReason(allocation.overlaidRows)
-          : allocation.orphanValues.length > 0
-            ? `${allocation.orphanValues.length} rows disclose a percentage without an extractable label: ${describe(allocation.orphanValues)}`
-            : "no allocation rows in the disclosed block");
+      if (contract.allocation.unextractable) {
+        unavailableReasons.allocation = contract.allocation.unextractable;
+        unavailableKinds.allocation = "chart-only";
+      } else if (allocation.overlaidRows.length > 0) {
+        unavailableReasons.allocation = overlaidReason(allocation.overlaidRows);
+        unavailableKinds.allocation = "overlaid-text-layer";
+      } else if (allocation.orphanValues.length > 0) {
+        unavailableReasons.allocation = `${allocation.orphanValues.length} rows disclose a percentage without an extractable label: ${describe(allocation.orphanValues)}`;
+        unavailableKinds.allocation = "values-without-names";
+      } else {
+        unavailableReasons.allocation = "no allocation rows in the disclosed block";
+        unavailableKinds.allocation = "not-disclosed";
+      }
     }
     if (topHoldings.length === 0) {
       unavailableFields.push("topHoldings");
-      unavailableReasons.topHoldings =
-        contract.holdings.unextractable ??
-        (holdings.overlaidRows.length > 0
-          ? overlaidReason(holdings.overlaidRows)
-          : holdings.orphanValues.length > 0
-            ? `${holdings.orphanValues.length} rows disclose a percentage without an extractable security name: ${describe(holdings.orphanValues)}`
-            : "no holdings rows in the disclosed block");
+      if (contract.holdings.unextractable) {
+        unavailableReasons.topHoldings = contract.holdings.unextractable;
+        unavailableKinds.topHoldings = "chart-only";
+      } else if (holdings.overlaidRows.length > 0) {
+        unavailableReasons.topHoldings = overlaidReason(holdings.overlaidRows);
+        unavailableKinds.topHoldings = "overlaid-text-layer";
+      } else if (holdings.orphanValues.length > 0) {
+        unavailableReasons.topHoldings = `${holdings.orphanValues.length} rows disclose a percentage without an extractable security name: ${describe(holdings.orphanValues)}`;
+        unavailableKinds.topHoldings = "values-without-names";
+      } else {
+        unavailableReasons.topHoldings = "no holdings rows in the disclosed block";
+        unavailableKinds.topHoldings = "not-disclosed";
+      }
     }
 
     return {
@@ -824,6 +854,7 @@ export function parseFactSheetDisclosures(
       topHoldings,
       unavailableFields,
       unavailableReasons,
+      unavailableKinds,
     } satisfies FactSheetDisclosure;
   });
 

@@ -24,6 +24,7 @@ function fund(
     topHoldings: [{ rank: 1, security: "TENCENT HOLDINGS LTD", percent: 9.36 }],
     unavailableFields: [],
     unavailableReasons: {},
+    unavailableKinds: {},
     ...overrides,
   };
 }

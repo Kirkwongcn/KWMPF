@@ -24,6 +24,7 @@ export type FactSheetDisclosureFund = {
   topHoldings: FactSheetDisclosure["topHoldings"];
   unavailableFields: string[];
   unavailableReasons: Record<string, string>;
+  unavailableKinds: FactSheetDisclosure["unavailableKinds"];
 };
 
 export type FactSheetDisclosureFile = {

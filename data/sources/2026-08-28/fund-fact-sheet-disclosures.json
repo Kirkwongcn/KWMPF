@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-30T23:43:33.515Z",
+  "generatedAt": "2026-08-30T23:52:19.514Z",
   "platformSnapshot": "data/sources/2026-08-29/mpf-fund-platform.json",
   "factSheetBatch": "data/sources/2026-08-28/fund-fact-sheet-links.json",
   "funds": [
@@ -89,7 +89,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-131"],
@@ -189,7 +190,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-132"],
@@ -289,7 +291,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-133"],
@@ -385,7 +388,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-134"],
@@ -457,7 +461,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-137"],
@@ -561,7 +566,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-141"],
@@ -649,7 +655,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-142"],
@@ -757,7 +764,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-145"],
@@ -861,7 +869,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-146"],
@@ -937,7 +946,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-657"],
@@ -1033,7 +1043,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-658"],
@@ -1121,7 +1132,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-699"],
@@ -1217,7 +1229,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-875"],
@@ -1333,7 +1346,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-876"],
@@ -1453,7 +1467,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-877"],
@@ -1553,7 +1568,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-878"],
@@ -1629,7 +1645,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1519"],
@@ -1725,7 +1742,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1520"],
@@ -1833,7 +1851,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1579"],
@@ -1945,7 +1964,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-769"],
@@ -2057,7 +2077,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-770"],
@@ -2165,7 +2186,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-771"],
@@ -2273,7 +2295,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-772"],
@@ -2381,7 +2404,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-773"],
@@ -2489,7 +2513,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-774"],
@@ -2589,7 +2614,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-775"],
@@ -2689,7 +2715,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-776"],
@@ -2789,7 +2816,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-777"],
@@ -2889,7 +2917,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-778"],
@@ -3001,7 +3030,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-779"],
@@ -3105,7 +3135,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-780"],
@@ -3189,7 +3220,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-781"],
@@ -3269,7 +3301,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-782"],
@@ -3369,7 +3402,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1529"],
@@ -3485,7 +3519,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1530"],
@@ -3601,7 +3636,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-206"],
@@ -3681,7 +3717,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-207"],
@@ -3785,7 +3822,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-208"],
@@ -3881,7 +3919,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-209"],
@@ -3985,7 +4024,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-210"],
@@ -4097,7 +4137,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-211"],
@@ -4169,7 +4210,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-653"],
@@ -4289,7 +4331,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-697"],
@@ -4409,7 +4452,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-798"],
@@ -4521,7 +4565,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-830"],
@@ -4617,7 +4662,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-831"],
@@ -4701,7 +4747,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1521"],
@@ -4801,7 +4848,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1522"],
@@ -4901,7 +4949,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1979"],
@@ -4964,6 +5013,9 @@
       "unavailableFields": ["topHoldings"],
       "unavailableReasons": {
         "topHoldings": "1 rows disclose a percentage without an extractable security name: \"25.0%\""
+      },
+      "unavailableKinds": {
+        "topHoldings": "values-without-names"
       }
     },
     {
@@ -5108,7 +5160,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-174"],
@@ -5232,7 +5285,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-175"],
@@ -5364,7 +5418,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-176"],
@@ -5512,7 +5567,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-177"],
@@ -5656,7 +5712,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-178"],
@@ -5800,7 +5857,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-179"],
@@ -5916,7 +5974,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-180"],
@@ -6040,7 +6099,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-181"],
@@ -6164,7 +6224,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1099"],
@@ -6276,7 +6337,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1531"],
@@ -6416,7 +6478,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1532"],
@@ -6544,7 +6607,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-182"],
@@ -6660,7 +6724,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-183"],
@@ -6812,7 +6877,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-184"],
@@ -6940,7 +7006,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-185"],
@@ -7068,7 +7135,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-187"],
@@ -7212,7 +7280,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-188"],
@@ -7340,7 +7409,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-189"],
@@ -7468,7 +7538,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-190"],
@@ -7616,7 +7687,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-659"],
@@ -7764,7 +7836,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-660"],
@@ -7920,7 +7993,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-701"],
@@ -8048,7 +8122,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-703"],
@@ -8168,7 +8243,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-705"],
@@ -8288,7 +8364,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-707"],
@@ -8408,7 +8485,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-710"],
@@ -8528,7 +8606,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-799"],
@@ -8652,7 +8731,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-800"],
@@ -8816,7 +8896,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-908"],
@@ -8956,7 +9037,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-909"],
@@ -9076,7 +9158,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1100"],
@@ -9188,7 +9271,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1533"],
@@ -9328,7 +9412,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1534"],
@@ -9456,7 +9541,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1819"],
@@ -9576,7 +9662,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1820"],
@@ -9696,7 +9783,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1821"],
@@ -9852,7 +9940,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1859"],
@@ -9980,7 +10069,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-160"],
@@ -10092,7 +10182,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-161"],
@@ -10184,7 +10275,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-162"],
@@ -10301,7 +10393,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-163"],
@@ -10405,7 +10498,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-165"],
@@ -10481,7 +10575,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-166"],
@@ -10565,7 +10660,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-167"],
@@ -10669,7 +10765,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-168"],
@@ -10769,7 +10866,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1493"],
@@ -10849,7 +10947,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1494"],
@@ -10929,7 +11028,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-147"],
@@ -11021,7 +11121,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-148"],
@@ -11121,7 +11222,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-149"],
@@ -11225,7 +11327,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-150"],
@@ -11301,7 +11404,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-151"],
@@ -11377,7 +11481,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-158"],
@@ -11481,7 +11586,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-838"],
@@ -11593,7 +11699,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-839"],
@@ -11710,7 +11817,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-841"],
@@ -11794,7 +11902,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-917"],
@@ -11882,7 +11991,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-918"],
@@ -12019,7 +12129,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1379"],
@@ -12095,7 +12206,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1495"],
@@ -12175,7 +12287,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1496"],
@@ -12255,7 +12368,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-426", "mpfa-cf-427"],
@@ -12319,6 +12433,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "no allocation rows in the disclosed block"
+      },
+      "unavailableKinds": {
+        "allocation": "not-disclosed"
       }
     },
     {
@@ -12415,7 +12532,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-430", "mpfa-cf-431"],
@@ -12507,7 +12625,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-432", "mpfa-cf-433"],
@@ -12591,7 +12710,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-434", "mpfa-cf-435"],
@@ -12699,7 +12819,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-438", "mpfa-cf-696"],
@@ -12811,7 +12932,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-440", "mpfa-cf-441"],
@@ -12895,7 +13017,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-444"],
@@ -12922,6 +13045,9 @@
       "unavailableFields": ["topHoldings"],
       "unavailableReasons": {
         "topHoldings": "1 rows disclose a percentage without an extractable security name: \"2.91\""
+      },
+      "unavailableKinds": {
+        "topHoldings": "values-without-names"
       }
     },
     {
@@ -13030,7 +13156,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-450", "mpfa-cf-451"],
@@ -13110,7 +13237,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-619", "mpfa-cf-620"],
@@ -13206,7 +13334,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-902"],
@@ -13282,7 +13411,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-903"],
@@ -13346,6 +13476,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "no allocation rows in the disclosed block"
+      },
+      "unavailableKinds": {
+        "allocation": "not-disclosed"
       }
     },
     {
@@ -13458,7 +13591,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1492"],
@@ -13578,7 +13712,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1739", "mpfa-cf-1740"],
@@ -13686,7 +13821,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1741"],
@@ -13814,7 +13950,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-191", "mpfa-cf-192"],
@@ -13910,7 +14047,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-193", "mpfa-cf-194"],
@@ -13990,7 +14128,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-195", "mpfa-cf-196"],
@@ -14110,7 +14249,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-198", "mpfa-cf-199"],
@@ -14206,7 +14346,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-200", "mpfa-cf-201"],
@@ -14298,7 +14439,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-202", "mpfa-cf-203"],
@@ -14394,7 +14536,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-627", "mpfa-cf-628"],
@@ -14506,7 +14649,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1101", "mpfa-cf-1102"],
@@ -14582,7 +14726,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1339", "mpfa-cf-1340"],
@@ -14702,7 +14847,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1557", "mpfa-cf-1558"],
@@ -14802,7 +14948,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1559", "mpfa-cf-1560"],
@@ -14902,7 +15049,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-2066", "mpfa-cf-2067"],
@@ -15014,7 +15162,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-2068", "mpfa-cf-2069"],
@@ -15130,7 +15279,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-212"],
@@ -15206,7 +15356,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-213"],
@@ -15294,7 +15445,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-214"],
@@ -15382,7 +15534,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-215"],
@@ -15470,7 +15623,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-811"],
@@ -15562,7 +15716,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-812"],
@@ -15642,7 +15797,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-899"],
@@ -15730,7 +15886,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-900"],
@@ -15822,7 +15979,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-901"],
@@ -15914,7 +16072,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-913"],
@@ -15994,7 +16153,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1535"],
@@ -16086,7 +16246,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1536"],
@@ -16178,7 +16339,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-216"],
@@ -16242,6 +16404,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "1 rows disclose a percentage without an extractable label: \"6.1%\""
+      },
+      "unavailableKinds": {
+        "allocation": "values-without-names"
       }
     },
     {
@@ -16334,7 +16499,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-218"],
@@ -16422,7 +16588,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-219"],
@@ -16506,7 +16673,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-220"],
@@ -16586,7 +16754,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-221"],
@@ -16674,7 +16843,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-223"],
@@ -16738,6 +16908,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "1 rows disclose a percentage without an extractable label: \"6.1%\""
+      },
+      "unavailableKinds": {
+        "allocation": "values-without-names"
       }
     },
     {
@@ -16802,6 +16975,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "1 rows disclose a percentage without an extractable label: \"8.4%\""
+      },
+      "unavailableKinds": {
+        "allocation": "values-without-names"
       }
     },
     {
@@ -16890,7 +17066,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-813"],
@@ -16982,7 +17159,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-814"],
@@ -17066,7 +17244,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-896"],
@@ -17154,7 +17333,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-897"],
@@ -17246,7 +17426,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-898"],
@@ -17342,7 +17523,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-912"],
@@ -17422,7 +17604,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1537"],
@@ -17510,7 +17693,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1538"],
@@ -17598,7 +17782,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1039"],
@@ -17686,7 +17871,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1040"],
@@ -17770,7 +17956,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1041"],
@@ -17846,7 +18033,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1042"],
@@ -17930,7 +18118,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1043"],
@@ -18018,7 +18207,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1044"],
@@ -18110,7 +18300,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1045"],
@@ -18198,7 +18389,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1047"],
@@ -18290,7 +18482,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1048"],
@@ -18374,7 +18567,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1539"],
@@ -18466,7 +18660,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1540"],
@@ -18558,7 +18753,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-226"],
@@ -18625,6 +18821,9 @@
       "unavailableFields": ["topHoldings"],
       "unavailableReasons": {
         "topHoldings": "no holdings rows in the disclosed block"
+      },
+      "unavailableKinds": {
+        "topHoldings": "not-disclosed"
       }
     },
     {
@@ -18685,7 +18884,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-228"],
@@ -18765,7 +18965,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-229"],
@@ -18845,7 +19046,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-231"],
@@ -18900,7 +19102,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-232"],
@@ -19016,7 +19219,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-233"],
@@ -19080,6 +19284,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "1 rows disclose a percentage without an extractable label: \"0.9%\""
+      },
+      "unavailableKinds": {
+        "allocation": "values-without-names"
       }
     },
     {
@@ -19175,7 +19382,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-654"],
@@ -19287,7 +19495,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-999"],
@@ -19407,7 +19616,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1000"],
@@ -19474,6 +19684,9 @@
       "unavailableFields": ["topHoldings"],
       "unavailableReasons": {
         "topHoldings": "no holdings rows in the disclosed block"
+      },
+      "unavailableKinds": {
+        "topHoldings": "not-disclosed"
       }
     },
     {
@@ -19557,6 +19770,9 @@
       "unavailableFields": ["topHoldings"],
       "unavailableReasons": {
         "topHoldings": "no holdings rows in the disclosed block"
+      },
+      "unavailableKinds": {
+        "topHoldings": "not-disclosed"
       }
     },
     {
@@ -19649,7 +19865,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1541"],
@@ -19684,7 +19901,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1542"],
@@ -19744,7 +19962,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1959"],
@@ -19824,7 +20043,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-236"],
@@ -19904,7 +20124,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-237"],
@@ -19984,7 +20205,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-238"],
@@ -20064,7 +20286,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-603"],
@@ -20144,7 +20367,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-606"],
@@ -20224,7 +20448,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-895"],
@@ -20304,7 +20529,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1545"],
@@ -20384,7 +20610,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1546"],
@@ -20464,7 +20691,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1839"],
@@ -20544,7 +20772,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1840"],
@@ -20624,7 +20853,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-268"],
@@ -20728,7 +20958,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-270"],
@@ -20874,7 +21105,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-271"],
@@ -20978,7 +21210,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-272"],
@@ -21082,7 +21315,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-273"],
@@ -21215,7 +21449,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-274"],
@@ -21291,7 +21526,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-275"],
@@ -21444,7 +21680,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-276"],
@@ -21574,7 +21811,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-278"],
@@ -21735,7 +21973,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-280"],
@@ -21839,7 +22078,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-706"],
@@ -21943,7 +22183,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-708"],
@@ -22043,7 +22284,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-709"],
@@ -22143,7 +22385,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-711"],
@@ -22243,7 +22486,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1159"],
@@ -22363,7 +22607,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1419"],
@@ -22463,7 +22708,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1420"],
@@ -22559,7 +22805,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1439"],
@@ -22689,7 +22936,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1551"],
@@ -22773,7 +23021,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1552"],
@@ -22857,7 +23106,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1799"],
@@ -22957,7 +23207,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-2079"],
@@ -23094,7 +23345,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-2080"],
@@ -23259,7 +23511,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-282", "mpfa-cf-283"],
@@ -23286,6 +23539,9 @@
       "unavailableFields": ["topHoldings"],
       "unavailableReasons": {
         "topHoldings": "no holdings rows in the disclosed block"
+      },
+      "unavailableKinds": {
+        "topHoldings": "not-disclosed"
       }
     },
     {
@@ -23317,6 +23573,9 @@
       "unavailableFields": ["topHoldings"],
       "unavailableReasons": {
         "topHoldings": "no holdings rows in the disclosed block"
+      },
+      "unavailableKinds": {
+        "topHoldings": "not-disclosed"
       }
     },
     {
@@ -23344,6 +23603,9 @@
       "unavailableFields": ["topHoldings"],
       "unavailableReasons": {
         "topHoldings": "no holdings rows in the disclosed block"
+      },
+      "unavailableKinds": {
+        "topHoldings": "not-disclosed"
       }
     },
     {
@@ -23371,6 +23633,9 @@
       "unavailableFields": ["topHoldings"],
       "unavailableReasons": {
         "topHoldings": "no holdings rows in the disclosed block"
+      },
+      "unavailableKinds": {
+        "topHoldings": "not-disclosed"
       }
     },
     {
@@ -23402,6 +23667,9 @@
       "unavailableFields": ["topHoldings"],
       "unavailableReasons": {
         "topHoldings": "no holdings rows in the disclosed block"
+      },
+      "unavailableKinds": {
+        "topHoldings": "not-disclosed"
       }
     },
     {
@@ -23459,7 +23727,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1555", "mpfa-cf-1556"],
@@ -23516,7 +23785,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-302"],
@@ -23636,7 +23906,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-303"],
@@ -23752,7 +24023,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-304"],
@@ -23856,7 +24128,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-305"],
@@ -23964,7 +24237,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-306"],
@@ -24044,7 +24318,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-307"],
@@ -24160,7 +24435,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-308"],
@@ -24276,7 +24552,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-309"],
@@ -24392,7 +24669,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-310"],
@@ -24496,7 +24774,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-311"],
@@ -24600,7 +24879,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-805"],
@@ -24716,7 +24996,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-806"],
@@ -24820,7 +25101,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-807"],
@@ -24924,7 +25206,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-808"],
@@ -25040,7 +25323,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1625"],
@@ -25156,7 +25440,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1626"],
@@ -25272,7 +25557,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1627"],
@@ -25388,7 +25674,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1628"],
@@ -25443,6 +25730,9 @@
       "unavailableFields": ["topHoldings"],
       "unavailableReasons": {
         "topHoldings": "1 rows disclose a percentage without an extractable security name: \"2021\""
+      },
+      "unavailableKinds": {
+        "topHoldings": "values-without-names"
       }
     },
     {
@@ -25559,7 +25849,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1630"],
@@ -25675,7 +25966,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-317"],
@@ -25779,7 +26071,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-318"],
@@ -25883,7 +26176,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-319"],
@@ -25963,7 +26257,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-320"],
@@ -26071,7 +26366,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-321"],
@@ -26187,7 +26483,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-322"],
@@ -26291,7 +26588,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-323"],
@@ -26407,7 +26705,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-324"],
@@ -26523,7 +26822,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-325"],
@@ -26643,7 +26943,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-326"],
@@ -26759,7 +27060,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-801"],
@@ -26875,7 +27177,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-802"],
@@ -26979,7 +27282,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-803"],
@@ -27083,7 +27387,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-804"],
@@ -27199,7 +27504,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1619"],
@@ -27315,7 +27621,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1620"],
@@ -27431,7 +27738,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1621"],
@@ -27547,7 +27855,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1622"],
@@ -27602,6 +27911,9 @@
       "unavailableFields": ["topHoldings"],
       "unavailableReasons": {
         "topHoldings": "1 rows disclose a percentage without an extractable security name: \"2021\""
+      },
+      "unavailableKinds": {
+        "topHoldings": "values-without-names"
       }
     },
     {
@@ -27718,7 +28030,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1631"],
@@ -27834,7 +28147,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-362"],
@@ -27848,6 +28162,10 @@
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "10 rows disclose a percentage without an extractable security name: \"3.80%\", \"2.22%\", \"2.10%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "values-without-names"
       }
     },
     {
@@ -27912,6 +28230,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -27976,6 +28297,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -27990,6 +28314,10 @@
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "10 rows disclose a percentage without an extractable security name: \"1.52%\", \"1.48%\", \"1.32%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "values-without-names"
       }
     },
     {
@@ -28004,6 +28332,10 @@
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "10 rows disclose a percentage without an extractable security name: \"3.50%\", \"2.50%\", \"2.50%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "values-without-names"
       }
     },
     {
@@ -28068,6 +28400,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -28082,6 +28417,10 @@
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "10 rows disclose a percentage without an extractable security name: \"4.70%\", \"4.03%\", \"3.18%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "values-without-names"
       }
     },
     {
@@ -28096,6 +28435,10 @@
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "10 rows disclose a percentage without an extractable security name: \"14.85%\", \"6.84%\", \"2.86%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "values-without-names"
       }
     },
     {
@@ -28110,6 +28453,10 @@
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "3 rows disclose a percentage without an extractable security name: \"6.04%\", \"3.77%\", \"1.47%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "values-without-names"
       }
     },
     {
@@ -28124,6 +28471,10 @@
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "10 rows disclose a percentage without an extractable security name: \"5.04%\", \"4.62%\", \"4.24%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "values-without-names"
       }
     },
     {
@@ -28138,6 +28489,10 @@
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "10 rows disclose a percentage without an extractable security name: \"3.03%\", \"2.84%\", \"2.45%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "values-without-names"
       }
     },
     {
@@ -28152,6 +28507,10 @@
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "6 rows disclose a percentage without an extractable security name: \"6.69%\", \"3.58%\", \"2.64%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "values-without-names"
       }
     },
     {
@@ -28166,6 +28525,10 @@
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "1 rows disclose a percentage without an extractable security name: \"2. 5.40%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "values-without-names"
       }
     },
     {
@@ -28230,6 +28593,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -28244,6 +28610,10 @@
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "5 rows disclose a percentage without an extractable security name: \"3.83%\", \"3.13%\", \"2.41%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "values-without-names"
       }
     },
     {
@@ -28258,6 +28628,10 @@
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "10 rows disclose a percentage without an extractable security name: \"6.89%\", \"6.26%\", \"4.60%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "values-without-names"
       }
     },
     {
@@ -28322,6 +28696,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -28386,6 +28763,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -28450,6 +28830,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -28514,6 +28897,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -28578,6 +28964,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -28642,6 +29031,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -28706,6 +29098,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -28720,6 +29115,10 @@
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "10 rows disclose a percentage without an extractable security name: \"1.88%\", \"1.87%\", \"1.55%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "values-without-names"
       }
     },
     {
@@ -28784,6 +29183,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -28848,6 +29250,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -28862,6 +29267,10 @@
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "9 rows disclose a percentage without an extractable security name: \"2.75%\", \"2.46%\", \"1.85%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "values-without-names"
       }
     },
     {
@@ -28876,6 +29285,10 @@
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "9 rows disclose a percentage without an extractable security name: \"0.92%\", \"0.82%\", \"0.62%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "values-without-names"
       }
     },
     {
@@ -28940,6 +29353,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -29056,7 +29472,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-247", "mpfa-cf-248", "mpfa-cf-249"],
@@ -29168,7 +29585,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-250", "mpfa-cf-251", "mpfa-cf-252"],
@@ -29264,7 +29682,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-253", "mpfa-cf-254", "mpfa-cf-255"],
@@ -29360,7 +29779,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-256", "mpfa-cf-257", "mpfa-cf-258"],
@@ -29456,7 +29876,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-259", "mpfa-cf-260", "mpfa-cf-261"],
@@ -29552,7 +29973,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-262", "mpfa-cf-263", "mpfa-cf-264"],
@@ -29632,7 +30054,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-265", "mpfa-cf-266", "mpfa-cf-267"],
@@ -29728,7 +30151,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-889", "mpfa-cf-890", "mpfa-cf-891"],
@@ -29840,7 +30264,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-892", "mpfa-cf-893", "mpfa-cf-894"],
@@ -29956,7 +30381,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1179", "mpfa-cf-1180", "mpfa-cf-1181"],
@@ -30044,7 +30470,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1523", "mpfa-cf-1524", "mpfa-cf-1525"],
@@ -30144,7 +30571,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1526", "mpfa-cf-1527", "mpfa-cf-1528"],
@@ -30244,7 +30672,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-383"],
@@ -30388,7 +30817,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-384"],
@@ -30528,7 +30958,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-385"],
@@ -30624,7 +31055,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-386"],
@@ -30704,7 +31136,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-387"],
@@ -30840,7 +31273,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-388"],
@@ -30936,7 +31370,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-389"],
@@ -31052,7 +31487,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-390"],
@@ -31184,7 +31620,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-391"],
@@ -31300,7 +31737,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-392"],
@@ -31412,7 +31850,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-394"],
@@ -31508,7 +31947,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-874"],
@@ -31592,7 +32032,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1487"],
@@ -31692,7 +32133,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1488"],
@@ -31792,7 +32234,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-816"],
@@ -31856,6 +32299,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -31920,6 +32366,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -31984,6 +32433,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -32048,6 +32500,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -32112,6 +32567,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -32176,6 +32634,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -32240,6 +32701,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -32304,6 +32768,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -32368,6 +32835,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -32432,6 +32902,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -32496,6 +32969,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -32560,6 +33036,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -32624,6 +33103,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -32688,6 +33170,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -32764,7 +33249,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-460"],
@@ -32872,7 +33358,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-462"],
@@ -32972,7 +33459,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-463"],
@@ -33080,7 +33568,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-464"],
@@ -33180,7 +33669,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-466"],
@@ -33256,7 +33746,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-815"],
@@ -33356,7 +33847,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1399"],
@@ -33456,7 +33948,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1497"],
@@ -33564,7 +34057,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-1498"],
@@ -33672,7 +34166,8 @@
         }
       ],
       "unavailableFields": [],
-      "unavailableReasons": {}
+      "unavailableReasons": {},
+      "unavailableKinds": {}
     },
     {
       "fundClassIds": ["mpfa-cf-498", "mpfa-cf-499"],
@@ -33686,6 +34181,10 @@
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
         "topHoldings": "20 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"US Government Bond 4.375% 30-Nov-2030Microsoft Corp 2.1%7.8%\", \"Samsung Electronics Co LtdVisa Inc - Class A 1.4%7.2%\", \"US Government Bond 4.25% 15-Aug-2035Johnson & Johnson 1.3%6.0%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "overlaid-text-layer"
       }
     },
     {
@@ -33700,6 +34199,10 @@
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
         "topHoldings": "12 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"Samsung Electronics Co LtdMicrosoft Corp 2.2%7.8%\", \"NVIDIA CorpVisa Inc - Class A 1.4%7.2%\", \"Samsung Electronics Co LtdMicrosoft Corp 2.2%7.8%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "overlaid-text-layer"
       }
     },
     {
@@ -33714,6 +34217,10 @@
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
         "topHoldings": "10 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"滙豐控股Microsoft CorpHSBC Holdings PLC 7.8%6.1%\", \"騰訊控股Visa Inc - Class ATencent Holdings Ltd 5.9%7.2%\", \"阿里巴巴Johnson & JohnsonAlibaba Group Holding Ltd 5.4%6.0%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "overlaid-text-layer"
       }
     },
     {
@@ -33728,6 +34235,10 @@
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
         "topHoldings": "20 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"Urban Renewal Authority 3.45% 27-Aug-2029Microsoft Corp 2.0%7.8%\", \"AIA Group Ltd 3.68% 16-Jan-2031Visa Inc - Class A 1.8%7.2%\", \"Korea Railroad Corp 3.36% 30-Mar-2028Johnson & Johnson 6.0%1.1%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "overlaid-text-layer"
       }
     },
     {
@@ -33742,6 +34253,10 @@
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
         "topHoldings": "20 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"Banco Santander S.A. Hong Kong 2.1% 21-Jan-2026Microsoft Corp 3.5%7.8%\", \"Bank of East Asia Ltd/Hong Kong 2.01% 28-Jan-2026Visa Inc - Class A 2.9%7.2%\", \"Agricultural Bank of China Ltd/Hong Kong 3.35% 20-Jan-2026Johnson & Johnson 2.3%6.0%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "overlaid-text-layer"
       }
     },
     {
@@ -33756,6 +34271,10 @@
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
         "topHoldings": "12 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"Samsung Electronics Co LtdMicrosoft Corp 3.0%7.8%\", \"NVIDIA CorpVisa Inc - Class A 2.0%7.2%\", \"Samsung Electronics Co LtdMicrosoft Corp 3.0%7.8%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "overlaid-text-layer"
       }
     },
     {
@@ -33770,6 +34289,10 @@
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
         "topHoldings": "12 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"Taiwan Semiconductor Manufacturing Co LtdMicrosoft Corp 7.6%7.8%\", \"Samsung Electronics Co LtdVisa Inc - Class A 6.4%7.2%\", \"Taiwan Semiconductor Manufacturing Co LtdMicrosoft Corp 7.6%7.8%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "overlaid-text-layer"
       }
     },
     {
@@ -33784,6 +34307,10 @@
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
         "topHoldings": "12 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"NVIDIA CorpMicrosoft Corp 6.4%7.8%\", \"Apple IncVisa Inc - Class A 5.3%7.2%\", \"NVIDIA CorpMicrosoft Corp 6.4%7.8%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "overlaid-text-layer"
       }
     },
     {
@@ -33798,6 +34325,10 @@
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
         "topHoldings": "12 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"Taiwan Semiconductor Manufacturing Co LtdMicrosoft Corp 9.6%7.8%\", \"騰訊控股Visa Inc - Class ATencent Holdings Ltd 8.4%7.2%\", \"Taiwan Semiconductor Manufacturing Co LtdMicrosoft Corp 9.6%7.8%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "overlaid-text-layer"
       }
     },
     {
@@ -33812,6 +34343,10 @@
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
         "topHoldings": "20 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"US Government Bond 4.25% 15-Aug-2035Microsoft Corp 3.0%7.8%\", \"US Government Bond 4% 15-Feb-2034Visa Inc - Class A 2.9%7.2%\", \"US Government Bond 4.375% 30-Nov-2030Johnson & Johnson 2.8%6.0%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "overlaid-text-layer"
       }
     },
     {
@@ -33826,6 +34361,10 @@
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
         "topHoldings": "20 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"Kreditanstalt fuer Wiederaufbau 2.9% 24-Feb-2026Microsoft Corp 4.0%7.8%\", \"PBOC International Note 1.72% 25-Mar-2026Visa Inc - Class A 4.0%7.2%\", \"PBOC International Note 1.6% 25-Feb-2026Johnson & Johnson 4.0%6.0%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "overlaid-text-layer"
       }
     },
     {
@@ -33890,6 +34429,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -33904,6 +34446,10 @@
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
         "topHoldings": "10 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"NVIDIA CorpMicrosoft Corp 2.6%7.8%\", \"Alphabet Inc - Class AVisa Inc - Class A 2.2%7.2%\", \"Microsoft CorpJohnson & Johnson 6.0%2.2%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "overlaid-text-layer"
       }
     },
     {
@@ -33918,6 +34464,10 @@
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
         "topHoldings": "10 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"US Government Bond 3.5% 31-Jan-2028Microsoft Corp 7.8%3.1%\", \"US Government Bond 0.875% 15-Nov-2030Visa Inc - Class A 7.2%3.1%\", \"US Government Bond 0.625% 31-Dec-2027Johnson & Johnson 6.0%2.6%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "overlaid-text-layer"
       }
     },
     {
@@ -33982,6 +34532,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -34046,6 +34599,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -34110,6 +34666,9 @@
       "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
       }
     },
     {
@@ -34124,6 +34683,10 @@
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
         "topHoldings": "20 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"NVIDIA CorpMicrosoft Corp 5.0%7.8%\", \"Apple IncVisa Inc - Class A 4.4%7.2%\", \"Microsoft CorpJohnson & Johnson 3.9%6.0%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "overlaid-text-layer"
       }
     },
     {
@@ -34138,6 +34701,10 @@
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
         "topHoldings": "20 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"US Government Bond 3.625% 30-Sep-2031Invesco Preferred Shares UCITS ETF 2.3%5.8%\", \"Invesco Preferred Shares UCITS ETFMicrosoft Corp 5.8%7.8%\", \"US Government Bond 4.625% 30-Apr-2029Invesco MSCI World Universal Screened UCITS ETF 2.2%2.7%\""
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only",
+        "topHoldings": "overlaid-text-layer"
       }
     }
   ]

@@ -90,6 +90,14 @@ type FactSheetDisclosure = {
   topHoldings: { rank: number; security: string; percent?: number }[];
   unavailableFields: string[];
   unavailableReasons: Record<string, string>;
+  // 原因文字係診斷用的英文長句，網站唔可以靠字串比對反推分類，所以另附代號。
+  unavailableKinds: Record<
+    string,
+    | "not-disclosed"
+    | "chart-only"
+    | "values-without-names"
+    | "overlaid-text-layer"
+  >;
 };
 
 type BrowseFundClass = {
