@@ -11,6 +11,18 @@ const AS_OF_SLASH = /(?:As of|As at|Data as of|Fund Data as at)[^0-9]{0,16}(\d{1
 const AS_OF_LONG = /As at\s+(\d{1,2}\s+[A-Za-z]{3,}\s+\d{4})/i;
 const AS_OF_MONTH_FIRST = /As at\s+([A-Za-z]{3,}\s+\d{1,2},\s*\d{4})/i;
 
+/** 富達逐隻基金披露不同維度，中文標題是版面上另一段文字，逐個對照。 */
+const FIDELITY_DIMENSION =
+  /^(?:Fund Allocation by Asset Class|Industry Breakdown|Geographical Breakdown|Currency Breakdown|S&P\/Moody’s Credit Ratings?)$/;
+const FIDELITY_DIMENSION_ZH: Record<string, string> = {
+  "Fund Allocation by Asset Class": "資產類別投資分配",
+  "Industry Breakdown": "行業投資分佈",
+  "Geographical Breakdown": "地區分佈",
+  "Currency Breakdown": "貨幣分佈",
+  "S&P/Moody’s Credit Rating": "標準普爾／穆廸信用評級",
+  "S&P/Moody’s Credit Ratings": "標準普爾／穆廸信用評級",
+};
+
 /** 新地印在基金名稱之後的腳註（`Note 1`、`Note *, 1 and 6`），不屬名稱。 */
 const SHKP_NOTE = /\s*Note\s*[\d*,\s and]*$/;
 
@@ -243,11 +255,20 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
     allocation: {
       heading: /^Asset Allocation\* \(%\)$/,
       headingLabel: () => "Asset Allocation (%) 資產分佈",
+      // 三欄版面：左邊市場評論、中間資產分佈（標籤 357、值 574）、右邊十大投資
+      // （標籤 612、值 841）。自動欄界由標題往左讓 30 pt，會切走中文標籤，
+      // 又會把右欄的證券名當成資產分佈的標籤。
+      band: { minLeft: 350, maxLeft: 600 },
+      valueMinLeft: 560,
       numberFormat: "bare",
+      // 資產分佈表之下係風險指標及基金開支比率，同一欄，不設下界就會一路讀落去。
+      stopAt: /^風險指標|^Risk Indicator/,
       ignore: /Summation|總和|rounding/i,
     },
     holdings: {
       heading: /^Top Ten Holdings \(%\)$/,
+      band: { minLeft: 605, maxLeft: 900 },
+      valueMinLeft: 800,
       numberFormat: "bare",
     },
     asOf: { pattern: AS_OF_LONG },
@@ -312,15 +333,38 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
   {
     scheme: "Fidelity Retirement Master Trust",
     title: {
-      pattern: /Fund$/,
-      fontSize: [12],
-      fontFamily: /NeuzeitGro-Reg/,
+      // 每隻基金一頁，頁首寫「計劃名 - 基金名」。前面幾頁的基金表現總表用同一批
+      // 基金名但係細字，認錯咗就會把 22 個區段全部切在總表上面，一行都抽唔到。
+      pattern: /^Fidelity Retirement Master Trust - .*Fund$/,
+      fontSize: [29],
+      fontFamily: /NeuzeitGro-Bol/,
+      name: (text) => text.replace(/^Fidelity Retirement Master Trust - /, "").trim(),
     },
     allocation: {
-      heading: /^Asset Allocation$/,
-      headingLabel: () => "Asset Allocation 資產分配",
+      // 富達冇統一的「資產分佈」標題：逐隻基金按類型披露不同維度，股票基金用行業，
+      // 混合基金用資產類別，債券基金另加貨幣及信用評級。維度標題原文照錄。
+      heading: FIDELITY_DIMENSION,
+      // 便覽最後幾頁的附錄用 4 級字把同一批表再縮印一次，最後一個區段會讀埋落去。
+      headingFontSize: [13],
+      headingLabel: (text) => `${text} ${FIDELITY_DIMENSION_ZH[text] ?? ""}`.trim(),
+      // 「行業投資分佈」在中欄，右邊係註腳而唔係另一塊披露，自動欄界推唔到右界。
+      columnWidth: 250,
+      // 左邊評論欄的斷字連字符排到 left 338，預設 30 pt 容差會把它收入欄內。
+      leftSlack: 20,
     },
-    holdings: { heading: /^Top 10 Holdings$/ },
+    holdings: {
+      heading: /^Top 10 Holdings$/,
+      headingFontSize: [13],
+      // 證券名換行時，百分比垂直置中排在兩段名稱之間（相距 5 至 6 pt），
+      // 而列與列之間相距 12 pt，所以容差要細過 12。
+      rowGap: 8,
+      // 部分基金（例如香港盈富基金）右邊冇另一塊披露，只有註腳，自動欄界推唔到右界。
+      columnWidth: 250,
+      // 十大投資項目以「TOTAL 總和」收尾，總和唔係一項投資。
+      stopAt: /^TOTAL|總和/,
+      // 左邊評論欄的斷字連字符排到 left 338，收入欄內會多出一行，令相鄰兩列併埋一齊。
+      leftSlack: 20,
+    },
     asOf: { pattern: AS_OF_SLASH },
   },
   {

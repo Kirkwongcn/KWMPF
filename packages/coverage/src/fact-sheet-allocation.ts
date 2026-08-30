@@ -61,6 +61,11 @@ export type TitleSelector = {
 export type BlockSelector = {
   heading: RegExp;
   /**
+   * 標題的字級。便覽後面的附錄有時把同一批表縮細再印一次（富達用 4 級字），
+   * 最後一個區段一直讀到文件結尾就會連附錄一齊讀。
+   */
+  headingFontSize?: number[];
+  /**
    * 版面上有呢一塊，但抽唔到成一張表。兩種情況：披露係圓餅圖旁邊的散落標註
    * （同一條水平線上的幾個百分比分屬唔同扇形，逐行讀必然配錯對），或者標籤畫成
    * 向量而唔係文字。設咗就一律走 `unavailableFields` 並附上原因，唔出局部資料。
@@ -70,6 +75,11 @@ export type BlockSelector = {
   headingLabel?: (text: string) => string;
   /** 自動推欄界時，向左預留的容差。 */
   leftSlack?: number;
+  /**
+   * 欄闊。自動推欄界只識向右數到下一個更右的標題；同一行冇另一個標題時
+   * （富達的「行業投資分佈」右邊係註腳而不是另一塊披露），就要靠欄闊收窄。
+   */
+  columnWidth?: number;
   /** 明確欄界，覆蓋自動推斷。 */
   band?: { minLeft: number; maxLeft: number };
   /** 由標題往下最多幾多 pt；預設到區段結尾。 */
@@ -321,7 +331,12 @@ function sectionItems(pages: PdfPage[], section: FactSheetSection) {
 }
 
 function headingsIn(items: PdfTextItem[], selector: BlockSelector) {
-  return items.filter((item) => selector.heading.test(item.text));
+  return items.filter(
+    (item) =>
+      selector.heading.test(item.text) &&
+      (selector.headingFontSize === undefined ||
+        selector.headingFontSize.includes(item.fontSize)),
+  );
 }
 
 /**
@@ -348,7 +363,11 @@ function bandFor(
   const pageWidth =
     pages.find((page) => page.number === heading.page)?.width ?? Number.MAX_SAFE_INTEGER;
   const right = others.length > 0 ? Math.min(...others.map((item) => item.left)) - 1 : pageWidth;
-  return { minLeft: heading.left - slack, maxLeft: right };
+  const width = selector.columnWidth;
+  return {
+    minLeft: heading.left - slack,
+    maxLeft: width === undefined ? right : Math.min(right, heading.left + width),
+  };
 }
 
 /**

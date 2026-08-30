@@ -319,6 +319,64 @@ describe("bilingual two-column tables", () => {
   });
 });
 
+describe("column bounds", () => {
+  /** 富達版面：同一區段內有幾個維度，右邊唔一定係另一塊披露，附錄再縮印一次同一批表。 */
+  const fidelityShaped: FactSheetContract = {
+    scheme: "Test Scheme",
+    title: { pattern: /Fund$/, fontSize: [18] },
+    allocation: {
+      heading: /^Industry Breakdown$/,
+      headingFontSize: [13],
+      columnWidth: 250,
+      leftSlack: 20,
+    },
+    holdings: { heading: /^never$/ },
+    asOf: { pattern: /As at\s+(\d{1,2}\/\d{1,2}\/\d{4})/i },
+  };
+
+  it("stops at the declared column width when the next column is a footnote", () => {
+    const pages = pdf(
+      page(1, [
+        { top: 10, left: 30, text: "As at 31/12/2025", width: 110 },
+        { top: 20, left: 30, text: "Core Fund", size: 18, width: 90 },
+        { top: 60, left: 365, text: "Industry Breakdown", size: 13, width: 111 },
+        { top: 90, left: 483, text: "26.2%", width: 22 },
+        { top: 91, left: 511, text: "Financials", width: 38 },
+        // 註腳排在右邊，唔屬於呢一塊披露。
+        { top: 91, left: 628, text: "The Fund Risk Indicator is measured by the", width: 234 },
+      ]),
+    );
+    const [disclosure] = parseFactSheetDisclosures(pages, fidelityShaped);
+
+    expect(disclosure?.allocations[0]?.entries).toEqual([
+      { label: "Financials", percent: 26.2 },
+    ]);
+  });
+
+  it("ignores the appendix copy of the same table printed in a smaller size", () => {
+    // 最後一個區段一直讀到文件結尾，附錄用細字再印一次同一批表。
+    const pages = pdf(
+      page(1, [
+        { top: 10, left: 30, text: "As at 31/12/2025", width: 110 },
+        { top: 20, left: 30, text: "Core Fund", size: 18, width: 90 },
+        { top: 60, left: 365, text: "Industry Breakdown", size: 13, width: 111 },
+        { top: 90, left: 483, text: "26.2%", width: 22 },
+        { top: 91, left: 511, text: "Financials", width: 38 },
+      ]),
+      page(2, [
+        { top: 60, left: 365, text: "Industry Breakdown", size: 4, width: 40 },
+        { top: 90, left: 483, text: "49.34%", width: 22 },
+      ]),
+    );
+    const [disclosure] = parseFactSheetDisclosures(pages, fidelityShaped);
+
+    expect(disclosure?.allocations[0]?.entries).toEqual([
+      { label: "Financials", percent: 26.2 },
+    ]);
+    expect(disclosure?.unavailableFields).not.toContain("allocation");
+  });
+});
+
 /** 中銀保誠及交銀版面：圓餅圖旁邊的置中標註，中文名、英文名、百分比同一個中心 x。 */
 const calloutShaped: FactSheetContract = {
   scheme: "Test Scheme",
