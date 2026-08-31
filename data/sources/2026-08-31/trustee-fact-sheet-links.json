@@ -58,5 +58,25 @@
     "scheme": "My Choice Mandatory Provident Fund Scheme",
     "factSheetUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
     "file": "MyChoice.pdf"
+  },
+  {
+    "scheme": "BEA (MPF) Master Trust Scheme",
+    "factSheetUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+    "file": "BEA_MT.pdf"
+  },
+  {
+    "scheme": "BEA (MPF) Industry Scheme",
+    "factSheetUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+    "file": "BEA_IS.pdf"
+  },
+  {
+    "scheme": "BEA (MPF) Value Scheme",
+    "factSheetUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf",
+    "file": "BEA_VS.pdf"
+  },
+  {
+    "scheme": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+    "factSheetUrl": "https://www.hsbc.com.hk/content/dam/hsbc/hk/docs/mpf/2q2026.pdf",
+    "file": "HSBC_SuperTrustPlus.pdf"
   }
 ]

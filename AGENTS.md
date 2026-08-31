@@ -85,7 +85,7 @@ MPF Navigator 檔案的 Sheet1（風險取向配置比重）不在範圍內，�
 覆蓋報告：`bun run coverage:fact-sheet-allocation-report --platform <平台快照> --links
 <fund-fact-sheet-links.json> --fact-sheets <PDF 目錄> --output <report.json>`。報告逐個計劃
 列出已配對數、未配對清單及原因、以及配對到但官方未披露的原因。2026-08-31 以 24 份便覽跑
-（十二個計劃用受託人官網那期、其餘用積金局副本）：382 隻成分基金中 381 隻配對到，
+（十六個計劃用受託人官網那期、其餘用積金局副本）：382 隻成分基金中 381 隻配對到，
 310 隻有配置、355 隻有十大持倉。餘下缺口主要是圖表式披露：宏利環球精選的配置畫成條形圖、
 永明畫成圓環圖（受託人版一樣係向量，文字層一個字都冇）、我的強積金的圓餅圖標註共用基線，
 全部走 `unavailableFields` 並寫明原因。
@@ -118,9 +118,12 @@ MPF Navigator 檔案的 Sheet1（風險取向配置比重）不在範圍內，�
 （季度 Fund Fact Sheet，2026-06-30，積金局副本 2026-03-31）、交通銀行 Joyful Retirement
 （季度 Fund Fact Sheet，2026-06-30，積金局副本 2025-12-31）、BCT Strategic
 （`bcthk.com/wr/ST-Fund-Fact-Sheet`，2026-07-31，積金局副本 2026-03-31）、中國人壽集成信託
-（季度基金表現便覽，2026-06-30，積金局副本 2025-12-31）及我的強積金
-（季度 Fund Fact Sheet，2026-06-30，積金局副本 2026-03-31），資料新三至六個月；
-餘下 12 個計劃仍待抄錄。
+（季度基金表現便覽，2026-06-30，積金局副本 2025-12-31）、我的強積金
+（季度 Fund Fact Sheet，2026-06-30，積金局副本 2026-03-31）、東亞三個計劃
+（集成信託 `mpf-mt-2026-2nd.pdf`、行業 `mpf-is-2026-2nd.pdf`、享惠 `mpf-vs-2026-2nd.pdf`，
+全部 2026-06-30，積金局副本 2026-03-31）及滙豐 SuperTrust Plus
+（`hsbc.com.hk/content/dam/hsbc/hk/docs/mpf/2q2026.pdf`，2026-06-30，積金局副本 2025-12-31），
+資料新三至六個月；餘下 8 個計劃仍待抄錄。
 
 **bcthk.com 用 CloudFront 擋自動化請求**：`curl` 冇帶瀏覽器 `User-Agent` 會收 403，
 帶正常瀏覽器 UA（例如 Chrome 128 UA）就過。BCT (MPF) Pro Choice 都試過（同一 UA 手法），
@@ -131,7 +134,11 @@ MPF Navigator 檔案的 Sheet1（風險取向配置比重）不在範圍內，�
 我的強積金換上受託人版揭發三個真缺口：積金局 2026-03-31 副本未收錄三隻新基金
 （Americas Equity、European Quality Tracker、Chinese Government and Policy Bank Bond Index），
 換版後 14 隻變 17 隻，配對數同十大持倉數各 +3（配置本身呢個計劃就一路 `unavailableFields`）。
-中銀保誠、交通銀行、BCT Strategic、中國人壽換版後覆蓋數字不變，純粹換新期別。
+中銀保誠、交通銀行、BCT Strategic、中國人壽、東亞三個計劃、滙豐換版後覆蓋數字不變，純粹換新期別。
+
+東亞三個計劃的連結有版本陷阱：2026 年起官網逐個計劃分開檔案（`mpf-{mt,is,vs}-2026-{n}.pdf`），
+2025 年及之前係三個計劃共用一份 `mpf-YYYY-Nth.pdf`。下載區當時只列到 2026-1st，
+但 2026-2nd 三份都已經上載，所以要逐條 URL 試，唔可以淨係抄下載區列咗的連結。
 
 **新地換版反而少一隻持倉，冇採用**：受託人官網 `Fund Price and FFS for SHKPESS.pdf`
 （2026-06-30）比積金局副本（2026-03-31）新一季，但 Fidelity Balanced Fund 嗰版有兩行
@@ -143,6 +150,17 @@ MPF Navigator 檔案的 Sheet1（風險取向配置比重）不在範圍內，�
 契約會報「no constituent fund sections found」，要重新設計解析契約先可以用，非純換連結。
 AMTD 受託人官網（ooogroup.xyz）嘅 Quarterly Fund Summary 現時同積金局副本一樣係 2025-12-31，
 未見更新，未加連結。
+
+**宏利兩個計劃：官網擋死自動化請求**。manulife.com.hk 全站行 Akamai Bot Manager，
+`curl`（連完整瀏覽器 headers）、`agent-browser`、`read_webpage` 一律收 403 Access Denied，
+`scmpf.` 子網域同 `zh-hk` 路徑一樣擋。連結本身查到——Global Select 的季度便覽在
+`/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf`——
+但取唔到檔案就驗唔到版面，所以兩個計劃都維持積金局副本。富達（fidelity.com.hk）同樣係
+Akamai 擋 `curl`，但 `read_webpage` 過到：官網只有逐隻基金一頁的
+`/en/funds/factsheet/<code>/H`，冇合併版 PDF，現有合併版契約用唔到。
+MASS（yflife.com）情況一樣：官網逐隻基金各自一份便覽，藏喺 `/aisite-applyapi/` 後面，
+公開目錄只有 `MonthlyFundPrice(E).pdf` 價格表，冇合併版。呢三個受託人要換版就要先重新
+設計「逐隻基金一份 PDF」的解析路徑，非純換連結。
 
 換版面時要一併重跑覆蓋報告比對：Series 800 換到 2026-03-31 那期先揭發配置欄的註腳 `3`
 落在 446，撞入原本去到 460 的持倉欄，令整張十大持倉表報唔可用。兩個 band 唔可以重疊。
