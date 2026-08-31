@@ -785,16 +785,28 @@ describe("cumulative returns", () => {
     ).toBeVisible();
   });
 
-  it("says when it fell back to the MPFA copy instead of the trustee's own issue", async () => {
+  it("says the trustee source is simply not transcribed yet", async () => {
     renderWithDisclosure(disclosure);
 
     expect(
       await screen.findByText(/資料來自積金局便覽庫存放的計劃便覽副本/),
     ).toBeVisible();
-    expect(screen.getByText(/受託人官網那一期未能取得/)).toBeVisible();
+    expect(
+      screen.getByText(/尚未收錄這個計劃在受託人官網的便覽/),
+    ).toBeVisible();
     expect(
       screen.getByRole("link", { name: "查閱這份計劃便覽原文" }),
     ).toHaveAttribute("href", "https://www.mpfa.org.hk/assets/FF/MT00172.pdf");
+  });
+
+  it("separates a failed trustee read from one that was never transcribed", async () => {
+    // 兩種情況措辭唔同：試過讀唔到，同從來未抄錄，唔可以當成同一句。
+    renderWithDisclosure({ ...disclosure, trusteeFallback: true });
+
+    expect(await screen.findByText(/受託人官網那一期未能讀取/)).toBeVisible();
+    expect(
+      screen.queryByText(/尚未收錄這個計劃在受託人官網的便覽/),
+    ).not.toBeInTheDocument();
   });
 
   it("names the trustee as the source when its own issue was used", async () => {

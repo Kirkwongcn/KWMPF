@@ -82,6 +82,8 @@ type FactSheetDisclosure = {
   /** 帶來源之前發布的快照沒有這兩欄。 */
   factSheetUrl?: string;
   factSheetSource?: "trustee" | "mpfa-registry";
+  /** 有抄錄受託人來源但抽不到，才退回副本；未抄錄的計劃沒有這一欄。 */
+  trusteeFallback?: true;
   factSheetAsOf: string;
   allocations: {
     heading: string;
@@ -524,7 +526,9 @@ export function FundClassPage({
               </p>
               {factSheetDisclosure.factSheetSource === "mpfa-registry" && (
                 <p className="kw-muted" role="note">
-                  受託人官網那一期未能取得，這裡用的是積金局便覽庫的副本，期別可能比受託人官網的舊。
+                  {factSheetDisclosure.trusteeFallback
+                    ? "受託人官網那一期未能讀取，這裡用的是積金局便覽庫的副本，期別可能比受託人官網的舊。"
+                    : "本網站尚未收錄這個計劃在受託人官網的便覽，這裡用的是積金局便覽庫的副本，期別可能比受託人官網的舊。"}
                 </p>
               )}
               {factSheetDisclosure.factSheetUrl && (

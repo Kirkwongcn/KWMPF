@@ -84,6 +84,8 @@ type FactSheetDisclosure = {
   factSheetUrl: string;
   // `trustee` 係受託人官網最新一期，`mpfa-registry` 係退回積金局副本，兩者期別唔同。
   factSheetSource: "trustee" | "mpfa-registry";
+  // 有抄錄受託人來源但抽唔到，先至退回副本；未抄錄嘅計劃冇呢一欄。
+  trusteeFallback?: true;
   factSheetAsOf: string;
   allocations: {
     heading: string;
