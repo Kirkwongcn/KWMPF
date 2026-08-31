@@ -1,7 +1,10 @@
 import { readdir, readFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import type { FactSheetDisclosure } from "./fact-sheet-allocation";
+import type {
+  FactSheetDisclosure,
+  FactSheetSource,
+} from "./fact-sheet-allocation";
 
 /**
  * 便覽的配置及十大持倉由 `coverage:fact-sheet-allocation-report --disclosures` 抽出，
@@ -19,6 +22,10 @@ export type FactSheetDisclosureFund = {
   schemeName: string;
   constituentFundName: string;
   factSheetFile: string;
+  /** 實際用咗嗰份便覽的下載連結，詳情頁會連去呢度。 */
+  factSheetUrl: string;
+  /** `trustee` 係受託人官網最新一期，`mpfa-registry` 係退回積金局副本。 */
+  factSheetSource: FactSheetSource;
   factSheetAsOf: string;
   allocations: FactSheetDisclosure["allocations"];
   topHoldings: FactSheetDisclosure["topHoldings"];

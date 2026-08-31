@@ -735,6 +735,8 @@ describe("cumulative returns", () => {
 
   const disclosure = {
     factSheetFile: "MT00172.pdf",
+    factSheetUrl: "https://www.mpfa.org.hk/assets/FF/MT00172.pdf",
+    factSheetSource: "mpfa-registry",
     factSheetAsOf: "2025-11-30",
     allocations: [
       {
@@ -781,7 +783,40 @@ describe("cumulative returns", () => {
         /便覽截至 2025-11-30，平台數據截至 2026-07-31，兩者期別不同，並非完全可比/,
       ),
     ).toBeVisible();
-    expect(screen.getByText(/文件編號 MT00172\.pdf/)).toBeVisible();
+  });
+
+  it("says when it fell back to the MPFA copy instead of the trustee's own issue", async () => {
+    renderWithDisclosure(disclosure);
+
+    expect(
+      await screen.findByText(/資料來自積金局便覽庫存放的計劃便覽副本/),
+    ).toBeVisible();
+    expect(screen.getByText(/受託人官網那一期未能取得/)).toBeVisible();
+    expect(
+      screen.getByRole("link", { name: "查閱這份計劃便覽原文" }),
+    ).toHaveAttribute("href", "https://www.mpfa.org.hk/assets/FF/MT00172.pdf");
+  });
+
+  it("names the trustee as the source when its own issue was used", async () => {
+    renderWithDisclosure({
+      ...disclosure,
+      factSheetSource: "trustee",
+      factSheetUrl: "https://www.bcthk.com/wr/Simple-Fund-Fact-Sheet",
+      factSheetAsOf: "2026-03-31",
+    });
+
+    expect(
+      await screen.findByText(/資料來自受託人官網刊發的計劃便覽/),
+    ).toBeVisible();
+    expect(
+      screen.queryByText(/受託人官網那一期未能取得/),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "查閱這份計劃便覽原文" }),
+    ).toHaveAttribute(
+      "href",
+      "https://www.bcthk.com/wr/Simple-Fund-Fact-Sheet",
+    );
   });
 
   it("says the official disclosure is a chart rather than calling it unavailable", async () => {

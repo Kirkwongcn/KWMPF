@@ -86,10 +86,30 @@ MPF Navigator 檔案的 Sheet1（風險取向配置比重）不在範圍內，�
 
 同一條指令加 `--disclosures <fund-fact-sheet-disclosures.json>` 會另出一份披露檔：覆蓋報告
 只收數目，發布要原文，所以兩份各自輸出，不可由報告的數目倒推。披露檔存放在來源批次目錄
-（現時 `data/sources/2026-08-28/`），由 `fact-sheet-disclosure-lookup.ts` 讀取——同 `fact-sheet-lookup.ts`
+（現時 `data/sources/2026-08-31/`），由 `fact-sheet-disclosure-lookup.ts` 讀取——同 `fact-sheet-lookup.ts`
 一樣只認 `YYYY-MM-DD` 目錄、取最新一個帶有該檔的批次。`publication-seed` 逐個基金類別查，
 查到就把 `factSheetDisclosure` 寫入 payload，`/fund-classes/:id` 原樣送出。
 451 個基金類別中 446 個有披露。
+
+## Fact sheet source: trustee first, MPFA registry as fallback
+
+積金局便覽庫存放的副本落後平台數據四至八個月，受託人官網已經出到更新一期。所以**配對用積金局
+登記冊、內容抓受託人官網**：`data/sources/<YYYY-MM-DD>/trustee-fact-sheet-links.json` 人手由各
+受託人官網抄錄，`trustee-fact-sheet-lookup.ts` 讀取。抽取層逐個計劃先試受託人那份，抽唔到
+（官網改版、下載失敗、版面對唔上契約）就退回積金局副本，並把原因寫入報告的
+`trusteeFallbackReason`。退回本身唔係錯，但唔可以靜靜哋當成最新版。
+
+同 `fact-sheet-lookup.ts` 一個關鍵分別：**冇呢份名單唔算錯**。積金局的連結必須齊 24 個計劃
+（`assertFactSheetCoverage`），受託人這份本來就唔齊，抄到幾多得幾多，其餘退回副本。
+連結會不預告改版，所以每筆明寫 `file`（本機檔名），唔靠 URL 尾段推算。
+
+每筆披露帶住 `factSheetSource`（`trustee` 或 `mpfa-registry`）及 `factSheetUrl`，
+詳情頁按來源講明措辭並連去實際用咗嗰份便覽——用咗副本就要明講「受託人官網那一期未能取得」，
+不可扮成最新版。2026-08-31 抄錄了 BCT 四個計劃（Simple、Smart、Series 800、Industry Choice），
+實測現有契約照樣解析新版面，資料新三至六個月；餘下 20 個計劃仍待抄錄。
+
+換版面時要一併重跑覆蓋報告比對：Series 800 換到 2026-03-31 那期先揭發配置欄的註腳 `3`
+落在 446，撞入原本去到 460 的持倉欄，令整張十大持倉表報唔可用。兩個 band 唔可以重疊。
 
 配置及持倉的覆蓋本來就不齊，所以**不設**覆蓋率斷言（對照 `assertFactSheetCoverage`：便覽連結
 必須齊 24 個計劃）。查不到就不寫入 payload，不可拿同計劃另一隻基金的披露頂上。
