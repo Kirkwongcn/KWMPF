@@ -4,9 +4,7 @@
   "factSheetBatch": "data/sources/2026-08-28/fund-fact-sheet-links.json",
   "funds": [
     {
-      "fundClassIds": [
-        "mpfa-cf-102"
-      ],
+      "fundClassIds": ["mpfa-cf-102"],
       "schemeName": "AIA MPF - Prime Value Choice",
       "constituentFundName": "Greater China Equity Fund",
       "factSheetFile": "AIA_PrimeValueChoice.pdf",
@@ -97,9 +95,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-131"
-      ],
+      "fundClassIds": ["mpfa-cf-131"],
       "schemeName": "AIA MPF - Prime Value Choice",
       "constituentFundName": "Capital Stable Portfolio",
       "factSheetFile": "AIA_PrimeValueChoice.pdf",
@@ -202,9 +198,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-132"
-      ],
+      "fundClassIds": ["mpfa-cf-132"],
       "schemeName": "AIA MPF - Prime Value Choice",
       "constituentFundName": "Balanced Portfolio",
       "factSheetFile": "AIA_PrimeValueChoice.pdf",
@@ -307,9 +301,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-133"
-      ],
+      "fundClassIds": ["mpfa-cf-133"],
       "schemeName": "AIA MPF - Prime Value Choice",
       "constituentFundName": "Growth Portfolio",
       "factSheetFile": "AIA_PrimeValueChoice.pdf",
@@ -408,9 +400,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-134"
-      ],
+      "fundClassIds": ["mpfa-cf-134"],
       "schemeName": "AIA MPF - Prime Value Choice",
       "constituentFundName": "MPF Conservative Fund",
       "factSheetFile": "AIA_PrimeValueChoice.pdf",
@@ -485,9 +475,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-137"
-      ],
+      "fundClassIds": ["mpfa-cf-137"],
       "schemeName": "AIA MPF - Prime Value Choice",
       "constituentFundName": "Asian Equity Fund",
       "factSheetFile": "AIA_PrimeValueChoice.pdf",
@@ -590,9 +578,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-141"
-      ],
+      "fundClassIds": ["mpfa-cf-141"],
       "schemeName": "AIA MPF - Prime Value Choice",
       "constituentFundName": "Green Fund",
       "factSheetFile": "AIA_PrimeValueChoice.pdf",
@@ -683,9 +669,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-142"
-      ],
+      "fundClassIds": ["mpfa-cf-142"],
       "schemeName": "AIA MPF - Prime Value Choice",
       "constituentFundName": "North American Equity Fund",
       "factSheetFile": "AIA_PrimeValueChoice.pdf",
@@ -796,9 +780,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-145"
-      ],
+      "fundClassIds": ["mpfa-cf-145"],
       "schemeName": "AIA MPF - Prime Value Choice",
       "constituentFundName": "European Equity Fund",
       "factSheetFile": "AIA_PrimeValueChoice.pdf",
@@ -905,9 +887,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-146"
-      ],
+      "fundClassIds": ["mpfa-cf-146"],
       "schemeName": "AIA MPF - Prime Value Choice",
       "constituentFundName": "Guaranteed Portfolio",
       "factSheetFile": "AIA_PrimeValueChoice.pdf",
@@ -986,9 +966,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-657"
-      ],
+      "fundClassIds": ["mpfa-cf-657"],
       "schemeName": "AIA MPF - Prime Value Choice",
       "constituentFundName": "Global Bond Fund",
       "factSheetFile": "AIA_PrimeValueChoice.pdf",
@@ -1087,9 +1065,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-658"
-      ],
+      "fundClassIds": ["mpfa-cf-658"],
       "schemeName": "AIA MPF - Prime Value Choice",
       "constituentFundName": "World Fund",
       "factSheetFile": "AIA_PrimeValueChoice.pdf",
@@ -1184,9 +1160,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-699"
-      ],
+      "fundClassIds": ["mpfa-cf-699"],
       "schemeName": "AIA MPF - Prime Value Choice",
       "constituentFundName": "Manager’s Choice Fund",
       "factSheetFile": "AIA_PrimeValueChoice.pdf",
@@ -1289,9 +1263,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-875"
-      ],
+      "fundClassIds": ["mpfa-cf-875"],
       "schemeName": "AIA MPF - Prime Value Choice",
       "constituentFundName": "Asian Bond Fund",
       "factSheetFile": "AIA_PrimeValueChoice.pdf",
@@ -1410,9 +1382,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-876"
-      ],
+      "fundClassIds": ["mpfa-cf-876"],
       "schemeName": "AIA MPF - Prime Value Choice",
       "constituentFundName": "Eurasia Fund",
       "factSheetFile": "AIA_PrimeValueChoice.pdf",
@@ -1535,9 +1505,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-877"
-      ],
+      "fundClassIds": ["mpfa-cf-877"],
       "schemeName": "AIA MPF - Prime Value Choice",
       "constituentFundName": "Hong Kong and China Fund",
       "factSheetFile": "AIA_PrimeValueChoice.pdf",
@@ -1644,9 +1612,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-878"
-      ],
+      "fundClassIds": ["mpfa-cf-878"],
       "schemeName": "AIA MPF - Prime Value Choice",
       "constituentFundName": "American Fund",
       "factSheetFile": "AIA_PrimeValueChoice.pdf",
@@ -1725,9 +1691,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1519"
-      ],
+      "fundClassIds": ["mpfa-cf-1519"],
       "schemeName": "AIA MPF - Prime Value Choice",
       "constituentFundName": "Core Accumulation Fund",
       "factSheetFile": "AIA_PrimeValueChoice.pdf",
@@ -1826,9 +1790,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1520"
-      ],
+      "fundClassIds": ["mpfa-cf-1520"],
       "schemeName": "AIA MPF - Prime Value Choice",
       "constituentFundName": "Age 65 Plus Fund",
       "factSheetFile": "AIA_PrimeValueChoice.pdf",
@@ -1931,9 +1893,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1579"
-      ],
+      "fundClassIds": ["mpfa-cf-1579"],
       "schemeName": "AIA MPF - Prime Value Choice",
       "constituentFundName": "China HK Dynamic Asset Allocation Fund",
       "factSheetFile": "AIA_PrimeValueChoice.pdf",
@@ -2048,9 +2008,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-2379"
-      ],
+      "fundClassIds": ["mpfa-cf-2379"],
       "schemeName": "AIA MPF - Prime Value Choice",
       "constituentFundName": "Retirement Income Fund",
       "factSheetFile": "AIA_PrimeValueChoice.pdf",
@@ -2161,9 +2119,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-769"
-      ],
+      "fundClassIds": ["mpfa-cf-769"],
       "schemeName": "AMTD MPF Scheme",
       "constituentFundName": "AMTD Allianz Choice Dynamic Allocation Fund",
       "factSheetFile": "MT00539.pdf",
@@ -2278,9 +2234,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-770"
-      ],
+      "fundClassIds": ["mpfa-cf-770"],
       "schemeName": "AMTD MPF Scheme",
       "constituentFundName": "AMTD Allianz Choice Capital Stable Fund",
       "factSheetFile": "MT00539.pdf",
@@ -2391,9 +2345,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-771"
-      ],
+      "fundClassIds": ["mpfa-cf-771"],
       "schemeName": "AMTD MPF Scheme",
       "constituentFundName": "AMTD Allianz Choice Stable Growth Fund",
       "factSheetFile": "MT00539.pdf",
@@ -2504,9 +2456,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-772"
-      ],
+      "fundClassIds": ["mpfa-cf-772"],
       "schemeName": "AMTD MPF Scheme",
       "constituentFundName": "AMTD Allianz Choice Balanced Fund",
       "factSheetFile": "MT00539.pdf",
@@ -2617,9 +2567,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-773"
-      ],
+      "fundClassIds": ["mpfa-cf-773"],
       "schemeName": "AMTD MPF Scheme",
       "constituentFundName": "AMTD Allianz Choice Growth Fund",
       "factSheetFile": "MT00539.pdf",
@@ -2730,9 +2678,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-774"
-      ],
+      "fundClassIds": ["mpfa-cf-774"],
       "schemeName": "AMTD MPF Scheme",
       "constituentFundName": "AMTD Invesco Target Retirement Now Fund",
       "factSheetFile": "MT00539.pdf",
@@ -2835,9 +2781,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-775"
-      ],
+      "fundClassIds": ["mpfa-cf-775"],
       "schemeName": "AMTD MPF Scheme",
       "constituentFundName": "AMTD Invesco Target 2028 Retirement Fund",
       "factSheetFile": "MT00539.pdf",
@@ -2940,9 +2884,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-776"
-      ],
+      "fundClassIds": ["mpfa-cf-776"],
       "schemeName": "AMTD MPF Scheme",
       "constituentFundName": "AMTD Invesco Target 2038 Retirement Fund",
       "factSheetFile": "MT00539.pdf",
@@ -3045,9 +2987,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-777"
-      ],
+      "fundClassIds": ["mpfa-cf-777"],
       "schemeName": "AMTD MPF Scheme",
       "constituentFundName": "AMTD Invesco Target 2048 Retirement Fund",
       "factSheetFile": "MT00539.pdf",
@@ -3150,9 +3090,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-778"
-      ],
+      "fundClassIds": ["mpfa-cf-778"],
       "schemeName": "AMTD MPF Scheme",
       "constituentFundName": "AMTD Invesco Asia Fund",
       "factSheetFile": "MT00539.pdf",
@@ -3267,9 +3205,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-779"
-      ],
+      "fundClassIds": ["mpfa-cf-779"],
       "schemeName": "AMTD MPF Scheme",
       "constituentFundName": "AMTD Invesco Europe Fund",
       "factSheetFile": "MT00539.pdf",
@@ -3376,9 +3312,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-780"
-      ],
+      "fundClassIds": ["mpfa-cf-780"],
       "schemeName": "AMTD MPF Scheme",
       "constituentFundName": "AMTD Invesco Hong Kong and China Fund",
       "factSheetFile": "MT00539.pdf",
@@ -3465,9 +3399,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-781"
-      ],
+      "fundClassIds": ["mpfa-cf-781"],
       "schemeName": "AMTD MPF Scheme",
       "constituentFundName": "AMTD Invesco MPF Conservative Fund",
       "factSheetFile": "MT00539.pdf",
@@ -3550,9 +3482,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-782"
-      ],
+      "fundClassIds": ["mpfa-cf-782"],
       "schemeName": "AMTD MPF Scheme",
       "constituentFundName": "AMTD Invesco Global Bond Fund",
       "factSheetFile": "MT00539.pdf",
@@ -3655,9 +3585,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1529"
-      ],
+      "fundClassIds": ["mpfa-cf-1529"],
       "schemeName": "AMTD MPF Scheme",
       "constituentFundName": "AMTD Invesco Core Accumulation Fund",
       "factSheetFile": "MT00539.pdf",
@@ -3776,9 +3704,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1530"
-      ],
+      "fundClassIds": ["mpfa-cf-1530"],
       "schemeName": "AMTD MPF Scheme",
       "constituentFundName": "AMTD Invesco Age 65 Plus Fund",
       "factSheetFile": "MT00539.pdf",
@@ -3897,9 +3823,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-206"
-      ],
+      "fundClassIds": ["mpfa-cf-206"],
       "schemeName": "BCOM Joyful Retirement MPF Scheme",
       "constituentFundName": "BCOM Guaranteed (CF) Fund",
       "factSheetFile": "BCOM_JoyfulRetirement.pdf",
@@ -3982,9 +3906,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-207"
-      ],
+      "fundClassIds": ["mpfa-cf-207"],
       "schemeName": "BCOM Joyful Retirement MPF Scheme",
       "constituentFundName": "BCOM Balanced (CF) Fund",
       "factSheetFile": "BCOM_JoyfulRetirement.pdf",
@@ -4091,9 +4013,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-208"
-      ],
+      "fundClassIds": ["mpfa-cf-208"],
       "schemeName": "BCOM Joyful Retirement MPF Scheme",
       "constituentFundName": "BCOM Dynamic Growth (CF) Fund",
       "factSheetFile": "BCOM_JoyfulRetirement.pdf",
@@ -4192,9 +4112,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-209"
-      ],
+      "fundClassIds": ["mpfa-cf-209"],
       "schemeName": "BCOM Joyful Retirement MPF Scheme",
       "constituentFundName": "BCOM Stable Growth (CF) Fund",
       "factSheetFile": "BCOM_JoyfulRetirement.pdf",
@@ -4301,9 +4219,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-210"
-      ],
+      "fundClassIds": ["mpfa-cf-210"],
       "schemeName": "BCOM Joyful Retirement MPF Scheme",
       "constituentFundName": "BCOM Asian Dynamic Equity (CF) Fund",
       "factSheetFile": "BCOM_JoyfulRetirement.pdf",
@@ -4414,9 +4330,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-211"
-      ],
+      "fundClassIds": ["mpfa-cf-211"],
       "schemeName": "BCOM Joyful Retirement MPF Scheme",
       "constituentFundName": "BCOM MPF Conservative Fund",
       "factSheetFile": "BCOM_JoyfulRetirement.pdf",
@@ -4491,9 +4405,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-653"
-      ],
+      "fundClassIds": ["mpfa-cf-653"],
       "schemeName": "BCOM Joyful Retirement MPF Scheme",
       "constituentFundName": "BCOM Hong Kong Dynamic Equity (CF) Fund",
       "factSheetFile": "BCOM_JoyfulRetirement.pdf",
@@ -4616,9 +4528,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-697"
-      ],
+      "fundClassIds": ["mpfa-cf-697"],
       "schemeName": "BCOM Joyful Retirement MPF Scheme",
       "constituentFundName": "BCOM China Dynamic Equity (CF) Fund",
       "factSheetFile": "BCOM_JoyfulRetirement.pdf",
@@ -4733,9 +4643,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-798"
-      ],
+      "fundClassIds": ["mpfa-cf-798"],
       "schemeName": "BCOM Joyful Retirement MPF Scheme",
       "constituentFundName": "BCOM HSI ESG Tracking (CF) Fund",
       "factSheetFile": "BCOM_JoyfulRetirement.pdf",
@@ -4854,9 +4762,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-830"
-      ],
+      "fundClassIds": ["mpfa-cf-830"],
       "schemeName": "BCOM Joyful Retirement MPF Scheme",
       "constituentFundName": "BCOM Global Bond (CF) Fund",
       "factSheetFile": "BCOM_JoyfulRetirement.pdf",
@@ -4955,9 +4861,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-831"
-      ],
+      "fundClassIds": ["mpfa-cf-831"],
       "schemeName": "BCOM Joyful Retirement MPF Scheme",
       "constituentFundName": "BCOM Greater China Equity (CF) Fund",
       "factSheetFile": "BCOM_JoyfulRetirement.pdf",
@@ -5044,9 +4948,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1521"
-      ],
+      "fundClassIds": ["mpfa-cf-1521"],
       "schemeName": "BCOM Joyful Retirement MPF Scheme",
       "constituentFundName": "BCOM Core Accumulation Fund",
       "factSheetFile": "BCOM_JoyfulRetirement.pdf",
@@ -5149,9 +5051,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1522"
-      ],
+      "fundClassIds": ["mpfa-cf-1522"],
       "schemeName": "BCOM Joyful Retirement MPF Scheme",
       "constituentFundName": "BCOM Age 65 Plus Fund",
       "factSheetFile": "BCOM_JoyfulRetirement.pdf",
@@ -5254,9 +5154,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1979"
-      ],
+      "fundClassIds": ["mpfa-cf-1979"],
       "schemeName": "BCOM Joyful Retirement MPF Scheme",
       "constituentFundName": "BCOM North American Equity (CF) Fund",
       "factSheetFile": "BCOM_JoyfulRetirement.pdf",
@@ -5319,9 +5217,7 @@
         }
       ],
       "topHoldings": [],
-      "unavailableFields": [
-        "topHoldings"
-      ],
+      "unavailableFields": ["topHoldings"],
       "unavailableReasons": {
         "topHoldings": "1 rows disclose a percentage without an extractable security name: \"25.0%\""
       },
@@ -5330,9 +5226,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-173"
-      ],
+      "fundClassIds": ["mpfa-cf-173"],
       "schemeName": "BCT (MPF) Industry Choice",
       "constituentFundName": "Global Bond Fund",
       "factSheetFile": "BCT_IS.pdf",
@@ -5483,9 +5377,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-174"
-      ],
+      "fundClassIds": ["mpfa-cf-174"],
       "schemeName": "BCT (MPF) Industry Choice",
       "constituentFundName": "E70 Mixed Asset Fund",
       "factSheetFile": "BCT_IS.pdf",
@@ -5608,9 +5500,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-175"
-      ],
+      "fundClassIds": ["mpfa-cf-175"],
       "schemeName": "BCT (MPF) Industry Choice",
       "constituentFundName": "Flexi Mixed Asset Fund",
       "factSheetFile": "BCT_IS.pdf",
@@ -5729,9 +5619,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-176"
-      ],
+      "fundClassIds": ["mpfa-cf-176"],
       "schemeName": "BCT (MPF) Industry Choice",
       "constituentFundName": "China and Hong Kong Equity Fund",
       "factSheetFile": "BCT_IS.pdf",
@@ -5890,9 +5778,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-177"
-      ],
+      "fundClassIds": ["mpfa-cf-177"],
       "schemeName": "BCT (MPF) Industry Choice",
       "constituentFundName": "Global Equity Fund",
       "factSheetFile": "BCT_IS.pdf",
@@ -6043,9 +5929,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-178"
-      ],
+      "fundClassIds": ["mpfa-cf-178"],
       "schemeName": "BCT (MPF) Industry Choice",
       "constituentFundName": "Asian Equity Fund",
       "factSheetFile": "BCT_IS.pdf",
@@ -6180,9 +6064,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-179"
-      ],
+      "fundClassIds": ["mpfa-cf-179"],
       "schemeName": "BCT (MPF) Industry Choice",
       "constituentFundName": "MPF Conservative Fund",
       "factSheetFile": "BCT_IS.pdf",
@@ -6281,9 +6163,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-180"
-      ],
+      "fundClassIds": ["mpfa-cf-180"],
       "schemeName": "BCT (MPF) Industry Choice",
       "constituentFundName": "E30 Mixed Asset Fund",
       "factSheetFile": "BCT_IS.pdf",
@@ -6406,9 +6286,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-181"
-      ],
+      "fundClassIds": ["mpfa-cf-181"],
       "schemeName": "BCT (MPF) Industry Choice",
       "constituentFundName": "E50 Mixed Asset Fund",
       "factSheetFile": "BCT_IS.pdf",
@@ -6531,9 +6409,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1099"
-      ],
+      "fundClassIds": ["mpfa-cf-1099"],
       "schemeName": "BCT (MPF) Industry Choice",
       "constituentFundName": "RMB Bond Fund",
       "factSheetFile": "BCT_IS.pdf",
@@ -6644,9 +6520,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1531"
-      ],
+      "fundClassIds": ["mpfa-cf-1531"],
       "schemeName": "BCT (MPF) Industry Choice",
       "constituentFundName": "Core Accumulation Fund",
       "factSheetFile": "BCT_IS.pdf",
@@ -6785,9 +6659,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1532"
-      ],
+      "fundClassIds": ["mpfa-cf-1532"],
       "schemeName": "BCT (MPF) Industry Choice",
       "constituentFundName": "Age 65 Plus Fund",
       "factSheetFile": "BCT_IS.pdf",
@@ -6922,9 +6794,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-182"
-      ],
+      "fundClassIds": ["mpfa-cf-182"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "MPF Conservative Fund",
       "factSheetFile": "MT00016.pdf",
@@ -7043,9 +6913,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-183"
-      ],
+      "fundClassIds": ["mpfa-cf-183"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "Global Bond Fund",
       "factSheetFile": "MT00016.pdf",
@@ -7200,9 +7068,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-184"
-      ],
+      "fundClassIds": ["mpfa-cf-184"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "E70 Mixed Asset Fund",
       "factSheetFile": "MT00016.pdf",
@@ -7333,9 +7199,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-185"
-      ],
+      "fundClassIds": ["mpfa-cf-185"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "E50 Mixed Asset Fund",
       "factSheetFile": "MT00016.pdf",
@@ -7466,9 +7330,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-187"
-      ],
+      "fundClassIds": ["mpfa-cf-187"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "Asian Equity Fund",
       "factSheetFile": "MT00016.pdf",
@@ -7615,9 +7477,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-188"
-      ],
+      "fundClassIds": ["mpfa-cf-188"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "E30 Mixed Asset Fund",
       "factSheetFile": "MT00016.pdf",
@@ -7748,9 +7608,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-189"
-      ],
+      "fundClassIds": ["mpfa-cf-189"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "Flexi Mixed Asset Fund",
       "factSheetFile": "MT00016.pdf",
@@ -7881,9 +7739,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-190"
-      ],
+      "fundClassIds": ["mpfa-cf-190"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "Global Equity Fund",
       "factSheetFile": "MT00016.pdf",
@@ -8034,9 +7890,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-659"
-      ],
+      "fundClassIds": ["mpfa-cf-659"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "China and Hong Kong Equity Fund",
       "factSheetFile": "MT00016.pdf",
@@ -8187,9 +8041,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-660"
-      ],
+      "fundClassIds": ["mpfa-cf-660"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "European Equity Fund",
       "factSheetFile": "MT00016.pdf",
@@ -8348,9 +8200,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-701"
-      ],
+      "fundClassIds": ["mpfa-cf-701"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "E90 Mixed Asset Fund",
       "factSheetFile": "MT00016.pdf",
@@ -8481,9 +8331,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-703"
-      ],
+      "fundClassIds": ["mpfa-cf-703"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "SaveEasy 2025 Fund",
       "factSheetFile": "MT00016.pdf",
@@ -8606,9 +8454,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-705"
-      ],
+      "fundClassIds": ["mpfa-cf-705"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "SaveEasy 2030 Fund",
       "factSheetFile": "MT00016.pdf",
@@ -8731,9 +8577,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-707"
-      ],
+      "fundClassIds": ["mpfa-cf-707"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "SaveEasy 2035 Fund",
       "factSheetFile": "MT00016.pdf",
@@ -8856,9 +8700,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-710"
-      ],
+      "fundClassIds": ["mpfa-cf-710"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "SaveEasy 2040 Fund",
       "factSheetFile": "MT00016.pdf",
@@ -8981,9 +8823,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-799"
-      ],
+      "fundClassIds": ["mpfa-cf-799"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "Hong Kong Dollar Bond Fund",
       "factSheetFile": "MT00016.pdf",
@@ -9110,9 +8950,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-800"
-      ],
+      "fundClassIds": ["mpfa-cf-800"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "Hang Seng Index Tracking Fund",
       "factSheetFile": "MT00016.pdf",
@@ -9279,9 +9117,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-908"
-      ],
+      "fundClassIds": ["mpfa-cf-908"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "World Equity Fund",
       "factSheetFile": "MT00016.pdf",
@@ -9424,9 +9260,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-909"
-      ],
+      "fundClassIds": ["mpfa-cf-909"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "Greater China Equity Fund",
       "factSheetFile": "MT00016.pdf",
@@ -9549,9 +9383,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1100"
-      ],
+      "fundClassIds": ["mpfa-cf-1100"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "RMB Bond Fund",
       "factSheetFile": "MT00016.pdf",
@@ -9666,9 +9498,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1533"
-      ],
+      "fundClassIds": ["mpfa-cf-1533"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "Core Accumulation Fund",
       "factSheetFile": "MT00016.pdf",
@@ -9811,9 +9641,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1534"
-      ],
+      "fundClassIds": ["mpfa-cf-1534"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "Age 65 Plus Fund",
       "factSheetFile": "MT00016.pdf",
@@ -9944,9 +9772,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1819"
-      ],
+      "fundClassIds": ["mpfa-cf-1819"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "SaveEasy 2045 Fund",
       "factSheetFile": "MT00016.pdf",
@@ -10069,9 +9895,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1820"
-      ],
+      "fundClassIds": ["mpfa-cf-1820"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "SaveEasy 2050 Fund",
       "factSheetFile": "MT00016.pdf",
@@ -10194,9 +10018,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1821"
-      ],
+      "fundClassIds": ["mpfa-cf-1821"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "U.S. Equity Fund",
       "factSheetFile": "MT00016.pdf",
@@ -10355,9 +10177,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1859"
-      ],
+      "fundClassIds": ["mpfa-cf-1859"],
       "schemeName": "BCT (MPF) Pro Choice",
       "constituentFundName": "Asian Income Retirement Fund",
       "factSheetFile": "MT00016.pdf",
@@ -10488,9 +10308,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-160"
-      ],
+      "fundClassIds": ["mpfa-cf-160"],
       "schemeName": "BCT MPF - Simple Plan",
       "constituentFundName": "Principal Dynamic Asia Pacific Equity Fund",
       "factSheetFile": "BCT_Simple.pdf",
@@ -10605,9 +10423,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-161"
-      ],
+      "fundClassIds": ["mpfa-cf-161"],
       "schemeName": "BCT MPF - Simple Plan",
       "constituentFundName": "Principal Dynamic Global Equity Fund",
       "factSheetFile": "BCT_Simple.pdf",
@@ -10702,9 +10518,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-162"
-      ],
+      "fundClassIds": ["mpfa-cf-162"],
       "schemeName": "BCT MPF - Simple Plan",
       "constituentFundName": "Principal Dynamic Global Bond Fund",
       "factSheetFile": "BCT_Simple.pdf",
@@ -10824,9 +10638,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-163"
-      ],
+      "fundClassIds": ["mpfa-cf-163"],
       "schemeName": "BCT MPF - Simple Plan",
       "constituentFundName": "Principal Stable Fund",
       "factSheetFile": "BCT_Simple.pdf",
@@ -10929,9 +10741,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-165"
-      ],
+      "fundClassIds": ["mpfa-cf-165"],
       "schemeName": "BCT MPF - Simple Plan",
       "constituentFundName": "Principal - MPF Conservative Fund",
       "factSheetFile": "BCT_Simple.pdf",
@@ -11010,9 +10820,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-166"
-      ],
+      "fundClassIds": ["mpfa-cf-166"],
       "schemeName": "BCT MPF - Simple Plan",
       "constituentFundName": "Principal Dynamic Hong Kong Equity Fund",
       "factSheetFile": "BCT_Simple.pdf",
@@ -11099,9 +10907,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-167"
-      ],
+      "fundClassIds": ["mpfa-cf-167"],
       "schemeName": "BCT MPF - Simple Plan",
       "constituentFundName": "Principal Balanced Fund",
       "factSheetFile": "BCT_Simple.pdf",
@@ -11204,9 +11010,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-168"
-      ],
+      "fundClassIds": ["mpfa-cf-168"],
       "schemeName": "BCT MPF - Simple Plan",
       "constituentFundName": "Principal Growth Fund",
       "factSheetFile": "BCT_Simple.pdf",
@@ -11305,9 +11109,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1493"
-      ],
+      "fundClassIds": ["mpfa-cf-1493"],
       "schemeName": "BCT MPF - Simple Plan",
       "constituentFundName": "Principal Core Accumulation Fund",
       "factSheetFile": "BCT_Simple.pdf",
@@ -11390,9 +11192,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1494"
-      ],
+      "fundClassIds": ["mpfa-cf-1494"],
       "schemeName": "BCT MPF - Simple Plan",
       "constituentFundName": "Principal Age 65 Plus Fund",
       "factSheetFile": "BCT_Simple.pdf",
@@ -11475,9 +11275,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-147"
-      ],
+      "fundClassIds": ["mpfa-cf-147"],
       "schemeName": "BCT MPF - Smart Plan",
       "constituentFundName": "Principal Dynamic Global Equity Fund",
       "factSheetFile": "BCT_Smart.pdf",
@@ -11572,9 +11370,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-148"
-      ],
+      "fundClassIds": ["mpfa-cf-148"],
       "schemeName": "BCT MPF - Smart Plan",
       "constituentFundName": "Principal Growth Fund",
       "factSheetFile": "BCT_Smart.pdf",
@@ -11673,9 +11469,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-149"
-      ],
+      "fundClassIds": ["mpfa-cf-149"],
       "schemeName": "BCT MPF - Smart Plan",
       "constituentFundName": "Principal Balanced Fund",
       "factSheetFile": "BCT_Smart.pdf",
@@ -11778,9 +11572,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-150"
-      ],
+      "fundClassIds": ["mpfa-cf-150"],
       "schemeName": "BCT MPF - Smart Plan",
       "constituentFundName": "Principal Cash Fund",
       "factSheetFile": "BCT_Smart.pdf",
@@ -11859,9 +11651,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-151"
-      ],
+      "fundClassIds": ["mpfa-cf-151"],
       "schemeName": "BCT MPF - Smart Plan",
       "constituentFundName": "Principal - MPF Conservative Fund",
       "factSheetFile": "BCT_Smart.pdf",
@@ -11940,9 +11730,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-158"
-      ],
+      "fundClassIds": ["mpfa-cf-158"],
       "schemeName": "BCT MPF - Smart Plan",
       "constituentFundName": "Principal Stable Fund",
       "factSheetFile": "BCT_Smart.pdf",
@@ -12045,9 +11833,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-838"
-      ],
+      "fundClassIds": ["mpfa-cf-838"],
       "schemeName": "BCT MPF - Smart Plan",
       "constituentFundName": "Principal Dynamic Asia Pacific Equity Fund",
       "factSheetFile": "BCT_Smart.pdf",
@@ -12162,9 +11948,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-839"
-      ],
+      "fundClassIds": ["mpfa-cf-839"],
       "schemeName": "BCT MPF - Smart Plan",
       "constituentFundName": "Principal Dynamic Global Bond Fund",
       "factSheetFile": "BCT_Smart.pdf",
@@ -12284,9 +12068,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-841"
-      ],
+      "fundClassIds": ["mpfa-cf-841"],
       "schemeName": "BCT MPF - Smart Plan",
       "constituentFundName": "Principal Dynamic Hong Kong Equity Fund",
       "factSheetFile": "BCT_Smart.pdf",
@@ -12373,9 +12155,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-917"
-      ],
+      "fundClassIds": ["mpfa-cf-917"],
       "schemeName": "BCT MPF - Smart Plan",
       "constituentFundName": "Principal Dynamic Greater China Equity Fund",
       "factSheetFile": "BCT_Smart.pdf",
@@ -12466,9 +12246,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-918"
-      ],
+      "fundClassIds": ["mpfa-cf-918"],
       "schemeName": "BCT MPF - Smart Plan",
       "constituentFundName": "Principal Dynamic Asian Bond Fund",
       "factSheetFile": "BCT_Smart.pdf",
@@ -12608,9 +12386,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1379"
-      ],
+      "fundClassIds": ["mpfa-cf-1379"],
       "schemeName": "BCT MPF - Smart Plan",
       "constituentFundName": "Principal - Hang Seng Index Tracking Fund",
       "factSheetFile": "BCT_Smart.pdf",
@@ -12689,9 +12465,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1495"
-      ],
+      "fundClassIds": ["mpfa-cf-1495"],
       "schemeName": "BCT MPF - Smart Plan",
       "constituentFundName": "Principal Core Accumulation Fund",
       "factSheetFile": "BCT_Smart.pdf",
@@ -12774,9 +12548,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1496"
-      ],
+      "fundClassIds": ["mpfa-cf-1496"],
       "schemeName": "BCT MPF - Smart Plan",
       "constituentFundName": "Principal Age 65 Plus Fund",
       "factSheetFile": "BCT_Smart.pdf",
@@ -12859,10 +12631,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-426",
-        "mpfa-cf-427"
-      ],
+      "fundClassIds": ["mpfa-cf-426", "mpfa-cf-427"],
       "schemeName": "BCT MPF Scheme Series 800",
       "constituentFundName": "Principal International Bond Fund",
       "factSheetFile": "BCT_S800.pdf",
@@ -12922,9 +12691,7 @@
           "percent": 1.42
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "no allocation rows in the disclosed block"
       },
@@ -12933,10 +12700,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-428",
-        "mpfa-cf-429"
-      ],
+      "fundClassIds": ["mpfa-cf-428", "mpfa-cf-429"],
       "schemeName": "BCT MPF Scheme Series 800",
       "constituentFundName": "Principal Hong Kong Equity Fund",
       "factSheetFile": "BCT_S800.pdf",
@@ -13035,10 +12799,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-430",
-        "mpfa-cf-431"
-      ],
+      "fundClassIds": ["mpfa-cf-430", "mpfa-cf-431"],
       "schemeName": "BCT MPF Scheme Series 800",
       "constituentFundName": "Principal International Equity Fund",
       "factSheetFile": "BCT_S800.pdf",
@@ -13133,10 +12894,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-432",
-        "mpfa-cf-433"
-      ],
+      "fundClassIds": ["mpfa-cf-432", "mpfa-cf-433"],
       "schemeName": "BCT MPF Scheme Series 800",
       "constituentFundName": "Principal Asian Equity Fund",
       "factSheetFile": "BCT_S800.pdf",
@@ -13223,10 +12981,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-434",
-        "mpfa-cf-435"
-      ],
+      "fundClassIds": ["mpfa-cf-434", "mpfa-cf-435"],
       "schemeName": "BCT MPF Scheme Series 800",
       "constituentFundName": "Principal Long Term Accumulation Fund",
       "factSheetFile": "BCT_S800.pdf",
@@ -13341,10 +13096,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-438",
-        "mpfa-cf-696"
-      ],
+      "fundClassIds": ["mpfa-cf-438", "mpfa-cf-696"],
       "schemeName": "BCT MPF Scheme Series 800",
       "constituentFundName": "Principal Stable Yield Fund",
       "factSheetFile": "BCT_S800.pdf",
@@ -13463,10 +13215,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-440",
-        "mpfa-cf-441"
-      ],
+      "fundClassIds": ["mpfa-cf-440", "mpfa-cf-441"],
       "schemeName": "BCT MPF Scheme Series 800",
       "constituentFundName": "Principal US Equity Fund",
       "factSheetFile": "BCT_S800.pdf",
@@ -13549,9 +13298,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-444"
-      ],
+      "fundClassIds": ["mpfa-cf-444"],
       "schemeName": "BCT MPF Scheme Series 800",
       "constituentFundName": "Principal MPF Conservative Fund",
       "factSheetFile": "BCT_S800.pdf",
@@ -13630,10 +13377,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-446",
-        "mpfa-cf-447"
-      ],
+      "fundClassIds": ["mpfa-cf-446", "mpfa-cf-447"],
       "schemeName": "BCT MPF Scheme Series 800",
       "constituentFundName": "Principal Global Growth Fund",
       "factSheetFile": "BCT_S800.pdf",
@@ -13748,10 +13492,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-450",
-        "mpfa-cf-451"
-      ],
+      "fundClassIds": ["mpfa-cf-450", "mpfa-cf-451"],
       "schemeName": "BCT MPF Scheme Series 800",
       "constituentFundName": "Principal HK Dollar Savings Fund",
       "factSheetFile": "BCT_S800.pdf",
@@ -13834,10 +13575,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-619",
-        "mpfa-cf-620"
-      ],
+      "fundClassIds": ["mpfa-cf-619", "mpfa-cf-620"],
       "schemeName": "BCT MPF Scheme Series 800",
       "constituentFundName": "Principal China Equity Fund",
       "factSheetFile": "BCT_S800.pdf",
@@ -13936,9 +13674,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-902"
-      ],
+      "fundClassIds": ["mpfa-cf-902"],
       "schemeName": "BCT MPF Scheme Series 800",
       "constituentFundName": "Principal Hang Seng Index Tracking Fund",
       "factSheetFile": "BCT_S800.pdf",
@@ -14017,9 +13753,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-903"
-      ],
+      "fundClassIds": ["mpfa-cf-903"],
       "schemeName": "BCT MPF Scheme Series 800",
       "constituentFundName": "Principal Hong Kong Bond Fund",
       "factSheetFile": "BCT_S800.pdf",
@@ -14079,9 +13813,7 @@
           "percent": 1.27
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "no allocation rows in the disclosed block"
       },
@@ -14090,9 +13822,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1491"
-      ],
+      "fundClassIds": ["mpfa-cf-1491"],
       "schemeName": "BCT MPF Scheme Series 800",
       "constituentFundName": "Principal Core Accumulation Fund",
       "factSheetFile": "BCT_S800.pdf",
@@ -14207,9 +13937,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1492"
-      ],
+      "fundClassIds": ["mpfa-cf-1492"],
       "schemeName": "BCT MPF Scheme Series 800",
       "constituentFundName": "Principal Age 65 Plus Fund",
       "factSheetFile": "BCT_S800.pdf",
@@ -14328,10 +14056,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1739",
-        "mpfa-cf-1740"
-      ],
+      "fundClassIds": ["mpfa-cf-1739", "mpfa-cf-1740"],
       "schemeName": "BCT MPF Scheme Series 800",
       "constituentFundName": "Principal Aggressive Strategy Fund",
       "factSheetFile": "BCT_S800.pdf",
@@ -14446,9 +14171,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1741"
-      ],
+      "fundClassIds": ["mpfa-cf-1741"],
       "schemeName": "BCT MPF Scheme Series 800",
       "constituentFundName": "Principal Asian Bond Fund",
       "factSheetFile": "BCT_S800.pdf",
@@ -14579,10 +14302,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-191",
-        "mpfa-cf-192"
-      ],
+      "fundClassIds": ["mpfa-cf-191", "mpfa-cf-192"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco Capital Stable Fund",
       "factSheetFile": "MT00075.pdf",
@@ -14681,10 +14401,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-193",
-        "mpfa-cf-194"
-      ],
+      "fundClassIds": ["mpfa-cf-193", "mpfa-cf-194"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco MPF Conservative Fund",
       "factSheetFile": "MT00075.pdf",
@@ -14767,10 +14484,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-195",
-        "mpfa-cf-196"
-      ],
+      "fundClassIds": ["mpfa-cf-195", "mpfa-cf-196"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco Hong Kong and China Equity Fund",
       "factSheetFile": "MT00075.pdf",
@@ -14893,10 +14607,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-198",
-        "mpfa-cf-199"
-      ],
+      "fundClassIds": ["mpfa-cf-198", "mpfa-cf-199"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco Balanced Fund",
       "factSheetFile": "MT00075.pdf",
@@ -14995,10 +14706,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-200",
-        "mpfa-cf-201"
-      ],
+      "fundClassIds": ["mpfa-cf-200", "mpfa-cf-201"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco Growth Fund",
       "factSheetFile": "MT00075.pdf",
@@ -15093,10 +14801,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-202",
-        "mpfa-cf-203"
-      ],
+      "fundClassIds": ["mpfa-cf-202", "mpfa-cf-203"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco Global Bond Fund",
       "factSheetFile": "MT00075.pdf",
@@ -15195,10 +14900,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-627",
-        "mpfa-cf-628"
-      ],
+      "fundClassIds": ["mpfa-cf-627", "mpfa-cf-628"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco Asian Equity Fund",
       "factSheetFile": "MT00075.pdf",
@@ -15313,10 +15015,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1101",
-        "mpfa-cf-1102"
-      ],
+      "fundClassIds": ["mpfa-cf-1101", "mpfa-cf-1102"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco RMB Bond Fund",
       "factSheetFile": "MT00075.pdf",
@@ -15395,10 +15094,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1339",
-        "mpfa-cf-1340"
-      ],
+      "fundClassIds": ["mpfa-cf-1339", "mpfa-cf-1340"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco Hang Seng Index Tracking Fund",
       "factSheetFile": "MT00075.pdf",
@@ -15521,10 +15217,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1557",
-        "mpfa-cf-1558"
-      ],
+      "fundClassIds": ["mpfa-cf-1557", "mpfa-cf-1558"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco Core Accumulation Fund",
       "factSheetFile": "MT00075.pdf",
@@ -15627,10 +15320,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1559",
-        "mpfa-cf-1560"
-      ],
+      "fundClassIds": ["mpfa-cf-1559", "mpfa-cf-1560"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco Age 65 Plus Fund",
       "factSheetFile": "MT00075.pdf",
@@ -15733,10 +15423,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-2066",
-        "mpfa-cf-2067"
-      ],
+      "fundClassIds": ["mpfa-cf-2066", "mpfa-cf-2067"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco Global Index Tracking Fund",
       "factSheetFile": "MT00075.pdf",
@@ -15851,10 +15538,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-2068",
-        "mpfa-cf-2069"
-      ],
+      "fundClassIds": ["mpfa-cf-2068", "mpfa-cf-2069"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco US Index Tracking Fund",
       "factSheetFile": "MT00075.pdf",
@@ -15973,9 +15657,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-212"
-      ],
+      "fundClassIds": ["mpfa-cf-212"],
       "schemeName": "BEA (MPF) Industry Scheme",
       "constituentFundName": "BEA (Industry Scheme) Balanced Fund",
       "factSheetFile": "IS00025.pdf",
@@ -16054,9 +15736,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-213"
-      ],
+      "fundClassIds": ["mpfa-cf-213"],
       "schemeName": "BEA (MPF) Industry Scheme",
       "constituentFundName": "BEA (Industry Scheme) MPF Conservative Fund",
       "factSheetFile": "IS00025.pdf",
@@ -16147,9 +15827,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-214"
-      ],
+      "fundClassIds": ["mpfa-cf-214"],
       "schemeName": "BEA (MPF) Industry Scheme",
       "constituentFundName": "BEA (Industry Scheme) Stable Fund",
       "factSheetFile": "IS00025.pdf",
@@ -16240,9 +15918,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-215"
-      ],
+      "fundClassIds": ["mpfa-cf-215"],
       "schemeName": "BEA (MPF) Industry Scheme",
       "constituentFundName": "BEA (Industry Scheme) Growth Fund",
       "factSheetFile": "IS00025.pdf",
@@ -16333,9 +16009,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-811"
-      ],
+      "fundClassIds": ["mpfa-cf-811"],
       "schemeName": "BEA (MPF) Industry Scheme",
       "constituentFundName": "BEA (Industry Scheme) Hong Kong Equity Fund",
       "factSheetFile": "IS00025.pdf",
@@ -16430,9 +16104,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-812"
-      ],
+      "fundClassIds": ["mpfa-cf-812"],
       "schemeName": "BEA (MPF) Industry Scheme",
       "constituentFundName": "BEA (Industry Scheme) Greater China Equity Fund",
       "factSheetFile": "IS00025.pdf",
@@ -16515,9 +16187,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-899"
-      ],
+      "fundClassIds": ["mpfa-cf-899"],
       "schemeName": "BEA (MPF) Industry Scheme",
       "constituentFundName": "BEA (Industry Scheme) Asian Equity Fund",
       "factSheetFile": "IS00025.pdf",
@@ -16608,9 +16278,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-900"
-      ],
+      "fundClassIds": ["mpfa-cf-900"],
       "schemeName": "BEA (MPF) Industry Scheme",
       "constituentFundName": "BEA China Tracker Fund",
       "factSheetFile": "IS00025.pdf",
@@ -16705,9 +16373,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-901"
-      ],
+      "fundClassIds": ["mpfa-cf-901"],
       "schemeName": "BEA (MPF) Industry Scheme",
       "constituentFundName": "BEA Hong Kong Tracker Fund",
       "factSheetFile": "IS00025.pdf",
@@ -16802,9 +16468,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-913"
-      ],
+      "fundClassIds": ["mpfa-cf-913"],
       "schemeName": "BEA (MPF) Industry Scheme",
       "constituentFundName": "BEA (Industry Scheme) RMB & HKD Money Market Fund",
       "factSheetFile": "IS00025.pdf",
@@ -16887,9 +16551,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1535"
-      ],
+      "fundClassIds": ["mpfa-cf-1535"],
       "schemeName": "BEA (MPF) Industry Scheme",
       "constituentFundName": "BEA (Industry Scheme) Core Accumulation Fund",
       "factSheetFile": "IS00025.pdf",
@@ -16984,9 +16646,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1536"
-      ],
+      "fundClassIds": ["mpfa-cf-1536"],
       "schemeName": "BEA (MPF) Industry Scheme",
       "constituentFundName": "BEA (Industry Scheme) Age 65 Plus Fund",
       "factSheetFile": "IS00025.pdf",
@@ -17081,9 +16741,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-216"
-      ],
+      "fundClassIds": ["mpfa-cf-216"],
       "schemeName": "BEA (MPF) Master Trust Scheme",
       "constituentFundName": "BEA (MPF) Balanced Fund",
       "factSheetFile": "MT00202.pdf",
@@ -17143,9 +16801,7 @@
           "percent": 0.55
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "1 rows disclose a percentage without an extractable label: \"6.1%\""
       },
@@ -17154,9 +16810,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-217"
-      ],
+      "fundClassIds": ["mpfa-cf-217"],
       "schemeName": "BEA (MPF) Master Trust Scheme",
       "constituentFundName": "BEA (MPF) Japan Equity Fund",
       "factSheetFile": "MT00202.pdf",
@@ -17251,9 +16905,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-218"
-      ],
+      "fundClassIds": ["mpfa-cf-218"],
       "schemeName": "BEA (MPF) Master Trust Scheme",
       "constituentFundName": "BEA (MPF) Greater China Equity Fund",
       "factSheetFile": "MT00202.pdf",
@@ -17344,9 +16996,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-219"
-      ],
+      "fundClassIds": ["mpfa-cf-219"],
       "schemeName": "BEA (MPF) Master Trust Scheme",
       "constituentFundName": "BEA (MPF) Global Bond Fund",
       "factSheetFile": "MT00202.pdf",
@@ -17433,9 +17083,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-220"
-      ],
+      "fundClassIds": ["mpfa-cf-220"],
       "schemeName": "BEA (MPF) Master Trust Scheme",
       "constituentFundName": "BEA (MPF) Hong Kong Equity Fund",
       "factSheetFile": "MT00202.pdf",
@@ -17518,9 +17166,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-221"
-      ],
+      "fundClassIds": ["mpfa-cf-221"],
       "schemeName": "BEA (MPF) Master Trust Scheme",
       "constituentFundName": "BEA (MPF) Asian Equity Fund",
       "factSheetFile": "MT00202.pdf",
@@ -17611,9 +17257,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-223"
-      ],
+      "fundClassIds": ["mpfa-cf-223"],
       "schemeName": "BEA (MPF) Master Trust Scheme",
       "constituentFundName": "BEA (MPF) Stable Fund",
       "factSheetFile": "MT00202.pdf",
@@ -17673,9 +17317,7 @@
           "percent": 0.59
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "1 rows disclose a percentage without an extractable label: \"6.1%\""
       },
@@ -17684,9 +17326,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-224"
-      ],
+      "fundClassIds": ["mpfa-cf-224"],
       "schemeName": "BEA (MPF) Master Trust Scheme",
       "constituentFundName": "BEA (MPF) Growth Fund",
       "factSheetFile": "MT00202.pdf",
@@ -17746,9 +17386,7 @@
           "percent": 0.67
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "1 rows disclose a percentage without an extractable label: \"8.4%\""
       },
@@ -17757,9 +17395,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-225"
-      ],
+      "fundClassIds": ["mpfa-cf-225"],
       "schemeName": "BEA (MPF) Master Trust Scheme",
       "constituentFundName": "BEA (MPF) Conservative Fund",
       "factSheetFile": "MT00202.pdf",
@@ -17850,9 +17486,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-813"
-      ],
+      "fundClassIds": ["mpfa-cf-813"],
       "schemeName": "BEA (MPF) Master Trust Scheme",
       "constituentFundName": "BEA (MPF) Global Equity Fund",
       "factSheetFile": "MT00202.pdf",
@@ -17947,9 +17581,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-814"
-      ],
+      "fundClassIds": ["mpfa-cf-814"],
       "schemeName": "BEA (MPF) Master Trust Scheme",
       "constituentFundName": "BEA (MPF) European Equity Fund",
       "factSheetFile": "MT00202.pdf",
@@ -18036,9 +17668,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-896"
-      ],
+      "fundClassIds": ["mpfa-cf-896"],
       "schemeName": "BEA (MPF) Master Trust Scheme",
       "constituentFundName": "BEA (MPF) North American Equity Fund",
       "factSheetFile": "MT00202.pdf",
@@ -18129,9 +17759,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-897"
-      ],
+      "fundClassIds": ["mpfa-cf-897"],
       "schemeName": "BEA (MPF) Master Trust Scheme",
       "constituentFundName": "BEA China Tracker Fund",
       "factSheetFile": "MT00202.pdf",
@@ -18226,9 +17854,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-898"
-      ],
+      "fundClassIds": ["mpfa-cf-898"],
       "schemeName": "BEA (MPF) Master Trust Scheme",
       "constituentFundName": "BEA Hong Kong Tracker Fund",
       "factSheetFile": "MT00202.pdf",
@@ -18327,9 +17953,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-912"
-      ],
+      "fundClassIds": ["mpfa-cf-912"],
       "schemeName": "BEA (MPF) Master Trust Scheme",
       "constituentFundName": "BEA (MPF) RMB & HKD Money Market Fund",
       "factSheetFile": "MT00202.pdf",
@@ -18412,9 +18036,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1537"
-      ],
+      "fundClassIds": ["mpfa-cf-1537"],
       "schemeName": "BEA (MPF) Master Trust Scheme",
       "constituentFundName": "BEA (MPF) Core Accumulation Fund",
       "factSheetFile": "MT00202.pdf",
@@ -18505,9 +18127,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1538"
-      ],
+      "fundClassIds": ["mpfa-cf-1538"],
       "schemeName": "BEA (MPF) Master Trust Scheme",
       "constituentFundName": "BEA (MPF) Age 65 Plus Fund",
       "factSheetFile": "MT00202.pdf",
@@ -18598,9 +18218,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1039"
-      ],
+      "fundClassIds": ["mpfa-cf-1039"],
       "schemeName": "BEA (MPF) Value Scheme",
       "constituentFundName": "BEA MPF Conservative Fund",
       "factSheetFile": "MT00571.pdf",
@@ -18691,9 +18309,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1040"
-      ],
+      "fundClassIds": ["mpfa-cf-1040"],
       "schemeName": "BEA (MPF) Value Scheme",
       "constituentFundName": "BEA Growth Fund",
       "factSheetFile": "MT00571.pdf",
@@ -18780,9 +18396,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1041"
-      ],
+      "fundClassIds": ["mpfa-cf-1041"],
       "schemeName": "BEA (MPF) Value Scheme",
       "constituentFundName": "BEA Balanced Fund",
       "factSheetFile": "MT00571.pdf",
@@ -18861,9 +18475,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1042"
-      ],
+      "fundClassIds": ["mpfa-cf-1042"],
       "schemeName": "BEA (MPF) Value Scheme",
       "constituentFundName": "BEA Stable Fund",
       "factSheetFile": "MT00571.pdf",
@@ -18950,9 +18562,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1043"
-      ],
+      "fundClassIds": ["mpfa-cf-1043"],
       "schemeName": "BEA (MPF) Value Scheme",
       "constituentFundName": "BEA Global Equity Fund",
       "factSheetFile": "MT00571.pdf",
@@ -19043,9 +18653,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1044"
-      ],
+      "fundClassIds": ["mpfa-cf-1044"],
       "schemeName": "BEA (MPF) Value Scheme",
       "constituentFundName": "BEA Asian Equity Fund",
       "factSheetFile": "MT00571.pdf",
@@ -19140,9 +18748,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1045"
-      ],
+      "fundClassIds": ["mpfa-cf-1045"],
       "schemeName": "BEA (MPF) Value Scheme",
       "constituentFundName": "BEA Greater China Equity Fund",
       "factSheetFile": "MT00571.pdf",
@@ -19233,9 +18839,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1047"
-      ],
+      "fundClassIds": ["mpfa-cf-1047"],
       "schemeName": "BEA (MPF) Value Scheme",
       "constituentFundName": "BEA Hong Kong Tracker Fund",
       "factSheetFile": "MT00571.pdf",
@@ -19330,9 +18934,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1048"
-      ],
+      "fundClassIds": ["mpfa-cf-1048"],
       "schemeName": "BEA (MPF) Value Scheme",
       "constituentFundName": "BEA Global Bond Fund",
       "factSheetFile": "MT00571.pdf",
@@ -19419,9 +19021,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1539"
-      ],
+      "fundClassIds": ["mpfa-cf-1539"],
       "schemeName": "BEA (MPF) Value Scheme",
       "constituentFundName": "BEA Core Accumulation Fund",
       "factSheetFile": "MT00571.pdf",
@@ -19516,9 +19116,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1540"
-      ],
+      "fundClassIds": ["mpfa-cf-1540"],
       "schemeName": "BEA (MPF) Value Scheme",
       "constituentFundName": "BEA Age 65 Plus Fund",
       "factSheetFile": "MT00571.pdf",
@@ -19613,9 +19211,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-226"
-      ],
+      "fundClassIds": ["mpfa-cf-226"],
       "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "BOC-Prudential Japan Equity Fund",
       "factSheetFile": "BOCPrudential_EasyChoice.pdf",
@@ -19678,9 +19274,7 @@
         }
       ],
       "topHoldings": [],
-      "unavailableFields": [
-        "topHoldings"
-      ],
+      "unavailableFields": ["topHoldings"],
       "unavailableReasons": {
         "topHoldings": "no holdings rows in the disclosed block"
       },
@@ -19689,9 +19283,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-227"
-      ],
+      "fundClassIds": ["mpfa-cf-227"],
       "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "BOC-Prudential Growth Fund",
       "factSheetFile": "BOCPrudential_EasyChoice.pdf",
@@ -19749,9 +19341,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-228"
-      ],
+      "fundClassIds": ["mpfa-cf-228"],
       "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "BOC-Prudential Balanced Fund",
       "factSheetFile": "BOCPrudential_EasyChoice.pdf",
@@ -19829,9 +19419,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-229"
-      ],
+      "fundClassIds": ["mpfa-cf-229"],
       "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "BOC-Prudential Stable Fund",
       "factSheetFile": "BOCPrudential_EasyChoice.pdf",
@@ -19914,9 +19502,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-231"
-      ],
+      "fundClassIds": ["mpfa-cf-231"],
       "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "BOC-Prudential Global Equity Fund",
       "factSheetFile": "BOCPrudential_EasyChoice.pdf",
@@ -19974,9 +19560,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-232"
-      ],
+      "fundClassIds": ["mpfa-cf-232"],
       "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "BOC-Prudential Hong Kong Equity Fund",
       "factSheetFile": "BOCPrudential_EasyChoice.pdf",
@@ -20095,9 +19679,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-233"
-      ],
+      "fundClassIds": ["mpfa-cf-233"],
       "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "BOC-Prudential Bond Fund",
       "factSheetFile": "BOCPrudential_EasyChoice.pdf",
@@ -20157,9 +19739,7 @@
           "percent": 1.9
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "1 rows disclose a percentage without an extractable label: \"0.9%\""
       },
@@ -20168,9 +19748,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-234"
-      ],
+      "fundClassIds": ["mpfa-cf-234"],
       "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "BOC-Prudential Asia Equity Fund",
       "factSheetFile": "BOCPrudential_EasyChoice.pdf",
@@ -20268,9 +19846,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-654"
-      ],
+      "fundClassIds": ["mpfa-cf-654"],
       "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "BOC-Prudential China Equity Fund",
       "factSheetFile": "BOCPrudential_EasyChoice.pdf",
@@ -20389,9 +19965,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-999"
-      ],
+      "fundClassIds": ["mpfa-cf-999"],
       "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "BOC-Prudential CSI HK 100 Tracker Fund",
       "factSheetFile": "BOCPrudential_EasyChoice.pdf",
@@ -20514,9 +20088,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1000"
-      ],
+      "fundClassIds": ["mpfa-cf-1000"],
       "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "BOC-Prudential North America Index Tracking Fund",
       "factSheetFile": "BOCPrudential_EasyChoice.pdf",
@@ -20579,9 +20151,7 @@
         }
       ],
       "topHoldings": [],
-      "unavailableFields": [
-        "topHoldings"
-      ],
+      "unavailableFields": ["topHoldings"],
       "unavailableReasons": {
         "topHoldings": "no holdings rows in the disclosed block"
       },
@@ -20590,9 +20160,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1001"
-      ],
+      "fundClassIds": ["mpfa-cf-1001"],
       "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "BOC-Prudential European Index Tracking Fund",
       "factSheetFile": "BOCPrudential_EasyChoice.pdf",
@@ -20671,9 +20239,7 @@
         }
       ],
       "topHoldings": [],
-      "unavailableFields": [
-        "topHoldings"
-      ],
+      "unavailableFields": ["topHoldings"],
       "unavailableReasons": {
         "topHoldings": "no holdings rows in the disclosed block"
       },
@@ -20682,9 +20248,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1119"
-      ],
+      "fundClassIds": ["mpfa-cf-1119"],
       "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "BOC-Prudential MPF RMB & HKD Money Market Fund",
       "factSheetFile": "BOCPrudential_EasyChoice.pdf",
@@ -20779,9 +20343,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1541"
-      ],
+      "fundClassIds": ["mpfa-cf-1541"],
       "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "BOC-Prudential Core Accumulation Fund",
       "factSheetFile": "BOCPrudential_EasyChoice.pdf",
@@ -20819,9 +20381,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1542"
-      ],
+      "fundClassIds": ["mpfa-cf-1542"],
       "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "BOC-Prudential Age 65 Plus Fund",
       "factSheetFile": "BOCPrudential_EasyChoice.pdf",
@@ -20884,9 +20444,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1959"
-      ],
+      "fundClassIds": ["mpfa-cf-1959"],
       "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "BOC-Prudential Hong Kong Stable Retirement Fund",
       "factSheetFile": "BOCPrudential_EasyChoice.pdf",
@@ -20969,9 +20527,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-236"
-      ],
+      "fundClassIds": ["mpfa-cf-236"],
       "schemeName": "China Life MPF Master Trust Scheme",
       "constituentFundName": "China Life Balanced Fund",
       "factSheetFile": "MT00083.pdf",
@@ -21054,9 +20610,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-237"
-      ],
+      "fundClassIds": ["mpfa-cf-237"],
       "schemeName": "China Life MPF Master Trust Scheme",
       "constituentFundName": "China Life Growth Fund",
       "factSheetFile": "MT00083.pdf",
@@ -21139,9 +20693,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-238"
-      ],
+      "fundClassIds": ["mpfa-cf-238"],
       "schemeName": "China Life MPF Master Trust Scheme",
       "constituentFundName": "China Life MPF Conservative Fund",
       "factSheetFile": "MT00083.pdf",
@@ -21224,9 +20776,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-603"
-      ],
+      "fundClassIds": ["mpfa-cf-603"],
       "schemeName": "China Life MPF Master Trust Scheme",
       "constituentFundName": "China Life Joyful Retirement Guaranteed Fund",
       "factSheetFile": "MT00083.pdf",
@@ -21309,9 +20859,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-606"
-      ],
+      "fundClassIds": ["mpfa-cf-606"],
       "schemeName": "China Life MPF Master Trust Scheme",
       "constituentFundName": "China Life Retire-Easy Global Equity Fund",
       "factSheetFile": "MT00083.pdf",
@@ -21394,9 +20942,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-895"
-      ],
+      "fundClassIds": ["mpfa-cf-895"],
       "schemeName": "China Life MPF Master Trust Scheme",
       "constituentFundName": "China Life Hong Kong Equity Fund",
       "factSheetFile": "MT00083.pdf",
@@ -21479,9 +21025,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1545"
-      ],
+      "fundClassIds": ["mpfa-cf-1545"],
       "schemeName": "China Life MPF Master Trust Scheme",
       "constituentFundName": "China Life Core Accumulation Fund",
       "factSheetFile": "MT00083.pdf",
@@ -21564,9 +21108,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1546"
-      ],
+      "fundClassIds": ["mpfa-cf-1546"],
       "schemeName": "China Life MPF Master Trust Scheme",
       "constituentFundName": "China Life Age 65 Plus Fund",
       "factSheetFile": "MT00083.pdf",
@@ -21649,9 +21191,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1839"
-      ],
+      "fundClassIds": ["mpfa-cf-1839"],
       "schemeName": "China Life MPF Master Trust Scheme",
       "constituentFundName": "China Life Greater China Equity Fund",
       "factSheetFile": "MT00083.pdf",
@@ -21734,9 +21274,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1840"
-      ],
+      "fundClassIds": ["mpfa-cf-1840"],
       "schemeName": "China Life MPF Master Trust Scheme",
       "constituentFundName": "China Life US Equity Fund",
       "factSheetFile": "MT00083.pdf",
@@ -21819,9 +21357,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-268"
-      ],
+      "fundClassIds": ["mpfa-cf-268"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "Growth Fund",
       "factSheetFile": "MT00288.pdf",
@@ -21928,9 +21464,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-270"
-      ],
+      "fundClassIds": ["mpfa-cf-270"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "World Bond Fund",
       "factSheetFile": "MT00288.pdf",
@@ -22079,9 +21613,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-271"
-      ],
+      "fundClassIds": ["mpfa-cf-271"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "Stable Growth Fund",
       "factSheetFile": "MT00288.pdf",
@@ -22188,9 +21720,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-272"
-      ],
+      "fundClassIds": ["mpfa-cf-272"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "Capital Stable Fund",
       "factSheetFile": "MT00288.pdf",
@@ -22297,9 +21827,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-273"
-      ],
+      "fundClassIds": ["mpfa-cf-273"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "Hong Kong Equity Fund",
       "factSheetFile": "MT00288.pdf",
@@ -22435,9 +21963,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-274"
-      ],
+      "fundClassIds": ["mpfa-cf-274"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "MPF Conservative Fund",
       "factSheetFile": "MT00288.pdf",
@@ -22516,9 +22042,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-275"
-      ],
+      "fundClassIds": ["mpfa-cf-275"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "Global Equity Fund",
       "factSheetFile": "MT00288.pdf",
@@ -22674,9 +22198,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-276"
-      ],
+      "fundClassIds": ["mpfa-cf-276"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "Hong Kong Bond Fund",
       "factSheetFile": "MT00288.pdf",
@@ -22809,9 +22331,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-278"
-      ],
+      "fundClassIds": ["mpfa-cf-278"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "Asia Pacific Equity Fund",
       "factSheetFile": "MT00288.pdf",
@@ -22975,9 +22495,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-280"
-      ],
+      "fundClassIds": ["mpfa-cf-280"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "Balanced Fund",
       "factSheetFile": "MT00288.pdf",
@@ -23084,9 +22602,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-706"
-      ],
+      "fundClassIds": ["mpfa-cf-706"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "Fidelity SaveEasy 2025 Fund",
       "factSheetFile": "MT00288.pdf",
@@ -23193,9 +22709,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-708"
-      ],
+      "fundClassIds": ["mpfa-cf-708"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "Fidelity SaveEasy 2030 Fund",
       "factSheetFile": "MT00288.pdf",
@@ -23298,9 +22812,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-709"
-      ],
+      "fundClassIds": ["mpfa-cf-709"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "Fidelity SaveEasy 2035 Fund",
       "factSheetFile": "MT00288.pdf",
@@ -23403,9 +22915,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-711"
-      ],
+      "fundClassIds": ["mpfa-cf-711"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "Fidelity SaveEasy 2040 Fund",
       "factSheetFile": "MT00288.pdf",
@@ -23508,9 +23018,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1159"
-      ],
+      "fundClassIds": ["mpfa-cf-1159"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "Fidelity Hong Kong Tracker Fund",
       "factSheetFile": "MT00288.pdf",
@@ -23633,9 +23141,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1419"
-      ],
+      "fundClassIds": ["mpfa-cf-1419"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "Fidelity SaveEasy 2045 Fund",
       "factSheetFile": "MT00288.pdf",
@@ -23738,9 +23244,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1420"
-      ],
+      "fundClassIds": ["mpfa-cf-1420"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "Fidelity SaveEasy 2050 Fund",
       "factSheetFile": "MT00288.pdf",
@@ -23839,9 +23343,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1439"
-      ],
+      "fundClassIds": ["mpfa-cf-1439"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "RMB Bond Fund",
       "factSheetFile": "MT00288.pdf",
@@ -23974,9 +23476,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1551"
-      ],
+      "fundClassIds": ["mpfa-cf-1551"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "Core Accumulation Fund",
       "factSheetFile": "MT00288.pdf",
@@ -24063,9 +23563,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1552"
-      ],
+      "fundClassIds": ["mpfa-cf-1552"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "Age 65 Plus Fund",
       "factSheetFile": "MT00288.pdf",
@@ -24152,9 +23650,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1799"
-      ],
+      "fundClassIds": ["mpfa-cf-1799"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "RetireEasy Fund",
       "factSheetFile": "MT00288.pdf",
@@ -24257,9 +23753,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-2079"
-      ],
+      "fundClassIds": ["mpfa-cf-2079"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "Americas Equity Fund",
       "factSheetFile": "MT00288.pdf",
@@ -24399,9 +23893,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-2080"
-      ],
+      "fundClassIds": ["mpfa-cf-2080"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "European Equity Fund",
       "factSheetFile": "MT00288.pdf",
@@ -24569,10 +24061,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-282",
-        "mpfa-cf-283"
-      ],
+      "fundClassIds": ["mpfa-cf-282", "mpfa-cf-283"],
       "schemeName": "Haitong MPF Retirement Fund",
       "constituentFundName": "HAITONG ASIA PACIFIC FUND",
       "factSheetFile": "MT00121.pdf",
@@ -24595,9 +24084,7 @@
         }
       ],
       "topHoldings": [],
-      "unavailableFields": [
-        "topHoldings"
-      ],
+      "unavailableFields": ["topHoldings"],
       "unavailableReasons": {
         "topHoldings": "no holdings rows in the disclosed block"
       },
@@ -24606,10 +24093,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-284",
-        "mpfa-cf-285"
-      ],
+      "fundClassIds": ["mpfa-cf-284", "mpfa-cf-285"],
       "schemeName": "Haitong MPF Retirement Fund",
       "constituentFundName": "HAITONG KOREA FUND",
       "factSheetFile": "MT00121.pdf",
@@ -24636,9 +24120,7 @@
         }
       ],
       "topHoldings": [],
-      "unavailableFields": [
-        "topHoldings"
-      ],
+      "unavailableFields": ["topHoldings"],
       "unavailableReasons": {
         "topHoldings": "no holdings rows in the disclosed block"
       },
@@ -24647,10 +24129,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-286",
-        "mpfa-cf-287"
-      ],
+      "fundClassIds": ["mpfa-cf-286", "mpfa-cf-287"],
       "schemeName": "Haitong MPF Retirement Fund",
       "constituentFundName": "HAITONG GLOBAL DIVERSIFICATION FUND",
       "factSheetFile": "MT00121.pdf",
@@ -24673,9 +24152,7 @@
         }
       ],
       "topHoldings": [],
-      "unavailableFields": [
-        "topHoldings"
-      ],
+      "unavailableFields": ["topHoldings"],
       "unavailableReasons": {
         "topHoldings": "no holdings rows in the disclosed block"
       },
@@ -24684,10 +24161,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-288",
-        "mpfa-cf-289"
-      ],
+      "fundClassIds": ["mpfa-cf-288", "mpfa-cf-289"],
       "schemeName": "Haitong MPF Retirement Fund",
       "constituentFundName": "HAITONG MPF CONSERVATIVE FUND",
       "factSheetFile": "MT00121.pdf",
@@ -24710,9 +24184,7 @@
         }
       ],
       "topHoldings": [],
-      "unavailableFields": [
-        "topHoldings"
-      ],
+      "unavailableFields": ["topHoldings"],
       "unavailableReasons": {
         "topHoldings": "no holdings rows in the disclosed block"
       },
@@ -24721,10 +24193,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-290",
-        "mpfa-cf-291"
-      ],
+      "fundClassIds": ["mpfa-cf-290", "mpfa-cf-291"],
       "schemeName": "Haitong MPF Retirement Fund",
       "constituentFundName": "HAITONG HONG KONG SAR FUND",
       "factSheetFile": "MT00121.pdf",
@@ -24751,9 +24220,7 @@
         }
       ],
       "topHoldings": [],
-      "unavailableFields": [
-        "topHoldings"
-      ],
+      "unavailableFields": ["topHoldings"],
       "unavailableReasons": {
         "topHoldings": "no holdings rows in the disclosed block"
       },
@@ -24762,10 +24229,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1553",
-        "mpfa-cf-1554"
-      ],
+      "fundClassIds": ["mpfa-cf-1553", "mpfa-cf-1554"],
       "schemeName": "Haitong MPF Retirement Fund",
       "constituentFundName": "HAITONG CORE ACCUMULATION FUND",
       "factSheetFile": "MT00121.pdf",
@@ -24825,10 +24289,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1555",
-        "mpfa-cf-1556"
-      ],
+      "fundClassIds": ["mpfa-cf-1555", "mpfa-cf-1556"],
       "schemeName": "Haitong MPF Retirement Fund",
       "constituentFundName": "HAITONG AGE 65 PLUS FUND",
       "factSheetFile": "MT00121.pdf",
@@ -24888,9 +24349,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-302"
-      ],
+      "fundClassIds": ["mpfa-cf-302"],
       "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Hang Seng Index Tracking Fund",
       "factSheetFile": "HangSeng_SuperTrustPlus.pdf",
@@ -25013,9 +24472,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-303"
-      ],
+      "fundClassIds": ["mpfa-cf-303"],
       "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Asia Pacific Equity Fund",
       "factSheetFile": "HangSeng_SuperTrustPlus.pdf",
@@ -25134,9 +24591,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-304"
-      ],
+      "fundClassIds": ["mpfa-cf-304"],
       "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Core Accumulation Fund",
       "factSheetFile": "HangSeng_SuperTrustPlus.pdf",
@@ -25243,9 +24698,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-305"
-      ],
+      "fundClassIds": ["mpfa-cf-305"],
       "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Guaranteed Fund",
       "factSheetFile": "HangSeng_SuperTrustPlus.pdf",
@@ -25356,9 +24809,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-306"
-      ],
+      "fundClassIds": ["mpfa-cf-306"],
       "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "MPF Conservative Fund",
       "factSheetFile": "HangSeng_SuperTrustPlus.pdf",
@@ -25437,9 +24888,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-307"
-      ],
+      "fundClassIds": ["mpfa-cf-307"],
       "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "European Equity Fund",
       "factSheetFile": "HangSeng_SuperTrustPlus.pdf",
@@ -25558,9 +25007,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-308"
-      ],
+      "fundClassIds": ["mpfa-cf-308"],
       "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "North American Equity Fund",
       "factSheetFile": "HangSeng_SuperTrustPlus.pdf",
@@ -25679,9 +25126,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-309"
-      ],
+      "fundClassIds": ["mpfa-cf-309"],
       "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Hong Kong and Chinese Equity Fund",
       "factSheetFile": "HangSeng_SuperTrustPlus.pdf",
@@ -25800,9 +25245,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-310"
-      ],
+      "fundClassIds": ["mpfa-cf-310"],
       "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Balanced Fund",
       "factSheetFile": "HangSeng_SuperTrustPlus.pdf",
@@ -25909,9 +25352,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-311"
-      ],
+      "fundClassIds": ["mpfa-cf-311"],
       "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Growth Fund",
       "factSheetFile": "HangSeng_SuperTrustPlus.pdf",
@@ -26018,9 +25459,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-805"
-      ],
+      "fundClassIds": ["mpfa-cf-805"],
       "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Global Bond Fund",
       "factSheetFile": "HangSeng_SuperTrustPlus.pdf",
@@ -26139,9 +25578,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-806"
-      ],
+      "fundClassIds": ["mpfa-cf-806"],
       "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Age 65 Plus Fund",
       "factSheetFile": "HangSeng_SuperTrustPlus.pdf",
@@ -26248,9 +25685,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-807"
-      ],
+      "fundClassIds": ["mpfa-cf-807"],
       "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Stable Fund",
       "factSheetFile": "HangSeng_SuperTrustPlus.pdf",
@@ -26357,9 +25792,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-808"
-      ],
+      "fundClassIds": ["mpfa-cf-808"],
       "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Chinese Equity Fund",
       "factSheetFile": "HangSeng_SuperTrustPlus.pdf",
@@ -26478,9 +25911,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1625"
-      ],
+      "fundClassIds": ["mpfa-cf-1625"],
       "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Global Equity Fund",
       "factSheetFile": "HangSeng_SuperTrustPlus.pdf",
@@ -26599,9 +26030,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1626"
-      ],
+      "fundClassIds": ["mpfa-cf-1626"],
       "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Hang Seng China Enterprises Index Tracking Fund",
       "factSheetFile": "HangSeng_SuperTrustPlus.pdf",
@@ -26720,9 +26149,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1627"
-      ],
+      "fundClassIds": ["mpfa-cf-1627"],
       "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "ValueChoice Asia Pacific Equity Tracker Fund",
       "factSheetFile": "HangSeng_SuperTrustPlus.pdf",
@@ -26841,9 +26268,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1628"
-      ],
+      "fundClassIds": ["mpfa-cf-1628"],
       "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "ValueChoice Balanced Fund",
       "factSheetFile": "HangSeng_SuperTrustPlus.pdf",
@@ -26894,9 +26319,7 @@
         }
       ],
       "topHoldings": [],
-      "unavailableFields": [
-        "topHoldings"
-      ],
+      "unavailableFields": ["topHoldings"],
       "unavailableReasons": {
         "topHoldings": "1 rows disclose a percentage without an extractable security name: \"2021\""
       },
@@ -26905,9 +26328,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1629"
-      ],
+      "fundClassIds": ["mpfa-cf-1629"],
       "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "ValueChoice Europe Equity Tracker Fund",
       "factSheetFile": "HangSeng_SuperTrustPlus.pdf",
@@ -27026,9 +26447,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1630"
-      ],
+      "fundClassIds": ["mpfa-cf-1630"],
       "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "ValueChoice North America Equity Tracker Fund",
       "factSheetFile": "HangSeng_SuperTrustPlus.pdf",
@@ -27147,9 +26566,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-317"
-      ],
+      "fundClassIds": ["mpfa-cf-317"],
       "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Growth Fund",
       "factSheetFile": "MT00245.pdf",
@@ -27256,9 +26673,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-318"
-      ],
+      "fundClassIds": ["mpfa-cf-318"],
       "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Core Accumulation Fund",
       "factSheetFile": "MT00245.pdf",
@@ -27365,9 +26780,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-319"
-      ],
+      "fundClassIds": ["mpfa-cf-319"],
       "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "MPF Conservative Fund",
       "factSheetFile": "MT00245.pdf",
@@ -27450,9 +26863,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-320"
-      ],
+      "fundClassIds": ["mpfa-cf-320"],
       "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Guaranteed Fund",
       "factSheetFile": "MT00245.pdf",
@@ -27563,9 +26974,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-321"
-      ],
+      "fundClassIds": ["mpfa-cf-321"],
       "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Hong Kong and Chinese Equity Fund",
       "factSheetFile": "MT00245.pdf",
@@ -27684,9 +27093,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-322"
-      ],
+      "fundClassIds": ["mpfa-cf-322"],
       "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Balanced Fund",
       "factSheetFile": "MT00245.pdf",
@@ -27793,9 +27200,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-323"
-      ],
+      "fundClassIds": ["mpfa-cf-323"],
       "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "North American Equity Fund",
       "factSheetFile": "MT00245.pdf",
@@ -27914,9 +27319,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-324"
-      ],
+      "fundClassIds": ["mpfa-cf-324"],
       "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Asia Pacific Equity Fund",
       "factSheetFile": "MT00245.pdf",
@@ -28035,9 +27438,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-325"
-      ],
+      "fundClassIds": ["mpfa-cf-325"],
       "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Hang Seng Index Tracking Fund",
       "factSheetFile": "MT00245.pdf",
@@ -28160,9 +27561,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-326"
-      ],
+      "fundClassIds": ["mpfa-cf-326"],
       "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "European Equity Fund",
       "factSheetFile": "MT00245.pdf",
@@ -28281,9 +27680,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-801"
-      ],
+      "fundClassIds": ["mpfa-cf-801"],
       "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Global Bond Fund",
       "factSheetFile": "MT00245.pdf",
@@ -28402,9 +27799,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-802"
-      ],
+      "fundClassIds": ["mpfa-cf-802"],
       "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Age 65 Plus Fund",
       "factSheetFile": "MT00245.pdf",
@@ -28511,9 +27906,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-803"
-      ],
+      "fundClassIds": ["mpfa-cf-803"],
       "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Stable Fund",
       "factSheetFile": "MT00245.pdf",
@@ -28620,9 +28013,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-804"
-      ],
+      "fundClassIds": ["mpfa-cf-804"],
       "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Chinese Equity Fund",
       "factSheetFile": "MT00245.pdf",
@@ -28741,9 +28132,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1619"
-      ],
+      "fundClassIds": ["mpfa-cf-1619"],
       "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Global Equity Fund",
       "factSheetFile": "MT00245.pdf",
@@ -28862,9 +28251,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1620"
-      ],
+      "fundClassIds": ["mpfa-cf-1620"],
       "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "Hang Seng China Enterprises Index Tracking Fund",
       "factSheetFile": "MT00245.pdf",
@@ -28983,9 +28370,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1621"
-      ],
+      "fundClassIds": ["mpfa-cf-1621"],
       "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "ValueChoice Asia Pacific Equity Tracker Fund",
       "factSheetFile": "MT00245.pdf",
@@ -29104,9 +28489,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1622"
-      ],
+      "fundClassIds": ["mpfa-cf-1622"],
       "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "ValueChoice Balanced Fund",
       "factSheetFile": "MT00245.pdf",
@@ -29157,9 +28540,7 @@
         }
       ],
       "topHoldings": [],
-      "unavailableFields": [
-        "topHoldings"
-      ],
+      "unavailableFields": ["topHoldings"],
       "unavailableReasons": {
         "topHoldings": "1 rows disclose a percentage without an extractable security name: \"2021\""
       },
@@ -29168,9 +28549,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1624"
-      ],
+      "fundClassIds": ["mpfa-cf-1624"],
       "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "ValueChoice North America Equity Tracker Fund",
       "factSheetFile": "MT00245.pdf",
@@ -29289,9 +28668,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1631"
-      ],
+      "fundClassIds": ["mpfa-cf-1631"],
       "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
       "constituentFundName": "ValueChoice Europe Equity Tracker Fund",
       "factSheetFile": "MT00245.pdf",
@@ -29410,9 +28787,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-362"
-      ],
+      "fundClassIds": ["mpfa-cf-362"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Hong Kong Bond Fund",
       "factSheetFile": "MT00482.pdf",
@@ -29421,10 +28796,7 @@
       "factSheetAsOf": "2026-03-31",
       "allocations": [],
       "topHoldings": [],
-      "unavailableFields": [
-        "allocation",
-        "topHoldings"
-      ],
+      "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "10 rows disclose a percentage without an extractable security name: \"3.80%\", \"2.22%\", \"2.10%\""
@@ -29435,9 +28807,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-363"
-      ],
+      "fundClassIds": ["mpfa-cf-363"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Growth Fund",
       "factSheetFile": "MT00482.pdf",
@@ -29497,9 +28867,7 @@
           "percent": 1
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
@@ -29508,9 +28876,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-364"
-      ],
+      "fundClassIds": ["mpfa-cf-364"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Stable Fund",
       "factSheetFile": "MT00482.pdf",
@@ -29570,9 +28936,7 @@
           "percent": 1.17
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
@@ -29581,9 +28945,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-365"
-      ],
+      "fundClassIds": ["mpfa-cf-365"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Interest Fund",
       "factSheetFile": "MT00482.pdf",
@@ -29592,10 +28954,7 @@
       "factSheetAsOf": "2026-03-31",
       "allocations": [],
       "topHoldings": [],
-      "unavailableFields": [
-        "allocation",
-        "topHoldings"
-      ],
+      "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "10 rows disclose a percentage without an extractable security name: \"1.52%\", \"1.48%\", \"1.32%\""
@@ -29606,9 +28965,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-366"
-      ],
+      "fundClassIds": ["mpfa-cf-366"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Conservative Fund",
       "factSheetFile": "MT00482.pdf",
@@ -29617,10 +28974,7 @@
       "factSheetAsOf": "2026-03-31",
       "allocations": [],
       "topHoldings": [],
-      "unavailableFields": [
-        "allocation",
-        "topHoldings"
-      ],
+      "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "10 rows disclose a percentage without an extractable security name: \"3.50%\", \"2.50%\", \"2.50%\""
@@ -29631,9 +28985,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-367"
-      ],
+      "fundClassIds": ["mpfa-cf-367"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Hong Kong Equity Fund",
       "factSheetFile": "MT00482.pdf",
@@ -29693,9 +29045,7 @@
           "percent": 1.83
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
@@ -29704,9 +29054,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-368"
-      ],
+      "fundClassIds": ["mpfa-cf-368"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF International Equity Fund",
       "factSheetFile": "MT00482.pdf",
@@ -29715,10 +29063,7 @@
       "factSheetAsOf": "2026-03-31",
       "allocations": [],
       "topHoldings": [],
-      "unavailableFields": [
-        "allocation",
-        "topHoldings"
-      ],
+      "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "10 rows disclose a percentage without an extractable security name: \"4.70%\", \"4.03%\", \"3.18%\""
@@ -29729,9 +29074,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-369"
-      ],
+      "fundClassIds": ["mpfa-cf-369"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF European Equity Fund",
       "factSheetFile": "MT00482.pdf",
@@ -29740,10 +29083,7 @@
       "factSheetAsOf": "2026-03-31",
       "allocations": [],
       "topHoldings": [],
-      "unavailableFields": [
-        "allocation",
-        "topHoldings"
-      ],
+      "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "10 rows disclose a percentage without an extractable security name: \"14.85%\", \"6.84%\", \"2.86%\""
@@ -29754,9 +29094,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-370"
-      ],
+      "fundClassIds": ["mpfa-cf-370"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Pacific Asia Equity Fund",
       "factSheetFile": "MT00482.pdf",
@@ -29765,10 +29103,7 @@
       "factSheetAsOf": "2026-03-31",
       "allocations": [],
       "topHoldings": [],
-      "unavailableFields": [
-        "allocation",
-        "topHoldings"
-      ],
+      "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "3 rows disclose a percentage without an extractable security name: \"6.04%\", \"3.77%\", \"1.47%\""
@@ -29779,9 +29114,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-371"
-      ],
+      "fundClassIds": ["mpfa-cf-371"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Japan Equity Fund",
       "factSheetFile": "MT00482.pdf",
@@ -29790,10 +29123,7 @@
       "factSheetAsOf": "2026-03-31",
       "allocations": [],
       "topHoldings": [],
-      "unavailableFields": [
-        "allocation",
-        "topHoldings"
-      ],
+      "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "10 rows disclose a percentage without an extractable security name: \"5.04%\", \"4.62%\", \"4.24%\""
@@ -29804,9 +29134,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-372"
-      ],
+      "fundClassIds": ["mpfa-cf-372"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF International Bond Fund",
       "factSheetFile": "MT00482.pdf",
@@ -29815,10 +29143,7 @@
       "factSheetAsOf": "2026-03-31",
       "allocations": [],
       "topHoldings": [],
-      "unavailableFields": [
-        "allocation",
-        "topHoldings"
-      ],
+      "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "10 rows disclose a percentage without an extractable security name: \"3.03%\", \"2.84%\", \"2.45%\""
@@ -29829,9 +29154,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-373"
-      ],
+      "fundClassIds": ["mpfa-cf-373"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Fidelity Growth Fund",
       "factSheetFile": "MT00482.pdf",
@@ -29840,10 +29163,7 @@
       "factSheetAsOf": "2026-03-31",
       "allocations": [],
       "topHoldings": [],
-      "unavailableFields": [
-        "allocation",
-        "topHoldings"
-      ],
+      "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "6 rows disclose a percentage without an extractable security name: \"6.69%\", \"3.58%\", \"2.64%\""
@@ -29854,9 +29174,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-374"
-      ],
+      "fundClassIds": ["mpfa-cf-374"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Fidelity Stable Growth Fund",
       "factSheetFile": "MT00482.pdf",
@@ -29865,10 +29183,7 @@
       "factSheetAsOf": "2026-03-31",
       "allocations": [],
       "topHoldings": [],
-      "unavailableFields": [
-        "allocation",
-        "topHoldings"
-      ],
+      "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "1 rows disclose a percentage without an extractable security name: \"2. 5.40%\""
@@ -29879,9 +29194,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-375"
-      ],
+      "fundClassIds": ["mpfa-cf-375"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF China Value Fund",
       "factSheetFile": "MT00482.pdf",
@@ -29941,9 +29254,7 @@
           "percent": 1.55
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
@@ -29952,9 +29263,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-376"
-      ],
+      "fundClassIds": ["mpfa-cf-376"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Aggressive Fund",
       "factSheetFile": "MT00482.pdf",
@@ -29963,10 +29272,7 @@
       "factSheetAsOf": "2026-03-31",
       "allocations": [],
       "topHoldings": [],
-      "unavailableFields": [
-        "allocation",
-        "topHoldings"
-      ],
+      "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "5 rows disclose a percentage without an extractable security name: \"3.83%\", \"3.13%\", \"2.41%\""
@@ -29977,9 +29283,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-377"
-      ],
+      "fundClassIds": ["mpfa-cf-377"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF North American Equity Fund",
       "factSheetFile": "MT00482.pdf",
@@ -29988,10 +29292,7 @@
       "factSheetAsOf": "2026-03-31",
       "allocations": [],
       "topHoldings": [],
-      "unavailableFields": [
-        "allocation",
-        "topHoldings"
-      ],
+      "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "10 rows disclose a percentage without an extractable security name: \"6.89%\", \"6.26%\", \"4.60%\""
@@ -30002,9 +29303,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-695"
-      ],
+      "fundClassIds": ["mpfa-cf-695"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Healthcare Fund",
       "factSheetFile": "MT00482.pdf",
@@ -30064,9 +29363,7 @@
           "percent": 2.7
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
@@ -30075,9 +29372,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-842"
-      ],
+      "fundClassIds": ["mpfa-cf-842"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Smart Retirement Fund",
       "factSheetFile": "MT00482.pdf",
@@ -30137,9 +29432,7 @@
           "percent": 1.05
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
@@ -30148,9 +29441,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-844"
-      ],
+      "fundClassIds": ["mpfa-cf-844"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF 2025 Retirement Fund",
       "factSheetFile": "MT00482.pdf",
@@ -30210,9 +29501,7 @@
           "percent": 1.09
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
@@ -30221,9 +29510,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-845"
-      ],
+      "fundClassIds": ["mpfa-cf-845"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF 2030 Retirement Fund",
       "factSheetFile": "MT00482.pdf",
@@ -30283,9 +29570,7 @@
           "percent": 1.13
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
@@ -30294,9 +29579,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-846"
-      ],
+      "fundClassIds": ["mpfa-cf-846"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF 2035 Retirement Fund",
       "factSheetFile": "MT00482.pdf",
@@ -30356,9 +29639,7 @@
           "percent": 1.39
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
@@ -30367,9 +29648,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-847"
-      ],
+      "fundClassIds": ["mpfa-cf-847"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF 2040 Retirement Fund",
       "factSheetFile": "MT00482.pdf",
@@ -30429,9 +29708,7 @@
           "percent": 1.6
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
@@ -30440,9 +29717,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-848"
-      ],
+      "fundClassIds": ["mpfa-cf-848"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF 2045 Retirement Fund",
       "factSheetFile": "MT00482.pdf",
@@ -30502,9 +29777,7 @@
           "percent": 1.66
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
@@ -30513,9 +29786,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-906"
-      ],
+      "fundClassIds": ["mpfa-cf-906"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Sustainable Pacific Asia Bond Fund",
       "factSheetFile": "MT00482.pdf",
@@ -30524,10 +29795,7 @@
       "factSheetAsOf": "2026-03-31",
       "allocations": [],
       "topHoldings": [],
-      "unavailableFields": [
-        "allocation",
-        "topHoldings"
-      ],
+      "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "10 rows disclose a percentage without an extractable security name: \"1.88%\", \"1.87%\", \"1.55%\""
@@ -30538,9 +29806,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-907"
-      ],
+      "fundClassIds": ["mpfa-cf-907"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Hang Seng Index ESG Fund",
       "factSheetFile": "MT00482.pdf",
@@ -30600,9 +29866,7 @@
           "percent": 3.12
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
@@ -30611,9 +29875,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1219"
-      ],
+      "fundClassIds": ["mpfa-cf-1219"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF RMB Bond Fund",
       "factSheetFile": "MT00482.pdf",
@@ -30673,9 +29935,7 @@
           "percent": 1.76
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
@@ -30684,9 +29944,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1485"
-      ],
+      "fundClassIds": ["mpfa-cf-1485"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Core Accumulation Fund",
       "factSheetFile": "MT00482.pdf",
@@ -30695,10 +29953,7 @@
       "factSheetAsOf": "2026-03-31",
       "allocations": [],
       "topHoldings": [],
-      "unavailableFields": [
-        "allocation",
-        "topHoldings"
-      ],
+      "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "9 rows disclose a percentage without an extractable security name: \"2.75%\", \"2.46%\", \"1.85%\""
@@ -30709,9 +29964,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1486"
-      ],
+      "fundClassIds": ["mpfa-cf-1486"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Age 65 Plus Fund",
       "factSheetFile": "MT00482.pdf",
@@ -30720,10 +29973,7 @@
       "factSheetAsOf": "2026-03-31",
       "allocations": [],
       "topHoldings": [],
-      "unavailableFields": [
-        "allocation",
-        "topHoldings"
-      ],
+      "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
         "topHoldings": "9 rows disclose a percentage without an extractable security name: \"0.92%\", \"0.82%\", \"0.62%\""
@@ -30734,9 +29984,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1719"
-      ],
+      "fundClassIds": ["mpfa-cf-1719"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Retirement Income Fund",
       "factSheetFile": "MT00482.pdf",
@@ -30796,9 +30044,7 @@
           "percent": 1.22
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
@@ -30807,11 +30053,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-244",
-        "mpfa-cf-245",
-        "mpfa-cf-246"
-      ],
+      "fundClassIds": ["mpfa-cf-244", "mpfa-cf-245", "mpfa-cf-246"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz Hong Kong Fund",
       "factSheetFile": "MT00490.pdf",
@@ -30930,11 +30172,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-247",
-        "mpfa-cf-248",
-        "mpfa-cf-249"
-      ],
+      "fundClassIds": ["mpfa-cf-247", "mpfa-cf-248", "mpfa-cf-249"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz Asian Fund",
       "factSheetFile": "MT00490.pdf",
@@ -31049,11 +30287,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-250",
-        "mpfa-cf-251",
-        "mpfa-cf-252"
-      ],
+      "fundClassIds": ["mpfa-cf-250", "mpfa-cf-251", "mpfa-cf-252"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz Balanced Fund",
       "factSheetFile": "MT00490.pdf",
@@ -31152,11 +30386,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-253",
-        "mpfa-cf-254",
-        "mpfa-cf-255"
-      ],
+      "fundClassIds": ["mpfa-cf-253", "mpfa-cf-254", "mpfa-cf-255"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz Flexi Balanced Fund",
       "factSheetFile": "MT00490.pdf",
@@ -31255,11 +30485,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-256",
-        "mpfa-cf-257",
-        "mpfa-cf-258"
-      ],
+      "fundClassIds": ["mpfa-cf-256", "mpfa-cf-257", "mpfa-cf-258"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz Stable Growth Fund",
       "factSheetFile": "MT00490.pdf",
@@ -31358,11 +30584,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-259",
-        "mpfa-cf-260",
-        "mpfa-cf-261"
-      ],
+      "fundClassIds": ["mpfa-cf-259", "mpfa-cf-260", "mpfa-cf-261"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz Capital Stable Fund",
       "factSheetFile": "MT00490.pdf",
@@ -31461,11 +30683,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-262",
-        "mpfa-cf-263",
-        "mpfa-cf-264"
-      ],
+      "fundClassIds": ["mpfa-cf-262", "mpfa-cf-263", "mpfa-cf-264"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz MPF Conservative Fund",
       "factSheetFile": "MT00490.pdf",
@@ -31548,11 +30766,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-265",
-        "mpfa-cf-266",
-        "mpfa-cf-267"
-      ],
+      "fundClassIds": ["mpfa-cf-265", "mpfa-cf-266", "mpfa-cf-267"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz Growth Fund",
       "factSheetFile": "MT00490.pdf",
@@ -31651,11 +30865,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-889",
-        "mpfa-cf-890",
-        "mpfa-cf-891"
-      ],
+      "fundClassIds": ["mpfa-cf-889", "mpfa-cf-890", "mpfa-cf-891"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz Greater China Fund",
       "factSheetFile": "MT00490.pdf",
@@ -31770,11 +30980,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-892",
-        "mpfa-cf-893",
-        "mpfa-cf-894"
-      ],
+      "fundClassIds": ["mpfa-cf-892", "mpfa-cf-893", "mpfa-cf-894"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz Oriental Pacific Fund",
       "factSheetFile": "MT00490.pdf",
@@ -31893,11 +31099,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1179",
-        "mpfa-cf-1180",
-        "mpfa-cf-1181"
-      ],
+      "fundClassIds": ["mpfa-cf-1179", "mpfa-cf-1180", "mpfa-cf-1181"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz RMB Money Market Fund",
       "factSheetFile": "MT00490.pdf",
@@ -31988,11 +31190,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1523",
-        "mpfa-cf-1524",
-        "mpfa-cf-1525"
-      ],
+      "fundClassIds": ["mpfa-cf-1523", "mpfa-cf-1524", "mpfa-cf-1525"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz MPF Core Accumulation Fund",
       "factSheetFile": "MT00490.pdf",
@@ -32095,11 +31293,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1526",
-        "mpfa-cf-1527",
-        "mpfa-cf-1528"
-      ],
+      "fundClassIds": ["mpfa-cf-1526", "mpfa-cf-1527", "mpfa-cf-1528"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz MPF Age 65 Plus Fund",
       "factSheetFile": "MT00490.pdf",
@@ -32202,9 +31396,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-383"
-      ],
+      "fundClassIds": ["mpfa-cf-383"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "Global Bond Fund",
       "factSheetFile": "MT00350.pdf",
@@ -32351,9 +31543,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-384"
-      ],
+      "fundClassIds": ["mpfa-cf-384"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "Asian Bond Fund",
       "factSheetFile": "MT00350.pdf",
@@ -32496,9 +31686,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-385"
-      ],
+      "fundClassIds": ["mpfa-cf-385"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "Global Stable Fund",
       "factSheetFile": "MT00350.pdf",
@@ -32597,9 +31785,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-386"
-      ],
+      "fundClassIds": ["mpfa-cf-386"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "MPF Conservative Fund",
       "factSheetFile": "MT00350.pdf",
@@ -32682,9 +31868,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-387"
-      ],
+      "fundClassIds": ["mpfa-cf-387"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "Global Equity Fund",
       "factSheetFile": "MT00350.pdf",
@@ -32823,9 +32007,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-388"
-      ],
+      "fundClassIds": ["mpfa-cf-388"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "Guaranteed Fund",
       "factSheetFile": "MT00350.pdf",
@@ -32924,9 +32106,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-389"
-      ],
+      "fundClassIds": ["mpfa-cf-389"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "Hong Kong Equities Fund",
       "factSheetFile": "MT00350.pdf",
@@ -33045,9 +32225,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-390"
-      ],
+      "fundClassIds": ["mpfa-cf-390"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "European Equity Fund",
       "factSheetFile": "MT00350.pdf",
@@ -33182,9 +32360,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-391"
-      ],
+      "fundClassIds": ["mpfa-cf-391"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "US Equity Fund",
       "factSheetFile": "MT00350.pdf",
@@ -33303,9 +32479,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-392"
-      ],
+      "fundClassIds": ["mpfa-cf-392"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "Asian Pacific Equity Fund",
       "factSheetFile": "MT00350.pdf",
@@ -33420,9 +32594,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-394"
-      ],
+      "fundClassIds": ["mpfa-cf-394"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "Global Growth Fund",
       "factSheetFile": "MT00350.pdf",
@@ -33521,9 +32693,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-874"
-      ],
+      "fundClassIds": ["mpfa-cf-874"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "Greater China Equity Fund",
       "factSheetFile": "MT00350.pdf",
@@ -33610,9 +32780,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1487"
-      ],
+      "fundClassIds": ["mpfa-cf-1487"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "Core Accumulation Fund",
       "factSheetFile": "MT00350.pdf",
@@ -33715,9 +32883,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1488"
-      ],
+      "fundClassIds": ["mpfa-cf-1488"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "Age 65 Plus Fund",
       "factSheetFile": "MT00350.pdf",
@@ -33820,9 +32986,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-816"
-      ],
+      "fundClassIds": ["mpfa-cf-816"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE GROWTH FUND",
       "factSheetFile": "MT00547.pdf",
@@ -33882,9 +33046,7 @@
           "percent": 1.19
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
       },
@@ -33893,9 +33055,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-817"
-      ],
+      "fundClassIds": ["mpfa-cf-817"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE BALANCED FUND",
       "factSheetFile": "MT00547.pdf",
@@ -33955,9 +33115,7 @@
           "percent": 1.16
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
       },
@@ -33966,9 +33124,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-818"
-      ],
+      "fundClassIds": ["mpfa-cf-818"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE STABLE FUND",
       "factSheetFile": "MT00547.pdf",
@@ -34028,9 +33184,7 @@
           "percent": 1.08
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
       },
@@ -34039,9 +33193,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-819"
-      ],
+      "fundClassIds": ["mpfa-cf-819"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE GLOBAL EQUITY FUND",
       "factSheetFile": "MT00547.pdf",
@@ -34101,9 +33253,7 @@
           "percent": 1.5
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
       },
@@ -34112,9 +33262,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-820"
-      ],
+      "fundClassIds": ["mpfa-cf-820"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE ASIA EQUITY FUND",
       "factSheetFile": "MT00547.pdf",
@@ -34174,9 +33322,7 @@
           "percent": 1.37
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
       },
@@ -34185,9 +33331,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-821"
-      ],
+      "fundClassIds": ["mpfa-cf-821"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE CHINA EQUITY FUND",
       "factSheetFile": "MT00547.pdf",
@@ -34247,9 +33391,7 @@
           "percent": 2.28
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
       },
@@ -34258,9 +33400,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-822"
-      ],
+      "fundClassIds": ["mpfa-cf-822"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE HONG KONG EQUITY FUND",
       "factSheetFile": "MT00547.pdf",
@@ -34320,9 +33460,7 @@
           "percent": 2.42
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
       },
@@ -34331,9 +33469,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-824"
-      ],
+      "fundClassIds": ["mpfa-cf-824"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE HONG KONG TRACKING FUND",
       "factSheetFile": "MT00547.pdf",
@@ -34393,9 +33529,7 @@
           "percent": 2.91
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
       },
@@ -34404,9 +33538,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-825"
-      ],
+      "fundClassIds": ["mpfa-cf-825"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE GLOBAL BOND FUND",
       "factSheetFile": "MT00547.pdf",
@@ -34466,9 +33598,7 @@
           "percent": 2.79
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
       },
@@ -34477,9 +33607,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-826"
-      ],
+      "fundClassIds": ["mpfa-cf-826"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE HKD BOND FUND",
       "factSheetFile": "MT00547.pdf",
@@ -34539,9 +33667,7 @@
           "percent": 1.57
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
       },
@@ -34550,9 +33676,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-827"
-      ],
+      "fundClassIds": ["mpfa-cf-827"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE MPF CONSERVATIVE FUND",
       "factSheetFile": "MT00547.pdf",
@@ -34612,9 +33736,7 @@
           "percent": 3.07
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
       },
@@ -34623,9 +33745,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1359"
-      ],
+      "fundClassIds": ["mpfa-cf-1359"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE RMB & HKD MONEY MARKET FUND",
       "factSheetFile": "MT00547.pdf",
@@ -34685,9 +33805,7 @@
           "percent": 1.63
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
       },
@@ -34696,9 +33814,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1543"
-      ],
+      "fundClassIds": ["mpfa-cf-1543"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE CORE ACCUMULATION FUND",
       "factSheetFile": "MT00547.pdf",
@@ -34758,9 +33874,7 @@
           "percent": 1.33
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
       },
@@ -34769,9 +33883,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1544"
-      ],
+      "fundClassIds": ["mpfa-cf-1544"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE AGE 65 PLUS FUND",
       "factSheetFile": "MT00547.pdf",
@@ -34831,9 +33943,7 @@
           "percent": 1.48
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
       },
@@ -34842,9 +33952,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-459"
-      ],
+      "fundClassIds": ["mpfa-cf-459"],
       "schemeName": "SHKP MPF Employer Sponsored Scheme",
       "constituentFundName": "Manulife Career Average Guaranteed Fund - SHKP",
       "factSheetFile": "ES00020.pdf",
@@ -34923,9 +34031,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-460"
-      ],
+      "fundClassIds": ["mpfa-cf-460"],
       "schemeName": "SHKP MPF Employer Sponsored Scheme",
       "constituentFundName": "Fidelity Balanced Fund",
       "factSheetFile": "ES00020.pdf",
@@ -35036,9 +34142,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-462"
-      ],
+      "fundClassIds": ["mpfa-cf-462"],
       "schemeName": "SHKP MPF Employer Sponsored Scheme",
       "constituentFundName": "SHKP MPF Fund",
       "factSheetFile": "ES00020.pdf",
@@ -35141,9 +34245,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-463"
-      ],
+      "fundClassIds": ["mpfa-cf-463"],
       "schemeName": "SHKP MPF Employer Sponsored Scheme",
       "constituentFundName": "Fidelity Stable Growth Fund",
       "factSheetFile": "ES00020.pdf",
@@ -35254,9 +34356,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-464"
-      ],
+      "fundClassIds": ["mpfa-cf-464"],
       "schemeName": "SHKP MPF Employer Sponsored Scheme",
       "constituentFundName": "Allianz Choice Stable Growth Fund",
       "factSheetFile": "ES00020.pdf",
@@ -35359,9 +34459,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-466"
-      ],
+      "fundClassIds": ["mpfa-cf-466"],
       "schemeName": "SHKP MPF Employer Sponsored Scheme",
       "constituentFundName": "Invesco MPF Conservative Fund",
       "factSheetFile": "ES00020.pdf",
@@ -35440,9 +34538,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-815"
-      ],
+      "fundClassIds": ["mpfa-cf-815"],
       "schemeName": "SHKP MPF Employer Sponsored Scheme",
       "constituentFundName": "Allianz Choice Balanced Fund",
       "factSheetFile": "ES00020.pdf",
@@ -35545,9 +34641,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1399"
-      ],
+      "fundClassIds": ["mpfa-cf-1399"],
       "schemeName": "SHKP MPF Employer Sponsored Scheme",
       "constituentFundName": "Invesco Global Stable Fund",
       "factSheetFile": "ES00020.pdf",
@@ -35650,9 +34744,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1497"
-      ],
+      "fundClassIds": ["mpfa-cf-1497"],
       "schemeName": "SHKP MPF Employer Sponsored Scheme",
       "constituentFundName": "Schroder MPF Core Accumulation Fund",
       "factSheetFile": "ES00020.pdf",
@@ -35763,9 +34855,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1498"
-      ],
+      "fundClassIds": ["mpfa-cf-1498"],
       "schemeName": "SHKP MPF Employer Sponsored Scheme",
       "constituentFundName": "Schroder MPF Age 65 Plus Fund",
       "factSheetFile": "ES00020.pdf",
@@ -35876,10 +34966,7 @@
       "unavailableKinds": {}
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-498",
-        "mpfa-cf-499"
-      ],
+      "fundClassIds": ["mpfa-cf-498", "mpfa-cf-499"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Stable Fund",
       "factSheetFile": "SunLife_Rainbow.pdf",
@@ -35939,9 +35026,7 @@
           "percent": 1.2
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
@@ -35950,10 +35035,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-500",
-        "mpfa-cf-501"
-      ],
+      "fundClassIds": ["mpfa-cf-500", "mpfa-cf-501"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Balanced Fund",
       "factSheetFile": "SunLife_Rainbow.pdf",
@@ -36013,9 +35095,7 @@
           "percent": 1
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
@@ -36024,10 +35104,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-502",
-        "mpfa-cf-503"
-      ],
+      "fundClassIds": ["mpfa-cf-502", "mpfa-cf-503"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Hong Kong Equity Fund",
       "factSheetFile": "SunLife_Rainbow.pdf",
@@ -36087,9 +35164,7 @@
           "percent": 1.4
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
@@ -36098,10 +35173,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-504",
-        "mpfa-cf-505"
-      ],
+      "fundClassIds": ["mpfa-cf-504", "mpfa-cf-505"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Hong Kong Dollar Bond Fund",
       "factSheetFile": "SunLife_Rainbow.pdf",
@@ -36161,9 +35233,7 @@
           "percent": 0.8
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
@@ -36172,10 +35242,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-506",
-        "mpfa-cf-507"
-      ],
+      "fundClassIds": ["mpfa-cf-506", "mpfa-cf-507"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Conservative Fund",
       "factSheetFile": "SunLife_Rainbow.pdf",
@@ -36235,9 +35302,7 @@
           "percent": 1.3
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
@@ -36246,10 +35311,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-508",
-        "mpfa-cf-509"
-      ],
+      "fundClassIds": ["mpfa-cf-508", "mpfa-cf-509"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Growth Fund",
       "factSheetFile": "SunLife_Rainbow.pdf",
@@ -36309,9 +35371,7 @@
           "percent": 0.8
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
@@ -36320,10 +35380,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-689",
-        "mpfa-cf-690"
-      ],
+      "fundClassIds": ["mpfa-cf-689", "mpfa-cf-690"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Asian Equity Fund",
       "factSheetFile": "SunLife_Rainbow.pdf",
@@ -36383,9 +35440,7 @@
           "percent": 1.2
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
@@ -36394,10 +35449,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-691",
-        "mpfa-cf-692"
-      ],
+      "fundClassIds": ["mpfa-cf-691", "mpfa-cf-692"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Multi-Sector Equity Fund",
       "factSheetFile": "SunLife_Rainbow.pdf",
@@ -36457,9 +35509,7 @@
           "percent": 1.5
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
@@ -36468,10 +35518,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-693",
-        "mpfa-cf-694"
-      ],
+      "fundClassIds": ["mpfa-cf-693", "mpfa-cf-694"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Greater China Equity Fund",
       "factSheetFile": "SunLife_Rainbow.pdf",
@@ -36531,9 +35578,7 @@
           "percent": 1.6
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
@@ -36542,10 +35587,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-809",
-        "mpfa-cf-810"
-      ],
+      "fundClassIds": ["mpfa-cf-809", "mpfa-cf-810"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Global Bond Fund",
       "factSheetFile": "SunLife_Rainbow.pdf",
@@ -36605,9 +35647,7 @@
           "percent": 1.4
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
@@ -36616,10 +35656,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-910",
-        "mpfa-cf-911"
-      ],
+      "fundClassIds": ["mpfa-cf-910", "mpfa-cf-911"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF RMB and HKD Fund",
       "factSheetFile": "SunLife_Rainbow.pdf",
@@ -36679,9 +35716,7 @@
           "percent": 1.8
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
@@ -36690,10 +35725,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1199",
-        "mpfa-cf-1200"
-      ],
+      "fundClassIds": ["mpfa-cf-1199", "mpfa-cf-1200"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life FTSE MPF Hong Kong Index Fund",
       "factSheetFile": "SunLife_Rainbow.pdf",
@@ -36753,9 +35785,7 @@
           "percent": 1.8
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
@@ -36764,9 +35794,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1503"
-      ],
+      "fundClassIds": ["mpfa-cf-1503"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Core Accumulation Fund",
       "factSheetFile": "SunLife_Rainbow.pdf",
@@ -36826,9 +35854,7 @@
           "percent": 1.3
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
@@ -36837,9 +35863,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-1505"
-      ],
+      "fundClassIds": ["mpfa-cf-1505"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Age 65 Plus Fund",
       "factSheetFile": "SunLife_Rainbow.pdf",
@@ -36899,9 +35923,7 @@
           "percent": 1.5
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
@@ -36910,9 +35932,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-2063"
-      ],
+      "fundClassIds": ["mpfa-cf-2063"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF US Equity Fund",
       "factSheetFile": "SunLife_Rainbow.pdf",
@@ -36972,9 +35992,7 @@
           "percent": 2.4
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
@@ -36983,9 +36001,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-2064"
-      ],
+      "fundClassIds": ["mpfa-cf-2064"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF European Equity Fund",
       "factSheetFile": "SunLife_Rainbow.pdf",
@@ -37045,9 +36061,7 @@
           "percent": 1.3
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
@@ -37056,9 +36070,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-2065"
-      ],
+      "fundClassIds": ["mpfa-cf-2065"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Global Low Carbon Index Fund",
       "factSheetFile": "SunLife_Rainbow.pdf",
@@ -37118,9 +36130,7 @@
           "percent": 1.8
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
@@ -37129,9 +36139,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-2099"
-      ],
+      "fundClassIds": ["mpfa-cf-2099"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF US & Hong Kong Equity Fund",
       "factSheetFile": "SunLife_Rainbow.pdf",
@@ -37191,9 +36199,7 @@
           "percent": 1.7
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
@@ -37202,9 +36208,7 @@
       }
     },
     {
-      "fundClassIds": [
-        "mpfa-cf-2239"
-      ],
+      "fundClassIds": ["mpfa-cf-2239"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Income Fund",
       "factSheetFile": "SunLife_Rainbow.pdf",
@@ -37264,9 +36268,7 @@
           "percent": 1.6
         }
       ],
-      "unavailableFields": [
-        "allocation"
-      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
         "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
