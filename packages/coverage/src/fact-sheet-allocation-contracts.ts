@@ -72,7 +72,9 @@ const series800Blocks = {
   },
   holdings: {
     heading: /^Top Ten Holdings$/,
-    band: { minLeft: 20, maxLeft: 460 },
+    // 右邊配置欄由 440 起，兩個 band 唔可以重疊：2026-03-31 那一期的配置欄註腳
+    // `3` 落在 446，撞入持倉欄就會變成「有數值冇名稱」，令整張十大持倉表報唔可用。
+    band: { minLeft: 20, maxLeft: 440 },
     numberFormat: "bare",
     valueMinLeft: 350,
     joinWrappedLabels: true,

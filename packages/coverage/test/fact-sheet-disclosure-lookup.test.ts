@@ -17,6 +17,8 @@ function fund(
     schemeName: "BCT (MPF) Pro Choice",
     constituentFundName: "Asian Equity Fund",
     factSheetFile: "MT00016.pdf",
+    factSheetUrl: "https://www.mpfa.org.hk/assets/FF/MT00016.pdf",
+    factSheetSource: "mpfa-registry",
     factSheetAsOf: "2025-12-31",
     allocations: [
       { heading: "Portfolio Allocation", entries: [{ label: "Equities", percent: 99.4 }] },

@@ -79,6 +79,9 @@ type PublishedFundClass = {
  */
 type FactSheetDisclosure = {
   factSheetFile: string;
+  /** 帶來源之前發布的快照沒有這兩欄。 */
+  factSheetUrl?: string;
+  factSheetSource?: "trustee" | "mpfa-registry";
   factSheetAsOf: string;
   allocations: {
     heading: string;
@@ -512,10 +515,29 @@ export function FundClassPage({
           {factSheetDisclosure ? (
             <>
               <p>
-                資料來自計劃便覽（文件編號 {factSheetDisclosure.factSheetFile}
-                ），截至 {factSheetDisclosure.factSheetAsOf}
+                資料來自
+                {factSheetDisclosure.factSheetSource === "trustee"
+                  ? "受託人官網刊發的計劃便覽"
+                  : "積金局便覽庫存放的計劃便覽副本"}
+                ，截至 {factSheetDisclosure.factSheetAsOf}
                 ；本頁其他數據來自積金局基金平台，截至 {provenance.dataAsOf}。
               </p>
+              {factSheetDisclosure.factSheetSource === "mpfa-registry" && (
+                <p className="kw-muted" role="note">
+                  受託人官網那一期未能取得，這裡用的是積金局便覽庫的副本，期別可能比受託人官網的舊。
+                </p>
+              )}
+              {factSheetDisclosure.factSheetUrl && (
+                <p>
+                  <a
+                    href={factSheetDisclosure.factSheetUrl}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    查閱這份計劃便覽原文
+                  </a>
+                </p>
+              )}
               {factSheetDatesDiffer && (
                 <p className="kw-muted" role="note">
                   便覽截至 {factSheetDisclosure.factSheetAsOf}，平台數據截至{" "}

@@ -1,0 +1,22 @@
+[
+  {
+    "scheme": "BCT (MPF) Industry Choice",
+    "factSheetUrl": "https://www.bcthk.com/IS-Fund-Fact-Sheet",
+    "file": "BCT_IS.pdf"
+  },
+  {
+    "scheme": "BCT MPF - Simple Plan",
+    "factSheetUrl": "https://www.bcthk.com/wr/Simple-Fund-Fact-Sheet",
+    "file": "BCT_Simple.pdf"
+  },
+  {
+    "scheme": "BCT MPF - Smart Plan",
+    "factSheetUrl": "https://www.bcthk.com/wr/Smart-Fund-Fact-Sheet",
+    "file": "BCT_Smart.pdf"
+  },
+  {
+    "scheme": "BCT MPF Scheme Series 800",
+    "factSheetUrl": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet",
+    "file": "BCT_S800.pdf"
+  }
+]

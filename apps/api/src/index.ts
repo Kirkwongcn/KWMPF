@@ -81,6 +81,9 @@ type FactSheetDisclosure = {
   schemeName: string;
   constituentFundName: string;
   factSheetFile: string;
+  factSheetUrl: string;
+  // `trustee` 係受託人官網最新一期，`mpfa-registry` 係退回積金局副本，兩者期別唔同。
+  factSheetSource: "trustee" | "mpfa-registry";
   factSheetAsOf: string;
   allocations: {
     heading: string;
