@@ -28,5 +28,20 @@
     "scheme": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
     "factSheetUrl": "https://www.hangseng.com/cms/pws/files/pdfs/FFS.pdf",
     "file": "HangSeng_SuperTrustPlus.pdf"
+  },
+  {
+    "scheme": "AIA MPF - Prime Value Choice",
+    "factSheetUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-may-2026.pdf",
+    "file": "AIA_PrimeValueChoice.pdf"
+  },
+  {
+    "scheme": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+    "factSheetUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+    "file": "BOCPrudential_EasyChoice.pdf"
+  },
+  {
+    "scheme": "BCOM Joyful Retirement MPF Scheme",
+    "factSheetUrl": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf",
+    "file": "BCOM_JoyfulRetirement.pdf"
   }
 ]
