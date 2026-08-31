@@ -117,6 +117,38 @@ describe("findSections", () => {
     ]);
     expect(sections[0]?.end).toEqual({ page: 1, top: 400 });
   });
+
+  it("takes the first-drawn title when another fund's page is overlaid on top of it", () => {
+    // 永明每一版都把另一隻基金的整版內容疊印上去，兩個標題同樣落喺 top≈82。
+    // 邊個標題排得左啲會逐期改（2025-12-31 那期本頁嗰個在左，2026-06-30 那期
+    // 疊上去嗰個在左），所以唔可以靠座標揀；內容流一定先寫本頁自己嗰版。
+    const pages = pdf(
+      page(1, [
+        { top: 82, left: 44, text: "Conservative Fund", size: 27, family: "Display" },
+        { top: 82, left: 42, text: "Low Carbon Index Fund", size: 27, family: "Display" },
+      ]),
+      page(2, [
+        { top: 82, left: 44, text: "Growth Fund", size: 27, family: "Display" },
+        { top: 138, left: 45, text: "Conservative Fund", size: 27, family: "Display" },
+        { top: 82, left: 42, text: "Low Carbon Index Fund", size: 27, family: "Display" },
+      ]),
+    );
+    const sections = findSections(pages, {
+      pattern: /Fund$/,
+      fontSize: [27],
+      overlaidPages: true,
+      maxTop: 160,
+    });
+    expect(sections.map((section) => section.name)).toEqual([
+      "Conservative Fund",
+      "Growth Fund",
+    ]);
+    // 疊上去嗰版由下一個標題落筆嗰刻開始，本頁自己嗰層讀到嗰度為止。
+    expect(sections.map((section) => section.layer)).toEqual([
+      { page: 1, endDrawIndex: 1 },
+      { page: 2, endDrawIndex: 1 },
+    ]);
+  });
 });
 
 /** 滙豐版面：百分比排在標籤左邊，長標籤換行落在數值那行之後。 */
@@ -452,6 +484,43 @@ describe("overlaid text layers", () => {
       /overlays another fund's table/,
     );
     expect(disclosure?.unavailableKinds.topHoldings).toBe("overlaid-text-layer");
+  });
+
+  it("reads only the layer the section's own title belongs to", () => {
+    // 永明疊印的係成版內容，唔淨係一行：標題、截至日期、十大持倉逐版重覆一次，
+    // 座標近乎完全重疊。落筆次序係唯一分得開嘅線索——本頁自己嗰版一定先寫，
+    // 之後嗰個標題開始就係疊上去嗰版（有幾版仲要係上兩季嘅舊數）。
+    const pages = pdf(
+      page(1, [
+        { top: 10, left: 30, text: "As at 30/06/2026", width: 110 },
+        { top: 20, left: 30, text: "Conservative Fund", size: 18, width: 130 },
+        { top: 60, left: 566, text: "Top 10 holdings", width: 101 },
+        { top: 90, left: 472, text: "Chong Hing Bank Limited 2.49%", width: 210 },
+        { top: 90, left: 822, text: "1.3%", width: 21 },
+        // 由呢度開始係疊上去嗰版，兩個 pt 之差，印出嚟見唔到分別。
+        { top: 12, left: 28, text: "As at 30/09/2025", width: 110 },
+        { top: 22, left: 28, text: "Growth Fund", size: 18, width: 130 },
+        { top: 62, left: 564, text: "Top 10 holdings", width: 101 },
+        { top: 92, left: 470, text: "Samsung Electronics Co Ltd", width: 190 },
+        { top: 92, left: 820, text: "3.5%", width: 23 },
+      ]),
+    );
+    const [disclosure, ...rest] = parseFactSheetDisclosures(pages, {
+      ...hsbcShaped,
+      title: { pattern: /Fund$/, fontSize: [18], overlaidPages: true, maxTop: 40 },
+      holdings: {
+        heading: /^Top 10 holdings$/,
+        band: { minLeft: 460, maxLeft: 900 },
+        valueMinLeft: 780,
+        rejectOverlaidRows: true,
+      },
+    });
+
+    expect(rest).toEqual([]);
+    expect(disclosure?.constituentFundName).toBe("Conservative Fund");
+    expect(disclosure?.topHoldings).toEqual([
+      { rank: 1, security: "Chong Hing Bank Limited 2.49%", percent: 1.3 },
+    ]);
   });
 });
 

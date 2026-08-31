@@ -18,5 +18,10 @@
     "scheme": "BCT MPF Scheme Series 800",
     "factSheetUrl": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet",
     "file": "BCT_S800.pdf"
+  },
+  {
+    "scheme": "Sun Life Rainbow MPF Scheme",
+    "factSheetUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+    "file": "SunLife_Rainbow.pdf"
   }
 ]

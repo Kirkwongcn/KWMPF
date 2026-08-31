@@ -580,8 +580,9 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       pattern: /^Sun Life .*Fund$/,
       fontSize: [27],
       fontFamily: /SunLifeNewDisplay/,
-      // 每頁一隻基金，頁內另有重疊的隱藏標題文字，只取最上面一個。
-      onePerPage: true,
+      // 每一版都把另外一至兩版成版疊印上去（有幾版疊住上兩季的舊版），
+      // 幾個標題同樣落喺 top≈82，只有落筆次序分得開本頁自己嗰層。
+      overlaidPages: true,
       maxTop: 160,
     },
     allocation: {
@@ -597,8 +598,8 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       // 標題置中（left≈566）而證券名靠左（left≈472），自動欄界會切走名稱只剩百分比。
       band: { minLeft: 460, maxLeft: 900 },
       valueMinLeft: 780,
-      // 文字層把「環球低碳指數基金」及「強積金保守基金」的同一張表疊印在大部分頁面，
-      // 只差兩至七 pt，印出嚟只見到一份。分唔清邊個百分比屬邊隻基金，所以整塊當抽唔到。
+      // `overlaidPages` 已按落筆次序切走疊上去嗰層。呢個係防線：切唔乾淨嘅話
+      // 同一行會出現多過一個百分比，寧可整塊當抽唔到，都唔靠左界猜邊個屬邊隻基金。
       rejectOverlaidRows: true,
     },
     asOf: { pattern: AS_OF_SLASH },

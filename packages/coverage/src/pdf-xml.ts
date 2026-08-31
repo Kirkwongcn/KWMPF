@@ -8,6 +8,11 @@
 
 export type PdfTextItem = {
   page: number;
+  /**
+   * 頁內的落筆次序（`pdftohtml` 依內容流輸出的先後）。座標排序會蓋過這個次序，
+   * 但文字層疊印時只有它分得開「本頁自己的內容」同「疊上去的另一頁」。
+   */
+  drawIndex: number;
   top: number;
   left: number;
   width: number;
@@ -82,6 +87,7 @@ export function parsePdfXml(xml: string): PdfPage[] {
       const font = fonts.get(Number(match[5]));
       items.push({
         page: number,
+        drawIndex: items.length,
         top: Number(match[1]),
         left: Number(match[2]),
         width: Number(match[3]),

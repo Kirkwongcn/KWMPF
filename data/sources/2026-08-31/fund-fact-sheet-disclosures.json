@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T00:13:34.222Z",
+  "generatedAt": "2026-08-31T05:43:21.584Z",
   "platformSnapshot": "data/sources/2026-08-29/mpf-fund-platform.json",
   "factSheetBatch": "data/sources/2026-08-28/fund-fact-sheet-links.json",
   "funds": [
@@ -34872,236 +34872,775 @@
       "fundClassIds": ["mpfa-cf-498", "mpfa-cf-499"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Stable Fund",
-      "factSheetFile": "MT00067.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00067.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "factSheetUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "US Government Bond 4.25% 15-Aug-2035",
+          "percent": 2.9
+        },
+        {
+          "rank": 2,
+          "security": "US Government Bond 3.875% 30-Apr-2031",
+          "percent": 2.3
+        },
+        {
+          "rank": 3,
+          "security": "US Government Bond 1.25% 15-Apr-2031",
+          "percent": 1.6
+        },
+        {
+          "rank": 4,
+          "security": "Samsung Electronics Co Ltd",
+          "percent": 1.6
+        },
+        {
+          "rank": 5,
+          "security": "Taiwan Semiconductor Manufacturing Co Ltd",
+          "percent": 1.5
+        },
+        {
+          "rank": 6,
+          "security": "US Government Bond Float 31-Jan-2028",
+          "percent": 1.5
+        },
+        {
+          "rank": 7,
+          "security": "US Government Bond Float 31-Oct-2027",
+          "percent": 1.5
+        },
+        {
+          "rank": 8,
+          "security": "China Government Bond 1.43% 25-Jan-2030",
+          "percent": 1.3
+        },
+        {
+          "rank": 9,
+          "security": "US Government Bond 4.375% 15-May-2036",
+          "percent": 1.3
+        },
+        {
+          "rank": 10,
+          "security": "SK hynix Inc",
+          "percent": 1.2
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
-        "topHoldings": "20 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"US Government Bond 4.375% 30-Nov-2030Microsoft Corp 2.1%7.8%\", \"Samsung Electronics Co LtdVisa Inc - Class A 1.4%7.2%\", \"US Government Bond 4.25% 15-Aug-2035Johnson & Johnson 1.3%6.0%\""
+        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "overlaid-text-layer"
+        "allocation": "chart-only"
       }
     },
     {
       "fundClassIds": ["mpfa-cf-500", "mpfa-cf-501"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Balanced Fund",
-      "factSheetFile": "MT00067.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00067.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "factSheetUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "Samsung Electronics Co Ltd",
+          "percent": 2.6
+        },
+        {
+          "rank": 2,
+          "security": "Taiwan Semiconductor Manufacturing Co Ltd",
+          "percent": 2.2
+        },
+        {
+          "rank": 3,
+          "security": "SK hynix Inc",
+          "percent": 1.9
+        },
+        {
+          "rank": 4,
+          "security": "US Government Bond 4.25% 15-Aug-2035",
+          "percent": 1.8
+        },
+        {
+          "rank": 5,
+          "security": "US Government Bond 3.875% 30-Apr-2031",
+          "percent": 1.5
+        },
+        {
+          "rank": 6,
+          "security": "NVIDIA Corp",
+          "percent": 1.1
+        },
+        {
+          "rank": 7,
+          "security": "US Government Bond 1.25% 15-Apr-2031",
+          "percent": 1.1
+        },
+        {
+          "rank": 8,
+          "security": "Apple Inc",
+          "percent": 1
+        },
+        {
+          "rank": 9,
+          "security": "匯豐控股HSBC Holdings PLC",
+          "percent": 1
+        },
+        {
+          "rank": 10,
+          "security": "MediaTek Inc",
+          "percent": 1
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
-        "topHoldings": "12 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"Samsung Electronics Co LtdMicrosoft Corp 2.2%7.8%\", \"NVIDIA CorpVisa Inc - Class A 1.4%7.2%\", \"Samsung Electronics Co LtdMicrosoft Corp 2.2%7.8%\""
+        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "overlaid-text-layer"
+        "allocation": "chart-only"
       }
     },
     {
       "fundClassIds": ["mpfa-cf-502", "mpfa-cf-503"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Hong Kong Equity Fund",
-      "factSheetFile": "MT00067.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00067.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "factSheetUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "匯豐控股HSBC Holdings PLC",
+          "percent": 9
+        },
+        {
+          "rank": 2,
+          "security": "騰訊控股Tencent Holdings Ltd",
+          "percent": 7.9
+        },
+        {
+          "rank": 3,
+          "security": "阿里巴巴Alibaba Group Holding Ltd",
+          "percent": 7
+        },
+        {
+          "rank": 4,
+          "security": "建設銀行China Construction Bank Corp",
+          "percent": 4.7
+        },
+        {
+          "rank": 5,
+          "security": "友邦保險AIA Group Ltd",
+          "percent": 3.4
+        },
+        {
+          "rank": 6,
+          "security": "工商銀行Industrial & Commercial Bank of China Ltd",
+          "percent": 2.5
+        },
+        {
+          "rank": 7,
+          "security": "香港交易所Hong Kong Exchanges & Clearing Ltd",
+          "percent": 2.1
+        },
+        {
+          "rank": 8,
+          "security": "中國平安Ping An Insurance Group Co of China Ltd",
+          "percent": 2.1
+        },
+        {
+          "rank": 9,
+          "security": "網易NetEase Inc",
+          "percent": 2
+        },
+        {
+          "rank": 10,
+          "security": "聯想集團Lenovo Group Ltd",
+          "percent": 1.4
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
-        "topHoldings": "10 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"滙豐控股Microsoft CorpHSBC Holdings PLC 7.8%6.1%\", \"騰訊控股Visa Inc - Class ATencent Holdings Ltd 5.9%7.2%\", \"阿里巴巴Johnson & JohnsonAlibaba Group Holding Ltd 5.4%6.0%\""
+        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "overlaid-text-layer"
+        "allocation": "chart-only"
       }
     },
     {
       "fundClassIds": ["mpfa-cf-504", "mpfa-cf-505"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Hong Kong Dollar Bond Fund",
-      "factSheetFile": "MT00067.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00067.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "factSheetUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "Urban Renewal Authority 3.45% 27-Aug-2029",
+          "percent": 1.4
+        },
+        {
+          "rank": 2,
+          "security": "Standard Chartered PLC 3.996% 28-May-2030",
+          "percent": 1.1
+        },
+        {
+          "rank": 3,
+          "security": "AIA Group Ltd 3.68% 16-Jan-2031",
+          "percent": 1.1
+        },
+        {
+          "rank": 4,
+          "security": "Hong Kong Mortgage Corp Ltd/The 3.45% 17-Oct-2029",
+          "percent": 1
+        },
+        {
+          "rank": 5,
+          "security": "Hong Kong Government Bond 3.75% 5-Dec-2039",
+          "percent": 0.9
+        },
+        {
+          "rank": 6,
+          "security": "International Bank for Reconstruction & Development3.012% 5-Sep-2030",
+          "percent": 0.9
+        },
+        {
+          "rank": 7,
+          "security": "Hong Kong Mortgage Corp Ltd/The 4.1% 28-Feb-2029",
+          "percent": 0.9
+        },
+        {
+          "rank": 8,
+          "security": "Hong Kong Government Bond 3.3% 26-May-2042",
+          "percent": 0.9
+        },
+        {
+          "rank": 9,
+          "security": "Swire Properties MTN Financing Ltd 2.4% 18-Jun-2027",
+          "percent": 0.8
+        },
+        {
+          "rank": 10,
+          "security": "BOC Aviation Ltd 3.25% 27-Jul-2027",
+          "percent": 0.8
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
-        "topHoldings": "20 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"Urban Renewal Authority 3.45% 27-Aug-2029Microsoft Corp 2.0%7.8%\", \"AIA Group Ltd 3.68% 16-Jan-2031Visa Inc - Class A 1.8%7.2%\", \"Korea Railroad Corp 3.36% 30-Mar-2028Johnson & Johnson 6.0%1.1%\""
+        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "overlaid-text-layer"
+        "allocation": "chart-only"
       }
     },
     {
       "fundClassIds": ["mpfa-cf-506", "mpfa-cf-507"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Conservative Fund",
-      "factSheetFile": "MT00067.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00067.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "factSheetUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "OCBC Wing Hang Bank Limited 2.52% 7 Aug 2026",
+          "percent": 1.9
+        },
+        {
+          "rank": 2,
+          "security": "Bank of East Asia Ltd/Hong Kong 2.75% 21 Jul 2026",
+          "percent": 1.7
+        },
+        {
+          "rank": 3,
+          "security": "CIMB Bank Berhad Hong Kong 2.75% 17 Aug 2026",
+          "percent": 1.7
+        },
+        {
+          "rank": 4,
+          "security": "Saudi National Bank 3.03 % CD 9-Mar-2027",
+          "percent": 1.7
+        },
+        {
+          "rank": 5,
+          "security": "OCBC Wing Hang Bank Limited 2.8% 18 Sep 2026",
+          "percent": 1.5
+        },
+        {
+          "rank": 6,
+          "security": "OCBC Wing Hang Bank Limited 2.65% 10 Aug 2026",
+          "percent": 1.5
+        },
+        {
+          "rank": 7,
+          "security": "Malayan Banking Berhad Hong Kong 2.75% 19 Aug 2026",
+          "percent": 1.5
+        },
+        {
+          "rank": 8,
+          "security": "Chong Hing Bank Limited 2.49% 27 Jul 2026",
+          "percent": 1.3
+        },
+        {
+          "rank": 9,
+          "security": "Chong Hing Bank Limited 2.46% 31 Jul 2026",
+          "percent": 1.3
+        },
+        {
+          "rank": 10,
+          "security": "Chong Hing Bank Limited 2.75% 11 Aug 2026",
+          "percent": 1.3
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
-        "topHoldings": "20 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"Banco Santander S.A. Hong Kong 2.1% 21-Jan-2026Microsoft Corp 3.5%7.8%\", \"Bank of East Asia Ltd/Hong Kong 2.01% 28-Jan-2026Visa Inc - Class A 2.9%7.2%\", \"Agricultural Bank of China Ltd/Hong Kong 3.35% 20-Jan-2026Johnson & Johnson 2.3%6.0%\""
+        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "overlaid-text-layer"
+        "allocation": "chart-only"
       }
     },
     {
       "fundClassIds": ["mpfa-cf-508", "mpfa-cf-509"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Growth Fund",
-      "factSheetFile": "MT00067.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00067.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "factSheetUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "Samsung Electronics Co Ltd",
+          "percent": 3.5
+        },
+        {
+          "rank": 2,
+          "security": "Taiwan Semiconductor Manufacturing Co Ltd",
+          "percent": 2.9
+        },
+        {
+          "rank": 3,
+          "security": "SK hynix Inc",
+          "percent": 2.5
+        },
+        {
+          "rank": 4,
+          "security": "NVIDIA Corp",
+          "percent": 1.5
+        },
+        {
+          "rank": 5,
+          "security": "匯豐控股HSBC Holdings PLC",
+          "percent": 1.4
+        },
+        {
+          "rank": 6,
+          "security": "Apple Inc",
+          "percent": 1.4
+        },
+        {
+          "rank": 7,
+          "security": "MediaTek Inc",
+          "percent": 1.3
+        },
+        {
+          "rank": 8,
+          "security": "Eli Lilly & Co",
+          "percent": 1.1
+        },
+        {
+          "rank": 9,
+          "security": "騰訊控股Tencent Holdings Ltd",
+          "percent": 1
+        },
+        {
+          "rank": 10,
+          "security": "Microsoft Corp",
+          "percent": 0.8
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
-        "topHoldings": "12 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"Samsung Electronics Co LtdMicrosoft Corp 3.0%7.8%\", \"NVIDIA CorpVisa Inc - Class A 2.0%7.2%\", \"Samsung Electronics Co LtdMicrosoft Corp 3.0%7.8%\""
+        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "overlaid-text-layer"
+        "allocation": "chart-only"
       }
     },
     {
       "fundClassIds": ["mpfa-cf-689", "mpfa-cf-690"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Asian Equity Fund",
-      "factSheetFile": "MT00067.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00067.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "factSheetUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "Samsung Electronics Co Ltd",
+          "percent": 11.6
+        },
+        {
+          "rank": 2,
+          "security": "SK hynix Inc",
+          "percent": 9.2
+        },
+        {
+          "rank": 3,
+          "security": "Taiwan Semiconductor Manufacturing Co Ltd",
+          "percent": 7.8
+        },
+        {
+          "rank": 4,
+          "security": "MediaTek Inc",
+          "percent": 3.3
+        },
+        {
+          "rank": 5,
+          "security": "Delta Electronics Inc",
+          "percent": 1.8
+        },
+        {
+          "rank": 6,
+          "security": "騰訊控股Tencent Holdings Ltd",
+          "percent": 1.7
+        },
+        {
+          "rank": 7,
+          "security": "SK Square Co Ltd",
+          "percent": 1.5
+        },
+        {
+          "rank": 8,
+          "security": "Hon Hai Precision Industry Co Ltd",
+          "percent": 1.4
+        },
+        {
+          "rank": 9,
+          "security": "ASE Technology Holding Co Ltd",
+          "percent": 1.4
+        },
+        {
+          "rank": 10,
+          "security": "阿里巴巴Alibaba Group Holding Ltd",
+          "percent": 1.2
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
-        "topHoldings": "12 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"Taiwan Semiconductor Manufacturing Co LtdMicrosoft Corp 7.6%7.8%\", \"Samsung Electronics Co LtdVisa Inc - Class A 6.4%7.2%\", \"Taiwan Semiconductor Manufacturing Co LtdMicrosoft Corp 7.6%7.8%\""
+        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "overlaid-text-layer"
+        "allocation": "chart-only"
       }
     },
     {
       "fundClassIds": ["mpfa-cf-691", "mpfa-cf-692"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Multi-Sector Equity Fund",
-      "factSheetFile": "MT00067.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00067.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "factSheetUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "NVIDIA Corp",
+          "percent": 5.3
+        },
+        {
+          "rank": 2,
+          "security": "Apple Inc",
+          "percent": 4.4
+        },
+        {
+          "rank": 3,
+          "security": "Taiwan Semiconductor Manufacturing Co Ltd",
+          "percent": 3.4
+        },
+        {
+          "rank": 4,
+          "security": "Microsoft Corp",
+          "percent": 3.2
+        },
+        {
+          "rank": 5,
+          "security": "Eli Lilly & Co",
+          "percent": 2
+        },
+        {
+          "rank": 6,
+          "security": "Micron Technology Inc",
+          "percent": 1.9
+        },
+        {
+          "rank": 7,
+          "security": "Broadcom Inc",
+          "percent": 1.8
+        },
+        {
+          "rank": 8,
+          "security": "Samsung Electronics Co Ltd",
+          "percent": 1.7
+        },
+        {
+          "rank": 9,
+          "security": "JPMorgan Chase & Co",
+          "percent": 1.6
+        },
+        {
+          "rank": 10,
+          "security": "SK hynix Inc",
+          "percent": 1.5
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
-        "topHoldings": "12 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"NVIDIA CorpMicrosoft Corp 6.4%7.8%\", \"Apple IncVisa Inc - Class A 5.3%7.2%\", \"NVIDIA CorpMicrosoft Corp 6.4%7.8%\""
+        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "overlaid-text-layer"
+        "allocation": "chart-only"
       }
     },
     {
       "fundClassIds": ["mpfa-cf-693", "mpfa-cf-694"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Greater China Equity Fund",
-      "factSheetFile": "MT00067.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00067.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "factSheetUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "Taiwan Semiconductor Manufacturing Co Ltd",
+          "percent": 12.3
+        },
+        {
+          "rank": 2,
+          "security": "MediaTek Inc",
+          "percent": 5.2
+        },
+        {
+          "rank": 3,
+          "security": "騰訊控股Tencent Holdings Ltd",
+          "percent": 4.5
+        },
+        {
+          "rank": 4,
+          "security": "匯豐控股HSBC Holdings PLC",
+          "percent": 4.1
+        },
+        {
+          "rank": 5,
+          "security": "Delta Electronics Inc",
+          "percent": 3.5
+        },
+        {
+          "rank": 6,
+          "security": "阿里巴巴Alibaba Group Holding Ltd",
+          "percent": 3
+        },
+        {
+          "rank": 7,
+          "security": "建設銀行China Construction Bank Corp",
+          "percent": 2.1
+        },
+        {
+          "rank": 8,
+          "security": "Hon Hai Precision Industry Co Ltd",
+          "percent": 1.9
+        },
+        {
+          "rank": 9,
+          "security": "Unimicron Technology Corp",
+          "percent": 1.7
+        },
+        {
+          "rank": 10,
+          "security": "Yageo Corp",
+          "percent": 1.6
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
-        "topHoldings": "12 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"Taiwan Semiconductor Manufacturing Co LtdMicrosoft Corp 9.6%7.8%\", \"騰訊控股Visa Inc - Class ATencent Holdings Ltd 8.4%7.2%\", \"Taiwan Semiconductor Manufacturing Co LtdMicrosoft Corp 9.6%7.8%\""
+        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "overlaid-text-layer"
+        "allocation": "chart-only"
       }
     },
     {
       "fundClassIds": ["mpfa-cf-809", "mpfa-cf-810"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Global Bond Fund",
-      "factSheetFile": "MT00067.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00067.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "factSheetUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "US Government Bond 4.25% 15-Aug-2035",
+          "percent": 6.5
+        },
+        {
+          "rank": 2,
+          "security": "US Government Bond Float 31-Jan-2028",
+          "percent": 3.4
+        },
+        {
+          "rank": 3,
+          "security": "US Government Bond Float 31-Oct-2027",
+          "percent": 3.4
+        },
+        {
+          "rank": 4,
+          "security": "US Government Bond 3.875% 30-Apr-2031",
+          "percent": 2.4
+        },
+        {
+          "rank": 5,
+          "security": "Germany Government Bond 2.9% 15-Feb-2036",
+          "percent": 2.1
+        },
+        {
+          "rank": 6,
+          "security": "US Government Bond 4.75% 15-May-2055",
+          "percent": 1.8
+        },
+        {
+          "rank": 7,
+          "security": "Mexico Government Bond 8% 31-Jul-2053",
+          "percent": 1.7
+        },
+        {
+          "rank": 8,
+          "security": "US Government Bond 1.25% 15-Apr-2031",
+          "percent": 1.7
+        },
+        {
+          "rank": 9,
+          "security": "International Bank for Reconstruction & Development 2.75% 19-Jan-2027",
+          "percent": 1.5
+        },
+        {
+          "rank": 10,
+          "security": "Chile Government Bond 5.8% 1-Oct-2029",
+          "percent": 1.4
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
-        "topHoldings": "20 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"US Government Bond 4.25% 15-Aug-2035Microsoft Corp 3.0%7.8%\", \"US Government Bond 4% 15-Feb-2034Visa Inc - Class A 2.9%7.2%\", \"US Government Bond 4.375% 30-Nov-2030Johnson & Johnson 2.8%6.0%\""
+        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "overlaid-text-layer"
+        "allocation": "chart-only"
       }
     },
     {
       "fundClassIds": ["mpfa-cf-910", "mpfa-cf-911"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF RMB and HKD Fund",
-      "factSheetFile": "MT00067.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00067.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "factSheetUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "United Overseas Bank Ltd 0% 20 Jul 2026",
+          "percent": 7.2
+        },
+        {
+          "rank": 2,
+          "security": "PBOC International Note 1.62% 27 Aug 2026",
+          "percent": 4.5
+        },
+        {
+          "rank": 3,
+          "security": "PBOC International Note 1.48% 25 Sep 2026",
+          "percent": 4.5
+        },
+        {
+          "rank": 4,
+          "security": "Hong Kong Mortgage Corp 2.98% 12 Sep 2026",
+          "percent": 3.6
+        },
+        {
+          "rank": 5,
+          "security": "China Development Bank CD 0% 8 Sep 2026",
+          "percent": 3.2
+        },
+        {
+          "rank": 6,
+          "security": "Asian Infrastructure Investment Bank 2.91% 16 Sep 2026",
+          "percent": 2.7
+        },
+        {
+          "rank": 7,
+          "security": "PBOC International Note 1.54% 26 Nov 2026",
+          "percent": 2.7
+        },
+        {
+          "rank": 8,
+          "security": "Agricultural Development Bank of China 3.05% 2 Nov 2026",
+          "percent": 2.7
+        },
+        {
+          "rank": 9,
+          "security": "China Development Bank CD 1.7% 8 Mar 2027",
+          "percent": 1.8
+        },
+        {
+          "rank": 10,
+          "security": "Korea Development Bank 1.9% 30 Mar 2027",
+          "percent": 1.8
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
-        "topHoldings": "20 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"Kreditanstalt fuer Wiederaufbau 2.9% 24-Feb-2026Microsoft Corp 4.0%7.8%\", \"PBOC International Note 1.72% 25-Mar-2026Visa Inc - Class A 4.0%7.2%\", \"PBOC International Note 1.6% 25-Feb-2026Johnson & Johnson 4.0%6.0%\""
+        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "overlaid-text-layer"
+        "allocation": "chart-only"
       }
     },
     {
       "fundClassIds": ["mpfa-cf-1199", "mpfa-cf-1200"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life FTSE MPF Hong Kong Index Fund",
-      "factSheetFile": "MT00067.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00067.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "factSheetUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
           "security": "滙豐控股HSBC Holdings PLC",
-          "percent": 9.5
+          "percent": 9.9
         },
         {
           "rank": 2,
@@ -35111,42 +35650,42 @@
         {
           "rank": 3,
           "security": "阿里巴巴Alibaba Group Holding Ltd",
-          "percent": 8.4
+          "percent": 8
         },
         {
           "rank": 4,
           "security": "友邦保險AIA Group Ltd",
-          "percent": 3.8
+          "percent": 3.7
         },
         {
           "rank": 5,
-          "security": "小米集團Xiaomi Corp - Class B",
-          "percent": 3.1
+          "security": "建設銀行China Construction Bank Corp",
+          "percent": 3.5
         },
         {
           "rank": 6,
-          "security": "建設銀行China Construction Bank Corp",
-          "percent": 3.1
-        },
-        {
-          "rank": 7,
-          "security": "美團Meituan - Class B",
+          "security": "工商銀行Industrial & Commercial Bank of China Ltd",
           "percent": 2.5
         },
         {
+          "rank": 7,
+          "security": "香港交易所Hong Kong Exchanges & Clearing Ltd",
+          "percent": 2
+        },
+        {
           "rank": 8,
-          "security": "工商銀行Industrial & Commercial Bank of China Ltd",
-          "percent": 2.3
+          "security": "美團Meituan - Class B",
+          "percent": 1.8
         },
         {
           "rank": 9,
-          "security": "香港交易所Hong Kong Exchanges & Clearing Ltd",
-          "percent": 2.2
+          "security": "小米集團Xiaomi Corp - Class B",
+          "percent": 1.8
         },
         {
           "rank": 10,
-          "security": "中國平安Ping An Insurance Group Co of China Ltd",
-          "percent": 1.9
+          "security": "網易NetEase Inc",
+          "percent": 1.8
         }
       ],
       "unavailableFields": ["allocation"],
@@ -35161,101 +35700,199 @@
       "fundClassIds": ["mpfa-cf-1503"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Core Accumulation Fund",
-      "factSheetFile": "MT00067.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00067.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "factSheetUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "iShares U.S. Technology ETF",
+          "percent": 5.9
+        },
+        {
+          "rank": 2,
+          "security": "Invesco QQQ Trust Series 1",
+          "percent": 2.6
+        },
+        {
+          "rank": 3,
+          "security": "Franklin FTSE Taiwan UCITS ETF",
+          "percent": 2.3
+        },
+        {
+          "rank": 4,
+          "security": "NVIDIA Corp",
+          "percent": 2.1
+        },
+        {
+          "rank": 5,
+          "security": "Apple Inc",
+          "percent": 1.8
+        },
+        {
+          "rank": 6,
+          "security": "Alphabet Inc - Class A",
+          "percent": 1.7
+        },
+        {
+          "rank": 7,
+          "security": "US Government Bond 4.125% 15-Feb-2036",
+          "percent": 1.7
+        },
+        {
+          "rank": 8,
+          "security": "Franklin FTSE Korea UCITS ETF",
+          "percent": 1.5
+        },
+        {
+          "rank": 9,
+          "security": "US Government Bond 3.5% 31-Jan-2028",
+          "percent": 1.3
+        },
+        {
+          "rank": 10,
+          "security": "US Government Bond 0.875% 15-Nov-2030",
+          "percent": 1.3
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
-        "topHoldings": "10 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"NVIDIA CorpMicrosoft Corp 2.6%7.8%\", \"Alphabet Inc - Class AVisa Inc - Class A 2.2%7.2%\", \"Microsoft CorpJohnson & Johnson 6.0%2.2%\""
+        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "overlaid-text-layer"
+        "allocation": "chart-only"
       }
     },
     {
       "fundClassIds": ["mpfa-cf-1505"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Age 65 Plus Fund",
-      "factSheetFile": "MT00067.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00067.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "factSheetUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "US Government Bond 4.125% 15-Feb-2036",
+          "percent": 3.6
+        },
+        {
+          "rank": 2,
+          "security": "US Government Bond 3.5% 31-Jan-2028",
+          "percent": 2.8
+        },
+        {
+          "rank": 3,
+          "security": "US Government Bond 0.875% 15-Nov-2030",
+          "percent": 2.8
+        },
+        {
+          "rank": 4,
+          "security": "iShares U.S. Technology ETF",
+          "percent": 2.2
+        },
+        {
+          "rank": 5,
+          "security": "US Government Bond 1.625% 15-Aug-2029",
+          "percent": 2.1
+        },
+        {
+          "rank": 6,
+          "security": "US Government Bond 3.75% 31-Jan-2031",
+          "percent": 1.9
+        },
+        {
+          "rank": 7,
+          "security": "US Government Bond 3.75% 15-Aug-2027",
+          "percent": 1.8
+        },
+        {
+          "rank": 8,
+          "security": "US Government Bond 1.25% 31-May-2028",
+          "percent": 1.7
+        },
+        {
+          "rank": 9,
+          "security": "US Government Bond 3.875% 30-Nov-2027",
+          "percent": 1.7
+        },
+        {
+          "rank": 10,
+          "security": "US Government Bond 3.125% 15-Feb-2043",
+          "percent": 1.5
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
-        "topHoldings": "10 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"US Government Bond 3.5% 31-Jan-2028Microsoft Corp 7.8%3.1%\", \"US Government Bond 0.875% 15-Nov-2030Visa Inc - Class A 7.2%3.1%\", \"US Government Bond 0.625% 31-Dec-2027Johnson & Johnson 6.0%2.6%\""
+        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "overlaid-text-layer"
+        "allocation": "chart-only"
       }
     },
     {
       "fundClassIds": ["mpfa-cf-2063"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF US Equity Fund",
-      "factSheetFile": "MT00067.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00067.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "factSheetUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
           "security": "NVIDIA Corp",
-          "percent": 7.4
+          "percent": 8.9
         },
         {
           "rank": 2,
           "security": "Apple Inc",
-          "percent": 6.7
+          "percent": 6.9
         },
         {
           "rank": 3,
           "security": "Microsoft Corp",
-          "percent": 6.1
+          "percent": 5.6
         },
         {
           "rank": 4,
           "security": "Alphabet Inc - Class A",
-          "percent": 3.1
+          "percent": 4
         },
         {
           "rank": 5,
-          "security": "Meta Platforms Inc - Class A",
-          "percent": 2.9
+          "security": "Alphabet Inc",
+          "percent": 3.2
         },
         {
           "rank": 6,
-          "security": "Amazon.com Inc",
-          "percent": 2.7
+          "security": "Broadcom Inc",
+          "percent": 3
         },
         {
           "rank": 7,
-          "security": "Alphabet Inc",
-          "percent": 2.5
+          "security": "Berkshire Hathaway Inc",
+          "percent": 2.8
         },
         {
           "rank": 8,
-          "security": "Broadcom Inc",
-          "percent": 2
+          "security": "Micron Technology Inc",
+          "percent": 2.6
         },
         {
           "rank": 9,
-          "security": "Tesla Inc",
-          "percent": 1.6
+          "security": "JPMorgan Chase & Co",
+          "percent": 2.5
         },
         {
           "rank": 10,
-          "security": "JPMorgan Chase & Co",
-          "percent": 1.3
+          "security": "Meta Platforms Inc - Class A",
+          "percent": 2.4
         }
       ],
       "unavailableFields": ["allocation"],
@@ -35270,61 +35907,61 @@
       "fundClassIds": ["mpfa-cf-2064"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF European Equity Fund",
-      "factSheetFile": "MT00067.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00067.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "factSheetUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
           "security": "ASML Holding NV",
-          "percent": 3.6
+          "percent": 6.4
         },
         {
           "rank": 2,
-          "security": "AstraZeneca PLC",
-          "percent": 2.4
+          "security": "Siemens AG",
+          "percent": 2
         },
         {
           "rank": 3,
-          "security": "Roche Holding AG",
-          "percent": 1.9
+          "security": "Novartis AG",
+          "percent": 2
         },
         {
           "rank": 4,
-          "security": "Novartis AG",
-          "percent": 1.8
+          "security": "Roche Holding AG",
+          "percent": 1.7
         },
         {
           "rank": 5,
-          "security": "Shell PLC",
-          "percent": 1.8
-        },
-        {
-          "rank": 6,
-          "security": "UniCredit SpA",
-          "percent": 1.6
-        },
-        {
-          "rank": 7,
-          "security": "滙豐控股HSBC Holdings PLC",
+          "security": "AstraZeneca PLC",
           "percent": 1.5
         },
         {
+          "rank": 6,
+          "security": "Banco Santander SA",
+          "percent": 1.5
+        },
+        {
+          "rank": 7,
+          "security": "Shell PLC",
+          "percent": 1.4
+        },
+        {
           "rank": 8,
-          "security": "Siemens AG",
-          "percent": 1.3
+          "security": "匯豐控股HSBC Holdings PLC",
+          "percent": 1.4
         },
         {
           "rank": 9,
-          "security": "Banco Santander SA",
-          "percent": 1.2
+          "security": "Rolls-Royce Holdings PLC",
+          "percent": 1.4
         },
         {
           "rank": 10,
-          "security": "Rolls-Royce Holdings PLC",
-          "percent": 1.1
+          "security": "UniCredit SpA",
+          "percent": 1.3
         }
       ],
       "unavailableFields": ["allocation"],
@@ -35339,61 +35976,61 @@
       "fundClassIds": ["mpfa-cf-2065"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Global Low Carbon Index Fund",
-      "factSheetFile": "MT00067.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00067.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "factSheetUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
-          "security": "Microsoft Corp",
-          "percent": 7.8
+          "security": "Johnson & Johnson",
+          "percent": 6.7
         },
         {
           "rank": 2,
           "security": "Visa Inc - Class A",
-          "percent": 7.2
+          "percent": 6.4
         },
         {
           "rank": 3,
-          "security": "Johnson & Johnson",
-          "percent": 6
+          "security": "Microsoft Corp",
+          "percent": 5.5
         },
         {
           "rank": 4,
           "security": "Cisco Systems Inc",
-          "percent": 3.7
+          "percent": 5.2
         },
         {
           "rank": 5,
-          "security": "NVIDIA Corp",
-          "percent": 3.4
+          "security": "Intel Corp",
+          "percent": 4.2
         },
         {
           "rank": 6,
-          "security": "Apple Inc",
-          "percent": 2.7
+          "security": "NVIDIA Corp",
+          "percent": 3.3
         },
         {
           "rank": 7,
-          "security": "Mitsubishi UFJ Financial Group Inc",
-          "percent": 1.9
+          "security": "Apple Inc",
+          "percent": 2.6
         },
         {
           "rank": 8,
-          "security": "Citigroup Inc",
-          "percent": 1.7
+          "security": "Mitsubishi UFJ Financial Group Inc",
+          "percent": 2.1
         },
         {
           "rank": 9,
           "security": "Merck & Co Inc",
-          "percent": 1.7
+          "percent": 1.8
         },
         {
           "rank": 10,
-          "security": "Amazon.com Inc",
-          "percent": 1.5
+          "security": "Citigroup Inc",
+          "percent": 1.8
         }
       ],
       "unavailableFields": ["allocation"],
@@ -35408,40 +36045,138 @@
       "fundClassIds": ["mpfa-cf-2099"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF US & Hong Kong Equity Fund",
-      "factSheetFile": "MT00067.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00067.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "factSheetUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "NVIDIA Corp",
+          "percent": 4.9
+        },
+        {
+          "rank": 2,
+          "security": "Apple Inc",
+          "percent": 4.3
+        },
+        {
+          "rank": 3,
+          "security": "匯豐控股HSBC Holdings PLC",
+          "percent": 3.1
+        },
+        {
+          "rank": 4,
+          "security": "Microsoft Corp",
+          "percent": 2.8
+        },
+        {
+          "rank": 5,
+          "security": "騰訊控股Tencent Holdings Ltd",
+          "percent": 2.7
+        },
+        {
+          "rank": 6,
+          "security": "Amazon.com Inc",
+          "percent": 2.4
+        },
+        {
+          "rank": 7,
+          "security": "阿里巴巴Alibaba Group Holding Ltd",
+          "percent": 2.2
+        },
+        {
+          "rank": 8,
+          "security": "Alphabet Inc - Class A",
+          "percent": 2.1
+        },
+        {
+          "rank": 9,
+          "security": "Broadcom Inc",
+          "percent": 1.8
+        },
+        {
+          "rank": 10,
+          "security": "建設銀行China Construction Bank Corp",
+          "percent": 1.7
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
-        "topHoldings": "20 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"NVIDIA CorpMicrosoft Corp 5.0%7.8%\", \"Apple IncVisa Inc - Class A 4.4%7.2%\", \"Microsoft CorpJohnson & Johnson 3.9%6.0%\""
+        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "overlaid-text-layer"
+        "allocation": "chart-only"
       }
     },
     {
       "fundClassIds": ["mpfa-cf-2239"],
       "schemeName": "Sun Life Rainbow MPF Scheme",
       "constituentFundName": "Sun Life MPF Income Fund",
-      "factSheetFile": "MT00067.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00067.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "factSheetUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "Invesco Preferred Shares UCITS ETF",
+          "percent": 6
+        },
+        {
+          "rank": 2,
+          "security": "Invesco MSCI World Universal Screened UCITS ETF",
+          "percent": 5.5
+        },
+        {
+          "rank": 3,
+          "security": "US Government Bond 3.875% 30-Apr-2031",
+          "percent": 2.9
+        },
+        {
+          "rank": 4,
+          "security": "Invesco MSCI USA Universal Screened UCITS ETF",
+          "percent": 2.2
+        },
+        {
+          "rank": 5,
+          "security": "Welltower Inc",
+          "percent": 2.2
+        },
+        {
+          "rank": 6,
+          "security": "US Government Bond 1.25% 15-Apr-2031",
+          "percent": 2.1
+        },
+        {
+          "rank": 7,
+          "security": "Equinix Inc",
+          "percent": 2
+        },
+        {
+          "rank": 8,
+          "security": "Prologis Inc",
+          "percent": 1.9
+        },
+        {
+          "rank": 9,
+          "security": "China Government Bond 1.43% 25-Jan-2030",
+          "percent": 1.7
+        },
+        {
+          "rank": 10,
+          "security": "US Government Bond 4.375% 15-May-2036",
+          "percent": 1.6
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
-        "topHoldings": "20 rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: \"US Government Bond 3.625% 30-Sep-2031Invesco Preferred Shares UCITS ETF 2.3%5.8%\", \"Invesco Preferred Shares UCITS ETFMicrosoft Corp 5.8%7.8%\", \"US Government Bond 4.625% 30-Apr-2029Invesco MSCI World Universal Screened UCITS ETF 2.2%2.7%\""
+        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "overlaid-text-layer"
+        "allocation": "chart-only"
       }
     }
   ]
