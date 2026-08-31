@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T09:04:53.840Z",
+  "generatedAt": "2026-08-31T09:27:20.543Z",
   "platformSnapshot": "data/sources/2026-08-29/mpf-fund-platform.json",
   "factSheetBatch": "data/sources/2026-08-28/fund-fact-sheet-links.json",
   "funds": [
@@ -14305,41 +14305,45 @@
       "fundClassIds": ["mpfa-cf-191", "mpfa-cf-192"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco Capital Stable Fund",
-      "factSheetFile": "MT00075.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00075.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "BCT_Strategic.pdf",
+      "factSheetUrl": "https://www.bcthk.com/wr/ST-Fund-Fact-Sheet",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
       "allocations": [
         {
           "heading": "Asset Allocation (%) 資產分佈",
           "entries": [
             {
               "label": "中港股票Hong Kong & China Equities",
-              "percent": 9.3
+              "percent": 9.7
             },
             {
               "label": "歐洲股票Europe Equities",
-              "percent": 6.8
+              "percent": 7.2
             },
             {
               "label": "北美洲股票N. America Equities",
-              "percent": 5.5
+              "percent": 6.3
             },
             {
               "label": "日本股票Japanese Equities",
-              "percent": 3.8
+              "percent": 4.1
             },
             {
               "label": "其他亞太地區股票Other Asia Pacific Equities",
-              "percent": 3.9
+              "percent": 4.4
             },
             {
               "label": "債券Bonds",
-              "percent": 63.9
+              "percent": 65.9
+            },
+            {
+              "label": "貨幣市場工具Money Market Instruments",
+              "percent": 0.1
             },
             {
               "label": "現金及其他Cash & Others<",
-              "percent": 6.8
+              "percent": 2.3
             }
           ]
         }
@@ -14347,53 +14351,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "China Government Bond 1.43% Jan 2030",
-          "percent": 4.1
+          "security": "25% Apr 2031",
+          "percent": 5.4
         },
         {
           "rank": 2,
-          "security": "Bundesobligation 2.5% Apr 2031",
-          "percent": 3.5
+          "security": "US Treasury N/B 3.875% May 2029",
+          "percent": 5.3
         },
         {
           "rank": 3,
-          "security": "Mex Bonos Desarr Fix Rt 8% Apr 2032",
-          "percent": 2.2
+          "security": "China Government Bond 1.43% Jan 2030",
+          "percent": 4.4
         },
         {
           "rank": 4,
-          "security": "Japan (2 Year Issue) 0.4% Sep 2026",
-          "percent": 2.1
+          "security": "Mex Bonos Desarr Fix Rt 8% Apr 2032",
+          "percent": 3.5
         },
         {
           "rank": 5,
-          "security": "US Treasury N/B 0% Jun 2026",
-          "percent": 1.9
+          "security": "US Treasury N/B 1.375% Aug 2050",
+          "percent": 2.7
         },
         {
           "rank": 6,
-          "security": "Australian Government Bond 4.25% Dec 2035",
-          "percent": 1.8
+          "security": "US Treasury N/B 3.875% Apr 2031",
+          "percent": 2.2
         },
         {
           "rank": 7,
-          "security": "US Treasury N/B 3.375% Feb 2028",
-          "percent": 1.8
+          "security": "Czech Republic 3.5% May 2035",
+          "percent": 2
         },
         {
           "rank": 8,
-          "security": "France Government Bond 2.75% Feb 2030",
-          "percent": 1.7
+          "security": "Japan (2 Year Issue) 0.4% Sep 2026",
+          "percent": 1.6
         },
         {
           "rank": 9,
-          "security": "US Treasury N/B 1.375% Aug 2050",
+          "security": "US Treasury N/B 2.25% May 2041",
           "percent": 1.6
         },
         {
           "rank": 10,
-          "security": "Gilts – United Kingdom 4.125% Jan 2027",
-          "percent": 1.6
+          "security": "Buoni Poliennali Del Tes 3.45% Feb 2036",
+          "percent": 1.4
         }
       ],
       "unavailableFields": [],
@@ -14404,25 +14408,25 @@
       "fundClassIds": ["mpfa-cf-193", "mpfa-cf-194"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco MPF Conservative Fund",
-      "factSheetFile": "MT00075.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00075.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "BCT_Strategic.pdf",
+      "factSheetUrl": "https://www.bcthk.com/wr/ST-Fund-Fact-Sheet",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
       "allocations": [
         {
           "heading": "Asset Allocation (%) 資產分佈",
           "entries": [
             {
-              "label": "貨幣巿場工具Money Market Instruments",
-              "percent": 39.1
+              "label": "債券Bonds",
+              "percent": 16.3
             },
             {
-              "label": "債券Bonds",
-              "percent": 56.6
+              "label": "貨幣巿場工具Money Market Instruments",
+              "percent": 82.6
             },
             {
               "label": "現金及其他Cash & Others<",
-              "percent": 4.3
+              "percent": 1.1
             }
           ]
         }
@@ -14430,53 +14434,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "HKMA Exchange Fund Bill 0% 15 Apr 2026",
+          "security": "China Construction Bank Macau 2.84% Oct 2026",
           "percent": 2.2
         },
         {
           "rank": 2,
-          "security": "Shanghai Commercial Bank Deposit 3.08% Apr 2026",
+          "security": "75% 8 Oct 2026",
           "percent": 2
         },
         {
           "rank": 2,
-          "security": "35% 23 Apr 2026",
+          "security": "75% 23 Oct 2026",
           "percent": 2
         },
         {
           "rank": 4,
-          "security": "HKMA Exchange Fund Bill 0% 8 Apr 2026",
-          "percent": 1.9
+          "security": "Agricultural Bank Deposit 2.75% 8 Oct 2026",
+          "percent": 1.8
         },
         {
-          "rank": 5,
-          "security": "Commonwealth Bank of Australia 3.01% Jun 2026",
+          "rank": 2,
+          "security": "8% 30 Sep 2026",
           "percent": 1.8
         },
         {
           "rank": 6,
-          "security": "Agricultural Bank Deposit 2.5% 8 Apr 2026",
+          "security": "China Construction Bank HK 2.85% 6 Oct 2026",
           "percent": 1.8
         },
         {
           "rank": 7,
-          "security": "HKMA Exchange Fund Bill 0% 29 Apr 2026",
+          "security": "HKMA Exchange Fund Bill 0% 5 Aug 2026",
           "percent": 1.8
         },
         {
           "rank": 8,
-          "security": "Sumitomo Mitsui Deposit 2.55% 14 Apr 2026",
-          "percent": 1.7
+          "security": "Sumitomo Mitsui Deposit 2.6% 19 Aug 2026",
+          "percent": 1.8
         },
         {
           "rank": 9,
           "security": "Commonwealth Bank of Australia 2.94% 22 Sep 2026",
-          "percent": 1.7
+          "percent": 1.8
         },
         {
           "rank": 10,
-          "security": "Bank of East Asia Ltd Deposit 1.8% 19 May 2026",
-          "percent": 1.7
+          "security": "Agricultural Bank Deposit 2.77% 22 Sep 2026",
+          "percent": 1.8
         }
       ],
       "unavailableFields": [],
@@ -14487,21 +14491,21 @@
       "fundClassIds": ["mpfa-cf-195", "mpfa-cf-196"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco Hong Kong and China Equity Fund",
-      "factSheetFile": "MT00075.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00075.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "BCT_Strategic.pdf",
+      "factSheetUrl": "https://www.bcthk.com/wr/ST-Fund-Fact-Sheet",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
       "allocations": [
         {
           "heading": "Asset Allocation (%) 資產分佈",
           "entries": [
             {
               "label": "基本原料Basic Materials",
-              "percent": 6.1
+              "percent": 3.3
             },
             {
               "label": "非必要消費品Consumer Discretionary",
-              "percent": 19.2
+              "percent": 20.2
             },
             {
               "label": "主要消費品Consumer Staples",
@@ -14509,19 +14513,19 @@
             },
             {
               "label": "能源Energy",
-              "percent": 2.5
+              "percent": 2.2
             },
             {
               "label": "金融Financials",
-              "percent": 33.5
+              "percent": 35.6
             },
             {
               "label": "健康護理Health Care",
-              "percent": 4.7
+              "percent": 4.6
             },
             {
               "label": "工業Industrials",
-              "percent": 4.5
+              "percent": 4.8
             },
             {
               "label": "房地產Real Estate",
@@ -14529,23 +14533,19 @@
             },
             {
               "label": "科技Technology",
-              "percent": 15.5
+              "percent": 18.7
             },
             {
               "label": "電訊Telecommunications",
-              "percent": 2.9
+              "percent": 3.2
             },
             {
               "label": "公用Utilities",
-              "percent": 0.4
-            },
-            {
-              "label": "其他行業Other Sectors",
-              "percent": 0
+              "percent": 0.6
             },
             {
               "label": "現金及其他Cash & Others<",
-              "percent": 5
+              "percent": 1.1
             }
           ]
         }
@@ -14554,52 +14554,52 @@
         {
           "rank": 1,
           "security": "滙豐控股HSBC Holdings",
-          "percent": 9.1
+          "percent": 10.1
         },
         {
           "rank": 2,
-          "security": "騰訊控股Tencent Holdings",
-          "percent": 8.6
+          "security": "阿里巴巴Alibaba Group Holding Ltd",
+          "percent": 9.5
         },
         {
           "rank": 3,
-          "security": "阿里巴巴Alibaba Group Holding Ltd",
-          "percent": 7.7
+          "security": "騰訊控股Tencent Holdings",
+          "percent": 9.1
         },
         {
           "rank": 4,
-          "security": "友邦保險AIA Group Ltd",
-          "percent": 4.8
+          "security": "建設銀行CCB",
+          "percent": 4.7
         },
         {
           "rank": 5,
-          "security": "紫金黃金國際Zijin Gold International Co Ltd",
-          "percent": 4.3
+          "security": "友邦保險AIA Group Ltd",
+          "percent": 4
         },
         {
           "rank": 6,
-          "security": "建設銀行CCB",
-          "percent": 4.2
+          "security": "工商銀行ICBC",
+          "percent": 2.9
         },
         {
           "rank": 7,
-          "security": "工商銀行ICBC",
-          "percent": 2.7
-        },
-        {
-          "rank": 8,
           "security": "香港交易所HKEx",
           "percent": 2.7
         },
         {
+          "rank": 8,
+          "security": "中國銀行Bank of China",
+          "percent": 2.6
+        },
+        {
           "rank": 9,
           "security": "小米集團Xiaomi Corp",
-          "percent": 2.4
+          "percent": 1.9
         },
         {
           "rank": 10,
-          "security": "中國銀行Bank of China",
-          "percent": 2.2
+          "security": "中國平安Ping An Insurance",
+          "percent": 1.9
         }
       ],
       "unavailableFields": [],
@@ -14610,41 +14610,45 @@
       "fundClassIds": ["mpfa-cf-198", "mpfa-cf-199"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco Balanced Fund",
-      "factSheetFile": "MT00075.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00075.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "BCT_Strategic.pdf",
+      "factSheetUrl": "https://www.bcthk.com/wr/ST-Fund-Fact-Sheet",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
       "allocations": [
         {
           "heading": "Asset Allocation (%) 資產分佈",
           "entries": [
             {
               "label": "中港股票Hong Kong & China Equities",
-              "percent": 21.8
+              "percent": 22.1
             },
             {
               "label": "歐洲股票Europe Equities",
-              "percent": 16
+              "percent": 16.4
             },
             {
               "label": "北美洲股票N. America Equities",
-              "percent": 12.9
+              "percent": 14.3
             },
             {
               "label": "日本股票Japanese Equities",
-              "percent": 8.9
+              "percent": 9.4
             },
             {
               "label": "其他亞太地區股票Other Asia Pacific Equities",
-              "percent": 9.3
+              "percent": 10
             },
             {
               "label": "債券Bonds",
-              "percent": 24.4
+              "percent": 24.2
+            },
+            {
+              "label": "貨幣市場工具Money Market Instruments",
+              "percent": 0
             },
             {
               "label": "現金及其他Cash & Others<",
-              "percent": 6.7
+              "percent": 3.6
             }
           ]
         }
@@ -14658,47 +14662,47 @@
         {
           "rank": 2,
           "security": "阿里巴巴Alibaba Group Holding Ltd",
-          "percent": 1.8
+          "percent": 2.1
         },
         {
-          "rank": 3,
+          "rank": 1,
+          "security": "25% Apr 2031",
+          "percent": 2
+        },
+        {
+          "rank": 4,
+          "security": "US Treasury N/B 3.875% May 2029",
+          "percent": 1.9
+        },
+        {
+          "rank": 5,
           "security": "China Government Bond 1.43% Jan 2030",
           "percent": 1.6
         },
         {
-          "rank": 4,
+          "rank": 6,
+          "security": "滙豐��HSBC Holdings",
+          "percent": 1.5
+        },
+        {
+          "rank": 7,
           "security": "台積電Taiwan Semiconductor Mfg",
           "percent": 1.4
         },
         {
-          "rank": 5,
-          "security": "滙豐控股HSBC Holdings",
-          "percent": 1.4
-        },
-        {
-          "rank": 6,
-          "security": "Bundesobligation 2.5% Apr 2031",
-          "percent": 1.3
-        },
-        {
-          "rank": 7,
-          "security": "Invesco MSCI USA Universal Screened UCITS ETF",
-          "percent": 1.3
-        },
-        {
           "rank": 8,
-          "security": "Samsung Electronics Co Ltd",
-          "percent": 1.2
+          "security": "Mex Bonos Desarr Fix Rt 8% Apr 2032",
+          "percent": 1.3
         },
         {
           "rank": 9,
-          "security": "友邦保險AIA Group Ltd",
-          "percent": 0.9
+          "security": "Samsung Electronics Co Ltd",
+          "percent": 1.3
         },
         {
           "rank": 10,
-          "security": "建設銀行CCB",
-          "percent": 0.9
+          "security": "US Treasury N/B 1.375% Aug 2050",
+          "percent": 1
         }
       ],
       "unavailableFields": [],
@@ -14709,37 +14713,45 @@
       "fundClassIds": ["mpfa-cf-200", "mpfa-cf-201"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco Growth Fund",
-      "factSheetFile": "MT00075.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00075.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "BCT_Strategic.pdf",
+      "factSheetUrl": "https://www.bcthk.com/wr/ST-Fund-Fact-Sheet",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
       "allocations": [
         {
           "heading": "Asset Allocation (%) 資產分佈",
           "entries": [
             {
-              "label": "中港Hong Kong & China",
-              "percent": 29.5
+              "label": "中港股票Hong Kong & China Equities",
+              "percent": 29.2
             },
             {
-              "label": "歐洲Europe",
-              "percent": 21.6
+              "label": "歐洲股票Europe Equities",
+              "percent": 21.7
             },
             {
-              "label": "北美洲N. America",
-              "percent": 17.5
+              "label": "北美洲股票N. America Equities",
+              "percent": 18.9
             },
             {
-              "label": "日本Japan",
-              "percent": 12.1
+              "label": "日本股票Japanese Equities",
+              "percent": 12.4
             },
             {
-              "label": "其他亞太地區Other Asia Pacific",
-              "percent": 12.5
+              "label": "其他亞太地區股票Other Asia Pacific Equities",
+              "percent": 13.2
+            },
+            {
+              "label": "債券Bonds",
+              "percent": 0
+            },
+            {
+              "label": "貨幣市場工具Money Market Instruments",
+              "percent": 0
             },
             {
               "label": "現金及其他Cash & Others<",
-              "percent": 6.8
+              "percent": 4.6
             }
           ]
         }
@@ -14753,47 +14765,47 @@
         {
           "rank": 2,
           "security": "阿里巴巴Alibaba Group Holding Ltd",
-          "percent": 2.4
+          "percent": 2.8
         },
         {
           "rank": 3,
+          "security": "滙豐��HSBC Holdings",
+          "percent": 2
+        },
+        {
+          "rank": 4,
           "security": "台積電Taiwan Semiconductor Mfg",
           "percent": 1.9
         },
         {
-          "rank": 4,
-          "security": "滙豐控股HSBC Holdings",
-          "percent": 1.8
-        },
-        {
           "rank": 5,
-          "security": "Invesco MSCI USA Universal Screened UCITS ETF",
-          "percent": 1.8
+          "security": "Samsung Electronics Co Ltd",
+          "percent": 1.7
         },
         {
           "rank": 6,
-          "security": "Samsung Electronics Co Ltd",
-          "percent": 1.6
+          "security": "NVIDIA Corp",
+          "percent": 1.3
         },
         {
           "rank": 7,
-          "security": "友邦保險AIA Group Ltd",
-          "percent": 1.2
+          "security": "Invesco MSCI USA Universal Screened UCITS ETF",
+          "percent": 1.3
         },
         {
           "rank": 8,
           "security": "建設銀行CCB",
-          "percent": 1.2
+          "percent": 1.3
         },
         {
           "rank": 9,
-          "security": "NVIDIA Corp",
+          "security": "盈富基金Tracker Fund of Hong Kong",
           "percent": 1.2
         },
         {
           "rank": 10,
           "security": "Apple Inc",
-          "percent": 1.1
+          "percent": 1.2
         }
       ],
       "unavailableFields": [],
@@ -14804,41 +14816,45 @@
       "fundClassIds": ["mpfa-cf-202", "mpfa-cf-203"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco Global Bond Fund",
-      "factSheetFile": "MT00075.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00075.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "BCT_Strategic.pdf",
+      "factSheetUrl": "https://www.bcthk.com/wr/ST-Fund-Fact-Sheet",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
       "allocations": [
         {
           "heading": "Asset Allocation (%) 資產分佈",
           "entries": [
             {
               "label": "美元US Dollar",
-              "percent": 17.6
+              "percent": 34.8
             },
             {
               "label": "歐洲Europe",
-              "percent": 29.1
+              "percent": 20.4
             },
             {
               "label": "香港Hong Kong",
-              "percent": 19.3
+              "percent": 19.1
             },
             {
               "label": "日本Japan",
-              "percent": 6.7
+              "percent": 5.9
             },
             {
               "label": "其他亞太地區Other Asia Pacific",
-              "percent": 18.1
+              "percent": 13.2
             },
             {
               "label": "其他國家Other Countries",
-              "percent": 3.2
+              "percent": 5.3
+            },
+            {
+              "label": "貨幣市場工具Money Market Instruments",
+              "percent": 0.2
             },
             {
               "label": "現金及其他Cash & Others<",
-              "percent": 6
+              "percent": 1.1
             }
           ]
         }
@@ -14846,53 +14862,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "China Government Bond 1.43% Jan 2030",
-          "percent": 6
+          "security": "25% Apr 2031",
+          "percent": 8.1
         },
         {
           "rank": 2,
-          "security": "Bundesobligation 2.5% Apr 2031",
-          "percent": 5.1
+          "security": "US Treasury N/B 3.875% May 2029",
+          "percent": 7.9
         },
         {
           "rank": 3,
-          "security": "Mex Bonos Desarr Fix Rt 8% Apr 2032",
-          "percent": 3.2
+          "security": "China Government Bond 1.43% Jan 2030",
+          "percent": 6.6
         },
         {
           "rank": 4,
-          "security": "Japan (2 Year Issue) 0.4% Sep 2026",
-          "percent": 3.1
+          "security": "Mex Bonos Desarr Fix Rt 8% Apr 2032",
+          "percent": 5.3
         },
         {
           "rank": 5,
-          "security": "US Treasury N/B 0% Jun 2026",
-          "percent": 2.9
+          "security": "US Treasury N/B 1.375% Aug 2050",
+          "percent": 4
         },
         {
           "rank": 6,
-          "security": "Australian Government Bond 4.25% Dec 2035",
-          "percent": 2.7
+          "security": "US Treasury N/B 3.875% Apr 2031",
+          "percent": 3.2
         },
         {
           "rank": 7,
-          "security": "US Treasury N/B 3.375% Feb 2028",
-          "percent": 2.7
+          "security": "Czech Republic 3.5% May 2035",
+          "percent": 3.1
         },
         {
           "rank": 8,
-          "security": "France Government Bond 2.75% Feb 2030",
+          "security": "Japan (2 Year Issue) 0.4% Sep 2026",
           "percent": 2.5
         },
         {
           "rank": 9,
-          "security": "US Treasury N/B 1.375% Aug 2050",
-          "percent": 2.4
+          "security": "US Treasury N/B 2.25% May 2041",
+          "percent": 2.3
         },
         {
           "rank": 10,
-          "security": "Gilts – United Kingdom 4.125% Jan 2027",
-          "percent": 2.3
+          "security": "Buoni Poliennali Del Tes 3.45% Feb 2036",
+          "percent": 2.1
         }
       ],
       "unavailableFields": [],
@@ -14903,49 +14919,49 @@
       "fundClassIds": ["mpfa-cf-627", "mpfa-cf-628"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco Asian Equity Fund",
-      "factSheetFile": "MT00075.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00075.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "BCT_Strategic.pdf",
+      "factSheetUrl": "https://www.bcthk.com/wr/ST-Fund-Fact-Sheet",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
       "allocations": [
         {
           "heading": "Asset Allocation (%) 資產分佈",
           "entries": [
             {
               "label": "中港Hong Kong & China",
-              "percent": 36.5
+              "percent": 30
             },
             {
               "label": "台灣Taiwan",
-              "percent": 22.9
+              "percent": 25.7
             },
             {
               "label": "印度India",
-              "percent": 15
+              "percent": 13.6
             },
             {
               "label": "南韓Korea",
-              "percent": 15.2
+              "percent": 21.3
             },
             {
               "label": "新加坡Singapore",
-              "percent": 3.4
+              "percent": 3.7
             },
             {
               "label": "菲律賓Philippines",
-              "percent": 0.5
+              "percent": 0.6
             },
             {
               "label": "印尼Indonesia",
-              "percent": 1.6
+              "percent": 1
             },
             {
               "label": "馬來西亞Malaysia",
-              "percent": 1.5
+              "percent": 0.5
             },
             {
               "label": "泰國Thailand",
-              "percent": 1.5
+              "percent": 1.7
             },
             {
               "label": "其他地區Other Regions",
@@ -14962,52 +14978,52 @@
         {
           "rank": 1,
           "security": "台積電Taiwan Semiconductor Mfg",
-          "percent": 9.6
+          "percent": 9.8
         },
         {
           "rank": 2,
           "security": "Samsung Electronics Co Ltd",
-          "percent": 7.8
+          "percent": 8.8
         },
         {
           "rank": 3,
-          "security": "騰訊控股Tencent Holdings",
-          "percent": 6
+          "security": "SK Hynix Inc",
+          "percent": 6.1
         },
         {
           "rank": 4,
-          "security": "阿里巴巴Alibaba Group Holding Ltd",
-          "percent": 4.3
+          "security": "騰訊控股Tencent Holdings",
+          "percent": 5.4
         },
         {
           "rank": 5,
-          "security": "DBS Group Holdings Ltd",
-          "percent": 2.8
+          "security": "阿里巴巴Alibaba Group Holding Ltd",
+          "percent": 4.4
         },
         {
           "rank": 6,
-          "security": "ICICI Bank Ltd",
-          "percent": 2.7
+          "security": "DBS Group Holdings Ltd",
+          "percent": 3.1
         },
         {
           "rank": 7,
-          "security": "State Bank of India",
-          "percent": 2.3
+          "security": "MediaTek Inc",
+          "percent": 2.7
         },
         {
           "rank": 8,
-          "security": "MediaTek Inc",
-          "percent": 2.1
+          "security": "ICICI Bank Ltd",
+          "percent": 2.4
         },
         {
           "rank": 9,
           "security": "ASE Technology Holding Co Ltd",
-          "percent": 1.9
+          "percent": 2
         },
         {
           "rank": 10,
-          "security": "中國神華China Shenhua Energy Co-H",
-          "percent": 1.8
+          "security": "建設銀行CCB",
+          "percent": 1.6
         }
       ],
       "unavailableFields": [],
@@ -15018,21 +15034,25 @@
       "fundClassIds": ["mpfa-cf-1101", "mpfa-cf-1102"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco RMB Bond Fund",
-      "factSheetFile": "MT00075.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00075.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "BCT_Strategic.pdf",
+      "factSheetUrl": "https://www.bcthk.com/wr/ST-Fund-Fact-Sheet",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
       "allocations": [
         {
           "heading": "Asset Allocation (%) 資產分佈",
           "entries": [
             {
               "label": "債券Bonds",
-              "percent": 100.1
+              "percent": 95.1
+            },
+            {
+              "label": "貨幣市場工具Money Market Instruments",
+              "percent": 2.8
             },
             {
               "label": "現金及其他Cash & Others<",
-              "percent": -0.1
+              "percent": 2.1
             }
           ]
         }
@@ -15050,43 +15070,43 @@
         },
         {
           "rank": 3,
-          "security": "Hong Kong Government Bond 2.95% Jun 2028",
-          "percent": 2.2
-        },
-        {
-          "rank": 4,
           "security": "Nestle Finance Intl Ltd 2.8% May 2035",
           "percent": 2.2
         },
         {
+          "rank": 4,
+          "security": "AIA Group Ltd 2.88% Apr 2036",
+          "percent": 2.2
+        },
+        {
           "rank": 5,
-          "security": "Bank of Communications Sydney 2.85% Jan 2027",
-          "percent": 2.1
-        },
-        {
-          "rank": 6,
-          "security": "China Cinda 2020 I Mngmn 2.43% Aug 2030",
-          "percent": 2.1
-        },
-        {
-          "rank": 7,
           "security": "Tencent Holdings Ltd 2.5% Sep 2035",
           "percent": 2.1
         },
         {
+          "rank": 6,
+          "security": "Hong Kong Government Bond 2.95% Jun 2028",
+          "percent": 2.1
+        },
+        {
+          "rank": 7,
+          "security": "China Cinda 2020 I Mngmn 2.43% Aug 2030",
+          "percent": 2.1
+        },
+        {
           "rank": 8,
-          "security": "China Development Bank 4.2% Jan 2027",
-          "percent": 2
+          "security": "Bank of Communications Sydney 2.85% Jan 2027",
+          "percent": 2.1
         },
         {
           "rank": 9,
-          "security": "United Overseas Bank Ltd 4.5% Apr 2032",
-          "percent": 1.8
+          "security": "China Government Bond 1.42% Jun 2029",
+          "percent": 2.1
         },
         {
           "rank": 10,
-          "security": "Goldman Sachs Fin Corp Intl 3.02% Sep 2029",
-          "percent": 1.8
+          "security": "China Development Bank 4.2% Jan 2027",
+          "percent": 2
         }
       ],
       "unavailableFields": [],
@@ -15097,65 +15117,65 @@
       "fundClassIds": ["mpfa-cf-1339", "mpfa-cf-1340"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco Hang Seng Index Tracking Fund",
-      "factSheetFile": "MT00075.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00075.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "BCT_Strategic.pdf",
+      "factSheetUrl": "https://www.bcthk.com/wr/ST-Fund-Fact-Sheet",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
       "allocations": [
         {
           "heading": "Asset Allocation (%) 資產分佈",
           "entries": [
             {
               "label": "金融Financials",
-              "percent": 33.4
+              "percent": 34.3
             },
             {
               "label": "能源Energy",
-              "percent": 5.8
+              "percent": 4.9
             },
             {
               "label": "地產建築Properties & Construction",
-              "percent": 4.1
+              "percent": 4
             },
             {
               "label": "電訊Telecommunications",
-              "percent": 3.8
+              "percent": 3.7
             },
             {
               "label": "資訊科技Information Technology",
-              "percent": 15
+              "percent": 15.7
             },
             {
               "label": "公用事業Utilities",
-              "percent": 2.6
+              "percent": 2.4
             },
             {
               "label": "生活消費品Consumer Discretionary",
-              "percent": 23.1
+              "percent": 22.3
             },
             {
               "label": "生活必需品Consumer Staples",
-              "percent": 2.1
+              "percent": 1.8
             },
             {
               "label": "綜合企業Conglomerates",
-              "percent": 1.5
+              "percent": 1.6
             },
             {
               "label": "工業Industrials",
-              "percent": 1.9
+              "percent": 2.3
             },
             {
               "label": "醫療保健Healthcare",
-              "percent": 3.9
+              "percent": 5.2
             },
             {
               "label": "物料Materials",
-              "percent": 2.5
+              "percent": 2.2
             },
             {
               "label": "現金及其他Cash & Others<",
-              "percent": 0.3
+              "percent": -0.4
             }
           ]
         }
@@ -15163,38 +15183,38 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "騰訊控股Tencent Holdings",
-          "percent": 7.9
+          "security": "滙豐控股HSBC Holdings",
+          "percent": 8.9
         },
         {
           "rank": 2,
-          "security": "滙豐控股HSBC Holdings",
-          "percent": 7.7
+          "security": "騰訊控股Tencent Holdings",
+          "percent": 7.8
         },
         {
           "rank": 3,
           "security": "阿里巴巴Alibaba Group Holding Ltd",
-          "percent": 7.3
+          "percent": 6.8
         },
         {
           "rank": 4,
-          "security": "友邦保險AIA Group Ltd",
-          "percent": 5.7
-        },
-        {
-          "rank": 5,
           "security": "建設銀行CCB",
           "percent": 5.2
         },
         {
+          "rank": 5,
+          "security": "友邦保險AIA Group Ltd",
+          "percent": 4.9
+        },
+        {
           "rank": 6,
-          "security": "小米集團Xiaomi Corp",
+          "security": "工商銀行ICBC",
           "percent": 3.7
         },
         {
           "rank": 7,
-          "security": "工商銀行ICBC",
-          "percent": 3.6
+          "security": "小米集團Xiaomi Corp",
+          "percent": 3.3
         },
         {
           "rank": 8,
@@ -15203,12 +15223,12 @@
         },
         {
           "rank": 9,
-          "security": "香港交易所HKEx",
+          "security": "美團Meituan",
           "percent": 3
         },
         {
           "rank": 10,
-          "security": "美團Meituan",
+          "security": "香港交易所HKEx",
           "percent": 2.9
         }
       ],
@@ -15220,45 +15240,49 @@
       "fundClassIds": ["mpfa-cf-1557", "mpfa-cf-1558"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco Core Accumulation Fund",
-      "factSheetFile": "MT00075.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00075.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "BCT_Strategic.pdf",
+      "factSheetUrl": "https://www.bcthk.com/wr/ST-Fund-Fact-Sheet",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
       "allocations": [
         {
           "heading": "Asset Allocation (%) 資產分佈",
           "entries": [
             {
               "label": "北美洲股票N. America Equities",
-              "percent": 41.3
+              "percent": 40.9
             },
             {
               "label": "歐洲股票Europe Equities",
-              "percent": 9.3
+              "percent": 9
             },
             {
               "label": "日本股票Japanese Equities",
-              "percent": 3.6
+              "percent": 3.7
             },
             {
               "label": "中港股票Hong Kong & China Equities",
-              "percent": 1.6
+              "percent": 1.5
             },
             {
               "label": "其他亞太地區股票Other Asia Pacific Equities",
-              "percent": 4.9
+              "percent": 5.9
             },
             {
               "label": "其他國家股票Other Countries Equities",
-              "percent": 1
+              "percent": 0.8
             },
             {
               "label": "債券Bonds",
-              "percent": 35.7
+              "percent": 35.3
+            },
+            {
+              "label": "貨幣市場工具Money Market Instruments",
+              "percent": 0
             },
             {
               "label": "現金及其他Cash & Others<",
-              "percent": 2.6
+              "percent": 2.9
             }
           ]
         }
@@ -15267,17 +15291,17 @@
         {
           "rank": 1,
           "security": "NVIDIA Corp",
-          "percent": 3.3
+          "percent": 3
         },
         {
           "rank": 2,
           "security": "Apple Inc",
-          "percent": 3
+          "percent": 2.9
         },
         {
           "rank": 3,
           "security": "US Treasury N/B 4.375% Jan 2032",
-          "percent": 3
+          "percent": 2.4
         },
         {
           "rank": 4,
@@ -15292,27 +15316,27 @@
         {
           "rank": 6,
           "security": "US Treasury N/B 0.625% May 2030",
-          "percent": 1.9
+          "percent": 1.8
         },
         {
           "rank": 7,
-          "security": "US Treasury N/B 3.5% Nov 2028",
-          "percent": 1.6
+          "security": "Gilts – United Kingdom 4.5% Mar 2035",
+          "percent": 1.7
         },
         {
           "rank": 8,
-          "security": "Amazon.com Inc",
-          "percent": 1.6
+          "security": "Canadian Government Bond 3.25% Jun 2035",
+          "percent": 1.7
         },
         {
           "rank": 9,
-          "security": "Canadian Government Bond 3.25% Jun 2035",
-          "percent": 1.6
+          "security": "Amazon.com Inc",
+          "percent": 1.7
         },
         {
           "rank": 10,
-          "security": "Sweden Government Bond 2.5% Oct 2036",
-          "percent": 1.5
+          "security": "China Government Bond 2.6% Sep 2032",
+          "percent": 1.7
         }
       ],
       "unavailableFields": [],
@@ -15323,33 +15347,33 @@
       "fundClassIds": ["mpfa-cf-1559", "mpfa-cf-1560"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco Age 65 Plus Fund",
-      "factSheetFile": "MT00075.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00075.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "BCT_Strategic.pdf",
+      "factSheetUrl": "https://www.bcthk.com/wr/ST-Fund-Fact-Sheet",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
       "allocations": [
         {
           "heading": "Asset Allocation (%) 資產分佈",
           "entries": [
             {
               "label": "北美洲股票N. America Equities",
-              "percent": 14.3
+              "percent": 14.2
             },
             {
               "label": "歐洲股票Europe Equities",
-              "percent": 3.2
+              "percent": 3.1
             },
             {
               "label": "日本股票Japanese Equities",
-              "percent": 1.2
+              "percent": 1.3
             },
             {
               "label": "中港股票Hong Kong & China Equities",
-              "percent": 0.6
+              "percent": 0.5
             },
             {
               "label": "其他亞太地區股票Other Asia Pacific Equities",
-              "percent": 1.7
+              "percent": 2
             },
             {
               "label": "其他國家股票Other Countries Equities",
@@ -15357,11 +15381,15 @@
             },
             {
               "label": "債券Bonds",
-              "percent": 75.8
+              "percent": 75.9
+            },
+            {
+              "label": "貨幣市場工具Money Market Instruments",
+              "percent": 0
             },
             {
               "label": "現金及其他Cash & Others<",
-              "percent": 2.9
+              "percent": 2.7
             }
           ]
         }
@@ -15370,51 +15398,51 @@
         {
           "rank": 1,
           "security": "US Treasury N/B 4.375% Jan 2032",
-          "percent": 6.3
+          "percent": 5.1
         },
         {
           "rank": 2,
           "security": "US Treasury N/B 0.625% May 2030",
-          "percent": 4
+          "percent": 3.9
         },
         {
           "rank": 3,
-          "security": "US Treasury N/B 3.5% Nov 2028",
-          "percent": 3.5
+          "security": "Gilts – United Kingdom 4.5% Mar 2035",
+          "percent": 3.7
         },
         {
           "rank": 4,
           "security": "Canadian Government Bond 3.25% Jun 2035",
-          "percent": 3.4
+          "percent": 3.7
         },
         {
           "rank": 5,
-          "security": "Sweden Government Bond 2.5% Oct 2036",
-          "percent": 3.1
+          "security": "China Government Bond 2.6% Sep 2032",
+          "percent": 3.6
         },
         {
           "rank": 6,
-          "security": "China Government Bond 2.6% Sep 2032",
-          "percent": 3
+          "security": "US Treasury N/B 4.625% Jun 2027",
+          "percent": 3.5
         },
         {
           "rank": 7,
-          "security": "US Treasury N/B 4.625% Jun 2026",
+          "security": "US Treasury N/B 3.5% Nov 2028",
           "percent": 2.8
         },
         {
           "rank": 8,
-          "security": "Gilts – United Kingdom 4.5% Mar 2035",
-          "percent": 2.8
+          "security": "Norwegian Government Bond 4.125% Jun 2036",
+          "percent": 2.7
         },
         {
           "rank": 9,
-          "security": "US Treasury N/B 2.75% Feb 2028",
-          "percent": 2.2
+          "security": "US Treasury N/B 3.875% Apr 2029",
+          "percent": 2.5
         },
         {
           "rank": 10,
-          "security": "US Treasury N/B 3% Feb 2048",
+          "security": "New Zealand Government 4.5% May 2035",
           "percent": 2.2
         }
       ],
@@ -15426,45 +15454,45 @@
       "fundClassIds": ["mpfa-cf-2066", "mpfa-cf-2067"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco Global Index Tracking Fund",
-      "factSheetFile": "MT00075.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00075.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "BCT_Strategic.pdf",
+      "factSheetUrl": "https://www.bcthk.com/wr/ST-Fund-Fact-Sheet",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
       "allocations": [
         {
           "heading": "Asset Allocation (%) 資產分佈",
           "entries": [
             {
               "label": "美國United States",
-              "percent": 63.1
+              "percent": 66.8
             },
             {
               "label": "日本Japan",
-              "percent": 6.9
+              "percent": 6.6
             },
             {
               "label": "英國United Kingdom",
-              "percent": 3.5
+              "percent": 3
             },
             {
               "label": "加拿大Canada",
-              "percent": 4.1
+              "percent": 3.3
             },
             {
               "label": "瑞士Switzerland",
-              "percent": 2.9
+              "percent": 1.9
             },
             {
               "label": "德國Germany",
-              "percent": 2.5
+              "percent": 2.3
             },
             {
               "label": "法國France",
-              "percent": 2.4
+              "percent": 2
             },
             {
               "label": "澳洲Australia",
-              "percent": 2.2
+              "percent": 2.1
             },
             {
               "label": "荷蘭Netherlands",
@@ -15472,11 +15500,11 @@
             },
             {
               "label": "其他國家Other Countries",
-              "percent": 7.3
+              "percent": 6.6
             },
             {
               "label": "現金及其他Cash & Others<",
-              "percent": 3.3
+              "percent": 3.6
             }
           ]
         }
@@ -15484,33 +15512,33 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "NVIDIA Corp",
-          "percent": 4.5
+          "security": "Microsoft Corp",
+          "percent": 5.2
         },
         {
           "rank": 2,
+          "security": "NVIDIA Corp",
+          "percent": 4.2
+        },
+        {
+          "rank": 3,
           "security": "Apple Inc",
           "percent": 3.6
         },
         {
-          "rank": 3,
-          "security": "Broadcom Inc",
-          "percent": 2.6
-        },
-        {
           "rank": 4,
-          "security": "Amazon.com Inc",
-          "percent": 1.9
+          "security": "Broadcom Inc",
+          "percent": 2.8
         },
         {
           "rank": 5,
-          "security": "Microsoft Corp",
-          "percent": 1.9
+          "security": "Amazon.com Inc",
+          "percent": 2.1
         },
         {
           "rank": 6,
           "security": "Alphabet Inc Class A",
-          "percent": 1.6
+          "percent": 1.7
         },
         {
           "rank": 7,
@@ -15519,17 +15547,17 @@
         },
         {
           "rank": 8,
-          "security": "Tesla Inc",
-          "percent": 1
+          "security": "Advanced Micro Devices",
+          "percent": 1.2
         },
         {
           "rank": 9,
-          "security": "VISA Inc",
+          "security": "ASML Holding NV",
           "percent": 1
         },
         {
           "rank": 10,
-          "security": "ASML Holding NV",
+          "security": "VISA Inc",
           "percent": 1
         }
       ],
@@ -15541,45 +15569,45 @@
       "fundClassIds": ["mpfa-cf-2068", "mpfa-cf-2069"],
       "schemeName": "BCT Strategic MPF Scheme",
       "constituentFundName": "Invesco US Index Tracking Fund",
-      "factSheetFile": "MT00075.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00075.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "BCT_Strategic.pdf",
+      "factSheetUrl": "https://www.bcthk.com/wr/ST-Fund-Fact-Sheet",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
       "allocations": [
         {
           "heading": "Asset Allocation (%) 資產分佈",
           "entries": [
             {
               "label": "非必需消費品Consumer Discretionary",
-              "percent": 9.8
+              "percent": 8.7
             },
             {
               "label": "主要消費品Consumer Staples",
-              "percent": 4.5
+              "percent": 4.2
             },
             {
               "label": "通訊服務Communication Services",
-              "percent": 7.9
+              "percent": 7.2
             },
             {
               "label": "能源Energy",
-              "percent": 2.1
+              "percent": 2.2
             },
             {
               "label": "金融Financials",
-              "percent": 14.5
+              "percent": 13.6
             },
             {
               "label": "健康護理Health Care",
-              "percent": 10.4
+              "percent": 9.8
             },
             {
               "label": "工業Industrials",
-              "percent": 9.2
+              "percent": 8.4
             },
             {
               "label": "資訊科技Information Technology",
-              "percent": 31.7
+              "percent": 37.3
             },
             {
               "label": "原料Materials",
@@ -15587,15 +15615,15 @@
             },
             {
               "label": "房地產Real Estate",
-              "percent": 2.6
+              "percent": 2.2
             },
             {
               "label": "公用Utilities",
-              "percent": 1.4
+              "percent": 1.3
             },
             {
               "label": "現金及其他Cash & Others<",
-              "percent": 3.5
+              "percent": 2.7
             }
           ]
         }
@@ -15603,48 +15631,48 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "Apple Inc",
-          "percent": 4.8
+          "security": "Microsoft Corp",
+          "percent": 5.3
         },
         {
           "rank": 2,
-          "security": "NVIDIA Corp",
-          "percent": 4.6
+          "security": "Apple Inc",
+          "percent": 4.9
         },
         {
           "rank": 3,
           "security": "Broadcom Inc",
-          "percent": 4.2
+          "percent": 4.5
         },
         {
           "rank": 4,
-          "security": "Amazon.com Inc",
-          "percent": 3
+          "security": "NVIDIA Corp",
+          "percent": 4.3
         },
         {
           "rank": 5,
-          "security": "Microsoft Corp",
-          "percent": 2.9
+          "security": "Amazon.com Inc",
+          "percent": 3.4
         },
         {
           "rank": 6,
           "security": "Alphabet Inc Class A",
-          "percent": 2.5
+          "percent": 2.4
         },
         {
           "rank": 7,
-          "security": "Alphabet Inc Class C",
-          "percent": 2.1
+          "security": "Advanced Micro Devices",
+          "percent": 2
         },
         {
           "rank": 8,
-          "security": "Tesla Inc",
-          "percent": 1.6
+          "security": "Alphabet Inc Class C",
+          "percent": 1.9
         },
         {
           "rank": 9,
           "security": "VISA Inc",
-          "percent": 1.5
+          "percent": 1.6
         },
         {
           "rank": 10,
@@ -20530,25 +20558,25 @@
       "fundClassIds": ["mpfa-cf-236"],
       "schemeName": "China Life MPF Master Trust Scheme",
       "constituentFundName": "China Life Balanced Fund",
-      "factSheetFile": "MT00083.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00083.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "ChinaLife_Q2_2026.pdf",
+      "factSheetUrl": "https://www.chinalife.com.hk/sites/default/files/2026-08/2026%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%9F%BA%E9%87%91%E8%A1%A8%E7%8F%BE%E4%BE%BF%E8%A6%BD.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Allocation 投資組合分佈",
           "entries": [
             {
-              "label": "Equities股票 74.68% Bonds債券",
-              "percent": 22.69
+              "label": "Equities股票 74.86% Bonds債券",
+              "percent": 22.91
             },
             {
               "label": "Cash & Others現金及其他",
-              "percent": 2.63
+              "percent": 2.23
             },
             {
               "label": "Annualized Standard Deviation for the past 3 years三年年度化標準差",
-              "percent": 10
+              "percent": 10.4
             }
           ]
         }
@@ -20556,53 +20584,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "HSBC INDEX TRACKER INVESTMENT FUNDS -EUROPEAN INDEX FUND",
-          "percent": 6.48
+          "security": "CSOP FTSE HONG KONG EQUITY ETF南方東英富時香港股票ETF",
+          "percent": 10.95
         },
         {
           "rank": 2,
-          "security": "ISHARES CORE MSCI CHINA ETF ISHARES安碩核心MSCI中國ETF",
-          "percent": 6.04
+          "security": "HSBC INDEX TRACKER INVESTMENT FUNDS -JAPAN INDEX FUND",
+          "percent": 5.39
         },
         {
           "rank": 3,
-          "security": "HSBC INDEX TRACKER INVESTMENT FUNDS -JAPAN INDEX FUND",
-          "percent": 5.77
+          "security": "Invesco QQQ Trust Series 1景順QQQ信託系列1",
+          "percent": 4.68
         },
         {
           "rank": 4,
-          "security": "TRACKER FUND OF HONG KONG盈富基金",
-          "percent": 5.46
+          "security": "HSBC GLOBAL FDS ICAV-GLOBAL GOVERNMENT BOND UCITS ETF",
+          "percent": 4.06
         },
         {
           "rank": 5,
-          "security": "ISHARES CORE CSI 300 ETF ISHARES安碩核心滬深300 ETF",
-          "percent": 5.19
+          "security": "ISHARES CORE CSI 300 ETF ISHARES安碩核⼼滬深300 ETF",
+          "percent": 3.81
         },
         {
           "rank": 6,
-          "security": "ISHARES S&P 500 GROWTH ETF",
-          "percent": 4.26
+          "security": "HSBC INDEX TRACKER INVESTMENT FUNDS -EUROPEAN INDEX FUND",
+          "percent": 2.91
         },
         {
           "rank": 7,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF南方東英富時香港股票ETF",
-          "percent": 4.1
+          "security": "ISHARES U.S. TECHNOLOGY ETF美國科技ETF",
+          "percent": 2.91
         },
         {
           "rank": 8,
-          "security": "HSBC GLOBAL FUNDS ICAV - GLOBAL GOVERNMENT BOND UCITS ETF",
-          "percent": 4
+          "security": "USTN 4.375% 15/05/2036美國國庫券4.25% 15/05/2036",
+          "percent": 1.25
         },
         {
           "rank": 9,
-          "security": "ISHARES U.S. HEALTHCARE ETF",
-          "percent": 2.57
+          "security": "FRANKLIN FTSE TAIWAN UCITS ETF",
+          "percent": 1.02
         },
         {
           "rank": 10,
-          "security": "HSBC INDEX TRACKER INVESTMENT FUNDS-AMERICAN INDEX FUND",
-          "percent": 1.93
+          "security": "SK HYNIX海力士",
+          "percent": 1.02
         }
       ],
       "unavailableFields": [],
@@ -20613,25 +20641,25 @@
       "fundClassIds": ["mpfa-cf-237"],
       "schemeName": "China Life MPF Master Trust Scheme",
       "constituentFundName": "China Life Growth Fund",
-      "factSheetFile": "MT00083.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00083.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "ChinaLife_Q2_2026.pdf",
+      "factSheetUrl": "https://www.chinalife.com.hk/sites/default/files/2026-08/2026%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%9F%BA%E9%87%91%E8%A1%A8%E7%8F%BE%E4%BE%BF%E8%A6%BD.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Allocation 投資組合分佈",
           "entries": [
             {
-              "label": "Equities股票 94.05% Bonds債券",
-              "percent": 3.67
+              "label": "Equities股票 94.59% Bonds債券",
+              "percent": 3.82
             },
             {
               "label": "Cash & Others現金及其他",
-              "percent": 2.28
+              "percent": 1.59
             },
             {
               "label": "Annualized Standard Deviation for the past 3 years三年年度化標準差",
-              "percent": 11.52
+              "percent": 12.33
             }
           ]
         }
@@ -20639,53 +20667,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "HSBC INDEX TRACKER INVESTMENT FUNDS -EUROPEAN INDEX FUND",
-          "percent": 8.25
+          "security": "CSOP FTSE HONG KONG EQUITY ETF南方東英富時香港股票ETF",
+          "percent": 12.18
         },
         {
           "rank": 2,
-          "security": "ISHARES CORE MSCI CHINA ETF ISHARES安碩核心MSCI中國ETF",
-          "percent": 7.7
+          "security": "HSBC INDEX TRACKER INVESTMENT FUNDS -JAPAN INDEX FUND",
+          "percent": 5.83
         },
         {
           "rank": 3,
-          "security": "HSBC INDEX TRACKER INVESTMENT FUNDS -JAPAN INDEX FUND",
-          "percent": 6.68
+          "security": "Invesco QQQ Trust Series 1景順QQQ信託系列1",
+          "percent": 4.72
         },
         {
           "rank": 4,
-          "security": "TRACKER FUND OF HONG KONG盈富基金",
-          "percent": 6.22
+          "security": "ISHARES CORE CSI 300 ETF ISHARES安碩核⼼滬深300 ETF",
+          "percent": 4.21
         },
         {
           "rank": 5,
-          "security": "ISHARES CORE CSI 300 ETF ISHARES安碩核心滬深300 ETF",
-          "percent": 5.67
+          "security": "HSBC INDEX TRACKER INVESTMENT FUNDS -EUROPEAN INDEX FUND",
+          "percent": 4.01
         },
         {
           "rank": 6,
-          "security": "ISHARES S&P 500 GROWTH ETF",
-          "percent": 5.03
+          "security": "HSBC INDEX TRACKER INVESTMENT FUNDS-AMERICAN INDEX FUND",
+          "percent": 3.3
         },
         {
           "rank": 7,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF南方東英富時香港股票ETF",
-          "percent": 4.99
+          "security": "ISHARES U.S. TECHNOLOGY ETF美國科技ETF",
+          "percent": 2.92
         },
         {
           "rank": 8,
-          "security": "ISHARES U.S. HEALTHCARE ETF",
-          "percent": 3.03
+          "security": "TRACKER FUND OF HONG KONG盈富基金",
+          "percent": 2.54
         },
         {
           "rank": 9,
-          "security": "HSBC INDEX TRACKER INVESTMENT FUNDS-AMERICAN INDEX FUND",
-          "percent": 2.78
+          "security": "SK HYNIX海力士",
+          "percent": 1.43
         },
         {
           "rank": 10,
           "security": "TAIWAN SEMICONDUCT MANUFACTURING台積電",
-          "percent": 1.3
+          "percent": 1.39
         }
       ],
       "unavailableFields": [],
@@ -20696,25 +20724,25 @@
       "fundClassIds": ["mpfa-cf-238"],
       "schemeName": "China Life MPF Master Trust Scheme",
       "constituentFundName": "China Life MPF Conservative Fund",
-      "factSheetFile": "MT00083.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00083.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "ChinaLife_Q2_2026.pdf",
+      "factSheetUrl": "https://www.chinalife.com.hk/sites/default/files/2026-08/2026%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%9F%BA%E9%87%91%E8%A1%A8%E7%8F%BE%E4%BE%BF%E8%A6%BD.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Allocation 投資組合分佈",
           "entries": [
             {
               "label": "Bank Deposit銀行存款",
-              "percent": 86.7
+              "percent": 90.55
             },
             {
-              "label": "Fixed Income Securities定息收入證券 10.94% Cash & Others現金及其他",
-              "percent": 2.36
+              "label": "Fixed Income Securities定息收入證券 8.15% Cash & Others現金及其他",
+              "percent": 1.3
             },
             {
               "label": "Annualized Standard Deviation for the past 3 years三年年度化標準差",
-              "percent": 0.24
+              "percent": 0.28
             }
           ]
         }
@@ -20722,53 +20750,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "AGRICULTURAL BANK OF CHINA LTD/HONG KONG 3.4% A 16/1/2026",
-          "percent": 2.44
+          "security": "DZ BANK HONG KONG 3.06% 9/9/2026 FXCD",
+          "percent": 2.45
         },
         {
           "rank": 2,
-          "security": "CHINA DEVELOPMENT BANK CORP/HONG KONG 4.47% Q 14/1/2026",
-          "percent": 2.12
+          "security": "CANADIAN IMPERIAL BANK OF COMMERCE/HONG KONG 0% A 2/10/2026",
+          "percent": 2.25
         },
         {
           "rank": 3,
-          "security": "DZ BANK HONG KONG 0% A 18/6/2026",
-          "percent": 2.09
+          "security": "NATIONAL AUSTRALIA BANK LTD 0% 8/3/2027 CD",
+          "percent": 2.23
         },
         {
           "rank": 4,
-          "security": "KOREA DEVELOPMENT BANK HK 0% A 4/6/2026",
-          "percent": 1.93
+          "security": "COMMONWEALTH BANK OF AUSTRALIA 3% 25/11/2026 FXCD",
+          "percent": 1.96
         },
         {
           "rank": 5,
-          "security": "INDUSTRIAL BANK CO HK TIME DEPOSIT-HKD 9/3/2026",
-          "percent": 1.82
+          "security": "BANK OF CHINA/MACAU 0% A 29/7/2026",
+          "percent": 1.95
         },
         {
           "rank": 6,
-          "security": "MIZUHO BANK LTD TIME DEPOSIT-HKD 8/1/2026",
-          "percent": 1.65
+          "security": "IND & COMM BK CHN/SYDNEY 0% 15/9/2026 CD",
+          "percent": 1.78
         },
         {
           "rank": 7,
-          "security": "BANK OF COMMUNICATIONS CO LTD/SYDNEY 3.95% A 27/4/2026 FXCD",
-          "percent": 1.63
+          "security": "COMMONWEALTH BANK OF AUSTRALIA 1.84% A 27/1/2027",
+          "percent": 1.78
         },
         {
           "rank": 8,
-          "security": "NATIONAL AUSTRALIA BANK LTD 4.25% A 9/2/2026",
-          "percent": 1.63
+          "security": "MIZUHO BANK LTD TIME DEPOSIT-HKD 8/7/2026",
+          "percent": 1.68
         },
         {
           "rank": 9,
-          "security": "BANK OF COMMUNICATIONS CO LTD/SYDNEY 0% A 12/2/2026",
-          "percent": 1.46
+          "security": "CREDIT AGRICOLE SA 5.03% A 7/9/2026",
+          "percent": 1.64
         },
         {
           "rank": 10,
-          "security": "MUFG BANK LTD TIME DEPOSIT-HKD 8/1/2026",
-          "percent": 1.33
+          "security": "COMMONWEALTH BANK OF AUSTRALIA 3.08% 10/12/2026 FXCD",
+          "percent": 1.64
         }
       ],
       "unavailableFields": [],
@@ -20779,25 +20807,25 @@
       "fundClassIds": ["mpfa-cf-603"],
       "schemeName": "China Life MPF Master Trust Scheme",
       "constituentFundName": "China Life Joyful Retirement Guaranteed Fund",
-      "factSheetFile": "MT00083.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00083.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "ChinaLife_Q2_2026.pdf",
+      "factSheetUrl": "https://www.chinalife.com.hk/sites/default/files/2026-08/2026%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%9F%BA%E9%87%91%E8%A1%A8%E7%8F%BE%E4%BE%BF%E8%A6%BD.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Allocation 投資組合分佈",
           "entries": [
             {
               "label": "Global Equities環球股票",
-              "percent": 11.63
+              "percent": 12.72
             },
             {
-              "label": "Fixed Income Securities 86.01% Cash & Others",
-              "percent": 2.36
+              "label": "Fixed Income Securities 84.70% Cash & Others",
+              "percent": 2.58
             },
             {
               "label": "Annualized Standard Deviation for the past 3 years三年年度化標準差",
-              "percent": 4.99
+              "percent": 4.32
             }
           ]
         }
@@ -20806,52 +20834,52 @@
         {
           "rank": 1,
           "security": "WELLS FARGO & CO 4.97% S/A 23/4/2029",
-          "percent": 2.53
+          "percent": 2.48
         },
         {
           "rank": 2,
           "security": "UBS GROUP AG 3.091% S/A 14/5/2032",
-          "percent": 2.12
+          "percent": 2.08
         },
         {
           "rank": 3,
-          "security": "UNITED STATES OF AMERICA TREASURY BILL 0% 5/3/2026",
-          "percent": 1.89
+          "security": "PRICOA GLOBAL FUNDING I 4.75% S/A 26/8/2032",
+          "percent": 1.54
         },
         {
           "rank": 4,
-          "security": "UNITED STATES OF AMERICA TREASURY BILL 0% 22/1/2026",
-          "percent": 1.61
-        },
-        {
-          "rank": 5,
-          "security": "PRICOA GLOBAL FUNDING I 4.75% S/A 26/8/2032",
-          "percent": 1.59
-        },
-        {
-          "rank": 6,
           "security": "FORD MOTOR CREDIT CO LLC 2.9% S/A 16/2/2028",
-          "percent": 1.45
-        },
-        {
-          "rank": 7,
-          "security": "CITIGROUP INC 2.976% S/A 5/11/2030",
           "percent": 1.44
         },
         {
-          "rank": 8,
+          "rank": 5,
           "security": "JPMORGAN CHASE & CO 2.522% S/A 22/4/2031",
-          "percent": 1.42
+          "percent": 1.4
+        },
+        {
+          "rank": 6,
+          "security": "BARCLAYS PLC 2.279% S/A 24/11/2027",
+          "percent": 1.35
+        },
+        {
+          "rank": 7,
+          "security": "DEUTSCHE BANK AG/NEW YORK 7.146% S/A 13/7/2027",
+          "percent": 1.32
+        },
+        {
+          "rank": 8,
+          "security": "US BANCORP 1.375% S/A 22/7/2030",
+          "percent": 1.27
         },
         {
           "rank": 9,
-          "security": "NEW YORK LIFE INSURANCE CO 4.15% S/A 25/7/2028",
-          "percent": 1.41
+          "security": "GOLDMAN SACHS GROUP INC 1.948% S/A 21/10/2027",
+          "percent": 1.22
         },
         {
           "rank": 10,
-          "security": "BARCLAYS PLC 2.279% S/A 24/11/2027",
-          "percent": 1.35
+          "security": "OMEGA HEALTHCARE INVESTORS INC 4.75% S/A 15/1/2028",
+          "percent": 1.19
         }
       ],
       "unavailableFields": [],
@@ -20862,25 +20890,25 @@
       "fundClassIds": ["mpfa-cf-606"],
       "schemeName": "China Life MPF Master Trust Scheme",
       "constituentFundName": "China Life Retire-Easy Global Equity Fund",
-      "factSheetFile": "MT00083.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00083.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "ChinaLife_Q2_2026.pdf",
+      "factSheetUrl": "https://www.chinalife.com.hk/sites/default/files/2026-08/2026%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%9F%BA%E9%87%91%E8%A1%A8%E7%8F%BE%E4%BE%BF%E8%A6%BD.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Allocation 投資組合分佈",
           "entries": [
             {
               "label": "Equities股票",
-              "percent": 97.1
+              "percent": 95.6
             },
             {
               "label": "Cash & Others現金及其他",
-              "percent": 2.9
+              "percent": 4.4
             },
             {
               "label": "Annualized Standard Deviation for the past 3 years三年年度化標準差",
-              "percent": 10.23
+              "percent": 11.47
             }
           ]
         }
@@ -20888,53 +20916,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "NVIDIA CORP輝達",
-          "percent": 3.74
+          "security": "APPLE INC蘋果公司",
+          "percent": 3.4
         },
         {
           "rank": 2,
-          "security": "MICROSOFT CORP微軟",
-          "percent": 3.71
+          "security": "NVIDIA CORP輝達公司",
+          "percent": 3.32
         },
         {
           "rank": 3,
-          "security": "APPLE INC蘋果公司",
-          "percent": 3.55
+          "security": "MICROSOFT CORP微軟公司",
+          "percent": 2.51
         },
         {
           "rank": 4,
           "security": "AMAZON.COM INC亞馬遜公司",
-          "percent": 2.26
-        },
-        {
-          "rank": 5,
-          "security": "GOLDMAN SACHS GP高盛集團",
           "percent": 2
         },
         {
+          "rank": 5,
+          "security": "ALPHABET INC-A Alphabet公司",
+          "percent": 1.95
+        },
+        {
           "rank": 6,
-          "security": "ALPHABET INC-C Alphabet公司",
-          "percent": 1.34
+          "security": "GOLDMAN SACHS GP高盛集團",
+          "percent": 1.85
         },
         {
           "rank": 7,
           "security": "CATERPILLAR INC卡特彼勒公司",
-          "percent": 1.33
+          "percent": 1.79
         },
         {
           "rank": 8,
-          "security": "META PLATFORMS-A Meta平台公司",
-          "percent": 1.29
+          "security": "TAIWAN SEMICONDUCTOR MANUFACTURING台積電",
+          "percent": 1.73
         },
         {
           "rank": 9,
-          "security": "TESLA INC特斯拉公司",
-          "percent": 1.26
+          "security": "MICRON TECH美光科技公司",
+          "percent": 1.35
         },
         {
           "rank": 10,
-          "security": "BROADCOM INC博通公司",
-          "percent": 1.2
+          "security": "ALPHABET INC-C Alphabet公司",
+          "percent": 1.15
         }
       ],
       "unavailableFields": [],
@@ -20945,25 +20973,25 @@
       "fundClassIds": ["mpfa-cf-895"],
       "schemeName": "China Life MPF Master Trust Scheme",
       "constituentFundName": "China Life Hong Kong Equity Fund",
-      "factSheetFile": "MT00083.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00083.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "ChinaLife_Q2_2026.pdf",
+      "factSheetUrl": "https://www.chinalife.com.hk/sites/default/files/2026-08/2026%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%9F%BA%E9%87%91%E8%A1%A8%E7%8F%BE%E4%BE%BF%E8%A6%BD.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Allocation 投資組合分佈",
           "entries": [
             {
               "label": "Equities股票",
-              "percent": 98.24
+              "percent": 96.9
             },
             {
               "label": "Cash & Others現金及其他",
-              "percent": 1.76
+              "percent": 3.1
             },
             {
               "label": "Annualized Standard Deviation for the past 3 years三年年度化標準差",
-              "percent": 22.8
+              "percent": 21.58
             }
           ]
         }
@@ -20972,17 +21000,17 @@
         {
           "rank": 1,
           "security": "TENCENT HOLDINGS騰訊控股",
-          "percent": 9.16
+          "percent": 9.76
         },
         {
           "rank": 2,
           "security": "HSBC HOLDINGS滙豐控股",
-          "percent": 8.47
+          "percent": 9.11
         },
         {
           "rank": 3,
           "security": "ALIBABA GROUP HOLDING CN阿里巴巴",
-          "percent": 8.23
+          "percent": 8.19
         },
         {
           "rank": 4,
@@ -20991,33 +21019,33 @@
         },
         {
           "rank": 5,
-          "security": "INDUSTRIAL & COMMERCIAL BANK OF CHINA H工商銀行",
-          "percent": 3.91
+          "security": "AIA GROUP友邦保險",
+          "percent": 3.59
         },
         {
           "rank": 6,
-          "security": "AIA GROUP友邦保險",
-          "percent": 3.87
+          "security": "PING AN INSURANCE H中國平安",
+          "percent": 3.23
         },
         {
           "rank": 7,
-          "security": "PING AN INSURANCE H中國平安",
-          "percent": 3.81
+          "security": "LENOVO GROUP聯想集團",
+          "percent": 2.68
         },
         {
           "rank": 8,
           "security": "MEITUAN美團",
-          "percent": 3.67
+          "percent": 2.66
         },
         {
           "rank": 9,
-          "security": "TRIP.COM GROUP攜程集團",
-          "percent": 3.54
+          "security": "CONTEMPORARY AMPEREX TEC A寧德時代",
+          "percent": 2.63
         },
         {
           "rank": 10,
-          "security": "HONG KONG EXCHANGES & CLEARING香港交易所",
-          "percent": 2.25
+          "security": "TIMES ELECTRIC CO LTD時代電氣",
+          "percent": 2.59
         }
       ],
       "unavailableFields": [],
@@ -21028,25 +21056,25 @@
       "fundClassIds": ["mpfa-cf-1545"],
       "schemeName": "China Life MPF Master Trust Scheme",
       "constituentFundName": "China Life Core Accumulation Fund",
-      "factSheetFile": "MT00083.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00083.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "ChinaLife_Q2_2026.pdf",
+      "factSheetUrl": "https://www.chinalife.com.hk/sites/default/files/2026-08/2026%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%9F%BA%E9%87%91%E8%A1%A8%E7%8F%BE%E4%BE%BF%E8%A6%BD.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Allocation 投資組合分佈",
           "entries": [
             {
-              "label": "Equities股票 61.74% Bonds債券",
-              "percent": 35.23
+              "label": "Equities股票 61.55% Bonds債券",
+              "percent": 35.36
             },
             {
               "label": "Cash & Others現金及其他",
-              "percent": 3.03
+              "percent": 3.09
             },
             {
               "label": "Annualized Standard Deviation for the past 3 years三年年度化標準差",
-              "percent": 8.09
+              "percent": 8.6
             }
           ]
         }
@@ -21054,53 +21082,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "NVIDIA CORP輝達",
-          "percent": 3.17
+          "security": "NVIDIA CORP輝達公司",
+          "percent": 3.09
         },
         {
           "rank": 2,
           "security": "APPLE INC蘋果公司",
-          "percent": 2.88
+          "percent": 2.89
         },
         {
           "rank": 3,
-          "security": "MICROSOFT CORP微軟",
-          "percent": 2.68
+          "security": "US TREASURY NOTE/BOND 4.375% 31/1/2032",
+          "percent": 2.5
         },
         {
           "rank": 4,
-          "security": "US TREASURY NOTE/BOND 4.375% 31/1/2032",
-          "percent": 2.28
+          "security": "ALPHABET INC-A Alphabet公司",
+          "percent": 1.9
         },
         {
           "rank": 5,
-          "security": "ALPHABET INC-A Alphabet公司",
-          "percent": 1.98
+          "security": "MICROSOFT CORP微軟",
+          "percent": 1.9
         },
         {
           "rank": 6,
-          "security": "US TREASURY NOTE/BOND 3.5% 15/11/2028",
-          "percent": 1.88
+          "security": "US TREASURY NOTE/BOND 0.625% 15/5/2030",
+          "percent": 1.9
         },
         {
           "rank": 7,
-          "security": "US TREASURY NOTE/BOND 0.625% 15/5/2030",
-          "percent": 1.79
+          "security": "UNITED KINGDOM GILT 4.5% 7/3/2035",
+          "percent": 1.8
         },
         {
           "rank": 8,
-          "security": "AMAZON.COM INC亞馬遜公司",
-          "percent": 1.59
+          "security": "US TREASURY NOTE/BOND 4.625% 15/6/2027",
+          "percent": 1.7
         },
         {
           "rank": 9,
-          "security": "CHINA GOVERNMENT BOND 2.6%1/9/2032",
-          "percent": 1.49
+          "security": "NEW ZEALAND GOVERNMENT 4.5% 15/5/2035",
+          "percent": 1.6
         },
         {
           "rank": 10,
-          "security": "US TREASURY NOTE/BOND 2.75% 15/2/2028",
-          "percent": 1.29
+          "security": "CANADIAN GOVERNMENT 3.25% 1/6/2035",
+          "percent": 1.6
         }
       ],
       "unavailableFields": [],
@@ -21111,25 +21139,25 @@
       "fundClassIds": ["mpfa-cf-1546"],
       "schemeName": "China Life MPF Master Trust Scheme",
       "constituentFundName": "China Life Age 65 Plus Fund",
-      "factSheetFile": "MT00083.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00083.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "ChinaLife_Q2_2026.pdf",
+      "factSheetUrl": "https://www.chinalife.com.hk/sites/default/files/2026-08/2026%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%9F%BA%E9%87%91%E8%A1%A8%E7%8F%BE%E4%BE%BF%E8%A6%BD.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Allocation 投資組合分佈",
           "entries": [
             {
-              "label": "Equities股票 21.79% Bonds債券 76.30%",
+              "label": "Equities股票 21.26% Bonds債券 75.54%",
               "percent": 0
             },
             {
               "label": "Cash & Others現金及其他",
-              "percent": 1.91
+              "percent": 3.2
             },
             {
               "label": "Annualized Standard Deviation for the past 3 years三年年度化標準差",
-              "percent": 5.51
+              "percent": 5.31
             }
           ]
         }
@@ -21138,52 +21166,52 @@
         {
           "rank": 1,
           "security": "US TREASURY NOTE/BOND 4.375% 31/1/2032",
-          "percent": 4.89
+          "percent": 5.39
         },
         {
           "rank": 2,
-          "security": "US TREASURY NOTE/BOND 3.5% 15/11/2028",
-          "percent": 4.09
-        },
-        {
-          "rank": 3,
           "security": "US TREASURY NOTE/BOND 0.625% 15/5/2030",
           "percent": 3.99
         },
         {
+          "rank": 3,
+          "security": "UNITED KINGDOM GILT 4.5% 7/3/2035",
+          "percent": 3.79
+        },
+        {
           "rank": 4,
-          "security": "CHINA GOVERNMENT BOND 2.6%1/9/2032",
-          "percent": 3.19
+          "security": "US TREASURY NOTE/BOND 4.625% 15/6/2027",
+          "percent": 3.5
         },
         {
           "rank": 5,
-          "security": "US TREASURY NOTE/BOND 2.75% 15/2/2028",
-          "percent": 2.69
+          "security": "NEW ZEALAND GOVERNMENT 4.5% 15/5/2035",
+          "percent": 3.5
         },
         {
           "rank": 6,
-          "security": "CANADIAN GOVERNMENT 3.25%1/6/2035",
-          "percent": 2.59
+          "security": "CANADIAN GOVERNMENT 3.25% 1/6/2035",
+          "percent": 3.4
         },
         {
           "rank": 7,
-          "security": "US TREASURY NOTE/BOND 4.625% 30/6/2026",
-          "percent": 2.5
+          "security": "CHINA GOVERNMENT BOND 2.6% 1/9/2032",
+          "percent": 3.3
         },
         {
           "rank": 8,
-          "security": "US TREASURY NOTE/BOND 4.25% 15/1/2028",
-          "percent": 2.4
+          "security": "US TREASURY NOTE/BOND 3.5% 15/11/2028",
+          "percent": 2.8
         },
         {
           "rank": 9,
-          "security": "US TREASURY NOTE/BOND 3% 15/2/2048",
-          "percent": 2.3
+          "security": "US TREASURY NOTE/BOND 3.875% 15/4/2029",
+          "percent": 2.6
         },
         {
           "rank": 10,
-          "security": "POLAND GOVERNMENT BOND 1.25% 25/10/2030",
-          "percent": 2.1
+          "security": "US TREASURY NOTE/BOND 3% 15/2/2048",
+          "percent": 2.3
         }
       ],
       "unavailableFields": [],
@@ -21194,25 +21222,25 @@
       "fundClassIds": ["mpfa-cf-1839"],
       "schemeName": "China Life MPF Master Trust Scheme",
       "constituentFundName": "China Life Greater China Equity Fund",
-      "factSheetFile": "MT00083.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00083.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "ChinaLife_Q2_2026.pdf",
+      "factSheetUrl": "https://www.chinalife.com.hk/sites/default/files/2026-08/2026%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%9F%BA%E9%87%91%E8%A1%A8%E7%8F%BE%E4%BE%BF%E8%A6%BD.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Allocation 投資組合分佈",
           "entries": [
             {
-              "label": "Greater China Equities大中華股票 97.31% Other Equities其他股票",
-              "percent": 1.63
+              "label": "Greater China Equities大中華股票",
+              "percent": 98.11
             },
             {
               "label": "Cash & Others現金及其他",
-              "percent": 1.06
+              "percent": 1.89
             },
             {
               "label": "Annualized Standard Deviation for the past 3 years三年年度化標準差",
-              "percent": 19.64
+              "percent": 20.33
             }
           ]
         }
@@ -21221,52 +21249,52 @@
         {
           "rank": 1,
           "security": "TAIWAN SEMICONDUCTOR MANUFACTURING台積電",
-          "percent": 10.04
+          "percent": 9.53
         },
         {
           "rank": 2,
           "security": "TENCENT HOLDINGS騰訊控股",
-          "percent": 9.32
+          "percent": 7.93
         },
         {
           "rank": 3,
           "security": "ALIBABA GROUP HOLDING阿里巴巴",
-          "percent": 7.74
+          "percent": 5.34
         },
         {
           "rank": 4,
-          "security": "HSBC HOLDINGS匯豐控股",
-          "percent": 2.72
+          "security": "DELTA ELECTRONICS台達電子",
+          "percent": 3.79
         },
         {
           "rank": 5,
-          "security": "PING AN INSURANCE中國平安",
-          "percent": 2.53
+          "security": "ELITE MATERIAL台光電",
+          "percent": 2.75
         },
         {
           "rank": 6,
-          "security": "XIAOMI小米",
-          "percent": 2.48
+          "security": "HSBC HOLDINGS匯豐控股",
+          "percent": 2.74
         },
         {
           "rank": 7,
-          "security": "DELTA ELECTRONICS台達電子",
-          "percent": 2.42
+          "security": "CHINA MERCHANTS BANK招商銀行",
+          "percent": 2.56
         },
         {
           "rank": 8,
-          "security": "ELITE MATERIAL台光電",
-          "percent": 2.33
+          "security": "NETEASE網易",
+          "percent": 2.5
         },
         {
           "rank": 9,
-          "security": "CHINA MERCHANTS BANK招商銀行",
+          "security": "REALTEK SEMICONDUCTOR瑞昱半導體",
           "percent": 2.32
         },
         {
           "rank": 10,
-          "security": "NETEASE網易",
-          "percent": 2.19
+          "security": "HONG KONG EXCHANGES & CLEARING香港交易所",
+          "percent": 2.31
         }
       ],
       "unavailableFields": [],
@@ -21277,25 +21305,25 @@
       "fundClassIds": ["mpfa-cf-1840"],
       "schemeName": "China Life MPF Master Trust Scheme",
       "constituentFundName": "China Life US Equity Fund",
-      "factSheetFile": "MT00083.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00083.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "ChinaLife_Q2_2026.pdf",
+      "factSheetUrl": "https://www.chinalife.com.hk/sites/default/files/2026-08/2026%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%9F%BA%E9%87%91%E8%A1%A8%E7%8F%BE%E4%BE%BF%E8%A6%BD.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Allocation 投資組合分佈",
           "entries": [
             {
               "label": "US Equities美國股票",
-              "percent": 94.87
+              "percent": 97.45
             },
             {
               "label": "Cash & Others現金及其他",
-              "percent": 5.13
+              "percent": 2.55
             },
             {
               "label": "Annualized Standard Deviation for the past 3 years三年年度化標準差",
-              "percent": 12.01
+              "percent": 14.35
             }
           ]
         }
@@ -21303,53 +21331,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "NVIDIA CORP輝達",
-          "percent": 7.96
+          "security": "NVIDIA CORP輝達公司",
+          "percent": 7.36
         },
         {
           "rank": 2,
           "security": "APPLE INC蘋果公司",
-          "percent": 7.06
+          "percent": 6.46
         },
         {
           "rank": 3,
-          "security": "MICROSOFT CORP微軟",
-          "percent": 6.31
+          "security": "MICROSOFT CORP微軟公司",
+          "percent": 4.21
         },
         {
           "rank": 4,
-          "security": "AMAZON.COM INC亞馬遜公司",
-          "percent": 4.15
+          "security": "MICRON TECH美光科技公司",
+          "percent": 3.75
         },
         {
           "rank": 5,
-          "security": "ALPHABET INC-A Alphabet公司",
-          "percent": 3.2
+          "security": "AMAZON.COM INC亞馬遜公司",
+          "percent": 3.72
         },
         {
           "rank": 6,
-          "security": "META PLATFORMS-A Meta平台公司",
-          "percent": 3.01
+          "security": "ALPHABET INC-A Alphabet公司",
+          "percent": 3.17
         },
         {
           "rank": 7,
-          "security": "TESLA INC特斯拉公司",
-          "percent": 2.91
+          "security": "ALPHABET INC-C Alphabet公司",
+          "percent": 2.74
         },
         {
           "rank": 8,
-          "security": "BROADCOM INC博通公司",
-          "percent": 2.87
+          "security": "ADV MICRO DEVICE超微半導體公司",
+          "percent": 2.73
         },
         {
           "rank": 9,
-          "security": "ALPHABET INC-C Alphabet公司",
-          "percent": 2.79
+          "security": "BROADCOM INC博通公司",
+          "percent": 2.72
         },
         {
           "rank": 10,
-          "security": "PALANTIR TECHN-A帕蘭提爾科技公司",
-          "percent": 1.39
+          "security": "TESLA INC特斯拉公司",
+          "percent": 2.51
         }
       ],
       "unavailableFields": [],
@@ -32989,61 +33017,61 @@
       "fundClassIds": ["mpfa-cf-816"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE GROWTH FUND",
-      "factSheetFile": "MT00547.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00547.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "MyChoice.pdf",
+      "factSheetUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
           "security": "南方東英富時香港股票ETF CSOP FTSE HONG KONG EQUITY ETF",
-          "percent": 12.66
+          "percent": 12.17
         },
         {
           "rank": 2,
-          "security": "HSBC INDEX TRACKER - JP IDX FUND",
-          "percent": 6.68
+          "security": "HSBC JAPAN INDEX FUND",
+          "percent": 5.83
         },
         {
           "rank": 3,
-          "security": "盈富基金TRACKER FUND OF HK",
-          "percent": 5.68
+          "security": "INVESCO QQQ TRUST SERIES 1",
+          "percent": 4.71
         },
         {
           "rank": 4,
           "security": "iSHARES安碩核心滬深300 ETF ISHARES CORE CSI 300 ETF",
-          "percent": 5.08
+          "percent": 4.2
         },
         {
           "rank": 5,
           "security": "HSBC EUROPEAN INDEX FUND",
-          "percent": 3.58
+          "percent": 4.01
         },
         {
           "rank": 6,
-          "security": "HSBC INDEX TRACKER - AM IDX FUND",
-          "percent": 2.64
+          "security": "HSBC AMERICA INDEX FUND",
+          "percent": 3.3
         },
         {
           "rank": 7,
-          "security": "ISHARES US UTILITIES ETF",
-          "percent": 2.49
+          "security": "ISHARES US TECHNOLOGY ETF",
+          "percent": 2.91
         },
         {
           "rank": 8,
-          "security": "ISHARES US TECHNOLOGY ETF",
-          "percent": 1.99
+          "security": "盈富基金TRACKER FUND OF HK",
+          "percent": 2.54
         },
         {
           "rank": 9,
-          "security": "ISHARES GLOBAL ENERGY ETF",
-          "percent": 1.5
+          "security": "SK HYNIX",
+          "percent": 1.43
         },
         {
           "rank": 10,
           "security": "台積電TAIWAN SEMICONDUCTOR MFG CO LTD",
-          "percent": 1.19
+          "percent": 1.39
         }
       ],
       "unavailableFields": ["allocation"],
@@ -33058,61 +33086,61 @@
       "fundClassIds": ["mpfa-cf-817"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE BALANCED FUND",
-      "factSheetFile": "MT00547.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00547.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "MyChoice.pdf",
+      "factSheetUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
           "security": "NOMURA NF TOPIX ETF",
-          "percent": 5.15
+          "percent": 3.48
         },
         {
           "rank": 2,
-          "security": "滙豐控股HSBC HLDGS PLC",
-          "percent": 1.93
+          "security": "FRANKLIN FTSE TAIWAN UCITS ETF",
+          "percent": 2.25
         },
         {
           "rank": 3,
-          "security": "騰訊控股TENCENT HLDGS LTD",
-          "percent": 1.71
+          "security": "ISHARES US TECHNOLOGY ETF",
+          "percent": 1.88
         },
         {
           "rank": 4,
-          "security": "阿里巴巴集團控股有限公司ALIBABA GROUP HLDG LTD",
-          "percent": 1.66
+          "security": "滙豐控股HSBC HLDGS PLC",
+          "percent": 1.69
         },
         {
           "rank": 5,
-          "security": "恒生中國企業指數上市基金HANG SENG CHINA ENTERPRISES INDEX ETF",
-          "percent": 1.59
+          "security": "騰訊控股TENCENT HLDGS LTD",
+          "percent": 1.56
         },
         {
           "rank": 6,
           "security": "ISHARES CORE FTSE UCITS ETF GBP D",
-          "percent": 1.57
+          "percent": 1.41
         },
         {
           "rank": 7,
-          "security": "盈富基金TRACKER FUND OF HK",
-          "percent": 1.43
+          "security": "阿里巴巴集團控股有限公司ALIBABA GROUP HLDG LTD",
+          "percent": 1.34
         },
         {
           "rank": 8,
-          "security": "FRANKLIN FTSE KOREA UCITS ETF",
-          "percent": 1.28
+          "security": "台積電TAIWAN SEMICONDUCTOR MFG CO LTD",
+          "percent": 1.25
         },
         {
           "rank": 9,
-          "security": "FRANKLIN FTSE TAIWAN UCITS ETF",
-          "percent": 1.27
+          "security": "INVESCO QQQ TRUST SERIES",
+          "percent": 1.16
         },
         {
           "rank": 10,
-          "security": "台積電TAIWAN SEMICONDUCTOR MFG CO LTD",
-          "percent": 1.16
+          "security": "FRANKLIN FTSE KOREA UCITS ETF",
+          "percent": 1.03
         }
       ],
       "unavailableFields": ["allocation"],
@@ -33127,61 +33155,61 @@
       "fundClassIds": ["mpfa-cf-818"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE STABLE FUND",
-      "factSheetFile": "MT00547.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00547.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "MyChoice.pdf",
+      "factSheetUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
-          "security": "NOMURA NF TOPIX ETF",
-          "percent": 2.86
+          "security": "FRANKLIN FTSE TAIWAN UCITS ETF",
+          "percent": 1.92
         },
         {
           "rank": 2,
-          "security": "TREASURY NOTE 4.5% 31/05/2029",
-          "percent": 2.06
+          "security": "TREASURY NOTE 3.75% 31/01/2031",
+          "percent": 1.75
         },
         {
           "rank": 3,
-          "security": "TREASURY NOTE 3.625% 15/08/2028",
-          "percent": 2
+          "security": "TREASURY NOTE 4.5% 31/05/2029",
+          "percent": 1.66
         },
         {
           "rank": 4,
-          "security": "滙豐控股HSBC HLDGS PLC",
-          "percent": 1.43
+          "security": "NOMURA NF TOPIX ETF",
+          "percent": 1.48
         },
         {
           "rank": 5,
-          "security": "盈富基金TRACKER FUND OF HK",
-          "percent": 1.35
+          "security": "ISHARES US TECHNOLOGY ETF",
+          "percent": 1.48
         },
         {
           "rank": 6,
-          "security": "騰訊控股TENCENT HLDGS LTD",
-          "percent": 1.29
+          "security": "滙豐控股HSBC HLDGS PLC",
+          "percent": 1.27
         },
         {
           "rank": 7,
-          "security": "CANADA (GOVERNMENT OF) 3.25% 01/12/2035",
-          "percent": 1.26
+          "security": "騰訊控股TENCENT HLDGS LTD",
+          "percent": 1.19
         },
         {
           "rank": 8,
-          "security": "阿里巴巴集團控股有限公司ALIBABA GROUP HLDG LTD",
-          "percent": 1.22
+          "security": "TREASURY NOTE 3.625% 15/08/2028",
+          "percent": 1.14
         },
         {
           "rank": 9,
-          "security": "GERMANY (FEDERAL REPUBLIC OF) 2.6% 15/08/2035",
-          "percent": 1.09
+          "security": "FRANCE (REPUBLIC OF) 3.5% 25/11/2035",
+          "percent": 1.05
         },
         {
           "rank": 10,
-          "security": "ISHARES CORE FTSE UCITS ETF GBP D",
-          "percent": 1.08
+          "security": "ITALY (REPUBLIC OF) RegS 2% 01/02/2028",
+          "percent": 1.03
         }
       ],
       "unavailableFields": ["allocation"],
@@ -33196,61 +33224,61 @@
       "fundClassIds": ["mpfa-cf-819"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE GLOBAL EQUITY FUND",
-      "factSheetFile": "MT00547.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00547.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "MyChoice.pdf",
+      "factSheetUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
-          "security": "NVIDIA CORP",
-          "percent": 4.19
+          "security": "INVESCO QQQ TRUST SERIES",
+          "percent": 5.82
         },
         {
           "rank": 2,
-          "security": "APPLE INC",
-          "percent": 3.33
+          "security": "ISHARES US TECHNOLOGY ETF",
+          "percent": 5.36
         },
         {
           "rank": 3,
-          "security": "MICROSOFT CORP",
-          "percent": 2.81
+          "security": "NVIDIA CORP",
+          "percent": 3.75
         },
         {
           "rank": 4,
-          "security": "ALPHABET INC CLASS A",
-          "percent": 2.81
+          "security": "FRANKLIN FTSE TAIWAN UCITS ETF",
+          "percent": 3.12
         },
         {
           "rank": 5,
-          "security": "INVESCO QQQ TRUST SERIES",
-          "percent": 2.68
+          "security": "APPLE INC",
+          "percent": 2.96
         },
         {
           "rank": 6,
-          "security": "AMAZON COM INC",
-          "percent": 2.04
+          "security": "ALPHABET INC CLASS A",
+          "percent": 2.58
         },
         {
           "rank": 7,
-          "security": "FRANKLIN FTSE TAIWAN UCITS ETF",
-          "percent": 1.92
+          "security": "MICROSOFT CORP",
+          "percent": 2.27
         },
         {
           "rank": 8,
-          "security": "BROADCOM INC",
-          "percent": 1.67
+          "security": "AMAZON COM INC",
+          "percent": 1.8
         },
         {
           "rank": 9,
-          "security": "NOMURA NF TOPIX ETF",
-          "percent": 1.65
+          "security": "BROADCOM INC",
+          "percent": 1.52
         },
         {
           "rank": 10,
-          "security": "ISHARES GLOBAL ENERGY ETF",
-          "percent": 1.5
+          "security": "AMUNDI S&P WORLD MATERIALS SCREENE",
+          "percent": 1.27
         }
       ],
       "unavailableFields": ["allocation"],
@@ -33265,61 +33293,61 @@
       "fundClassIds": ["mpfa-cf-820"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE ASIA EQUITY FUND",
-      "factSheetFile": "MT00547.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00547.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "MyChoice.pdf",
+      "factSheetUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
-          "security": "台積電TAIWAN SEMICONDUCTOR MFG CO LTD",
-          "percent": 9.16
+          "security": "SK HYNIX",
+          "percent": 9.06
         },
         {
           "rank": 2,
-          "security": "SAMSUNG ELECTRONICS",
-          "percent": 7.29
+          "security": "台積電TAIWAN SEMICONDUCTOR MFG CO LTD",
+          "percent": 8.78
         },
         {
           "rank": 3,
-          "security": "SK HYNIX",
-          "percent": 4.37
+          "security": "SAMSUNG ELECTRONICS",
+          "percent": 8.53
         },
         {
           "rank": 4,
-          "security": "COMMONWEALTH BANK OF AUSTRALIA",
-          "percent": 3.1
+          "security": "聯發科技股份有限公司MEDIATEK INC",
+          "percent": 2.88
         },
         {
           "rank": 5,
           "security": "BHP GROUP",
-          "percent": 2.29
+          "percent": 2.23
         },
         {
           "rank": 6,
-          "security": "台達電子DELTA ELECTRONICS",
-          "percent": 1.94
+          "security": "COMMONWEALTH BANK OF AUSTRALIA",
+          "percent": 1.96
         },
         {
           "rank": 7,
-          "security": "星展集團股有限公司DBS GROUP HOLDINGS Ltd",
-          "percent": 1.85
+          "security": "台達電子DELTA ELECTRONICS",
+          "percent": 1.87
         },
         {
           "rank": 8,
-          "security": "ICICI BANK",
-          "percent": 1.65
+          "security": "SK SQUARE",
+          "percent": 1.79
         },
         {
           "rank": 9,
-          "security": "HYUNDAI MOTOR",
-          "percent": 1.38
+          "security": "星展集團股有限公司DBS GROUP HOLDINGS Ltd",
+          "percent": 1.55
         },
         {
           "rank": 10,
-          "security": "鴻海精密HON HAI PRECISION INDUSTRY CO LTD",
-          "percent": 1.37
+          "security": "台光電ELITE MATERIAL CO LTD",
+          "percent": 1.33
         }
       ],
       "unavailableFields": ["allocation"],
@@ -33334,61 +33362,61 @@
       "fundClassIds": ["mpfa-cf-821"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE CHINA EQUITY FUND",
-      "factSheetFile": "MT00547.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00547.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "MyChoice.pdf",
+      "factSheetUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
           "security": "台積電TAIWAN SEMICONDUCTOR MFG CO LTD",
-          "percent": 9.76
+          "percent": 9.63
         },
         {
           "rank": 2,
           "security": "騰訊控股TENCENT HLDGS LTD",
-          "percent": 9.37
+          "percent": 8.01
         },
         {
           "rank": 3,
           "security": "阿里巴巴集團控股有限公司ALIBABA GROUP HLDG LTD",
-          "percent": 7.38
+          "percent": 5.4
         },
         {
           "rank": 4,
           "security": "台達電子DELTA ELECTRONICS",
-          "percent": 3.37
+          "percent": 3.83
         },
         {
           "rank": 5,
-          "security": "招商銀行H股CHINA MERCHANTS BANK H",
-          "percent": 3.02
+          "security": "台光電ELITE MATERIAL CO LTD",
+          "percent": 2.78
         },
         {
           "rank": 6,
-          "security": "中國平安H股PING AN INSURANCE CO LTD H",
-          "percent": 2.48
+          "security": "滙豐控股HSBC HLDGS PLC",
+          "percent": 2.77
         },
         {
           "rank": 7,
-          "security": "台光電ELITE MATERIAL CO LTD",
-          "percent": 2.36
+          "security": "招商銀行H股CHINA MERCHANTS BANK H",
+          "percent": 2.59
         },
         {
           "rank": 8,
-          "security": "香港交易所HONG KONG EXCHS & CLEARING LTD",
-          "percent": 2.36
+          "security": "網易股份有限公司NETEASE, INC",
+          "percent": 2.53
         },
         {
           "rank": 9,
-          "security": "網易股份有限公司NETEASE, INC",
-          "percent": 2.33
+          "security": "瑞昱半導體股份有限公司REALTEK SEMICONDUCTOR CORP.",
+          "percent": 2.35
         },
         {
           "rank": 10,
-          "security": "滙豐控股HSBC HLDGS PLC",
-          "percent": 2.28
+          "security": "香港交易所HONG KONG EXCHS & CLEARING LTD",
+          "percent": 2.33
         }
       ],
       "unavailableFields": ["allocation"],
@@ -33403,61 +33431,61 @@
       "fundClassIds": ["mpfa-cf-822"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE HONG KONG EQUITY FUND",
-      "factSheetFile": "MT00547.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00547.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "MyChoice.pdf",
+      "factSheetUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
           "security": "騰訊控股TENCENT HLDGS LTD",
-          "percent": 9.03
+          "percent": 9.81
         },
         {
           "rank": 2,
-          "security": "阿里巴巴集團控股有限公司ALIBABA GROUP HLDG LTD",
-          "percent": 8.18
+          "security": "滙豐控股HSBC HLDGS PLC",
+          "percent": 9.16
         },
         {
           "rank": 3,
-          "security": "滙豐控股HSBC HLDGS PLC",
-          "percent": 7.83
+          "security": "阿里巴巴集團控股有限公司ALIBABA GROUP HLDG LTD",
+          "percent": 8.23
         },
         {
           "rank": 4,
           "security": "中國建設銀行H股CHINA CONSTRUCTION BANK H",
-          "percent": 6.46
+          "percent": 5.96
         },
         {
           "rank": 5,
           "security": "友邦保險AIA GROUP LTD",
-          "percent": 4.11
+          "percent": 3.61
         },
         {
           "rank": 6,
-          "security": "中國工商銀行H股ICBC H",
-          "percent": 3.38
+          "security": "中國平安H股PING AN INSURANCE CO LTD H",
+          "percent": 3.25
         },
         {
           "rank": 7,
-          "security": "中國平安H股PING AN INSURANCE CO LTD H",
-          "percent": 3.2
+          "security": "LENOVO GROUP",
+          "percent": 2.7
         },
         {
           "rank": 8,
-          "security": "攜程集團TRIP.COM GROUP",
-          "percent": 2.96
+          "security": "美團點評MEITUAN DIANPING",
+          "percent": 2.67
         },
         {
           "rank": 9,
-          "security": "美團點評MEITUAN DIANPING",
-          "percent": 2.95
+          "security": "寧德時代CONTEMPORARY AMPEREX TECHNOLOGY CO LTD",
+          "percent": 2.64
         },
         {
           "rank": 10,
-          "security": "寧德時代CONTEMPORARY AMPEREX TECHNOLOGY CO LTD",
-          "percent": 2.42
+          "security": "株洲中車時代電氣股票有限公司- H股ZHUZHOU CRRC TIMES ELECTRIC (H)",
+          "percent": 2.61
         }
       ],
       "unavailableFields": ["allocation"],
@@ -33472,61 +33500,61 @@
       "fundClassIds": ["mpfa-cf-824"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE HONG KONG TRACKING FUND",
-      "factSheetFile": "MT00547.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00547.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "MyChoice.pdf",
+      "factSheetUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
-          "security": "騰訊控股TENCENT HLDGS LTD",
-          "percent": 7.87
+          "security": "滙豐控股HSBC HLDGS PLC",
+          "percent": 9.11
         },
         {
           "rank": 2,
-          "security": "滙豐控股HSBC HLDGS PLC",
-          "percent": 7.69
+          "security": "騰訊控股TENCENT HLDGS LTD",
+          "percent": 8.09
         },
         {
           "rank": 3,
           "security": "阿里巴巴集團控股有限公司ALIBABA GROUP HLDG LTD",
-          "percent": 7.33
+          "percent": 6.43
         },
         {
           "rank": 4,
-          "security": "友邦保險AIA GROUP LTD",
-          "percent": 5.7
+          "security": "中國建設銀行H股CHINA CONSTRUCTION BANK H",
+          "percent": 5.16
         },
         {
           "rank": 5,
-          "security": "中國建設銀行H股CHINA CONSTRUCTION BANK H",
-          "percent": 5.15
+          "security": "友邦保險AIA GROUP LTD",
+          "percent": 5
         },
         {
           "rank": 6,
-          "security": "小米集團XIAOMI CORP",
-          "percent": 3.7
+          "security": "中國工商銀行H股ICBC H",
+          "percent": 3.53
         },
         {
           "rank": 7,
-          "security": "中國工商銀行H股ICBC H",
-          "percent": 3.61
-        },
-        {
-          "rank": 8,
           "security": "中國移動H股CHINA MOBILE LTD H",
           "percent": 3.15
         },
         {
-          "rank": 9,
+          "rank": 8,
           "security": "香港交易所HONG KONG EXCHS & CLEARING LTD",
-          "percent": 2.99
+          "percent": 2.91
+        },
+        {
+          "rank": 9,
+          "security": "小米集團XIAOMI CORP",
+          "percent": 2.61
         },
         {
           "rank": 10,
           "security": "美團點評MEITUAN DIANPING",
-          "percent": 2.91
+          "percent": 2.53
         }
       ],
       "unavailableFields": ["allocation"],
@@ -33541,61 +33569,61 @@
       "fundClassIds": ["mpfa-cf-825"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE GLOBAL BOND FUND",
-      "factSheetFile": "MT00547.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00547.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "MyChoice.pdf",
+      "factSheetUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
-          "security": "USTN 4.25% 15/11/2034",
-          "percent": 13.55
+          "security": "USTN 4.375% 15/05/2036",
+          "percent": 14.66
         },
         {
           "rank": 2,
-          "security": "GERMANY 2.6% 15/08/2034 REGS",
-          "percent": 6.5
+          "security": "GERMANY 2.6% 15/08/2035 REGS",
+          "percent": 7.1
         },
         {
           "rank": 3,
-          "security": "GERMANY 2.6% 15/08/2035 REGS",
-          "percent": 6.5
+          "security": "USTN 4.375% 31/01/2032",
+          "percent": 7.07
         },
         {
           "rank": 4,
-          "security": "USTN 4.375% 31/01/2032",
-          "percent": 5.06
+          "security": "GERMANY 2.6% 15/08/2034 REGS",
+          "percent": 6.63
         },
         {
           "rank": 5,
           "security": "CHINA 2.8% 15/11/2032",
-          "percent": 4.44
+          "percent": 4.52
         },
         {
           "rank": 6,
           "security": "GERMANY 2.5% 11/10/2029 REGS",
-          "percent": 4.39
+          "percent": 4.19
         },
         {
           "rank": 7,
           "security": "USTB 4.5% 15/11/2054",
-          "percent": 3.7
+          "percent": 3.35
         },
         {
           "rank": 8,
           "security": "CHINA 2.05% 15/04/2029",
-          "percent": 3.35
+          "percent": 3.27
         },
         {
           "rank": 9,
           "security": "CHINA 1.35% 25/09/2026",
-          "percent": 2.92
+          "percent": 2.85
         },
         {
           "rank": 10,
-          "security": "JAPAN .1% 20/09/2028",
-          "percent": 2.79
+          "security": "JAPAN 1.1% 20/06/2034",
+          "percent": 2.49
         }
       ],
       "unavailableFields": ["allocation"],
@@ -33610,61 +33638,61 @@
       "fundClassIds": ["mpfa-cf-826"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE HKD BOND FUND",
-      "factSheetFile": "MT00547.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00547.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "MyChoice.pdf",
+      "factSheetUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
           "security": "HONG KONG MORTGAGE CORPORATION 3.45% 17/10/29",
-          "percent": 2.39
+          "percent": 2.41
         },
         {
           "rank": 2,
-          "security": "HONG KONG SAR OF THE PEOPLE'S REPUBLIC OF CHINA 1.89% 02/03/32",
-          "percent": 2.34
+          "security": "IFC DEVELOPMENT CORPORATE TREASURY LTD 2.67% 08/04/30",
+          "percent": 2.17
         },
         {
           "rank": 3,
-          "security": "IFC DEVELOPMENT CORPORATE TREASURY LTD 2.67% 08/04/30",
-          "percent": 2.18
+          "security": "HONG KONG SAR OF THE PEOPLE'S REPUBLIC OF CHINA 2.02% 07/03/34",
+          "percent": 2.16
         },
         {
           "rank": 4,
-          "security": "HONG KONG SAR OF THE PEOPLE'S REPUBLIC OF CHINA 2.02% 07/03/34",
-          "percent": 2.18
+          "security": "HONG KONG SAR OF THE PEOPLE'S REPUBLIC OF CHINA 1.89% 02/03/32",
+          "percent": 2.05
         },
         {
           "rank": 5,
-          "security": "URBAN RENEWAL AUTHORITY 3.45% 27/08/29",
-          "percent": 1.95
+          "security": "STATE GRID OVERSEAS INVESTMENT (BVI) LIMITED 2.85% 17/04/29",
+          "percent": 1.71
         },
         {
           "rank": 6,
-          "security": "STATE GRID OVERSEAS INVESTMENT (BVI) LIMITED 2.85% 17/04/29",
-          "percent": 1.75
+          "security": "URBAN RENEWAL AUTHORITY 3.45% 27/08/29",
+          "percent": 1.66
         },
         {
           "rank": 7,
-          "security": "MTR CORPORATION LIMITED DBA MTR CORPORATION 4.2% 01/03/34",
-          "percent": 1.72
+          "security": "ASB BANK LIMITED 1.4% 02/08/28",
+          "percent": 1.58
         },
         {
           "rank": 8,
-          "security": "AIRPORT AUTHORITY HONG KONG 4.1% 14/01/30",
-          "percent": 1.68
+          "security": "HONG KONG SAR OF THE PEOPLE'S REPUBLIC OF CHINA 3.74% 12/01/38",
+          "percent": 1.53
         },
         {
           "rank": 9,
           "security": "HONG KONG SAR OF THE PEOPLE'S REPUBLIC OF CHINA 2.7% 15/05/30",
-          "percent": 1.63
+          "percent": 1.5
         },
         {
           "rank": 10,
-          "security": "ASB BANK LIMITED 1.4% 02/08/28",
-          "percent": 1.57
+          "security": "AIRPORT AUTHORITY HONG KONG 4.05% 14/01/28",
+          "percent": 1.41
         }
       ],
       "unavailableFields": ["allocation"],
@@ -33679,61 +33707,61 @@
       "fundClassIds": ["mpfa-cf-827"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE MPF CONSERVATIVE FUND",
-      "factSheetFile": "MT00547.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00547.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "MyChoice.pdf",
+      "factSheetUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
-          "security": "OVERSEA-CHINESE BANKING CORPORATION LTD DEPOSITS 1-MTH 2.35% 10/04/2026",
-          "percent": 4.18
+          "security": "AUSTRALIA AND NEW ZEALAND BANKING GROUP LTD DEPOSITS 1-MTH 2.32% 20/07/2026",
+          "percent": 6.39
         },
         {
           "rank": 2,
-          "security": "DAH SING BANK LTD DEPOSITS 1-MTH 1.85% 02/04/2026",
-          "percent": 4.17
+          "security": "INDUSTRIAL AND COMMERCIAL BANK OF CHINA (ASIA) LTD DEPOSITS 1-MTH 2.54% 22/07/2026",
+          "percent": 5.89
         },
         {
           "rank": 3,
-          "security": "DZ BANK AG DEUTSCHE ZENTRAL-GENOSS 3% 19/05/2026",
-          "percent": 4.03
+          "security": "AGRICULTURAL BANK OF CHINA LTD DEPOSITS 1-MTH 2.65% 15/07/2026",
+          "percent": 4.43
         },
         {
           "rank": 4,
-          "security": "DZ BANK HONG KONG REGS NULL% 18/06/2026",
-          "percent": 3.91
+          "security": "DAH SING BANK LTD DEPOSITS 2-MTH 2.4% 04/08/2026",
+          "percent": 4.42
         },
         {
           "rank": 5,
-          "security": "TORONTO-DOMINION BANK (LONDON BRAN NULL% 20/08/2026",
-          "percent": 3.89
+          "security": "OVERSEA-CHINESE BANKING CORPORATION LTD DEPOSITS 1-MTH 2.14% 06/07/2026",
+          "percent": 4.18
         },
         {
           "rank": 6,
-          "security": "STANDARD CHARTERED BANK MTN REGS 3.875% 05/05/2026",
-          "percent": 3.59
+          "security": "DAH SING BANK LTD DEPOSITS 1-MTH 2.45% 23/07/2026",
+          "percent": 4.17
         },
         {
           "rank": 7,
-          "security": "DAH SING BANK LTD DEPOSITS 1-MTH 1.6% 13/04/2026",
-          "percent": 3.24
+          "security": "CHINA CONSTRUCTION BANK ASIA CORPORATION LTD DEPOSITS 1-MTH 2.55% 15/07/2026",
+          "percent": 4.17
         },
         {
           "rank": 8,
-          "security": "HONG KONG MORTGAGE CORP LTD MTN REGS 4.39% 10/06/2026",
-          "percent": 3.12
+          "security": "TORONTO-DOMINION BANK (LONDON BRAN NULL% 20/08/2026",
+          "percent": 4.15
         },
         {
           "rank": 9,
-          "security": "INDUSTRIAL AND COMMERCIAL BANK OF REGS 3.21% 15/05/2026",
-          "percent": 3.09
+          "security": "MACQUARIE BANK LTD MTN REGS 3.12% 28/08/2026",
+          "percent": 3.27
         },
         {
           "rank": 10,
-          "security": "KOREA DEVELOPMENT BANK (SINGAPORE MTN REGS 2.8% 26/06/2026",
-          "percent": 3.07
+          "security": "ASCENDAS REAL ESTATE INVESTMENT TR MTN 2.77% 03/08/2026",
+          "percent": 3.26
         }
       ],
       "unavailableFields": ["allocation"],
@@ -33748,61 +33776,61 @@
       "fundClassIds": ["mpfa-cf-1359"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE RMB & HKD MONEY MARKET FUND",
-      "factSheetFile": "MT00547.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00547.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "MyChoice.pdf",
+      "factSheetUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
-          "security": "CHINA DEVELOPMENT BK/HK SER 1.60% CD 03/06/2026",
-          "percent": 2.27
+          "security": "OVERSEA-CHINESE BANKING CORPORATION LTD 2.80% 02/07/2026",
+          "percent": 2.69
         },
         {
           "rank": 2,
-          "security": "SUMITOMO MITSUI BKG CORP 1.00% 08/04/2026",
-          "percent": 2.09
+          "security": "QNB FINANCE LTD SER EMTN 4.0525% 04/12/2026",
+          "percent": 1.88
         },
         {
           "rank": 3,
-          "security": "KOREA DEVELOPMENT BANK SER GMTN (REG S) 2.95% 14/06/2026",
-          "percent": 1.95
+          "security": "QNB FINANCE LTD SER EMTN (REG S) 4.00% 14/03/2027",
+          "percent": 1.88
         },
         {
           "rank": 4,
-          "security": "HANA BANK SER EMTN 2.03% 18/06/2026",
-          "percent": 1.95
+          "security": "SAUDI NTL BANK SG SER 2.00% CD 12/01/2027",
+          "percent": 1.86
         },
         {
           "rank": 5,
-          "security": "CHINA CONSTRUCT BK/TOKYO SER 0.00% CD 11/06/2026",
-          "percent": 1.94
+          "security": "SAUDI NTL BANK SG SER 2.11% CD 02/09/2026",
+          "percent": 1.86
         },
         {
           "rank": 6,
-          "security": "DAH SING BK LTD 1.95% 01/04/2026",
-          "percent": 1.81
+          "security": "IND & COMM BK CHINA/LUX SER 0.00% CD 23/07/2026",
+          "percent": 1.86
         },
         {
           "rank": 7,
-          "security": "CHINA CONSTR BK (ASIA) CORP 1.23% 24/04/2026",
-          "percent": 1.66
+          "security": "CHINA EVERBRIGHT BK/LUX SER 0.00% CD 24/07/2026",
+          "percent": 1.86
         },
         {
           "rank": 8,
-          "security": "AGRICULTURAL BANK OF CHINA (HK) 1.45% 24/04/2026",
-          "percent": 1.66
+          "security": "IND & COMM BK CHN/LONDON SER 0.00% CD 30/09/2026",
+          "percent": 1.86
         },
         {
           "rank": 9,
-          "security": "ROYAL BANK OF CANADA SER EMTN (BR) 3.40% 07/07/2026",
-          "percent": 1.63
+          "security": "CMS INTNTNL GEMSTONE SER EMTN (REG S) 3.30% 18/09/2026",
+          "percent": 1.56
         },
         {
           "rank": 10,
-          "security": "KOREA DEVELOPMENT BANK SER EMTN (REG S) (BR) 3.05% 26/06/2026",
-          "percent": 1.63
+          "security": "ROYAL BANK OF CANADA SER EMTN (BR) 3.40% 07/07/2026",
+          "percent": 1.55
         }
       ],
       "unavailableFields": ["allocation"],
@@ -33817,61 +33845,61 @@
       "fundClassIds": ["mpfa-cf-1543"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE CORE ACCUMULATION FUND",
-      "factSheetFile": "MT00547.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00547.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "MyChoice.pdf",
+      "factSheetUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
-          "security": "NVIDIA CORP",
-          "percent": 2.41
+          "security": "ISHARES US TECHNOLOGY ETF",
+          "percent": 5.88
         },
         {
           "rank": 2,
-          "security": "SPDR GOLD SHARES",
-          "percent": 2.09
+          "security": "INVESCO QQQ TRUST SERIES",
+          "percent": 2.56
         },
         {
           "rank": 3,
-          "security": "NOMURA NF TOPIX ETF",
-          "percent": 1.96
+          "security": "FRANKLIN FTSE TAIWAN UCITS ETF",
+          "percent": 2.34
         },
         {
           "rank": 4,
-          "security": "ALPHABET INC CLASS A",
-          "percent": 1.87
+          "security": "NVIDIA CORP",
+          "percent": 2.14
         },
         {
           "rank": 5,
           "security": "APPLE INC",
-          "percent": 1.85
+          "percent": 1.81
         },
         {
           "rank": 6,
-          "security": "ISHARES CORE S&P 500 ETF",
-          "percent": 1.67
+          "security": "ALPHABET INC CLASS A",
+          "percent": 1.71
         },
         {
           "rank": 7,
-          "security": "MICROSOFT CORP",
-          "percent": 1.59
+          "security": "TREASURY NOTE (OLD) 4.125% 15/02/2036",
+          "percent": 1.66
         },
         {
           "rank": 8,
-          "security": "TREASURY NOTE 0.875% 15/11/2030",
-          "percent": 1.46
+          "security": "FRANKLIN FTSE KOREA UCITS ETF",
+          "percent": 1.54
         },
         {
           "rank": 9,
-          "security": "TREASURY NOTE (2OLD) 3.5% 31/01/2028",
-          "percent": 1.45
+          "security": "TREASURY NOTE 3.5% 31/01/2028",
+          "percent": 1.31
         },
         {
           "rank": 10,
-          "security": "ISHARES GLOBAL ENERGY ETF",
-          "percent": 1.33
+          "security": "TREASURY NOTE 0.875% 15/11/2030",
+          "percent": 1.3
         }
       ],
       "unavailableFields": ["allocation"],
@@ -33886,61 +33914,268 @@
       "fundClassIds": ["mpfa-cf-1544"],
       "schemeName": "My Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "MY CHOICE AGE 65 PLUS FUND",
-      "factSheetFile": "MT00547.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00547.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "MyChoice.pdf",
+      "factSheetUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
-          "security": "TREASURY NOTE 0.875% 15/11/2030",
-          "percent": 3.06
+          "security": "TREASURY NOTE (OLD) 4.125% 15/02/2036",
+          "percent": 3.55
         },
         {
           "rank": 2,
-          "security": "TREASURY NOTE (2OLD) 3.5% 31/01/2028",
-          "percent": 3.04
+          "security": "TREASURY NOTE 3.5% 31/01/2028",
+          "percent": 2.81
         },
         {
           "rank": 3,
-          "security": "ITALY (REPUBLIC OF) RegS 2.2% 01/06/2027",
-          "percent": 2.64
+          "security": "TREASURY NOTE 0.875% 15/11/2030",
+          "percent": 2.79
         },
         {
           "rank": 4,
-          "security": "TREASURY NOTE 0.625% 31/12/2027",
-          "percent": 2.54
+          "security": "ISHARES US TECHNOLOGY ETF",
+          "percent": 2.21
         },
         {
           "rank": 5,
           "security": "TREASURY NOTE 1.625% 15/08/2029",
-          "percent": 2.29
+          "percent": 2.1
         },
         {
           "rank": 6,
-          "security": "GERMANY (FEDERAL REPUBLIC OF) RegS 2.5% 16/04/2031",
-          "percent": 1.97
+          "security": "TREASURY NOTE 3.75% 31/01/2031",
+          "percent": 1.89
         },
         {
           "rank": 7,
-          "security": "TREASURY NOTE 1.25% 31/05/2028",
-          "percent": 1.87
+          "security": "TREASURY NOTE 3.75% 15/08/2027",
+          "percent": 1.8
         },
         {
           "rank": 8,
-          "security": "TREASURY NOTE 3.875% 30/11/2027",
-          "percent": 1.86
+          "security": "TREASURY NOTE 1.25% 31/05/2028",
+          "percent": 1.71
         },
         {
           "rank": 9,
-          "security": "TREASURY BOND 3.125% 15/02/2043",
-          "percent": 1.64
+          "security": "TREASURY NOTE 3.875% 30/11/2027",
+          "percent": 1.68
         },
         {
           "rank": 10,
-          "security": "TREASURY NOTE (OTR) 3.75% 31/03/2028",
-          "percent": 1.48
+          "security": "TREASURY BOND 3.125% 15/02/2043",
+          "percent": 1.52
+        }
+      ],
+      "unavailableFields": ["allocation"],
+      "unavailableReasons": {
+        "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
+      }
+    },
+    {
+      "fundClassIds": ["mpfa-cf-2399"],
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "MY CHOICE EUROPEAN QUALITY TRACKER FUND",
+      "factSheetFile": "MyChoice.pdf",
+      "factSheetUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
+      "allocations": [],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "ASML HOLDING NV EUR0.09 (POST SPLIT)",
+          "percent": 6.16
+        },
+        {
+          "rank": 2,
+          "security": "NOVARTIS AG-REG CHF0.50 (REGD)",
+          "percent": 4.72
+        },
+        {
+          "rank": 3,
+          "security": "ASTRAZENECA PLC ORD USD0.25",
+          "percent": 4.56
+        },
+        {
+          "rank": 4,
+          "security": "NESTLE SA-REG CHF0.10 (REGD)",
+          "percent": 4.33
+        },
+        {
+          "rank": 5,
+          "security": "ROCHE HOLDING AG",
+          "percent": 4.3
+        },
+        {
+          "rank": 6,
+          "security": "NOVO NORDISK A/S-B",
+          "percent": 3.61
+        },
+        {
+          "rank": 7,
+          "security": "ABB LTD-REG CHF1.03 (REGD)",
+          "percent": 3.36
+        },
+        {
+          "rank": 8,
+          "security": "ROLLS-ROYCE HOLDINGS PLC",
+          "percent": 2.75
+        },
+        {
+          "rank": 9,
+          "security": "UNILEVER PLC",
+          "percent": 2.73
+        },
+        {
+          "rank": 10,
+          "security": "ALLIANZ SE-REG ALV",
+          "percent": 2.72
+        }
+      ],
+      "unavailableFields": ["allocation"],
+      "unavailableReasons": {
+        "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
+      }
+    },
+    {
+      "fundClassIds": ["mpfa-cf-2400"],
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "MY CHOICE CHINESE GOVERNMENT AND POLICY BANK BOND INDEX FUND",
+      "factSheetFile": "MyChoice.pdf",
+      "factSheetUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
+      "allocations": [],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "CHINA (GOVT) 3.81% 14SEP2050(INTERBANK)",
+          "percent": 6.52
+        },
+        {
+          "rank": 2,
+          "security": "CHINA (GOVT OF) SER 1910 (REG) 3.86% 22JUL2049(INTERBANK)",
+          "percent": 5.79
+        },
+        {
+          "rank": 3,
+          "security": "CHINA (GOVT OF) SER INBK (REG) 3.39% 16MAR2050(INTERBANK)",
+          "percent": 5.65
+        },
+        {
+          "rank": 4,
+          "security": "CHINA (GOVT OF) SER INBK (REG) 3% 15OCT2053(INTERBANK)",
+          "percent": 5.43
+        },
+        {
+          "rank": 5,
+          "security": "CHINA (GOVT OF) SER 1824 (REG) 4.08% 22OCT2048(INTERBANK)",
+          "percent": 4.54
+        },
+        {
+          "rank": 6,
+          "security": "CHINA (GOVT OF) SER INBK (REG) 3.73% 25MAY2070(INTERBANK)",
+          "percent": 4.42
+        },
+        {
+          "rank": 7,
+          "security": "CHINA (GOVT OF) SER INBK (REG) 3.72% 12APR2051(INTERBANK)",
+          "percent": 4.09
+        },
+        {
+          "rank": 8,
+          "security": "CHINA (GOVT OF) SER INBK (REG) 3.76% 22MAR2071(INTERBANK)",
+          "percent": 3.8
+        },
+        {
+          "rank": 9,
+          "security": "CHINA (GOVT OF) SER INBK (REG) 3.53% 18OCT2051(INTERBANK)",
+          "percent": 3.55
+        },
+        {
+          "rank": 10,
+          "security": "CHINA (GOVT OF) SER INBK (REG) 3.19% 15APR2053(INTERBANK)",
+          "percent": 3.39
+        }
+      ],
+      "unavailableFields": ["allocation"],
+      "unavailableReasons": {
+        "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
+      },
+      "unavailableKinds": {
+        "allocation": "chart-only"
+      }
+    },
+    {
+      "fundClassIds": ["mpfa-cf-2401"],
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "MY CHOICE AMERICAS EQUITY FUND",
+      "factSheetFile": "MyChoice.pdf",
+      "factSheetUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
+      "allocations": [],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "NVIDIA CORP",
+          "percent": 6.98
+        },
+        {
+          "rank": 2,
+          "security": "APPLE INC",
+          "percent": 5.98
+        },
+        {
+          "rank": 3,
+          "security": "MICROSOFT CORP",
+          "percent": 4.42
+        },
+        {
+          "rank": 4,
+          "security": "AMAZON.COM.INC",
+          "percent": 3.67
+        },
+        {
+          "rank": 5,
+          "security": "ALPHABET INC CLASS A",
+          "percent": 3.16
+        },
+        {
+          "rank": 6,
+          "security": "BROADCOM",
+          "percent": 2.83
+        },
+        {
+          "rank": 7,
+          "security": "ALPHABET INC CLASS C",
+          "percent": 2.6
+        },
+        {
+          "rank": 8,
+          "security": "META PLATFORMS INC CLASS A",
+          "percent": 2.17
+        },
+        {
+          "rank": 9,
+          "security": "BERKSHIRE HATHAWAY B",
+          "percent": 1.71
+        },
+        {
+          "rank": 10,
+          "security": "ADVANCED MICRO DEVICES",
+          "percent": 1.68
         }
       ],
       "unavailableFields": ["allocation"],
