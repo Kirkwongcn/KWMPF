@@ -65,8 +65,13 @@ export type TitleSelector = {
   minLeft?: number;
   maxLeft?: number;
   maxTop?: number;
-  /** 同一版重覆出現標題時只取最上面一個（例如被水印或隱藏文字重覆）。 */
-  onePerPage?: boolean;
+  /**
+   * 整版疊印的版面。永明每一版都把另外一至兩版（有時係上兩季的舊版）成版疊印上去，
+   * 幾個標題同樣落喺 top≈82，座標分唔開。但內容流一定係逐版順住寫：先寫本頁自己
+   * 嗰版，再寫疊上去嗰版。所以每頁取最先落筆嗰個標題，並且只讀到下一個標題落筆為止
+   * ——由嗰度開始嘅文字屬於疊上去嗰版，唔可以當成本頁嘅披露。
+   */
+  overlaidPages?: boolean;
   /** 便覽的中文版重覆同一批基金時，只保留第一次出現的區段。 */
   dedupeByName?: boolean;
   /** 由標題原文取成分基金名稱（例如去掉項目符號或計劃前綴）。 */
@@ -188,6 +193,11 @@ export type FactSheetSection = {
   className?: string;
   start: { page: number; top: number };
   end: { page: number; top: number };
+  /**
+   * 整版疊印時，本頁自己嗰一層嘅落筆範圍上界（見 `TitleSelector.overlaidPages`）。
+   * 座標同疊上去嗰版完全重疊，只有呢個界分得開。
+   */
+  layer?: { page: number; endDrawIndex: number };
 };
 
 const PERCENT_ITEM = /^\(?([+-]?\d+(?:\.\d+)?)\s*%\)?$/;
@@ -313,22 +323,47 @@ function matchesTitle(item: PdfTextItem, selector: TitleSelector) {
   return true;
 }
 
+type TitleLayer = { title: PdfTextItem; endDrawIndex: number };
+
+/**
+ * 逐版切出「本頁自己嗰一層」。取最先落筆嗰個標題，界線係同一版下一個標題落筆嗰刻
+ * （見 `TitleSelector.overlaidPages`）。座標排序會蓋過落筆次序，所以要靠 `drawIndex`。
+ */
+function pageLayers(matched: PdfTextItem[]): TitleLayer[] {
+  const byPage = new Map<number, PdfTextItem[]>();
+  for (const item of matched) {
+    const titles = byPage.get(item.page);
+    if (titles) titles.push(item);
+    else byPage.set(item.page, [item]);
+  }
+  return [...byPage.entries()]
+    .sort(([a], [b]) => a - b)
+    .flatMap(([, titles]) => {
+      const drawn = titles.toSorted((a, b) => a.drawIndex - b.drawIndex);
+      const own = drawn[0];
+      if (!own) return [];
+      return [{ title: own, endDrawIndex: drawn[1]?.drawIndex ?? Number.POSITIVE_INFINITY }];
+    });
+}
+
 /** 以基金標題切開便覽，每個區段由一個標題開始，去到下一個標題為止。 */
 export function findSections(
   pages: PdfPage[],
   selector: TitleSelector,
 ): FactSheetSection[] {
   const matched = documentOrder(pages).filter((item) => matchesTitle(item, selector));
-  const perPage = selector.onePerPage
-    ? matched.filter((item, index) => item.page !== matched[index - 1]?.page)
-    : matched;
+  const perPage = selector.overlaidPages
+    ? pageLayers(matched)
+    : matched.map((title) => ({ title, endDrawIndex: Number.POSITIVE_INFINITY }));
   // 部分便覽把基金名稱在同一版重覆（頁首加頁尾），連續同名的標題屬同一個區段。
-  const titles = perPage.filter((item, index) => item.text !== perPage[index - 1]?.text);
+  const titles = perPage.filter(
+    (layer, index) => layer.title.text !== perPage[index - 1]?.title.text,
+  );
   const lastPage = pages.at(-1);
   if (!lastPage) throw new Error("Fact sheet has no pages");
 
-  const sections = titles.map((item, index) => {
-    const next = titles[index + 1];
+  const sections = titles.map(({ title: item, endDrawIndex }, index) => {
+    const next = titles[index + 1]?.title;
     return {
       name: selector.name ? selector.name(item.text, item) : item.text,
       ...(selector.className?.(item.text, item)
@@ -338,6 +373,9 @@ export function findSections(
       end: next
         ? { page: next.page, top: next.top }
         : { page: lastPage.number, top: Number.POSITIVE_INFINITY },
+      ...(Number.isFinite(endDrawIndex)
+        ? { layer: { page: item.page, endDrawIndex } }
+        : {}),
     };
   });
 
@@ -350,11 +388,19 @@ export function findSections(
     : sections;
 }
 
+/** 疊上去嗰版嘅文字。座標同本頁自己嗰層完全重疊，只有落筆次序分得開。 */
+function overlaid(item: PdfTextItem, section: FactSheetSection) {
+  const layer = section.layer;
+  return (
+    layer !== undefined && item.page === layer.page && item.drawIndex >= layer.endDrawIndex
+  );
+}
+
 function withinSection(item: PdfTextItem, section: FactSheetSection) {
   if (item.page < section.start.page || item.page > section.end.page) return false;
   if (item.page === section.start.page && item.top < section.start.top) return false;
   if (item.page === section.end.page && item.top >= section.end.top) return false;
-  return true;
+  return !overlaid(item, section);
 }
 
 function sectionItems(pages: PdfPage[], section: FactSheetSection) {
@@ -458,7 +504,10 @@ function blockLines(
     const lines = toLines({
       ...page,
       items: page.items.filter(
-        (item) => item.left >= band.minLeft && item.left <= band.maxLeft,
+        (item) =>
+          item.left >= band.minLeft &&
+          item.left <= band.maxLeft &&
+          !overlaid(item, section),
       ),
     });
 
