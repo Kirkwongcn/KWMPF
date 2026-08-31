@@ -23,5 +23,10 @@
     "scheme": "Sun Life Rainbow MPF Scheme",
     "factSheetUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
     "file": "SunLife_Rainbow.pdf"
+  },
+  {
+    "scheme": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+    "factSheetUrl": "https://www.hangseng.com/cms/pws/files/pdfs/FFS.pdf",
+    "file": "HangSeng_SuperTrustPlus.pdf"
   }
 ]
