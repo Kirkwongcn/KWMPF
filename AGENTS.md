@@ -85,7 +85,7 @@ MPF Navigator 檔案的 Sheet1（風險取向配置比重）不在範圍內，�
 覆蓋報告：`bun run coverage:fact-sheet-allocation-report --platform <平台快照> --links
 <fund-fact-sheet-links.json> --fact-sheets <PDF 目錄> --output <report.json>`。報告逐個計劃
 列出已配對數、未配對清單及原因、以及配對到但官方未披露的原因。2026-08-31 以 24 份便覽跑
-（五個計劃用受託人官網那期、其餘用積金局副本）：382 隻成分基金中 377 隻配對到，
+（六個計劃用受託人官網那期、其餘用積金局副本）：382 隻成分基金中 377 隻配對到，
 309 隻有配置、351 隻有十大持倉。餘下缺口主要是圖表式披露：宏利環球精選的配置畫成條形圖、
 永明畫成圓環圖（受託人版一樣係向量，文字層一個字都冇）、我的強積金的圓餅圖標註共用基線，
 全部走 `unavailableFields` 並寫明原因。
@@ -111,9 +111,10 @@ MPF Navigator 檔案的 Sheet1（風險取向配置比重）不在範圍內，�
 
 每筆披露帶住 `factSheetSource`（`trustee` 或 `mpfa-registry`）及 `factSheetUrl`，
 詳情頁按來源講明措辭並連去實際用咗嗰份便覽——用咗副本就要明講「受託人官網那一期未能取得」，
-不可扮成最新版。2026-08-31 抄錄了 BCT 四個計劃（Simple、Smart、Series 800、Industry Choice）
-及永明彩虹（`Rainbow_MPF_Quarterly_Update.pdf`，2026-06-30），資料新三至六個月；
-餘下 19 個計劃仍待抄錄。
+不可扮成最新版。2026-08-31 抄錄了 BCT 四個計劃（Simple、Smart、Series 800、Industry Choice）、
+永明彩虹（`Rainbow_MPF_Quarterly_Update.pdf`，2026-06-30）及恒生 SuperTrust Plus
+（`FFS.pdf`，2026-06-30，積金局副本 2025-12-31），資料新三至六個月；
+餘下 18 個計劃仍待抄錄。
 
 換版面時要一併重跑覆蓋報告比對：Series 800 換到 2026-03-31 那期先揭發配置欄的註腳 `3`
 落在 446，撞入原本去到 460 的持倉欄，令整張十大持倉表報唔可用。兩個 band 唔可以重疊。
