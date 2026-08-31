@@ -85,8 +85,8 @@ MPF Navigator 檔案的 Sheet1（風險取向配置比重）不在範圍內，�
 覆蓋報告：`bun run coverage:fact-sheet-allocation-report --platform <平台快照> --links
 <fund-fact-sheet-links.json> --fact-sheets <PDF 目錄> --output <report.json>`。報告逐個計劃
 列出已配對數、未配對清單及原因、以及配對到但官方未披露的原因。2026-08-31 以 24 份便覽跑
-（六個計劃用受託人官網那期、其餘用積金局副本）：382 隻成分基金中 377 隻配對到，
-309 隻有配置、351 隻有十大持倉。餘下缺口主要是圖表式披露：宏利環球精選的配置畫成條形圖、
+（九個計劃用受託人官網那期、其餘用積金局副本）：382 隻成分基金中 378 隻配對到，
+310 隻有配置、352 隻有十大持倉。餘下缺口主要是圖表式披露：宏利環球精選的配置畫成條形圖、
 永明畫成圓環圖（受託人版一樣係向量，文字層一個字都冇）、我的強積金的圓餅圖標註共用基線，
 全部走 `unavailableFields` 並寫明原因。
 
@@ -95,7 +95,7 @@ MPF Navigator 檔案的 Sheet1（風險取向配置比重）不在範圍內，�
 （現時 `data/sources/2026-08-31/`），由 `fact-sheet-disclosure-lookup.ts` 讀取——同 `fact-sheet-lookup.ts`
 一樣只認 `YYYY-MM-DD` 目錄、取最新一個帶有該檔的批次。`publication-seed` 逐個基金類別查，
 查到就把 `factSheetDisclosure` 寫入 payload，`/fund-classes/:id` 原樣送出。
-451 個基金類別中 446 個有披露。
+451 個基金類別中 447 個有披露。
 
 ## Fact sheet source: trustee first, MPFA registry as fallback
 
@@ -111,10 +111,17 @@ MPF Navigator 檔案的 Sheet1（風險取向配置比重）不在範圍內，�
 
 每筆披露帶住 `factSheetSource`（`trustee` 或 `mpfa-registry`）及 `factSheetUrl`，
 詳情頁按來源講明措辭並連去實際用咗嗰份便覽——用咗副本就要明講「受託人官網那一期未能取得」，
-不可扮成最新版。2026-08-31 抄錄了 BCT 四個計劃（Simple、Smart、Series 800、Industry Choice）、
-永明彩虹（`Rainbow_MPF_Quarterly_Update.pdf`，2026-06-30）及恒生 SuperTrust Plus
-（`FFS.pdf`，2026-06-30，積金局副本 2025-12-31），資料新三至六個月；
-餘下 18 個計劃仍待抄錄。
+不可扮成最新版。2026-08-31 抄錄咗 BCT 四個計劃（Simple、Smart、Series 800、Industry Choice）、
+永明彩虹（`Rainbow_MPF_Quarterly_Update.pdf`，2026-06-30）、恒生 SuperTrust Plus
+（`FFS.pdf`，2026-06-30，積金局副本 2025-12-31）、友邦 Prime Value Choice
+（月度 Fund Performance Review，2026-05-31，積金局副本 2025-11-30）、中銀保誠 Easy-Choice
+（季度 Fund Fact Sheet，2026-06-30，積金局副本 2026-03-31）及交通銀行 Joyful Retirement
+（季度 Fund Fact Sheet，2026-06-30，積金局副本 2025-12-31），資料新三至六個月；
+餘下 15 個計劃仍待抄錄。
+
+友邦那期同時揭發一個真缺口：積金局 2025-11-30 副本未收錄 Retirement Income Fund，
+換上受託人版之後 21 隻成分基金全部有齊配置及十大持倉，配對數同十大持倉數各 +1。
+中銀保誠、交通銀行換版後覆蓋數字不變（配置、持倉照舊各 16 隻、14 隻），純粹換新期別。
 
 換版面時要一併重跑覆蓋報告比對：Series 800 換到 2026-03-31 那期先揭發配置欄的註腳 `3`
 落在 446，撞入原本去到 460 的持倉欄，令整張十大持倉表報唔可用。兩個 band 唔可以重疊。
