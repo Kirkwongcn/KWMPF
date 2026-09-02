@@ -1,4 +1,6 @@
 import {
+  CJK,
+  NUMERIC_FRAGMENT,
   documentOrder,
   joinItems,
   toLines,
@@ -171,6 +173,13 @@ export type BlockSelector = {
 export type FactSheetContract = {
   scheme: string;
   /**
+   * 呢份契約淨係啱用嘅來源。冇填就兩個來源（`trustee`／`mpfa-registry`）共用同一份
+   * 契約——依家 23/24 個計劃嘅受託人官網版面同積金局副本一致，唔使分開。海通受託人
+   * 官網係完全唔同嘅版面（長條圖式，數值印喺圖表末端），先要按來源分成兩份契約；
+   * 同一 `scheme` 可以有多過一份契約，逐份各自聲明自己嘅 `source`。
+   */
+  source?: FactSheetSource;
+  /**
    * 平台的成分基金名稱前綴，而便覽的標題冇（BCT 平台寫「BCT (Pro) Asian Equity Fund」，
    * 便覽寫「Asian Equity Fund」）。配對時由平台那邊剝走。這是逐個計劃訂明的固定前綴，
    * 唔係模糊比對。
@@ -207,8 +216,6 @@ const BARE_TRAILING = /^(.*?\S)[\s.·]+([+-]?\d+\.\d+)$/;
 // 名次可以係「1.」「1、」或者淨係「1 」。要求數字後面有分隔或空白，
 // 否則會把「3M Co」的 3 當成名次。
 const RANK_PREFIX = /^(\d{1,2})(?:\s*[.、)．]\s*|\s+)/;
-// 中日韓文字、中文標點、全形字符，加上便覽當全形斜線用的 `╱`。
-const CJK = /[╱╲　-〿㐀-鿿豈-﫿＀-￯]/;
 
 /**
  * 接駁跨行的名稱。中文標籤換行時原文並沒有空格（「亞太股票（中國內地╱香港╱」＋
@@ -248,7 +255,11 @@ function inReadingOrder(items: PdfTextItem[]) {
 
 /**
  * 由同一列的文字段落砌出名稱。同一行的用水平空隙決定要唔要空格（中銀保誠會把
- * 一個數字拆成幾段）；跨行的用 `joinLabel`（換行的中文標籤唔應該加空格）。
+ * 一個數字拆成幾段），空隙量到 0 但 poppler 喺嗰度開咗一個新詞就補返一個空格
+ * （`startsWord`：中英對照的證券名喺文字層黐埋，見 `markWordStarts`）——但兩段都係
+ * 數值碎片（`NUMERIC_FRAGMENT`）就唔信 `startsWord`：poppler 一樣會把 `8.8%` 切成
+ * `8` `.` `8` `%` 四個「詞」，一律當有空格會拆散名次前面／後面嗰個數值。跨行的用
+ * `joinLabel`（換行的中文標籤唔應該加空格）。
  */
 function joinLabelItems(items: PdfTextItem[]) {
   let text = "";
@@ -256,7 +267,12 @@ function joinLabelItems(items: PdfTextItem[]) {
   for (const item of items) {
     if (previous === undefined) text = item.text;
     else if (Math.abs(item.top - previous.top) <= SAME_ROW) {
-      text += item.left - (previous.left + previous.width) > 1 ? ` ${item.text}` : item.text;
+      const numericFragment =
+        NUMERIC_FRAGMENT.test(text.at(-1) ?? "") && NUMERIC_FRAGMENT.test(item.text[0] ?? "");
+      const separated =
+        item.left - (previous.left + previous.width) > 1 ||
+        (item.startsWord === true && !numericFragment);
+      text += separated ? ` ${item.text}` : item.text;
     } else text = joinLabel(text, item.text);
     previous = item;
   }

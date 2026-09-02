@@ -1,4 +1,4 @@
-import type { FactSheetContract } from "./fact-sheet-allocation";
+import type { FactSheetContract, FactSheetSource } from "./fact-sheet-allocation";
 
 /**
  * 每個計劃一個抽取契約。標題錨點、欄界及日期式樣逐個計劃訂明，
@@ -395,7 +395,11 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
     asOf: { pattern: AS_OF_SLASH },
   },
   {
+    // 積金局便覽庫嗰份，版面全大寫標題、密集報告式配置表，持倉數字帶 `%`。
+    // 受託人官網（gthtam.com.hk）嘅「Fund Monitor」係完全唔同嘅長條圖式版面
+    // （數值印喺圖表末端、持倉數字唔帶 `%`），要用底下 `source: "trustee"` 嗰份契約。
     scheme: "Haitong MPF Retirement Fund",
+    source: "mpfa-registry",
     title: {
       pattern: /FUND$/,
       fontSize: [14],
@@ -407,6 +411,43 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       headingLabel: (text) => text,
     },
     holdings: { heading: /^TOP TEN HOLDINGS$/ },
+    asOf: { pattern: AS_OF_SLASH },
+  },
+  {
+    // 受託人官網「Fund Monitor」：長條圖式配置，英文、中文、百分比分成三段獨立文字，
+    // 百分比印喺圖表末端（隨數值大小左右浮動），唔跟英文標籤排喺同一行——三段之間
+    // 得返幾 pt 嘅垂直落差，`rowGap` 先合併得返一整列。
+    scheme: "Haitong MPF Retirement Fund",
+    source: "trustee",
+    title: {
+      pattern: /Fund$/,
+      fontSize: [17, 18],
+      fontFamily: /Arial$/,
+      fontColor: ["#ffffff"],
+      maxLeft: 400,
+    },
+    allocation: {
+      heading: /^ASSET ALLOCATION/,
+      headingLabel: (text) => text,
+      // 右欄（配置圖表及十大持倉）由 left≈420 起，左欄（基金描述、基金表現、
+      // 曆年回報表）止於 left≈400 內，留咗足夠容差。
+      band: { minLeft: 420, maxLeft: 900 },
+      // 圖表下面有一行座標軸刻度（例如 `0% 10% 20% 30% 40%`），跟正常一行「標籤+數值」
+      // 長得一樣，但冇標籤——一律以 `0%` 起首，唔理後面幾多個刻度、跳幾多都要剔走，
+      // 否則會屈埋做「有數值冇名稱」，累到成個配置表當官方未提供。
+      ignore: /^0%(\s+\d+%)+$/,
+      // 英文標籤、百分比、中文標籤三段分別排喺 top 相差 4 至 10 pt，行距唔靠版位對齊，
+      // 逐行讀會拆散成三段獨立、冇法配對嘅碎片。同一列嘅三段最多相差 7 pt，
+      // 下一列嘅英文標籤同呢一列最後一段最少相差 14 pt，8 夾喺中間，兩頭都留返容差。
+      rowGap: 8,
+    },
+    holdings: {
+      heading: /^TOP TEN HOLDINGS$/,
+      band: { minLeft: 420, maxLeft: 900 },
+      // 持倉數字唔帶 `%`（標題已寫「% of Net Asset Value」）。
+      numberFormat: "bare",
+      valueMinLeft: 700,
+    },
     asOf: { pattern: AS_OF_SLASH },
   },
   {
@@ -606,8 +647,23 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
   },
 ];
 
-export function factSheetContract(scheme: string) {
-  const contract = FACT_SHEET_CONTRACTS.find((candidate) => candidate.scheme === scheme);
-  if (!contract) throw new Error(`No fact sheet allocation contract for ${scheme}`);
+/** 逐個計劃嘅 scheme 名，去重但保留 `FACT_SHEET_CONTRACTS` 入面首次出現嘅次序。 */
+export const FACT_SHEET_SCHEMES: string[] = [
+  ...new Set(FACT_SHEET_CONTRACTS.map((contract) => contract.scheme)),
+];
+
+/**
+ * 揀返嗰個 scheme 適用嘅契約：先搵聲明咗 `source` 同呢次來源相符嗰份，
+ * 揾唔到就退而求其次揀冇聲明 `source`（兩個來源共用）嗰份。兩樣都揾唔到就報錯，
+ * 唔可以夾硬用另一個來源嘅契約去讀呢份便覽。
+ */
+export function factSheetContract(scheme: string, source: FactSheetSource) {
+  const candidates = FACT_SHEET_CONTRACTS.filter((contract) => contract.scheme === scheme);
+  const contract =
+    candidates.find((candidate) => candidate.source === source) ??
+    candidates.find((candidate) => candidate.source === undefined);
+  if (!contract) {
+    throw new Error(`No fact sheet allocation contract for ${scheme} (source: ${source})`);
+  }
   return contract;
 }
