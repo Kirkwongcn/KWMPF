@@ -78,5 +78,10 @@
     "scheme": "HSBC Mandatory Provident Fund - SuperTrust Plus",
     "factSheetUrl": "https://www.hsbc.com.hk/content/dam/hsbc/hk/docs/mpf/2q2026.pdf",
     "file": "HSBC_SuperTrustPlus.pdf"
+  },
+  {
+    "scheme": "Haitong MPF Retirement Fund",
+    "factSheetUrl": "https://gthtam.com.hk/hti_content/images/mpf/Haitong_MPF_Conservative_Fund/FundDocument/4/en-US/Haitong%20MPF%20Conservative%20Fund%20-%20Fund%20Monitor.pdf",
+    "file": "Haitong_FundMonitor.pdf"
   }
 ]

@@ -21,6 +21,12 @@ export type PdfTextItem = {
   fontFamily: string;
   fontColor: string;
   text: string;
+  /**
+   * poppler 自己切詞時，有冇喺呢一段的左界開一個新詞（見 `markWordStarts`）。
+   * `true` 即係原文喺呢度有空格，即使兩段的座標黐到冇空隙。冇跑過 `markWordStarts`
+   * 就係 `undefined`，接字時只靠水平空隙判斷。
+   */
+  startsWord?: boolean;
 };
 
 export type PdfPage = {
@@ -120,16 +126,106 @@ export function documentOrder(pages: PdfPage[]): PdfTextItem[] {
     );
 }
 
+/** 中日韓文字、中文標點、全形字符，加上便覽當全形斜線用的 `╱`。 */
+export const CJK = /[╱╲　-〿㐀-鿿豈-﫿＀-￯]/;
+
+const BBOX_PAGE = /<page width="([\d.]+)"/;
+const BBOX_WORD = /<word xMin="([\d.]+)" yMin="([\d.]+)"[^>]*>/g;
+
 /**
- * 把同一行的文字段落接成一句。中銀保誠那份把 `8.4%` 拆成 `8` `.` `4` `%` 四段，
- * 一律加空格會變成 `8 . 4 %`，等於改寫原文；所以只有兩段之間真係有水平空隙先加空格，
- * 緊貼的直接接埋。
+ * 座標對位的容差，用 `pdftohtml` 的整數格計。兩份輸出來自同一個 PDF，只差單位換算
+ * 同四捨五入：量過海通那份，1045 段對得上的文字裏面 1036 段偏差喺 1 pt 以內。同一頁
+ * 最貼的兩行相隔 5 pt，所以 2 pt 容差夾唔到隔籬行。
+ */
+const WORD_START_TOLERANCE = 2;
+
+function bboxPageWordStarts(xml: string) {
+  return xml
+    .split(/(?=<page width=")/)
+    .flatMap((chunk) => {
+      const header = chunk.match(BBOX_PAGE);
+      if (!header?.[1]) return [];
+      return [
+        {
+          width: Number(header[1]),
+          starts: [...chunk.matchAll(BBOX_WORD)].map((word) => ({
+            x: Number(word[1]),
+            y: Number(word[2]),
+          })),
+        },
+      ];
+    });
+}
+
+/**
+ * 用 `pdftotext -bbox` 的切詞結果標記每段文字係咪一個詞的開頭。
+ *
+ * 中英對照的標籤及證券名喺文字層量到的水平空隙可以係 0——前一段的字寬啱啱食到下一段
+ * 的左界——但印出嚟兩者之間確實有空格（海通那份的 `Bonds` ＋ `債券`）。淨靠空隙判斷
+ * 會黐埋，等於改寫原文。反過來又唔可以一律喺中英交界加空格：同一份便覽的
+ * `Bond` ＋ `債券` 係一個詞 `Bond債券`，`SK` ＋ `海力士` 亦然；而中銀保誠把 `8.4%`
+ * 拆成 `8` `.` `4` `%` 四段，加空格會變成 `8 . 4 %`。
+ *
+ * poppler 自己有一套切詞（`pdftotext -bbox` 逐個 `<word>` 輸出），切喺邊就係原文邊度
+ * 有空格。同一個 PDF 的兩份輸出用同一套座標，只差單位（`pdftohtml` 的頁闊 ÷ `pdftotext`
+ * 的頁闊），對得返位。`pdftohtml` 用咗 `-hidden` 會多咗隱藏文字層，`pdftotext` 冇——
+ * 對唔到位的段落 `startsWord` 係 `false`，退返去只靠空隙判斷，同以前一樣。
+ */
+export function markWordStarts(pages: PdfPage[], bboxXml: string): PdfPage[] {
+  const bboxPages = bboxPageWordStarts(bboxXml);
+  return pages.map((page) => {
+    // `pdftotext -bbox` 的 `<page>` 冇頁碼，逐版順住輸出，所以第 N 版對 `number` 係 N。
+    const bbox = bboxPages[page.number - 1];
+    if (!bbox || bbox.width === 0) return page;
+    const scale = page.width / bbox.width;
+    const starts = new Set(
+      bbox.starts.map(
+        (start) => `${Math.round(start.x * scale)}:${Math.round(start.y * scale)}`,
+      ),
+    );
+    return {
+      ...page,
+      items: page.items.map((item) => ({
+        ...item,
+        startsWord: withinTolerance(starts, item.left, item.top),
+      })),
+    };
+  });
+}
+
+function withinTolerance(starts: Set<string>, left: number, top: number) {
+  for (let x = left - WORD_START_TOLERANCE; x <= left + WORD_START_TOLERANCE; x += 1) {
+    for (let y = top - WORD_START_TOLERANCE; y <= top + WORD_START_TOLERANCE; y += 1) {
+      if (starts.has(`${x}:${y}`)) return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * 數字、小數點、千分位逗號、正負號、百分號——同一個數值可能拆成的碎片。中銀保誠
+ * 把 `8.8%` 拆成 `8` `.` `8` `%` 四段緊貼的文字，`pdftotext -bbox` 把呢四段當四個獨立
+ * 詞輸出（`startsWord` 全部 `true`），但印出嚟明明係一個數字冇空格。呢個唔係
+ * `markWordStarts` 對唔中座標，而係 poppler 切詞本身唔理會「是否同一個數值」；
+ * 兩段都屬呢個字符集就唔可以信 `startsWord`，一律退返靠水平空隙判斷。
+ */
+export const NUMERIC_FRAGMENT = /[\d.,%+-]/;
+
+/**
+ * 把同一行的文字段落接成一句。兩段之間真係有水平空隙，或者 poppler 喺後一段開咗一個
+ * 新詞（`startsWord`，見 `markWordStarts`）先加空格，其餘緊貼的直接接埋——但兩段都係
+ * 數值碎片（見 `NUMERIC_FRAGMENT`）就唔信 `startsWord`，只認水平空隙。
  */
 export function joinItems(items: PdfTextItem[], gap = 1) {
   let text = "";
   let right: number | undefined;
   for (const item of items) {
-    if (right !== undefined) text += item.left - right > gap ? " " : "";
+    if (right !== undefined) {
+      const hasGap = item.left - right > gap;
+      const numericFragment =
+        NUMERIC_FRAGMENT.test(text.at(-1) ?? "") && NUMERIC_FRAGMENT.test(item.text[0] ?? "");
+      text += hasGap || (item.startsWord === true && !numericFragment) ? " " : "";
+    }
     text += item.text;
     right = item.left + item.width;
   }

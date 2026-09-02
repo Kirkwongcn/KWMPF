@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { joinItems, parsePdfXml, toLines } from "../src/pdf-xml";
+import { joinItems, markWordStarts, parsePdfXml, toLines } from "../src/pdf-xml";
 import {
   findFactSheetAsOf,
   findSections,
@@ -43,6 +43,35 @@ function pdf(...pages: string[]) {
   return parsePdfXml(`<pdf2xml>${pages.join("")}</pdf2xml>`);
 }
 
+/** `pdftohtml -xml` 同 `pdftotext -bbox` 兩份輸出的頁闊比例，同真實便覽一樣係 1.5 倍。 */
+const BBOX_SCALE = 1.5;
+
+/**
+ * `pdftotext -bbox` 的切詞輸出：逐頁列明 poppler 喺邊個座標開一個新詞。座標用
+ * `page()` 那一套（`pdftohtml` 的整數格）寫，由呢度換算返 `pdftotext` 的點數，
+ * 等測試連 `markWordStarts` 的換算及容差一齊行過。
+ */
+function wordStarts(...pages: { left: number; top: number }[][]) {
+  const point = (value: number) => (value / BBOX_SCALE).toFixed(6);
+  const body = pages
+    .map(
+      (starts) =>
+        `<page width="${(900 / BBOX_SCALE).toFixed(6)}" height="${(1200 / BBOX_SCALE).toFixed(6)}">${starts
+          .map(
+            ({ left, top }) =>
+              `<word xMin="${point(left)}" yMin="${point(top)}" xMax="${point(left + 10)}" yMax="${point(top + 10)}">w</word>`,
+          )
+          .join("")}</page>`,
+    )
+    .join("");
+  return `<html><body>${body}</body></html>`;
+}
+
+/** `page()` 砌出嚟的頁，加埋 poppler 的切詞標記——即 `factSheetPages()` 真正餵落嚟那一種。 */
+function pdfWithWords(pages: string[], starts: { left: number; top: number }[][]) {
+  return markWordStarts(pdf(...pages), wordStarts(...starts));
+}
+
 const baseContract = {
   scheme: "Test Scheme",
   title: { pattern: /Fund$/, size: undefined },
@@ -62,6 +91,64 @@ describe("joinItems", () => {
       ]),
     );
     expect(joinItems(first!.items)).toBe("8.4% of NAV");
+  });
+
+  it("separates touching runs where poppler starts a new word", () => {
+    // 海通「安老基金」的 `Bonds 債券`：兩段之間量到的空隙係 0（前一段的字寬啱啱食到
+    // 下一段的左界），但 poppler 切成兩個詞，即原文印住有空格。座標抄自真實便覽。
+    const [first] = pdfWithWords(
+      [
+        page(1, [
+          { top: 697, left: 513, text: "Bonds", width: 25 },
+          { top: 696, left: 538, text: "債券", width: 18 },
+        ]),
+      ],
+      [[{ left: 513, top: 697 }, { left: 538, top: 696 }]],
+    );
+    // 兩段的 `top` 差 1 pt，同真實便覽一樣；靠 `toLines` 併返一行先排得返左右次序。
+    expect(toLines(first!)[0]?.text).toBe("Bonds 債券");
+  });
+
+  it("glues touching runs that poppler calls one word", () => {
+    // 同一份便覽的「強積金保守基金」印住 `Bond債券`——中英交界但係一個詞。唔可以
+    // 一律喺中英交界加空格，否則呢度會改寫原文。座標抄自真實便覽。
+    const [first] = pdfWithWords(
+      [
+        page(1, [
+          { top: 174, left: 583, text: "Bond", width: 13 },
+          { top: 173, left: 596, text: "債券", width: 12 },
+        ]),
+      ],
+      [[{ left: 583, top: 174 }]],
+    );
+    expect(toLines(first!)[0]?.text).toBe("Bond債券");
+  });
+
+  it("ignores a word start that belongs to the line above", () => {
+    // 同一頁最貼的兩行相隔 5 pt，容差 2 pt 唔可以夾到隔籬行嗰個詞頭。
+    const [first] = pdfWithWords(
+      [
+        page(1, [
+          { top: 15, left: 100, text: "Bond", width: 13 },
+          { top: 15, left: 113, text: "債券", width: 12 },
+        ]),
+      ],
+      [[{ left: 100, top: 15 }, { left: 113, top: 10 }]],
+    );
+    expect(toLines(first!)[0]?.text).toBe("Bond債券");
+  });
+
+  it("falls back to the horizontal gap when the word oracle was not run", () => {
+    // 單元測試砌的頁冇跑過 `markWordStarts`，`startsWord` 係 `undefined`，
+    // 接字只靠空隙——同加呢個訊號之前一樣。
+    const [first] = pdf(
+      page(1, [
+        { top: 10, left: 100, text: "Bonds", width: 25 },
+        { top: 10, left: 125, text: "債券", width: 18 },
+        { top: 10, left: 200, text: "of NAV", width: 40 },
+      ]),
+    );
+    expect(joinItems(first!.items)).toBe("Bonds債券 of NAV");
   });
 });
 
@@ -657,6 +744,111 @@ describe("unextractable blocks", () => {
 
     expect(disclosure?.allocations).toEqual([]);
     expect(disclosure?.unavailableKinds.allocation).toBe("values-without-names");
+  });
+});
+
+/**
+ * 海通受託人官網「Fund Monitor」：長條圖式配置，英文標籤、百分比、中文標籤三段
+ * 分別排喺 top 相差 4 至 10 pt（唔跟正常表格對齊喺同一行），圖表底下仲有一行
+ * 座標軸刻度（`0% 10% 20% 30% ...`），同真正嘅資料行長得一樣但冇標籤。座標抄自
+ * 真實便覽（`ASSET ALLOCATION (BY SECTORS)`，2026-07-31 那期）。
+ */
+const haitongTrusteeShaped: FactSheetContract = {
+  scheme: "Test Scheme",
+  title: { pattern: /Fund$/, fontSize: [18] },
+  allocation: {
+    heading: /^ASSET ALLOCATION/,
+    headingLabel: (text) => text,
+    band: { minLeft: 420, maxLeft: 900 },
+    ignore: /^0%(\s+\d+%)+$/,
+    rowGap: 8,
+  },
+  holdings: {
+    heading: /^TOP TEN HOLDINGS$/,
+    band: { minLeft: 420, maxLeft: 900 },
+    numberFormat: "bare",
+    valueMinLeft: 700,
+  },
+  asOf: { pattern: /As of\s+(\d{1,2}\/\d{1,2}\/\d{4})/i },
+};
+
+describe("Haitong trustee bar chart", () => {
+  it("merges the English label, bar value and Chinese label despite the vertical offset", () => {
+    const pages = pdf(
+      page(1, [
+        { top: 10, left: 30, text: "as of 31/07/2026", width: 110 },
+        { top: 20, left: 30, text: "Haitong Hong Kong SAR Fund", size: 18, width: 210 },
+        { top: 114, left: 451, text: "ASSET ALLOCATION (BY SECTORS)", width: 242 },
+        { top: 148, left: 471, text: "Financials & Insurance", width: 75 },
+        { top: 153, left: 769, text: "37.94%", width: 25 },
+        { top: 157, left: 488, text: "金融及保險", width: 41 },
+        { top: 170, left: 518, text: "TMT", width: 15 },
+        { top: 176, left: 646, text: "15.19%", width: 25 },
+        { top: 180, left: 505, text: "電訊多媒體", width: 41 },
+        // 座標軸刻度：以 `0%` 起首，冇標籤，唔屬於任何一項配置。
+        { top: 332, left: 548, text: "0%", width: 10 },
+        { top: 332, left: 602, text: "10%", width: 14 },
+        { top: 332, left: 657, text: "20%", width: 14 },
+        { top: 332, left: 712, text: "30%", width: 14 },
+        { top: 332, left: 768, text: "40%", width: 14 },
+        { top: 359, left: 445, text: "TOP TEN HOLDINGS", width: 120 },
+        { top: 426, left: 722, text: "10.02", width: 25 },
+        { top: 427, left: 439, text: "HSBC Holdings PLC", width: 83 },
+      ]),
+    );
+    const [disclosure] = parseFactSheetDisclosures(pages, haitongTrusteeShaped);
+
+    expect(disclosure?.allocations).toEqual([
+      {
+        heading: "ASSET ALLOCATION (BY SECTORS)",
+        entries: [
+          { label: "Financials & Insurance 金融及保險", percent: 37.94 },
+          { label: "TMT 電訊多媒體", percent: 15.19 },
+        ],
+      },
+    ]);
+    expect(disclosure?.topHoldings).toEqual([
+      { rank: 1, security: "HSBC Holdings PLC", percent: 10.02 },
+    ]);
+    expect(disclosure?.unavailableFields).toEqual([]);
+  });
+
+  it("does not mistake the axis tick row for a values-without-names gap", () => {
+    // 冚唪唥剔走軸線之後，得返一項真正嘅配置，唔可以因為軸線而報成官方未提供。
+    // 呢一版印住 `Bond債券`（poppler 切成一個詞），唔同「安老基金」嗰版的 `Bonds 債券`。
+    const pages = pdfWithWords(
+      [
+        page(1, [
+          { top: 10, left: 30, text: "as of 31/07/2026", width: 110 },
+          { top: 20, left: 30, text: "Haitong MPF Conservative Fund", size: 18, width: 230 },
+          { top: 105, left: 434, text: "ASSET ALLOCATION (BY SECTORS)", width: 243 },
+          { top: 173, left: 596, text: "債券", width: 12 },
+          { top: 174, left: 583, text: "Bond", width: 13 },
+          { top: 181, left: 586, text: "23.18%", width: 19 },
+          { top: 332, left: 548, text: "0%", width: 10 },
+          { top: 332, left: 602, text: "50%", width: 14 },
+          { top: 359, left: 445, text: "TOP TEN HOLDINGS", width: 120 },
+        ]),
+      ],
+      [
+        [
+          { left: 30, top: 10 },
+          { left: 30, top: 20 },
+          { left: 434, top: 105 },
+          { left: 583, top: 174 },
+          { left: 586, top: 181 },
+          { left: 548, top: 332 },
+          { left: 602, top: 332 },
+          { left: 445, top: 359 },
+        ],
+      ],
+    );
+    const [disclosure] = parseFactSheetDisclosures(pages, haitongTrusteeShaped);
+
+    expect(disclosure?.allocations[0]?.entries).toEqual([
+      { label: "Bond債券", percent: 23.18 },
+    ]);
+    expect(disclosure?.unavailableKinds.allocation).toBeUndefined();
   });
 });
 
