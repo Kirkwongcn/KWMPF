@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-02T02:12:27.193Z",
+  "generatedAt": "2026-09-02T08:28:06.641Z",
   "platformSnapshot": "data/sources/2026-08-29/mpf-fund-platform.json",
   "factSheetBatch": "data/sources/2026-08-28/fund-fact-sheet-links.json",
   "funds": [
@@ -29215,16 +29215,16 @@
       "fundClassIds": ["mpfa-cf-362"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Hong Kong Bond Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [],
       "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "10 rows disclose a percentage without an extractable security name: \"3.80%\", \"2.22%\", \"2.10%\""
+        "topHoldings": "10 rows disclose a percentage without an extractable security name: \"3.80%\", \"2.09%\", \"2.09%\""
       },
       "unavailableKinds": {
         "allocation": "chart-only",
@@ -29235,60 +29235,60 @@
       "fundClassIds": ["mpfa-cf-363"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Growth Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
-          "security": "iShares Core FTSE 100 UCITS ETF",
-          "percent": 3.68
+          "security": "iShares Treasury Bond ETF",
+          "percent": 5.29
         },
         {
           "rank": 2,
-          "security": "iShares MSCI Canada ETF",
-          "percent": 2.19
+          "security": "Lyxor Core MSCI World (DR) UCITS ETF",
+          "percent": 3.33
         },
         {
           "rank": 3,
-          "security": "Lyxor Core MSCI World (DR) UCITS ETF",
-          "percent": 1.77
+          "security": "iShares U.S. Technology ETF",
+          "percent": 2.09
         },
         {
           "rank": 4,
-          "security": "HSBC Holdings PLC.滙豐控股",
-          "percent": 1.72
+          "security": "iShares MSCI India ETF",
+          "percent": 1.92
         },
         {
           "rank": 5,
-          "security": "Tencent Holdings Ltd.騰訊控股",
-          "percent": 1.61
+          "security": "HSBC Term Deposit 3.34% 02/07/2026",
+          "percent": 1.78
         },
         {
           "rank": 6,
-          "security": "Alibaba Group Holding Ltd.阿里巴巴集團",
-          "percent": 1.6
+          "security": "HSBC Holdings PLC.滙豐控股",
+          "percent": 1.51
         },
         {
           "rank": 7,
-          "security": "iShares US Basic Materials ETF",
-          "percent": 1.26
+          "security": "Tencent Holdings Ltd.騰訊控股",
+          "percent": 1.3
         },
         {
           "rank": 8,
-          "security": "HSBC Term Deposit 3.13% 01/04/2026",
-          "percent": 1.05
+          "security": "Alibaba Group Holding Ltd.阿里巴巴集團",
+          "percent": 1.11
         },
         {
           "rank": 9,
-          "security": "TSMC台灣積體電路製造股份",
+          "security": "iShares MSCI Taiwan ETF",
           "percent": 1.04
         },
         {
           "rank": 10,
-          "security": "iShares Treasury Bond ETF",
+          "security": "iShares U.S. Financials ETF",
           "percent": 1
         }
       ],
@@ -29304,61 +29304,61 @@
       "fundClassIds": ["mpfa-cf-364"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Stable Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
           "security": "Hong Kong Government Bond 2.02% 07/03/2034",
-          "percent": 2.49
+          "percent": 2.43
         },
         {
           "rank": 2,
-          "security": "HKMA Exchange Fund Bill (Series 91) 01/04/2026",
-          "percent": 1.47
+          "security": "General Property Trust 2.2% 18/11/2030",
+          "percent": 1.34
         },
         {
           "rank": 3,
-          "security": "NBN Co. Ltd. 4.8% 07/12/2033",
-          "percent": 1.38
-        },
-        {
-          "rank": 4,
-          "security": "General Property Trust 2.2% 18/11/2030",
-          "percent": 1.37
-        },
-        {
-          "rank": 5,
-          "security": "AGI Finance Pty Ltd 4.66% 28/01/2032",
-          "percent": 1.35
-        },
-        {
-          "rank": 6,
-          "security": "Ausgrid Finance Pty Ltd. 4.51% 03/03/2030",
+          "security": "NBN Co Ltd. 4.8% 07/12/2033",
           "percent": 1.33
         },
         {
-          "rank": 7,
-          "security": "AIA Group Ltd. 3.78% 10/09/2029",
+          "rank": 4,
+          "security": "AGI Finance Pty Ltd 4.66% 28/01/2032",
           "percent": 1.32
+        },
+        {
+          "rank": 5,
+          "security": "Ausgrid Finance Pty Ltd. 4.51% 03/03/2030",
+          "percent": 1.29
+        },
+        {
+          "rank": 6,
+          "security": "AIA Group Ltd. 3.78% 10/09/2029",
+          "percent": 1.29
+        },
+        {
+          "rank": 7,
+          "security": "Hong Kong Mortgage Corporation Ltd. 3.45% 17/10/2029",
+          "percent": 1.29
         },
         {
           "rank": 8,
-          "security": "Hong Kong Mortgage Corporation Ltd. 3.45% 17/10/2029",
-          "percent": 1.32
+          "security": "HKCG (Finance) Ltd. 1.98% 08/10/2030",
+          "percent": 1.17
         },
         {
           "rank": 9,
-          "security": "HKCG (Finance) Ltd. 1.98% 08/10/2030",
-          "percent": 1.2
+          "security": "Standard Chartered Plc 3.996% 28/05/2030",
+          "percent": 1.13
         },
         {
           "rank": 10,
           "security": "Commonwealth Bank of Australia 4.22% 04/03/2035",
-          "percent": 1.17
+          "percent": 1.13
         }
       ],
       "unavailableFields": ["allocation"],
@@ -29373,16 +29373,16 @@
       "fundClassIds": ["mpfa-cf-365"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Interest Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [],
       "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "10 rows disclose a percentage without an extractable security name: \"1.52%\", \"1.48%\", \"1.32%\""
+        "topHoldings": "10 rows disclose a percentage without an extractable security name: \"1.59%\", \"1.59%\", \"1.48%\""
       },
       "unavailableKinds": {
         "allocation": "chart-only",
@@ -29393,16 +29393,16 @@
       "fundClassIds": ["mpfa-cf-366"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Conservative Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [],
       "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "10 rows disclose a percentage without an extractable security name: \"3.50%\", \"2.50%\", \"2.50%\""
+        "topHoldings": "10 rows disclose a percentage without an extractable security name: \"3.88%\", \"3.88%\", \"3.62%\""
       },
       "unavailableKinds": {
         "allocation": "chart-only",
@@ -29413,61 +29413,61 @@
       "fundClassIds": ["mpfa-cf-367"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Hong Kong Equity Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
           "security": "滙豐控股",
-          "percent": 9.15
+          "percent": 9.66
         },
         {
           "rank": 2,
           "security": "騰訊控股",
-          "percent": 8.47
+          "percent": 8.2
         },
         {
           "rank": 3,
           "security": "阿里巴巴集團",
-          "percent": 8.36
+          "percent": 7.07
         },
         {
           "rank": 4,
-          "security": "友邦保險",
-          "percent": 5.04
+          "security": "中國建設銀行",
+          "percent": 4.82
         },
         {
           "rank": 5,
-          "security": "中國建設銀行",
-          "percent": 4.83
+          "security": "友邦保險",
+          "percent": 4.15
         },
         {
           "rank": 6,
           "security": "工商銀行",
-          "percent": 3.29
+          "percent": 3.07
         },
         {
           "rank": 7,
           "security": "香港交易所",
-          "percent": 2.8
+          "percent": 2.54
         },
         {
           "rank": 8,
           "security": "中國平安保險",
-          "percent": 2.27
+          "percent": 2.34
         },
         {
           "rank": 9,
-          "security": "小米集團",
-          "percent": 2.1
+          "security": "建滔積層板控股有限公司",
+          "percent": 1.81
         },
         {
           "rank": 10,
-          "security": "比亞迪",
-          "percent": 1.83
+          "security": "比亞迪股份有限公司",
+          "percent": 1.5
         }
       ],
       "unavailableFields": ["allocation"],
@@ -29482,16 +29482,16 @@
       "fundClassIds": ["mpfa-cf-368"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF International Equity Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [],
       "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "10 rows disclose a percentage without an extractable security name: \"4.70%\", \"4.03%\", \"3.18%\""
+        "topHoldings": "10 rows disclose a percentage without an extractable security name: \"3.88%\", \"2.85%\", \"2.34%\""
       },
       "unavailableKinds": {
         "allocation": "chart-only",
@@ -29502,16 +29502,16 @@
       "fundClassIds": ["mpfa-cf-369"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF European Equity Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [],
       "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "10 rows disclose a percentage without an extractable security name: \"14.85%\", \"6.84%\", \"2.86%\""
+        "topHoldings": "9 rows disclose a percentage without an extractable security name: \"10.01%\", \"4.71%\", \"3.58%\""
       },
       "unavailableKinds": {
         "allocation": "chart-only",
@@ -29522,16 +29522,16 @@
       "fundClassIds": ["mpfa-cf-370"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Pacific Asia Equity Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [],
       "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "3 rows disclose a percentage without an extractable security name: \"6.04%\", \"3.77%\", \"1.47%\""
+        "topHoldings": "4 rows disclose a percentage without an extractable security name: \"7.20%\", \"7.17%\", \"1.69%\""
       },
       "unavailableKinds": {
         "allocation": "chart-only",
@@ -29542,16 +29542,16 @@
       "fundClassIds": ["mpfa-cf-371"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Japan Equity Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [],
       "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "10 rows disclose a percentage without an extractable security name: \"5.04%\", \"4.62%\", \"4.24%\""
+        "topHoldings": "10 rows disclose a percentage without an extractable security name: \"4.78%\", \"4.74%\", \"4.22%\""
       },
       "unavailableKinds": {
         "allocation": "chart-only",
@@ -29562,16 +29562,16 @@
       "fundClassIds": ["mpfa-cf-372"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF International Bond Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [],
       "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "10 rows disclose a percentage without an extractable security name: \"3.03%\", \"2.84%\", \"2.45%\""
+        "topHoldings": "10 rows disclose a percentage without an extractable security name: \"3.07%\", \"2.86%\", \"2.47%\""
       },
       "unavailableKinds": {
         "allocation": "chart-only",
@@ -29582,16 +29582,16 @@
       "fundClassIds": ["mpfa-cf-373"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Fidelity Growth Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [],
       "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "6 rows disclose a percentage without an extractable security name: \"6.69%\", \"3.58%\", \"2.64%\""
+        "topHoldings": "6 rows disclose a percentage without an extractable security name: \"5.83%\", \"4.72%\", \"4.01%\""
       },
       "unavailableKinds": {
         "allocation": "chart-only",
@@ -29602,81 +29602,130 @@
       "fundClassIds": ["mpfa-cf-374"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Fidelity Stable Growth Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "HSBC Global Funds ICAV - Global Government Bond UCITS ETF",
+          "percent": 7.31
+        },
+        {
+          "rank": 2,
+          "security": "CSOP FTSE Hong Kong Equity ETF",
+          "percent": 6.29
+        },
+        {
+          "rank": 3,
+          "security": "Invesco QQQ Trust",
+          "percent": 4.75
+        },
+        {
+          "rank": 4,
+          "security": "USTN 4.375% 15/05/2036",
+          "percent": 3.01
+        },
+        {
+          "rank": 5,
+          "security": "HSBC Japan Index Fund Institutional Accumulation HKD",
+          "percent": 2.93
+        },
+        {
+          "rank": 6,
+          "security": "iShares U.S. Technology ETF",
+          "percent": 2.75
+        },
+        {
+          "rank": 7,
+          "security": "iShares Core CSI 300 ETF安碩核心滬深 300 ETF",
+          "percent": 2.7
+        },
+        {
+          "rank": 8,
+          "security": "HSBC European Index Fund Institutional Accumulation HKD",
+          "percent": 2.18
+        },
+        {
+          "rank": 9,
+          "security": "Bundesrepub Deutschland 2.6% 15/08/2035",
+          "percent": 1.43
+        },
+        {
+          "rank": 10,
+          "security": "USTN 4.375% 31/01/2032",
+          "percent": 1.42
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "1 rows disclose a percentage without an extractable security name: \"2. 5.40%\""
+        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "values-without-names"
+        "allocation": "chart-only"
       }
     },
     {
       "fundClassIds": ["mpfa-cf-375"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF China Value Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
           "security": "TSMC台灣積體電路製造股份",
-          "percent": 9.68
+          "percent": 9.6
         },
         {
           "rank": 2,
           "security": "Tencent Holdings Ltd.騰訊控股",
-          "percent": 8.17
-        },
-        {
-          "rank": 3,
-          "security": "Alibaba Group Holding Ltd.阿里巴巴集團",
           "percent": 6.31
         },
         {
-          "rank": 4,
+          "rank": 3,
           "security": "HSBC Holdings PLC.滙豐控股",
-          "percent": 5.4
+          "percent": 5.16
+        },
+        {
+          "rank": 4,
+          "security": "Alibaba Group Holding Ltd.阿里巴巴集團",
+          "percent": 4.04
         },
         {
           "rank": 5,
           "security": "Delta Electronic台達電子",
-          "percent": 3.67
+          "percent": 3.54
         },
         {
           "rank": 6,
-          "security": "HKEX香港交易所",
-          "percent": 1.77
+          "security": "Elite Material Co., Ltd.台光電子材料股份有限公司",
+          "percent": 2.22
         },
         {
           "rank": 7,
-          "security": "Elite Material Co., Ltd.台光電子材料股份有限公司",
-          "percent": 1.69
+          "security": "MediaTek Inc.聯發科技",
+          "percent": 1.88
         },
         {
           "rank": 8,
-          "security": "AIA Group Ltd.友邦保險",
-          "percent": 1.6
+          "security": "HKEX香港交易所",
+          "percent": 1.53
         },
         {
           "rank": 9,
-          "security": "Contemporary Amperex Technology Co., Ltd.",
-          "percent": 1.58
+          "security": "Unimicron Technology Corp.欣興電子股份有限公司",
+          "percent": 1.44
         },
         {
           "rank": 10,
-          "security": "China Construction Bank Corp.中國建設銀行",
-          "percent": 1.55
+          "security": "CTBC Financial Holding Co., Ltd.中信金控",
+          "percent": 1.42
         }
       ],
       "unavailableFields": ["allocation"],
@@ -29691,16 +29740,16 @@
       "fundClassIds": ["mpfa-cf-376"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Aggressive Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [],
       "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "5 rows disclose a percentage without an extractable security name: \"3.83%\", \"3.13%\", \"2.41%\""
+        "topHoldings": "6 rows disclose a percentage without an extractable security name: \"4.14%\", \"2.31%\", \"2.22%\""
       },
       "unavailableKinds": {
         "allocation": "chart-only",
@@ -29711,16 +29760,16 @@
       "fundClassIds": ["mpfa-cf-377"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF North American Equity Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [],
       "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "10 rows disclose a percentage without an extractable security name: \"6.89%\", \"6.26%\", \"4.60%\""
+        "topHoldings": "10 rows disclose a percentage without an extractable security name: \"6.29%\", \"5.67%\", \"5.21%\""
       },
       "unavailableKinds": {
         "allocation": "chart-only",
@@ -29731,61 +29780,61 @@
       "fundClassIds": ["mpfa-cf-695"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Healthcare Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
           "security": "Eli Lilly and Co.",
-          "percent": 9.23
+          "percent": 9.78
         },
         {
           "rank": 2,
           "security": "Johnson & Johnson",
-          "percent": 6.66
+          "percent": 7.29
         },
         {
           "rank": 3,
-          "security": "AstraZeneca PLC",
-          "percent": 6.25
+          "security": "AbbVie Inc.",
+          "percent": 5.18
         },
         {
           "rank": 4,
-          "security": "AbbVie Inc.",
-          "percent": 5.02
+          "security": "AstraZeneca PLC",
+          "percent": 5.08
         },
         {
           "rank": 5,
           "security": "Amgen Inc.",
-          "percent": 4.08
+          "percent": 4.16
         },
         {
           "rank": 6,
-          "security": "Medtronic plc",
-          "percent": 3.2
+          "security": "UnitedHealth Group Inc.",
+          "percent": 3.19
         },
         {
           "rank": 7,
-          "security": "Roche Holding AG",
-          "percent": 3
+          "security": "Roche Holding Ltd",
+          "percent": 3.17
         },
         {
           "rank": 8,
-          "security": "Regeneron Pharmaceuticals Inc.",
-          "percent": 2.71
+          "security": "Vertex Pharmaceuticals Inc.",
+          "percent": 2.85
         },
         {
           "rank": 9,
-          "security": "Vertex Pharmaceuticals",
-          "percent": 2.7
+          "security": "Medtronic Plc",
+          "percent": 2.82
         },
         {
           "rank": 10,
           "security": "Stryker Corp.",
-          "percent": 2.7
+          "percent": 2.73
         }
       ],
       "unavailableFields": ["allocation"],
@@ -29800,60 +29849,60 @@
       "fundClassIds": ["mpfa-cf-842"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Smart Retirement Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
-          "security": "iShares MSCI Canada ETF",
-          "percent": 2.38
+          "security": "iShares Treasury Bond ETF",
+          "percent": 2.65
         },
         {
           "rank": 2,
-          "security": "Lyxor Core MSCI World (DR) UCITS ETF",
-          "percent": 2.07
+          "security": "HSBC Term Deposit 3.12% 02/07/2026",
+          "percent": 2.25
         },
         {
           "rank": 3,
-          "security": "iShares Treasury Bond ETF",
-          "percent": 1.93
+          "security": "iShares U.S. Technology ETF",
+          "percent": 1.82
         },
         {
           "rank": 4,
-          "security": "iShares TIPS Bond ETF",
-          "percent": 1.38
+          "security": "iShares MSCI India ETF",
+          "percent": 1.71
         },
         {
           "rank": 5,
-          "security": "TSMC台灣積體電路製造股份",
-          "percent": 1.32
+          "security": "Lyxor Core MSCI World (DR) UCITS ETF",
+          "percent": 1.69
         },
         {
           "rank": 6,
-          "security": "HSBC Holdings PLC.滙豐控股",
-          "percent": 1.12
+          "security": "HSBC Term Deposit 3.34% 02/07/2026",
+          "percent": 1.34
         },
         {
           "rank": 7,
-          "security": "Samsung Electronics Co. Ltd.",
-          "percent": 1.12
-        },
-        {
-          "rank": 8,
-          "security": "iShares US Basic Materials ETF",
-          "percent": 1.11
-        },
-        {
-          "rank": 9,
-          "security": "Hong Kong Government Bond 2.02% 07/03/2034",
+          "security": "TSMC台灣積體電路製造股份",
           "percent": 1.1
         },
         {
+          "rank": 8,
+          "security": "Hong Kong Government Bond 2.02% 07/03/2034",
+          "percent": 1.06
+        },
+        {
+          "rank": 9,
+          "security": "Samsung Electronics Co. Ltd.",
+          "percent": 1.05
+        },
+        {
           "rank": 10,
-          "security": "Tencent Holdings Ltd.騰訊控股",
+          "security": "SK Hynix Inc.",
           "percent": 1.05
         }
       ],
@@ -29869,61 +29918,61 @@
       "fundClassIds": ["mpfa-cf-844"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF 2025 Retirement Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
-          "security": "iShares MSCI Canada ETF",
-          "percent": 2.4
+          "security": "iShares Treasury Bond ETF",
+          "percent": 2.72
         },
         {
           "rank": 2,
-          "security": "iShares Treasury Bond ETF",
-          "percent": 1.94
+          "security": "HSBC Term Deposit 3.12% 02/07/2026",
+          "percent": 2.36
         },
         {
           "rank": 3,
-          "security": "iShares TIPS Bond ETF",
-          "percent": 1.61
+          "security": "iShares U.S. Technology ETF",
+          "percent": 2.11
         },
         {
           "rank": 4,
-          "security": "iShares Core FTSE 100 UCITS ETF",
-          "percent": 1.46
+          "security": "iShares MSCI India ETF",
+          "percent": 1.72
         },
         {
           "rank": 5,
-          "security": "TSMC台灣積體電路製造股份",
-          "percent": 1.32
+          "security": "Lyxor Core MSCI World (DR) UCITS ETF",
+          "percent": 1.48
         },
         {
           "rank": 6,
-          "security": "Lyxor Core MSCI World (DR) UCITS ETF",
-          "percent": 1.25
+          "security": "HSBC Term Deposit 3.34% 02/07/2026",
+          "percent": 1.12
         },
         {
           "rank": 7,
-          "security": "iShares US Basic Materials ETF",
-          "percent": 1.15
+          "security": "TSMC台灣積體電路製造股份",
+          "percent": 1.1
         },
         {
           "rank": 8,
-          "security": "HSBC Holdings PLC.滙豐控股",
-          "percent": 1.13
+          "security": "Samsung Electronics Co. Ltd.",
+          "percent": 1.05
         },
         {
           "rank": 9,
-          "security": "Samsung Electronics Co. Ltd.",
-          "percent": 1.12
+          "security": "SK Hynix Inc.",
+          "percent": 1.05
         },
         {
           "rank": 10,
           "security": "Hong Kong Government Bond 2.02% 07/03/2034",
-          "percent": 1.09
+          "percent": 1.04
         }
       ],
       "unavailableFields": ["allocation"],
@@ -29938,61 +29987,61 @@
       "fundClassIds": ["mpfa-cf-845"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF 2030 Retirement Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
-          "security": "iShares MSCI Canada ETF",
-          "percent": 2.38
+          "security": "Lyxor Core MSCI World (DR) UCITS ETF",
+          "percent": 2.41
         },
         {
           "rank": 2,
-          "security": "Lyxor Core MSCI World (DR) UCITS ETF",
-          "percent": 2.15
+          "security": "iShares U.S. Technology ETF",
+          "percent": 2.06
         },
         {
           "rank": 3,
-          "security": "iShares Treasury Bond ETF",
-          "percent": 1.91
+          "security": "HSBC Holdings PLC.滙豐控股",
+          "percent": 1.78
         },
         {
           "rank": 4,
-          "security": "HSBC Holdings PLC.滙豐控股",
-          "percent": 1.88
+          "security": "iShares MSCI India ETF",
+          "percent": 1.71
         },
         {
           "rank": 5,
           "security": "TSMC台灣積體電路製造股份",
-          "percent": 1.79
+          "percent": 1.56
         },
         {
           "rank": 6,
           "security": "Tencent Holdings Ltd.騰訊控股",
-          "percent": 1.75
+          "percent": 1.51
         },
         {
           "rank": 7,
-          "security": "Alibaba Group Holding Ltd.阿里巴巴集團",
-          "percent": 1.74
+          "security": "Samsung Electronics Co. Ltd.",
+          "percent": 1.49
         },
         {
           "rank": 8,
-          "security": "Samsung Electronics Co. Ltd.",
-          "percent": 1.52
+          "security": "SK Hynix Inc.",
+          "percent": 1.48
         },
         {
           "rank": 9,
-          "security": "iShares Core FTSE 100 UCITS ETF",
-          "percent": 1.43
+          "security": "iShares Treasury Bond ETF",
+          "percent": 1.48
         },
         {
           "rank": 10,
-          "security": "iShares US Basic Materials ETF",
-          "percent": 1.13
+          "security": "Alibaba Group Holding Ltd.阿里巴巴集團",
+          "percent": 1.3
         }
       ],
       "unavailableFields": ["allocation"],
@@ -30007,61 +30056,61 @@
       "fundClassIds": ["mpfa-cf-846"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF 2035 Retirement Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
-          "security": "iShares MSCI Canada ETF",
-          "percent": 2.76
+          "security": "Lyxor Core MSCI World (DR) UCITS ETF",
+          "percent": 2.84
         },
         {
           "rank": 2,
-          "security": "iShares Treasury Bond ETF",
-          "percent": 2.67
+          "security": "HSBC Holdings PLC.滙豐控股",
+          "percent": 2.4
         },
         {
           "rank": 3,
-          "security": "Lyxor Core MSCI World (DR) UCITS ETF",
-          "percent": 2.51
+          "security": "iShares U.S. Technology ETF",
+          "percent": 2.06
         },
         {
           "rank": 4,
-          "security": "HSBC Holdings PLC.滙豐控股",
-          "percent": 2.49
+          "security": "Tencent Holdings Ltd.騰訊控股",
+          "percent": 2.05
         },
         {
           "rank": 5,
-          "security": "Tencent Holdings Ltd.騰訊控股",
-          "percent": 2.32
+          "security": "Alibaba Group Holding Ltd.阿里巴巴集團",
+          "percent": 1.76
         },
         {
           "rank": 6,
-          "security": "Alibaba Group Holding Ltd.阿里巴巴集團",
-          "percent": 2.31
+          "security": "TSMC台灣積體電路製造股份",
+          "percent": 1.73
         },
         {
           "rank": 7,
-          "security": "TSMC台灣積體電路製造股份",
-          "percent": 1.96
+          "security": "iShares MSCI India ETF",
+          "percent": 1.72
         },
         {
           "rank": 8,
           "security": "Samsung Electronics Co. Ltd.",
-          "percent": 1.67
+          "percent": 1.65
         },
         {
           "rank": 9,
-          "security": "iShares Core FTSE 100 UCITS ETF",
-          "percent": 1.63
+          "security": "SK Hynix Inc.",
+          "percent": 1.64
         },
         {
           "rank": 10,
-          "security": "AIA Group Ltd.友邦保險",
-          "percent": 1.39
+          "security": "iShares Treasury Bond ETF",
+          "percent": 1.37
         }
       ],
       "unavailableFields": ["allocation"],
@@ -30076,61 +30125,61 @@
       "fundClassIds": ["mpfa-cf-847"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF 2040 Retirement Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
           "security": "HSBC Holdings PLC.滙豐控股",
-          "percent": 3.07
+          "percent": 2.99
         },
         {
           "rank": 2,
-          "security": "iShares MSCI Canada ETF",
-          "percent": 3
+          "security": "Lyxor Core MSCI World (DR) UCITS ETF",
+          "percent": 2.98
         },
         {
           "rank": 3,
           "security": "Tencent Holdings Ltd.騰訊控股",
-          "percent": 2.85
+          "percent": 2.55
         },
         {
           "rank": 4,
-          "security": "Lyxor Core MSCI World (DR) UCITS ETF",
-          "percent": 2.85
+          "security": "Alibaba Group Holding Ltd.阿里巴巴集團",
+          "percent": 2.19
         },
         {
           "rank": 5,
-          "security": "Alibaba Group Holding Ltd.阿里巴巴集團",
-          "percent": 2.83
+          "security": "iShares U.S. Technology ETF",
+          "percent": 2.07
         },
         {
           "rank": 6,
           "security": "TSMC台灣積體電路製造股份",
-          "percent": 2.01
+          "percent": 1.81
         },
         {
           "rank": 7,
-          "security": "iShares Core FTSE 100 UCITS ETF",
-          "percent": 1.72
-        },
-        {
-          "rank": 8,
           "security": "Samsung Electronics Co. Ltd.",
           "percent": 1.72
         },
         {
+          "rank": 8,
+          "security": "iShares MSCI India ETF",
+          "percent": 1.72
+        },
+        {
           "rank": 9,
-          "security": "AIA Group Ltd.友邦保險",
-          "percent": 1.7
+          "security": "SK Hynix Inc.",
+          "percent": 1.72
         },
         {
           "rank": 10,
           "security": "China Construction Bank Corp.中國建設銀行",
-          "percent": 1.6
+          "percent": 1.48
         }
       ],
       "unavailableFields": ["allocation"],
@@ -30145,61 +30194,61 @@
       "fundClassIds": ["mpfa-cf-848"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF 2045 Retirement Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
           "security": "HSBC Holdings PLC.滙豐控股",
-          "percent": 3.18
+          "percent": 3.11
         },
         {
           "rank": 2,
-          "security": "iShares MSCI Canada ETF",
-          "percent": 2.98
+          "security": "Lyxor Core MSCI World (DR) UCITS ETF",
+          "percent": 2.97
         },
         {
           "rank": 3,
           "security": "Tencent Holdings Ltd.騰訊控股",
-          "percent": 2.06
+          "percent": 2.65
         },
         {
           "rank": 4,
           "security": "Alibaba Group Holding Ltd.阿里巴巴集團",
-          "percent": 2.93
+          "percent": 2.28
         },
         {
           "rank": 5,
-          "security": "Lyxor Core MSCI World (DR) UCITS ETF",
-          "percent": 2.77
+          "security": "iShares U.S. Technology ETF",
+          "percent": 2.07
         },
         {
           "rank": 6,
           "security": "TSMC台灣積體電路製造股份",
-          "percent": 2.02
-        },
-        {
-          "rank": 7,
-          "security": "iShares Core FTSE 100 UCITS ETF",
           "percent": 1.82
         },
         {
+          "rank": 7,
+          "security": "Samsung Electronics Co. Ltd.",
+          "percent": 1.73
+        },
+        {
           "rank": 8,
-          "security": "AIA Group Ltd.友邦保險",
-          "percent": 1.76
+          "security": "SK Hynix Inc.",
+          "percent": 1.73
         },
         {
           "rank": 9,
-          "security": "Samsung Electronics Co. Ltd.",
-          "percent": 1.72
+          "security": "iShares MSCI India ETF",
+          "percent": 1.73
         },
         {
           "rank": 10,
           "security": "China Construction Bank Corp.中國建設銀行",
-          "percent": 1.66
+          "percent": 1.54
         }
       ],
       "unavailableFields": ["allocation"],
@@ -30214,16 +30263,16 @@
       "fundClassIds": ["mpfa-cf-906"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Sustainable Pacific Asia Bond Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [],
       "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "10 rows disclose a percentage without an extractable security name: \"1.88%\", \"1.87%\", \"1.55%\""
+        "topHoldings": "10 rows disclose a percentage without an extractable security name: \"1.83%\", \"1.81%\", \"1.61%\""
       },
       "unavailableKinds": {
         "allocation": "chart-only",
@@ -30234,61 +30283,61 @@
       "fundClassIds": ["mpfa-cf-907"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Hang Seng Index ESG Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
-          "security": "AIA Group Ltd.友邦保險",
-          "percent": 8.5
+          "security": "HSBC Holdings PLC.滙豐控股",
+          "percent": 8.73
         },
         {
           "rank": 2,
           "security": "Tencent Holdings Ltd.騰訊控股",
-          "percent": 8.07
+          "percent": 7.76
         },
         {
           "rank": 3,
-          "security": "HSBC Holdings PLC.滙豐控股",
-          "percent": 7.88
+          "security": "AIA Group Ltd.友邦保險",
+          "percent": 7.57
         },
         {
           "rank": 4,
-          "security": "Alibaba Group Holding Ltd.阿里巴巴集團",
-          "percent": 7.52
+          "security": "HKEX香港交易所",
+          "percent": 6.33
         },
         {
           "rank": 5,
-          "security": "HKEX香港交易所",
-          "percent": 7.04
+          "security": "Alibaba Group Holding Ltd.阿里巴巴集團",
+          "percent": 6.17
         },
         {
           "rank": 6,
           "security": "Ping An Insurance中國平安保險",
-          "percent": 5.8
+          "percent": 4.8
         },
         {
           "rank": 7,
-          "security": "Xiaomi Corp.小米集團",
-          "percent": 4.72
+          "security": "ANTA Sports安踏體育",
+          "percent": 3.65
         },
         {
           "rank": 8,
-          "security": "ANTA Sports 安踏體育",
-          "percent": 4.6
+          "security": "Neteas Inc 網易股份有限公司",
+          "percent": 3.64
         },
         {
           "rank": 9,
           "security": "China Mobile中國移動",
-          "percent": 3.71
+          "percent": 3.39
         },
         {
           "rank": 10,
-          "security": "Neteas Inc網易股份有限公司",
-          "percent": 3.12
+          "security": "Meituan-Dianping美團",
+          "percent": 3.22
         }
       ],
       "unavailableFields": ["allocation"],
@@ -30303,61 +30352,61 @@
       "fundClassIds": ["mpfa-cf-1219"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF RMB Bond Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
           "security": "JPMorgan Chase & Co. 3.5% 27/07/2028",
-          "percent": 3.59
+          "percent": 3.46
         },
         {
           "rank": 2,
           "security": "China Cinda (2020) I Management Ltd. 2.58% 25/06/2028",
-          "percent": 3.36
+          "percent": 3.24
         },
         {
           "rank": 3,
-          "security": "Nestle Finance International Ltd. 2.8% 29/05/2035",
-          "percent": 2.51
+          "security": "The Bank Of East Asia, Limited 2.95% 09/09/2029",
+          "percent": 2.61
         },
         {
           "rank": 4,
-          "security": "HSBC Holdings PLC. 3.4% 29/06/2027",
-          "percent": 2.5
+          "security": "Nestle Finance International Ltd. 2.8% 29/05/2035",
+          "percent": 2.45
         },
         {
           "rank": 5,
-          "security": "Korea Development Bank 2.77% 31/07/2027",
-          "percent": 2.17
+          "security": "Swire Properties MTN Financing Ltd. 2.85% 22/07/2030",
+          "percent": 2.36
         },
         {
           "rank": 6,
-          "security": "ICBC Ltd. 2% 21/05/2028",
-          "percent": 2.15
+          "security": "Far East Horizon Limited 4.25% 14/02/2028",
+          "percent": 2.13
         },
         {
           "rank": 7,
-          "security": "United Overseas Bank Ltd. 4.5% 06/04/2032",
-          "percent": 2.01
+          "security": "ICBC Ltd. 2.0% 21/05/2028",
+          "percent": 2.07
         },
         {
           "rank": 8,
-          "security": "China Construction Bank Corp. 2.83% 16/07/2027",
-          "percent": 1.92
+          "security": "AIA Group Ltd. 2.88% 30/04/2036",
+          "percent": 1.9
         },
         {
           "rank": 9,
-          "security": "Alibaba Group Holding Ltd. 2.65% 28/05/2028",
-          "percent": 1.8
+          "security": "Baidu, Inc. 2.7% 12/03/2030",
+          "percent": 1.76
         },
         {
           "rank": 10,
-          "security": "TCCL (Finance) Limited 2.8% 06/09/2027",
-          "percent": 1.76
+          "security": "China Resources Land Limited 2.4% 20/11/2030",
+          "percent": 1.75
         }
       ],
       "unavailableFields": ["allocation"],
@@ -30372,16 +30421,16 @@
       "fundClassIds": ["mpfa-cf-1485"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Core Accumulation Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [],
       "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "9 rows disclose a percentage without an extractable security name: \"2.75%\", \"2.46%\", \"1.85%\""
+        "topHoldings": "9 rows disclose a percentage without an extractable security name: \"2.73%\", \"2.45%\", \"1.62%\""
       },
       "unavailableKinds": {
         "allocation": "chart-only",
@@ -30392,16 +30441,16 @@
       "fundClassIds": ["mpfa-cf-1486"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Age 65 Plus Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [],
       "unavailableFields": ["allocation", "topHoldings"],
       "unavailableReasons": {
         "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "9 rows disclose a percentage without an extractable security name: \"0.92%\", \"0.82%\", \"0.62%\""
+        "topHoldings": "9 rows disclose a percentage without an extractable security name: \"0.92%\", \"0.83%\", \"0.55%\""
       },
       "unavailableKinds": {
         "allocation": "chart-only",
@@ -30412,61 +30461,61 @@
       "fundClassIds": ["mpfa-cf-1719"],
       "schemeName": "Manulife Global Select (MPF) Scheme",
       "constituentFundName": "Manulife MPF Retirement Income Fund",
-      "factSheetFile": "MT00482.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [],
       "topHoldings": [
         {
           "rank": 1,
-          "security": "iShares 1-3 Year Treasury Bond ETF",
-          "percent": 2.5
+          "security": "State Street SPDR Portfolio S&P 500 Value ETF",
+          "percent": 3.04
         },
         {
           "rank": 2,
-          "security": "iShares EUR Corp Bond Large Cap UCITS ETF",
-          "percent": 2.46
+          "security": "iShares 7-10 Year Treasury Bond ETF",
+          "percent": 2.79
         },
         {
           "rank": 3,
-          "security": "iShares Core GBP Corp Bond UCITS ETF",
-          "percent": 2.35
+          "security": "iShares 1-3 Year Treasury Bond ETF",
+          "percent": 2.29
         },
         {
           "rank": 4,
-          "security": "iShares MSCI Canada ETF",
-          "percent": 2.25
+          "security": "Amundi MSCI EMU UCITS ETF",
+          "percent": 1.8
         },
         {
           "rank": 5,
-          "security": "iShares MSCI Japan ETF",
-          "percent": 1.71
+          "security": "iShares MSCI India ETF",
+          "percent": 1.72
         },
         {
           "rank": 6,
-          "security": "Amundi MSCI EMU UCITS ETF",
-          "percent": 1.7
+          "security": "iShares 20+ Year Treasury Bond ETF",
+          "percent": 1.54
         },
         {
           "rank": 7,
-          "security": "iShares TIPS Bond ETF",
-          "percent": 1.5
+          "security": "Hong Kong Government Bond 2.02% 07/03/2034",
+          "percent": 1.16
         },
         {
           "rank": 8,
-          "security": "iShares 20+ Year Treasury Bond ETF",
-          "percent": 1.28
+          "security": "iShares MSCI Japan ETF",
+          "percent": 1.16
         },
         {
           "rank": 9,
-          "security": "iShares Core FTSE 100 UCITS ETF",
-          "percent": 1.23
+          "security": "iShares U.S. Technology ETF",
+          "percent": 1.15
         },
         {
           "rank": 10,
-          "security": "Hong Kong Government Bond 2.02% 07/03/2034",
-          "percent": 1.22
+          "security": "iShares MSCI Taiwan ETF",
+          "percent": 1.06
         }
       ],
       "unavailableFields": ["allocation"],
@@ -30481,61 +30530,57 @@
       "fundClassIds": ["mpfa-cf-244", "mpfa-cf-245", "mpfa-cf-246"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz Hong Kong Fund",
-      "factSheetFile": "MT00490.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00490.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "Manulife_RetireChoice.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/mpf/retirechoice-scheme/fundfact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Analysis 投資組合分析",
           "entries": [
             {
-              "label": "Financials",
-              "percent": 32
+              "label": "■ Financials",
+              "percent": 31
             },
             {
-              "label": "Consumer Discretionary",
-              "percent": 22
-            },
-            {
-              "label": "Communication Services",
+              "label": "■ Consumer Discretionary",
               "percent": 15
             },
             {
-              "label": "Information Technology",
+              "label": "■ Communication Services",
+              "percent": 13
+            },
+            {
+              "label": "■ Information Technology",
+              "percent": 11
+            },
+            {
+              "label": "■ Industrials",
+              "percent": 9
+            },
+            {
+              "label": "■ Real Estate",
               "percent": 6
             },
             {
-              "label": "Real Estate",
+              "label": "■ Health Care",
               "percent": 5
             },
             {
-              "label": "Health Care",
-              "percent": 5
-            },
-            {
-              "label": "Industrials",
+              "label": "■ Materials",
               "percent": 4
             },
             {
-              "label": "Materials",
-              "percent": 4
-            },
-            {
-              "label": "Energy",
+              "label": "■ Energy",
               "percent": 2
             },
             {
-              "label": "Consumer Staples",
-              "percent": 1
+              "label": "■ Consumer Staples",
+              "percent": 2
             },
             {
-              "label": "Utilities",
-              "percent": 1
-            },
-            {
-              "label": "Cash and Others",
-              "percent": 3
+              "label": "■ Cash and Others",
+              "percent": 2
             }
           ]
         }
@@ -30543,53 +30588,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "TENCENT HOLDINGS LTD",
-          "percent": 9.23
+          "security": "HSBC HLDGS PLC",
+          "percent": 9.61
         },
         {
           "rank": 2,
-          "security": "ALIBABA GROUP HOLDING LTD",
-          "percent": 8.86
+          "security": "TENCENT HOLDINGS LTD",
+          "percent": 8.84
         },
         {
           "rank": 3,
-          "security": "HSBC HLDGS PLC",
-          "percent": 8.85
+          "security": "ALIBABA GROUP HOLDING LTD",
+          "percent": 7.78
         },
         {
           "rank": 4,
           "security": "CHINA CONSTRUCTION BANK H",
-          "percent": 6
+          "percent": 6.76
         },
         {
           "rank": 5,
           "security": "AIA GROUP LTD",
-          "percent": 5.34
+          "percent": 4.06
         },
         {
           "rank": 6,
-          "security": "PING AN INSURANCE (GROUP) COMPANY OF CHINA LTD H",
-          "percent": 4.04
+          "security": "HONG KONG EXCHANGES AND CLEARING LTD",
+          "percent": 2.92
         },
         {
           "rank": 7,
-          "security": "HONG KONG EXCHANGES AND CLEARING LTD",
-          "percent": 3.77
+          "security": "PING AN INSURANCE (GROUP) COMPANY OF CHINA LTD H",
+          "percent": 2.71
         },
         {
           "rank": 8,
           "security": "ZIJIN MINING GROUP CO LTD H",
-          "percent": 3.03
+          "percent": 2.16
         },
         {
           "rank": 9,
-          "security": "CHINA MERCHANTS BANK CO LTD H",
-          "percent": 2.42
+          "security": "ASMPT LTD",
+          "percent": 2.11
         },
         {
           "rank": 10,
-          "security": "NETEASE INC",
-          "percent": 2.3
+          "security": "ADVANCED MICRO-FABRICATION-A",
+          "percent": 2.04
         }
       ],
       "unavailableFields": [],
@@ -30600,56 +30645,48 @@
       "fundClassIds": ["mpfa-cf-247", "mpfa-cf-248", "mpfa-cf-249"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz Asian Fund",
-      "factSheetFile": "MT00490.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00490.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "Manulife_RetireChoice.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/mpf/retirechoice-scheme/fundfact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Analysis 投資組合分析",
           "entries": [
             {
-              "label": "China",
-              "percent": 33
+              "label": "■ South Korea",
+              "percent": 27
             },
             {
-              "label": "Taiwan",
-              "percent": 23
+              "label": "■ Taiwan",
+              "percent": 27
             },
             {
-              "label": "South Korea",
-              "percent": 14
+              "label": "■ China",
+              "percent": 24
             },
             {
-              "label": "India",
-              "percent": 14
+              "label": "■ Hong Kong",
+              "percent": 8
             },
             {
-              "label": "Hong Kong",
-              "percent": 4
+              "label": "■ India",
+              "percent": 7
             },
             {
-              "label": "Singapore",
-              "percent": 4
-            },
-            {
-              "label": "Thailand",
+              "label": "■ Singapore",
               "percent": 2
             },
             {
-              "label": "Malaysia",
+              "label": "■ Malaysia",
               "percent": 2
             },
             {
-              "label": "Indonesia",
+              "label": "■ Philippines",
               "percent": 1
             },
             {
-              "label": "Philippines",
-              "percent": 1
-            },
-            {
-              "label": "Cash and Others",
+              "label": "■ Cash and Others",
               "percent": 2
             }
           ]
@@ -30659,52 +30696,52 @@
         {
           "rank": 1,
           "security": "TAIWAN SEMICONDUCTOR MANUFACTURING CO LTD",
-          "percent": 9.99
+          "percent": 9.81
         },
         {
           "rank": 2,
           "security": "SAMSUNG ELECTRONICS CO LTD SOUTH KOREA",
-          "percent": 6.64
+          "percent": 9.14
         },
         {
           "rank": 3,
-          "security": "TENCENT HOLDINGS LTD",
-          "percent": 6.23
+          "security": "SK HYNIX INC SOUTH KOREA",
+          "percent": 8.94
         },
         {
           "rank": 4,
-          "security": "ALIBABA GROUP HOLDING LTD",
-          "percent": 5.9
+          "security": "TENCENT HOLDINGS LTD",
+          "percent": 4.32
         },
         {
           "rank": 5,
-          "security": "SK HYNIX INC SOUTH KOREA",
-          "percent": 4.49
+          "security": "HSBC HLDGS PLC",
+          "percent": 3.36
         },
         {
           "rank": 6,
-          "security": "SINGAPORE TELECOMMUNICATIONS LTD",
-          "percent": 3.51
-        },
-        {
-          "rank": 7,
-          "security": "HDFC BANK LTD",
-          "percent": 3.34
-        },
-        {
-          "rank": 8,
-          "security": "RELIANCE INDUSTRIES LTD",
+          "security": "MEDIATEK INC",
           "percent": 3.29
         },
         {
-          "rank": 9,
+          "rank": 7,
           "security": "DELTA ELECTRONICS INC",
-          "percent": 3.26
+          "percent": 3.02
+        },
+        {
+          "rank": 8,
+          "security": "SAMSUNG C&T CORP SOUTH KOREA",
+          "percent": 2.61
+        },
+        {
+          "rank": 9,
+          "security": "SK SQUARE CO LTD SOUTH KOREA",
+          "percent": 2.59
         },
         {
           "rank": 10,
-          "security": "PING AN INSURANCE (GROUP) COMPANY OF CHINA LTD H",
-          "percent": 3.23
+          "security": "ALIBABA GROUP HOLDING LTD",
+          "percent": 2.43
         }
       ],
       "unavailableFields": [],
@@ -30715,41 +30752,41 @@
       "fundClassIds": ["mpfa-cf-250", "mpfa-cf-251", "mpfa-cf-252"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz Balanced Fund",
-      "factSheetFile": "MT00490.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00490.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "Manulife_RetireChoice.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/mpf/retirechoice-scheme/fundfact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Analysis 投資組合分析",
           "entries": [
             {
-              "label": "Fixed Income",
+              "label": "■ Fixed Income",
               "percent": 24
             },
             {
-              "label": "Hong Kong/China Equities",
+              "label": "■ Hong Kong/China Equities",
               "percent": 24
             },
             {
-              "label": "North America Equities",
+              "label": "■ North America Equities",
               "percent": 15
             },
             {
-              "label": "Europe Equities",
+              "label": "■ Europe Equities",
               "percent": 14
             },
             {
-              "label": "Other Asia Equities",
+              "label": "■ Other Asia Equities",
               "percent": 10
             },
             {
-              "label": "Japan Equities",
-              "percent": 10
+              "label": "■ Japan Equities",
+              "percent": 9
             },
             {
-              "label": "Cash and Others",
-              "percent": 3
+              "label": "■ Cash and Others",
+              "percent": 4
             }
           ]
         }
@@ -30757,53 +30794,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF",
-          "percent": 6.05
+          "security": "FRANKLIN FTSE ASIA EX CHINA EX JAPAN UCITS ETF",
+          "percent": 7.14
         },
         {
           "rank": 2,
-          "security": "FRANKLIN FTSE ASIA EX CHINA EX JAPAN UCITS ETF",
-          "percent": 5.89
-        },
-        {
-          "rank": 3,
-          "security": "ISHARES FTSE CHINA A50 ETF",
-          "percent": 2.42
-        },
-        {
-          "rank": 4,
-          "security": "FRANKLIN FTSE AUSTRALIA ETF",
+          "security": "HSBC HOLDINGS PLC",
           "percent": 1.88
         },
         {
-          "rank": 5,
-          "security": "ISHARES CORE MSCI CHINA ETF",
-          "percent": 1.6
+          "rank": 3,
+          "security": "TENCENT HOLDINGS LTD",
+          "percent": 1.53
         },
         {
-          "rank": 6,
-          "security": "NEXT FUNDS TOPIX EXCHANGE TRADED FUND",
+          "rank": 4,
+          "security": "ALIBABA GROUP HOLDING LTD",
           "percent": 1.37
         },
         {
+          "rank": 5,
+          "security": "CHINA CONSTRUCTION BANK H",
+          "percent": 1.17
+        },
+        {
+          "rank": 6,
+          "security": "NEXT FUNDS TOPIX EXCHANGE TRADED FUND ETF",
+          "percent": 1.1
+        },
+        {
           "rank": 7,
-          "security": "GLOBAL X MSCI CHINA ETF",
-          "percent": 1.36
+          "security": "FRANKLIN FTSE AUSTRALIA ETF",
+          "percent": 1.08
         },
         {
           "rank": 8,
           "security": "NVIDIA CORPORATION UNITED STATES",
-          "percent": 1.07
+          "percent": 1.02
         },
         {
           "rank": 9,
-          "security": "HSBC HOLDINGS PLC",
-          "percent": 1.05
+          "security": "APPLE INC UNITED STATES",
+          "percent": 0.92
         },
         {
           "rank": 10,
-          "security": "FRANKLIN FTSE INDIA UCITS ETF",
-          "percent": 1.02
+          "security": "US TREASURY 4.50% 15/04/2027 UNITED STATES",
+          "percent": 0.9
         }
       ],
       "unavailableFields": [],
@@ -30814,41 +30851,37 @@
       "fundClassIds": ["mpfa-cf-253", "mpfa-cf-254", "mpfa-cf-255"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz Flexi Balanced Fund",
-      "factSheetFile": "MT00490.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00490.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "Manulife_RetireChoice.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/mpf/retirechoice-scheme/fundfact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Analysis 投資組合分析",
           "entries": [
             {
-              "label": "USD Bonds",
-              "percent": 65
+              "label": "■ USD Bonds",
+              "percent": 61
             },
             {
-              "label": "Equities",
-              "percent": 23
+              "label": "■ Equities",
+              "percent": 26
             },
             {
-              "label": "Other Bonds",
+              "label": "■ AUD Bonds",
+              "percent": 4
+            },
+            {
+              "label": "■ Other Bonds",
               "percent": 3
             },
             {
-              "label": "AUD Bonds",
-              "percent": 3
-            },
-            {
-              "label": "HKD Bonds",
-              "percent": 2
-            },
-            {
-              "label": "EUR Bonds",
+              "label": "■ EUR Bonds",
               "percent": 1
             },
             {
-              "label": "Cash and Others",
-              "percent": 3
+              "label": "■ Cash and Others",
+              "percent": 5
             }
           ]
         }
@@ -30856,53 +30889,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "US TREASURY BILLS 0.00% 17/02/2026 UNITED STATES",
-          "percent": 2.46
+          "security": "SK HYNIX INC SOUTH KOREA",
+          "percent": 3.04
         },
         {
           "rank": 2,
           "security": "RESONA HOLDINGS INC",
-          "percent": 2.38
+          "percent": 2.18
         },
         {
           "rank": 3,
-          "security": "HITACHI LTD",
-          "percent": 1.83
+          "security": "US TREASURY BILLS 0.00% 28/07/2026 UNITED STATES",
+          "percent": 2.05
         },
         {
           "rank": 4,
-          "security": "BOEING CO UNITED STATES",
-          "percent": 1.63
+          "security": "US TREASURY BILLS 0.00% 03/09/2026 UNITED STATES",
+          "percent": 1.75
         },
         {
           "rank": 5,
-          "security": "PFIZER INC UNITED STATES",
-          "percent": 1.51
+          "security": "BRISTOL MYERS SQUIBB COMPANY UNITED STATES",
+          "percent": 1.72
         },
         {
           "rank": 6,
-          "security": "OVERSEA-CHINESE BANKING (REG S) VAR 15/06/2032",
-          "percent": 1.46
+          "security": "KINGBOARD LAMINATES HOLDINGS LTD",
+          "percent": 1.67
         },
         {
           "rank": 7,
-          "security": "HOYA CORPORATION",
-          "percent": 1.44
+          "security": "BOEING CO UNITED STATES",
+          "percent": 1.54
         },
         {
           "rank": 8,
-          "security": "BRISTOL MYERS SQUIBB COMPANY UNITED STATES",
-          "percent": 1.4
+          "security": "HITACHI LTD",
+          "percent": 1.53
         },
         {
           "rank": 9,
-          "security": "ASTRAZENECA PLC",
-          "percent": 1.36
+          "security": "US TREASURY BILLS 0.00% 02/07/2026 UNITED STATES",
+          "percent": 1.47
         },
         {
           "rank": 10,
-          "security": "PRUDENTIAL FUNDING (ASIA) PLC (REG S) VAR 03/11/2033",
-          "percent": 1.33
+          "security": "PFIZER INC UNITED STATES",
+          "percent": 1.39
         }
       ],
       "unavailableFields": [],
@@ -30913,41 +30946,41 @@
       "fundClassIds": ["mpfa-cf-256", "mpfa-cf-257", "mpfa-cf-258"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz Stable Growth Fund",
-      "factSheetFile": "MT00490.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00490.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "Manulife_RetireChoice.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/mpf/retirechoice-scheme/fundfact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Analysis 投資組合分析",
           "entries": [
             {
-              "label": "Fixed Income",
-              "percent": 43
+              "label": "■ Fixed Income",
+              "percent": 42
             },
             {
-              "label": "Hong Kong/China Equities",
-              "percent": 18
+              "label": "■ Hong Kong/China Equities",
+              "percent": 17
             },
             {
-              "label": "North America Equities",
+              "label": "■ North America Equities",
               "percent": 11
             },
             {
-              "label": "Europe Equities",
+              "label": "■ Europe Equities",
               "percent": 10
             },
             {
-              "label": "Other Asia Equities",
+              "label": "■ Other Asia Equities",
               "percent": 7
             },
             {
-              "label": "Japan Equities",
+              "label": "■ Japan Equities",
               "percent": 7
             },
             {
-              "label": "Cash and Others",
-              "percent": 4
+              "label": "■ Cash and Others",
+              "percent": 6
             }
           ]
         }
@@ -30955,53 +30988,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF",
-          "percent": 4.3
+          "security": "FRANKLIN FTSE ASIA EX CHINA EX JAPAN UCITS ETF",
+          "percent": 5.07
         },
         {
           "rank": 2,
-          "security": "FRANKLIN FTSE ASIA EX CHINA EX JAPAN UCITS ETF",
-          "percent": 4.16
+          "security": "US TREASURY 4.50% 15/04/2027 UNITED STATES",
+          "percent": 1.62
         },
         {
           "rank": 3,
-          "security": "ISHARES FTSE CHINA A50 ETF",
-          "percent": 1.77
+          "security": "HSBC HOLDINGS PLC",
+          "percent": 1.34
         },
         {
           "rank": 4,
-          "security": "FRANKLIN FTSE AUSTRALIA ETF",
-          "percent": 1.27
+          "security": "BUNDESCHATZANWEISINGEN (REG S) (BR) 2.90% 15/02/2036",
+          "percent": 1.15
         },
         {
           "rank": 5,
-          "security": "GLOBAL X MSCI CHINA ETF",
-          "percent": 1.21
+          "security": "TENCENT HOLDINGS LTD",
+          "percent": 1.08
         },
         {
           "rank": 6,
-          "security": "ISHARES CORE MSCI CHINA ETF",
-          "percent": 1.19
+          "security": "NEXT FUNDS TOPIX EXCHANGE TRADED FUND ETF",
+          "percent": 1
         },
         {
           "rank": 7,
-          "security": "FRANKLIN FTSE INDIA UCITS ETF",
-          "percent": 1.03
+          "security": "ALIBABA GROUP HOLDING LTD",
+          "percent": 0.96
         },
         {
           "rank": 8,
-          "security": "NVIDIA CORPORATION UNITED STATES",
-          "percent": 0.77
+          "security": "FRANKLIN FTSE AUSTRALIA ETF",
+          "percent": 0.87
         },
         {
           "rank": 9,
-          "security": "US TREASURY 4.125% 30/09/2027 UNITED STATES",
-          "percent": 0.75
+          "security": "ITALY (REP OF) SER 10Y (REG S) (BR) 3.60% 01/10/2035",
+          "percent": 0.84
         },
         {
           "rank": 10,
-          "security": "HSBC HOLDINGS PLC",
-          "percent": 0.74
+          "security": "CHINA CONSTRUCTION BANK H",
+          "percent": 0.83
         }
       ],
       "unavailableFields": [],
@@ -31012,41 +31045,41 @@
       "fundClassIds": ["mpfa-cf-259", "mpfa-cf-260", "mpfa-cf-261"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz Capital Stable Fund",
-      "factSheetFile": "MT00490.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00490.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "Manulife_RetireChoice.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/mpf/retirechoice-scheme/fundfact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Analysis 投資組合分析",
           "entries": [
             {
-              "label": "Fixed Income",
-              "percent": 62
+              "label": "■ Fixed Income",
+              "percent": 61
             },
             {
-              "label": "Hong Kong/China Equities",
-              "percent": 11
+              "label": "■ Hong Kong/China Equities",
+              "percent": 10
             },
             {
-              "label": "North America Equities",
+              "label": "■ North America Equities",
               "percent": 7
             },
             {
-              "label": "Europe Equities",
+              "label": "■ Europe Equities",
               "percent": 6
             },
             {
-              "label": "Japan Equities",
+              "label": "■ Japan Equities",
               "percent": 5
             },
             {
-              "label": "Other Asia Equities",
+              "label": "■ Other Asia Equities",
               "percent": 4
             },
             {
-              "label": "Cash and Others",
-              "percent": 5
+              "label": "■ Cash and Others",
+              "percent": 7
             }
           ]
         }
@@ -31054,53 +31087,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF",
-          "percent": 2.58
+          "security": "ISHARES 1-3 YEAR TREASURY BOND ETF UNITED STATES",
+          "percent": 4.5
         },
         {
           "rank": 2,
           "security": "FRANKLIN FTSE ASIA EX CHINA EX JAPAN UCITS ETF",
-          "percent": 2.09
+          "percent": 3.08
         },
         {
           "rank": 3,
-          "security": "ISHARES 1-3 YEAR TREASURY BOND ETF UNITED STATES",
-          "percent": 2.01
+          "security": "US TREASURY 4.50% 15/04/2027 UNITED STATES",
+          "percent": 2.16
         },
         {
           "rank": 4,
-          "security": "LYXOR US TREASURY 7-10Y DR ETF UNITED STATES",
-          "percent": 1.98
+          "security": "BUNDESCHATZANWEISINGEN (REG S) (BR) 2.90% 15/02/2036",
+          "percent": 1.53
         },
         {
           "rank": 5,
-          "security": "FRANKLIN FTSE INDIA UCITS ETF",
-          "percent": 1.03
+          "security": "ITALY (REP OF) SER 10Y (REG S) (BR) 3.60% 01/10/2035",
+          "percent": 1.12
         },
         {
           "rank": 6,
-          "security": "ISHARES CORE MSCI CHINA ETF",
-          "percent": 1.02
+          "security": "JAPAN (2 YEAR ISSUE) SER 482 1.30% 01/03/2028",
+          "percent": 1.01
         },
         {
           "rank": 7,
-          "security": "ISHARES FTSE CHINA A50 ETF",
-          "percent": 1.01
+          "security": "NEXT FUNDS TOPIX EXCHANGE TRADED FUND ETF",
+          "percent": 1
         },
         {
           "rank": 8,
           "security": "US TREASURY 4.125% 30/09/2027 UNITED STATES",
-          "percent": 1.01
+          "percent": 0.92
         },
         {
           "rank": 9,
-          "security": "GLOBAL X MSCI CHINA ETF",
-          "percent": 1.01
+          "security": "US TREASURY 3.50% 15/02/2033 UNITED STATES",
+          "percent": 0.88
         },
         {
           "rank": 10,
-          "security": "NEXT FUNDS TOPIX EXCHANGE TRADED FUND",
-          "percent": 1
+          "security": "US TREASURY 4.00% 15/11/2042 UNITED STATES",
+          "percent": 0.88
         }
       ],
       "unavailableFields": [],
@@ -31111,25 +31144,25 @@
       "fundClassIds": ["mpfa-cf-262", "mpfa-cf-263", "mpfa-cf-264"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz MPF Conservative Fund",
-      "factSheetFile": "MT00490.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00490.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "Manulife_RetireChoice.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/mpf/retirechoice-scheme/fundfact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Analysis 投資組合分析",
           "entries": [
             {
-              "label": "Fixed Deposits",
-              "percent": 66
+              "label": "■ Fixed Deposits",
+              "percent": 68
             },
             {
-              "label": "Fixed Income",
-              "percent": 32
+              "label": "■ Fixed Income",
+              "percent": 31
             },
             {
-              "label": "Cash and Others",
-              "percent": 2
+              "label": "■ Cash and Others",
+              "percent": 1
             }
           ]
         }
@@ -31137,53 +31170,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "TAIPEI FUBON COMM BK CO LTD, 2.96% 28/01/2026",
-          "percent": 4.87
-        },
-        {
-          "rank": 2,
-          "security": "SAUDI NTL BANK SG SER 0.00% CD 28/01/2026",
-          "percent": 4.65
-        },
-        {
-          "rank": 3,
-          "security": "CMB WING LUNG BANK LTD 3.39% 12/01/2026",
-          "percent": 4.42
-        },
-        {
-          "rank": 4,
-          "security": "OVERSEA-CHINESE BANKING CORPORATION LTD 3.15% 19/01/2026",
-          "percent": 3.21
-        },
-        {
-          "rank": 5,
-          "security": "HONG KONG T-BILLS SER 91 0.00% 21/01/2026",
-          "percent": 3.11
-        },
-        {
-          "rank": 6,
-          "security": "SUMITOMO MITSUI BKG CORP 3.19% 13/01/2026",
+          "security": "BANK OF CHINA/HONG KONG SER 0.00% CD 23/09/2026",
           "percent": 3.06
         },
         {
+          "rank": 2,
+          "security": "SAUDI NTL BANK SG SER 3.00% CD 02/09/2026",
+          "percent": 2.93
+        },
+        {
+          "rank": 3,
+          "security": "LINK FINANCE CAYMAN 2009 SER EMTN (REG S) 2.50% 08/08/2026",
+          "percent": 2.62
+        },
+        {
+          "rank": 4,
+          "security": "AGRICULTURAL BANK OF CHINA (HK) 2.25% 08/07/2026",
+          "percent": 2.32
+        },
+        {
+          "rank": 5,
+          "security": "DZ BANK HONG KONG SER 3.06% CD 09/09/2026",
+          "percent": 2.31
+        },
+        {
+          "rank": 6,
+          "security": "WESTPAC BANKING CORPORATION SER EMTN (REG S) (BR) 3.02% 15/01/2027",
+          "percent": 2.31
+        },
+        {
           "rank": 7,
-          "security": "OVERSEA-CHINESE BANKING CORPORATION LTD 2.90% 06/01/2026",
-          "percent": 2.69
+          "security": "UOB HONG KONG SER 0.00% CD 22/08/2026",
+          "percent": 2.3
         },
         {
           "rank": 8,
-          "security": "BANK OF TOKYO-MITSUBISHI UFJ 3.36% 08/01/2026",
-          "percent": 2.49
+          "security": "BANCO SANTANDER, S.A., HONG KONG BRANCH 2.55% 14/07/2026",
+          "percent": 2.16
         },
         {
           "rank": 9,
-          "security": "AGRICULTURAL BANK OF CHINA (HK) 3.30% 19/01/2026",
-          "percent": 2.49
+          "security": "TOTAL SE SER EMTN (REG S) 3.088% 14/09/2026",
+          "percent": 2.16
         },
         {
           "rank": 10,
-          "security": "CMB WING LUNG BANK LTD 2.50% 15/01/2026",
-          "percent": 2.42
+          "security": "TAIPEI FUBON COMM BK CO LTD, 2.60% 10/08/2026",
+          "percent": 1.93
         }
       ],
       "unavailableFields": [],
@@ -31194,41 +31227,41 @@
       "fundClassIds": ["mpfa-cf-265", "mpfa-cf-266", "mpfa-cf-267"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz Growth Fund",
-      "factSheetFile": "MT00490.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00490.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "Manulife_RetireChoice.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/mpf/retirechoice-scheme/fundfact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Analysis 投資組合分析",
           "entries": [
             {
-              "label": "Hong Kong/China Equities",
+              "label": "■ Hong Kong/China Equities",
               "percent": 30
             },
             {
-              "label": "North America Equities",
+              "label": "■ North America Equities",
               "percent": 19
             },
             {
-              "label": "Europe Equities",
+              "label": "■ Europe Equities",
               "percent": 18
             },
             {
-              "label": "Japan Equities",
+              "label": "■ Other Asia Equities",
               "percent": 13
             },
             {
-              "label": "Other Asia Equities",
-              "percent": 13
+              "label": "■ Japan Equities",
+              "percent": 12
             },
             {
-              "label": "Fixed Income",
+              "label": "■ Fixed Income",
               "percent": 5
             },
             {
-              "label": "Cash and Others",
-              "percent": 2
+              "label": "■ Cash and Others",
+              "percent": 3
             }
           ]
         }
@@ -31237,52 +31270,52 @@
         {
           "rank": 1,
           "security": "FRANKLIN FTSE ASIA EX CHINA EX JAPAN UCITS ETF",
-          "percent": 8.44
+          "percent": 9.11
         },
         {
           "rank": 2,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF",
-          "percent": 7.84
+          "security": "HSBC HOLDINGS PLC",
+          "percent": 2.42
         },
         {
           "rank": 3,
-          "security": "ISHARES FTSE CHINA A50 ETF",
-          "percent": 3
+          "security": "TENCENT HOLDINGS LTD",
+          "percent": 1.98
         },
         {
           "rank": 4,
-          "security": "FRANKLIN FTSE AUSTRALIA ETF",
-          "percent": 2.19
-        },
-        {
-          "rank": 5,
-          "security": "ISHARES CORE MSCI CHINA ETF",
+          "security": "ALIBABA GROUP HOLDING LTD",
           "percent": 1.76
         },
         {
+          "rank": 5,
+          "security": "CHINA CONSTRUCTION BANK H",
+          "percent": 1.5
+        },
+        {
           "rank": 6,
-          "security": "GLOBAL X MSCI CHINA ETF",
-          "percent": 1.64
-        },
-        {
-          "rank": 7,
           "security": "NVIDIA CORPORATION UNITED STATES",
-          "percent": 1.35
-        },
-        {
-          "rank": 8,
-          "security": "HSBC HOLDINGS PLC",
           "percent": 1.3
         },
         {
+          "rank": 7,
+          "security": "APPLE INC UNITED STATES",
+          "percent": 1.17
+        },
+        {
+          "rank": 8,
+          "security": "FRANKLIN FTSE AUSTRALIA ETF",
+          "percent": 1.13
+        },
+        {
           "rank": 9,
-          "security": "NEXT FUNDS TOPIX EXCHANGE TRADED FUND",
-          "percent": 1.23
+          "security": "ASML HDG NETHERLANDS",
+          "percent": 1.1
         },
         {
           "rank": 10,
-          "security": "TENCENT HOLDINGS LTD",
-          "percent": 1.2
+          "security": "NEXT FUNDS TOPIX EXCHANGE TRADED FUND ETF",
+          "percent": 1.03
         }
       ],
       "unavailableFields": [],
@@ -31293,57 +31326,57 @@
       "fundClassIds": ["mpfa-cf-889", "mpfa-cf-890", "mpfa-cf-891"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz Greater China Fund",
-      "factSheetFile": "MT00490.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00490.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "Manulife_RetireChoice.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/mpf/retirechoice-scheme/fundfact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Analysis 投資組合分析",
           "entries": [
             {
-              "label": "Information Technology",
-              "percent": 27
+              "label": "■ Information Technology",
+              "percent": 45
             },
             {
-              "label": "Financials",
-              "percent": 23
+              "label": "■ Financials",
+              "percent": 19
             },
             {
-              "label": "Consumer Discretionary",
-              "percent": 16
+              "label": "■ Consumer Discretionary",
+              "percent": 9
             },
             {
-              "label": "Communication Services",
-              "percent": 11
+              "label": "■ Communication Services",
+              "percent": 8
             },
             {
-              "label": "Industrials",
-              "percent": 7
+              "label": "■ Industrials",
+              "percent": 6
             },
             {
-              "label": "Materials",
-              "percent": 5
-            },
-            {
-              "label": "Health Care",
+              "label": "■ Materials",
               "percent": 4
             },
             {
-              "label": "Real Estate",
+              "label": "■ Real Estate",
               "percent": 3
             },
             {
-              "label": "Consumer Staples",
+              "label": "■ Health Care",
               "percent": 2
             },
             {
-              "label": "Energy",
+              "label": "■ Consumer Staples",
               "percent": 1
             },
             {
-              "label": "Cash and Others",
+              "label": "■ Energy",
               "percent": 1
+            },
+            {
+              "label": "■ Cash and Others",
+              "percent": 2
             }
           ]
         }
@@ -31352,52 +31385,52 @@
         {
           "rank": 1,
           "security": "TAIWAN SEMICONDUCTOR MANUFACTURING CO LTD",
-          "percent": 10
+          "percent": 9.74
         },
         {
           "rank": 2,
           "security": "TENCENT HOLDINGS LTD",
-          "percent": 9.04
+          "percent": 6.86
         },
         {
           "rank": 3,
-          "security": "ALIBABA GROUP HOLDING LTD",
-          "percent": 8.66
+          "security": "HSBC HLDGS PLC",
+          "percent": 6.44
         },
         {
           "rank": 4,
-          "security": "HSBC HLDGS PLC",
-          "percent": 5.67
+          "security": "MEDIATEK INC",
+          "percent": 4.24
         },
         {
           "rank": 5,
-          "security": "PING AN INSURANCE (GROUP) COMPANY OF CHINA LTD H",
-          "percent": 3.75
+          "security": "ALIBABA GROUP HOLDING LTD",
+          "percent": 4.23
         },
         {
           "rank": 6,
-          "security": "ZIJIN MINING GROUP CO LTD H",
-          "percent": 3.03
+          "security": "DELTA ELECTRONICS INC",
+          "percent": 3.93
         },
         {
           "rank": 7,
-          "security": "DELTA ELECTRONICS INC",
-          "percent": 3.02
+          "security": "CHINA CONSTRUCTION BANK H",
+          "percent": 2.18
         },
         {
           "rank": 8,
-          "security": "AIA GROUP LTD",
-          "percent": 2.66
+          "security": "HON HAI PRECISION IND CO LTD",
+          "percent": 2.07
         },
         {
           "rank": 9,
-          "security": "CHINA CONSTRUCTION BANK H",
-          "percent": 2.65
+          "security": "ADVANCED MICRO-FABRICATION-A",
+          "percent": 1.96
         },
         {
           "rank": 10,
-          "security": "CTBC FINANCIAL HOLDING CO LTD",
-          "percent": 2.25
+          "security": "AIA GROUP LTD",
+          "percent": 1.94
         }
       ],
       "unavailableFields": [],
@@ -31408,61 +31441,57 @@
       "fundClassIds": ["mpfa-cf-892", "mpfa-cf-893", "mpfa-cf-894"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz Oriental Pacific Fund",
-      "factSheetFile": "MT00490.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00490.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "Manulife_RetireChoice.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/mpf/retirechoice-scheme/fundfact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Analysis 投資組合分析",
           "entries": [
             {
-              "label": "China",
-              "percent": 30
+              "label": "■ China",
+              "percent": 26
             },
             {
-              "label": "Japan",
-              "percent": 27
+              "label": "■ Japan",
+              "percent": 23
             },
             {
-              "label": "Taiwan",
-              "percent": 13
+              "label": "■ Taiwan",
+              "percent": 20
             },
             {
-              "label": "South Korea",
-              "percent": 9
+              "label": "■ South Korea",
+              "percent": 11
             },
             {
-              "label": "Australia",
+              "label": "■ Australia",
+              "percent": 7
+            },
+            {
+              "label": "■ Hong Kong",
               "percent": 5
             },
             {
-              "label": "New Zealand",
-              "percent": 4
-            },
-            {
-              "label": "Other Equities",
-              "percent": 4
-            },
-            {
-              "label": "Hong Kong",
+              "label": "■ New Zealand",
               "percent": 3
             },
             {
-              "label": "Malaysia",
+              "label": "■ Malaysia",
+              "percent": 1
+            },
+            {
+              "label": "■ Singapore",
+              "percent": 1
+            },
+            {
+              "label": "■ Other Equities",
+              "percent": 1
+            },
+            {
+              "label": "■ Cash and Others",
               "percent": 2
-            },
-            {
-              "label": "Singapore",
-              "percent": 1
-            },
-            {
-              "label": "Macau",
-              "percent": 1
-            },
-            {
-              "label": "Cash and Others",
-              "percent": 1
             }
           ]
         }
@@ -31470,53 +31499,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "PING AN INSURANCE (GROUP) COMPANY OF CHINA LTD H",
-          "percent": 5.67
+          "security": "SK HYNIX INC SOUTH KOREA",
+          "percent": 6.24
         },
         {
           "rank": 2,
-          "security": "MITSUBISHI HEAVY INDUSTRIES LTD",
-          "percent": 4.22
+          "security": "ASE TECHNOLOGY HOLDING CO LTD",
+          "percent": 4.58
         },
         {
           "rank": 3,
-          "security": "MAINFREIGHT LTD NEW ZEALAND",
-          "percent": 3.81
+          "security": "PING AN INSURANCE (GROUP) COMPANY OF CHINA LTD H",
+          "percent": 3.59
         },
         {
           "rank": 4,
           "security": "ALIBABA GROUP HOLDING LTD",
-          "percent": 3.78
+          "percent": 3.44
         },
         {
           "rank": 5,
-          "security": "SK HYNIX INC SOUTH KOREA",
-          "percent": 3.63
+          "security": "ASPEED TECHNOLOGY INC",
+          "percent": 3.16
         },
         {
           "rank": 6,
-          "security": "TENCENT HOLDINGS LTD",
-          "percent": 3.17
+          "security": "MITSUBISHI HEAVY INDUSTRIES LTD",
+          "percent": 2.96
         },
         {
           "rank": 7,
           "security": "ALCHIP TECHNOLOGIES LTD",
-          "percent": 3.07
+          "percent": 2.9
         },
         {
           "rank": 8,
-          "security": "ABBISKO CAYMAN LTD",
-          "percent": 2.98
+          "security": "MAINFREIGHT LTD NEW ZEALAND",
+          "percent": 2.67
         },
         {
           "rank": 9,
-          "security": "PETROCHINA CO LTD H",
-          "percent": 2.85
+          "security": "HON.PRECISION, INC.",
+          "percent": 2.63
         },
         {
           "rank": 10,
-          "security": "ASPEED TECHNOLOGY INC",
-          "percent": 2.68
+          "security": "PETROCHINA CO LTD H",
+          "percent": 2.52
         }
       ],
       "unavailableFields": [],
@@ -31527,32 +31556,32 @@
       "fundClassIds": ["mpfa-cf-1179", "mpfa-cf-1180", "mpfa-cf-1181"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz RMB Money Market Fund",
-      "factSheetFile": "MT00490.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00490.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "Manulife_RetireChoice.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/mpf/retirechoice-scheme/fundfact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Analysis 投資組合分析",
           "entries": [
             {
-              "label": "RMB Fixed Deposits",
-              "percent": 44
+              "label": "■ RMB Fixed Deposits",
+              "percent": 46
             },
             {
-              "label": "HKD Fixed Deposits",
-              "percent": 25
+              "label": "■ HKD Fixed Deposits",
+              "percent": 22
             },
             {
-              "label": "RMB Fixed Income",
-              "percent": 20
+              "label": "■ RMB Fixed Income",
+              "percent": 19
             },
             {
-              "label": "HKD Fixed Income",
-              "percent": 10
+              "label": "■ HKD Fixed Income",
+              "percent": 12
             },
             {
-              "label": "Cash and Others",
+              "label": "■ Cash and Others",
               "percent": 1
             }
           ]
@@ -31561,53 +31590,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "SUMITOMO MITSUI BKG CORP 1.00% 06/01/2026",
-          "percent": 2.79
+          "security": "OVERSEA-CHINESE BANKING CORPORATION LTD 2.80% 02/07/2026",
+          "percent": 2.74
         },
         {
           "rank": 2,
-          "security": "IND AND COM BK OF CHINA (ASIA) 1.70% 05/01/2026",
-          "percent": 2.38
+          "security": "QNB FINANCE LTD SER EMTN 4.0525% 04/12/2026",
+          "percent": 1.91
         },
         {
           "rank": 3,
-          "security": "CMB WING LUNG BANK LTD 1.45% 23/03/2026",
-          "percent": 2.25
+          "security": "QNB FINANCE LTD SER EMTN (REG S) 4.00% 14/03/2027",
+          "percent": 1.91
         },
         {
           "rank": 4,
-          "security": "KOREA DEVELOPMENT BANK SER GMTN (REG S) 2.95% 14/06/2026",
-          "percent": 2.23
+          "security": "SAUDI NTL BANK SG SER 2.00% CD 12/01/2027",
+          "percent": 1.9
         },
         {
           "rank": 5,
-          "security": "EMIRATES NBD BANK PJSC SER EMTN (BR) 3.32% 19/02/2026",
-          "percent": 2.22
+          "security": "SAUDI NTL BANK SG SER 2.11% CD 02/09/2026",
+          "percent": 1.9
         },
         {
           "rank": 6,
-          "security": "DAH SING BK LTD 3.00% 02/01/2026",
-          "percent": 2.15
+          "security": "IND & COMM BK CHINA/LUX SER 0.00% CD 23/07/2026",
+          "percent": 1.9
         },
         {
           "rank": 7,
-          "security": "SUMITOMO MITSUI BKG CORP 1.00% 05/01/2026",
-          "percent": 2.15
+          "security": "CHINA EVERBRIGHT BK/LUX SER 0.00% CD 24/07/2026",
+          "percent": 1.89
         },
         {
           "rank": 8,
-          "security": "CHINA CONSTR BK (ASIA) CORP 1.50% 15/01/2026",
-          "percent": 1.88
+          "security": "IND & COMM BK CHN/LONDON SER 0.00% CD 30/09/2026",
+          "percent": 1.89
         },
         {
           "rank": 9,
-          "security": "HKCG FINANCE LTD SER EMTN (REG S) (BR) 3.00% 31/01/2026",
-          "percent": 1.85
+          "security": "CMS INTNTNL GEMSTONE SER EMTN (REG S) 3.30% 18/09/2026",
+          "percent": 1.59
         },
         {
           "rank": 10,
-          "security": "QNB FINANCE LTD SER EMTN (BR) 3.30% 13/01/2026",
-          "percent": 1.85
+          "security": "ROYAL BANK OF CANADA SER EMTN (BR) 3.40% 07/07/2026",
+          "percent": 1.58
         }
       ],
       "unavailableFields": [],
@@ -31618,44 +31647,44 @@
       "fundClassIds": ["mpfa-cf-1523", "mpfa-cf-1524", "mpfa-cf-1525"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz MPF Core Accumulation Fund",
-      "factSheetFile": "MT00490.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00490.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "Manulife_RetireChoice.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/mpf/retirechoice-scheme/fundfact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Analysis 投資組合分析",
           "entries": [
             {
-              "label": "North America Equities",
+              "label": "■ North America Equities",
               "percent": 40
             },
             {
-              "label": "Fixed Income",
-              "percent": 36
+              "label": "■ Fixed Income",
+              "percent": 33
             },
             {
-              "label": "Europe Equities",
-              "percent": 9
+              "label": "■ Europe Equities",
+              "percent": 8
             },
             {
-              "label": "Hong Kong/China Equities",
+              "label": "■ Hong Kong/China Equities",
               "percent": 5
             },
             {
-              "label": "Japan Equities",
-              "percent": 4
+              "label": "■ Japan Equities",
+              "percent": 5
             },
             {
-              "label": "Other Asia Equities",
+              "label": "■ Other Asia Equities",
+              "percent": 5
+            },
+            {
+              "label": "■ Fixed Deposits",
               "percent": 3
             },
             {
-              "label": "Fixed Deposits",
-              "percent": 2
-            },
-            {
-              "label": "Cash and Others",
+              "label": "■ Cash and Others",
               "percent": 1
             }
           ]
@@ -31664,53 +31693,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "NVIDIA CORPORATION UNITED STATES",
-          "percent": 2.94
+          "security": "FIXED DEPOSIT",
+          "percent": 2.9
         },
         {
           "rank": 2,
-          "security": "APPLE INC UNITED STATES",
-          "percent": 2.55
+          "security": "NVIDIA CORPORATION UNITED STATES",
+          "percent": 2.76
         },
         {
           "rank": 3,
-          "security": "MICROSOFT CORP UNITED STATES",
-          "percent": 2.41
+          "security": "APPLE INC UNITED STATES",
+          "percent": 2.48
         },
         {
           "rank": 4,
-          "security": "FIXED DEPOSITS",
-          "percent": 1.95
+          "security": "MICROSOFT CORP UNITED STATES",
+          "percent": 1.6
         },
         {
           "rank": 5,
           "security": "AMAZON.COM INC UNITED STATES",
-          "percent": 1.57
+          "percent": 1.47
         },
         {
           "rank": 6,
           "security": "ALPHABET INC-CL A UNITED STATES",
-          "percent": 1.25
+          "percent": 1.4
         },
         {
           "rank": 7,
-          "security": "BROADCOM INC UNITED STATES",
-          "percent": 1.17
+          "security": "ALPHABET INC-CL C UNITED STATES",
+          "percent": 1.15
         },
         {
           "rank": 8,
-          "security": "ALPHABET INC-CL C UNITED STATES",
-          "percent": 1.16
+          "security": "MICRON TECHNOLOGY UNITED STATES",
+          "percent": 0.96
         },
         {
           "rank": 9,
-          "security": "META PLATFORMS INC UNITED STATES",
-          "percent": 0.98
+          "security": "APPLIED MATERIALS INC UNITED STATES",
+          "percent": 0.95
         },
         {
           "rank": 10,
-          "security": "JPMORGAN CHASE & CO UNITED STATES",
-          "percent": 0.78
+          "security": "LAM RESEARCH CORP UNITED STATES",
+          "percent": 0.88
         }
       ],
       "unavailableFields": [],
@@ -31721,44 +31750,44 @@
       "fundClassIds": ["mpfa-cf-1526", "mpfa-cf-1527", "mpfa-cf-1528"],
       "schemeName": "Manulife RetireChoice (MPF) Scheme",
       "constituentFundName": "Allianz MPF Age 65 Plus Fund",
-      "factSheetFile": "MT00490.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00490.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "Manulife_RetireChoice.pdf",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/mpf/retirechoice-scheme/fundfact-sheet.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Analysis 投資組合分析",
           "entries": [
             {
-              "label": "Fixed Income",
-              "percent": 74
+              "label": "■ Fixed Income",
+              "percent": 72
             },
             {
-              "label": "North America Equities",
+              "label": "■ North America Equities",
               "percent": 14
             },
             {
-              "label": "Europe Equities",
+              "label": "■ Fixed Deposits",
               "percent": 3
             },
             {
-              "label": "Hong Kong/China Equities",
+              "label": "■ Europe Equities",
+              "percent": 3
+            },
+            {
+              "label": "■ Hong Kong/China Equities",
               "percent": 2
             },
             {
-              "label": "Fixed Deposits",
+              "label": "■ Other Asia Equities",
               "percent": 2
             },
             {
-              "label": "Japan Equities",
+              "label": "■ Japan Equities",
               "percent": 2
             },
             {
-              "label": "Other Asia Equities",
-              "percent": 1
-            },
-            {
-              "label": "Cash and Others",
+              "label": "■ Cash and Others",
               "percent": 2
             }
           ]
@@ -31767,53 +31796,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "FIXED DEPOSITS",
-          "percent": 1.95
+          "security": "FIXED DEPOSIT",
+          "percent": 2.69
         },
         {
           "rank": 2,
-          "security": "NVIDIA CORPORATION UNITED STATES",
-          "percent": 1.02
+          "security": "US TREASURY 4.50% 15/04/2027 UNITED STATES",
+          "percent": 1.07
         },
         {
           "rank": 3,
-          "security": "APPLE INC UNITED STATES",
-          "percent": 0.86
+          "security": "NVIDIA CORPORATION UNITED STATES",
+          "percent": 0.97
         },
         {
           "rank": 4,
-          "security": "MICROSOFT CORP UNITED STATES",
-          "percent": 0.84
+          "security": "APPLE INC UNITED STATES",
+          "percent": 0.87
         },
         {
           "rank": 5,
-          "security": "AMAZON.COM INC UNITED STATES",
-          "percent": 0.55
+          "security": "BUNDESCHATZANWEISINGEN (REG S) (BR) 2.90% 15/02/2036",
+          "percent": 0.76
         },
         {
           "rank": 6,
-          "security": "ALPHABET INC-CL A UNITED STATES",
-          "percent": 0.44
+          "security": "MICROSOFT CORP UNITED STATES",
+          "percent": 0.56
         },
         {
           "rank": 7,
-          "security": "BROADCOM INC UNITED STATES",
-          "percent": 0.4
+          "security": "ITALY (REP OF) SER 10Y (REG S) (BR) 3.60% 01/10/2035",
+          "percent": 0.56
         },
         {
           "rank": 8,
-          "security": "ALPHABET INC-CL C UNITED STATES",
-          "percent": 0.39
+          "security": "AMAZON.COM INC UNITED STATES",
+          "percent": 0.51
         },
         {
           "rank": 9,
-          "security": "META PLATFORMS INC UNITED STATES",
-          "percent": 0.33
+          "security": "JAPAN (2 YEAR ISSUE) SER 482 1.30% 01/03/2028",
+          "percent": 0.5
         },
         {
           "rank": 10,
-          "security": "JPMORGAN CHASE & CO UNITED STATES",
-          "percent": 0.26
+          "security": "ALPHABET INC-CL A UNITED STATES",
+          "percent": 0.49
         }
       ],
       "unavailableFields": [],
@@ -34587,21 +34616,21 @@
       "fundClassIds": ["mpfa-cf-459"],
       "schemeName": "SHKP MPF Employer Sponsored Scheme",
       "constituentFundName": "Manulife Career Average Guaranteed Fund - SHKP",
-      "factSheetFile": "ES00020.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/ES00020.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "SHKP_FundPriceFFS.pdf",
+      "factSheetUrl": "https://www.shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Asset Allocation of Underlying Fund",
           "entries": [
             {
               "label": "Bonds 債券",
-              "percent": 98.36
+              "percent": 97.17
             },
             {
               "label": "Cash and Others 現金及其他",
-              "percent": 1.64
+              "percent": 2.83
             }
           ]
         }
@@ -34609,53 +34638,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "Mizuho Financial Group Inc 5.778 07/06/29",
-          "percent": 1.86
+          "security": "Shinhan Card Co Ltd Float 12/24/29",
+          "percent": 1.96
         },
         {
           "rank": 2,
-          "security": "Barclays Bank PLC 4 1/4 02/25/28",
-          "percent": 1.8
+          "security": "Mizuho Financial Group Inc 5.778 07/06/29",
+          "percent": 1.91
         },
         {
           "rank": 3,
-          "security": "Korea Hydro & Nuclear Power Co Ltd 3.35 03/13/28",
-          "percent": 1.77
+          "security": "Barclays Bank PLC 4 1/4 02/25/28",
+          "percent": 1.83
         },
         {
           "rank": 4,
+          "security": "Korea Hydro & Nuclear Power Co Ltd 3.35 03/13/28",
+          "percent": 1.78
+        },
+        {
+          "rank": 5,
+          "security": "HKT Capital No 5 Ltd 3 1/4 09/30/29",
+          "percent": 1.77
+        },
+        {
+          "rank": 6,
           "security": "National Australia Bank Ltd 3.07 04/02/29",
           "percent": 1.76
         },
         {
-          "rank": 5,
+          "rank": 7,
           "security": "Hong Kong Mortgage Corp Ltd 2.9 04/01/31",
           "percent": 1.76
         },
         {
-          "rank": 6,
-          "security": "Hong Kong Exchange Fund Bill 0 04/08/26",
-          "percent": 1.76
-        },
-        {
-          "rank": 7,
-          "security": "Gohl Capital Ltd 4 1/4 01/24/27",
-          "percent": 1.74
-        },
-        {
           "rank": 8,
-          "security": "HKT Capital No 5 Ltd 3 1/4 09/30/29",
-          "percent": 1.72
+          "security": "Momentive Performance Materials Inc 4 1/8 10/22/28",
+          "percent": 1.71
         },
         {
           "rank": 9,
-          "security": "Momentive Performance Materials Inc 4 1/8 10/22/28",
+          "security": "CMT MTN Pte Ltd 2 1/2 11/27/30",
           "percent": 1.7
         },
         {
           "rank": 10,
-          "security": "CMT MTN Pte Ltd 2 1/2 11/27/30",
-          "percent": 1.68
+          "security": "Hysan MTN Ltd 2.82 09/04/29",
+          "percent": 1.66
         }
       ],
       "unavailableFields": [],
@@ -34666,53 +34695,53 @@
       "fundClassIds": ["mpfa-cf-460"],
       "schemeName": "SHKP MPF Employer Sponsored Scheme",
       "constituentFundName": "Fidelity Balanced Fund",
-      "factSheetFile": "ES00020.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/ES00020.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "SHKP_FundPriceFFS.pdf",
+      "factSheetUrl": "https://www.shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Asset Allocation of Underlying Fund",
           "entries": [
             {
               "label": "Hong Kong Equity 香港股票",
-              "percent": 17.24
+              "percent": 12.79
             },
             {
               "label": "Japanese Equity 日本股票",
-              "percent": 9.84
+              "percent": 9.24
             },
             {
               "label": "Asia Pacific Equity 亞太區股票",
-              "percent": 9.84
+              "percent": 12.02
             },
             {
               "label": "Americas Equity 美國股票",
-              "percent": 13.45
+              "percent": 17.64
             },
             {
               "label": "European Equity 歐洲股票",
-              "percent": 11.12
+              "percent": 11.7
             },
             {
               "label": "China Onshore Equitity 中國在岸股票",
-              "percent": 7.16
+              "percent": 9.87
             },
             {
               "label": "Emerging Markets Equity 新興市場股票",
-              "percent": 0
+              "percent": 0.52
             },
             {
               "label": "World Equity 世界股票",
-              "percent": 1.19
+              "percent": 1.01
             },
             {
               "label": "Bonds 債券",
-              "percent": 24.73
+              "percent": 22.89
             },
             {
               "label": "Cash and Other※ 現金及其他※",
-              "percent": 5.43
+              "percent": 2.32
             }
           ]
         }
@@ -34721,52 +34750,52 @@
         {
           "rank": 1,
           "security": "CSOP FTSE HONG KONG EQUITY ETF",
-          "percent": 9.47
+          "percent": 10.94
         },
         {
           "rank": 2,
           "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - JAPAN INDEX",
-          "percent": 6.1
+          "percent": 5.38
         },
         {
           "rank": 3,
-          "security": "HONG KONG TRACKER FUND",
-          "percent": 4.92
+          "security": "INVESCO QQQ TRUST",
+          "percent": 4.68
         },
         {
           "rank": 4,
-          "security": "ISHARES CORE CSI 300 ETF",
-          "percent": 4.59
+          "security": "HSBC GF ICAV - GLOBAL GOVERNMENT BOND UCITS ETF",
+          "percent": 4.06
         },
         {
           "rank": 5,
-          "security": "HSBC GF ICAV - GLOBAL GOVERNMENT BOND UCITS ETF",
-          "percent": 3.84
+          "security": "ISHARES CORE CSI 300 ETF",
+          "percent": 3.81
         },
         {
           "rank": 6,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - EUROPEAN INDEX",
-          "percent": 2.43
+          "security": "ISHARES US TECHNOLOGY ETF",
+          "percent": 2.91
         },
         {
           "rank": 7,
-          "security": "ISHARES U.S. UTILITIES ETF",
-          "percent": 2.09
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - EUROPEAN INDEX",
+          "percent": 2.91
         },
         {
           "rank": 8,
-          "security": "ISHARES US TECHNOLOGY ETF",
-          "percent": 1.97
+          "security": "USTN 4.375% 15/05/2036",
+          "percent": 1.25
         },
         {
           "rank": 9,
-          "security": "USTN 4.25% 15/11/2034",
-          "percent": 1.22
+          "security": "FRANKLIN FTSE TAIWAN UCITS ETF",
+          "percent": 1.02
         },
         {
           "rank": 10,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - AMERICAN INDEX",
-          "percent": 1.19
+          "security": "SK HYNIX INC",
+          "percent": 1.02
         }
       ],
       "unavailableFields": [],
@@ -34777,25 +34806,25 @@
       "fundClassIds": ["mpfa-cf-462"],
       "schemeName": "SHKP MPF Employer Sponsored Scheme",
       "constituentFundName": "SHKP MPF Fund",
-      "factSheetFile": "ES00020.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/ES00020.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "SHKP_FundPriceFFS.pdf",
+      "factSheetUrl": "https://www.shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Asset Allocation of Underlying Fund",
           "entries": [
             {
               "label": "HK Equity 香港股票",
-              "percent": 23.7
+              "percent": 22.1
             },
             {
               "label": "US Equity 美國股票",
-              "percent": 26.2
+              "percent": 30.7
             },
             {
               "label": "European Equity 歐洲股票",
-              "percent": 1.2
+              "percent": 1.1
             },
             {
               "label": "Japan Equity 日本股票",
@@ -34811,11 +34840,11 @@
             },
             {
               "label": "Bonds 債券",
-              "percent": 32.2
+              "percent": 30.1
             },
             {
               "label": "Cash 現金",
-              "percent": 16
+              "percent": 15.3
             }
           ]
         }
@@ -34823,53 +34852,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "Alphabet Class A",
-          "percent": 4.96
+          "security": "Alphabet Class A 谷歌 A 類股票",
+          "percent": 6.16
         },
         {
           "rank": 2,
-          "security": "US Treasury Note (zero coupon 23/07/26)",
-          "percent": 4.67
+          "security": "US Treasury Note (zero coupon 23/7/26) 美國國庫債券 （零息票2026 年 7 月 23 日）",
+          "percent": 4.53
         },
         {
           "rank": 3,
-          "security": "TRACKER FUND OF HONG KONG",
-          "percent": 4.48
+          "security": "US Treasury Note (4.00% 31/5/28) 美國國庫債券 （4.00% 2028 年 5 月 31 日）",
+          "percent": 4.31
         },
         {
           "rank": 4,
-          "security": "US Treasury Note (zero coupon 18/06/26)",
-          "percent": 4.46
+          "security": "iShares Core S&P 500 ETF iShares 核心標準普爾500 指數ETF",
+          "percent": 4.23
         },
         {
           "rank": 5,
-          "security": "Hang Seng China Enterprises Index ETF",
-          "percent": 4.05
+          "security": "Tracker Fund Of Hong Kong 盈富基金",
+          "percent": 4.02
         },
         {
           "rank": 6,
-          "security": "US Treasury Note (zero coupon 09/07/26)",
-          "percent": 4.01
+          "security": "US Treasury Note (zero coupon 9/7/26) 美國國庫債券 （零息票2026 年 7 月 9 日）",
+          "percent": 3.89
         },
         {
           "rank": 7,
-          "security": "iShares Core S&P 500 ETF",
-          "percent": 3.76
+          "security": "SPDR S&P 500 ETF SPDR 標準普爾500 指數ETF",
+          "percent": 3.73
         },
         {
           "rank": 8,
-          "security": "SPDR S&P 500 ETF",
-          "percent": 3.31
+          "security": "Hang Seng China Enterprises Index ETF 恆生中國企業",
+          "percent": 3.54
         },
         {
           "rank": 9,
-          "security": "US Treasury Note (4.25% 15/01/28)",
-          "percent": 3.17
+          "security": "HSBC Holdings 滙豐控股有限公司",
+          "percent": 3.5
         },
         {
           "rank": 10,
-          "security": "US Treasury Note (4.25% 31/12/26)",
-          "percent": 3.16
+          "security": "Invesco QQQ Trust 景順 QQQ ETF",
+          "percent": 3.44
         }
       ],
       "unavailableFields": [],
@@ -34880,53 +34909,53 @@
       "fundClassIds": ["mpfa-cf-463"],
       "schemeName": "SHKP MPF Employer Sponsored Scheme",
       "constituentFundName": "Fidelity Stable Growth Fund",
-      "factSheetFile": "ES00020.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/ES00020.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "SHKP_FundPriceFFS.pdf",
+      "factSheetUrl": "https://www.shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Asset Allocation of Underlying Fund",
           "entries": [
             {
               "label": "Hong Kong Equity 香港股票",
-              "percent": 11.65
+              "percent": 7.95
             },
             {
               "label": "Japanese Equity 日本股票",
-              "percent": 7.13
+              "percent": 7.09
             },
             {
               "label": "Asia Pacific Equity 亞太區股票",
-              "percent": 7.42
+              "percent": 9.19
             },
             {
               "label": "Americas Equity 美國股票",
-              "percent": 9.38
+              "percent": 12.88
             },
             {
               "label": "European Equity 歐洲股票",
-              "percent": 7.45
+              "percent": 8.63
             },
             {
               "label": "China Onshore Equitity 中國在岸股票",
-              "percent": 5.45
+              "percent": 7.72
             },
             {
               "label": "Emerging Markets Equity 新興市場股票",
-              "percent": 0
+              "percent": 0.52
             },
             {
               "label": "World Equity 世界股票",
-              "percent": 1.18
+              "percent": 1.01
             },
             {
               "label": "Bonds 債券",
-              "percent": 43.95
+              "percent": 41.92
             },
             {
               "label": "Cash and Other※ 現金及其他※",
-              "percent": 6.39
+              "percent": 3.09
             }
           ]
         }
@@ -34935,52 +34964,52 @@
         {
           "rank": 1,
           "security": "HSBC GF ICAV - GLOBAL GOVERNMENT BOND UCITS ETF",
-          "percent": 6.65
+          "percent": 7.31
         },
         {
           "rank": 2,
           "security": "CSOP FTSE HONG KONG EQUITY ETF",
-          "percent": 5.4
+          "percent": 6.29
         },
         {
           "rank": 3,
-          "security": "HONG KONG TRACKER FUND",
-          "percent": 3.72
+          "security": "INVESCO QQQ TRUST",
+          "percent": 4.75
         },
         {
           "rank": 4,
-          "security": "ISHARES CORE CSI 300 ETF",
-          "percent": 3.47
+          "security": "USTN 4.375% 15/05/2036",
+          "percent": 3.01
         },
         {
           "rank": 5,
           "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - JAPAN INDEX FUND",
-          "percent": 3.21
-        },
-        {
-          "rank": 6,
-          "security": "USTN 4.25% 15/11/2034",
           "percent": 2.93
         },
         {
+          "rank": 6,
+          "security": "ISHARES US TECHNOLOGY ETF",
+          "percent": 2.75
+        },
+        {
           "rank": 7,
-          "security": "ISHARES U.S. UTILITIES ETF",
-          "percent": 2.04
+          "security": "ISHARES CORE CSI 300 ETF",
+          "percent": 2.7
         },
         {
           "rank": 8,
-          "security": "ISHARES US TECHNOLOGY ETF",
-          "percent": 1.57
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - EUROPEAN INDEX",
+          "percent": 2.18
         },
         {
           "rank": 9,
-          "security": "BUNDESREPUB. DEUTSCHLAND 2.6% 15/08/2034 REGS",
-          "percent": 1.41
+          "security": "BUNDESREPUB DEUTSCHLAND 2.6% 15/08/2035 REGS",
+          "percent": 1.43
         },
         {
           "rank": 10,
-          "security": "BUNDESREPUB DEUTSCHLAND 2.6% 15/08/2035 REGS",
-          "percent": 1.41
+          "security": "USTN 4.375% 31/01/2032",
+          "percent": 1.42
         }
       ],
       "unavailableFields": [],
@@ -34991,17 +35020,17 @@
       "fundClassIds": ["mpfa-cf-464"],
       "schemeName": "SHKP MPF Employer Sponsored Scheme",
       "constituentFundName": "Allianz Choice Stable Growth Fund",
-      "factSheetFile": "ES00020.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/ES00020.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "SHKP_FundPriceFFS.pdf",
+      "factSheetUrl": "https://www.shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Asset Allocation of Underlying Fund",
           "entries": [
             {
               "label": "Hong Kong/China Equities 香港/中國股票",
-              "percent": 19
+              "percent": 17
             },
             {
               "label": "Japan Equities 日本股票",
@@ -35009,7 +35038,7 @@
             },
             {
               "label": "North America Equities 北美股票",
-              "percent": 10
+              "percent": 11
             },
             {
               "label": "Europe Equities 歐洲股票",
@@ -35017,15 +35046,15 @@
             },
             {
               "label": "Other Asia Equities 亞洲其他國家股票",
-              "percent": 5
+              "percent": 7
             },
             {
               "label": "Fixed Income 債券",
-              "percent": 44
+              "percent": 42
             },
             {
               "label": "Cash and Others 現金及其他",
-              "percent": 5
+              "percent": 6
             },
             {
               "label": "Fixed Deposits 定期存款",
@@ -35038,52 +35067,52 @@
         {
           "rank": 1,
           "security": "FRANKLIN FTSE ASIA EX CHINA EX JAPAN UCITS ETF",
-          "percent": 3.72
+          "percent": 5.07
         },
         {
           "rank": 2,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF",
-          "percent": 3.64
+          "security": "US TREASURY 4.50% 15/04/2027",
+          "percent": 1.62
         },
         {
           "rank": 3,
-          "security": "ISHARES CORE MSCI CHINA ETF",
-          "percent": 1.45
+          "security": "HSBC HOLDINGS PLC",
+          "percent": 1.34
         },
         {
           "rank": 4,
-          "security": "GLOBAL X MSCI CHINA ETF",
-          "percent": 1.13
+          "security": "BUNDESCHATZANWEISINGEN (REG S) (BR) 2.90% 15/02/2036",
+          "percent": 1.15
         },
         {
           "rank": 5,
-          "security": "LYXOR US TREASURY 7-10Y ETF",
-          "percent": 1.02
+          "security": "TENCENT HOLDINGS LTD",
+          "percent": 1.08
         },
         {
           "rank": 6,
-          "security": "HSBC HOLDINGS PLC",
-          "percent": 0.99
+          "security": "NEXT FUNDS TOPIX EXCHANGE TRADED FUND ETF",
+          "percent": 1
         },
         {
           "rank": 7,
-          "security": "FRANKLIN FTSE AUSTRALIA ETF",
-          "percent": 0.9
+          "security": "ALIBABA GROUP HOLDING LTD",
+          "percent": 0.96
         },
         {
           "rank": 8,
-          "security": "JAPAN (2 YEAR ISSUE) SER 482 1.30% 01/03/2028",
-          "percent": 0.85
+          "security": "FRANKLIN FTSE AUSTRALIA ETF",
+          "percent": 0.87
         },
         {
           "rank": 9,
-          "security": "TENCENT HOLDINGS LTD",
-          "percent": 0.83
+          "security": "ITALY (REP OF) SER 10Y (REG S) (BR) 3.60% 01/10/2035",
+          "percent": 0.84
         },
         {
           "rank": 10,
-          "security": "US TREASURY 4.125% 30/09/2027",
-          "percent": 0.76
+          "security": "CHINA CONSTRUCTION BANK H",
+          "percent": 0.83
         }
       ],
       "unavailableFields": [],
@@ -35094,21 +35123,21 @@
       "fundClassIds": ["mpfa-cf-466"],
       "schemeName": "SHKP MPF Employer Sponsored Scheme",
       "constituentFundName": "Invesco MPF Conservative Fund",
-      "factSheetFile": "ES00020.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/ES00020.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "SHKP_FundPriceFFS.pdf",
+      "factSheetUrl": "https://www.shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Asset Allocation of the Fund",
           "entries": [
             {
               "label": "Fixed Deposit 定期存款",
-              "percent": 35.39
+              "percent": 34.62
             },
             {
               "label": "Cash and Others 現金及其他",
-              "percent": 64.61
+              "percent": 65.38
             }
           ]
         }
@@ -35116,53 +35145,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "HONG KONG T-BILLS 0% 08/10/2025",
-          "percent": 2.52
+          "security": "AGRICULTURUAL BANK OF CHINA LTD HK(BROKE 2.45%05/08/2026",
+          "percent": 2.38
         },
         {
           "rank": 2,
-          "security": "HONG KONG T-BILLS 0% 05/11/2025",
-          "percent": 2.52
+          "security": "PUBLIC BK HONG KONG LTD 2.2%16/07/2026",
+          "percent": 2
         },
         {
           "rank": 3,
-          "security": "IND & COMM BK CHN/SY 0% 17/12/2025",
-          "percent": 2.52
+          "security": "Shanghai Pudong Development BK HK 2.45%02/10/2026",
+          "percent": 1.95
         },
         {
           "rank": 4,
-          "security": "HONG KONG MORTGAGE CORP 3.23% 08/04/2026",
-          "percent": 2.52
+          "security": "Shanghai Pudong Development BK HK 2.45%13/10/2026",
+          "percent": 1.95
         },
         {
           "rank": 5,
-          "security": "AGRICULTURAL BK CN/MACAO 0% 17/12/2025",
-          "percent": 2.4
+          "security": "PUBLIC BK HONG KONG LTD 2.75%18/09/2026",
+          "percent": 1.94
         },
         {
           "rank": 6,
-          "security": "PUBLIC BK HONG KONG LTD 1.5%27/10/2025",
-          "percent": 2.31
+          "security": "SUMITOMO MITSUI BANKING CORPORATION 2.65%27/08/2026",
+          "percent": 1.85
         },
         {
           "rank": 7,
-          "security": "PUBLIC BK HONG KONG LTD 1.6%16/10/2025",
-          "percent": 2.05
+          "security": "BANK OF CHINA/HONG K .000000% 06/11/2026",
+          "percent": 1.79
         },
         {
           "rank": 8,
-          "security": "FIRST ABU DHABI BK PJSC 1.6%09/10/2025",
-          "percent": 1.94
+          "security": "CANADIAN IMP BK COMM .000000% 18/09/2026",
+          "percent": 1.67
         },
         {
           "rank": 9,
-          "security": "FIRST ABU DHABI BK PJSC 1.8%16/10/2025",
-          "percent": 1.94
+          "security": "CANADIAN IMP BK COMM .000000% 04/11/2026",
+          "percent": 1.66
         },
         {
           "rank": 10,
-          "security": "HONG KONG T-BILLS 0% 02/10/2025",
-          "percent": 1.89
+          "security": "COMMONWEALTH BANK A 2.940000% 22/09/2026",
+          "percent": 1.58
         }
       ],
       "unavailableFields": [],
@@ -35173,17 +35202,17 @@
       "fundClassIds": ["mpfa-cf-815"],
       "schemeName": "SHKP MPF Employer Sponsored Scheme",
       "constituentFundName": "Allianz Choice Balanced Fund",
-      "factSheetFile": "ES00020.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/ES00020.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "SHKP_FundPriceFFS.pdf",
+      "factSheetUrl": "https://www.shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Asset Allocation of Underlying Fund",
           "entries": [
             {
               "label": "Hong Kong/China Equities 香港/中國股票",
-              "percent": 26
+              "percent": 24
             },
             {
               "label": "Japan Equities 日本股票",
@@ -35191,7 +35220,7 @@
             },
             {
               "label": "North America Equities 北美股票",
-              "percent": 14
+              "percent": 15
             },
             {
               "label": "Europe Equities 歐洲股票",
@@ -35199,7 +35228,7 @@
             },
             {
               "label": "Other Asia Equities 亞洲其他國家股票",
-              "percent": 8
+              "percent": 10
             },
             {
               "label": "Fixed Income 債券",
@@ -35207,7 +35236,7 @@
             },
             {
               "label": "Cash and Others 現金及其他",
-              "percent": 5
+              "percent": 4
             },
             {
               "label": "Fixed Deposits 定期存款",
@@ -35220,52 +35249,52 @@
         {
           "rank": 1,
           "security": "FRANKLIN FTSE ASIA EX CHINA EX JAPAN UCITS ETF",
-          "percent": 5.55
+          "percent": 7.14
         },
         {
           "rank": 2,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF",
-          "percent": 5.02
+          "security": "HSBC HOLDINGS PLC",
+          "percent": 1.88
         },
         {
           "rank": 3,
-          "security": "ISHARES CORE MSCI CHINA ETF",
-          "percent": 1.74
+          "security": "TENCENT HOLDINGS LTD",
+          "percent": 1.53
         },
         {
           "rank": 4,
-          "security": "GLOBAL X MSCI CHINA ETF",
-          "percent": 1.49
+          "security": "ALIBABA GROUP HOLDING LTD",
+          "percent": 1.37
         },
         {
           "rank": 5,
-          "security": "FRANKLIN FTSE AUSTRALIA ETF",
-          "percent": 1.39
+          "security": "CHINA CONSTRUCTION BANK H",
+          "percent": 1.17
         },
         {
           "rank": 6,
-          "security": "HSBC HOLDINGS PLC",
-          "percent": 1.38
+          "security": "NEXT FUNDS TOPIX EXCHANGE TRADED FUND ETF",
+          "percent": 1.1
         },
         {
           "rank": 7,
-          "security": "ISHARES FTSE CHINA A50 ETF",
-          "percent": 1.16
+          "security": "FRANKLIN FTSE AUSTRALIA ETF",
+          "percent": 1.08
         },
         {
           "rank": 8,
-          "security": "TENCENT HOLDINGS LTD",
-          "percent": 1.16
+          "security": "NVIDIA CORPORATION",
+          "percent": 1.02
         },
         {
           "rank": 9,
-          "security": "ALIBABA GROUP HOLDING LTD",
-          "percent": 1.06
+          "security": "APPLE INC",
+          "percent": 0.92
         },
         {
           "rank": 10,
-          "security": "LYXOR US TREASURY 7-10Y ETF",
-          "percent": 1.03
+          "security": "US TREASURY 4.50% 15/04/2027",
+          "percent": 0.9
         }
       ],
       "unavailableFields": [],
@@ -35276,37 +35305,37 @@
       "fundClassIds": ["mpfa-cf-1399"],
       "schemeName": "SHKP MPF Employer Sponsored Scheme",
       "constituentFundName": "Invesco Global Stable Fund",
-      "factSheetFile": "ES00020.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/ES00020.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "SHKP_FundPriceFFS.pdf",
+      "factSheetUrl": "https://www.shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Asset Allocation of Underlying Fund",
           "entries": [
             {
               "label": "Hong Kong Equities 香港股票",
-              "percent": 8.92
+              "percent": 7.17
             },
             {
               "label": "North American Equities 北美洲股票",
-              "percent": 5.51
+              "percent": 6.26
             },
             {
               "label": "European Equities 歐洲股票",
-              "percent": 6.8
+              "percent": 7.67
             },
             {
               "label": "Japanese Equities 日本股票",
-              "percent": 3.79
+              "percent": 3.98
             },
             {
               "label": "Other Asian Equities 其他亞太區股票",
-              "percent": 4.28
+              "percent": 5.49
             },
             {
               "label": "Bonds 債券",
-              "percent": 63.99
+              "percent": 66.26
             },
             {
               "label": "Money Market Instruments 貨幣市場工具",
@@ -35314,7 +35343,7 @@
             },
             {
               "label": "Cash & Others※ 現金及其他※",
-              "percent": 6.71
+              "percent": 3.17
             }
           ]
         }
@@ -35322,53 +35351,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "CHINA GOVERNMENT BOND 1.43% JAN 25 2030",
-          "percent": 4.1
+          "security": "US TREASURY NOTE/BOND 3.875% APR 30 2031",
+          "percent": 7.26
         },
         {
           "rank": 2,
-          "security": "BUNDESOBLIGATION 2.5% APR 16 2031",
-          "percent": 3.46
+          "security": "US TREASURY INFLATION INDEXED BOND 1.25% APR 15 2031",
+          "percent": 5.27
         },
         {
           "rank": 3,
-          "security": "MEX BONOS DESARR FIX RT 8% APR 15 2032",
-          "percent": 2.16
+          "security": "CHINA GOVERNMENT BOND 1.43% JAN 25 2030",
+          "percent": 4.24
         },
         {
           "rank": 4,
-          "security": "JAPAN (2 YEAR ISSUE) 0.4% SEP 1 2026",
-          "percent": 2.12
+          "security": "US TREASURY NOTE/BOND 4.375% MAY 15 2036",
+          "percent": 4.14
         },
         {
           "rank": 5,
-          "security": "US TREASURY NOTE/BOND 0% JUN 18 2026",
-          "percent": 1.94
+          "security": "MEX BONOS DESARR FIX RT 8% APR 15 2032",
+          "percent": 3.39
         },
         {
           "rank": 6,
-          "security": "AUSTRALIAN GOVERNMENT 4.25% DEC 21 2035",
-          "percent": 1.85
+          "security": "CZECH REPUBLIC 3.5% MAY 30 2035",
+          "percent": 2.12
         },
         {
           "rank": 7,
-          "security": "US TREASURY NOTE/BOND 3.375% FEB 29 2028",
-          "percent": 1.8
+          "security": "JAPAN (2 YEAR ISSUE) 0.4% SEP 1 2026",
+          "percent": 1.57
         },
         {
           "rank": 8,
-          "security": "FRANCE (GOVT OF) 2.75% FEB 25 2030",
-          "percent": 1.73
+          "security": "ONTARIO (PROVINCE OF) 3.8% DEC 2 2034",
+          "percent": 1.48
         },
         {
           "rank": 9,
-          "security": "US TREASURY NOTE/BOND 1.375% AUG 15 2050",
-          "percent": 1.64
+          "security": "BUONI POLIENNALI DEL TES 3.45% FEB 1 2036",
+          "percent": 1.38
         },
         {
           "rank": 10,
-          "security": "UNITED KINGDOM GILT 4.125% JAN 29 2027",
-          "percent": 1.6
+          "security": "US TREASURY NOTE/BOND 1.375% AUG 15 2050",
+          "percent": 1.2
         }
       ],
       "unavailableFields": [],
@@ -35379,53 +35408,53 @@
       "fundClassIds": ["mpfa-cf-1497"],
       "schemeName": "SHKP MPF Employer Sponsored Scheme",
       "constituentFundName": "Schroder MPF Core Accumulation Fund",
-      "factSheetFile": "ES00020.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/ES00020.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "SHKP_FundPriceFFS.pdf",
+      "factSheetUrl": "https://www.shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Asset Allocation of Underlying Fund",
           "entries": [
             {
               "label": "USD Bonds 美元債券",
-              "percent": 15.29
+              "percent": 14.91
             },
             {
-              "label": "Global Currencies Bonds 國際貨幣債券 (美元及港元除外)",
-              "percent": 20.11
+              "label": "Global Currencies Bonds (ex USD, ex HKD) 國際貨幣債券 (美元及港元除外)",
+              "percent": 19.45
             },
             {
               "label": "Hong Kong/China Equities 香港/中國股票",
-              "percent": 1.94
+              "percent": 3.03
             },
             {
               "label": "Asia Equities (ex Japan) 亞洲股票(日本除外)",
-              "percent": 6.73
+              "percent": 8.6
             },
             {
               "label": "Japan Equities 日本股票",
-              "percent": 4.58
+              "percent": 2.78
             },
             {
               "label": "Europe Equities (ex UK) 歐洲股票(英國除外)",
-              "percent": 6
+              "percent": 6.41
             },
             {
               "label": "United Kingdom 英國",
-              "percent": 2.21
+              "percent": 1.49
             },
             {
               "label": "North America Equities 美國股票",
-              "percent": 38.46
+              "percent": 39.58
             },
             {
               "label": "Other Equities 其他股票",
-              "percent": 1.69
+              "percent": 1.5
             },
             {
               "label": "Cash or Cash Equivalent 現金或現金等值",
-              "percent": 2.99
+              "percent": 2.25
             }
           ]
         }
@@ -35433,53 +35462,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "NVIDIA CORP",
-          "percent": 2.41
+          "security": "ISHARES US TECHNOLOGY ETF",
+          "percent": 5.88
         },
         {
           "rank": 2,
-          "security": "SPDR GOLD SHARES",
-          "percent": 2.1
+          "security": "INVESCO QQQ TRUST SERIES",
+          "percent": 2.56
         },
         {
           "rank": 3,
-          "security": "NOMURA NF TOPIX ETF",
-          "percent": 1.96
+          "security": "FRANKLIN FTSE TAIWAN UCITS ETF",
+          "percent": 2.35
         },
         {
           "rank": 4,
-          "security": "ALPHABET INC CLASS A",
-          "percent": 1.88
+          "security": "NVIDIA CORP",
+          "percent": 2.15
         },
         {
           "rank": 5,
           "security": "APPLE INC",
-          "percent": 1.85
+          "percent": 1.81
         },
         {
           "rank": 6,
-          "security": "ISHARES CORE S&P 500 ETF",
-          "percent": 1.67
+          "security": "ALPHABET INC CLASS A",
+          "percent": 1.71
         },
         {
           "rank": 7,
-          "security": "MICROSOFT CORP",
-          "percent": 1.6
+          "security": "TREASURY NOTE (OLD) 4.125% 15/02/2036",
+          "percent": 1.66
         },
         {
           "rank": 8,
-          "security": "TREASURY NOTE 0.875% 15/11/2030",
-          "percent": 1.46
+          "security": "FRANKLIN FTSE KOREA UCITS ETF",
+          "percent": 1.54
         },
         {
           "rank": 9,
-          "security": "TREASURY NOTE (2OLD) 3.5% 31/01/2028",
-          "percent": 1.45
+          "security": "TREASURY NOTE 3.5% 31/01/2028",
+          "percent": 1.31
         },
         {
           "rank": 10,
-          "security": "ISHARES GLOBAL ENERGY ETF",
-          "percent": 1.33
+          "security": "TREASURY NOTE 0.875% 15/11/2030",
+          "percent": 1.3
         }
       ],
       "unavailableFields": [],
@@ -35490,53 +35519,53 @@
       "fundClassIds": ["mpfa-cf-1498"],
       "schemeName": "SHKP MPF Employer Sponsored Scheme",
       "constituentFundName": "Schroder MPF Age 65 Plus Fund",
-      "factSheetFile": "ES00020.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/ES00020.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2026-03-31",
+      "factSheetFile": "SHKP_FundPriceFFS.pdf",
+      "factSheetUrl": "https://www.shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Asset Allocation of Underlying Fund",
           "entries": [
             {
               "label": "USD Bonds 美元債券",
-              "percent": 32.29
+              "percent": 31.98
             },
             {
               "label": "Global Currencies Bonds (ex USD, ex HKD) 國際貨幣債券 (美元及港元除外)",
-              "percent": 42.44
+              "percent": 41.74
             },
             {
               "label": "Hong Kong/China Equities 香港/中國股票",
-              "percent": 0.71
+              "percent": 1.14
             },
             {
               "label": "Asia Equities (ex Japan) 亞洲股票(日本除外)",
-              "percent": 2.47
+              "percent": 3.23
             },
             {
               "label": "Japan Equities 日本股票",
-              "percent": 1.68
+              "percent": 1.04
             },
             {
               "label": "Europe Equities (ex UK) 歐洲股票(英國除外)",
-              "percent": 2.2
+              "percent": 2.41
             },
             {
               "label": "United Kingdom Equities 英國股票",
-              "percent": 0.81
+              "percent": 0.56
             },
             {
               "label": "North America Equities 美國股票",
-              "percent": 14.1
+              "percent": 14.88
             },
             {
               "label": "Other Equities 其他股票",
-              "percent": 0.62
+              "percent": 0.56
             },
             {
               "label": "Cash or Cash Equivalent 現金或現金等值",
-              "percent": 2.68
+              "percent": 2.46
             }
           ]
         }
@@ -35544,53 +35573,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "TREASURY NOTE 0.875% 15/11/2030",
-          "percent": 3.08
+          "security": "TREASURY NOTE (OLD) 4.125% 15/02/2036",
+          "percent": 3.56
         },
         {
           "rank": 2,
-          "security": "TREASURY NOTE (2OLD) 3.5% 31/01/2028",
-          "percent": 3.06
+          "security": "TREASURY NOTE 3.5% 31/01/2028",
+          "percent": 2.81
         },
         {
           "rank": 3,
-          "security": "ITALY (REPUBLIC OF) RegS 2.2% 01/06/2027",
-          "percent": 2.65
+          "security": "TREASURY NOTE 0.875% 15/11/2030",
+          "percent": 2.8
         },
         {
           "rank": 4,
-          "security": "TREASURY NOTE 0.625% 31/12/2027",
-          "percent": 2.56
+          "security": "ISHARES US TECHNOLOGY ETF",
+          "percent": 2.21
         },
         {
           "rank": 5,
           "security": "TREASURY NOTE 1.625% 15/08/2029",
-          "percent": 2.3
+          "percent": 2.11
         },
         {
           "rank": 6,
-          "security": "GERMANY (FEDERAL REPUBLIC OF) RegS 2.5% 16/04/2031",
-          "percent": 1.98
+          "security": "TREASURY NOTE 3.75% 31/01/2031",
+          "percent": 1.89
         },
         {
           "rank": 7,
-          "security": "TREASURY NOTE 1.25% 31/05/2028",
-          "percent": 1.88
+          "security": "TREASURY NOTE 3.75% 15/08/2027",
+          "percent": 1.8
         },
         {
           "rank": 8,
-          "security": "TREASURY NOTE 3.875% 30/11/2027",
-          "percent": 1.87
+          "security": "TREASURY NOTE 1.25% 31/05/2028",
+          "percent": 1.71
         },
         {
           "rank": 9,
-          "security": "TREASURY BOND 3.125% 15/02/2043",
-          "percent": 1.65
+          "security": "TREASURY NOTE 3.875% 30/11/2027",
+          "percent": 1.69
         },
         {
           "rank": 10,
-          "security": "TREASURY NOTE (OTR) 3.75% 31/03/2028",
-          "percent": 1.49
+          "security": "TREASURY BOND 3.125% 15/02/2043",
+          "percent": 1.53
         }
       ],
       "unavailableFields": [],

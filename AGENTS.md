@@ -85,8 +85,8 @@ MPF Navigator 檔案的 Sheet1（風險取向配置比重）不在範圍內，�
 覆蓋報告：`bun run coverage:fact-sheet-allocation-report --platform <平台快照> --links
 <fund-fact-sheet-links.json> --fact-sheets <PDF 目錄> --output <report.json>`。報告逐個計劃
 列出已配對數、未配對清單及原因、以及配對到但官方未披露的原因。2026-09-02 以 24 份便覽跑
-（十八個計劃用受託人官網那期、其餘用積金局副本）：382 隻成分基金中 381 隻配對到，
-310 隻有配置、360 隻有十大持倉。餘下缺口主要是圖表式披露：宏利環球精選的配置畫成條形圖、
+（二十一個計劃用受託人官網那期、其餘三個用積金局副本）：382 隻成分基金中 381 隻配對到，
+310 隻有配置、361 隻有十大持倉。餘下缺口主要是圖表式披露：宏利環球精選的配置畫成條形圖、
 永明畫成圓環圖（受託人版一樣係向量，文字層一個字都冇）、我的強積金的圓餅圖標註共用基線，
 全部走 `unavailableFields` 並寫明原因。
 
@@ -123,12 +123,25 @@ MPF Navigator 檔案的 Sheet1（風險取向配置比重）不在範圍內，�
 （集成信託 `mpf-mt-2026-2nd.pdf`、行業 `mpf-is-2026-2nd.pdf`、享惠 `mpf-vs-2026-2nd.pdf`，
 全部 2026-06-30，積金局副本 2026-03-31）及滙豐 SuperTrust Plus
 （`hsbc.com.hk/content/dam/hsbc/hk/docs/mpf/2q2026.pdf`，2026-06-30，積金局副本 2025-12-31）、
-海通（`gthtam.com.hk` 的 Fund Monitor，2026-07-31，積金局副本 2025-12-31）及
-BCT Pro Choice（`bcthk.com/MTS-Fund-Fact-Sheet`，2026-06-30，積金局副本 2025-12-31），
-資料新三至七個月；餘下 6 個計劃仍待抄錄。
+海通（`gthtam.com.hk` 的 Fund Monitor，2026-07-31，積金局副本 2025-12-31）、
+BCT Pro Choice（`bcthk.com/MTS-Fund-Fact-Sheet`，2026-06-30，積金局副本 2025-12-31）、
+宏利環球精選（`manulife.com.hk/…/services/forms/quarterly-fund-fact-sheet.pdf`，2026-06-30，
+積金局副本 2026-03-31）、宏利自在人生（`manulife.com.hk/…/products/mpf/retirechoice-scheme/
+fundfact-sheet.pdf`，2026-06-30，積金局副本 2025-12-31）及新地
+（`shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf`，2026-06-30，
+積金局副本 2026-03-31），資料新三至七個月；餘下 3 個計劃（AMTD、富達、MASS）仍未換版。
 
 **bcthk.com 用 CloudFront 擋自動化請求**：`curl` 冇帶瀏覽器 `User-Agent` 會收 403，
 帶正常瀏覽器 UA（例如 Chrome 128 UA）就過。
+
+**Akamai Bot Manager 認 TLS 指紋，唔係認 `User-Agent`**：manulife.com.hk 全站行 Akamai，
+`curl`（連完整瀏覽器 headers）、`agent-browser`、`read_webpage` 一律收 403 Access Denied，
+因為擋的是 TLS/JA3 握手指紋，補幾多個 header 都冇用。用 `curl_cffi`（已安裝於
+`/usr/local/lib/python3.12/site-packages`，注意要行 `/usr/local/bin/python3`，
+`/usr/bin/python3` 揀唔到）以 `requests.Session(impersonate="chrome124")` 重現 Chrome
+的握手指紋就一次過通——完全喺本機跑，唔使 proxy、唔燒任何額度。shkp.com 同樣行得。
+`r.jina.ai` 之類的公開 proxy 只會把 PDF 轉成 markdown，攞唔到原始位元組，抽唔到座標，
+唔可以用嚟做版面解析。
 
 **Pro Choice 的連結唔喺下載區，要去積金局 KSID 攞**：計劃叫 Pro Choice，但便覽的短連結係
 `bcthk.com/MTS-Fund-Fact-Sheet`（MTS = Master Trust Scheme，解到
@@ -149,10 +162,12 @@ BCT Pro Choice（`bcthk.com/MTS-Fund-Fact-Sheet`，2026-06-30，積金局副本 
 2025 年及之前係三個計劃共用一份 `mpf-YYYY-Nth.pdf`。下載區當時只列到 2026-1st，
 但 2026-2nd 三份都已經上載，所以要逐條 URL 試，唔可以淨係抄下載區列咗的連結。
 
-**新地換版反而少一隻持倉，冇採用**：受託人官網 `Fund Price and FFS for SHKPESS.pdf`
+**新地換版一度少一隻持倉，靠 `rowGap` 修返**：受託人官網 `Fund Price and FFS for SHKPESS.pdf`
 （2026-06-30）比積金局副本（2026-03-31）新一季，但 Fidelity Balanced Fund 嗰版有兩行
-「有百分比冇名稱」（`values-without-names`），令呢隻基金由有齊十大持倉變冇。換版必須先跑
-覆蓋報告確認冇退步先可以換，呢次退步緊，維持用積金局副本，未寫入 `trustee-fact-sheet-links.json`。
+「有百分比冇名稱」（`values-without-names`），令呢隻基金由有齊十大持倉變冇。查落唔係向量繪圖，
+而係百分比嘅基線比證券名高 5 至 6 pt，超出 `toLines` 嘅 4 pt 容差；列距 14 至 15 pt，所以
+持倉區段加 `rowGap: 7` 就併得返同一列而唔會吞埋下一列。積金局副本行同一份契約，加咗之後
+輸出逐字不變（本身已經對齊），所以唔使拆兩份契約。換版必須先跑覆蓋報告確認冇退步先可以換。
 
 **AMTD：受託人自己都冇喺官網放最新便覽**。2026-09-02 逐層查過：
 
@@ -170,16 +185,19 @@ BCT Pro Choice（`bcthk.com/MTS-Fund-Fact-Sheet`，2026-06-30，積金局副本 
 即係話 AMTD 唔係「攞唔到」，而係受託人官網根本冇一份比積金局副本新嘅合併便覽。維持用
 積金局副本 `MT00539.pdf`（2025-12-31）。要再進一步就要睇 eMPF 平台有冇刊發，屬另一條來源路徑。
 
-**宏利兩個計劃：官網擋死自動化請求**。manulife.com.hk 全站行 Akamai Bot Manager，
-`curl`（連完整瀏覽器 headers）、`agent-browser`、`read_webpage` 一律收 403 Access Denied，
-`scmpf.` 子網域同 `zh-hk` 路徑一樣擋。連結本身查到——Global Select 的季度便覽在
-`/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf`——
-但取唔到檔案就驗唔到版面，所以兩個計劃都維持積金局副本。富達（fidelity.com.hk）同樣係
-Akamai 擋 `curl`，但 `read_webpage` 過到：官網只有逐隻基金一頁的
-`/en/funds/factsheet/<code>/H`，冇合併版 PDF，現有合併版契約用唔到。
-MASS（yflife.com）情況一樣：官網逐隻基金各自一份便覽，藏喺 `/aisite-applyapi/` 後面，
-公開目錄只有 `MonthlyFundPrice(E).pdf` 價格表，冇合併版。呢三個受託人要換版就要先重新
-設計「逐隻基金一份 PDF」的解析路徑，非純換連結。
+**宏利兩個計劃：Akamai 擋得住 header，擋唔住 TLS 指紋重現**。兩份便覽的版面同積金局副本
+一模一樣，取到檔案就照用現有契約，只差自在人生嗰份由 Word 匯出，標題嵌字由 `Arial` 變
+`Arial,Bold`（內文一律 `ArialMT`，所以放寬字體名唔會誤中，唔使拆兩份契約）。
+環球精選換版仲補返一隻：積金局副本嘅 Fidelity Stable Growth Fund 有一行證券名畫成向量
+（`values-without-names`），受託人版文字層齊全，十大持倉由 14 隻升到 15 隻，而且同新地嗰份
+獨立便覽披露嘅同一隻基礎基金持倉逐項對得上。
+
+**富達同 MASS 冇合併版便覽，唔係取不到檔**。富達（fidelity.com.hk）官網只有逐隻基金一頁的
+`/en/funds/factsheet/<code>/H`；MASS（yflife.com）逐隻基金各自一份便覽，藏喺
+`/aisite-applyapi/` 後面，公開目錄只有 `MonthlyFundPrice(E).pdf` 價格表。兩者都冇一份
+涵蓋成個計劃的合併 PDF，現有「一份便覽、逐版一隻基金」的契約結構用唔到——要換版就要先重新
+設計「逐隻基金一份 PDF」的解析路徑（逐隻抓、逐隻對名、逐隻記自己的截至日期），非純換連結，
+屬另一張票。
 
 換版面時要一併重跑覆蓋報告比對：Series 800 換到 2026-03-31 那期先揭發配置欄的註腳 `3`
 落在 446，撞入原本去到 460 的持倉欄，令整張十大持倉表報唔可用。兩個 band 唔可以重疊。

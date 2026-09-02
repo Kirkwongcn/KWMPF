@@ -88,5 +88,20 @@
     "scheme": "BCT (MPF) Pro Choice",
     "factSheetUrl": "https://www.bcthk.com/MTS-Fund-Fact-Sheet",
     "file": "BCT_ProChoice.pdf"
+  },
+  {
+    "scheme": "Manulife Global Select (MPF) Scheme",
+    "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+    "file": "Manulife_GlobalSelect.pdf"
+  },
+  {
+    "scheme": "Manulife RetireChoice (MPF) Scheme",
+    "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/mpf/retirechoice-scheme/fundfact-sheet.pdf",
+    "file": "Manulife_RetireChoice.pdf"
+  },
+  {
+    "scheme": "SHKP MPF Employer Sponsored Scheme",
+    "factSheetUrl": "https://www.shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf",
+    "file": "SHKP_FundPriceFFS.pdf"
   }
 ]

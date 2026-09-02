@@ -336,6 +336,16 @@ const shkpShaped: FactSheetContract = {
   asOf: { pattern: /As at\s+(\d{1,2}\/\d{1,2}\/\d{4})/i },
 };
 
+/** 新地的十大持倉：橫跨成版，證券名同百分比的基線唔一定對齊。 */
+const shkpHoldingsShaped: FactSheetContract = {
+  ...shkpShaped,
+  holdings: {
+    heading: /^Top Ten Holdings of Underlying Fund/,
+    band: { minLeft: 20, maxLeft: 900 },
+    rowGap: 7,
+  },
+};
+
 describe("bilingual two-column tables", () => {
   it("keeps a run whose baseline sits a point lower in its place on the row", () => {
     // 「香港」「/」「中國股票」係同一行，但斜線的基線低一點。淨係按 `top` 排會變成
@@ -435,6 +445,30 @@ describe("bilingual two-column tables", () => {
         percent: 42.44,
       },
     ]);
+  });
+
+  it("pairs a holding whose percentage sits a few points off the security name", () => {
+    // 受託人官網那份的百分比有幾行比證券名高五至六點，超出 `toLines` 的四點容差。
+    // 逐行讀會變成「有百分比冇名稱」，整張十大持倉表當官方未提供，等於漏報披露。
+    // 列距十四至十五點，所以七點併得返同一列而唔會吞埋下一列。
+    const pages = pdf(
+      page(1, [
+        { top: 10, left: 30, text: "As at 30/06/2026", width: 110 },
+        { top: 20, left: 30, text: "Balanced Fund", size: 18, width: 90 },
+        { top: 582, left: 274, text: "Top Ten Holdings of Underlying Fund", width: 232 },
+        { top: 599, left: 828, text: "10.94%", width: 47 },
+        { top: 604, left: 46, text: "CSOP FTSE HONG KONG EQUITY ETF", width: 223 },
+        { top: 618, left: 46, text: "INVESCO QQQ TRUST", width: 132 },
+        { top: 618, left: 838, text: "5.38%", width: 37 },
+      ]),
+    );
+    const [disclosure] = parseFactSheetDisclosures(pages, shkpHoldingsShaped);
+
+    expect(disclosure?.topHoldings).toEqual([
+      { rank: 1, security: "CSOP FTSE HONG KONG EQUITY ETF", percent: 10.94 },
+      { rank: 2, security: "INVESCO QQQ TRUST", percent: 5.38 },
+    ]);
+    expect(disclosure?.unavailableFields).not.toContain("topHoldings");
   });
 });
 
