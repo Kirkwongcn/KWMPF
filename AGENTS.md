@@ -84,9 +84,9 @@ MPF Navigator 檔案的 Sheet1（風險取向配置比重）不在範圍內，�
 
 覆蓋報告：`bun run coverage:fact-sheet-allocation-report --platform <平台快照> --links
 <fund-fact-sheet-links.json> --fact-sheets <PDF 目錄> --output <report.json>`。報告逐個計劃
-列出已配對數、未配對清單及原因、以及配對到但官方未披露的原因。2026-08-31 以 24 份便覽跑
-（十六個計劃用受託人官網那期、其餘用積金局副本）：382 隻成分基金中 381 隻配對到，
-310 隻有配置、355 隻有十大持倉。餘下缺口主要是圖表式披露：宏利環球精選的配置畫成條形圖、
+列出已配對數、未配對清單及原因、以及配對到但官方未披露的原因。2026-09-02 以 24 份便覽跑
+（十八個計劃用受託人官網那期、其餘用積金局副本）：382 隻成分基金中 381 隻配對到，
+310 隻有配置、360 隻有十大持倉。餘下缺口主要是圖表式披露：宏利環球精選的配置畫成條形圖、
 永明畫成圓環圖（受託人版一樣係向量，文字層一個字都冇）、我的強積金的圓餅圖標註共用基線，
 全部走 `unavailableFields` 並寫明原因。
 
@@ -122,12 +122,21 @@ MPF Navigator 檔案的 Sheet1（風險取向配置比重）不在範圍內，�
 （季度 Fund Fact Sheet，2026-06-30，積金局副本 2026-03-31）、東亞三個計劃
 （集成信託 `mpf-mt-2026-2nd.pdf`、行業 `mpf-is-2026-2nd.pdf`、享惠 `mpf-vs-2026-2nd.pdf`，
 全部 2026-06-30，積金局副本 2026-03-31）及滙豐 SuperTrust Plus
-（`hsbc.com.hk/content/dam/hsbc/hk/docs/mpf/2q2026.pdf`，2026-06-30，積金局副本 2025-12-31），
-資料新三至六個月；餘下 8 個計劃仍待抄錄。
+（`hsbc.com.hk/content/dam/hsbc/hk/docs/mpf/2q2026.pdf`，2026-06-30，積金局副本 2025-12-31）、
+海通（`gthtam.com.hk` 的 Fund Monitor，2026-07-31，積金局副本 2025-12-31）及
+BCT Pro Choice（`bcthk.com/MTS-Fund-Fact-Sheet`，2026-06-30，積金局副本 2025-12-31），
+資料新三至七個月；餘下 6 個計劃仍待抄錄。
 
 **bcthk.com 用 CloudFront 擋自動化請求**：`curl` 冇帶瀏覽器 `User-Agent` 會收 403，
-帶正常瀏覽器 UA（例如 Chrome 128 UA）就過。BCT (MPF) Pro Choice 都試過（同一 UA 手法），
-但受託人現有那份同積金局副本一樣係 2025-12-31，冇新資料，冇更新連結。
+帶正常瀏覽器 UA（例如 Chrome 128 UA）就過。
+
+**Pro Choice 的連結唔喺下載區，要去積金局 KSID 攞**：計劃叫 Pro Choice，但便覽的短連結係
+`bcthk.com/MTS-Fund-Fact-Sheet`（MTS = Master Trust Scheme，解到
+`/content/dam/bcthk-sites/documents/publications/images/MT_Fact_Sheet.pdf`）。
+`PC-`、`ProChoice-`、`IC-` 一律解唔到，官網下載區又係 JS render，`curl` 攞唔到連結；
+之前試出「同積金局副本一樣係 2025-12-31」係因為試錯咗連結。權威出處係積金局的
+主要計劃資料文件 `mpfa.org.hk/assets/OD/MT00016_BCT_(MPF)_Pro_Choice_EN.pdf`，
+入面明寫基金便覽連結。其餘計劃搵唔到連結時，同樣可以去 `assets/OD/<計劃編號>_*_EN.pdf` 查。
 
 友邦那期同時揭發一個真缺口：積金局 2025-11-30 副本未收錄 Retirement Income Fund，
 換上受託人版之後 21 隻成分基金全部有齊配置及十大持倉，配對數同十大持倉數各 +1。
@@ -145,11 +154,8 @@ MPF Navigator 檔案的 Sheet1（風險取向配置比重）不在範圍內，�
 「有百分比冇名稱」（`values-without-names`），令呢隻基金由有齊十大持倉變冇。換版必須先跑
 覆蓋報告確認冇退步先可以換，呢次退步緊，維持用積金局副本，未寫入 `trustee-fact-sheet-links.json`。
 
-**海通、AMTD 未逐個試**：海通受託人官網（gthtam.com.hk）的「Fund Monitor」已到 2026-07-31，
-比積金局副本 2025-12-31 新，但版面同現有契約完全唔同（標題格式、字體、多基金合併方式都變），
-契約會報「no constituent fund sections found」，要重新設計解析契約先可以用，非純換連結。
-AMTD 受託人官網（ooogroup.xyz）嘅 Quarterly Fund Summary 現時同積金局副本一樣係 2025-12-31，
-未見更新，未加連結。
+**AMTD 未見更新**：受託人官網（ooogroup.xyz）嘅 Quarterly Fund Summary 現時同積金局副本
+一樣係 2025-12-31，未見更新，未加連結。（海通已於 #225 換版，見上文 `source` 分流。）
 
 **宏利兩個計劃：官網擋死自動化請求**。manulife.com.hk 全站行 Akamai Bot Manager，
 `curl`（連完整瀏覽器 headers）、`agent-browser`、`read_webpage` 一律收 403 Access Denied，

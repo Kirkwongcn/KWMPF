@@ -83,5 +83,10 @@
     "scheme": "Haitong MPF Retirement Fund",
     "factSheetUrl": "https://gthtam.com.hk/hti_content/images/mpf/Haitong_MPF_Conservative_Fund/FundDocument/4/en-US/Haitong%20MPF%20Conservative%20Fund%20-%20Fund%20Monitor.pdf",
     "file": "Haitong_FundMonitor.pdf"
+  },
+  {
+    "scheme": "BCT (MPF) Pro Choice",
+    "factSheetUrl": "https://www.bcthk.com/MTS-Fund-Fact-Sheet",
+    "file": "BCT_ProChoice.pdf"
   }
 ]
