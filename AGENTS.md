@@ -154,8 +154,21 @@ BCT Pro Choice（`bcthk.com/MTS-Fund-Fact-Sheet`，2026-06-30，積金局副本 
 「有百分比冇名稱」（`values-without-names`），令呢隻基金由有齊十大持倉變冇。換版必須先跑
 覆蓋報告確認冇退步先可以換，呢次退步緊，維持用積金局副本，未寫入 `trustee-fact-sheet-links.json`。
 
-**AMTD 未見更新**：受託人官網（ooogroup.xyz）嘅 Quarterly Fund Summary 現時同積金局副本
-一樣係 2025-12-31，未見更新，未加連結。（海通已於 #225 換版，見上文 `source` 分流。）
+**AMTD：受託人自己都冇喺官網放最新便覽**。2026-09-02 逐層查過：
+
+- 營辦機構 2024-06-18 由 orientiert XYZ Securities 改名為 oOo Securities (HK) Group，
+  網址由 `orientiertgroup.com` 轉去 `ooogroup.xyz`。舊網域仲解析到，但 TLS 憑證
+  2025-03-07 已經過期，`curl` 同瀏覽器都連唔上，唔可以攞嚟做發布資料的來源。
+- 積金局主要計劃資料文件（`assets/OD/MT00539_AMTD_MPF_Scheme_EN.pdf`）入面嗰條基金便覽
+  短連結係 `bit.ly/44v4piX`，解到舊網域嘅 **2021 年 9 月**月報，比積金局副本仲舊。
+- 新網域行 Cloudflare：`curl`（帶瀏覽器 UA）同 `agent-browser` 一律收 403，Zo 瀏覽器過到，
+  但「基金資料」頁（`/hk/mpf-3.html`）有一個 JS 免責聲明閘，要㩒「同意」先入到；
+  同頁嘅 `/locales/hk/mpf-3` 內容 API 出返一模一樣嘅閘前文字，繞唔到。
+- 旁證顯示個站嘅強積金部分已經停止更新：`/locales/en/mpf_price` 嘅單位價格仲係
+  2024-04-26，登入掣直接跳去 eMPF（`e-mpfhk.com`）。
+
+即係話 AMTD 唔係「攞唔到」，而係受託人官網根本冇一份比積金局副本新嘅合併便覽。維持用
+積金局副本 `MT00539.pdf`（2025-12-31）。要再進一步就要睇 eMPF 平台有冇刊發，屬另一條來源路徑。
 
 **宏利兩個計劃：官網擋死自動化請求**。manulife.com.hk 全站行 Akamai Bot Manager，
 `curl`（連完整瀏覽器 headers）、`agent-browser`、`read_webpage` 一律收 403 Access Denied，
