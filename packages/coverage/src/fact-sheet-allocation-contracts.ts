@@ -503,7 +503,10 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
     title: {
       pattern: /Fund$/,
       fontSize: [24],
-      fontFamily: /Arial$/,
+      // 積金局副本嵌入的字體係 `Arial`，受託人官網那份由 Word 匯出，同一個標題嵌成
+      // `Arial,Bold`。兩份的版面一模一樣，只係嵌字名唔同，所以放寬字體名而唔開多一份契約；
+      // 內文用 `ArialMT`，加 `,Bold` 唔會誤中。
+      fontFamily: /Arial(?:,Bold)?$/,
       fontColor: ["#ffffff"],
     },
     allocation: {
@@ -612,6 +615,10 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       // 標題置中（left≈274）而證券名靠左（left≈32 至 46），自動欄界會由標題往左讓
       // 30 pt，剛好切走名稱只剩百分比，所以要明確劃開整版。
       band: { minLeft: 20, maxLeft: 900 },
+      // 證券名同百分比唔一定對齊同一條基線：受託人官網那份有幾行差 5 至 6 pt，
+      // 超出 `toLines` 的 4 pt 容差，逐行讀會變成「有百分比冇名稱」，整張表報唔可用。
+      // 列距 14 至 15 pt，所以 7 pt 併得返同一列而唔會吞埋下一列。
+      rowGap: 7,
     },
     asOf: { pattern: AS_OF_LONG },
   },
