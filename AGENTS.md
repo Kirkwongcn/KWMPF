@@ -84,8 +84,8 @@ MPF Navigator 檔案的 Sheet1（風險取向配置比重）不在範圍內，�
 
 覆蓋報告：`bun run coverage:fact-sheet-allocation-report --platform <平台快照> --links
 <fund-fact-sheet-links.json> --fact-sheets <PDF 目錄> --output <report.json>`。報告逐個計劃
-列出已配對數、未配對清單及原因、以及配對到但官方未披露的原因。2026-09-04 以 37 份便覽跑
-（二十二個計劃用受託人官網那期、其餘兩個用積金局副本；MASS 嗰個計劃自己就佔 14 份）：
+列出已配對數、未配對清單及原因、以及配對到但官方未披露的原因。2026-09-04 以 59 份便覽跑
+（二十三個計劃用受託人官網那期、AMTD 用積金局副本；MASS 佔 14 份、富達佔 23 份）：
 382 隻成分基金中 381 隻配對到，
 310 隻有配置、361 隻有十大持倉。餘下缺口主要是圖表式披露：宏利環球精選的配置畫成條形圖、
 永明畫成圓環圖（受託人版一樣係向量，文字層一個字都冇）、我的強積金的圓餅圖標註共用基線，
@@ -131,7 +131,9 @@ BCT Pro Choice（`bcthk.com/MTS-Fund-Fact-Sheet`，2026-06-30，積金局副本 
 fundfact-sheet.pdf`，2026-06-30，積金局副本 2025-12-31）及新地
 （`shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf`，2026-06-30，
 積金局副本 2026-03-31）及 MASS（`yflife.com` 逐隻成分基金一份便覽，14 份全部 2026-06-30，
-積金局副本 2025-12-31），資料新三至七個月；餘下 2 個計劃（AMTD、富達）仍未換版。
+積金局副本 2025-12-31）及富達（`fidelityinternational.com` 逐隻成分基金一份便覽，
+23 份全部 2026-07-31，積金局副本 2025-12-31），資料新三至七個月；
+餘下 1 個計劃（AMTD）仍未換版，原因見下。
 
 **bcthk.com 用 CloudFront 擋自動化請求**：`curl` 冇帶瀏覽器 `User-Agent` 會收 403，
 帶正常瀏覽器 UA（例如 Chrome 128 UA）就過。
@@ -196,8 +198,25 @@ fundfact-sheet.pdf`，2026-06-30，積金局副本 2025-12-31）及新地
 
 **富達同 MASS 冇合併版便覽，唔係取不到檔**。富達（fidelity.com.hk）官網只有逐隻基金一頁的
 `/en/funds/factsheet/<code>/H`；MASS（yflife.com）逐隻基金各自一份便覽。兩者都冇一份涵蓋成個
-計劃的合併 PDF，所以來源結構加咗「一個計劃多份便覽」嗰個形態（見下）。MASS 已經換版，
-富達仲未（#229）。
+計劃的合併 PDF，所以來源結構加咗「一個計劃多份便覽」嗰個形態（見下），兩個計劃都已經換版。
+
+**富達逐隻基金一份便覽**。`fidelity.com.hk` 嗰版係 SPA，`/pdf`、`/download`、`/api/...` 全部
+撞返同一個 shell；便覽唔喺零售網域，而係
+`www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-<代號>.pdf`。
+代號係零售網站基金代號嘅前半段（`CFGF/H` → `H-CFGF`），23 隻齊。只有 `HK-zh_en` 呢個地區碼
+攞到檔，`HK-en`／`HK-zh` 一律 403。取檔要 `curl_cffi`（`impersonate="chrome124"`）；
+`agent-browser` 開零售網站會撞 Access Denied，所以基金代號係由網站嘅 JS bundle 反查出嚟。
+23 份全部 2026-07-31，積金局副本 `MT00288.pdf` 係 2025-12-31，新七個月。
+
+排版同積金局副本同一套（同一批字體級數、同樣三欄），所以標題錨點、欄界、日期式樣共用
+`fidelityBlocks`；唯一分別係中英對照：每個披露標題後面緊接中文譯名，併行之後變成
+「Top 10 Holdings 十大主要投資項目」，所以受託人版嘅標題式樣唔可以用 `$` 收尾。中文譯名
+兩個來源都照樣由 `FIDELITY_DIMENSION_ZH` 對照，出返同一套標籤。換版之後配置維度
+（34 個）同十大持倉（230 項）同積金局副本一模一樣，冇多冇少。
+
+配置本身仲有一個更舊嘅日期：便覽寫「Fund Data as of 31/07/2026」，但配置表下面嘅註腳寫
+「^ as of 30/06/2026」。現時 `factSheetAsOf` 一個披露得一個，記嘅係便覽自己嗰個；
+逐塊披露各自嘅截至日期唔喺 #229 範圍，要做就另開票。
 
 **MASS 逐隻基金一份便覽**。`www.yflife.com/en/product/mpf-hongkong/fund-price-history/` 嗰版
 用 `aisite-applyapi/mo/moCompanyFund/fundList` 出返 14 隻成分基金嘅 `fund_code` 同便覽路徑
