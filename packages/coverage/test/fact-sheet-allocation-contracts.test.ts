@@ -7,7 +7,9 @@ import {
 
 /**
  * 大部分計劃嘅受託人官網版面同積金局副本一致，一份契約兩個來源共用；
- * 海通嘅受託人官網係完全唔同嘅版面，先要按來源分開兩份契約。呢度測試嘅係
+ * 海通嘅受託人官網係完全唔同嘅版面，MASS 兩邊版面一樣但截至日期寫法唔同
+ * （副本有中文日期，官網逐隻基金嗰份淨係英文而且斷咗行），
+ * 呢兩個計劃先要按來源分開兩份契約。呢度測試嘅係
  * 「按來源揀契約」呢層揀選邏輯本身，唔係逐份契約嘅解析細節（嗰啲喺
  * `fact-sheet-allocation.test.ts` 度用真實座標鎖定）。
  */
@@ -44,8 +46,12 @@ describe("FACT_SHEET_SCHEMES", () => {
       (scheme, index) => FACT_SHEET_SCHEMES.indexOf(scheme) !== index,
     );
     expect(duplicates).toEqual([]);
-    expect(FACT_SHEET_SCHEMES).toContain("Haitong MPF Retirement Fund");
-    // 25 份契約、24 個計劃：海通一個計劃有兩份（按來源分開）。
-    expect(FACT_SHEET_CONTRACTS.length).toBe(FACT_SHEET_SCHEMES.length + 1);
+    // 海通同 MASS 各有兩份契約（按來源分開），其餘二十二個計劃各一份。
+    const twoContracts = [
+      "Haitong MPF Retirement Fund",
+      "MASS Mandatory Provident Fund Scheme",
+    ];
+    for (const scheme of twoContracts) expect(FACT_SHEET_SCHEMES).toContain(scheme);
+    expect(FACT_SHEET_CONTRACTS.length).toBe(FACT_SHEET_SCHEMES.length + twoContracts.length);
   });
 });

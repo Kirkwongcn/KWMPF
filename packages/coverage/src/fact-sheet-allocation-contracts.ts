@@ -147,6 +147,31 @@ const hsbcBlocks = {
   },
 } as const;
 
+/**
+ * MASS：積金局副本同受託人官網逐隻基金那份係同一套版面（藍色基金名做頁眉、右邊圓餅圖
+ * 標註、左下角十大持倉），只有截至日期的寫法唔同，所以標題同兩塊披露共用。
+ */
+const massBlocks: Pick<FactSheetContract, "title" | "allocation" | "holdings"> = {
+  title: {
+    // 基金名排在每隻基金第二版的頁眉；第一版的標題係另一個顏色，唔會撞。
+    pattern: /Fund$/,
+    fontSize: [18],
+    fontFamily: /Calibri,Bold/,
+    fontColor: ["#00b8f1"],
+  },
+  allocation: {
+    // 餅圖旁邊的標註：標籤一行、百分比一行，餅左邊的靠右對齊、右邊的靠左對齊，
+    // 所以中心對唔上，要按水平範圍相交分組。標註以百分比作結。
+    heading: /^Portfolio Asset Allocation/,
+    headingLabel: () => "Portfolio Asset Allocation 投資組合分佈",
+    band: { minLeft: 390, maxLeft: 900 },
+    callouts: { overlap: true },
+    // 餅圖之下係資料來源及曆年回報表，唔屬於投資組合分佈。
+    maxDepth: 260,
+  },
+  holdings: { heading: /^Top 10 Holdings/ },
+} as const;
+
 export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
   {
     scheme: "AIA MPF - Prime Value Choice",
@@ -530,24 +555,23 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
   },
   {
     scheme: "MASS Mandatory Provident Fund Scheme",
-    title: {
-      pattern: /Fund$/,
-      fontSize: [18],
-      fontFamily: /Calibri,Bold/,
-      fontColor: ["#00b8f1"],
-    },
-    allocation: {
-      // 餅圖旁邊的標註：標籤一行、百分比一行，餅左邊的靠右對齊、右邊的靠左對齊，
-      // 所以中心對唔上，要按水平範圍相交分組。標註以百分比作結。
-      heading: /^Portfolio Asset Allocation/,
-      headingLabel: () => "Portfolio Asset Allocation 投資組合分佈",
-      band: { minLeft: 390, maxLeft: 900 },
-      callouts: { overlap: true },
-      // 餅圖之下係資料來源及曆年回報表，唔屬於投資組合分佈。
-      maxDepth: 260,
-    },
-    holdings: { heading: /^Top 10 Holdings/ },
+    source: "mpfa-registry",
+    ...massBlocks,
+    // 積金局副本係中英對照版，封面同逐版都有中文日期，一行讀得到。
     asOf: { pattern: /(\d{4}\s*年\s*\d{1,2}\s*月\s*\d{1,2}\s*日)/ },
+  },
+  {
+    // 受託人官網逐隻基金一份便覽（`app2.yflife.com/MPFWeb/pdf/fact_sheet/<代號>_E.pdf`），
+    // 版面同積金局副本一模一樣，只差係英文版：冇中文日期，而「Fund Data as at
+    // June 30, 2026」排喺左欄並且斷開兩行，右邊同一條基線仲有「Fund Price (HKD)」。
+    scheme: "MASS Mandatory Provident Fund Scheme",
+    source: "trustee",
+    ...massBlocks,
+    asOf: {
+      pattern: AS_OF_MONTH_FIRST,
+      band: { minLeft: 0, maxLeft: 200 },
+      joinWrappedLines: true,
+    },
   },
   {
     scheme: "My Choice Mandatory Provident Fund Scheme",
