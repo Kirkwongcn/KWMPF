@@ -17,12 +17,32 @@ import { fileURLToPath } from "node:url";
 
 export const TRUSTEE_FACT_SHEET_LINKS_FILENAME = "trustee-fact-sheet-links.json";
 
+/**
+ * 逐隻基金一份便覽時，其中一份。
+ *
+ * 受託人唔一定出合併版：MASS 逐隻成分基金各自一份 PDF。呢類來源要逐份聲明對應
+ * 邊隻成分基金——靠檔名或者次序猜，一改版就會把另一隻基金的配置同持倉貼落去。
+ */
+export type TrusteeFactSheetFund = {
+  /** 平台的成分基金名稱。便覽抽到的區段名對唔上就報錯，唔會靜靜哋當配對到。 */
+  constituentFund: string;
+  /** 呢一份便覽自己的下載連結，詳情頁會連去呢度。 */
+  factSheetUrl: string;
+  /** 呢一份便覽 PDF 在本機的檔名。 */
+  file: string;
+};
+
 export type TrusteeFactSheetLink = {
   scheme: string;
-  /** 受託人官網的下載連結，詳情頁會連去呢度。 */
+  /**
+   * 受託人官網的下載連結。一個計劃一份便覽時就係嗰份 PDF；逐隻基金一份時，
+   * 係列出全部便覽嗰一版，逐份自己的連結寫在 `funds`。
+   */
   factSheetUrl: string;
-  /** 便覽 PDF 在本機的檔名。 */
-  file: string;
+  /** 一個計劃一份便覽時，便覽 PDF 在本機的檔名。 */
+  file?: string;
+  /** 逐隻基金一份便覽時，逐份各自的基金名、連結同檔名。同 `file` 二擇其一。 */
+  funds?: TrusteeFactSheetFund[];
 };
 
 export type TrusteeFactSheetLookup = {
@@ -42,6 +62,39 @@ const SOURCES_DIRECTORY = join(
 
 const DATE_DIRECTORY = /^\d{4}-\d{2}-\d{2}$/;
 
+function validateFunds(scheme: string, funds: TrusteeFactSheetFund[]) {
+  if (funds.length === 0) {
+    throw new Error(`Trustee fact sheet list for ${scheme} names no funds`);
+  }
+  const names = new Set<string>();
+  const files = new Set<string>();
+  for (const fund of funds) {
+    if (!fund.constituentFund?.trim()) {
+      throw new Error(`Trustee fact sheet for ${scheme} must name the constituent fund it covers`);
+    }
+    if (!fund.factSheetUrl?.startsWith("https://")) {
+      throw new Error(
+        `Trustee fact sheet URL for ${scheme} ${fund.constituentFund} must be an HTTPS URL, got ${fund.factSheetUrl}`,
+      );
+    }
+    if (!fund.file?.trim()) {
+      throw new Error(
+        `Trustee fact sheet for ${scheme} ${fund.constituentFund} must name a local file`,
+      );
+    }
+    // 同一隻基金兩份便覽、或者兩隻基金指去同一份，都代表名單抄錯咗；
+    // 靜靜哋揀其中一份等於把另一隻基金的披露貼落去。
+    if (names.has(fund.constituentFund)) {
+      throw new Error(`Trustee fact sheet list for ${scheme} lists ${fund.constituentFund} more than once`);
+    }
+    if (files.has(fund.file)) {
+      throw new Error(`Trustee fact sheet list for ${scheme} uses ${fund.file} for more than one fund`);
+    }
+    names.add(fund.constituentFund);
+    files.add(fund.file);
+  }
+}
+
 export function toTrusteeFactSheetLookup(
   capturedAt: string,
   links: TrusteeFactSheetLink[],
@@ -53,9 +106,15 @@ export function toTrusteeFactSheetLookup(
         `Trustee fact sheet URL for ${link.scheme} must be an HTTPS URL, got ${link.factSheetUrl}`,
       );
     }
-    if (!link.file?.trim()) {
+    if (link.file?.trim() && link.funds) {
+      throw new Error(
+        `Trustee fact sheet for ${link.scheme} must name either one file or a per-fund list, not both`,
+      );
+    }
+    if (!link.file?.trim() && !link.funds) {
       throw new Error(`Trustee fact sheet for ${link.scheme} must name a local file`);
     }
+    if (link.funds) validateFunds(link.scheme, link.funds);
     if (byScheme.has(link.scheme)) {
       throw new Error(`Trustee fact sheet links list ${link.scheme} more than once`);
     }
