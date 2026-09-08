@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-02T08:28:06.641Z",
+  "generatedAt": "2026-09-04T14:09:28.651Z",
   "platformSnapshot": "data/sources/2026-08-29/mpf-fund-platform.json",
   "factSheetBatch": "data/sources/2026-08-28/fund-fact-sheet-links.json",
   "funds": [
@@ -31853,89 +31853,93 @@
       "fundClassIds": ["mpfa-cf-383"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "Global Bond Fund",
-      "factSheetFile": "MT00350.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00350.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "MASS_GLBF.pdf",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLBF_E.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Asset Allocation 投資組合分佈",
           "entries": [
             {
-              "label": "Spain",
-              "percent": 7.6
-            },
-            {
               "label": "United States",
-              "percent": 34.3
+              "percent": 32.3
             },
             {
               "label": "PRC",
-              "percent": 7.6
-            },
-            {
-              "label": "Italy",
-              "percent": 5.9
+              "percent": 7
             },
             {
               "label": "Others",
-              "percent": 6.8
+              "percent": 2.6
             },
             {
-              "label": "United Kingdom",
-              "percent": 5.8
+              "label": "Germany",
+              "percent": 7
             },
             {
               "label": "Cash",
-              "percent": 1.4
+              "percent": 3.5
             },
             {
-              "label": "Korea",
+              "label": "Singapore",
               "percent": 1
             },
             {
-              "label": "Japan",
-              "percent": 5.7
+              "label": "Korea",
+              "percent": 1.1
             },
             {
               "label": "Norway",
-              "percent": 3.7
+              "percent": 1.4
             },
             {
-              "label": "Sweden",
-              "percent": 1.2
+              "label": "Denmark",
+              "percent": 1.7
+            },
+            {
+              "label": "United Kingdom",
+              "percent": 6.1
+            },
+            {
+              "label": "Switzerland",
+              "percent": 2.3
             },
             {
               "label": "France",
-              "percent": 3.3
-            },
-            {
-              "label": "Netherlands (the)",
-              "percent": 1.3
-            },
-            {
-              "label": "Portugal",
-              "percent": 1.5
-            },
-            {
-              "label": "Canada",
-              "percent": 3.2
+              "percent": 5.1
             },
             {
               "label": "Malaysia",
               "percent": 2.7
             },
             {
-              "label": "Ireland",
-              "percent": 2.3
+              "label": "Italy",
+              "percent": 4.5
             },
             {
-              "label": "Germany",
-              "percent": 2.4
+              "label": "Spain",
+              "percent": 3.1
+            },
+            {
+              "label": "Canada",
+              "percent": 4.1
             },
             {
               "label": "Mexico",
-              "percent": 2.3
+              "percent": 3.4
+            },
+            {
+              "label": "Japan",
+              "percent": 4
+            },
+            {
+              "label": "Australia",
+              "percent": 3.5
+            },
+            {
+              "label": "New Zealand",
+              "percent": 3.6
             }
           ]
         }
@@ -31943,53 +31947,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "WI TREASURY SEC. WIT 3 5/8 09/30/30",
-          "percent": 4.49
+          "security": "US TREASURY N/B T 4 1/8 02/15/36",
+          "percent": 5.93
         },
         {
           "rank": 2,
-          "security": "BTPS BTPS 0 04/01/26",
-          "percent": 3.91
+          "security": "US TREASURY N/B T 1 5/8 05/15/31",
+          "percent": 3.31
         },
         {
           "rank": 3,
-          "security": "US TREASURY N/B T 4 1/4 08/15/35",
-          "percent": 3.55
+          "security": "US TREASURY N/B T 2 7/8 05/15/43",
+          "percent": 2.87
         },
         {
           "rank": 4,
-          "security": "US TREASURY N/B T 3 7/8 08/31/32",
-          "percent": 3.51
+          "security": "UK TSY GILT UKT 4 10/22/31",
+          "percent": 2.45
         },
         {
           "rank": 5,
-          "security": "UNITED KINGDOM GILT",
-          "percent": 3.39
+          "security": "FRANCE O.A.T. FRTR 3.2 05/25/35",
+          "percent": 2.24
         },
         {
           "rank": 6,
-          "security": "SPANISH GOV'T SPGB 0.1 04/30/31",
-          "percent": 2.67
+          "security": "BTPS BTPS 3.45 02/01/36",
+          "percent": 2.14
         },
         {
           "rank": 7,
-          "security": "CHINA GOVT BOND CGB 2.6 09/01/32",
-          "percent": 2.64
+          "security": "CANADA-GOV'T CAN 2 3/4 09/01/30",
+          "percent": 1.97
         },
         {
           "rank": 8,
-          "security": "CHINA GOVT BOND CGB 2.4 07/15/28",
-          "percent": 2.39
+          "security": "DEUTSCHLAND REP DBR 0 08/15/26",
+          "percent": 1.9
         },
         {
           "rank": 9,
-          "security": "US TREASURY N/B T 3 11/15/44",
-          "percent": 2.02
+          "security": "BTPS BTPS 0.6 08/01/31",
+          "percent": 1.9
         },
         {
           "rank": 10,
-          "security": "ORACLE CORP ORCL 6 08/03/55",
-          "percent": 1.57
+          "security": "DEUTSCHLAND REP DBR 1 05/15/38",
+          "percent": 1.7
         }
       ],
       "unavailableFields": [],
@@ -32000,85 +32004,85 @@
       "fundClassIds": ["mpfa-cf-384"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "Asian Bond Fund",
-      "factSheetFile": "MT00350.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00350.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "MASS_ASBF.pdf",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/ASBF_E.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Asset Allocation 投資組合分佈",
           "entries": [
             {
+              "label": "China",
+              "percent": 18.9
+            },
+            {
+              "label": "France",
+              "percent": 0.7
+            },
+            {
               "label": "Canada",
               "percent": 0.8
             },
             {
-              "label": "China",
-              "percent": 22.1
+              "label": "Hong Kong",
+              "percent": 11.7
             },
             {
               "label": "Australia",
-              "percent": 2
-            },
-            {
-              "label": "Hong Kong",
-              "percent": 10.7
-            },
-            {
-              "label": "Cash",
-              "percent": 1.9
+              "percent": 2.9
             },
             {
               "label": "India",
-              "percent": 5.3
+              "percent": 5.6
+            },
+            {
+              "label": "Cash",
+              "percent": 2
             },
             {
               "label": "United States",
-              "percent": 3.8
+              "percent": 2.8
             },
             {
               "label": "United Kingdom",
-              "percent": 4.4
+              "percent": 4.6
             },
             {
               "label": "Thailand",
-              "percent": 2.4
+              "percent": 3.6
             },
             {
               "label": "Taiwan",
-              "percent": 1.5
-            },
-            {
-              "label": "Supra Natonal",
-              "percent": 0.4
+              "percent": 2.3
             },
             {
               "label": "Singapore",
-              "percent": 4.8
+              "percent": 2.6
             },
             {
               "label": "Philippines",
-              "percent": 4.7
+              "percent": 3.5
             },
             {
               "label": "Indonesia",
-              "percent": 13.9
+              "percent": 13.7
             },
             {
               "label": "Malaysia",
-              "percent": 4.3
+              "percent": 3.8
             },
             {
               "label": "Japan",
-              "percent": 2.7
+              "percent": 3.4
             },
             {
               "label": "Macau",
-              "percent": 1.2
+              "percent": 0.8
             },
             {
               "label": "Korea",
-              "percent": 13.4
+              "percent": 16.4
             }
           ]
         }
@@ -32086,53 +32090,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "INDONESIA (REP) INDON 5.6 01/15/35",
+          "security": "INDONESIA (REP) INDON 5.69 05/29/36",
           "percent": 1.93
         },
         {
           "rank": 2,
-          "security": "INDONESIA (REP) INDON 5.15 09/10/54",
-          "percent": 1.83
-        },
-        {
-          "rank": 3,
-          "security": "TENCENT HOLD TENCNT 2.39 06/03/30",
-          "percent": 1.58
-        },
-        {
-          "rank": 4,
-          "security": "STATE GRID OSEAS CHGRID 3 1/2 05/04/27",
+          "security": "INDONESIA (REP) INDON 4.95 02/21/36",
           "percent": 1.45
         },
         {
+          "rank": 3,
+          "security": "INDONESIA (REP) INDON 5.475 02/21/56",
+          "percent": 1.41
+        },
+        {
+          "rank": 4,
+          "security": "TENCENT HOLD TENCNT 2.39 06/03/30",
+          "percent": 1.36
+        },
+        {
           "rank": 5,
-          "security": "WI TREASURY SEC.",
-          "percent": 1.44
+          "security": "STATE GRID OSEAS CHGRID 3 1/2 05/04/27",
+          "percent": 1.25
         },
         {
           "rank": 6,
-          "security": "INDONESIA (REP) INDON 4 3/4 09/10/34",
-          "percent": 1.37
+          "security": "CK HUTCHISON 25 CKHH 4 1/4 09/26/30",
+          "percent": 1.05
         },
         {
           "rank": 7,
-          "security": "CK HUTCHISON 25 CKHH 4 1/4 09/26/30",
-          "percent": 1.22
+          "security": "AIA GROUP AIA 5 3/8 04/05/34",
+          "percent": 0.99
         },
         {
           "rank": 8,
-          "security": "SANDS CHINA LTD SANLTD 5.4 08/08/28",
-          "percent": 1.2
+          "security": "INDONESIA (REP) INDON 5.15 09/10/54",
+          "percent": 0.98
         },
         {
           "rank": 9,
-          "security": "AIA GROUP AIA 5 3/8 04/05/34",
-          "percent": 1.16
+          "security": "PHILIPPINES(REP) PHILIP 5.9 02/04/50",
+          "percent": 0.96
         },
         {
           "rank": 10,
-          "security": "PHILIPPINES(REP) PHILIP 5.9 02/04/50",
-          "percent": 1.13
+          "security": "AMBANK M BHD AMMMK 5.252 01/23/30",
+          "percent": 0.95
         }
       ],
       "unavailableFields": [],
@@ -32143,33 +32147,33 @@
       "fundClassIds": ["mpfa-cf-385"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "Global Stable Fund",
-      "factSheetFile": "MT00350.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00350.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "MASS_GLSF.pdf",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLSF_E.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Asset Allocation 投資組合分佈",
           "entries": [
             {
-              "label": "JAPAN EQUITIES",
-              "percent": 7
-            },
-            {
-              "label": "HONG KONG/CHINA EQUITIES",
-              "percent": 18
-            },
-            {
               "label": "NORTH AMERICA EQUITIES",
               "percent": 11
             },
             {
-              "label": "CASH AND OTHERS",
-              "percent": 4
+              "label": "JAPAN EQUITIES",
+              "percent": 7
             },
             {
               "label": "EUROPE EQUITIES",
               "percent": 10
+            },
+            {
+              "label": "HONG KONG/CHINA EQUITIES",
+              "percent": 17
+            },
+            {
+              "label": "CASH AND OTHERS",
+              "percent": 6
             },
             {
               "label": "OTHER ASIA EQUITIES",
@@ -32177,7 +32181,7 @@
             },
             {
               "label": "FIXED INCOME",
-              "percent": 43
+              "percent": 42
             }
           ]
         }
@@ -32185,53 +32189,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF",
-          "percent": 4.3
+          "security": "FRANKLIN FTSE ASIA EX CHINA EX JAPAN UCITS ETF",
+          "percent": 5.07
         },
         {
           "rank": 2,
-          "security": "FRANKLIN FTSE ASIA EX CHINA EX JAPAN UCITS ETF",
-          "percent": 4.16
+          "security": "US TREASURY 4.50% 15/04/2027",
+          "percent": 1.62
         },
         {
           "rank": 3,
-          "security": "ISHARES FTSE CHINA A50 ETF",
-          "percent": 1.77
+          "security": "HSBC HOLDINGS PLC",
+          "percent": 1.34
         },
         {
           "rank": 4,
-          "security": "FRANKLIN FTSE AUSTRALIA ETF",
-          "percent": 1.27
+          "security": "BUNDESCHATZANWEISINGEN (REG S) (BR) 2.90% 15/02/2036",
+          "percent": 1.15
         },
         {
           "rank": 5,
-          "security": "GLOBAL X MSCI CHINA ETF",
-          "percent": 1.21
+          "security": "TENCENT HOLDINGS LTD",
+          "percent": 1.08
         },
         {
           "rank": 6,
-          "security": "ISHARES CORE MSCI CHINA ETF",
-          "percent": 1.19
+          "security": "NEXT FUNDS TOPIX EXCHANGE TRADED FUND ETF",
+          "percent": 1
         },
         {
           "rank": 7,
-          "security": "FRANKLIN FTSE INDIA UCITS ETF",
-          "percent": 1.03
+          "security": "ALIBABA GROUP HOLDING LTD",
+          "percent": 0.96
         },
         {
           "rank": 8,
-          "security": "NVIDIA CORPORATION",
-          "percent": 0.77
+          "security": "FRANKLIN FTSE AUSTRALIA ETF",
+          "percent": 0.87
         },
         {
           "rank": 9,
-          "security": "US TREASURY 4.125% 30/09/2027",
-          "percent": 0.75
+          "security": "ITALY (REP OF) SER 10Y (REG S) (BR) 3.60% 01/10/2035",
+          "percent": 0.84
         },
         {
           "rank": 10,
-          "security": "HSBC HOLDINGS PLC",
-          "percent": 0.74
+          "security": "CHINA CONSTRUCTION BANK H",
+          "percent": 0.83
         }
       ],
       "unavailableFields": [],
@@ -32242,25 +32246,25 @@
       "fundClassIds": ["mpfa-cf-386"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "MPF Conservative Fund",
-      "factSheetFile": "MT00350.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00350.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "MASS_CAPF.pdf",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/CAPF_E.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Asset Allocation 投資組合分佈",
           "entries": [
             {
-              "label": "FIXED DEPOSITS",
-              "percent": 66
+              "label": "Cash",
+              "percent": 0.8
             },
             {
-              "label": "CASH AND OTHERS",
-              "percent": 2
+              "label": "Short-Medium Term Securites",
+              "percent": 36
             },
             {
-              "label": "FIXED INCOME",
-              "percent": 32
+              "label": "Time Deposit",
+              "percent": 63.2
             }
           ]
         }
@@ -32268,53 +32272,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "TAIPEI FUBON COMM BK CO LTD, 2.96% 28/01/2026",
-          "percent": 4.87
+          "security": "Term deposit 481 991 194.52 HKD OCBC Bank (HK) LTD 2.35% 28/07/2026",
+          "percent": 7.6
         },
         {
           "rank": 2,
-          "security": "SAUDI NTL BANK SG SER 0.00% CD 28/01/2026",
-          "percent": 4.65
+          "security": "AGRI BK CHINA/HK AGRBK 2.8 08/20/26",
+          "percent": 4.25
         },
         {
           "rank": 3,
-          "security": "CMB WING LUNG BANK LTD 3.39% 12/01/2026",
-          "percent": 4.42
+          "security": "Term deposit 244 461 031.51 HKD OVERSEAS CHINESE BANKING CORP HONGKONG 2.3% 22/0",
+          "percent": 3.86
         },
         {
           "rank": 4,
-          "security": "OVERSEA-CHINESE BANKING CORPORATION LTD 3.15% 19/01/2026",
-          "percent": 3.21
+          "security": "BANK OF CHINA/HK BCHINA 2.39 07/23/26",
+          "percent": 3.31
         },
         {
           "rank": 5,
-          "security": "HONG KONG T-BILLS SER 91 0.00% 21/01/2026",
-          "percent": 3.11
+          "security": "Term deposit 191 485 216.99 HKD BANK OF CHINA HKG 2.35% 20/07/2026",
+          "percent": 3.02
         },
         {
           "rank": 6,
-          "security": "SUMITOMO MITSUI BKG CORP 3.19% 13/01/2026",
-          "percent": 3.06
+          "security": "ICBC/SEOUL ICBCAS 2.85 09/23/26",
+          "percent": 2.91
         },
         {
           "rank": 7,
-          "security": "OVERSEA-CHINESE BANKING CORPORATION LTD 2.90% 06/01/2026",
-          "percent": 2.69
+          "security": "Term deposit 167 803 322.80 HKD INDUSTRIAL & COMM BANK OF CHINA LTD 2.35% 23/07/",
+          "percent": 2.65
         },
         {
           "rank": 8,
-          "security": "AGRICULTURAL BANK OF CHINA (HK) 3.30% 19/01/2026",
-          "percent": 2.49
+          "security": "Term deposit 167 000 000.00 HKD Nanyang Commercial Bank HK 2.77% 24/09/2026",
+          "percent": 2.62
         },
         {
           "rank": 9,
-          "security": "BANK OF TOKYO-MITSUBISHI UFJ 3.36% 08/01/2026",
-          "percent": 2.49
+          "security": "Term deposit 155 571 716.07 HKD BANK OF CHINA HKG 2.71% 27/08/2026",
+          "percent": 2.45
         },
         {
           "rank": 10,
-          "security": "CMB WING LUNG BANK LTD 2.50% 15/01/2026",
-          "percent": 2.42
+          "security": "Term deposit 153 000 000.00 HKD MUFG BANK LTD. 2.73% 30/09/2026",
+          "percent": 2.4
         }
       ],
       "unavailableFields": [],
@@ -32325,65 +32329,61 @@
       "fundClassIds": ["mpfa-cf-387"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "Global Equity Fund",
-      "factSheetFile": "MT00350.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00350.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "MASS_GLEF.pdf",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLEF_E.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Asset Allocation 投資組合分佈",
           "entries": [
             {
-              "label": "Japan",
-              "percent": 6.9
+              "label": "Korea (South), Republic of",
+              "percent": 4.8
             },
             {
               "label": "Netherlands",
-              "percent": 1.4
+              "percent": 1.7
             },
             {
-              "label": "Italy",
-              "percent": 1.4
-            },
-            {
-              "label": "Singapore",
-              "percent": 1
-            },
-            {
-              "label": "India",
-              "percent": 1.3
+              "label": "Japan",
+              "percent": 4.3
             },
             {
               "label": "Spain",
               "percent": 2
             },
             {
-              "label": "Hong Kong",
-              "percent": 1
+              "label": "Italy",
+              "percent": 1.3
             },
             {
               "label": "Switzerland",
-              "percent": 2.2
+              "percent": 1.3
             },
             {
-              "label": "Germany",
-              "percent": 2.3
+              "label": "Hong Kong",
+              "percent": 1.3
             },
             {
               "label": "Taiwan (Republic of China)",
-              "percent": 2.6
+              "percent": 6.7
             },
             {
-              "label": "France",
-              "percent": 2.3
+              "label": "Germany",
+              "percent": 1.3
             },
             {
               "label": "United Kingdom",
-              "percent": 3.2
+              "percent": 2.5
+            },
+            {
+              "label": "France",
+              "percent": 2
             },
             {
               "label": "China",
-              "percent": 3.5
+              "percent": 3.9
             },
             {
               "label": "Canada",
@@ -32391,15 +32391,15 @@
             },
             {
               "label": "Others",
-              "percent": 2.9
+              "percent": 3.2
             },
             {
               "label": "United States",
-              "percent": 61.6
+              "percent": 59.1
             },
             {
               "label": "Other",
-              "percent": 1
+              "percent": 1.9
             }
           ]
         }
@@ -32407,53 +32407,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "NVIDIA CORPORATION",
-          "percent": 4.09
+          "security": "ISHARES US TECHNOLOGY ETF",
+          "percent": 9.17
         },
         {
           "rank": 2,
-          "security": "ALPHABET INC",
-          "percent": 4.04
+          "security": "INVESCO QQQ TRUST SERIES",
+          "percent": 3.99
         },
         {
           "rank": 3,
-          "security": "MICROSOFT CORPORATION",
-          "percent": 3.34
+          "security": "FRANKLIN FTSE TAIWAN UCITS ETF",
+          "percent": 3.65
         },
         {
           "rank": 4,
-          "security": "APPLE INC",
-          "percent": 2.95
+          "security": "NVIDIA CORPORATION",
+          "percent": 3.34
         },
         {
           "rank": 5,
-          "security": "ISHARES CORE S&P 500 ETF",
-          "percent": 2.94
+          "security": "ALPHABET INC",
+          "percent": 3.33
         },
         {
           "rank": 6,
-          "security": "NOMURA HOLDINGS INC",
-          "percent": 2.93
+          "security": "APPLE INC",
+          "percent": 2.82
         },
         {
           "rank": 7,
           "security": "TAIWAN SEMICONDUCTOR MANUFACTURING CO LTD",
-          "percent": 2.31
+          "percent": 2.49
         },
         {
           "rank": 8,
-          "security": "SPDR GOLD SHARES",
-          "percent": 2.16
+          "security": "FRANKLIN FTSE KOREA UCITS ETF",
+          "percent": 2.41
         },
         {
           "rank": 9,
-          "security": "AMAZON.COM INC",
-          "percent": 2.08
+          "security": "MICROSOFT CORPORATION",
+          "percent": 1.98
         },
         {
           "rank": 10,
-          "security": "INVESCO QQQ TRUST SERIES",
-          "percent": 1.86
+          "security": "AMUNDI S&P WORLD MATERIALS SCREENE",
+          "percent": 1.89
         }
       ],
       "unavailableFields": [],
@@ -32464,10 +32464,10 @@
       "fundClassIds": ["mpfa-cf-388"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "Guaranteed Fund",
-      "factSheetFile": "MT00350.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00350.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "MASS_GUAF.pdf",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GUAF_E.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Asset Allocation 投資組合分佈",
@@ -32490,15 +32490,15 @@
             },
             {
               "label": "HONG KONG/CHINA EQUITIES",
-              "percent": 11
+              "percent": 10
             },
             {
               "label": "CASH AND OTHERS",
-              "percent": 5
+              "percent": 7
             },
             {
               "label": "FIXED INCOME",
-              "percent": 62
+              "percent": 61
             }
           ]
         }
@@ -32506,53 +32506,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF",
-          "percent": 2.58
+          "security": "ISHARES 1-3 YEAR TREASURY BOND ETF",
+          "percent": 4.5
         },
         {
           "rank": 2,
           "security": "FRANKLIN FTSE ASIA EX CHINA EX JAPAN UCITS ETF",
-          "percent": 2.09
+          "percent": 3.08
         },
         {
           "rank": 3,
-          "security": "ISHARES 1-3 YEAR TREASURY BOND ETF",
-          "percent": 2.01
+          "security": "US TREASURY 4.50% 15/04/2027",
+          "percent": 2.16
         },
         {
           "rank": 4,
-          "security": "LYXOR US TREASURY 7-10Y DR ETF",
-          "percent": 1.98
+          "security": "BUNDESCHATZANWEISINGEN (REG S) (BR) 2.90% 15/02/2036",
+          "percent": 1.53
         },
         {
           "rank": 5,
-          "security": "FRANKLIN FTSE INDIA UCITS ETF",
-          "percent": 1.03
+          "security": "ITALY (REP OF) SER 10Y (REG S) (BR) 3.60% 01/10/2035",
+          "percent": 1.12
         },
         {
           "rank": 6,
-          "security": "ISHARES CORE MSCI CHINA ETF",
-          "percent": 1.02
+          "security": "JAPAN (2 YEAR ISSUE) SER 482 1.30% 01/03/2028",
+          "percent": 1.01
         },
         {
           "rank": 7,
-          "security": "GLOBAL X MSCI CHINA ETF",
-          "percent": 1.01
+          "security": "NEXT FUNDS TOPIX EXCHANGE TRADED FUND ETF",
+          "percent": 1
         },
         {
           "rank": 8,
           "security": "US TREASURY 4.125% 30/09/2027",
-          "percent": 1.01
+          "percent": 0.92
         },
         {
           "rank": 9,
-          "security": "ISHARES FTSE CHINA A50 ETF",
-          "percent": 1.01
+          "security": "US TREASURY 4.00% 15/11/2042",
+          "percent": 0.88
         },
         {
           "rank": 10,
-          "security": "NEXT FUNDS TOPIX EXCHANGE TRADED FUND",
-          "percent": 1
+          "security": "US TREASURY 3.50% 15/02/2033",
+          "percent": 0.88
         }
       ],
       "unavailableFields": [],
@@ -32563,61 +32563,29 @@
       "fundClassIds": ["mpfa-cf-389"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "Hong Kong Equities Fund",
-      "factSheetFile": "MT00350.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00350.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "MASS_HKEF.pdf",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/HKEF_E.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Asset Allocation 投資組合分佈",
           "entries": [
             {
-              "label": "CONSUMER STAPLES",
-              "percent": 1
+              "label": "China",
+              "percent": 80.3
             },
             {
-              "label": "CONSUMER DISCRETIONARY",
-              "percent": 22
+              "label": "Cash",
+              "percent": 1.4
             },
             {
-              "label": "ENERGY",
-              "percent": 2
+              "label": "Others",
+              "percent": 0.3
             },
             {
-              "label": "CASH AND OTHERS",
-              "percent": 3
-            },
-            {
-              "label": "FINANCIALS",
-              "percent": 32
-            },
-            {
-              "label": "REAL ESTATE",
-              "percent": 5
-            },
-            {
-              "label": "HEALTH CARE",
-              "percent": 5
-            },
-            {
-              "label": "UTILITIES",
-              "percent": 1
-            },
-            {
-              "label": "INDUSTRIALS",
-              "percent": 4
-            },
-            {
-              "label": "COMMUNICATION SERVICES",
-              "percent": 15
-            },
-            {
-              "label": "INFORMATION TECHNOLOGY",
-              "percent": 6
-            },
-            {
-              "label": "MATERIALS",
-              "percent": 4
+              "label": "Hong Kong",
+              "percent": 18
             }
           ]
         }
@@ -32625,53 +32593,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "TENCENT HOLDINGS LTD",
-          "percent": 9.23
+          "security": "TENCENT",
+          "percent": 9.59
         },
         {
           "rank": 2,
-          "security": "ALIBABA GROUP HOLDING LTD",
-          "percent": 8.86
+          "security": "ALIBABA",
+          "percent": 6.94
         },
         {
           "rank": 3,
-          "security": "HSBC HLDGS PLC",
-          "percent": 8.85
+          "security": "HSBC",
+          "percent": 6.12
         },
         {
           "rank": 4,
-          "security": "CHINA CONSTRUCTION BANK H",
-          "percent": 6
+          "security": "CHINA CONSTRUCTION BANK",
+          "percent": 4.3
         },
         {
           "rank": 5,
-          "security": "AIA GROUP LTD",
-          "percent": 5.34
+          "security": "AIA",
+          "percent": 3.28
         },
         {
           "rank": 6,
-          "security": "PING AN INSURANCE (GROUP) COMPANY OF CHINA LTD H",
-          "percent": 4.04
+          "security": "INDUSTRIAL & COMMERCIAL BANK",
+          "percent": 2.91
         },
         {
           "rank": 7,
-          "security": "HONG KONG EXCHANGES AND CLEARING LTD",
-          "percent": 3.77
+          "security": "XIAOMI",
+          "percent": 2.73
         },
         {
           "rank": 8,
-          "security": "ZIJIN MINING GROUP CO LTD H",
-          "percent": 3.03
+          "security": "MEITUAN",
+          "percent": 2.7
         },
         {
           "rank": 9,
-          "security": "CHINA MERCHANTS BANK CO LTD H",
-          "percent": 2.42
+          "security": "NETEASE",
+          "percent": 2.62
         },
         {
           "rank": 10,
-          "security": "NETEASE INC",
-          "percent": 2.3
+          "security": "SMIC",
+          "percent": 2.35
         }
       ],
       "unavailableFields": [],
@@ -32682,25 +32650,29 @@
       "fundClassIds": ["mpfa-cf-390"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "European Equity Fund",
-      "factSheetFile": "MT00350.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00350.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "MASS_EUEF.pdf",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/EUEF_E.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Asset Allocation 投資組合分佈",
           "entries": [
             {
-              "label": "Germany",
-              "percent": 8
+              "label": "Greece",
+              "percent": 2
             },
             {
-              "label": "Greece",
-              "percent": 4.5
+              "label": "Germany",
+              "percent": 7.3
+            },
+            {
+              "label": "Hong Kong",
+              "percent": 0.5
             },
             {
               "label": "France",
-              "percent": 18.7
+              "percent": 9.2
             },
             {
               "label": "Ireland",
@@ -32708,51 +32680,47 @@
             },
             {
               "label": "Denmark",
-              "percent": 0.7
+              "percent": 3.3
             },
             {
               "label": "Italy",
-              "percent": 4.7
+              "percent": 5
             },
             {
               "label": "Austria",
-              "percent": 3.4
-            },
-            {
-              "label": "Luxembourg",
-              "percent": 0.2
-            },
-            {
-              "label": "Cash",
-              "percent": 1.2
+              "percent": 3.2
             },
             {
               "label": "Netherlands",
-              "percent": 9.9
+              "percent": 14.8
             },
             {
-              "label": "United States",
-              "percent": 2.7
+              "label": "Cash",
+              "percent": 3.3
             },
             {
               "label": "Portugal",
-              "percent": 0.4
+              "percent": 0.3
             },
             {
               "label": "Spain",
-              "percent": 2.8
+              "percent": 4
             },
             {
               "label": "Sweden",
-              "percent": 2.9
+              "percent": 2.5
             },
             {
-              "label": "United Kingdom",
-              "percent": 30.6
+              "label": "United States",
+              "percent": 5.7
             },
             {
               "label": "Switzerland",
-              "percent": 4.9
+              "percent": 4.6
+            },
+            {
+              "label": "United Kingdom",
+              "percent": 29.7
             }
           ]
         }
@@ -32761,52 +32729,52 @@
         {
           "rank": 1,
           "security": "ASML HOLDING NV EUR0.09 (POST SPLIT)",
-          "percent": 5.26
+          "percent": 8.88
         },
         {
           "rank": 2,
           "security": "ASTRAZENECA PLC ORD USD0.25",
-          "percent": 3.99
+          "percent": 3.48
         },
         {
           "rank": 3,
-          "security": "DEUTSCHE TELEKOM AG-REG DTE",
-          "percent": 3.39
+          "security": "ROLLS-ROYCE HOLDINGS PLC",
+          "percent": 3.31
         },
         {
           "rank": 4,
           "security": "ERSTE GROUP BANK AG NPV",
-          "percent": 3.37
+          "percent": 3.23
         },
         {
           "rank": 5,
-          "security": "AIRBUS SE",
-          "percent": 3.15
+          "security": "UNICREDIT SPA UCGM",
+          "percent": 3.14
         },
         {
           "rank": 6,
           "security": "AIB GROUP PLC",
-          "percent": 2.99
+          "percent": 3.04
         },
         {
           "rank": 7,
-          "security": "UNICREDIT SPA UCGM",
-          "percent": 2.75
+          "security": "DAIMLER TRUCK HOLDING AG",
+          "percent": 2.98
         },
         {
           "rank": 8,
-          "security": "CRH PLC ORD EUR0.32",
-          "percent": 2.69
+          "security": "BRITISH AMERICAN TOBACCO PLC ORD GBP0.25",
+          "percent": 2.91
         },
         {
           "rank": 9,
-          "security": "NATIONAL BANK OF GREECE ETE",
-          "percent": 2.56
+          "security": "BP PLC ORD USD0.25",
+          "percent": 2.7
         },
         {
           "rank": 10,
-          "security": "SANOFI SAN",
-          "percent": 2.5
+          "security": "ANGLO AMERICAN PLC",
+          "percent": 2.7
         }
       ],
       "unavailableFields": [],
@@ -32817,61 +32785,61 @@
       "fundClassIds": ["mpfa-cf-391"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "US Equity Fund",
-      "factSheetFile": "MT00350.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00350.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "MASS_USEF.pdf",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/USEF_E.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Asset Allocation 投資組合分佈",
           "entries": [
             {
               "label": "Consumer Staples",
-              "percent": 4.5
+              "percent": 4.3
             },
             {
               "label": "Consumer Discretonary",
-              "percent": 10.1
+              "percent": 9.1
             },
             {
               "label": "Energy",
-              "percent": 3.4
+              "percent": 3.6
             },
             {
               "label": "Communicaton",
-              "percent": 10.3
+              "percent": 9.5
             },
             {
               "label": "Financials",
-              "percent": 14.6
+              "percent": 13.2
             },
             {
-              "label": "Cash",
-              "percent": 0.4
-            },
-            {
-              "label": "Utlites",
-              "percent": 2.2
-            },
-            {
-              "label": "Real Estate",
-              "percent": 1.7
+              "label": "Cash and Equivalents",
+              "percent": 0.6
             },
             {
               "label": "Health Care",
-              "percent": 9.2
+              "percent": 8.5
+            },
+            {
+              "label": "Utlites",
+              "percent": 2.1
+            },
+            {
+              "label": "Real Estate",
+              "percent": 1.6
             },
             {
               "label": "Materials",
-              "percent": 2.4
+              "percent": 2.3
             },
             {
               "label": "Industrials",
-              "percent": 8.1
+              "percent": 8.8
             },
             {
               "label": "Informaton Technology",
-              "percent": 33.1
+              "percent": 36.4
             }
           ]
         }
@@ -32880,52 +32848,52 @@
         {
           "rank": 1,
           "security": "NVIDIA CORPORATION",
-          "percent": 7.06
+          "percent": 6.89
         },
         {
           "rank": 2,
           "security": "APPLE INC",
-          "percent": 6.41
+          "percent": 6.16
         },
         {
           "rank": 3,
-          "security": "MICROSOFT CORPORATION",
-          "percent": 5.8
+          "security": "ALPHABET INC",
+          "percent": 5.55
         },
         {
           "rank": 4,
-          "security": "ALPHABET INC",
-          "percent": 5.34
+          "security": "MICROSOFT CORPORATION",
+          "percent": 4.09
         },
         {
           "rank": 5,
           "security": "AMAZON.COM INC",
-          "percent": 3.56
+          "percent": 3.41
         },
         {
           "rank": 6,
           "security": "BROADCOM INC",
-          "percent": 2.61
+          "percent": 2.6
         },
         {
           "rank": 7,
-          "security": "META PLATFORMS INC",
-          "percent": 2.35
+          "security": "MICRON TECHNOLOGY INC",
+          "percent": 1.92
         },
         {
           "rank": 8,
-          "security": "TESLA INC",
-          "percent": 2.06
+          "security": "META PLATFORMS INC",
+          "percent": 1.82
         },
         {
           "rank": 9,
-          "security": "BERKSHIRE HATHAWAY INC",
-          "percent": 1.5
+          "security": "TESLA INC",
+          "percent": 1.81
         },
         {
           "rank": 10,
-          "security": "JPMORGAN CHASE & CO",
-          "percent": 1.43
+          "security": "ELI LILLY AND COMPANY",
+          "percent": 1.41
         }
       ],
       "unavailableFields": [],
@@ -32936,57 +32904,57 @@
       "fundClassIds": ["mpfa-cf-392"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "Asian Pacific Equity Fund",
-      "factSheetFile": "MT00350.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00350.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "MASS_APEF.pdf",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/APEF_E.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Asset Allocation 投資組合分佈",
           "entries": [
             {
               "label": "Hong Kong",
-              "percent": 5
+              "percent": 4.1
             },
             {
               "label": "China",
-              "percent": 31.7
-            },
-            {
-              "label": "Cash Instruments & Notonal Ofset",
-              "percent": 2.5
-            },
-            {
-              "label": "Thailand",
-              "percent": 1.5
-            },
-            {
-              "label": "Taiwan (Republic of China)",
-              "percent": 18.8
+              "percent": 23.3
             },
             {
               "label": "India",
-              "percent": 19.3
+              "percent": 14.6
             },
             {
-              "label": "Singapore",
-              "percent": 2.9
+              "label": "Cash",
+              "percent": 2.4
             },
             {
               "label": "Indonesia",
-              "percent": 1.3
+              "percent": 0.6
             },
             {
-              "label": "Philippines",
-              "percent": 0.5
+              "label": "Thailand",
+              "percent": 1.4
             },
             {
               "label": "Korea (South), Republic of",
-              "percent": 15
+              "percent": 25.8
             },
             {
               "label": "Malaysia",
-              "percent": 1.7
+              "percent": 1.3
+            },
+            {
+              "label": "Taiwan (Republic of China)",
+              "percent": 23.5
+            },
+            {
+              "label": "Philippines",
+              "percent": 0.4
+            },
+            {
+              "label": "Singapore",
+              "percent": 2.7
             }
           ]
         }
@@ -32995,52 +32963,52 @@
         {
           "rank": 1,
           "security": "TAIWAN SEMICONDUCTOR MANUFACTURING CO LTD",
-          "percent": 8.9
+          "percent": 9.26
         },
         {
           "rank": 2,
-          "security": "TENCENT HOLDINGS LTD",
-          "percent": 5.07
+          "security": "SAMSUNG ELECTRONICS CO LTD",
+          "percent": 8.94
         },
         {
           "rank": 3,
-          "security": "SAMSUNG ELECTRONICS CO LTD",
-          "percent": 4.63
+          "security": "SK HYNIX INC",
+          "percent": 8.32
         },
         {
           "rank": 4,
-          "security": "ALIBABA GROUP HOLDING LTD",
-          "percent": 3.49
+          "security": "TENCENT HOLDINGS LTD",
+          "percent": 3.02
         },
         {
           "rank": 5,
-          "security": "SK HYNIX INC",
-          "percent": 2.61
+          "security": "ALIBABA GROUP HOLDING LTD",
+          "percent": 1.9
         },
         {
           "rank": 6,
-          "security": "HDFC BANK LTD",
-          "percent": 1.33
+          "security": "MEDIATEK INC",
+          "percent": 1.71
         },
         {
           "rank": 7,
-          "security": "RELIANCE INDUSTRIES LTD",
-          "percent": 1.26
+          "security": "DELTA ELECTRONICS INC",
+          "percent": 1.04
         },
         {
           "rank": 8,
-          "security": "AIA GROUP LTD",
-          "percent": 1.14
+          "security": "DBS GROUP HOLDINGS LTD",
+          "percent": 0.89
         },
         {
           "rank": 9,
-          "security": "CHINA CONSTRUCTION BANK CORP",
-          "percent": 0.95
+          "security": "SK SQUARE CO LTD",
+          "percent": 0.86
         },
         {
           "rank": 10,
-          "security": "HON HAI PRECISION INDUSTRY CO LTD",
-          "percent": 0.94
+          "security": "HDFC BANK LTD",
+          "percent": 0.85
         }
       ],
       "unavailableFields": [],
@@ -33051,17 +33019,17 @@
       "fundClassIds": ["mpfa-cf-394"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "Global Growth Fund",
-      "factSheetFile": "MT00350.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00350.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "MASS_GLGF.pdf",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLGF_E.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Asset Allocation 投資組合分佈",
           "entries": [
             {
               "label": "JAPAN EQUITIES",
-              "percent": 10
+              "percent": 9
             },
             {
               "label": "HONG KONG/CHINA EQUITIES",
@@ -33073,7 +33041,7 @@
             },
             {
               "label": "CASH AND OTHERS",
-              "percent": 3
+              "percent": 4
             },
             {
               "label": "EUROPE EQUITIES",
@@ -33093,53 +33061,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF",
-          "percent": 6.05
+          "security": "FRANKLIN FTSE ASIA EX CHINA EX JAPAN UCITS ETF",
+          "percent": 7.14
         },
         {
           "rank": 2,
-          "security": "FRANKLIN FTSE ASIA EX CHINA EX JAPAN UCITS ETF",
-          "percent": 5.89
-        },
-        {
-          "rank": 3,
-          "security": "ISHARES FTSE CHINA A50 ETF",
-          "percent": 2.42
-        },
-        {
-          "rank": 4,
-          "security": "FRANKLIN FTSE AUSTRALIA ETF",
+          "security": "HSBC HOLDINGS PLC",
           "percent": 1.88
         },
         {
-          "rank": 5,
-          "security": "ISHARES CORE MSCI CHINA ETF",
-          "percent": 1.6
+          "rank": 3,
+          "security": "TENCENT HOLDINGS LTD",
+          "percent": 1.53
         },
         {
-          "rank": 6,
-          "security": "NEXT FUNDS TOPIX EXCHANGE TRADED FUND",
+          "rank": 4,
+          "security": "ALIBABA GROUP HOLDING LTD",
           "percent": 1.37
         },
         {
+          "rank": 5,
+          "security": "CHINA CONSTRUCTION BANK H",
+          "percent": 1.17
+        },
+        {
+          "rank": 6,
+          "security": "NEXT FUNDS TOPIX EXCHANGE TRADED FUND ETF",
+          "percent": 1.1
+        },
+        {
           "rank": 7,
-          "security": "GLOBAL X MSCI CHINA ETF",
-          "percent": 1.36
+          "security": "FRANKLIN FTSE AUSTRALIA ETF",
+          "percent": 1.08
         },
         {
           "rank": 8,
           "security": "NVIDIA CORPORATION",
-          "percent": 1.07
+          "percent": 1.02
         },
         {
           "rank": 9,
-          "security": "HSBC HOLDINGS PLC",
-          "percent": 1.05
+          "security": "APPLE INC",
+          "percent": 0.92
         },
         {
           "rank": 10,
-          "security": "FRANKLIN FTSE INDIA UCITS ETF",
-          "percent": 1.02
+          "security": "US TREASURY 4.50% 15/04/2027",
+          "percent": 0.9
         }
       ],
       "unavailableFields": [],
@@ -33150,29 +33118,33 @@
       "fundClassIds": ["mpfa-cf-874"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "Greater China Equity Fund",
-      "factSheetFile": "MT00350.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00350.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "MASS_GCEF.pdf",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GCEF_E.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Asset Allocation 投資組合分佈",
           "entries": [
             {
               "label": "China",
-              "percent": 64.8
+              "percent": 46
             },
             {
-              "label": "Net Liquidity",
-              "percent": 0.5
+              "label": "Cash",
+              "percent": 1
             },
             {
-              "label": "Hong Kong",
-              "percent": 4.7
+              "label": "Others",
+              "percent": 0.9
             },
             {
               "label": "Taiwan",
-              "percent": 30
+              "percent": 43.2
+            },
+            {
+              "label": "Hong Kong",
+              "percent": 9
             }
           ]
         }
@@ -33180,53 +33152,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "Taiwan Semiconductor Manufacturing",
-          "percent": 10.1
+          "security": "TAIWAN SEMICONDUCTOR MANUFACTURING CO",
+          "percent": 11.51
         },
         {
           "rank": 2,
-          "security": "Tencent Holdings",
-          "percent": 9.37
+          "security": "TENCENT",
+          "percent": 5.71
         },
         {
           "rank": 3,
-          "security": "Alibaba Group Holding",
-          "percent": 7.78
+          "security": "HSBC",
+          "percent": 4.13
         },
         {
           "rank": 4,
-          "security": "China Merchants Bank",
-          "percent": 2.86
+          "security": "MEDIATEK",
+          "percent": 3.77
         },
         {
           "rank": 5,
-          "security": "HSBC Holdings",
-          "percent": 2.73
+          "security": "ALIBABA",
+          "percent": 3.67
         },
         {
           "rank": 6,
-          "security": "Ping An Insurance Group",
-          "percent": 2.55
+          "security": "DELTA ELECTRONICS",
+          "percent": 2.27
         },
         {
           "rank": 7,
-          "security": "Xiaomi",
-          "percent": 2.49
+          "security": "HON HAI PRECISION INDUSTRY",
+          "percent": 1.85
         },
         {
           "rank": 8,
-          "security": "Delta Electronics",
-          "percent": 2.44
+          "security": "NETEASE",
+          "percent": 1.37
         },
         {
           "rank": 9,
-          "security": "Elite Material",
-          "percent": 2.34
+          "security": "CHINA CONSTRICATION BANK",
+          "percent": 1.37
         },
         {
           "rank": 10,
-          "security": "NetEase",
-          "percent": 2.2
+          "security": "ASE TECHNOLOGY",
+          "percent": 1.35
         }
       ],
       "unavailableFields": [],
@@ -33237,45 +33209,45 @@
       "fundClassIds": ["mpfa-cf-1487"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "Core Accumulation Fund",
-      "factSheetFile": "MT00350.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00350.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "MASS_CAF2.pdf",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/CAF2_E.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Asset Allocation 投資組合分佈",
           "entries": [
             {
-              "label": "North American equites",
-              "percent": 42.8
-            },
-            {
-              "label": "Cash and others",
-              "percent": 2.2
-            },
-            {
               "label": "HK and China equites",
-              "percent": 1.8
+              "percent": 1.3
+            },
+            {
+              "label": "North American equites",
+              "percent": 41.3
             },
             {
               "label": "Japan equites",
-              "percent": 3.8
+              "percent": 3.5
+            },
+            {
+              "label": "Cash and others",
+              "percent": 2.9
             },
             {
               "label": "Other Asia Pacifc equites",
-              "percent": 3.7
+              "percent": 6.2
             },
             {
               "label": "European equites",
-              "percent": 9.5
+              "percent": 8.6
             },
             {
               "label": "Other equites",
-              "percent": 0.7
+              "percent": 0.8
             },
             {
               "label": "Bonds",
-              "percent": 35.5
+              "percent": 35.4
             }
           ]
         }
@@ -33284,52 +33256,52 @@
         {
           "rank": 1,
           "security": "Nvidia Corp",
-          "percent": 3.2
+          "percent": 3.13
         },
         {
           "rank": 2,
           "security": "Apple Inc",
-          "percent": 2.9
+          "percent": 2.86
         },
         {
           "rank": 3,
-          "security": "Microsoft Corp",
-          "percent": 2.7
+          "security": "US Treasury Note/Bond 4.375% Jan 31 2032",
+          "percent": 2.52
         },
         {
           "rank": 4,
-          "security": "US Treasury Note/Bond 4.375% Jan 31 2032",
-          "percent": 2.28
+          "security": "Alphabet Inc-Cl A",
+          "percent": 1.9
         },
         {
           "rank": 5,
-          "security": "Alphabet Inc-Cl A",
-          "percent": 2.01
+          "security": "US Treasury Note/Bond 0.625% May 15 2030",
+          "percent": 1.88
         },
         {
           "rank": 6,
-          "security": "US Treasury Note/Bond 3.5% Nov 15 2028",
-          "percent": 1.92
+          "security": "Microsoft Corp",
+          "percent": 1.85
         },
         {
           "rank": 7,
-          "security": "US Treasury Note/Bond 0.625% May 15 2030",
-          "percent": 1.84
+          "security": "United Kingdom Gilt 4.5% Mar 7 2035",
+          "percent": 1.77
         },
         {
           "rank": 8,
-          "security": "Amazon.com Inc",
-          "percent": 1.63
+          "security": "US Treasury Note/Bond 4.625% Jun 15 2027",
+          "percent": 1.66
         },
         {
           "rank": 9,
-          "security": "China Government Bond 2.6% Sep 1 2032",
-          "percent": 1.48
+          "security": "New Zealand Government 4.5% May 15 2035",
+          "percent": 1.63
         },
         {
           "rank": 10,
-          "security": "US Treasury Note/Bond 2.75% Feb 15 2028",
-          "percent": 1.25
+          "security": "Canadian Government 3.25% Jun 1 2035",
+          "percent": 1.58
         }
       ],
       "unavailableFields": [],
@@ -33340,45 +33312,45 @@
       "fundClassIds": ["mpfa-cf-1488"],
       "schemeName": "MASS Mandatory Provident Fund Scheme",
       "constituentFundName": "Age 65 Plus Fund",
-      "factSheetFile": "MT00350.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00350.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "MASS_A65F2.pdf",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/A65F2_E.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
       "allocations": [
         {
           "heading": "Portfolio Asset Allocation 投資組合分佈",
           "entries": [
             {
               "label": "Other equites",
-              "percent": 0.2
+              "percent": 0.3
             },
             {
               "label": "European equites",
-              "percent": 3.3
+              "percent": 3
             },
             {
               "label": "Other Asia Pacifc equites",
-              "percent": 1.3
+              "percent": 2.1
             },
             {
               "label": "Japan equites",
-              "percent": 1.3
+              "percent": 1.2
             },
             {
               "label": "HK and China equites",
-              "percent": 0.6
+              "percent": 0.5
             },
             {
               "label": "North American equites",
-              "percent": 15
+              "percent": 14.2
             },
             {
               "label": "Cash and others",
-              "percent": 1.7
+              "percent": 3.1
             },
             {
               "label": "Bonds",
-              "percent": 76.5
+              "percent": 75.6
             }
           ]
         }
@@ -33387,52 +33359,52 @@
         {
           "rank": 1,
           "security": "US Treasury Note/Bond 4.375% Jan 31 2032",
-          "percent": 4.91
+          "percent": 5.39
         },
         {
           "rank": 2,
-          "security": "US Treasury Note/Bond 3.5% Nov 15 2028",
-          "percent": 4.14
+          "security": "US Treasury Note/Bond 0.625% May 15 2030",
+          "percent": 4.01
         },
         {
           "rank": 3,
-          "security": "US Treasury Note/Bond 0.625% May 15 2030",
-          "percent": 3.97
+          "security": "United Kingdom Gilt 4.5% Mar 7 2035",
+          "percent": 3.78
         },
         {
           "rank": 4,
-          "security": "China Government Bond 2.6% Sep 1 2032",
-          "percent": 3.19
+          "security": "US Treasury Note/Bond 4.625% Jun 15 2027",
+          "percent": 3.54
         },
         {
           "rank": 5,
-          "security": "US Treasury Note/Bond 2.75% Feb 15 2028",
-          "percent": 2.7
+          "security": "New Zealand Government 4.5% May 15 2035",
+          "percent": 3.47
         },
         {
           "rank": 6,
           "security": "Canadian Government 3.25% Jun 1 2035",
-          "percent": 2.55
+          "percent": 3.36
         },
         {
           "rank": 7,
-          "security": "US Treasury Note/Bond 4.625% Jun 30 2026",
-          "percent": 2.53
+          "security": "China Government Bond 2.6% Sep 1 2032",
+          "percent": 3.3
         },
         {
           "rank": 8,
-          "security": "US Treasury Note/Bond 4.25% Jan 15 2028",
-          "percent": 2.4
+          "security": "US Treasury Note/Bond 3.5% Nov 15 2028",
+          "percent": 2.81
         },
         {
           "rank": 9,
-          "security": "US Treasury Note/Bond 3% Feb 15 2048",
-          "percent": 2.34
+          "security": "US Treasury Note/Bond 3.875% Apr 15 2029",
+          "percent": 2.57
         },
         {
           "rank": 10,
-          "security": "Poland Government Bond 1.25% Oct 25 2030",
-          "percent": 2.07
+          "security": "US Treasury Note/Bond 3% Feb 15 2048",
+          "percent": 2.27
         }
       ],
       "unavailableFields": [],

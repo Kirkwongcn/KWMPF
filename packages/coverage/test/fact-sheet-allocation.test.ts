@@ -183,6 +183,45 @@ describe("findFactSheetAsOf", () => {
     } satisfies FactSheetContract;
     expect(findFactSheetAsOf(pages, contract)).toBe("2025-12-31");
   });
+
+  /**
+   * MASS 逐隻基金那份便覽把「Fund Data as at June 30, 2026」排喺左窄欄，斷開兩行，
+   * 而同一條基線右邊仲有另一欄的「Fund Price (HKD)」。座標同真實 PDF 一樣。
+   */
+  const wrappedInNarrowColumn = pdf(
+    page(1, [
+      { top: 688, left: 29, text: "Fund Data as at June ", width: 158, size: 18 },
+      { top: 691, left: 226, text: "Fund Price (HKD)", width: 126, size: 18 },
+      { top: 709, left: 29, text: "30, 2026", width: 63, size: 18 },
+    ]),
+  );
+
+  const narrowColumnContract = {
+    ...baseContract,
+    title: { pattern: /Fund$/ },
+    allocation: { heading: /never/ },
+    holdings: { heading: /never/ },
+    asOf: {
+      pattern: /As at\s+([A-Za-z]{3,}\s+\d{1,2},\s*\d{4})/i,
+      band: { minLeft: 0, maxLeft: 200 },
+      joinWrappedLines: true as const,
+    },
+  } satisfies FactSheetContract;
+
+  it("reads a date that wraps onto the next line of a narrow column", () => {
+    expect(findFactSheetAsOf(wrappedInNarrowColumn, narrowColumnContract)).toBe(
+      "2026-06-30",
+    );
+  });
+
+  it("refuses to read the date when the neighbouring column joins the line", () => {
+    // 冇橫向範圍嘅話，「Fund Data as at June」會併埋隔籬欄嘅「Fund Price (HKD)」，
+    // 日期就唔再連續。寧願報錯，都好過抽錯一個日期當成官方截至日。
+    const { band, ...asOf } = narrowColumnContract.asOf;
+    expect(() =>
+      findFactSheetAsOf(wrappedInNarrowColumn, { ...narrowColumnContract, asOf }),
+    ).toThrow(/fact sheet as-of date not found/);
+  });
 });
 
 describe("findSections", () => {

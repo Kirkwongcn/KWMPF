@@ -84,8 +84,9 @@ MPF Navigator 檔案的 Sheet1（風險取向配置比重）不在範圍內，�
 
 覆蓋報告：`bun run coverage:fact-sheet-allocation-report --platform <平台快照> --links
 <fund-fact-sheet-links.json> --fact-sheets <PDF 目錄> --output <report.json>`。報告逐個計劃
-列出已配對數、未配對清單及原因、以及配對到但官方未披露的原因。2026-09-02 以 24 份便覽跑
-（二十一個計劃用受託人官網那期、其餘三個用積金局副本）：382 隻成分基金中 381 隻配對到，
+列出已配對數、未配對清單及原因、以及配對到但官方未披露的原因。2026-09-04 以 37 份便覽跑
+（二十二個計劃用受託人官網那期、其餘兩個用積金局副本；MASS 嗰個計劃自己就佔 14 份）：
+382 隻成分基金中 381 隻配對到，
 310 隻有配置、361 隻有十大持倉。餘下缺口主要是圖表式披露：宏利環球精選的配置畫成條形圖、
 永明畫成圓環圖（受託人版一樣係向量，文字層一個字都冇）、我的強積金的圓餅圖標註共用基線，
 全部走 `unavailableFields` 並寫明原因。
@@ -129,7 +130,8 @@ BCT Pro Choice（`bcthk.com/MTS-Fund-Fact-Sheet`，2026-06-30，積金局副本 
 積金局副本 2026-03-31）、宏利自在人生（`manulife.com.hk/…/products/mpf/retirechoice-scheme/
 fundfact-sheet.pdf`，2026-06-30，積金局副本 2025-12-31）及新地
 （`shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf`，2026-06-30，
-積金局副本 2026-03-31），資料新三至七個月；餘下 3 個計劃（AMTD、富達、MASS）仍未換版。
+積金局副本 2026-03-31）及 MASS（`yflife.com` 逐隻成分基金一份便覽，14 份全部 2026-06-30，
+積金局副本 2025-12-31），資料新三至七個月；餘下 2 個計劃（AMTD、富達）仍未換版。
 
 **bcthk.com 用 CloudFront 擋自動化請求**：`curl` 冇帶瀏覽器 `User-Agent` 會收 403，
 帶正常瀏覽器 UA（例如 Chrome 128 UA）就過。
@@ -193,11 +195,31 @@ fundfact-sheet.pdf`，2026-06-30，積金局副本 2025-12-31）及新地
 獨立便覽披露嘅同一隻基礎基金持倉逐項對得上。
 
 **富達同 MASS 冇合併版便覽，唔係取不到檔**。富達（fidelity.com.hk）官網只有逐隻基金一頁的
-`/en/funds/factsheet/<code>/H`；MASS（yflife.com）逐隻基金各自一份便覽，藏喺
-`/aisite-applyapi/` 後面，公開目錄只有 `MonthlyFundPrice(E).pdf` 價格表。兩者都冇一份
-涵蓋成個計劃的合併 PDF，現有「一份便覽、逐版一隻基金」的契約結構用唔到——要換版就要先重新
-設計「逐隻基金一份 PDF」的解析路徑（逐隻抓、逐隻對名、逐隻記自己的截至日期），非純換連結，
-屬另一張票。
+`/en/funds/factsheet/<code>/H`；MASS（yflife.com）逐隻基金各自一份便覽。兩者都冇一份涵蓋成個
+計劃的合併 PDF，所以來源結構加咗「一個計劃多份便覽」嗰個形態（見下）。MASS 已經換版，
+富達仲未（#229）。
+
+**MASS 逐隻基金一份便覽**。`www.yflife.com/en/product/mpf-hongkong/fund-price-history/` 嗰版
+用 `aisite-applyapi/mo/moCompanyFund/fundList` 出返 14 隻成分基金嘅 `fund_code` 同便覽路徑
+`app2.yflife.com/MPFWeb/pdf/fact_sheet/<code>_E.pdf`。API 寫嘅係 `http://`，同一條路徑行
+`https://` 一樣返 200，所以名單一律寫 `https://`。取檔要 `curl_cffi`
+（`impersonate="chrome124"`）——普通 header 過唔到。14 份 2026-06-30，積金局副本
+`MT00350.pdf` 係 2025-12-31，新半年。基金名兩邊逐隻對得上（官網列表把預設投資策略嗰兩隻
+標咗星號註腳，抄錄時剝走，星號唔屬基金名）。
+
+版面同積金局副本一模一樣，所以標題、配置、持倉三塊契約共用；只有截至日期唔同，要按來源
+分開兩份契約（同海通嗰種「成個版面唔同」唔一樣）。副本係中英對照版，中文日期一行讀得到；
+官網逐隻基金嗰份淨係英文，「Fund Data as at June 30, 2026」排喺左窄欄斷開兩行，而同一條
+基線右邊仲有「Fund Price (HKD)」。所以 `asOf` 加咗兩個原語：`band` 只喺指定橫向範圍搵日期
+（唔限範圍就會併埋隔籬欄，日期唔再連續），`joinWrappedLines` 連埋下一行再試一次式樣。
+
+逐隻基金一份便覽時，`trustee-fact-sheet-links.json` 嗰筆寫 `funds`（逐隻聲明基金名、自己嘅
+下載連結同本機檔名）而唔係 `file`，計劃層面嘅 `factSheetUrl` 指去列出全部便覽嗰一版。
+兩者二擇其一，同時寫會報錯。冇咗「一份 PDF 逐版一隻基金」嗰個天然次序，所以**逐份對名**：
+一份只可以切到一個區段，而且區段名要同名單聲明嗰隻對得上，唔啱就報錯（`disclosureForFund`）——
+靠檔名或者次序猜，官網一改版就會把另一隻基金嘅配置同持倉貼落去。`factSheetAsOf` 亦由
+「全份一個」變成逐份一個：全部同一期先報計劃層面嗰個，唔同期就淨係逐份保留
+（`sharedFactSheetAsOf`），取最舊嗰個冚全份等於改寫其餘基金嘅官方日期。
 
 換版面時要一併重跑覆蓋報告比對：Series 800 換到 2026-03-31 那期先揭發配置欄的註腳 `3`
 落在 446，撞入原本去到 460 的持倉欄，令整張十大持倉表報唔可用。兩個 band 唔可以重疊。

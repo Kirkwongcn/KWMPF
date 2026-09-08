@@ -103,5 +103,81 @@
     "scheme": "SHKP MPF Employer Sponsored Scheme",
     "factSheetUrl": "https://www.shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf",
     "file": "SHKP_FundPriceFFS.pdf"
+  },
+  {
+    "scheme": "MASS Mandatory Provident Fund Scheme",
+    "factSheetUrl": "https://www.yflife.com/en/product/mpf-hongkong/fund-price-history/",
+    "funds": [
+      {
+        "constituentFund": "Global Stable Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLSF_E.pdf",
+        "file": "MASS_GLSF.pdf"
+      },
+      {
+        "constituentFund": "Global Growth Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLGF_E.pdf",
+        "file": "MASS_GLGF.pdf"
+      },
+      {
+        "constituentFund": "Guaranteed Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GUAF_E.pdf",
+        "file": "MASS_GUAF.pdf"
+      },
+      {
+        "constituentFund": "MPF Conservative Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/CAPF_E.pdf",
+        "file": "MASS_CAPF.pdf"
+      },
+      {
+        "constituentFund": "Global Equity Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLEF_E.pdf",
+        "file": "MASS_GLEF.pdf"
+      },
+      {
+        "constituentFund": "Global Bond Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLBF_E.pdf",
+        "file": "MASS_GLBF.pdf"
+      },
+      {
+        "constituentFund": "Asian Bond Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/ASBF_E.pdf",
+        "file": "MASS_ASBF.pdf"
+      },
+      {
+        "constituentFund": "Asian Pacific Equity Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/APEF_E.pdf",
+        "file": "MASS_APEF.pdf"
+      },
+      {
+        "constituentFund": "US Equity Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/USEF_E.pdf",
+        "file": "MASS_USEF.pdf"
+      },
+      {
+        "constituentFund": "European Equity Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/EUEF_E.pdf",
+        "file": "MASS_EUEF.pdf"
+      },
+      {
+        "constituentFund": "Hong Kong Equities Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/HKEF_E.pdf",
+        "file": "MASS_HKEF.pdf"
+      },
+      {
+        "constituentFund": "Greater China Equity Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GCEF_E.pdf",
+        "file": "MASS_GCEF.pdf"
+      },
+      {
+        "constituentFund": "Core Accumulation Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/CAF2_E.pdf",
+        "file": "MASS_CAF2.pdf"
+      },
+      {
+        "constituentFund": "Age 65 Plus Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/A65F2_E.pdf",
+        "file": "MASS_A65F2.pdf"
+      }
+    ]
   }
 ]

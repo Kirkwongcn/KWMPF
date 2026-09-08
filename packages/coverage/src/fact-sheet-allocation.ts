@@ -194,6 +194,17 @@ export type FactSheetContract = {
     maxPage?: number;
     /** 同一份便覽有多個日期時（例如中國人壽的基準說明），取最新一個。 */
     pick?: "first" | "latest";
+    /**
+     * 只喺呢個橫向範圍搵日期。日期排喺窄欄時，同一條基線上會有隔籬欄的文字
+     * （MASS 的「Fund Data as at June」右邊就係「Fund Price (HKD)」），
+     * 併行之後日期就唔再連續，配唔到式樣。
+     */
+    band?: { minLeft: number; maxLeft: number };
+    /**
+     * 日期喺窄欄入面斷行（MASS 逐隻基金那份把「Fund Data as at June」同
+     * 「30, 2026」排成兩行）。設咗就連埋下一行再試一次式樣。
+     */
+    joinWrappedLines?: true;
   };
 };
 
@@ -821,8 +832,19 @@ export function findFactSheetAsOf(pages: PdfPage[], contract: FactSheetContract)
         ? contract.asOf.pattern.flags
         : `${contract.asOf.pattern.flags}g`,
     );
-    for (const line of toLines(page)) {
-      for (const match of line.text.matchAll(pattern)) {
+    const { band, joinWrappedLines } = contract.asOf;
+    const scoped = band
+      ? { ...page, items: page.items.filter((item) => item.left >= band.minLeft && item.left <= band.maxLeft) }
+      : page;
+    const lines = toLines(scoped);
+    const texts = joinWrappedLines
+      ? lines.flatMap((line, index) => {
+          const next = lines[index + 1];
+          return next ? [line.text, `${line.text} ${next.text}`] : [line.text];
+        })
+      : lines.map((line) => line.text);
+    for (const text of texts) {
+      for (const match of text.matchAll(pattern)) {
         if (!match[1]) continue;
         const date = parseFactSheetDate(match[1]);
         if (contract.asOf.pick !== "latest") return date;
