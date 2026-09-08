@@ -14,12 +14,14 @@ describe("publication snapshot", () => {
   beforeEach(async () => {
     await bindings.DB.exec(`
       DROP TABLE IF EXISTS current_publication;
+      DROP TABLE IF EXISTS comparison_group_stats;
       DROP TABLE IF EXISTS fund_class_versions;
       DROP TABLE IF EXISTS publication_snapshots;
       DROP TABLE IF EXISTS candidate_batches;
       CREATE TABLE candidate_batches (batch_id TEXT PRIMARY KEY, status TEXT NOT NULL, raw_key TEXT NOT NULL, raw_sha256 TEXT NOT NULL);
       CREATE TABLE publication_snapshots (snapshot_id TEXT PRIMARY KEY, published_at TEXT NOT NULL);
       CREATE TABLE fund_class_versions (snapshot_id TEXT NOT NULL, fund_class_id TEXT NOT NULL, payload TEXT NOT NULL, PRIMARY KEY (snapshot_id, fund_class_id));
+      CREATE TABLE comparison_group_stats (snapshot_id TEXT NOT NULL, comparison_group TEXT NOT NULL, avg_allocation TEXT, avg_top10_concentration REAL, avg_volatility_3y REAL, fund_count INTEGER NOT NULL, allocation_count INTEGER NOT NULL, top10_count INTEGER NOT NULL, volatility_count INTEGER NOT NULL, insufficient_sample INTEGER NOT NULL, PRIMARY KEY (snapshot_id, comparison_group));
       CREATE TABLE current_publication (singleton INTEGER PRIMARY KEY CHECK (singleton = 1), snapshot_id TEXT NOT NULL);
     `);
   });
@@ -723,6 +725,109 @@ describe("publication snapshot", () => {
     ).json()) as { mappedAllocation: unknown };
 
     expect(body.mappedAllocation).toEqual(mappedAllocation);
+  });
+
+  it("serves frozen comparison-group averages from the snapshot, not a live recalculation", async () => {
+    const snapshotId = "snapshot-group-stats";
+    await bindings.DB.prepare(
+      "INSERT INTO publication_snapshots (snapshot_id, published_at) VALUES (?, ?)",
+    )
+      .bind(snapshotId, "2026-08-29T00:00:00Z")
+      .run();
+    await bindings.DB.prepare(
+      "INSERT INTO current_publication (singleton, snapshot_id) VALUES (1, ?)",
+    )
+      .bind(snapshotId)
+      .run();
+    await bindings.DB.prepare(
+      `INSERT INTO comparison_group_stats (
+         snapshot_id, comparison_group, avg_allocation, avg_top10_concentration,
+         avg_volatility_3y, fund_count, allocation_count, top10_count, volatility_count,
+         insufficient_sample
+       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    )
+      .bind(
+        snapshotId,
+        "Hong Kong Equity",
+        JSON.stringify({ equity: 92.5, bond: 2.5, cashAndOther: 5 }),
+        31.2,
+        18.4,
+        12,
+        8,
+        10,
+        12,
+        0,
+      )
+      .run();
+    await bindings.DB.prepare(
+      `INSERT INTO comparison_group_stats (
+         snapshot_id, comparison_group, avg_allocation, avg_top10_concentration,
+         avg_volatility_3y, fund_count, allocation_count, top10_count, volatility_count,
+         insufficient_sample
+       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    )
+      .bind(
+        snapshotId,
+        "平台分類：Guaranteed Fund",
+        null,
+        null,
+        null,
+        2,
+        1,
+        2,
+        2,
+        1,
+      )
+      .run();
+
+    const all = (await (
+      await SELF.fetch("https://kwmpf.test/comparison-group-stats")
+    ).json()) as { snapshotId: string; groups: unknown[] };
+    expect(all.snapshotId).toBe(snapshotId);
+    expect(all.groups).toEqual([
+      {
+        comparisonGroup: "Hong Kong Equity",
+        comparisonGroupSource: "lipper",
+        avgAllocation: {
+          official: false,
+          equity: 92.5,
+          bond: 2.5,
+          cashAndOther: 5,
+        },
+        avgTop10Concentration: 31.2,
+        avgVolatility3y: 18.4,
+        fundCount: 12,
+        allocationCount: 8,
+        top10Count: 10,
+        volatilityCount: 12,
+        insufficientSample: false,
+      },
+      {
+        comparisonGroup: "平台分類：Guaranteed Fund",
+        comparisonGroupSource: "platform",
+        avgAllocation: null,
+        avgTop10Concentration: null,
+        avgVolatility3y: null,
+        fundCount: 2,
+        allocationCount: 1,
+        top10Count: 2,
+        volatilityCount: 2,
+        insufficientSample: true,
+      },
+    ]);
+
+    const one = (await (
+      await SELF.fetch(
+        "https://kwmpf.test/comparison-group-stats?comparisonGroup=Hong%20Kong%20Equity",
+      )
+    ).json()) as { groups: Array<{ comparisonGroup: string }> };
+    expect(one.groups).toHaveLength(1);
+    expect(one.groups[0]?.comparisonGroup).toBe("Hong Kong Equity");
+
+    const missing = await SELF.fetch(
+      "https://kwmpf.test/comparison-group-stats?comparisonGroup=Missing",
+    );
+    expect(missing.status).toBe(404);
   });
 
   it("reports the data-as-of range of each scheme and the date behind each fund", async () => {

@@ -317,6 +317,78 @@ app.get("/filters", async (context) => {
   });
 });
 
+type ComparisonGroupStatsRow = {
+  comparison_group: string;
+  avg_allocation: string | null;
+  avg_top10_concentration: number | null;
+  avg_volatility_3y: number | null;
+  fund_count: number;
+  allocation_count: number;
+  top10_count: number;
+  volatility_count: number;
+  insufficient_sample: number;
+};
+
+function publishedComparisonGroupStats(row: ComparisonGroupStatsRow) {
+  const avgAllocation = row.avg_allocation
+    ? (JSON.parse(row.avg_allocation) as {
+        equity: number;
+        bond: number;
+        cashAndOther: number;
+      })
+    : null;
+  return {
+    comparisonGroup: row.comparison_group,
+    comparisonGroupSource: comparisonGroupSourceOf(row.comparison_group),
+    avgAllocation:
+      avgAllocation === null
+        ? null
+        : { official: false as const, ...avgAllocation },
+    avgTop10Concentration: row.avg_top10_concentration,
+    avgVolatility3y: row.avg_volatility_3y,
+    fundCount: row.fund_count,
+    allocationCount: row.allocation_count,
+    top10Count: row.top10_count,
+    volatilityCount: row.volatility_count,
+    insufficientSample: row.insufficient_sample === 1,
+  };
+}
+
+app.get("/comparison-group-stats", async (context) => {
+  const current = await context.env.DB.prepare(
+    `SELECT snapshot_id FROM current_publication WHERE singleton = 1`,
+  ).first<{ snapshot_id: string }>();
+
+  if (!current) {
+    return context.json({ snapshotId: null, groups: [] });
+  }
+
+  const requested = context.req.query("comparisonGroup")?.trim();
+  const rows = await context.env.DB.prepare(
+    requested
+      ? `SELECT comparison_group, avg_allocation, avg_top10_concentration, avg_volatility_3y,
+                fund_count, allocation_count, top10_count, volatility_count, insufficient_sample
+         FROM comparison_group_stats
+         WHERE snapshot_id = ? AND comparison_group = ?
+         ORDER BY comparison_group`
+      : `SELECT comparison_group, avg_allocation, avg_top10_concentration, avg_volatility_3y,
+                fund_count, allocation_count, top10_count, volatility_count, insufficient_sample
+         FROM comparison_group_stats
+         WHERE snapshot_id = ?
+         ORDER BY comparison_group`,
+  )
+    .bind(
+      ...(requested ? [current.snapshot_id, requested] : [current.snapshot_id]),
+    )
+    .all<ComparisonGroupStatsRow>();
+
+  const groups = rows.results.map(publishedComparisonGroupStats);
+  if (requested && groups.length === 0) {
+    return context.json({ error: "Comparison group not found" }, 404);
+  }
+  return context.json({ snapshotId: current.snapshot_id, groups });
+});
+
 app.get("/summary", async (context) => {
   const current = await context.env.DB.prepare(
     `SELECT snapshot_id FROM current_publication WHERE singleton = 1`,
