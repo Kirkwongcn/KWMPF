@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { joinItems, markWordStarts, parsePdfXml, toLines } from "../src/pdf-xml";
+import { factSheetContract } from "../src/fact-sheet-allocation-contracts";
 import {
   findFactSheetAsOf,
   findSections,
@@ -1021,5 +1022,138 @@ describe("toLines", () => {
     );
     expect(rest).toEqual([]);
     expect(line?.text).toBe("Label 12.5%");
+  });
+});
+
+/**
+ * 富達受託人官網逐隻成分基金一份便覽的真實座標。三種基金類型各一，因為富達逐隻基金
+ * 披露唔同維度：股票用地區同行業，債券用貨幣同信用評級，混合用資產類別。
+ * 呢度用返真正出貨嗰份契約，唔係另砌一份，所以契約改壞咗呢啲測試會即刻紅。
+ */
+describe("Fidelity trustee per-fund fact sheet", () => {
+  const contract = factSheetContract("Fidelity Retirement Master Trust", "trustee");
+
+  /**
+   * 每份便覽第一版係免責聲明，基金資料喺第二版。頁首英文全名一行、中文一行，
+   * 跟住「As of 截至 <日期>」——英文、中文同日期係三段文字，併成同一行先讀得到。
+   */
+  function fidelitySheet(fundName: string, runs: Run[]) {
+    return pdf(
+      page(1, [
+        {
+          top: 30,
+          left: 79,
+          text: "For Fidelity Retirement Master Trust, please note:",
+          width: 300,
+        },
+      ]),
+      page(2, [...fidelityHeader(fundName), ...runs]),
+    );
+  }
+
+  function fidelityHeader(fundName: string) {
+    return [
+      {
+        top: 41,
+        left: 34,
+        text: `Fidelity Retirement Master Trust - ${fundName}`,
+        width: 576,
+        size: 29,
+        family: "NeuzeitGro-Bol",
+      },
+      { top: 116, left: 38, text: "As of ", width: 29 },
+      { top: 115, left: 67, text: "截至", width: 23 },
+      { top: 116, left: 93, text: "31/07/2026", width: 55 },
+    ];
+  }
+
+  it("reads the geographical and industry dimensions of an equity fund", () => {
+    // 中英對照：標題後面緊接中文譯名同兩個「▲」註腳標記，所以標題式樣唔可以用 `$` 收尾。
+    // 標籤本身的中英之間冇空格，同積金局副本嗰份一樣（#220），呢度照錄唔補。
+    const pages = fidelitySheet("Hong Kong Equity Fund", [
+        { top: 490, left: 621, text: "Geographical Breakdown", width: 145, size: 13 },
+        { top: 490, left: 766, text: "▲", width: 5, size: 7 },
+        { top: 488, left: 775, text: "地區分佈", width: 48, size: 12 },
+        { top: 490, left: 826, text: "▲", width: 5, size: 7 },
+        { top: 511, left: 621, text: "CHINA ", width: 29 },
+        { top: 510, left: 650, text: "中國", width: 18 },
+        { top: 511, left: 836, text: "81.0%", width: 22 },
+        { top: 525, left: 621, text: "HONG KONG ", width: 56 },
+        { top: 523, left: 677, text: "香港", width: 18 },
+      { top: 525, left: 836, text: "19.7%", width: 22 },
+    ]);
+    const [disclosure] = parseFactSheetDisclosures(pages, contract);
+
+    expect(disclosure?.constituentFundName).toBe("Hong Kong Equity Fund");
+    expect(disclosure?.factSheetAsOf).toBe("2026-07-31");
+    expect(disclosure?.allocations).toEqual([
+      {
+        // 中文譯名由契約的對照表補，同積金局副本嗰份出返同一個標籤。
+        heading: "Geographical Breakdown 地區分佈",
+        entries: [
+          { label: "CHINA中國", percent: 81 },
+          { label: "HONG KONG香港", percent: 19.7 },
+        ],
+      },
+    ]);
+  });
+
+  it("reads the currency and credit-rating dimensions of a bond fund", () => {
+    const pages = fidelitySheet("World Bond Fund", [
+        { top: 490, left: 621, text: "Currency Breakdown", width: 116, size: 13 },
+        { top: 488, left: 746, text: "貨幣分佈", width: 48, size: 12 },
+        { top: 512, left: 621, text: "HONG KONG DOLLAR ", width: 91 },
+        { top: 510, left: 712, text: "港元", width: 18 },
+        { top: 512, left: 836, text: "35.5%", width: 22 },
+        { top: 655, left: 621, text: "S&P/Moody’s Credit Rating", width: 116, size: 13 },
+        { top: 654, left: 744, text: "標準普爾", width: 37, size: 12 },
+        { top: 656, left: 783, text: "/", width: 4, size: 12 },
+        { top: 654, left: 789, text: "穆廸信用評級", width: 55, size: 12 },
+        { top: 676, left: 621, text: "AAA/Aaa", width: 40 },
+      { top: 676, left: 836, text: "63.0%", width: 22 },
+    ]);
+    const [disclosure] = parseFactSheetDisclosures(pages, contract);
+
+    expect(disclosure?.allocations).toEqual([
+      {
+        heading: "Currency Breakdown 貨幣分佈",
+        // 中英之間冇空格：兩段文字喺版面上緊貼，`joinItems` 見唔到空隙。
+        // 積金局副本嗰份一樣係咁，屬 #220，唔喺呢張票補。
+        entries: [{ label: "HONG KONG DOLLAR港元", percent: 35.5 }],
+      },
+      {
+        heading: "S&P/Moody’s Credit Rating 標準普爾／穆廸信用評級",
+        entries: [{ label: "AAA/Aaa", percent: 63 }],
+      },
+    ]);
+  });
+
+  it("reads the asset-class dimension and top holdings of a mixed-asset fund", () => {
+    const pages = fidelitySheet("Growth Fund", [
+        { top: 491, left: 366, text: "Top 10 Holdings ", width: 94, size: 13 },
+        { top: 489, left: 460, text: "十大主要投資項目", width: 96, size: 12 },
+        { top: 512, left: 366, text: "CSOP FTSE HONG KONG EQUITY ETF ", width: 148 },
+        { top: 511, left: 514, text: "南方香港股票", width: 54 },
+        { top: 512, left: 577, text: "20.78%", width: 27 },
+        { top: 491, left: 621, text: "Fund Allocation by Asset Class", width: 135, size: 13 },
+        { top: 491, left: 755, text: "▲", width: 4, size: 7 },
+        { top: 491, left: 759, text: "^ ", width: 8, size: 13 },
+        { top: 489, left: 767, text: "資產類別投資分配", width: 80, size: 12 },
+        { top: 512, left: 621, text: "HONG KONG EQUITIES ", width: 94 },
+        { top: 511, left: 715, text: "香港股票", width: 36 },
+      { top: 512, left: 831, text: "24.63%", width: 27 },
+    ]);
+    const [disclosure] = parseFactSheetDisclosures(pages, contract);
+
+    expect(disclosure?.allocations).toEqual([
+      {
+        heading: "Fund Allocation by Asset Class 資產類別投資分配",
+        entries: [{ label: "HONG KONG EQUITIES香港股票", percent: 24.63 }],
+      },
+    ]);
+    // 「Top 10 Holdings」同樣接住中文譯名，所以持倉標題式樣一樣要放寬。
+    expect(disclosure?.topHoldings).toEqual([
+      { rank: 1, security: "CSOP FTSE HONG KONG EQUITY ETF南方香港股票", percent: 20.78 },
+    ]);
   });
 });

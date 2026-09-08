@@ -179,5 +179,126 @@
         "file": "MASS_A65F2.pdf"
       }
     ]
+  },
+  {
+    "scheme": "Fidelity Retirement Master Trust",
+    "factSheetUrl": "https://www.fidelity.com.hk/en/our-funds/mpf",
+    "funds": [
+      {
+        "constituentFund": "Age 65 Plus Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-C65P.pdf",
+        "file": "Fidelity_C65P.pdf"
+      },
+      {
+        "constituentFund": "Americas Equity Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CAME.pdf",
+        "file": "Fidelity_CAME.pdf"
+      },
+      {
+        "constituentFund": "European Equity Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CEUR.pdf",
+        "file": "Fidelity_CEUR.pdf"
+      },
+      {
+        "constituentFund": "Core Accumulation Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFAF.pdf",
+        "file": "Fidelity_CFAF.pdf"
+      },
+      {
+        "constituentFund": "Asia Pacific Equity Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFAP.pdf",
+        "file": "Fidelity_CFAP.pdf"
+      },
+      {
+        "constituentFund": "Balanced Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFBF.pdf",
+        "file": "Fidelity_CFBF.pdf"
+      },
+      {
+        "constituentFund": "Capital Stable Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFCF.pdf",
+        "file": "Fidelity_CFCF.pdf"
+      },
+      {
+        "constituentFund": "MPF Conservative Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFCP.pdf",
+        "file": "Fidelity_CFCP.pdf"
+      },
+      {
+        "constituentFund": "Global Equity Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFGE.pdf",
+        "file": "Fidelity_CFGE.pdf"
+      },
+      {
+        "constituentFund": "Growth Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFGF.pdf",
+        "file": "Fidelity_CFGF.pdf"
+      },
+      {
+        "constituentFund": "Hong Kong Bond Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFHB.pdf",
+        "file": "Fidelity_CFHB.pdf"
+      },
+      {
+        "constituentFund": "Hong Kong Equity Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFHK.pdf",
+        "file": "Fidelity_CFHK.pdf"
+      },
+      {
+        "constituentFund": "RMB Bond Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFRB.pdf",
+        "file": "Fidelity_CFRB.pdf"
+      },
+      {
+        "constituentFund": "Stable Growth Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFSF.pdf",
+        "file": "Fidelity_CFSF.pdf"
+      },
+      {
+        "constituentFund": "Fidelity Hong Kong Tracker Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFTF.pdf",
+        "file": "Fidelity_CFTF.pdf"
+      },
+      {
+        "constituentFund": "World Bond Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFWB.pdf",
+        "file": "Fidelity_CFWB.pdf"
+      },
+      {
+        "constituentFund": "Fidelity SaveEasy 2025 Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS25.pdf",
+        "file": "Fidelity_CS25.pdf"
+      },
+      {
+        "constituentFund": "Fidelity SaveEasy 2030 Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS30.pdf",
+        "file": "Fidelity_CS30.pdf"
+      },
+      {
+        "constituentFund": "Fidelity SaveEasy 2035 Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS35.pdf",
+        "file": "Fidelity_CS35.pdf"
+      },
+      {
+        "constituentFund": "Fidelity SaveEasy 2040 Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS40.pdf",
+        "file": "Fidelity_CS40.pdf"
+      },
+      {
+        "constituentFund": "Fidelity SaveEasy 2045 Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS45.pdf",
+        "file": "Fidelity_CS45.pdf"
+      },
+      {
+        "constituentFund": "Fidelity SaveEasy 2050 Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS50.pdf",
+        "file": "Fidelity_CS50.pdf"
+      },
+      {
+        "constituentFund": "RetireEasy Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CTEF.pdf",
+        "file": "Fidelity_CTEF.pdf"
+      }
+    ]
   }
 ]

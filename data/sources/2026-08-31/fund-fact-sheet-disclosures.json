@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-04T14:09:28.651Z",
+  "generatedAt": "2026-09-04T14:23:12.317Z",
   "platformSnapshot": "data/sources/2026-08-29/mpf-fund-platform.json",
   "factSheetBatch": "data/sources/2026-08-28/fund-fact-sheet-links.json",
   "funds": [
@@ -21348,49 +21348,57 @@
       "fundClassIds": ["mpfa-cf-268"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "Growth Fund",
-      "factSheetFile": "MT00288.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00288.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "Fidelity_CFGF.pdf",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFGF.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
       "allocations": [
         {
           "heading": "Fund Allocation by Asset Class 資產類別投資分配",
           "entries": [
             {
               "label": "HONG KONG EQUITIES香港股票",
-              "percent": 23.51
+              "percent": 24.63
             },
             {
               "label": "CHINA ONSHORE EQUITIES中國在岸股票",
-              "percent": 7.06
+              "percent": 6.88
             },
             {
               "label": "ASIA PACIFIC EQUITIES*亞太股票 *",
-              "percent": 13.28
+              "percent": 11.46
             },
             {
               "label": "JAPAN EQUITIES日本股票",
-              "percent": 11.97
+              "percent": 11.37
             },
             {
               "label": "EUROPE EQUITIES歐洲股票",
-              "percent": 18.04
+              "percent": 16.29
             },
             {
               "label": "AMERICAS EQUITIES美國股票",
-              "percent": 20.2
+              "percent": 20.77
+            },
+            {
+              "label": "EMERGING MARKETS EQUITIES新興市場股票",
+              "percent": 0.04
+            },
+            {
+              "label": "WORLD EQUITIES世界股票",
+              "percent": 0.5
             },
             {
               "label": "HIGHER GRADE BOND高評級債券",
-              "percent": 3.67
+              "percent": 4.28
             },
             {
               "label": "MONEY FUND貨幣基金",
-              "percent": 0.41
+              "percent": 0.34
             },
             {
               "label": "CASH & OTHERS # 現金及其他 #",
-              "percent": 1.86
+              "percent": 3.44
             }
           ]
         }
@@ -21398,53 +21406,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - EUROPEAN INDEX FUND",
-          "percent": 8.25
+          "security": "CSOP FTSE HONG KONG EQUITY ETF南方香港股票",
+          "percent": 20.78
         },
         {
           "rank": 2,
-          "security": "ISHARES CORE MSCI CHINA ETF ISHARES安碩核心 MSCI中國 ETF",
-          "percent": 7.7
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - JAPAN INDEX FUND",
+          "percent": 4.91
         },
         {
           "rank": 3,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - JAPAN INDEX FUND",
-          "percent": 6.68
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - EUROPEAN INDEX FUND",
+          "percent": 3.98
         },
         {
           "rank": 4,
-          "security": "HONG KONG TRACKER FUND盈富基金",
-          "percent": 6.22
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - AMERICAN INDEX FUND",
+          "percent": 3.38
         },
         {
           "rank": 5,
-          "security": "ISHARES CORE CSI 300 ETF ISHARES安碩核心滬深 300 指數 ETF",
-          "percent": 5.67
+          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
+          "percent": 2.44
         },
         {
           "rank": 6,
-          "security": "ISHARES S&P 500 GROWTH ETF ISHARES標普 500 成長股 ETF",
-          "percent": 5.03
+          "security": "ISHARES U.S. UTILITIES ETF ISHARES美國公用事業 ETF",
+          "percent": 1.83
         },
         {
           "rank": 7,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方東英富時香港股票 ETF",
-          "percent": 4.99
+          "security": "ISHARES US TECHNOLOGY ETF",
+          "percent": 1.79
         },
         {
           "rank": 8,
-          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
-          "percent": 3.03
+          "security": "INVESCO QQQ TRUST景順 QQQ",
+          "percent": 1.51
         },
         {
           "rank": 9,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - AMERICAN INDEX FUND",
-          "percent": 2.78
+          "security": "HONG KONG TRACKER FUND盈富基金",
+          "percent": 1.28
         },
         {
           "rank": 10,
-          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD台積公司",
-          "percent": 1.3
+          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD台積電",
+          "percent": 0.99
         }
       ],
       "unavailableFields": [],
@@ -21455,33 +21463,33 @@
       "fundClassIds": ["mpfa-cf-270"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "World Bond Fund",
-      "factSheetFile": "MT00288.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00288.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "Fidelity_CFWB.pdf",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFWB.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
       "allocations": [
         {
           "heading": "Currency Breakdown 貨幣分佈",
           "entries": [
             {
               "label": "HONG KONG DOLLAR港元",
-              "percent": 35.8
+              "percent": 35.5
             },
             {
               "label": "US DOLLAR美元",
-              "percent": 28.7
+              "percent": 27.8
             },
             {
               "label": "EURO歐元",
-              "percent": 15
+              "percent": 13.5
             },
             {
               "label": "CHINESE YUAN**人民幣 **",
-              "percent": 7.7
+              "percent": 8.3
             },
             {
               "label": "JAPANESE YEN日元",
-              "percent": 3.9
+              "percent": 5.6
             },
             {
               "label": "UK POUND英鎊",
@@ -21489,11 +21497,11 @@
             },
             {
               "label": "AUSTRALIAN DOLLAR澳元",
-              "percent": 1.7
+              "percent": 1.8
             },
             {
               "label": "OTHERS其他",
-              "percent": 3.5
+              "percent": 3.7
             }
           ]
         },
@@ -21502,23 +21510,23 @@
           "entries": [
             {
               "label": "AAA/Aaa",
-              "percent": 68.5
+              "percent": 63
             },
             {
               "label": "AA/Aa",
-              "percent": 6.8
+              "percent": 6.5
             },
             {
               "label": "A",
-              "percent": 6.7
+              "percent": 11.7
             },
             {
               "label": "BBB/Baa",
-              "percent": 1.7
+              "percent": 1.6
             },
             {
               "label": "Others*其他 *",
-              "percent": 16.3
+              "percent": 17.2
             }
           ]
         },
@@ -21527,19 +21535,23 @@
           "entries": [
             {
               "label": "Treasury 國庫券",
-              "percent": 93.7
+              "percent": 92.4
+            },
+            {
+              "label": "Financial 金融",
+              "percent": 1.5
             },
             {
               "label": "Industrial 工業",
-              "percent": 1.3
+              "percent": 1.4
             },
             {
               "label": "Quasi/Sov/Supra/Agncy",
-              "percent": 0.8
+              "percent": 0.2
             },
             {
               "label": "Others* 其他**",
-              "percent": 4.2
+              "percent": 4.5
             }
           ]
         }
@@ -21547,53 +21559,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "USTN 4.25% 15/11/2034美國國庫券 4.25% 15/11/2034",
-          "percent": 14.46
+          "security": "USTN 4.375% 15/05/2036",
+          "percent": 14.62
         },
         {
           "rank": 2,
-          "security": "BUNDESREPUB. DEUTSCHLAND 2.6% 15/08/2034 REGS",
-          "percent": 6.86
+          "security": "USTN 4.375% 31/01/2032",
+          "percent": 7.24
         },
         {
           "rank": 3,
-          "security": "USTN 4.375% 31/01/2032美國國庫券 4.375% 31/01/2032",
-          "percent": 5.19
+          "security": "BUNDESREPUB DEUTSCHLAND 2.6% 15/08/2035 REGS",
+          "percent": 7.22
         },
         {
           "rank": 4,
-          "security": "BUNDESCHATZANWEISINGEN 2.5% 11/10/2029 REGS",
-          "percent": 4.68
+          "security": "BUNDESREPUB. DEUTSCHLAND 2.6% 15/08/2034 REGS",
+          "percent": 7.02
         },
         {
           "rank": 5,
           "security": "CHINA 2.8% 15/11/2032 REGS",
-          "percent": 4.42
+          "percent": 4.71
         },
         {
           "rank": 6,
-          "security": "USTN 4.5% 15/11/2054美國國庫券 4.5% 15/11/2054",
-          "percent": 4.12
+          "security": "BUNDESCHATZANWEISINGEN 2.5% 11/10/2029 REGS",
+          "percent": 4.32
         },
         {
           "rank": 7,
-          "security": "GERMANY 2.2% 15/02/2034 REGS",
-          "percent": 3.68
-        },
-        {
-          "rank": 8,
-          "security": "BUNDESREPUB DEUTSCHLAND 2.6% 15/08/2035 REGS",
+          "security": "CHINA 2.05% 15/04/2029 REGS",
           "percent": 3.41
         },
         {
+          "rank": 8,
+          "security": "USTN 4.5% 15/11/2054",
+          "percent": 3.3
+        },
+        {
           "rank": 9,
-          "security": "CHINA 2.05% 15/04/2029 REGS",
-          "percent": 3.1
+          "security": "CHINA 1.35% 25/09/2026 REGS",
+          "percent": 2.96
         },
         {
           "rank": 10,
-          "security": "CHINA 1.35% 25/09/2026 REGS",
-          "percent": 2.93
+          "security": "JAPAN 1.1% 20/06/2034",
+          "percent": 2.62
         }
       ],
       "unavailableFields": [],
@@ -21604,49 +21616,57 @@
       "fundClassIds": ["mpfa-cf-271"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "Stable Growth Fund",
-      "factSheetFile": "MT00288.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00288.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "Fidelity_CFSF.pdf",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFSF.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
       "allocations": [
         {
           "heading": "Fund Allocation by Asset Class 資產類別投資分配",
           "entries": [
             {
               "label": "HONG KONG EQUITIES香港股票",
-              "percent": 13.74
+              "percent": 14.32
             },
             {
               "label": "CHINA ONSHORE EQUITIES中國在岸股票",
-              "percent": 4.78
+              "percent": 4.43
             },
             {
               "label": "ASIA PACIFIC EQUITIES*亞太股票 *",
-              "percent": 7.61
+              "percent": 5.78
             },
             {
               "label": "JAPAN EQUITIES日本股票",
-              "percent": 6.42
+              "percent": 6.12
             },
             {
               "label": "EUROPE EQUITIES歐洲股票",
-              "percent": 9.74
+              "percent": 8.23
             },
             {
               "label": "AMERICAS EQUITIES美國股票",
-              "percent": 12.47
+              "percent": 12.88
+            },
+            {
+              "label": "EMERGING MARKETS EQUITIES新興市場股票",
+              "percent": 0.04
+            },
+            {
+              "label": "WORLD EQUITIES世界股票",
+              "percent": 0.5
             },
             {
               "label": "HIGHER GRADE BOND高評級債券",
-              "percent": 41.63
+              "percent": 42.55
             },
             {
               "label": "MONEY FUND貨幣基金",
-              "percent": 0.79
+              "percent": 0.68
             },
             {
               "label": "CASH & OTHERS # 現金及其他 #",
-              "percent": 2.82
+              "percent": 4.47
             }
           ]
         }
@@ -21654,53 +21674,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "HSBC GF ICAV - GLOBAL GOVERNMENT BOND UCITS ETF",
-          "percent": 6.5
+          "security": "CSOP FTSE HONG KONG EQUITY ETF南方香港股票",
+          "percent": 12.49
         },
         {
           "rank": 2,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - EUROPEAN INDEX FUND",
-          "percent": 4.32
+          "security": "HSBC GF ICAV - GLOBAL GOVERNMENT BOND UCITS ETF",
+          "percent": 7.36
         },
         {
           "rank": 3,
-          "security": "HONG KONG TRACKER FUND盈富基金",
-          "percent": 4.28
+          "security": "USTN 4.375% 15/05/2036",
+          "percent": 2.99
         },
         {
           "rank": 4,
-          "security": "ISHARES CORE MSCI CHINA ETF ISHARES安碩核心 MSCI中國 ETF",
-          "percent": 3.76
+          "security": "INVESCO QQQ TRUST景順 QQQ",
+          "percent": 2.06
         },
         {
           "rank": 5,
-          "security": "ISHARES CORE CSI 300 ETF ISHARES安碩核心滬深 300 指數 ETF",
-          "percent": 3.68
+          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
+          "percent": 1.91
         },
         {
           "rank": 6,
           "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - JAPAN INDEX FUND",
-          "percent": 3.11
+          "percent": 1.87
         },
         {
           "rank": 7,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方東英富時香港股票 ETF",
-          "percent": 3.1
+          "security": "ISHARES US TECHNOLOGY ETF",
+          "percent": 1.65
         },
         {
           "rank": 8,
-          "security": "USTN 4.25% 15/11/2034美國國庫券 4.25% 15/11/2034",
-          "percent": 3.03
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - EUROPEAN INDEX FUND",
+          "percent": 1.6
         },
         {
           "rank": 9,
-          "security": "ISHARES S&P 500 GROWTH ETF ISHARES標普 500 成長股 ETF",
-          "percent": 2.79
+          "security": "USTN 4.375% 31/01/2032",
+          "percent": 1.45
         },
         {
           "rank": 10,
-          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
-          "percent": 2.58
+          "security": "BUNDESREPUB DEUTSCHLAND 2.6% 15/08/2035 REGS",
+          "percent": 1.44
         }
       ],
       "unavailableFields": [],
@@ -21711,49 +21731,57 @@
       "fundClassIds": ["mpfa-cf-272"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "Capital Stable Fund",
-      "factSheetFile": "MT00288.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00288.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "Fidelity_CFCF.pdf",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFCF.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
       "allocations": [
         {
           "heading": "Fund Allocation by Asset Class 資產類別投資分配",
           "entries": [
             {
               "label": "HONG KONG EQUITIES香港股票",
-              "percent": 7.87
+              "percent": 8.51
             },
             {
               "label": "CHINA ONSHORE EQUITIES中國在岸股票",
-              "percent": 3.76
+              "percent": 3.02
             },
             {
               "label": "ASIA PACIFIC EQUITIES*亞太股票 *",
-              "percent": 4.96
+              "percent": 3.32
             },
             {
               "label": "JAPAN EQUITIES日本股票",
-              "percent": 4
+              "percent": 3.46
             },
             {
               "label": "EUROPE EQUITIES歐洲股票",
-              "percent": 5.51
+              "percent": 4.54
             },
             {
               "label": "AMERICAS EQUITIES美國股票",
-              "percent": 9.02
+              "percent": 8.39
+            },
+            {
+              "label": "EMERGING MARKETS EQUITIES新興市場股票",
+              "percent": 0.05
+            },
+            {
+              "label": "WORLD EQUITIES世界股票",
+              "percent": 0.5
             },
             {
               "label": "HIGHER GRADE BOND高評級債券",
-              "percent": 56.83
+              "percent": 58.04
             },
             {
               "label": "MONEY FUND貨幣基金",
-              "percent": 5.47
+              "percent": 5.32
             },
             {
               "label": "CASH & OTHERS # 現金及其他 #",
-              "percent": 2.58
+              "percent": 4.85
             }
           ]
         }
@@ -21761,53 +21789,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "HSBC GF ICAV - GLOBAL GOVERNMENT BOND UCITS ETF",
-          "percent": 6.84
+          "security": "CSOP FTSE HONG KONG EQUITY ETF南方香港股票",
+          "percent": 8.26
         },
         {
           "rank": 2,
-          "security": "USTN 4.25% 15/11/2034美國國庫券 4.25% 15/11/2034",
-          "percent": 4.46
+          "security": "HSBC GF ICAV - GLOBAL GOVERNMENT BOND UCITS ETF",
+          "percent": 7.83
         },
         {
           "rank": 3,
-          "security": "ISHARES CORE CSI 300 ETF ISHARES安碩核心滬深 300 指數 ETF",
-          "percent": 2.87
+          "security": "USTN 4.375% 15/05/2036",
+          "percent": 4.43
         },
         {
           "rank": 4,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方東英富時香港股票 ETF",
-          "percent": 2.63
+          "security": "USTN 4.375% 31/01/2032",
+          "percent": 2.15
         },
         {
           "rank": 5,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - JAPAN INDEX FUND",
-          "percent": 2.35
+          "security": "BUNDESREPUB DEUTSCHLAND 2.6% 15/08/2035 REGS",
+          "percent": 2.14
         },
         {
           "rank": 6,
           "security": "BUNDESREPUB. DEUTSCHLAND 2.6% 15/08/2034 REGS",
-          "percent": 2.11
+          "percent": 2.08
         },
         {
           "rank": 7,
-          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
-          "percent": 2.1
+          "security": "INVESCO QQQ TRUST景順 QQQ",
+          "percent": 1.69
         },
         {
           "rank": 8,
-          "security": "ISHARES S&P 500 GROWTH ETF ISHARES標普 500 成長股 ETF",
-          "percent": 1.92
+          "security": "CHINA 2.8% 15/11/2032 REGS",
+          "percent": 1.4
         },
         {
           "rank": 9,
-          "security": "ISHARES CORE MSCI CHINA ETF ISHARES安碩核心 MSCI中國 ETF",
-          "percent": 1.78
+          "security": "BUNDESCHATZANWEISINGEN 2.5% 11/10/2029 REGS",
+          "percent": 1.28
         },
         {
           "rank": 10,
-          "security": "USTN 4.375% 31/01/2032美國國庫券 4.375% 31/01/2032",
-          "percent": 1.6
+          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
+          "percent": 1.24
         }
       ],
       "unavailableFields": [],
@@ -21818,25 +21846,25 @@
       "fundClassIds": ["mpfa-cf-273"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "Hong Kong Equity Fund",
-      "factSheetFile": "MT00288.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00288.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "Fidelity_CFHK.pdf",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFHK.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
       "allocations": [
         {
           "heading": "Geographical Breakdown 地區分佈",
           "entries": [
             {
               "label": "CHINA中國",
-              "percent": 75.9
+              "percent": 81
             },
             {
               "label": "HONG KONG香港",
-              "percent": 22.9
+              "percent": 19.7
             },
             {
               "label": "OTHERS # 其他 #",
-              "percent": 1.2
+              "percent": -0.7
             }
           ]
         },
@@ -21845,51 +21873,47 @@
           "entries": [
             {
               "label": "Financials 金融",
-              "percent": 28.4
+              "percent": 28.6
             },
             {
               "label": "Consumer Discretionary",
-              "percent": 26.5
+              "percent": 22.6
             },
             {
               "label": "Technology 科技",
-              "percent": 18.1
+              "percent": 18.5
             },
             {
               "label": "Industrials 工業",
-              "percent": 9.8
+              "percent": 9.6
             },
             {
               "label": "Consumer Staples",
-              "percent": 5.2
-            },
-            {
-              "label": "Health Care 健康護理",
-              "percent": 3
+              "percent": 7.3
             },
             {
               "label": "Real Estate 房地產",
-              "percent": 2.7
+              "percent": 4.9
             },
             {
               "label": "Energy 能源",
-              "percent": 1.8
+              "percent": 3.1
             },
             {
-              "label": "Telecommunications",
-              "percent": 1.2
+              "label": "Health Care 健康護理",
+              "percent": 2.7
             },
             {
               "label": "Utilities 公用事業",
+              "percent": 1.4
+            },
+            {
+              "label": "Telecommunications",
               "percent": 1.1
             },
             {
-              "label": "Basic Materials",
-              "percent": 0.9
-            },
-            {
               "label": "Others* 其他**",
-              "percent": 1.3
+              "percent": 0.2
             }
           ]
         }
@@ -21897,53 +21921,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "TENCENT HOLDINGS LTD騰訊控股有限公司",
-          "percent": 9.14
+          "security": "ALIBABA GROUP HOLDING LTD阿里巴巴－ W",
+          "percent": 9.8
         },
         {
           "rank": 2,
-          "security": "HSBC HOLDINGS PLC滙豐控股",
-          "percent": 8.46
+          "security": "TENCENT HOLDINGS LTD騰訊控股",
+          "percent": 9.77
         },
         {
           "rank": 3,
-          "security": "ALIBABA GROUP HOLDING LTD阿里巴巴集團",
-          "percent": 8.22
+          "security": "HSBC HOLDINGS PLC滙豐控股",
+          "percent": 8.76
         },
         {
           "rank": 4,
-          "security": "CHINA CONSTRUCTION BANK H中國建設銀行 H",
-          "percent": 5.92
+          "security": "CHINA CONSTRUCTION BANK H建設銀行",
+          "percent": 5.56
         },
         {
           "rank": 5,
-          "security": "INDUSTRIAL & COM BK OF CHINA H SHRS 中國工商銀行 H 股",
-          "percent": 3.91
+          "security": "MEITUAN美團－ W",
+          "percent": 3.76
         },
         {
           "rank": 6,
-          "security": "AIA GROUP LTD友邦保險控股有限公司",
-          "percent": 3.86
+          "security": "AIA GROUP LTD友邦保險",
+          "percent": 3.69
         },
         {
           "rank": 7,
-          "security": "PING AN INSURANCE CO LTD H SHRS 中國平安保險 H 股",
-          "percent": 3.81
+          "security": "PING AN INSURANCE CO LTD H SHRS中國平安",
+          "percent": 3.44
         },
         {
           "rank": 8,
-          "security": "MEITUAN美團",
-          "percent": 3.67
+          "security": "TRIP GROUP LTD攜程集團－ S",
+          "percent": 2.86
         },
         {
           "rank": 9,
-          "security": "TRIP GROUP LTD攜程集團",
-          "percent": 3.54
+          "security": "CHINA MERCHANTS BANK CO LTD",
+          "percent": 2.45
         },
         {
           "rank": 10,
-          "security": "HONG KONG EXCHS & CLEARING LTD香港交易所",
-          "percent": 2.25
+          "security": "CHINA OVERSEAS LAND & INVESTMENT LTD 中國海外發展有限公司",
+          "percent": 2.22
         }
       ],
       "unavailableFields": [],
@@ -21954,21 +21978,21 @@
       "fundClassIds": ["mpfa-cf-274"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "MPF Conservative Fund",
-      "factSheetFile": "MT00288.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00288.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "Fidelity_CFCP.pdf",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFCP.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
       "allocations": [
         {
           "heading": "Fund Allocation by Asset Class 資產類別投資分配",
           "entries": [
             {
               "label": "MONEY FUND貨幣基金",
-              "percent": 99.9
+              "percent": 99.02
             },
             {
               "label": "CASH & OTHERS # 現金及其他 #",
-              "percent": 0.1
+              "percent": 0.98
             }
           ]
         }
@@ -21976,53 +22000,53 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "TERM DEPOSIT IN OCBC (HK) LTD 05/01/2026",
-          "percent": 8.84
+          "security": "TERM DEPOSIT IN CALYON 03/08/2026",
+          "percent": 9.16
         },
         {
           "rank": 2,
-          "security": "TERM DEPOSIT IN ING BANK 02/01/2026",
-          "percent": 7.39
+          "security": "TERM DEPOSIT IN OCBC (HK) LTD 05/08/2026",
+          "percent": 7.96
         },
         {
           "rank": 3,
-          "security": "TERM DEPOSIT IN HSBC 02/01/2026",
-          "percent": 6.88
+          "security": "THE TORONTO-DOMINION BANK 0% 02/11/2026",
+          "percent": 4.79
         },
         {
           "rank": 4,
-          "security": "SAUDI NTL BANK SG 0% 20/01/2026 REGS",
-          "percent": 5.24
+          "security": "UOB HONG KONG 0% 15/01/2027",
+          "percent": 3.8
         },
         {
           "rank": 5,
-          "security": "TERM DEPOSIT IN MIZUHO 23/03/2026",
-          "percent": 4.42
+          "security": "TERM DEPOSIT IN ING BANK 03/08/2026",
+          "percent": 3.57
         },
         {
           "rank": 6,
-          "security": "NATIXIS SINGAPORE 0% 14/01/2026 REGS",
-          "percent": 4.37
+          "security": "DZ BANK HONG KONG 0% 17/09/2026",
+          "percent": 3.46
         },
         {
           "rank": 7,
-          "security": "DZ BANK AG DEUTSCHE ZENTRAL-GENOSSE NSCHAFTSBANK FRANKFURT AM MAIN 0% 30/01/2026",
-          "percent": 4.36
+          "security": "CHINA CONSTRUCT BANK/HK 0% 09/10/2026 REGS",
+          "percent": 3.45
         },
         {
           "rank": 8,
-          "security": "IND & COMM BK CHN SYDNEY 0% 30/01/2026 REGS",
-          "percent": 3.67
+          "security": "BNP PARIBAS HONG KONG BRANCH 0% 04/08/2026",
+          "percent": 3.37
         },
         {
           "rank": 9,
-          "security": "AGRICULTURAL BANK OF CHINA HONGKONG 0% 06/02/2026 REGS",
-          "percent": 3.49
+          "security": "ICBC SYDNEY 0% 11/08/2026 REGS",
+          "percent": 3.08
         },
         {
           "rank": 10,
-          "security": "NATIXIS SINGAPORE 0% 26/02/2026 REGS",
-          "percent": 3.34
+          "security": "TERM DEPOSIT IN ING BANK 13/01/2027",
+          "percent": 2.89
         }
       ],
       "unavailableFields": [],
@@ -22033,41 +22057,45 @@
       "fundClassIds": ["mpfa-cf-275"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "Global Equity Fund",
-      "factSheetFile": "MT00288.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00288.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "Fidelity_CFGE.pdf",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFGE.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
       "allocations": [
         {
           "heading": "Fund Allocation by Asset Class 資產類別投資分配",
           "entries": [
             {
               "label": "HONG KONG EQUITIES香港股票",
-              "percent": 2.98
+              "percent": 2.58
             },
             {
               "label": "CHINA ONSHORE EQUITIES中國在岸股票",
-              "percent": 1.7
+              "percent": 0.72
             },
             {
               "label": "ASIA PACIFIC EQUITIES*亞太股票 *",
-              "percent": 7.84
+              "percent": 9.36
             },
             {
               "label": "JAPAN EQUITIES日本股票",
-              "percent": 3.9
+              "percent": 5.5
             },
             {
               "label": "EUROPE EQUITIES歐洲股票",
-              "percent": 14.6
+              "percent": 12.6
             },
             {
               "label": "AMERICAS EQUITIES美國股票",
-              "percent": 68.23
+              "percent": 66.85
             },
             {
               "label": "EMERGING MARKETS EQUITIES新興市場股票",
-              "percent": 0.53
+              "percent": 0.49
+            },
+            {
+              "label": "WORLD EQUITIES世界股票",
+              "percent": 1.68
             },
             {
               "label": "CASH & OTHERS # 現金及其他 #",
@@ -22080,51 +22108,51 @@
           "entries": [
             {
               "label": "Technology 科技",
-              "percent": 21.2
+              "percent": 22.4
             },
             {
               "label": "Financials 金融",
-              "percent": 10.3
+              "percent": 10.9
             },
             {
               "label": "Industrials 工業",
-              "percent": 7
+              "percent": 8.4
             },
             {
               "label": "Consumer Discretionary",
-              "percent": 6.9
+              "percent": 7.2
             },
             {
               "label": "Health Care 健康護理",
-              "percent": 5.7
+              "percent": 5.5
+            },
+            {
+              "label": "Telecommunications",
+              "percent": 2.5
+            },
+            {
+              "label": "Energy 能源",
+              "percent": 2.5
             },
             {
               "label": "Consumer Staples",
               "percent": 2.1
             },
             {
-              "label": "Telecommunications",
-              "percent": 1.6
-            },
-            {
-              "label": "Energy 能源",
-              "percent": 1.6
-            },
-            {
               "label": "Basic Materials",
-              "percent": 1.5
+              "percent": 1.9
             },
             {
               "label": "Utilities 公用事業",
-              "percent": 1
+              "percent": 1.4
             },
             {
               "label": "Real Estate 房地產",
-              "percent": 0.7
+              "percent": 0.8
             },
             {
               "label": "Others* 其他**",
-              "percent": 40.4
+              "percent": 34.4
             }
           ]
         }
@@ -22133,52 +22161,52 @@
         {
           "rank": 1,
           "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - AMERICAN INDEX FUND",
-          "percent": 20.57
+          "percent": 18.62
         },
         {
           "rank": 2,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - EUROPEAN INDEX FUND",
-          "percent": 5.06
+          "security": "NVIDIA CORP輝達",
+          "percent": 2.98
         },
         {
           "rank": 3,
-          "security": "ISHARES S&P 500 GROWTH ETF ISHARES標普 500 成長股 ETF",
-          "percent": 4.92
+          "security": "APPLE INC蘋果公司",
+          "percent": 2.78
         },
         {
           "rank": 4,
-          "security": "NVIDIA CORP輝達",
-          "percent": 3.25
+          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
+          "percent": 2.46
         },
         {
           "rank": 5,
-          "security": "APPLE INC蘋果公司",
-          "percent": 2.94
+          "security": "CSOP FTSE HONG KONG EQUITY ETF南方香港股票",
+          "percent": 2.34
         },
         {
           "rank": 6,
           "security": "MICROSOFT CORP微軟",
-          "percent": 2.65
+          "percent": 2.24
         },
         {
           "rank": 7,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - JAPAN INDEX FUND",
-          "percent": 2.34
+          "security": "ISHARES U.S. UTILITIES ETF ISHARES 美國公用事業 ETF",
+          "percent": 1.94
         },
         {
           "rank": 8,
-          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
-          "percent": 1.98
+          "security": "AMAZON.COM亞馬遜",
+          "percent": 1.84
         },
         {
           "rank": 9,
-          "security": "AMAZON.COM亞馬遜",
-          "percent": 1.76
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - EUROPEAN INDEX FUND",
+          "percent": 1.78
         },
         {
           "rank": 10,
-          "security": "ISHARES CORE CSI 300 ETF ISHARES安碩核心滬深 300 指數 ETF",
-          "percent": 1.7
+          "security": "ALPHABET A",
+          "percent": 1.49
         }
       ],
       "unavailableFields": [],
@@ -22189,21 +22217,21 @@
       "fundClassIds": ["mpfa-cf-276"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "Hong Kong Bond Fund",
-      "factSheetFile": "MT00288.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00288.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "Fidelity_CFHB.pdf",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFHB.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
       "allocations": [
         {
           "heading": "Currency Breakdown 貨幣分佈",
           "entries": [
             {
               "label": "HONG KONG DOLLAR港元",
-              "percent": 86.4
+              "percent": 97
             },
             {
               "label": "US DOLLAR美元",
-              "percent": 13.6
+              "percent": 3
             }
           ]
         },
@@ -22211,24 +22239,20 @@
           "heading": "S&P/Moody’s Credit Rating 標準普爾／穆廸信用評級",
           "entries": [
             {
-              "label": "AAA/Aaa",
-              "percent": 0.8
-            },
-            {
               "label": "AA/Aa",
-              "percent": 31.9
+              "percent": 39.3
             },
             {
               "label": "A",
-              "percent": 54.4
+              "percent": 49
             },
             {
               "label": "BBB/Baa",
-              "percent": 9
+              "percent": 7.6
             },
             {
               "label": "Others*其他 *",
-              "percent": 3.9
+              "percent": 4.1
             }
           ]
         },
@@ -22241,23 +22265,23 @@
             },
             {
               "label": "Quasi/Sov/Supra/Agncy",
-              "percent": 28.8
+              "percent": 35.2
             },
             {
               "label": "Utility 公用事業",
-              "percent": 10.8
+              "percent": 9.3
             },
             {
               "label": "Industrial 工業",
-              "percent": 7.7
+              "percent": 5.8
             },
             {
-              "label": "Treasury 國庫券",
-              "percent": 1.8
+              "label": "Securitised 証券化",
+              "percent": 0.2
             },
             {
               "label": "Others* 其他**",
-              "percent": 3
+              "percent": 1.6
             }
           ]
         }
@@ -22266,52 +22290,52 @@
         {
           "rank": 1,
           "security": "LINK CB LTD CONV 4.5% 12/12/2027 REGS",
-          "percent": 4.67
+          "percent": 4.77
         },
         {
           "rank": 2,
           "security": "NATIONAL AUSTRALIA BANK 4.7% 03/08/2032 REGS",
-          "percent": 4.42
+          "percent": 4.5
         },
         {
           "rank": 3,
-          "security": "CORP ANDINA DE FOMENTO 4.27% 19/07/2028",
-          "percent": 4.19
+          "security": "TORONTO-DOMINION BANK 4.041% 28/07/2029 REGS",
+          "percent": 4.22
         },
         {
           "rank": 4,
-          "security": "HK CYBERPORT MANAGE 3.2% 19/08/2035 REGS",
-          "percent": 4.07
+          "security": "BNP PARIBAS 4.3% 14/10/2034 法國巴黎銀行 4.3% 14/10/2034",
+          "percent": 3.22
         },
         {
           "rank": 5,
-          "security": "BNP PARIBAS 4.3% 14/10/2034 法國巴黎銀行 4.3% 14/10/2034",
-          "percent": 3.19
+          "security": "CORP ANDINA DE FOMENTO 4.27% 19/07/2028",
+          "percent": 3.17
         },
         {
           "rank": 6,
           "security": "AUSNET SERVICES HOLDINGS 3.21% 28/02/2028",
-          "percent": 3.07
+          "percent": 3.13
         },
         {
           "rank": 7,
-          "security": "SGSP AUSTRALIA ASSETS 4.32% 25/03/2035",
-          "percent": 2.79
+          "security": "KIWIBANK LTD 3.83% 25/06/2031 REGS",
+          "percent": 3.12
         },
         {
           "rank": 8,
-          "security": "WELLS FARGO BANK NA 4.12% 22/04/2030 REGS 富國銀行4.12% 22/04/2030 REGS",
-          "percent": 2.64
+          "security": "SGSP AUSTRALIA ASSETS 4.32% 25/03/2035",
+          "percent": 2.76
         },
         {
           "rank": 9,
           "security": "COMMONWEALTH BANK AUST VAR 13/09/2032 REGS",
-          "percent": 2.63
+          "percent": 2.67
         },
         {
           "rank": 10,
           "security": "QNB FINANCE LTD 4.565% 25/06/2027 REGS 卡達國家銀行金融有限公司 4.565% 25/06/2027 REGS",
-          "percent": 2.62
+          "percent": 2.66
         }
       ],
       "unavailableFields": [],
@@ -22322,57 +22346,1675 @@
       "fundClassIds": ["mpfa-cf-278"],
       "schemeName": "Fidelity Retirement Master Trust",
       "constituentFundName": "Asia Pacific Equity Fund",
-      "factSheetFile": "MT00288.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00288.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
+      "factSheetFile": "Fidelity_CFAP.pdf",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFAP.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
       "allocations": [
         {
           "heading": "Geographical Breakdown 地區分佈",
           "entries": [
             {
-              "label": "INDIA印度",
-              "percent": 25.4
+              "label": "KOREA (SOUTH)南韓",
+              "percent": 24.7
             },
             {
               "label": "TAIWAN台灣",
-              "percent": 21.7
+              "percent": 24.6
             },
             {
-              "label": "KOREA (SOUTH)南韓",
-              "percent": 21
+              "label": "INDIA印度",
+              "percent": 19.2
             },
             {
               "label": "AUSTRALIA澳洲",
-              "percent": 17.6
+              "percent": 17.1
             },
             {
               "label": "SINGAPORE新加坡",
-              "percent": 3.9
+              "percent": 4
             },
             {
               "label": "CHINA中國",
-              "percent": 2.6
+              "percent": 3.9
             },
             {
               "label": "MALAYSIA馬來西亞",
-              "percent": 1.8
-            },
-            {
-              "label": "INDONESIA印尼",
-              "percent": 1.6
+              "percent": 1.9
             },
             {
               "label": "THAILAND泰國",
-              "percent": 1.4
+              "percent": 1.6
             },
             {
-              "label": "UNITED STATES美國",
-              "percent": 0.9
+              "label": "INDONESIA印尼",
+              "percent": 0.8
             },
             {
               "label": "OTHERS # 其他 #",
-              "percent": 2.1
+              "percent": 2.2
+            }
+          ]
+        },
+        {
+          "heading": "Industry Breakdown 行業投資分佈",
+          "entries": [
+            {
+              "label": "Technology 科技",
+              "percent": 29.3
+            },
+            {
+              "label": "Financials 金融",
+              "percent": 23.7
+            },
+            {
+              "label": "Telecommunications",
+              "percent": 13.8
+            },
+            {
+              "label": "Industrials 工業",
+              "percent": 8.3
+            },
+            {
+              "label": "Consumer Discretionary",
+              "percent": 5.5
+            },
+            {
+              "label": "Health Care 健康護理",
+              "percent": 5.4
+            },
+            {
+              "label": "Basic Materials",
+              "percent": 5.1
+            },
+            {
+              "label": "Consumer Staples",
+              "percent": 3
+            },
+            {
+              "label": "Energy 能源",
+              "percent": 2.4
+            },
+            {
+              "label": "Utilities 公用事業",
+              "percent": 1
+            },
+            {
+              "label": "Real Estate 房地產",
+              "percent": 0.3
+            },
+            {
+              "label": "Others* 其他**",
+              "percent": 2.2
+            }
+          ]
+        }
+      ],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD台積電",
+          "percent": 9.23
+        },
+        {
+          "rank": 2,
+          "security": "SAMSUNG ELECTRONICS三星電子",
+          "percent": 8.34
+        },
+        {
+          "rank": 3,
+          "security": "SK HYNIX INC",
+          "percent": 7.87
+        },
+        {
+          "rank": 4,
+          "security": "BHP BILLITON LTD必和必拓",
+          "percent": 2.93
+        },
+        {
+          "rank": 5,
+          "security": "COMMONWEALTH BK OF AUSTRALIA澳洲聯邦銀行",
+          "percent": 2.82
+        },
+        {
+          "rank": 6,
+          "security": "MEDIATEK INC聯發科技",
+          "percent": 2.68
+        },
+        {
+          "rank": 7,
+          "security": "DELTA ELECTRONICS INC ORD",
+          "percent": 1.95
+        },
+        {
+          "rank": 8,
+          "security": "DBS GROUP HLDGS LTD星展銀行有限公司",
+          "percent": 1.88
+        },
+        {
+          "rank": 9,
+          "security": "ICICI BANK",
+          "percent": 1.65
+        },
+        {
+          "rank": 10,
+          "security": "INFOSYS LTD印孚瑟斯",
+          "percent": 1.38
+        }
+      ],
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {}
+    },
+    {
+      "fundClassIds": ["mpfa-cf-280"],
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Balanced Fund",
+      "factSheetFile": "Fidelity_CFBF.pdf",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFBF.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
+      "allocations": [
+        {
+          "heading": "Fund Allocation by Asset Class 資產類別投資分配",
+          "entries": [
+            {
+              "label": "HONG KONG EQUITIES香港股票",
+              "percent": 20.25
+            },
+            {
+              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
+              "percent": 5.8
+            },
+            {
+              "label": "ASIA PACIFIC EQUITIES*亞太股票 *",
+              "percent": 8.14
+            },
+            {
+              "label": "JAPAN EQUITIES日本股票",
+              "percent": 8.37
+            },
+            {
+              "label": "EUROPE EQUITIES歐洲股票",
+              "percent": 12.35
+            },
+            {
+              "label": "AMERICAS EQUITIES美國股票",
+              "percent": 16.61
+            },
+            {
+              "label": "EMERGING MARKETS EQUITIES新興市場股票",
+              "percent": 0.04
+            },
+            {
+              "label": "WORLD EQUITIES世界股票",
+              "percent": 0.5
+            },
+            {
+              "label": "HIGHER GRADE BOND高評級債券",
+              "percent": 23.32
+            },
+            {
+              "label": "MONEY FUND貨幣基金",
+              "percent": 0.35
+            },
+            {
+              "label": "CASH & OTHERS # 現金及其他 #",
+              "percent": 4.27
+            }
+          ]
+        }
+      ],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "CSOP FTSE HONG KONG EQUITY ETF南方香港股票",
+          "percent": 18.33
+        },
+        {
+          "rank": 2,
+          "security": "HSBC GF ICAV - GLOBAL GOVERNMENT BOND UCITS ETF",
+          "percent": 4.09
+        },
+        {
+          "rank": 3,
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - JAPAN INDEX FUND",
+          "percent": 3.96
+        },
+        {
+          "rank": 4,
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - EUROPEAN INDEX FUND",
+          "percent": 2.87
+        },
+        {
+          "rank": 5,
+          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
+          "percent": 2.1
+        },
+        {
+          "rank": 6,
+          "security": "INVESCO QQQ TRUST景順 QQQ",
+          "percent": 1.99
+        },
+        {
+          "rank": 7,
+          "security": "ISHARES US TECHNOLOGY ETF",
+          "percent": 1.31
+        },
+        {
+          "rank": 8,
+          "security": "USTN 4.375% 15/05/2036",
+          "percent": 1.23
+        },
+        {
+          "rank": 9,
+          "security": "ISHARES U.S. UTILITIES ETF ISHARES美國公用事業 ETF",
+          "percent": 1.21
+        },
+        {
+          "rank": 10,
+          "security": "ISHARES U.S. FINANCIALS ETF ISHARES美國金融 ETF",
+          "percent": 1.1
+        }
+      ],
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {}
+    },
+    {
+      "fundClassIds": ["mpfa-cf-706"],
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Fidelity SaveEasy 2025 Fund",
+      "factSheetFile": "Fidelity_CS25.pdf",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS25.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
+      "allocations": [
+        {
+          "heading": "Fund Allocation by Asset Class 資產類別投資分配",
+          "entries": [
+            {
+              "label": "HONG KONG EQUITIES香港股票",
+              "percent": 12.32
+            },
+            {
+              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
+              "percent": 0.91
+            },
+            {
+              "label": "ASIA PACIFIC EQUITIES*亞太股票 *",
+              "percent": 4.07
+            },
+            {
+              "label": "JAPAN EQUITIES日本股票",
+              "percent": 4.04
+            },
+            {
+              "label": "EUROPE EQUITIES歐洲股票",
+              "percent": 5.44
+            },
+            {
+              "label": "AMERICAS EQUITIES美國股票",
+              "percent": 9.63
+            },
+            {
+              "label": "EMERGING MARKETS EQUITIES新興市場股票",
+              "percent": 0.1
+            },
+            {
+              "label": "WORLD EQUITIES世界股票",
+              "percent": 0.51
+            },
+            {
+              "label": "HIGHER GRADE BOND高評級債券",
+              "percent": 54.25
+            },
+            {
+              "label": "MONEY FUND貨幣基金",
+              "percent": 4.82
+            },
+            {
+              "label": "CASH & OTHERS # 現金及其他 #",
+              "percent": 3.91
+            }
+          ]
+        }
+      ],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "CSOP FTSE HONG KONG EQUITY ETF南方香港股票",
+          "percent": 11.17
+        },
+        {
+          "rank": 2,
+          "security": "USTN 4.375% 15/05/2036",
+          "percent": 7.16
+        },
+        {
+          "rank": 3,
+          "security": "HSBC GF ICAV - GLOBAL GOVERNMENT BOND UCITS ETF",
+          "percent": 4.12
+        },
+        {
+          "rank": 4,
+          "security": "USTN 4.375% 31/01/2032",
+          "percent": 3.55
+        },
+        {
+          "rank": 5,
+          "security": "BUNDESREPUB DEUTSCHLAND 2.6% 15/08/2035 REGS",
+          "percent": 3.54
+        },
+        {
+          "rank": 6,
+          "security": "BUNDESREPUB. DEUTSCHLAND 2.6% 15/08/2034 REGS",
+          "percent": 3.44
+        },
+        {
+          "rank": 7,
+          "security": "CHINA 2.8% 15/11/2032 REGS",
+          "percent": 2.31
+        },
+        {
+          "rank": 8,
+          "security": "BUNDESCHATZANWEISINGEN 2.5% 11/10/2029 REGS",
+          "percent": 2.12
+        },
+        {
+          "rank": 9,
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - EUROPEAN INDEX FUND",
+          "percent": 1.76
+        },
+        {
+          "rank": 10,
+          "security": "CHINA 2.05% 15/04/2029 REGS",
+          "percent": 1.67
+        }
+      ],
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {}
+    },
+    {
+      "fundClassIds": ["mpfa-cf-708"],
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Fidelity SaveEasy 2030 Fund",
+      "factSheetFile": "Fidelity_CS30.pdf",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS30.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
+      "allocations": [
+        {
+          "heading": "Fund Allocation by Asset Class 資產類別投資分配",
+          "entries": [
+            {
+              "label": "HONG KONG EQUITIES香港股票",
+              "percent": 27.6
+            },
+            {
+              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
+              "percent": 0.93
+            },
+            {
+              "label": "ASIA PACIFIC EQUITIES*亞太股票 *",
+              "percent": 9.81
+            },
+            {
+              "label": "JAPAN EQUITIES日本股票",
+              "percent": 9.83
+            },
+            {
+              "label": "EUROPE EQUITIES歐洲股票",
+              "percent": 14.38
+            },
+            {
+              "label": "AMERICAS EQUITIES美國股票",
+              "percent": 18.26
+            },
+            {
+              "label": "EMERGING MARKETS EQUITIES新興市場股票",
+              "percent": 0.09
+            },
+            {
+              "label": "WORLD EQUITIES世界股票",
+              "percent": 0.5
+            },
+            {
+              "label": "HIGHER GRADE BOND高評級債券",
+              "percent": 15.54
+            },
+            {
+              "label": "CASH & OTHERS # 現金及其他 #",
+              "percent": 3.06
+            }
+          ]
+        }
+      ],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "CSOP FTSE HONG KONG EQUITY ETF南方香港股票",
+          "percent": 23.91
+        },
+        {
+          "rank": 2,
+          "security": "HSBC GF ICAV - GLOBAL GOVERNMENT BOND UCITS ETF",
+          "percent": 6.72
+        },
+        {
+          "rank": 3,
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - EUROPEAN INDEX FUND",
+          "percent": 4.43
+        },
+        {
+          "rank": 4,
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - AMERICAN INDEX FUND",
+          "percent": 2.95
+        },
+        {
+          "rank": 5,
+          "security": "INVESCO QQQ TRUST景順 QQQ",
+          "percent": 2.04
+        },
+        {
+          "rank": 6,
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - JAPAN INDEX FUND",
+          "percent": 2.03
+        },
+        {
+          "rank": 7,
+          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
+          "percent": 1.46
+        },
+        {
+          "rank": 8,
+          "security": "USTN 4.375% 15/05/2036",
+          "percent": 1.21
+        },
+        {
+          "rank": 9,
+          "security": "ISHARES US TECHNOLOGY ETF",
+          "percent": 0.96
+        },
+        {
+          "rank": 10,
+          "security": "FRANKLIN FTSE TAIWAN UCITS ETF",
+          "percent": 0.9
+        }
+      ],
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {}
+    },
+    {
+      "fundClassIds": ["mpfa-cf-709"],
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Fidelity SaveEasy 2035 Fund",
+      "factSheetFile": "Fidelity_CS35.pdf",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS35.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
+      "allocations": [
+        {
+          "heading": "Fund Allocation by Asset Class 資產類別投資分配",
+          "entries": [
+            {
+              "label": "HONG KONG EQUITIES香港股票",
+              "percent": 31.84
+            },
+            {
+              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
+              "percent": 0.93
+            },
+            {
+              "label": "ASIA PACIFIC EQUITIES*亞太股票 *",
+              "percent": 11.52
+            },
+            {
+              "label": "JAPAN EQUITIES日本股票",
+              "percent": 11.3
+            },
+            {
+              "label": "EUROPE EQUITIES歐洲股票",
+              "percent": 16.77
+            },
+            {
+              "label": "AMERICAS EQUITIES美國股票",
+              "percent": 20.54
+            },
+            {
+              "label": "EMERGING MARKETS EQUITIES新興市場股票",
+              "percent": 0.09
+            },
+            {
+              "label": "WORLD EQUITIES世界股票",
+              "percent": 0.5
+            },
+            {
+              "label": "HIGHER GRADE BOND高評級債券",
+              "percent": 4.84
+            },
+            {
+              "label": "CASH & OTHERS # 現金及其他 #",
+              "percent": 1.67
+            }
+          ]
+        }
+      ],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "CSOP FTSE HONG KONG EQUITY ETF南方香港股票",
+          "percent": 27.47
+        },
+        {
+          "rank": 2,
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - EUROPEAN INDEX FUND",
+          "percent": 5.13
+        },
+        {
+          "rank": 3,
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - AMERICAN INDEX FUND",
+          "percent": 2.8
+        },
+        {
+          "rank": 4,
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - JAPAN INDEX FUND",
+          "percent": 2.74
+        },
+        {
+          "rank": 5,
+          "security": "INVESCO QQQ TRUST景順 QQQ",
+          "percent": 2.49
+        },
+        {
+          "rank": 6,
+          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
+          "percent": 1.94
+        },
+        {
+          "rank": 7,
+          "security": "HSBC GF ICAV - GLOBAL GOVERNMENT BOND UCITS ETF",
+          "percent": 1.81
+        },
+        {
+          "rank": 8,
+          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD台積電",
+          "percent": 1
+        },
+        {
+          "rank": 9,
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - FTSE 100 INDEX FUND",
+          "percent": 0.98
+        },
+        {
+          "rank": 10,
+          "security": "ISHARES U.S. UTILITIES ETF ISHARES美國公用事業 ETF",
+          "percent": 0.96
+        }
+      ],
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {}
+    },
+    {
+      "fundClassIds": ["mpfa-cf-711"],
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Fidelity SaveEasy 2040 Fund",
+      "factSheetFile": "Fidelity_CS40.pdf",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS40.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
+      "allocations": [
+        {
+          "heading": "Fund Allocation by Asset Class 資產類別投資分配",
+          "entries": [
+            {
+              "label": "HONG KONG EQUITIES香港股票",
+              "percent": 33.22
+            },
+            {
+              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
+              "percent": 0.92
+            },
+            {
+              "label": "ASIA PACIFIC EQUITIES*亞太股票 *",
+              "percent": 11.81
+            },
+            {
+              "label": "JAPAN EQUITIES日本股票",
+              "percent": 12.07
+            },
+            {
+              "label": "EUROPE EQUITIES歐洲股票",
+              "percent": 17.81
+            },
+            {
+              "label": "AMERICAS EQUITIES美國股票",
+              "percent": 21.24
+            },
+            {
+              "label": "EMERGING MARKETS EQUITIES新興市場股票",
+              "percent": 0.09
+            },
+            {
+              "label": "WORLD EQUITIES世界股票",
+              "percent": 0.5
+            },
+            {
+              "label": "HIGHER GRADE BOND高評級債券",
+              "percent": 1.04
+            },
+            {
+              "label": "CASH & OTHERS # 現金及其他 #",
+              "percent": 1.3
+            }
+          ]
+        }
+      ],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "CSOP FTSE HONG KONG EQUITY ETF南方香港股票",
+          "percent": 26.73
+        },
+        {
+          "rank": 2,
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - EUROPEAN INDEX FUND",
+          "percent": 6.07
+        },
+        {
+          "rank": 3,
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - JAPAN INDEX FUND",
+          "percent": 3.82
+        },
+        {
+          "rank": 4,
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - AMERICAN INDEX FUND",
+          "percent": 3.44
+        },
+        {
+          "rank": 5,
+          "security": "INVESCO QQQ TRUST景順 QQQ",
+          "percent": 2.53
+        },
+        {
+          "rank": 6,
+          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
+          "percent": 1.94
+        },
+        {
+          "rank": 7,
+          "security": "HONG KONG TRACKER FUND盈富基金",
+          "percent": 1.89
+        },
+        {
+          "rank": 8,
+          "security": "ISHARES US TECHNOLOGY ETF",
+          "percent": 1.44
+        },
+        {
+          "rank": 9,
+          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD台積電",
+          "percent": 1.02
+        },
+        {
+          "rank": 10,
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - FTSE 100 INDEX FUND",
+          "percent": 0.98
+        }
+      ],
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {}
+    },
+    {
+      "fundClassIds": ["mpfa-cf-1159"],
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Fidelity Hong Kong Tracker Fund",
+      "factSheetFile": "Fidelity_CFTF.pdf",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFTF.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
+      "allocations": [
+        {
+          "heading": "Industry Breakdown 行業投資分佈",
+          "entries": [
+            {
+              "label": "Financials 金融",
+              "percent": 33.7
+            },
+            {
+              "label": "Consumer Discretionary",
+              "percent": 21.9
+            },
+            {
+              "label": "Information Technology",
+              "percent": 15.4
+            },
+            {
+              "label": "Healthcare 健康護理",
+              "percent": 5.1
+            },
+            {
+              "label": "Energy 能源",
+              "percent": 4.8
+            },
+            {
+              "label": "Properties &",
+              "percent": 3.9
+            },
+            {
+              "label": "Telecommunications",
+              "percent": 3.6
+            },
+            {
+              "label": "Utilities 公用事業",
+              "percent": 2.4
+            },
+            {
+              "label": "Industrials 工業",
+              "percent": 2.3
+            },
+            {
+              "label": "Materials 物料",
+              "percent": 2.2
+            },
+            {
+              "label": "Consumer Staples",
+              "percent": 1.8
+            },
+            {
+              "label": "Conglomerates",
+              "percent": 1.6
+            },
+            {
+              "label": "Others* 其他**",
+              "percent": 1.3
+            }
+          ]
+        }
+      ],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "HSBC HOLDINGS PLC滙豐控股",
+          "percent": 9.07
+        },
+        {
+          "rank": 2,
+          "security": "TENCENT HOLDINGS LTD騰訊控股",
+          "percent": 7.83
+        },
+        {
+          "rank": 3,
+          "security": "ALIBABA GROUP HOLDING LTD阿里巴巴－W",
+          "percent": 7.09
+        },
+        {
+          "rank": 4,
+          "security": "CHINA CONSTRUCTION BANK H建設銀行",
+          "percent": 5.16
+        },
+        {
+          "rank": 5,
+          "security": "AIA GROUP LTD友邦保險",
+          "percent": 4.85
+        },
+        {
+          "rank": 6,
+          "security": "INDUSTRIAL & COM BK OF CHINA H SHRS 中國工商銀行 H 股",
+          "percent": 3.61
+        },
+        {
+          "rank": 7,
+          "security": "XIAOMI CORPORATION小米",
+          "percent": 3.04
+        },
+        {
+          "rank": 8,
+          "security": "CHINA MOBILE LTD中國移動",
+          "percent": 3.03
+        },
+        {
+          "rank": 9,
+          "security": "MEITUAN美團－ W",
+          "percent": 2.99
+        },
+        {
+          "rank": 10,
+          "security": "HONG KONG EXCHS & CLEARING LTD香港交易所",
+          "percent": 2.87
+        }
+      ],
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {}
+    },
+    {
+      "fundClassIds": ["mpfa-cf-1419"],
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Fidelity SaveEasy 2045 Fund",
+      "factSheetFile": "Fidelity_CS45.pdf",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS45.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
+      "allocations": [
+        {
+          "heading": "Fund Allocation by Asset Class 資產類別投資分配",
+          "entries": [
+            {
+              "label": "HONG KONG EQUITIES香港股票",
+              "percent": 33.96
+            },
+            {
+              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
+              "percent": 0.88
+            },
+            {
+              "label": "ASIA PACIFIC EQUITIES*亞太股票 *",
+              "percent": 12.11
+            },
+            {
+              "label": "JAPAN EQUITIES日本股票",
+              "percent": 12.19
+            },
+            {
+              "label": "EUROPE EQUITIES歐洲股票",
+              "percent": 18
+            },
+            {
+              "label": "AMERICAS EQUITIES美國股票",
+              "percent": 21.7
+            },
+            {
+              "label": "EMERGING MARKETS EQUITIES新興市場股票",
+              "percent": 0.08
+            },
+            {
+              "label": "WORLD EQUITIES世界股票",
+              "percent": 0.5
+            },
+            {
+              "label": "HIGHER GRADE BOND高評級債券",
+              "percent": 0.32
+            },
+            {
+              "label": "CASH & OTHERS # 現金及其他 #",
+              "percent": 0.26
+            }
+          ]
+        }
+      ],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "CSOP FTSE HONG KONG EQUITY ETF南方香港股票",
+          "percent": 27.38
+        },
+        {
+          "rank": 2,
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - EUROPEAN INDEX FUND",
+          "percent": 4.94
+        },
+        {
+          "rank": 3,
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - JAPAN INDEX FUND",
+          "percent": 3.13
+        },
+        {
+          "rank": 4,
+          "security": "INVESCO QQQ TRUST景順 QQQ",
+          "percent": 2.45
+        },
+        {
+          "rank": 5,
+          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健ETF",
+          "percent": 1.94
+        },
+        {
+          "rank": 6,
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - AMERICAN INDEX FUND",
+          "percent": 1.87
+        },
+        {
+          "rank": 7,
+          "security": "ISHARES US TECHNOLOGY ETF",
+          "percent": 1.51
+        },
+        {
+          "rank": 8,
+          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD台積電",
+          "percent": 1.05
+        },
+        {
+          "rank": 9,
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - FTSE 100 INDEX FUND",
+          "percent": 0.98
+        },
+        {
+          "rank": 10,
+          "security": "ISHARES U.S. UTILITIES ETF ISHARES美國公用事業 ETF",
+          "percent": 0.96
+        }
+      ],
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {}
+    },
+    {
+      "fundClassIds": ["mpfa-cf-1420"],
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Fidelity SaveEasy 2050 Fund",
+      "factSheetFile": "Fidelity_CS50.pdf",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS50.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
+      "allocations": [
+        {
+          "heading": "Fund Allocation by Asset Class 資產類別投資分配",
+          "entries": [
+            {
+              "label": "HONG KONG EQUITIES香港股票",
+              "percent": 34.28
+            },
+            {
+              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
+              "percent": 0.93
+            },
+            {
+              "label": "ASIA PACIFIC EQUITIES*亞太股票 *",
+              "percent": 12.15
+            },
+            {
+              "label": "JAPAN EQUITIES日本股票",
+              "percent": 12.37
+            },
+            {
+              "label": "EUROPE EQUITIES歐洲股票",
+              "percent": 18.16
+            },
+            {
+              "label": "AMERICAS EQUITIES美國股票",
+              "percent": 21.34
+            },
+            {
+              "label": "EMERGING MARKETS EQUITIES新興市場股票",
+              "percent": 0.08
+            },
+            {
+              "label": "WORLD EQUITIES世界股票",
+              "percent": 0.5
+            },
+            {
+              "label": "HIGHER GRADE BOND高評級債券",
+              "percent": 0.02
+            },
+            {
+              "label": "CASH & OTHERS # 現金及其他 #",
+              "percent": 0.17
+            }
+          ]
+        }
+      ],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "CSOP FTSE HONG KONG EQUITY ETF南方香港股票",
+          "percent": 27.68
+        },
+        {
+          "rank": 2,
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - EUROPEAN INDEX FUND",
+          "percent": 4.55
+        },
+        {
+          "rank": 3,
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - JAPAN INDEX FUND",
+          "percent": 2.61
+        },
+        {
+          "rank": 4,
+          "security": "INVESCO QQQ TRUST景順 QQQ",
+          "percent": 2.25
+        },
+        {
+          "rank": 5,
+          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
+          "percent": 1.94
+        },
+        {
+          "rank": 6,
+          "security": "ISHARES US TECHNOLOGY ETF",
+          "percent": 1.65
+        },
+        {
+          "rank": 7,
+          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - AMERICAN INDEX FUND",
+          "percent": 1.27
+        },
+        {
+          "rank": 8,
+          "security": "ISHARES U.S. FINANCIALS ETF ISHARES美國金融 ETF",
+          "percent": 1.1
+        },
+        {
+          "rank": 9,
+          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD台積電",
+          "percent": 1.06
+        },
+        {
+          "rank": 10,
+          "security": "ISHARES U.S. UTILITIES ETF ISHARES 美國公用事業 ETF",
+          "percent": 0.96
+        }
+      ],
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {}
+    },
+    {
+      "fundClassIds": ["mpfa-cf-1439"],
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "RMB Bond Fund",
+      "factSheetFile": "Fidelity_CFRB.pdf",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFRB.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
+      "allocations": [
+        {
+          "heading": "Currency Breakdown 貨幣分佈",
+          "entries": [
+            {
+              "label": "CHINESE YUAN**人民幣 **",
+              "percent": 67.9
+            },
+            {
+              "label": "HONG KONG DOLLAR港元",
+              "percent": 32
+            },
+            {
+              "label": "US DOLLAR美元",
+              "percent": 0.1
+            },
+            {
+              "label": "OTHERS其他",
+              "percent": 0
+            }
+          ]
+        },
+        {
+          "heading": "S&P/Moody’s Credit Ratings 標準普爾／穆廸信用評級",
+          "entries": [
+            {
+              "label": "AAA/Aaa",
+              "percent": 6.4
+            },
+            {
+              "label": "AA/Aa",
+              "percent": 18.5
+            },
+            {
+              "label": "A",
+              "percent": 48.4
+            },
+            {
+              "label": "BBB/Baa",
+              "percent": 23.6
+            },
+            {
+              "label": "Others*其他 *",
+              "percent": 3.1
+            }
+          ]
+        },
+        {
+          "heading": "Industry Breakdown 行業投資分佈",
+          "entries": [
+            {
+              "label": "Quasi/Sov/Supra/Agncy",
+              "percent": 45.1
+            },
+            {
+              "label": "Financial 金融",
+              "percent": 34.9
+            },
+            {
+              "label": "Industrial 工業",
+              "percent": 16.9
+            },
+            {
+              "label": "Utility 公用事業",
+              "percent": 1.6
+            },
+            {
+              "label": "Others* 其他**",
+              "percent": 1.5
+            }
+          ]
+        }
+      ],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "TEMASEK FINANCIAL I LTD 3.1% 28/08/2054 REGS 淡馬錫金融 I有限公司 3.1% 28/08/2054 REGS",
+          "percent": 4.18
+        },
+        {
+          "rank": 2,
+          "security": "AIRPORT AUTHORITY HK 2.85% 14/01/2035 REGS 香港機場管理局 2.85% 14/01/2035 REGS",
+          "percent": 3.87
+        },
+        {
+          "rank": 3,
+          "security": "AIA GROUP LTD 2.88% 30/04/2036 REGS 友邦保險 2.88% 30/04/2036 REGS",
+          "percent": 3.53
+        },
+        {
+          "rank": 4,
+          "security": "BAIDU INC 3% 12/03/2035 REGS",
+          "percent": 3.29
+        },
+        {
+          "rank": 5,
+          "security": "ZHEJIANG ENERGY INTL LTD 2.02% 14/07/2031 REGS",
+          "percent": 3.13
+        },
+        {
+          "rank": 6,
+          "security": "BNP PARIBAS VAR 17/08/2031 REGS",
+          "percent": 2.8
+        },
+        {
+          "rank": 7,
+          "security": "CHINA CINDA 2020 I MNGMN 2.58% 25/06/2028 REGS",
+          "percent": 2.74
+        },
+        {
+          "rank": 8,
+          "security": "NESTLE FINANCE INTL LTD 2.8% 29/05/2035 REGS",
+          "percent": 2.67
+        },
+        {
+          "rank": 9,
+          "security": "SWIRE PROPERT MTN FIN 3.45% 22/07/2035 REGS 太古地產 MTN 融資有限公司 3.45% 22/07/2035 REGS",
+          "percent": 2.65
+        },
+        {
+          "rank": 3,
+          "security": "8% 27/10/2030 REGS",
+          "percent": 2.55
+        }
+      ],
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {}
+    },
+    {
+      "fundClassIds": ["mpfa-cf-1551"],
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Core Accumulation Fund",
+      "factSheetFile": "Fidelity_CFAF.pdf",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFAF.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
+      "allocations": [
+        {
+          "heading": "Fund Allocation by Asset Class 資產類別投資分配",
+          "entries": [
+            {
+              "label": "WORLD EQUITIES世界股票",
+              "percent": 62.47
+            },
+            {
+              "label": "HIGHER GRADE BOND高評級債券",
+              "percent": 34.7
+            },
+            {
+              "label": "MONEY FUND貨幣基金",
+              "percent": 1.16
+            },
+            {
+              "label": "CASH & OTHERS # 現金及其他 #",
+              "percent": 1.67
+            }
+          ]
+        }
+      ],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "NVIDIA CORP輝達",
+          "percent": 2.83
+        },
+        {
+          "rank": 2,
+          "security": "APPLE INC蘋果公司",
+          "percent": 2.7
+        },
+        {
+          "rank": 3,
+          "security": "MICROSOFT",
+          "percent": 2.09
+        },
+        {
+          "rank": 4,
+          "security": "AMAZON.COM亞馬遜",
+          "percent": 1.59
+        },
+        {
+          "rank": 5,
+          "security": "ALPHABET CLASS A",
+          "percent": 1.26
+        },
+        {
+          "rank": 6,
+          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD台積電",
+          "percent": 1.11
+        },
+        {
+          "rank": 7,
+          "security": "BROADCOM INC博通",
+          "percent": 1.1
+        },
+        {
+          "rank": 8,
+          "security": "ALPHABET CLASS C",
+          "percent": 1.03
+        },
+        {
+          "rank": 9,
+          "security": "META PLATFORMS CLASS A",
+          "percent": 0.74
+        },
+        {
+          "rank": 10,
+          "security": "JPMORGAN CHASE & CO摩根大通",
+          "percent": 0.57
+        }
+      ],
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {}
+    },
+    {
+      "fundClassIds": ["mpfa-cf-1552"],
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Age 65 Plus Fund",
+      "factSheetFile": "Fidelity_C65P.pdf",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-C65P.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
+      "allocations": [
+        {
+          "heading": "Fund Allocation by Asset Class 資產類別投資分配",
+          "entries": [
+            {
+              "label": "WORLD EQUITIES世界股票",
+              "percent": 22.01
+            },
+            {
+              "label": "HIGHER GRADE BOND高評級債券",
+              "percent": 75.3
+            },
+            {
+              "label": "MONEY FUND貨幣基金",
+              "percent": 1.23
+            },
+            {
+              "label": "CASH & OTHERS # 現金及其他 #",
+              "percent": 1.46
+            }
+          ]
+        }
+      ],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "NVIDIA CORP輝達",
+          "percent": 1
+        },
+        {
+          "rank": 2,
+          "security": "CHINA PEOPLES REPUBLIC OF GOVERNM 1.61% 15/02/2035",
+          "percent": 0.98
+        },
+        {
+          "rank": 3,
+          "security": "APPLE INC蘋果公司",
+          "percent": 0.95
+        },
+        {
+          "rank": 4,
+          "security": "CHINA PEOPLES REPUBLIC OF GOVERNM 2.52% 25/08/2033",
+          "percent": 0.9
+        },
+        {
+          "rank": 5,
+          "security": "CHINA PEOPLES REPUBLIC OF GOVERNM 1.49% 25/12/2031",
+          "percent": 0.78
+        },
+        {
+          "rank": 6,
+          "security": "MICROSOFT",
+          "percent": 0.74
+        },
+        {
+          "rank": 7,
+          "security": "CHINA PEOPLES REPUBLIC OF GOVERNM 2.64% 15/01/2028",
+          "percent": 0.66
+        },
+        {
+          "rank": 8,
+          "security": "CHINA PEOPLES REPUBLIC OF GOVERNM 1.91% 15/07/2029",
+          "percent": 0.62
+        },
+        {
+          "rank": 9,
+          "security": "AMAZON.COM亞馬遜",
+          "percent": 0.56
+        },
+        {
+          "rank": 10,
+          "security": "CHINA PEOPLES REPUBLIC OF GOVERNM 1.43% 25/01/2030",
+          "percent": 0.56
+        }
+      ],
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {}
+    },
+    {
+      "fundClassIds": ["mpfa-cf-1799"],
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "RetireEasy Fund",
+      "factSheetFile": "Fidelity_CTEF.pdf",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CTEF.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
+      "allocations": [
+        {
+          "heading": "Fund Allocation by Asset Class 資產類別投資分配",
+          "entries": [
+            {
+              "label": "HONG KONG EQUITIES香港股票",
+              "percent": 2.54
+            },
+            {
+              "label": "ASIA PACIFIC EQUITIES*亞太股票 *",
+              "percent": 1.86
+            },
+            {
+              "label": "AMERICAS EQUITIES美國股票",
+              "percent": 3.84
+            },
+            {
+              "label": "WORLD EQUITIES世界股票",
+              "percent": 27.89
+            },
+            {
+              "label": "HIGHER GRADE BOND高評級債券",
+              "percent": 59.66
+            },
+            {
+              "label": "MONEY FUND貨幣基金",
+              "percent": 1
+            },
+            {
+              "label": "CASH & OTHERS # 現金及其他 #",
+              "percent": 3.21
+            }
+          ]
+        }
+      ],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "USTN 4.375% 15/05/2036",
+          "percent": 6.09
+        },
+        {
+          "rank": 2,
+          "security": "HSBC MSCI WORLD UCITS ETF",
+          "percent": 3.34
+        },
+        {
+          "rank": 3,
+          "security": "USTN 4.375% 31/01/2032",
+          "percent": 2.98
+        },
+        {
+          "rank": 4,
+          "security": "BUNDESREPUB DEUTSCHLAND 2.6% 15/08/2035 REGS",
+          "percent": 2.97
+        },
+        {
+          "rank": 5,
+          "security": "BUNDESREPUB. DEUTSCHLAND 2.6% 15/08/2034 REGS",
+          "percent": 2.88
+        },
+        {
+          "rank": 6,
+          "security": "ISHARES TIPS BOND ETF ISHARES抗通膨債券 ETF",
+          "percent": 1.98
+        },
+        {
+          "rank": 7,
+          "security": "CHINA 2.8% 15/11/2032 REGS",
+          "percent": 1.94
+        },
+        {
+          "rank": 8,
+          "security": "BUNDESCHATZANWEISINGEN 2.5% 11/10/2029 REGS",
+          "percent": 1.78
+        },
+        {
+          "rank": 9,
+          "security": "CSOP FTSE HONG KONG EQUITY ETF南方香港股票",
+          "percent": 1.68
+        },
+        {
+          "rank": 10,
+          "security": "CHINA 2.05% 15/04/2029 REGS",
+          "percent": 1.4
+        }
+      ],
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {}
+    },
+    {
+      "fundClassIds": ["mpfa-cf-2079"],
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Americas Equity Fund",
+      "factSheetFile": "Fidelity_CAME.pdf",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CAME.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
+      "allocations": [
+        {
+          "heading": "Geographical Breakdown 地區分佈",
+          "entries": [
+            {
+              "label": "UNITED STATES美國",
+              "percent": 95.1
+            },
+            {
+              "label": "CANADA加拿大",
+              "percent": 5
+            },
+            {
+              "label": "SWEDEN瑞典",
+              "percent": 0.1
+            },
+            {
+              "label": "OTHERS # 其他 #",
+              "percent": -0.2
+            }
+          ]
+        },
+        {
+          "heading": "Industry Breakdown 行業投資分佈",
+          "entries": [
+            {
+              "label": "Technology 科技",
+              "percent": 44.2
+            },
+            {
+              "label": "Consumer Discretionary",
+              "percent": 12.5
+            },
+            {
+              "label": "Financials 金融",
+              "percent": 12.1
+            },
+            {
+              "label": "Industrials 工業",
+              "percent": 10.1
+            },
+            {
+              "label": "Health Care 健康護理",
+              "percent": 8.3
+            },
+            {
+              "label": "Energy 能源",
+              "percent": 3.9
+            },
+            {
+              "label": "Utilities 公用事業",
+              "percent": 2
+            },
+            {
+              "label": "Consumer Staples",
+              "percent": 2
+            },
+            {
+              "label": "Telecommunications",
+              "percent": 1.8
+            },
+            {
+              "label": "Basic Materials",
+              "percent": 1.8
+            },
+            {
+              "label": "Others* 其他**",
+              "percent": 1.3
+            }
+          ]
+        }
+      ],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "NVIDIA CORP輝達",
+          "percent": 7.3
+        },
+        {
+          "rank": 2,
+          "security": "APPLE INC蘋果公司",
+          "percent": 6.82
+        },
+        {
+          "rank": 3,
+          "security": "MICROSOFT CORP微軟",
+          "percent": 5.49
+        },
+        {
+          "rank": 4,
+          "security": "AMAZON.COM亞馬遜",
+          "percent": 4.51
+        },
+        {
+          "rank": 5,
+          "security": "ALPHABET A",
+          "percent": 3.65
+        },
+        {
+          "rank": 6,
+          "security": "BROADCOM INC博通",
+          "percent": 3.05
+        },
+        {
+          "rank": 7,
+          "security": "ALPHABET C",
+          "percent": 3.05
+        },
+        {
+          "rank": 8,
+          "security": "META PLATFORMS A",
+          "percent": 2.3
+        },
+        {
+          "rank": 9,
+          "security": "JPMORGAN CHASE & CO摩根大通",
+          "percent": 1.71
+        },
+        {
+          "rank": 10,
+          "security": "BERKSHIRE HATHAWAY INC CL B",
+          "percent": 1.69
+        }
+      ],
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {}
+    },
+    {
+      "fundClassIds": ["mpfa-cf-2080"],
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "European Equity Fund",
+      "factSheetFile": "Fidelity_CEUR.pdf",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CEUR.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-07-31",
+      "allocations": [
+        {
+          "heading": "Geographical Breakdown 地區分佈",
+          "entries": [
+            {
+              "label": "UNITED KINGDOM英國",
+              "percent": 22.7
+            },
+            {
+              "label": "FRANCE法國",
+              "percent": 14.8
+            },
+            {
+              "label": "SWITZERLAND瑞士",
+              "percent": 13.4
+            },
+            {
+              "label": "GERMANY德國",
+              "percent": 12.5
+            },
+            {
+              "label": "NETHERLANDS荷蘭",
+              "percent": 8.2
+            },
+            {
+              "label": "SPAIN西班牙",
+              "percent": 6
+            },
+            {
+              "label": "ITALY意大利",
+              "percent": 5.4
+            },
+            {
+              "label": "SWEDEN瑞典",
+              "percent": 4.6
+            },
+            {
+              "label": "DENMARK丹麥",
+              "percent": 2.9
+            },
+            {
+              "label": "BELGIUM比利時",
+              "percent": 2
+            },
+            {
+              "label": "OTHERS # 其他 #",
+              "percent": 7.5
             }
           ]
         },
@@ -22384,1610 +24026,48 @@
               "percent": 26.2
             },
             {
-              "label": "Technology 科技",
-              "percent": 25.1
-            },
-            {
-              "label": "Telecommunications",
-              "percent": 10.3
-            },
-            {
               "label": "Industrials 工業",
-              "percent": 10.2
+              "percent": 19.3
             },
             {
-              "label": "Basic Materials",
-              "percent": 8.3
+              "label": "Health Care 健康護理",
+              "percent": 12.7
+            },
+            {
+              "label": "Technology 科技",
+              "percent": 8.5
             },
             {
               "label": "Consumer Discretionary",
-              "percent": 7.1
+              "percent": 6.9
             },
             {
               "label": "Consumer Staples",
+              "percent": 6.7
+            },
+            {
+              "label": "Energy 能源",
+              "percent": 6
+            },
+            {
+              "label": "Utilities 公用事業",
               "percent": 4.1
             },
             {
-              "label": "Health Care 健康護理",
-              "percent": 3.3
-            },
-            {
-              "label": "Utilities 公用事業",
-              "percent": 2.6
-            },
-            {
-              "label": "Energy 能源",
-              "percent": 1.8
-            },
-            {
-              "label": "Others* 其他**",
-              "percent": 1
-            }
-          ]
-        }
-      ],
-      "topHoldings": [
-        {
-          "rank": 1,
-          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD台積公司",
-          "percent": 9.75
-        },
-        {
-          "rank": 2,
-          "security": "SAMSUNG ELECTRONICS三星電子",
-          "percent": 5.68
-        },
-        {
-          "rank": 3,
-          "security": "SK HYNIX INC SK 海力士",
-          "percent": 3.59
-        },
-        {
-          "rank": 4,
-          "security": "COMMONWEALTH BK OF AUSTRALIA澳洲聯邦銀行",
-          "percent": 2.79
-        },
-        {
-          "rank": 5,
-          "security": "HDFC BANK",
-          "percent": 2.77
-        },
-        {
-          "rank": 6,
-          "security": "BHP BILLITON LTD必和必拓",
-          "percent": 2.36
-        },
-        {
-          "rank": 7,
-          "security": "DBS GROUP HLDGS LTD星展銀行有限公司",
-          "percent": 2.15
-        },
-        {
-          "rank": 8,
-          "security": "INFOSYS LTD印孚瑟斯",
-          "percent": 1.91
-        },
-        {
-          "rank": 9,
-          "security": "RELIANCE INDUSTRIES DEMATERIALIZED",
-          "percent": 1.8
-        },
-        {
-          "rank": 10,
-          "security": "ICICI BANK",
-          "percent": 1.76
-        }
-      ],
-      "unavailableFields": [],
-      "unavailableReasons": {},
-      "unavailableKinds": {}
-    },
-    {
-      "fundClassIds": ["mpfa-cf-280"],
-      "schemeName": "Fidelity Retirement Master Trust",
-      "constituentFundName": "Balanced Fund",
-      "factSheetFile": "MT00288.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00288.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
-      "allocations": [
-        {
-          "heading": "Fund Allocation by Asset Class 資產類別投資分配",
-          "entries": [
-            {
-              "label": "HONG KONG EQUITIES香港股票",
-              "percent": 18.57
-            },
-            {
-              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
-              "percent": 6.46
-            },
-            {
-              "label": "ASIA PACIFIC EQUITIES*亞太股票 *",
-              "percent": 10.26
-            },
-            {
-              "label": "JAPAN EQUITIES日本股票",
-              "percent": 8.9
-            },
-            {
-              "label": "EUROPE EQUITIES歐洲股票",
-              "percent": 13.84
-            },
-            {
-              "label": "AMERICAS EQUITIES美國股票",
-              "percent": 16.63
-            },
-            {
-              "label": "HIGHER GRADE BOND高評級債券",
-              "percent": 22.68
-            },
-            {
-              "label": "MONEY FUND貨幣基金",
-              "percent": 0.49
-            },
-            {
-              "label": "CASH & OTHERS # 現金及其他 #",
-              "percent": 2.17
-            }
-          ]
-        }
-      ],
-      "topHoldings": [
-        {
-          "rank": 1,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - EUROPEAN INDEX FUND",
-          "percent": 6.48
-        },
-        {
-          "rank": 2,
-          "security": "ISHARES CORE MSCI CHINA ETF ISHARES安碩核心 MSCI中國 ETF",
-          "percent": 6.04
-        },
-        {
-          "rank": 3,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - JAPAN INDEX FUND",
-          "percent": 5.77
-        },
-        {
-          "rank": 4,
-          "security": "HONG KONG TRACKER FUND盈富基金",
-          "percent": 5.46
-        },
-        {
-          "rank": 5,
-          "security": "ISHARES CORE CSI 300 ETF ISHARES安碩核心滬深 300指數 ETF",
-          "percent": 5.19
-        },
-        {
-          "rank": 6,
-          "security": "ISHARES S&P 500 GROWTH ETF ISHARES標普 500 成長股 ETF",
-          "percent": 4.25
-        },
-        {
-          "rank": 7,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方東英富時香港股票 ETF",
-          "percent": 4.1
-        },
-        {
-          "rank": 8,
-          "security": "HSBC GF ICAV - GLOBAL GOVERNMENT BOND UCITS ETF",
-          "percent": 3.99
-        },
-        {
-          "rank": 9,
-          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
-          "percent": 2.57
-        },
-        {
-          "rank": 10,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - AMERICAN INDEX FUND",
-          "percent": 1.93
-        }
-      ],
-      "unavailableFields": [],
-      "unavailableReasons": {},
-      "unavailableKinds": {}
-    },
-    {
-      "fundClassIds": ["mpfa-cf-706"],
-      "schemeName": "Fidelity Retirement Master Trust",
-      "constituentFundName": "Fidelity SaveEasy 2025 Fund",
-      "factSheetFile": "MT00288.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00288.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
-      "allocations": [
-        {
-          "heading": "Fund Allocation by Asset Class 資產類別投資分配",
-          "entries": [
-            {
-              "label": "HONG KONG EQUITIES香港股票",
-              "percent": 11.79
-            },
-            {
-              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
-              "percent": 1.03
-            },
-            {
-              "label": "ASIA PACIFIC EQUITIES*亞太股票 *",
-              "percent": 5.3
-            },
-            {
-              "label": "JAPAN EQUITIES日本股票",
-              "percent": 4.64
-            },
-            {
-              "label": "EUROPE EQUITIES歐洲股票",
-              "percent": 7.09
-            },
-            {
-              "label": "AMERICAS EQUITIES美國股票",
-              "percent": 10.03
-            },
-            {
-              "label": "HIGHER GRADE BOND高評級債券",
-              "percent": 54.83
-            },
-            {
-              "label": "MONEY FUND貨幣基金",
-              "percent": 2.73
-            },
-            {
-              "label": "CASH & OTHERS # 現金及其他 #",
-              "percent": 2.56
-            }
-          ]
-        }
-      ],
-      "topHoldings": [
-        {
-          "rank": 1,
-          "security": "USTN 4.25% 15/11/2034美國國庫券 4.25% 15/11/2034",
-          "percent": 7.34
-        },
-        {
-          "rank": 2,
-          "security": "ISHARES CORE MSCI CHINA ETF ISHARES安碩核心 MSCI中國 ETF",
-          "percent": 4.34
-        },
-        {
-          "rank": 3,
-          "security": "HSBC GF ICAV - GLOBAL GOVERNMENT BOND UCITS ETF",
-          "percent": 3.96
-        },
-        {
-          "rank": 4,
-          "security": "BUNDESREPUB. DEUTSCHLAND 2.6% 15/08/2034 REGS",
-          "percent": 3.48
-        },
-        {
-          "rank": 5,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方東英富時香港股票 ETF",
-          "percent": 3.02
-        },
-        {
-          "rank": 6,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - JAPAN INDEX FUND",
-          "percent": 2.77
-        },
-        {
-          "rank": 7,
-          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
-          "percent": 2.66
-        },
-        {
-          "rank": 8,
-          "security": "USTN 4.375% 31/01/2032美國國庫券 4.375% 31/01/2032",
-          "percent": 2.64
-        },
-        {
-          "rank": 9,
-          "security": "BUNDESCHATZANWEISINGEN 2.5% 11/10/2029 REGS",
-          "percent": 2.38
-        },
-        {
-          "rank": 10,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - EUROPEAN INDEX FUND",
-          "percent": 2.3
-        }
-      ],
-      "unavailableFields": [],
-      "unavailableReasons": {},
-      "unavailableKinds": {}
-    },
-    {
-      "fundClassIds": ["mpfa-cf-708"],
-      "schemeName": "Fidelity Retirement Master Trust",
-      "constituentFundName": "Fidelity SaveEasy 2030 Fund",
-      "factSheetFile": "MT00288.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00288.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
-      "allocations": [
-        {
-          "heading": "Fund Allocation by Asset Class 資產類別投資分配",
-          "entries": [
-            {
-              "label": "HONG KONG EQUITIES香港股票",
-              "percent": 27.79
-            },
-            {
-              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
-              "percent": 0.95
-            },
-            {
-              "label": "ASIA PACIFIC EQUITIES*亞太股票 *",
-              "percent": 11.56
-            },
-            {
-              "label": "JAPAN EQUITIES日本股票",
-              "percent": 10.59
-            },
-            {
-              "label": "EUROPE EQUITIES歐洲股票",
-              "percent": 16.56
-            },
-            {
-              "label": "AMERICAS EQUITIES美國股票",
-              "percent": 19.03
-            },
-            {
-              "label": "HIGHER GRADE BOND高評級債券",
-              "percent": 12.8
-            },
-            {
-              "label": "CASH & OTHERS # 現金及其他 #",
-              "percent": 0.72
-            }
-          ]
-        }
-      ],
-      "topHoldings": [
-        {
-          "rank": 1,
-          "security": "ISHARES CORE MSCI CHINA ETF ISHARES安碩核心 MSCI中國 ETF",
-          "percent": 11.18
-        },
-        {
-          "rank": 2,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - EUROPEAN INDEX FUND",
-          "percent": 9.23
-        },
-        {
-          "rank": 3,
-          "security": "HONG KONG TRACKER FUND盈富基金",
-          "percent": 7.6
-        },
-        {
-          "rank": 4,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - JAPAN INDEX FUND",
-          "percent": 6.75
-        },
-        {
-          "rank": 5,
-          "security": "HSBC GF ICAV - GLOBAL GOVERNMENT BOND UCITS ETF",
-          "percent": 4.61
-        },
-        {
-          "rank": 6,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - AMERICAN INDEX FUND",
-          "percent": 4.37
-        },
-        {
-          "rank": 7,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方東英富時香港股票 ETF",
-          "percent": 4.19
-        },
-        {
-          "rank": 8,
-          "security": "ISHARES S&P 500 GROWTH ETF ISHARES標普 500 成長股 ETF",
-          "percent": 3.7
-        },
-        {
-          "rank": 9,
-          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
-          "percent": 2.58
-        },
-        {
-          "rank": 10,
-          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD台積公司",
-          "percent": 1.13
-        }
-      ],
-      "unavailableFields": [],
-      "unavailableReasons": {},
-      "unavailableKinds": {}
-    },
-    {
-      "fundClassIds": ["mpfa-cf-709"],
-      "schemeName": "Fidelity Retirement Master Trust",
-      "constituentFundName": "Fidelity SaveEasy 2035 Fund",
-      "factSheetFile": "MT00288.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00288.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
-      "allocations": [
-        {
-          "heading": "Fund Allocation by Asset Class 資產類別投資分配",
-          "entries": [
-            {
-              "label": "HONG KONG EQUITIES香港股票",
-              "percent": 31.05
-            },
-            {
-              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
-              "percent": 0.86
-            },
-            {
-              "label": "ASIA PACIFIC EQUITIES*亞太股票 *",
-              "percent": 12.72
-            },
-            {
-              "label": "JAPAN EQUITIES日本股票",
-              "percent": 11.87
-            },
-            {
-              "label": "EUROPE EQUITIES歐洲股票",
-              "percent": 18.78
-            },
-            {
-              "label": "AMERICAS EQUITIES美國股票",
-              "percent": 20.81
-            },
-            {
-              "label": "HIGHER GRADE BOND高評級債券",
-              "percent": 3.69
-            },
-            {
-              "label": "CASH & OTHERS # 現金及其他 #",
-              "percent": 0.22
-            }
-          ]
-        }
-      ],
-      "topHoldings": [
-        {
-          "rank": 1,
-          "security": "ISHARES CORE MSCI CHINA ETF ISHARES安碩核心MSCI中國 ETF",
-          "percent": 13.26
-        },
-        {
-          "rank": 2,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - EUROPEAN INDEX FUND",
-          "percent": 9.11
-        },
-        {
-          "rank": 3,
-          "security": "HONG KONG TRACKER FUND盈富基金",
-          "percent": 8.55
-        },
-        {
-          "rank": 4,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - JAPAN INDEX FUND",
-          "percent": 7.35
-        },
-        {
-          "rank": 5,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - AMERICAN INDEX FUND",
-          "percent": 5.33
-        },
-        {
-          "rank": 6,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方東英富時香港股票 ETF",
-          "percent": 4.69
-        },
-        {
-          "rank": 7,
-          "security": "ISHARES S&P 500 GROWTH ETF ISHARES標普 500 成長股 ETF",
-          "percent": 3.49
-        },
-        {
-          "rank": 8,
-          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
-          "percent": 2.98
-        },
-        {
-          "rank": 9,
-          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD台積公司",
-          "percent": 1.25
-        },
-        {
-          "rank": 10,
-          "security": "ISHARES CORE CSI 300 ETF ISHARES安碩核心滬深 300 指數 ETF",
-          "percent": 0.86
-        }
-      ],
-      "unavailableFields": [],
-      "unavailableReasons": {},
-      "unavailableKinds": {}
-    },
-    {
-      "fundClassIds": ["mpfa-cf-711"],
-      "schemeName": "Fidelity Retirement Master Trust",
-      "constituentFundName": "Fidelity SaveEasy 2040 Fund",
-      "factSheetFile": "MT00288.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00288.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
-      "allocations": [
-        {
-          "heading": "Fund Allocation by Asset Class 資產類別投資分配",
-          "entries": [
-            {
-              "label": "HONG KONG EQUITIES香港股票",
-              "percent": 32.28
-            },
-            {
-              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
-              "percent": 1
-            },
-            {
-              "label": "ASIA PACIFIC EQUITIES*亞太股票 *",
-              "percent": 13.59
-            },
-            {
-              "label": "JAPAN EQUITIES日本股票",
-              "percent": 12.48
-            },
-            {
-              "label": "EUROPE EQUITIES歐洲股票",
-              "percent": 19.55
-            },
-            {
-              "label": "AMERICAS EQUITIES美國股票",
-              "percent": 19.51
-            },
-            {
-              "label": "HIGHER GRADE BOND高評級債券",
-              "percent": 1.36
-            },
-            {
-              "label": "CASH & OTHERS # 現金及其他 #",
-              "percent": 0.23
-            }
-          ]
-        }
-      ],
-      "topHoldings": [
-        {
-          "rank": 1,
-          "security": "ISHARES CORE MSCI CHINA ETF ISHARES安碩核心MSCI中國 ETF",
-          "percent": 13.24
-        },
-        {
-          "rank": 2,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - EUROPEAN INDEX FUND",
-          "percent": 10.45
-        },
-        {
-          "rank": 3,
-          "security": "HONG KONG TRACKER FUND盈富基金",
-          "percent": 10.32
-        },
-        {
-          "rank": 4,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - JAPAN INDEX FUND",
-          "percent": 8.9
-        },
-        {
-          "rank": 5,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - AMERICAN INDEX FUND",
-          "percent": 5.41
-        },
-        {
-          "rank": 6,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方東英富時香港股票 ETF",
-          "percent": 4.66
-        },
-        {
-          "rank": 7,
-          "security": "ISHARES S&P 500 GROWTH ETF ISHARES標普 500 成長股 ETF",
-          "percent": 2.74
-        },
-        {
-          "rank": 8,
-          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
-          "percent": 2.72
-        },
-        {
-          "rank": 9,
-          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD台積公司",
-          "percent": 1.33
-        },
-        {
-          "rank": 10,
-          "security": "ISHARES CORE CSI 300 ETF ISHARES安碩核心滬深 300 指數 ETF",
-          "percent": 1
-        }
-      ],
-      "unavailableFields": [],
-      "unavailableReasons": {},
-      "unavailableKinds": {}
-    },
-    {
-      "fundClassIds": ["mpfa-cf-1159"],
-      "schemeName": "Fidelity Retirement Master Trust",
-      "constituentFundName": "Fidelity Hong Kong Tracker Fund",
-      "factSheetFile": "MT00288.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00288.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
-      "allocations": [
-        {
-          "heading": "Industry Breakdown 行業投資分佈",
-          "entries": [
-            {
-              "label": "Financials 金融",
-              "percent": 33.9
-            },
-            {
-              "label": "Consumer Discretionary",
-              "percent": 23.9
-            },
-            {
-              "label": "Information Technology",
-              "percent": 16.8
-            },
-            {
-              "label": "Energy 能源",
-              "percent": 4.6
-            },
-            {
-              "label": "Telecommunications",
+              "label": "Basic Materials",
               "percent": 3.9
             },
             {
-              "label": "Healthcare 健康護理",
-              "percent": 3.7
-            },
-            {
-              "label": "Properties &",
-              "percent": 3.6
-            },
-            {
-              "label": "Utilities 公用事業",
-              "percent": 2.6
-            },
-            {
-              "label": "Materials 物料",
-              "percent": 2
-            },
-            {
-              "label": "Consumer Staples",
-              "percent": 1.9
-            },
-            {
-              "label": "Conglomerates",
-              "percent": 1.3
-            },
-            {
-              "label": "Industrials 工業",
-              "percent": 1.2
-            },
-            {
-              "label": "Others* 其他**",
-              "percent": 0.6
-            }
-          ]
-        }
-      ],
-      "topHoldings": [
-        {
-          "rank": 1,
-          "security": "HSBC HOLDINGS PLC滙豐控股",
-          "percent": 8.94
-        },
-        {
-          "rank": 2,
-          "security": "TENCENT HOLDINGS LTD騰訊控股有限公司",
-          "percent": 7.87
-        },
-        {
-          "rank": 3,
-          "security": "ALIBABA GROUP HOLDING LTD阿里巴巴集團",
-          "percent": 7.38
-        },
-        {
-          "rank": 4,
-          "security": "AIA GROUP LTD友邦保險控股有限公司",
-          "percent": 5.22
-        },
-        {
-          "rank": 5,
-          "security": "CHINA CONSTRUCTION BANK H中國建設銀行 H",
-          "percent": 4.6
-        },
-        {
-          "rank": 6,
-          "security": "XIAOMI CORPORATION小米",
-          "percent": 4.45
-        },
-        {
-          "rank": 7,
-          "security": "MEITUAN美團",
-          "percent": 3.53
-        },
-        {
-          "rank": 8,
-          "security": "INDUSTRIAL & COM BK OF CHINA H SHRS",
-          "percent": 3.23
-        },
-        {
-          "rank": 9,
-          "security": "CHINA MOBILE LTD中國移動",
-          "percent": 3.16
-        },
-        {
-          "rank": 10,
-          "security": "HONG KONG EXCHS & CLEARING LTD香港交易所",
-          "percent": 3.05
-        }
-      ],
-      "unavailableFields": [],
-      "unavailableReasons": {},
-      "unavailableKinds": {}
-    },
-    {
-      "fundClassIds": ["mpfa-cf-1419"],
-      "schemeName": "Fidelity Retirement Master Trust",
-      "constituentFundName": "Fidelity SaveEasy 2045 Fund",
-      "factSheetFile": "MT00288.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00288.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
-      "allocations": [
-        {
-          "heading": "Fund Allocation by Asset Class 資產類別投資分配",
-          "entries": [
-            {
-              "label": "HONG KONG EQUITIES香港股票",
-              "percent": 32.81
-            },
-            {
-              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
-              "percent": 0.89
-            },
-            {
-              "label": "ASIA PACIFIC EQUITIES*亞太股票 *",
-              "percent": 13.38
-            },
-            {
-              "label": "JAPAN EQUITIES日本股票",
-              "percent": 12.52
-            },
-            {
-              "label": "EUROPE EQUITIES歐洲股票",
-              "percent": 19.91
-            },
-            {
-              "label": "AMERICAS EQUITIES美國股票",
-              "percent": 19.99
-            },
-            {
-              "label": "HIGHER GRADE BOND高評級債券",
-              "percent": 0.26
-            },
-            {
-              "label": "CASH & OTHERS # 現金及其他 #",
-              "percent": 0.24
-            }
-          ]
-        }
-      ],
-      "topHoldings": [
-        {
-          "rank": 1,
-          "security": "ISHARES CORE MSCI CHINA ETF ISHARES安碩核心MSCI中國ETF",
-          "percent": 12.68
-        },
-        {
-          "rank": 2,
-          "security": "HONG KONG TRACKER FUND盈富基金",
-          "percent": 9.52
-        },
-        {
-          "rank": 3,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - EUROPEAN INDEX FUND",
-          "percent": 8.12
-        },
-        {
-          "rank": 4,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - JAPAN INDEX FUND",
-          "percent": 7.57
-        },
-        {
-          "rank": 5,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方東英富時香港股票 ETF",
-          "percent": 4.56
-        },
-        {
-          "rank": 6,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - AMERICAN INDEX FUND",
-          "percent": 3.88
-        },
-        {
-          "rank": 7,
-          "security": "ISHARES S&P 500 GROWTH ETF ISHARES標普 500成長股ETF",
-          "percent": 2.7
-        },
-        {
-          "rank": 8,
-          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健ETF",
-          "percent": 2.52
-        },
-        {
-          "rank": 9,
-          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD台積公司",
-          "percent": 1.31
-        },
-        {
-          "rank": 10,
-          "security": "ISHARES CORE CSI 300 ETF ISHARES安碩核心滬深 300指數 ETF",
-          "percent": 0.89
-        }
-      ],
-      "unavailableFields": [],
-      "unavailableReasons": {},
-      "unavailableKinds": {}
-    },
-    {
-      "fundClassIds": ["mpfa-cf-1420"],
-      "schemeName": "Fidelity Retirement Master Trust",
-      "constituentFundName": "Fidelity SaveEasy 2050 Fund",
-      "factSheetFile": "MT00288.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00288.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
-      "allocations": [
-        {
-          "heading": "Fund Allocation by Asset Class 資產類別投資分配",
-          "entries": [
-            {
-              "label": "HONG KONG EQUITIES香港股票",
-              "percent": 32.94
-            },
-            {
-              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
-              "percent": 0.72
-            },
-            {
-              "label": "ASIA PACIFIC EQUITIES*亞太股票 *",
-              "percent": 13.63
-            },
-            {
-              "label": "JAPAN EQUITIES日本股票",
-              "percent": 12.7
-            },
-            {
-              "label": "EUROPE EQUITIES歐洲股票",
-              "percent": 19.88
-            },
-            {
-              "label": "AMERICAS EQUITIES美國股票",
-              "percent": 19.9
-            },
-            {
-              "label": "CASH & OTHERS # 現金及其他 #",
-              "percent": 0.23
-            }
-          ]
-        }
-      ],
-      "topHoldings": [
-        {
-          "rank": 1,
-          "security": "ISHARES CORE MSCI CHINA ETF ISHARES安碩核心 MSCI中國 ETF",
-          "percent": 13.27
-        },
-        {
-          "rank": 2,
-          "security": "HONG KONG TRACKER FUND盈富基金",
-          "percent": 10.7
-        },
-        {
-          "rank": 3,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - EUROPEAN INDEX FUND",
-          "percent": 8.41
-        },
-        {
-          "rank": 4,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - JAPAN INDEX FUND",
-          "percent": 7.58
-        },
-        {
-          "rank": 5,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方東英富時香港股票 ETF",
-          "percent": 4.55
-        },
-        {
-          "rank": 6,
-          "security": "ISHARES S&P 500 GROWTH ETF ISHARES標普 500 成長股 ETF",
-          "percent": 3.44
-        },
-        {
-          "rank": 7,
-          "security": "HSBC INSTITUTIONAL ACCUMULATION HKD - AMERICAN INDEX FUND",
-          "percent": 2.74
-        },
-        {
-          "rank": 8,
-          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
-          "percent": 2.52
-        },
-        {
-          "rank": 9,
-          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD台積公司",
-          "percent": 1.34
-        },
-        {
-          "rank": 10,
-          "security": "NVIDIA CORP輝達",
-          "percent": 0.89
-        }
-      ],
-      "unavailableFields": [],
-      "unavailableReasons": {},
-      "unavailableKinds": {}
-    },
-    {
-      "fundClassIds": ["mpfa-cf-1439"],
-      "schemeName": "Fidelity Retirement Master Trust",
-      "constituentFundName": "RMB Bond Fund",
-      "factSheetFile": "MT00288.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00288.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
-      "allocations": [
-        {
-          "heading": "Currency Breakdown 貨幣分佈",
-          "entries": [
-            {
-              "label": "CHINESE YUAN**人民幣 **",
-              "percent": 66.3
-            },
-            {
-              "label": "HONG KONG DOLLAR港元",
-              "percent": 33.5
-            },
-            {
-              "label": "US DOLLAR美元",
-              "percent": 0.2
-            }
-          ]
-        },
-        {
-          "heading": "S&P/Moody’s Credit Ratings 標準普爾／穆廸信用評級",
-          "entries": [
-            {
-              "label": "AAA/Aaa",
-              "percent": 4.9
-            },
-            {
-              "label": "AA/Aa",
-              "percent": 18.4
-            },
-            {
-              "label": "A",
-              "percent": 46.1
-            },
-            {
-              "label": "BBB/Baa",
-              "percent": 25.5
-            },
-            {
-              "label": "Others*其他 *",
-              "percent": 5.1
-            }
-          ]
-        },
-        {
-          "heading": "Industry Breakdown 行業投資分佈",
-          "entries": [
-            {
-              "label": "Financial 金融",
-              "percent": 45.8
-            },
-            {
-              "label": "Quasi/Sov/Supra/Agncy",
-              "percent": 30.5
-            },
-            {
-              "label": "Industrial 工業",
-              "percent": 15.1
-            },
-            {
-              "label": "Utility 公用事業",
-              "percent": 5.4
-            },
-            {
-              "label": "Others* 其他**",
-              "percent": 3.2
-            }
-          ]
-        }
-      ],
-      "topHoldings": [
-        {
-          "rank": 1,
-          "security": "AIRPORT AUTHORITY HK 2.85% 14/01/2035 REGS 香港機場管理局 2.85% 14/01/2035 REGS",
-          "percent": 4.31
-        },
-        {
-          "rank": 2,
-          "security": "BNP PARIBAS VAR 17/08/2031 REGS",
-          "percent": 3.2
-        },
-        {
-          "rank": 3,
-          "security": "DBS GROUP HOLDINGS LTD 3.7% 03/03/2031 REGS 星展銀行有限公司 3.7% 03/03/2031 REGS",
-          "percent": 2.96
-        },
-        {
-          "rank": 4,
-          "security": "NESTLE FINANCE INTL LTD 2.8% 29/05/2035 REGS",
-          "percent": 2.93
-        },
-        {
-          "rank": 5,
-          "security": "UNITED OVERSEAS BANK LTD 4.5% 06/04/2032 REGS 大華銀行有限公司 4.5% 06/04/2032 REGS",
-          "percent": 2.92
-        },
-        {
-          "rank": 3,
-          "security": "8% 27/10/2030 REGS 中國農業發展銀行 3.8% 27/10/2030 REGS",
-          "percent": 2.87
-        },
-        {
-          "rank": 7,
-          "security": "JPMORGAN CHASE & CO 2.4% 25/07/2030 REGS 摩根大通 2.4% 25/07/2030 REGS",
-          "percent": 2.77
-        },
-        {
-          "rank": 8,
-          "security": "TEMASEK FINANCIAL I LTD 3.1% 28/08/2054 REGS 淡馬錫金融 I有限公司 3.1% 28/08/2054 REGS",
-          "percent": 2.58
-        },
-        {
-          "rank": 9,
-          "security": "MTR CORP LTD 3.05% 20/09/2054 REGS 香港鐵路有限公司 3.05% 20/09/2054 REGS",
-          "percent": 2.57
-        },
-        {
-          "rank": 10,
-          "security": "EX-IM BK INDIA/L 3.45% 25/06/2026",
-          "percent": 2.49
-        }
-      ],
-      "unavailableFields": [],
-      "unavailableReasons": {},
-      "unavailableKinds": {}
-    },
-    {
-      "fundClassIds": ["mpfa-cf-1551"],
-      "schemeName": "Fidelity Retirement Master Trust",
-      "constituentFundName": "Core Accumulation Fund",
-      "factSheetFile": "MT00288.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00288.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
-      "allocations": [
-        {
-          "heading": "Fund Allocation by Asset Class 資產類別投資分配",
-          "entries": [
-            {
-              "label": "WORLD EQUITIES世界股票",
-              "percent": 63.21
-            },
-            {
-              "label": "HIGHER GRADE BOND高評級債券",
-              "percent": 36.24
-            },
-            {
-              "label": "MONEY FUND貨幣基金",
-              "percent": 0.33
-            },
-            {
-              "label": "CASH & OTHERS # 現金及其他 #",
-              "percent": 0.22
-            }
-          ]
-        }
-      ],
-      "topHoldings": [
-        {
-          "rank": 1,
-          "security": "NVIDIA CORP輝達",
-          "percent": 2.96
-        },
-        {
-          "rank": 2,
-          "security": "APPLE INC蘋果公司",
-          "percent": 2.69
-        },
-        {
-          "rank": 3,
-          "security": "MICROSOFT CORP微軟",
-          "percent": 2.43
-        },
-        {
-          "rank": 4,
-          "security": "AMAZON.COM亞馬遜",
-          "percent": 1.5
-        },
-        {
-          "rank": 5,
-          "security": "ALPHABET A",
-          "percent": 1.23
-        },
-        {
-          "rank": 6,
-          "security": "BROADCOM INC博通",
-          "percent": 1.09
-        },
-        {
-          "rank": 7,
-          "security": "ALPHABET C",
-          "percent": 1.01
-        },
-        {
-          "rank": 8,
-          "security": "META PLATFORMS A",
-          "percent": 0.98
-        },
-        {
-          "rank": 9,
-          "security": "TESLA特斯拉",
-          "percent": 0.86
-        },
-        {
-          "rank": 10,
-          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD台積公司",
-          "percent": 0.82
-        }
-      ],
-      "unavailableFields": [],
-      "unavailableReasons": {},
-      "unavailableKinds": {}
-    },
-    {
-      "fundClassIds": ["mpfa-cf-1552"],
-      "schemeName": "Fidelity Retirement Master Trust",
-      "constituentFundName": "Age 65 Plus Fund",
-      "factSheetFile": "MT00288.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00288.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
-      "allocations": [
-        {
-          "heading": "Fund Allocation by Asset Class 資產類別投資分配",
-          "entries": [
-            {
-              "label": "WORLD EQUITIES世界股票",
-              "percent": 22.88
-            },
-            {
-              "label": "HIGHER GRADE BOND高評級債券",
-              "percent": 76.92
-            },
-            {
-              "label": "MONEY FUND貨幣基金",
-              "percent": 0.34
-            },
-            {
-              "label": "CASH & OTHERS # 現金及其他 #",
-              "percent": -0.14
-            }
-          ]
-        }
-      ],
-      "topHoldings": [
-        {
-          "rank": 1,
-          "security": "NVIDIA CORP輝達",
-          "percent": 1.07
-        },
-        {
-          "rank": 2,
-          "security": "APPLE INC蘋果公司",
-          "percent": 0.97
-        },
-        {
-          "rank": 3,
-          "security": "CHINA PEOPLES REPUBLIC OF GOVERNM 2.52% 25/08/2033",
-          "percent": 0.95
-        },
-        {
-          "rank": 4,
-          "security": "MICROSOFT CORP微軟",
-          "percent": 0.88
-        },
-        {
-          "rank": 5,
-          "security": "CHINA PEOPLES REPUBLIC OF GOVERNM 2.64% 15/01/2028",
-          "percent": 0.72
-        },
-        {
-          "rank": 6,
-          "security": "CHINA PEOPLES REPUBLIC OF GOVERNM 1.91% 15/07/2029",
-          "percent": 0.66
-        },
-        {
-          "rank": 7,
-          "security": "AMAZON.COM亞馬遜",
-          "percent": 0.54
-        },
-        {
-          "rank": 8,
-          "security": "CHINA PEOPLES REPUBLIC OF GOVERNM 2.67% 25/05/2033",
-          "percent": 0.51
-        },
-        {
-          "rank": 9,
-          "security": "CHINA PEOPLES REPUBLIC OF GOVERNM 2.68% 21/05/2030",
-          "percent": 0.47
-        },
-        {
-          "rank": 10,
-          "security": "ALPHABET A",
-          "percent": 0.45
-        }
-      ],
-      "unavailableFields": [],
-      "unavailableReasons": {},
-      "unavailableKinds": {}
-    },
-    {
-      "fundClassIds": ["mpfa-cf-1799"],
-      "schemeName": "Fidelity Retirement Master Trust",
-      "constituentFundName": "RetireEasy Fund",
-      "factSheetFile": "MT00288.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00288.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
-      "allocations": [
-        {
-          "heading": "Fund Allocation by Asset Class 資產類別投資分配",
-          "entries": [
-            {
-              "label": "HONG KONG EQUITIES香港股票",
-              "percent": 3.35
-            },
-            {
-              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
-              "percent": 0.98
-            },
-            {
-              "label": "ASIA PACIFIC EQUITIES*亞太股票 *",
-              "percent": 2.64
-            },
-            {
-              "label": "AMERICAS EQUITIES美國股票",
-              "percent": 2.58
-            },
-            {
-              "label": "WORLD EQUITIES世界股票",
-              "percent": 29.88
-            },
-            {
-              "label": "HIGHER GRADE BOND高評級債券",
-              "percent": 58.49
-            },
-            {
-              "label": "MONEY FUND貨幣基金",
-              "percent": 1.1
-            },
-            {
-              "label": "CASH & OTHERS # 現金及其他 #",
-              "percent": 0.98
-            }
-          ]
-        }
-      ],
-      "topHoldings": [
-        {
-          "rank": 1,
-          "security": "USTN 4.25% 15/11/2034美國國庫券 4.25% 15/11/2034",
-          "percent": 6.13
-        },
-        {
-          "rank": 2,
-          "security": "HSBC MSCI WORLD UCITS ETF",
-          "percent": 5.92
-        },
-        {
-          "rank": 3,
-          "security": "BUNDESREPUB. DEUTSCHLAND 2.6% 15/08/2034 REGS",
-          "percent": 2.91
-        },
-        {
-          "rank": 4,
-          "security": "USTN 4.375% 31/01/2032美國國庫券 4.375% 31/01/2032",
-          "percent": 2.2
-        },
-        {
-          "rank": 5,
-          "security": "BUNDESCHATZANWEISINGEN 2.5% 11/10/2029 REGS",
-          "percent": 1.98
-        },
-        {
-          "rank": 6,
-          "security": "CHINA 2.8% 15/11/2032 REGS",
-          "percent": 1.87
-        },
-        {
-          "rank": 7,
-          "security": "USTN 4.5% 15/11/2054美國國庫券 4.5% 15/11/2054",
-          "percent": 1.75
-        },
-        {
-          "rank": 8,
-          "security": "GERMANY 2.2% 15/02/2034 REGS",
-          "percent": 1.65
-        },
-        {
-          "rank": 9,
-          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
-          "percent": 1.59
-        },
-        {
-          "rank": 10,
-          "security": "BUNDESREPUB DEUTSCHLAND 2.6% 15/08/2035 REGS",
-          "percent": 1.5
-        }
-      ],
-      "unavailableFields": [],
-      "unavailableReasons": {},
-      "unavailableKinds": {}
-    },
-    {
-      "fundClassIds": ["mpfa-cf-2079"],
-      "schemeName": "Fidelity Retirement Master Trust",
-      "constituentFundName": "Americas Equity Fund",
-      "factSheetFile": "MT00288.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00288.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
-      "allocations": [
-        {
-          "heading": "Geographical Breakdown 地區分佈",
-          "entries": [
-            {
-              "label": "UNITED STATES美國",
-              "percent": 95.9
-            },
-            {
-              "label": "CANADA加拿大",
-              "percent": 4
-            },
-            {
-              "label": "SWEDEN瑞典",
-              "percent": 0.1
-            },
-            {
-              "label": "OTHERS # 其他 #",
-              "percent": 0
-            }
-          ]
-        },
-        {
-          "heading": "Industry Breakdown 行業投資分佈",
-          "entries": [
-            {
-              "label": "Technology 科技",
-              "percent": 44.3
-            },
-            {
-              "label": "Financials 金融",
-              "percent": 13.8
-            },
-            {
-              "label": "Consumer Discretionary",
-              "percent": 12.7
-            },
-            {
-              "label": "Health Care 健康護理",
-              "percent": 10
-            },
-            {
-              "label": "Industrials 工業",
-              "percent": 9.3
-            },
-            {
-              "label": "Consumer Staples",
-              "percent": 2.5
-            },
-            {
-              "label": "Energy 能源",
+              "label": "Telecommunications",
               "percent": 2.5
             },
             {
               "label": "Real Estate 房地產",
-              "percent": 1.5
-            },
-            {
-              "label": "Utilities 公用事業",
-              "percent": 1.3
-            },
-            {
-              "label": "Telecommunications",
-              "percent": 1.1
-            },
-            {
-              "label": "Basic Materials",
-              "percent": 1
+              "percent": 0.4
             },
             {
               "label": "Others* 其他**",
-              "percent": 0
-            }
-          ]
-        }
-      ],
-      "topHoldings": [
-        {
-          "rank": 1,
-          "security": "NVIDIA CORP輝達",
-          "percent": 7.98
-        },
-        {
-          "rank": 2,
-          "security": "APPLE INC蘋果公司",
-          "percent": 7.22
-        },
-        {
-          "rank": 3,
-          "security": "MICROSOFT CORP微軟",
-          "percent": 6.52
-        },
-        {
-          "rank": 4,
-          "security": "AMAZON.COM亞馬遜",
-          "percent": 4.31
-        },
-        {
-          "rank": 5,
-          "security": "ALPHABET A",
-          "percent": 3.45
-        },
-        {
-          "rank": 6,
-          "security": "BROADCOM INC博通",
-          "percent": 3.23
-        },
-        {
-          "rank": 7,
-          "security": "META PLATFORMS A",
-          "percent": 3.08
-        },
-        {
-          "rank": 8,
-          "security": "ALPHABET INC-CL C COM",
-          "percent": 2.69
-        },
-        {
-          "rank": 9,
-          "security": "JPMORGAN CHASE & CO摩根大通",
-          "percent": 1.96
-        },
-        {
-          "rank": 10,
-          "security": "BERKSHIRE HATHAWAY INC CL B",
-          "percent": 1.47
-        }
-      ],
-      "unavailableFields": [],
-      "unavailableReasons": {},
-      "unavailableKinds": {}
-    },
-    {
-      "fundClassIds": ["mpfa-cf-2080"],
-      "schemeName": "Fidelity Retirement Master Trust",
-      "constituentFundName": "European Equity Fund",
-      "factSheetFile": "MT00288.pdf",
-      "factSheetUrl": "https://www.mpfa.org.hk/assets/FF/MT00288.pdf",
-      "factSheetSource": "mpfa-registry",
-      "factSheetAsOf": "2025-12-31",
-      "allocations": [
-        {
-          "heading": "Geographical Breakdown 地區分佈",
-          "entries": [
-            {
-              "label": "UNITED KINGDOM英國",
-              "percent": 23.9
-            },
-            {
-              "label": "FRANCE法國",
-              "percent": 16.3
-            },
-            {
-              "label": "SWITZERLAND瑞士",
-              "percent": 13.7
-            },
-            {
-              "label": "GERMANY德國",
-              "percent": 13.4
-            },
-            {
-              "label": "NETHERLANDS荷蘭",
-              "percent": 7.8
-            },
-            {
-              "label": "SPAIN西班牙",
-              "percent": 5.4
-            },
-            {
-              "label": "SWEDEN瑞典",
-              "percent": 4.8
-            },
-            {
-              "label": "ITALY意大利",
-              "percent": 4.1
-            },
-            {
-              "label": "DENMARK丹麥",
-              "percent": 2.4
-            },
-            {
-              "label": "BELGIUM比利時",
-              "percent": 1.6
-            },
-            {
-              "label": "OTHERS # 其他 #",
-              "percent": 6.6
-            }
-          ]
-        },
-        {
-          "heading": "Industry Breakdown 行業投資分佈",
-          "entries": [
-            {
-              "label": "Financials 金融",
-              "percent": 23.7
-            },
-            {
-              "label": "Industrials 工業",
-              "percent": 20.3
-            },
-            {
-              "label": "Health Care 健康護理",
-              "percent": 13.4
-            },
-            {
-              "label": "Technology 科技",
-              "percent": 9.8
-            },
-            {
-              "label": "Consumer Discretionary",
-              "percent": 8.3
-            },
-            {
-              "label": "Consumer Staples",
-              "percent": 7.3
-            },
-            {
-              "label": "Energy 能源",
-              "percent": 3.9
-            },
-            {
-              "label": "Basic Materials",
-              "percent": 3.5
-            },
-            {
-              "label": "Telecommunications",
-              "percent": 3.1
-            },
-            {
-              "label": "Utilities 公用事業",
-              "percent": 2.9
-            },
-            {
-              "label": "Real Estate 房地產",
-              "percent": 0.7
-            },
-            {
-              "label": "Others* 其他**",
-              "percent": 3.1
+              "percent": 2.8
             }
           ]
         }
@@ -23996,52 +24076,52 @@
         {
           "rank": 1,
           "security": "ASML HOLDING艾司摩爾",
-          "percent": 3.77
+          "percent": 4.5
         },
         {
           "rank": 2,
-          "security": "SAP SE",
-          "percent": 2.52
+          "security": "HSBC HOLDINGS PLC滙豐控股",
+          "percent": 2.75
         },
         {
           "rank": 3,
-          "security": "ROCHE HOLDINGS AG (GENUSSCHEIN)羅氏",
-          "percent": 2.22
+          "security": "ROCHE HOLDING AG羅氏",
+          "percent": 2.09
         },
         {
           "rank": 4,
-          "security": "SIEMENS西門子公司",
-          "percent": 2.15
+          "security": "NOVARTIS AG諾華製藥集團",
+          "percent": 2.02
         },
         {
           "rank": 5,
-          "security": "ASTRAZENECA阿斯利康",
-          "percent": 2.13
+          "security": "SIEMENS西門子公司",
+          "percent": 1.97
         },
         {
           "rank": 6,
-          "security": "NOVARTIS AG諾華製藥集團",
-          "percent": 2.04
+          "security": "ASTRAZENECA阿斯利康",
+          "percent": 1.68
         },
         {
           "rank": 7,
           "security": "BANCO SANTANDER西班牙桑坦德銀行",
-          "percent": 1.81
+          "percent": 1.64
         },
         {
           "rank": 8,
-          "security": "HSBC HOLDINGS PLC滙豐控股",
-          "percent": 1.7
+          "security": "SCHNEIDER ELECTRIC SE施耐德電氣",
+          "percent": 1.55
         },
         {
           "rank": 9,
-          "security": "SCHNEIDER ELECTRIC SE施耐德電氣",
-          "percent": 1.48
+          "security": "UBS GROUP瑞銀集團",
+          "percent": 1.44
         },
         {
           "rank": 10,
-          "security": "BANCO BILBAO VIZCAYA ARGENTARIA 西班牙對外銀行",
-          "percent": 1.41
+          "security": "ROLLS ROYCE HOLDINGS PLC勞斯萊斯公司",
+          "percent": 1.42
         }
       ],
       "unavailableFields": [],

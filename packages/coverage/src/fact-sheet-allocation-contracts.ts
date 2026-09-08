@@ -12,8 +12,12 @@ const AS_OF_LONG = /As at\s+(\d{1,2}\s+[A-Za-z]{3,}\s+\d{4})/i;
 const AS_OF_MONTH_FIRST = /As at\s+([A-Za-z]{3,}\s+\d{1,2},\s*\d{4})/i;
 
 /** 富達逐隻基金披露不同維度，中文標題是版面上另一段文字，逐個對照。 */
-const FIDELITY_DIMENSION =
-  /^(?:Fund Allocation by Asset Class|Industry Breakdown|Geographical Breakdown|Currency Breakdown|S&P\/Moody’s Credit Ratings?)$/;
+const FIDELITY_DIMENSIONS =
+  "Fund Allocation by Asset Class|Industry Breakdown|Geographical Breakdown|Currency Breakdown|S&P\\/Moody’s Credit Ratings?";
+/** 積金局副本嘅標題係淨英文一行，用 `$` 收尾避免撞正文。 */
+const FIDELITY_DIMENSION = new RegExp(`^(?:${FIDELITY_DIMENSIONS})$`);
+/** 受託人官網嗰份係中英對照，標題後面緊接中文譯名，唔可以用 `$` 收尾。 */
+const FIDELITY_DIMENSION_BILINGUAL = new RegExp(`^(?:${FIDELITY_DIMENSIONS})`);
 const FIDELITY_DIMENSION_ZH: Record<string, string> = {
   "Fund Allocation by Asset Class": "資產類別投資分配",
   "Industry Breakdown": "行業投資分佈",
@@ -22,6 +26,50 @@ const FIDELITY_DIMENSION_ZH: Record<string, string> = {
   "S&P/Moody’s Credit Rating": "標準普爾／穆廸信用評級",
   "S&P/Moody’s Credit Ratings": "標準普爾／穆廸信用評級",
 };
+
+/**
+ * 富達積金局副本同受託人官網逐隻基金那份係同一套排版（同一批字體級數、同樣三欄），
+ * 標題錨點、欄界及日期式樣共用；只有披露標題的收尾唔同，逐個來源各自覆寫。
+ */
+const fidelityBlocks: Pick<
+  FactSheetContract,
+  "title" | "allocation" | "holdings" | "asOf"
+> = {
+  title: {
+    // 每隻基金一頁，頁首寫「計劃名 - 基金名」。積金局副本前面幾頁的基金表現總表用
+    // 同一批基金名但係細字，認錯咗就會把 22 個區段全部切在總表上面，一行都抽唔到。
+    pattern: /^Fidelity Retirement Master Trust - .*Fund$/,
+    fontSize: [29],
+    fontFamily: /NeuzeitGro-Bol/,
+    name: (text: string) => text.replace(/^Fidelity Retirement Master Trust - /, "").trim(),
+  },
+  allocation: {
+    // 富達冇統一的「資產分佈」標題：逐隻基金按類型披露不同維度，股票基金用行業，
+    // 混合基金用資產類別，債券基金另加貨幣及信用評級。維度標題原文照錄。
+    heading: FIDELITY_DIMENSION_BILINGUAL,
+    // 便覽最後幾頁的附錄用 4 級字把同一批表再縮印一次，最後一個區段會讀埋落去。
+    headingFontSize: [13],
+    headingLabel: (text: string) => `${text} ${FIDELITY_DIMENSION_ZH[text] ?? ""}`.trim(),
+    // 「行業投資分佈」在中欄，右邊係註腳而唔係另一塊披露，自動欄界推唔到右界。
+    columnWidth: 250,
+    // 左邊評論欄的斷字連字符排到 left 338，預設 30 pt 容差會把它收入欄內。
+    leftSlack: 20,
+  },
+  holdings: {
+    heading: /^Top 10 Holdings/,
+    headingFontSize: [13],
+    // 證券名換行時，百分比垂直置中排在兩段名稱之間（相距 5 至 6 pt），
+    // 而列與列之間相距 12 pt，所以容差要細過 12。
+    rowGap: 8,
+    // 部分基金（例如香港盈富基金）右邊冇另一塊披露，只有註腳，自動欄界推唔到右界。
+    columnWidth: 250,
+    // 十大投資項目以「TOTAL 總和」收尾，總和唔係一項投資。
+    stopAt: /^TOTAL|總和/,
+    // 左邊評論欄的斷字連字符排到 left 338，收入欄內會多出一行，令相鄰兩列併埋一齊。
+    leftSlack: 20,
+  },
+  asOf: { pattern: AS_OF_SLASH },
+} as const;
 
 /** 新地印在基金名稱之後的腳註（`Note 1`、`Note *, 1 and 6`），不屬名稱。 */
 const SHKP_NOTE = /\s*Note\s*[\d*,\s and]*$/;
@@ -384,40 +432,27 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
   },
   {
     scheme: "Fidelity Retirement Master Trust",
-    title: {
-      // 每隻基金一頁，頁首寫「計劃名 - 基金名」。前面幾頁的基金表現總表用同一批
-      // 基金名但係細字，認錯咗就會把 22 個區段全部切在總表上面，一行都抽唔到。
-      pattern: /^Fidelity Retirement Master Trust - .*Fund$/,
-      fontSize: [29],
-      fontFamily: /NeuzeitGro-Bol/,
-      name: (text) => text.replace(/^Fidelity Retirement Master Trust - /, "").trim(),
-    },
+    source: "mpfa-registry",
+    ...fidelityBlocks,
     allocation: {
-      // 富達冇統一的「資產分佈」標題：逐隻基金按類型披露不同維度，股票基金用行業，
-      // 混合基金用資產類別，債券基金另加貨幣及信用評級。維度標題原文照錄。
+      ...fidelityBlocks.allocation,
       heading: FIDELITY_DIMENSION,
-      // 便覽最後幾頁的附錄用 4 級字把同一批表再縮印一次，最後一個區段會讀埋落去。
-      headingFontSize: [13],
-      headingLabel: (text) => `${text} ${FIDELITY_DIMENSION_ZH[text] ?? ""}`.trim(),
-      // 「行業投資分佈」在中欄，右邊係註腳而唔係另一塊披露，自動欄界推唔到右界。
-      columnWidth: 250,
-      // 左邊評論欄的斷字連字符排到 left 338，預設 30 pt 容差會把它收入欄內。
-      leftSlack: 20,
     },
-    holdings: {
-      heading: /^Top 10 Holdings$/,
-      headingFontSize: [13],
-      // 證券名換行時，百分比垂直置中排在兩段名稱之間（相距 5 至 6 pt），
-      // 而列與列之間相距 12 pt，所以容差要細過 12。
-      rowGap: 8,
-      // 部分基金（例如香港盈富基金）右邊冇另一塊披露，只有註腳，自動欄界推唔到右界。
-      columnWidth: 250,
-      // 十大投資項目以「TOTAL 總和」收尾，總和唔係一項投資。
-      stopAt: /^TOTAL|總和/,
-      // 左邊評論欄的斷字連字符排到 left 338，收入欄內會多出一行，令相鄰兩列併埋一齊。
-      leftSlack: 20,
-    },
-    asOf: { pattern: AS_OF_SLASH },
+    holdings: { ...fidelityBlocks.holdings, heading: /^Top 10 Holdings$/ },
+  },
+  {
+    /**
+     * 受託人官網逐隻成分基金一份便覽
+     * （`fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-<代號>.pdf`）。
+     *
+     * 排版同積金局副本同一套（同一批字體級數、同樣三欄），只差係中英對照版：每個披露
+     * 標題後面緊接中文譯名，併行之後變成「Top 10 Holdings 十大主要投資項目」，
+     * 所以標題式樣唔可以用 `$` 收尾。中文譯名照樣由 `FIDELITY_DIMENSION_ZH` 對照，
+     * 兩個來源出返同一套標籤。
+     */
+    scheme: "Fidelity Retirement Master Trust",
+    source: "trustee",
+    ...fidelityBlocks,
   },
   {
     // 積金局便覽庫嗰份，版面全大寫標題、密集報告式配置表，持倉數字帶 `%`。
