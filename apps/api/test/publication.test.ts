@@ -675,6 +675,56 @@ describe("publication snapshot", () => {
     expect(undisclosed).not.toHaveProperty("factSheetDisclosure");
   });
 
+  it("serves the editorial asset-class buckets beside the verbatim fact sheet table", async () => {
+    const snapshotId = "snapshot-mapped-allocation";
+    const mappedAllocation = {
+      official: false,
+      mapVersion: "2026-09-08",
+      asOf: "2026-05-31",
+      sourceHeading: "ASSET ALLOCATION 資產分佈",
+      buckets: { equity: 33, bond: 64.48, cashAndOther: 2.52 },
+    };
+    await bindings.DB.prepare(
+      "INSERT INTO publication_snapshots (snapshot_id, published_at) VALUES (?, ?)",
+    )
+      .bind(snapshotId, "2026-08-29T00:00:00Z")
+      .run();
+    await bindings.DB.prepare(
+      "INSERT INTO fund_class_versions (snapshot_id, fund_class_id, payload) VALUES (?, ?, ?)",
+    )
+      .bind(
+        snapshotId,
+        "fund-mapped",
+        JSON.stringify({
+          snapshotId,
+          mappedAllocation,
+          fundClass: {
+            id: "fund-mapped",
+            schemeName: "AIA MPF - Prime Value Choice",
+            trusteeName: "測試受託人",
+            constituentFundName: "Capital Stable Portfolio",
+            fundClassName: "n.a.",
+            fundType: "Mixed Assets Fund",
+            dataAsOf: "2026-07-31",
+            verificationStatus: "verified",
+          },
+          provenance: { dataAsOf: "2026-07-31" },
+        }),
+      )
+      .run();
+    await bindings.DB.prepare(
+      "INSERT INTO current_publication (singleton, snapshot_id) VALUES (1, ?)",
+    )
+      .bind(snapshotId)
+      .run();
+
+    const body = (await (
+      await SELF.fetch("https://kwmpf.test/fund-classes/fund-mapped")
+    ).json()) as { mappedAllocation: unknown };
+
+    expect(body.mappedAllocation).toEqual(mappedAllocation);
+  });
+
   it("reports the data-as-of range of each scheme and the date behind each fund", async () => {
     const snapshotId = "snapshot-scheme-dates";
     await bindings.DB.prepare(

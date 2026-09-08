@@ -5,6 +5,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json --noEmit",
     "category-map": "bun src/build-fund-class-category-map.ts",
+    "allocation-label-map": "bun src/build-allocation-label-map.ts",
     "fact-sheet-allocation-report": "bun src/build-fact-sheet-allocation-report.ts",
     "fetch:platform": "bun src/fetch-platform.ts",
     "publication-seed": "bun src/build-staging-seed.ts",

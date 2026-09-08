@@ -711,7 +711,10 @@ describe("cumulative returns", () => {
     ).toBeVisible();
   });
 
-  function renderWithDisclosure(factSheetDisclosure: unknown) {
+  function renderWithDisclosure(
+    factSheetDisclosure: unknown,
+    extra: Record<string, unknown> = {},
+  ) {
     vi.stubGlobal(
       "fetch",
       vi.fn().mockResolvedValue(
@@ -725,6 +728,7 @@ describe("cumulative returns", () => {
             verificationStatus: "verified",
           },
           ...(factSheetDisclosure ? { factSheetDisclosure } : {}),
+          ...extra,
         }),
       ),
     );
@@ -863,6 +867,52 @@ describe("cumulative returns", () => {
     });
 
     expect(await screen.findByText(/十大持倉：官方未提供/)).toBeVisible();
+  });
+
+  it("shows editorial asset-class buckets separately from the verbatim table", async () => {
+    renderWithDisclosure(disclosure, {
+      mappedAllocation: {
+        official: false,
+        mapVersion: "2026-09-08",
+        asOf: "2025-11-30",
+        sourceHeading: "ASSET ALLOCATION 資產分佈",
+        buckets: { equity: 33, bond: 64.48, cashAndOther: 2.52 },
+      },
+    });
+
+    const mapped = await screen.findByRole("table", {
+      name: "編輯歸類的資產類別",
+    });
+    expect(
+      within(mapped).getByRole("rowheader", { name: "股票" }),
+    ).toBeVisible();
+    expect(within(mapped).getByText("33%")).toBeVisible();
+    expect(within(mapped).getByText("64.48%")).toBeVisible();
+    expect(within(mapped).getByText("2.52%")).toBeVisible();
+    expect(screen.getByText(/編輯歸類，非官方分類/)).toBeVisible();
+    expect(
+      screen.getByRole("table", { name: "ASSET ALLOCATION 資產分佈" }),
+    ).toBeVisible();
+  });
+
+  it("says when the official table is not an asset-class disclosure", async () => {
+    renderWithDisclosure(disclosure, {
+      mappedAllocation: {
+        official: false,
+        mapVersion: "2026-09-08",
+        asOf: "2025-11-30",
+        unavailable: true,
+        reason: "not-asset-class",
+      },
+    });
+
+    expect(await screen.findByText(/此維度官方未以資產類別披露/)).toBeVisible();
+    expect(
+      screen.queryByRole("table", { name: "編輯歸類的資產類別" }),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("table", { name: "ASSET ALLOCATION 資產分佈" }),
+    ).toBeVisible();
   });
 
   it("says so when no fact sheet disclosure pairs with the fund at all", async () => {

@@ -19,8 +19,9 @@
 ## Reference datasets
 
 `data/reference/` 存放使用者提供、非官方來源的參考資料，原始檔留在 `data/sources/`。
-目前有 Lipper 香港退休基金分類（`lipper-hk-pension-categories.json`，見 #194）
-及由它產生的基金對照表（`fund-class-category-map.json`）。對照表由
+目前有 Lipper 香港退休基金分類（`lipper-hk-pension-categories.json`，見 #194）、
+由它產生的基金對照表（`fund-class-category-map.json`），以及便覽配置標籤到
+股票／債券／現金及其他的編輯對照表（`allocation-label-map.json`，見 #211）。對照表由
 `bun --filter @kwmpf/coverage category-map <平台快照路徑>` 重建，會一併輸出與舊版的差異報告；
 未能配對的基金會報錯，不可靜默回退到平台 `fundType`。
 這些數據屬非官方來源，顯示時須標明出處及期別，不可與官方平台數據混為一談。
@@ -44,7 +45,7 @@ MPF Navigator 檔案的 Sheet1（風險取向配置比重）不在範圍內，�
 24 個計劃各自一份契約寫在 `fact-sheet-allocation-contracts.ts`。抽取靠座標：便覽是多欄
 雙語版面，`pdftotext -layout` 會把相鄰欄位併成同一行，所以一律行 `pdftohtml -xml`
 （`pdf-xml.ts`）。契約只描述「去邊度攞」，不描述「點樣改寫」——維度標題、標籤及證券名稱
-一律原文照錄，不做正規化或跨計劃映射（跨計劃比較是另一張票 #211）。
+一律原文照錄，不做正規化或跨計劃映射。跨計劃的三桶資產歸類是另一層，見下節。
 
 五條不可繞過的規則：
 
@@ -260,6 +261,34 @@ fundfact-sheet.pdf`，2026-06-30，積金局副本 2025-12-31）及新地
 `values-without-names`（有百分比但名稱畫成向量）、`overlaid-text-layer`（文字層疊印）。
 四個代號各自對應詳情頁一句中文措辭，英文原因不出街。新增缺口成因時要一併加代號同措辭，
 唔可以塞落現有代號當「其他」。
+
+## Editorial asset-class mapping
+
+第一版只把便覽配置映射到三個資產類別桶：股票／債券／現金及其他（#211 選 A）。
+地區與行業暫緩。映射是編輯判斷，不是官方分類。
+
+對照表在 `data/reference/allocation-label-map.json`，鍵是正規化後的標籤
+（插入中英空格、摺疊空白、去掉字母編號及註腳），值是 `equity` / `bond` /
+`cash_and_other` / `not_asset_class`。重建：
+
+`bun --filter @kwmpf/coverage allocation-label-map <fund-fact-sheet-disclosures.json>`
+
+會對照舊表輸出 `added` / `removed` / `recategorized`。已有對照表再出現差異就以
+非零狀態結束，未覆核不得發布。未出現在表內、又不是抽取垃圾的標籤會報錯，
+不可靜默丟進「其他」。
+
+套用規則：
+
+- 一張表的每一行都映射到三桶，合計絕對值在 80 至 120 之間，先可以出三桶。
+- 資產 × 地區（「香港股票」）可加總。
+- 純地區、純行業、評級、貨幣，或同一張表混了這些，走
+  `mappedAllocation.unavailable`，原因 `not-asset-class`。網站措辭是
+  「此維度官方未以資產類別披露」，不可把行業或地區百分比當成股票比例。
+- 圖表式披露沿用便覽的 `unavailableKinds`，不為它們發明數字。
+- 市場評論、回報列、標準差、標籤裏已有 `%` 的黏行，不當成配置列。若被略過的行
+  仍帶股票／債券／現金字眼，整張表都不可用，以免留下殘缺比例。
+- 原文表仍在 `factSheetDisclosure`。三桶寫在 payload 的 `mappedAllocation`，
+  `official: false`，顯示時必須標明「編輯歸類，非官方分類」。
 
 ## Fund size, launch date and calendar year returns
 
