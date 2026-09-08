@@ -147,6 +147,7 @@ type BrowseFundClass = {
   fundSizeAsOf?: string;
   returnsAsOf?: string;
   launchDate?: string;
+  isDisComponent?: "core_accumulation" | "age65_plus";
 };
 
 async function loadPublishedFundClasses(

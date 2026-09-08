@@ -11,6 +11,11 @@ import {
 } from "./category-map-lookup";
 import { loadAllocationLabelLookup } from "./allocation-label-lookup";
 import { buildComparisonGroupStats } from "./comparison-group-stats";
+import {
+  assertDisNameTypeAgreement,
+  reportSchemeDisCoverage,
+  tagDisComponents,
+} from "./dis-component";
 import { loadFactSheetDisclosureLookup } from "./fact-sheet-disclosure-lookup";
 import {
   assertFactSheetCoverage,
@@ -60,12 +65,23 @@ const allocationLabels = await loadAllocationLabelLookup(
   argument("--allocation-label-map"),
 );
 
+const disFunds = snapshot.records.map((record) => ({
+  fundClassId: record.fundClassId,
+  schemeName: record.identity.schemeName,
+  constituentFundName: record.identity.constituentFundName,
+  fundType: record.fundType,
+}));
+assertDisNameTypeAgreement(disFunds);
+const disTags = tagDisComponents(disFunds);
+const disSchemes = reportSchemeDisCoverage(disFunds);
+
 const sqlString = (value: string) => `'${value.replaceAll("'", "''")}'`;
 const sqlNumber = (value: number | null) => (value === null ? "NULL" : String(value));
 const publications = payload.records.map((record) => {
   const sourceRecord = snapshot.records.find(
     (candidate) => candidate.fundClassId === record.fundClassId,
   );
+  const isDisComponent = disTags.get(record.fundClassId);
   const fundClass = {
     id: record.fundClassId,
     ...record.identity,
@@ -74,6 +90,7 @@ const publications = payload.records.map((record) => {
     lipperCategory: categories.categoryOf(record.fundClassId),
     annualizedReturn1y: record.publicFields?.annualizedReturn1y,
     ...record.publicFields,
+    ...(isDisComponent ? { isDisComponent } : {}),
     unavailableFields: record.unavailableFields ?? [],
     verificationStatus: record.status,
     dataAsOf: record.dataAsOf,
@@ -151,5 +168,17 @@ console.log(
     snapshotId,
     records: payload.records.length,
     comparisonGroups: groupStats.length,
+    disComponents: {
+      tagged: disTags.size,
+      schemesComplete: disSchemes.filter((row) => row.status === "complete")
+        .length,
+      schemesUnavailable: disSchemes
+        .filter((row) => row.status === "unavailable")
+        .map((row) => ({
+          schemeName: row.schemeName,
+          missing: row.missing,
+          reason: row.reason,
+        })),
+    },
   }),
 );

@@ -51,6 +51,7 @@ type PublishedFundClass = {
     calendarYearReturns?: Record<string, number>;
     sinceLaunchReturnAnnualized?: number;
     sinceLaunchReturnCumulative?: number;
+    isDisComponent?: "core_accumulation" | "age65_plus";
   };
   provenance: {
     sourceUrl: string;
@@ -330,6 +331,16 @@ export function FundClassPage({
               <dt>成立日期</dt>
               <dd>{fundClass.launchDate ?? unavailable}</dd>
             </div>
+            {fundClass.isDisComponent && (
+              <div>
+                <dt>預設投資策略</dt>
+                <dd>
+                  {fundClass.isDisComponent === "core_accumulation"
+                    ? "核心累積基金"
+                    : "65歲後基金"}
+                </dd>
+              </div>
+            )}
           </dl>
           {fundSizeFreshness?.status === "stale" && (
             <p className="kw-status kw-status--warning">

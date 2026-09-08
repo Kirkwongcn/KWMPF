@@ -727,6 +727,50 @@ describe("publication snapshot", () => {
     expect(body.mappedAllocation).toEqual(mappedAllocation);
   });
 
+  it("serves the DIS constituent-fund tag from the published payload", async () => {
+    const snapshotId = "snapshot-dis-tag";
+    await bindings.DB.prepare(
+      "INSERT INTO publication_snapshots (snapshot_id, published_at) VALUES (?, ?)",
+    )
+      .bind(snapshotId, "2026-08-29T00:00:00Z")
+      .run();
+    await bindings.DB.prepare(
+      "INSERT INTO fund_class_versions (snapshot_id, fund_class_id, payload) VALUES (?, ?, ?)",
+    )
+      .bind(
+        snapshotId,
+        "fund-dis",
+        JSON.stringify({
+          snapshotId,
+          fundClass: {
+            id: "fund-dis",
+            schemeName: "AIA MPF - Prime Value Choice",
+            trusteeName: "測試受託人",
+            constituentFundName: "Core Accumulation Fund",
+            fundClassName: "n.a.",
+            fundType:
+              "Mixed Assets Fund - Default Investment Strategy - Core Accumulation Fund",
+            isDisComponent: "core_accumulation",
+            dataAsOf: "2026-07-31",
+            verificationStatus: "verified",
+          },
+          provenance: { dataAsOf: "2026-07-31" },
+        }),
+      )
+      .run();
+    await bindings.DB.prepare(
+      "INSERT INTO current_publication (singleton, snapshot_id) VALUES (1, ?)",
+    )
+      .bind(snapshotId)
+      .run();
+
+    const body = (await (
+      await SELF.fetch("https://kwmpf.test/fund-classes/fund-dis")
+    ).json()) as { fundClass: { isDisComponent?: string } };
+
+    expect(body.fundClass.isDisComponent).toBe("core_accumulation");
+  });
+
   it("serves frozen comparison-group averages from the snapshot, not a live recalculation", async () => {
     const snapshotId = "snapshot-group-stats";
     await bindings.DB.prepare(
