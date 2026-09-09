@@ -303,6 +303,18 @@ fundfact-sheet.pdf`，2026-06-30，積金局副本 2025-12-31）及新地
   三項平均都為空。某一指標少於 3 隻有數值，只清空該項平均。
 - 每個有已核實基金的比較組別都有一列。不可為了湊樣本而把行業或地區百分比當成股票。
 
+## DIS constituent funds
+
+預設投資策略由「核心累積基金」同「65歲後基金」兩隻獨立成分基金組成。
+`isDisComponent` 只對 `constituentFundName` 做完全匹配（大小寫、引號、破折號
+正規化），寫入 `core_accumulation` / `age65_plus`。唔用 `fundClassName`
+（嗰欄係 Class A／n.a.），亦唔做包含或前綴比對。
+
+已知全名寫在 `packages/coverage/src/dis-component.ts`。新名稱要人手加進名單；
+官方 `fundType` 寫明 DIS 但名稱不在名單內，發布會報錯，不可用基金種類補位。
+一個計劃缺任何一隻就整項 DIS 表現標示官方未提供（#241），唔估算。
+呢個標籤唔影響排名。
+
 ## Fund size, launch date and calendar year returns
 
 官方平台詳情頁另有 `Fund size (HKD Million)`（連自己的截至日期）、`Launch Date`、

@@ -62,6 +62,65 @@ describe("fund class page", () => {
     expect(fetch).toHaveBeenCalledWith(
       "https://api.test/fund-classes/mpfa-cf-429-class-i",
     );
+    expect(screen.queryByText("預設投資策略")).not.toBeInTheDocument();
+  });
+
+  it("labels a DIS core accumulation fund from the exact-name tag", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-dis-core",
+          fundClass: {
+            ...fixture.fundClass,
+            constituentFundName: "Principal Core Accumulation Fund",
+            isDisComponent: "core_accumulation",
+          },
+          provenance: {
+            sourceUrl: fixture.source.url,
+            dataAsOf: fixture.fundClass.dataAsOf,
+            retrievedAt: fixture.source.retrievedAt,
+            verificationStatus: "verified",
+          },
+        }),
+      ),
+    );
+
+    render(
+      <FundClassPage apiBaseUrl="https://api.test" fundClassId="dis-core" />,
+    );
+
+    expect(await screen.findByText("預設投資策略")).toBeVisible();
+    expect(screen.getByText("核心累積基金")).toBeVisible();
+  });
+
+  it("labels a DIS age 65 plus fund from the exact-name tag", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-dis-age65",
+          fundClass: {
+            ...fixture.fundClass,
+            constituentFundName: "Principal Age 65 Plus Fund",
+            isDisComponent: "age65_plus",
+          },
+          provenance: {
+            sourceUrl: fixture.source.url,
+            dataAsOf: fixture.fundClass.dataAsOf,
+            retrievedAt: fixture.source.retrievedAt,
+            verificationStatus: "verified",
+          },
+        }),
+      ),
+    );
+
+    render(
+      <FundClassPage apiBaseUrl="https://api.test" fundClassId="dis-age65" />,
+    );
+
+    expect(await screen.findByText("預設投資策略")).toBeVisible();
+    expect(screen.getByText("65歲後基金")).toBeVisible();
   });
 
   it("keeps site navigation and the sitewide disclaimer available", async () => {
