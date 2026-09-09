@@ -10,6 +10,7 @@ import {
   loadCategoryLookup,
 } from "./category-map-lookup";
 import { loadAllocationLabelLookup } from "./allocation-label-lookup";
+import { buildComparisonGroupStats } from "./comparison-group-stats";
 import { loadFactSheetDisclosureLookup } from "./fact-sheet-disclosure-lookup";
 import {
   assertFactSheetCoverage,
@@ -60,32 +61,33 @@ const allocationLabels = await loadAllocationLabelLookup(
 );
 
 const sqlString = (value: string) => `'${value.replaceAll("'", "''")}'`;
-const statements = [
-  "DELETE FROM current_publication;",
-  "DELETE FROM fund_class_versions;",
-  "DELETE FROM publication_snapshots;",
-  `INSERT INTO publication_snapshots (snapshot_id, published_at) VALUES (${sqlString(snapshotId)}, ${sqlString(snapshot.retrievedAt)});`,
-  ...payload.records.map((record) => {
-    const sourceRecord = snapshot.records.find(
-      (candidate) => candidate.fundClassId === record.fundClassId,
-    );
-    const fundClass = {
-      id: record.fundClassId,
-      ...record.identity,
-      fundType: sourceRecord?.fundType ?? "",
-      fundCategory: sourceRecord?.fundTypeDescriptor ?? "",
-      lipperCategory: categories.categoryOf(record.fundClassId),
-      annualizedReturn1y: record.publicFields?.annualizedReturn1y,
-      ...record.publicFields,
-      unavailableFields: record.unavailableFields ?? [],
-      verificationStatus: record.status,
-      dataAsOf: record.dataAsOf,
-    };
-    const factSheetDisclosure = disclosures.disclosureOf(record.fundClassId);
-    const mappedAllocation = factSheetDisclosure
-      ? allocationLabels.mapOf(factSheetDisclosure)
-      : undefined;
-    const body = JSON.stringify({
+const sqlNumber = (value: number | null) => (value === null ? "NULL" : String(value));
+const publications = payload.records.map((record) => {
+  const sourceRecord = snapshot.records.find(
+    (candidate) => candidate.fundClassId === record.fundClassId,
+  );
+  const fundClass = {
+    id: record.fundClassId,
+    ...record.identity,
+    fundType: sourceRecord?.fundType ?? "",
+    fundCategory: sourceRecord?.fundTypeDescriptor ?? "",
+    lipperCategory: categories.categoryOf(record.fundClassId),
+    annualizedReturn1y: record.publicFields?.annualizedReturn1y,
+    ...record.publicFields,
+    unavailableFields: record.unavailableFields ?? [],
+    verificationStatus: record.status,
+    dataAsOf: record.dataAsOf,
+  };
+  const factSheetDisclosure = disclosures.disclosureOf(record.fundClassId);
+  const mappedAllocation = factSheetDisclosure
+    ? allocationLabels.mapOf(factSheetDisclosure)
+    : undefined;
+  return {
+    fundClassId: record.fundClassId,
+    fundClass,
+    factSheetDisclosure,
+    mappedAllocation,
+    body: JSON.stringify({
       snapshotId,
       fundClass,
       classification: {
@@ -110,10 +112,44 @@ const statements = [
           fundOverviewGraceDays: FUND_OVERVIEW_GRACE_DAYS,
         },
       },
-    });
-    return `INSERT INTO fund_class_versions (snapshot_id, fund_class_id, payload) VALUES (${sqlString(snapshotId)}, ${sqlString(record.fundClassId)}, ${sqlString(body)});`;
-  }),
+    }),
+  };
+});
+const groupStats = buildComparisonGroupStats(
+  publications.map((publication) => ({
+    fundClassId: publication.fundClassId,
+    verificationStatus: publication.fundClass.verificationStatus,
+    lipperCategory: publication.fundClass.lipperCategory,
+    fundType: publication.fundClass.fundType,
+    fundCategory: publication.fundClass.fundCategory,
+    unavailableFields: publication.fundClass.unavailableFields,
+    fundRiskIndicator: publication.fundClass.fundRiskIndicator,
+    mappedAllocation: publication.mappedAllocation,
+    factSheetDisclosure: publication.factSheetDisclosure,
+  })),
+);
+const statements = [
+  "DELETE FROM current_publication;",
+  "DELETE FROM comparison_group_stats;",
+  "DELETE FROM fund_class_versions;",
+  "DELETE FROM publication_snapshots;",
+  `INSERT INTO publication_snapshots (snapshot_id, published_at) VALUES (${sqlString(snapshotId)}, ${sqlString(snapshot.retrievedAt)});`,
+  ...publications.map(
+    (publication) =>
+      `INSERT INTO fund_class_versions (snapshot_id, fund_class_id, payload) VALUES (${sqlString(snapshotId)}, ${sqlString(publication.fundClassId)}, ${sqlString(publication.body)});`,
+  ),
+  ...groupStats.map(
+    (row) =>
+      `INSERT INTO comparison_group_stats (snapshot_id, comparison_group, avg_allocation, avg_top10_concentration, avg_volatility_3y, fund_count, allocation_count, top10_count, volatility_count, insufficient_sample) VALUES (${sqlString(snapshotId)}, ${sqlString(row.comparisonGroup)}, ${row.avgAllocation === null ? "NULL" : sqlString(JSON.stringify(row.avgAllocation))}, ${sqlNumber(row.avgTop10Concentration)}, ${sqlNumber(row.avgVolatility3y)}, ${row.fundCount}, ${row.allocationCount}, ${row.top10Count}, ${row.volatilityCount}, ${row.insufficientSample ? 1 : 0});`,
+  ),
   `INSERT INTO current_publication (singleton, snapshot_id) VALUES (1, ${sqlString(snapshotId)});`,
 ];
 await writeFile(outputPath, `${statements.join("\n")}\n`);
-console.log(JSON.stringify({ outputPath, snapshotId, records: payload.records.length }));
+console.log(
+  JSON.stringify({
+    outputPath,
+    snapshotId,
+    records: payload.records.length,
+    comparisonGroups: groupStats.length,
+  }),
+);

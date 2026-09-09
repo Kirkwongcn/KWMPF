@@ -15,12 +15,14 @@ describe("edge caching", () => {
   beforeEach(async () => {
     await bindings.DB.exec(`
       DROP TABLE IF EXISTS current_publication;
+      DROP TABLE IF EXISTS comparison_group_stats;
       DROP TABLE IF EXISTS fund_class_versions;
       DROP TABLE IF EXISTS publication_snapshots;
       DROP TABLE IF EXISTS candidate_batches;
       CREATE TABLE candidate_batches (batch_id TEXT PRIMARY KEY, status TEXT NOT NULL, raw_key TEXT NOT NULL, raw_sha256 TEXT NOT NULL);
       CREATE TABLE publication_snapshots (snapshot_id TEXT PRIMARY KEY, published_at TEXT NOT NULL);
       CREATE TABLE fund_class_versions (snapshot_id TEXT NOT NULL, fund_class_id TEXT NOT NULL, payload TEXT NOT NULL, PRIMARY KEY (snapshot_id, fund_class_id));
+      CREATE TABLE comparison_group_stats (snapshot_id TEXT NOT NULL, comparison_group TEXT NOT NULL, avg_allocation TEXT, avg_top10_concentration REAL, avg_volatility_3y REAL, fund_count INTEGER NOT NULL, allocation_count INTEGER NOT NULL, top10_count INTEGER NOT NULL, volatility_count INTEGER NOT NULL, insufficient_sample INTEGER NOT NULL, PRIMARY KEY (snapshot_id, comparison_group));
       CREATE TABLE current_publication (singleton INTEGER PRIMARY KEY CHECK (singleton = 1), snapshot_id TEXT NOT NULL);
     `);
   });
@@ -60,6 +62,7 @@ describe("edge caching", () => {
       "/summary",
       "/schemes",
       "/rankings?period=1",
+      "/comparison-group-stats",
     ]) {
       const response = await SELF.fetch(`https://kwmpf.test${path}`);
 

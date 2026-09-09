@@ -17,7 +17,7 @@ Cloudflare D1 免費額度每日 500 萬行，換算後只支撐約 2,000 名訪
 在 API 加入 `publicationCache()` middleware（`apps/api/src/caching.ts`）：
 
 1. **可快取路徑**僅限已發布的唯讀端點：`/fund-classes/:id`、`/search`、`/filters`、
-   `/summary`、`/schemes`、`/rankings`。
+   `/summary`、`/schemes`、`/rankings`、`/comparison-group-stats`。
 2. **只有在 `current_publication` 有已發布快照、且回應為 200 時**才發出
    `Cache-Control: public, max-age=300, stale-while-revalidate=600` 及
    `ETag: "<snapshotId>"`。

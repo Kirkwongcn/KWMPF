@@ -15,6 +15,7 @@ const CACHEABLE_PATHS = [
   /^\/summary$/,
   /^\/schemes$/,
   /^\/rankings$/,
+  /^\/comparison-group-stats$/,
 ];
 
 export const isCacheablePath = (path: string): boolean =>

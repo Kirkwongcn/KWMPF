@@ -290,6 +290,19 @@ fundfact-sheet.pdf`，2026-06-30，積金局副本 2025-12-31）及新地
 - 原文表仍在 `factSheetDisclosure`。三桶寫在 payload 的 `mappedAllocation`，
   `official: false`，顯示時必須標明「編輯歸類，非官方分類」。
 
+## Comparison group stats
+
+`publication-seed` 會按 Lipper 比較組別（`apps/api/src/comparison-group.ts` 同一口徑）
+計算每個組別的平均值，寫入 `comparison_group_stats`，每個快照凍結一份。網站只讀
+`GET /comparison-group-stats`，唔即場重算。
+
+- 資產配置平均來自 `mappedAllocation` 三桶；未以資產類別披露的基金不計入。
+- 十大持倉集中度是便覽十大持倉百分比的合計；任何一筆冇披露比重就不計入該基金。
+- 三年波幅用官方平台的 `fundRiskIndicator`（年度化標準差），不另行由月度序列反推。
+- 待核實／資料不足的基金不計入。組別少於 3 隻已核實基金會標示 `insufficientSample`，
+  三項平均都為空。某一指標少於 3 隻有數值，只清空該項平均。
+- 每個有已核實基金的比較組別都有一列。不可為了湊樣本而把行業或地區百分比當成股票。
+
 ## Fund size, launch date and calendar year returns
 
 官方平台詳情頁另有 `Fund size (HKD Million)`（連自己的截至日期）、`Launch Date`、
