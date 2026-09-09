@@ -1628,4 +1628,165 @@ describe("publication snapshot", () => {
       reason: "回報、費用及風險級別分開排序，網站不會合成單一推薦總分。",
     });
   });
+
+  async function seedInterpretationSnapshot(options?: {
+    insufficientSample?: boolean;
+    missingFundValues?: boolean;
+  }) {
+    const snapshotId = `snapshot-interpretation-${options?.insufficientSample ? "small" : "full"}-${options?.missingFundValues ? "missing" : "values"}`;
+    await bindings.DB.prepare(
+      "INSERT INTO publication_snapshots (snapshot_id, published_at) VALUES (?, ?)",
+    )
+      .bind(snapshotId, "2026-09-10T00:00:00Z")
+      .run();
+    await bindings.DB.prepare(
+      "INSERT INTO fund_class_versions (snapshot_id, fund_class_id, payload) VALUES (?, ?, ?)",
+    )
+      .bind(
+        snapshotId,
+        "interpretation-fund",
+        JSON.stringify({
+          snapshotId,
+          fundClass: {
+            id: "interpretation-fund",
+            fundClassName: "Class A",
+            constituentFundName: "測試基金",
+            schemeName: "測試計劃",
+            trusteeName: "測試受託人",
+            fundType: "Equity Fund",
+            fundCategory: "Hong Kong Equity Fund",
+            lipperCategory: "Hong Kong Equity",
+            verificationStatus: "verified",
+            ...(options?.missingFundValues ? {} : { fundRiskIndicator: 17 }),
+          },
+          ...(options?.missingFundValues
+            ? {}
+            : {
+                mappedAllocation: {
+                  official: false,
+                  mapVersion: "test",
+                  asOf: "2026-06-30",
+                  sourceHeading: "Asset Allocation",
+                  buckets: { equity: 94, bond: 3, cashAndOther: 3 },
+                },
+                factSheetDisclosure: {
+                  unavailableFields: [],
+                  topHoldings: [
+                    { rank: 1, security: "A", percent: 20 },
+                    { rank: 2, security: "B", percent: 13 },
+                  ],
+                },
+              }),
+        }),
+      )
+      .run();
+    await bindings.DB.prepare(
+      `INSERT INTO comparison_group_stats (
+         snapshot_id, comparison_group, avg_allocation, avg_top10_concentration,
+         avg_volatility_3y, fund_count, allocation_count, top10_count, volatility_count,
+         insufficient_sample
+       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    )
+      .bind(
+        snapshotId,
+        "Hong Kong Equity",
+        JSON.stringify({ equity: 92, bond: 3, cashAndOther: 5 }),
+        30,
+        20,
+        options?.insufficientSample ? 2 : 8,
+        options?.insufficientSample ? 2 : 8,
+        options?.insufficientSample ? 2 : 8,
+        options?.insufficientSample ? 2 : 8,
+        options?.insufficientSample ? 1 : 0,
+      )
+      .run();
+    await bindings.DB.prepare(
+      "INSERT INTO current_publication (singleton, snapshot_id) VALUES (1, ?)",
+    )
+      .bind(snapshotId)
+      .run();
+    return snapshotId;
+  }
+
+  it("returns snapshot-scoped fund values, group averages, and rule-based interpretations", async () => {
+    const snapshotId = await seedInterpretationSnapshot();
+    const response = await SELF.fetch(
+      "https://kwmpf.test/fund-classes/interpretation-fund/interpretation",
+    );
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({
+      snapshotId,
+      fundClassId: "interpretation-fund",
+      comparisonGroup: "Hong Kong Equity",
+      comparisonGroupSource: "lipper",
+      values: {
+        equity: { fund: 94, groupAverage: 92, official: false },
+        top10Concentration: { fund: 33, groupAverage: 30 },
+        volatility3y: { fund: 17, groupAverage: 20 },
+      },
+      interpretation: {
+        thresholdVersion: "2026-09-10-trial-1",
+        thresholdStatus: "trial",
+        equity: {
+          status: "similar",
+          text: "股票配置（編輯歸類，非官方分類） 94%，與同組別平均相若。",
+        },
+        top10Concentration: {
+          status: "higher",
+          text: "十大持倉佔比 33%，比同組別平均高 3 個百分點。",
+        },
+        volatility3y: {
+          status: "lower",
+          text: "3年波幅 17%，比同組別平均低 3 個百分點。",
+        },
+      },
+    });
+  });
+
+  it("returns explicit unavailable and insufficient-sample states", async () => {
+    await seedInterpretationSnapshot({
+      insufficientSample: true,
+      missingFundValues: true,
+    });
+    const body = (await (
+      await SELF.fetch(
+        "https://kwmpf.test/fund-classes/interpretation-fund/interpretation",
+      )
+    ).json()) as {
+      values: Record<string, { fund: number | null }>;
+      interpretation: Record<string, { status?: string }>;
+    };
+
+    expect(
+      Object.values(body.values).every((value) => value.fund === null),
+    ).toBe(true);
+    expect(body.interpretation.equity?.status).toBe("insufficient-sample");
+    expect(body.interpretation.top10Concentration?.status).toBe(
+      "insufficient-sample",
+    );
+    expect(body.interpretation.volatility3y?.status).toBe(
+      "insufficient-sample",
+    );
+  });
+
+  it("does not expose interpretation for an unpublished fund", async () => {
+    const response = await SELF.fetch(
+      "https://kwmpf.test/fund-classes/missing/interpretation",
+    );
+    expect(response.status).toBe(404);
+    expect(await response.json()).toEqual({ error: "Fund class not found" });
+  });
+
+  it("rejects period parameters instead of pretending they change snapshot factors", async () => {
+    const response = await SELF.fetch(
+      "https://kwmpf.test/fund-classes/interpretation-fund/interpretation?period=3",
+    );
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({
+      error: "Interpretation periods are not supported",
+      reason:
+        "資產配置、十大持倉集中度及三年波幅均為發布快照當期資料，不會隨回報期間改變。",
+    });
+  });
 });

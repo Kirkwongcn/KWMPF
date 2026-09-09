@@ -6,7 +6,11 @@ import {
   publishCandidate,
   type FundClassFixture,
 } from "../src/publication";
-import { cacheKeyFor, currentPublicationVersion } from "../src/caching";
+import {
+  cacheKeyFor,
+  currentPublicationVersion,
+  isCacheablePath,
+} from "../src/caching";
 
 describe("edge caching", () => {
   const bindings = env as unknown as Parameters<typeof archiveCandidate>[0];
@@ -25,6 +29,10 @@ describe("edge caching", () => {
       CREATE TABLE comparison_group_stats (snapshot_id TEXT NOT NULL, comparison_group TEXT NOT NULL, avg_allocation TEXT, avg_top10_concentration REAL, avg_volatility_3y REAL, fund_count INTEGER NOT NULL, allocation_count INTEGER NOT NULL, top10_count INTEGER NOT NULL, volatility_count INTEGER NOT NULL, insufficient_sample INTEGER NOT NULL, PRIMARY KEY (snapshot_id, comparison_group));
       CREATE TABLE current_publication (singleton INTEGER PRIMARY KEY CHECK (singleton = 1), snapshot_id TEXT NOT NULL);
     `);
+  });
+
+  it("recognizes the interpretation endpoint as published content", () => {
+    expect(isCacheablePath("/fund-classes/fund-a/interpretation")).toBe(true);
   });
 
   it("lets the edge cache a published fund class and ties it to the snapshot", async () => {

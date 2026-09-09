@@ -14,6 +14,7 @@ import {
   type FreshnessPolicy,
 } from "./freshness";
 import type { PublicationBindings } from "./publication";
+import { interpretFund } from "../../../packages/coverage/src/fund-interpretation";
 
 type Bindings = PublicationBindings & {
   RELEASE_VERSION: string;
@@ -149,6 +150,34 @@ type BrowseFundClass = {
   launchDate?: string;
   isDisComponent?: "core_accumulation" | "age65_plus";
 };
+
+type PublishedFundPayload = {
+  fundClass: BrowseFundClass & { unavailableFields?: string[] };
+  mappedAllocation?: MappedAllocation;
+  factSheetDisclosure?: FactSheetDisclosure;
+};
+
+function top10Concentration(
+  disclosure: FactSheetDisclosure | undefined,
+): number | undefined {
+  if (
+    !disclosure ||
+    disclosure.unavailableFields.includes("topHoldings") ||
+    disclosure.topHoldings.length === 0 ||
+    disclosure.topHoldings.some(
+      (holding) =>
+        typeof holding.percent !== "number" ||
+        !Number.isFinite(holding.percent),
+    )
+  ) {
+    return undefined;
+  }
+  return Number(
+    disclosure.topHoldings
+      .reduce((sum, holding) => sum + holding.percent!, 0)
+      .toFixed(2),
+  );
+}
 
 async function loadPublishedFundClasses(
   db: PublicationBindings["DB"],
@@ -354,6 +383,107 @@ function publishedComparisonGroupStats(row: ComparisonGroupStatsRow) {
     insufficientSample: row.insufficient_sample === 1,
   };
 }
+
+app.get("/fund-classes/:id/interpretation", async (context) => {
+  if (
+    context.req.query("period") !== undefined ||
+    context.req.query("startMonth") !== undefined ||
+    context.req.query("endMonth") !== undefined
+  ) {
+    return context.json(
+      {
+        error: "Interpretation periods are not supported",
+        reason:
+          "資產配置、十大持倉集中度及三年波幅均為發布快照當期資料，不會隨回報期間改變。",
+      },
+      400,
+    );
+  }
+  const row = await context.env.DB.prepare(
+    `SELECT c.snapshot_id, f.payload
+     FROM current_publication c
+     JOIN fund_class_versions f ON f.snapshot_id = c.snapshot_id
+     WHERE c.singleton = 1 AND f.fund_class_id = ?`,
+  )
+    .bind(context.req.param("id"))
+    .first<{ snapshot_id: string; payload: string }>();
+
+  if (!row) return context.json({ error: "Fund class not found" }, 404);
+
+  const published = JSON.parse(row.payload) as PublishedFundPayload;
+  const comparisonGroup = comparisonGroupFor(published.fundClass);
+  const stats = await context.env.DB.prepare(
+    `SELECT comparison_group, avg_allocation, avg_top10_concentration, avg_volatility_3y,
+            fund_count, allocation_count, top10_count, volatility_count, insufficient_sample
+     FROM comparison_group_stats
+     WHERE snapshot_id = ? AND comparison_group = ?`,
+  )
+    .bind(row.snapshot_id, comparisonGroup.name)
+    .first<ComparisonGroupStatsRow>();
+
+  if (!stats) {
+    return context.json(
+      { error: "Comparison group statistics not found" },
+      404,
+    );
+  }
+
+  const group = publishedComparisonGroupStats(stats);
+  const mappedAllocation = published.mappedAllocation;
+  const equity =
+    mappedAllocation && !("unavailable" in mappedAllocation)
+      ? mappedAllocation.buckets.equity
+      : undefined;
+  const values = {
+    equity,
+    top10Concentration: top10Concentration(published.factSheetDisclosure),
+    volatility3y: published.fundClass.unavailableFields?.includes(
+      "fundRiskIndicator",
+    )
+      ? undefined
+      : published.fundClass.fundRiskIndicator,
+  };
+  const interpretation = interpretFund(values, {
+    comparisonGroup: group.comparisonGroup,
+    avgAllocation: group.avgAllocation
+      ? {
+          equity: group.avgAllocation.equity,
+          bond: group.avgAllocation.bond,
+          cashAndOther: group.avgAllocation.cashAndOther,
+        }
+      : null,
+    avgTop10Concentration: group.avgTop10Concentration,
+    avgVolatility3y: group.avgVolatility3y,
+    fundCount: group.fundCount,
+    allocationCount: group.allocationCount,
+    top10Count: group.top10Count,
+    volatilityCount: group.volatilityCount,
+    insufficientSample: group.insufficientSample,
+  });
+
+  return context.json({
+    snapshotId: row.snapshot_id,
+    fundClassId: published.fundClass.id,
+    comparisonGroup: comparisonGroup.name,
+    comparisonGroupSource: comparisonGroup.source,
+    values: {
+      equity: {
+        fund: values.equity ?? null,
+        groupAverage: group.avgAllocation?.equity ?? null,
+        official: false,
+      },
+      top10Concentration: {
+        fund: values.top10Concentration ?? null,
+        groupAverage: group.avgTop10Concentration,
+      },
+      volatility3y: {
+        fund: values.volatility3y ?? null,
+        groupAverage: group.avgVolatility3y,
+      },
+    },
+    interpretation,
+  });
+});
 
 app.get("/comparison-group-stats", async (context) => {
   const current = await context.env.DB.prepare(
