@@ -10,6 +10,7 @@ export const UNCACHEABLE_CACHE_CONTROL = "no-store";
 
 const CACHEABLE_PATHS = [
   /^\/fund-classes\/[^/]+$/,
+  /^\/fund-classes\/[^/]+\/interpretation$/,
   /^\/search$/,
   /^\/filters$/,
   /^\/summary$/,
