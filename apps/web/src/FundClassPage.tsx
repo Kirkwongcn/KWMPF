@@ -71,6 +71,7 @@ type PublishedFundClass = {
     ageDays: number | null;
   };
   factSheetDisclosure?: FactSheetDisclosure;
+  mappedAllocation?: MappedAllocation;
 };
 
 /**
@@ -102,6 +103,22 @@ type FactSheetUnavailableKind =
   | "values-without-names"
   | "overlaid-text-layer";
 
+type MappedAllocation =
+  | {
+      official: false;
+      mapVersion: string;
+      asOf: string;
+      sourceHeading: string;
+      buckets: { equity: number; bond: number; cashAndOther: number };
+    }
+  | {
+      official: false;
+      mapVersion: string;
+      asOf?: string;
+      unavailable: true;
+      reason: FactSheetUnavailableKind | "not-asset-class";
+    };
+
 /**
  * 「官方未提供」同「官方以圖表披露」是兩回事，票 #210 要求分開講。
  * 抽取層在知道分別那一刻記下代號，這裡只做對照，不靠原因文字反推。
@@ -115,6 +132,31 @@ const unavailableWording: Record<FactSheetUnavailableKind, string> = {
   "overlaid-text-layer":
     "官方文件無法可靠讀取。便覽的文字層把另一隻基金的同一張表疊印在同一位置，分不清哪個數值屬哪一隻基金。",
 };
+
+const mappedBucketLabels = [
+  ["equity", "股票"],
+  ["bond", "債券"],
+  ["cashAndOther", "現金及其他"],
+] as const;
+
+function hasMappedBuckets(
+  mapped: MappedAllocation,
+): mapped is Extract<
+  MappedAllocation,
+  { buckets: { equity: number; bond: number; cashAndOther: number } }
+> {
+  return !("unavailable" in mapped && mapped.unavailable);
+}
+
+function mappedUnavailableNote(mapped: MappedAllocation): string | undefined {
+  if (hasMappedBuckets(mapped) || mapped.reason !== "not-asset-class")
+    return undefined;
+  return "此維度官方未以資產類別披露。便覽用的是地區、行業或其他分類，本網站不會把那些百分比改寫成股票／債券／現金比例。";
+}
+
+function formatEditorialPercent(value: number) {
+  return `${value}%`;
+}
 
 function unavailableNote(field: string, disclosure: FactSheetDisclosure) {
   if (!disclosure.unavailableFields.includes(field)) return undefined;
@@ -249,6 +291,7 @@ export function FundClassPage({
     fundClass.fundSizeAsOf !== fundClass.returnsAsOf,
   );
   const factSheetDisclosure = publication.factSheetDisclosure;
+  const mappedAllocation = publication.mappedAllocation;
   // 便覽比平台快照落後幾個月，兩個截至日期各自保留，唔同期就要講明並非完全可比。
   const factSheetDatesDiffer = Boolean(
     factSheetDisclosure &&
@@ -548,6 +591,41 @@ export function FundClassPage({
                   {provenance.dataAsOf}，兩者期別不同，並非完全可比。
                 </p>
               )}
+              {mappedAllocation && hasMappedBuckets(mappedAllocation) && (
+                <div className="kw-table-scroll">
+                  <table className="kw-table" aria-label="編輯歸類的資產類別">
+                    <caption>編輯歸類的資產類別</caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">項目</th>
+                        <th scope="col">比重</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {mappedBucketLabels.map(([key, label]) => (
+                        <tr key={key}>
+                          <th scope="row">{label}</th>
+                          <td className="kw-return">
+                            {formatEditorialPercent(
+                              mappedAllocation.buckets[key],
+                            )}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  <p className="kw-muted" role="note">
+                    編輯歸類，非官方分類。對照表期別{" "}
+                    {mappedAllocation.mapVersion}
+                    。下面的表仍是便覽原文。
+                  </p>
+                </div>
+              )}
+              {mappedAllocation && mappedUnavailableNote(mappedAllocation) && (
+                <p className="kw-muted" role="note">
+                  編輯歸類：{mappedUnavailableNote(mappedAllocation)}
+                </p>
+              )}
               {factSheetDisclosure.allocations.map((dimension) => (
                 <div className="kw-table-scroll" key={dimension.heading}>
                   <table className="kw-table" aria-label={dimension.heading}>
@@ -608,7 +686,7 @@ export function FundClassPage({
                 </p>
               )}
               <p className="kw-muted">
-                維度標題、項目名稱及證券名稱一律照便覽原文，比重的小數位數沿用披露本身；本網站不作正規化，亦不與其他計劃的維度對應。
+                維度標題、項目名稱及證券名稱一律照便覽原文，比重的小數位數沿用披露本身。股票／債券／現金及其他三個桶是編輯歸類，不是官方分類，不會覆蓋原文。
               </p>
             </>
           ) : (

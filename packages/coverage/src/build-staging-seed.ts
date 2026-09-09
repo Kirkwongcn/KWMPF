@@ -9,6 +9,7 @@ import {
   assertCategoryCoverage,
   loadCategoryLookup,
 } from "./category-map-lookup";
+import { loadAllocationLabelLookup } from "./allocation-label-lookup";
 import { loadFactSheetDisclosureLookup } from "./fact-sheet-disclosure-lookup";
 import {
   assertFactSheetCoverage,
@@ -54,6 +55,9 @@ assertFactSheetCoverage(
 const disclosures = await loadFactSheetDisclosureLookup(
   argument("--fact-sheet-disclosures"),
 );
+const allocationLabels = await loadAllocationLabelLookup(
+  argument("--allocation-label-map"),
+);
 
 const sqlString = (value: string) => `'${value.replaceAll("'", "''")}'`;
 const statements = [
@@ -78,6 +82,9 @@ const statements = [
       dataAsOf: record.dataAsOf,
     };
     const factSheetDisclosure = disclosures.disclosureOf(record.fundClassId);
+    const mappedAllocation = factSheetDisclosure
+      ? allocationLabels.mapOf(factSheetDisclosure)
+      : undefined;
     const body = JSON.stringify({
       snapshotId,
       fundClass,
@@ -92,7 +99,7 @@ const statements = [
         capturedAt: factSheets.capturedAt,
         registerUrl: factSheets.registerUrl,
       },
-      ...(factSheetDisclosure ? { factSheetDisclosure } : {}),
+      ...(factSheetDisclosure ? { factSheetDisclosure, mappedAllocation } : {}),
       provenance: {
         sourceUrl: record.sourceUrl,
         dataAsOf: record.dataAsOf,

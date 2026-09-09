@@ -54,6 +54,8 @@ app.get("/fund-classes/:id", async (context) => {
     // 便覽的配置及十大持倉原文照錄，帶住自己的 `factSheetAsOf`（比平台快照落後幾個月）。
     // 配對唔到或者官方以圖表披露的基金冇呢一段，唔可以留白當零。
     factSheetDisclosure?: FactSheetDisclosure;
+    // 編輯歸類的三桶資產比例，不是官方分類。原文表仍在 factSheetDisclosure。
+    mappedAllocation?: MappedAllocation;
   };
   const group = comparisonGroupFor(published.fundClass);
   const fundSizeAsOf = published.fundClass.fundSizeAsOf;
@@ -104,6 +106,27 @@ type FactSheetDisclosure = {
     | "overlaid-text-layer"
   >;
 };
+
+type MappedAllocation =
+  | {
+      official: false;
+      mapVersion: string;
+      asOf: string;
+      sourceHeading: string;
+      buckets: { equity: number; bond: number; cashAndOther: number };
+    }
+  | {
+      official: false;
+      mapVersion: string;
+      asOf?: string;
+      unavailable: true;
+      reason:
+        | "not-asset-class"
+        | "not-disclosed"
+        | "chart-only"
+        | "values-without-names"
+        | "overlaid-text-layer";
+    };
 
 type BrowseFundClass = {
   id: string;
