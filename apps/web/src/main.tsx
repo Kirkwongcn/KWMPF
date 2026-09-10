@@ -4,6 +4,7 @@ import { App } from "./App";
 import { FundClassPage } from "./FundClassPage";
 import { FundsPage } from "./FundsPage";
 import { RankingsPage } from "./RankingsPage";
+import { SchemeComparePage } from "./SchemeComparePage";
 import { SchemesPage } from "./SchemesPage";
 import "./styles.css";
 
@@ -18,6 +19,7 @@ const fundClassMatch = window.location.pathname.match(
   /^\/fund-classes\/([^/]+)$/,
 );
 const fundClassId = fundClassMatch?.[1];
+const isSchemeComparePage = window.location.pathname === "/schemes/compare";
 const isSchemesPage = window.location.pathname === "/schemes";
 const isRankingsPage = window.location.pathname === "/rankings";
 const isFundsPage = window.location.pathname === "/funds";
@@ -44,6 +46,11 @@ createRoot(root).render(
         initialTrustee={params.get("trustee") ?? "all"}
         initialRiskClass={params.get("riskClass") ?? "all"}
         initialQuery={params.get("q") ?? ""}
+      />
+    ) : isSchemeComparePage ? (
+      <SchemeComparePage
+        apiBaseUrl={apiBaseUrl}
+        search={window.location.search}
       />
     ) : isSchemesPage ? (
       <SchemesPage apiBaseUrl={apiBaseUrl} />

@@ -74,10 +74,13 @@ function dataAsOfLabel(dataAsOf: Scheme["dataAsOf"]) {
     : `${dataAsOf.earliest} – ${dataAsOf.latest}`;
 }
 
+const COMPARE_LIMIT = 4;
+
 export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
   const [schemes, setSchemes] = useState<Scheme[] | null>(null);
   const [sortBy, setSortBy] = useState<"name" | "fee">("name");
   const [horizon, setHorizon] = useState<Horizon>("1");
+  const [selected, setSelected] = useState<string[]>([]);
   useEffect(() => {
     fetch(`${apiBaseUrl}/schemes`)
       .then((response) => response.json() as Promise<Scheme[]>)
@@ -97,6 +100,21 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
       return a.managementFee.median - b.managementFee.median;
     });
   }, [schemes, sortBy]);
+
+  const atLimit = selected.length >= COMPARE_LIMIT;
+  const compareHref =
+    selected.length === 0
+      ? undefined
+      : `/schemes/compare?ids=${selected.map(encodeURIComponent).join(",")}`;
+
+  function toggleScheme(schemeName: string) {
+    setSelected((current) => {
+      if (current.includes(schemeName))
+        return current.filter((name) => name !== schemeName);
+      if (current.length >= COMPARE_LIMIT) return current;
+      return [...current, schemeName];
+    });
+  }
 
   return (
     <SiteChrome
@@ -140,8 +158,33 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
                 ))}
               </select>
             </p>
+            <div className="kw-field scheme-compare-picker">
+              <p className="scheme-compare-picker__count" aria-live="polite">
+                已選 {selected.length}/{COMPARE_LIMIT} 個計劃比較
+              </p>
+              {compareHref ? (
+                <a className="kw-button" href={compareHref}>
+                  比較已選計劃
+                </a>
+              ) : (
+                <button className="kw-button" type="button" disabled>
+                  比較已選計劃
+                </button>
+              )}
+            </div>
           </div>
           <div className="kw-toolbar__notes">
+            <p className="kw-muted">
+              勾選最多 {COMPARE_LIMIT}{" "}
+              個計劃後按「比較已選計劃」，可並排對比受託人、基金選擇、FER 及 DIS
+              表現。
+            </p>
+            {atLimit && (
+              <p className="kw-status kw-status--warning" role="status">
+                一次最多比較 {COMPARE_LIMIT}{" "}
+                個計劃。請先取消其中一個，才能再勾選。
+              </p>
+            )}
             <p className="kw-muted">
               計劃內的基金按所選期間的官方年率化回報由高至低排列，官方未提供回報的排在最後。
             </p>
@@ -171,8 +214,23 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
             const withReturn = funds.filter(
               (fund) => horizonReturn(fund, horizon) !== undefined,
             ).length;
+            const checked = selected.includes(scheme.schemeName);
+            const checkboxDisabled = atLimit && !checked;
             return (
-              <article key={scheme.schemeName} className="kw-card scheme-card">
+              <article
+                key={scheme.schemeName}
+                className={`kw-card scheme-card${checked ? " scheme-card--selected" : ""}`}
+              >
+                <label className="scheme-card__select">
+                  <input
+                    type="checkbox"
+                    checked={checked}
+                    disabled={checkboxDisabled}
+                    onChange={() => toggleScheme(scheme.schemeName)}
+                    aria-label={`選擇 ${scheme.schemeName} 作比較`}
+                  />
+                  <span>加入比較</span>
+                </label>
                 <h3>{scheme.schemeName}</h3>
                 <p className="kw-muted scheme-card__trustee">
                   {scheme.trusteeName}

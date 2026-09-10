@@ -87,6 +87,24 @@ test("由計劃比較頁可追查至個別基金詳情", async ({ page }) => {
   ).toBeVisible();
 });
 
+test("勾選兩個計劃後可進入逐項比較頁", async ({ page }) => {
+  await page.goto("/schemes");
+  const cards = cardsOf(page);
+  await expect(cards.first()).toBeVisible();
+
+  const first = cards.nth(0);
+  const second = cards.nth(1);
+  await first.getByRole("checkbox", { name: /選擇 .+ 作比較/ }).check();
+  await second.getByRole("checkbox", { name: /選擇 .+ 作比較/ }).check();
+  await expect(page.getByText("已選 2/4 個計劃比較")).toBeVisible();
+
+  await page.getByRole("link", { name: "比較已選計劃" }).click();
+  await expect(page).toHaveURL(/\/schemes\/compare\?ids=/);
+  await expect(page.getByRole("heading", { name: "逐項對比" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "雷達圖概覽" })).toBeVisible();
+  await expect(page.getByRole("img", { name: /計劃比較雷達圖/ })).toBeVisible();
+});
+
 test("每個計劃都連到積金局的官方基金便覽", async ({ page }) => {
   await page.goto("/schemes");
   const cards = cardsOf(page);

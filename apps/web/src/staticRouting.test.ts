@@ -21,6 +21,7 @@ describe("_redirects", () => {
   });
 
   it("rewrites every real page route to the SPA shell", () => {
+    expect(rules).toContain("/schemes/compare / 200");
     expect(rules).toContain("/schemes / 200");
     expect(rules).toContain("/rankings / 200");
     expect(rules).toContain("/funds / 200");
