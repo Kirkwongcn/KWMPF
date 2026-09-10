@@ -37,6 +37,9 @@ export type SourceRecord = {
   fundSizeAsOf?: string;
   // 成立日期是靜態事實，不設過期。
   launchDate?: string;
+  // 計劃財政期終結日，月日格式（例如 `11-30`），年年重複、不帶年份。用嚟計算
+  // 持倉／配置／風險／FER 嘅法定基金概覽發布期限，見 data-freshness.ts。
+  financialPeriodEndDate?: string;
   // 曆年累積回報（年份對百分比），不是年率化回報。
   calendarYearReturns?: Record<string, number>;
   sinceLaunchReturn?: {

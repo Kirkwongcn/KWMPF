@@ -121,6 +121,9 @@ export function buildPublicationInputs(records: SourceRecord[]): PublicationInpu
         ? { returnSources: returnSources(record) }
         : {}),
       ...(record.launchDate ? { launchDate: record.launchDate } : {}),
+      ...(record.financialPeriodEndDate
+        ? { financialPeriodEndDate: record.financialPeriodEndDate }
+        : {}),
       ...(record.calendarYearReturns &&
       Object.keys(record.calendarYearReturns).length
         ? { calendarYearReturns: record.calendarYearReturns }
