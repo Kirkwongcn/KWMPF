@@ -33,6 +33,10 @@ type PublicFields = {
   fundSizeHkdMillion?: number;
   fundSizeAsOf?: string;
   returnsAsOf?: string;
+  returnSources?: Record<
+    string,
+    { dataAsOf: string; sourceUrl: string; retrievedAt?: string }
+  >;
   launchDate?: string;
   calendarYearReturns?: Record<string, number>;
   sinceLaunchReturnAnnualized?: number;

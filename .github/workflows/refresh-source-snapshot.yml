@@ -144,7 +144,7 @@ jobs:
           CANDIDATE_DATA_AS_OF: ${{ steps.report.outputs.candidateDataAsOf }}
         run: |
           set -euo pipefail
-          branch="data/source-snapshot-${CANDIDATE_DATA_AS_OF}"
+          branch="data/source-snapshot-${CANDIDATE_DATA_AS_OF}-${GITHUB_RUN_ID}"
           if gh pr view "${branch}" --json number >/dev/null 2>&1; then
             gh pr comment "${branch}" --body \
               "另一次擷取再次產生 ${CANDIDATE_DATA_AS_OF} 的候選批次。此 PR 的分支未被覆寫，請繼續在這裡核對。Run：${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"

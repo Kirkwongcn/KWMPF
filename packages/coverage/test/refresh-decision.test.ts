@@ -24,15 +24,28 @@ const cleanAudit: RefreshAudit = {
 };
 
 describe("refresh decision", () => {
-  it("reports no new data when the source date has not moved", () => {
+  it("reports no new data when the source date and content have not changed", () => {
     const decision = decideRefresh({
       previousDataAsOf: "2026-07-31",
       candidateDataAsOf: "2026-07-31",
+      candidateContentChanged: false,
       readiness: readyReadiness,
       audit: cleanAudit,
     });
     expect(decision.outcome).toBe("no_new_data");
     expect(decision.publishable).toBe(false);
+  });
+
+  it("accepts newly disclosed fields from a revised batch with the same source date", () => {
+    const decision = decideRefresh({
+      previousDataAsOf: "2026-07-31",
+      candidateDataAsOf: "2026-07-31",
+      candidateContentChanged: true,
+      readiness: readyReadiness,
+      audit: cleanAudit,
+    });
+    expect(decision.outcome).toBe("ready");
+    expect(decision.publishable).toBe(true);
   });
 
   it("blocks a candidate that fails the publication preflight", () => {

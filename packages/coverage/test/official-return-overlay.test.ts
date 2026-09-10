@@ -58,8 +58,18 @@ describe("official return overlay", () => {
     const result = applyOfficialReturnOverlay([record], [observation(1, 2.1), observation(3, 3.2)]);
     expect(result.records[0]).toEqual(expect.objectContaining({ ...record, current: true }));
     expect(result.records[0]?.returns).toEqual({
-      1: { annualized: 2.1, dataAsOf: "2025-12-31" },
-      3: { annualized: 3.2, dataAsOf: "2025-12-31" },
+      1: {
+        annualized: 2.1,
+        dataAsOf: "2025-12-31",
+        sourceUrl: "https://official.test/fidelity.pdf",
+        retrievedAt: "2026-08-12T00:00:00Z",
+      },
+      3: {
+        annualized: 3.2,
+        dataAsOf: "2025-12-31",
+        sourceUrl: "https://official.test/fidelity.pdf",
+        retrievedAt: "2026-08-12T00:00:00Z",
+      },
     });
     expect(result.applied).toHaveLength(2);
   });

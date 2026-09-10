@@ -21,6 +21,7 @@ export type RefreshAudit = {
 export type RefreshDecisionInput = {
   previousDataAsOf?: string;
   candidateDataAsOf: string;
+  candidateContentChanged?: boolean;
   readiness: RefreshReadiness;
   audit: RefreshAudit;
 };
@@ -34,9 +35,15 @@ export type RefreshDecision = {
 };
 
 export function decideRefresh(input: RefreshDecisionInput): RefreshDecision {
-  const { previousDataAsOf, candidateDataAsOf, readiness, audit } = input;
+  const {
+    previousDataAsOf,
+    candidateDataAsOf,
+    candidateContentChanged = false,
+    readiness,
+    audit,
+  } = input;
   const base = { previousDataAsOf, candidateDataAsOf };
-  if (previousDataAsOf === candidateDataAsOf) {
+  if (previousDataAsOf === candidateDataAsOf && !candidateContentChanged) {
     return {
       ...base,
       outcome: "no_new_data",

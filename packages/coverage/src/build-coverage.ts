@@ -28,6 +28,8 @@ export type SourceRecord = {
     annualized?: number;
     cumulative?: number;
     dataAsOf: string;
+    sourceUrl?: string;
+    retrievedAt?: string;
     status?: "verified" | "stale" | "failed_with_last_verified";
   }>>;
   // 基金規模按月更新，截至日期由平台獨立標示，未必等於回報的截至日期。
