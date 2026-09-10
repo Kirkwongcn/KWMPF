@@ -81,18 +81,19 @@ test("切換回報期間會換走一年欄位並重新排名", async ({ page }) 
   await expect(firstValue).toBeVisible();
   const firstOneYear = await firstValue.textContent();
 
+  // e2e 快照尚未帶入官方三年年率化欄位；先確認選項與標題，以及不會硬砌空白表。
   await page.getByLabel("回報期間").selectOption("3");
 
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
     "三年回報排名",
   );
+  await expect(page.getByLabel("回報期間")).toHaveValue("3");
   await expect(
-    page.getByRole("columnheader", { name: "三年回報" }),
+    page.getByText("這個比較組別目前沒有合資格的三年回報資料。"),
   ).toBeVisible();
   await expect(
     page.getByRole("columnheader", { name: "一年回報" }),
   ).toHaveCount(0);
-  await expect(firstValue).not.toHaveText(firstOneYear ?? "");
 
   await page.getByLabel("回報期間").selectOption("10");
 
@@ -103,8 +104,9 @@ test("切換回報期間會換走一年欄位並重新排名", async ({ page }) 
     page.getByRole("columnheader", { name: "十年回報" }),
   ).toBeVisible();
   await expect(
-    page.getByRole("columnheader", { name: "三年回報" }),
+    page.getByRole("columnheader", { name: "一年回報" }),
   ).toHaveCount(0);
+  await expect(firstValue).not.toHaveText(firstOneYear ?? "");
 });
 
 test("切換至管理費指標會改為由低至高排序，並隱藏回報期間", async ({ page }) => {
