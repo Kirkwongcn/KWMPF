@@ -77,30 +77,51 @@ describe("published return rankings", () => {
     expect(fetch).toHaveBeenCalledWith("https://api.test/rankings?period=1");
   });
   it("lets the reader switch the ranking period and refetches from the API", async () => {
-    const fetchMock = vi.fn().mockImplementation((url: string) =>
-      Promise.resolve(
+    const fetchMock = vi.fn().mockImplementation((url: string) => {
+      const period = new URL(url).searchParams.get("period");
+      const byPeriod = {
+        "1": {
+          fundClassId: "fund-a",
+          constituentFundName: "North America Fund",
+          displayValue: "17.21%",
+          periodYears: 1,
+        },
+        "3": {
+          fundClassId: "fund-mid",
+          constituentFundName: "Mid Horizon Fund",
+          displayValue: "8.40%",
+          periodYears: 3,
+        },
+        "5": {
+          fundClassId: "fund-long",
+          constituentFundName: "Long Horizon Fund",
+          displayValue: "6.14%",
+          periodYears: 5,
+        },
+      } as const;
+      const selected =
+        byPeriod[(period ?? "1") as keyof typeof byPeriod] ?? byPeriod["1"];
+      return Promise.resolve(
         Response.json({
           snapshotId: "snapshot-2026-07-31",
-          periodYears: url.includes("period=5") ? 5 : 1,
+          periodYears: selected.periodYears,
           rankings: [
             {
-              fundClassId: url.includes("period=5") ? "fund-long" : "fund-a",
+              fundClassId: selected.fundClassId,
               fundClassName: "Class A",
-              constituentFundName: url.includes("period=5")
-                ? "Long Horizon Fund"
-                : "North America Fund",
+              constituentFundName: selected.constituentFundName,
               schemeName: "Scheme One",
               trusteeName: "Trustee One",
               comparisonGroup: "Equity Fund (North America)",
-              displayValue: url.includes("period=5") ? "6.14%" : "17.21%",
+              displayValue: selected.displayValue,
               rank: 1,
               dataAsOf: "2026-07-31",
               sourceUrl: "https://example.test/fund",
             },
           ],
         }),
-      ),
-    );
+      );
+    });
     vi.stubGlobal("fetch", fetchMock);
 
     render(<RankingsPage apiBaseUrl="https://api.test" />);
@@ -108,6 +129,18 @@ describe("published return rankings", () => {
     expect(await screen.findByText("17.21%")).toBeVisible();
     expect(fetchMock).toHaveBeenCalledWith(
       "https://api.test/rankings?period=1",
+    );
+
+    fireEvent.change(screen.getByLabelText("回報期間"), {
+      target: { value: "3" },
+    });
+
+    expect(await screen.findByText("8.40%")).toBeVisible();
+    expect(
+      await screen.findByRole("heading", { name: "三年回報排名" }),
+    ).toBeVisible();
+    expect(fetchMock).toHaveBeenCalledWith(
+      "https://api.test/rankings?period=3",
     );
 
     fireEvent.change(screen.getByLabelText("回報期間"), {
@@ -120,7 +153,7 @@ describe("published return rankings", () => {
     );
   });
 
-  it("tells the reader the official source publishes no three year return", async () => {
+  it("explains that missing official period returns are excluded instead of inferred", async () => {
     vi.stubGlobal(
       "fetch",
       vi.fn().mockResolvedValue(
@@ -134,8 +167,11 @@ describe("published return rankings", () => {
 
     render(<RankingsPage apiBaseUrl="https://api.test" />);
 
-    expect(await screen.findByText(/官方沒有提供三年年率化回報/)).toBeVisible();
+    expect(
+      await screen.findByText(/沒有該期間數值的基金不會入榜/),
+    ).toBeVisible();
     expect(screen.getByLabelText("回報期間")).toBeVisible();
+    expect(screen.getByRole("option", { name: "三年" })).toBeInTheDocument();
   });
   it("opens on the comparison group and period named in the link", async () => {
     const fetchMock = vi.fn().mockImplementation((url: string) =>
