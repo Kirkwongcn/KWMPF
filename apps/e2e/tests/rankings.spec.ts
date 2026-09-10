@@ -81,6 +81,19 @@ test("切換回報期間會換走一年欄位並重新排名", async ({ page }) 
   await expect(firstValue).toBeVisible();
   const firstOneYear = await firstValue.textContent();
 
+  await page.getByLabel("回報期間").selectOption("3");
+
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "三年回報排名",
+  );
+  await expect(
+    page.getByRole("columnheader", { name: "三年回報" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("columnheader", { name: "一年回報" }),
+  ).toHaveCount(0);
+  await expect(firstValue).not.toHaveText(firstOneYear ?? "");
+
   await page.getByLabel("回報期間").selectOption("10");
 
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
@@ -90,9 +103,8 @@ test("切換回報期間會換走一年欄位並重新排名", async ({ page }) 
     page.getByRole("columnheader", { name: "十年回報" }),
   ).toBeVisible();
   await expect(
-    page.getByRole("columnheader", { name: "一年回報" }),
+    page.getByRole("columnheader", { name: "三年回報" }),
   ).toHaveCount(0);
-  await expect(firstValue).not.toHaveText(firstOneYear ?? "");
 });
 
 test("切換至管理費指標會改為由低至高排序，並隱藏回報期間", async ({ page }) => {

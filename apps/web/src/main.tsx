@@ -26,7 +26,9 @@ const isFundsPage = window.location.pathname === "/funds";
 const params = new URLSearchParams(window.location.search);
 const requestedPeriod = params.get("period");
 const initialPeriod =
-  requestedPeriod === "5" || requestedPeriod === "10" ? requestedPeriod : "1";
+  requestedPeriod === "3" || requestedPeriod === "5" || requestedPeriod === "10"
+    ? requestedPeriod
+    : "1";
 const initialComparisonGroup = params.get("group") ?? "all";
 const requestedMetric = params.get("metric");
 const initialMetric =

@@ -31,7 +31,14 @@ type PublishedRankings = {
   rankings: RankingRow[];
 };
 
-const periodLabels = { "1": "一年", "5": "五年", "10": "十年" } as const;
+const periodLabels = {
+  "1": "一年",
+  "3": "三年",
+  "5": "五年",
+  "10": "十年",
+} as const;
+
+type RankingPeriod = keyof typeof periodLabels;
 
 type RankingMetric = "return" | "fee" | "risk";
 
@@ -48,7 +55,7 @@ export function RankingsPage({
   initialMetric = "return",
 }: {
   apiBaseUrl: string;
-  initialPeriod?: "1" | "5" | "10";
+  initialPeriod?: RankingPeriod;
   initialComparisonGroup?: string;
   initialMetric?: RankingMetric;
 }) {
@@ -59,7 +66,7 @@ export function RankingsPage({
   const [comparisonGroup, setComparisonGroup] = useState(
     initialComparisonGroup,
   );
-  const [period, setPeriod] = useState<"1" | "5" | "10">(initialPeriod);
+  const [period, setPeriod] = useState<RankingPeriod>(initialPeriod);
   const [metric, setMetric] = useState<RankingMetric>(initialMetric);
 
   useEffect(() => {
@@ -153,10 +160,11 @@ export function RankingsPage({
                   id="ranking-period"
                   value={period}
                   onChange={(event) =>
-                    setPeriod(event.target.value as "1" | "5" | "10")
+                    setPeriod(event.target.value as RankingPeriod)
                   }
                 >
                   <option value="1">一年</option>
+                  <option value="3">三年</option>
                   <option value="5">五年</option>
                   <option value="10">十年</option>
                 </select>
@@ -184,7 +192,7 @@ export function RankingsPage({
           <div className="kw-toolbar__notes">
             <p className="kw-muted">
               {metric === "return"
-                ? "官方沒有提供三年年率化回報，本站不會由其他期間推算。同一比較組別內按回報由高至低排列。"
+                ? "只採用官方已披露的年率化回報；沒有該期間數值的基金不會入榜，本站不會由其他期間推算。同一比較組別內按回報由高至低排列。"
                 : metric === "fee"
                   ? "管理費為官方公布的當前費率，不包括基金開支比率所涵蓋的歷史費用。"
                   : "波幅用官方公布的基金風險指標，即過去三年的年度化標準差。數字越低代表過往價格波動越小，不代表基金較佳或較適合你。成立不足三年的基金官方沒有這項數據，不會出現在此排名。"}
