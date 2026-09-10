@@ -60,7 +60,7 @@
     "periodYears": 3,
     "annualized": 11.9,
     "dataAsOf": "2026-07-31",
-    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/Fidelity_CFTF.pdf",
+    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFTF.pdf",
     "retrievedAt": "2026-09-10T00:00:00Z"
   },
   {
@@ -132,7 +132,7 @@
     "periodYears": 3,
     "annualized": 12.13,
     "dataAsOf": "2026-07-31",
-    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/Fidelity_CS45.pdf",
+    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS45.pdf",
     "retrievedAt": "2026-09-10T00:00:00Z"
   },
   {
@@ -148,7 +148,7 @@
     "periodYears": 3,
     "annualized": 12.34,
     "dataAsOf": "2026-07-31",
-    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/Fidelity_CS50.pdf",
+    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS50.pdf",
     "retrievedAt": "2026-09-10T00:00:00Z"
   },
   {
@@ -156,7 +156,7 @@
     "periodYears": 3,
     "annualized": 4.5,
     "dataAsOf": "2026-07-31",
-    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/Fidelity_CFRB.pdf",
+    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFRB.pdf",
     "retrievedAt": "2026-09-10T00:00:00Z"
   },
   {
@@ -356,7 +356,7 @@
     "periodYears": 3,
     "annualized": 12.36,
     "dataAsOf": "2026-07-31",
-    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/Fidelity_CFAF.pdf",
+    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFAF.pdf",
     "retrievedAt": "2026-09-10T00:00:00Z"
   },
   {
@@ -364,7 +364,7 @@
     "periodYears": 3,
     "annualized": 3.7,
     "dataAsOf": "2026-07-31",
-    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/Fidelity_C65P.pdf",
+    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-C65P.pdf",
     "retrievedAt": "2026-09-10T00:00:00Z"
   },
   {
@@ -612,7 +612,7 @@
     "periodYears": 3,
     "annualized": 6.54,
     "dataAsOf": "2026-07-31",
-    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/Fidelity_CTEF.pdf",
+    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CTEF.pdf",
     "retrievedAt": "2026-09-10T00:00:00Z"
   },
   {
@@ -652,7 +652,7 @@
     "periodYears": 3,
     "annualized": 17.28,
     "dataAsOf": "2026-07-31",
-    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/Fidelity_CAME.pdf",
+    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CAME.pdf",
     "retrievedAt": "2026-09-10T00:00:00Z"
   },
   {
@@ -668,7 +668,7 @@
     "periodYears": 3,
     "annualized": 11.6,
     "dataAsOf": "2026-07-31",
-    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/Fidelity_CEUR.pdf",
+    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CEUR.pdf",
     "retrievedAt": "2026-09-10T00:00:00Z"
   },
   {
@@ -772,7 +772,7 @@
     "periodYears": 3,
     "annualized": 11.35,
     "dataAsOf": "2026-07-31",
-    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/Fidelity_CFGF.pdf",
+    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFGF.pdf",
     "retrievedAt": "2026-09-10T00:00:00Z"
   },
   {
@@ -780,7 +780,7 @@
     "periodYears": 3,
     "annualized": 0.84,
     "dataAsOf": "2026-07-31",
-    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/Fidelity_CFWB.pdf",
+    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFWB.pdf",
     "retrievedAt": "2026-09-10T00:00:00Z"
   },
   {
@@ -788,7 +788,7 @@
     "periodYears": 3,
     "annualized": 6.73,
     "dataAsOf": "2026-07-31",
-    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/Fidelity_CFSF.pdf",
+    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFSF.pdf",
     "retrievedAt": "2026-09-10T00:00:00Z"
   },
   {
@@ -796,7 +796,7 @@
     "periodYears": 3,
     "annualized": 4.46,
     "dataAsOf": "2026-07-31",
-    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/Fidelity_CFCF.pdf",
+    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFCF.pdf",
     "retrievedAt": "2026-09-10T00:00:00Z"
   },
   {
@@ -804,7 +804,7 @@
     "periodYears": 3,
     "annualized": 8.34,
     "dataAsOf": "2026-07-31",
-    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/Fidelity_CFHK.pdf",
+    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFHK.pdf",
     "retrievedAt": "2026-09-10T00:00:00Z"
   },
   {
@@ -812,7 +812,7 @@
     "periodYears": 3,
     "annualized": 2.76,
     "dataAsOf": "2026-07-31",
-    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/Fidelity_CFCP.pdf",
+    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFCP.pdf",
     "retrievedAt": "2026-09-10T00:00:00Z"
   },
   {
@@ -820,7 +820,7 @@
     "periodYears": 3,
     "annualized": 14.74,
     "dataAsOf": "2026-07-31",
-    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/Fidelity_CFGE.pdf",
+    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFGE.pdf",
     "retrievedAt": "2026-09-10T00:00:00Z"
   },
   {
@@ -828,7 +828,7 @@
     "periodYears": 3,
     "annualized": 4.36,
     "dataAsOf": "2026-07-31",
-    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/Fidelity_CFHB.pdf",
+    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFHB.pdf",
     "retrievedAt": "2026-09-10T00:00:00Z"
   },
   {
@@ -836,7 +836,7 @@
     "periodYears": 3,
     "annualized": 21.63,
     "dataAsOf": "2026-07-31",
-    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/Fidelity_CFAP.pdf",
+    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFAP.pdf",
     "retrievedAt": "2026-09-10T00:00:00Z"
   },
   {
@@ -844,7 +844,7 @@
     "periodYears": 3,
     "annualized": 9.03,
     "dataAsOf": "2026-07-31",
-    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/Fidelity_CFBF.pdf",
+    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFBF.pdf",
     "retrievedAt": "2026-09-10T00:00:00Z"
   },
   {
@@ -1380,7 +1380,7 @@
     "periodYears": 3,
     "annualized": 4.79,
     "dataAsOf": "2026-07-31",
-    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/Fidelity_CS25.pdf",
+    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS25.pdf",
     "retrievedAt": "2026-09-10T00:00:00Z"
   },
   {
@@ -1388,7 +1388,7 @@
     "periodYears": 3,
     "annualized": 10.52,
     "dataAsOf": "2026-07-31",
-    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/Fidelity_CS30.pdf",
+    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS30.pdf",
     "retrievedAt": "2026-09-10T00:00:00Z"
   },
   {
@@ -1396,7 +1396,7 @@
     "periodYears": 3,
     "annualized": 11.49,
     "dataAsOf": "2026-07-31",
-    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/Fidelity_CS35.pdf",
+    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS35.pdf",
     "retrievedAt": "2026-09-10T00:00:00Z"
   },
   {
@@ -1404,7 +1404,7 @@
     "periodYears": 3,
     "annualized": 12.1,
     "dataAsOf": "2026-07-31",
-    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/Fidelity_CS40.pdf",
+    "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS40.pdf",
     "retrievedAt": "2026-09-10T00:00:00Z"
   },
   {
