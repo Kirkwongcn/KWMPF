@@ -120,6 +120,169 @@ type MappedAllocation =
       reason: FactSheetUnavailableKind | "not-asset-class";
     };
 
+type InterpretationFactor = {
+  status:
+    "higher" | "lower" | "similar" | "insufficient-sample" | "unavailable";
+  text: string;
+};
+
+type InterpretationResponse = {
+  snapshotId: string;
+  comparisonGroup: string;
+  comparisonGroupSource: "lipper" | "platform";
+  values: Record<
+    "equity" | "top10Concentration" | "volatility3y",
+    { fund: number | null; groupAverage: number | null; official?: false }
+  >;
+  interpretation: {
+    thresholdVersion: string;
+    thresholdStatus: string;
+    equity: InterpretationFactor;
+    top10Concentration: InterpretationFactor;
+    volatility3y: InterpretationFactor;
+  };
+};
+
+const interpretationFactors = [
+  ["equity", "股票配置", "編輯歸類，非官方分類"],
+  ["top10Concentration", "十大持倉集中度", "十大持倉披露比重合計"],
+  ["volatility3y", "3年波幅", "官方基金風險指標"],
+] as const;
+
+function InterpretationPanel({
+  apiBaseUrl,
+  fundClassId,
+  expectedSnapshotId,
+}: {
+  apiBaseUrl: string;
+  fundClassId: string;
+  expectedSnapshotId: string;
+}) {
+  const [result, setResult] = useState<InterpretationResponse | null>(null);
+  const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    fetch(
+      `${apiBaseUrl}/fund-classes/${encodeURIComponent(fundClassId)}/interpretation`,
+    )
+      .then((response) => {
+        if (!response.ok) throw new Error("Interpretation unavailable");
+        return response.json() as Promise<InterpretationResponse>;
+      })
+      .then((next) => {
+        if (next.snapshotId !== expectedSnapshotId)
+          throw new Error("Snapshot changed while loading");
+        setResult(next);
+      })
+      .catch(() => setFailed(true));
+  }, [apiBaseUrl, expectedSnapshotId, fundClassId]);
+
+  if (failed)
+    return (
+      <section
+        className="kw-section"
+        aria-labelledby="fund-interpretation-title"
+      >
+        <h2 className="kw-section__heading" id="fund-interpretation-title">
+          基金解讀
+        </h2>
+        <p className="kw-status kw-status--negative">未能取得基金解讀。</p>
+      </section>
+    );
+  if (!result)
+    return (
+      <section
+        className="kw-section"
+        aria-labelledby="fund-interpretation-title"
+      >
+        <h2 className="kw-section__heading" id="fund-interpretation-title">
+          基金解讀
+        </h2>
+        <p className="kw-status">正在載入基金解讀…</p>
+      </section>
+    );
+
+  return (
+    <section className="kw-section" aria-labelledby="fund-interpretation-title">
+      <h2 className="kw-section__heading" id="fund-interpretation-title">
+        基金解讀
+      </h2>
+      <div className="kw-card kw-interpretation-intro">
+        <p>
+          以下把基金同 <strong>{result.comparisonGroup}</strong>{" "}
+          組別平均比較。三項因素均為發布快照當期資料，不會隨回報期間改變。
+        </p>
+        <p className="kw-muted" role="note">
+          「相若」試用門檻為相差不超過 2 個百分點；規則版本{" "}
+          {result.interpretation.thresholdVersion}
+          。高低只描述差距，不代表優劣、適合程度或回報原因。
+        </p>
+      </div>
+      <div className="kw-interpretation-grid">
+        {interpretationFactors.map(([key, label, note]) => {
+          const factor = result.interpretation[key];
+          const values = result.values[key];
+          const comparable =
+            factor.status !== "insufficient-sample" &&
+            factor.status !== "unavailable" &&
+            values.fund !== null &&
+            values.groupAverage !== null;
+          const scale = comparable
+            ? Math.max(values.fund!, values.groupAverage!, 1)
+            : 1;
+          return (
+            <article className="kw-card kw-interpretation" key={key}>
+              <header>
+                <div>
+                  <h3>{label}</h3>
+                  <p className="kw-muted">{note}</p>
+                </div>
+                <span
+                  className={`kw-interpretation__badge kw-interpretation__badge--${factor.status}`}
+                >
+                  {factor.status === "higher"
+                    ? "較高"
+                    : factor.status === "lower"
+                      ? "較低"
+                      : factor.status === "similar"
+                        ? "相若"
+                        : factor.status === "insufficient-sample"
+                          ? "樣本不足"
+                          : "資料不足"}
+                </span>
+              </header>
+              <p className="kw-interpretation__text">{factor.text}</p>
+              {comparable && (
+                <div
+                  className="kw-comparison-bars"
+                  role="img"
+                  aria-label={`${label}：基金 ${values.fund}%，同組別平均 ${values.groupAverage}%`}
+                >
+                  {(["fund", "groupAverage"] as const).map((valueKey) => (
+                    <div className="kw-comparison-bars__row" key={valueKey}>
+                      <span>
+                        {valueKey === "fund" ? "這隻基金" : "組別平均"}
+                      </span>
+                      <div className="kw-comparison-bars__track">
+                        <span
+                          style={{
+                            width: `${(values[valueKey]! / scale) * 100}%`,
+                          }}
+                        />
+                      </div>
+                      <strong>{values[valueKey]}%</strong>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </article>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 /**
  * 「官方未提供」同「官方以圖表披露」是兩回事，票 #210 要求分開講。
  * 抽取層在知道分別那一刻記下代號，這裡只做對照，不靠原因文字反推。
@@ -234,6 +397,9 @@ export function FundClassPage({
     null,
   );
   const [failed, setFailed] = useState(false);
+  const [activeTab, setActiveTab] = useState<"details" | "interpretation">(
+    "details",
+  );
 
   useEffect(() => {
     fetch(`${apiBaseUrl}/fund-classes/${encodeURIComponent(fundClassId)}`)
@@ -307,467 +473,526 @@ export function FundClassPage({
         `${fundClass.fundType}／${fundClass.fundCategory}`,
       )}
     >
-      <section className="kw-section" aria-labelledby="fund-profile-title">
-        <h2 className="kw-section__heading" id="fund-profile-title">
-          基金概況
-        </h2>
-        <div className="kw-card">
-          <dl className="status-list">
-            <div>
-              <dt>基金規模</dt>
-              <dd>
-                {typeof fundClass.fundSizeHkdMillion === "number"
-                  ? `HK$${fundClass.fundSizeHkdMillion.toLocaleString("en-US", {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })} 百萬`
-                  : unavailable}
-                {fundClass.fundSizeAsOf
-                  ? `（截至 ${fundClass.fundSizeAsOf}）`
-                  : ""}
-              </dd>
+      <div className="kw-tabs" role="tablist" aria-label="基金頁內容">
+        <button
+          aria-controls="fund-details-panel"
+          aria-selected={activeTab === "details"}
+          className="kw-tabs__tab"
+          id="fund-details-tab"
+          onClick={() => setActiveTab("details")}
+          role="tab"
+          type="button"
+        >
+          基金資料
+        </button>
+        <button
+          aria-controls="fund-interpretation-panel"
+          aria-selected={activeTab === "interpretation"}
+          className="kw-tabs__tab"
+          id="fund-interpretation-tab"
+          onClick={() => setActiveTab("interpretation")}
+          role="tab"
+          type="button"
+        >
+          基金解讀
+        </button>
+      </div>
+      {activeTab === "interpretation" ? (
+        <div
+          aria-labelledby="fund-interpretation-tab"
+          id="fund-interpretation-panel"
+          role="tabpanel"
+        >
+          <InterpretationPanel
+            apiBaseUrl={apiBaseUrl}
+            expectedSnapshotId={snapshotId}
+            fundClassId={fundClassId}
+          />
+        </div>
+      ) : (
+        <div
+          aria-labelledby="fund-details-tab"
+          id="fund-details-panel"
+          role="tabpanel"
+        >
+          <section className="kw-section" aria-labelledby="fund-profile-title">
+            <h2 className="kw-section__heading" id="fund-profile-title">
+              基金概況
+            </h2>
+            <div className="kw-card">
+              <dl className="status-list">
+                <div>
+                  <dt>基金規模</dt>
+                  <dd>
+                    {typeof fundClass.fundSizeHkdMillion === "number"
+                      ? `HK$${fundClass.fundSizeHkdMillion.toLocaleString(
+                          "en-US",
+                          {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          },
+                        )} 百萬`
+                      : unavailable}
+                    {fundClass.fundSizeAsOf
+                      ? `（截至 ${fundClass.fundSizeAsOf}）`
+                      : ""}
+                  </dd>
+                </div>
+                <div>
+                  <dt>成立日期</dt>
+                  <dd>{fundClass.launchDate ?? unavailable}</dd>
+                </div>
+                {fundClass.isDisComponent && (
+                  <div>
+                    <dt>預設投資策略</dt>
+                    <dd>
+                      {fundClass.isDisComponent === "core_accumulation"
+                        ? "核心累積基金"
+                        : "65歲後基金"}
+                    </dd>
+                  </div>
+                )}
+              </dl>
+              {fundSizeFreshness?.status === "stale" && (
+                <p className="kw-status kw-status--warning">
+                  基金規模已超出官方披露寬限期（{fundSizeFreshness.graceDays}{" "}
+                  日），截至日期仍為 {fundSizeFreshness.dataAsOf}。
+                </p>
+              )}
+              {datesDiffer && (
+                <p className="kw-muted" role="note">
+                  基金規模截至 {fundClass.fundSizeAsOf}，回報截至{" "}
+                  {fundClass.returnsAsOf}，兩者期別不同，並非完全可比。
+                </p>
+              )}
+              <p className="kw-muted">
+                成立日期是靜態事實，不設過期；基金規模按月披露，沿用月度寬限期。
+              </p>
             </div>
-            <div>
-              <dt>成立日期</dt>
-              <dd>{fundClass.launchDate ?? unavailable}</dd>
+          </section>
+          <section className="kw-section" aria-labelledby="fund-figures-title">
+            <h2 className="kw-section__heading" id="fund-figures-title">
+              主要數據
+            </h2>
+            <div className="kw-table-scroll">
+              <table className="kw-table" aria-label="回報">
+                <thead>
+                  <tr>
+                    <th scope="col">期間</th>
+                    <th scope="col">年率化回報</th>
+                    <th scope="col">累積回報</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {(
+                    [
+                      [
+                        "一年",
+                        fundClass.annualizedReturn1y,
+                        fundClass.cumulativeReturn1y,
+                      ],
+                      [
+                        "五年",
+                        fundClass.annualizedReturn5y,
+                        fundClass.cumulativeReturn5y,
+                      ],
+                      [
+                        "十年",
+                        fundClass.annualizedReturn10y,
+                        fundClass.cumulativeReturn10y,
+                      ],
+                      [
+                        "成立至今",
+                        fundClass.sinceLaunchReturnAnnualized,
+                        fundClass.sinceLaunchReturnCumulative,
+                      ],
+                    ] as const
+                  ).map(([horizon, annualized, cumulative]) => (
+                    <tr key={horizon}>
+                      <th scope="row">{horizon}</th>
+                      <td className="kw-return">
+                        {formatNumber(annualized, 2, "%")}
+                      </td>
+                      <td className="kw-return">
+                        {formatNumber(cumulative, 2, "%")}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
-            {fundClass.isDisComponent && (
+            <dl className="status-list">
               <div>
-                <dt>預設投資策略</dt>
+                <dt>風險級別</dt>
+                <dd>{fundClass.riskClass ?? unavailable}</dd>
+              </div>
+              <div>
+                <dt>基金風險指標</dt>
                 <dd>
-                  {fundClass.isDisComponent === "core_accumulation"
-                    ? "核心累積基金"
-                    : "65歲後基金"}
+                  {typeof fundClass.fundRiskIndicator === "number"
+                    ? formatNumber(fundClass.fundRiskIndicator, 2, "%")
+                    : unavailable}
                 </dd>
               </div>
+            </dl>
+            <p className="kw-muted" role="note">
+              基金風險指標是過去三年的年度化標準差，數字越高代表過往價格波動越大；風險級別是積金局按該指標劃分的
+              1 至 7 級。成立不足三年的基金官方不會提供指標。
+            </p>
+            <p className="kw-muted" role="note">
+              年率化回報是每年平均變幅，適合與其他基金比較；累積回報是整段期間的總變幅，反映同一筆本金實際增減。兩者均為積金局公布數值，網站不會自行換算。
+            </p>
+          </section>
+          <section className="kw-section" aria-labelledby="fund-calendar-title">
+            <h2 className="kw-section__heading" id="fund-calendar-title">
+              年度回報
+            </h2>
+            {calendarYears.length === 0 ? (
+              <p className="kw-status">官方未提供年度回報。</p>
+            ) : (
+              <div className="kw-table-scroll">
+                <table className="kw-table" aria-label="年度回報">
+                  <thead>
+                    <tr>
+                      <th scope="col">年度</th>
+                      <th scope="col">曆年回報</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {calendarYears.map((year) => (
+                      <tr key={year}>
+                        <th scope="row">{year}</th>
+                        <td className="kw-return">
+                          {formatNumber(
+                            fundClass.calendarYearReturns?.[year],
+                            2,
+                            "%",
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             )}
-          </dl>
-          {fundSizeFreshness?.status === "stale" && (
-            <p className="kw-status kw-status--warning">
-              基金規模已超出官方披露寬限期（{fundSizeFreshness.graceDays}{" "}
-              日），截至日期仍為 {fundSizeFreshness.dataAsOf}。
-            </p>
-          )}
-          {datesDiffer && (
             <p className="kw-muted" role="note">
-              基金規模截至 {fundClass.fundSizeAsOf}，回報截至{" "}
-              {fundClass.returnsAsOf}，兩者期別不同，並非完全可比。
+              年度回報是該個曆年的累積回報，不是年率化回報，不可與上表的年率化數字直接比較。官方沒有公布的年度不會顯示。
             </p>
-          )}
-          <p className="kw-muted">
-            成立日期是靜態事實，不設過期；基金規模按月披露，沿用月度寬限期。
-          </p>
-        </div>
-      </section>
-      <section className="kw-section" aria-labelledby="fund-figures-title">
-        <h2 className="kw-section__heading" id="fund-figures-title">
-          主要數據
-        </h2>
-        <div className="kw-table-scroll">
-          <table className="kw-table" aria-label="回報">
-            <thead>
-              <tr>
-                <th scope="col">期間</th>
-                <th scope="col">年率化回報</th>
-                <th scope="col">累積回報</th>
-              </tr>
-            </thead>
-            <tbody>
-              {(
-                [
-                  [
-                    "一年",
-                    fundClass.annualizedReturn1y,
-                    fundClass.cumulativeReturn1y,
-                  ],
-                  [
-                    "五年",
-                    fundClass.annualizedReturn5y,
-                    fundClass.cumulativeReturn5y,
-                  ],
-                  [
-                    "十年",
-                    fundClass.annualizedReturn10y,
-                    fundClass.cumulativeReturn10y,
-                  ],
-                  [
-                    "成立至今",
-                    fundClass.sinceLaunchReturnAnnualized,
-                    fundClass.sinceLaunchReturnCumulative,
-                  ],
-                ] as const
-              ).map(([horizon, annualized, cumulative]) => (
-                <tr key={horizon}>
-                  <th scope="row">{horizon}</th>
-                  <td className="kw-return">
-                    {formatNumber(annualized, 2, "%")}
-                  </td>
-                  <td className="kw-return">
-                    {formatNumber(cumulative, 2, "%")}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <dl className="status-list">
-          <div>
-            <dt>風險級別</dt>
-            <dd>{fundClass.riskClass ?? unavailable}</dd>
-          </div>
-          <div>
-            <dt>基金風險指標</dt>
-            <dd>
-              {typeof fundClass.fundRiskIndicator === "number"
-                ? formatNumber(fundClass.fundRiskIndicator, 2, "%")
-                : unavailable}
-            </dd>
-          </div>
-        </dl>
-        <p className="kw-muted" role="note">
-          基金風險指標是過去三年的年度化標準差，數字越高代表過往價格波動越大；風險級別是積金局按該指標劃分的
-          1 至 7 級。成立不足三年的基金官方不會提供指標。
-        </p>
-        <p className="kw-muted" role="note">
-          年率化回報是每年平均變幅，適合與其他基金比較；累積回報是整段期間的總變幅，反映同一筆本金實際增減。兩者均為積金局公布數值，網站不會自行換算。
-        </p>
-      </section>
-      <section className="kw-section" aria-labelledby="fund-calendar-title">
-        <h2 className="kw-section__heading" id="fund-calendar-title">
-          年度回報
-        </h2>
-        {calendarYears.length === 0 ? (
-          <p className="kw-status">官方未提供年度回報。</p>
-        ) : (
-          <div className="kw-table-scroll">
-            <table className="kw-table" aria-label="年度回報">
-              <thead>
-                <tr>
-                  <th scope="col">年度</th>
-                  <th scope="col">曆年回報</th>
-                </tr>
-              </thead>
-              <tbody>
-                {calendarYears.map((year) => (
-                  <tr key={year}>
-                    <th scope="row">{year}</th>
-                    <td className="kw-return">
-                      {formatNumber(
-                        fundClass.calendarYearReturns?.[year],
-                        2,
-                        "%",
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-        <p className="kw-muted" role="note">
-          年度回報是該個曆年的累積回報，不是年率化回報，不可與上表的年率化數字直接比較。官方沒有公布的年度不會顯示。
-        </p>
-      </section>
-      <section className="kw-section" aria-labelledby="fund-fees-title">
-        <h2 className="kw-section__heading" id="fund-fees-title">
-          費用及資料限制
-        </h2>
-        <div className="kw-card provenance">
-          <dl className="status-list">
-            <div>
-              <dt>基金開支比率（歷史財政期）</dt>
-              <dd>{formatNumber(fundClass.latestFer, 5, "%")}</dd>
-            </div>
-          </dl>
-          <div className="kw-table-scroll">
-            <table className="kw-table" aria-label="經常性費用">
-              <caption>經常性費用（每年）</caption>
-              <thead>
-                <tr>
-                  <th scope="col">項目</th>
-                  <th scope="col">披露費率</th>
-                </tr>
-              </thead>
-              <tbody>
-                {recurringFeeRows.map(([label, field]) => (
-                  <tr key={field}>
-                    <th scope="row">{label}</th>
-                    <td className="kw-return">{feeRate(field)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div className="kw-table-scroll">
-            <table className="kw-table" aria-label="一次性及交易收費">
-              <caption>一次性及交易收費</caption>
-              <thead>
-                <tr>
-                  <th scope="col">項目</th>
-                  <th scope="col">披露收費</th>
-                </tr>
-              </thead>
-              <tbody>
-                {oneOffChargeRows.map(([label, field]) => (
-                  <tr key={field}>
-                    <th scope="row">{label}</th>
-                    <td className="kw-return">{feeRate(field)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div className="kw-table-scroll">
-            <table className="kw-table" aria-label="持續成本說明">
-              <caption>持續成本說明（OCI）</caption>
-              <thead>
-                <tr>
-                  <th scope="col">期間</th>
-                  <th scope="col">每 HK$1,000 投資的成本</th>
-                </tr>
-              </thead>
-              <tbody>
-                {ociRows.map(([label, field]) => (
-                  <tr key={field}>
-                    <th scope="row">{label}</th>
-                    <td className="kw-return">{feeAmount(field)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          {feeCaps.length > 0 && (
-            <p className="kw-muted" role="note">
-              標示「上限」的項目，官方原文寫的是 <code>Up to</code>
-              ，即披露的是收費上限而非實際費率；實際扣費可能較低。
-            </p>
-          )}
-          {feeDisclosureRows.length > 0 && (
-            <div>
-              <p className="kw-muted">
-                以下項目不是單一費率，官方以文字披露，原文照錄：
-              </p>
-              <dl className="status-list fee-disclosures">
-                {feeDisclosureRows.map(([field, text]) => (
-                  <div key={field}>
-                    <dt>{feeLabels[field] ?? field}</dt>
-                    <dd>{text}</dd>
-                  </div>
-                ))}
+          </section>
+          <section className="kw-section" aria-labelledby="fund-fees-title">
+            <h2 className="kw-section__heading" id="fund-fees-title">
+              費用及資料限制
+            </h2>
+            <div className="kw-card provenance">
+              <dl className="status-list">
+                <div>
+                  <dt>基金開支比率（歷史財政期）</dt>
+                  <dd>{formatNumber(fundClass.latestFer, 5, "%")}</dd>
+                </div>
               </dl>
-            </div>
-          )}
-          <p>配置及持倉資料的截至日期可能不同，使用時請留意可比性限制。</p>
-          <p role="note">
-            顯示「官方未提供」代表積金局資料按適用披露規則沒有該欄位；常見原因包括基金運作年期不足或保證／資本保存安排。網站不會以估算值補足。
-          </p>
-        </div>
-      </section>
-      <section className="kw-section" aria-labelledby="fund-fact-sheet-title">
-        <h2 className="kw-section__heading" id="fund-fact-sheet-title">
-          投資組合披露
-        </h2>
-        <div className="kw-card">
-          {factSheetDisclosure ? (
-            <>
-              <p>
-                資料來自
-                {factSheetDisclosure.factSheetSource === "trustee"
-                  ? "受託人官網刊發的計劃便覽"
-                  : "積金局便覽庫存放的計劃便覽副本"}
-                ，截至 {factSheetDisclosure.factSheetAsOf}
-                ；本頁其他數據來自積金局基金平台，截至 {provenance.dataAsOf}。
-              </p>
-              {factSheetDisclosure.factSheetSource === "mpfa-registry" && (
-                <p className="kw-muted" role="note">
-                  {factSheetDisclosure.trusteeFallback
-                    ? "受託人官網那一期未能讀取，這裡用的是積金局便覽庫的副本，期別可能比受託人官網的舊。"
-                    : "本網站尚未收錄這個計劃在受託人官網的便覽，這裡用的是積金局便覽庫的副本，期別可能比受託人官網的舊。"}
-                </p>
-              )}
-              {factSheetDisclosure.factSheetUrl && (
-                <p>
-                  <a
-                    href={factSheetDisclosure.factSheetUrl}
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    查閱這份計劃便覽原文
-                  </a>
-                </p>
-              )}
-              {factSheetDatesDiffer && (
-                <p className="kw-muted" role="note">
-                  便覽截至 {factSheetDisclosure.factSheetAsOf}，平台數據截至{" "}
-                  {provenance.dataAsOf}，兩者期別不同，並非完全可比。
-                </p>
-              )}
-              {mappedAllocation && hasMappedBuckets(mappedAllocation) && (
-                <div className="kw-table-scroll">
-                  <table className="kw-table" aria-label="編輯歸類的資產類別">
-                    <caption>編輯歸類的資產類別</caption>
-                    <thead>
-                      <tr>
-                        <th scope="col">項目</th>
-                        <th scope="col">比重</th>
+              <div className="kw-table-scroll">
+                <table className="kw-table" aria-label="經常性費用">
+                  <caption>經常性費用（每年）</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">項目</th>
+                      <th scope="col">披露費率</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {recurringFeeRows.map(([label, field]) => (
+                      <tr key={field}>
+                        <th scope="row">{label}</th>
+                        <td className="kw-return">{feeRate(field)}</td>
                       </tr>
-                    </thead>
-                    <tbody>
-                      {mappedBucketLabels.map(([key, label]) => (
-                        <tr key={key}>
-                          <th scope="row">{label}</th>
-                          <td className="kw-return">
-                            {formatEditorialPercent(
-                              mappedAllocation.buckets[key],
-                            )}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                  <p className="kw-muted" role="note">
-                    編輯歸類，非官方分類。對照表期別{" "}
-                    {mappedAllocation.mapVersion}
-                    。下面的表仍是便覽原文。
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="kw-table-scroll">
+                <table className="kw-table" aria-label="一次性及交易收費">
+                  <caption>一次性及交易收費</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">項目</th>
+                      <th scope="col">披露收費</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {oneOffChargeRows.map(([label, field]) => (
+                      <tr key={field}>
+                        <th scope="row">{label}</th>
+                        <td className="kw-return">{feeRate(field)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="kw-table-scroll">
+                <table className="kw-table" aria-label="持續成本說明">
+                  <caption>持續成本說明（OCI）</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">期間</th>
+                      <th scope="col">每 HK$1,000 投資的成本</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {ociRows.map(([label, field]) => (
+                      <tr key={field}>
+                        <th scope="row">{label}</th>
+                        <td className="kw-return">{feeAmount(field)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              {feeCaps.length > 0 && (
+                <p className="kw-muted" role="note">
+                  標示「上限」的項目，官方原文寫的是 <code>Up to</code>
+                  ，即披露的是收費上限而非實際費率；實際扣費可能較低。
+                </p>
+              )}
+              {feeDisclosureRows.length > 0 && (
+                <div>
+                  <p className="kw-muted">
+                    以下項目不是單一費率，官方以文字披露，原文照錄：
                   </p>
+                  <dl className="status-list fee-disclosures">
+                    {feeDisclosureRows.map(([field, text]) => (
+                      <div key={field}>
+                        <dt>{feeLabels[field] ?? field}</dt>
+                        <dd>{text}</dd>
+                      </div>
+                    ))}
+                  </dl>
                 </div>
               )}
-              {mappedAllocation && mappedUnavailableNote(mappedAllocation) && (
-                <p className="kw-muted" role="note">
-                  編輯歸類：{mappedUnavailableNote(mappedAllocation)}
-                </p>
-              )}
-              {factSheetDisclosure.allocations.map((dimension) => (
-                <div className="kw-table-scroll" key={dimension.heading}>
-                  <table className="kw-table" aria-label={dimension.heading}>
-                    <caption>{dimension.heading}</caption>
-                    <thead>
-                      <tr>
-                        <th scope="col">項目</th>
-                        <th scope="col">比重</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {dimension.entries.map((entry) => (
-                        <tr key={entry.label}>
-                          <th scope="row">{entry.label}</th>
-                          <td className="kw-return">{entry.percent}%</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              ))}
-              {unavailableNote("allocation", factSheetDisclosure) && (
-                <p className="kw-muted" role="note">
-                  資產配置：{unavailableNote("allocation", factSheetDisclosure)}
-                </p>
-              )}
-              {factSheetDisclosure.topHoldings.length > 0 && (
-                <div className="kw-table-scroll">
-                  <table className="kw-table" aria-label="十大持倉">
-                    <caption>十大持倉</caption>
-                    <thead>
-                      <tr>
-                        <th scope="col">排名</th>
-                        <th scope="col">證券</th>
-                        <th scope="col">比重</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {factSheetDisclosure.topHoldings.map((holding) => (
-                        <tr key={`${holding.rank}-${holding.security}`}>
-                          <th scope="row">{holding.rank}</th>
-                          <td>{holding.security}</td>
-                          <td className="kw-return">
-                            {typeof holding.percent === "number"
-                              ? `${holding.percent}%`
-                              : unavailable}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              )}
-              {unavailableNote("topHoldings", factSheetDisclosure) && (
-                <p className="kw-muted" role="note">
-                  十大持倉：
-                  {unavailableNote("topHoldings", factSheetDisclosure)}
-                </p>
-              )}
-              <p className="kw-muted">
-                維度標題、項目名稱及證券名稱一律照便覽原文，比重的小數位數沿用披露本身。股票／債券／現金及其他三個桶是編輯歸類，不是官方分類，不會覆蓋原文。
+              <p>配置及持倉資料的截至日期可能不同，使用時請留意可比性限制。</p>
+              <p role="note">
+                顯示「官方未提供」代表積金局資料按適用披露規則沒有該欄位；常見原因包括基金運作年期不足或保證／資本保存安排。網站不會以估算值補足。
               </p>
-            </>
-          ) : (
-            <p className="kw-muted" role="note">
-              官方未提供：這隻基金未有可對應的計劃便覽披露。
-            </p>
-          )}
-        </div>
-      </section>
-      <section className="kw-section" aria-labelledby="fund-source-title">
-        <h2 className="kw-section__heading" id="fund-source-title">
-          資料來源及驗證
-        </h2>
-        <div className="kw-card provenance">
-          <p>資料截至：{provenance.dataAsOf}</p>
-          <p>擷取版本：{provenance.retrievedAt}</p>
-          <p>驗證狀態：已驗證</p>
-          {freshness && (
-            <>
-              <p
-                className={
-                  freshness.status === "stale"
-                    ? "kw-status kw-status--warning"
-                    : "kw-status kw-status--positive"
-                }
-              >
-                {freshness.status === "stale" ? "資料過期" : "資料現行"}
-              </p>
+            </div>
+          </section>
+          <section
+            className="kw-section"
+            aria-labelledby="fund-fact-sheet-title"
+          >
+            <h2 className="kw-section__heading" id="fund-fact-sheet-title">
+              投資組合披露
+            </h2>
+            <div className="kw-card">
+              {factSheetDisclosure ? (
+                <>
+                  <p>
+                    資料來自
+                    {factSheetDisclosure.factSheetSource === "trustee"
+                      ? "受託人官網刊發的計劃便覽"
+                      : "積金局便覽庫存放的計劃便覽副本"}
+                    ，截至 {factSheetDisclosure.factSheetAsOf}
+                    ；本頁其他數據來自積金局基金平台，截至 {provenance.dataAsOf}
+                    。
+                  </p>
+                  {factSheetDisclosure.factSheetSource === "mpfa-registry" && (
+                    <p className="kw-muted" role="note">
+                      {factSheetDisclosure.trusteeFallback
+                        ? "受託人官網那一期未能讀取，這裡用的是積金局便覽庫的副本，期別可能比受託人官網的舊。"
+                        : "本網站尚未收錄這個計劃在受託人官網的便覽，這裡用的是積金局便覽庫的副本，期別可能比受託人官網的舊。"}
+                    </p>
+                  )}
+                  {factSheetDisclosure.factSheetUrl && (
+                    <p>
+                      <a
+                        href={factSheetDisclosure.factSheetUrl}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        查閱這份計劃便覽原文
+                      </a>
+                    </p>
+                  )}
+                  {factSheetDatesDiffer && (
+                    <p className="kw-muted" role="note">
+                      便覽截至 {factSheetDisclosure.factSheetAsOf}，平台數據截至{" "}
+                      {provenance.dataAsOf}，兩者期別不同，並非完全可比。
+                    </p>
+                  )}
+                  {mappedAllocation && hasMappedBuckets(mappedAllocation) && (
+                    <div className="kw-table-scroll">
+                      <table
+                        className="kw-table"
+                        aria-label="編輯歸類的資產類別"
+                      >
+                        <caption>編輯歸類的資產類別</caption>
+                        <thead>
+                          <tr>
+                            <th scope="col">項目</th>
+                            <th scope="col">比重</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {mappedBucketLabels.map(([key, label]) => (
+                            <tr key={key}>
+                              <th scope="row">{label}</th>
+                              <td className="kw-return">
+                                {formatEditorialPercent(
+                                  mappedAllocation.buckets[key],
+                                )}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                      <p className="kw-muted" role="note">
+                        編輯歸類，非官方分類。對照表期別{" "}
+                        {mappedAllocation.mapVersion}
+                        。下面的表仍是便覽原文。
+                      </p>
+                    </div>
+                  )}
+                  {mappedAllocation &&
+                    mappedUnavailableNote(mappedAllocation) && (
+                      <p className="kw-muted" role="note">
+                        編輯歸類：{mappedUnavailableNote(mappedAllocation)}
+                      </p>
+                    )}
+                  {factSheetDisclosure.allocations.map((dimension) => (
+                    <div className="kw-table-scroll" key={dimension.heading}>
+                      <table
+                        className="kw-table"
+                        aria-label={dimension.heading}
+                      >
+                        <caption>{dimension.heading}</caption>
+                        <thead>
+                          <tr>
+                            <th scope="col">項目</th>
+                            <th scope="col">比重</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {dimension.entries.map((entry) => (
+                            <tr key={entry.label}>
+                              <th scope="row">{entry.label}</th>
+                              <td className="kw-return">{entry.percent}%</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  ))}
+                  {unavailableNote("allocation", factSheetDisclosure) && (
+                    <p className="kw-muted" role="note">
+                      資產配置：
+                      {unavailableNote("allocation", factSheetDisclosure)}
+                    </p>
+                  )}
+                  {factSheetDisclosure.topHoldings.length > 0 && (
+                    <div className="kw-table-scroll">
+                      <table className="kw-table" aria-label="十大持倉">
+                        <caption>十大持倉</caption>
+                        <thead>
+                          <tr>
+                            <th scope="col">排名</th>
+                            <th scope="col">證券</th>
+                            <th scope="col">比重</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {factSheetDisclosure.topHoldings.map((holding) => (
+                            <tr key={`${holding.rank}-${holding.security}`}>
+                              <th scope="row">{holding.rank}</th>
+                              <td>{holding.security}</td>
+                              <td className="kw-return">
+                                {typeof holding.percent === "number"
+                                  ? `${holding.percent}%`
+                                  : unavailable}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+                  {unavailableNote("topHoldings", factSheetDisclosure) && (
+                    <p className="kw-muted" role="note">
+                      十大持倉：
+                      {unavailableNote("topHoldings", factSheetDisclosure)}
+                    </p>
+                  )}
+                  <p className="kw-muted">
+                    維度標題、項目名稱及證券名稱一律照便覽原文，比重的小數位數沿用披露本身。股票／債券／現金及其他三個桶是編輯歸類，不是官方分類，不會覆蓋原文。
+                  </p>
+                </>
+              ) : (
+                <p className="kw-muted" role="note">
+                  官方未提供：這隻基金未有可對應的計劃便覽披露。
+                </p>
+              )}
+            </div>
+          </section>
+          <section className="kw-section" aria-labelledby="fund-source-title">
+            <h2 className="kw-section__heading" id="fund-source-title">
+              資料來源及驗證
+            </h2>
+            <div className="kw-card provenance">
+              <p>資料截至：{provenance.dataAsOf}</p>
+              <p>擷取版本：{provenance.retrievedAt}</p>
+              <p>驗證狀態：已驗證</p>
+              {freshness && (
+                <>
+                  <p
+                    className={
+                      freshness.status === "stale"
+                        ? "kw-status kw-status--warning"
+                        : "kw-status kw-status--positive"
+                    }
+                  >
+                    {freshness.status === "stale" ? "資料過期" : "資料現行"}
+                  </p>
+                  <p>
+                    {freshness.status === "stale"
+                      ? `這項資料已超出官方披露寬限期（${freshness.graceDays} 日），截至日期仍為 ${freshness.dataAsOf}。數值繼續顯示以供參考，但不會參與排名。`
+                      : `資料在官方披露寬限期（${freshness.graceDays} 日）之內。`}
+                  </p>
+                </>
+              )}
               <p>
-                {freshness.status === "stale"
-                  ? `這項資料已超出官方披露寬限期（${freshness.graceDays} 日），截至日期仍為 ${freshness.dataAsOf}。數值繼續顯示以供參考，但不會參與排名。`
-                  : `資料在官方披露寬限期（${freshness.graceDays} 日）之內。`}
+                公開快照：<code>{snapshotId}</code>
               </p>
-            </>
-          )}
-          <p>
-            公開快照：<code>{snapshotId}</code>
-          </p>
-          <a href={provenance.sourceUrl} rel="noreferrer" target="_blank">
-            積金局原始資料
-          </a>
-          <p className="disclaimer">
-            資料比較不代表投資建議；過往表現不代表未來結果。請查閱受託人最新文件。
-          </p>
+              <a href={provenance.sourceUrl} rel="noreferrer" target="_blank">
+                積金局原始資料
+              </a>
+              <p className="disclaimer">
+                資料比較不代表投資建議；過往表現不代表未來結果。請查閱受託人最新文件。
+              </p>
+            </div>
+          </section>
+          <section className="kw-section" aria-labelledby="fund-peers-title">
+            <h2 className="kw-section__heading" id="fund-peers-title">
+              同組比較
+            </h2>
+            <div className="kw-card">
+              <p>
+                這隻基金的比較組別是 <strong>{comparisonGroup}</strong>
+                。排名只在同一組別內進行，不會與其他基金種類混合。
+              </p>
+              <p className="kw-muted">
+                {publication.classification
+                  ? `分類來自 ${publication.classification.provider}「${publication.classification.dataset}」（期別 ${publication.classification.capturedAt}），屬非官方來源。官方平台基金種類為 ${fundClass.fundType}／${fundClass.fundCategory}。`
+                  : `官方平台基金種類為 ${fundClass.fundType}／${fundClass.fundCategory}。`}
+              </p>
+              <p className="kw-home-actions">
+                <a
+                  className="kw-button"
+                  href={`/rankings?period=1&group=${encodeURIComponent(comparisonGroup)}`}
+                >
+                  查看同組基金排名
+                </a>
+              </p>
+            </div>
+          </section>
         </div>
-      </section>
-      <section className="kw-section" aria-labelledby="fund-peers-title">
-        <h2 className="kw-section__heading" id="fund-peers-title">
-          同組比較
-        </h2>
-        <div className="kw-card">
-          <p>
-            這隻基金的比較組別是 <strong>{comparisonGroup}</strong>
-            。排名只在同一組別內進行，不會與其他基金種類混合。
-          </p>
-          <p className="kw-muted">
-            {publication.classification
-              ? `分類來自 ${publication.classification.provider}「${publication.classification.dataset}」（期別 ${publication.classification.capturedAt}），屬非官方來源。官方平台基金種類為 ${fundClass.fundType}／${fundClass.fundCategory}。`
-              : `官方平台基金種類為 ${fundClass.fundType}／${fundClass.fundCategory}。`}
-          </p>
-          <p className="kw-home-actions">
-            <a
-              className="kw-button"
-              href={`/rankings?period=1&group=${encodeURIComponent(comparisonGroup)}`}
-            >
-              查看同組基金排名
-            </a>
-          </p>
-        </div>
-      </section>
+      )}
     </SiteChrome>
   );
 }
