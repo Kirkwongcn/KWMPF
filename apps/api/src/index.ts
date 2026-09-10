@@ -141,6 +141,9 @@ type BrowseFundClass = {
   riskClass?: number;
   fundRiskIndicator?: number;
   annualizedReturn1y?: number;
+  annualizedReturn3y?: number;
+  annualizedReturn5y?: number;
+  annualizedReturn10y?: number;
   managementFee?: number;
   latestFer?: number;
   dataAsOf?: string;
@@ -149,6 +152,7 @@ type BrowseFundClass = {
   returnsAsOf?: string;
   launchDate?: string;
   isDisComponent?: "core_accumulation" | "age65_plus";
+  verificationStatus: string;
 };
 
 type PublishedFundPayload = {
@@ -607,6 +611,7 @@ app.get("/schemes", async (context) => {
         dataAsOf?: string;
         sourceUrl?: string;
         annualizedReturn1y?: number;
+        annualizedReturn3y?: number;
         annualizedReturn5y?: number;
         annualizedReturn10y?: number;
       }[];
@@ -636,6 +641,7 @@ app.get("/schemes", async (context) => {
         managementFee?: number;
         dataAsOf?: string;
         annualizedReturn1y?: number;
+        annualizedReturn3y?: number;
         annualizedReturn5y?: number;
         annualizedReturn10y?: number;
         verificationStatus: string;
@@ -703,6 +709,126 @@ app.get("/schemes", async (context) => {
   );
 });
 
+type SchemeComparisonFund = BrowseFundClass;
+
+function summarizeDisReturns(funds: SchemeComparisonFund[]) {
+  const values = (period: 1 | 3 | 5 | 10) => {
+    const field = `annualizedReturn${period}y` as
+      | "annualizedReturn1y"
+      | "annualizedReturn3y"
+      | "annualizedReturn5y"
+      | "annualizedReturn10y";
+    return funds.flatMap((fund) => {
+      const value = fund[field];
+      return typeof value === "number" && Number.isFinite(value) ? [value] : [];
+    });
+  };
+  return Object.fromEntries(
+    ([1, 3, 5, 10] as const).map((period) => {
+      const published = values(period);
+      return [
+        `${period}y`,
+        published.length === 0
+          ? null
+          : {
+              min: Math.min(...published),
+              max: Math.max(...published),
+              fundClassCount: published.length,
+            },
+      ];
+    }),
+  );
+}
+
+function disComponentSummary(
+  funds: SchemeComparisonFund[],
+  component: "core_accumulation" | "age65_plus",
+) {
+  const matches = funds.filter((fund) => fund.isDisComponent === component);
+  if (matches.length === 0) return null;
+  return {
+    constituentFundName: matches[0]!.constituentFundName,
+    returns: summarizeDisReturns(matches),
+    fundClasses: matches.map((fund) => ({
+      id: fund.id,
+      fundClassName: fund.fundClassName,
+      ...definedReturns(fund),
+    })),
+  };
+}
+
+function schemeComparison(schemeName: string, funds: SchemeComparisonFund[]) {
+  const coreAccumulation = disComponentSummary(funds, "core_accumulation");
+  const age65Plus = disComponentSummary(funds, "age65_plus");
+  const ferValues = funds.flatMap((fund) =>
+    typeof fund.latestFer === "number" && Number.isFinite(fund.latestFer)
+      ? [fund.latestFer]
+      : [],
+  );
+  return {
+    id: schemeName,
+    schemeName,
+    trusteeName: funds[0]!.trusteeName,
+    fundChoiceCount: new Set(funds.map((fund) => fund.constituentFundName))
+      .size,
+    fundClassCount: funds.length,
+    fer: summarizeFees(ferValues),
+    disPerformance: {
+      status:
+        coreAccumulation && age65Plus
+          ? ("complete" as const)
+          : ("incomplete" as const),
+      missing: [
+        ...(coreAccumulation ? [] : ["core_accumulation" as const]),
+        ...(age65Plus ? [] : ["age65_plus" as const]),
+      ],
+      coreAccumulation,
+      age65Plus,
+    },
+    administrationScore: null,
+  };
+}
+
+app.get("/schemes/compare", async (context) => {
+  const rawIds = context.req.query("ids");
+  const ids = rawIds
+    ?.split(",")
+    .map((id) => id.trim())
+    .filter((id, index, all) => id.length > 0 && all.indexOf(id) === index);
+  if (!ids?.length) {
+    return context.json({ error: "Provide between 1 and 4 scheme ids" }, 400);
+  }
+  if (ids.length > 4) {
+    return context.json(
+      { error: "A maximum of 4 schemes can be compared", maximum: 4 },
+      400,
+    );
+  }
+
+  const current = await context.env.DB.prepare(
+    `SELECT snapshot_id FROM current_publication WHERE singleton = 1`,
+  ).first<{ snapshot_id: string }>();
+  if (!current) return context.json({ snapshotId: null, schemes: [] });
+
+  const published = await loadPublishedFundClasses(context.env.DB);
+  const grouped = new Map<string, SchemeComparisonFund[]>();
+  for (const fund of published) {
+    if (fund.verificationStatus !== "verified") continue;
+    const members = grouped.get(fund.schemeName) ?? [];
+    members.push(fund);
+    grouped.set(fund.schemeName, members);
+  }
+  const missingIds = ids.filter((id) => !grouped.has(id));
+  if (missingIds.length > 0) {
+    return context.json({ error: "Scheme not found", missingIds }, 404);
+  }
+
+  return context.json({
+    snapshotId: current.snapshot_id,
+    schemes: ids.map((id) => schemeComparison(id, grouped.get(id)!)),
+  });
+});
+
 function summarizeDates(dates: string[]) {
   if (dates.length === 0) return null;
   const sorted = [...dates].sort();
@@ -711,12 +837,16 @@ function summarizeDates(dates: string[]) {
 
 function definedReturns(fundClass: {
   annualizedReturn1y?: number;
+  annualizedReturn3y?: number;
   annualizedReturn5y?: number;
   annualizedReturn10y?: number;
 }) {
   return {
     ...(typeof fundClass.annualizedReturn1y === "number"
       ? { annualizedReturn1y: fundClass.annualizedReturn1y }
+      : {}),
+    ...(typeof fundClass.annualizedReturn3y === "number"
+      ? { annualizedReturn3y: fundClass.annualizedReturn3y }
       : {}),
     ...(typeof fundClass.annualizedReturn5y === "number"
       ? { annualizedReturn5y: fundClass.annualizedReturn5y }

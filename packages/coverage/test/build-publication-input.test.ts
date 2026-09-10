@@ -29,7 +29,7 @@ describe("publication input builder", () => {
     expect(result.publicFields).not.toHaveProperty("oci1yHkd");
   });
 
-  it("carries official five and ten year returns when the source provides them", () => {
+  it("carries official three, five and ten year returns when the source provides them", () => {
     const result = buildPublicationInputs([
       {
         fundClassId: "fund-b",
@@ -44,6 +44,7 @@ describe("publication input builder", () => {
         sourceUrl: "https://example.test/fund-b",
         returns: {
           1: { annualized: 4.2, dataAsOf: "2026-07-31" },
+          3: { annualized: 5.3, dataAsOf: "2026-07-31" },
           5: { annualized: 6.1, dataAsOf: "2026-07-31" },
           10: { annualized: 5.4, dataAsOf: "2026-07-31" },
         },
@@ -52,6 +53,7 @@ describe("publication input builder", () => {
 
     expect(result.publicFields).toMatchObject({
       annualizedReturn1y: 4.2,
+      annualizedReturn3y: 5.3,
       annualizedReturn5y: 6.1,
       annualizedReturn10y: 5.4,
     });

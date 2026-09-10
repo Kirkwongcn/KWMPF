@@ -472,10 +472,10 @@ describe("publication snapshot", () => {
       .bind(snapshotId, "2026-08-24T00:00:00Z")
       .run();
     const funds = [
-      { id: "fund-full", returns: { 1: 6.09, 5: 4.2, 10: 9.41 } },
+      { id: "fund-full", returns: { 1: 6.09, 3: 5.3, 5: 4.2, 10: 9.41 } },
       { id: "fund-short", returns: { 1: 2.5 } },
       { id: "fund-none", returns: {} },
-    ] as { id: string; returns: Partial<Record<1 | 5 | 10, number>> }[];
+    ] as { id: string; returns: Partial<Record<1 | 3 | 5 | 10, number>> }[];
     for (const fund of funds) {
       await bindings.DB.prepare(
         "INSERT INTO fund_class_versions (snapshot_id, fund_class_id, payload) VALUES (?, ?, ?)",
@@ -496,6 +496,9 @@ describe("publication snapshot", () => {
               ...(fund.returns[1] === undefined
                 ? {}
                 : { annualizedReturn1y: fund.returns[1] }),
+              ...(fund.returns[3] === undefined
+                ? {}
+                : { annualizedReturn3y: fund.returns[3] }),
               ...(fund.returns[5] === undefined
                 ? {}
                 : { annualizedReturn5y: fund.returns[5] }),
@@ -519,6 +522,7 @@ describe("publication snapshot", () => {
       funds: {
         id: string;
         annualizedReturn1y?: number;
+        annualizedReturn3y?: number;
         annualizedReturn5y?: number;
         annualizedReturn10y?: number;
       }[];
@@ -527,6 +531,7 @@ describe("publication snapshot", () => {
     const byId = new Map(schemes[0]!.funds.map((fund) => [fund.id, fund]));
     expect(byId.get("fund-full")).toMatchObject({
       annualizedReturn1y: 6.09,
+      annualizedReturn3y: 5.3,
       annualizedReturn5y: 4.2,
       annualizedReturn10y: 9.41,
     });
@@ -1034,6 +1039,129 @@ describe("publication snapshot", () => {
     ).json()) as { managementFee: unknown }[];
 
     expect(schemes[0]!.managementFee).toBeNull();
+  });
+
+  it("compares up to four schemes without double-counting fund classes as choices", async () => {
+    const snapshotId = "snapshot-scheme-comparison";
+    await bindings.DB.prepare(
+      "INSERT INTO publication_snapshots (snapshot_id, published_at) VALUES (?, ?)",
+    )
+      .bind(snapshotId, "2026-09-10T00:00:00Z")
+      .run();
+    const funds = [
+      {
+        id: "core-a",
+        constituentFundName: "Core Accumulation Fund",
+        fundClassName: "Class A",
+        component: "core_accumulation",
+        fer: 0.72,
+        returns: { annualizedReturn1y: 8.11, annualizedReturn3y: 5.2 },
+      },
+      {
+        id: "core-t",
+        constituentFundName: "Core Accumulation Fund",
+        fundClassName: "Class T",
+        component: "core_accumulation",
+        fer: 0.68,
+        returns: { annualizedReturn1y: 8.1, annualizedReturn3y: 5.2 },
+      },
+      {
+        id: "age65",
+        constituentFundName: "Age 65 Plus Fund",
+        fundClassName: "Class A",
+        component: "age65_plus",
+        fer: 0.61,
+        returns: { annualizedReturn1y: 3.2 },
+      },
+      {
+        id: "other",
+        constituentFundName: "Global Equity Fund",
+        fundClassName: "Class A",
+        fer: undefined,
+        returns: {},
+      },
+    ];
+    for (const fund of funds) {
+      await bindings.DB.prepare(
+        "INSERT INTO fund_class_versions (snapshot_id, fund_class_id, payload) VALUES (?, ?, ?)",
+      )
+        .bind(
+          snapshotId,
+          fund.id,
+          JSON.stringify({
+            snapshotId,
+            fundClass: {
+              id: fund.id,
+              schemeName: "比較計劃",
+              trusteeName: "比較受託人",
+              constituentFundName: fund.constituentFundName,
+              fundClassName: fund.fundClassName,
+              fundType: "Mixed Assets Fund",
+              verificationStatus: "verified",
+              ...(fund.component ? { isDisComponent: fund.component } : {}),
+              ...(fund.fer === undefined ? {} : { latestFer: fund.fer }),
+              ...fund.returns,
+            },
+          }),
+        )
+        .run();
+    }
+    await bindings.DB.prepare(
+      "INSERT INTO current_publication (singleton, snapshot_id) VALUES (1, ?)",
+    )
+      .bind(snapshotId)
+      .run();
+
+    const response = await SELF.fetch(
+      `https://kwmpf.test/schemes/compare?ids=${encodeURIComponent("比較計劃")}`,
+    );
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({
+      snapshotId,
+      schemes: [
+        expect.objectContaining({
+          id: "比較計劃",
+          trusteeName: "比較受託人",
+          fundChoiceCount: 3,
+          fundClassCount: 4,
+          fer: { min: 0.61, median: 0.68, max: 0.72, fundCount: 3 },
+          administrationScore: null,
+          disPerformance: expect.objectContaining({
+            status: "complete",
+            missing: [],
+            coreAccumulation: expect.objectContaining({
+              returns: expect.objectContaining({
+                "1y": { min: 8.1, max: 8.11, fundClassCount: 2 },
+                "3y": { min: 5.2, max: 5.2, fundClassCount: 2 },
+                "5y": null,
+                "10y": null,
+              }),
+            }),
+          }),
+        }),
+      ],
+    });
+  });
+
+  it("rejects empty, excessive, and unknown scheme comparison ids", async () => {
+    expect(
+      await SELF.fetch("https://kwmpf.test/schemes/compare"),
+    ).toHaveProperty("status", 400);
+    expect(
+      await SELF.fetch("https://kwmpf.test/schemes/compare?ids=a,b,c,d,e"),
+    ).toHaveProperty("status", 400);
+
+    const archived = await archiveCandidate(bindings, fundFixture);
+    await publishCandidate(bindings, fundFixture, archived);
+    const response = await SELF.fetch(
+      "https://kwmpf.test/schemes/compare?ids=missing",
+    );
+    expect(response.status).toBe(404);
+    expect(await response.json()).toEqual({
+      error: "Scheme not found",
+      missingIds: ["missing"],
+    });
   });
 
   it("keeps verified fund classes with unavailable risk data in scheme summaries", async () => {

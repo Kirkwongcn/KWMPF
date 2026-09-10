@@ -4,6 +4,7 @@ import type { PublicationInput } from "./publication-preflight";
 function returnsAsOf(record: SourceRecord) {
   return (
     record.returns?.[1]?.dataAsOf ??
+    record.returns?.[3]?.dataAsOf ??
     record.returns?.[5]?.dataAsOf ??
     record.returns?.[10]?.dataAsOf ??
     record.sinceLaunchReturn?.dataAsOf
@@ -49,6 +50,9 @@ export function buildPublicationInputs(records: SourceRecord[]): PublicationInpu
     publicFields: {
       ...(typeof record.returns?.[1]?.annualized === "number"
         ? { annualizedReturn1y: record.returns[1].annualized }
+        : {}),
+      ...(typeof record.returns?.[3]?.annualized === "number"
+        ? { annualizedReturn3y: record.returns[3].annualized }
         : {}),
       ...(typeof record.returns?.[5]?.annualized === "number"
         ? { annualizedReturn5y: record.returns[5].annualized }
