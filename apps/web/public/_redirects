@@ -7,6 +7,7 @@
 # The rewrite target must be `/`, not `/index.html`: Pages normalises
 # `/index.html` back to `/`, which turns these rules into 308 redirects and
 # makes the splat rule look like an infinite loop, so Pages drops it.
+/schemes/compare / 200
 /schemes / 200
 /rankings / 200
 /funds / 200

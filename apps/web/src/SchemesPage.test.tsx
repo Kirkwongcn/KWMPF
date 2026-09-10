@@ -687,3 +687,88 @@ describe("scheme fact sheet link", () => {
     expect(screen.getAllByText(/積金局基金便覽/)).toHaveLength(1);
   });
 });
+
+describe("scheme comparison selection", () => {
+  afterEach(() => {
+    cleanup();
+    vi.unstubAllGlobals();
+  });
+
+  const manySchemes = Array.from({ length: 5 }, (_, index) => ({
+    schemeName: `計劃 ${index + 1}`,
+    trusteeName: `Trustee ${index + 1}`,
+    fundClassCount: 1,
+    fundTypes: ["Equity Fund"],
+    riskClassDistribution: { "5": 1 },
+    managementFee: {
+      min: 0.5,
+      median: 0.6,
+      max: 0.7,
+      fundCount: 1,
+    },
+    dataAsOf: { earliest: "2026-07-31", latest: "2026-07-31" },
+    factSheet: null,
+    funds: [
+      {
+        id: `fund-${index + 1}`,
+        constituentFundName: `Fund ${index + 1}`,
+        fundClassName: "Class A",
+        fundType: "Equity Fund",
+        riskClass: 5,
+        annualizedReturn1y: 5,
+      },
+    ],
+  }));
+
+  it("links selected schemes into the compare page", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(Response.json(manySchemes.slice(0, 2))),
+    );
+
+    render(<SchemesPage apiBaseUrl="https://api.test" />);
+
+    expect(await screen.findByText("已選 0/4 個計劃比較")).toBeVisible();
+    expect(screen.getByRole("button", { name: "比較已選計劃" })).toBeDisabled();
+
+    fireEvent.click(
+      screen.getByRole("checkbox", { name: "選擇 計劃 1 作比較" }),
+    );
+    fireEvent.click(
+      screen.getByRole("checkbox", { name: "選擇 計劃 2 作比較" }),
+    );
+
+    expect(screen.getByText("已選 2/4 個計劃比較")).toBeVisible();
+    expect(screen.getByRole("link", { name: "比較已選計劃" })).toHaveAttribute(
+      "href",
+      `/schemes/compare?ids=${encodeURIComponent("計劃 1")},${encodeURIComponent("計劃 2")}`,
+    );
+  });
+
+  it("blocks a fifth selection and explains the limit", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(Response.json(manySchemes)),
+    );
+
+    render(<SchemesPage apiBaseUrl="https://api.test" />);
+
+    await screen.findByRole("heading", { name: "計劃 1" });
+    for (const name of ["計劃 1", "計劃 2", "計劃 3", "計劃 4"]) {
+      fireEvent.click(
+        screen.getByRole("checkbox", { name: `選擇 ${name} 作比較` }),
+      );
+    }
+
+    expect(screen.getByText("已選 4/4 個計劃比較")).toBeVisible();
+    expect(screen.getByText(/一次最多比較 4 個計劃/)).toBeVisible();
+    expect(
+      screen.getByRole("checkbox", { name: "選擇 計劃 5 作比較" }),
+    ).toBeDisabled();
+
+    fireEvent.click(
+      screen.getByRole("checkbox", { name: "選擇 計劃 5 作比較" }),
+    );
+    expect(screen.getByText("已選 4/4 個計劃比較")).toBeVisible();
+  });
+});
