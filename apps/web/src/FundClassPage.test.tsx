@@ -1,5 +1,6 @@
 import {
   cleanup,
+  fireEvent,
   render,
   screen,
   waitFor,
@@ -983,5 +984,111 @@ describe("cumulative returns", () => {
     expect(
       screen.queryByRole("table", { name: "十大持倉" }),
     ).not.toBeInTheDocument();
+  });
+
+  function interpretationResponse(
+    status: "complete" | "insufficient" = "complete",
+  ) {
+    const unavailable = status === "insufficient";
+    return {
+      snapshotId: "snapshot-interpretation-ui",
+      fundClassId: "interpretation-ui",
+      comparisonGroup: "Hong Kong Equity",
+      comparisonGroupSource: "lipper",
+      values: {
+        equity: {
+          fund: unavailable ? null : 94,
+          groupAverage: unavailable ? null : 92,
+          official: false,
+        },
+        top10Concentration: {
+          fund: unavailable ? null : 33,
+          groupAverage: unavailable ? null : 30,
+        },
+        volatility3y: {
+          fund: unavailable ? null : 17,
+          groupAverage: unavailable ? null : 20,
+        },
+      },
+      interpretation: {
+        thresholdVersion: "2026-09-10-trial-1",
+        thresholdStatus: "trial",
+        equity: {
+          status: unavailable ? "insufficient-sample" : "similar",
+          text: unavailable
+            ? "股票配置（編輯歸類，非官方分類）：同組別樣本不足，未能比較。"
+            : "股票配置（編輯歸類，非官方分類） 94%，與同組別平均相若。",
+        },
+        top10Concentration: {
+          status: unavailable ? "insufficient-sample" : "higher",
+          text: unavailable
+            ? "十大持倉佔比：同組別樣本不足，未能比較。"
+            : "十大持倉佔比 33%，比同組別平均高 3 個百分點。",
+        },
+        volatility3y: {
+          status: unavailable ? "insufficient-sample" : "lower",
+          text: unavailable
+            ? "3年波幅：同組別樣本不足，未能比較。"
+            : "3年波幅 17%，比同組別平均低 3 個百分點。",
+        },
+      },
+    };
+  }
+
+  function renderInterpretation(
+    status: "complete" | "insufficient" = "complete",
+  ) {
+    const fetchMock = vi.fn().mockImplementation((url: string) =>
+      Promise.resolve(
+        Response.json(
+          url.endsWith("/interpretation")
+            ? interpretationResponse(status)
+            : {
+                snapshotId: "snapshot-interpretation-ui",
+                fundClass: fixture.fundClass,
+                comparisonGroup: "Hong Kong Equity",
+                provenance: {
+                  sourceUrl: fixture.source.url,
+                  dataAsOf: fixture.fundClass.dataAsOf,
+                  retrievedAt: fixture.source.retrievedAt,
+                  verificationStatus: "verified",
+                },
+              },
+        ),
+      ),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+    render(
+      <FundClassPage
+        apiBaseUrl="https://api.test"
+        fundClassId="interpretation-ui"
+      />,
+    );
+    return fetchMock;
+  }
+
+  it("shows snapshot interpretation text and matching comparison charts", async () => {
+    const fetchMock = renderInterpretation();
+
+    fireEvent.click(await screen.findByRole("tab", { name: "基金解讀" }));
+
+    expect(await screen.findByText(/股票配置.*94%.*相若/)).toBeVisible();
+    expect(screen.getByText(/十大持倉佔比 33%.*高 3 個百分點/)).toBeVisible();
+    expect(screen.getByText(/3年波幅 17%.*低 3 個百分點/)).toBeVisible();
+    expect(screen.getByText(/規則版本 2026-09-10-trial-1/)).toBeVisible();
+    expect(screen.getAllByRole("img")).toHaveLength(3);
+    expect(fetchMock).toHaveBeenLastCalledWith(
+      "https://api.test/fund-classes/interpretation-ui/interpretation",
+    );
+  });
+
+  it("shows explicit sample status without partial charts", async () => {
+    renderInterpretation("insufficient");
+
+    fireEvent.click(await screen.findByRole("tab", { name: "基金解讀" }));
+
+    expect(await screen.findAllByText("樣本不足")).toHaveLength(3);
+    expect(screen.getAllByText(/同組別樣本不足，未能比較/)).toHaveLength(3);
+    expect(screen.queryByRole("img")).not.toBeInTheDocument();
   });
 });

@@ -77,6 +77,24 @@ test("詳情頁的同組比較連結會帶著比較組別回到排名", async ({
   }
 });
 
+test("基金解讀分頁以同一快照顯示三項比較", async ({ page }) => {
+  await page.goto("/rankings");
+  const firstFund = page
+    .locator("table.kw-table tbody tr td.kw-table__name a")
+    .first();
+  await expect(firstFund).toBeVisible();
+  await firstFund.click();
+
+  await page.getByRole("tab", { name: "基金解讀" }).click();
+
+  const interpretation = page.getByRole("region", { name: "基金解讀" });
+  await expect(interpretation).toContainText(/股票配置/);
+  await expect(interpretation).toContainText(/十大持倉/);
+  await expect(interpretation).toContainText(/3年波幅/);
+  await expect(interpretation).toContainText("2026-09-10-trial-1");
+  await expect(interpretation).toContainText(/不會隨回報期間改變/);
+});
+
 test("找不到的基金不會顯示估算資料", async ({ page }) => {
   await page.goto("/fund-classes/does-not-exist");
 
