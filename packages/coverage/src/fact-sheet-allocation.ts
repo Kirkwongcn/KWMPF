@@ -227,6 +227,7 @@ const BARE_TRAILING = /^(.*?\S)[\s.·]+([+-]?\d+\.\d+)$/;
 // 名次可以係「1.」「1、」或者淨係「1 」。要求數字後面有分隔或空白，
 // 否則會把「3M Co」的 3 當成名次。
 const RANK_PREFIX = /^(\d{1,2})(?:\s*[.、)．]\s*|\s+)/;
+const LATIN_LETTER = /[A-Za-z]/;
 
 /**
  * 接駁跨行的名稱。中文標籤換行時原文並沒有空格（「亞太股票（中國內地╱香港╱」＋
@@ -267,12 +268,14 @@ function inReadingOrder(items: PdfTextItem[]) {
 /**
  * 由同一列的文字段落砌出名稱。同一行的用水平空隙決定要唔要空格（中銀保誠會把
  * 一個數字拆成幾段），空隙量到 0 但 poppler 喺嗰度開咗一個新詞就補返一個空格
- * （`startsWord`：中英對照的證券名喺文字層黐埋，見 `markWordStarts`）——但兩段都係
+ * （`startsWord`：中英對照的證券名喺文字層黐埋，見 `markWordStarts`）。有啲便覽連
+ * poppler 都會把黐埋的中英兩段當成同一個詞，所以中日韓字與拉丁字的交界亦要補空格——
+ * 但兩段都係
  * 數值碎片（`NUMERIC_FRAGMENT`）就唔信 `startsWord`：poppler 一樣會把 `8.8%` 切成
  * `8` `.` `8` `%` 四個「詞」，一律當有空格會拆散名次前面／後面嗰個數值。跨行的用
  * `joinLabel`（換行的中文標籤唔應該加空格）。
  */
-function joinLabelItems(items: PdfTextItem[]) {
+export function joinLabelItems(items: PdfTextItem[]) {
   let text = "";
   let previous: PdfTextItem | undefined;
   for (const item of items) {
@@ -280,9 +283,14 @@ function joinLabelItems(items: PdfTextItem[]) {
     else if (Math.abs(item.top - previous.top) <= SAME_ROW) {
       const numericFragment =
         NUMERIC_FRAGMENT.test(text.at(-1) ?? "") && NUMERIC_FRAGMENT.test(item.text[0] ?? "");
+      const left = text.at(-1) ?? "";
+      const right = item.text[0] ?? "";
+      const bilingualBoundary =
+        (CJK.test(left) && LATIN_LETTER.test(right)) ||
+        (LATIN_LETTER.test(left) && CJK.test(right));
       const separated =
         item.left - (previous.left + previous.width) > 1 ||
-        (item.startsWord === true && !numericFragment);
+        ((item.startsWord === true || bilingualBoundary) && !numericFragment);
       text += separated ? ` ${item.text}` : item.text;
     } else text = joinLabel(text, item.text);
     previous = item;

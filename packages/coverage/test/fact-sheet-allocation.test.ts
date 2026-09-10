@@ -4,6 +4,7 @@ import { factSheetContract } from "../src/fact-sheet-allocation-contracts";
 import {
   findFactSheetAsOf,
   findSections,
+  joinLabelItems,
   parseFactSheetDate,
   parseFactSheetDisclosures,
   type FactSheetContract,
@@ -150,6 +151,40 @@ describe("joinItems", () => {
       ]),
     );
     expect(joinItems(first!.items)).toBe("Bonds債券 of NAV");
+  });
+});
+
+describe("joinLabelItems", () => {
+  it("separates touching Chinese and Latin label runs even without a poppler word start", () => {
+    const [first] = pdf(
+      page(1, [
+        { top: 10, left: 100, text: "匯豐控股", width: 40 },
+        { top: 10, left: 140, text: "HSBC Holdings PLC", width: 90 },
+      ]),
+    );
+    expect(joinLabelItems(first!.items)).toBe("匯豐控股 HSBC Holdings PLC");
+  });
+
+  it("separates touching Latin and Chinese label runs in the other direction", () => {
+    const [first] = pdf(
+      page(1, [
+        { top: 10, left: 100, text: "APPLE INC", width: 50 },
+        { top: 10, left: 150, text: "蘋果公司", width: 40 },
+      ]),
+    );
+    expect(joinLabelItems(first!.items)).toBe("APPLE INC 蘋果公司");
+  });
+
+  it("keeps touching numeric fragments together inside labels", () => {
+    const [first] = pdf(
+      page(1, [
+        { top: 10, left: 100, text: "8", width: 6 },
+        { top: 10, left: 106, text: ".", width: 3 },
+        { top: 10, left: 109, text: "4", width: 6 },
+        { top: 10, left: 115, text: "%", width: 8 },
+      ]),
+    );
+    expect(joinLabelItems(first!.items)).toBe("8.4%");
   });
 });
 
@@ -920,7 +955,7 @@ describe("Haitong trustee bar chart", () => {
     const [disclosure] = parseFactSheetDisclosures(pages, haitongTrusteeShaped);
 
     expect(disclosure?.allocations[0]?.entries).toEqual([
-      { label: "Bond債券", percent: 23.18 },
+      { label: "Bond 債券", percent: 23.18 },
     ]);
     expect(disclosure?.unavailableKinds.allocation).toBeUndefined();
   });
@@ -1091,8 +1126,8 @@ describe("Fidelity trustee per-fund fact sheet", () => {
         // 中文譯名由契約的對照表補，同積金局副本嗰份出返同一個標籤。
         heading: "Geographical Breakdown 地區分佈",
         entries: [
-          { label: "CHINA中國", percent: 81 },
-          { label: "HONG KONG香港", percent: 19.7 },
+          { label: "CHINA 中國", percent: 81 },
+          { label: "HONG KONG 香港", percent: 19.7 },
         ],
       },
     ]);
@@ -1117,9 +1152,7 @@ describe("Fidelity trustee per-fund fact sheet", () => {
     expect(disclosure?.allocations).toEqual([
       {
         heading: "Currency Breakdown 貨幣分佈",
-        // 中英之間冇空格：兩段文字喺版面上緊貼，`joinItems` 見唔到空隙。
-        // 積金局副本嗰份一樣係咁，屬 #220，唔喺呢張票補。
-        entries: [{ label: "HONG KONG DOLLAR港元", percent: 35.5 }],
+        entries: [{ label: "HONG KONG DOLLAR 港元", percent: 35.5 }],
       },
       {
         heading: "S&P/Moody’s Credit Rating 標準普爾／穆廸信用評級",
@@ -1148,12 +1181,12 @@ describe("Fidelity trustee per-fund fact sheet", () => {
     expect(disclosure?.allocations).toEqual([
       {
         heading: "Fund Allocation by Asset Class 資產類別投資分配",
-        entries: [{ label: "HONG KONG EQUITIES香港股票", percent: 24.63 }],
+        entries: [{ label: "HONG KONG EQUITIES 香港股票", percent: 24.63 }],
       },
     ]);
     // 「Top 10 Holdings」同樣接住中文譯名，所以持倉標題式樣一樣要放寬。
     expect(disclosure?.topHoldings).toEqual([
-      { rank: 1, security: "CSOP FTSE HONG KONG EQUITY ETF南方香港股票", percent: 20.78 },
+      { rank: 1, security: "CSOP FTSE HONG KONG EQUITY ETF 南方香港股票", percent: 20.78 },
     ]);
   });
 });

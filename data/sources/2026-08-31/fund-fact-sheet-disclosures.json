@@ -4489,7 +4489,7 @@
         },
         {
           "rank": 4,
-          "security": "中國建設銀行-H股 China Construction Bank Corp-H",
+          "security": "中國建設銀行-H 股 China Construction Bank Corp-H",
           "percent": 4.4
         },
         {
@@ -4509,7 +4509,7 @@
         },
         {
           "rank": 8,
-          "security": "中國銀行-H股 Bank of China Ltd-H",
+          "security": "中國銀行-H 股 Bank of China Ltd-H",
           "percent": 2.3
         },
         {
@@ -4599,12 +4599,12 @@
         },
         {
           "rank": 3,
-          "security": "中國建設銀行-H股 China Construction Bank Corp-H",
+          "security": "中國建設銀行-H 股 China Construction Bank Corp-H",
           "percent": 4.6
         },
         {
           "rank": 4,
-          "security": "中國銀行-H股 Bank of China Ltd-H",
+          "security": "中國銀行-H 股 Bank of China Ltd-H",
           "percent": 2.7
         },
         {
@@ -9141,7 +9141,7 @@
               "percent": 37.3
             },
             {
-              "label": "新興市場表現顯著領先，MSCI 新興市場指數上升 ，但升幅",
+              "label": "新興市場表現顯著領先， MSCI 新興市場指數上升 ，但升幅",
               "percent": 24.1
             },
             {
@@ -12696,7 +12696,7 @@
               "percent": 21.9
             },
             {
-              "label": "3 H股 H Shares",
+              "label": "3 H 股 H Shares",
               "percent": 20.7
             },
             {
@@ -12704,7 +12704,7 @@
               "percent": 7.6
             },
             {
-              "label": "3 5 A股 A Shares",
+              "label": "3 5 A 股 A Shares",
               "percent": 7.1
             },
             {
@@ -12736,7 +12736,7 @@
         },
         {
           "rank": 4,
-          "security": "中國建設銀行-H股 China Construction Bank Corp-H",
+          "security": "中國建設銀行-H 股 China Construction Bank Corp-H",
           "percent": 4.43
         },
         {
@@ -12751,12 +12751,12 @@
         },
         {
           "rank": 7,
-          "security": "香港交易及結算所Hong Kong Exchanges and Clearing Ltd",
+          "security": "香港交易及結算所 Hong Kong Exchanges and Clearing Ltd",
           "percent": 2.67
         },
         {
           "rank": 8,
-          "security": "中國銀行-H股 Bank of China Ltd-H",
+          "security": "中國銀行-H 股 Bank of China Ltd-H",
           "percent": 2.26
         },
         {
@@ -12807,7 +12807,7 @@
               "percent": 2.8
             },
             {
-              "label": "6 現金Cash",
+              "label": "6 現金 Cash",
               "percent": 1.5
             }
           ]
@@ -12894,7 +12894,7 @@
               "percent": 2.7
             },
             {
-              "label": "1 4 現金Cash",
+              "label": "1 4 現金 Cash",
               "percent": 3
             }
           ]
@@ -13211,7 +13211,7 @@
               "percent": 0.1
             },
             {
-              "label": "4 現金Cash",
+              "label": "4 現金 Cash",
               "percent": 1.8
             }
           ]
@@ -13245,7 +13245,7 @@
         },
         {
           "rank": 6,
-          "security": "博通Broadcom Inc",
+          "security": "博通 Broadcom Inc",
           "percent": 2.71
         },
         {
@@ -13444,7 +13444,7 @@
         },
         {
           "rank": 7,
-          "security": "台灣積體電路製造Taiwan Semiconductor Manufacturing Co Ltd",
+          "security": "台灣積體電路製造 Taiwan Semiconductor Manufacturing Co Ltd",
           "percent": 1.42
         },
         {
@@ -13488,7 +13488,7 @@
               "percent": 1.1
             },
             {
-              "label": "1 港元HKD",
+              "label": "1 港元 HKD",
               "percent": 100
             }
           ]
@@ -13567,11 +13567,11 @@
               "percent": 42
             },
             {
-              "label": "2 H股 H Shares",
+              "label": "2 H 股 H Shares",
               "percent": 22.2
             },
             {
-              "label": "1 3 A股 A Shares",
+              "label": "1 3 A 股 A Shares",
               "percent": 21.6
             },
             {
@@ -13606,12 +13606,12 @@
         },
         {
           "rank": 3,
-          "security": "中國建設銀行-H股 China Construction Bank Corp-H",
+          "security": "中國建設銀行-H 股 China Construction Bank Corp-H",
           "percent": 4.56
         },
         {
           "rank": 4,
-          "security": "中國銀行-H股 Bank of China Ltd-H",
+          "security": "中國銀行-H 股 Bank of China Ltd-H",
           "percent": 2.66
         },
         {
@@ -13666,7 +13666,7 @@
               "percent": 99.8
             },
             {
-              "label": "2 現金Cash",
+              "label": "2 現金 Cash",
               "percent": 0.2
             }
           ]
@@ -13770,7 +13770,7 @@
         },
         {
           "rank": 7,
-          "security": "香港鐵路有限公司MTR Corporation Ltd-3.3% 28/04/2036",
+          "security": "香港鐵路有限公司 MTR Corporation Ltd-3.3% 28/04/2036",
           "percent": 1.54
         },
         {
@@ -14155,19 +14155,19 @@
               "percent": 0.5
             },
             {
-              "label": "4 現金Cash",
+              "label": "4 現金 Cash",
               "percent": 2.2
             },
             {
-              "label": "11 1 金融Financials",
+              "label": "11 1 金融 Financials",
               "percent": 33.9
             },
             {
-              "label": "2 政府Government",
+              "label": "2 政府 Government",
               "percent": 18.4
             },
             {
-              "label": "1 3 能源Energy",
+              "label": "1 3 能源 Energy",
               "percent": 11.1
             },
             {
@@ -14191,15 +14191,15 @@
               "percent": 2.7
             },
             {
-              "label": "3 2 9 物料Materials",
+              "label": "3 2 9 物料 Materials",
               "percent": 2.4
             },
             {
-              "label": "10 其他Others",
+              "label": "10 其他 Others",
               "percent": 0.9
             },
             {
-              "label": "11 現金Cash",
+              "label": "11 現金 Cash",
               "percent": 2.2
             }
           ]
@@ -20544,7 +20544,7 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方東英富時香港股票ETF",
+          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方東英富時香港股票 ETF",
           "percent": 10.95
         },
         {
@@ -20554,7 +20554,7 @@
         },
         {
           "rank": 3,
-          "security": "Invesco QQQ Trust Series 1 景順QQQ信託系列1",
+          "security": "Invesco QQQ Trust Series 1 景順 QQQ 信託系列1",
           "percent": 4.68
         },
         {
@@ -20627,7 +20627,7 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方東英富時香港股票ETF",
+          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方東英富時香港股票 ETF",
           "percent": 12.18
         },
         {
@@ -20637,7 +20637,7 @@
         },
         {
           "rank": 3,
-          "security": "Invesco QQQ Trust Series 1 景順QQQ信託系列1",
+          "security": "Invesco QQQ Trust Series 1 景順 QQQ 信託系列1",
           "percent": 4.72
         },
         {
@@ -20896,7 +20896,7 @@
         },
         {
           "rank": 5,
-          "security": "ALPHABET INC-A Alphabet公司",
+          "security": "ALPHABET INC-A Alphabet 公司",
           "percent": 1.95
         },
         {
@@ -20921,7 +20921,7 @@
         },
         {
           "rank": 10,
-          "security": "ALPHABET INC-C Alphabet公司",
+          "security": "ALPHABET INC-C Alphabet 公司",
           "percent": 1.15
         }
       ],
@@ -21057,7 +21057,7 @@
         },
         {
           "rank": 4,
-          "security": "ALPHABET INC-A Alphabet公司",
+          "security": "ALPHABET INC-A Alphabet 公司",
           "percent": 1.9
         },
         {
@@ -21316,12 +21316,12 @@
         },
         {
           "rank": 6,
-          "security": "ALPHABET INC-A Alphabet公司",
+          "security": "ALPHABET INC-A Alphabet 公司",
           "percent": 3.17
         },
         {
           "rank": 7,
-          "security": "ALPHABET INC-C Alphabet公司",
+          "security": "ALPHABET INC-C Alphabet 公司",
           "percent": 2.74
         },
         {
@@ -21357,11 +21357,11 @@
           "heading": "Fund Allocation by Asset Class 資產類別投資分配",
           "entries": [
             {
-              "label": "HONG KONG EQUITIES香港股票",
+              "label": "HONG KONG EQUITIES 香港股票",
               "percent": 24.63
             },
             {
-              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
+              "label": "CHINA ONSHORE EQUITIES 中國在岸股票",
               "percent": 6.88
             },
             {
@@ -21369,31 +21369,31 @@
               "percent": 11.46
             },
             {
-              "label": "JAPAN EQUITIES日本股票",
+              "label": "JAPAN EQUITIES 日本股票",
               "percent": 11.37
             },
             {
-              "label": "EUROPE EQUITIES歐洲股票",
+              "label": "EUROPE EQUITIES 歐洲股票",
               "percent": 16.29
             },
             {
-              "label": "AMERICAS EQUITIES美國股票",
+              "label": "AMERICAS EQUITIES 美國股票",
               "percent": 20.77
             },
             {
-              "label": "EMERGING MARKETS EQUITIES新興市場股票",
+              "label": "EMERGING MARKETS EQUITIES 新興市場股票",
               "percent": 0.04
             },
             {
-              "label": "WORLD EQUITIES世界股票",
+              "label": "WORLD EQUITIES 世界股票",
               "percent": 0.5
             },
             {
-              "label": "HIGHER GRADE BOND高評級債券",
+              "label": "HIGHER GRADE BOND 高評級債券",
               "percent": 4.28
             },
             {
-              "label": "MONEY FUND貨幣基金",
+              "label": "MONEY FUND 貨幣基金",
               "percent": 0.34
             },
             {
@@ -21406,7 +21406,7 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF南方香港股票",
+          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方香港股票",
           "percent": 20.78
         },
         {
@@ -21426,12 +21426,12 @@
         },
         {
           "rank": 5,
-          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
+          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES 美國醫療保健 ETF",
           "percent": 2.44
         },
         {
           "rank": 6,
-          "security": "ISHARES U.S. UTILITIES ETF ISHARES美國公用事業 ETF",
+          "security": "ISHARES U.S. UTILITIES ETF ISHARES 美國公用事業 ETF",
           "percent": 1.83
         },
         {
@@ -21441,17 +21441,17 @@
         },
         {
           "rank": 8,
-          "security": "INVESCO QQQ TRUST景順 QQQ",
+          "security": "INVESCO QQQ TRUST 景順 QQQ",
           "percent": 1.51
         },
         {
           "rank": 9,
-          "security": "HONG KONG TRACKER FUND盈富基金",
+          "security": "HONG KONG TRACKER FUND 盈富基金",
           "percent": 1.28
         },
         {
           "rank": 10,
-          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD台積電",
+          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD 台積電",
           "percent": 0.99
         }
       ],
@@ -21472,15 +21472,15 @@
           "heading": "Currency Breakdown 貨幣分佈",
           "entries": [
             {
-              "label": "HONG KONG DOLLAR港元",
+              "label": "HONG KONG DOLLAR 港元",
               "percent": 35.5
             },
             {
-              "label": "US DOLLAR美元",
+              "label": "US DOLLAR 美元",
               "percent": 27.8
             },
             {
-              "label": "EURO歐元",
+              "label": "EURO 歐元",
               "percent": 13.5
             },
             {
@@ -21488,19 +21488,19 @@
               "percent": 8.3
             },
             {
-              "label": "JAPANESE YEN日元",
+              "label": "JAPANESE YEN 日元",
               "percent": 5.6
             },
             {
-              "label": "UK POUND英鎊",
+              "label": "UK POUND 英鎊",
               "percent": 3.7
             },
             {
-              "label": "AUSTRALIAN DOLLAR澳元",
+              "label": "AUSTRALIAN DOLLAR 澳元",
               "percent": 1.8
             },
             {
-              "label": "OTHERS其他",
+              "label": "OTHERS 其他",
               "percent": 3.7
             }
           ]
@@ -21625,11 +21625,11 @@
           "heading": "Fund Allocation by Asset Class 資產類別投資分配",
           "entries": [
             {
-              "label": "HONG KONG EQUITIES香港股票",
+              "label": "HONG KONG EQUITIES 香港股票",
               "percent": 14.32
             },
             {
-              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
+              "label": "CHINA ONSHORE EQUITIES 中國在岸股票",
               "percent": 4.43
             },
             {
@@ -21637,31 +21637,31 @@
               "percent": 5.78
             },
             {
-              "label": "JAPAN EQUITIES日本股票",
+              "label": "JAPAN EQUITIES 日本股票",
               "percent": 6.12
             },
             {
-              "label": "EUROPE EQUITIES歐洲股票",
+              "label": "EUROPE EQUITIES 歐洲股票",
               "percent": 8.23
             },
             {
-              "label": "AMERICAS EQUITIES美國股票",
+              "label": "AMERICAS EQUITIES 美國股票",
               "percent": 12.88
             },
             {
-              "label": "EMERGING MARKETS EQUITIES新興市場股票",
+              "label": "EMERGING MARKETS EQUITIES 新興市場股票",
               "percent": 0.04
             },
             {
-              "label": "WORLD EQUITIES世界股票",
+              "label": "WORLD EQUITIES 世界股票",
               "percent": 0.5
             },
             {
-              "label": "HIGHER GRADE BOND高評級債券",
+              "label": "HIGHER GRADE BOND 高評級債券",
               "percent": 42.55
             },
             {
-              "label": "MONEY FUND貨幣基金",
+              "label": "MONEY FUND 貨幣基金",
               "percent": 0.68
             },
             {
@@ -21674,7 +21674,7 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF南方香港股票",
+          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方香港股票",
           "percent": 12.49
         },
         {
@@ -21689,12 +21689,12 @@
         },
         {
           "rank": 4,
-          "security": "INVESCO QQQ TRUST景順 QQQ",
+          "security": "INVESCO QQQ TRUST 景順 QQQ",
           "percent": 2.06
         },
         {
           "rank": 5,
-          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
+          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES 美國醫療保健 ETF",
           "percent": 1.91
         },
         {
@@ -21740,11 +21740,11 @@
           "heading": "Fund Allocation by Asset Class 資產類別投資分配",
           "entries": [
             {
-              "label": "HONG KONG EQUITIES香港股票",
+              "label": "HONG KONG EQUITIES 香港股票",
               "percent": 8.51
             },
             {
-              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
+              "label": "CHINA ONSHORE EQUITIES 中國在岸股票",
               "percent": 3.02
             },
             {
@@ -21752,31 +21752,31 @@
               "percent": 3.32
             },
             {
-              "label": "JAPAN EQUITIES日本股票",
+              "label": "JAPAN EQUITIES 日本股票",
               "percent": 3.46
             },
             {
-              "label": "EUROPE EQUITIES歐洲股票",
+              "label": "EUROPE EQUITIES 歐洲股票",
               "percent": 4.54
             },
             {
-              "label": "AMERICAS EQUITIES美國股票",
+              "label": "AMERICAS EQUITIES 美國股票",
               "percent": 8.39
             },
             {
-              "label": "EMERGING MARKETS EQUITIES新興市場股票",
+              "label": "EMERGING MARKETS EQUITIES 新興市場股票",
               "percent": 0.05
             },
             {
-              "label": "WORLD EQUITIES世界股票",
+              "label": "WORLD EQUITIES 世界股票",
               "percent": 0.5
             },
             {
-              "label": "HIGHER GRADE BOND高評級債券",
+              "label": "HIGHER GRADE BOND 高評級債券",
               "percent": 58.04
             },
             {
-              "label": "MONEY FUND貨幣基金",
+              "label": "MONEY FUND 貨幣基金",
               "percent": 5.32
             },
             {
@@ -21789,7 +21789,7 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF南方香港股票",
+          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方香港股票",
           "percent": 8.26
         },
         {
@@ -21819,7 +21819,7 @@
         },
         {
           "rank": 7,
-          "security": "INVESCO QQQ TRUST景順 QQQ",
+          "security": "INVESCO QQQ TRUST 景順 QQQ",
           "percent": 1.69
         },
         {
@@ -21834,7 +21834,7 @@
         },
         {
           "rank": 10,
-          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
+          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES 美國醫療保健 ETF",
           "percent": 1.24
         }
       ],
@@ -21855,11 +21855,11 @@
           "heading": "Geographical Breakdown 地區分佈",
           "entries": [
             {
-              "label": "CHINA中國",
+              "label": "CHINA 中國",
               "percent": 81
             },
             {
-              "label": "HONG KONG香港",
+              "label": "HONG KONG 香港",
               "percent": 19.7
             },
             {
@@ -21921,42 +21921,42 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "ALIBABA GROUP HOLDING LTD阿里巴巴－ W",
+          "security": "ALIBABA GROUP HOLDING LTD 阿里巴巴－ W",
           "percent": 9.8
         },
         {
           "rank": 2,
-          "security": "TENCENT HOLDINGS LTD騰訊控股",
+          "security": "TENCENT HOLDINGS LTD 騰訊控股",
           "percent": 9.77
         },
         {
           "rank": 3,
-          "security": "HSBC HOLDINGS PLC滙豐控股",
+          "security": "HSBC HOLDINGS PLC 滙豐控股",
           "percent": 8.76
         },
         {
           "rank": 4,
-          "security": "CHINA CONSTRUCTION BANK H建設銀行",
+          "security": "CHINA CONSTRUCTION BANK H 建設銀行",
           "percent": 5.56
         },
         {
           "rank": 5,
-          "security": "MEITUAN美團－ W",
+          "security": "MEITUAN 美團－ W",
           "percent": 3.76
         },
         {
           "rank": 6,
-          "security": "AIA GROUP LTD友邦保險",
+          "security": "AIA GROUP LTD 友邦保險",
           "percent": 3.69
         },
         {
           "rank": 7,
-          "security": "PING AN INSURANCE CO LTD H SHRS中國平安",
+          "security": "PING AN INSURANCE CO LTD H SHRS 中國平安",
           "percent": 3.44
         },
         {
           "rank": 8,
-          "security": "TRIP GROUP LTD攜程集團－ S",
+          "security": "TRIP GROUP LTD 攜程集團－ S",
           "percent": 2.86
         },
         {
@@ -21987,7 +21987,7 @@
           "heading": "Fund Allocation by Asset Class 資產類別投資分配",
           "entries": [
             {
-              "label": "MONEY FUND貨幣基金",
+              "label": "MONEY FUND 貨幣基金",
               "percent": 99.02
             },
             {
@@ -22066,11 +22066,11 @@
           "heading": "Fund Allocation by Asset Class 資產類別投資分配",
           "entries": [
             {
-              "label": "HONG KONG EQUITIES香港股票",
+              "label": "HONG KONG EQUITIES 香港股票",
               "percent": 2.58
             },
             {
-              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
+              "label": "CHINA ONSHORE EQUITIES 中國在岸股票",
               "percent": 0.72
             },
             {
@@ -22078,23 +22078,23 @@
               "percent": 9.36
             },
             {
-              "label": "JAPAN EQUITIES日本股票",
+              "label": "JAPAN EQUITIES 日本股票",
               "percent": 5.5
             },
             {
-              "label": "EUROPE EQUITIES歐洲股票",
+              "label": "EUROPE EQUITIES 歐洲股票",
               "percent": 12.6
             },
             {
-              "label": "AMERICAS EQUITIES美國股票",
+              "label": "AMERICAS EQUITIES 美國股票",
               "percent": 66.85
             },
             {
-              "label": "EMERGING MARKETS EQUITIES新興市場股票",
+              "label": "EMERGING MARKETS EQUITIES 新興市場股票",
               "percent": 0.49
             },
             {
-              "label": "WORLD EQUITIES世界股票",
+              "label": "WORLD EQUITIES 世界股票",
               "percent": 1.68
             },
             {
@@ -22165,27 +22165,27 @@
         },
         {
           "rank": 2,
-          "security": "NVIDIA CORP輝達",
+          "security": "NVIDIA CORP 輝達",
           "percent": 2.98
         },
         {
           "rank": 3,
-          "security": "APPLE INC蘋果公司",
+          "security": "APPLE INC 蘋果公司",
           "percent": 2.78
         },
         {
           "rank": 4,
-          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
+          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES 美國醫療保健 ETF",
           "percent": 2.46
         },
         {
           "rank": 5,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF南方香港股票",
+          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方香港股票",
           "percent": 2.34
         },
         {
           "rank": 6,
-          "security": "MICROSOFT CORP微軟",
+          "security": "MICROSOFT CORP 微軟",
           "percent": 2.24
         },
         {
@@ -22195,7 +22195,7 @@
         },
         {
           "rank": 8,
-          "security": "AMAZON.COM亞馬遜",
+          "security": "AMAZON.COM 亞馬遜",
           "percent": 1.84
         },
         {
@@ -22226,11 +22226,11 @@
           "heading": "Currency Breakdown 貨幣分佈",
           "entries": [
             {
-              "label": "HONG KONG DOLLAR港元",
+              "label": "HONG KONG DOLLAR 港元",
               "percent": 97
             },
             {
-              "label": "US DOLLAR美元",
+              "label": "US DOLLAR 美元",
               "percent": 3
             }
           ]
@@ -22359,35 +22359,35 @@
               "percent": 24.7
             },
             {
-              "label": "TAIWAN台灣",
+              "label": "TAIWAN 台灣",
               "percent": 24.6
             },
             {
-              "label": "INDIA印度",
+              "label": "INDIA 印度",
               "percent": 19.2
             },
             {
-              "label": "AUSTRALIA澳洲",
+              "label": "AUSTRALIA 澳洲",
               "percent": 17.1
             },
             {
-              "label": "SINGAPORE新加坡",
+              "label": "SINGAPORE 新加坡",
               "percent": 4
             },
             {
-              "label": "CHINA中國",
+              "label": "CHINA 中國",
               "percent": 3.9
             },
             {
-              "label": "MALAYSIA馬來西亞",
+              "label": "MALAYSIA 馬來西亞",
               "percent": 1.9
             },
             {
-              "label": "THAILAND泰國",
+              "label": "THAILAND 泰國",
               "percent": 1.6
             },
             {
-              "label": "INDONESIA印尼",
+              "label": "INDONESIA 印尼",
               "percent": 0.8
             },
             {
@@ -22453,12 +22453,12 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD台積電",
+          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD 台積電",
           "percent": 9.23
         },
         {
           "rank": 2,
-          "security": "SAMSUNG ELECTRONICS三星電子",
+          "security": "SAMSUNG ELECTRONICS 三星電子",
           "percent": 8.34
         },
         {
@@ -22468,17 +22468,17 @@
         },
         {
           "rank": 4,
-          "security": "BHP BILLITON LTD必和必拓",
+          "security": "BHP BILLITON LTD 必和必拓",
           "percent": 2.93
         },
         {
           "rank": 5,
-          "security": "COMMONWEALTH BK OF AUSTRALIA澳洲聯邦銀行",
+          "security": "COMMONWEALTH BK OF AUSTRALIA 澳洲聯邦銀行",
           "percent": 2.82
         },
         {
           "rank": 6,
-          "security": "MEDIATEK INC聯發科技",
+          "security": "MEDIATEK INC 聯發科技",
           "percent": 2.68
         },
         {
@@ -22488,7 +22488,7 @@
         },
         {
           "rank": 8,
-          "security": "DBS GROUP HLDGS LTD星展銀行有限公司",
+          "security": "DBS GROUP HLDGS LTD 星展銀行有限公司",
           "percent": 1.88
         },
         {
@@ -22498,7 +22498,7 @@
         },
         {
           "rank": 10,
-          "security": "INFOSYS LTD印孚瑟斯",
+          "security": "INFOSYS LTD 印孚瑟斯",
           "percent": 1.38
         }
       ],
@@ -22519,11 +22519,11 @@
           "heading": "Fund Allocation by Asset Class 資產類別投資分配",
           "entries": [
             {
-              "label": "HONG KONG EQUITIES香港股票",
+              "label": "HONG KONG EQUITIES 香港股票",
               "percent": 20.25
             },
             {
-              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
+              "label": "CHINA ONSHORE EQUITIES 中國在岸股票",
               "percent": 5.8
             },
             {
@@ -22531,31 +22531,31 @@
               "percent": 8.14
             },
             {
-              "label": "JAPAN EQUITIES日本股票",
+              "label": "JAPAN EQUITIES 日本股票",
               "percent": 8.37
             },
             {
-              "label": "EUROPE EQUITIES歐洲股票",
+              "label": "EUROPE EQUITIES 歐洲股票",
               "percent": 12.35
             },
             {
-              "label": "AMERICAS EQUITIES美國股票",
+              "label": "AMERICAS EQUITIES 美國股票",
               "percent": 16.61
             },
             {
-              "label": "EMERGING MARKETS EQUITIES新興市場股票",
+              "label": "EMERGING MARKETS EQUITIES 新興市場股票",
               "percent": 0.04
             },
             {
-              "label": "WORLD EQUITIES世界股票",
+              "label": "WORLD EQUITIES 世界股票",
               "percent": 0.5
             },
             {
-              "label": "HIGHER GRADE BOND高評級債券",
+              "label": "HIGHER GRADE BOND 高評級債券",
               "percent": 23.32
             },
             {
-              "label": "MONEY FUND貨幣基金",
+              "label": "MONEY FUND 貨幣基金",
               "percent": 0.35
             },
             {
@@ -22568,7 +22568,7 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF南方香港股票",
+          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方香港股票",
           "percent": 18.33
         },
         {
@@ -22588,12 +22588,12 @@
         },
         {
           "rank": 5,
-          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
+          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES 美國醫療保健 ETF",
           "percent": 2.1
         },
         {
           "rank": 6,
-          "security": "INVESCO QQQ TRUST景順 QQQ",
+          "security": "INVESCO QQQ TRUST 景順 QQQ",
           "percent": 1.99
         },
         {
@@ -22608,12 +22608,12 @@
         },
         {
           "rank": 9,
-          "security": "ISHARES U.S. UTILITIES ETF ISHARES美國公用事業 ETF",
+          "security": "ISHARES U.S. UTILITIES ETF ISHARES 美國公用事業 ETF",
           "percent": 1.21
         },
         {
           "rank": 10,
-          "security": "ISHARES U.S. FINANCIALS ETF ISHARES美國金融 ETF",
+          "security": "ISHARES U.S. FINANCIALS ETF ISHARES 美國金融 ETF",
           "percent": 1.1
         }
       ],
@@ -22634,11 +22634,11 @@
           "heading": "Fund Allocation by Asset Class 資產類別投資分配",
           "entries": [
             {
-              "label": "HONG KONG EQUITIES香港股票",
+              "label": "HONG KONG EQUITIES 香港股票",
               "percent": 12.32
             },
             {
-              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
+              "label": "CHINA ONSHORE EQUITIES 中國在岸股票",
               "percent": 0.91
             },
             {
@@ -22646,31 +22646,31 @@
               "percent": 4.07
             },
             {
-              "label": "JAPAN EQUITIES日本股票",
+              "label": "JAPAN EQUITIES 日本股票",
               "percent": 4.04
             },
             {
-              "label": "EUROPE EQUITIES歐洲股票",
+              "label": "EUROPE EQUITIES 歐洲股票",
               "percent": 5.44
             },
             {
-              "label": "AMERICAS EQUITIES美國股票",
+              "label": "AMERICAS EQUITIES 美國股票",
               "percent": 9.63
             },
             {
-              "label": "EMERGING MARKETS EQUITIES新興市場股票",
+              "label": "EMERGING MARKETS EQUITIES 新興市場股票",
               "percent": 0.1
             },
             {
-              "label": "WORLD EQUITIES世界股票",
+              "label": "WORLD EQUITIES 世界股票",
               "percent": 0.51
             },
             {
-              "label": "HIGHER GRADE BOND高評級債券",
+              "label": "HIGHER GRADE BOND 高評級債券",
               "percent": 54.25
             },
             {
-              "label": "MONEY FUND貨幣基金",
+              "label": "MONEY FUND 貨幣基金",
               "percent": 4.82
             },
             {
@@ -22683,7 +22683,7 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF南方香港股票",
+          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方香港股票",
           "percent": 11.17
         },
         {
@@ -22749,11 +22749,11 @@
           "heading": "Fund Allocation by Asset Class 資產類別投資分配",
           "entries": [
             {
-              "label": "HONG KONG EQUITIES香港股票",
+              "label": "HONG KONG EQUITIES 香港股票",
               "percent": 27.6
             },
             {
-              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
+              "label": "CHINA ONSHORE EQUITIES 中國在岸股票",
               "percent": 0.93
             },
             {
@@ -22761,27 +22761,27 @@
               "percent": 9.81
             },
             {
-              "label": "JAPAN EQUITIES日本股票",
+              "label": "JAPAN EQUITIES 日本股票",
               "percent": 9.83
             },
             {
-              "label": "EUROPE EQUITIES歐洲股票",
+              "label": "EUROPE EQUITIES 歐洲股票",
               "percent": 14.38
             },
             {
-              "label": "AMERICAS EQUITIES美國股票",
+              "label": "AMERICAS EQUITIES 美國股票",
               "percent": 18.26
             },
             {
-              "label": "EMERGING MARKETS EQUITIES新興市場股票",
+              "label": "EMERGING MARKETS EQUITIES 新興市場股票",
               "percent": 0.09
             },
             {
-              "label": "WORLD EQUITIES世界股票",
+              "label": "WORLD EQUITIES 世界股票",
               "percent": 0.5
             },
             {
-              "label": "HIGHER GRADE BOND高評級債券",
+              "label": "HIGHER GRADE BOND 高評級債券",
               "percent": 15.54
             },
             {
@@ -22794,7 +22794,7 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF南方香港股票",
+          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方香港股票",
           "percent": 23.91
         },
         {
@@ -22814,7 +22814,7 @@
         },
         {
           "rank": 5,
-          "security": "INVESCO QQQ TRUST景順 QQQ",
+          "security": "INVESCO QQQ TRUST 景順 QQQ",
           "percent": 2.04
         },
         {
@@ -22824,7 +22824,7 @@
         },
         {
           "rank": 7,
-          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
+          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES 美國醫療保健 ETF",
           "percent": 1.46
         },
         {
@@ -22860,11 +22860,11 @@
           "heading": "Fund Allocation by Asset Class 資產類別投資分配",
           "entries": [
             {
-              "label": "HONG KONG EQUITIES香港股票",
+              "label": "HONG KONG EQUITIES 香港股票",
               "percent": 31.84
             },
             {
-              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
+              "label": "CHINA ONSHORE EQUITIES 中國在岸股票",
               "percent": 0.93
             },
             {
@@ -22872,27 +22872,27 @@
               "percent": 11.52
             },
             {
-              "label": "JAPAN EQUITIES日本股票",
+              "label": "JAPAN EQUITIES 日本股票",
               "percent": 11.3
             },
             {
-              "label": "EUROPE EQUITIES歐洲股票",
+              "label": "EUROPE EQUITIES 歐洲股票",
               "percent": 16.77
             },
             {
-              "label": "AMERICAS EQUITIES美國股票",
+              "label": "AMERICAS EQUITIES 美國股票",
               "percent": 20.54
             },
             {
-              "label": "EMERGING MARKETS EQUITIES新興市場股票",
+              "label": "EMERGING MARKETS EQUITIES 新興市場股票",
               "percent": 0.09
             },
             {
-              "label": "WORLD EQUITIES世界股票",
+              "label": "WORLD EQUITIES 世界股票",
               "percent": 0.5
             },
             {
-              "label": "HIGHER GRADE BOND高評級債券",
+              "label": "HIGHER GRADE BOND 高評級債券",
               "percent": 4.84
             },
             {
@@ -22905,7 +22905,7 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF南方香港股票",
+          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方香港股票",
           "percent": 27.47
         },
         {
@@ -22925,12 +22925,12 @@
         },
         {
           "rank": 5,
-          "security": "INVESCO QQQ TRUST景順 QQQ",
+          "security": "INVESCO QQQ TRUST 景順 QQQ",
           "percent": 2.49
         },
         {
           "rank": 6,
-          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
+          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES 美國醫療保健 ETF",
           "percent": 1.94
         },
         {
@@ -22940,7 +22940,7 @@
         },
         {
           "rank": 8,
-          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD台積電",
+          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD 台積電",
           "percent": 1
         },
         {
@@ -22950,7 +22950,7 @@
         },
         {
           "rank": 10,
-          "security": "ISHARES U.S. UTILITIES ETF ISHARES美國公用事業 ETF",
+          "security": "ISHARES U.S. UTILITIES ETF ISHARES 美國公用事業 ETF",
           "percent": 0.96
         }
       ],
@@ -22971,11 +22971,11 @@
           "heading": "Fund Allocation by Asset Class 資產類別投資分配",
           "entries": [
             {
-              "label": "HONG KONG EQUITIES香港股票",
+              "label": "HONG KONG EQUITIES 香港股票",
               "percent": 33.22
             },
             {
-              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
+              "label": "CHINA ONSHORE EQUITIES 中國在岸股票",
               "percent": 0.92
             },
             {
@@ -22983,27 +22983,27 @@
               "percent": 11.81
             },
             {
-              "label": "JAPAN EQUITIES日本股票",
+              "label": "JAPAN EQUITIES 日本股票",
               "percent": 12.07
             },
             {
-              "label": "EUROPE EQUITIES歐洲股票",
+              "label": "EUROPE EQUITIES 歐洲股票",
               "percent": 17.81
             },
             {
-              "label": "AMERICAS EQUITIES美國股票",
+              "label": "AMERICAS EQUITIES 美國股票",
               "percent": 21.24
             },
             {
-              "label": "EMERGING MARKETS EQUITIES新興市場股票",
+              "label": "EMERGING MARKETS EQUITIES 新興市場股票",
               "percent": 0.09
             },
             {
-              "label": "WORLD EQUITIES世界股票",
+              "label": "WORLD EQUITIES 世界股票",
               "percent": 0.5
             },
             {
-              "label": "HIGHER GRADE BOND高評級債券",
+              "label": "HIGHER GRADE BOND 高評級債券",
               "percent": 1.04
             },
             {
@@ -23016,7 +23016,7 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF南方香港股票",
+          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方香港股票",
           "percent": 26.73
         },
         {
@@ -23036,17 +23036,17 @@
         },
         {
           "rank": 5,
-          "security": "INVESCO QQQ TRUST景順 QQQ",
+          "security": "INVESCO QQQ TRUST 景順 QQQ",
           "percent": 2.53
         },
         {
           "rank": 6,
-          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
+          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES 美國醫療保健 ETF",
           "percent": 1.94
         },
         {
           "rank": 7,
-          "security": "HONG KONG TRACKER FUND盈富基金",
+          "security": "HONG KONG TRACKER FUND 盈富基金",
           "percent": 1.89
         },
         {
@@ -23056,7 +23056,7 @@
         },
         {
           "rank": 9,
-          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD台積電",
+          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD 台積電",
           "percent": 1.02
         },
         {
@@ -23139,27 +23139,27 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "HSBC HOLDINGS PLC滙豐控股",
+          "security": "HSBC HOLDINGS PLC 滙豐控股",
           "percent": 9.07
         },
         {
           "rank": 2,
-          "security": "TENCENT HOLDINGS LTD騰訊控股",
+          "security": "TENCENT HOLDINGS LTD 騰訊控股",
           "percent": 7.83
         },
         {
           "rank": 3,
-          "security": "ALIBABA GROUP HOLDING LTD阿里巴巴－W",
+          "security": "ALIBABA GROUP HOLDING LTD 阿里巴巴－ W",
           "percent": 7.09
         },
         {
           "rank": 4,
-          "security": "CHINA CONSTRUCTION BANK H建設銀行",
+          "security": "CHINA CONSTRUCTION BANK H 建設銀行",
           "percent": 5.16
         },
         {
           "rank": 5,
-          "security": "AIA GROUP LTD友邦保險",
+          "security": "AIA GROUP LTD 友邦保險",
           "percent": 4.85
         },
         {
@@ -23169,22 +23169,22 @@
         },
         {
           "rank": 7,
-          "security": "XIAOMI CORPORATION小米",
+          "security": "XIAOMI CORPORATION 小米",
           "percent": 3.04
         },
         {
           "rank": 8,
-          "security": "CHINA MOBILE LTD中國移動",
+          "security": "CHINA MOBILE LTD 中國移動",
           "percent": 3.03
         },
         {
           "rank": 9,
-          "security": "MEITUAN美團－ W",
+          "security": "MEITUAN 美團－ W",
           "percent": 2.99
         },
         {
           "rank": 10,
-          "security": "HONG KONG EXCHS & CLEARING LTD香港交易所",
+          "security": "HONG KONG EXCHS & CLEARING LTD 香港交易所",
           "percent": 2.87
         }
       ],
@@ -23205,11 +23205,11 @@
           "heading": "Fund Allocation by Asset Class 資產類別投資分配",
           "entries": [
             {
-              "label": "HONG KONG EQUITIES香港股票",
+              "label": "HONG KONG EQUITIES 香港股票",
               "percent": 33.96
             },
             {
-              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
+              "label": "CHINA ONSHORE EQUITIES 中國在岸股票",
               "percent": 0.88
             },
             {
@@ -23217,27 +23217,27 @@
               "percent": 12.11
             },
             {
-              "label": "JAPAN EQUITIES日本股票",
+              "label": "JAPAN EQUITIES 日本股票",
               "percent": 12.19
             },
             {
-              "label": "EUROPE EQUITIES歐洲股票",
+              "label": "EUROPE EQUITIES 歐洲股票",
               "percent": 18
             },
             {
-              "label": "AMERICAS EQUITIES美國股票",
+              "label": "AMERICAS EQUITIES 美國股票",
               "percent": 21.7
             },
             {
-              "label": "EMERGING MARKETS EQUITIES新興市場股票",
+              "label": "EMERGING MARKETS EQUITIES 新興市場股票",
               "percent": 0.08
             },
             {
-              "label": "WORLD EQUITIES世界股票",
+              "label": "WORLD EQUITIES 世界股票",
               "percent": 0.5
             },
             {
-              "label": "HIGHER GRADE BOND高評級債券",
+              "label": "HIGHER GRADE BOND 高評級債券",
               "percent": 0.32
             },
             {
@@ -23250,7 +23250,7 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF南方香港股票",
+          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方香港股票",
           "percent": 27.38
         },
         {
@@ -23265,12 +23265,12 @@
         },
         {
           "rank": 4,
-          "security": "INVESCO QQQ TRUST景順 QQQ",
+          "security": "INVESCO QQQ TRUST 景順 QQQ",
           "percent": 2.45
         },
         {
           "rank": 5,
-          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健ETF",
+          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES 美國醫療保健 ETF",
           "percent": 1.94
         },
         {
@@ -23285,7 +23285,7 @@
         },
         {
           "rank": 8,
-          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD台積電",
+          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD 台積電",
           "percent": 1.05
         },
         {
@@ -23295,7 +23295,7 @@
         },
         {
           "rank": 10,
-          "security": "ISHARES U.S. UTILITIES ETF ISHARES美國公用事業 ETF",
+          "security": "ISHARES U.S. UTILITIES ETF ISHARES 美國公用事業 ETF",
           "percent": 0.96
         }
       ],
@@ -23316,11 +23316,11 @@
           "heading": "Fund Allocation by Asset Class 資產類別投資分配",
           "entries": [
             {
-              "label": "HONG KONG EQUITIES香港股票",
+              "label": "HONG KONG EQUITIES 香港股票",
               "percent": 34.28
             },
             {
-              "label": "CHINA ONSHORE EQUITIES中國在岸股票",
+              "label": "CHINA ONSHORE EQUITIES 中國在岸股票",
               "percent": 0.93
             },
             {
@@ -23328,27 +23328,27 @@
               "percent": 12.15
             },
             {
-              "label": "JAPAN EQUITIES日本股票",
+              "label": "JAPAN EQUITIES 日本股票",
               "percent": 12.37
             },
             {
-              "label": "EUROPE EQUITIES歐洲股票",
+              "label": "EUROPE EQUITIES 歐洲股票",
               "percent": 18.16
             },
             {
-              "label": "AMERICAS EQUITIES美國股票",
+              "label": "AMERICAS EQUITIES 美國股票",
               "percent": 21.34
             },
             {
-              "label": "EMERGING MARKETS EQUITIES新興市場股票",
+              "label": "EMERGING MARKETS EQUITIES 新興市場股票",
               "percent": 0.08
             },
             {
-              "label": "WORLD EQUITIES世界股票",
+              "label": "WORLD EQUITIES 世界股票",
               "percent": 0.5
             },
             {
-              "label": "HIGHER GRADE BOND高評級債券",
+              "label": "HIGHER GRADE BOND 高評級債券",
               "percent": 0.02
             },
             {
@@ -23361,7 +23361,7 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF南方香港股票",
+          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方香港股票",
           "percent": 27.68
         },
         {
@@ -23376,12 +23376,12 @@
         },
         {
           "rank": 4,
-          "security": "INVESCO QQQ TRUST景順 QQQ",
+          "security": "INVESCO QQQ TRUST 景順 QQQ",
           "percent": 2.25
         },
         {
           "rank": 5,
-          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES美國醫療保健 ETF",
+          "security": "ISHARES U.S. HEALTHCARE ETF ISHARES 美國醫療保健 ETF",
           "percent": 1.94
         },
         {
@@ -23396,12 +23396,12 @@
         },
         {
           "rank": 8,
-          "security": "ISHARES U.S. FINANCIALS ETF ISHARES美國金融 ETF",
+          "security": "ISHARES U.S. FINANCIALS ETF ISHARES 美國金融 ETF",
           "percent": 1.1
         },
         {
           "rank": 9,
-          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD台積電",
+          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD 台積電",
           "percent": 1.06
         },
         {
@@ -23431,15 +23431,15 @@
               "percent": 67.9
             },
             {
-              "label": "HONG KONG DOLLAR港元",
+              "label": "HONG KONG DOLLAR 港元",
               "percent": 32
             },
             {
-              "label": "US DOLLAR美元",
+              "label": "US DOLLAR 美元",
               "percent": 0.1
             },
             {
-              "label": "OTHERS其他",
+              "label": "OTHERS 其他",
               "percent": 0
             }
           ]
@@ -23498,7 +23498,7 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "TEMASEK FINANCIAL I LTD 3.1% 28/08/2054 REGS 淡馬錫金融 I有限公司 3.1% 28/08/2054 REGS",
+          "security": "TEMASEK FINANCIAL I LTD 3.1% 28/08/2054 REGS 淡馬錫金融 I 有限公司 3.1% 28/08/2054 REGS",
           "percent": 4.18
         },
         {
@@ -23564,15 +23564,15 @@
           "heading": "Fund Allocation by Asset Class 資產類別投資分配",
           "entries": [
             {
-              "label": "WORLD EQUITIES世界股票",
+              "label": "WORLD EQUITIES 世界股票",
               "percent": 62.47
             },
             {
-              "label": "HIGHER GRADE BOND高評級債券",
+              "label": "HIGHER GRADE BOND 高評級債券",
               "percent": 34.7
             },
             {
-              "label": "MONEY FUND貨幣基金",
+              "label": "MONEY FUND 貨幣基金",
               "percent": 1.16
             },
             {
@@ -23585,12 +23585,12 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "NVIDIA CORP輝達",
+          "security": "NVIDIA CORP 輝達",
           "percent": 2.83
         },
         {
           "rank": 2,
-          "security": "APPLE INC蘋果公司",
+          "security": "APPLE INC 蘋果公司",
           "percent": 2.7
         },
         {
@@ -23600,7 +23600,7 @@
         },
         {
           "rank": 4,
-          "security": "AMAZON.COM亞馬遜",
+          "security": "AMAZON.COM 亞馬遜",
           "percent": 1.59
         },
         {
@@ -23610,12 +23610,12 @@
         },
         {
           "rank": 6,
-          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD台積電",
+          "security": "TAIWAN SEMICONDUCTOR MFG CO LTD 台積電",
           "percent": 1.11
         },
         {
           "rank": 7,
-          "security": "BROADCOM INC博通",
+          "security": "BROADCOM INC 博通",
           "percent": 1.1
         },
         {
@@ -23630,7 +23630,7 @@
         },
         {
           "rank": 10,
-          "security": "JPMORGAN CHASE & CO摩根大通",
+          "security": "JPMORGAN CHASE & CO 摩根大通",
           "percent": 0.57
         }
       ],
@@ -23651,15 +23651,15 @@
           "heading": "Fund Allocation by Asset Class 資產類別投資分配",
           "entries": [
             {
-              "label": "WORLD EQUITIES世界股票",
+              "label": "WORLD EQUITIES 世界股票",
               "percent": 22.01
             },
             {
-              "label": "HIGHER GRADE BOND高評級債券",
+              "label": "HIGHER GRADE BOND 高評級債券",
               "percent": 75.3
             },
             {
-              "label": "MONEY FUND貨幣基金",
+              "label": "MONEY FUND 貨幣基金",
               "percent": 1.23
             },
             {
@@ -23672,7 +23672,7 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "NVIDIA CORP輝達",
+          "security": "NVIDIA CORP 輝達",
           "percent": 1
         },
         {
@@ -23682,7 +23682,7 @@
         },
         {
           "rank": 3,
-          "security": "APPLE INC蘋果公司",
+          "security": "APPLE INC 蘋果公司",
           "percent": 0.95
         },
         {
@@ -23712,7 +23712,7 @@
         },
         {
           "rank": 9,
-          "security": "AMAZON.COM亞馬遜",
+          "security": "AMAZON.COM 亞馬遜",
           "percent": 0.56
         },
         {
@@ -23738,7 +23738,7 @@
           "heading": "Fund Allocation by Asset Class 資產類別投資分配",
           "entries": [
             {
-              "label": "HONG KONG EQUITIES香港股票",
+              "label": "HONG KONG EQUITIES 香港股票",
               "percent": 2.54
             },
             {
@@ -23746,19 +23746,19 @@
               "percent": 1.86
             },
             {
-              "label": "AMERICAS EQUITIES美國股票",
+              "label": "AMERICAS EQUITIES 美國股票",
               "percent": 3.84
             },
             {
-              "label": "WORLD EQUITIES世界股票",
+              "label": "WORLD EQUITIES 世界股票",
               "percent": 27.89
             },
             {
-              "label": "HIGHER GRADE BOND高評級債券",
+              "label": "HIGHER GRADE BOND 高評級債券",
               "percent": 59.66
             },
             {
-              "label": "MONEY FUND貨幣基金",
+              "label": "MONEY FUND 貨幣基金",
               "percent": 1
             },
             {
@@ -23796,7 +23796,7 @@
         },
         {
           "rank": 6,
-          "security": "ISHARES TIPS BOND ETF ISHARES抗通膨債券 ETF",
+          "security": "ISHARES TIPS BOND ETF ISHARES 抗通膨債券 ETF",
           "percent": 1.98
         },
         {
@@ -23811,7 +23811,7 @@
         },
         {
           "rank": 9,
-          "security": "CSOP FTSE HONG KONG EQUITY ETF南方香港股票",
+          "security": "CSOP FTSE HONG KONG EQUITY ETF 南方香港股票",
           "percent": 1.68
         },
         {
@@ -23837,15 +23837,15 @@
           "heading": "Geographical Breakdown 地區分佈",
           "entries": [
             {
-              "label": "UNITED STATES美國",
+              "label": "UNITED STATES 美國",
               "percent": 95.1
             },
             {
-              "label": "CANADA加拿大",
+              "label": "CANADA 加拿大",
               "percent": 5
             },
             {
-              "label": "SWEDEN瑞典",
+              "label": "SWEDEN 瑞典",
               "percent": 0.1
             },
             {
@@ -23907,22 +23907,22 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "NVIDIA CORP輝達",
+          "security": "NVIDIA CORP 輝達",
           "percent": 7.3
         },
         {
           "rank": 2,
-          "security": "APPLE INC蘋果公司",
+          "security": "APPLE INC 蘋果公司",
           "percent": 6.82
         },
         {
           "rank": 3,
-          "security": "MICROSOFT CORP微軟",
+          "security": "MICROSOFT CORP 微軟",
           "percent": 5.49
         },
         {
           "rank": 4,
-          "security": "AMAZON.COM亞馬遜",
+          "security": "AMAZON.COM 亞馬遜",
           "percent": 4.51
         },
         {
@@ -23932,7 +23932,7 @@
         },
         {
           "rank": 6,
-          "security": "BROADCOM INC博通",
+          "security": "BROADCOM INC 博通",
           "percent": 3.05
         },
         {
@@ -23947,7 +23947,7 @@
         },
         {
           "rank": 9,
-          "security": "JPMORGAN CHASE & CO摩根大通",
+          "security": "JPMORGAN CHASE & CO 摩根大通",
           "percent": 1.71
         },
         {
@@ -23973,43 +23973,43 @@
           "heading": "Geographical Breakdown 地區分佈",
           "entries": [
             {
-              "label": "UNITED KINGDOM英國",
+              "label": "UNITED KINGDOM 英國",
               "percent": 22.7
             },
             {
-              "label": "FRANCE法國",
+              "label": "FRANCE 法國",
               "percent": 14.8
             },
             {
-              "label": "SWITZERLAND瑞士",
+              "label": "SWITZERLAND 瑞士",
               "percent": 13.4
             },
             {
-              "label": "GERMANY德國",
+              "label": "GERMANY 德國",
               "percent": 12.5
             },
             {
-              "label": "NETHERLANDS荷蘭",
+              "label": "NETHERLANDS 荷蘭",
               "percent": 8.2
             },
             {
-              "label": "SPAIN西班牙",
+              "label": "SPAIN 西班牙",
               "percent": 6
             },
             {
-              "label": "ITALY意大利",
+              "label": "ITALY 意大利",
               "percent": 5.4
             },
             {
-              "label": "SWEDEN瑞典",
+              "label": "SWEDEN 瑞典",
               "percent": 4.6
             },
             {
-              "label": "DENMARK丹麥",
+              "label": "DENMARK 丹麥",
               "percent": 2.9
             },
             {
-              "label": "BELGIUM比利時",
+              "label": "BELGIUM 比利時",
               "percent": 2
             },
             {
@@ -24075,52 +24075,52 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "ASML HOLDING艾司摩爾",
+          "security": "ASML HOLDING 艾司摩爾",
           "percent": 4.5
         },
         {
           "rank": 2,
-          "security": "HSBC HOLDINGS PLC滙豐控股",
+          "security": "HSBC HOLDINGS PLC 滙豐控股",
           "percent": 2.75
         },
         {
           "rank": 3,
-          "security": "ROCHE HOLDING AG羅氏",
+          "security": "ROCHE HOLDING AG 羅氏",
           "percent": 2.09
         },
         {
           "rank": 4,
-          "security": "NOVARTIS AG諾華製藥集團",
+          "security": "NOVARTIS AG 諾華製藥集團",
           "percent": 2.02
         },
         {
           "rank": 5,
-          "security": "SIEMENS西門子公司",
+          "security": "SIEMENS 西門子公司",
           "percent": 1.97
         },
         {
           "rank": 6,
-          "security": "ASTRAZENECA阿斯利康",
+          "security": "ASTRAZENECA 阿斯利康",
           "percent": 1.68
         },
         {
           "rank": 7,
-          "security": "BANCO SANTANDER西班牙桑坦德銀行",
+          "security": "BANCO SANTANDER 西班牙桑坦德銀行",
           "percent": 1.64
         },
         {
           "rank": 8,
-          "security": "SCHNEIDER ELECTRIC SE施耐德電氣",
+          "security": "SCHNEIDER ELECTRIC SE 施耐德電氣",
           "percent": 1.55
         },
         {
           "rank": 9,
-          "security": "UBS GROUP瑞銀集團",
+          "security": "UBS GROUP 瑞銀集團",
           "percent": 1.44
         },
         {
           "rank": 10,
-          "security": "ROLLS ROYCE HOLDINGS PLC勞斯萊斯公司",
+          "security": "ROLLS ROYCE HOLDINGS PLC 勞斯萊斯公司",
           "percent": 1.42
         }
       ],
@@ -24458,7 +24458,7 @@
           "heading": "ASSET ALLOCATION (BY SECTORS)",
           "entries": [
             {
-              "label": "Bond債券",
+              "label": "Bond 債券",
               "percent": 23.18
             },
             {
@@ -24927,12 +24927,12 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "滙豐控股HSBC Holdings",
+          "security": "滙豐控股 HSBC Holdings",
           "percent": 9
         },
         {
           "rank": 2,
-          "security": "騰訊控股Tencent Holdings",
+          "security": "騰訊控股 Tencent Holdings",
           "percent": 8
         },
         {
@@ -24947,7 +24947,7 @@
         },
         {
           "rank": 5,
-          "security": "友邦保險控股AIA Group",
+          "security": "友邦保險控股 AIA Group",
           "percent": 5
         },
         {
@@ -24957,7 +24957,7 @@
         },
         {
           "rank": 7,
-          "security": "中國移動China Mobile Ltd",
+          "security": "中國移動 China Mobile Ltd",
           "percent": 3.1
         },
         {
@@ -24972,7 +24972,7 @@
         },
         {
           "rank": 10,
-          "security": "美團Meituan-Class B",
+          "security": "美團 Meituan-Class B",
           "percent": 2.5
         }
       ],
@@ -25051,27 +25051,27 @@
         },
         {
           "rank": 2,
-          "security": "三星電子Samsung Electronics Co Ltd",
+          "security": "三星電子 Samsung Electronics Co Ltd",
           "percent": 8.6
         },
         {
           "rank": 3,
-          "security": "愛思開海力士SK Hynix Inc",
+          "security": "愛思開海力士 SK Hynix Inc",
           "percent": 7.5
         },
         {
           "rank": 4,
-          "security": "必和必拓BHP Group Ltd",
+          "security": "必和必拓 BHP Group Ltd",
           "percent": 2.7
         },
         {
           "rank": 5,
-          "security": "星展集團DBS Group Holdings Ltd",
+          "security": "星展集團 DBS Group Holdings Ltd",
           "percent": 2.5
         },
         {
           "rank": 6,
-          "security": "騰訊控股Tencent Holdings",
+          "security": "騰訊控股 Tencent Holdings",
           "percent": 2.5
         },
         {
@@ -25153,7 +25153,7 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "輝達NVIDIA Corp",
+          "security": "輝達 NVIDIA Corp",
           "percent": 2.8
         },
         {
@@ -25163,7 +25163,7 @@
         },
         {
           "rank": 3,
-          "security": "微軟Microsoft Corp",
+          "security": "微軟 Microsoft Corp",
           "percent": 1.5
         },
         {
@@ -25188,7 +25188,7 @@
         },
         {
           "rank": 8,
-          "security": "台灣積體電路Taiwan Semiconductor Manufacturing Co",
+          "security": "台灣積體電路 Taiwan Semiconductor Manufacturing Co",
           "percent": 1
         },
         {
@@ -25198,7 +25198,7 @@
         },
         {
           "rank": 10,
-          "security": "博通Broadcom Inc",
+          "security": "博通 Broadcom Inc",
           "percent": 1
         }
       ],
@@ -25467,12 +25467,12 @@
         },
         {
           "rank": 2,
-          "security": "羅氏控股Roche Holding AG",
+          "security": "羅氏控股 Roche Holding AG",
           "percent": 3.2
         },
         {
           "rank": 3,
-          "security": "阿斯特捷利康AstraZeneca Plc",
+          "security": "阿斯特捷利康 AstraZeneca Plc",
           "percent": 2.8
         },
         {
@@ -25482,7 +25482,7 @@
         },
         {
           "rank": 5,
-          "security": "安聯集團Allianz SE-REG",
+          "security": "安聯集團 Allianz SE-REG",
           "percent": 2.5
         },
         {
@@ -25497,7 +25497,7 @@
         },
         {
           "rank": 8,
-          "security": "西班牙國際銀行Banco Santander SA",
+          "security": "西班牙國際銀行 Banco Santander SA",
           "percent": 2.1
         },
         {
@@ -25507,7 +25507,7 @@
         },
         {
           "rank": 10,
-          "security": "空中巴士Airbus SE",
+          "security": "空中巴士 Airbus SE",
           "percent": 2
         }
       ],
@@ -25581,7 +25581,7 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "輝達NVIDIA Corp",
+          "security": "輝達 NVIDIA Corp",
           "percent": 7
         },
         {
@@ -25596,7 +25596,7 @@
         },
         {
           "rank": 4,
-          "security": "微軟Microsoft Corp",
+          "security": "微軟 Microsoft Corp",
           "percent": 4.2
         },
         {
@@ -25606,12 +25606,12 @@
         },
         {
           "rank": 6,
-          "security": "博通Broadcom Inc",
+          "security": "博通 Broadcom Inc",
           "percent": 2.4
         },
         {
           "rank": 7,
-          "security": "美光科技Micron Technology Inc",
+          "security": "美光科技 Micron Technology Inc",
           "percent": 2.2
         },
         {
@@ -25621,12 +25621,12 @@
         },
         {
           "rank": 9,
-          "security": "Meta 平台Meta Platforms Inc-Class A",
+          "security": "Meta 平台 Meta Platforms Inc-Class A",
           "percent": 1.9
         },
         {
           "rank": 10,
-          "security": "科林研發Lam Research Corp",
+          "security": "科林研發 Lam Research Corp",
           "percent": 1.8
         }
       ],
@@ -25700,12 +25700,12 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "滙豐控股HSBC Holdings",
+          "security": "滙豐控股 HSBC Holdings",
           "percent": 9.9
         },
         {
           "rank": 2,
-          "security": "騰訊控股Tencent Holdings",
+          "security": "騰訊控股 Tencent Holdings",
           "percent": 9.1
         },
         {
@@ -25720,7 +25720,7 @@
         },
         {
           "rank": 5,
-          "security": "友邦保險控股AIA Group",
+          "security": "友邦保險控股 AIA Group",
           "percent": 3.3
         },
         {
@@ -25730,7 +25730,7 @@
         },
         {
           "rank": 7,
-          "security": "紫金礦業Zijin Mining Group Co Ltd-H",
+          "security": "紫金礦業 Zijin Mining Group Co Ltd-H",
           "percent": 2
         },
         {
@@ -25740,12 +25740,12 @@
         },
         {
           "rank": 9,
-          "security": "網易NetEase, Inc.",
+          "security": "網易 NetEase, Inc.",
           "percent": 1.8
         },
         {
           "rank": 10,
-          "security": "濰柴動力Weichai Power Co Ltd-H",
+          "security": "濰柴動力 Weichai Power Co Ltd-H",
           "percent": 1.8
         }
       ],
@@ -25807,17 +25807,17 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "台灣積體電路Taiwan Semiconductor Manufacturing Co",
+          "security": "台灣積體電路 Taiwan Semiconductor Manufacturing Co",
           "percent": 1.5
         },
         {
           "rank": 2,
-          "security": "騰訊控股Tencent Holdings",
+          "security": "騰訊控股 Tencent Holdings",
           "percent": 1.3
         },
         {
           "rank": 3,
-          "security": "滙豐控股HSBC Holdings",
+          "security": "滙豐控股 HSBC Holdings",
           "percent": 1.1
         },
         {
@@ -25827,7 +25827,7 @@
         },
         {
           "rank": 5,
-          "security": "三星電子Samsung Electronics Co Ltd",
+          "security": "三星電子 Samsung Electronics Co Ltd",
           "percent": 0.7
         },
         {
@@ -25842,12 +25842,12 @@
         },
         {
           "rank": 8,
-          "security": "愛思開海力士SK Hynix Inc",
+          "security": "愛思開海力士 SK Hynix Inc",
           "percent": 0.7
         },
         {
           "rank": 9,
-          "security": "輝達NVIDIA Corp",
+          "security": "輝達 NVIDIA Corp",
           "percent": 0.7
         },
         {
@@ -25914,17 +25914,17 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "台灣積體電路Taiwan Semiconductor Manufacturing Co",
+          "security": "台灣積體電路 Taiwan Semiconductor Manufacturing Co",
           "percent": 1.9
         },
         {
           "rank": 2,
-          "security": "騰訊控股Tencent Holdings",
+          "security": "騰訊控股 Tencent Holdings",
           "percent": 1.6
         },
         {
           "rank": 3,
-          "security": "滙豐控股HSBC Holdings",
+          "security": "滙豐控股 HSBC Holdings",
           "percent": 1.4
         },
         {
@@ -25934,17 +25934,17 @@
         },
         {
           "rank": 5,
-          "security": "三星電子Samsung Electronics Co Ltd",
+          "security": "三星電子 Samsung Electronics Co Ltd",
           "percent": 1
         },
         {
           "rank": 6,
-          "security": "愛思開海力士SK Hynix Inc",
+          "security": "愛思開海力士 SK Hynix Inc",
           "percent": 0.9
         },
         {
           "rank": 7,
-          "security": "輝達NVIDIA Corp",
+          "security": "輝達 NVIDIA Corp",
           "percent": 0.9
         },
         {
@@ -26366,7 +26366,7 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "騰訊控股Tencent Holdings",
+          "security": "騰訊控股 Tencent Holdings",
           "percent": 8.9
         },
         {
@@ -26381,7 +26381,7 @@
         },
         {
           "rank": 4,
-          "security": "紫金礦業Zijin Mining Group Co Ltd-H",
+          "security": "紫金礦業 Zijin Mining Group Co Ltd-H",
           "percent": 4.5
         },
         {
@@ -26391,22 +26391,22 @@
         },
         {
           "rank": 6,
-          "security": "寧德時代Contemporary Amperex Tech-A",
+          "security": "寧德時代 Contemporary Amperex Tech-A",
           "percent": 3.1
         },
         {
           "rank": 7,
-          "security": "濰柴動力Weichai Power Co Ltd-H",
+          "security": "濰柴動力 Weichai Power Co Ltd-H",
           "percent": 2.9
         },
         {
           "rank": 8,
-          "security": "台達電子Delta Electronics Inc",
+          "security": "台達電子 Delta Electronics Inc",
           "percent": 2.9
         },
         {
           "rank": 9,
-          "security": "聯發科技MediaTek Inc",
+          "security": "聯發科技 MediaTek Inc",
           "percent": 2.7
         },
         {
@@ -26485,7 +26485,7 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "輝達NVIDIA Corp",
+          "security": "輝達 NVIDIA Corp",
           "percent": 5.2
         },
         {
@@ -26500,7 +26500,7 @@
         },
         {
           "rank": 4,
-          "security": "微軟Microsoft Corp",
+          "security": "微軟 Microsoft Corp",
           "percent": 2.8
         },
         {
@@ -26515,22 +26515,22 @@
         },
         {
           "rank": 7,
-          "security": "愛思開海力士SK Hynix Inc",
+          "security": "愛思開海力士 SK Hynix Inc",
           "percent": 1.8
         },
         {
           "rank": 8,
-          "security": "博通Broadcom Inc",
+          "security": "博通 Broadcom Inc",
           "percent": 1.6
         },
         {
           "rank": 9,
-          "security": "三星電子Samsung Electronics Co Ltd",
+          "security": "三星電子 Samsung Electronics Co Ltd",
           "percent": 1.6
         },
         {
           "rank": 10,
-          "security": "科林研發Lam Research Corp",
+          "security": "科林研發 Lam Research Corp",
           "percent": 1.4
         }
       ],
@@ -26604,7 +26604,7 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "騰訊控股Tencent Holdings",
+          "security": "騰訊控股 Tencent Holdings",
           "percent": 8.2
         },
         {
@@ -26624,7 +26624,7 @@
         },
         {
           "rank": 5,
-          "security": "中國移動China Mobile Ltd",
+          "security": "中國移動 China Mobile Ltd",
           "percent": 4.8
         },
         {
@@ -26634,7 +26634,7 @@
         },
         {
           "rank": 7,
-          "security": "美團Meituan-Class B",
+          "security": "美團 Meituan-Class B",
           "percent": 3.9
         },
         {
@@ -26649,7 +26649,7 @@
         },
         {
           "rank": 10,
-          "security": "中國平安保險Ping An Insurance-H",
+          "security": "中國平安保險 Ping An Insurance-H",
           "percent": 3.5
         }
       ],
@@ -26728,17 +26728,17 @@
         },
         {
           "rank": 2,
-          "security": "三星電子Samsung Electronics Co Ltd",
+          "security": "三星電子 Samsung Electronics Co Ltd",
           "percent": 8.6
         },
         {
           "rank": 3,
-          "security": "愛思開海力士SK Hynix Inc",
+          "security": "愛思開海力士 SK Hynix Inc",
           "percent": 7.4
         },
         {
           "rank": 4,
-          "security": "騰訊控股Tencent Holdings",
+          "security": "騰訊控股 Tencent Holdings",
           "percent": 2.6
         },
         {
@@ -26748,27 +26748,27 @@
         },
         {
           "rank": 6,
-          "security": "必和必拓BHP Group Ltd",
+          "security": "必和必拓 BHP Group Ltd",
           "percent": 1.6
         },
         {
           "rank": 7,
-          "security": "聯發科技MediaTek Inc",
+          "security": "聯發科技 MediaTek Inc",
           "percent": 1.5
         },
         {
           "rank": 8,
-          "security": "澳洲聯邦銀行Commonwealth Bank of Australia",
+          "security": "澳洲聯邦銀行 Commonwealth Bank of Australia",
           "percent": 1.4
         },
         {
           "rank": 9,
-          "security": "台達電子Delta Electronics Inc",
+          "security": "台達電子 Delta Electronics Inc",
           "percent": 0.9
         },
         {
           "rank": 10,
-          "security": "星展集團DBS Group Holdings Ltd",
+          "security": "星展集團 DBS Group Holdings Ltd",
           "percent": 0.8
         }
       ],
@@ -26907,22 +26907,22 @@
         },
         {
           "rank": 2,
-          "security": "滙豐控股HSBC Holdings",
+          "security": "滙豐控股 HSBC Holdings",
           "percent": 2.2
         },
         {
           "rank": 3,
-          "security": "羅氏控股Roche Holding AG",
+          "security": "羅氏控股 Roche Holding AG",
           "percent": 2.1
         },
         {
           "rank": 4,
-          "security": "諾華Novartis AG-Reg",
+          "security": "諾華 Novartis AG-Reg",
           "percent": 2
         },
         {
           "rank": 5,
-          "security": "阿斯特捷利康AstraZeneca Plc",
+          "security": "阿斯特捷利康 AstraZeneca Plc",
           "percent": 1.9
         },
         {
@@ -26942,12 +26942,12 @@
         },
         {
           "rank": 9,
-          "security": "西班牙國際銀行Banco Santander SA",
+          "security": "西班牙國際銀行 Banco Santander SA",
           "percent": 1.3
         },
         {
           "rank": 10,
-          "security": "安聯集團Allianz SE-REG",
+          "security": "安聯集團 Allianz SE-REG",
           "percent": 1.2
         }
       ],
@@ -27021,7 +27021,7 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "輝達NVIDIA Corp",
+          "security": "輝達 NVIDIA Corp",
           "percent": 6.8
         },
         {
@@ -27036,7 +27036,7 @@
         },
         {
           "rank": 4,
-          "security": "微軟Microsoft Corp",
+          "security": "微軟 Microsoft Corp",
           "percent": 4
         },
         {
@@ -27046,17 +27046,17 @@
         },
         {
           "rank": 6,
-          "security": "博通Broadcom Inc",
+          "security": "博通 Broadcom Inc",
           "percent": 2.6
         },
         {
           "rank": 7,
-          "security": "美光科技Micron Technology Inc",
+          "security": "美光科技 Micron Technology Inc",
           "percent": 1.9
         },
         {
           "rank": 8,
-          "security": "Meta平台Meta Platforms Inc-Class A",
+          "security": "Meta 平台 Meta Platforms Inc-Class A",
           "percent": 1.8
         },
         {
@@ -27066,7 +27066,7 @@
         },
         {
           "rank": 10,
-          "security": "禮來Eli Lilly and Co",
+          "security": "禮來 Eli Lilly and Co",
           "percent": 1.4
         }
       ],
@@ -27128,52 +27128,52 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "台灣積體電路Taiwan Semiconductor Manufacturing Co",
+          "security": "台灣積體電路 Taiwan Semiconductor Manufacturing Co",
           "percent": 1.9
         },
         {
           "rank": 2,
-          "security": "騰訊控 股Tencent Holdings",
+          "security": "騰訊控 股 Tencent Holdings",
           "percent": 1.6
         },
         {
           "rank": 3,
-          "security": "滙豐控 股HSBC Holdings",
+          "security": "滙豐控 股 HSBC Holdings",
           "percent": 1.4
         },
         {
           "rank": 4,
-          "security": "阿里巴巴Alibaba Group Holding Ltd",
+          "security": "阿里巴巴 Alibaba Group Holding Ltd",
           "percent": 1.3
         },
         {
           "rank": 5,
-          "security": "三星電子Samsung Electronics Co Ltd",
+          "security": "三星電子 Samsung Electronics Co Ltd",
           "percent": 1
         },
         {
           "rank": 6,
-          "security": "愛思開海力士SK Hynix Inc",
+          "security": "愛思開海力士 SK Hynix Inc",
           "percent": 0.9
         },
         {
           "rank": 7,
-          "security": "輝達NVIDIA Corp",
+          "security": "輝達 NVIDIA Corp",
           "percent": 0.9
         },
         {
           "rank": 8,
-          "security": "艾司摩爾控 股ASML Holding NV",
+          "security": "艾司摩爾控 股 ASML Holding NV",
           "percent": 0.9
         },
         {
           "rank": 9,
-          "security": "蘋果Apple Inc",
+          "security": "蘋果 Apple Inc",
           "percent": 0.8
         },
         {
           "rank": 10,
-          "security": "中國建設銀行China Construction Bank-H",
+          "security": "中國建設銀行 China Construction Bank-H",
           "percent": 0.7
         }
       ],
@@ -27235,22 +27235,22 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "輝達NVIDIA Corp",
+          "security": "輝達 NVIDIA Corp",
           "percent": 2.8
         },
         {
           "rank": 2,
-          "security": "蘋果Apple Inc",
+          "security": "蘋果 Apple Inc",
           "percent": 2.5
         },
         {
           "rank": 3,
-          "security": "微軟Microsoft Corp",
+          "security": "微軟 Microsoft Corp",
           "percent": 1.5
         },
         {
           "rank": 4,
-          "security": "亞馬遜Amazon.Com",
+          "security": "亞馬遜 Amazon.Com",
           "percent": 1.3
         },
         {
@@ -27270,7 +27270,7 @@
         },
         {
           "rank": 8,
-          "security": "台灣積體電路Taiwan Semiconductor Manufacturing Co",
+          "security": "台灣積體電路 Taiwan Semiconductor Manufacturing Co",
           "percent": 1
         },
         {
@@ -27280,7 +27280,7 @@
         },
         {
           "rank": 10,
-          "security": "博通Broadcom Inc",
+          "security": "博通 Broadcom Inc",
           "percent": 1
         }
       ],
@@ -27544,27 +27544,27 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "滙豐控 股HSBC Holdings",
+          "security": "滙豐控 股 HSBC Holdings",
           "percent": 9.9
         },
         {
           "rank": 2,
-          "security": "騰訊控 股Tencent Holdings",
+          "security": "騰訊控 股 Tencent Holdings",
           "percent": 9.1
         },
         {
           "rank": 3,
-          "security": "阿里巴巴Alibaba Group Holding Ltd",
+          "security": "阿里巴巴 Alibaba Group Holding Ltd",
           "percent": 7.8
         },
         {
           "rank": 4,
-          "security": "中國建設銀行China Construction Bank-H",
+          "security": "中國建設銀行 China Construction Bank-H",
           "percent": 4.3
         },
         {
           "rank": 5,
-          "security": "友邦保險控 股AIA Group",
+          "security": "友邦保險控 股 AIA Group",
           "percent": 3.3
         },
         {
@@ -27574,7 +27574,7 @@
         },
         {
           "rank": 7,
-          "security": "紫金礦 業Zijin Mining Group Co Ltd-H",
+          "security": "紫金礦 業 Zijin Mining Group Co Ltd-H",
           "percent": 2
         },
         {
@@ -27584,12 +27584,12 @@
         },
         {
           "rank": 9,
-          "security": "網易NetEase, Inc.",
+          "security": "網易 NetEase, Inc.",
           "percent": 1.8
         },
         {
           "rank": 10,
-          "security": "濰 柴動力Weichai Power Co Ltd-H",
+          "security": "濰 柴動力 Weichai Power Co Ltd-H",
           "percent": 1.8
         }
       ],
@@ -27651,27 +27651,27 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "台灣積體電路Taiwan Semiconductor Manufacturing Co",
+          "security": "台灣積體電路 Taiwan Semiconductor Manufacturing Co",
           "percent": 1.5
         },
         {
           "rank": 2,
-          "security": "騰訊控 股Tencent Holdings",
+          "security": "騰訊控 股 Tencent Holdings",
           "percent": 1.3
         },
         {
           "rank": 3,
-          "security": "滙豐控 股HSBC Holdings",
+          "security": "滙豐控 股 HSBC Holdings",
           "percent": 1.1
         },
         {
           "rank": 4,
-          "security": "阿里巴巴Alibaba Group Holding Ltd",
+          "security": "阿里巴巴 Alibaba Group Holding Ltd",
           "percent": 1
         },
         {
           "rank": 5,
-          "security": "三星電子Samsung Electronics Co Ltd",
+          "security": "三星電子 Samsung Electronics Co Ltd",
           "percent": 0.7
         },
         {
@@ -27681,17 +27681,17 @@
         },
         {
           "rank": 7,
-          "security": "艾司摩爾控 股ASML Holding NV",
+          "security": "艾司摩爾控 股 ASML Holding NV",
           "percent": 0.7
         },
         {
           "rank": 8,
-          "security": "愛思開海力士SK Hynix Inc",
+          "security": "愛思開海力士 SK Hynix Inc",
           "percent": 0.7
         },
         {
           "rank": 9,
-          "security": "輝達NVIDIA Corp",
+          "security": "輝達 NVIDIA Corp",
           "percent": 0.7
         },
         {
@@ -27770,12 +27770,12 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "輝達NVIDIA Corp",
+          "security": "輝達 NVIDIA Corp",
           "percent": 7
         },
         {
           "rank": 2,
-          "security": "蘋果Apple Inc",
+          "security": "蘋果 Apple Inc",
           "percent": 6
         },
         {
@@ -27785,37 +27785,37 @@
         },
         {
           "rank": 4,
-          "security": "微軟Microsoft Corp",
+          "security": "微軟 Microsoft Corp",
           "percent": 4.2
         },
         {
           "rank": 5,
-          "security": "亞馬遜Amazon.Com",
+          "security": "亞馬遜 Amazon.Com",
           "percent": 3
         },
         {
           "rank": 6,
-          "security": "博通Broadcom Inc",
+          "security": "博通 Broadcom Inc",
           "percent": 2.4
         },
         {
           "rank": 7,
-          "security": "美光科 技Micron Technology Inc",
+          "security": "美光科 技 Micron Technology Inc",
           "percent": 2.2
         },
         {
           "rank": 8,
-          "security": "摩根 大 通JPMorgan Chase",
+          "security": "摩根 大 通 JPMorgan Chase",
           "percent": 1.9
         },
         {
           "rank": 9,
-          "security": "Meta 平台Meta Platforms Inc-Class A",
+          "security": "Meta 平台 Meta Platforms Inc-Class A",
           "percent": 1.9
         },
         {
           "rank": 10,
-          "security": "科林研 發Lam Research Corp",
+          "security": "科林研 發 Lam Research Corp",
           "percent": 1.8
         }
       ],
@@ -27889,37 +27889,37 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "台灣半導體Taiwan Semiconductor Co Ltd",
+          "security": "台灣半導體 Taiwan Semiconductor Co Ltd",
           "percent": 9.5
         },
         {
           "rank": 2,
-          "security": "三星電子Samsung Electronics Co Ltd",
+          "security": "三星電子 Samsung Electronics Co Ltd",
           "percent": 8.6
         },
         {
           "rank": 3,
-          "security": "愛思開海力士SK Hynix Inc",
+          "security": "愛思開海力士 SK Hynix Inc",
           "percent": 7.5
         },
         {
           "rank": 4,
-          "security": "必和必拓BHP Group Ltd",
+          "security": "必和必拓 BHP Group Ltd",
           "percent": 2.7
         },
         {
           "rank": 5,
-          "security": "星展集團DBS Group Holdings Ltd",
+          "security": "星展集團 DBS Group Holdings Ltd",
           "percent": 2.5
         },
         {
           "rank": 6,
-          "security": "騰訊控 股Tencent Holdings",
+          "security": "騰訊控 股 Tencent Holdings",
           "percent": 2.5
         },
         {
           "rank": 7,
-          "security": "印度工業信 貸投資銀行ICICI Bank Ltd",
+          "security": "印度工業信 貸投資銀行 ICICI Bank Ltd",
           "percent": 1.9
         },
         {
@@ -28012,27 +28012,27 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "滙豐控 股HSBC Holdings",
+          "security": "滙豐控 股 HSBC Holdings",
           "percent": 9
         },
         {
           "rank": 2,
-          "security": "騰訊控 股Tencent Holdings",
+          "security": "騰訊控 股 Tencent Holdings",
           "percent": 8
         },
         {
           "rank": 3,
-          "security": "阿里巴巴Alibaba Group Holding Ltd",
+          "security": "阿里巴巴 Alibaba Group Holding Ltd",
           "percent": 6.4
         },
         {
           "rank": 4,
-          "security": "中國建設銀行China Construction Bank-H",
+          "security": "中國建設銀行 China Construction Bank-H",
           "percent": 5.1
         },
         {
           "rank": 5,
-          "security": "友邦保險控 股AIA Group",
+          "security": "友邦保險控 股 AIA Group",
           "percent": 5
         },
         {
@@ -28042,7 +28042,7 @@
         },
         {
           "rank": 7,
-          "security": "中國移動China Mobile Ltd",
+          "security": "中國移動 China Mobile Ltd",
           "percent": 3.1
         },
         {
@@ -28052,12 +28052,12 @@
         },
         {
           "rank": 9,
-          "security": "小米集團Xiaomi Corp-Class B",
+          "security": "小米集團 Xiaomi Corp-Class B",
           "percent": 2.6
         },
         {
           "rank": 10,
-          "security": "美團Meituan-Class B",
+          "security": "美團 Meituan-Class B",
           "percent": 2.5
         }
       ],
@@ -28131,52 +28131,52 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "艾司摩爾控 股ASML Holding NV",
+          "security": "艾司摩爾控 股 ASML Holding NV",
           "percent": 4.9
         },
         {
           "rank": 2,
-          "security": "羅氏控 股Roche Holding AG",
+          "security": "羅氏控 股 Roche Holding AG",
           "percent": 3.2
         },
         {
           "rank": 3,
-          "security": "阿斯特 捷利康AstraZeneca Plc",
+          "security": "阿斯特 捷利康 AstraZeneca Plc",
           "percent": 2.8
         },
         {
           "rank": 4,
-          "security": "西門子Siemens AG-Reg",
+          "security": "西門子 Siemens AG-Reg",
           "percent": 2.5
         },
         {
           "rank": 5,
-          "security": "安聯集團Allianz SE-REG",
+          "security": "安聯集團 Allianz SE-REG",
           "percent": 2.5
         },
         {
           "rank": 6,
-          "security": "殼 牌Shell Plc",
+          "security": "殼 牌 Shell Plc",
           "percent": 2.4
         },
         {
           "rank": 7,
-          "security": "德國商業銀行Commerzbank AG",
+          "security": "德國商業銀行 Commerzbank AG",
           "percent": 2.1
         },
         {
           "rank": 8,
-          "security": "西班牙國際銀行Banco Santander SA",
+          "security": "西班牙國際銀行 Banco Santander SA",
           "percent": 2.1
         },
         {
           "rank": 9,
-          "security": "雀巢Nestle SA-Reg",
+          "security": "雀巢 Nestle SA-Reg",
           "percent": 2
         },
         {
           "rank": 10,
-          "security": "空中巴士Airbus SE",
+          "security": "空中巴士 Airbus SE",
           "percent": 2
         }
       ],
@@ -28583,52 +28583,52 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "騰訊控 股Tencent Holdings",
+          "security": "騰訊控 股 Tencent Holdings",
           "percent": 8.9
         },
         {
           "rank": 2,
-          "security": "阿里巴巴Alibaba Group Holding Ltd",
+          "security": "阿里巴巴 Alibaba Group Holding Ltd",
           "percent": 6.8
         },
         {
           "rank": 3,
-          "security": "中國建設銀行China Construction Bank-H",
+          "security": "中國建設銀行 China Construction Bank-H",
           "percent": 6.2
         },
         {
           "rank": 4,
-          "security": "紫金礦 業Zijin Mining Group Co Ltd-H",
+          "security": "紫金礦 業 Zijin Mining Group Co Ltd-H",
           "percent": 4.5
         },
         {
           "rank": 5,
-          "security": "中際旭創Zhongji Innolight Co Ltd-A",
+          "security": "中際旭創 Zhongji Innolight Co Ltd-A",
           "percent": 4.3
         },
         {
           "rank": 6,
-          "security": "寧 德時代Contemporary Amperex Tech-A",
+          "security": "寧 德時代 Contemporary Amperex Tech-A",
           "percent": 3.1
         },
         {
           "rank": 7,
-          "security": "濰 柴動力Weichai Power Co Ltd-H",
+          "security": "濰 柴動力 Weichai Power Co Ltd-H",
           "percent": 2.9
         },
         {
           "rank": 8,
-          "security": "台達電子Delta Electronics Inc",
+          "security": "台達電子 Delta Electronics Inc",
           "percent": 2.9
         },
         {
           "rank": 9,
-          "security": "聯發科 技MediaTek Inc",
+          "security": "聯發科 技 MediaTek Inc",
           "percent": 2.7
         },
         {
           "rank": 10,
-          "security": "江蘇 恆 立液 壓Jiangsu Hengli Hydraulic Co Ltd-A",
+          "security": "江蘇 恆 立液 壓 Jiangsu Hengli Hydraulic Co Ltd-A",
           "percent": 2.7
         }
       ],
@@ -28702,12 +28702,12 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "輝達NVIDIA Corp",
+          "security": "輝達 NVIDIA Corp",
           "percent": 5.2
         },
         {
           "rank": 2,
-          "security": "蘋果Apple Inc",
+          "security": "蘋果 Apple Inc",
           "percent": 4.6
         },
         {
@@ -28717,37 +28717,37 @@
         },
         {
           "rank": 4,
-          "security": "微軟Microsoft Corp",
+          "security": "微軟 Microsoft Corp",
           "percent": 2.8
         },
         {
           "rank": 5,
-          "security": "台灣半導體Taiwan Semiconductor Co Ltd",
+          "security": "台灣半導體 Taiwan Semiconductor Co Ltd",
           "percent": 2.4
         },
         {
           "rank": 6,
-          "security": "亞馬遜Amazon.Com",
+          "security": "亞馬遜 Amazon.Com",
           "percent": 2.1
         },
         {
           "rank": 7,
-          "security": "愛思開海力士SK Hynix Inc",
+          "security": "愛思開海力士 SK Hynix Inc",
           "percent": 1.8
         },
         {
           "rank": 8,
-          "security": "博通Broadcom Inc",
+          "security": "博通 Broadcom Inc",
           "percent": 1.6
         },
         {
           "rank": 9,
-          "security": "三星電子Samsung Electronics Co Ltd",
+          "security": "三星電子 Samsung Electronics Co Ltd",
           "percent": 1.6
         },
         {
           "rank": 10,
-          "security": "科林研 發Lam Research Corp",
+          "security": "科林研 發 Lam Research Corp",
           "percent": 1.4
         }
       ],
@@ -28821,17 +28821,17 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "騰訊控 股Tencent Holdings",
+          "security": "騰訊控 股 Tencent Holdings",
           "percent": 8.2
         },
         {
           "rank": 2,
-          "security": "中國建設銀行China Construction Bank-H",
+          "security": "中國建設銀行 China Construction Bank-H",
           "percent": 7.9
         },
         {
           "rank": 3,
-          "security": "阿里巴巴Alibaba Group Holding Ltd",
+          "security": "阿里巴巴 Alibaba Group Holding Ltd",
           "percent": 6.5
         },
         {
@@ -28841,32 +28841,32 @@
         },
         {
           "rank": 5,
-          "security": "中國移動China Mobile Ltd",
+          "security": "中國移動 China Mobile Ltd",
           "percent": 4.8
         },
         {
           "rank": 6,
-          "security": "小米集團Xiaomi Corp-Class B",
+          "security": "小米集團 Xiaomi Corp-Class B",
           "percent": 4
         },
         {
           "rank": 7,
-          "security": "美團Meituan-Class B",
+          "security": "美團 Meituan-Class B",
           "percent": 3.9
         },
         {
           "rank": 8,
-          "security": "中芯國際SMIC",
+          "security": "中芯國際 SMIC",
           "percent": 3.8
         },
         {
           "rank": 9,
-          "security": "中國銀行Bank of China",
+          "security": "中國銀行 Bank of China",
           "percent": 3.6
         },
         {
           "rank": 10,
-          "security": "中國平安保險Ping An Insurance-H",
+          "security": "中國平安保險 Ping An Insurance-H",
           "percent": 3.5
         }
       ],
@@ -28940,52 +28940,52 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "台灣半導體Taiwan Semiconductor Co Ltd",
+          "security": "台灣半導體 Taiwan Semiconductor Co Ltd",
           "percent": 9.5
         },
         {
           "rank": 2,
-          "security": "三星電子Samsung Electronics Co Ltd",
+          "security": "三星電子 Samsung Electronics Co Ltd",
           "percent": 8.6
         },
         {
           "rank": 3,
-          "security": "愛思開海力士SK Hynix Inc",
+          "security": "愛思開海力士 SK Hynix Inc",
           "percent": 7.4
         },
         {
           "rank": 4,
-          "security": "騰訊控 股Tencent Holdings",
+          "security": "騰訊控 股 Tencent Holdings",
           "percent": 2.6
         },
         {
           "rank": 5,
-          "security": "阿里巴巴Alibaba Group Holding Ltd",
+          "security": "阿里巴巴 Alibaba Group Holding Ltd",
           "percent": 1.6
         },
         {
           "rank": 6,
-          "security": "必和必拓BHP Group Ltd",
+          "security": "必和必拓 BHP Group Ltd",
           "percent": 1.6
         },
         {
           "rank": 7,
-          "security": "聯發科 技MediaTek Inc",
+          "security": "聯發科 技 MediaTek Inc",
           "percent": 1.5
         },
         {
           "rank": 8,
-          "security": "澳 洲聯邦銀行Commonwealth Bank of Australia",
+          "security": "澳 洲聯邦銀行 Commonwealth Bank of Australia",
           "percent": 1.4
         },
         {
           "rank": 9,
-          "security": "台達電子Delta Electronics Inc",
+          "security": "台達電子 Delta Electronics Inc",
           "percent": 0.9
         },
         {
           "rank": 10,
-          "security": "星展集團DBS Group Holdings Ltd",
+          "security": "星展集團 DBS Group Holdings Ltd",
           "percent": 0.8
         }
       ],
@@ -29119,12 +29119,12 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "輝達NVIDIA Corp",
+          "security": "輝達 NVIDIA Corp",
           "percent": 6.8
         },
         {
           "rank": 2,
-          "security": "蘋果Apple Inc",
+          "security": "蘋果 Apple Inc",
           "percent": 6.1
         },
         {
@@ -29134,37 +29134,37 @@
         },
         {
           "rank": 4,
-          "security": "微軟Microsoft Corp",
+          "security": "微軟 Microsoft Corp",
           "percent": 4
         },
         {
           "rank": 5,
-          "security": "亞馬遜Amazon.Com",
+          "security": "亞馬遜 Amazon.Com",
           "percent": 3.4
         },
         {
           "rank": 6,
-          "security": "博通Broadcom Inc",
+          "security": "博通 Broadcom Inc",
           "percent": 2.6
         },
         {
           "rank": 7,
-          "security": "美光科 技Micron Technology Inc",
+          "security": "美光科 技 Micron Technology Inc",
           "percent": 1.9
         },
         {
           "rank": 8,
-          "security": "Meta平台Meta Platforms Inc-Class A",
+          "security": "Meta 平台 Meta Platforms Inc-Class A",
           "percent": 1.8
         },
         {
           "rank": 9,
-          "security": "特斯拉Tesla Inc",
+          "security": "特斯拉 Tesla Inc",
           "percent": 1.8
         },
         {
           "rank": 10,
-          "security": "禮來Eli Lilly and Co",
+          "security": "禮來 Eli Lilly and Co",
           "percent": 1.4
         }
       ],
@@ -29238,52 +29238,52 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "艾司摩爾控 股ASML Holding NV",
+          "security": "艾司摩爾控 股 ASML Holding NV",
           "percent": 5.2
         },
         {
           "rank": 2,
-          "security": "滙豐控 股HSBC Holdings",
+          "security": "滙豐控 股 HSBC Holdings",
           "percent": 2.2
         },
         {
           "rank": 3,
-          "security": "羅氏控 股Roche Holding AG",
+          "security": "羅氏控 股 Roche Holding AG",
           "percent": 2.1
         },
         {
           "rank": 4,
-          "security": "諾華Novartis AG-Reg",
+          "security": "諾華 Novartis AG-Reg",
           "percent": 2
         },
         {
           "rank": 5,
-          "security": "阿斯特 捷利康AstraZeneca Plc",
+          "security": "阿斯特 捷利康 AstraZeneca Plc",
           "percent": 1.9
         },
         {
           "rank": 6,
-          "security": "雀巢Nestle SA-Reg",
+          "security": "雀巢 Nestle SA-Reg",
           "percent": 1.8
         },
         {
           "rank": 7,
-          "security": "西門子Siemens AG-Reg",
+          "security": "西門子 Siemens AG-Reg",
           "percent": 1.6
         },
         {
           "rank": 8,
-          "security": "殼 牌Shell Plc",
+          "security": "殼 牌 Shell Plc",
           "percent": 1.5
         },
         {
           "rank": 9,
-          "security": "西班牙國際銀行Banco Santander SA",
+          "security": "西班牙國際銀行 Banco Santander SA",
           "percent": 1.3
         },
         {
           "rank": 10,
-          "security": "安聯集團Allianz SE-REG",
+          "security": "安聯集團 Allianz SE-REG",
           "percent": 1.2
         }
       ],
@@ -29720,7 +29720,7 @@
         },
         {
           "rank": 7,
-          "security": "iShares Core CSI 300 ETF安碩核心滬深 300 ETF",
+          "security": "iShares Core CSI 300 ETF 安碩核心滬深 300 ETF",
           "percent": 2.7
         },
         {
@@ -29759,7 +29759,7 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "TSMC台灣積體電路製造股份",
+          "security": "TSMC 台灣積體電路製造股份",
           "percent": 9.6
         },
         {
@@ -29779,7 +29779,7 @@
         },
         {
           "rank": 5,
-          "security": "Delta Electronic台達電子",
+          "security": "Delta Electronic 台達電子",
           "percent": 3.54
         },
         {
@@ -29794,7 +29794,7 @@
         },
         {
           "rank": 8,
-          "security": "HKEX香港交易所",
+          "security": "HKEX 香港交易所",
           "percent": 1.53
         },
         {
@@ -29967,7 +29967,7 @@
         },
         {
           "rank": 7,
-          "security": "TSMC台灣積體電路製造股份",
+          "security": "TSMC 台灣積體電路製造股份",
           "percent": 1.1
         },
         {
@@ -30036,7 +30036,7 @@
         },
         {
           "rank": 7,
-          "security": "TSMC台灣積體電路製造股份",
+          "security": "TSMC 台灣積體電路製造股份",
           "percent": 1.1
         },
         {
@@ -30095,7 +30095,7 @@
         },
         {
           "rank": 5,
-          "security": "TSMC台灣積體電路製造股份",
+          "security": "TSMC 台灣積體電路製造股份",
           "percent": 1.56
         },
         {
@@ -30169,7 +30169,7 @@
         },
         {
           "rank": 6,
-          "security": "TSMC台灣積體電路製造股份",
+          "security": "TSMC 台灣積體電路製造股份",
           "percent": 1.73
         },
         {
@@ -30238,7 +30238,7 @@
         },
         {
           "rank": 6,
-          "security": "TSMC台灣積體電路製造股份",
+          "security": "TSMC 台灣積體電路製造股份",
           "percent": 1.81
         },
         {
@@ -30307,7 +30307,7 @@
         },
         {
           "rank": 6,
-          "security": "TSMC台灣積體電路製造股份",
+          "security": "TSMC 台灣積體電路製造股份",
           "percent": 1.82
         },
         {
@@ -30386,7 +30386,7 @@
         },
         {
           "rank": 4,
-          "security": "HKEX香港交易所",
+          "security": "HKEX 香港交易所",
           "percent": 6.33
         },
         {
@@ -30396,12 +30396,12 @@
         },
         {
           "rank": 6,
-          "security": "Ping An Insurance中國平安保險",
+          "security": "Ping An Insurance 中國平安保險",
           "percent": 4.8
         },
         {
           "rank": 7,
-          "security": "ANTA Sports安踏體育",
+          "security": "ANTA Sports 安踏體育",
           "percent": 3.65
         },
         {
@@ -30411,12 +30411,12 @@
         },
         {
           "rank": 9,
-          "security": "China Mobile中國移動",
+          "security": "China Mobile 中國移動",
           "percent": 3.39
         },
         {
           "rank": 10,
-          "security": "Meituan-Dianping美團",
+          "security": "Meituan-Dianping 美團",
           "percent": 3.22
         }
       ],
@@ -33503,7 +33503,7 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "南方東英富時香港股票ETF CSOP FTSE HONG KONG EQUITY ETF",
+          "security": "南方東英富時香港股票 ETF CSOP FTSE HONG KONG EQUITY ETF",
           "percent": 12.17
         },
         {
@@ -33538,7 +33538,7 @@
         },
         {
           "rank": 8,
-          "security": "盈富基金TRACKER FUND OF HK",
+          "security": "盈富基金 TRACKER FUND OF HK",
           "percent": 2.54
         },
         {
@@ -33548,7 +33548,7 @@
         },
         {
           "rank": 10,
-          "security": "台積電TAIWAN SEMICONDUCTOR MFG CO LTD",
+          "security": "台積電 TAIWAN SEMICONDUCTOR MFG CO LTD",
           "percent": 1.39
         }
       ],
@@ -33587,12 +33587,12 @@
         },
         {
           "rank": 4,
-          "security": "滙豐控股HSBC HLDGS PLC",
+          "security": "滙豐控股 HSBC HLDGS PLC",
           "percent": 1.69
         },
         {
           "rank": 5,
-          "security": "騰訊控股TENCENT HLDGS LTD",
+          "security": "騰訊控股 TENCENT HLDGS LTD",
           "percent": 1.56
         },
         {
@@ -33602,7 +33602,7 @@
         },
         {
           "rank": 7,
-          "security": "阿里巴巴集團控股有限公司ALIBABA GROUP HLDG LTD",
+          "security": "阿里巴巴集團控股有限公司 ALIBABA GROUP HLDG LTD",
           "percent": 1.34
         },
         {
@@ -33666,12 +33666,12 @@
         },
         {
           "rank": 6,
-          "security": "滙豐控股HSBC HLDGS PLC",
+          "security": "滙豐控股 HSBC HLDGS PLC",
           "percent": 1.27
         },
         {
           "rank": 7,
-          "security": "騰訊控股TENCENT HLDGS LTD",
+          "security": "騰訊控股 TENCENT HLDGS LTD",
           "percent": 1.19
         },
         {
@@ -33784,7 +33784,7 @@
         },
         {
           "rank": 2,
-          "security": "台積電TAIWAN SEMICONDUCTOR MFG CO LTD",
+          "security": "台積電 TAIWAN SEMICONDUCTOR MFG CO LTD",
           "percent": 8.78
         },
         {
@@ -33794,7 +33794,7 @@
         },
         {
           "rank": 4,
-          "security": "聯發科技股份有限公司MEDIATEK INC",
+          "security": "聯發科技股份有限公司 MEDIATEK INC",
           "percent": 2.88
         },
         {
@@ -33809,7 +33809,7 @@
         },
         {
           "rank": 7,
-          "security": "台達電子DELTA ELECTRONICS",
+          "security": "台達電子 DELTA ELECTRONICS",
           "percent": 1.87
         },
         {
@@ -33819,12 +33819,12 @@
         },
         {
           "rank": 9,
-          "security": "星展集團股有限公司DBS GROUP HOLDINGS Ltd",
+          "security": "星展集團股有限公司 DBS GROUP HOLDINGS Ltd",
           "percent": 1.55
         },
         {
           "rank": 10,
-          "security": "台光電ELITE MATERIAL CO LTD",
+          "security": "台光電 ELITE MATERIAL CO LTD",
           "percent": 1.33
         }
       ],
@@ -33848,42 +33848,42 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "台積電TAIWAN SEMICONDUCTOR MFG CO LTD",
+          "security": "台積電 TAIWAN SEMICONDUCTOR MFG CO LTD",
           "percent": 9.63
         },
         {
           "rank": 2,
-          "security": "騰訊控股TENCENT HLDGS LTD",
+          "security": "騰訊控股 TENCENT HLDGS LTD",
           "percent": 8.01
         },
         {
           "rank": 3,
-          "security": "阿里巴巴集團控股有限公司ALIBABA GROUP HLDG LTD",
+          "security": "阿里巴巴集團控股有限公司 ALIBABA GROUP HLDG LTD",
           "percent": 5.4
         },
         {
           "rank": 4,
-          "security": "台達電子DELTA ELECTRONICS",
+          "security": "台達電子 DELTA ELECTRONICS",
           "percent": 3.83
         },
         {
           "rank": 5,
-          "security": "台光電ELITE MATERIAL CO LTD",
+          "security": "台光電 ELITE MATERIAL CO LTD",
           "percent": 2.78
         },
         {
           "rank": 6,
-          "security": "滙豐控股HSBC HLDGS PLC",
+          "security": "滙豐控股 HSBC HLDGS PLC",
           "percent": 2.77
         },
         {
           "rank": 7,
-          "security": "招商銀行 H 股CHINA MERCHANTS BANK H",
+          "security": "招商銀行 H 股 CHINA MERCHANTS BANK H",
           "percent": 2.59
         },
         {
           "rank": 8,
-          "security": "網易股份有限公司NETEASE, INC",
+          "security": "網易股份有限公司 NETEASE, INC",
           "percent": 2.53
         },
         {
@@ -33917,32 +33917,32 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "騰訊控股TENCENT HLDGS LTD",
+          "security": "騰訊控股 TENCENT HLDGS LTD",
           "percent": 9.81
         },
         {
           "rank": 2,
-          "security": "滙豐控股HSBC HLDGS PLC",
+          "security": "滙豐控股 HSBC HLDGS PLC",
           "percent": 9.16
         },
         {
           "rank": 3,
-          "security": "阿里巴巴集團控股有限公司ALIBABA GROUP HLDG LTD",
+          "security": "阿里巴巴集團控股有限公司 ALIBABA GROUP HLDG LTD",
           "percent": 8.23
         },
         {
           "rank": 4,
-          "security": "中國建設銀行 H 股CHINA CONSTRUCTION BANK H",
+          "security": "中國建設銀行 H 股 CHINA CONSTRUCTION BANK H",
           "percent": 5.96
         },
         {
           "rank": 5,
-          "security": "友邦保險AIA GROUP LTD",
+          "security": "友邦保險 AIA GROUP LTD",
           "percent": 3.61
         },
         {
           "rank": 6,
-          "security": "中國平安 H 股PING AN INSURANCE CO LTD H",
+          "security": "中國平安 H 股 PING AN INSURANCE CO LTD H",
           "percent": 3.25
         },
         {
@@ -33952,17 +33952,17 @@
         },
         {
           "rank": 8,
-          "security": "美團點評MEITUAN DIANPING",
+          "security": "美團點評 MEITUAN DIANPING",
           "percent": 2.67
         },
         {
           "rank": 9,
-          "security": "寧德時代CONTEMPORARY AMPEREX TECHNOLOGY CO LTD",
+          "security": "寧德時代 CONTEMPORARY AMPEREX TECHNOLOGY CO LTD",
           "percent": 2.64
         },
         {
           "rank": 10,
-          "security": "株洲中車時代電氣股票有限公司- H 股ZHUZHOU CRRC TIMES ELECTRIC (H)",
+          "security": "株洲中車時代電氣股票有限公司- H 股 ZHUZHOU CRRC TIMES ELECTRIC (H)",
           "percent": 2.61
         }
       ],
@@ -33986,37 +33986,37 @@
       "topHoldings": [
         {
           "rank": 1,
-          "security": "滙豐控股HSBC HLDGS PLC",
+          "security": "滙豐控股 HSBC HLDGS PLC",
           "percent": 9.11
         },
         {
           "rank": 2,
-          "security": "騰訊控股TENCENT HLDGS LTD",
+          "security": "騰訊控股 TENCENT HLDGS LTD",
           "percent": 8.09
         },
         {
           "rank": 3,
-          "security": "阿里巴巴集團控股有限公司ALIBABA GROUP HLDG LTD",
+          "security": "阿里巴巴集團控股有限公司 ALIBABA GROUP HLDG LTD",
           "percent": 6.43
         },
         {
           "rank": 4,
-          "security": "中國建設銀行 H 股CHINA CONSTRUCTION BANK H",
+          "security": "中國建設銀行 H 股 CHINA CONSTRUCTION BANK H",
           "percent": 5.16
         },
         {
           "rank": 5,
-          "security": "友邦保險AIA GROUP LTD",
+          "security": "友邦保險 AIA GROUP LTD",
           "percent": 5
         },
         {
           "rank": 6,
-          "security": "中國工商銀行 H 股ICBC H",
+          "security": "中國工商銀行 H 股 ICBC H",
           "percent": 3.53
         },
         {
           "rank": 7,
-          "security": "中國移動 H 股CHINA MOBILE LTD H",
+          "security": "中國移動 H 股 CHINA MOBILE LTD H",
           "percent": 3.15
         },
         {
@@ -34026,7 +34026,7 @@
         },
         {
           "rank": 9,
-          "security": "小米集團XIAOMI CORP",
+          "security": "小米集團 XIAOMI CORP",
           "percent": 2.61
         },
         {
@@ -34919,7 +34919,7 @@
         },
         {
           "rank": 4,
-          "security": "iShares Core S&P 500 ETF iShares 核心標準普爾500 指數ETF",
+          "security": "iShares Core S&P 500 ETF iShares 核心標準普爾500 指數 ETF",
           "percent": 4.23
         },
         {
@@ -34934,7 +34934,7 @@
         },
         {
           "rank": 7,
-          "security": "SPDR S&P 500 ETF SPDR 標準普爾500 指數ETF",
+          "security": "SPDR S&P 500 ETF SPDR 標準普爾500 指數 ETF",
           "percent": 3.73
         },
         {
