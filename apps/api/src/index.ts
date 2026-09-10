@@ -988,13 +988,17 @@ app.get("/rankings", async (context) => {
       };
     },
   }));
-  const policy = parsed[0]?.publication.provenance.freshnessPolicy;
-  const graceDays =
-    metric === "return"
-      ? returnsGraceDays(policy)
-      : fundOverviewGraceDays(policy);
   const evaluatedAt = new Date();
   let excludedStaleCount = 0;
+  // 寬限日數逐個基金類別計，唔可以淨係用第一隻基金嘅 freshnessPolicy 代表全部——
+  // fundOverviewGraceDays 而家按各計劃財政年結日各自唔同（見 #192）。落嚟 methodology
+  // 顯示嘅 graceDays 淨係取第一隻基金做代表，只作參考，實際篩選一律用逐隻基金自己嗰個。
+  const methodologyGraceDays =
+    metric === "return"
+      ? returnsGraceDays(parsed[0]?.publication.provenance.freshnessPolicy)
+      : fundOverviewGraceDays(
+          parsed[0]?.publication.provenance.freshnessPolicy,
+        );
   const eligible = parsed.flatMap(({ snapshotId, publication }) => {
     const value = publication.fundClass[valueField];
     const returnSource =
@@ -1012,6 +1016,10 @@ app.get("/rankings", async (context) => {
     ) {
       return [];
     }
+    const graceDays =
+      metric === "return"
+        ? returnsGraceDays(publication.provenance.freshnessPolicy)
+        : fundOverviewGraceDays(publication.provenance.freshnessPolicy);
     if (
       evaluateFreshness(dataAsOf, graceDays, evaluatedAt).status !== "verified"
     ) {
@@ -1079,7 +1087,7 @@ app.get("/rankings", async (context) => {
       sortDirection: selected.sortDirection,
       displayPrecision: precision,
       freshness: {
-        graceDays,
+        graceDays: methodologyGraceDays,
         evaluatedOn: evaluatedAt.toISOString().slice(0, 10),
         rule: "資料截至日期超出官方披露寬限期的數值不參與排名，但仍可在基金詳情頁連同原截至日期查看。",
       },

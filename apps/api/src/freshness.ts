@@ -1,11 +1,14 @@
 export const DEFAULT_RETURNS_GRACE_DAYS = 45;
-// 與 packages/coverage 的 FUND_OVERVIEW_GRACE_DAYS 一致；只在已發布資料沒有帶出
-// freshnessPolicy 時才會用到這個預設值。
+// 每個基金類別自己嘅 fundOverviewGraceDays 已經按計劃財政年結日及法定基金概覽發布期限
+// 算好（見 packages/coverage 的 fundOverviewGraceDaysFor），寫死喺發布 payload 入面。
+// 呢個係冇財政年結日資料嘅舊快照先會用到嘅最後備援值。
 export const DEFAULT_FUND_OVERVIEW_GRACE_DAYS = 45;
 
 export type FreshnessPolicy = {
   returnsGraceDays?: number;
   fundOverviewGraceDays?: number;
+  // 規則本身版本號；已發布快照凍住計算時嘅版本，規則改變不會回溯改寫舊批次。
+  fundOverviewPolicyVersion?: number;
 };
 
 export type PublishedFreshness = {

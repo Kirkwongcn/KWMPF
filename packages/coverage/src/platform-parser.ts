@@ -271,6 +271,20 @@ export function parseFundDetail(html: string, cfId: number): SourceRecord {
     launchDate = `${match[3]}-${month}-${match[1].padStart(2, "0")}`;
   }
 
+  // 「計劃財政期終結日」年年重複，平台淨係列月日（例如 `30 Nov`），不帶年份。
+  const financialPeriodEndDateText = fields.get("Financial Period End Date");
+  let financialPeriodEndDate: string | undefined;
+  if (financialPeriodEndDateText && /n\.a\./i.test(financialPeriodEndDateText)) {
+    unavailableFields.push("financialPeriodEndDate");
+  } else if (financialPeriodEndDateText) {
+    const match = financialPeriodEndDateText.match(/^(\d{1,2}) ([A-Za-z]+)$/);
+    const month = match?.[2] ? monthNumber(match[2]) : undefined;
+    if (!match?.[1] || !month) {
+      throw new Error(`Financial Period End Date is unreadable on cf_id ${cfId}`);
+    }
+    financialPeriodEndDate = `${month}-${match[1].padStart(2, "0")}`;
+  }
+
   const calendarYearReturns: Record<string, number> = {};
   for (const [label, value] of fields) {
     const year = label.match(/^Calendar year return: (\d{4})$/)?.[1];
@@ -323,6 +337,7 @@ export function parseFundDetail(html: string, cfId: number): SourceRecord {
       ? {}
       : { fundSizeHkdMillion, fundSizeAsOf: sourceDate(fundSizeText, cfId) }),
     ...(launchDate === undefined ? {} : { launchDate }),
+    ...(financialPeriodEndDate === undefined ? {} : { financialPeriodEndDate }),
     ...(Object.keys(calendarYearReturns).length
       ? { calendarYearReturns }
       : {}),

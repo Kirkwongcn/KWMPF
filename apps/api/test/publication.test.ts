@@ -1748,6 +1748,66 @@ describe("publication snapshot", () => {
     expect(returns.rankings.length).toBeGreaterThan(0);
   });
 
+  it("evaluates each fund's own fund-overview grace period instead of only the first fund's (#192)", async () => {
+    const snapshotId = `snapshot-per-fund-grace-${crypto.randomUUID()}`;
+    const dataAsOf = isoDaysAgo(30);
+    const fundClass = (id: string, managementFee: number) => ({
+      id,
+      fundClassName: id,
+      constituentFundName: id,
+      schemeName: "測試計劃",
+      trusteeName: "測試受託人",
+      fundCategory: "環球股票基金",
+      lipperCategory: "Global Equity",
+      managementFee,
+      dataAsOf,
+      verificationStatus: "verified",
+    });
+    await insertPublication(snapshotId, [
+      {
+        id: "short-grace-fund",
+        payload: {
+          snapshotId,
+          fundClass: fundClass("short-grace-fund", 1),
+          provenance: {
+            sourceUrl: "https://example.test/short-grace-fund",
+            dataAsOf,
+            verificationStatus: "verified",
+            freshnessPolicy: { fundOverviewGraceDays: 20 },
+          },
+        },
+      },
+      {
+        id: "long-grace-fund",
+        payload: {
+          snapshotId,
+          fundClass: fundClass("long-grace-fund", 2),
+          provenance: {
+            sourceUrl: "https://example.test/long-grace-fund",
+            dataAsOf,
+            verificationStatus: "verified",
+            freshnessPolicy: { fundOverviewGraceDays: 400 },
+          },
+        },
+      },
+    ]);
+
+    const fee = (await (
+      await SELF.fetch("https://kwmpf.test/rankings?metric=fee")
+    ).json()) as {
+      rankings: { fundClassId: string }[];
+      excludedStaleCount: number;
+    };
+
+    // 30 日舊嘅資料超出 short-grace-fund 自己 20 日嘅寬限，但喺 long-grace-fund
+    // 400 日嘅寬限之內——如果淨係用第一隻基金嘅政策代表全部（舊 bug），兩者會攞埋
+    // 同一個結果（要不全部剔走、要不全部保留），唔會係「淨係 long-grace-fund 上榜」。
+    expect(fee.rankings.map((row) => row.fundClassId)).toEqual([
+      "long-grace-fund",
+    ]);
+    expect(fee.excludedStaleCount).toBe(1);
+  });
+
   it("keeps fund overview figures ranking through a full official release cycle", async () => {
     await seedCostAndRiskSnapshot("snapshot-overview-cycle", isoDaysAgo(44));
 

@@ -34,6 +34,7 @@ describe("MPF Fund Platform parser", () => {
       fundSizeHkdMillion: 3344.42,
       fundSizeAsOf: "2026-06-30",
       launchDate: "2006-09-01",
+      financialPeriodEndDate: "11-30",
       calendarYearReturns: {
         2022: -21.22,
         2023: -12.7,
@@ -182,6 +183,31 @@ describe("MPF Fund Platform parser", () => {
 
     expect(() => parseFundDetail(html, 429)).toThrow(
       "Launch Date is unreadable on cf_id 429",
+    );
+  });
+
+  it("reads a financial period end date with a short month name", () => {
+    const html = fixture("fund-detail.html").replace("30 Nov", "5 Jun");
+
+    expect(parseFundDetail(html, 429).financialPeriodEndDate).toBe("06-05");
+  });
+
+  it("records an unavailable financial period end date instead of dropping it silently", () => {
+    const html = fixture("fund-detail.html").replace(
+      "<tr><td>Financial Period End Date</td><td>30 Nov</td></tr>",
+      "<tr><td>Financial Period End Date</td><td>n.a.</td></tr>",
+    );
+    const result = parseFundDetail(html, 429);
+
+    expect(result.financialPeriodEndDate).toBeUndefined();
+    expect(result.unavailableFields).toContain("financialPeriodEndDate");
+  });
+
+  it("fails loudly when the financial period end date is unreadable", () => {
+    const html = fixture("fund-detail.html").replace("30 Nov", "30 November 2025");
+
+    expect(() => parseFundDetail(html, 429)).toThrow(
+      "Financial Period End Date is unreadable on cf_id 429",
     );
   });
 
