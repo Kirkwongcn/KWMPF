@@ -11,6 +11,25 @@ function returnsAsOf(record: SourceRecord) {
   );
 }
 
+function returnSources(record: SourceRecord) {
+  return Object.fromEntries(
+    Object.entries(record.returns ?? {}).flatMap(([period, value]) =>
+      value
+        ? [
+            [
+              period,
+              {
+                dataAsOf: value.dataAsOf,
+                sourceUrl: value.sourceUrl ?? record.sourceUrl ?? "",
+                ...(value.retrievedAt ? { retrievedAt: value.retrievedAt } : {}),
+              },
+            ],
+          ]
+        : [],
+    ),
+  );
+}
+
 // 官方詳情頁已披露的費用組成部分，逐個原樣帶入 payload；缺失的欄位留空，不補 0。
 const feeFields = [
   "oci1yHkd",
@@ -98,6 +117,9 @@ export function buildPublicationInputs(records: SourceRecord[]): PublicationInpu
         : {}),
       ...(record.fundSizeAsOf ? { fundSizeAsOf: record.fundSizeAsOf } : {}),
       ...(returnsAsOf(record) ? { returnsAsOf: returnsAsOf(record) } : {}),
+      ...(Object.keys(returnSources(record)).length > 0
+        ? { returnSources: returnSources(record) }
+        : {}),
       ...(record.launchDate ? { launchDate: record.launchDate } : {}),
       ...(record.calendarYearReturns &&
       Object.keys(record.calendarYearReturns).length

@@ -189,6 +189,37 @@ describe("publication input builder", () => {
     });
   });
 
+  it("keeps each return period's own official date and source", () => {
+    const result = buildPublicationInputs([
+      {
+        fundClassId: "fund-return-source",
+        identity: {
+          trusteeName: "T",
+          schemeName: "S",
+          constituentFundName: "F",
+          fundClassName: "C",
+        },
+        current: true,
+        dataAsOf: "2026-07-31",
+        sourceUrl: "https://platform.example.test/fund",
+        returns: {
+          3: {
+            annualized: 5.2,
+            dataAsOf: "2026-06-30",
+            sourceUrl: "https://trustee.example.test/fact-sheet.pdf",
+            retrievedAt: "2026-08-13T00:00:00Z",
+          },
+        },
+      },
+    ])[0]!;
+
+    expect(result.publicFields?.returnSources?.["3"]).toEqual({
+      dataAsOf: "2026-06-30",
+      sourceUrl: "https://trustee.example.test/fact-sheet.pdf",
+      retrievedAt: "2026-08-13T00:00:00Z",
+    });
+  });
+
   it("omits fund size and launch fields the source never published", () => {
     const result = buildPublicationInputs([
       {

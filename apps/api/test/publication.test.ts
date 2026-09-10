@@ -1312,6 +1312,12 @@ describe("publication snapshot", () => {
               annualizedReturn3y: fund.return3y,
               annualizedReturn5y: fund.return5y,
               annualizedReturn10y: fund.return10y,
+              returnSources: {
+                "3": {
+                  dataAsOf: "2026-07-31",
+                  sourceUrl: `https://factsheet.example.test/${fund.id}`,
+                },
+              },
               dataAsOf: "2026-07-31",
               verificationStatus: "verified",
             },
@@ -1332,12 +1338,19 @@ describe("publication snapshot", () => {
 
     const threeYear = (await (
       await SELF.fetch("https://kwmpf.test/rankings?period=3")
-    ).json()) as { periodYears: number; rankings: { fundClassId: string }[] };
+    ).json()) as {
+      periodYears: number;
+      rankings: { fundClassId: string; dataAsOf: string; sourceUrl: string }[];
+    };
     expect(threeYear.periodYears).toBe(3);
     expect(threeYear.rankings.map((row) => row.fundClassId)).toEqual([
       "fund-b",
       "fund-a",
     ]);
+    expect(threeYear.rankings[0]).toMatchObject({
+      dataAsOf: "2026-07-31",
+      sourceUrl: "https://factsheet.example.test/fund-b",
+    });
 
     const fiveYear = (await (
       await SELF.fetch("https://kwmpf.test/rankings?period=5")

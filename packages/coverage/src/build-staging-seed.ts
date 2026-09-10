@@ -1,4 +1,6 @@
 import { readFile, writeFile } from "node:fs/promises";
+import { resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import {
   FUND_OVERVIEW_GRACE_DAYS,
   MONTHLY_GRACE_DAYS,
@@ -23,6 +25,11 @@ import {
 } from "./fact-sheet-lookup";
 import { publicationSnapshotId } from "./publication-snapshot-id";
 import { parseSourceSnapshot } from "./input";
+import {
+  applyOfficialReturnOverlay,
+  type OfficialReturnObservation,
+  validateOfficialReturnObservations,
+} from "./official-return-overlay";
 
 function argument(name: string) {
   const index = process.argv.indexOf(name);
@@ -39,7 +46,32 @@ if (!sourcePath || !outputPath) {
 
 const snapshot = parseSourceSnapshot(JSON.parse(await readFile(sourcePath, "utf8")));
 const snapshotId = argument("--snapshot") ?? publicationSnapshotId(snapshot);
-const payload = buildPublicationPayload(buildPublicationInputs(snapshot.records));
+const returnObservationsPath =
+  argument("--return-observations") ??
+  resolve(
+    fileURLToPath(new URL(".", import.meta.url)),
+    "../../../data/coverage/2026-08-13-official-return-observations-partial.json",
+  );
+const returnObservations = JSON.parse(
+  await readFile(returnObservationsPath, "utf8"),
+) as OfficialReturnObservation[];
+const returnValidation = validateOfficialReturnObservations(returnObservations);
+if (returnValidation.invalid.length > 0) {
+  throw new Error(
+    `Official return validation failed for ${returnValidation.invalid.length} observation(s)`,
+  );
+}
+const returnOverlay = applyOfficialReturnOverlay(
+  snapshot.records,
+  returnValidation.valid,
+);
+if (returnOverlay.unmatched.length > 0 || returnOverlay.conflicts.length > 0) {
+  throw new Error(
+    `Official return overlay failed: ${returnOverlay.unmatched.length} unmatched, ${returnOverlay.conflicts.length} conflicts`,
+  );
+}
+const sourceRecords = returnOverlay.records;
+const payload = buildPublicationPayload(buildPublicationInputs(sourceRecords));
 if (!payload.ready) {
   throw new Error(`Publication preflight blocked ${payload.preflight.blocked} records`);
 }
@@ -65,7 +97,7 @@ const allocationLabels = await loadAllocationLabelLookup(
   argument("--allocation-label-map"),
 );
 
-const disFunds = snapshot.records.map((record) => ({
+const disFunds = sourceRecords.map((record) => ({
   fundClassId: record.fundClassId,
   schemeName: record.identity.schemeName,
   constituentFundName: record.identity.constituentFundName,
@@ -78,7 +110,7 @@ const disSchemes = reportSchemeDisCoverage(disFunds);
 const sqlString = (value: string) => `'${value.replaceAll("'", "''")}'`;
 const sqlNumber = (value: number | null) => (value === null ? "NULL" : String(value));
 const publications = payload.records.map((record) => {
-  const sourceRecord = snapshot.records.find(
+  const sourceRecord = sourceRecords.find(
     (candidate) => candidate.fundClassId === record.fundClassId,
   );
   const isDisComponent = disTags.get(record.fundClassId);
@@ -167,6 +199,7 @@ console.log(
     outputPath,
     snapshotId,
     records: payload.records.length,
+    officialReturnsApplied: returnOverlay.applied.length,
     comparisonGroups: groupStats.length,
     disComponents: {
       tagged: disTags.size,

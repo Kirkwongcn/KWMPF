@@ -614,6 +614,10 @@ app.get("/schemes", async (context) => {
         annualizedReturn3y?: number;
         annualizedReturn5y?: number;
         annualizedReturn10y?: number;
+        returnSources?: Record<
+          string,
+          { dataAsOf: string; sourceUrl: string; retrievedAt?: string }
+        >;
       }[];
     }
   >();
@@ -966,6 +970,10 @@ app.get("/rankings", async (context) => {
         annualizedReturn3y?: number;
         annualizedReturn5y?: number;
         annualizedReturn10y?: number;
+        returnSources?: Record<
+          string,
+          { dataAsOf: string; sourceUrl: string; retrievedAt?: string }
+        >;
         managementFee?: number;
         riskClass?: number;
         fundRiskIndicator?: number;
@@ -989,6 +997,13 @@ app.get("/rankings", async (context) => {
   let excludedStaleCount = 0;
   const eligible = parsed.flatMap(({ snapshotId, publication }) => {
     const value = publication.fundClass[valueField];
+    const returnSource =
+      metric === "return"
+        ? publication.fundClass.returnSources?.[String(periodYears)]
+        : undefined;
+    const dataAsOf = returnSource?.dataAsOf ?? publication.provenance.dataAsOf;
+    const sourceUrl =
+      returnSource?.sourceUrl ?? publication.provenance.sourceUrl;
     if (
       publication.fundClass.verificationStatus !== "verified" ||
       publication.provenance.verificationStatus !== "verified" ||
@@ -998,13 +1013,12 @@ app.get("/rankings", async (context) => {
       return [];
     }
     if (
-      evaluateFreshness(publication.provenance.dataAsOf, graceDays, evaluatedAt)
-        .status !== "verified"
+      evaluateFreshness(dataAsOf, graceDays, evaluatedAt).status !== "verified"
     ) {
       excludedStaleCount += 1;
       return [];
     }
-    return [{ snapshotId, publication, value }];
+    return [{ snapshotId, publication, value, dataAsOf, sourceUrl }];
   });
   const groups = Map.groupBy(
     eligible,
@@ -1024,7 +1038,7 @@ app.get("/rankings", async (context) => {
     });
     let previousValue: number | undefined;
     let previousRank = 0;
-    return funds.map(({ publication, value }, index) => {
+    return funds.map(({ publication, value, dataAsOf, sourceUrl }, index) => {
       const displayed = Number(value.toFixed(precision));
       const rank = displayed === previousValue ? previousRank : index + 1;
       previousValue = displayed;
@@ -1040,8 +1054,8 @@ app.get("/rankings", async (context) => {
         value,
         displayValue: `${value.toFixed(precision)}${selected.unit}`,
         rank,
-        dataAsOf: publication.provenance.dataAsOf,
-        sourceUrl: publication.provenance.sourceUrl,
+        dataAsOf,
+        sourceUrl,
       };
     });
   });

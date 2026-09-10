@@ -138,6 +138,8 @@ export function applyOfficialReturnOverlay(
       [observation.periodYears]: {
         annualized: observation.annualized,
         dataAsOf: observation.dataAsOf,
+        sourceUrl: observation.sourceUrl,
+        retrievedAt: observation.retrievedAt,
       },
     };
     applied.push(observation);

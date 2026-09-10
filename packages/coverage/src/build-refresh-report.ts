@@ -52,6 +52,9 @@ const audit = buildCandidateAuditReport(
 const decision = decideRefresh({
   previousDataAsOf: previous?.sourceDataAsOf,
   candidateDataAsOf: candidate.sourceDataAsOf,
+  candidateContentChanged:
+    previous !== undefined &&
+    JSON.stringify(candidate.records) !== JSON.stringify(previous.records),
   readiness,
   audit,
 });

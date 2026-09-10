@@ -45,7 +45,7 @@ jobs:
       - name: Confirm the requested source snapshot exists
         run: test -f "data/sources/${{ inputs.source_snapshot }}"
       - name: Build full production publication seed
-        run: bun run --filter @kwmpf/coverage publication-seed -- --source ../../data/sources/${{ inputs.source_snapshot }} --output /tmp/kwmpf-production.sql
+        run: bun run --filter @kwmpf/coverage publication-seed -- --source ../../data/sources/${{ inputs.source_snapshot }} --output /tmp/kwmpf-production.sql --snapshot snapshot-mpfa-platform-$(jq -r .sourceDataAsOf data/sources/${{ inputs.source_snapshot }})-${GITHUB_SHA::12}
       - name: Prepare production Worker configuration
         env:
           D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
