@@ -874,6 +874,7 @@ function summarizeFees(fees: number[]) {
 
 const rankingReturnFields = {
   1: "annualizedReturn1y",
+  3: "annualizedReturn3y",
   5: "annualizedReturn5y",
   10: "annualizedReturn10y",
 } as const;
@@ -923,9 +924,9 @@ app.get("/rankings", async (context) => {
     return context.json(
       {
         error: "Unsupported ranking period",
-        supportedPeriods: [1, 5, 10],
+        supportedPeriods: [1, 3, 5, 10],
         reason:
-          "官方強積金基金平台沒有提供三年年率化回報，網站不會自行由其他期間推算。",
+          "回報排名只接受官方已披露的年率化期間：一年、三年、五年、十年。",
       },
       400,
     );
@@ -962,6 +963,7 @@ app.get("/rankings", async (context) => {
         fundCategory: string;
         lipperCategory?: string;
         annualizedReturn1y?: number;
+        annualizedReturn3y?: number;
         annualizedReturn5y?: number;
         annualizedReturn10y?: number;
         managementFee?: number;

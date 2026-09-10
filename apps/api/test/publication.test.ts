@@ -1264,7 +1264,7 @@ describe("publication snapshot", () => {
     });
   });
 
-  it("ranks five and ten year returns and excludes funds the source never published", async () => {
+  it("ranks three, five and ten year returns and excludes funds the source never published", async () => {
     const snapshotId = "snapshot-long-horizon";
     await bindings.DB.prepare(
       "INSERT INTO publication_snapshots (snapshot_id, published_at) VALUES (?, ?)",
@@ -1272,8 +1272,24 @@ describe("publication snapshot", () => {
       .bind(snapshotId, "2026-08-13T00:00:00Z")
       .run();
     const funds = [
-      { id: "fund-a", return5y: 6.1, return10y: 5.4 },
-      { id: "fund-b", return5y: 7.2, return10y: undefined },
+      {
+        id: "fund-a",
+        return3y: 4.8,
+        return5y: 6.1,
+        return10y: 5.4,
+      },
+      {
+        id: "fund-b",
+        return3y: 5.9,
+        return5y: 7.2,
+        return10y: undefined,
+      },
+      {
+        id: "fund-c",
+        return3y: undefined,
+        return5y: undefined,
+        return10y: undefined,
+      },
     ];
     for (const fund of funds) {
       await bindings.DB.prepare(
@@ -1293,6 +1309,7 @@ describe("publication snapshot", () => {
               fundCategory: "環球股票基金",
               lipperCategory: "Global Equity",
               annualizedReturn1y: 1,
+              annualizedReturn3y: fund.return3y,
               annualizedReturn5y: fund.return5y,
               annualizedReturn10y: fund.return10y,
               dataAsOf: "2026-07-31",
@@ -1312,6 +1329,15 @@ describe("publication snapshot", () => {
     )
       .bind(snapshotId)
       .run();
+
+    const threeYear = (await (
+      await SELF.fetch("https://kwmpf.test/rankings?period=3")
+    ).json()) as { periodYears: number; rankings: { fundClassId: string }[] };
+    expect(threeYear.periodYears).toBe(3);
+    expect(threeYear.rankings.map((row) => row.fundClassId)).toEqual([
+      "fund-b",
+      "fund-a",
+    ]);
 
     const fiveYear = (await (
       await SELF.fetch("https://kwmpf.test/rankings?period=5")
@@ -1385,27 +1411,14 @@ describe("publication snapshot", () => {
     ]);
   });
 
-  it("explains that the official platform publishes no three year return", async () => {
-    const response = await SELF.fetch("https://kwmpf.test/rankings?period=3");
-
-    expect(response.status).toBe(400);
-    expect(await response.json()).toEqual({
-      error: "Unsupported ranking period",
-      supportedPeriods: [1, 5, 10],
-      reason:
-        "官方強積金基金平台沒有提供三年年率化回報，網站不會自行由其他期間推算。",
-    });
-  });
-
   it("rejects a period the caller supplied but the source cannot answer", async () => {
     const response = await SELF.fetch("https://kwmpf.test/rankings?period=1y");
 
     expect(response.status).toBe(400);
     expect(await response.json()).toEqual({
       error: "Unsupported ranking period",
-      supportedPeriods: [1, 5, 10],
-      reason:
-        "官方強積金基金平台沒有提供三年年率化回報，網站不會自行由其他期間推算。",
+      supportedPeriods: [1, 3, 5, 10],
+      reason: "回報排名只接受官方已披露的年率化期間：一年、三年、五年、十年。",
     });
   });
 
