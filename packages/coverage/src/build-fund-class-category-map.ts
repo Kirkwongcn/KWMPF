@@ -25,10 +25,24 @@ async function readJsonIfPresent(path: string) {
   }
 }
 
+/**
+ * #194 人手覆核過嘅低分自動配對（score < REVIEW_SCORE，但名稱同計劃逐項對得上，
+ * 已對照平台快照嘅 identity 確認）。轉做 manual 令 reviewRequired 唔再列出，
+ * 唔改變 lipperCategory／fundClassId 配對本身。
+ */
+const confirmedLowScoreOverrides: Record<string, string> = {
+  "HSBC MPF-SuperTrust Plus-ValueChoice AsPac Eq Trkr": "mpfa-cf-1621",
+  "Hang Seng MPF-SuperTrust Plus-ValChce NAm Eq Trkr": "mpfa-cf-1630",
+};
+
 export async function buildFundClassCategoryMapFile(platformPath: string, options: CategoryMapOptions = {}) {
   const lipper = await readJson(lipperPath);
   const platform = await readJson(platformPath);
-  const result = buildLipperCategoryMap(lipper.funds, platform.records, options);
+  const mergedOptions: CategoryMapOptions = {
+    ...options,
+    manualOverrides: { ...confirmedLowScoreOverrides, ...(options.manualOverrides ?? {}) },
+  };
+  const result = buildLipperCategoryMap(lipper.funds, platform.records, mergedOptions);
   const previous = await readJsonIfPresent(outputPath);
   const diff = diffCategoryMaps((previous?.entries ?? []) as CategoryMapEntry[], result.entries);
   const payload = {
