@@ -24,6 +24,30 @@ jobs:
       - run: bun install --frozen-lockfile
       - run: bun run check
 
+  high-risk-review:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Require review evidence for high-risk paths
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          set -euo pipefail
+          git diff --name-only "$BASE_SHA" "$HEAD_SHA" >/tmp/changed-files.txt
+          printf '%s\n' "$PR_BODY" >/tmp/pr-body.md
+          scripts/check-high-risk-review.sh /tmp/changed-files.txt /tmp/pr-body.md
+      - name: Keep source data reviewable separately from code
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: scripts/check-pr-composition.sh "$BASE_SHA" "$HEAD_SHA"
+
   e2e:
     runs-on: ubuntu-latest
     timeout-minutes: 25

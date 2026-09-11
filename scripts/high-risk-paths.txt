@@ -1,0 +1,22 @@
+# 高危路徑清單，供 scripts/check-high-risk-review.sh 使用。
+# 每行一個 shell glob（對照 repo 根目錄的相對路徑）。
+# 與 .github/CODEOWNERS 同一組路徑，改其中一邊要一併改另一邊。
+packages/coverage/src/fact-sheet-*.ts
+packages/coverage/src/trustee-fact-sheet-lookup.ts
+packages/coverage/src/platform-parser.ts
+packages/coverage/src/data-freshness.ts
+packages/coverage/src/dis-component.ts
+packages/coverage/src/allocation-label-*.ts
+packages/coverage/src/comparison-group.ts
+packages/coverage/src/comparison-group-stats.ts
+packages/coverage/src/build-publication-*.ts
+packages/coverage/src/build-staging-seed.ts
+packages/coverage/src/official-return-overlay.ts
+packages/coverage/src/candidate-anomalies.ts
+apps/api/src/comparison-group.ts
+apps/api/src/freshness.ts
+apps/api/src/publication.ts
+apps/api/migrations/*
+data/reference/*
+.github/workflows/deploy-staging.yml
+.github/workflows/deploy-production.yml
