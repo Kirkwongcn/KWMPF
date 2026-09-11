@@ -27,3 +27,7 @@
 
 - [ ] high-risk: code-review
 - [ ] high-risk: publication-seed
+
+code-review evidence: <!-- findings／零發現及修正結果 -->
+
+publication-seed evidence: <!-- 端點數量及三筆官方原文核對結果 -->

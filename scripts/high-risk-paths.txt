@@ -18,4 +18,5 @@ apps/api/src/freshness.ts
 apps/api/src/publication.ts
 apps/api/migrations/*
 data/reference/*
+.github/workflows/deploy-staging.yml
 .github/workflows/deploy-production.yml

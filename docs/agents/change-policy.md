@@ -71,8 +71,11 @@ curl -s 'http://127.0.0.1:8799/rankings?metric=return&period=3' \
 ```
 
 - `code-review`：跑過 repo 內嘅 `/code-review`，並把結果（或者「零發現」）
-  貼上 PR。
-- `publication-seed`：跑過第 1 節嗰條端到端核對，並貼出對過嗰三筆數字。
+  寫入 PR 的 `code-review evidence:`。
+- `publication-seed`：跑過第 1 節嗰條端到端核對，並把三筆官方原文核對結果寫入
+  `publication-seed evidence:`。
+
+CI 除咗 checkbox，亦會要求兩項 evidence 有實際內容；留住 placeholder 或淨係剔格會失敗。
 
 CI 嘅 `high-risk-review` job 會檢查（`scripts/check-high-risk-review.sh`）。
 佢只檢查有冇勾，唔檢查有冇做——勾咗但冇做，責任在勾嘅人。純 UI／文件 PR
@@ -122,3 +125,9 @@ Worker 及 `vite preview`，再以 Playwright 在桌面及手機兩個 project �
 首次執行前需安裝瀏覽器：
 `cd apps/e2e && node node_modules/@playwright/test/cli.js install chromium`。
 E2E 不屬於 `bun run check`，在 CI 由獨立 job 執行。
+
+## 7. Staging 發布必須可回復
+
+`deploy-staging.yml` 改寫 D1 前先完整匯出現有資料庫。寫入新 seed 及部署 Worker 後，
+必須經公開 API 驗證 summary 有 snapshot、基金數大於零，而且一年回報排名非空；之後先部署
+Pages。seed 成功後任何步驟失敗，workflow 必須用部署前匯出檔回復 D1，避免留下半更新狀態。

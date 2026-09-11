@@ -20,6 +20,7 @@
 /packages/coverage/src/comparison-group-stats.ts           @Kirkwongcn
 /packages/coverage/src/build-publication-input.ts          @Kirkwongcn
 /packages/coverage/src/build-publication-payload.ts        @Kirkwongcn
+/packages/coverage/src/build-publication-readiness.ts      @Kirkwongcn
 /packages/coverage/src/build-staging-seed.ts               @Kirkwongcn
 /packages/coverage/src/official-return-overlay.ts          @Kirkwongcn
 /packages/coverage/src/candidate-anomalies.ts              @Kirkwongcn
@@ -28,4 +29,5 @@
 /apps/api/src/publication.ts                               @Kirkwongcn
 /apps/api/migrations/                                      @Kirkwongcn
 /data/reference/                                           @Kirkwongcn
+/.github/workflows/deploy-staging.yml                      @Kirkwongcn
 /.github/workflows/deploy-production.yml                   @Kirkwongcn

@@ -42,6 +42,11 @@ jobs:
           git diff --name-only "$BASE_SHA" "$HEAD_SHA" >/tmp/changed-files.txt
           printf '%s\n' "$PR_BODY" >/tmp/pr-body.md
           scripts/check-high-risk-review.sh /tmp/changed-files.txt /tmp/pr-body.md
+      - name: Keep source data reviewable separately from code
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: scripts/check-pr-composition.sh "$BASE_SHA" "$HEAD_SHA"
 
   e2e:
     runs-on: ubuntu-latest

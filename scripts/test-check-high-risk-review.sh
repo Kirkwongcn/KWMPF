@@ -8,11 +8,14 @@ trap 'rm -rf "$root"' EXIT
 body_ok="$root/body-ok.md"
 body_partial="$root/body-partial.md"
 body_empty="$root/body-empty.md"
+body_no_evidence="$root/body-no-evidence.md"
 
 cat >"$body_ok" <<'MARKDOWN'
 ## 覆核
 - [x] high-risk: code-review
 - [x] high-risk: publication-seed
+code-review evidence: Standards 零發現；Spec 零發現，已覆核全部差異。
+publication-seed evidence: rankings 447 筆；三筆已逐項對照官方來源。
 MARKDOWN
 
 cat >"$body_partial" <<'MARKDOWN'
@@ -21,6 +24,10 @@ cat >"$body_partial" <<'MARKDOWN'
 MARKDOWN
 
 printf '一般 PR 描述，冇勾任何嘢。\n' >"$body_empty"
+cat >"$body_no_evidence" <<'MARKDOWN'
+- [x] high-risk: code-review
+- [x] high-risk: publication-seed
+MARKDOWN
 
 low_risk="$root/low-risk.txt"
 printf 'apps/web/src/pages/Home.tsx\ndocs/agents/change-policy.md\n' >"$low_risk"
@@ -43,6 +50,11 @@ fi
 
 if scripts/check-high-risk-review.sh "$high_risk" "$body_partial" >/dev/null 2>&1; then
   echo "只勾一半憑證，必須失敗" >&2
+  exit 1
+fi
+
+if scripts/check-high-risk-review.sh "$high_risk" "$body_no_evidence" >/dev/null 2>&1; then
+  echo "淨係勾 checkbox 而冇實際結果，必須失敗" >&2
   exit 1
 fi
 

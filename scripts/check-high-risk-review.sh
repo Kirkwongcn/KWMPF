@@ -10,7 +10,7 @@ set -euo pipefail
 #   - [x] high-risk: code-review
 #   - [x] high-risk: publication-seed
 #
-# 勾了但沒做，責任在勾的人；這裡只確保沒有人在不知情下略過。
+# 描述亦要保留實際結果，避免淨係剔 checkbox 而冇可覆核憑證。
 # 純 UI／文件改動不受影響，不加摩擦。
 
 changed_files="${1:-}"
@@ -66,8 +66,15 @@ for token in "code-review" "publication-seed"; do
   fi
 done
 
+for token in "code-review" "publication-seed"; do
+  evidence="$(sed -nE "s/^[[:space:]]*${token}[[:space:]]+evidence:[[:space:]]*(.+)$/\\1/ip" "$pr_body" | head -n 1)"
+  if [ "${#evidence}" -lt 20 ] || [[ "$evidence" == *"<!--"* ]]; then
+    missing+=("${token} evidence")
+  fi
+done
+
 if [ "${#missing[@]}" -eq 0 ]; then
-  echo "PR 描述已勾齊高危覆核憑證。"
+  echo "PR 描述已勾齊高危覆核及實際結果。"
   exit 0
 fi
 
