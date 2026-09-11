@@ -30,11 +30,16 @@ snapshot="$(scripts/resolve-previous-snapshot.sh data/sources)"
 KWMPF_E2E_SOURCE="$PWD/$snapshot" scripts/e2e-serve-api.sh
 
 # 3. 另開一個 shell，打真嗰個端點
-curl -s 'http://127.0.0.1:8799/rankings?metric=return&period=3' | jq '.items | length'
+curl -s 'http://127.0.0.1:8799/rankings?metric=return&period=3' \
+  | jq '{n: (.rankings | length), excluded: .excludedStaleCount}'
 ```
 
 第三步唔可以只睇 HTTP 200：要睇**行數非零**，再由 `data/sources` 嘅原文
 （或者對應嗰份便覽 PDF）抽三筆逐個數字對。對唔到就唔算收貨。
+
+陷阱：`/rankings` 嘅結果喺 `.rankings`，唔係 `.items`；`jq '.items | length'`
+會靜靜哋出 `0`，睇落似「排名係空嘅」，實際上係問錯咗個 key。同時要睇
+`excludedStaleCount`——大量基金因為過期被剔走，同「冇資料」係兩回事。
 
 改到費用、風險、配置、持倉、過期狀態嘅票同樣適用，只係端點唔同。
 
