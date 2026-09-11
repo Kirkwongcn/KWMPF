@@ -6,6 +6,11 @@ set -euo pipefail
 # data/sources 之下同時有非日期目錄（例如 lipper/）及只放其他官方檔案的
 # 日期目錄（例如只有 fund-fact-sheet-links.json 的批次），兩者都不是
 # 上一個平台批次，必須略過而不是靜默失敗。
+#
+# 兩個用途共用同一個定義：`refresh-source-snapshot` 在寫入新批次之前呼叫，
+# 拿到的是「上一個」批次；部署工作流程在之後呼叫，拿到的是「最新已入庫」
+# 那一個。兩者都不可以由工作流程自己寫死日期目錄
+# （見 docs/agents/change-policy.md 的「部署來源批次」）。
 
 sources_root="${1:-data/sources}"
 

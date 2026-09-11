@@ -1,394 +1,62 @@
 # KWMPF
 
-香港強積金計劃及基金比較網站。開始工作前先閱讀 `CONTEXT.md`、相關 ADR，以及 canonical implementation spec。
-
-## Agent skills
-
-### Issue tracker
-
-工作項目以 GitHub Issues 管理。詳見 `docs/agents/issue-tracker.md`。
-
-### Triage labels
-
-採用五個預設 triage labels。詳見 `docs/agents/triage-labels.md`。
-
-### Domain docs
-
-本專案採用 single-context：根目錄 `CONTEXT.md` 配合 `docs/adr/`。詳見 `docs/agents/domain.md`。
-
-## Reference datasets
-
-`data/reference/` 存放使用者提供、非官方來源的參考資料，原始檔留在 `data/sources/`。
-目前有 Lipper 香港退休基金分類（`lipper-hk-pension-categories.json`，見 #194）、
-由它產生的基金對照表（`fund-class-category-map.json`），以及便覽配置標籤到
-股票／債券／現金及其他的編輯對照表（`allocation-label-map.json`，見 #211）。對照表由
-`bun --filter @kwmpf/coverage category-map <平台快照路徑>` 重建，會一併輸出與舊版的差異報告；
-未能配對的基金會報錯，不可靜默回退到平台 `fundType`。
-這些數據屬非官方來源，顯示時須標明出處及期別，不可與官方平台數據混為一談。
-對照表在 `publication-seed` 時寫入每筆快照 payload 的 `lipperCategory`，網站的比較組別由
-`apps/api/src/comparison-group.ts` 統一決定；計劃不在 Lipper 來源內的基金以「平台分類：」前綴自成一組。
-MPF Navigator 檔案的 Sheet1（風險取向配置比重）不在範圍內，不要入庫或引用。
-
-## Official scheme fact sheets
-
-積金局的「基金便覽」按計劃發布，連結抄錄自〈註冊強積金計劃及成分基金〉登記冊，存放於
-`data/sources/<YYYY-MM-DD>/fund-fact-sheet-links.json`。`packages/coverage/src/fact-sheet-lookup.ts`
-只認 `YYYY-MM-DD` 目錄，取最新一個帶有該檔案的批次，並在 `publication-seed` 時把
-`schemeFactSheet`（連結、抄錄日期、登記冊網址）寫入每筆快照 payload。
-快照內有計劃在連結檔中找不到就會報錯，不可靜默略過。
-檔案編號的前綴代表計劃類型（`MT` 集成信託、`IS` 行業、`ES` 僱主營辦），不可由編號推算。
-更新做法：開新的日期目錄，由登記冊重新抄錄全部計劃，再重跑 seed。
-
-## Fact sheet allocation and top holdings
-
-便覽的「配置」及「十大持倉」由 `packages/coverage/src/fact-sheet-allocation.ts` 抽取，
-24 個計劃各自一份契約寫在 `fact-sheet-allocation-contracts.ts`。抽取靠座標：便覽是多欄
-雙語版面，`pdftotext -layout` 會把相鄰欄位併成同一行，所以一律行 `pdftohtml -xml`
-（`pdf-xml.ts`）。契約只描述「去邊度攞」，不描述「點樣改寫」——維度標題、標籤及證券名稱
-一律原文照錄，不做正規化或跨計劃映射。跨計劃的三桶資產歸類是另一層，見下節。
-
-五條不可繞過的規則：
-
-- **有數值、冇名稱就整塊當官方未提供**。宏利環球精選有部分證券名稱畫成向量而非文字，
-  靜默丟走這些行會令名單短一截、排名整體移位，等於改寫官方披露。走 `unavailableFields`，
-  並把原因（連同落單那幾行的原文）寫入 `unavailableReasons`。
-- **抽唔到成表就明講**。`BlockSelector.unextractable` 用嚟聲明「版面上有呢一塊，但抽唔到」，
-  例如宏利環球精選的條形圖標籤是向量、我的強積金的圓餅圖標註共用基線又有數值離群。
-  設咗就一律走 `unavailableFields`，唔會出局部資料。
-- **接駁文字唔可以加多咗空格**。同一行的文字段落用水平空隙決定要唔要空格（`joinItems`：
-  中銀保誠把 `8.4%` 拆成 `8` `.` `4` `%` 四段緊貼的文字）；跨行的中文標籤兩邊都係中文時
-  唔加空格，中英對照之間就要加。
-- **配對唔做模糊比對**。`fact-sheet-allocation-pairing.ts` 只做大小寫、彎引號、破折號
-  正規化，加上契約聲明的 `platformNamePrefix`（平台寫「BCT (Pro) …」，便覽冇呢個前綴）。
-  同名兩個區段就報唔配對，唔可以隨便揀一個。一隻成分基金的多個基金類別共用同一份披露。
-- **疊印分層靠落筆次序，唔靠座標**。永明每一版都把另外一至兩版（有幾版仲要係上兩季
-  嘅舊數）成版疊印上去：標題、截至日期、成張十大持倉逐版重覆一次，只差兩至七 pt，
-  有幾行兩份的百分比左界完全一樣。座標分唔開，但 `pdftohtml` 依內容流輸出，而內容流
-  一定係先寫本頁自己嗰版。所以 `PdfTextItem.drawIndex` 保住落筆次序，
-  `TitleSelector.overlaidPages` 每頁取最先落筆嗰個標題，並且只讀到下一個標題落筆為止。
-  實測 27 版全部第一層都係 `As at 30/06/2026`，疊上去嗰啲先係 2025-09-30／2025-03-31。
-  `rejectOverlaidRows` 保留做防線：切唔乾淨就會有一行帶兩個百分比，
-  嗰陣寧可整塊當抽唔到，都唔靠座標猜邊個數值屬邊隻基金。
-
-版面原語，唔好夾硬用錯：一般表格逐行讀；`rowGap` 把換行拆散的一列併返（宏利自在人生、
-富達的數值垂直置中排在兩段名稱之間，容差要細過列距）；`callouts` 分組圖表標註，預設按
-中心 x（中銀保誠、交銀的幾個扇形百分比會落在同一條基線上），`overlap` 則按水平範圍相交
-（MASS 的標註在餅左邊靠右對齊、右邊靠左對齊，中心對唔上），兩者都以百分比作結；
-`labelColumnGap` 把換行的中英對照標籤逐欄併返（新地）。
-
-欄界四個原語：`band` 明確劃死；`leftSlack` 收窄自動欄界的左邊容差（富達左欄評論的
-斷字連字符會漏入）；`columnWidth` 收窄右邊（自動欄界只識數到下一個更右的標題，
-右邊係註腳時推唔到）；`headingFontSize` 排除附錄用細字縮印的同一批表（富達用 4 級字）。
-
-有幾個計劃逐隻基金披露唔同維度（富達、BCT Simple／Smart），`heading` 要認齊全部維度標題，
-`headingLabel` 逐個對照中文名，唔可以夾硬當成同一個維度。
-
-覆蓋報告：`bun run coverage:fact-sheet-allocation-report --platform <平台快照> --links
-<fund-fact-sheet-links.json> --fact-sheets <PDF 目錄> --output <report.json>`。報告逐個計劃
-列出已配對數、未配對清單及原因、以及配對到但官方未披露的原因。2026-09-04 以 59 份便覽跑
-（二十三個計劃用受託人官網那期、AMTD 用積金局副本；MASS 佔 14 份、富達佔 23 份）：
-382 隻成分基金中 381 隻配對到，
-310 隻有配置、361 隻有十大持倉。餘下缺口主要是圖表式披露：宏利環球精選的配置畫成條形圖、
-永明畫成圓環圖（受託人版一樣係向量，文字層一個字都冇）、我的強積金的圓餅圖標註共用基線，
-全部走 `unavailableFields` 並寫明原因。
-
-同一條指令加 `--disclosures <fund-fact-sheet-disclosures.json>` 會另出一份披露檔：覆蓋報告
-只收數目，發布要原文，所以兩份各自輸出，不可由報告的數目倒推。披露檔存放在來源批次目錄
-（現時 `data/sources/2026-08-31/`），由 `fact-sheet-disclosure-lookup.ts` 讀取——同 `fact-sheet-lookup.ts`
-一樣只認 `YYYY-MM-DD` 目錄、取最新一個帶有該檔的批次。`publication-seed` 逐個基金類別查，
-查到就把 `factSheetDisclosure` 寫入 payload，`/fund-classes/:id` 原樣送出。
-451 個基金類別中 450 個有披露。
-
-## Fact sheet source: trustee first, MPFA registry as fallback
-
-積金局便覽庫存放的副本落後平台數據四至八個月，受託人官網已經出到更新一期。所以**配對用積金局
-登記冊、內容抓受託人官網**：`data/sources/<YYYY-MM-DD>/trustee-fact-sheet-links.json` 人手由各
-受託人官網抄錄，`trustee-fact-sheet-lookup.ts` 讀取。抽取層逐個計劃先試受託人那份，抽唔到
-（官網改版、下載失敗、版面對唔上契約）就退回積金局副本，並把原因寫入報告的
-`trusteeFallbackReason`。退回本身唔係錯，但唔可以靜靜哋當成最新版。
-
-同 `fact-sheet-lookup.ts` 一個關鍵分別：**冇呢份名單唔算錯**。積金局的連結必須齊 24 個計劃
-（`assertFactSheetCoverage`），受託人這份本來就唔齊，抄到幾多得幾多，其餘退回副本。
-連結會不預告改版，所以每筆明寫 `file`（本機檔名），唔靠 URL 尾段推算。
-
-每筆披露帶住 `factSheetSource`（`trustee` 或 `mpfa-registry`）及 `factSheetUrl`，
-詳情頁按來源講明措辭並連去實際用咗嗰份便覽——用咗副本就要明講「受託人官網那一期未能取得」，
-不可扮成最新版。2026-08-31 抄錄咗 BCT 四個計劃（Simple、Smart、Series 800、Industry Choice）、
-永明彩虹（`Rainbow_MPF_Quarterly_Update.pdf`，2026-06-30）、恒生 SuperTrust Plus
-（`FFS.pdf`，2026-06-30，積金局副本 2025-12-31）、友邦 Prime Value Choice
-（月度 Fund Performance Review，2026-05-31，積金局副本 2025-11-30）、中銀保誠 Easy-Choice
-（季度 Fund Fact Sheet，2026-06-30，積金局副本 2026-03-31）、交通銀行 Joyful Retirement
-（季度 Fund Fact Sheet，2026-06-30，積金局副本 2025-12-31）、BCT Strategic
-（`bcthk.com/wr/ST-Fund-Fact-Sheet`，2026-07-31，積金局副本 2026-03-31）、中國人壽集成信託
-（季度基金表現便覽，2026-06-30，積金局副本 2025-12-31）、我的強積金
-（季度 Fund Fact Sheet，2026-06-30，積金局副本 2026-03-31）、東亞三個計劃
-（集成信託 `mpf-mt-2026-2nd.pdf`、行業 `mpf-is-2026-2nd.pdf`、享惠 `mpf-vs-2026-2nd.pdf`，
-全部 2026-06-30，積金局副本 2026-03-31）及滙豐 SuperTrust Plus
-（`hsbc.com.hk/content/dam/hsbc/hk/docs/mpf/2q2026.pdf`，2026-06-30，積金局副本 2025-12-31）、
-海通（`gthtam.com.hk` 的 Fund Monitor，2026-07-31，積金局副本 2025-12-31）、
-BCT Pro Choice（`bcthk.com/MTS-Fund-Fact-Sheet`，2026-06-30，積金局副本 2025-12-31）、
-宏利環球精選（`manulife.com.hk/…/services/forms/quarterly-fund-fact-sheet.pdf`，2026-06-30，
-積金局副本 2026-03-31）、宏利自在人生（`manulife.com.hk/…/products/mpf/retirechoice-scheme/
-fundfact-sheet.pdf`，2026-06-30，積金局副本 2025-12-31）及新地
-（`shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf`，2026-06-30，
-積金局副本 2026-03-31）及 MASS（`yflife.com` 逐隻成分基金一份便覽，14 份全部 2026-06-30，
-積金局副本 2025-12-31）及富達（`fidelityinternational.com` 逐隻成分基金一份便覽，
-23 份全部 2026-07-31，積金局副本 2025-12-31），資料新三至七個月；
-餘下 1 個計劃（AMTD）仍未換版，原因見下。
-
-**bcthk.com 用 CloudFront 擋自動化請求**：`curl` 冇帶瀏覽器 `User-Agent` 會收 403，
-帶正常瀏覽器 UA（例如 Chrome 128 UA）就過。
-
-**Akamai Bot Manager 認 TLS 指紋，唔係認 `User-Agent`**：manulife.com.hk 全站行 Akamai，
-`curl`（連完整瀏覽器 headers）、`agent-browser`、`read_webpage` 一律收 403 Access Denied，
-因為擋的是 TLS/JA3 握手指紋，補幾多個 header 都冇用。用 `curl_cffi`（已安裝於
-`/usr/local/lib/python3.12/site-packages`，注意要行 `/usr/local/bin/python3`，
-`/usr/bin/python3` 揀唔到）以 `requests.Session(impersonate="chrome124")` 重現 Chrome
-的握手指紋就一次過通——完全喺本機跑，唔使 proxy、唔燒任何額度。shkp.com 同樣行得。
-`r.jina.ai` 之類的公開 proxy 只會把 PDF 轉成 markdown，攞唔到原始位元組，抽唔到座標，
-唔可以用嚟做版面解析。
-
-**Pro Choice 的連結唔喺下載區，要去積金局 KSID 攞**：計劃叫 Pro Choice，但便覽的短連結係
-`bcthk.com/MTS-Fund-Fact-Sheet`（MTS = Master Trust Scheme，解到
-`/content/dam/bcthk-sites/documents/publications/images/MT_Fact_Sheet.pdf`）。
-`PC-`、`ProChoice-`、`IC-` 一律解唔到，官網下載區又係 JS render，`curl` 攞唔到連結；
-之前試出「同積金局副本一樣係 2025-12-31」係因為試錯咗連結。權威出處係積金局的
-主要計劃資料文件 `mpfa.org.hk/assets/OD/MT00016_BCT_(MPF)_Pro_Choice_EN.pdf`，
-入面明寫基金便覽連結。其餘計劃搵唔到連結時，同樣可以去 `assets/OD/<計劃編號>_*_EN.pdf` 查。
-
-友邦那期同時揭發一個真缺口：積金局 2025-11-30 副本未收錄 Retirement Income Fund，
-換上受託人版之後 21 隻成分基金全部有齊配置及十大持倉，配對數同十大持倉數各 +1。
-我的強積金換上受託人版揭發三個真缺口：積金局 2026-03-31 副本未收錄三隻新基金
-（Americas Equity、European Quality Tracker、Chinese Government and Policy Bank Bond Index），
-換版後 14 隻變 17 隻，配對數同十大持倉數各 +3（配置本身呢個計劃就一路 `unavailableFields`）。
-中銀保誠、交通銀行、BCT Strategic、中國人壽、東亞三個計劃、滙豐換版後覆蓋數字不變，純粹換新期別。
-
-東亞三個計劃的連結有版本陷阱：2026 年起官網逐個計劃分開檔案（`mpf-{mt,is,vs}-2026-{n}.pdf`），
-2025 年及之前係三個計劃共用一份 `mpf-YYYY-Nth.pdf`。下載區當時只列到 2026-1st，
-但 2026-2nd 三份都已經上載，所以要逐條 URL 試，唔可以淨係抄下載區列咗的連結。
-
-**新地換版一度少一隻持倉，靠 `rowGap` 修返**：受託人官網 `Fund Price and FFS for SHKPESS.pdf`
-（2026-06-30）比積金局副本（2026-03-31）新一季，但 Fidelity Balanced Fund 嗰版有兩行
-「有百分比冇名稱」（`values-without-names`），令呢隻基金由有齊十大持倉變冇。查落唔係向量繪圖，
-而係百分比嘅基線比證券名高 5 至 6 pt，超出 `toLines` 嘅 4 pt 容差；列距 14 至 15 pt，所以
-持倉區段加 `rowGap: 7` 就併得返同一列而唔會吞埋下一列。積金局副本行同一份契約，加咗之後
-輸出逐字不變（本身已經對齊），所以唔使拆兩份契約。換版必須先跑覆蓋報告確認冇退步先可以換。
-
-**AMTD：受託人自己都冇喺官網放最新便覽**。2026-09-02 逐層查過：
-
-- 營辦機構 2024-06-18 由 orientiert XYZ Securities 改名為 oOo Securities (HK) Group，
-  網址由 `orientiertgroup.com` 轉去 `ooogroup.xyz`。舊網域仲解析到，但 TLS 憑證
-  2025-03-07 已經過期，`curl` 同瀏覽器都連唔上，唔可以攞嚟做發布資料的來源。
-- 積金局主要計劃資料文件（`assets/OD/MT00539_AMTD_MPF_Scheme_EN.pdf`）入面嗰條基金便覽
-  短連結係 `bit.ly/44v4piX`，解到舊網域嘅 **2021 年 9 月**月報，比積金局副本仲舊。
-- 新網域行 Cloudflare：`curl`（帶瀏覽器 UA）同 `agent-browser` 一律收 403，Zo 瀏覽器過到，
-  但「基金資料」頁（`/hk/mpf-3.html`）有一個 JS 免責聲明閘，要㩒「同意」先入到；
-  同頁嘅 `/locales/hk/mpf-3` 內容 API 出返一模一樣嘅閘前文字，繞唔到。
-- 旁證顯示個站嘅強積金部分已經停止更新：`/locales/en/mpf_price` 嘅單位價格仲係
-  2024-04-26，登入掣直接跳去 eMPF（`e-mpfhk.com`）。
-
-即係話 AMTD 唔係「攞唔到」，而係受託人官網根本冇一份比積金局副本新嘅合併便覽。維持用
-積金局副本 `MT00539.pdf`（2025-12-31）。要再進一步就要睇 eMPF 平台有冇刊發，屬另一條來源路徑。
-
-**宏利兩個計劃：Akamai 擋得住 header，擋唔住 TLS 指紋重現**。兩份便覽的版面同積金局副本
-一模一樣，取到檔案就照用現有契約，只差自在人生嗰份由 Word 匯出，標題嵌字由 `Arial` 變
-`Arial,Bold`（內文一律 `ArialMT`，所以放寬字體名唔會誤中，唔使拆兩份契約）。
-環球精選換版仲補返一隻：積金局副本嘅 Fidelity Stable Growth Fund 有一行證券名畫成向量
-（`values-without-names`），受託人版文字層齊全，十大持倉由 14 隻升到 15 隻，而且同新地嗰份
-獨立便覽披露嘅同一隻基礎基金持倉逐項對得上。
-
-**富達同 MASS 冇合併版便覽，唔係取不到檔**。富達（fidelity.com.hk）官網只有逐隻基金一頁的
-`/en/funds/factsheet/<code>/H`；MASS（yflife.com）逐隻基金各自一份便覽。兩者都冇一份涵蓋成個
-計劃的合併 PDF，所以來源結構加咗「一個計劃多份便覽」嗰個形態（見下），兩個計劃都已經換版。
-
-**富達逐隻基金一份便覽**。`fidelity.com.hk` 嗰版係 SPA，`/pdf`、`/download`、`/api/...` 全部
-撞返同一個 shell；便覽唔喺零售網域，而係
-`www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-<代號>.pdf`。
-代號係零售網站基金代號嘅前半段（`CFGF/H` → `H-CFGF`），23 隻齊。只有 `HK-zh_en` 呢個地區碼
-攞到檔，`HK-en`／`HK-zh` 一律 403。取檔要 `curl_cffi`（`impersonate="chrome124"`）；
-`agent-browser` 開零售網站會撞 Access Denied，所以基金代號係由網站嘅 JS bundle 反查出嚟。
-23 份全部 2026-07-31，積金局副本 `MT00288.pdf` 係 2025-12-31，新七個月。
-
-排版同積金局副本同一套（同一批字體級數、同樣三欄），所以標題錨點、欄界、日期式樣共用
-`fidelityBlocks`；唯一分別係中英對照：每個披露標題後面緊接中文譯名，併行之後變成
-「Top 10 Holdings 十大主要投資項目」，所以受託人版嘅標題式樣唔可以用 `$` 收尾。中文譯名
-兩個來源都照樣由 `FIDELITY_DIMENSION_ZH` 對照，出返同一套標籤。換版之後配置維度
-（34 個）同十大持倉（230 項）同積金局副本一模一樣，冇多冇少。
-
-配置本身仲有一個更舊嘅日期：便覽寫「Fund Data as of 31/07/2026」，但配置表下面嘅註腳寫
-「^ as of 30/06/2026」。現時 `factSheetAsOf` 一個披露得一個，記嘅係便覽自己嗰個；
-逐塊披露各自嘅截至日期唔喺 #229 範圍，要做就另開票。
-
-**MASS 逐隻基金一份便覽**。`www.yflife.com/en/product/mpf-hongkong/fund-price-history/` 嗰版
-用 `aisite-applyapi/mo/moCompanyFund/fundList` 出返 14 隻成分基金嘅 `fund_code` 同便覽路徑
-`app2.yflife.com/MPFWeb/pdf/fact_sheet/<code>_E.pdf`。API 寫嘅係 `http://`，同一條路徑行
-`https://` 一樣返 200，所以名單一律寫 `https://`。取檔要 `curl_cffi`
-（`impersonate="chrome124"`）——普通 header 過唔到。14 份 2026-06-30，積金局副本
-`MT00350.pdf` 係 2025-12-31，新半年。基金名兩邊逐隻對得上（官網列表把預設投資策略嗰兩隻
-標咗星號註腳，抄錄時剝走，星號唔屬基金名）。
-
-版面同積金局副本一模一樣，所以標題、配置、持倉三塊契約共用；只有截至日期唔同，要按來源
-分開兩份契約（同海通嗰種「成個版面唔同」唔一樣）。副本係中英對照版，中文日期一行讀得到；
-官網逐隻基金嗰份淨係英文，「Fund Data as at June 30, 2026」排喺左窄欄斷開兩行，而同一條
-基線右邊仲有「Fund Price (HKD)」。所以 `asOf` 加咗兩個原語：`band` 只喺指定橫向範圍搵日期
-（唔限範圍就會併埋隔籬欄，日期唔再連續），`joinWrappedLines` 連埋下一行再試一次式樣。
-
-逐隻基金一份便覽時，`trustee-fact-sheet-links.json` 嗰筆寫 `funds`（逐隻聲明基金名、自己嘅
-下載連結同本機檔名）而唔係 `file`，計劃層面嘅 `factSheetUrl` 指去列出全部便覽嗰一版。
-兩者二擇其一，同時寫會報錯。冇咗「一份 PDF 逐版一隻基金」嗰個天然次序，所以**逐份對名**：
-一份只可以切到一個區段，而且區段名要同名單聲明嗰隻對得上，唔啱就報錯（`disclosureForFund`）——
-靠檔名或者次序猜，官網一改版就會把另一隻基金嘅配置同持倉貼落去。`factSheetAsOf` 亦由
-「全份一個」變成逐份一個：全部同一期先報計劃層面嗰個，唔同期就淨係逐份保留
-（`sharedFactSheetAsOf`），取最舊嗰個冚全份等於改寫其餘基金嘅官方日期。
-
-換版面時要一併重跑覆蓋報告比對：Series 800 換到 2026-03-31 那期先揭發配置欄的註腳 `3`
-落在 446，撞入原本去到 460 的持倉欄，令整張十大持倉表報唔可用。兩個 band 唔可以重疊。
-永明那期換上受託人版先揭發整版疊印唔止一層：積金局副本每頁疊一層，受託人版有幾頁疊兩層，
-`rejectOverlaidRows` 只做到「整塊當抽唔到」，19 隻成分基金全部冇持倉；改用落筆次序切層之後
-19 隻全部齊十大持倉，並經逐頁對版核對過（見 `TitleSelector.overlaidPages`）。
-
-配置及持倉的覆蓋本來就不齊，所以**不設**覆蓋率斷言（對照 `assertFactSheetCoverage`：便覽連結
-必須齊 24 個計劃）。查不到就不寫入 payload，不可拿同計劃另一隻基金的披露頂上。
-一個基金類別對應多過一份披露會報錯，因為靜默覆蓋等於把另一隻基金的持倉貼落去。
-便覽的 `factSheetAsOf` 比平台快照落後四至八個月，每筆各自保留自己的日期，
-不可沿用平台的 `dataAsOf`。基金詳情頁的「投資組合披露」一節同時顯示兩個日期，
-不同期就標示並非完全可比；比重照原值印（披露寫 `11` 就係 `11%`），
-固定成兩位小數等於改寫官方數字。
-
-「官方未提供」同「官方以圖表披露」是兩回事，票 #210 要求分開講。原因文字（`unavailableReasons`）
-是診斷用的英文長句，網站**不可以**靠字串比對反推分類，所以抽取層在知道分別那一刻另外記低
-`unavailableKinds`：`not-disclosed`（該區段冇呢一塊）、`chart-only`（契約聲明畫成圖表）、
-`values-without-names`（有百分比但名稱畫成向量）、`overlaid-text-layer`（文字層疊印）。
-四個代號各自對應詳情頁一句中文措辭，英文原因不出街。新增缺口成因時要一併加代號同措辭，
-唔可以塞落現有代號當「其他」。
-
-## Editorial asset-class mapping
-
-第一版只把便覽配置映射到三個資產類別桶：股票／債券／現金及其他（#211 選 A）。
-地區與行業暫緩。映射是編輯判斷，不是官方分類。
-
-對照表在 `data/reference/allocation-label-map.json`，鍵是正規化後的標籤
-（插入中英空格、摺疊空白、去掉字母編號及註腳），值是 `equity` / `bond` /
-`cash_and_other` / `not_asset_class`。重建：
-
-`bun --filter @kwmpf/coverage allocation-label-map <fund-fact-sheet-disclosures.json>`
-
-會對照舊表輸出 `added` / `removed` / `recategorized`。已有對照表再出現差異就以
-非零狀態結束，未覆核不得發布。未出現在表內、又不是抽取垃圾的標籤會報錯，
-不可靜默丟進「其他」。
-
-套用規則：
-
-- 一張表的每一行都映射到三桶，合計絕對值在 80 至 120 之間，先可以出三桶。
-- 資產 × 地區（「香港股票」）可加總。
-- 純地區、純行業、評級、貨幣，或同一張表混了這些，走
-  `mappedAllocation.unavailable`，原因 `not-asset-class`。網站措辭是
-  「此維度官方未以資產類別披露」，不可把行業或地區百分比當成股票比例。
-- 圖表式披露沿用便覽的 `unavailableKinds`，不為它們發明數字。
-- 市場評論、回報列、標準差、標籤裏已有 `%` 的黏行，不當成配置列。若被略過的行
-  仍帶股票／債券／現金字眼，整張表都不可用，以免留下殘缺比例。
-- 原文表仍在 `factSheetDisclosure`。三桶寫在 payload 的 `mappedAllocation`，
-  `official: false`，顯示時必須標明「編輯歸類，非官方分類」。
-
-## Comparison group stats
-
-`publication-seed` 會按 Lipper 比較組別（`apps/api/src/comparison-group.ts` 同一口徑）
-計算每個組別的平均值，寫入 `comparison_group_stats`，每個快照凍結一份。網站只讀
-`GET /comparison-group-stats`，唔即場重算。
-
-- 資產配置平均來自 `mappedAllocation` 三桶；未以資產類別披露的基金不計入。
-- 十大持倉集中度是便覽十大持倉百分比的合計；任何一筆冇披露比重就不計入該基金。
-- 三年波幅用官方平台的 `fundRiskIndicator`（年度化標準差），不另行由月度序列反推。
-- 待核實／資料不足的基金不計入。組別少於 3 隻已核實基金會標示 `insufficientSample`，
-  三項平均都為空。某一指標少於 3 隻有數值，只清空該項平均。
-- 每個有已核實基金的比較組別都有一列。不可為了湊樣本而把行業或地區百分比當成股票。
-
-## DIS constituent funds
-
-預設投資策略由「核心累積基金」同「65歲後基金」兩隻獨立成分基金組成。
-`isDisComponent` 只對 `constituentFundName` 做完全匹配（大小寫、引號、破折號
-正規化），寫入 `core_accumulation` / `age65_plus`。唔用 `fundClassName`
-（嗰欄係 Class A／n.a.），亦唔做包含或前綴比對。
-
-已知全名寫在 `packages/coverage/src/dis-component.ts`。新名稱要人手加進名單；
-官方 `fundType` 寫明 DIS 但名稱不在名單內，發布會報錯，不可用基金種類補位。
-一個計劃缺任何一隻就整項 DIS 表現標示官方未提供（#241），唔估算。
-呢個標籤唔影響排名。
-
-## Fund size, launch date and calendar year returns
-
-官方平台詳情頁另有 `Fund size (HKD Million)`（連自己的截至日期）、`Launch Date`、
-`Calendar year return: YYYY` 及 `Annualized Return / Cumulative Return (Since Launch)`。
-`platform-parser.ts` 把它們抽為 `fundSizeHkdMillion` / `fundSizeAsOf` / `launchDate` /
-`calendarYearReturns` / `sinceLaunchReturn`，再由 `build-publication-input.ts` 帶入 payload。
-基金規模的截至日期與回報的截至日期各自保留（payload 的 `fundSizeAsOf` 與 `returnsAsOf`），
-兩者不同時基金詳情頁會標示「並非完全可比」。基金規模沿用月度寬限期，API 以 `fundSizeFreshness`
-另行計算；成立日期是靜態事實，不設過期。年度回報是曆年累積回報，顯示時不可與年率化數字混為一談，
-官方寫 `n.a.` 的年度走 `unavailableFields`，不可當成 0。
-
-## Fund risk indicator
-
-官方平台詳情頁的 `Fund Risk Indicator` 是年度化標準差，`platform-parser.ts` 抽為
-`fundRiskIndicator`（451 頁全部有此欄位，435 隻有數值、16 隻 `n.a.`）。
-`/rankings?metric=risk` 用它做波幅排序（`sortDirection: ascending`、兩位小數、單位 `%`），
-不用 `riskClass`——風險級別只有 1 至 7 級，是同一指標的分級摘要，451 隻基金擠在 7 個值裡
-會大量並列。風險級別仍然保留作 `/search?riskClass=` 的篩選條件，兩者不可互換。
-
-它不是收費：抽取走 `percentField` 而非 `rateField`，沒有 `Up to` 上限語義，對不上百分比格式
-就報錯，不會退回 `feeDisclosures`。官方寫 `n.a.` 的走 `unavailableFields`，不當成 0，
-亦不會用風險級別補位，該基金不參與波幅排名。指標每月隨市況變動屬正常，所以**不要**把它加入
-`candidate-anomalies.ts` 的 `feeFields`，否則每次更新都會觸發無意義的人手核對。
-
-## Fund overview freshness policy
-
-規格第 97 行要求持倉、資產配置、風險及 FER 按每個計劃嘅財政年結日及適用嘅基金概覽發布
-期限計算過期（#192）。`platform-parser.ts` 抽 `Financial Period End Date`（平台淨係列月日，
-例如 `30 Nov`，唔帶年份，存做 `financialPeriodEndDate: "11-30"`），冇呢個欄位或官方寫
-`n.a.` 就走 `unavailableFields`，不可假設。
-
-查證見 `docs/research/2026-09-10-fund-fact-sheet-publication-deadline.md`：《強積金投資基金
-披露守則》D3.1–D3.4 要求受託人每個財政期發兩份基金便覽——「截至財政期終結日」嗰份連同
-週年權益報表喺終結後三個月內發出，「截至終結後六個月」嗰份喺該匯報日起兩個月內分發。
-`data-freshness.ts` 嘅 `fundOverviewGraceDaysFor()` 揀返資料截至日之前最近一份便覽嘅匯報日
-（財政期終結日或終結後六個月，二揀一），套用對應嘅法定期限（3 個月或 2 個月）加規格寫嘅
-30 日寬限，摺埋做逐個基金類別自己嘅寬限日數；冇財政年結日就退回保守嘅 45 日
-（`FUND_OVERVIEW_FALLBACK_GRACE_DAYS`）。呢個取代咗 PR #188 嗰個同月度週期睇齊嘅 45 日
-權宜值——兩個計劃財政年結日唔同，喺同一日就會有唔同嘅過期狀態。
-
-寬限日數喺 `build-staging-seed.ts` 逐個基金類別計好，寫入 `provenance.freshnessPolicy.
-fundOverviewGraceDays`（連同 `fundOverviewPolicyVersion`），發布之後凍結；規則常數本身
-之後改變只影響新批次，不會回溯改寫已發布快照嘅寬限日數。`apps/api` 嘅 `/rankings?metric=
-fee|risk` 逐個基金類別讀自己嗰份 `freshnessPolicy`，唔可以淨係攞第一隻基金嘅政策代表全部
-（呢個曾經係 bug，已經喺 #192 一併修正並釘測試）。
-
-## Fee breakdown
-
-官方平台詳情頁披露一整組費用組成部分，`platform-parser.ts` 全部抽入 `fundOverview`：
-經常性費率（`managementFee`、`trusteeCustodianFee`、`empfPlatformFee`、`memberServicingFee`、
-`investmentManagementFee`、`guaranteeCharge`）、一次性及交易收費（`joiningFee`、`annualFee`、
-`contributionCharge`、`bidSpread`、`offerSpread`、`withdrawalCharge`）及三個期別的持續成本說明
-（`oci1yHkd` / `oci3yHkd` / `oci5yHkd`）。
-
-三條規則不可繞過：
-
-- 原文帶 `Up to` 的是收費上限，不是實際費率。欄位名會列入 `feeCaps`，顯示時必須標明「上限」。
-- 不是單一費率的披露（例如按成員人數分級的年費）原文照錄到 `feeDisclosures`，不可砌成數字。
-  官方用 `<br>` 逐行列明階梯及註腳，抽文字時必須把分行還原成換行（`platform-parser.ts` 的
-  `collapseLines`），否則 `HKD3,000` 接 `15 to 29` 會黏成 `HKD3,00015 to 29`，等於改寫原文。
-  基金詳情頁的文字披露用 `.fee-disclosures` 的 `white-space: pre-line` 保留分行。
-- 官方寫 `n.a.` 的走 `unavailableFields`，不可當成 0；平台確實寫 `0%` 的才是 0。
-
-費率的小數位數由披露本身決定（`1.205%`、`0.575%`），顯示時不可固定成兩位小數，否則會把官方數字改寫。
-新增費用欄位時要一併加入 `candidate-anomalies.ts` 的 `feeFields` 並升 `version`，令費率改變觸發人手核對。
-
-## End-to-end tests
-
-`bun run e2e` 會用 `scripts/e2e-serve-api.sh` 把已發布快照載入本機 D1，啟動本機 Worker 及 `vite preview`，再以 Playwright 在桌面及手機兩個 project 跑跨頁流程。首次執行前需安裝瀏覽器：`cd apps/e2e && node node_modules/@playwright/test/cli.js install chromium`。E2E 不屬於 `bun run check`，在 CI 由獨立 job 執行。
-
-## Canonical specification
-
-第一版實作以 `docs/specs/2026-08-08-hk-mpf-comparison-v1-implementation-spec.md` 為準。較早的計劃和研究文件只作決策來源及背景。
-
-## User milestone preference
-
-當工作進入最終網站設計及網域接入階段，先通知使用者；未獲確認前不處理正式網域或最終公開發布。
+香港強積金計劃及基金比較網站。開始工作前先閱讀 `CONTEXT.md`、相關 ADR，以及
+canonical implementation spec（`docs/specs/2026-08-08-hk-mpf-comparison-v1-implementation-spec.md`）。
+
+這一份是路由索引，不放細節。細節在 `docs/agents/` 之下逐個主題一份——**這樣做是因為
+本檔案曾經長到 31 KB 而被截斷，尾段的紅線根本傳唔到執行者手上**。任何一份超過
+10 KB 就再拆，唔好塞返落嚟。
+
+## 不可繞過的紅線
+
+呢七條凌駕一切效率考慮。做唔到就報錯或者標示「官方未提供」，唔好估。
+
+1. **唔可以靜默改寫官方數字。** 固定小數位、補 0、四捨五入、正規化標籤，
+   全部係改寫。披露寫 `1.205%` 就係 `1.205%`。
+2. **官方寫 `n.a.` 唔等於 0。** 一律走 `unavailableFields`，唔可以用另一個
+   欄位（風險級別、基金種類）補位。
+3. **抽唔到就明講，唔出局部資料。** 一張表有一行對唔上，整塊當官方未提供，
+   並記低原因同代號（`unavailableKinds`）。
+4. **配對唔做模糊比對。** 只做大小寫／引號／破折號正規化加契約聲明嘅前綴。
+   同名兩個就報錯，唔可以隨便揀一個。
+5. **唔可以拿另一隻基金嘅披露頂上。** 一個基金類別對多過一份披露要報錯。
+6. **編輯判斷要標明。** 三桶資產歸類、比較組別都係編輯層，payload 寫
+   `official: false`，顯示時要講明「非官方分類」。
+7. **每個來源保留自己嘅截至日期。** 便覽比平台落後四至八個月，唔可以沿用
+   平台嘅 `dataAsOf`，唔可以攞最舊嗰個冚全份。
+
+## 主題索引
+
+| 主題                                                           | 讀邊份                                   |
+| -------------------------------------------------------------- | ---------------------------------------- |
+| 改動流程：收貨條件、PR 組成、高危覆核、部署來源、分支衛生、E2E | `docs/agents/change-policy.md`           |
+| 便覽連結、PDF 抽取、版面原語、覆蓋報告、缺口分類               | `docs/agents/fact-sheet-extraction.md`   |
+| 便覽來源政策：受託人官網優先、來源檔結構                       | `docs/agents/fact-sheet-sources.md`      |
+| 逐個受託人嘅實戰紀錄：反爬蟲、連結陷阱、換版缺口               | `docs/agents/fact-sheet-source-notes.md` |
+| 三桶資產映射、比較組別平均                                     | `docs/agents/editorial-mapping.md`       |
+| 官方平台欄位：DIS、規模、成立日期、年度回報、風險指標、費用    | `docs/agents/platform-fields.md`         |
+| 過期政策（財政年結日）                                         | `docs/agents/freshness-policy.md`        |
+| 非官方參考數據（Lipper 分類、對照表）                          | `docs/agents/reference-datasets.md`      |
+| GitHub issues 用法、收貨條件、`needs-info` 處理                | `docs/agents/issue-tracker.md`           |
+| Triage labels                                                  | `docs/agents/triage-labels.md`           |
+| Domain docs、ubiquitous language                               | `docs/agents/domain.md`                  |
+| 部署步驟                                                       | `docs/deployment.md`                     |
+
+## 已接受的決策（ADR）
+
+規矩答「點做」，ADR 答「點解咁揀、否決過咩、幾時重審」。改到以下任何一項嘅
+前提，要先更新對應 ADR，唔好靜靜哋喺規矩度改。
+
+| ADR                                                         | 決策                                       |
+| ----------------------------------------------------------- | ------------------------------------------ |
+| `docs/adr/0001-github-cloudflare-deployment.md`             | GitHub + Cloudflare 部署架構               |
+| `docs/adr/0002-publication-scoped-edge-caching.md`          | 以發布快照為界的邊緣快取                   |
+| `docs/adr/0003-trustee-first-fact-sheet-sources.md`         | 便覽內容抓受託人官網、配對用積金局登記冊   |
+| `docs/adr/0004-overlaid-text-layer-by-draw-order.md`        | 疊印文字層靠落筆次序分層，唔靠座標         |
+| `docs/adr/0005-editorial-asset-class-buckets.md`            | 第一版只做股票／債券／現金及其他三桶       |
+| `docs/adr/0006-fund-overview-freshness-by-fiscal-period.md` | 基金概覽過期按財政年結日及法定發布期限計算 |
+
+## 使用者里程碑偏好
+
+當工作進入最終網站設計及網域接入階段，先通知使用者；未獲確認前不處理正式網域
+或最終公開發布。

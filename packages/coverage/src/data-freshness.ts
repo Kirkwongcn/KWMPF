@@ -6,7 +6,7 @@ export const MONTHLY_GRACE_DAYS = 45;
 export const CURRENT_STATUS_GRACE_DAYS = 7;
 
 // 版本號寫入發布 payload；規則本身改變只影響之後新建的批次，已發布快照凍住舊版本號
-// 計出嚟嘅寬限日數，不會被回溯改寫（見 KWMPF/AGENTS.md「發布安排日後改變」一節）。
+// 計出嚟嘅寬限日數，不會被回溯改寫（見 docs/adr/0006-fund-overview-freshness-by-fiscal-period.md）。
 export const FUND_OVERVIEW_POLICY_VERSION = 1;
 
 // 《強積金投資基金披露守則》D3.1–D3.4：受託人每個財政期須發兩份基金便覽——一份「截至

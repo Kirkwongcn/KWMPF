@@ -8,10 +8,14 @@ on:
         required: true
         type: string
       source_snapshot:
-        description: "Official source snapshot to publish (path under data/sources)"
+        description: "Official source snapshot to publish, e.g. 2026-08-29/mpf-fund-platform.json (no default: must match the newest batch in data/sources)"
         required: true
         type: string
-        default: "2026-08-13/mpf-fund-platform.json"
+      allow_older_snapshot:
+        description: "Publish a batch older than the newest one in data/sources (only for a deliberate rollback)"
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -44,6 +48,24 @@ jobs:
       - run: bun run e2e
       - name: Confirm the requested source snapshot exists
         run: test -f "data/sources/${{ inputs.source_snapshot }}"
+      - name: Confirm the requested snapshot is the newest batch in the repository
+        env:
+          ALLOW_OLDER: ${{ inputs.allow_older_snapshot }}
+        run: |
+          set -euo pipefail
+          latest="$(scripts/resolve-previous-snapshot.sh data/sources)"
+          requested="data/sources/${{ inputs.source_snapshot }}"
+          echo "Newest batch committed: $latest"
+          echo "Requested batch:        $requested"
+          if [ "$requested" = "$latest" ]; then
+            exit 0
+          fi
+          if [ "$ALLOW_OLDER" = "true" ]; then
+            echo "::warning::Publishing $requested while $latest is newer, as explicitly requested."
+            exit 0
+          fi
+          echo "Refusing to publish a stale batch. Re-run with allow_older_snapshot to override." >&2
+          exit 1
       - name: Build full production publication seed
         run: bun run --filter @kwmpf/coverage publication-seed -- --source ../../data/sources/${{ inputs.source_snapshot }} --output /tmp/kwmpf-production.sql --snapshot snapshot-mpfa-platform-$(jq -r .sourceDataAsOf data/sources/${{ inputs.source_snapshot }})-${GITHUB_SHA::12}
       - name: Prepare production Worker configuration

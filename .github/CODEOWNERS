@@ -1,0 +1,31 @@
+# 高危路徑：改動這些檔案有機會靜默改寫官方數字，
+# 綠燈的 typecheck／test／build 捉不到。
+#
+# CI 的 high-risk-review job 會對照同一份清單
+# （scripts/high-risk-paths.txt），要求 PR 描述勾齊覆核項目。
+# 規則見 docs/agents/change-policy.md。
+
+/packages/coverage/src/fact-sheet-allocation.ts            @Kirkwongcn
+/packages/coverage/src/fact-sheet-allocation-contracts.ts  @Kirkwongcn
+/packages/coverage/src/fact-sheet-allocation-pairing.ts    @Kirkwongcn
+/packages/coverage/src/fact-sheet-lookup.ts                @Kirkwongcn
+/packages/coverage/src/fact-sheet-disclosure-lookup.ts     @Kirkwongcn
+/packages/coverage/src/trustee-fact-sheet-lookup.ts        @Kirkwongcn
+/packages/coverage/src/platform-parser.ts                  @Kirkwongcn
+/packages/coverage/src/data-freshness.ts                   @Kirkwongcn
+/packages/coverage/src/dis-component.ts                    @Kirkwongcn
+/packages/coverage/src/allocation-label-map.ts             @Kirkwongcn
+/packages/coverage/src/allocation-label-lookup.ts          @Kirkwongcn
+/packages/coverage/src/comparison-group.ts                 @Kirkwongcn
+/packages/coverage/src/comparison-group-stats.ts           @Kirkwongcn
+/packages/coverage/src/build-publication-input.ts          @Kirkwongcn
+/packages/coverage/src/build-publication-payload.ts        @Kirkwongcn
+/packages/coverage/src/build-staging-seed.ts               @Kirkwongcn
+/packages/coverage/src/official-return-overlay.ts          @Kirkwongcn
+/packages/coverage/src/candidate-anomalies.ts              @Kirkwongcn
+/apps/api/src/comparison-group.ts                          @Kirkwongcn
+/apps/api/src/freshness.ts                                 @Kirkwongcn
+/apps/api/src/publication.ts                               @Kirkwongcn
+/apps/api/migrations/                                      @Kirkwongcn
+/data/reference/                                           @Kirkwongcn
+/.github/workflows/deploy-production.yml                   @Kirkwongcn

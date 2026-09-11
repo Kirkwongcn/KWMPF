@@ -9,3 +9,5 @@ test-results/
 *.local
 dist-e2e/
 apps/e2e/.e2e-state/
+.tmp-*/
+.tmp-*
