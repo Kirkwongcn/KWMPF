@@ -1,0 +1,149 @@
+{
+  "generatedAt": "2026-09-15T22:02:07.485Z",
+  "decision": {
+    "previousDataAsOf": "2026-07-31",
+    "candidateDataAsOf": "2026-08-31",
+    "outcome": "needs_review",
+    "publishable": false,
+    "reasons": [
+      "異常核對政策 2026-09-10.v5 標記了 14 項異常，涉及 6 個基金類別；必須人手核對後才可發布。",
+      "費率改變：14 項。"
+    ]
+  },
+  "readiness": {
+    "ready": true,
+    "inputRecords": 451,
+    "acceptedRecords": 451,
+    "blockedRecords": 0,
+    "missingByField": {},
+    "unavailableByField": {
+      "annualizedReturn10y": 93,
+      "annualizedReturn1y": 4,
+      "annualizedReturn5y": 24,
+      "calendarYearReturn2021": 46,
+      "calendarYearReturn2022": 18,
+      "calendarYearReturn2023": 16,
+      "calendarYearReturn2024": 5,
+      "calendarYearReturn2025": 5,
+      "fundRiskIndicator": 16,
+      "latestFer": 5,
+      "oci1yHkd": 32,
+      "oci3yHkd": 32,
+      "oci5yHkd": 32,
+      "riskClass": 16,
+      "sinceLaunchReturn": 4
+    },
+    "blockedDetails": [],
+    "issues": []
+  },
+  "audit": {
+    "batchId": "candidate-35028597752",
+    "policyVersion": "2026-09-10.v5",
+    "requiresReview": true,
+    "inputRecords": 451,
+    "previousRecords": 451,
+    "generatedAt": "2026-09-15T22:02:07.475Z",
+    "anomalies": [
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-131",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 17 改為 18"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-131",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 54 改為 55"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-131",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 93 改為 94"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-141",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 79 改為 80"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-145",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 18 改為 17"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-145",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 55 改為 54"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-145",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 94 改為 93"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-876",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 9 改為 10"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-876",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 28 改為 30"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-876",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 48 改為 52"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-877",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 8 改為 9"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-877",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 25 改為 28"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-877",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 44 改為 49"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1579",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.24314 改為 1.24313"
+      }
+    ],
+    "affectedFundClassIds": [
+      "mpfa-cf-131",
+      "mpfa-cf-141",
+      "mpfa-cf-145",
+      "mpfa-cf-1579",
+      "mpfa-cf-876",
+      "mpfa-cf-877"
+    ],
+    "sourceFailures": [],
+    "sources": [
+      {
+        "url": "https://mfp.mpfa.org.hk/eng/mpp_list.jsp",
+        "dataAsOf": "2026-08-31",
+        "retrievedAt": "2026-09-15T22:02:06.071Z"
+      }
+    ]
+  }
+}
