@@ -41,19 +41,25 @@ jobs:
           fetch-depth: 0
       - name: Require review evidence for high-risk paths
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           PR_BODY: ${{ github.event.pull_request.body }}
         run: |
           set -euo pipefail
-          git diff --name-only "$BASE_SHA" "$HEAD_SHA" >/tmp/changed-files.txt
+          git fetch --no-tags origin "refs/heads/${BASE_REF}:refs/remotes/origin/${BASE_REF}"
+          diff_base="$(git merge-base "origin/${BASE_REF}" "$HEAD_SHA")"
+          git diff --name-only "$diff_base" "$HEAD_SHA" >/tmp/changed-files.txt
           printf '%s\n' "$PR_BODY" >/tmp/pr-body.md
           scripts/check-high-risk-review.sh /tmp/changed-files.txt /tmp/pr-body.md
       - name: Keep source data reviewable separately from code
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-        run: scripts/check-pr-composition.sh "$BASE_SHA" "$HEAD_SHA"
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin "refs/heads/${BASE_REF}:refs/remotes/origin/${BASE_REF}"
+          diff_base="$(git merge-base "origin/${BASE_REF}" "$HEAD_SHA")"
+          scripts/check-pr-composition.sh "$diff_base" "$HEAD_SHA"
 
   e2e:
     runs-on: ubuntu-latest
@@ -64,12 +70,13 @@ jobs:
         id: e2e-scope
         if: github.event_name == 'pull_request'
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
           CHECKED_OUT_SHA: ${{ github.sha }}
         run: |
           set -euo pipefail
-          git fetch --no-tags --depth=1 origin "$BASE_SHA"
-          git diff --name-only -z "$BASE_SHA" "$CHECKED_OUT_SHA" > /tmp/ci-changed-paths
+          git fetch --no-tags --depth=1 origin "refs/heads/${BASE_REF}:refs/remotes/origin/${BASE_REF}"
+          base_sha="$(git rev-parse "origin/${BASE_REF}")"
+          git diff --name-only -z "$base_sha" "$CHECKED_OUT_SHA" > /tmp/ci-changed-paths
           mapfile -d '' changed_paths < /tmp/ci-changed-paths
 
           run_e2e=true
@@ -113,3 +120,4 @@ jobs:
           name: playwright-report
           path: apps/e2e/playwright-report
           retention-days: 7
+
