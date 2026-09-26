@@ -1,2 +1,533 @@
-Y™Áäx-ÆÈ‹j◊ù¢Îi∫⁄+äßj[hëÈ‹¢ÈÌÁ›ªNãZñã≠¶Îeäw¨’•µ¡Ω…–ÅÏÅç±ïÖπ’¿∞Åô•…ïŸïπ–∞Å…ïπëï»∞ÅÕç…ïï∏ÅÙÅô…Ω¥Äâ—ïÕ—•πúµ±•â…Ö…‰Ω…ïÖç–àÏ)•µ¡Ω…–ÅÏÅÖô—ï…Öç†∞ÅëïÕç…•âî∞Åï·¡ïç–∞Å•–∞ÅŸ§ÅÙÅô…Ω¥ÄâŸ•—ïÕ–àÏ)•µ¡Ω…–ÅÏÅIÖπ≠•πùÕAÖùîÅÙÅô…Ω¥Äà∏ΩIÖπ≠•πùÕAÖùîàÏ()ëïÕç…•âî†â¡’â±•Õ°ïêÅ…ï—’…∏Å…Öπ≠•πùÃà∞Ä†§ÄÙ¯ÅÏ(ÄÅÖô—ï…Öç†††§ÄÙ¯ÅÏ(ÄÄÄÅç±ïÖπ’¿†§Ï(ÄÄÄÅŸ§π’πÕ—’â±±±ΩâÖ±Ã†§Ï(ÄÅÙ§Ï((ÄÅ•–†âÕ°Ω›ÃÅ—…ÖçïÖâ±îÅ…Öπ≠•πùÃÅÖπêÅô•±—ï…ÃÅ—°ï¥Åâ‰ÅçΩµ¡Ö…•ÕΩ∏Åù…Ω’¿à∞ÅÖÕÂπåÄ†§ÄÙ¯ÅÏ(ÄÄÄÅŸ§πÕ—’â±ΩâÖ∞†(ÄÄÄÄÄÄâôï—ç†à∞(ÄÄÄÄÄÅŸ§πô∏†§πµΩç≠IïÕΩ±ŸïëYÖ±’î†(ÄÄÄÄÄÄÄÅIïÕ¡ΩπÕîπ©ÕΩ∏°Ï(ÄÄÄÄÄÄÄÄÄÅÕπÖ¡Õ°Ω—%êËÄâÕπÖ¡Õ°Ω–¥»¿»ÿ¥¿‹¥Ãƒà∞(ÄÄÄÄÄÄÄÄÄÅ¡ï…•ΩëeïÖ…ÃËÄƒ∞(ÄÄÄÄÄÄÄÄÄÅµï—°ΩëΩ±Ωù‰ËÅÏ(ÄÄÄÄÄÄÄÄÄÄÄÅµï—…•åËÄâÖππ’Ö±•Èïë}…ï—’…∏à∞(ÄÄÄÄÄÄÄÄÄÄÄÅù…Ω’¡•πúËÄâçΩµ¡Ö…•ÕΩπ}ù…Ω’¿à∞(ÄÄÄÄÄÄÄÄÄÄÄÅÕΩ…—•…ïç—•Ω∏ËÄâëïÕçïπë•πúà∞(ÄÄÄÄÄÄÄÄÄÄÄÅë•Õ¡±ÖÂA…ïç•Õ•Ω∏ËÄ»∞(ÄÄÄÄÄÄÄÄÄÅÙ∞(ÄÄÄÄÄÄÄÄÄÅ…Öπ≠•πùÃËÅl(ÄÄÄÄÄÄÄÄÄÄÄÅÏ(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅô’πë±ÖÕÕ%êËÄâô’πêµÑà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅô’πë±ÖÕÕ9ÖµîËÄâ±ÖÕÃÅà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅçΩπÕ—•—’ïπ—’πë9ÖµîËÄâ9Ω…—†Åµï…•çÑÅ’πêà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅÕç°ïµï9ÖµîËÄâMç°ïµîÅ=πîà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅ—…’Õ—ïï9ÖµîËÄâQ…’Õ—ïîÅ=πîà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅçΩµ¡Ö…•ÕΩπ…Ω’¿ËÄâ≈’•—‰Å’πêÄ°9Ω…—†Åµï…•çÑ§à∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅŸÖ±’îËÄƒ‹∏»ƒ∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅë•Õ¡±ÖÂYÖ±’îËÄàƒ‹∏»ƒîà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅ…Öπ¨ËÄƒ∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅëÖ—ÖÕ=òËÄà»¿»ÿ¥¿‹¥Ãƒà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅÕΩ’…çïU…∞ËÄâ°——¡ÃËºΩï·Öµ¡±îπ—ïÕ–Ωô’πêµÑà∞(ÄÄÄÄÄÄÄÄÄÄÄÅÙ∞(ÄÄÄÄÄÄÄÄÄÄÄÅÏ(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅô’πë±ÖÕÕ%êËÄâô’πêµàà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅô’πë±ÖÕÕ9ÖµîËÄâ±ÖÕÃÅà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅçΩπÕ—•—’ïπ—’πë9ÖµîËÄâ!ΩπúÅ-ΩπúÅ5Ωπï‰Å5Ö…≠ï–Å’πêà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅÕç°ïµï9ÖµîËÄâMç°ïµîÅQ›ºà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅ—…’Õ—ïï9ÖµîËÄâQ…’Õ—ïîÅQ›ºà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅçΩµ¡Ö…•ÕΩπ…Ω’¿ËÄâ5Ωπï‰Å5Ö…≠ï–Å’πêÄ¥Å!ΩπúÅ-Ωπúà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅŸÖ±’îËÄƒ∏‰ƒ∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅë•Õ¡±ÖÂYÖ±’îËÄàƒ∏‰ƒîà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅ…Öπ¨ËÄƒ∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅëÖ—ÖÕ=òËÄà»¿»ÿ¥¿‹¥Ãƒà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅÕΩ’…çïU…∞ËÄâ°——¡ÃËºΩï·Öµ¡±îπ—ïÕ–Ωô’πêµàà∞(ÄÄÄÄÄÄÄÄÄÄÄÅÙ∞(ÄÄÄÄÄÄÄÄÄÅt∞(ÄÄÄÄÄÄÄÅÙ§∞(ÄÄÄÄÄÄ§∞(ÄÄÄÄ§Ï((ÄÄÄÅ…ïπëï»†ÒIÖπ≠•πùÕAÖùîÅÖ¡•	ÖÕïU…∞Ùâ°——¡ÃËºΩÖ¡§π—ïÕ–àÄº¯§Ï((ÄÄÄÅï·¡ïç–†(ÄÄÄÄÄÅÖ›Ö•–ÅÕç…ïï∏πô•πë	ÂIΩ±î†â°ïÖë•πúà∞ÅÏÅπÖµîËÄãí‚ñÊ”ñn{ñÇ«ö:KñB4àÅÙ§∞(ÄÄÄÄ§π—Ω	ïY•Õ•â±î†§Ï(ÄÄÄÅï·¡ïç–°Õç…ïï∏πùï—	ÂQï·–†â9Ω…—†Åµï…•çÑÅ’πêà§§π—Ω	ïY•Õ•â±î†§Ï(ÄÄÄÅï·¡ïç–°Õç…ïï∏πùï—	ÂQï·–†àƒ‹∏»ƒîà§§π—Ω	ïY•Õ•â±î†§Ï(ÄÄÄÅï·¡ïç–°Õç…ïï∏πùï—±±	ÂQï·–†à»¿»ÿ¥¿‹¥Ãƒà§§π—Ω!ÖŸï1ïπù—††»§Ï(ÄÄÄÅï·¡ïç–†(ÄÄÄÄÄÅÕç…ïï∏πùï—	ÂIΩ±î†â±•π¨à∞ÅÏÅπÖµîËÄãö~óûr,Å9Ω…—†Åµï…•çÑÅ’πêÉ¢¶œöàÅÙ§∞(ÄÄÄÄ§π—Ω!ÖŸï——…•â’—î†â°…ïòà∞ÄàΩô’πêµç±ÖÕÕïÃΩô’πêµÑà§Ï(ÄÄÄÅï·¡ïç–†(ÄÄÄÄÄÅÕç…ïï∏πùï—	ÂIΩ±î†â±•π¨à∞ÅÏÅπÖµîËÄâ9Ω…—†Åµï…•çÑÅ’πêÉñ∫cöZÁí˙öÍ@àÅÙ§∞(ÄÄÄÄ§π—Ω!ÖŸï——…•â’—î†â°…ïòà∞Äâ°——¡ÃËºΩï·Öµ¡±îπ—ïÕ–Ωô’πêµÑà§Ï((ÄÄÄÅô•…ïŸïπ–πç°Öπùî°Õç…ïï∏πùï—	Â1Öâï±Qï·–†ãöæS¢Úû÷ñ"îà§∞ÅÏ(ÄÄÄÄÄÅ—Ö…ùï–ËÅÏÅŸÖ±’îËÄâ5Ωπï‰Å5Ö…≠ï–Å’πêÄ¥Å!ΩπúÅ-ΩπúàÅÙ∞(ÄÄÄÅÙ§Ï(ÄÄÄÅï·¡ïç–°›•πëΩ‹π±ΩçÖ—•Ω∏πÕïÖ…ç†§π—ΩΩπ—Ö•∏†(ÄÄÄÄÄÄâù…Ω’¿ı5Ωπï‰≠5Ö…≠ï–≠’πê¨¥≠!Ωπú≠-Ωπúà∞(ÄÄÄÄ§Ï((ÄÄÄÅï·¡ïç–°Õç…ïï∏π≈’ï…Â	ÂQï·–†â9Ω…—†Åµï…•çÑÅ’πêà§§ππΩ–π—Ω	ï%πQ°ïΩç’µïπ–†§Ï(ÄÄÄÅï·¡ïç–°Õç…ïï∏πùï—	ÂQï·–†â!ΩπúÅ-ΩπúÅ5Ωπï‰Å5Ö…≠ï–Å’πêà§§π—Ω	ïY•Õ•â±î†§Ï(ÄÄÄÅï·¡ïç–°ôï—ç†§π—Ω!ÖŸï	ïïπÖ±±ïë]•—††(ÄÄÄÄÄÄâ°——¡ÃËºΩÖ¡§π—ïÕ–Ω…Öπ≠•πùÃ˝¡ï…•ΩêÙƒà∞(ÄÄÄÄÄÅï·¡ïç–πΩâ©ïç—Ωπ—Ö•π•πú°ÏÅÕ•ùπÖ∞ËÅï·¡ïç–πÖπÂ—°•πú†§ÅÙ§∞(ÄÄÄÄ§Ï(ÄÅÙ§Ï(ÄÅ•–†â±ï—ÃÅ—°îÅ…ïÖëï»ÅÕ›•—ç†Å—°îÅ…Öπ≠•πúÅ¡ï…•ΩêÅÖπêÅ…ïôï—ç°ïÃÅô…Ω¥Å—°îÅA$à∞ÅÖÕÂπåÄ†§ÄÙ¯ÅÏ(ÄÄÄÅçΩπÕ–Åôï—ç°5Ωç¨ÄÙÅŸ§πô∏†§πµΩç≠%µ¡±ïµïπ—Ö—•Ω∏†°’…∞ËÅÕ—…•πú§ÄÙ¯ÅÏ(ÄÄÄÄÄÅçΩπÕ–Å¡ï…•ΩêÄÙÅπï‹ÅUI0°’…∞§πÕïÖ…ç°AÖ…ÖµÃπùï–†â¡ï…•Ωêà§Ï(ÄÄÄÄÄÅçΩπÕ–ÅâÂAï…•ΩêÄÙÅÏ(ÄÄÄÄÄÄÄÄàƒàËÅÏ(ÄÄÄÄÄÄÄÄÄÅô’πë±ÖÕÕ%êËÄâô’πêµÑà∞(ÄÄÄÄÄÄÄÄÄÅçΩπÕ—•—’ïπ—’πë9ÖµîËÄâ9Ω…—†Åµï…•çÑÅ’πêà∞(ÄÄÄÄÄÄÄÄÄÅë•Õ¡±ÖÂYÖ±’îËÄàƒ‹∏»ƒîà∞(ÄÄÄÄÄÄÄÄÄÅ¡ï…•ΩëeïÖ…ÃËÄƒ∞(ÄÄÄÄÄÄÄÅÙ∞(ÄÄÄÄÄÄÄÄàÃàËÅÏ(ÄÄÄÄÄÄÄÄÄÅô’πë±ÖÕÕ%êËÄâô’πêµµ•êà∞(ÄÄÄÄÄÄÄÄÄÅçΩπÕ—•—’ïπ—’πë9ÖµîËÄâ5•êÅ!Ω…•ÈΩ∏Å’πêà∞(ÄÄÄÄÄÄÄÄÄÅë•Õ¡±ÖÂYÖ±’îËÄà‡∏–¿îà∞(ÄÄÄÄÄÄÄÄÄÅ¡ï…•ΩëeïÖ…ÃËÄÃ∞(ÄÄÄÄÄÄÄÅÙ∞(ÄÄÄÄÄÄÄÄà‘àËÅÏ(ÄÄÄÄÄÄÄÄÄÅô’πë±ÖÕÕ%êËÄâô’πêµ±Ωπúà∞(ÄÄÄÄÄÄÄÄÄÅçΩπÕ—•—’ïπ—’πë9ÖµîËÄâ1ΩπúÅ!Ω…•ÈΩ∏Å’πêà∞(ÄÄÄÄÄÄÄÄÄÅë•Õ¡±ÖÂYÖ±’îËÄàÿ∏ƒ–îà∞(ÄÄÄÄÄÄÄÄÄÅ¡ï…•ΩëeïÖ…ÃËÄ‘∞(ÄÄÄÄÄÄÄÅÙ∞(ÄÄÄÄÄÅÙÅÖÃÅçΩπÕ–Ï(ÄÄÄÄÄÅçΩπÕ–ÅÕï±ïç—ïêÄÙ(ÄÄÄÄÄÄÄÅâÂAï…•Ωël°¡ï…•ΩêÄ¸¸Äàƒà§ÅÖÃÅ≠ïÂΩòÅ—Â¡ïΩòÅâÂAï…•ΩëtÄ¸¸ÅâÂAï…•ΩëlàƒâtÏ(ÄÄÄÄÄÅ…ï—’…∏ÅA…Ωµ•Õîπ…ïÕΩ±Ÿî†(ÄÄÄÄÄÄÄÅIïÕ¡ΩπÕîπ©ÕΩ∏°Ï(ÄÄÄÄÄÄÄÄÄÅÕπÖ¡Õ°Ω—%êËÄâÕπÖ¡Õ°Ω–¥»¿»ÿ¥¿‹¥Ãƒà∞(ÄÄÄÄÄÄÄÄÄÅ¡ï…•ΩëeïÖ…ÃËÅÕï±ïç—ïêπ¡ï…•ΩëeïÖ…Ã∞(ÄÄÄÄÄÄÄÄÄÅ…Öπ≠•πùÃËÅl(ÄÄÄÄÄÄÄÄÄÄÄÅÏ(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅô’πë±ÖÕÕ%êËÅÕï±ïç—ïêπô’πë±ÖÕÕ%ê∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅô’πë±ÖÕÕ9ÖµîËÄâ±ÖÕÃÅà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅçΩπÕ—•—’ïπ—’πë9ÖµîËÅÕï±ïç—ïêπçΩπÕ—•—’ïπ—’πë9Öµî∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅÕç°ïµï9ÖµîËÄâMç°ïµîÅ=πîà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅ—…’Õ—ïï9ÖµîËÄâQ…’Õ—ïîÅ=πîà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅçΩµ¡Ö…•ÕΩπ…Ω’¿ËÄâ≈’•—‰Å’πêÄ°9Ω…—†Åµï…•çÑ§à∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅë•Õ¡±ÖÂYÖ±’îËÅÕï±ïç—ïêπë•Õ¡±ÖÂYÖ±’î∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅ…Öπ¨ËÄƒ∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅëÖ—ÖÕ=òËÄà»¿»ÿ¥¿‹¥Ãƒà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅÕΩ’…çïU…∞ËÄâ°——¡ÃËºΩï·Öµ¡±îπ—ïÕ–Ωô’πêà∞(ÄÄÄÄÄÄÄÄÄÄÄÅÙ∞(ÄÄÄÄÄÄÄÄÄÅt∞(ÄÄÄÄÄÄÄÅÙ§∞(ÄÄÄÄÄÄ§Ï(ÄÄÄÅÙ§Ï(ÄÄÄÅŸ§πÕ—’â±ΩâÖ∞†âôï—ç†à∞Åôï—ç°5Ωç¨§Ï((ÄÄÄÅ…ïπëï»†ÒIÖπ≠•πùÕAÖùîÅÖ¡•	ÖÕïU…∞Ùâ°——¡ÃËºΩÖ¡§π—ïÕ–àÄº¯§Ï((ÄÄÄÅï·¡ïç–°Ö›Ö•–ÅÕç…ïï∏πô•πë	ÂQï·–†àƒ‹∏»ƒîà§§π—Ω	ïY•Õ•â±î†§Ï(ÄÄÄÅï·¡ïç–°ôï—ç°5Ωç¨§π—Ω!ÖŸï	ïïπÖ±±ïë]•—††(ÄÄÄÄÄÄâ°——¡ÃËºΩÖ¡§π—ïÕ–Ω…Öπ≠•πùÃ˝¡ï…•ΩêÙƒà∞(ÄÄÄÄÄÅï·¡ïç–πΩâ©ïç—Ωπ—Ö•π•πú°ÏÅÕ•ùπÖ∞ËÅï·¡ïç–πÖπÂ—°•πú†§ÅÙ§∞(ÄÄÄÄ§Ï((ÄÄÄÅô•…ïŸïπ–πç°Öπùî°Õç…ïï∏πùï—	Â1Öâï±Qï·–†ãñn{ñÇ«ör¶ZLà§∞ÅÏ(ÄÄÄÄÄÅ—Ö…ùï–ËÅÏÅŸÖ±’îËÄàÃàÅÙ∞(ÄÄÄÅÙ§Ï((ÄÄÄÅï·¡ïç–°Ö›Ö•–ÅÕç…ïï∏πô•πë	ÂQï·–†à‡∏–¿îà§§π—Ω	ïY•Õ•â±î†§Ï(ÄÄÄÅï·¡ïç–°›•πëΩ‹π±ΩçÖ—•Ω∏πÕïÖ…ç†§π—Ω	î†à˝¡ï…•ΩêÙÃà§Ï(ÄÄÄÅï·¡ïç–†(ÄÄÄÄÄÅÖ›Ö•–ÅÕç…ïï∏πô•πë	ÂIΩ±î†â°ïÖë•πúà∞ÅÏÅπÖµîËÄãí‚'ñÊ”ñn{ñÇ«ö:KñB4àÅÙ§∞(ÄÄÄÄ§π—Ω	ïY•Õ•â±î†§Ï(ÄÄÄÅï·¡ïç–°ôï—ç°5Ωç¨§π—Ω!ÖŸï	ïïπÖ±±ïë]•—††(ÄÄÄÄÄÄâ°——¡ÃËºΩÖ¡§π—ïÕ–Ω…Öπ≠•πùÃ˝¡ï…•ΩêÙÃà∞(ÄÄÄÄÄÅï·¡ïç–πΩâ©ïç—Ωπ—Ö•π•πú°ÏÅÕ•ùπÖ∞ËÅï·¡ïç–πÖπÂ—°•πú†§ÅÙ§∞(ÄÄÄÄ§Ï((ÄÄÄÅô•…ïŸïπ–πç°Öπùî°Õç…ïï∏πùï—	Â1Öâï±Qï·–†ãñn{ñÇ«ör¶ZLà§∞ÅÏ(ÄÄÄÄÄÅ—Ö…ùï–ËÅÏÅŸÖ±’îËÄà‘àÅÙ∞(ÄÄÄÅÙ§Ï((ÄÄÄÅï·¡ïç–°Ö›Ö•–ÅÕç…ïï∏πô•πë	ÂQï·–†àÿ∏ƒ–îà§§π—Ω	ïY•Õ•â±î†§Ï(ÄÄÄÅï·¡ïç–°ôï—ç°5Ωç¨§π—Ω!ÖŸï	ïïπÖ±±ïë]•—††(ÄÄÄÄÄÄâ°——¡ÃËºΩÖ¡§π—ïÕ–Ω…Öπ≠•πùÃ˝¡ï…•ΩêÙ‘à∞(ÄÄÄÄÄÅï·¡ïç–πΩâ©ïç—Ωπ—Ö•π•πú°ÏÅÕ•ùπÖ∞ËÅï·¡ïç–πÖπÂ—°•πú†§ÅÙ§∞(ÄÄÄÄ§Ï(ÄÅÙ§Ï((ÄÅ•–†âï·¡±Ö•πÃÅ—°Ö–Åµ•ÕÕ•πúÅΩôô•ç•Ö∞Å¡ï…•ΩêÅ…ï—’…πÃÅÖ…îÅï·ç±’ëïêÅ•πÕ—ïÖêÅΩòÅ•πôï……ïêà∞ÅÖÕÂπåÄ†§ÄÙ¯ÅÏ(ÄÄÄÅŸ§πÕ—’â±ΩâÖ∞†(ÄÄÄÄÄÄâôï—ç†à∞(ÄÄÄÄÄÅŸ§πô∏†§πµΩç≠IïÕΩ±ŸïëYÖ±’î†(ÄÄÄÄÄÄÄÅIïÕ¡ΩπÕîπ©ÕΩ∏°Ï(ÄÄÄÄÄÄÄÄÄÅÕπÖ¡Õ°Ω—%êËÄâÕπÖ¡Õ°Ω–¥»¿»ÿ¥¿‹¥Ãƒà∞(ÄÄÄÄÄÄÄÄÄÅ¡ï…•ΩëeïÖ…ÃËÄƒ∞(ÄÄÄÄÄÄÄÄÄÅ…Öπ≠•πùÃËÅmt∞(ÄÄÄÄÄÄÄÅÙ§∞(ÄÄÄÄÄÄ§∞(ÄÄÄÄ§Ï((ÄÄÄÅ…ïπëï»†ÒIÖπ≠•πùÕAÖùîÅÖ¡•	ÖÕïU…∞Ùâ°——¡ÃËºΩÖ¡§π—ïÕ–àÄº¯§Ï((ÄÄÄÅï·¡ïç–†(ÄÄÄÄÄÅÖ›Ö•–ÅÕç…ïï∏πô•πë	ÂQï·–†øö Kör'¢¶Àör¶ZOöV„ñÛûjñ~Î¶Gí‚7örñóööpº§∞(ÄÄÄÄ§π—Ω	ïY•Õ•â±î†§Ï(ÄÄÄÅï·¡ïç–°Õç…ïï∏πùï—	Â1Öâï±Qï·–†ãñn{ñÇ«ör¶ZLà§§π—Ω	ïY•Õ•â±î†§Ï(ÄÄÄÅï·¡ïç–°Õç…ïï∏πùï—	ÂIΩ±î†âΩ¡—•Ω∏à∞ÅÏÅπÖµîËÄãí‚'ñÊ–àÅÙ§§π—Ω	ï%πQ°ïΩç’µïπ–†§Ï(ÄÅÙ§Ï(ÄÅ•–†âΩ¡ïπÃÅΩ∏Å—°îÅçΩµ¡Ö…•ÕΩ∏Åù…Ω’¿ÅÖπêÅ¡ï…•ΩêÅπÖµïêÅ•∏Å—°îÅ±•π¨à∞ÅÖÕÂπåÄ†§ÄÙ¯ÅÏ(ÄÄÄÅçΩπÕ–Åôï—ç°5Ωç¨ÄÙÅŸ§πô∏†§πµΩç≠%µ¡±ïµïπ—Ö—•Ω∏†°’…∞ËÅÕ—…•πú§ÄÙ¯(ÄÄÄÄÄÅA…Ωµ•Õîπ…ïÕΩ±Ÿî†(ÄÄÄÄÄÄÄÅIïÕ¡ΩπÕîπ©ÕΩ∏°Ï(ÄÄÄÄÄÄÄÄÄÅÕπÖ¡Õ°Ω—%êËÄâÕπÖ¡Õ°Ω–¥»¿»ÿ¥¿‹¥Ãƒà∞(ÄÄÄÄÄÄÄÄÄÅ¡ï…•ΩëeïÖ…ÃËÅ9’µâï»°πï‹ÅUI0°’…∞§πÕïÖ…ç°AÖ…ÖµÃπùï–†â¡ï…•Ωêà§§∞(ÄÄÄÄÄÄÄÄÄÅ…Öπ≠•πùÃËÅl(ÄÄÄÄÄÄÄÄÄÄÄÅÏ(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅô’πë±ÖÕÕ%êËÄâô’πêµÑà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅô’πë±ÖÕÕ9ÖµîËÄâ±ÖÕÃÅà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅçΩπÕ—•—’ïπ—’πë9ÖµîËÄâ9Ω…—†Åµï…•çÑÅ’πêà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅÕç°ïµï9ÖµîËÄâMç°ïµîÅ=πîà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅ—…’Õ—ïï9ÖµîËÄâQ…’Õ—ïîÅ=πîà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅçΩµ¡Ö…•ÕΩπ…Ω’¿ËÄâ≈’•—‰Å’πêÄ°9Ω…—†Åµï…•çÑ§à∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅë•Õ¡±ÖÂYÖ±’îËÄàƒ‹∏»ƒîà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅ…Öπ¨ËÄƒ∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅëÖ—ÖÕ=òËÄà»¿»ÿ¥¿‹¥Ãƒà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅÕΩ’…çïU…∞ËÄâ°——¡ÃËºΩï·Öµ¡±îπ—ïÕ–Ωô’πêµÑà∞(ÄÄÄÄÄÄÄÄÄÄÄÅÙ∞(ÄÄÄÄÄÄÄÄÄÄÄÅÏ(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅô’πë±ÖÕÕ%êËÄâô’πêµàà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅô’πë±ÖÕÕ9ÖµîËÄâ±ÖÕÃÅà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅçΩπÕ—•—’ïπ—’πë9ÖµîËÄâ5Ωπï‰Å5Ö…≠ï–Å’πêà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅÕç°ïµï9ÖµîËÄâMç°ïµîÅQ›ºà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅ—…’Õ—ïï9ÖµîËÄâQ…’Õ—ïîÅQ›ºà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅçΩµ¡Ö…•ÕΩπ…Ω’¿ËÄâ5Ωπï‰Å5Ö…≠ï–Å’πêÄ¥Å!ΩπúÅ-Ωπúà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅë•Õ¡±ÖÂYÖ±’îËÄàƒ∏‰ƒîà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅ…Öπ¨ËÄƒ∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅëÖ—ÖÕ=òËÄã›ª∂âûÀk∫wµÁ@ÄÄÄÄÄÄÄÄÄÄÄÄÅçΩµ¡Ö…•ÕΩπ…Ω’¡MΩ’…çîËÄâ±•¡¡ï»à∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅë•Õ¡±ÖÂYÖ±’îËÄà‡∏¿»îà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅ…Öπ¨ËÄƒ∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅëÖ—ÖÕ=òËÄà»¿»ÿ¥¿‹¥Ãƒà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅÕΩ’…çïU…∞ËÄâ°——¡ÃËºΩï·Öµ¡±îπ—ïÕ–Ωô’πêµÑà∞(ÄÄÄÄÄÄÄÄÄÄÄÅÙ∞(ÄÄÄÄÄÄÄÄÄÅt∞(ÄÄÄÄÄÄÄÅÙ§∞(ÄÄÄÄÄÄ§∞(ÄÄÄÄ§Ï((ÄÄÄÅ…ïπëï»†(ÄÄÄÄÄÄÒIÖπ≠•πùÕAÖùî(ÄÄÄÄÄÄÄÅÖ¡•	ÖÕïU…∞Ùâ°——¡ÃËºΩÖ¡§π—ïÕ–à(ÄÄÄÄÄÄÄÅ•π•—•Ö±Ωµ¡Ö…•ÕΩπ…Ω’¿Ùâ≈’•—‰Å’πêÄ°9Ω…—†Åµï…•çÑ§à(ÄÄÄÄÄÄº¯∞(ÄÄÄÄ§Ï((ÄÄÄÅï·¡ïç–†(ÄÄÄÄÄÅÖ›Ö•–ÅÕç…ïï∏πô•πë	ÂQï·–†(ÄÄÄÄÄÄÄÄøé1≈’•—‰Å’πêÅp°9Ω…—†Åµï…•çÖpßé7í‚7ñ7öbøû6£ûÆ/û÷ñ"îº∞(ÄÄÄÄÄÄ§∞(ÄÄÄÄ§π—Ω	ïY•Õ•â±î†§Ï(ÄÄÄÅï·¡ïç–°Õç…ïï∏πùï—	Â1Öâï±Qï·–†ãöæS¢Úû÷ñ"îà§§π—Ω!ÖŸïYÖ±’î†âÖ±∞à§Ï(ÄÄÄÅï·¡ïç–°Õç…ïï∏πùï—	ÂQï·–†ãö‚ø¢
-áñ~Î¶Dà§§π—Ω	ïY•Õ•â±î†§Ï(ÄÄÄÅï·¡ïç–°Õç…ïï∏πùï—	ÂQï·–†øörñ"îÄ»¿»ÿ¥¿‡¥»‹º§§π—Ω	ïY•Õ•â±î†§Ï(ÄÅÙ§Ï((ÄÅ•–†âï·¡±Ö•πÃÅ°Ω‹ÅµÖπ‰Åô’πëÃÅÖ…îÅ°ï±êÅΩ’–ÅΩòÅ—°îÅ…Öπ≠•πúÅÖÃÅÕ—Ö±îà∞ÅÖÕÂπåÄ†§ÄÙ¯ÅÏ(ÄÄÄÅŸ§πÕ—’â±ΩâÖ∞†(ÄÄÄÄÄÄâôï—ç†à∞(ÄÄÄÄÄÅŸ§πô∏†§πµΩç≠IïÕΩ±ŸïëYÖ±’î†(ÄÄÄÄÄÄÄÅIïÕ¡ΩπÕîπ©ÕΩ∏°Ï(ÄÄÄÄÄÄÄÄÄÅÕπÖ¡Õ°Ω—%êËÄâÕπÖ¡Õ°Ω–¥»¿»ÿ¥¿‹¥Ãƒà∞(ÄÄÄÄÄÄÄÄÄÅ¡ï…•ΩëeïÖ…ÃËÄƒ∞(ÄÄÄÄÄÄÄÄÄÅï·ç±’ëïëM—Ö±ïΩ’π–ËÄƒ»∞(ÄÄÄÄÄÄÄÄÄÅµï—°ΩëΩ±Ωù‰ËÅÏ(ÄÄÄÄÄÄÄÄÄÄÄÅµï—…•åËÄâÖππ’Ö±•Èïë}…ï—’…∏à∞(ÄÄÄÄÄÄÄÄÄÄÄÅù…Ω’¡•πúËÄâçΩµ¡Ö…•ÕΩπ}ù…Ω’¿à∞(ÄÄÄÄÄÄÄÄÄÄÄÅÕΩ…—•…ïç—•Ω∏ËÄâëïÕçïπë•πúà∞(ÄÄÄÄÄÄÄÄÄÄÄÅë•Õ¡±ÖÂA…ïç•Õ•Ω∏ËÄ»∞(ÄÄÄÄÄÄÄÄÄÄÄÅô…ïÕ°πïÕÃËÅÏ(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅù…ÖçïÖÂÃËÄ–‘∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅïŸÖ±’Ö—ïë=∏ËÄà»¿»ÿ¥¿‡¥»–à∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅ…’±îËÄãö‚≥¢¶õ¢ö?ñ&à∞(ÄÄÄÄÄÄÄÄÄÄÄÅÙ∞(ÄÄÄÄÄÄÄÄÄÅÙ∞(ÄÄÄÄÄÄÄÄÄÅ…Öπ≠•πùÃËÅmt∞(ÄÄÄÄÄÄÄÅÙ§∞(ÄÄÄÄÄÄ§∞(ÄÄÄÄ§Ï((ÄÄÄÅ…ïπëï»†ÒIÖπ≠•πùÕAÖùîÅÖ¡•	ÖÕïU…∞Ùâ°——¡ÃËºΩÖ¡§π—ïÕ–àÄº¯§Ï((ÄÄÄÅï·¡ïç–†(ÄÄÄÄÄÅÖ›Ö•–ÅÕç…ïï∏πô•πë	ÂQï·–†(ÄÄÄÄÄÄÄÄºƒ»É¶jÔñ~Î¶Gûj¢ŒöZgñﬁÀ¢⁄ñÎñ∫cöZÁö*Ø¶rÀñæ≥¶fCöræÚ –‘Éö^óæÚ'æÚ3öjØí‚7ñ"_ñóö:KñB4º∞(ÄÄÄÄÄÄ§∞(ÄÄÄÄ§π—Ω	ïY•Õ•â±î†§Ï(ÄÅÙ§Ï((ÄÅ•–†âÕÖÂÃÅπΩ—°•πúÅÖâΩ’–ÅÕ—Ö±îÅô’πëÃÅ›°ï∏ÅπΩπîÅÖ…îÅ°ï±êÅΩ’–à∞ÅÖÕÂπåÄ†§ÄÙ¯ÅÏ(ÄÄÄÅŸ§πÕ—’â±ΩâÖ∞†(ÄÄÄÄÄÄâôï—ç†à∞(ÄÄÄÄÄÅŸ§πô∏†§πµΩç≠IïÕΩ±ŸïëYÖ±’î†(ÄÄÄÄÄÄÄÅIïÕ¡ΩπÕîπ©ÕΩ∏°Ï(ÄÄÄÄÄÄÄÄÄÅÕπÖ¡Õ°Ω—%êËÄâÕπÖ¡Õ°Ω–¥»¿»ÿ¥¿‹¥Ãƒà∞(ÄÄÄÄÄÄÄÄÄÅ¡ï…•ΩëeïÖ…ÃËÄƒ∞(ÄÄÄÄÄÄÄÄÄÅï·ç±’ëïëM—Ö±ïΩ’π–ËÄ¿∞(ÄÄÄÄÄÄÄÄÄÅ…Öπ≠•πùÃËÅmt∞(ÄÄÄÄÄÄÄÅÙ§∞(ÄÄÄÄÄÄ§∞(ÄÄÄÄ§Ï((ÄÄÄÅ…ïπëï»†ÒIÖπ≠•πùÕAÖùîÅÖ¡•	ÖÕïU…∞Ùâ°——¡ÃËºΩÖ¡§π—ïÕ–àÄº¯§Ï((ÄÄÄÅï·¡ïç–°Ö›Ö•–ÅÕç…ïï∏πô•πë	Â1Öâï±Qï·–†ãöæS¢Úû÷ñ"îà§§π—Ω	ïY•Õ•â±î†§Ï(ÄÄÄÅï·¡ïç–°Õç…ïï∏π≈’ï…Â	ÂQï·–†øöjØí‚7ñ"_ñóö:KñB4º§§ππΩ–π—Ω	ï%πQ°ïΩç’µïπ–†§Ï(ÄÅÙ§Ï((ÄÅçΩπÕ–Åµï—…•çIïÕ¡ΩπÕîÄÙÄ°µï—…•åËÅÕ—…•πú§ÄÙ¯(ÄÄÄÅIïÕ¡ΩπÕîπ©ÕΩ∏°Ï(ÄÄÄÄÄÅÕπÖ¡Õ°Ω—%êËÄâÕπÖ¡Õ°Ω–¥»¿»ÿ¥¿‹¥Ãƒà∞(ÄÄÄÄÄÅµï—…•å∞(ÄÄÄÄÄÅ¡ï…•ΩëeïÖ…ÃËÅµï—…•åÄÙÙÙÄâ…ï—’…∏àÄ¸ÄƒÄËÅπ’±∞∞(ÄÄÄÄÄÅ…Öπ≠•πùÃËÅl(ÄÄÄÄÄÄÄÅÏ(ÄÄÄÄÄÄÄÄÄÅô’πë±ÖÕÕ%êËÄâô’πêµÑà∞(ÄÄÄÄÄÄÄÄÄÅô’πë±ÖÕÕ9ÖµîËÄâ±ÖÕÃÅà∞(ÄÄÄÄÄÄÄÄÄÅçΩπÕ—•—’ïπ—’πë9ÖµîËÄâ9Ω…—†Åµï…•çÑÅ’πêà∞(ÄÄÄÄÄÄÄÄÄÅÕç°ïµï9ÖµîËÄâMç°ïµîÅ=πîà∞(ÄÄÄÄÄÄÄÄÄÅ—…’Õ—ïï9ÖµîËÄâQ…’Õ—ïîÅ=πîà∞(ÄÄÄÄÄÄÄÄÄÅçΩµ¡Ö…•ÕΩπ…Ω’¿ËÄâ≈’•—‰Å’πêÄ°9Ω…—†Åµï…•çÑ§à∞(ÄÄÄÄÄÄÄÄÄÅë•Õ¡±ÖÂYÖ±’îË(ÄÄÄÄÄÄÄÄÄÄÄÅµï—…•åÄÙÙÙÄâôïîàÄ¸Äà¿∏ÿ‘îàÄËÅµï—…•åÄÙÙÙÄâ…•Õ¨àÄ¸Äà–∏‹¿îàÄËÄàƒ‹∏»ƒîà∞(ÄÄÄÄÄÄÄÄÄÅ…Öπ¨ËÄƒ∞(ÄÄÄÄÄÄÄÄÄÅëÖ—ÖÕ=òËÄà»¿»ÿ¥¿‹¥Ãƒà∞(ÄÄÄÄÄÄÄÄÄÅÕΩ’…çïU…∞ËÄâ°——¡ÃËºΩï·Öµ¡±îπ—ïÕ–Ωô’πêµÑà∞(ÄÄÄÄÄÄÄÅÙ∞(ÄÄÄÄÄÅt∞(ÄÄÄÅÙ§Ï((ÄÅ•–†â±ï—ÃÅ—°îÅ…ïÖëï»Å…Öπ¨Åâ‰ÅµÖπÖùïµïπ–ÅôïîÅ•πÕ—ïÖêÅΩòÅ…ï—’…∏à∞ÅÖÕÂπåÄ†§ÄÙ¯ÅÏ(ÄÄÄÅçΩπÕ–Åôï—ç°5Ωç¨ÄÙÅŸ§(ÄÄÄÄÄÄπô∏†§(ÄÄÄÄÄÄπµΩç≠%µ¡±ïµïπ—Ö—•Ω∏†°’…∞ËÅÕ—…•πú§ÄÙ¯(ÄÄÄÄÄÄÄÅA…Ωµ•Õîπ…ïÕΩ±Ÿî†(ÄÄÄÄÄÄÄÄÄÅµï—…•çIïÕ¡ΩπÕî°’…∞π•πç±’ëïÃ†âµï—…•åıôïîà§Ä¸ÄâôïîàÄËÄâ…ï—’…∏à§∞(ÄÄÄÄÄÄÄÄ§∞(ÄÄÄÄÄÄ§Ï(ÄÄÄÅŸ§πÕ—’â±ΩâÖ∞†âôï—ç†à∞Åôï—ç°5Ωç¨§Ï((ÄÄÄÅ…ïπëï»†ÒIÖπ≠•πùÕAÖùîÅÖ¡•	ÖÕïU…∞Ùâ°——¡ÃËºΩÖ¡§π—ïÕ–àÄº¯§Ï((ÄÄÄÅï·¡ïç–°Ö›Ö•–ÅÕç…ïï∏πô•πë	ÂQï·–†àƒ‹∏»ƒîà§§π—Ω	ïY•Õ•â±î†§Ï((ÄÄÄÅô•…ïŸïπ–πç°Öπùî°Õç…ïï∏πùï—	Â1Öâï±Qï·–†ãö:KñÍ?ö2ö¢dà§∞ÅÏ(ÄÄÄÄÄÅ—Ö…ùï–ËÅÏÅŸÖ±’îËÄâôïîàÅÙ∞(ÄÄÄÅÙ§Ï((ÄÄÄÅï·¡ïç–°Ö›Ö•–ÅÕç…ïï∏πô•πë	ÂQï·–†à¿∏ÿ‘îà§§π—Ω	ïY•Õ•â±î†§Ï(ÄÄÄÅï·¡ïç–°ôï—ç°5Ωç¨§π—Ω!ÖŸï	ïïπÖ±±ïë]•—††(ÄÄÄÄÄÄâ°——¡ÃËºΩÖ¡§π—ïÕ–Ω…Öπ≠•πùÃ˝µï—…•åıôïîà∞(ÄÄÄÄÄÅï·¡ïç–πΩâ©ïç—Ωπ—Ö•π•πú°ÏÅÕ•ùπÖ∞ËÅï·¡ïç–πÖπÂ—°•πú†§ÅÙ§∞(ÄÄÄÄ§Ï(ÄÄÄÅï·¡ïç–°Õç…ïï∏πùï—	ÂIΩ±î†â°ïÖë•πúà∞ÅÏÅπÖµîËÄãû∫áûB¢ Ôö:KñB4àÅÙ§§π—Ω	ïY•Õ•â±î†§Ï(ÄÄÄÅï·¡ïç–°Õç…ïï∏πùï—	ÂIΩ±î†âçΩ±’µπ°ïÖëï»à∞ÅÏÅπÖµîËÄãû∫áûB¢ ÏàÅÙ§§π—Ω	ïY•Õ•â±î†§Ï(ÄÄÄÅï·¡ïç–°Õç…ïï∏π≈’ï…Â	Â1Öâï±Qï·–†ãñn{ñÇ«ör¶ZLà§§ππΩ–π—Ω	ï%πQ°ïΩç’µïπ–†§Ï(ÄÅÙ§Ï((ÄÅ•–†â…Öπ≠ÃÅ—°îÅΩôô•ç•Ö∞Åô’πêÅ…•Õ¨Å•πë•çÖ—Ω»ÅÖÃÅÑÅÕï¡Ö…Ö—îÅ±Ω›ï»ÅŸΩ±Ö—•±•—‰ÅŸ•ï‹à∞ÅÖÕÂπåÄ†§ÄÙ¯ÅÏ(ÄÄÄÅçΩπÕ–Åôï—ç°5Ωç¨ÄÙÅŸ§(ÄÄÄÄÄÄπô∏†§(ÄÄÄÄÄÄπµΩç≠%µ¡±ïµïπ—Ö—•Ω∏†°’…∞ËÅÕ—…•πú§ÄÙ¯(ÄÄÄÄÄÄÄÅA…Ωµ•Õîπ…ïÕΩ±Ÿî†(ÄÄÄÄÄÄÄÄÄÅµï—…•çIïÕ¡ΩπÕî°’…∞π•πç±’ëïÃ†âµï—…•åı…•Õ¨à§Ä¸Äâ…•Õ¨àÄËÄâ…ï—’…∏à§∞(ÄÄÄÄÄÄÄÄ§∞(ÄÄÄÄÄÄ§Ï(ÄÄÄÅŸ§πÕ—’â±ΩâÖ∞†âôï—ç†à∞Åôï—ç°5Ωç¨§Ï((ÄÄÄÅ…ïπëï»†ÒIÖπ≠•πùÕAÖùîÅÖ¡•	ÖÕïU…∞Ùâ°——¡ÃËºΩÖ¡§π—ïÕ–àÅ•π•—•Ö±5ï—…•åÙâ…•Õ¨àÄº¯§Ï((ÄÄÄÅï·¡ïç–°Ö›Ö•–ÅÕç…ïï∏πô•πë	ÂQï·–†à–∏‹¿îà§§π—Ω	ïY•Õ•â±î†§Ï(ÄÄÄÅï·¡ïç–°ôï—ç°5Ωç¨§π—Ω!ÖŸï	ïïπÖ±±ïë]•—††(ÄÄÄÄÄÄâ°——¡ÃËºΩÖ¡§π—ïÕ–Ω…Öπ≠•πùÃ˝µï—…•åı…•Õ¨à∞(ÄÄÄÄÄÅï·¡ïç–πΩâ©ïç—Ωπ—Ö•π•πú°ÏÅÕ•ùπÖ∞ËÅï·¡ïç–πÖπÂ—°•πú†§ÅÙ§∞(ÄÄÄÄ§Ï(ÄÄÄÅï·¡ïç–°Õç…ïï∏πùï—	Â1Öâï±Qï·–†ãö:KñÍ?ö2ö¢dà§§π—Ω!ÖŸïYÖ±’î†â…•Õ¨à§Ï(ÄÄÄÅï·¡ïç–°Õç…ïï∏πùï—	ÂIΩ±î†â°ïÖë•πúà∞ÅÏÅπÖµîËÄãöŒãñÊö:KñB4àÅÙ§§π—Ω	ïY•Õ•â±î†§Ï(ÄÄÄÅï·¡ïç–°Õç…ïï∏πùï—	ÂIΩ±î†âçΩ±’µπ°ïÖëï»à∞ÅÏÅπÖµîËÄãöŒãñÊàÅÙ§§π—Ω	ïY•Õ•â±î†§Ï(ÄÄÄÄººÉö¢gûíÎñ˛¶Ç#¢≤oöb;¶göbøöŒãñÊæÚ3í‚7öbøé3¶ä£¶j´¢Úíˆ;¢Úññ˜é7é(ÄÄÄÅï·¡ïç–†(ÄÄÄÄÄÅÕç…ïï∏πùï—	ÂQï·–†øñ~Î¶G¶ä£¶j´ö2ö¢gæÚ3ñ6œ¶;ñ:Ôí‚'ñÊ”ûjñÊ”ñÍõñ2[ö¢göÍ[ñﬁ∏º§∞(ÄÄÄÄ§π—Ω	ïY•Õ•â±î†§Ï(ÄÄÄÅï·¡ïç–°Õç…ïï∏πùï—	ÂQï·–†øí‚7íÓè¢Ü£ñ~Î¶G¢Úíˆœö"[¢Ú¶ßñB#íˆÄº§§π—Ω	ïY•Õ•â±î†§Ï(ÄÅÙ§Ï((ÄÅ•–†â¡’—ÃÅ—°îÅ…Öπ≠ïêÅŸÖ±’îÅâïôΩ…îÅ—°îÅ±ΩπúÅçΩµ¡Ö…•ÕΩ∏Åù…Ω’¿ÅçΩ±’µ∏à∞ÅÖÕÂπåÄ†§ÄÙ¯ÅÏ(ÄÄÄÅŸ§πÕ—’â±ΩâÖ∞†(ÄÄÄÄÄÄâôï—ç†à∞(ÄÄÄÄÄÅŸ§πô∏†§πµΩç≠%µ¡±ïµïπ—Ö—•Ω∏††§ÄÙ¯ÅA…Ωµ•Õîπ…ïÕΩ±Ÿî°µï—…•çIïÕ¡ΩπÕî†âôïîà§§§∞(ÄÄÄÄ§Ï((ÄÄÄÅ…ïπëï»†ÒIÖπ≠•πùÕAÖùîÅÖ¡•	ÖÕïU…∞Ùâ°——¡ÃËºΩÖ¡§π—ïÕ–àÅ•π•—•Ö±5ï—…•åÙâôïîàÄº¯§Ï((ÄÄÄÅï·¡ïç–°Ö›Ö•–ÅÕç…ïï∏πô•πë	ÂQï·–†à¿∏ÿ‘îà§§π—Ω	ïY•Õ•â±î†§Ï(ÄÄÄÅï·¡ïç–†(ÄÄÄÄÄÅÕç…ïï∏πùï—±±	ÂIΩ±î†âçΩ±’µπ°ïÖëï»à§πµÖ¿†°çï±∞§ÄÙ¯Åçï±∞π—ï·—Ωπ—ïπ–§∞(ÄÄÄÄ§π—Ω≈’Ö∞°lãñB7ö≤Ñà∞Äãñ~Î¶Dà∞Äãû∫áûB¢ Ïà∞ÄãöæS¢Úû÷ñ"îà∞Äãö"´¢œö^óör|à∞Äãí˙öÍ@ât§Ï(ÄÅÙ§Ï((ÄÅ•–†â≠ïï¡ÃÅ—°îÅ…ï—’…∏Åµï—…•åÅ±•π¨ÅôΩ…µÖ–Å’πç°Öπùïêà∞ÅÖÕÂπåÄ†§ÄÙ¯ÅÏ(ÄÄÄÅçΩπÕ–Åôï—ç°5Ωç¨ÄÙÅŸ§(ÄÄÄÄÄÄπô∏†§(ÄÄÄÄÄÄπµΩç≠%µ¡±ïµïπ—Ö—•Ω∏††§ÄÙ¯ÅA…Ωµ•Õîπ…ïÕΩ±Ÿî°µï—…•çIïÕ¡ΩπÕî†â…ï—’…∏à§§§Ï(ÄÄÄÅŸ§πÕ—’â±ΩâÖ∞†âôï—ç†à∞Åôï—ç°5Ωç¨§Ï((ÄÄÄÅ…ïπëï»†ÒIÖπ≠•πùÕAÖùîÅÖ¡•	ÖÕïU…∞Ùâ°——¡ÃËºΩÖ¡§π—ïÕ–àÄº¯§Ï((ÄÄÄÅï·¡ïç–°Ö›Ö•–ÅÕç…ïï∏πô•πë	ÂQï·–†àƒ‹∏»ƒîà§§π—Ω	ïY•Õ•â±î†§Ï(ÄÄÄÅï·¡ïç–°ôï—ç°5Ωç¨§π—Ω!ÖŸï	ïïπÖ±±ïë]•—††(ÄÄÄÄÄÄâ°——¡ÃËºΩÖ¡§π—ïÕ–Ω…Öπ≠•πùÃ˝¡ï…•ΩêÙƒà∞(ÄÄÄÄÄÅï·¡ïç–πΩâ©ïç—Ωπ—Ö•π•πú°ÏÅÕ•ùπÖ∞ËÅï·¡ïç–πÖπÂ—°•πú†§ÅÙ§∞(ÄÄÄÄ§Ï(ÄÄÄÅï·¡ïç–°Õç…ïï∏πùï—	Â1Öâï±Qï·–†ãö:KñÍ?ö2ö¢dà§§π—Ω!ÖŸïYÖ±’î†â…ï—’…∏à§Ï(ÄÅÙ§Ï)Ù§Ï()ëïÕç…•âî†â…Öπ≠ïêÅô’πëÃÅ›•—°Ω’–ÅÑÅÕï¡Ö…Ö—îÅç±ÖÕÃà∞Ä†§ÄÙ¯ÅÏ(ÄÅÖô—ï…Öç†††§ÄÙ¯ÅÏ(ÄÄÄÅç±ïÖπ’¿†§Ï(ÄÄÄÅŸ§π’πÕ—’â±±±ΩâÖ±Ã†§Ï(ÄÅÙ§Ï((ÄÅ•–†âΩµ•—ÃÅ—°îÅΩôô•ç•Ö∞Å∏πÑ∏Å¡±Öçï°Ω±ëï»Åô…Ω¥Å—°îÅ…Öπ≠•πúÅ…Ω‹à∞ÅÖÕÂπåÄ†§ÄÙ¯ÅÏ(ÄÄÄÅŸ§πÕ—’â±ΩâÖ∞†(ÄÄÄÄÄÄâôï—ç†à∞(ÄÄÄÄÄÅŸ§πô∏†§πµΩç≠IïÕΩ±ŸïëYÖ±’î†(ÄÄÄÄÄÄÄÅIïÕ¡ΩπÕîπ©ÕΩ∏°Ï(ÄÄÄÄÄÄÄÄÄÅÕπÖ¡Õ°Ω—%êËÄâÕπÖ¡Õ°Ω–¥»¿»ÿ¥¿‹¥Ãƒà∞(ÄÄÄÄÄÄÄÄÄÅ¡ï…•ΩëeïÖ…ÃËÄƒ∞(ÄÄÄÄÄÄÄÄÄÅµï—°ΩëΩ±Ωù‰ËÅÏ(ÄÄÄÄÄÄÄÄÄÄÄÅµï—…•åËÄâÖππ’Ö±•Èïë}…ï—’…∏à∞(ÄÄÄÄÄÄÄÄÄÄÄÅù…Ω’¡•πúËÄâçΩµ¡Ö…•ÕΩπ}ù…Ω’¿à∞(ÄÄÄÄÄÄÄÄÄÄÄÅÕΩ…—•…ïç—•Ω∏ËÄâëïÕçïπë•πúà∞(ÄÄÄÄÄÄÄÄÄÄÄÅë•Õ¡±ÖÂA…ïç•Õ•Ω∏ËÄ»∞(ÄÄÄÄÄÄÄÄÄÅÙ∞(ÄÄÄÄÄÄÄÄÄÅ…Öπ≠•πùÃËÅl(ÄÄÄÄÄÄÄÄÄÄÄÅÏ(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅô’πë±ÖÕÕ%êËÄâô’πêµπÑà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅô’πë±ÖÕÕ9ÖµîËÄâ∏πÑ∏à∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅçΩπÕ—•—’ïπ—’πë9ÖµîËÄâ9Ω…—†Åµï…•çÑÅ’πêà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅÕç°ïµï9ÖµîËÄâMç°ïµîÅ=πîà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅ—…’Õ—ïï9ÖµîËÄâQ…’Õ—ïîÅ=πîà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅçΩµ¡Ö…•ÕΩπ…Ω’¿ËÄâ≈’•—‰Å’πêÄ°9Ω…—†Åµï…•çÑ§à∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅŸÖ±’îËÄƒ‹∏»ƒ∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅë•Õ¡±ÖÂYÖ±’îËÄàƒ‹∏»ƒîà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅ…Öπ¨ËÄƒ∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅëÖ—ÖÕ=òËÄà»¿»ÿ¥¿‹¥Ãƒà∞(ÄÄÄÄÄÄÄÄÄÄÄÄÄÅÕΩ’…çïU…∞ËÄâ°——¡ÃËºΩï·Öµ¡±îπ—ïÕ–Ωô’πêµπÑà∞(ÄÄÄÄÄÄÄÄÄÄÄÅÙ∞(ÄÄÄÄÄÄÄÄÄÅt∞(ÄÄÄÄÄÄÄÅÙ§∞(ÄÄÄÄÄÄ§∞(ÄÄÄÄ§Ï((ÄÄÄÅ…ïπëï»†ÒIÖπ≠•πùÕAÖùîÅÖ¡•	ÖÕïU…∞Ùâ°——¡ÃËºΩÖ¡§π—ïÕ–àÄº¯§Ï((ÄÄÄÅï·¡ïç–°Ö›Ö•–ÅÕç…ïï∏πô•πë	ÂQï·–†âMç°ïµîÅ=πîà§§π—Ω	ïY•Õ•â±î†§Ï(ÄÄÄÅï·¡ïç–°Õç…ïï∏π≈’ï…Â	ÂQï·–†ΩπpπÖp∏Ω§§§ππΩ–π—Ω	ï%πQ°ïΩç’µïπ–†§Ï(ÄÅÙ§Ï)Ù§Ï(
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { RankingsPage } from "./RankingsPage";
+
+describe("published return rankings", () => {
+  afterEach(() => {
+    cleanup();
+    vi.unstubAllGlobals();
+  });
+
+  it("shows traceable rankings and filters them by comparison group", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-2026-07-31",
+          periodYears: 1,
+          methodology: {
+            metric: "annualized_return",
+            grouping: "comparison_group",
+            sortDirection: "descending",
+            displayPrecision: 2,
+          },
+          rankings: [
+            {
+              fundClassId: "fund-a",
+              fundClassName: "Class A",
+              constituentFundName: "North America Fund",
+              schemeName: "Scheme One",
+              trusteeName: "Trustee One",
+              comparisonGroup: "Equity Fund (North America)",
+              value: 17.21,
+              displayValue: "17.21%",
+              rank: 1,
+              dataAsOf: "2026-07-31",
+              sourceUrl: "https://example.test/fund-a",
+            },
+            {
+              fundClassId: "fund-b",
+              fundClassName: "Class B",
+              constituentFundName: "Hong Kong Money Market Fund",
+              schemeName: "Scheme Two",
+              trusteeName: "Trustee Two",
+              comparisonGroup: "Money Market Fund - Hong Kong",
+              value: 1.91,
+              displayValue: "1.91%",
+              rank: 1,
+              dataAsOf: "2026-07-31",
+              sourceUrl: "https://example.test/fund-b",
+            },
+          ],
+        }),
+      ),
+    );
+
+    render(<RankingsPage apiBaseUrl="https://api.test" />);
+
+    expect(
+      await screen.findByRole("heading", { name: "‰∏ÄÂπ¥ÂõûÂ†±ÊéíÂêç" }),
+    ).toBeVisible();
+    expect(screen.getByText("North America Fund")).toBeVisible();
+    expect(screen.getByText("17.21%")).toBeVisible();
+    expect(screen.getAllByText("2026-07-31")).toHaveLength(2);
+    expect(
+      screen.getByRole("link", { name: "Êü•Áúã North America Fund Ë©≥ÊÉÖ" }),
+    ).toHaveAttribute("href", "/fund-classes/fund-a");
+    expect(
+      screen.getByRole("link", { name: "North America Fund ÂÆòÊñπ‰æÜÊ∫ê" }),
+    ).toHaveAttribute("href", "https://example.test/fund-a");
+
+    fireEvent.change(screen.getByLabelText("ÊØîËºÉÁµÑÂà•"), {
+      target: { value: "Money Market Fund - Hong Kong" },
+    });
+    expect(window.location.search).toContain(
+      "group=Money+Market+Fund+-+Hong+Kong",
+    );
+
+    expect(screen.queryByText("North America Fund")).not.toBeInTheDocument();
+    expect(screen.getByText("Hong Kong Money Market Fund")).toBeVisible();
+    expect(fetch).toHaveBeenCalledWith(
+      "https://api.test/rankings?period=1",
+      expect.objectContaining({ signal: expect.anything() }),
+    );
+  });
+  it("lets the reader switch the ranking period and refetches from the API", async () => {
+    const fetchMock = vi.fn().mockImplementation((url: string) => {
+      const period = new URL(url).searchParams.get("period");
+      const byPeriod = {
+        "1": {
+          fundClassId: "fund-a",
+          constituentFundName: "North America Fund",
+          displayValue: "17.21%",
+          periodYears: 1,
+        },
+        "3": {
+          fundClassId: "fund-mid",
+          constituentFundName: "Mid Horizon Fund",
+          displayValue: "8.40%",
+          periodYears: 3,
+        },
+        "5": {
+          fundClassId: "fund-long",
+          constituentFundName: "Long Horizon Fund",
+          displayValue: "6.14%",
+          periodYears: 5,
+        },
+      } as const;
+      const selected =
+        byPeriod[(period ?? "1") as keyof typeof byPeriod] ?? byPeriod["1"];
+      return Promise.resolve(
+        Response.json({
+          snapshotId: "snapshot-2026-07-31",
+          periodYears: selected.periodYears,
+          rankings: [
+            {
+              fundClassId: selected.fundClassId,
+              fundClassName: "Class A",
+              constituentFundName: selected.constituentFundName,
+              schemeName: "Scheme One",
+              trusteeName: "Trustee One",
+              comparisonGroup: "Equity Fund (North America)",
+              displayValue: selected.displayValue,
+              rank: 1,
+              dataAsOf: "2026-07-31",
+              sourceUrl: "https://example.test/fund",
+            },
+          ],
+        }),
+      );
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<RankingsPage apiBaseUrl="https://api.test" />);
+
+    expect(await screen.findByText("17.21%")).toBeVisible();
+    expect(fetchMock).toHaveBeenCalledWith(
+      "https://api.test/rankings?period=1",
+      expect.objectContaining({ signal: expect.anything() }),
+    );
+
+    fireEvent.change(screen.getByLabelText("ÂõûÂ†±ÊúüÈñì"), {
+      target: { value: "3" },
+    });
+
+    expect(await screen.findByText("8.40%")).toBeVisible();
+    expect(window.location.search).toBe("?period=3");
+    expect(
+      await screen.findByRole("heading", { name: "‰∏âÂπ¥ÂõûÂ†±ÊéíÂêç" }),
+    ).toBeVisible();
+    expect(fetchMock).toHaveBeenCalledWith(
+      "https://api.test/rankings?period=3",
+      expect.objectContaining({ signal: expect.anything() }),
+    );
+
+    fireEvent.change(screen.getByLabelText("ÂõûÂ†±ÊúüÈñì"), {
+      target: { value: "5" },
+    });
+
+    expect(await screen.findByText("6.14%")).toBeVisible();
+    expect(fetchMock).toHaveBeenCalledWith(
+      "https://api.test/rankings?period=5",
+      expect.objectContaining({ signal: expect.anything() }),
+    );
+  });
+
+  it("explains that missing official period returns are excluded instead of inferred", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-2026-07-31",
+          periodYears: 1,
+          rankings: [],
+        }),
+      ),
+    );
+
+    render(<RankingsPage apiBaseUrl="https://api.test" />);
+
+    expect(
+      await screen.findByText(/Ê≤íÊúâË©≤ÊúüÈñìÊï∏ÂÄºÁöÑÂü∫Èáë‰∏çÊúÉÂÖ•Ê¶ú/),
+    ).toBeVisible();
+    expect(screen.getByLabelText("ÂõûÂ†±ÊúüÈñì")).toBeVisible();
+    expect(screen.getByRole("option", { name: "‰∏âÂπ¥" })).toBeInTheDocument();
+  });
+  it("opens on the comparison group and period named in the link", async () => {
+    const fetchMock = vi.fn().mockImplementation((url: string) =>
+      Promise.resolve(
+        Response.json({
+          snapshotId: "snapshot-2026-07-31",
+          periodYears: Number(new URL(url).searchParams.get("period")),
+          rankings: [
+            {
+              fundClassId: "fund-a",
+              fundClassName: "Class A",
+              constituentFundName: "North America Fund",
+              schemeName: "Scheme One",
+              trusteeName: "Trustee One",
+              comparisonGroup: "Equity Fund (North America)",
+              displayValue: "17.21%",
+              rank: 1,
+              dataAsOf: "2026-07-31",
+              sourceUrl: "https://example.test/fund-a",
+            },
+            {
+              fundClassId: "fund-b",
+              fundClassName: "Class B",
+              constituentFundName: "Money Market Fund",
+              schemeName: "Scheme Two",
+              trusteeName: "Trustee Two",
+              comparisonGroup: "Money Market Fund - Hong Kong",
+              displayValue: "1.91%",
+              rank: 1,
+              dataAsOf: "2026-07-31",
+              sourceUrl: "https://example.test/fund-b",
+            },
+          ],
+        }),
+      ),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(
+      <RankingsPage
+        apiBaseUrl="https://api.test"
+        initialPeriod="5"
+        initialComparisonGroup="Money Market Fund - Hong Kong"
+      />,
+    );
+
+    expect(await screen.findByText("1.91%")).toBeVisible();
+    expect(screen.queryByText("17.21%")).not.toBeInTheDocument();
+    expect(fetchMock).toHaveBeenCalledWith(
+      "https://api.test/rankings?period=5",
+      expect.objectContaining({ signal: expect.anything() }),
+    );
+    expect(screen.getByLabelText("ÂõûÂ†±ÊúüÈñì")).toHaveValue("5");
+    expect(screen.getByLabelText("ÊØîËºÉÁµÑÂà•")).toHaveValue(
+      "Money Market Fund - Hong Kong",
+    );
+  });
+  it("keeps showing a linked group that has no eligible funds for the period", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-2026-07-31",
+          periodYears: 10,
+          rankings: [
+            {
+              fundClassId: "fund-a",
+              fundClassName: "Class A",
+              constituentFundName: "North America Fund",
+              schemeName: "Scheme One",
+              trusteeName: "Trustee One",
+              comparisonGroup: "Equity Fund (North America)",
+              displayValue: "8.02%",
+              rank: 1,
+              dataAsOf: "2026-07-31",
+              sourceUrl: "https://example.test/fund-a",
+            },
+          ],
+        }),
+      ),
+    );
+
+    render(
+      <RankingsPage
+        apiBaseUrl="https://api.test"
+        initialPeriod="10"
+        initialComparisonGroup="Guaranteed Fund"
+      />,
+    );
+
+    expect(await screen.findByText(/Ê≤íÊúâÂêàË≥áÊ†ºÁöÑÂçÅÂπ¥ÂõûÂ†±Ë≥áÊñô/)).toBeVisible();
+    expect(screen.getByLabelText("ÊØîËºÉÁµÑÂà•")).toHaveValue("Guaranteed Fund");
+  });
+
+  it("falls back to every group when an old link names a retired platform category", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-2026-07-31",
+          periodYears: 1,
+          comparisonGroups: ["Global Equity", "Hong Kong Equity"],
+          methodology: {
+            classification: {
+              provider: "Lipper",
+              dataset: "Hong Kong Pension Fund Classification",
+              capturedAt: "2026-08-27",
+            },
+          },
+          rankings: [
+            {
+              fundClassId: "fund-a",
+              fundClassName: "Class A",
+              constituentFundName: "Ê∏ØËÇ°Âü∫Èáë",
+              schemeName: "Scheme One",
+              trusteeName: "Trustee One",
+              comparisonGroup: "Hong Kong Equity",
+              comparisonGroupSource: "lipper",
+              displayValue: "8.02%",
+              rank: 1,
+              dataAsOf: "2026-07-31",
+              sourceUrl: "https://example.test/fund-a",
+            },
+          ],
+        }),
+      ),
+    );
+
+    render(
+      <RankingsPage
+        apiBaseUrl="https://api.test"
+        initialComparisonGroup="Equity Fund (North America)"
+      />,
+    );
+
+    expect(
+      await screen.findByText(
+        /„ÄåEquity Fund \(North America\)„Äç‰∏çÂÜçÊòØÁç®Á´ãÁµÑÂà•/,
+      ),
+    ).toBeVisible();
+    expect(screen.getByLabelText("ÊØîËºÉÁµÑÂà•")).toHaveValue("all");
+    expect(screen.getByText("Ê∏ØËÇ°Âü∫Èáë")).toBeVisible();
+    expect(screen.getByText(/ÊúüÂà• 2026-08-27/)).toBeVisible();
+  });
+
+  it("explains how many funds are held out of the ranking as stale", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-2026-07-31",
+          periodYears: 1,
+          excludedStaleCount: 12,
+          methodology: {
+            metric: "annualized_return",
+            grouping: "comparison_group",
+            sortDirection: "descending",
+            displayPrecision: 2,
+            freshness: {
+              graceDays: 45,
+              evaluatedOn: "2026-08-24",
+              rule: "Ê∏¨Ë©¶Ë¶èÂâá",
+            },
+          },
+          rankings: [],
+        }),
+      ),
+    );
+
+    render(<RankingsPage apiBaseUrl="https://api.test" />);
+
+    expect(
+      await screen.findByText(
+        /12 ÈöªÂü∫ÈáëÁöÑË≥áÊñôÂ∑≤Ë∂ÖÂá∫ÂÆòÊñπÊä´Èú≤ÂØ¨ÈôêÊúüÔºà45 Êó•ÔºâÔºåÊö´‰∏çÂàóÂÖ•ÊéíÂêç/,
+      ),
+    ).toBeVisible();
+  });
+
+  it("says nothing about stale funds when none are held out", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-2026-07-31",
+          periodYears: 1,
+          excludedStaleCount: 0,
+          rankings: [],
+        }),
+      ),
+    );
+
+    render(<RankingsPage apiBaseUrl="https://api.test" />);
+
+    expect(await screen.findByLabelText("ÊØîËºÉÁµÑÂà•")).toBeVisible();
+    expect(screen.queryByText(/Êö´‰∏çÂàóÂÖ•ÊéíÂêç/)).not.toBeInTheDocument();
+  });
+
+  const metricResponse = (metric: string) =>
+    Response.json({
+      snapshotId: "snapshot-2026-07-31",
+      metric,
+      periodYears: metric === "return" ? 1 : null,
+      rankings: [
+        {
+          fundClassId: "fund-a",
+          fundClassName: "Class A",
+          constituentFundName: "North America Fund",
+          schemeName: "Scheme One",
+          trusteeName: "Trustee One",
+          comparisonGroup: "Equity Fund (North America)",
+          displayValue:
+            metric === "fee" ? "0.65%" : metric === "risk" ? "4.70%" : "17.21%",
+          rank: 1,
+          dataAsOf: "2026-07-31",
+          sourceUrl: "https://example.test/fund-a",
+        },
+      ],
+    });
+
+  it("lets the reader rank by management fee instead of return", async () => {
+    const fetchMock = vi
+      .fn()
+      .mockImplementation((url: string) =>
+        Promise.resolve(
+          metricResponse(url.includes("metric=fee") ? "fee" : "return"),
+        ),
+      );
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<RankingsPage apiBaseUrl="https://api.test" />);
+
+    expect(await screen.findByText("17.21%")).toBeVisible();
+
+    fireEvent.change(screen.getByLabelText("ÊéíÂ∫èÊåáÊ®ô"), {
+      target: { value: "fee" },
+    });
+
+    expect(await screen.findByText("0.65%")).toBeVisible();
+    expect(fetchMock).toHaveBeenCalledWith(
+      "https://api.test/rankings?metric=fee",
+      expect.objectContaining({ signal: expect.anything() }),
+    );
+    expect(screen.getByRole("heading", { name: "ÁÆ°ÁêÜË≤ªÊéíÂêç" })).toBeVisible();
+    expect(screen.getByRole("columnheader", { name: "ÁÆ°ÁêÜË≤ª" })).toBeVisible();
+    expect(screen.queryByLabelText("ÂõûÂ†±ÊúüÈñì")).not.toBeInTheDocument();
+  });
+
+  it("ranks the official fund risk indicator as a separate lower volatility view", async () => {
+    const fetchMock = vi
+      .fn()
+      .mockImplementation((url: string) =>
+        Promise.resolve(
+          metricResponse(url.includes("metric=risk") ? "risk" : "return"),
+        ),
+      );
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<RankingsPage apiBaseUrl="https://api.test" initialMetric="risk" />);
+
+    expect(await screen.findByText("4.70%")).toBeVisible();
+    expect(fetchMock).toHaveBeenCalledWith(
+      "https://api.test/rankings?metric=risk",
+      expect.objectContaining({ signal: expect.anything() }),
+    );
+    expect(screen.getByLabelText("ÊéíÂ∫èÊåáÊ®ô")).toHaveValue("risk");
+    expect(screen.getByRole("heading", { name: "Ê≥¢ÂπÖÊéíÂêç" })).toBeVisible();
+    expect(screen.getByRole("columnheader", { name: "Ê≥¢ÂπÖ" })).toBeVisible();
+    // Ê®ôÁ§∫ÂøÖÈ†àË¨õÊòéÈÄôÊòØÊ≥¢ÂπÖÔºå‰∏çÊòØ„ÄåÈ¢®Èö™ËºÉ‰ΩéËºÉÂ•Ω„Äç„ÄÇ
+    expect(
+      screen.getByText(/Âü∫ÈáëÈ¢®Èö™ÊåáÊ®ôÔºåÂç≥ÈÅéÂéª‰∏âÂπ¥ÁöÑÂπ¥Â∫¶ÂåñÊ®ôÊ∫ñÂ∑Æ/),
+    ).toBeVisible();
+    expect(screen.getByText(/‰∏ç‰ª£Ë°®Âü∫ÈáëËºÉ‰Ω≥ÊàñËºÉÈÅ©Âêà‰Ω†/)).toBeVisible();
+  });
+
+  it("puts the ranked value before the long comparison group column", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockImplementation(() => Promise.resolve(metricResponse("fee"))),
+    );
+
+    render(<RankingsPage apiBaseUrl="https://api.test" initialMetric="fee" />);
+
+    expect(await screen.findByText("0.65%")).toBeVisible();
+    expect(
+      screen.getAllByRole("columnheader").map((cell) => cell.textContent),
+    ).toEqual(["ÂêçÊ¨°", "Âü∫Èáë", "ÁÆ°ÁêÜË≤ª", "ÊØîËºÉÁµÑÂà•", "Êà™Ëá≥Êó•Êúü", "‰æÜÊ∫ê"]);
+  });
+
+  it("keeps the return metric link format unchanged", async () => {
+    const fetchMock = vi
+      .fn()
+      .mockImplementation(() => Promise.resolve(metricResponse("return")));
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<RankingsPage apiBaseUrl="https://api.test" />);
+
+    expect(await screen.findByText("17.21%")).toBeVisible();
+    expect(fetchMock).toHaveBeenCalledWith(
+      "https://api.test/rankings?period=1",
+      expect.objectContaining({ signal: expect.anything() }),
+    );
+    expect(screen.getByLabelText("ÊéíÂ∫èÊåáÊ®ô")).toHaveValue("return");
+  });
+});
+
+describe("ranked funds without a separate class", () => {
+  afterEach(() => {
+    cleanup();
+    vi.unstubAllGlobals();
+  });
+
+  it("omits the official n.a. placeholder from the ranking row", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        Response.json({
+          snapshotId: "snapshot-2026-07-31",
+          periodYears: 1,
+          methodology: {
+            metric: "annualized_return",
+            grouping: "comparison_group",
+            sortDirection: "descending",
+            displayPrecision: 2,
+          },
+          rankings: [
+            {
+              fundClassId: "fund-na",
+              fundClassName: "n.a.",
+              constituentFundName: "North America Fund",
+              schemeName: "Scheme One",
+              trusteeName: "Trustee One",
+              comparisonGroup: "Equity Fund (North America)",
+              value: 17.21,
+              displayValue: "17.21%",
+              rank: 1,
+              dataAsOf: "2026-07-31",
+              sourceUrl: "https://example.test/fund-na",
+            },
+          ],
+        }),
+      ),
+    );
+
+    render(<RankingsPage apiBaseUrl="https://api.test" />);
+
+    expect(await screen.findByText("Scheme One")).toBeVisible();
+    expect(screen.queryByText(/n\.a\./i)).not.toBeInTheDocument();
+  });
+});

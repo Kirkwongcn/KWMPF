@@ -8,8 +8,6 @@ DNS 以 proxied CNAME 指向 `kwmpf-web-production.pages.dev`，前端讀取 Wor
 
 The `Deploy staging` GitHub Actions workflow publishes the API Worker and health page from `main`. Both deployments receive the commit SHA as their release identifier. It remains manually triggered until the required Cloudflare resources and secrets are configured; the `staging` environment requires approval from the repository owner.
 
-Staging and production dispatches must target `main` and reuse a successful `CI` push run for the exact same commit SHA. The deployment workflow does not repeat the full check or browser suite; CI remains the single full validation run for that SHA. CI and deployment jobs cache Bun's package download store by the lockfile hash.
-
 ### Cloudflare resources
 
 Create these staging resources before enabling the workflow:
@@ -34,9 +32,7 @@ After deployment, verify that the Pages health page and `GET /health` on the Wor
 
 1. 觸發時必須在 `confirm` 輸入框逐字輸入 `deploy-production`。
 2. `production` GitHub environment 受保護，需要 repository owner 批准。
-3. 該 SHA 必須已有成功的 `main` push CI run；CI 先前已跑 `bun run check` 及完整 `bun run e2e`（desktop + Pixel 5），部署不重覆安裝瀏覽器及再跑一次。
-
-在任何資料庫 migration 前，workflow 會匯出目前 D1、確認 SQL 檔非空，計算 bytes／SHA-256，並把 SQL 和 manifest 保留在同一個 Actions artifact 30 日。之後會要求 Cloudflare D1 Time Travel 能解析部署前時間點，否則在資料庫變更前中止。migration 已套用但 Worker 尚未嘗試部署時，失敗路徑會還原 D1；Worker 一旦已嘗試部署，workflow 只記下復原時間點，避免把可能正由新 Worker 使用的 schema 強行還原。這是發布前保護與短期證據，不能代替長期備份及隔離還原演練。D1 Time Travel 還原會覆蓋資料庫，手動還原前必須配對 Worker／資料版本並依 Cloudflare 提示確認。
+3. 部署前先跑 `bun run check` 及完整 `bun run e2e`（desktop + Pixel 5），任何一項失敗即中止。
 
 `source_snapshot` 輸入指定要發布的官方來源快照（`data/sources/` 之下的路徑）。
 Workflow 會先確認該檔案存在，才建立發布種子。
@@ -85,11 +81,8 @@ fund class，並且 `Cache-Control` 必須是 `public, max-age=300, stale-while-
 核對現行數量，再以 `workflow_dispatch` 填入新數量重跑。不要為了令 workflow 通過而
 放寬這個檢查。
 
-若 GitHub repository 設定不允許 Actions 建立 pull request，候選分支仍會保留，run summary 會提供人工開 PR 的連結；不要因此略過候選審核。
-
 ### 尚未處理
 
 - 已發布快照的原始 HTML 只保留在 workflow artifact（30 日），未按規格長期存入 R2；
   `Deploy production` 目前只把來源 JSON 封存到 R2。
-- 部署前 D1 SQL artifact 亦只保留 30 日；Time Travel 還原路徑尚未在 staging／production 實際演練，不能視為已驗證備份。
 - `D1 Restore Drill` 只有手動觸發，未有每季執行的紀錄。

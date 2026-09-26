@@ -1,4 +1,522 @@
-YªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éíëN4N‹Z–‹­¦ëeŠw¬Õ¥µÁ½ÉĞìÕÍ•™™•Ğ°ÕÍ•5•µ¼°ÕÍ•MÑ…Ñ”ô™É½´€‰É•…Ğˆì)¥µÁ½ÉĞìM¥Ñ•¡É½µ”ô™É½´€ˆ¸½M¥Ñ•¡É½µ”ˆì()ÑåÁ”••I…¹”€ôì(€µ¥¸è¹Õµ‰•Èì(€µ•‘¥…¸è¹Õµ‰•Èì(€µ…àè¹Õµ‰•Èì(€™Õ¹‘½Õ¹Ğè¹Õµ‰•Èì)ôì()ÑåÁ”¥ÍI•ÑÕÉ¹	…¹€ôì(€µ¥¸è¹Õµ‰•Èì(€µ…àè¹Õµ‰•Èì(€™Õ¹‘±…ÍÍ½Õ¹Ğè¹Õµ‰•Èì)ôğ¹Õ±°ì()ÑåÁ”¥Í½µÁ½¹•¹Ğ€ôì(€½¹ÍÑ¥ÑÕ•¹ÑÕ¹‘9…µ”èÍÑÉ¥¹œì(€É•ÑÕÉ¹ÌèI•½ÉğˆÅäˆğ€ˆÍäˆğ€ˆÕäˆğ€ˆÄÁäˆ°¥ÍI•ÑÕÉ¹	…¹øì(€™Õ¹‘±…ÍÍ•ÌèÉÉ…äñì(€€€¥èÍÑÉ¥¹œì(€€€™Õ¹‘±…ÍÍ9…µ”èÍÑÉ¥¹œì(€€€…¹¹Õ…±¥é•‘I•ÑÕÉ¸Åäüè¹Õµ‰•Èì(€€€…¹¹Õ…±¥é•‘I•ÑÕÉ¸Íäüè¹Õµ‰•Èì(€€€…¹¹Õ…±¥é•‘I•ÑÕÉ¸Õäüè¹Õµ‰•Èì(€€€…¹¹Õ…±¥é•‘I•ÑÕÉ¸ÄÁäüè¹Õµ‰•Èì(€ôøì)ôğ¹Õ±°ì()ÑåÁ”½µÁ…É•‘M¡•µ”€ôì(€¥èÍÑÉ¥¹œì(€Í¡•µ•9…µ”èÍÑÉ¥¹œì(€ÑÉÕÍÑ••9…µ”èÍÑÉ¥¹œì(€™Õ¹‘¡½¥•½Õ¹Ğè¹Õµ‰•Èì(€™Õ¹‘±…ÍÍ½Õ¹Ğè¹Õµ‰•Èì(€™•Èè••I…¹”ğ¹Õ±°ì(€‘¥ÍA•É™½Éµ…¹”èì(€€€ÍÑ…ÑÕÌè€‰½µÁ±•Ñ”ˆğ€‰¥¹½µÁ±•Ñ”ˆì(€€€µ¥ÍÍ¥¹œèÉÉ…äğ‰½É•}…ÕµÕ±…Ñ¥½¸ˆğ€‰…”ØÕ}Á±ÕÌˆøì(€€€½É•ÕµÕ±…Ñ¥½¸è¥Í½µÁ½¹•¹Ğì(€€€…”ØÕA±ÕÌè¥Í½µÁ½¹•¹Ğì(€ôì(€…‘µ¥¹¥ÍÑÉ…Ñ¥½¹M½É”è¹Õ±°ì)ôì()ÑåÁ”½µÁ…É•I•ÍÁ½¹Í”€ôì(€Í¹…ÁÍ¡½Ñ%èÍÑÉ¥¹œğ¹Õ±°ì(€Í¡•µ•Ìè½µÁ…É•‘M¡•µ•mtì(€•ÉÉ½ÈüèÍÑÉ¥¹œì(€µ¥ÍÍ¥¹%‘ÌüèÍÑÉ¥¹mtì(€µ…á¥µÕ´üè¹Õµ‰•Èì)ôì()½¹ÍĞÍ¡•µ•½±½ÉÌ€ôlˆŒÁ˜ĞÄÑ”ˆ°€ˆŒÈØÜÜàØˆ°€ˆŒİ„ØÙ„ˆ°€ˆŒå„ÍˆÍˆ‰t…Ì½¹ÍĞì()½¹ÍĞµ¥ÍÍ¥¹1…‰•±Ì€ôì(€½É•}…ÕµÕ±…Ñ¥½¸è€‹š‚ã–şÒ¿¦7–~ë¦Dˆ°(€…”ØÕ}Á±ÕÌè€ˆØ×š¶Ë–ú3–~ë¦Dˆ°)ô…Ì½¹ÍĞì()½¹ÍĞÉ•ÑÕÉ¹A•É¥½‘Ì€ôlˆÅäˆ°€ˆÍäˆ°€ˆÕäˆ°€ˆÄÁä‰t…Ì½¹ÍĞì)½¹ÍĞÉ•ÑÕÉ¹A•É¥½‘1…‰•±Ì€ôì(€€ˆÅäˆè€ˆÇ–æĞˆ°(€€ˆÍäˆè€ˆÏ–æĞˆ°(€€ˆÕäˆè€ˆ×–æĞˆ°(€€ˆÄÁäˆè€ˆÄÃ–æĞˆ°)ô…Ì½¹ÍĞì()™Õ¹Ñ¥½¸Á…ÉÍ•M¡•µ•%‘Ì¡Í•…É èÍÑÉ¥¹œ¤ì(€½¹ÍĞÉ…Ü€ô¹•ÜUI1M•…É¡A…É…µÌ¡Í•…É ¤¹•Ğ ‰¥‘Ìˆ¤ì(€¥˜€ …É…Ü¤É•ÑÕÉ¸mtì(€É•ÑÕÉ¸É…Ü(€€€€¹ÍÁ±¥Ğ ˆ°ˆ¤(€€€€¹µ…À ¡¥¤€ôø¥¹ÑÉ¥´ ¤¤(€€€€¹™¥±Ñ•È ¡¥°¥¹‘•à°…±°¤€ôø¥¹±•¹Ñ €ø€À€˜˜…±°¹¥¹‘•á=˜¡¥¤€ôôô¥¹‘•à¤(€€€€¹Í±¥” À°€Ğ¤ì)ô()™Õ¹Ñ¥½¸™½Éµ…ÑA•É•¹Ğ¡Ù…±Õ”è¹Õµ‰•È¤ì(€É•ÑÕÉ¸€‘íÙ…±Õ”¹Ñ½¥á• È¥ô•€ì)ô()™Õ¹Ñ¥½¸™½Éµ…ÑI…¹”¡‰…¹è¥ÍI•ÑÕÉ¹	…¹ğ••I…¹”ğ¹Õ±°¤ì(€¥˜€ …‰…¹¤É•ÑÕÉ¸€‹–ºcšZçšr«š>C’úlˆì(€¥˜€¡‰…¹¹µ¥¸€ôôô‰…¹¹µ…à¤É•ÑÕÉ¸™½Éµ…ÑA•É•¹Ğ¡‰…¹¹µ¥¸¤ì(€É•ÑÕÉ¸€‘í™½Éµ…ÑA•É•¹Ğ¡‰…¹¹µ¥¸¥ôƒŠL€‘í™½Éµ…ÑA•É•¹Ğ¡‰…¹¹µ…à¥õ€ì)ô()™Õ¹Ñ¥½¸µ¥‘Á½¥¹Ğ¡‰…¹è¥ÍI•ÑÕÉ¹	…¹¤ì(€¥˜€ …‰…¹¤É•ÑÕÉ¸¹Õ±°ì(€É•ÑÕÉ¸€¡‰…¹¹µ¥¸€¬‰…¹¹µ…à¤€¼€Èì)ô()ÑåÁ”I…‘…Éá¥Í-•ä€ô€‰™Õ¹‘¡½¥•½Õ¹Ğˆğ€‰™•Èˆğ€‰‘¥Í½É”Åäˆğ€‰‘¥Í”ØÔÅäˆì()½¹ÍĞÉ…‘…Éá•ÌèÉÉ…äñì(€­•äèI…‘…Éá¥Í-•äì(€±…‰•°èÍÑÉ¥¹œì(€¡¥¡•É%Í	•ÑÑ•Èè‰½½±•…¸ì)ôø€ôl(€ì­•äè€‰™Õ¹‘¡½¥•½Õ¹Ğˆ°±…‰•°è€‹–~ë¦G¦ãšNˆ°¡¥¡•É%Í	•ÑÑ•ÈèÑÉÕ”ô°(€ì­•äè€‰™•Èˆ°±…‰•°è€‰Hˆ°¡¥¡•É%Í	•ÑÑ•Èè™…±Í”ô°(€ì­•äè€‰‘¥Í½É”Åäˆ°±…‰•°è€‰%Oš‚ã–şÇ–æĞˆ°¡¥¡•É%Í	•ÑÑ•ÈèÑÉÕ”ô°(€ì­•äè€‰‘¥Í”ØÔÅäˆ°±…‰•°è€‰%LØ×š¶ÈÇ–æĞˆ°¡¥¡•É%Í	•ÑÑ•ÈèÑÉÕ”ô°)tì()™Õ¹Ñ¥½¸É…‘…ÉI…İY…±Õ”¡Í¡•µ”è½µÁ…É•‘M¡•µ”°­•äèI…‘…Éá¥Í-•ä¤ì(€¥˜€¡­•ä€ôôô€‰™Õ¹‘¡½¥•½Õ¹Ğˆ¤É•ÑÕÉ¸Í¡•µ”¹™Õ¹‘¡½¥•½Õ¹Ğì(€¥˜€¡­•ä€ôôô€‰™•Èˆ¤ì(€€€É•ÑÕÉ¸Í¡•µ”¹™•È€üÍ¡•µ”¹™•È¹µ•‘¥…¸€è¹Õ±°ì(€ô(€¥˜€¡Í¡•µ”¹‘¥ÍA•É™½Éµ…¹”¹ÍÑ…ÑÕÌ€„ôô€‰½µÁ±•Ñ”ˆ¤É•ÑÕÉ¸¹Õ±°ì(€¥˜€¡­•ä€ôôô€‰‘¥Í½É”Åäˆ¤(€€€É•ÑÕÉ¸µ¥‘Á½¥¹Ğ (€€€€€Í¡•µ”¹‘¥ÍA•É™½Éµ…¹”¹½É•ÕµÕ±…Ñ¥½¸ü¹É•ÑÕÉ¹ÍlˆÅä‰t€üü¹Õ±°°(€€€€¤ì(€É•ÑÕÉ¸µ¥‘Á½¥¹Ğ¡Í¡•µ”¹‘¥ÍA•É™½Éµ…¹”¹…”ØÕA±ÕÌü¹É•ÑÕÉ¹ÍlˆÅä‰t€üü¹Õ±°¤ì)ô((¼¨¨ƒ–>«–r£’î+š²‡š>’â·j¢¢#–*’æ/¦ZO–h€ÃŠLÄÀÀƒnã–Â7–"šVã¾òoòë–ó–RSVÛš"@€Ã€¨¼)™Õ¹Ñ¥½¸É…‘…ÉM½É•Ì¡Í¡•µ•Ìè½µÁ…É•‘M¡•µ•mt¤ì(€½¹ÍĞÉ…¹•Ì€ô=‰©•Ğ¹™É½µ¹ÑÉ¥•Ì (€€€É…‘…Éá•Ì¹µ…À ¡ì­•ä°¡¥¡•É%Í	•ÑÑ•Èô¤€ôøì(€€€€€½¹ÍĞÙ…±Õ•Ì€ôÍ¡•µ•Ì(€€€€€€€€¹µ…À ¡Í¡•µ”¤€ôøÉ…‘…ÉI…İY…±Õ”¡Í¡•µ”°­•ä¤¤(€€€€€€€€¹™¥±Ñ•È ¡Ù…±Õ”¤èÙ…±Õ”¥Ì¹Õµ‰•È€ôøÑåÁ•½˜Ù…±Õ”€ôôô€‰¹Õµ‰•Èˆ¤ì(€€€€€¥˜€¡Ù…±Õ•Ì¹±•¹Ñ €ôôô€À¤É•ÑÕÉ¸m­•ä°¹Õ±±tì(€€€€€½¹ÍĞµ¥¸€ô5…Ñ ¹µ¥¸ ¸¸¹Ù…±Õ•Ì¤ì(€€€€€½¹ÍĞµ…à€ô5…Ñ ¹µ…à ¸¸¹Ù…±Õ•Ì¤ì(€€€€€É•ÑÕÉ¸m­•ä°ìµ¥¸°µ…à°¡¥¡•É%Í	•ÑÑ•Èõtì(€€€ô¤°(€€¤…ÌI•½Éğ(€€€I…‘…Éá¥Í-•ä°(€€€ìµ¥¸è¹Õµ‰•Èìµ…àè¹Õµ‰•Èì¡¥¡•É%Í	•ÑÑ•Èè‰½½±•…¸ôğ¹Õ±°(€€øì((€É•ÑÕÉ¸Í¡•µ•Ì¹µ…À ¡Í¡•µ”¤€ôø€¡ì(€€€Í¡•µ”°(€€€¥¹½µÁ±•Ñ•¥ÌèÍ¡•µ”¹‘¥ÍA•É™½Éµ…¹”¹ÍÑ…ÑÕÌ€„ôô€‰½µÁ±•Ñ”ˆ°(€€€Í½É•Ìè=‰©•Ğ¹™É½µ¹ÑÉ¥•Ì (€€€€€É…‘…Éá•Ì¹µ…À ¡ì­•äô¤€ôøì(€€€€€€€½¹ÍĞÙ…±Õ”€ôÉ…‘…ÉI…İY…±Õ”¡Í¡•µ”°­•ä¤ì(€€€€€€€½¹ÍĞÉ…¹”€ôÉ…¹•Ím­•åtì(€€€€€€€¥˜€¡Ù…±Õ”€ôôô¹Õ±°ñğ€…É…¹”¤É•ÑÕÉ¸m­•ä°¹Õ±±tì(€€€€€€€¥˜€¡É…¹”¹µ…à€ôôôÉ…¹”¹µ¥¸¤É•ÑÕÉ¸m­•ä°€ÔÁtì(€€€€€€€½¹ÍĞÉ…Ñ¥¼€ô€¡Ù…±Õ”€´É…¹”¹µ¥¸¤€¼€¡É…¹”¹µ…à€´É…¹”¹µ¥¸¤ì(€€€€€€€É•ÑÕÉ¸m­•ä°€¡É…¹”¹¡¥¡•É%Í	•ÑÑ•È€üÉ…Ñ¥¼€è€Ä€´É…Ñ¥¼¤€¨€ÄÀÁtì(€€€€€ô¤°(€€€€¤…ÌI•½ÉñI…‘…Éá¥Í-•ä°¹Õµ‰•Èğ¹Õ±°ø°(€ô¤¤ì)ô()™Õ¹Ñ¥½¸Á½±…ÉA½¥¹Ğ¡àè¹Õµ‰•È°äè¹Õµ‰•È°É…‘¥ÕÌè¹Õµ‰•È°…¹±”è¹Õµ‰•È¤ì(€É•ÑÕÉ¸ì(€€€àèà€¬É…‘¥ÕÌ€¨5…Ñ ¹½Ì¡…¹±”¤°(€€€äèä€¬É…‘¥ÕÌ€¨5…Ñ ¹Í¥¸¡…¹±”¤°(€ôì)ô()™Õ¹Ñ¥½¸M¡•µ•½µÁ…É•I…‘…È¡ìÍ¡•µ•ÌôèìÍ¡•µ•Ìè½µÁ…É•‘M¡•µ•mtô¤ì(€½¹ÍĞÍ½É•€ôÕÍ•5•µ¼  ¤€ôøÉ…‘…ÉM½É•Ì¡Í¡•µ•Ì¤°mÍ¡•µ•Ít¤ì(€½¹ÍĞÍ¥é”€ô€ÌØÀì(€½¹ÍĞà€ôÍ¥é”€¼€Èì(€½¹ÍĞä€ôÍ¥é”€¼€Èì(€½¹ÍĞµ…áI…‘¥ÕÌ€ô€ÄÀàì(€½¹ÍĞ…á¥Í½Õ¹Ğ€ôÉ…‘…Éá•Ì¹±•¹Ñ ì((€É•ÑÕÉ¸€ (€€€€ñ‘¥Ø±…ÍÍ9…µ”ô‰Í¡•µ”µ½µÁ…É”µÉ…‘…Èˆø(€€€€€€ñÍÙœ(€€€€€€€Ù¥•İ	½àõí€À€À€‘íÍ¥é•ô€‘íÍ¥é•õô(€€€€€€€É½±”ô‰¥µœˆ(€€€€€€€…É¥„µ±…‰•°ô‹¢¢#–*š¾S¢ò¦nß¦S–r[¾òk–~ë¦G¦ãšNK%Lƒš‚ã–şÒ¿¦7’â–æÓ–n{–‚Ç%L€Ø×š¶Ë–ú3’â–æÓ–n{–‚Ç¾ò3–B¢îã6£®/š¢gšê[–2[
-è€Àƒ¢Ì€ÄÀÀƒ–"ˆ(€€€€€€ø(€€€€€€€ílÀ¸ÈÔ°€À¸Ô°€À¸ÜÔ°€Åt¹µ…À ¡Í…±”¤€ôøì(€€€€€€€€€½¹ÍĞÁ½¥¹ÑÌ€ôÉ…‘…Éá•Ì(€€€€€€€€€€€€¹µ…À ¡|°¥¹‘•à¤€ôøì(€€€€€€€€€€€€€½¹ÍĞ…¹±”€ô€µ5…Ñ ¹A$€¼€È€¬€¡¥¹‘•à€¨€È€¨5…Ñ ¹A$¤€¼…á¥Í½Õ¹Ğì(€€€€€€€€€€€€€½¹ÍĞÁ½¥¹Ğ€ôÁ½±…ÉA½¥¹Ğ¡à°ä°µ…áI…‘¥ÕÌ€¨Í…±”°…¹±”¤ì(€€€€€€€€€€€€€É•ÑÕÉ¸€‘íÁ½¥¹Ğ¹áô°‘íÁ½¥¹Ğ¹åõ€ì(€€€€€€€€€€€ô¤(€€€€€€€€€€€€¹©½¥¸ ˆ€ˆ¤ì(€€€€€€€€€É•ÑÕÉ¸€ (€€€€€€€€€€€€ñÁ½±å½¸(€€€€€€€€€€€€€­•äõíÍ…±•ô(€€€€€€€€€€€€€±…ÍÍ9…µ”ô‰Í¡•µ”µ½µÁ…É”µÉ…‘…É}}É¥ˆ(€€€€€€€€€€€€€Á½¥¹ÑÌõíÁ½¥¹ÑÍô(€€€€€€€€€€€€¼ø(€€€€€€€€€€¤ì(€€€€€€€ô¥ô(€€€€€€€íÉ…‘…Éá•Ì¹µ…À ¡…á¥Ì°¥¹‘•à¤€ôøì(€€€€€€€€€½¹ÍĞ…¹±”€ô€µ5…Ñ ¹A$€¼€È€¬€¡¥¹‘•à€¨€È€¨5…Ñ ¹A$¤€¼…á¥Í½Õ¹Ğì(€€€€€€€€€½¹ÍĞ•¹€ôÁ½±…ÉA½¥¹Ğ¡à°ä°µ…áI…‘¥ÕÌ°…¹±”¤ì(€€€€€€€€€½¹ÍĞ±…‰•°€ôÁ½±…ÉA½¥¹Ğ¡à°ä°µ…áI…‘¥ÕÌ€¬€ÌØ°…¹±”¤ì(€€€€€€€€€½¹ÍĞ…¹¡½È€ô(€€€€€€€€€€€5…Ñ ¹…‰Ì¡5…Ñ ¹½Ì¡…¹±”¤¤€ğ€À¸Ä(€€€€€€€€€€€€€€ü€‰µ¥‘‘±”ˆ(€€€€€€€€€€€€€€è5…Ñ ¹½Ì¡…¹±”¤€ø€À(€€€€€€€€€€€€€€€€ü€‰ÍÑ…ÉĞˆ(€€€€€€€€€€€€€€€€è€‰•¹ˆì(€€€€€€€€€É•ÑÕÉ¸€ (€€€€€€€€€€€€ñœ­•äõí…á¥Ì¹­•åôø(€€€€€€€€€€€€€€ñ±¥¹”(€€€€€€€€€€€€€€€±…ÍÍ9…µ”ô‰Í¡•µ”µ½µÁ…É”µÉ…‘…É}}…á¥Ìˆ(€€€€€€€€€€€€€€€àÄõíáô(€€€€€€€€€€€€€€€äÄõíåô(€€€€€€€€€€€€€€€àÈõí•¹¹áô(€€€€€€€€€€€€€€€äÈõí•¹¹åô(€€€€€€€€€€€€€€¼ø(€€€€€€€€€€€€€€ñÑ•áĞ(€€€€€€€€€€€€€€€±…ÍÍ9…µ”ô‰Í¡•µ”µ½µÁ…É”µÉ…‘…É}}±…‰•°ˆ(€€€€€€€€€€€€€€€àõí±…‰•°¹áô(€€€€€€€€€€€€€€€äõí±…‰•°¹åô(€€€€€€€€€€€€€€€Ñ•áÑ¹¡½Èõí…¹¡½Éô(€€€€€€€€€€€€€€€‘½µ¥¹…¹Ñ	…Í•±¥¹”ô‰µ¥‘‘±”ˆ(€€€€€€€€€€€€€€ø(€€€€€€€€€€€€€€€í…á¥Ì¹±…‰•±ô(€€€€€€€€€€€€€€ğ½Ñ•áĞø(€€€€€€€€€€€€ğ½œø(€€€€€€€€€€¤ì(€€€€€€€ô¥ô(€€€€€€€íÍ½É•¹µ…À ¡ìÍ¡•µ”°Í½É•Ì°¥¹½µÁ±•Ñ•¥Ìô°Í¡•µ•%¹‘•à¤€ôøì(€€€€€€€€€½¹ÍĞÁ½¥¹ÑÌ€ôÉ…‘…Éá•Ì¹µ…À ¡…á¥Ì°¥¹‘•à¤€ôøì(€€€€€€€€€€€½¹ÍĞ…¹±”€ô€µ5…Ñ ¹A$€¼€È€¬€¡¥¹‘•à€¨€È€¨5…Ñ ¹A$¤€¼…á¥Í½Õ¹Ğì(€€€€€€€€€€€½¹ÍĞÍ½É”€ôÍ½É•Ím…á¥Ì¹­•åtì(€€€€€€€€€€€€¼¼ƒòë–ó–RSV¯–"Ã’â·–ş¾ò#šr¢Š¯¢ª“¢ºš"Cšr’ö;–"¾ò'¾ò3šRçV¯–r£–’[š†–Ÿ–Ó¢foŞk’ö7ö»’â›R£¢foŞk–’k¦
-+–ö‹š¢g’ë(€€€€€€€€€€€½¹ÍĞÉ…‘¥ÕÌ€ô(€€€€€€€€€€€€€Í½É”€ôôô¹Õ±°€üµ…áI…‘¥ÕÌ€¨€À¸Àà€è€¡Í½É”€¼€ÄÀÀ¤€¨µ…áI…‘¥ÕÌì(€€€€€€€€€€€É•ÑÕÉ¸Á½±…ÉA½¥¹Ğ¡à°ä°É…‘¥ÕÌ°…¹±”¤ì(€€€€€€€€€ô¤ì(€€€€€€€€€½¹ÍĞÁ½±å½¸€ôÁ½¥¹ÑÌ(€€€€€€€€€€€€¹µ…À ¡Á½¥¹Ğ¤€ôø€‘íÁ½¥¹Ğ¹áô°‘íÁ½¥¹Ğ¹åõ€¤(€€€€€€€€€€€€¹©½¥¸ ˆ€ˆ¤ì(€€€€€€€€€½¹ÍĞ½±½È€ôÍ¡•µ•½±½ÉÍmÍ¡•µ•%¹‘•à€”Í¡•µ•½±½ÉÌ¹±•¹Ñ¡t„ì(€€€€€€€€€É•ÑÕÉ¸€ (€€€€€€€€€€€€ñÁ½±å½¸(€€€€€€€€€€€€€­•äõíÍ¡•µ”¹¥‘ô(€€€€€€€€€€€€€Á½¥¹ÑÌõíÁ½±å½¹ô(€€€€€€€€€€€€€™¥±°õí½±½Éô(€€€€€€€ƒ]8ÒÚ$z{-®éÜj×G2æÆVæwF‚âbb&W7VÇBÓÓÒçVÆÂbbf–ÆVBbb€¢Ç6Æ74æÖSÒ&·r×7FGW2#îjÚ>YÊ‹ÈXZ^ŠˆX¨>jùN‹È>(
-cÂ÷à¢—Ğ ¢¶f–ÆVBbb€¢Ç6Æ74æÖSÒ&·r×7FGW2·r×7FGW2ÒÖæVvF—fR#à¢¶W'&÷$ÖW76vRóò.iÊ®ˆ;ŞXùn[é~ŠˆX¨>jùN‹È>‹8~ii’'×²"'Ğ¢Æ‡&VcÒ"÷66†VÖW2#î‹ùNY¹îŠˆX¨>jh.ŠkÓÂöà¢Â÷à¢—Ğ ¢·&W7VÇBbb€¢Ãà¢Ç6V7F–öà¢6Æ74æÖSÒ&·r×6V7F–öâ ¢&–ÖÆ&VÆÆVF'“Ò'66†VÖRÖ6ö×&R×F&ÆR×F—FÆR ¢à¢Æƒ"6Æ74æÖSÒ&·r×6V7F–öåõö†VF–ær"–CÒ'66†VÖRÖ6ö×&R×F&ÆR×F—FÆR#à¢˜	š^[Şjù@¢Âöƒ#à¢Ç6Æ74æÖSÒ&·rÖ×WFVB#à¢[ú¾xZr·&W7VÇBç6æ6†÷D–Bóò.[	®iÊ®y›Î[ˆ2'Ş8.ŠÎiKşŠ™^Xˆbc¢iª¾KˆŞŠ™^XˆnûÈÎjÈNKØŞš	yYx+®z›®8 ¢Â÷à¢ÆF—`¢6Æ74æÖSÒ&·r×F&ÆR×67&öÆÂ ¢F$–æFWƒ×³Ğ¢&öÆSÒ'&Vv–öâ ¢&–ÖÆ&VÃÒ.ŠˆX¨>˜	š^jùN‹È>ŠûÈÎXúş[znXû>hÛ.X¹^iú^yÈ¾h˜iÈjÈNKØÒ ¢à¢ÇF&ÆR6Æ74æÖSÒ&·r×F&ÆR66†VÖRÖ6ö×&R×F&ÆR#à¢ÇF†VCà¢ÇG#à¢ÇF‚66÷SÒ&6öÂ#îš^yºãÂ÷Fƒà¢·&W7VÇBç66†VÖW2æÖ‚‡66†VÖR’Óâ€¢ÇF‚66÷SÒ&6öÂ"¶W“×·66†VÖRæ–GÓà¢·66†VÖRç66†VÖTæÖWĞ¢Â÷Fƒà¢’—Ğ¢Â÷G#à¢Â÷F†VCà¢ÇF&öG“à¢ÇG#à¢ÇF‚66÷SÒ'&÷r#îXù~Š‰~K«£Â÷Fƒà¢·&W7VÇBç66†VÖW2æÖ‚‡66†VÖR’Óâ€¢ÇFB¶W“×·66†VÖRæ–GÓç·66†VÖRçG'W7FVTæÖWÓÂ÷FCà¢’—Ğ¢Â÷G#à¢ÇG#à¢ÇF‚66÷SÒ'&÷r#îxÚz¸¾h‰XˆnYû®˜yi[yºãÂ÷Fƒà¢·&W7VÇBç66†VÖW2æÖ‚‡66†VÖR’Óâ€¢ÇFB¶W“×·66†VÖRæ–GÓç·66†VÖRægVæD6†ö–6T6÷VçGÓÂ÷FCà¢’—Ğ¢Â÷G#à¢ÇG#à¢ÇF‚66÷SÒ'&÷r#îYû®˜yšîXŠ^i[yºãÂ÷Fƒà¢·&W7VÇBç66†VÖW2æÖ‚‡66†VÖR’Óâ€¢ÇFB¶W“×·66†VÖRæ–GÓç·66†VÖRægVæD6Æ746÷VçGÓÂ÷FCà¢’—Ğ¢Â÷G#à¢ÇG#à¢ÇF‚66÷SÒ'&÷r#ädU"zøNYÈÓÂ÷Fƒà¢·&W7VÇBç66†VÖW2æÖ‚‡66†VÖR’Óâ€¢ÇFB¶W“×·66†VÖRæ–GÓà¢·66†VÖRæfW"ò€¢Ãà¢Ç7â6Æ74æÖSÒ&·rÖæ÷w&#à¢¶f÷&ÖE&ævR‡66†VÖRæfW"—Ğ¢Â÷7ãà¢Ç6ÖÆÂ6Æ74æÖSÒ&·rÖfVRÖæ÷FR#à¢KŠŞKØŞi[‚¶f÷&ÖEW&6VçB‡66†VÖRæfW"æÖVF–â—ŞûÉ°¢·66†VÖRæfW"ægVæD6÷VçGÒ™«¾iÈ’dU ¢Â÷6ÖÆÃà¢Âóà¢’¢€¢.ZéikiÊ®hùKé² ¢—Ğ¢Â÷FCà¢’—Ğ¢Â÷G#à¢ÇG#à¢ÇF‚66÷SÒ'&÷r#îŠÎiKşŠ™^XˆcÂ÷Fƒà¢·&W7VÇBç66†VÖW2æÖ‚‡66†VÖR’Óâ€¢ÇFB¶W“×·66†VÖRæ–GÓà¢·66†VÖRæFÖ–æ—7G&F–öå66÷&RÓÓÒçVÆÀ¢ò'ciª¾KˆŞŠ™^Xˆb ¢¢66†VÖRæFÖ–æ—7G&F–öå66÷&WĞ¢Â÷FCà¢’—Ğ¢Â÷G#à¢ÇG#à¢ÇF‚66÷SÒ'&÷r#äD•2ŠxûãÂ÷Fƒà¢·&W7VÇBç66†VÖW2æÖ‚‡66†VÖR’Óâ°¢6öç7B–æ6ö×ÆWFRĞ¢66†VÖRæF—5W&f÷&Öæ6Rç7FGW2ÓÓÒ&–æ6ö×ÆWFR#°¢&WGW&â€¢ÇF@¢¶W“×·66†VÖRæ–GĞ¢6Æ74æÖS×°¢–æ6ö×ÆWFP¢ò'66†VÖRÖ6ö×&R×F&ÆUõö–æ6ö×ÆWFR ¢¢VæFVf–æV@¢Ğ¢à¢¶–æ6ö×ÆWFRò€¢Ãà¢Ç7â6Æ74æÖSÒ'66†VÖRÖ6ö×&RÖ&FvR#à¢KˆŞZèÎi[@¢Â÷7ãà¢Ç6ÖÆÂ6Æ74æÖSÒ&·rÖfVRÖæ÷FR#à¢{Ë®[	¢·66†VÖRæF—5W&f÷&Öæ6RæÖ—76–æp¢æÖ‚†—FVÒ’ÓâÖ—76–ætÆ&VÇ5¶—FVÕÒ¢æ¦ö–â‚.8"—Ğ¢ûÈÎi[NšRD•2ŠxûîKˆŞKÙÎjùN‹È>8 ¢Â÷6ÖÆÃà¢Âóà¢’¢€¢Ç7â6Æ74æÖSÒ'66†VÖRÖ6ö×&RÖ&FvR66†VÖRÖ6ö×&RÖ&FvRÒÖö²#à¢ZèÎi[@¢Â÷7ãà¢—Ğ¢Â÷FCà¢“°¢Ò—Ğ¢Â÷G#à¢²…²&6÷&T67V×VÆF–öâ"Â&vScUÇW2%Ò26öç7B’æÖ€¢†6ö×öæVçB’Óâ°¢6öç7BF—FÆRĞ¢6ö×öæVçBÓÓÒ&6÷&T67V×VÆF–öâ ¢ò.j[ø>{Jşz˜ŞYû®˜y ¢¢#c^jÛ.[èÎYû®˜y#°¢&WGW&â&WGW&åW&–öG2æÖ‚‡W&–öB’Óâ€¢ÇG"¶W“×¶G¶6ö×öæVçGÒÒG·W&–öGÖÓà¢ÇF‚66÷SÒ'&÷r#à¢·F—FÆWÒ+r·&WGW&åW&–öDÆ&VÇ5·W&–öE×Ğ¢Â÷Fƒà¢·&W7VÇBç66†VÖW2æÖ‚‡66†VÖR’Óâ°¢6öç7B–æ6ö×ÆWFRĞ¢66†VÖRæF—5W&f÷&Öæ6Rç7FGW2ÓÓÒ&–æ6ö×ÆWFR#°¢6öç7B&æBĞ¢66†VÖRæF—5W&f÷&Öæ6U¶6ö×öæVçEÓòç&WGW&ç5°¢W&–ö@¢ÒóòçVÆÃ°¢&WGW&â€¢ÇF@¢¶W“×·66†VÖRæ–GĞ¢6Æ74æÖS×°¢–æ6ö×ÆWFP¢ò'66†VÖRÖ6ö×&R×F&ÆUõö–æ6ö×ÆWFR ¢¢VæFVf–æV@¢Ğ¢à¢¶–æ6ö×ÆWFP¢ò.KˆŞZèÎi[NûÈÎKˆŞšşzK¢ ¢¢f÷&ÖE&ævR†&æB—Ğ¢Â÷FCà¢“°¢Ò—Ğ¢Â÷G#à¢’“°¢ÒÀ¢—Ğ¢Â÷F&öG“à¢Â÷F&ÆSà¢ÂöF—cà¢Â÷6V7F–öãà ¢Ç6V7F–öà¢6Æ74æÖSÒ&·r×6V7F–öâ ¢&–ÖÆ&VÆÆVF'“Ò'66†VÖRÖ6ö×&R×&F"×F—FÆR ¢à¢Æƒ"6Æ74æÖSÒ&·r×6V7F–öåõö†VF–ær"–CÒ'66†VÖRÖ6ö×&R×&F"×F—FÆR#à¢™»~˜NYÉnjh.ŠkĞ¢Âöƒ#à¢Ç6Æ74æÖSÒ&·rÖ×WFVB#à¢jøşj)Ş‹»Xú®hÈK¸®jÊ˜Xùny¨NŠˆX¨>hù¾zé~x+®y»[Ò(	3 ¢XˆnûÉ¾š¹KØîikY	YºhÈ~j‰ˆÎy[ûÈÎKˆŞˆ;Ş‹z‹»jùN‹È>h‰nŠinx+®Zéik{‹ŞXˆn8.XZ˜(®y»YÎi˜.šşzK ¢SûÈÎ{Ë®XÎKˆŞy[nKÙÎ™»nûÉ¾˜	š^XéşZx¾i[XÎŠ¸¾Kº^[ŞjùNŠx+®k©n8 ¢Â÷à¢Å66†VÖT6ö×&U&F"66†VÖW3×·&W7VÇBç66†VÖW7Òóà¢Â÷6V7F–öãà¢Âóà¢—Ğ¢Âõ6—FT6‡&öÖSà¢“°§Ğ 
+import { useEffect, useMemo, useState } from "react";
+import { SiteChrome } from "./SiteChrome";
+
+type FeeRange = {
+  min: number;
+  median: number;
+  max: number;
+  fundCount: number;
+};
+
+type DisReturnBand = {
+  min: number;
+  max: number;
+  fundClassCount: number;
+} | null;
+
+type DisComponent = {
+  constituentFundName: string;
+  returns: Record<"1y" | "3y" | "5y" | "10y", DisReturnBand>;
+  fundClasses: Array<{
+    id: string;
+    fundClassName: string;
+    annualizedReturn1y?: number;
+    annualizedReturn3y?: number;
+    annualizedReturn5y?: number;
+    annualizedReturn10y?: number;
+  }>;
+} | null;
+
+type ComparedScheme = {
+  id: string;
+  schemeName: string;
+  trusteeName: string;
+  fundChoiceCount: number;
+  fundClassCount: number;
+  fer: FeeRange | null;
+  disPerformance: {
+    status: "complete" | "incomplete";
+    missing: Array<"core_accumulation" | "age65_plus">;
+    coreAccumulation: DisComponent;
+    age65Plus: DisComponent;
+  };
+  administrationScore: null;
+};
+
+type CompareResponse = {
+  snapshotId: string | null;
+  schemes: ComparedScheme[];
+  error?: string;
+  missingIds?: string[];
+  maximum?: number;
+};
+
+const schemeColors = ["#0f414e", "#267786", "#c7a66a", "#9a3b3b"] as const;
+
+const missingLabels = {
+  core_accumulation: "æ ¸å¿ƒç´¯ç©åŸºé‡‘",
+  age65_plus: "65æ­²å¾ŒåŸºé‡‘",
+} as const;
+
+const returnPeriods = ["1y", "3y", "5y", "10y"] as const;
+const returnPeriodLabels = {
+  "1y": "1å¹´",
+  "3y": "3å¹´",
+  "5y": "5å¹´",
+  "10y": "10å¹´",
+} as const;
+
+function parseSchemeIds(search: string) {
+  const raw = new URLSearchParams(search).get("ids");
+  if (!raw) return [];
+  return raw
+    .split(",")
+    .map((id) => id.trim())
+    .filter((id, index, all) => id.length > 0 && all.indexOf(id) === index)
+    .slice(0, 4);
+}
+
+function formatPercent(value: number) {
+  return `${value.toFixed(2)}%`;
+}
+
+function formatRange(band: DisReturnBand | FeeRange | null) {
+  if (!band) return "å®˜æ–¹æœªæä¾›";
+  if (band.min === band.max) return formatPercent(band.min);
+  return `${formatPercent(band.min)} â€“ ${formatPercent(band.max)}`;
+}
+
+function midpoint(band: DisReturnBand) {
+  if (!band) return null;
+  return (band.min + band.max) / 2;
+}
+
+type RadarAxisKey = "fundChoiceCount" | "fer" | "disCore1y" | "disAge651y";
+
+const radarAxes: Array<{
+  key: RadarAxisKey;
+  label: string;
+  higherIsBetter: boolean;
+}> = [
+  { key: "fundChoiceCount", label: "åŸºé‡‘é¸æ“‡", higherIsBetter: true },
+  { key: "fer", label: "FER", higherIsBetter: false },
+  { key: "disCore1y", label: "DISæ ¸å¿ƒ1å¹´", higherIsBetter: true },
+  { key: "disAge651y", label: "DIS65æ­²1å¹´", higherIsBetter: true },
+];
+
+function radarRawValue(scheme: ComparedScheme, key: RadarAxisKey) {
+  if (key === "fundChoiceCount") return scheme.fundChoiceCount;
+  if (key === "fer") {
+    return scheme.fer ? scheme.fer.median : null;
+  }
+  if (scheme.disPerformance.status !== "complete") return null;
+  if (key === "disCore1y")
+    return midpoint(
+      scheme.disPerformance.coreAccumulation?.returns["1y"] ?? null,
+    );
+  return midpoint(scheme.disPerformance.age65Plus?.returns["1y"] ?? null);
+}
+
+/** åªåœ¨ä»Šæ¬¡æ€ä¸­çš„è¨ˆåŠƒä¹‹é–“åš 0â€“100 ç›¸å°åˆ†æ•¸ï¼›ç¼ºå€¼å””ç•¶æˆ 0ã€‚ */
+function radarScores(schemes: ComparedScheme[]) {
+  const ranges = Object.fromEntries(
+    radarAxes.map(({ key, higherIsBetter }) => {
+      const values = schemes
+        .map((scheme) => radarRawValue(scheme, key))
+        .filter((value): value is number => typeof value === "number");
+      if (values.length === 0) return [key, null];
+      const min = Math.min(...values);
+      const max = Math.max(...values);
+      return [key, { min, max, higherIsBetter }];
+    }),
+  ) as Record<
+    RadarAxisKey,
+    { min: number; max: number; higherIsBetter: boolean } | null
+  >;
+
+  return schemes.map((scheme) => ({
+    scheme,
+    incompleteDis: scheme.disPerformance.status !== "complete",
+    scores: Object.fromEntries(
+      radarAxes.map(({ key }) => {
+        const value = radarRawValue(scheme, key);
+        const range = ranges[key];
+        if (value === null || !range) return [key, null];
+        if (range.max === range.min) return [key, 50];
+        const ratio = (value - range.min) / (range.max - range.min);
+        return [key, (range.higherIsBetter ? ratio : 1 - ratio) * 100];
+      }),
+    ) as Record<RadarAxisKey, number | null>,
+  }));
+}
+
+function polarPoint(cx: number, cy: number, radius: number, angle: number) {
+  return {
+    x: cx + radius * Math.cos(angle),
+    y: cy + radius * Math.sin(angle),
+  };
+}
+
+function SchemeCompareRadar({ schemes }: { schemes: ComparedScheme[] }) {
+  const scored = useMemo(() => radarScores(schemes), [schemes]);
+  const size = 360;
+  const cx = size / 2;
+  const cy = size / 2;
+  const maxRadius = 108;
+  const axisCount = radarAxes.length;
+
+  return (
+    <div className="scheme-compare-radar">
+      <svg
+        viewBox={`0 0 ${size} ${size}`}
+        role="img"
+        aria-label="è¨ˆåŠƒæ¯”è¼ƒé›·é”åœ–ï¼šåŸºé‡‘é¸æ“‡ã€FERã€DIS æ ¸å¿ƒç´¯ç©ä¸€å¹´å›å ±ã€DIS 65æ­²å¾Œä¸€å¹´å›å ±ï¼Œå„è»¸ç¨ç«‹æ¨™æº–åŒ–ç‚º 0 è‡³ 100 åˆ†"
+      >
+        {[0.25, 0.5, 0.75, 1].map((scale) => {
+          const points = radarAxes
+            .map((_, index) => {
+              const angle = -Math.PI / 2 + (index * 2 * Math.PI) / axisCount;
+              const point = polarPoint(cx, cy, maxRadius * scale, angle);
+              return `${point.x},${point.y}`;
+            })
+            .join(" ");
+          return (
+            <polygon
+              key={scale}
+              className="scheme-compare-radar__grid"
+              points={points}
+            />
+          );
+        })}
+        {radarAxes.map((axis, index) => {
+          const angle = -Math.PI / 2 + (index * 2 * Math.PI) / axisCount;
+          const end = polarPoint(cx, cy, maxRadius, angle);
+          const label = polarPoint(cx, cy, maxRadius + 36, angle);
+          const anchor =
+            Math.abs(Math.cos(angle)) < 0.1
+              ? "middle"
+              : Math.cos(angle) > 0
+                ? "start"
+                : "end";
+          return (
+            <g key={axis.key}>
+              <line
+                className="scheme-compare-radar__axis"
+                x1={cx}
+                y1={cy}
+                x2={end.x}
+                y2={end.y}
+              />
+              <text
+                className="scheme-compare-radar__label"
+                x={label.x}
+                y={label.y}
+                textAnchor={anchor}
+                dominantBaseline="middle"
+              >
+                {axis.label}
+              </text>
+            </g>
+          );
+        })}
+        {scored.map(({ scheme, scores, incompleteDis }, schemeIndex) => {
+          const points = radarAxes.map((axis, index) => {
+            const angle = -Math.PI / 2 + (index * 2 * Math.PI) / axisCount;
+            const score = scores[axis.key];
+            // ç¼ºå€¼å””ç•«åˆ°ä¸­å¿ƒï¼ˆæœƒè¢«èª¤è®€æˆæœ€ä½åˆ†ï¼‰ï¼Œæ”¹ç•«åœ¨å¤–æ¡†å…§å´è™›ç·šä½ç½®ä¸¦ç”¨è™›ç·šå¤šé‚Šå½¢æ¨™ç¤ºã€‚
+            const radius =
+              score === null ? maxRadius * 0.08 : (score / 100) * maxRadius;
+            return polarPoint(cx, cy, radius, angle);
+          });
+          const polygon = points
+            .map((point) => `${point.x},${point.y}`)
+            .join(" ");
+          const color = schemeColors[schemeIndex % schemeColors.length]!;
+          return (
+            <polygon
+              key={scheme.id}
+              points={polygon}
+              fill={color}
+              fillOpacity={incompleteDis ? 0.08 : 0.18}
+              stroke={color}
+              strokeWidth={incompleteDis ? 1.5 : 2}
+              strokeDasharray={incompleteDis ? "5 4" : undefined}
+            />
+          );
+        })}
+      </svg>
+      <ul className="scheme-compare-radar__legend">
+        {scored.map(({ scheme, incompleteDis }, index) => (
+          <li key={scheme.id}>
+            <span
+              className="scheme-compare-radar__swatch"
+              style={{ background: schemeColors[index % schemeColors.length] }}
+              aria-hidden="true"
+            />
+            <span>
+              {scheme.schemeName}
+              {incompleteDis && (
+                <small className="scheme-compare-badge">DIS ä¸å®Œæ•´</small>
+              )}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <p className="kw-muted" role="note">
+        é›·é”åœ–å„è»¸åªåœ¨ä»Šæ¬¡æ¯”è¼ƒçš„è¨ˆåŠƒä¹‹é–“æ¨™æº–åŒ–æˆ 0â€“100
+        åˆ†ï¼Œä¸¦éå–®ä¸€ç¸½åˆ†ï¼Œäº¦ä¸æ˜¯å®˜æ–¹è©•åˆ†ã€‚FER æ„ˆä½åˆ†æ„ˆé«˜ï¼›DIS
+        å›å ±ç”¨ä¸€å¹´å¹´ç‡åŒ–ä¸­ä½æ•¸ã€‚è™›ç·šè¡¨ç¤ºè©²è¨ˆåŠƒ DIS
+        è¡¨ç¾ä¸å®Œæ•´ï¼Œå°æ‡‰è»¸æ²’æœ‰å¯æ¯”è¼ƒæ•¸å€¼ã€‚
+      </p>
+    </div>
+  );
+}
+
+export function SchemeComparePage({
+  apiBaseUrl,
+  search = typeof window === "undefined" ? "" : window.location.search,
+}: {
+  apiBaseUrl: string;
+  search?: string;
+}) {
+  const ids = useMemo(() => parseSchemeIds(search), [search]);
+  const [result, setResult] = useState<CompareResponse | null>(null);
+  const [failed, setFailed] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (ids.length === 0) {
+      setResult(null);
+      setFailed(false);
+      setErrorMessage("è«‹å…ˆåœ¨è¨ˆåŠƒæ¯”è¼ƒé å‹¾é¸ 1 è‡³ 4 å€‹è¨ˆåŠƒã€‚");
+      return;
+    }
+    setResult(null);
+    setFailed(false);
+    setErrorMessage(null);
+    const query = ids.map(encodeURIComponent).join(",");
+    fetch(`${apiBaseUrl}/schemes/compare?ids=${query}`)
+      .then(async (response) => {
+        const body = (await response.json()) as CompareResponse;
+        if (!response.ok) {
+          setErrorMessage(
+            body.error ??
+              (response.status === 404
+                ? "æ‰¾ä¸åˆ°æ‰€é¸è¨ˆåŠƒ"
+                : "æœªèƒ½å–å¾—è¨ˆåŠƒæ¯”è¼ƒè³‡æ–™"),
+          );
+          setFailed(true);
+          return;
+        }
+        setResult(body);
+      })
+      .catch(() => {
+        setFailed(true);
+        setErrorMessage("æœªèƒ½å–å¾—è¨ˆåŠƒæ¯”è¼ƒè³‡æ–™");
+      });
+  }, [apiBaseUrl, ids]);
+
+  return (
+    <SiteChrome
+      current="schemes"
+      eyebrow="é¦™æ¸¯å¼·ç©é‡‘æ¯”è¼ƒ"
+      title="è¨ˆåŠƒé€é …æ¯”è¼ƒ"
+      subtitle="ä¸€æ¬¡æœ€å¤šæ¯”è¼ƒ 4 å€‹è¨ˆåŠƒã€‚è¡¨æ ¼åˆ—å‡ºå®˜æ–¹å¯è¿½æº¯æ•¸å­—ï¼›é›·é”åœ–åªåšç›¸å°è¦–è¦ºåŒ–ï¼Œä¸æœƒåˆæˆå–®ä¸€ç¸½åˆ†ã€‚"
+    >
+      <p className="kw-compare-back">
+        <a href="/schemes">â† è¿”å›è¨ˆåŠƒæ¦‚è¦½</a>
+      </p>
+
+      {ids.length === 0 && (
+        <p className="kw-status kw-status--warning">
+          {errorMessage} <a href="/schemes">è¿”å›å‹¾é¸è¨ˆåŠƒ</a>
+        </p>
+      )}
+
+      {ids.length > 0 && result === null && !failed && (
+        <p className="kw-status">æ­£åœ¨è¼‰å…¥è¨ˆåŠƒæ¯”è¼ƒâ€¦</p>
+      )}
+
+      {failed && (
+        <p className="kw-status kw-status--negative">
+          {errorMessage ?? "æœªèƒ½å–å¾—è¨ˆåŠƒæ¯”è¼ƒè³‡æ–™"}{" "}
+          <a href="/schemes">è¿”å›è¨ˆåŠƒæ¦‚è¦½</a>
+        </p>
+      )}
+
+      {result && (
+        <>
+          <section
+            className="kw-section"
+            aria-labelledby="scheme-compare-table-title"
+          >
+            <h2 className="kw-section__heading" id="scheme-compare-table-title">
+              é€é …å°æ¯”
+            </h2>
+            <p className="kw-muted">
+              å¿«ç…§ {result.snapshotId ?? "å°šæœªç™¼å¸ƒ"}ã€‚è¡Œæ”¿è©•åˆ† v1
+              æš«ä¸è©•åˆ†ï¼Œæ¬„ä½é ç•™ç‚ºç©ºã€‚
+            </p>
+            <div
+              className="kw-table-scroll"
+              tabIndex={0}
+              role="region"
+              aria-label="è¨ˆåŠƒé€é …æ¯”è¼ƒè¡¨ï¼Œå¯å·¦å³æ²å‹•æŸ¥çœ‹æ‰€æœ‰æ¬„ä½"
+            >
+              <table className="kw-table scheme-compare-table">
+                <thead>
+                  <tr>
+                    <th scope="col">é …ç›®</th>
+                    {result.schemes.map((scheme) => (
+                      <th scope="col" key={scheme.id}>
+                        {scheme.schemeName}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">å—è¨—äºº</th>
+                    {result.schemes.map((scheme) => (
+                      <td key={scheme.id}>{scheme.trusteeName}</td>
+                    ))}
+                  </tr>
+                  <tr>
+                    <th scope="row">ç¨ç«‹æˆåˆ†åŸºé‡‘æ•¸ç›®</th>
+                    {result.schemes.map((scheme) => (
+                      <td key={scheme.id}>{scheme.fundChoiceCount}</td>
+                    ))}
+                  </tr>
+                  <tr>
+                    <th scope="row">åŸºé‡‘é¡åˆ¥æ•¸ç›®</th>
+                    {result.schemes.map((scheme) => (
+                      <td key={scheme.id}>{scheme.fundClassCount}</td>
+                    ))}
+                  </tr>
+                  <tr>
+                    <th scope="row">FER ç¯„åœ</th>
+                    {result.schemes.map((scheme) => (
+                      <td key={scheme.id}>
+                        {scheme.fer ? (
+                          <>
+                            <span className="kw-nowrap">
+                              {formatRange(scheme.fer)}
+                            </span>
+                            <small className="kw-fee-note">
+                              ä¸­ä½æ•¸ {formatPercent(scheme.fer.median)}ï¼›
+                              {scheme.fer.fundCount} éš»æœ‰ FER
+                            </small>
+                          </>
+                        ) : (
+                          "å®˜æ–¹æœªæä¾›"
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                  <tr>
+                    <th scope="row">è¡Œæ”¿è©•åˆ†</th>
+                    {result.schemes.map((scheme) => (
+                      <td key={scheme.id}>
+                        {scheme.administrationScore === null
+                          ? "v1 æš«ä¸è©•åˆ†"
+                          : scheme.administrationScore}
+                      </td>
+                    ))}
+                  </tr>
+                  <tr>
+                    <th scope="row">DIS è¡¨ç¾</th>
+                    {result.schemes.map((scheme) => {
+                      const incomplete =
+                        scheme.disPerformance.status === "incomplete";
+                      return (
+                        <td
+                          key={scheme.id}
+                          className={
+                            incomplete
+                              ? "scheme-compare-table__incomplete"
+                              : undefined
+                          }
+                        >
+                          {incomplete ? (
+                            <>
+                              <span className="scheme-compare-badge">
+                                ä¸å®Œæ•´
+                              </span>
+                              <small className="kw-fee-note">
+                                ç¼ºå°‘
+                                {scheme.disPerformance.missing
+                                  .map((item) => missingLabels[item])
+                                  .join("ã€")}
+                                ï¼Œæ•´é … DIS è¡¨ç¾ä¸ä½œæ¯”è¼ƒã€‚
+                              </small>
+                            </>
+                          ) : (
+                            <span className="scheme-compare-badge scheme-compare-badge--ok">
+                              å®Œæ•´
+                            </span>
+                          )}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                  {(["coreAccumulation", "age65Plus"] as const).map(
+                    (component) => {
+                      const title =
+                        component === "coreAccumulation"
+                          ? "æ ¸å¿ƒç´¯ç©åŸºé‡‘"
+                          : "65æ­²å¾ŒåŸºé‡‘";
+                      return returnPeriods.map((period) => (
+                        <tr key={`${component}-${period}`}>
+                          <th scope="row">
+                            {title} Â· {returnPeriodLabels[period]}
+                          </th>
+                          {result.schemes.map((scheme) => {
+                            const incomplete =
+                              scheme.disPerformance.status === "incomplete";
+                            const band =
+                              scheme.disPerformance[component]?.returns[
+                                period
+                              ] ?? null;
+                            return (
+                              <td
+                                key={scheme.id}
+                                className={
+                                  incomplete
+                                    ? "scheme-compare-table__incomplete"
+                                    : undefined
+                                }
+                              >
+                                {incomplete
+                                  ? "ä¸å®Œæ•´ï¼Œä¸é¡¯ç¤º"
+                                  : formatRange(band)}
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      ));
+                    },
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section
+            className="kw-section"
+            aria-labelledby="scheme-compare-radar-title"
+          >
+            <h2 className="kw-section__heading" id="scheme-compare-radar-title">
+              é›·é”åœ–æ¦‚è¦½
+            </h2>
+            <p className="kw-muted">
+              æ¯æ¢è»¸åªæŒ‰ä»Šæ¬¡é¸å–çš„è¨ˆåŠƒæ›ç®—ç‚ºç›¸å° 0â€“100
+              åˆ†ï¼›é«˜ä½æ–¹å‘å› æŒ‡æ¨™è€Œç•°ï¼Œä¸èƒ½è·¨è»¸æ¯”è¼ƒæˆ–è¦–ç‚ºå®˜æ–¹ç¸½åˆ†ã€‚å…©é‚Šç›¸åŒæ™‚é¡¯ç¤º
+              50ï¼Œç¼ºå€¼ä¸ç•¶ä½œé›¶ï¼›é€é …åŸå§‹æ•¸å€¼è«‹ä»¥å°æ¯”è¡¨ç‚ºæº–ã€‚
+            </p>
+            <SchemeCompareRadar schemes={result.schemes} />
+          </section>
+        </>
+      )}
+    </SiteChrome>
+  );
+}

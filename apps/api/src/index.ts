@@ -1,59 +1,1179 @@
-YªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éí×nõå:-jZ.¶›­–)Ş³V–×÷'B²†öæòÒg&öÒ&†öæò#°¦–×÷'B²6÷'2Òg&öÒ&†öæòö6÷'2#°¦–×÷'B²V&Æ–6F–öä66†RÒg&öÒ"âö66†–ær#°¦–×÷'B°¢6Æ76–f–6F–öäöbÀ¢6ö×&—6öäw&÷Wf÷"À¢6ö×&—6öäw&÷W6÷W&6TöbÀ¢G—R6Æ76–f–6F–öâÀ§Òg&öÒ"âö6ö×&—6öâÖw&÷W#°¦–×÷'B°¢WfÇVFTg&W6†æW72À¢gVæD÷fW'f–Wtw&6TF—2À¢&WGW&ç4w&6TF—2À¢G—Rg&W6†æW75öÆ–7’À¢G—RV&Æ—6†VDg&W6†æW72À§Òg&öÒ"âög&W6†æW72#°¦–×÷'BG—R²V&Æ–6F–öä&–æF–æw2Òg&öÒ"â÷V&Æ–6F–öâ#°¦–×÷'B²–çFW'&WDgVæBÒg&öÒ"ââòââòââ÷6¶vW2ö6÷fW&vR÷7&2ögVæBÖ–çFW'&WFF–öâ#° §G—R&–æF–æw2ÒV&Æ–6F–öä&–æF–æw2b°¢$TÄT4UõdU%4”ôã¢7G&–æs°§Ó° ¦6öç7BÒæWr†öæóÇ²&–æF–æw3¢&–æF–æw2Óâ‚“° ¦6öç7B4T$4…õ$U5TÅEôÄ”Ô•BÒS° ¦çW6R‚"¢"Â6÷'2‡²÷&–v–ã¢"¢"ÂW‡÷6T†VFW'3¢²%‚ÕF÷FÂÔÖF6†W2%ÒÒ’“°¦çW6R‚"¢"ÂV&Æ–6F–öä66†R‚’“° ¦ævWB‚"ö†VÇF‚"Â†6öçFW‡B’Óà¢6öçFW‡Bæ§6öâ‡°¢7FGW3¢&ö²"À¢fW'6–öã¢6öçFW‡BæVçbå$TÄT4UõdU%4”ôâÀ¢&–æF–æw3¢°¢C¢&ööÆVâ†6öçFW‡BæVçbäD"’À¢##¢&ööÆVâ†6öçFW‡BæVçbå$uô$4„•dR’À¢ÒÀ¢Ò’À¢“° ¦ævWB‚"ögVæBÖ6Æ76W2ó¦–B"Â7–æ2†6öçFW‡B’Óâ°¢6öç7B&÷rÒv—B6öçFW‡BæVçbäD"ç&W&R€¢4TÄT5Bbç–Æö@¢e$ôÒ7W'&VçE÷V&Æ–6F–öâ0¢¤ô”âgVæEö6Æ75÷fW'6–öç2bôâbç6æ6†÷Eö–BÒ2ç6æ6†÷Eö–@¢t„U$R2ç6–ævÆWFöâÒäBbægVæEö6Æ75ö–BÒöÀ¢¢æ&–æB†6öçFW‡Bç&Wç&Ò‚&–B"’¢æf—'7CÇ²–ÆöC¢7G&–ærÓâ‚“° ¢–b‚&÷r’&WGW&â6öçFW‡Bæ§6öâ‡²W'&÷#¢$gVæB6Æ72æ÷Bf÷VæB"ÒÂCB“°¢6öç7BV&Æ—6†VBÒ¥4ôâç'6R‡&÷rç–ÆöB’2°¢gVæD6Æ73¢'&÷w6TgVæD6Æ73°¢&÷fVææ6S¢²FF4öc¢7G&–æs²g&W6†æW75öÆ–7“ó¢g&W6†æW75öÆ–7’Ó°¢òòKëşŠkŞy¨N˜XŞ{ÚîXø®XØZJ~hÈXXéşih~xZ~˜ÈNûÈÎ[‹nKØşˆz®[{y¨Bf7E6†VWD4öfûÈjùN[›>Xû[ú¾xZ~‰Ş[èÎ[›îX¾iÈûÈ8 ¢òò˜XŞ[ŞYINX‹h‰nˆ^ZéikKº^YÉnŠhª¾™Ë.y¨NYû®˜yXh~Y.Kˆjë^ûÈÎYINXúşKº^yYy›Şy[n™»n8 ¢f7E6†VWDF—66Æ÷7W&Só¢f7E6†VWDF—66Æ÷7W&S°¢òò{z‹ÊşjÛšîy¨NKˆjn‹8~yJ.jùNKè¾ûÈÎKˆŞiŠşZéikXˆnšî8.Xéşih~ŠK¸ŞYÊ‚f7E6†VWDF—66Æ÷7W&^8 ¢ÖVDÆÆö6F–öãó¢ÖVDÆÆö6F–öã°¢Ó°¢6öç7Bw&÷WÒ6ö×&—6öäw&÷Wf÷"‡V&Æ—6†VBægVæD6Æ72“°¢6öç7BgVæE6—¦T4öbÒV&Æ—6†VBægVæD6Æ72ægVæE6—¦T4öc°¢&WGW&â6öçFW‡Bæ§6öâ‡°¢ââçV&Æ—6†VBÀ¢6ö×&—6öäw&÷W¢w&÷WææÖRÀ¢6ö×&—6öäw&÷W6÷W&6S¢w&÷Wç6÷W&6RÀ¢g&W6†æW73¢WfÇVFTg&W6†æW72€¢V&Æ—6†VBægVæD6Æ72ç&WGW&å6÷W&6W3òå²#%ÓòæFF4öbóğ¢V&Æ—6†VBægVæD6Æ72ç&WGW&ç44öbóğ¢V&Æ—6†VBç&÷fVææ6RæFF4öbÀ¢&WGW&ç4w&6TF—2‡V&Æ—6†VBç&÷fVææ6Ræg&W6†æW75öÆ–7’’À¢’À¢òòYû®˜yŠhşjŠhÈiÈhª¾™Ë.ûÈÎk+şyJY¹îZy¨NiÈ[ªnZúÎ™™iÉşûÉ¾h‰z¸¾iz^iÉşiŠş™ÙÎhX¾K¨¾ZúnûÈÎKˆŞŠŠŞ˜îiÉş8 ¢âââ†gVæE6—¦T4ö`¢ò°¢gVæE6—¦Tg&W6†æW73¢WfÇVFTg&W6†æW72€¢gVæE6—¦T4öbÀ¢&WGW&ç4w&6TF—2‡V&Æ—6†VBç&÷fVææ6Ræg&W6†æW75öÆ–7’’À¢’À¢Ğ¢¢·Ò’À¢Ò“°§Ò“° §G—Rf7E6†VWDF—66Æ÷7W&RÒ°¢66†VÖTæÖS¢7G&–æs°¢6öç7F—GVVçDgVæDæÖS¢7G&–æs°¢f7E6†VWDf–ÆS¢7G&–æs°¢f7E6†VWEW&Ã¢7G&–æs°¢òòG'W7FVVKø.Xù~Š‰~K«®Zé{k.iÈikKˆiÉşûÈÆ×f×&Vv—7G'–Kø.˜Y¹îz˜Ş˜y[XšşiÊÎûÈÎXZˆ^iÉşXŠ^YINYÎ8 ¢f7E6†VWE6÷W&6S¢'G'W7FVR"Â&×f×&Vv—7G'’#°¢òòiÈh¨N˜ÈNXù~Š‰~K«®Kènk©KØnh«ŞYINX‹ûÈÎXXˆ{>˜Y¹îXšşiÊÎûÉ¾iÊ®h¨N˜ÈNYˆ^ŠˆX¨>Xh~Y.KˆjÈN8 ¢G'W7FVTfÆÆ&6³ó¢G'VS°¢f7E6†VWD4öc¢7G&–æs°¢ÆÆö6F–öç3¢°¢†VF–æs¢7G&–æs°¢VçG&–W3¢²Æ&VÃ¢7G&–æs²W&6VçC¢çVÖ&W"ÕµÓ°¢ÕµÓ°¢òòZéikXú®X‰~YŞjÊYÎŠØX‹YŞ8Xh~hª¾™Ë.hÈiÈ˜xşi˜"W&6VçFiÈ>{Ë®[ŠŞûÈÎYINXúşKº^y[nh‰8 ¢F÷†öÆF–æw3¢²&æ³¢çVÖ&W#²6V7W&—G“¢7G&–æs²W&6VçCó¢çVÖ&W"ÕµÓ°¢Væf–Æ&ÆTf–VÆG3¢7G&–æuµÓ°¢Væf–Æ&ÆU&V6öç3¢&V6÷&CÇ7G&–ærÂ7G&–æsã°¢òòXéşYºih~ZÙ~Kø.Š‹®ik~yJy¨Nˆ»ih~™[~Xú^ûÈÎ{k.z¹YINXúşKº^™ÚZÙ~K‹.jùN[ŞXøŞhêXˆnšîûÈÎh˜Kº^Xún™˜NKº>‰™ş8 ¢Væf–Æ&ÆT¶–æG3¢&V6÷&CÀ¢7G&–ærÀ¢Â&æ÷BÖF—66Æ÷6VB ¢Â&6†'BÖöæÇ’ ¢Â'fÇVW2×v—F†÷WBÖæÖW2 ¢Â&÷fW&Æ–B×FW‡BÖÆ–W" ¢ã°§Ó° §G—RÖVDÆÆö6F–öâĞ¢Â°¢öff–6–Ã¢fÇ6S°¢ÖfW'6–öã¢7G&–æs°¢4öc¢7G&–æs°¢6÷W&6T†VF–æs¢7G&–æs°¢'V6¶WG3¢²WV—G“¢çVÖ&W#²&öæC¢çVÖ&W#²66„æD÷F†W#¢çVÖ&W"Ó°¢Ğ¢Â°¢öff–6–Ã¢fÇ6S°¢ÖfW'6–öã¢7G&–æs°¢4öcó¢7G&–æs°¢Væf–Æ&ÆS¢G'VS°¢&V6öã ¢Â&æ÷BÖ76WBÖ6Æ72 ¢Â&æ÷BÖF—66Æ÷6VB ¢Â&6†'BÖöæÇ’ ¢Â'fÇVW2×v—F†÷WBÖæÖW2 ¢Â&÷fW&Æ–B×FW‡BÖÆ–W"#°¢Ó° §G—R'&÷w6TgVæD6Æ72Ò°¢–C¢7G&–æs°¢gVæD6Æ74æÖS¢7G&–æs°¢6öç7F—GVVçDgVæDæÖS¢7G&–æs°¢66†VÖTæÖS¢7G&–æs°¢G'W7FVTæÖS¢7G&–æs°¢gVæEG—S¢7G&–æs°¢gVæD6FVv÷'“ó¢7G&–æs°¢Æ—W$6FVv÷'“ó¢7G&–æs°¢&—6´6Æ73ó¢çVÖ&W#°¢gVæE&—6´–æF–6F÷#ó¢çVÖ&W#°¢æçVÆ—¦VE&WGW&ã“ó¢çVÖ&W#°¢æçVÆ—¦VE&WGW&ã7“ó¢çVÖ&W#°¢æçVÆ—¦VE&WGW&ãW“ó¢çVÖ&W#°¢æçVÆ—¦VE&WGW&ã“ó¢çVÖ&W#°¢ÖævVÖVçDfVSó¢çVÖ&W#°¢fVT63ó¢7G&–æuµÓ°¢ÆFW7DfW#ó¢çVÖ&W#°¢FF4öcó¢7G&–æs°¢gVæE6—¦T†¶DÖ–ÆÆ–öãó¢çVÖ&W#°¢gVæE6—¦T4öcó¢7G&–æs°¢&WGW&ç44öcó¢7G&–æs°¢&WGW&å6÷W&6W3ó¢&V6÷&CÇ7G&–ærÂ²FF4öc¢7G&–æs²6÷W&6UW&Ã¢7G&–ærÓã°¢ÆVæ6„FFSó¢7G&–æs°¢—4F—46ö×öæVçCó¢&6÷&Uö67V×VÆF–öâ"Â&vScU÷ÇW2#°¢fW&–f–6F–öå7FGW3¢7G&–æs°§Ó° §G—RV&Æ—6†VDgVæE–ÆöBÒ°¢gVæD6Æ73¢'&÷w6TgVæD6Æ72b²Væf–Æ&ÆTf–VÆG3ó¢7G&–æuµÒÓ°¢ÖVDÆÆö6F–öãó¢ÖVDÆÆö6F–öã°¢f7E6†VWDF—66Æ÷7W&Só¢f7E6†VWDF—66Æ÷7W&S°§Ó° ¦gVæ7F–öâF÷6öæ6VçG&F–öâ€¢F—66Æ÷7W&S¢f7E6†VWDF—66Æ÷7W&RÂVæFVf–æVBÀ¢“¢çVÖ&W"ÂVæFVf–æVB°¢–b€¢F—66Æ÷7W&RÇÀ¢F—66Æ÷7W&RçVæf–Æ&ÆTf–VÆG2æ–æ6ÇVFW2‚'F÷†öÆF–æw2"’ÇÀ¢F—66Æ÷7W&RçF÷†öÆF–æw2æÆVæwF‚ÓÓÒÇÀ¢F—66Æ÷7W&RçF÷†öÆF–æw2ç6öÖR€¢††öÆF–ær’Óà¢G—Vöb†öÆF–ærçW&6VçBÓÒ&çVÖ&W""ÇÀ¢çVÖ&W"æ—4f–æ—FR††öÆF–ærçW&6VçB’À¢¢’°¢&WGW&âVæFVf–æVC°¢Ğ¢&WGW&âçVÖ&W"€¢F—66Æ÷7W&RçF÷†öÆF–æw0¢ç&VGV6R‚‡7VÒÂ†öÆF–ær’Óâ7VÒ²†öÆF–ærçW&6VçBÂ¢çFôf—†VBƒ"’À¢“°§Ğ ¦7–æ2gVæ7F–öâÆöEV&Æ—6†VDgVæD6Æ76W2€¢F#¢V&Æ–6F–öä&–æF–æw5²$D"%ÒÀ¢“¢&öÖ—6SÄ'&÷w6TgVæD6Æ75µÓâ°¢6öç7B&÷w2Òv—BF ¢ç&W&R€¢4TÄT5Bbç–Æö@¢e$ôÒ7W'&VçE÷V&Æ–6F–öâ0¢¤ô”âgVæEö6Æ75÷fW'6–öç2bôâbç6æ6†÷Eö–BÒ2ç6æ6†÷Eö–@¢t„U$R2ç6–ævÆWFöâÒÀ¢¢æÆÃÇ²–ÆöC¢7G&–ærÓâ‚“° ¢&WGW&â&÷w2ç&W7VÇG2æÖ€¢‡&÷r’Óà¢„¥4ôâç'6R‡&÷rç–ÆöB’2²gVæD6Æ73¢'&÷w6TgVæD6Æ72Ò’ægVæD6Æ72À¢“°§Ğ §G—RV&Æ—6†VE6V&6„gVæBÒ°¢gVæD6Æ73¢'&÷w6TgVæD6Æ73°¢&÷fVææ6Só¢²FF4öcó¢7G&–æs²g&W6†æW75öÆ–7“ó¢g&W6†æW75öÆ–7’Ó°§Ó° ¦7–æ2gVæ7F–öâÆöEV&Æ—6†VE6V&6„gVæG2€¢F#¢V&Æ–6F–öä&–æF–æw5²$D"%ÒÀ¢“¢&öÖ—6SÅV&Æ—6†VE6V&6„gVæEµÓâ°¢6öç7B&÷w2Òv—BF ¢ç&W&R€¢4TÄT5Bbç–Æö@¢e$ôÒ7W'&VçE÷V&Æ–6F–öâ0¢¤ô”âgVæEö6Æ75÷fW'6–öç2bôâbç6æ6†÷Eö–BÒ2ç6æ6†÷Eö–@¢t„U$R2ç6–ævÆWFöâÒÀ¢¢æÆÃÇ²–ÆöC¢7G&–ærÓâ‚“° ¢&WGW&â&÷w2ç&W7VÇG2æÖ€¢‡&÷r’Óâ¥4ôâç'6R‡&÷rç–ÆöB’2V&Æ—6†VE6V&6„gVæBÀ¢“°§Ğ ¦7–æ2gVæ7F–öâÆöD6Æ76–f–6F–öâ€¢F#¢V&Æ–6F–öä&–æF–æw5²$D"%ÒÀ¢“¢&öÖ—6SÄ6Æ76–f–6F–öâÂçVÆÃâ°¢6öç7B&÷rÒv—BF ¢ç&W&R€¢4TÄT5Bbç–Æö@¢e$ôÒ7W'&VçE÷V&Æ–6F–öâ0¢¤ô”âgVæEö6Æ75÷fW'6–öç2bôâbç6æ6†÷Eö–BÒ2ç6æ6†÷Eö–@¢t„U$R2ç6–ævÆWFöâÒ¢Ä”Ô•BÀ¢¢æf—'7CÇ²–ÆöC¢7G&–ærÓâ‚“° ¢&WGW&â&÷p¢ò6Æ76–f–6F–öäöb€¢¥4ôâç'6R‡&÷rç–ÆöB’2²6Æ76–f–6F–öãó¢6Æ76–f–6F–öâÒÀ¢¢¢çVÆÃ°§Ğ ¦gVæ7F–öâ¶æ÷vå&WGW&â‡fÇVS¢çVÖ&W"ÂVæFVf–æVB’°¢&WGW&âG—VöbfÇVRÓÓÒ&çVÖ&W""bbçVÖ&W"æ—4f–æ—FR‡fÇVR¢òfÇVP¢¢VæFVf–æVC°§Ğ ¦ævWB‚"÷6V&6‚"Â7–æ2†6öçFW‡B’Óâ°¢6öç7BVW.û×›h‘éì¶»§q«^t›X[˜YÙ[Y[Ù™YH‹ˆÛÜ\™Xİ[Ûˆ˜\ØÙ[™[™È‹ˆ\Ü^T™XÚ\Ú[Ûˆ‹ˆ[š]ˆ‰H‹ˆKˆËÈ9¬è¹nay£¤¹n£ùå*9k¦9¥®yæ¡9gîºaäzhª:fª¹£!ùª&{ï"9nm9n©¹c%¹ª&y®¥¹më»ï"{ï#9.#yå*:hª:fª¹í&¹b)xà ºhª:fª¹í&¹b)ycê¹§"HH:!ìÈÈ9í&»ï#ˆËÈLH:f®ùgîºaäy¤è9g*È9`"ù`/:(è{ï#9d#9ía9i)úaãù.)¹b%ûï#:`e9.#yb,ÓÓ•V›Y9l#xà#:/ ù/c¹¬è¹nay£¤¹n£øà#yæ¡9k¦¹ïªxà ‚ˆËÈ:hª:fª¹í&¹b)y.ãyá-¹/çyåfy/gÜÙX\˜ÚÜš\ÚĞÛ\ÜÏX9æ¡9ëêz`n9¨§y.í¸à ‚ˆš\ÚÎˆÂˆšY[ˆ™[™š\ÚÒ[™XØ]Üˆ‹ˆY]ÙÛÙŞNˆ™[™Üš\Ú×Ú[™XØ]Üˆ‹ˆÛÜ\™Xİ[Ûˆ˜\ØÙ[™[™È‹ˆ\Ü^T™XÚ\Ú[Ûˆ‹ˆ[š]ˆ‰H‹ˆKŸH\ÈÛÛœİÂ‚\H˜[šÚ[™ÓY]šXÈHœ™]\›ˆˆÙ^[Ùˆ\[Ùˆ˜[šÚ[™ÓY]šXÜÎÂ‚˜\™Ù]
-‹Ü˜[šÚ[™ÜÈ‹\Ş[˜È
-ÛÛ^
-HOˆÂˆÛÛœİY]šXÈH
-ÛÛ^œ™\Kœ]Y\J›Y]šXÈŠHÏÈœ™]\›ˆŠH\È˜[šÚ[™ÓY]šXÎÂˆYˆ
-Y]šXÈOOHœ™]\›ˆˆ	‰ˆJY]šXÈ[ˆ˜[šÚ[™ÓY]šXÜÊJHÂˆ™]\›ˆÛÛ^šœÛÛŠˆÂˆ\œ›Üˆ•[œİ\ÜY˜[šÚ[™ÈY]šXÈ‹ˆİ\ÜYY]šXÜÎˆÈœ™]\›ˆ‹™™YH‹œš\ÚÈ—Kˆ™X\ÛÛˆ¹fç¹h,xà z,®ùå*9câºhª:fª¹í&¹b)yb!ºe¢ù£¤¹n£ûï#9í¬¹êæy.#y§ ùd"9¢$9e«¹. 9£ª:%©¹î/yb!¸à ˆ‹ˆKˆˆ
-NÂˆBˆÛÛœİ\š[Ù\˜[HHÛÛ^œ™\Kœ]Y\Jœ\š[ÙŠNÂˆÛÛœİ™\]Y\İYBˆ\š[Ù\˜[HOOH[™Yš[™YÈY˜][˜[šÚ[™Ô\š[Ùˆ[X™\Š\š[Ù\˜[JNÂˆYˆ
-Y]šXÈOOHœ™]\›ˆˆ	‰ˆJ™\]Y\İY[ˆ˜[šÚ[™Ô™]\›‘šY[ÊJHÂˆ™]\›ˆÛÛ^šœÛÛŠˆÂˆ\œ›Üˆ•[œİ\ÜY˜[šÚ[™È\š[Ù‹ˆİ\ÜY\š[ÙÎˆÌKËKLKˆ™X\ÛÛ‚ˆ¹fç¹h,y£¤¹d#ycê¹£©ycåùk¦9¥®ymì¹¢ªúg,¹æ¡9nm9ã¡ùc%¹§'úe¤ûï&¹. 9nm8à y."ynm8à y.¥9nm8à yc`ynm8à ˆ‹ˆKˆˆ
-NÂˆBˆÛÛœİ\š[ÙYX\œÈHY]šXÈOOHœ™]\›ˆˆÈ
-™\]Y\İY\È˜[šÚ[™Ô\š[Ù
-Hˆ[ÂˆÛÛœİÙ[XİYBˆY]šXÈOOHœ™]\›ˆ‚ˆÈÂˆšY[ˆ˜[šÚ[™Ô™]\›‘šY[ÖÜ\š[ÙYX\œÈ\È˜[šÚ[™Ô\š[ÙKˆY]ÙÛÙŞNˆ˜[›X[^™YÜ™]\›ˆ‹ˆÛÜ\™Xİ[Ûˆ™\ØÙ[™[™Èˆ\ÈÛÛœİˆ\Ü^T™XÚ\Ú[Ûˆ‹ˆ[š]ˆ‰H‹ˆBˆˆ˜[šÚ[™ÓY]šXÜÖÛY]šX×NÂˆÛÛœİ˜[YQšY[HÙ[XİY™šY[ÂˆÛÛœİ›İÜÈH]ØZ]ÛÛ^™[‹‘‹œ™\\™JˆÑSPÕËœÛ˜\ÚİÚY‹œ^[ØYˆ”“ÓHİ\œ™[ÜX›XØ][ÛˆÂˆ“ÒSˆ[™ØÛ\Ü×İ™\œÚ[ÛœÈˆÓˆ‹œÛ˜\ÚİÚYHËœÛ˜\ÚİÚYˆÒT‘HËœÚ[™Û]ÛˆHXˆ
-K˜[ÈÛ˜\ÚİÚYˆİš[™ÎÈ^[ØYˆİš[™ÈOŠ
-NÂˆÛÛœİ\œÙYH›İÜËœ™\İ[Ë›X\
+import { Hono } from "hono";
+import { cors } from "hono/cors";
+import { publicationCache } from "./caching";
+import {
+  classificationOf,
+  comparisonGroupFor,
+  comparisonGroupSourceOf,
+  type Classification,
+} from "./comparison-group";
+import {
+  evaluateFreshness,
+  fundOverviewGraceDays,
+  returnsGraceDays,
+  type FreshnessPolicy,
+  type PublishedFreshness,
+} from "./freshness";
+import type { PublicationBindings } from "./publication";
+import { interpretFund } from "../../../packages/coverage/src/fund-interpretation";
 
-›İÊHOˆ
-ÂˆÛ˜\ÚİYˆ›İËœÛ˜\ÚİÚYˆX›XØ][Ûˆ”ÓÓ‹œ\œÙJ›İËœ^[ØY
-H\ÈÂˆÛ\ÜÚYšXØ][ÛÎˆÛ\ÜÚYšXØ][ÛÂˆ[™Û\ÜÎˆÂˆYˆİš[™ÎÂˆ[™Û\ÜÓ˜[YNˆİš[™ÎÂˆÛÛœİ]Y[[™˜[YNˆİš[™ÎÂˆØÚ[YS˜[YNˆİš[™ÎÂˆ\İYS˜[YNˆİš[™ÎÂˆ[™\OÎˆİš[™ÎÂˆ[™Ø]YÛÜNˆİš[™ÎÂˆ\\Ø]YÛÜOÎˆİš[™ÎÂˆ[›X[^™Y™]\›Œ^OÎˆ[X™\Âˆ[›X[^™Y™]\›ŒŞOÎˆ[X™\Âˆ[›X[^™Y™]\›^OÎˆ[X™\Âˆ[›X[^™Y™]\›ŒLOÎˆ[X™\Âˆ™]\›”Ûİ\˜Ù\ÏÎˆ™XÛÜ™ˆİš[™ËˆÈ]P\ÓÙˆİš[™ÎÈÛİ\˜ÙU\›ˆİš[™ÎÈ™]šY]™Y]Îˆİš[™ÈBˆÂˆX[˜YÙ[Y[™YOÎˆ[X™\Âˆš\ÚĞÛ\ÜÏÎˆ[X™\Âˆ[™š\ÚÒ[™XØ]ÜÎˆ[X™\Âˆ]P\ÓÙˆİš[™ÎÂˆ™\šYšXØ][Û”İ]\Îˆİš[™ÎÂˆNÂˆ›İ™[˜[˜ÙNˆÂˆÛİ\˜ÙU\›ˆİš[™ÎÂˆ]P\ÓÙˆİš[™ÎÂˆ™\šYšXØ][Û”İ]\Îˆİš[™ÎÂˆœ™\Ú™\ÜÔÛXŞOÎˆœ™\Ú™\ÜÔÛXŞNÂˆNÂˆKˆJJNÂˆÛÛœİ]˜[X]Y]H™]È]J
-NÂˆ]^ÛYYİ[PÛİ[HÂˆËÈ9kë:fd9¥éy¥n:`$9`"ùgîºaäzhg¹b)z*";ï#9e%9cëù.éy­ê9/à¹å*9ë+9. :f®ùgîºaäyf!Hœ™\Ú™\ÜÔÛXŞH9.èú(j9aj:`ê8 %8 %ˆËÈ[™İ™\šY]ÑÜ˜XÙQ^\È: #9k­¹£"yd!:*"9b ú,¨y¥/ùnm9íd9¥éyd!:!ê¹e%9d#;ï":)¢ÈÌNL»ï"xà º$/yf§ÈY]ÙÛÙŞBˆËÈ:hkùé.¹f!HÜ˜XÙQ^\È9­ê9/à¹cå¹ë+9. :f®ùgîºaäy`f¹.èú(j;ï#9cê¹/g9càú  ûï#9kéºf¦ùëêz`n9. 9o¢ùå*:`$:f®ùgîºaäz!ê¹mìyeì9`"øà ‚ˆÛÛœİY]ÙÛÙŞQÜ˜XÙQ^\ÈBˆY]šXÈOOHœ™]\›ˆ‚ˆÈ™]\›œÑÜ˜XÙQ^\Ê\œÙYÌOËœX›XØ][Û‹œ›İ™[˜[˜ÙK™œ™\Ú™\ÜÔÛXŞJBˆˆ[™İ™\šY]ÑÜ˜XÙQ^\Êˆ\œÙYÌOËœX›XØ][Û‹œ›İ™[˜[˜ÙK™œ™\Ú™\ÜÔÛXŞKˆ
-NÂˆÛÛœİ[YÚX›HH\œÙY™›]X\
+type Bindings = PublicationBindings & {
+  RELEASE_VERSION: string;
+};
 
-ÈÛ˜\ÚİYX›XØ][ÛˆJHOˆÂˆÛÛœİ˜[YHHX›XØ][Û‹™[™Û\ÜÖİ˜[YQšY[NÂˆÛÛœİ™]\›”Ûİ\˜ÙHBˆY]šXÈOOHœ™]\›ˆ‚ˆÈX›XØ][Û‹™[™Û\ÜËœ™]\›”Ûİ\˜Ù\ÏË–Ôİš[™Ê\š[ÙYX\œÊWBˆˆ[™Yš[™YÂˆÛÛœİ]P\ÓÙˆH™]\›”Ûİ\˜ÙOË™]P\ÓÙˆÏÈX›XØ][Û‹œ›İ™[˜[˜ÙK™]P\ÓÙÂˆÛÛœİÛİ\˜ÙU\›Bˆ™]\›”Ûİ\˜ÙOËœÛİ\˜ÙU\›ÏÈX›XØ][Û‹œ›İ™[˜[˜ÙKœÛİ\˜ÙU\›ÂˆYˆ
-ˆX›XØ][Û‹™[™Û\ÜË™\šYšXØ][Û”İ]\ÈOOH™\šYšYYˆˆX›XØ][Û‹œ›İ™[˜[˜ÙK™\šYšXØ][Û”İ]\ÈOOH™\šYšYYˆˆ\[Ùˆ˜[YHOOH›[X™\ˆˆˆS[X™\‹š\Ñš[š]J˜[YJBˆ
-HÂˆ™]\›ˆ×NÂˆBˆÛÛœİÜ˜XÙQ^\ÈBˆY]šXÈOOHœ™]\›ˆ‚ˆÈ™]\›œÑÜ˜XÙQ^\ÊX›XØ][Û‹œ›İ™[˜[˜ÙK™œ™\Ú™\ÜÔÛXŞJBˆˆ[™İ™\šY]ÑÜ˜XÙQ^\ÊX›XØ][Û‹œ›İ™[˜[˜ÙK™œ™\Ú™\ÜÔÛXŞJNÂˆYˆ
-ˆ]˜[X]Qœ™\Ú™\ÜÊ]P\ÓÙ‹Ü˜XÙQ^\Ë]˜[X]Y]
-Kœİ]\ÈOOH™\šYšYY‚ˆ
-HÂˆ^ÛYYİ[PÛİ[
-ÏHNÂˆ™]\›ˆ×NÂˆBˆ™]\›ˆŞÈÛ˜\ÚİYX›XØ][Û‹˜[YK]P\ÓÙ‹Ûİ\˜ÙU\›WNÂˆJNÂˆÛÛœİÜ›İ\ÈHX\™Ü›İ\Jˆ[YÚX›Kˆ
-ÈX›XØ][ÛˆJHOˆÛÛ\\š\ÛÛ‘Ü›İ\›ÜŠX›XØ][Û‹™[™Û\ÜÊK›˜[YKˆ
-NÂˆÛÛœİ™XÚ\Ú[ÛˆHÙ[XİY™\Ü^T™XÚ\Ú[ÛÂˆÛÛœİ\™Xİ[ÛˆHÙ[XİYœÛÜ\™Xİ[ÛˆOOH˜\ØÙ[™[™ÈˆÈHˆLNÂˆÛÛœİ˜[šÚ[™ÜÈHË‹‹™Ü›İ\Ë™[šY\Ê
-WK™›]X\
+const app = new Hono<{ Bindings: Bindings }>();
 
-ØÛÛ\\š\ÛÛ‘Ü›İ\[™×JHOˆÂˆ[™ËœÛÜ
+const SEARCH_RESULT_LIMIT = 50;
 
-KŠHOˆÂˆÛÛœİÜ™\™YBˆ\™Xİ[Ûˆ
-‚ˆ
-[X™\ŠK˜[YKÑš^Y
-™XÚ\Ú[ÛŠJHBˆ[X™\Š‹˜[YKÑš^Y
-™XÚ\Ú[ÛŠJJNÂˆ™]\›ˆÜ™\™YOOHˆÈÜ™\™YˆˆKœX›XØ][Û‹™[™Û\ÜËšY›ØØ[PÛÛ\\™J‹œX›XØ][Û‹™[™Û\ÜËšY
-NÂˆJNÂˆ]™]š[İ\Õ˜[YNˆ[X™\ˆ[™Yš[™YÂˆ]™]š[İ\Ô˜[šÈHÂˆ™]\›ˆ[™Ë›X\
+app.use("*", cors({ origin: "*", exposeHeaders: ["X-Total-Matches"] }));
+app.use("*", publicationCache());
 
-ÈX›XØ][Û‹˜[YK]P\ÓÙ‹Ûİ\˜ÙU\›K[™^
-HOˆÂˆÛÛœİ\Ü^YYH[X™\Š˜[YKÑš^Y
-™XÚ\Ú[ÛŠJNÂˆÛÛœİ˜[šÈH\Ü^YYOOH™]š[İ\Õ˜[YHÈ™]š[İ\Ô˜[šÈˆ[™^
-ÈNÂˆ™]š[İ\Õ˜[YHH\Ü^YYÂˆ™]š[İ\Ô˜[šÈH˜[šÎÂˆ™]\›ˆÂˆ[™Û\ÜÒYˆX›XØ][Û‹™[™Û\ÜËšYˆ[™Û\ÜÓ˜[YNˆX›XØ][Û‹™[™Û\ÜË™[™Û\ÜÓ˜[YKˆÛÛœİ]Y[[™˜[YNˆX›XØ][Û‹™[™Û\ÜË˜ÛÛœİ]Y[[™˜[YKˆØÚ[YS˜[YNˆX›XØ][Û‹™[™Û\ÜËœØÚ[YS˜[YKˆ\İYS˜[YNˆX›XØ][Û‹™[™Û\ÜË\İYS˜[YKˆÛÛ\\š\ÛÛ‘Ü›İ\ˆÛÛ\\š\ÛÛ‘Ü›İ\Ûİ\˜ÙNˆÛÛ\\š\ÛÛ‘Ü›İ\Ûİ\˜ÙSÙŠÛÛ\\š\ÛÛ‘Ü›İ\
-Kˆ˜[YKˆ\Ü^U˜[YNˆ	İ˜[YKÑš^Y
-™XÚ\Ú[ÛŠ_IÜÙ[XİY[š]Xˆ˜[šËˆ]P\ÓÙ‹ˆÛİ\˜ÙU\›ˆNÂˆJNÂˆJNÂ‚ˆ™]\›ˆÛÛ^šœÛÛŠÂˆÛ˜\ÚİYˆ›İÜËœ™\İ[ÖÌOËœÛ˜\ÚİÚYÏÈ[ˆÛÛ\\š\ÛÛ‘Ü›İ\ÎˆÂˆ‹‹›™]ÈÙ]
-ˆ\œÙY›X\
-ˆ
-ÈX›XØ][ÛˆJHOˆÛÛ\\š\ÛÛ‘Ü›İ\›ÜŠX›XØ][Û‹™[™Û\ÜÊK›˜[YKˆ
-Kˆ
-KˆKœÛÜ
+app.get("/health", (context) =>
+  context.json({
+    status: "ok",
+    version: context.env.RELEASE_VERSION,
+    bindings: {
+      d1: Boolean(context.env.DB),
+      r2: Boolean(context.env.RAW_ARCHIVE),
+    },
+  }),
+);
 
-KˆY]šXËˆ\š[ÙYX\œËˆ^ÛYYİ[PÛİ[ˆY]ÙÛÙŞNˆÂˆY]šXÎˆÙ[XİY›Y]ÙÛÙŞKˆÜ›İ\[™Îˆ˜ÛÛ\\š\ÛÛ—ÙÜ›İ\‹ˆÛ\ÜÚYšXØ][ÛˆÛ\ÜÚYšXØ][Û“ÙŠ\œÙYÌOËœX›XØ][ÛŠKˆÛÜ\™Xİ[ÛˆÙ[XİYœÛÜ\™Xİ[Û‹ˆ\Ü^T™XÚ\Ú[Ûˆ™XÚ\Ú[Û‹ˆœ™\Ú™\ÜÎˆÂˆÜ˜XÙQ^\ÎˆY]ÙÛÙŞQÜ˜XÙQ^\Ëˆ]˜[X]YÛˆ]˜[X]Y]ÒTÓÔİš[™Ê
-KœÛXÙJL
-Kˆ[Nˆº,áù¥¦y¢*º!ìù¥éy§'ú-¡yaî¹k¦9¥®y¢ªúg,¹kë:fd9§'ùæ¡9¥n9`/9.#ycàú"!ù£¤¹d#{ï#9/a¹.ãycëùg*9gîºaäz*lù ázh z`(ùd#9c§ù¢*º!ìù¥éy§'ù§éyç"øà ˆ‹ˆKˆKˆ˜[šÚ[™ÜËˆJNÂŸJNÂ‚˜\››İ›İ[™
+app.get("/fund-classes/:id", async (context) => {
+  const row = await context.env.DB.prepare(
+    `SELECT f.payload
+     FROM current_publication c
+     JOIN fund_class_versions f ON f.snapshot_id = c.snapshot_id
+     WHERE c.singleton = 1 AND f.fund_class_id = ?`,
+  )
+    .bind(context.req.param("id"))
+    .first<{ payload: string }>();
 
-ÛÛ^
-HOˆÛÛ^šœÛÛŠÈ\œ›Üˆ“›İ›İ[™ˆK
-JNÂ‚™^ÜY˜][\Â
+  if (!row) return context.json({ error: "Fund class not found" }, 404);
+  const published = JSON.parse(row.payload) as {
+    fundClass: BrowseFundClass;
+    provenance: { dataAsOf: string; freshnessPolicy?: FreshnessPolicy };
+    // ä¾¿è¦½çš„é…ç½®åŠåå¤§æŒå€‰åŸæ–‡ç…§éŒ„ï¼Œå¸¶ä½è‡ªå·±çš„ `factSheetAsOf`ï¼ˆæ¯”å¹³å°å¿«ç…§è½å¾Œå¹¾å€‹æœˆï¼‰ã€‚
+    // é…å°å””åˆ°æˆ–è€…å®˜æ–¹ä»¥åœ–è¡¨æŠ«éœ²çš„åŸºé‡‘å†‡å‘¢ä¸€æ®µï¼Œå””å¯ä»¥ç•™ç™½ç•¶é›¶ã€‚
+    factSheetDisclosure?: FactSheetDisclosure;
+    // ç·¨è¼¯æ­¸é¡çš„ä¸‰æ¡¶è³‡ç”¢æ¯”ä¾‹ï¼Œä¸æ˜¯å®˜æ–¹åˆ†é¡ã€‚åŸæ–‡è¡¨ä»åœ¨ factSheetDisclosureã€‚
+    mappedAllocation?: MappedAllocation;
+  };
+  const group = comparisonGroupFor(published.fundClass);
+  const fundSizeAsOf = published.fundClass.fundSizeAsOf;
+  return context.json({
+    ...published,
+    comparisonGroup: group.name,
+    comparisonGroupSource: group.source,
+    freshness: evaluateFreshness(
+      published.fundClass.returnSources?.["1"]?.dataAsOf ??
+        published.fundClass.returnsAsOf ??
+        published.provenance.dataAsOf,
+      returnsGraceDays(published.provenance.freshnessPolicy),
+    ),
+    // åŸºé‡‘è¦æ¨¡æŒ‰æœˆæŠ«éœ²ï¼Œæ²¿ç”¨å›å ±çš„æœˆåº¦å¯¬é™æœŸï¼›æˆç«‹æ—¥æœŸæ˜¯éœæ…‹äº‹å¯¦ï¼Œä¸è¨­éæœŸã€‚
+    ...(fundSizeAsOf
+      ? {
+          fundSizeFreshness: evaluateFreshness(
+            fundSizeAsOf,
+            returnsGraceDays(published.provenance.freshnessPolicy),
+          ),
+        }
+      : {}),
+  });
+});
+
+type FactSheetDisclosure = {
+  schemeName: string;
+  constituentFundName: string;
+  factSheetFile: string;
+  factSheetUrl: string;
+  // `trustee` ä¿‚å—è¨—äººå®˜ç¶²æœ€æ–°ä¸€æœŸï¼Œ`mpfa-registry` ä¿‚é€€å›ç©é‡‘å±€å‰¯æœ¬ï¼Œå…©è€…æœŸåˆ¥å””åŒã€‚
+  factSheetSource: "trustee" | "mpfa-registry";
+  // æœ‰æŠ„éŒ„å—è¨—äººä¾†æºä½†æŠ½å””åˆ°ï¼Œå…ˆè‡³é€€å›å‰¯æœ¬ï¼›æœªæŠ„éŒ„å˜…è¨ˆåŠƒå†‡å‘¢ä¸€æ¬„ã€‚
+  trusteeFallback?: true;
+  factSheetAsOf: string;
+  allocations: {
+    heading: string;
+    entries: { label: string; percent: number }[];
+  }[];
+  // å®˜æ–¹åªåˆ—åæ¬¡åŒè­‰åˆ¸åã€å†‡æŠ«éœ²æŒæœ‰é‡æ™‚ `percent` æœƒç¼ºå¸­ï¼Œå””å¯ä»¥ç•¶æˆ 0ã€‚
+  topHoldings: { rank: number; security: string; percent?: number }[];
+  unavailableFields: string[];
+  unavailableReasons: Record<string, string>;
+  // åŸå› æ–‡å­—ä¿‚è¨ºæ–·ç”¨çš„è‹±æ–‡é•·å¥ï¼Œç¶²ç«™å””å¯ä»¥é å­—ä¸²æ¯”å°åæ¨åˆ†é¡ï¼Œæ‰€ä»¥å¦é™„ä»£è™Ÿã€‚
+  unavailableKinds: Record<
+    string,
+    | "not-disclosed"
+    | "chart-only"
+    | "values-without-names"
+    | "overlaid-text-layer"
+  >;
+};
+
+type MappedAllocation =
+  | {
+      official: false;
+      mapVersion: string;
+      asOf: string;
+      sourceHeading: string;
+      buckets: { equity: number; bond: number; cashAndOther: number };
+    }
+  | {
+      official: false;
+      mapVersion: string;
+      asOf?: string;
+      unavailable: true;
+      reason:
+        | "not-asset-class"
+        | "not-disclosed"
+        | "chart-only"
+        | "values-without-names"
+        | "overlaid-text-layer";
+    };
+
+type BrowseFundClass = {
+  id: string;
+  fundClassName: string;
+  constituentFundName: string;
+  schemeName: string;
+  trusteeName: string;
+  fundType: string;
+  fundCategory?: string;
+  lipperCategory?: string;
+  riskClass?: number;
+  fundRiskIndicator?: number;
+  annualizedReturn1y?: number;
+  annualizedReturn3y?: number;
+  annualizedReturn5y?: number;
+  annualizedReturn10y?: number;
+  managementFee?: number;
+  feeCaps?: string[];
+  latestFer?: number;
+  dataAsOf?: string;
+  fundSizeHkdMillion?: number;
+  fundSizeAsOf?: string;
+  returnsAsOf?: string;
+  returnSources?: Record<string, { dataAsOf: string; sourceUrl: string }>;
+  launchDate?: string;
+  isDisComponent?: "core_accumulation" | "age65_plus";
+  verificationStatus: string;
+};
+
+type PublishedFundPayload = {
+  fundClass: BrowseFundClass & { unavailableFields?: string[] };
+  mappedAllocation?: MappedAllocation;
+  factSheetDisclosure?: FactSheetDisclosure;
+};
+
+function top10Concentration(
+  disclosure: FactSheetDisclosure | undefined,
+): number | undefined {
+  if (
+    !disclosure ||
+    disclosure.unavailableFields.includes("topHoldings") ||
+    disclosure.topHoldings.length === 0 ||
+    disclosure.topHoldings.some(
+      (holding) =>
+        typeof holding.percent !== "number" ||
+        !Number.isFinite(holding.percent),
+    )
+  ) {
+    return undefined;
+  }
+  return Number(
+    disclosure.topHoldings
+      .reduce((sum, holding) => sum + holding.percent!, 0)
+      .toFixed(2),
+  );
+}
+
+async function loadPublishedFundClasses(
+  db: PublicationBindings["DB"],
+): Promise<BrowseFundClass[]> {
+  const rows = await db
+    .prepare(
+      `SELECT f.payload
+     FROM current_publication c
+     JOIN fund_class_versions f ON f.snapshot_id = c.snapshot_id
+     WHERE c.singleton = 1`,
+    )
+    .all<{ payload: string }>();
+
+  return rows.results.map(
+    (row) =>
+      (JSON.parse(row.payload) as { fundClass: BrowseFundClass }).fundClass,
+  );
+}
+
+type PublishedSearchFund = {
+  fundClass: BrowseFundClass;
+  provenance?: { dataAsOf?: string; freshnessPolicy?: FreshnessPolicy };
+};
+
+async function loadPublishedSearchFunds(
+  db: PublicationBindings["DB"],
+): Promise<PublishedSearchFund[]> {
+  const rows = await db
+    .prepare(
+      `SELECT f.payload
+       FROM current_publication c
+       JOIN fund_class_versions f ON f.snapshot_id = c.snapshot_id
+       WHERE c.singleton = 1`,
+    )
+    .all<{ payload: string }>();
+
+  return rows.results.map(
+    (row) => JSON.parse(row.payload) as PublishedSearchFund,
+  );
+}
+
+async function loadClassification(
+  db: PublicationBindings["DB"],
+): Promise<Classification | null> {
+  const row = await db
+    .prepare(
+      `SELECT f.payload
+     FROM current_publication c
+     JOIN fund_class_versions f ON f.snapshot_id = c.snapshot_id
+     WHERE c.singleton = 1
+     LIMIT 1`,
+    )
+    .first<{ payload: string }>();
+
+  return row
+    ? classificationOf(
+        JSON.parse(row.payload) as { classification?: Classification },
+      )
+    : null;
+}
+
+function knownReturn(value: number | undefined) {
+  return typeof value === "number" && Number.isFinite(value)
+    ? value
+    : undefined;
+}
+
+app.get("/search", async (context) => {
+  const query = context.req.query("q")?.trim().toLocaleLowerCase();
+  const category = context.req.query("category")?.trim();
+  const fundType = context.req.query("fundType")?.trim();
+  const fundCategory = context.req.query("fundCategory")?.trim();
+  const trustee = context.req.query("trustee")?.trim();
+  const riskClassParam = context.req.query("riskClass")?.trim();
+  const riskClass = riskClassParam ? Number(riskClassParam) : undefined;
+
+  const evaluatedAt = new Date();
+  const matches = (await loadPublishedSearchFunds(context.env.DB))
+    .map((published) => {
+      const dataAsOf =
+        published.fundClass.returnSources?.["1"]?.dataAsOf ??
+        published.fundClass.returnsAsOf ??
+        published.provenance?.dataAsOf ??
+        published.fundClass.dataAsOf;
+      return {
+        fundClass: published.fundClass,
+        freshness: dataAsOf
+          ? evaluateFreshness(
+              dataAsOf,
+              returnsGraceDays(published.provenance?.freshnessPolicy),
+              evaluatedAt,
+            )
+          : undefined,
+      };
+    })
+    .filter(({ fundClass }) => {
+      if (
+        query &&
+        ![
+          fundClass.fundClassName,
+          fundClass.constituentFundName,
+          fundClass.schemeName,
+          fundClass.trusteeName,
+        ].some((value) => value.toLocaleLowerCase().includes(query))
+      )
+        return false;
+      if (category && comparisonGroupFor(fundClass).name !== category)
+        return false;
+      if (fundType && fundClass.fundType !== fundType) return false;
+      if (fundCategory && fundClass.fundCategory !== fundCategory) return false;
+      if (trustee && fundClass.trusteeName !== trustee) return false;
+      if (
+        riskClass !== undefined &&
+        Number.isFinite(riskClass) &&
+        fundClass.riskClass !== riskClass
+      )
+        return false;
+      return true;
+    });
+
+  // å…ˆæŒ‰å®˜æ–¹ä¸€å¹´å¹´ç‡åŒ–å›å ±ç”±é«˜è‡³ä½æ’åºï¼Œè®“è¢«æˆªæ–·çš„çµæœä»ç„¶æ˜¯è¡¨ç¾æœ€å¥½çš„ä¸€æ‰¹ï¼›
+  // å®˜æ–¹æœªæä¾›å›å ±çš„åŸºé‡‘æ’åœ¨æœ€å¾Œï¼ŒåŒå€¼å†ä»¥è­˜åˆ¥ç¢¼ç©©å®šæ’åºã€‚
+  matches.sort((a, b) => {
+    const left = knownReturn(a.fundClass.annualizedReturn1y);
+    const right = knownReturn(b.fundClass.annualizedReturn1y);
+    if (left !== undefined && right !== undefined && left !== right)
+      return right - left;
+    if ((left === undefined) !== (right === undefined))
+      return left === undefined ? 1 : -1;
+    return a.fundClass.id.localeCompare(b.fundClass.id);
+  });
+
+  const results = matches
+    .slice(0, SEARCH_RESULT_LIMIT)
+    .map(({ fundClass, freshness }) => {
+      const group = comparisonGroupFor(fundClass);
+      return {
+        id: fundClass.id,
+        fundClassName: fundClass.fundClassName,
+        constituentFundName: fundClass.constituentFundName,
+        schemeName: fundClass.schemeName,
+        trusteeName: fundClass.trusteeName,
+        fundType: fundClass.fundType,
+        fundCategory: fundClass.fundCategory,
+        comparisonGroup: group.name,
+        comparisonGroupSource: group.source,
+        riskClass: fundClass.riskClass,
+        fundRiskIndicator: fundClass.fundRiskIndicator,
+        annualizedReturn1y: fundClass.annualizedReturn1y,
+        managementFee: fundClass.managementFee,
+        feeCaps: fundClass.feeCaps,
+        latestFer: fundClass.latestFer,
+        dataAsOf: fundClass.dataAsOf,
+        ...(freshness ? { freshness } : {}),
+      };
+    });
+
+  return context.json(results, {
+    headers: { "X-Total-Matches": String(matches.length) },
+  });
+});
+
+app.get("/filters", async (context) => {
+  const current = await context.env.DB.prepare(
+    `SELECT snapshot_id FROM current_publication WHERE singleton = 1`,
+  ).first<{ snapshot_id: string }>();
+
+  if (!current)
+    return context.json({
+      snapshotId: null,
+      categories: [],
+      classification: null,
+      fundTypes: [],
+      trustees: [],
+      riskClasses: [],
+    });
+
+  const fundClasses = await loadPublishedFundClasses(context.env.DB);
+  const categories = new Set<string>();
+  const fundTypes = new Set<string>();
+  const trustees = new Set<string>();
+  const riskClasses = new Set<number>();
+
+  for (const fundClass of fundClasses) {
+    categories.add(comparisonGroupFor(fundClass).name);
+    if (fundClass.fundType) fundTypes.add(fundClass.fundType);
+    if (fundClass.trusteeName) trustees.add(fundClass.trusteeName);
+    if (typeof fundClass.riskClass === "number")
+      riskClasses.add(fundClass.riskClass);
+  }
+
+  return context.json({
+    snapshotId: current.snapshot_id,
+    categories: [...categories].sort(),
+    classification: await loadClassification(context.env.DB),
+    fundTypes: [...fundTypes].sort(),
+    trustees: [...trustees].sort(),
+    riskClasses: [...riskClasses].sort((a, b) => a - b),
+  });
+});
+
+type ComparisonGroupStatsRow = {
+  comparison_group: string;
+  avg_allocation: string | null;
+  avg_top10_concentration: number | null;
+  avg_volatility_3y: number | null;
+  fund_count: number;
+  allocation_count: number;
+  top10_count: number;
+  volatility_count: number;
+  insufficient_sample: number;
+};
+
+function publishedComparisonGroupStats(row: ComparisonGroupStatsRow) {
+  const avgAllocation = row.avg_allocation
+    ? (JSON.parse(row.avg_allocation) as {
+        equity: number;
+        bond: number;
+        cashAndOther: number;
+      })
+    : null;
+  return {
+    comparisonGroup: row.comparison_group,
+    comparisonGroupSource: comparisonGroupSourceOf(row.comparison_group),
+    avgAllocation:
+      avgAllocation === null
+        ? null
+        : { official: false as const, ...avgAllocation },
+    avgTop10Concentration: row.avg_top10_concentration,
+    avgVolatility3y: row.avg_volatility_3y,
+    fundCount: row.fund_count,
+    allocationCount: row.allocation_count,
+    top10Count: row.top10_count,
+    volatilityCount: row.volatility_count,
+    insufficientSample: row.insufficient_sample === 1,
+  };
+}
+
+app.get("/fund-classes/:id/interpretation", async (context) => {
+  if (
+    context.req.query("period") !== undefined ||
+    context.req.query("startMonth") !== undefined ||
+    context.req.query("endMonth") !== undefined
+  ) {
+    return context.json(
+      {
+        error: "Interpretation periods are not supported",
+        reason:
+          "è³‡ç”¢é…ç½®ã€åå¤§æŒå€‰é›†ä¸­åº¦åŠä¸‰å¹´æ³¢å¹…å‡ç‚ºç™¼å¸ƒå¿«ç…§ç•¶æœŸè³‡æ–™ï¼Œä¸æœƒéš¨å›å ±æœŸé–“æ”¹è®Šã€‚",
+      },
+      400,
+    );
+  }
+  const row = await context.env.DB.prepare(
+    `SELECT c.snapshot_id, f.payload
+     FROM current_publication c
+     JOIN fund_class_versions f ON f.snapshot_id = c.snapshot_id
+     WHERE c.singleton = 1 AND f.fund_class_id = ?`,
+  )
+    .bind(context.req.param("id"))
+    .first<{ snapshot_id: string; payload: string }>();
+
+  if (!row) return context.json({ error: "Fund class not found" }, 404);
+
+  const published = JSON.parse(row.payload) as PublishedFundPayload;
+  const comparisonGroup = comparisonGroupFor(published.fundClass);
+  const stats = await context.env.DB.prepare(
+    `SELECT comparison_group, avg_allocation, avg_top10_concentration, avg_volatility_3y,
+            fund_count, allocation_count, top10_count, volatility_count, insufficient_sample
+     FROM comparison_group_stats
+     WHERE snapshot_id = ? AND comparison_group = ?`,
+  )
+    .bind(row.snapshot_id, comparisonGroup.name)
+    .first<ComparisonGroupStatsRow>();
+
+  if (!stats) {
+    return context.json(
+      { error: "Comparison group statistics not found" },
+      404,
+    );
+  }
+
+  const group = publishedComparisonGroupStats(stats);
+  const mappedAllocation = published.mappedAllocation;
+  const equity =
+    mappedAllocation && !("unavailable" in mappedAllocation)
+      ? mappedAllocation.buckets.equity
+      : undefined;
+  const values = {
+    equity,
+    top10Concentration: top10Concentration(published.factSheetDisclosure),
+    volatility3y: published.fundClass.unavailableFields?.includes(
+      "fundRiskIndicator",
+    )
+      ? undefined
+      : published.fundClass.fundRiskIndicator,
+  };
+  const interpretation = interpretFund(values, {
+    comparisonGroup: group.comparisonGroup,
+    avgAllocation: group.avgAllocation
+      ? {
+          equity: group.avgAllocation.equity,
+          bond: group.avgAllocation.bond,
+          cashAndOther: group.avgAllocation.cashAndOther,
+        }
+      : null,
+    avgTop10Concentration: group.avgTop10Concentration,
+    avgVolatility3y: group.avgVolatility3y,
+    fundCount: group.fundCount,
+    allocationCount: group.allocationCount,
+    top10Count: group.top10Count,
+    volatilityCount: group.volatilityCount,
+    insufficientSample: group.insufficientSample,
+  });
+
+  return context.json({
+    snapshotId: row.snapshot_id,
+    fundClassId: published.fundClass.id,
+    comparisonGroup: comparisonGroup.name,
+    comparisonGroupSource: comparisonGroup.source,
+    values: {
+      equity: {
+        fund: values.equity ?? null,
+        groupAverage: group.avgAllocation?.equity ?? null,
+        official: false,
+      },
+      top10Concentration: {
+        fund: values.top10Concentration ?? null,
+        groupAverage: group.avgTop10Concentration,
+      },
+      volatility3y: {
+        fund: values.volatility3y ?? null,
+        groupAverage: group.avgVolatility3y,
+      },
+    },
+    interpretation,
+  });
+});
+
+app.get("/comparison-group-stats", async (context) => {
+  const current = await context.env.DB.prepare(
+    `SELECT snapshot_id FROM current_publication WHERE singleton = 1`,
+  ).first<{ snapshot_id: string }>();
+
+  if (!current) {
+    return context.json({ snapshotId: null, groups: [] });
+  }
+
+  const requested = context.req.query("comparisonGroup")?.trim();
+  const rows = await context.env.DB.prepare(
+    requested
+      ? `SELECT comparison_group, avg_allocation, avg_top10_concentration, avg_volatility_3y,
+                fund_count, allocation_count, top10_count, volatility_count, insufficient_sample
+         FROM comparison_group_stats
+         WHERE snapshot_id = ? AND comparison_group = ?
+         ORDER BY comparison_group`
+      : `SELECT comparison_group, avg_allocation, avg_top10_concentration, avg_volatility_3y,
+                fund_count, allocation_count, top10_count, volatility_count, insufficient_sample
+         FROM comparison_group_stats
+         WHERE snapshot_id = ?
+         ORDER BY comparison_group`,
+  )
+    .bind(
+      ...(requested ? [current.snapshot_id, requested] : [current.snapshot_id]),
+    )
+    .all<ComparisonGroupStatsRow>();
+
+  const groups = rows.results.map(publishedComparisonGroupStats);
+  if (requested && groups.length === 0) {
+    return context.json({ error: "Comparison group not found" }, 404);
+  }
+  return context.json({ snapshotId: current.snapshot_id, groups });
+});
+
+app.get("/summary", async (context) => {
+  const current = await context.env.DB.prepare(
+    `SELECT snapshot_id FROM current_publication WHERE singleton = 1`,
+  ).first<{ snapshot_id: string }>();
+
+  if (!current)
+    return context.json({
+      snapshotId: null,
+      fundClassCount: 0,
+      schemeCount: 0,
+      trusteeCount: 0,
+      dataAsOf: null,
+    });
+
+  const rows = await context.env.DB.prepare(
+    `SELECT payload FROM fund_class_versions WHERE snapshot_id = ?`,
+  )
+    .bind(current.snapshot_id)
+    .all<{ payload: string }>();
+
+  const schemes = new Set<string>();
+  const trustees = new Set<string>();
+  const dates: string[] = [];
+  let fundClassCount = 0;
+
+  for (const row of rows.results) {
+    const { fundClass } = JSON.parse(row.payload) as {
+      fundClass: {
+        schemeName: string;
+        trusteeName: string;
+        dataAsOf?: string;
+        verificationStatus: string;
+      };
+    };
+    if (fundClass.verificationStatus !== "verified") continue;
+    fundClassCount += 1;
+    schemes.add(fundClass.schemeName);
+    trustees.add(fundClass.trusteeName);
+    if (fundClass.dataAsOf) dates.push(fundClass.dataAsOf);
+  }
+
+  dates.sort();
+  return context.json({
+    snapshotId: current.snapshot_id,
+    fundClassCount,
+    schemeCount: schemes.size,
+    trusteeCount: trustees.size,
+    dataAsOf:
+      dates.length > 0
+        ? { earliest: dates[0], latest: dates[dates.length - 1] }
+        : null,
+  });
+});
+
+app.get("/schemes", async (context) => {
+  const rows = await context.env.DB.prepare(
+    `SELECT f.payload
+     FROM current_publication c
+     JOIN fund_class_versions f ON f.snapshot_id = c.snapshot_id
+     WHERE c.singleton = 1`,
+  ).all<{ payload: string }>();
+  const schemes = new Map<
+    string,
+    {
+      schemeName: string;
+      trusteeName: string;
+      fundClassCount: number;
+      categories: string[];
+      fundTypes: string[];
+      riskClassDistribution: Record<string, number>;
+      managementFees: number[];
+      dataAsOfDates: string[];
+      factSheet: {
+        url: string;
+        capturedAt: string;
+        registerUrl: string;
+      } | null;
+      funds: {
+        id: string;
+        constituentFundName: string;
+        fundClassName: string;
+        fundType: string;
+        comparisonGroup: string;
+        riskClass?: number;
+        dataAsOf?: string;
+        sourceUrl?: string;
+        annualizedReturn1y?: number;
+        annualizedReturn3y?: number;
+        annualizedReturn5y?: number;
+        annualizedReturn10y?: number;
+        returnSources?: Record<
+          string,
+          { dataAsOf: string; sourceUrl?: string; retrievedAt?: string }
+        >;
+        returnsFreshness?: Record<string, PublishedFreshness>;
+      }[];
+    }
+  >();
+  const evaluatedAt = new Date();
+
+  for (const row of rows.results) {
+    const { fundClass, provenance, schemeFactSheet } = JSON.parse(
+      row.payload,
+    ) as {
+      provenance?: {
+        sourceUrl?: string;
+        freshnessPolicy?: FreshnessPolicy;
+      };
+      schemeFactSheet?: {
+        url?: string;
+        capturedAt?: string;
+        registerUrl?: string;
+      };
+      fundClass: {
+        id: string;
+        schemeName: string;
+        trusteeName: string;
+        constituentFundName: string;
+        fundClassName: string;
+        fundType: string;
+        fundCategory?: string;
+        lipperCategory?: string;
+        riskClass?: number;
+        managementFee?: number;
+        dataAsOf?: string;
+        annualizedReturn1y?: number;
+        annualizedReturn3y?: number;
+        annualizedReturn5y?: number;
+        annualizedReturn10y?: number;
+        returnsAsOf?: string;
+        returnSources?: Record<
+          string,
+          { dataAsOf: string; sourceUrl?: string; retrievedAt?: string }
+        >;
+        verificationStatus: string;
+      };
+    };
+    if (fundClass.verificationStatus !== "verified") continue;
+    const scheme = schemes.get(fundClass.schemeName) ?? {
+      schemeName: fundClass.schemeName,
+      trusteeName: fundClass.trusteeName,
+      fundClassCount: 0,
+      categories: [],
+      fundTypes: [],
+      riskClassDistribution: {},
+      managementFees: [],
+      dataAsOfDates: [],
+      factSheet:
+        schemeFactSheet?.url &&
+        schemeFactSheet.capturedAt &&
+        schemeFactSheet.registerUrl
+          ? {
+              url: schemeFactSheet.url,
+              capturedAt: schemeFactSheet.capturedAt,
+              registerUrl: schemeFactSheet.registerUrl,
+            }
+          : null,
+      funds: [],
+    };
+    const comparisonGroup = comparisonGroupFor(fundClass).name;
+    scheme.fundClassCount += 1;
+    if (!scheme.categories.includes(comparisonGroup))
+      scheme.categories.push(comparisonGroup);
+    if (!scheme.fundTypes.includes(fundClass.fundType))
+      scheme.fundTypes.push(fundClass.fundType);
+    if (typeof fundClass.riskClass === "number") {
+      const risk = String(fundClass.riskClass);
+      scheme.riskClassDistribution[risk] =
+        (scheme.riskClassDistribution[risk] ?? 0) + 1;
+    }
+    if (typeof fundClass.managementFee === "number")
+      scheme.managementFees.push(fundClass.managementFee);
+    if (fundClass.dataAsOf) scheme.dataAsOfDates.push(fundClass.dataAsOf);
+    const returnValues = {
+      "1": fundClass.annualizedReturn1y,
+      "3": fundClass.annualizedReturn3y,
+      "5": fundClass.annualizedReturn5y,
+      "10": fundClass.annualizedReturn10y,
+    };
+    const returnsFreshness = Object.fromEntries(
+      Object.entries(returnValues).flatMap(([period, value]) => {
+        if (typeof value !== "number") return [];
+        const dataAsOf =
+          fundClass.returnSources?.[period]?.dataAsOf ??
+          fundClass.returnsAsOf ??
+          fundClass.dataAsOf;
+        return dataAsOf
+          ? [
+              [
+                period,
+                evaluateFreshness(
+                  dataAsOf,
+                  returnsGraceDays(provenance?.freshnessPolicy),
+                  evaluatedAt,
+                ),
+              ],
+            ]
+          : [];
+      }),
+    );
+    scheme.funds.push({
+      id: fundClass.id,
+      constituentFundName: fundClass.constituentFundName,
+      fundClassName: fundClass.fundClassName,
+      fundType: fundClass.fundType,
+      comparisonGroup,
+      ...(typeof fundClass.riskClass === "number"
+        ? { riskClass: fundClass.riskClass }
+        : {}),
+      ...(fundClass.dataAsOf ? { dataAsOf: fundClass.dataAsOf } : {}),
+      ...(provenance?.sourceUrl ? { sourceUrl: provenance.sourceUrl } : {}),
+      ...(fundClass.returnSources
+        ? { returnSources: fundClass.returnSources }
+        : {}),
+      ...(Object.keys(returnsFreshness).length > 0 ? { returnsFreshness } : {}),
+      ...definedReturns(fundClass),
+    });
+    schemes.set(fundClass.schemeName, scheme);
+  }
+  return context.json(
+    [...schemes.values()].map(
+      ({ managementFees, dataAsOfDates, ...scheme }) => ({
+        ...scheme,
+        managementFee: summarizeFees(managementFees),
+        dataAsOf: summarizeDates(dataAsOfDates),
+      }),
+    ),
+  );
+});
+
+type SchemeComparisonFund = BrowseFundClass;
+
+function summarizeDisReturns(funds: SchemeComparisonFund[]) {
+  const values = (period: 1 | 3 | 5 | 10) => {
+    const field = `annualizedReturn${period}y` as
+      | "annualizedReturn1y"
+      | "annualizedReturn3y"
+      | "annualizedReturn5y"
+      | "annualizedReturn10y";
+    return funds.flatMap((fund) => {
+      const value = fund[field];
+      return typeof value === "number" && Number.isFinite(value) ? [value] : [];
+    });
+  };
+  return Object.fromEntries(
+    ([1, 3, 5, 10] as const).map((period) => {
+      const published = values(period);
+      return [
+        `${period}y`,
+        published.length === 0
+          ? null
+          : {
+              min: Math.min(...published),
+              max: Math.max(...published),
+              fundClassCount: published.length,
+            },
+      ];
+    }),
+  );
+}
+
+function disComponentSummary(
+  funds: SchemeComparisonFund[],
+  component: "core_accumulation" | "age65_plus",
+) {
+  const matches = funds.filter((fund) => fund.isDisComponent === component);
+  if (matches.length === 0) return null;
+  return {
+    constituentFundName: matches[0]!.constituentFundName,
+    returns: summarizeDisReturns(matches),
+    fundClasses: matches.map((fund) => ({
+      id: fund.id,
+      fundClassName: fund.fundClassName,
+      ...definedReturns(fund),
+    })),
+  };
+}
+
+function schemeComparison(schemeName: string, funds: SchemeComparisonFund[]) {
+  const coreAccumulation = disComponentSummary(funds, "core_accumulation");
+  const age65Plus = disComponentSummary(funds, "age65_plus");
+  const ferValues = funds.flatMap((fund) =>
+    typeof fund.latestFer === "number" && Number.isFinite(fund.latestFer)
+      ? [fund.latestFer]
+      : [],
+  );
+  return {
+    id: schemeName,
+    schemeName,
+    trusteeName: funds[0]!.trusteeName,
+    fundChoiceCount: new Set(funds.map((fund) => fund.constituentFundName))
+      .size,
+    fundClassCount: funds.length,
+    fer: summarizeFees(ferValues),
+    disPerformance: {
+      status:
+        coreAccumulation && age65Plus
+          ? ("complete" as const)
+          : ("incomplete" as const),
+      missing: [
+        ...(coreAccumulation ? [] : ["core_accumulation" as const]),
+        ...(age65Plus ? [] : ["age65_plus" as const]),
+      ],
+      coreAccumulation,
+      age65Plus,
+    },
+    administrationScore: null,
+  };
+}
+
+app.get("/schemes/compare", async (context) => {
+  const rawIds = context.req.query("ids");
+  const ids = rawIds
+    ?.split(",")
+    .map((id) => id.trim())
+    .filter((id, index, all) => id.length > 0 && all.indexOf(id) === index);
+  if (!ids?.length) {
+    return context.json({ error: "Provide between 1 and 4 scheme ids" }, 400);
+  }
+  if (ids.length > 4) {
+    return context.json(
+      { error: "A maximum of 4 schemes can be compared", maximum: 4 },
+      400,
+    );
+  }
+
+  const current = await context.env.DB.prepare(
+    `SELECT snapshot_id FROM current_publication WHERE singleton = 1`,
+  ).first<{ snapshot_id: string }>();
+  if (!current) return context.json({ snapshotId: null, schemes: [] });
+
+  const published = await loadPublishedFundClasses(context.env.DB);
+  const grouped = new Map<string, SchemeComparisonFund[]>();
+  for (const fund of published) {
+    if (fund.verificationStatus !== "verified") continue;
+    const members = grouped.get(fund.schemeName) ?? [];
+    members.push(fund);
+    grouped.set(fund.schemeName, members);
+  }
+  const missingIds = ids.filter((id) => !grouped.has(id));
+  if (missingIds.length > 0) {
+    return context.json({ error: "Scheme not found", missingIds }, 404);
+  }
+
+  return context.json({
+    snapshotId: current.snapshot_id,
+    schemes: ids.map((id) => schemeComparison(id, grouped.get(id)!)),
+  });
+});
+
+function summarizeDates(dates: string[]) {
+  if (dates.length === 0) return null;
+  const sorted = [...dates].sort();
+  return { earliest: sorted[0]!, latest: sorted[sorted.length - 1]! };
+}
+
+function definedReturns(fundClass: {
+  annualizedReturn1y?: number;
+  annualizedReturn3y?: number;
+  annualizedReturn5y?: number;
+  annualizedReturn10y?: number;
+}) {
+  return {
+    ...(typeof fundClass.annualizedReturn1y === "number"
+      ? { annualizedReturn1y: fundClass.annualizedReturn1y }
+      : {}),
+    ...(typeof fundClass.annualizedReturn3y === "number"
+      ? { annualizedReturn3y: fundClass.annualizedReturn3y }
+      : {}),
+    ...(typeof fundClass.annualizedReturn5y === "number"
+      ? { annualizedReturn5y: fundClass.annualizedReturn5y }
+      : {}),
+    ...(typeof fundClass.annualizedReturn10y === "number"
+      ? { annualizedReturn10y: fundClass.annualizedReturn10y }
+      : {}),
+  };
+}
+
+function summarizeFees(fees: number[]) {
+  if (fees.length === 0) return null;
+  const sorted = [...fees].sort((a, b) => a - b);
+  const middle = Math.floor(sorted.length / 2);
+  return {
+    min: sorted[0]!,
+    median:
+      sorted.length % 2 === 0
+        ? (sorted[middle - 1]! + sorted[middle]!) / 2
+        : sorted[middle]!,
+    max: sorted[sorted.length - 1]!,
+    fundCount: sorted.length,
+  };
+}
+
+const rankingReturnFields = {
+  1: "annualizedReturn1y",
+  3: "annualizedReturn3y",
+  5: "annualizedReturn5y",
+  10: "annualizedReturn10y",
+} as const;
+
+type RankingPeriod = keyof typeof rankingReturnFields;
+
+const defaultRankingPeriod = 1 satisfies RankingPeriod;
+
+const rankingMetrics = {
+  fee: {
+    field: "managementFee",
+    methodology: "management_fee",
+    sortDirection: "ascending",
+    displayPrecision: 2,
+    unit: "%",
+  },
+  // æ³¢å¹…æ’åºç”¨å®˜æ–¹çš„åŸºé‡‘é¢¨éšªæŒ‡æ¨™ï¼ˆå¹´åº¦åŒ–æ¨™æº–å·®ï¼‰ï¼Œä¸ç”¨é¢¨éšªç´šåˆ¥ã€‚é¢¨éšªç´šåˆ¥åªæœ‰ 1 è‡³ 7 ç´šï¼Œ
+  // 451 éš»åŸºé‡‘æ“ åœ¨ 7 å€‹å€¼è£¡ï¼ŒåŒçµ„å¤§é‡ä¸¦åˆ—ï¼Œé”ä¸åˆ° CONTEXT.md å°ã€Œè¼ƒä½æ³¢å¹…æ’åºã€çš„å®šç¾©ã€‚
+  // é¢¨éšªç´šåˆ¥ä»ç„¶ä¿ç•™ä½œ `/search?riskClass=` çš„ç¯©é¸æ¢ä»¶ã€‚
+  risk: {
+    field: "fundRiskIndicator",
+    methodology: "fund_risk_indicator",
+    sortDirection: "ascending",
+    displayPrecision: 2,
+    unit: "%",
+  },
+} as const;
+
+type RankingMetric = "return" | keyof typeof rankingMetrics;
+
+app.get("/rankings", async (context) => {
+  const metric = (context.req.query("metric") ?? "return") as RankingMetric;
+  if (metric !== "return" && !(metric in rankingMetrics)) {
+    return context.json(
+      {
+        error: "Unsupported ranking metric",
+        supportedMetrics: ["return", "fee", "risk"],
+        reason: "å›å ±ã€è²»ç”¨åŠé¢¨éšªç´šåˆ¥åˆ†é–‹æ’åºï¼Œç¶²ç«™ä¸æœƒåˆæˆå–®ä¸€æ¨è–¦ç¸½åˆ†ã€‚",
+      },
+      400,
+    );
+  }
+  const periodParam = context.req.query("period");
+  const requested =
+    periodParam === undefined ? defaultRankingPeriod : Number(periodParam);
+  if (metric === "return" && !(requested in rankingReturnFields)) {
+    return context.json(
+      {
+        error: "Unsupported ranking period",
+        supportedPeriods: [1, 3, 5, 10],
+        reason:
+          "å›å ±æ’ååªæ¥å—å®˜æ–¹å·²æŠ«éœ²çš„å¹´ç‡åŒ–æœŸé–“ï¼šä¸€å¹´ã€ä¸‰å¹´ã€äº”å¹´ã€åå¹´ã€‚",
+      },
+      400,
+    );
+  }
+  const periodYears = metric === "return" ? (requested as RankingPeriod) : null;
+  const selected =
+    metric === "return"
+      ? {
+          field: rankingReturnFields[periodYears as RankingPeriod],
+          methodology: "annualized_return",
+          sortDirection: "descending" as const,
+          displayPrecision: 2,
+          unit: "%",
+        }
+      : rankingMetrics[metric];
+  const valueField = selected.field;
+  const rows = await context.env.DB.prepare(
+    `SELECT c.snapshot_id, f.payload
+     FROM current_publication c
+     JOIN fund_class_versions f ON f.snapshot_id = c.snapshot_id
+     WHERE c.singleton = 1`,
+  ).all<{ snapshot_id: string; payload: string }>();
+  const parsed = rows.results.map((row) => ({
+    snapshotId: row.snapshot_id,
+    publication: JSON.parse(row.payload) as {
+      classification?: Classification;
+      fundClass: {
+        id: string;
+        fundClassName: string;
+        constituentFundName: string;
+        schemeName: string;
+        trusteeName: string;
+        fundType?: string;
+        fundCategory: string;
+        lipperCategory?: string;
+        annualizedReturn1y?: number;
+        annualizedReturn3y?: number;
+        annualizedReturn5y?: number;
+        annualizedReturn10y?: number;
+        returnSources?: Record<
+          string,
+          { dataAsOf: string; sourceUrl: string; retrievedAt?: string }
+        >;
+        managementFee?: number;
+        riskClass?: number;
+        fundRiskIndicator?: number;
+        dataAsOf: string;
+        verificationStatus: string;
+      };
+      provenance: {
+        sourceUrl: string;
+        dataAsOf: string;
+        verificationStatus: string;
+        freshnessPolicy?: FreshnessPolicy;
+      };
+    },
+  }));
+  const evaluatedAt = new Date();
+  let excludedStaleCount = 0;
+  // å¯¬é™æ—¥æ•¸é€å€‹åŸºé‡‘é¡åˆ¥è¨ˆï¼Œå””å¯ä»¥æ·¨ä¿‚ç”¨ç¬¬ä¸€éš»åŸºé‡‘å˜… freshnessPolicy ä»£è¡¨å…¨éƒ¨â€”â€”
+  // fundOverviewGraceDays è€Œå®¶æŒ‰å„è¨ˆåŠƒè²¡æ”¿å¹´çµæ—¥å„è‡ªå””åŒï¼ˆè¦‹ #192ï¼‰ã€‚è½åšŸ methodology
+  // é¡¯ç¤ºå˜… graceDays æ·¨ä¿‚å–ç¬¬ä¸€éš»åŸºé‡‘åšä»£è¡¨ï¼Œåªä½œåƒè€ƒï¼Œå¯¦éš›ç¯©é¸ä¸€å¾‹ç”¨é€éš»åŸºé‡‘è‡ªå·±å—°å€‹ã€‚
+  const methodologyGraceDays =
+    metric === "return"
+      ? returnsGraceDays(parsed[0]?.publication.provenance.freshnessPolicy)
+      : fundOverviewGraceDays(
+          parsed[0]?.publication.provenance.freshnessPolicy,
+        );
+  const eligible = parsed.flatMap(({ snapshotId, publication }) => {
+    const value = publication.fundClass[valueField];
+    const returnSource =
+      metric === "return"
+        ? publication.fundClass.returnSources?.[String(periodYears)]
+        : undefined;
+    const dataAsOf = returnSource?.dataAsOf ?? publication.provenance.dataAsOf;
+    const sourceUrl =
+      returnSource?.sourceUrl ?? publication.provenance.sourceUrl;
+    if (
+      publication.fundClass.verificationStatus !== "verified" ||
+      publication.provenance.verificationStatus !== "verified" ||
+      typeof value !== "number" ||
+      !Number.isFinite(value)
+    ) {
+      return [];
+    }
+    const graceDays =
+      metric === "return"
+        ? returnsGraceDays(publication.provenance.freshnessPolicy)
+        : fundOverviewGraceDays(publication.provenance.freshnessPolicy);
+    if (
+      evaluateFreshness(dataAsOf, graceDays, evaluatedAt).status !== "verified"
+    ) {
+      excludedStaleCount += 1;
+      return [];
+    }
+    return [{ snapshotId, publication, value, dataAsOf, sourceUrl }];
+  });
+  const groups = Map.groupBy(
+    eligible,
+    ({ publication }) => comparisonGroupFor(publication.fundClass).name,
+  );
+  const precision = selected.displayPrecision;
+  const direction = selected.sortDirection === "ascending" ? 1 : -1;
+  const rankings = [...groups.entries()].flatMap(([comparisonGroup, funds]) => {
+    funds.sort((a, b) => {
+      const ordered =
+        direction *
+        (Number(a.value.toFixed(precision)) -
+          Number(b.value.toFixed(precision)));
+      return ordered !== 0
+        ? ordered
+        : a.publication.fundClass.id.localeCompare(b.publication.fundClass.id);
+    });
+    let previousValue: number | undefined;
+    let previousRank = 0;
+    return funds.map(({ publication, value, dataAsOf, sourceUrl }, index) => {
+      const displayed = Number(value.toFixed(precision));
+      const rank = displayed === previousValue ? previousRank : index + 1;
+      previousValue = displayed;
+      previousRank = rank;
+      return {
+        fundClassId: publication.fundClass.id,
+        fundClassName: publication.fundClass.fundClassName,
+        constituentFundName: publication.fundClass.constituentFundName,
+        schemeName: publication.fundClass.schemeName,
+        trusteeName: publication.fundClass.trusteeName,
+        comparisonGroup,
+        comparisonGroupSource: comparisonGroupSourceOf(comparisonGroup),
+        value,
+        displayValue: `${value.toFixed(precision)}${selected.unit}`,
+        rank,
+        dataAsOf,
+        sourceUrl,
+      };
+    });
+  });
+
+  return context.json({
+    snapshotId: rows.results[0]?.snapshot_id ?? null,
+    comparisonGroups: [
+      ...new Set(
+        parsed.map(
+          ({ publication }) => comparisonGroupFor(publication.fundClass).name,
+        ),
+      ),
+    ].sort(),
+    metric,
+    periodYears,
+    excludedStaleCount,
+    methodology: {
+      metric: selected.methodology,
+      grouping: "comparison_group",
+      classification: classificationOf(parsed[0]?.publication),
+      sortDirection: selected.sortDirection,
+      displayPrecision: precision,
+      freshness: {
+        graceDays: methodologyGraceDays,
+        evaluatedOn: evaluatedAt.toISOString().slice(0, 10),
+        rule: "è³‡æ–™æˆªè‡³æ—¥æœŸè¶…å‡ºå®˜æ–¹æŠ«éœ²å¯¬é™æœŸçš„æ•¸å€¼ä¸åƒèˆ‡æ’åï¼Œä½†ä»å¯åœ¨åŸºé‡‘è©³æƒ…é é€£åŒåŸæˆªè‡³æ—¥æœŸæŸ¥çœ‹ã€‚",
+      },
+    },
+    rankings,
+  });
+});
+
+app.notFound((context) => context.json({ error: "Not found" }, 404));
+
+export default app;
