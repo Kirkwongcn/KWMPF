@@ -125,6 +125,70 @@ describe("health page", () => {
     expect(await screen.findByText("尚未有已發布快照")).toBeVisible();
   });
 
+  it("distinguishes a summary still loading from no published snapshot", async () => {
+    let resolveSummary!: (response: Response) => void;
+    const summaryResponse = new Promise<Response>((resolve) => {
+      resolveSummary = resolve;
+    });
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockImplementation((input: RequestInfo | URL) => {
+        const url = String(input);
+        if (url.endsWith("/summary")) return summaryResponse;
+        return Promise.resolve(
+          Response.json({
+            status: "ok",
+            version: "test-release",
+            bindings: { d1: true, r2: true },
+          }),
+        );
+      }),
+    );
+
+    render(<App apiUrl="https://api.test/health" />);
+
+    expect(screen.getByRole("status")).toHaveTextContent("正在載入已發布快照");
+    expect(screen.queryByText("尚未有已發布快照")).not.toBeInTheDocument();
+
+    resolveSummary(
+      Response.json({
+        snapshotId: "snapshot-2026-06-30",
+        fundClassCount: 451,
+        schemeCount: 27,
+        trusteeCount: 12,
+        dataAsOf: { earliest: "2026-03-31", latest: "2026-06-30" },
+      }),
+    );
+
+    expect(await screen.findByText("451")).toBeVisible();
+  });
+
+  it("explains when the published snapshot summary cannot be loaded", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockImplementation((input: RequestInfo | URL) => {
+        const url = String(input);
+        if (url.endsWith("/summary")) {
+          return Promise.reject(new Error("offline"));
+        }
+        return Promise.resolve(
+          Response.json({
+            status: "ok",
+            version: "test-release",
+            bindings: { d1: true, r2: true },
+          }),
+        );
+      }),
+    );
+
+    render(<App apiUrl="https://api.test/health" />);
+
+    expect(await screen.findByRole("status")).toHaveTextContent(
+      "目前未能載入已發布快照資料，請稍後重新整理頁面。",
+    );
+    expect(screen.queryByText("尚未有已發布快照")).not.toBeInTheDocument();
+  });
+
   it("says so when a search matches nothing instead of doing nothing", async () => {
     stubSearch(() => Promise.resolve(Response.json([])));
 
