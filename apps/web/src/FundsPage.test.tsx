@@ -29,8 +29,15 @@ const equityResults = [
     riskClass: 6,
     annualizedReturn1y: 8.12,
     managementFee: 1.25,
+    feeCaps: ["managementFee"],
     latestFer: 1.4,
     dataAsOf: "2026-06-30",
+    freshness: {
+      status: "stale",
+      dataAsOf: "2026-06-30",
+      graceDays: 45,
+      ageDays: 88,
+    },
   },
 ];
 
@@ -76,11 +83,11 @@ describe("fund browse page", () => {
     });
 
     expect(await screen.findByText("港股基金")).toBeVisible();
-    expect(
-      fetchMock.mock.calls
-        .map((call) => String(call[0]))
-        .find((url) => url.includes("/search")),
-    ).toContain("category=Hong+Kong+Equity");
+    const searchCall = fetchMock.mock.calls
+      .map((call) => String(call[0]))
+      .filter((url) => url.includes("/search"))
+      .at(-1);
+    expect(searchCall).toContain("category=Hong+Kong+Equity");
     expect(screen.getByText(/Lipper/)).toBeVisible();
     expect(screen.getByText(/期別 2026-08-27/)).toBeVisible();
   });
@@ -133,7 +140,8 @@ describe("fund browse page", () => {
     expect(await screen.findByText("港股基金")).toBeVisible();
     const searchCall = fetchMock.mock.calls
       .map((call) => String(call[0]))
-      .find((url) => url.includes("/search"));
+      .filter((url) => url.includes("/search"))
+      .at(-1);
     expect(searchCall).toContain("fundType=Equity+Fund");
     expect(searchCall).not.toContain("q=");
   });
@@ -148,15 +156,16 @@ describe("fund browse page", () => {
     });
 
     expect(await screen.findByText("8.12%")).toBeVisible();
-    expect(screen.getByText("1.25%")).toBeVisible();
+    expect(screen.getByText("1.25%（上限）")).toBeVisible();
     expect(screen.getByText("2026-06-30")).toBeVisible();
+    expect(screen.getAllByText("過期")).toHaveLength(2);
     expect(screen.getByRole("link", { name: /港股基金/ })).toHaveAttribute(
       "href",
       "/fund-classes/equity-low",
     );
   });
 
-  it("prompts for a filter before any query is sent", async () => {
+  it("loads a useful default browse page without a filter", async () => {
     const fetchMock = stubFetch((url) =>
       url.includes("/filters") ? filters : equityResults,
     );
@@ -164,14 +173,12 @@ describe("fund browse page", () => {
     render(<FundsPage apiBaseUrl="https://api.test" />);
 
     expect(await screen.findByLabelText("官方基金種類")).toBeVisible();
-    expect(
-      screen.getByText(/先選擇一項篩選條件或輸入關鍵字/),
-    ).toBeInTheDocument();
+    expect(await screen.findByText("港股基金")).toBeVisible();
     expect(
       fetchMock.mock.calls
         .map((call) => String(call[0]))
-        .some((url) => url.includes("/search")),
-    ).toBe(false);
+        .some((url) => url.endsWith("/search?")),
+    ).toBe(true);
   });
 
   it("reports when no published fund matches the chosen filters", async () => {

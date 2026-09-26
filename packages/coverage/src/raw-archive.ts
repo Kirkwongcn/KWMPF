@@ -11,12 +11,22 @@ export type RawArtifact = {
   bytes: number;
   parseStatus: "parsed" | "parse_failed" | "fetch_failed";
   dataAsOf?: string;
+  attempt?: number;
+  httpStatus?: number;
+  error?: string;
+};
+
+type FetchFailureMetadata = {
+  attempt?: number;
+  httpStatus?: number;
+  error?: string;
 };
 
 export function failedFetchArtifact(
   relativePath: string,
   url: string,
   retrievedAt: string,
+  metadata: FetchFailureMetadata = {},
 ): RawArtifact {
   return {
     sourceType: "mpf_fund_platform",
@@ -25,6 +35,7 @@ export function failedFetchArtifact(
     retrievedAt,
     bytes: 0,
     parseStatus: "fetch_failed",
+    ...metadata,
   };
 }
 
@@ -52,6 +63,7 @@ export async function archiveHtml(
   html: string,
   retrievedAt: string,
   parseStatus: RawArtifact["parseStatus"],
+  metadata: FetchFailureMetadata = {},
 ): Promise<RawArtifact> {
   const bytes = Buffer.byteLength(html);
   try {
@@ -67,6 +79,7 @@ export async function archiveHtml(
       sha256: createHash("sha256").update(existing).digest("hex"),
       bytes: Buffer.byteLength(existing),
       parseStatus,
+      ...metadata,
     };
   }
   return {
@@ -77,6 +90,7 @@ export async function archiveHtml(
     sha256: createHash("sha256").update(html).digest("hex"),
     bytes,
     parseStatus,
+    ...metadata,
   };
 }
 

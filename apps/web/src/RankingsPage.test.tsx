@@ -71,10 +71,16 @@ describe("published return rankings", () => {
     fireEvent.change(screen.getByLabelText("比較組別"), {
       target: { value: "Money Market Fund - Hong Kong" },
     });
+    expect(window.location.search).toContain(
+      "group=Money+Market+Fund+-+Hong+Kong",
+    );
 
     expect(screen.queryByText("North America Fund")).not.toBeInTheDocument();
     expect(screen.getByText("Hong Kong Money Market Fund")).toBeVisible();
-    expect(fetch).toHaveBeenCalledWith("https://api.test/rankings?period=1");
+    expect(fetch).toHaveBeenCalledWith(
+      "https://api.test/rankings?period=1",
+      expect.objectContaining({ signal: expect.anything() }),
+    );
   });
   it("lets the reader switch the ranking period and refetches from the API", async () => {
     const fetchMock = vi.fn().mockImplementation((url: string) => {
@@ -129,6 +135,7 @@ describe("published return rankings", () => {
     expect(await screen.findByText("17.21%")).toBeVisible();
     expect(fetchMock).toHaveBeenCalledWith(
       "https://api.test/rankings?period=1",
+      expect.objectContaining({ signal: expect.anything() }),
     );
 
     fireEvent.change(screen.getByLabelText("回報期間"), {
@@ -136,11 +143,13 @@ describe("published return rankings", () => {
     });
 
     expect(await screen.findByText("8.40%")).toBeVisible();
+    expect(window.location.search).toBe("?period=3");
     expect(
       await screen.findByRole("heading", { name: "三年回報排名" }),
     ).toBeVisible();
     expect(fetchMock).toHaveBeenCalledWith(
       "https://api.test/rankings?period=3",
+      expect.objectContaining({ signal: expect.anything() }),
     );
 
     fireEvent.change(screen.getByLabelText("回報期間"), {
@@ -150,6 +159,7 @@ describe("published return rankings", () => {
     expect(await screen.findByText("6.14%")).toBeVisible();
     expect(fetchMock).toHaveBeenCalledWith(
       "https://api.test/rankings?period=5",
+      expect.objectContaining({ signal: expect.anything() }),
     );
   });
 
@@ -222,6 +232,7 @@ describe("published return rankings", () => {
     expect(screen.queryByText("17.21%")).not.toBeInTheDocument();
     expect(fetchMock).toHaveBeenCalledWith(
       "https://api.test/rankings?period=5",
+      expect.objectContaining({ signal: expect.anything() }),
     );
     expect(screen.getByLabelText("回報期間")).toHaveValue("5");
     expect(screen.getByLabelText("比較組別")).toHaveValue(
@@ -383,6 +394,7 @@ describe("published return rankings", () => {
           comparisonGroup: "Equity Fund (North America)",
           displayValue:
             metric === "fee" ? "0.65%" : metric === "risk" ? "4.70%" : "17.21%",
+          ...(metric === "fee" ? { feeCap: true } : {}),
           rank: 1,
           dataAsOf: "2026-07-31",
           sourceUrl: "https://example.test/fund-a",
@@ -408,9 +420,10 @@ describe("published return rankings", () => {
       target: { value: "fee" },
     });
 
-    expect(await screen.findByText("0.65%")).toBeVisible();
+    expect(await screen.findByText("0.65%（上限）")).toBeVisible();
     expect(fetchMock).toHaveBeenCalledWith(
       "https://api.test/rankings?metric=fee",
+      expect.objectContaining({ signal: expect.anything() }),
     );
     expect(screen.getByRole("heading", { name: "管理費排名" })).toBeVisible();
     expect(screen.getByRole("columnheader", { name: "管理費" })).toBeVisible();
@@ -432,6 +445,7 @@ describe("published return rankings", () => {
     expect(await screen.findByText("4.70%")).toBeVisible();
     expect(fetchMock).toHaveBeenCalledWith(
       "https://api.test/rankings?metric=risk",
+      expect.objectContaining({ signal: expect.anything() }),
     );
     expect(screen.getByLabelText("排序指標")).toHaveValue("risk");
     expect(screen.getByRole("heading", { name: "波幅排名" })).toBeVisible();
@@ -451,7 +465,9 @@ describe("published return rankings", () => {
 
     render(<RankingsPage apiBaseUrl="https://api.test" initialMetric="fee" />);
 
-    expect(await screen.findByText("0.65%")).toBeVisible();
+    expect(
+      await screen.findByRole("cell", { name: "0.65%（上限）" }),
+    ).toBeVisible();
     expect(
       screen.getAllByRole("columnheader").map((cell) => cell.textContent),
     ).toEqual(["名次", "基金", "管理費", "比較組別", "截至日期", "來源"]);
@@ -468,6 +484,7 @@ describe("published return rankings", () => {
     expect(await screen.findByText("17.21%")).toBeVisible();
     expect(fetchMock).toHaveBeenCalledWith(
       "https://api.test/rankings?period=1",
+      expect.objectContaining({ signal: expect.anything() }),
     );
     expect(screen.getByLabelText("排序指標")).toHaveValue("return");
   });

@@ -12,6 +12,7 @@ import {
   fundOverviewGraceDays,
   returnsGraceDays,
   type FreshnessPolicy,
+  type PublishedFreshness,
 } from "./freshness";
 import type { PublicationBindings } from "./publication";
 import { interpretFund } from "../../../packages/coverage/src/fund-interpretation";
@@ -65,7 +66,9 @@ app.get("/fund-classes/:id", async (context) => {
     comparisonGroup: group.name,
     comparisonGroupSource: group.source,
     freshness: evaluateFreshness(
-      published.provenance.dataAsOf,
+      published.fundClass.returnSources?.["1"]?.dataAsOf ??
+        published.fundClass.returnsAsOf ??
+        published.provenance.dataAsOf,
       returnsGraceDays(published.provenance.freshnessPolicy),
     ),
     // 基金規模按月披露，沿用回報的月度寬限期；成立日期是靜態事實，不設過期。
@@ -145,11 +148,13 @@ type BrowseFundClass = {
   annualizedReturn5y?: number;
   annualizedReturn10y?: number;
   managementFee?: number;
+  feeCaps?: string[];
   latestFer?: number;
   dataAsOf?: string;
   fundSizeHkdMillion?: number;
   fundSizeAsOf?: string;
   returnsAsOf?: string;
+  returnSources?: Record<string, { dataAsOf: string; sourceUrl: string }>;
   launchDate?: string;
   isDisComponent?: "core_accumulation" | "age65_plus";
   verificationStatus: string;
@@ -201,6 +206,28 @@ async function loadPublishedFundClasses(
   );
 }
 
+type PublishedSearchFund = {
+  fundClass: BrowseFundClass;
+  provenance?: { dataAsOf?: string; freshnessPolicy?: FreshnessPolicy };
+};
+
+async function loadPublishedSearchFunds(
+  db: PublicationBindings["DB"],
+): Promise<PublishedSearchFund[]> {
+  const rows = await db
+    .prepare(
+      `SELECT f.payload
+       FROM current_publication c
+       JOIN fund_class_versions f ON f.snapshot_id = c.snapshot_id
+       WHERE c.singleton = 1`,
+    )
+    .all<{ payload: string }>();
+
+  return rows.results.map(
+    (row) => JSON.parse(row.payload) as PublishedSearchFund,
+  );
+}
+
 async function loadClassification(
   db: PublicationBindings["DB"],
 ): Promise<Classification | null> {
@@ -236,19 +263,26 @@ app.get("/search", async (context) => {
   const riskClassParam = context.req.query("riskClass")?.trim();
   const riskClass = riskClassParam ? Number(riskClassParam) : undefined;
 
-  const hasFilter = Boolean(
-    category ||
-    fundType ||
-    fundCategory ||
-    trustee ||
-    (riskClass !== undefined && Number.isFinite(riskClass)),
-  );
-  if (!query && !hasFilter) {
-    return context.json([], { headers: { "X-Total-Matches": "0" } });
-  }
-
-  const matches = (await loadPublishedFundClasses(context.env.DB)).filter(
-    (fundClass) => {
+  const evaluatedAt = new Date();
+  const matches = (await loadPublishedSearchFunds(context.env.DB))
+    .map((published) => {
+      const dataAsOf =
+        published.fundClass.returnSources?.["1"]?.dataAsOf ??
+        published.fundClass.returnsAsOf ??
+        published.provenance?.dataAsOf ??
+        published.fundClass.dataAsOf;
+      return {
+        fundClass: published.fundClass,
+        freshness: dataAsOf
+          ? evaluateFreshness(
+              dataAsOf,
+              returnsGraceDays(published.provenance?.freshnessPolicy),
+              evaluatedAt,
+            )
+          : undefined,
+      };
+    })
+    .filter(({ fundClass }) => {
       if (
         query &&
         ![
@@ -271,41 +305,44 @@ app.get("/search", async (context) => {
       )
         return false;
       return true;
-    },
-  );
+    });
 
   // 先按官方一年年率化回報由高至低排序，讓被截斷的結果仍然是表現最好的一批；
   // 官方未提供回報的基金排在最後，同值再以識別碼穩定排序。
   matches.sort((a, b) => {
-    const left = knownReturn(a.annualizedReturn1y);
-    const right = knownReturn(b.annualizedReturn1y);
+    const left = knownReturn(a.fundClass.annualizedReturn1y);
+    const right = knownReturn(b.fundClass.annualizedReturn1y);
     if (left !== undefined && right !== undefined && left !== right)
       return right - left;
     if ((left === undefined) !== (right === undefined))
       return left === undefined ? 1 : -1;
-    return a.id.localeCompare(b.id);
+    return a.fundClass.id.localeCompare(b.fundClass.id);
   });
 
-  const results = matches.slice(0, SEARCH_RESULT_LIMIT).map((fundClass) => {
-    const group = comparisonGroupFor(fundClass);
-    return {
-      id: fundClass.id,
-      fundClassName: fundClass.fundClassName,
-      constituentFundName: fundClass.constituentFundName,
-      schemeName: fundClass.schemeName,
-      trusteeName: fundClass.trusteeName,
-      fundType: fundClass.fundType,
-      fundCategory: fundClass.fundCategory,
-      comparisonGroup: group.name,
-      comparisonGroupSource: group.source,
-      riskClass: fundClass.riskClass,
-      fundRiskIndicator: fundClass.fundRiskIndicator,
-      annualizedReturn1y: fundClass.annualizedReturn1y,
-      managementFee: fundClass.managementFee,
-      latestFer: fundClass.latestFer,
-      dataAsOf: fundClass.dataAsOf,
-    };
-  });
+  const results = matches
+    .slice(0, SEARCH_RESULT_LIMIT)
+    .map(({ fundClass, freshness }) => {
+      const group = comparisonGroupFor(fundClass);
+      return {
+        id: fundClass.id,
+        fundClassName: fundClass.fundClassName,
+        constituentFundName: fundClass.constituentFundName,
+        schemeName: fundClass.schemeName,
+        trusteeName: fundClass.trusteeName,
+        fundType: fundClass.fundType,
+        fundCategory: fundClass.fundCategory,
+        comparisonGroup: group.name,
+        comparisonGroupSource: group.source,
+        riskClass: fundClass.riskClass,
+        fundRiskIndicator: fundClass.fundRiskIndicator,
+        annualizedReturn1y: fundClass.annualizedReturn1y,
+        managementFee: fundClass.managementFee,
+        feeCaps: fundClass.feeCaps,
+        latestFer: fundClass.latestFer,
+        dataAsOf: fundClass.dataAsOf,
+        ...(freshness ? { freshness } : {}),
+      };
+    });
 
   return context.json(results, {
     headers: { "X-Total-Matches": String(matches.length) },
@@ -343,10 +380,10 @@ app.get("/filters", async (context) => {
 
   return context.json({
     snapshotId: current.snapshot_id,
-    categories: [...categories].sort((a, b) => a.localeCompare(b)),
+    categories: [...categories].sort(),
     classification: await loadClassification(context.env.DB),
-    fundTypes: [...fundTypes].sort((a, b) => a.localeCompare(b)),
-    trustees: [...trustees].sort((a, b) => a.localeCompare(b)),
+    fundTypes: [...fundTypes].sort(),
+    trustees: [...trustees].sort(),
     riskClasses: [...riskClasses].sort((a, b) => a - b),
   });
 });
@@ -616,17 +653,22 @@ app.get("/schemes", async (context) => {
         annualizedReturn10y?: number;
         returnSources?: Record<
           string,
-          { dataAsOf: string; sourceUrl: string; retrievedAt?: string }
+          { dataAsOf: string; sourceUrl?: string; retrievedAt?: string }
         >;
+        returnsFreshness?: Record<string, PublishedFreshness>;
       }[];
     }
   >();
+  const evaluatedAt = new Date();
 
   for (const row of rows.results) {
     const { fundClass, provenance, schemeFactSheet } = JSON.parse(
       row.payload,
     ) as {
-      provenance?: { sourceUrl?: string };
+      provenance?: {
+        sourceUrl?: string;
+        freshnessPolicy?: FreshnessPolicy;
+      };
       schemeFactSheet?: {
         url?: string;
         capturedAt?: string;
@@ -648,6 +690,11 @@ app.get("/schemes", async (context) => {
         annualizedReturn3y?: number;
         annualizedReturn5y?: number;
         annualizedReturn10y?: number;
+        returnsAsOf?: string;
+        returnSources?: Record<
+          string,
+          { dataAsOf: string; sourceUrl?: string; retrievedAt?: string }
+        >;
         verificationStatus: string;
       };
     };
@@ -687,6 +734,33 @@ app.get("/schemes", async (context) => {
     if (typeof fundClass.managementFee === "number")
       scheme.managementFees.push(fundClass.managementFee);
     if (fundClass.dataAsOf) scheme.dataAsOfDates.push(fundClass.dataAsOf);
+    const returnValues = {
+      "1": fundClass.annualizedReturn1y,
+      "3": fundClass.annualizedReturn3y,
+      "5": fundClass.annualizedReturn5y,
+      "10": fundClass.annualizedReturn10y,
+    };
+    const returnsFreshness = Object.fromEntries(
+      Object.entries(returnValues).flatMap(([period, value]) => {
+        if (typeof value !== "number") return [];
+        const dataAsOf =
+          fundClass.returnSources?.[period]?.dataAsOf ??
+          fundClass.returnsAsOf ??
+          fundClass.dataAsOf;
+        return dataAsOf
+          ? [
+              [
+                period,
+                evaluateFreshness(
+                  dataAsOf,
+                  returnsGraceDays(provenance?.freshnessPolicy),
+                  evaluatedAt,
+                ),
+              ],
+            ]
+          : [];
+      }),
+    );
     scheme.funds.push({
       id: fundClass.id,
       constituentFundName: fundClass.constituentFundName,
@@ -698,6 +772,10 @@ app.get("/schemes", async (context) => {
         : {}),
       ...(fundClass.dataAsOf ? { dataAsOf: fundClass.dataAsOf } : {}),
       ...(provenance?.sourceUrl ? { sourceUrl: provenance.sourceUrl } : {}),
+      ...(fundClass.returnSources
+        ? { returnSources: fundClass.returnSources }
+        : {}),
+      ...(Object.keys(returnsFreshness).length > 0 ? { returnsFreshness } : {}),
       ...definedReturns(fundClass),
     });
     schemes.set(fundClass.schemeName, scheme);
@@ -892,7 +970,7 @@ const rankingMetrics = {
     field: "managementFee",
     methodology: "management_fee",
     sortDirection: "ascending",
-    displayPrecision: 2,
+    displayPrecision: "source",
     unit: "%",
   },
   // 波幅排序用官方的基金風險指標（年度化標準差），不用風險級別。風險級別只有 1 至 7 級，
@@ -975,6 +1053,7 @@ app.get("/rankings", async (context) => {
           { dataAsOf: string; sourceUrl: string; retrievedAt?: string }
         >;
         managementFee?: number;
+        feeCaps?: string[];
         riskClass?: number;
         fundRiskIndicator?: number;
         dataAsOf: string;
@@ -1033,13 +1112,14 @@ app.get("/rankings", async (context) => {
     ({ publication }) => comparisonGroupFor(publication.fundClass).name,
   );
   const precision = selected.displayPrecision;
+  const rankValue = (value: number) =>
+    precision === "source" ? value : Number(value.toFixed(precision));
+  const displayValue = (value: number) =>
+    precision === "source" ? String(value) : value.toFixed(precision);
   const direction = selected.sortDirection === "ascending" ? 1 : -1;
   const rankings = [...groups.entries()].flatMap(([comparisonGroup, funds]) => {
     funds.sort((a, b) => {
-      const ordered =
-        direction *
-        (Number(a.value.toFixed(precision)) -
-          Number(b.value.toFixed(precision)));
+      const ordered = direction * (rankValue(a.value) - rankValue(b.value));
       return ordered !== 0
         ? ordered
         : a.publication.fundClass.id.localeCompare(b.publication.fundClass.id);
@@ -1047,9 +1127,9 @@ app.get("/rankings", async (context) => {
     let previousValue: number | undefined;
     let previousRank = 0;
     return funds.map(({ publication, value, dataAsOf, sourceUrl }, index) => {
-      const displayed = Number(value.toFixed(precision));
-      const rank = displayed === previousValue ? previousRank : index + 1;
-      previousValue = displayed;
+      const rankingValue = rankValue(value);
+      const rank = rankingValue === previousValue ? previousRank : index + 1;
+      previousValue = rankingValue;
       previousRank = rank;
       return {
         fundClassId: publication.fundClass.id,
@@ -1060,7 +1140,11 @@ app.get("/rankings", async (context) => {
         comparisonGroup,
         comparisonGroupSource: comparisonGroupSourceOf(comparisonGroup),
         value,
-        displayValue: `${value.toFixed(precision)}${selected.unit}`,
+        displayValue: `${displayValue(value)}${selected.unit}`,
+        ...(metric === "fee" &&
+        publication.fundClass.feeCaps?.includes("managementFee")
+          ? { feeCap: true }
+          : {}),
         rank,
         dataAsOf,
         sourceUrl,
@@ -1076,7 +1160,7 @@ app.get("/rankings", async (context) => {
           ({ publication }) => comparisonGroupFor(publication.fundClass).name,
         ),
       ),
-    ].sort((a, b) => a.localeCompare(b)),
+    ].sort(),
     metric,
     periodYears,
     excludedStaleCount,

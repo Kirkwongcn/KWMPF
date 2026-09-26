@@ -40,7 +40,7 @@ export default defineConfig({
       stderr: "pipe",
     },
     {
-      command: `bunx vite build --outDir dist-e2e && bunx vite preview --outDir dist-e2e --host 127.0.0.1 --port ${webPort} --strictPort`,
+      command: `bun run vite build --outDir dist-e2e && bun run vite preview --outDir dist-e2e --host 127.0.0.1 --port ${webPort} --strictPort`,
       cwd: "../web",
       url: webUrl,
       reuseExistingServer: !process.env.CI,

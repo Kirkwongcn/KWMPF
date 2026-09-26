@@ -10,6 +10,7 @@ type RankingRow = {
   trusteeName: string;
   comparisonGroup: string;
   displayValue: string;
+  feeCap?: boolean;
   rank: number;
   dataAsOf: string;
   sourceUrl: string;
@@ -69,17 +70,60 @@ export function RankingsPage({
   const [period, setPeriod] = useState<RankingPeriod>(initialPeriod);
   const [metric, setMetric] = useState<RankingMetric>(initialMetric);
 
+  function pushRankingUrl(
+    nextMetric: RankingMetric,
+    nextPeriod: RankingPeriod,
+    nextGroup: string,
+  ) {
+    const params = new URLSearchParams();
+    if (nextMetric === "return") params.set("period", nextPeriod);
+    else params.set("metric", nextMetric);
+    if (nextGroup !== "all") params.set("group", nextGroup);
+    window.history.pushState(
+      {},
+      "",
+      `${window.location.pathname}?${params.toString()}`,
+    );
+  }
+
+  useEffect(() => {
+    function restoreRankingUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const requestedPeriod = params.get("period");
+      const nextPeriod: RankingPeriod =
+        requestedPeriod === "3" ||
+        requestedPeriod === "5" ||
+        requestedPeriod === "10"
+          ? requestedPeriod
+          : "1";
+      const requestedMetric = params.get("metric");
+      const nextMetric: RankingMetric =
+        requestedMetric === "fee" || requestedMetric === "risk"
+          ? requestedMetric
+          : "return";
+      setPeriod(nextPeriod);
+      setMetric(nextMetric);
+      setComparisonGroup(params.get("group") ?? "all");
+    }
+    window.addEventListener("popstate", restoreRankingUrl);
+    return () => window.removeEventListener("popstate", restoreRankingUrl);
+  }, []);
+
   useEffect(() => {
     setPublication(null);
     setFailed(false);
+    const controller = new AbortController();
     const query = metric === "return" ? `period=${period}` : `metric=${metric}`;
-    fetch(`${apiBaseUrl}/rankings?${query}`)
+    fetch(`${apiBaseUrl}/rankings?${query}`, { signal: controller.signal })
       .then((response) => {
         if (!response.ok) throw new Error("Rankings unavailable");
         return response.json() as Promise<PublishedRankings>;
       })
       .then(setPublication)
-      .catch(() => setFailed(true));
+      .catch(() => {
+        if (!controller.signal.aborted) setFailed(true);
+      });
+    return () => controller.abort();
   }, [apiBaseUrl, period, metric]);
 
   // 舊網址可能帶著已停用的平台分類組別。快照內完全沒有這個組別時退回「全部」，
@@ -141,9 +185,11 @@ export function RankingsPage({
                 className="kw-control"
                 id="ranking-metric"
                 value={metric}
-                onChange={(event) =>
-                  setMetric(event.target.value as RankingMetric)
-                }
+                onChange={(event) => {
+                  const nextMetric = event.target.value as RankingMetric;
+                  setMetric(nextMetric);
+                  pushRankingUrl(nextMetric, period, effectiveGroup);
+                }}
               >
                 {Object.entries(metricLabels).map(([value, label]) => (
                   <option key={value} value={value}>
@@ -159,9 +205,11 @@ export function RankingsPage({
                   className="kw-control"
                   id="ranking-period"
                   value={period}
-                  onChange={(event) =>
-                    setPeriod(event.target.value as RankingPeriod)
-                  }
+                  onChange={(event) => {
+                    const nextPeriod = event.target.value as RankingPeriod;
+                    setPeriod(nextPeriod);
+                    pushRankingUrl(metric, nextPeriod, effectiveGroup);
+                  }}
                 >
                   <option value="1">一年</option>
                   <option value="3">三年</option>
@@ -177,7 +225,10 @@ export function RankingsPage({
                   className="kw-control"
                   id="comparison-group"
                   value={effectiveGroup}
-                  onChange={(event) => setComparisonGroup(event.target.value)}
+                  onChange={(event) => {
+                    setComparisonGroup(event.target.value);
+                    pushRankingUrl(metric, period, event.target.value);
+                  }}
                 >
                   <option value="all">全部比較組別</option>
                   {comparisonGroups.map((group) => (
@@ -212,11 +263,13 @@ export function RankingsPage({
           </div>
         </div>
         {failed ? (
-          <p className="kw-status kw-status--negative">
+          <p className="kw-status kw-status--negative" role="alert">
             暫時未能取得排名，現有公開快照不受影響，請稍後再試。
           </p>
         ) : !publication ? (
-          <p className="kw-status">正在載入已發布排名…</p>
+          <p className="kw-status" role="status" aria-live="polite">
+            正在載入已發布排名…
+          </p>
         ) : (
           <>
             {retiredGroup ? (
@@ -230,56 +283,80 @@ export function RankingsPage({
               </p>
             ) : null}
             {rankings?.length ? (
-              <div className="kw-table-wrap">
-                <table className="kw-table">
-                  <thead>
-                    <tr>
-                      <th scope="col">名次</th>
-                      <th scope="col">基金</th>
-                      <th scope="col">{valueLabel}</th>
-                      <th scope="col">比較組別</th>
-                      <th scope="col">截至日期</th>
-                      <th scope="col">來源</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {rankings.map((row) => (
-                      <tr key={row.fundClassId}>
-                        <td className="kw-rank">第 {row.rank}</td>
-                        <td className="kw-table__name">
-                          <a
-                            href={`/fund-classes/${encodeURIComponent(row.fundClassId)}`}
-                            aria-label={`查看 ${row.constituentFundName} 詳情`}
-                          >
-                            {row.constituentFundName}
-                          </a>
-                          <small>
-                            {joinFundParts(
-                              fundClassLabel(row.fundClassName),
-                              row.schemeName,
-                            )}
-                          </small>
-                        </td>
-                        <td className="kw-return">{row.displayValue}</td>
-                        <td>{row.comparisonGroup}</td>
-                        <td className="kw-nowrap">{row.dataAsOf}</td>
-                        <td className="kw-nowrap">
-                          <a
-                            href={row.sourceUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            aria-label={`${row.constituentFundName} 官方來源`}
-                          >
-                            官方來源
-                          </a>
-                        </td>
+              <>
+                <p
+                  className="kw-muted"
+                  role="status"
+                  aria-live="polite"
+                  aria-atomic="true"
+                >
+                  {effectiveGroup === "all"
+                    ? `目前顯示 ${rankings.length} 隻合資格基金。`
+                    : `「${effectiveGroup}」組別目前有 ${rankings.length} 隻合資格基金。`}
+                </p>
+                <div
+                  className="kw-table-wrap"
+                  tabIndex={0}
+                  role="region"
+                  aria-label="基金排名結果，可左右捲動查看所有欄位"
+                >
+                  <table className="kw-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">名次</th>
+                        <th scope="col">基金</th>
+                        <th scope="col">{valueLabel}</th>
+                        <th scope="col">比較組別</th>
+                        <th scope="col">截至日期</th>
+                        <th scope="col">來源</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                    </thead>
+                    <tbody>
+                      {rankings.map((row) => (
+                        <tr key={row.fundClassId}>
+                          <td className="kw-rank">第 {row.rank}</td>
+                          <td className="kw-table__name">
+                            <a
+                              href={`/fund-classes/${encodeURIComponent(row.fundClassId)}`}
+                              aria-label={`查看 ${row.constituentFundName} 詳情`}
+                            >
+                              {row.constituentFundName}
+                            </a>
+                            <small>
+                              {joinFundParts(
+                                fundClassLabel(row.fundClassName),
+                                row.schemeName,
+                              )}
+                            </small>
+                          </td>
+                          <td className="kw-return">
+                            {row.displayValue}
+                            {row.feeCap ? "（上限）" : ""}
+                          </td>
+                          <td>{row.comparisonGroup}</td>
+                          <td className="kw-nowrap">{row.dataAsOf}</td>
+                          <td className="kw-nowrap">
+                            <a
+                              href={row.sourceUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              aria-label={`${row.constituentFundName} 官方來源`}
+                            >
+                              官方來源
+                            </a>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </>
             ) : (
-              <p className="kw-status kw-status--warning">
+              <p
+                className="kw-status kw-status--warning"
+                role="status"
+                aria-live="polite"
+              >
                 這個比較組別目前沒有合資格的{valueLabel}資料。
               </p>
             )}

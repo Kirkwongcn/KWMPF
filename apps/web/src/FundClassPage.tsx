@@ -473,36 +473,26 @@ export function FundClassPage({
         `${fundClass.fundType}／${fundClass.fundCategory}`,
       )}
     >
-      <div className="kw-tabs" role="tablist" aria-label="基金頁內容">
+      <div className="kw-tabs" role="group" aria-label="基金頁內容">
         <button
-          aria-controls="fund-details-panel"
-          aria-selected={activeTab === "details"}
+          aria-pressed={activeTab === "details"}
           className="kw-tabs__tab"
-          id="fund-details-tab"
           onClick={() => setActiveTab("details")}
-          role="tab"
           type="button"
         >
           基金資料
         </button>
         <button
-          aria-controls="fund-interpretation-panel"
-          aria-selected={activeTab === "interpretation"}
+          aria-pressed={activeTab === "interpretation"}
           className="kw-tabs__tab"
-          id="fund-interpretation-tab"
           onClick={() => setActiveTab("interpretation")}
-          role="tab"
           type="button"
         >
           基金解讀
         </button>
       </div>
       {activeTab === "interpretation" ? (
-        <div
-          aria-labelledby="fund-interpretation-tab"
-          id="fund-interpretation-panel"
-          role="tabpanel"
-        >
+        <div className="kw-page-panel">
           <InterpretationPanel
             apiBaseUrl={apiBaseUrl}
             expectedSnapshotId={snapshotId}
@@ -510,11 +500,7 @@ export function FundClassPage({
           />
         </div>
       ) : (
-        <div
-          aria-labelledby="fund-details-tab"
-          id="fund-details-panel"
-          role="tabpanel"
-        >
+        <div className="kw-page-panel">
           <section className="kw-section" aria-labelledby="fund-profile-title">
             <h2 className="kw-section__heading" id="fund-profile-title">
               基金概況
@@ -574,7 +560,12 @@ export function FundClassPage({
             <h2 className="kw-section__heading" id="fund-figures-title">
               主要數據
             </h2>
-            <div className="kw-table-scroll">
+            <div
+              className="kw-table-scroll"
+              tabIndex={0}
+              role="region"
+              aria-label="基金回報表，可左右捲動查看所有欄位"
+            >
               <table className="kw-table" aria-label="回報">
                 <thead>
                   <tr>
@@ -650,7 +641,12 @@ export function FundClassPage({
             {calendarYears.length === 0 ? (
               <p className="kw-status">官方未提供年度回報。</p>
             ) : (
-              <div className="kw-table-scroll">
+              <div
+                className="kw-table-scroll"
+                tabIndex={0}
+                role="region"
+                aria-label="年度回報表，可左右捲動查看所有欄位"
+              >
                 <table className="kw-table" aria-label="年度回報">
                   <thead>
                     <tr>
@@ -690,7 +686,12 @@ export function FundClassPage({
                   <dd>{formatNumber(fundClass.latestFer, 5, "%")}</dd>
                 </div>
               </dl>
-              <div className="kw-table-scroll">
+              <div
+                className="kw-table-scroll"
+                tabIndex={0}
+                role="region"
+                aria-label="基金經常性費用表，可左右捲動查看所有欄位"
+              >
                 <table className="kw-table" aria-label="經常性費用">
                   <caption>經常性費用（每年）</caption>
                   <thead>
@@ -709,7 +710,12 @@ export function FundClassPage({
                   </tbody>
                 </table>
               </div>
-              <div className="kw-table-scroll">
+              <div
+                className="kw-table-scroll"
+                tabIndex={0}
+                role="region"
+                aria-label="一次性及交易收費表，可左右捲動查看所有欄位"
+              >
                 <table className="kw-table" aria-label="一次性及交易收費">
                   <caption>一次性及交易收費</caption>
                   <thead>
@@ -728,7 +734,12 @@ export function FundClassPage({
                   </tbody>
                 </table>
               </div>
-              <div className="kw-table-scroll">
+              <div
+                className="kw-table-scroll"
+                tabIndex={0}
+                role="region"
+                aria-label="持續成本說明表，可左右捲動查看所有欄位"
+              >
                 <table className="kw-table" aria-label="持續成本說明">
                   <caption>持續成本說明（OCI）</caption>
                   <thead>
@@ -818,7 +829,12 @@ export function FundClassPage({
                     </p>
                   )}
                   {mappedAllocation && hasMappedBuckets(mappedAllocation) && (
-                    <div className="kw-table-scroll">
+                    <div
+                      className="kw-table-scroll"
+                      tabIndex={0}
+                      role="region"
+                      aria-label="編輯歸類的資產類別表，可左右捲動查看所有欄位"
+                    >
                       <table
                         className="kw-table"
                         aria-label="編輯歸類的資產類別"
@@ -857,7 +873,13 @@ export function FundClassPage({
                       </p>
                     )}
                   {factSheetDisclosure.allocations.map((dimension) => (
-                    <div className="kw-table-scroll" key={dimension.heading}>
+                    <div
+                      className="kw-table-scroll"
+                      key={dimension.heading}
+                      tabIndex={0}
+                      role="region"
+                      aria-label={`${dimension.heading}，可左右捲動查看所有欄位`}
+                    >
                       <table
                         className="kw-table"
                         aria-label={dimension.heading}
@@ -887,7 +909,12 @@ export function FundClassPage({
                     </p>
                   )}
                   {factSheetDisclosure.topHoldings.length > 0 && (
-                    <div className="kw-table-scroll">
+                    <div
+                      className="kw-table-scroll"
+                      tabIndex={0}
+                      role="region"
+                      aria-label="十大持倉表，可左右捲動查看所有欄位"
+                    >
                       <table className="kw-table" aria-label="十大持倉">
                         <caption>十大持倉</caption>
                         <thead>

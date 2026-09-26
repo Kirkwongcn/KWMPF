@@ -1,16 +1,21 @@
 import { expect, test } from "@playwright/test";
 
-test("未選條件前不會查詢，選受託人後結果全部相符", async ({ page }) => {
+test("開啟基金瀏覽會載入結果，選受託人後結果全部相符", async ({ page }) => {
   await page.goto("/funds");
-
-  await expect(
-    page.getByText("先選擇一項篩選條件或輸入關鍵字，才會查詢已發布快照。"),
-  ).toBeVisible();
 
   const trusteeFilter = page.getByLabel("受託人");
   await expect(trusteeFilter.locator("option")).not.toHaveCount(1);
   const trustee = (await trusteeFilter.locator("option").nth(1).textContent())!;
+  const trusteeResponse = page.waitForResponse((response) => {
+    const url = new URL(response.url());
+    return (
+      url.pathname.endsWith("/search") &&
+      url.searchParams.get("trustee") === trustee &&
+      response.ok()
+    );
+  });
   await trusteeFilter.selectOption({ label: trustee });
+  await trusteeResponse;
 
   const rows = page.locator("table.kw-table tbody tr");
   await expect(rows.first()).toBeVisible();
@@ -24,7 +29,16 @@ test("加入風險級別條件後結果收窄且仍全部相符", async ({ page 
 
   const trusteeFilter = page.getByLabel("受託人");
   const trustee = (await trusteeFilter.locator("option").nth(1).textContent())!;
+  const trusteeResponse = page.waitForResponse((response) => {
+    const url = new URL(response.url());
+    return (
+      url.pathname.endsWith("/search") &&
+      url.searchParams.get("trustee") === trustee &&
+      response.ok()
+    );
+  });
   await trusteeFilter.selectOption({ label: trustee });
+  await trusteeResponse;
 
   const rows = page.locator("table.kw-table tbody tr");
   await expect(rows.first()).toBeVisible();
@@ -73,7 +87,7 @@ test("篩選結果每一行都標示官方截至日期", async ({ page }) => {
   await expect(rows.first()).toBeVisible();
   for (const row of await rows.all()) {
     await expect(row.locator("td").last()).toHaveText(
-      /^\d{4}-\d{2}-\d{2}$|官方未提供/,
+      /^\d{4}-\d{2}-\d{2}(?:\s*過期)?$|官方未提供/,
     );
   }
 });

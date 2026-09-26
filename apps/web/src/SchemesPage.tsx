@@ -13,6 +13,11 @@ type SchemeFund = {
   annualizedReturn1y?: number;
   annualizedReturn5y?: number;
   annualizedReturn10y?: number;
+  returnSources?: Record<string, { dataAsOf: string; sourceUrl: string }>;
+  returnsFreshness?: Record<
+    string,
+    { status: "verified" | "stale"; dataAsOf: string }
+  >;
 };
 
 type Scheme = {
@@ -59,6 +64,13 @@ function byHorizonReturnDescending(horizon: Horizon) {
   return (a: SchemeFund, b: SchemeFund) => {
     const left = horizonReturn(a, horizon);
     const right = horizonReturn(b, horizon);
+    const leftFreshness = a.returnsFreshness?.[horizon];
+    const rightFreshness = b.returnsFreshness?.[horizon];
+    const tier = (value: number | undefined, status?: string) =>
+      value === undefined ? 2 : status === "verified" ? 0 : 1;
+    const leftTier = tier(left, leftFreshness?.status);
+    const rightTier = tier(right, rightFreshness?.status);
+    if (leftTier !== rightTier) return leftTier - rightTier;
     if (left !== undefined && right !== undefined && left !== right)
       return right - left;
     if ((left === undefined) !== (right === undefined))
@@ -78,15 +90,58 @@ const COMPARE_LIMIT = 4;
 
 export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
   const [schemes, setSchemes] = useState<Scheme[] | null>(null);
-  const [sortBy, setSortBy] = useState<"name" | "fee">("name");
-  const [horizon, setHorizon] = useState<Horizon>("1");
+  const [failed, setFailed] = useState(false);
+  const [sortBy, setSortBy] = useState<"name" | "fee">(() =>
+    new URLSearchParams(window.location.search).get("sort") === "fee"
+      ? "fee"
+      : "name",
+  );
+  const [horizon, setHorizon] = useState<Horizon>(() => {
+    const period = new URLSearchParams(window.location.search).get("period");
+    return period === "5" || period === "10" ? period : "1";
+  });
   const [selected, setSelected] = useState<string[]>([]);
   useEffect(() => {
-    fetch(`${apiBaseUrl}/schemes`)
-      .then((response) => response.json() as Promise<Scheme[]>)
-      .then(setSchemes)
-      .catch(() => setSchemes([]));
+    const controller = new AbortController();
+    fetch(`${apiBaseUrl}/schemes`, { signal: controller.signal })
+      .then((response) => {
+        if (!response.ok) throw new Error("Schemes unavailable");
+        return response.json() as Promise<Scheme[]>;
+      })
+      .then((payload) => {
+        setSchemes(payload);
+        setFailed(false);
+      })
+      .catch(() => {
+        if (controller.signal.aborted) return;
+        setSchemes([]);
+        setFailed(true);
+      });
+    return () => controller.abort();
   }, [apiBaseUrl]);
+
+  function pushSchemeUrl(nextSort: "name" | "fee", nextHorizon: Horizon) {
+    const params = new URLSearchParams();
+    if (nextSort !== "name") params.set("sort", nextSort);
+    if (nextHorizon !== "1") params.set("period", nextHorizon);
+    const search = params.toString();
+    window.history.pushState(
+      {},
+      "",
+      `${window.location.pathname}${search ? `?${search}` : ""}`,
+    );
+  }
+
+  useEffect(() => {
+    function restoreSchemeUrl() {
+      const params = new URLSearchParams(window.location.search);
+      setSortBy(params.get("sort") === "fee" ? "fee" : "name");
+      const period = params.get("period");
+      setHorizon(period === "5" || period === "10" ? period : "1");
+    }
+    window.addEventListener("popstate", restoreSchemeUrl);
+    return () => window.removeEventListener("popstate", restoreSchemeUrl);
+  }, []);
 
   const sortedSchemes = useMemo(() => {
     if (!schemes) return schemes;
@@ -135,9 +190,11 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
                 className="kw-control"
                 id="scheme-sort"
                 value={sortBy}
-                onChange={(event) =>
-                  setSortBy(event.target.value as "name" | "fee")
-                }
+                onChange={(event) => {
+                  const nextSort = event.target.value as "name" | "fee";
+                  setSortBy(nextSort);
+                  pushSchemeUrl(nextSort, horizon);
+                }}
               >
                 <option value="name">按計劃名稱</option>
                 <option value="fee">按官方管理費中位數</option>
@@ -149,7 +206,11 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
                 className="kw-control"
                 id="scheme-horizon"
                 value={horizon}
-                onChange={(event) => setHorizon(event.target.value as Horizon)}
+                onChange={(event) => {
+                  const nextHorizon = event.target.value as Horizon;
+                  setHorizon(nextHorizon);
+                  pushSchemeUrl(sortBy, nextHorizon);
+                }}
               >
                 {Object.entries(horizons).map(([value, { label }]) => (
                   <option key={value} value={value}>
@@ -196,9 +257,18 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
             </p>
           </div>
         </div>
-        {schemes === null && <p className="kw-status">正在載入計劃資料…</p>}
-        {schemes !== null && schemes.length === 0 && (
-          <p className="kw-status kw-status--warning">
+        {schemes === null && (
+          <p className="kw-status" role="status" aria-live="polite">
+            正在載入計劃資料…
+          </p>
+        )}
+        {failed && (
+          <p className="kw-status kw-status--negative" role="alert">
+            暫時未能讀取已發布計劃資料，請稍後再試。
+          </p>
+        )}
+        {!failed && schemes !== null && schemes.length === 0 && (
+          <p className="kw-status kw-status--warning" role="status">
             目前沒有已發布的計劃資料。
           </p>
         )}
@@ -213,6 +283,11 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
             );
             const withReturn = funds.filter(
               (fund) => horizonReturn(fund, horizon) !== undefined,
+            ).length;
+            const currentReturns = funds.filter(
+              (fund) =>
+                horizonReturn(fund, horizon) !== undefined &&
+                fund.returnsFreshness?.[horizon]?.status === "verified",
             ).length;
             const checked = selected.includes(scheme.schemeName);
             const checkboxDisabled = atLimit && !checked;
@@ -237,7 +312,7 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
                 </p>
                 <dl className="status-list">
                   <div>
-                    <dt>官方管理費</dt>
+                    <dt>管理費統計</dt>
                     <dd>
                       {scheme.managementFee ? (
                         <>
@@ -249,8 +324,17 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
                             中位數 {scheme.managementFee.median.toFixed(2)}%
                           </small>
                           <small className="kw-fee-note">
-                            {scheme.fundClassCount} 隻基金中{" "}
-                            {scheme.managementFee.fundCount} 隻有官方管理費
+                            平台已核實 {scheme.fundClassCount} 隻基金中，
+                            {scheme.managementFee.fundCount} 隻有官方管理費（
+                            {Math.round(
+                              (scheme.managementFee.fundCount /
+                                scheme.fundClassCount) *
+                                100,
+                            )}
+                            % 覆蓋）
+                          </small>
+                          <small className="kw-fee-note">
+                            中位數由本站按有披露的基金類別計算；不等於計劃總開支，低覆蓋計劃的結果較難直接比較。
                           </small>
                         </>
                       ) : (
@@ -315,14 +399,28 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
                   <details className="kw-disclosure kw-fund-disclosure">
                     <summary>
                       <span>基金列表（{funds.length}）</span>
-                      <small className="kw-fee-note">
-                        {scheme.fundClassCount} 隻基金中 {withReturn} 隻有
+                      <small
+                        className="kw-fee-note"
+                        aria-live="polite"
+                        aria-atomic="true"
+                      >
+                        {currentReturns} 隻資料現行、{withReturn} 隻有
                         {horizons[horizon].label}回報
                       </small>
                     </summary>
                     <ul className="kw-fund-list">
                       {funds.map((fund) => {
                         const value = horizonReturn(fund, horizon);
+                        const returnDataAsOf =
+                          fund.returnsFreshness?.[horizon]?.dataAsOf ??
+                          fund.returnSources?.[horizon]?.dataAsOf ??
+                          fund.dataAsOf;
+                        const showReturnDate = Boolean(
+                          returnDataAsOf &&
+                          (mixedDates ||
+                            !scheme.dataAsOf ||
+                            returnDataAsOf !== scheme.dataAsOf.latest),
+                        );
                         return (
                           <li key={fund.id}>
                             <a
@@ -343,9 +441,15 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
                                 {value === undefined
                                   ? "官方未提供"
                                   : ` ${value.toFixed(2)}%`}
-                                {mixedDates && fund.dataAsOf && (
+                                {fund.returnsFreshness?.[horizon]?.status ===
+                                  "stale" && (
+                                  <small className="kw-data-state kw-data-state--stale">
+                                    過期，不參與排名
+                                  </small>
+                                )}
+                                {showReturnDate && (
                                   <small className="kw-fund-asof">
-                                    截至 {fund.dataAsOf}
+                                    截至 {returnDataAsOf}
                                   </small>
                                 )}
                               </span>

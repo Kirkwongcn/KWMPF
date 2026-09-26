@@ -1,15 +1,19 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 
-test("基金詳情頁顯示逐期回報、費用及可追溯來源", async ({ page }) => {
-  await page.goto("/rankings");
+async function openFirstFundDetail(page: Page) {
+  await page.goto("/funds");
   const firstFund = page
-    .locator("table.kw-table tbody tr td.kw-table__name a")
+    .locator("table.kw-table tbody th[scope='row'] a")
     .first();
   await expect(firstFund).toBeVisible();
   const fundName = (await firstFund.textContent())!.trim();
   await firstFund.click();
-
   await expect(page).toHaveURL(/\/fund-classes\//);
+  return fundName;
+}
+
+test("基金詳情頁顯示逐期回報、費用及可追溯來源", async ({ page }) => {
+  const fundName = await openFirstFundDetail(page);
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(fundName);
 
   const returns = page.getByRole("table", { name: "回報" });
@@ -56,12 +60,7 @@ test("基金詳情頁顯示逐期回報、費用及可追溯來源", async ({ pa
 });
 
 test("詳情頁的同組比較連結會帶著比較組別回到排名", async ({ page }) => {
-  await page.goto("/rankings");
-  const firstFund = page
-    .locator("table.kw-table tbody tr td.kw-table__name a")
-    .first();
-  await expect(firstFund).toBeVisible();
-  await firstFund.click();
+  await openFirstFundDetail(page);
 
   const peers = page.getByRole("region", { name: "同組比較" });
   const group = (await peers.locator("strong").first().textContent())!.trim();
@@ -71,21 +70,23 @@ test("詳情頁的同組比較連結會帶著比較組別回到排名", async ({
   await expect(page.getByLabel("比較組別")).toHaveValue(group);
 
   const rows = page.locator("table.kw-table tbody tr");
-  await expect(rows.first()).toBeVisible();
-  for (const row of await rows.all()) {
-    await expect(row.locator("td").nth(3)).toHaveText(group);
+  if ((await rows.count()) === 0) {
+    await expect(
+      page.locator(".kw-status--warning").filter({
+        hasText: "目前沒有合資格",
+      }),
+    ).toContainText("目前沒有合資格的一年回報資料。");
+  } else {
+    for (const row of await rows.all()) {
+      await expect(row.locator("td").nth(3)).toHaveText(group);
+    }
   }
 });
 
 test("基金解讀分頁以同一快照顯示三項比較", async ({ page }) => {
-  await page.goto("/rankings");
-  const firstFund = page
-    .locator("table.kw-table tbody tr td.kw-table__name a")
-    .first();
-  await expect(firstFund).toBeVisible();
-  await firstFund.click();
+  await openFirstFundDetail(page);
 
-  await page.getByRole("tab", { name: "基金解讀" }).click();
+  await page.getByRole("button", { name: "基金解讀" }).click();
 
   const interpretation = page.getByRole("region", { name: "基金解讀" });
   await expect(interpretation).toContainText(/股票配置/);

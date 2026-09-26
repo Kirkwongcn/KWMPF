@@ -10,10 +10,13 @@ function expandFundLists() {
     disclosure.open = true;
 }
 
+afterEach(() => window.history.replaceState({}, "", "/"));
+
 describe("scheme comparison page", () => {
   afterEach(() => {
     cleanup();
     vi.unstubAllGlobals();
+    window.history.replaceState({}, "", "/");
   });
 
   it("keeps site navigation and the sitewide disclaimer available", async () => {
@@ -66,6 +69,25 @@ describe("scheme comparison page", () => {
     expect(
       screen.getByText(/本網站只提供資料比較及投資教育，不構成投資建議/),
     ).toBeVisible();
+  });
+
+  it("shares its selected horizon and sorting in the URL and restores browser history", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(Response.json([])));
+
+    render(<SchemesPage apiBaseUrl="https://api.test" />);
+
+    expect(await screen.findByLabelText("回報期間")).toBeVisible();
+    fireEvent.change(screen.getByLabelText("回報期間"), {
+      target: { value: "5" },
+    });
+    expect(window.location.search).toBe("?period=5");
+
+    window.history.pushState({}, "", "/schemes?period=10&sort=fee");
+    fireEvent.popState(window);
+
+    expect(screen.getByLabelText("回報期間")).toHaveValue("10");
+    expect(screen.getByLabelText("排序")).toHaveValue("fee");
+    window.history.replaceState({}, "", "/");
   });
 
   it("lists funds by official name and links to each fund class page", async () => {
@@ -154,7 +176,9 @@ describe("scheme comparison page", () => {
 
     expect(await screen.findByText("0.75% – 1.55%")).toBeVisible();
     expect(screen.getByText("中位數 1.05%")).toBeVisible();
-    expect(screen.getByText("4 隻基金中 3 隻有官方管理費")).toBeVisible();
+    expect(
+      screen.getByText(/4 隻基金中，3 隻有官方管理費（75% 覆蓋）/),
+    ).toBeVisible();
     expect(screen.getByText("官方未提供")).toBeVisible();
   });
   it("sorts schemes by median official fee and keeps unknown fees last", async () => {
@@ -241,7 +265,7 @@ describe("scheme comparison page", () => {
     const terms = Array.from(card?.querySelectorAll("dt") ?? []).map(
       (node) => node.textContent,
     );
-    expect(terms[0]).toBe("官方管理費");
+    expect(terms[0]).toBe("管理費統計");
 
     const fundTypeSummary = screen.getByText("基金種類（12）");
     expect(fundTypeSummary.closest("details")).not.toHaveAttribute("open");
@@ -273,6 +297,11 @@ describe("scheme fund returns", () => {
           annualizedReturn1y: 6.09,
           annualizedReturn5y: 4.2,
           annualizedReturn10y: 9.41,
+          returnsFreshness: {
+            "1": { status: "verified", dataAsOf: "2026-09-26" },
+            "5": { status: "verified", dataAsOf: "2026-09-26" },
+            "10": { status: "verified", dataAsOf: "2026-09-26" },
+          },
         },
         {
           id: "fund-short",
@@ -280,6 +309,9 @@ describe("scheme fund returns", () => {
           fundClassName: "Class B",
           fundType: "Bond Fund",
           annualizedReturn1y: 2.5,
+          returnsFreshness: {
+            "1": { status: "verified", dataAsOf: "2026-09-26" },
+          },
         },
       ],
     },
@@ -326,13 +358,15 @@ describe("scheme fund returns", () => {
 
     render(<SchemesPage apiBaseUrl="https://api.test" />);
 
-    expect(await screen.findByText("2 隻基金中 2 隻有一年回報")).toBeVisible();
+    expect(
+      await screen.findByText("2 隻資料現行、2 隻有一年回報"),
+    ).toBeVisible();
 
     fireEvent.change(screen.getByLabelText("回報期間"), {
       target: { value: "5" },
     });
 
-    expect(screen.getByText("2 隻基金中 1 隻有五年回報")).toBeVisible();
+    expect(screen.getByText("1 隻資料現行、1 隻有五年回報")).toBeVisible();
   });
 
   it("warns that returns across different fund types are not comparable", async () => {

@@ -4,7 +4,7 @@
   --kw-navy: #123b46;
   --kw-action: #0f414e;
   --kw-teal: #267786;
-  --kw-muted: #738086;
+  --kw-muted: #5b666c;
   --kw-muted-strong: #537080;
   --kw-gold: #c7a66a;
   --kw-gold-light: #d8b774;
@@ -12,7 +12,7 @@
   --kw-soft: #f2f4f1;
   --kw-table-head: #f5f7fa;
   --kw-white: #fff;
-  --kw-positive: #008b48;
+  --kw-positive: #006b37;
   --kw-negative: #9a3b3b;
   --kw-warning: #fff8e6;
   --kw-content: 1520px;
@@ -39,6 +39,23 @@ body {
   width: min(var(--kw-content), 100%);
   margin-inline: auto;
   padding-inline: var(--kw-gutter);
+}
+.kw-skip-link {
+  position: absolute;
+  z-index: 10;
+  top: 8px;
+  left: 8px;
+  transform: translateY(-160%);
+  border: 2px solid var(--kw-gold-light);
+  padding: 9px 14px;
+  background: var(--kw-white);
+  color: var(--kw-navy);
+  font-weight: 700;
+}
+.kw-skip-link:focus {
+  transform: translateY(0);
+  outline: 3px solid var(--kw-gold-light);
+  outline-offset: 2px;
 }
 .kw-header {
   min-height: 72px;
@@ -415,6 +432,12 @@ body {
   width: 100%;
   max-width: 100%;
   overflow-x: auto;
+  scroll-padding-inline: 12px;
+}
+.kw-table-wrap:focus-visible,
+.kw-table-scroll:focus-visible {
+  outline: 3px solid var(--kw-teal);
+  outline-offset: 3px;
 }
 .kw-table {
   width: 100%;
@@ -434,6 +457,14 @@ body {
 }
 .kw-table th[scope="col"] {
   white-space: nowrap;
+}
+.kw-table a {
+  color: var(--kw-action);
+  text-decoration-color: var(--kw-gold);
+  text-underline-offset: 3px;
+}
+.kw-table a:hover {
+  text-decoration-thickness: 2px;
 }
 .kw-table__name {
   min-width: 170px;
@@ -480,9 +511,9 @@ body {
   color: var(--kw-muted-strong);
 }
 .kw-status--positive {
-  border-color: #8de0ad;
+  border-color: #3f8f60;
   background: #effaf2;
-  color: #006b37;
+  color: var(--kw-positive);
 }
 .kw-status--negative {
   border-color: #dfabab;
@@ -509,6 +540,26 @@ body {
 .status-list dt {
   color: var(--kw-muted);
   font-size: 12px;
+}
+.kw-footer .kw-muted {
+  color: #c6d4dd;
+}
+.kw-data-state {
+  display: inline-block;
+  margin-inline-start: 6px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 1px 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.4;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.kw-data-state--stale {
+  border-color: #e7cb83;
+  background: var(--kw-warning);
+  color: #6f5418;
 }
 .status-list dd {
   margin: 0;
@@ -880,7 +931,10 @@ body {
   }
   .kw-nav a {
     font-size: 13px;
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     white-space: nowrap;
   }
   .kw-hero {

@@ -1070,7 +1070,7 @@ describe("cumulative returns", () => {
   it("shows snapshot interpretation text and matching comparison charts", async () => {
     const fetchMock = renderInterpretation();
 
-    fireEvent.click(await screen.findByRole("tab", { name: "基金解讀" }));
+    fireEvent.click(await screen.findByRole("button", { name: "基金解讀" }));
 
     expect(await screen.findByText(/股票配置.*94%.*相若/)).toBeVisible();
     expect(screen.getByText(/十大持倉佔比 33%.*高 3 個百分點/)).toBeVisible();
@@ -1085,7 +1085,7 @@ describe("cumulative returns", () => {
   it("shows explicit sample status without partial charts", async () => {
     renderInterpretation("insufficient");
 
-    fireEvent.click(await screen.findByRole("tab", { name: "基金解讀" }));
+    fireEvent.click(await screen.findByRole("button", { name: "基金解讀" }));
 
     expect(await screen.findAllByText("樣本不足")).toHaveLength(3);
     expect(screen.getAllByText(/同組別樣本不足，未能比較/)).toHaveLength(3);

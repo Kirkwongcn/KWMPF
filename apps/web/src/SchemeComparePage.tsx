@@ -357,7 +357,12 @@ export function SchemeComparePage({
               快照 {result.snapshotId ?? "尚未發布"}。行政評分 v1
               暫不評分，欄位預留為空。
             </p>
-            <div className="kw-table-scroll">
+            <div
+              className="kw-table-scroll"
+              tabIndex={0}
+              role="region"
+              aria-label="計劃逐項比較表，可左右捲動查看所有欄位"
+            >
               <table className="kw-table scheme-compare-table">
                 <thead>
                   <tr>
@@ -503,6 +508,11 @@ export function SchemeComparePage({
             <h2 className="kw-section__heading" id="scheme-compare-radar-title">
               雷達圖概覽
             </h2>
+            <p className="kw-muted">
+              每條軸只按今次選取的計劃換算為相對 0–100
+              分；高低方向因指標而異，不能跨軸比較或視為官方總分。兩邊相同時顯示
+              50，缺值不當作零；逐項原始數值請以對比表為準。
+            </p>
             <SchemeCompareRadar schemes={result.schemes} />
           </section>
         </>

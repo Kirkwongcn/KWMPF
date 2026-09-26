@@ -164,6 +164,11 @@ describe("publication snapshot", () => {
         managementFee: fundFixture.fundClass.managementFee,
         latestFer: fundFixture.fundClass.latestFer,
         dataAsOf: fundFixture.fundClass.dataAsOf,
+        freshness: expect.objectContaining({
+          status: "stale",
+          dataAsOf: fundFixture.fundClass.dataAsOf,
+          graceDays: 45,
+        }),
       },
     ]);
   });
@@ -338,13 +343,14 @@ describe("publication snapshot", () => {
     ).toContain("x-total-matches");
   });
 
-  it("returns nothing when neither a search term nor a filter is given", async () => {
+  it("returns a default browse page when neither a search term nor a filter is given", async () => {
     await publishBrowseFixture();
 
     const response = await SELF.fetch("https://kwmpf.test/search");
 
     expect(response.status).toBe(200);
-    expect(await response.json()).toEqual([]);
+    expect(response.headers.get("X-Total-Matches")).toBe("3");
+    expect(((await response.json()) as unknown[]).length).toBe(3);
   });
 
   it("lists the filter values available in the current publication", async () => {
@@ -457,6 +463,13 @@ describe("publication snapshot", () => {
             riskClass: fundFixture.fundClass.riskClass,
             dataAsOf: fundFixture.fundClass.dataAsOf,
             sourceUrl: fundFixture.source.url,
+            returnsFreshness: {
+              "1": expect.objectContaining({
+                status: "stale",
+                dataAsOf: fundFixture.fundClass.dataAsOf,
+                graceDays: 45,
+              }),
+            },
             annualizedReturn1y: fundFixture.fundClass.annualizedReturn1y,
           },
         ],
@@ -1179,6 +1192,7 @@ describe("publication snapshot", () => {
 
   it("ranks one-year returns within the same comparison group using displayed precision", async () => {
     const snapshotId = "snapshot-ranking-test";
+    const dataAsOf = new Date().toISOString().slice(0, 10);
     await bindings.DB.prepare(
       "INSERT INTO publication_snapshots (snapshot_id, published_at) VALUES (?, ?)",
     )
@@ -1207,12 +1221,12 @@ describe("publication snapshot", () => {
               fundCategory: "環球股票基金",
               lipperCategory: "Global Equity",
               annualizedReturn1y: fund.value,
-              dataAsOf: "2026-07-31",
+              dataAsOf,
               verificationStatus: "verified",
             },
             provenance: {
               sourceUrl: `https://example.test/${fund.id}`,
-              dataAsOf: "2026-07-31",
+              dataAsOf,
               verificationStatus: "verified",
             },
           }),
@@ -1266,6 +1280,7 @@ describe("publication snapshot", () => {
 
   it("ranks three, five and ten year returns and excludes funds the source never published", async () => {
     const snapshotId = "snapshot-long-horizon";
+    const dataAsOf = new Date().toISOString().slice(0, 10);
     await bindings.DB.prepare(
       "INSERT INTO publication_snapshots (snapshot_id, published_at) VALUES (?, ?)",
     )
@@ -1314,16 +1329,16 @@ describe("publication snapshot", () => {
               annualizedReturn10y: fund.return10y,
               returnSources: {
                 "3": {
-                  dataAsOf: "2026-07-31",
+                  dataAsOf,
                   sourceUrl: `https://factsheet.example.test/${fund.id}`,
                 },
               },
-              dataAsOf: "2026-07-31",
+              dataAsOf,
               verificationStatus: "verified",
             },
             provenance: {
               sourceUrl: `https://example.test/${fund.id}`,
-              dataAsOf: "2026-07-31",
+              dataAsOf,
               verificationStatus: "verified",
             },
           }),
@@ -1348,7 +1363,7 @@ describe("publication snapshot", () => {
       "fund-a",
     ]);
     expect(threeYear.rankings[0]).toMatchObject({
-      dataAsOf: "2026-07-31",
+      dataAsOf,
       sourceUrl: "https://factsheet.example.test/fund-b",
     });
 
@@ -1370,6 +1385,7 @@ describe("publication snapshot", () => {
 
   it("defaults to the one year period when the caller omits it", async () => {
     const snapshotId = "snapshot-default-period";
+    const dataAsOf = new Date().toISOString().slice(0, 10);
     await bindings.DB.prepare(
       "INSERT INTO publication_snapshots (snapshot_id, published_at) VALUES (?, ?)",
     )
@@ -1394,12 +1410,12 @@ describe("publication snapshot", () => {
             annualizedReturn1y: 4.2,
             annualizedReturn5y: 6.1,
             annualizedReturn10y: 5.4,
-            dataAsOf: "2026-07-31",
+            dataAsOf,
             verificationStatus: "verified",
           },
           provenance: {
             sourceUrl: "https://example.test/fund-a",
-            dataAsOf: "2026-07-31",
+            dataAsOf,
             verificationStatus: "verified",
           },
         }),
@@ -1514,24 +1530,28 @@ describe("publication snapshot", () => {
       {
         id: "fund-a",
         managementFee: 1.205,
+        feeCaps: undefined,
         riskClass: 6,
         fundRiskIndicator: 18.49,
       },
       {
         id: "fund-b",
         managementFee: 0.65,
+        feeCaps: ["managementFee"],
         riskClass: 3,
         fundRiskIndicator: 4.7,
       },
       {
         id: "fund-c",
         managementFee: 0.6504,
+        feeCaps: undefined,
         riskClass: 3,
         fundRiskIndicator: 2.31,
       },
       {
         id: "fund-d",
         managementFee: undefined,
+        feeCaps: undefined,
         riskClass: undefined,
         fundRiskIndicator: undefined,
       },
@@ -1552,6 +1572,7 @@ describe("publication snapshot", () => {
             lipperCategory: "Global Equity",
             annualizedReturn1y: 1,
             managementFee: fund.managementFee,
+            feeCaps: fund.feeCaps,
             riskClass: fund.riskClass,
             fundRiskIndicator: fund.fundRiskIndicator,
             dataAsOf,
@@ -1647,7 +1668,12 @@ describe("publication snapshot", () => {
       metric: string;
       periodYears: number | null;
       methodology: Record<string, unknown>;
-      rankings: { fundClassId: string; displayValue: string; rank: number }[];
+      rankings: {
+        fundClassId: string;
+        displayValue: string;
+        feeCap?: boolean;
+        rank: number;
+      }[];
     };
     expect(body.metric).toBe("fee");
     expect(body.periodYears).toBeNull();
@@ -1655,14 +1681,19 @@ describe("publication snapshot", () => {
       metric: "management_fee",
       grouping: "comparison_group",
       sortDirection: "ascending",
-      displayPrecision: 2,
+      displayPrecision: "source",
     });
     expect(
-      body.rankings.map((row) => [row.fundClassId, row.displayValue, row.rank]),
+      body.rankings.map((row) => [
+        row.fundClassId,
+        row.displayValue,
+        row.rank,
+        row.feeCap ?? false,
+      ]),
     ).toEqual([
-      ["fund-b", "0.65%", 1],
-      ["fund-c", "0.65%", 1],
-      ["fund-a", "1.21%", 3],
+      ["fund-b", "0.65%", 1, true],
+      ["fund-c", "0.6504%", 2, false],
+      ["fund-a", "1.205%", 3, false],
     ]);
   });
 
