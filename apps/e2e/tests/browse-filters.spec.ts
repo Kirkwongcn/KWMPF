@@ -6,7 +6,16 @@ test("開啟基金瀏覽會載入結果，選受託人後結果全部相符", as
   const trusteeFilter = page.getByLabel("受託人");
   await expect(trusteeFilter.locator("option")).not.toHaveCount(1);
   const trustee = (await trusteeFilter.locator("option").nth(1).textContent())!;
+  const trusteeResponse = page.waitForResponse((response) => {
+    const url = new URL(response.url());
+    return (
+      url.pathname.endsWith("/search") &&
+      url.searchParams.get("trustee") === trustee &&
+      response.ok()
+    );
+  });
   await trusteeFilter.selectOption({ label: trustee });
+  await trusteeResponse;
 
   const rows = page.locator("table.kw-table tbody tr");
   await expect(rows.first()).toBeVisible();
@@ -20,7 +29,16 @@ test("加入風險級別條件後結果收窄且仍全部相符", async ({ page 
 
   const trusteeFilter = page.getByLabel("受託人");
   const trustee = (await trusteeFilter.locator("option").nth(1).textContent())!;
+  const trusteeResponse = page.waitForResponse((response) => {
+    const url = new URL(response.url());
+    return (
+      url.pathname.endsWith("/search") &&
+      url.searchParams.get("trustee") === trustee &&
+      response.ok()
+    );
+  });
   await trusteeFilter.selectOption({ label: trustee });
+  await trusteeResponse;
 
   const rows = page.locator("table.kw-table tbody tr");
   await expect(rows.first()).toBeVisible();

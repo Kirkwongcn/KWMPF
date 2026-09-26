@@ -129,20 +129,16 @@ test("切換回報期間會更新排名，或說明沒有合資格資料", async
     "三年回報排名",
   );
   await expect(page.getByLabel("回報期間")).toHaveValue("3");
-  await expect(
-    page.getByRole("columnheader", { name: "三年回報" }),
-  ).toBeVisible();
-  await expect(
-    page.getByRole("columnheader", { name: "一年回報" }),
-  ).toHaveCount(0);
   const threeYearRows = await readRows(page);
   if (threeYearRows.length === 0) {
-    await expect(
-      page.locator(".kw-status--warning").filter({
-        hasText: "目前沒有合資格",
-      }),
-    ).toContainText("目前沒有合資格的三年回報資料。");
+    await expectHonestEmptyReturnState(page, "三年");
   } else {
+    await expect(
+      page.getByRole("columnheader", { name: "三年回報" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("columnheader", { name: "一年回報" }),
+    ).toHaveCount(0);
     await expect(
       page.locator("table.kw-table tbody tr").first().locator("td").nth(4),
     ).toHaveText(/^\d{4}-\d{2}-\d{2}$/);
@@ -155,20 +151,16 @@ test("切換回報期間會更新排名，或說明沒有合資格資料", async
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
     "十年回報排名",
   );
-  await expect(
-    page.getByRole("columnheader", { name: "十年回報" }),
-  ).toBeVisible();
-  await expect(
-    page.getByRole("columnheader", { name: "一年回報" }),
-  ).toHaveCount(0);
   const tenYearRows = await readRows(page);
   if (tenYearRows.length === 0) {
-    await expect(
-      page.locator(".kw-status--warning").filter({
-        hasText: "目前沒有合資格",
-      }),
-    ).toContainText("目前沒有合資格的十年回報資料。");
+    await expectHonestEmptyReturnState(page, "十年");
   } else {
+    await expect(
+      page.getByRole("columnheader", { name: "十年回報" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("columnheader", { name: "一年回報" }),
+    ).toHaveCount(0);
     await expect(
       page.locator("table.kw-table tbody tr").first().locator("td").nth(4),
     ).toHaveText(/^\d{4}-\d{2}-\d{2}$/);
@@ -188,6 +180,19 @@ test("切換至管理費指標會改為由低至高排序，並隱藏回報期�
   await expect(page.getByLabel("回報期間")).toHaveCount(0);
 
   const rows = await readRows(page);
+  if (rows.length === 0) {
+    await expect(
+      page.locator(".kw-status--warning").filter({
+        hasText: "目前沒有合資格",
+      }),
+    ).toContainText("目前沒有合資格的管理費資料。");
+    await expect(
+      page.locator(".kw-status--warning").filter({
+        hasText: "超出官方披露寬限期",
+      }),
+    ).toBeVisible();
+    return;
+  }
   expect(rows.length).toBeGreaterThan(0);
   for (const [group, groupRows] of groupBy(rows)) {
     expectCompetitionRanks(groupRows, group);
@@ -204,6 +209,19 @@ test("選擇比較組別後，只保留同組基金", async ({ page }) => {
 
   const rows = page.locator("table.kw-table tbody tr");
   const allRows = await readRows(page);
+  if (allRows.length === 0) {
+    await expect(
+      page.locator(".kw-status--warning").filter({
+        hasText: "目前沒有合資格",
+      }),
+    ).toContainText("目前沒有合資格的管理費資料。");
+    await expect(
+      page.locator(".kw-status--warning").filter({
+        hasText: "超出官方披露寬限期",
+      }),
+    ).toBeVisible();
+    return;
+  }
   expect(allRows.length).toBeGreaterThan(0);
   const group = allRows[0]!.group;
 

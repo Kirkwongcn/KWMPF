@@ -86,7 +86,7 @@ test("詳情頁的同組比較連結會帶著比較組別回到排名", async ({
 test("基金解讀分頁以同一快照顯示三項比較", async ({ page }) => {
   await openFirstFundDetail(page);
 
-  await page.getByRole("tab", { name: "基金解讀" }).click();
+  await page.getByRole("button", { name: "基金解讀" }).click();
 
   const interpretation = page.getByRole("region", { name: "基金解讀" });
   await expect(interpretation).toContainText(/股票配置/);
