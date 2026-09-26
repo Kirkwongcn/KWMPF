@@ -839,12 +839,12 @@ describe("cumulative returns", () => {
     expect(within(holdings).getByText("9.36%")).toBeVisible();
   });
 
-  it("marks the fact sheet and platform dates as not fully comparable", async () => {
+  it("separates the document date from the platform snapshot date", async () => {
     renderWithDisclosure(disclosure);
 
     expect(
       await screen.findByText(
-        /便覽截至 2025-11-30，平台數據截至 2026-07-31，兩者期別不同，並非完全可比/,
+        /便覽列示日期為 2025-11-30，平台快照日期為 2026-07-31；單憑文件日期未能確認每項披露是否反映同一期別/,
       ),
     ).toBeVisible();
   });
