@@ -1,10 +1,10 @@
 import { writeFile } from "node:fs/promises";
 import type { SourceRecord, SourceSnapshot } from "./build-coverage";
 import { parseFundDetail, parseFundIds } from "./platform-parser";
+import { fetchAndArchiveHtml } from "./fetch-platform-http";
 import {
   archiveHtml,
   createRunArchive,
-  failedFetchArtifact,
   readArchivedHtml,
   type RawArtifact,
   writeArchiveManifest,
@@ -13,65 +13,9 @@ import {
 const listUrl = "https://mfp.mpfa.org.hk/eng/mpp_list.jsp";
 const detailUrl = (cfId: number) =>
   `https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=${cfId}`;
-const MAX_HTML_BYTES = 5 * 1024 * 1024;
-
-type FetchFailure = {
-  attempt: number;
-  retrievedAt: string;
-  httpStatus?: number;
-  html?: string;
-  error: string;
-};
-
 function argument(name: string) {
   const index = process.argv.indexOf(name);
   return index === -1 ? undefined : process.argv[index + 1];
-}
-
-async function fetchHtml(
-  url: string,
-  onFailure?: (failure: FetchFailure) => Promise<void>,
-) {
-  let lastError: unknown;
-  for (let attempt = 1; attempt <= 4; attempt += 1) {
-    let httpStatus: number | undefined;
-    let html: string | undefined;
-    let retrievedAt = new Date().toISOString();
-    try {
-      const response = await fetch(url, { signal: AbortSignal.timeout(30_000) });
-      httpStatus = response.status;
-      retrievedAt = new Date().toISOString();
-      const declaredSize = Number(response.headers.get("content-length") ?? 0);
-      if (declaredSize > MAX_HTML_BYTES) throw new Error(`${url} exceeds 5 MiB`);
-      html = await response.text();
-      retrievedAt = new Date().toISOString();
-      if (Buffer.byteLength(html) > MAX_HTML_BYTES) {
-        html = undefined;
-        throw new Error(`${url} exceeds 5 MiB`);
-      }
-      if (/This page can't be displayed|incident ID:/i.test(html)) {
-        throw new Error(url + " returned a platform protection page");
-      }
-      if (!response.ok)
-        throw new Error(url + " returned HTTP " + response.status);
-      return html;
-    } catch (error) {
-      lastError = error;
-      retrievedAt = new Date().toISOString();
-      await onFailure?.({
-        attempt,
-        retrievedAt,
-        ...(httpStatus === undefined ? {} : { httpStatus }),
-        ...(html === undefined ? {} : { html }),
-        error:
-          error instanceof Error ? error.message.slice(0, 500) : String(error),
-      });
-      if (attempt < 4) {
-        await new Promise((resolve) => setTimeout(resolve, 1500 * attempt));
-      }
-    }
-  }
-  throw lastError;
 }
 
 async function parallelMap<T, R>(
@@ -126,35 +70,7 @@ for (const [name, value] of Object.entries(expectedCounts)) {
 const runDirectory = await createRunArchive(rawDirectory, runId);
 const artifacts: RawArtifact[] = [];
 async function fetchAndArchive(url: string, relativePath: string) {
-  return fetchHtml(url, async ({ attempt, retrievedAt, httpStatus, html, error }) => {
-    const metadata = {
-      attempt,
-      ...(httpStatus === undefined ? {} : { httpStatus }),
-      error,
-    };
-    if (html !== undefined) {
-      artifacts.push(
-        await archiveHtml(
-          runDirectory,
-          relativePath + ".attempt-" + attempt + ".html",
-          url,
-          html,
-          retrievedAt,
-          "fetch_failed",
-          metadata,
-        ),
-      );
-    } else {
-      artifacts.push(
-        failedFetchArtifact(
-          relativePath + ".attempt-" + attempt + ".fetch-failed",
-          url,
-          retrievedAt,
-          metadata,
-        ),
-      );
-    }
-  });
+  return fetchAndArchiveHtml(url, runDirectory, relativePath, artifacts);
 }
 
 let listHtml = await readArchivedHtml(runDirectory, "fund-information-table.html");
