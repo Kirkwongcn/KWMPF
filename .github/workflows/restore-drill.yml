@@ -85,7 +85,18 @@ jobs:
       - name: Restore to local D1
         run: |
           set -euo pipefail
-          bunx wrangler d1 execute RESTORE_DB --local --config apps/api/wrangler.restore.jsonc --file restore-drill/d1.sql
+          restore_status=0
+          bunx wrangler d1 execute RESTORE_DB --local --config apps/api/wrangler.restore.jsonc --file restore-drill/d1.sql --json > restore-drill/restore.json 2> restore-drill/restore.stderr || restore_status=$?
+          if ! jq -e 'type == "array" and length > 0 and all(.[]; .success == true)' restore-drill/restore.json >/dev/null 2>&1; then
+            echo "Local D1 restore results contain a failed or missing SQL command (Wrangler exit status: $restore_status)." >&2
+            jq -c '[.[] | select(.success != true)] | .[:10]' restore-drill/restore.json >&2 || true
+            if [[ -s restore-drill/restore.stderr ]]; then cat restore-drill/restore.stderr >&2; fi
+            exit 1
+          fi
+          if (( restore_status != 0 )); then
+            echo "Wrangler returned exit status $restore_status after local D1 import; checking restored database invariants." >&2
+            if [[ -s restore-drill/restore.stderr ]]; then cat restore-drill/restore.stderr >&2; fi
+          fi
           expected_snapshot_id="$(jq -r '.snapshotId' restore-drill/manifest.json)"
           query='SELECT
             (SELECT snapshot_id FROM current_publication WHERE singleton = 1) AS snapshot_id,
@@ -93,7 +104,14 @@ jobs:
             (SELECT count(*) FROM publication_snapshots) AS publication_snapshot_rows,
             (SELECT count(*) FROM fund_class_versions WHERE snapshot_id = (SELECT snapshot_id FROM current_publication WHERE singleton = 1)) AS fund_class_version_rows,
             (SELECT count(*) FROM comparison_group_stats WHERE snapshot_id = (SELECT snapshot_id FROM current_publication WHERE singleton = 1)) AS comparison_group_stat_rows'
-          bunx wrangler d1 execute RESTORE_DB --local --config apps/api/wrangler.restore.jsonc --command "$query" --json > restore-drill/query.json
+          query_status=0
+          bunx wrangler d1 execute RESTORE_DB --local --config apps/api/wrangler.restore.jsonc --command "$query" --json > restore-drill/query.json 2> restore-drill/query.stderr || query_status=$?
+          if [[ -s restore-drill/query.json ]]; then
+            echo "Post-restore verification JSON (aggregate local D1 counts):" >&2
+            jq -c . restore-drill/query.json >&2 || cat restore-drill/query.json >&2
+          else
+            echo "Post-restore query produced no JSON (Wrangler exit status: $query_status)." >&2
+          fi
           if ! jq -e --arg snapshot_id "$expected_snapshot_id" '
             .[0].results as $rows
             | ($rows | length) == 1
@@ -103,10 +121,12 @@ jobs:
               and $rows[0].fund_class_version_rows > 0
               and $rows[0].comparison_group_stat_rows > 0
           ' restore-drill/query.json >/dev/null; then
+            echo "Post-restore verification failed (Wrangler exit status: $query_status)." >&2
+            if [[ -s restore-drill/query.stderr ]]; then cat restore-drill/query.stderr >&2; fi
             echo "Post-restore verification failed. Local D1 query result:" >> "$GITHUB_STEP_SUMMARY"
-            echo "Post-restore verification JSON (local D1 only):" >&2
-            jq -c . restore-drill/query.json >&2
-            jq . restore-drill/query.json >> "$GITHUB_STEP_SUMMARY"
+            jq . restore-drill/query.json >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || echo "No valid JSON query result was produced." >> "$GITHUB_STEP_SUMMARY"
             exit 1
           fi
           jq -r '.[0].results[0] | "Restored snapshot: \(.snapshot_id); fund classes: \(.fund_class_version_rows); comparison groups: \(.comparison_group_stat_rows)."' restore-drill/query.json >> "$GITHUB_STEP_SUMMARY"
+          printf 'Wrangler local D1 exit statuses: import=%s, verification=%s.\n' "$restore_status" "$query_status" >> "$GITHUB_STEP_SUMMARY"
+          echo "Local D1 restore invariants passed (Wrangler exit statuses: import=$restore_status, verification=$query_status)."
