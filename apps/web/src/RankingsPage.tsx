@@ -369,4 +369,3 @@ export function RankingsPage({
     </SiteChrome>
   );
 }
-

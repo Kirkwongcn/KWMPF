@@ -1183,4 +1183,3 @@ app.get("/rankings", async (context) => {
 app.notFound((context) => context.json({ error: "Not found" }, 404));
 
 export default app;
-

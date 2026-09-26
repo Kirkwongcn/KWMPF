@@ -2035,4 +2035,3 @@ describe("publication snapshot", () => {
     });
   });
 });
-

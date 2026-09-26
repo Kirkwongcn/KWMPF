@@ -532,4 +532,3 @@ describe("ranked funds without a separate class", () => {
     expect(screen.queryByText(/n\.a\./i)).not.toBeInTheDocument();
   });
 });
-
