@@ -100,6 +100,9 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
     const period = new URLSearchParams(window.location.search).get("period");
     return period === "5" || period === "10" ? period : "1";
   });
+  const [searchQuery, setSearchQuery] = useState(
+    () => new URLSearchParams(window.location.search).get("q") ?? "",
+  );
   const [selected, setSelected] = useState<string[]>([]);
   useEffect(() => {
     const controller = new AbortController();
@@ -120,16 +123,23 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
     return () => controller.abort();
   }, [apiBaseUrl]);
 
-  function pushSchemeUrl(nextSort: "name" | "fee", nextHorizon: Horizon) {
+  function updateSchemeUrl(
+    nextSort: "name" | "fee",
+    nextHorizon: Horizon,
+    nextQuery: string,
+    historyAction: "push" | "replace",
+  ) {
     const params = new URLSearchParams();
     if (nextSort !== "name") params.set("sort", nextSort);
     if (nextHorizon !== "1") params.set("period", nextHorizon);
+    if (nextQuery.trim()) params.set("q", nextQuery.trim());
     const search = params.toString();
-    window.history.pushState(
-      {},
-      "",
-      `${window.location.pathname}${search ? `?${search}` : ""}`,
-    );
+    const url = `${window.location.pathname}${search ? `?${search}` : ""}`;
+    if (historyAction === "push") {
+      window.history.pushState({}, "", url);
+    } else {
+      window.history.replaceState({}, "", url);
+    }
   }
 
   useEffect(() => {
@@ -138,6 +148,7 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
       setSortBy(params.get("sort") === "fee" ? "fee" : "name");
       const period = params.get("period");
       setHorizon(period === "5" || period === "10" ? period : "1");
+      setSearchQuery(params.get("q") ?? "");
     }
     window.addEventListener("popstate", restoreSchemeUrl);
     return () => window.removeEventListener("popstate", restoreSchemeUrl);
@@ -155,6 +166,17 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
       return a.managementFee.median - b.managementFee.median;
     });
   }, [schemes, sortBy]);
+
+  const filteredSchemes = useMemo(() => {
+    if (!sortedSchemes) return sortedSchemes;
+    const query = searchQuery.trim().toLowerCase();
+    if (!query) return sortedSchemes;
+    return sortedSchemes.filter((scheme) =>
+      `${scheme.schemeName} ${scheme.trusteeName}`
+        .toLowerCase()
+        .includes(query),
+    );
+  }, [sortedSchemes, searchQuery]);
 
   const atLimit = selected.length >= COMPARE_LIMIT;
   const compareHref =
@@ -185,6 +207,23 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
         <div className="kw-toolbar">
           <div className="kw-toolbar__controls">
             <p className="kw-field">
+              <label htmlFor="scheme-search">搜尋計劃或受託人</label>
+              <input
+                autoComplete="off"
+                className="kw-control"
+                id="scheme-search"
+                name="q"
+                placeholder="例如：BCT、滙豐…"
+                type="search"
+                value={searchQuery}
+                onChange={(event) => {
+                  const nextQuery = event.target.value;
+                  setSearchQuery(nextQuery);
+                  updateSchemeUrl(sortBy, horizon, nextQuery, "replace");
+                }}
+              />
+            </p>
+            <p className="kw-field">
               <label htmlFor="scheme-sort">排序</label>
               <select
                 className="kw-control"
@@ -193,7 +232,7 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
                 onChange={(event) => {
                   const nextSort = event.target.value as "name" | "fee";
                   setSortBy(nextSort);
-                  pushSchemeUrl(nextSort, horizon);
+                  updateSchemeUrl(nextSort, horizon, searchQuery, "push");
                 }}
               >
                 <option value="name">按計劃名稱</option>
@@ -209,7 +248,7 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
                 onChange={(event) => {
                   const nextHorizon = event.target.value as Horizon;
                   setHorizon(nextHorizon);
-                  pushSchemeUrl(sortBy, nextHorizon);
+                  updateSchemeUrl(sortBy, nextHorizon, searchQuery, "push");
                 }}
               >
                 {Object.entries(horizons).map(([value, { label }]) => (
@@ -257,6 +296,13 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
             </p>
           </div>
         </div>
+        {schemes !== null && !failed && searchQuery.trim() !== "" && (
+          <p className="kw-status" role="status" aria-live="polite">
+            {filteredSchemes?.length
+              ? `找到 ${filteredSchemes.length} 個計劃`
+              : "沒有符合的計劃，請更改搜尋字詞。"}
+          </p>
+        )}
         {schemes === null && (
           <p className="kw-status" role="status" aria-live="polite">
             正在載入計劃資料…
@@ -273,7 +319,7 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
           </p>
         )}
         <div className="kw-grid scheme-list">
-          {sortedSchemes?.map((scheme) => {
+          {filteredSchemes?.map((scheme) => {
             const mixedDates = Boolean(
               scheme.dataAsOf &&
               scheme.dataAsOf.earliest !== scheme.dataAsOf.latest,
