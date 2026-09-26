@@ -10,6 +10,7 @@ type RankingRow = {
   trusteeName: string;
   comparisonGroup: string;
   displayValue: string;
+  feeCap?: boolean;
   rank: number;
   dataAsOf: string;
   sourceUrl: string;
@@ -328,7 +329,10 @@ export function RankingsPage({
                               )}
                             </small>
                           </td>
-                          <td className="kw-return">{row.displayValue}</td>
+                          <td className="kw-return">
+                            {row.displayValue}
+                            {row.feeCap ? "（上限）" : ""}
+                          </td>
                           <td>{row.comparisonGroup}</td>
                           <td className="kw-nowrap">{row.dataAsOf}</td>
                           <td className="kw-nowrap">
@@ -365,3 +369,4 @@ export function RankingsPage({
     </SiteChrome>
   );
 }
+

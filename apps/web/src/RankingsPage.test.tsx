@@ -394,6 +394,7 @@ describe("published return rankings", () => {
           comparisonGroup: "Equity Fund (North America)",
           displayValue:
             metric === "fee" ? "0.65%" : metric === "risk" ? "4.70%" : "17.21%",
+          ...(metric === "fee" ? { feeCap: true } : {}),
           rank: 1,
           dataAsOf: "2026-07-31",
           sourceUrl: "https://example.test/fund-a",
@@ -419,7 +420,7 @@ describe("published return rankings", () => {
       target: { value: "fee" },
     });
 
-    expect(await screen.findByText("0.65%")).toBeVisible();
+    expect(await screen.findByText("0.65%（上限）")).toBeVisible();
     expect(fetchMock).toHaveBeenCalledWith(
       "https://api.test/rankings?metric=fee",
       expect.objectContaining({ signal: expect.anything() }),
@@ -531,3 +532,4 @@ describe("ranked funds without a separate class", () => {
     expect(screen.queryByText(/n\.a\./i)).not.toBeInTheDocument();
   });
 });
+

@@ -1530,24 +1530,28 @@ describe("publication snapshot", () => {
       {
         id: "fund-a",
         managementFee: 1.205,
+        feeCaps: undefined,
         riskClass: 6,
         fundRiskIndicator: 18.49,
       },
       {
         id: "fund-b",
         managementFee: 0.65,
+        feeCaps: ["managementFee"],
         riskClass: 3,
         fundRiskIndicator: 4.7,
       },
       {
         id: "fund-c",
         managementFee: 0.6504,
+        feeCaps: undefined,
         riskClass: 3,
         fundRiskIndicator: 2.31,
       },
       {
         id: "fund-d",
         managementFee: undefined,
+        feeCaps: undefined,
         riskClass: undefined,
         fundRiskIndicator: undefined,
       },
@@ -1568,6 +1572,7 @@ describe("publication snapshot", () => {
             lipperCategory: "Global Equity",
             annualizedReturn1y: 1,
             managementFee: fund.managementFee,
+            feeCaps: fund.feeCaps,
             riskClass: fund.riskClass,
             fundRiskIndicator: fund.fundRiskIndicator,
             dataAsOf,
@@ -1663,7 +1668,12 @@ describe("publication snapshot", () => {
       metric: string;
       periodYears: number | null;
       methodology: Record<string, unknown>;
-      rankings: { fundClassId: string; displayValue: string; rank: number }[];
+      rankings: {
+        fundClassId: string;
+        displayValue: string;
+        feeCap?: boolean;
+        rank: number;
+      }[];
     };
     expect(body.metric).toBe("fee");
     expect(body.periodYears).toBeNull();
@@ -1671,14 +1681,19 @@ describe("publication snapshot", () => {
       metric: "management_fee",
       grouping: "comparison_group",
       sortDirection: "ascending",
-      displayPrecision: 2,
+      displayPrecision: "source",
     });
     expect(
-      body.rankings.map((row) => [row.fundClassId, row.displayValue, row.rank]),
+      body.rankings.map((row) => [
+        row.fundClassId,
+        row.displayValue,
+        row.rank,
+        row.feeCap ?? false,
+      ]),
     ).toEqual([
-      ["fund-b", "0.65%", 1],
-      ["fund-c", "0.65%", 1],
-      ["fund-a", "1.21%", 3],
+      ["fund-b", "0.65%", 1, true],
+      ["fund-c", "0.6504%", 2, false],
+      ["fund-a", "1.205%", 3, false],
     ]);
   });
 
@@ -2020,3 +2035,4 @@ describe("publication snapshot", () => {
     });
   });
 });
+

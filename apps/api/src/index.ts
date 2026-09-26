@@ -970,7 +970,7 @@ const rankingMetrics = {
     field: "managementFee",
     methodology: "management_fee",
     sortDirection: "ascending",
-    displayPrecision: 2,
+    displayPrecision: "source",
     unit: "%",
   },
   // 波幅排序用官方的基金風險指標（年度化標準差），不用風險級別。風險級別只有 1 至 7 級，
@@ -1053,6 +1053,7 @@ app.get("/rankings", async (context) => {
           { dataAsOf: string; sourceUrl: string; retrievedAt?: string }
         >;
         managementFee?: number;
+        feeCaps?: string[];
         riskClass?: number;
         fundRiskIndicator?: number;
         dataAsOf: string;
@@ -1111,13 +1112,14 @@ app.get("/rankings", async (context) => {
     ({ publication }) => comparisonGroupFor(publication.fundClass).name,
   );
   const precision = selected.displayPrecision;
+  const rankValue = (value: number) =>
+    precision === "source" ? value : Number(value.toFixed(precision));
+  const displayValue = (value: number) =>
+    precision === "source" ? String(value) : value.toFixed(precision);
   const direction = selected.sortDirection === "ascending" ? 1 : -1;
   const rankings = [...groups.entries()].flatMap(([comparisonGroup, funds]) => {
     funds.sort((a, b) => {
-      const ordered =
-        direction *
-        (Number(a.value.toFixed(precision)) -
-          Number(b.value.toFixed(precision)));
+      const ordered = direction * (rankValue(a.value) - rankValue(b.value));
       return ordered !== 0
         ? ordered
         : a.publication.fundClass.id.localeCompare(b.publication.fundClass.id);
@@ -1125,9 +1127,9 @@ app.get("/rankings", async (context) => {
     let previousValue: number | undefined;
     let previousRank = 0;
     return funds.map(({ publication, value, dataAsOf, sourceUrl }, index) => {
-      const displayed = Number(value.toFixed(precision));
-      const rank = displayed === previousValue ? previousRank : index + 1;
-      previousValue = displayed;
+      const rankingValue = rankValue(value);
+      const rank = rankingValue === previousValue ? previousRank : index + 1;
+      previousValue = rankingValue;
       previousRank = rank;
       return {
         fundClassId: publication.fundClass.id,
@@ -1138,7 +1140,11 @@ app.get("/rankings", async (context) => {
         comparisonGroup,
         comparisonGroupSource: comparisonGroupSourceOf(comparisonGroup),
         value,
-        displayValue: `${value.toFixed(precision)}${selected.unit}`,
+        displayValue: `${displayValue(value)}${selected.unit}`,
+        ...(metric === "fee" &&
+        publication.fundClass.feeCaps?.includes("managementFee")
+          ? { feeCap: true }
+          : {}),
         rank,
         dataAsOf,
         sourceUrl,
@@ -1177,3 +1183,4 @@ app.get("/rankings", async (context) => {
 app.notFound((context) => context.json({ error: "Not found" }, 404));
 
 export default app;
+
