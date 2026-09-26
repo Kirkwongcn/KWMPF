@@ -26,6 +26,9 @@ type Summary = {
 export function App({ apiUrl }: { apiUrl: string }) {
   const [health, setHealth] = useState<Health | null>(null);
   const [summary, setSummary] = useState<Summary | null>(null);
+  const [summaryStatus, setSummaryStatus] = useState<
+    "loading" | "loaded" | "error"
+  >("loading");
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
   const [searched, setSearched] = useState<string | null>(null);
@@ -48,8 +51,14 @@ export function App({ apiUrl }: { apiUrl: string }) {
         if (!response.ok) throw new Error("Summary unavailable");
         return response.json() as Promise<Summary>;
       })
-      .then(setSummary)
-      .catch(() => setSummary(null));
+      .then((payload) => {
+        setSummary(payload);
+        setSummaryStatus("loaded");
+      })
+      .catch(() => {
+        setSummary(null);
+        setSummaryStatus("error");
+      });
   }, [apiUrl]);
 
   function search(event: FormEvent) {
@@ -199,7 +208,13 @@ export function App({ apiUrl }: { apiUrl: string }) {
             </p>
           </>
         ) : (
-          <p className="kw-status kw-status--warning">尚未有已發布快照</p>
+          <p className="kw-status kw-status--warning" role="status">
+            {summaryStatus === "loading"
+              ? "正在載入已發布快照…"
+              : summaryStatus === "error"
+                ? "目前未能載入已發布快照資料，請稍後重新整理頁面。"
+                : "尚未有已發布快照"}
+          </p>
         )}
       </section>
 

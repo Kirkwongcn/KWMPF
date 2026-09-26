@@ -1,8 +1,10 @@
 import type { FundFactSheetReturn } from "./fund-fact-sheet-parser";
 
-export function parseMassFundPerformance(text: string, sourceUrl: string): FundFactSheetReturn[] {
-  const reportDate = text.match(/Fund Data as at[\s\S]{0,160}?([A-Za-z]+ \d{1,2}, \d{4})/i)?.[1];
-  const defaultDataAsOf = reportDate ? parseMassDate(reportDate) : "2024-12-31";
+export function parseMassFundPerformance(
+  text: string,
+  sourceUrl: string,
+): FundFactSheetReturn[] {
+  const reportDataAsOf = massReportDataAsOf(text);
   const results: FundFactSheetReturn[] = [];
   for (const block of text.split(/\f/)) {
     const name = block.match(/(?:YF Life Trustees Ltd\.\s*\n\s*)?([A-Za-z0-9][A-Za-z0-9 &'()/-]+?Fund)\s+Published in/im)?.[1]?.trim() ?? block
@@ -12,7 +14,7 @@ export function parseMassFundPerformance(text: string, sourceUrl: string): FundF
       ?.replace(/\s+/g, " ")
       .trim();
     if (!name) continue;
-    const dataAsOf = defaultDataAsOf;
+    const dataAsOf = reportDataAsOf;
     const annualizedIndex = block.search(/Annualized(?:\s+Return)?/i);
     if (annualizedIndex < 0) continue;
     const row = block.slice(annualizedIndex).match(/Annualized(?:\s+Return)?[\s\S]{0,500}?((?:[+-]?\d+(?:\.\d+)?%|N\/A)(?:\s+(?:[+-]?\d+(?:\.\d+)?%|N\/A)){3,})/i)
@@ -30,12 +32,34 @@ export function parseMassFundPerformance(text: string, sourceUrl: string): FundF
   return results;
 }
 
+function massReportDataAsOf(text: string): string {
+  const match = text.match(
+    /Fund Data as at\s+([A-Za-z]+)[^\r\n]*(?:\r?\n[^\r\n]*){0,2}?\b(\d{1,2}),\s*(\d{4})/i,
+  );
+  if (!match) throw new Error("MASS fund data-as-of date is missing");
+  return parseMassDate(`${match[1]} ${match[2]}, ${match[3]}`);
+}
+
 function parseMassDate(value: string): string {
   const match = value.match(/^([A-Za-z]+) (\d{1,2}), (\d{4})$/);
   const monthName = match?.[1];
-  const day = match?.[2];
-  const year = match?.[3];
-  if (!monthName || !day || !year) throw new Error(`Unsupported MASS report date: ${value}`);
-  const month = new Date(`${monthName} 1, ${year}`).getMonth() + 1;
-  return `${year}-${String(month).padStart(2, "0")}-${day.padStart(2, "0")}`;
+  const day = Number(match?.[2]);
+  const year = Number(match?.[3]);
+  if (!monthName || !Number.isInteger(day) || !Number.isInteger(year)) {
+    throw new Error(`Unsupported MASS report date: ${value}`);
+  }
+  const monthDate = new Date(`${monthName} 1, ${year} UTC`);
+  if (!Number.isFinite(monthDate.getTime())) {
+    throw new Error(`Unsupported MASS report date: ${value}`);
+  }
+  const month = monthDate.getUTCMonth() + 1;
+  const date = new Date(Date.UTC(year, month - 1, day));
+  if (
+    date.getUTCFullYear() !== year ||
+    date.getUTCMonth() + 1 !== month ||
+    date.getUTCDate() !== day
+  ) {
+    throw new Error(`Unsupported MASS report date: ${value}`);
+  }
+  return date.toISOString().slice(0, 10);
 }

@@ -89,7 +89,7 @@ describe("coverage manifest", () => {
       source("official_scheme_document", [record]),
     ], undefined, "2026-08-14");
     expect(result.records[0]?.currentStatus).toBe("stale");
-    expect(result.records[0]?.returns?.[3]?.status).toBe("stale");
+    expect(result.records[0]?.returns?.[3]?.status).toBe("verified");
   });
 
   it("detects coverage changes and assigns every trustee to one stable batch of at most four", () => {

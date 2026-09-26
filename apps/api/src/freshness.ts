@@ -6,6 +6,7 @@ export const DEFAULT_FUND_OVERVIEW_GRACE_DAYS = 45;
 
 export type FreshnessPolicy = {
   returnsGraceDays?: number;
+  threeYearReturnGraceDays?: number;
   fundOverviewGraceDays?: number;
   // 規則本身版本號；已發布快照凍住計算時嘅版本，規則改變不會回溯改寫舊批次。
   fundOverviewPolicyVersion?: number;
@@ -45,6 +46,16 @@ export function evaluateFreshness(
 
 export function returnsGraceDays(policy?: FreshnessPolicy) {
   return policy?.returnsGraceDays ?? DEFAULT_RETURNS_GRACE_DAYS;
+}
+
+export function returnGraceDaysForPeriod(
+  policy: FreshnessPolicy | undefined,
+  periodYears: number,
+) {
+  if (periodYears === 3) {
+    return policy?.threeYearReturnGraceDays ?? returnsGraceDays(policy);
+  }
+  return returnsGraceDays(policy);
 }
 
 export function fundOverviewGraceDays(policy?: FreshnessPolicy) {

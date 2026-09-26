@@ -3,6 +3,7 @@ import type { SourceRecord } from "./build-coverage";
 export type FreshnessStatus = "verified" | "stale" | "failed_with_last_verified";
 
 export const MONTHLY_GRACE_DAYS = 45;
+export const THREE_YEAR_RETURN_GRACE_DAYS = 90;
 export const CURRENT_STATUS_GRACE_DAYS = 7;
 
 // 版本號寫入發布 payload；規則本身改變只影響之後新建的批次，已發布快照凍住舊版本號
@@ -139,7 +140,18 @@ export function applyFreshnessStatuses<T extends SourceRecord>(
           returns: Object.fromEntries(
             Object.entries(record.returns).map(([period, observation]) => [
               period,
-              { ...observation, status: classifyFreshness({ kind: "monthly", asOf: observation!.dataAsOf, today }) },
+              {
+                ...observation,
+                status: classifyFreshness({
+                  kind: "monthly",
+                  asOf: observation!.dataAsOf,
+                  today,
+                  graceDays:
+                    period === "3"
+                      ? THREE_YEAR_RETURN_GRACE_DAYS
+                      : MONTHLY_GRACE_DAYS,
+                }),
+              },
             ]),
           ) as SourceRecord["returns"],
         }
