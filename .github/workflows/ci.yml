@@ -22,7 +22,7 @@ jobs:
         with:
           bun-version: 1.3.11
       - name: Cache Bun's package download store
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.bun/install/cache
           key: ${{ runner.os }}-bun-install-${{ hashFiles('bun.lock') }}
@@ -100,7 +100,7 @@ jobs:
           bun-version: 1.3.11
       - name: Cache Bun's package download store
         if: steps.e2e-scope.outputs.run_e2e != 'false'
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.bun/install/cache
           key: ${{ runner.os }}-bun-install-${{ hashFiles('bun.lock') }}
