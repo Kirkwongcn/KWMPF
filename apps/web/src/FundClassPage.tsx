@@ -836,7 +836,8 @@ export function FundClassPage({
                   {factSheetDatesDiffer && (
                     <p className="kw-muted" role="note">
                       便覽列示日期為 {factSheetDisclosure.factSheetAsOf}，
-                      平台快照日期為 {provenance.dataAsOf}；單憑文件日期未能確認每項披露是否反映同一期別。
+                      平台快照日期為 {provenance.dataAsOf}
+                      ；單憑文件日期未能確認每項披露是否反映同一期別。
                     </p>
                   )}
                   {allocationAsOf && (
