@@ -94,7 +94,7 @@ jobs:
             (SELECT count(*) FROM fund_class_versions WHERE snapshot_id = (SELECT snapshot_id FROM current_publication WHERE singleton = 1)) AS fund_class_version_rows,
             (SELECT count(*) FROM comparison_group_stats WHERE snapshot_id = (SELECT snapshot_id FROM current_publication WHERE singleton = 1)) AS comparison_group_stat_rows'
           bunx wrangler d1 execute RESTORE_DB --local --config apps/api/wrangler.restore.jsonc --command "$query" --json > restore-drill/query.json
-          jq -e --arg snapshot_id "$expected_snapshot_id" '
+          if ! jq -e --arg snapshot_id "$expected_snapshot_id" '
             .[0].results as $rows
             | ($rows | length) == 1
               and $rows[0].snapshot_id == $snapshot_id
@@ -102,5 +102,9 @@ jobs:
               and $rows[0].publication_snapshot_rows >= 1
               and $rows[0].fund_class_version_rows > 0
               and $rows[0].comparison_group_stat_rows > 0
-          ' restore-drill/query.json >/dev/null
+          ' restore-drill/query.json >/dev/null; then
+            echo "Post-restore verification failed. Local D1 query result:" >> "$GITHUB_STEP_SUMMARY"
+            jq . restore-drill/query.json >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
           jq -r '.[0].results[0] | "Restored snapshot: \(.snapshot_id); fund classes: \(.fund_class_version_rows); comparison groups: \(.comparison_group_stat_rows)."' restore-drill/query.json >> "$GITHUB_STEP_SUMMARY"
