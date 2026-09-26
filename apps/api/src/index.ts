@@ -11,6 +11,7 @@ import {
   evaluateFreshness,
   fundOverviewGraceDays,
   returnsGraceDays,
+  returnGraceDaysForPeriod,
   type FreshnessPolicy,
   type PublishedFreshness,
 } from "./freshness";
@@ -753,7 +754,7 @@ app.get("/schemes", async (context) => {
                 period,
                 evaluateFreshness(
                   dataAsOf,
-                  returnsGraceDays(provenance?.freshnessPolicy),
+                  returnGraceDaysForPeriod(provenance?.freshnessPolicy, Number(period)),
                   evaluatedAt,
                 ),
               ],
@@ -1074,7 +1075,10 @@ app.get("/rankings", async (context) => {
   // 顯示嘅 graceDays 淨係取第一隻基金做代表，只作參考，實際篩選一律用逐隻基金自己嗰個。
   const methodologyGraceDays =
     metric === "return"
-      ? returnsGraceDays(parsed[0]?.publication.provenance.freshnessPolicy)
+      ? returnGraceDaysForPeriod(
+          parsed[0]?.publication.provenance.freshnessPolicy,
+          periodYears,
+        )
       : fundOverviewGraceDays(
           parsed[0]?.publication.provenance.freshnessPolicy,
         );
@@ -1097,7 +1101,10 @@ app.get("/rankings", async (context) => {
     }
     const graceDays =
       metric === "return"
-        ? returnsGraceDays(publication.provenance.freshnessPolicy)
+        ? returnGraceDaysForPeriod(
+            publication.provenance.freshnessPolicy,
+            periodYears,
+          )
         : fundOverviewGraceDays(publication.provenance.freshnessPolicy);
     if (
       evaluateFreshness(dataAsOf, graceDays, evaluatedAt).status !== "verified"
