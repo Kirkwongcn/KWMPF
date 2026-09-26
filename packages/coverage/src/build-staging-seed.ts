@@ -5,6 +5,7 @@ import {
   FUND_OVERVIEW_POLICY_VERSION,
   fundOverviewGraceDaysFor,
   MONTHLY_GRACE_DAYS,
+  THREE_YEAR_RETURN_GRACE_DAYS,
 } from "./data-freshness";
 import { buildPublicationInputs } from "./build-publication-input";
 import { buildPublicationPayload } from "./build-publication-payload";
@@ -159,6 +160,7 @@ const publications = payload.records.map((record) => {
         verificationStatus: record.status,
         freshnessPolicy: {
           returnsGraceDays: MONTHLY_GRACE_DAYS,
+          threeYearReturnGraceDays: THREE_YEAR_RETURN_GRACE_DAYS,
           fundOverviewGraceDays: fundOverviewGraceDaysFor(
             sourceRecord?.financialPeriodEndDate,
             // preflight 已經喺上面 `payload.ready` 檢查保證 dataAsOf 一定存在。
