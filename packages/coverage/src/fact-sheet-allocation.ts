@@ -8,6 +8,7 @@ import {
   type PdfPage,
   type PdfTextItem,
 } from "./pdf-xml";
+import type { FactSheetTemporalScopes } from "./fact-sheet-temporal";
 
 /**
  * 由計劃便覽抽取「配置」及「十大持倉」。
@@ -50,6 +51,8 @@ export type FactSheetDisclosure = {
   constituentFundName: string;
   fundClassName?: string;
   factSheetAsOf: string;
+  /** Date scope by disclosed field; the document date is not inherited by its metrics. */
+  temporalScopes?: FactSheetTemporalScopes;
   allocations: AllocationDimension[];
   topHoldings: TopHolding[];
   unavailableFields: string[];
@@ -945,6 +948,9 @@ export function parseFactSheetDisclosures(
       constituentFundName: section.name,
       ...(section.className ? { fundClassName: section.className } : {}),
       factSheetAsOf,
+      temporalScopes: {
+        document: { kind: "point-in-time", asOf: factSheetAsOf },
+      },
       allocations,
       topHoldings,
       unavailableFields,

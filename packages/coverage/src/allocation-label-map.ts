@@ -37,7 +37,7 @@ export type MappedAllocationUnavailableReason = FactSheetUnavailableKind | "not-
 export type MappedAllocationBuckets = {
   official: false;
   mapVersion: string;
-  asOf: string;
+  asOf?: string;
   sourceHeading: string;
   buckets: { equity: number; bond: number; cashAndOther: number };
 };
@@ -61,7 +61,7 @@ export type MapAllocationInput = {
   allocations: AllocationDimensionInput[];
   unavailableFields?: string[];
   unavailableKinds?: Partial<Record<string, FactSheetUnavailableKind>>;
-  factSheetAsOf?: string;
+  allocationAsOf?: string;
 };
 
 const EQUITY =
@@ -193,7 +193,7 @@ export function mapDisclosureAllocation(
     return {
       official: false,
       mapVersion,
-      asOf: input.factSheetAsOf,
+      ...(input.allocationAsOf ? { asOf: input.allocationAsOf } : {}),
       unavailable: true,
       reason: officialKind ?? "not-disclosed",
     };
@@ -209,7 +209,7 @@ export function mapDisclosureAllocation(
     return {
       official: false,
       mapVersion,
-      asOf: input.factSheetAsOf,
+      ...(input.allocationAsOf ? { asOf: input.allocationAsOf } : {}),
       unavailable: true,
       reason: "not-asset-class",
     };
@@ -219,7 +219,7 @@ export function mapDisclosureAllocation(
   return {
     official: false,
     mapVersion,
-    asOf: input.factSheetAsOf ?? "",
+    ...(input.allocationAsOf ? { asOf: input.allocationAsOf } : {}),
     sourceHeading: chosen.heading,
     buckets: chosen.buckets,
   };

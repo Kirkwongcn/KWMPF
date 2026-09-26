@@ -73,6 +73,7 @@ export type FactSheetDisclosureFile = {
     /** 有抄錄受託人來源但抽唔到，先至退回副本；未抄錄嘅計劃冇呢一欄。 */
     trusteeFallback?: true;
     factSheetAsOf: string;
+    temporalScopes?: FactSheetDisclosure["temporalScopes"];
     allocations: FactSheetDisclosure["allocations"];
     topHoldings: FactSheetDisclosure["topHoldings"];
     unavailableFields: string[];
@@ -372,6 +373,9 @@ if (import.meta.main) {
         factSheetSource: chosen.source,
         ...(trusteeFallbackReason ? { trusteeFallback: true as const } : {}),
         factSheetAsOf: disclosure.factSheetAsOf,
+        ...(disclosure.temporalScopes
+          ? { temporalScopes: disclosure.temporalScopes }
+          : {}),
         allocations: disclosure.allocations,
         topHoldings: disclosure.topHoldings,
         unavailableFields: disclosure.unavailableFields,
