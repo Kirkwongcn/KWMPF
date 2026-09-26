@@ -147,9 +147,7 @@ describe("health page", () => {
 
     render(<App apiUrl="https://api.test/health" />);
 
-    expect(screen.getByRole("status")).toHaveTextContent(
-      "正在載入已發布快照",
-    );
+    expect(screen.getByRole("status")).toHaveTextContent("正在載入已發布快照");
     expect(screen.queryByText("尚未有已發布快照")).not.toBeInTheDocument();
 
     resolveSummary(

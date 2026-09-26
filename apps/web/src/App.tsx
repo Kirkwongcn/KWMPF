@@ -26,7 +26,9 @@ type Summary = {
 export function App({ apiUrl }: { apiUrl: string }) {
   const [health, setHealth] = useState<Health | null>(null);
   const [summary, setSummary] = useState<Summary | null>(null);
-  const [summaryStatus, setSummaryStatus] = useState<"loading" | "loaded" | "error">("loading");
+  const [summaryStatus, setSummaryStatus] = useState<
+    "loading" | "loaded" | "error"
+  >("loading");
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
   const [searched, setSearched] = useState<string | null>(null);
