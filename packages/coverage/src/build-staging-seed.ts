@@ -1,6 +1,4 @@
 import { readFile, writeFile } from "node:fs/promises";
-import { resolve } from "node:path";
-import { fileURLToPath } from "node:url";
 import {
   FUND_OVERVIEW_POLICY_VERSION,
   fundOverviewGraceDaysFor,
