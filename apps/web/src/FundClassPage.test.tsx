@@ -842,11 +842,15 @@ describe("cumulative returns", () => {
   it("separates the document date from the platform snapshot date", async () => {
     renderWithDisclosure(disclosure);
 
-    expect(
-      await screen.findByText(
-        /便覽列示日期為 2025-11-30，平台快照日期為 2026-07-31[\s\S]*單憑文件日期未能確認每項披露是否反映同一期別/,
-      ),
-    ).toBeVisible();
+    const factSheet = within(
+      await screen.findByRole("region", { name: "投資組合披露" }),
+    );
+    const dateNote = await factSheet.findByRole("note", {
+      name: /單憑文件日期未能確認每項披露是否反映同一期別/,
+    });
+
+    expect(dateNote).toHaveTextContent("2025-11-30");
+    expect(dateNote).toHaveTextContent("2026-07-31");
   });
 
   it("says the trustee source is simply not transcribed yet", async () => {
