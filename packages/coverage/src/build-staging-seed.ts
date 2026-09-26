@@ -1,6 +1,4 @@
 import { readFile, writeFile } from "node:fs/promises";
-import { resolve } from "node:path";
-import { fileURLToPath } from "node:url";
 import {
   FUND_OVERVIEW_POLICY_VERSION,
   fundOverviewGraceDaysFor,
@@ -40,20 +38,16 @@ function argument(name: string) {
 
 const sourcePath = argument("--source");
 const outputPath = argument("--output");
-if (!sourcePath || !outputPath) {
+const returnObservationsPath = argument("--return-observations");
+if (!sourcePath || !outputPath || !returnObservationsPath) {
   throw new Error(
-    "Usage: bun coverage:publication-seed --source <platform-snapshot.json> --output <seed.sql> [--snapshot <id>]",
+    "Usage: bun coverage:publication-seed --source <platform-snapshot.json> --return-observations <official-return-observations.json> --output <seed.sql> [--snapshot <id>]",
   );
 }
 
 const snapshot = parseSourceSnapshot(JSON.parse(await readFile(sourcePath, "utf8")));
 const snapshotId = argument("--snapshot") ?? publicationSnapshotId(snapshot);
-const returnObservationsPath =
-  argument("--return-observations") ??
-  resolve(
-    fileURLToPath(new URL(".", import.meta.url)),
-    "../../../data/coverage/2026-08-13-official-return-observations-partial.json",
-  );
+
 const returnObservations = JSON.parse(
   await readFile(returnObservationsPath, "utf8"),
 ) as OfficialReturnObservation[];

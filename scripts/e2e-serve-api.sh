@@ -6,22 +6,19 @@ set -euo pipefail
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 state="${KWMPF_E2E_STATE:-$root/apps/e2e/.e2e-state}"
 source_snapshot="${KWMPF_E2E_SOURCE:-$root/data/sources/2026-08-13/mpf-fund-platform.json}"
-return_observations="${KWMPF_PUBLICATION_SEED_RETURN_OBSERVATIONS:-${KWMPF_E2E_RETURN_OBSERVATIONS:-}}"
+return_observations="${KWMPF_PUBLICATION_SEED_RETURN_OBSERVATIONS:-${KWMPF_E2E_RETURN_OBSERVATIONS:-$root/data/coverage/2026-08-13-official-return-observations-partial.json}}"
 port="${KWMPF_E2E_API_PORT:-8799}"
 
 export WRANGLER_SEND_METRICS=false
 
 rm -rf "$state"
 mkdir -p "$state"
-if [[ -n "$return_observations" && ! -f "$return_observations" ]]; then
+if [[ ! -f "$return_observations" ]]; then
   echo "Publication return observations do not exist: $return_observations" >&2
   exit 1
 fi
 
-seed_args=(--source "$source_snapshot" --output "$state/seed.sql")
-if [[ -n "$return_observations" ]]; then
-  seed_args+=(--return-observations "$return_observations")
-fi
+seed_args=(--source "$source_snapshot" --output "$state/seed.sql" --return-observations "$return_observations")
 bun "$root/packages/coverage/src/build-staging-seed.ts" "${seed_args[@]}"
 
 cd "$root/apps/api"
