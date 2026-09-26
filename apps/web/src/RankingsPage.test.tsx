@@ -465,7 +465,9 @@ describe("published return rankings", () => {
 
     render(<RankingsPage apiBaseUrl="https://api.test" initialMetric="fee" />);
 
-    expect(await screen.findByText("0.65%")).toBeVisible();
+    expect(
+      await screen.findByRole("cell", { name: "0.65%（上限）" }),
+    ).toBeVisible();
     expect(
       screen.getAllByRole("columnheader").map((cell) => cell.textContent),
     ).toEqual(["名次", "基金", "管理費", "比較組別", "截至日期", "來源"]);
