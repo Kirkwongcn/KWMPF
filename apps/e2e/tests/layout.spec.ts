@@ -52,7 +52,9 @@ test("每頁都可經第一個鍵盤焦點跳至主內容", async ({ page }) => 
   }
 
   await page.goto("/");
+
   const skipLink = page.getByRole("link", { name: "跳至主內容" });
+  await expect(skipLink).not.toBeInViewport();
   await page.keyboard.press("Tab");
   await expect(skipLink).toBeFocused();
   await expect(skipLink).toBeInViewport();
