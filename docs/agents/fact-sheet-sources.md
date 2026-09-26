@@ -68,3 +68,9 @@ fundfact-sheet.pdf`，2026-06-30，積金局副本 2025-12-31）及新地
 不可沿用平台的 `dataAsOf`。基金詳情頁的「投資組合披露」一節同時顯示兩個日期，
 不同期就標示並非完全可比；比重照原值印（披露寫 `11` 就係 `11%`），
 固定成兩位小數等於改寫官方數字。
+
+## Preserve trustee PDF source evidence
+
+The manual `Archive trustee fact sheets to R2` workflow saves the source PDFs referenced by a dated trustee-link manifest. It records the link-manifest checksum, source commit, original URLs and filenames, retrieval times, byte counts, checksums, and failed downloads in a private archive index. The workflow does not change the factsheet links, extracted returns, ranking candidates, or publication data.
+
+Run it from `main` with an existing `source_batch`. The download job uses sequential browser-impersonated requests and a 30-day GitHub artifact only as a handoff to the protected staging job. After a maintainer approves the `staging` environment, that job writes the deterministic archive and index to the staging R2 bucket and verifies byte-for-byte readback. No real R2 archive exists until that manual run completes; a partial fetch is recorded as partial and never presented as a complete set.

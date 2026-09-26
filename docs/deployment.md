@@ -86,3 +86,9 @@ fund class，並且 `Cache-Control` 必須是 `public, max-age=300, stale-while-
 - 已發布快照的原始 HTML 只保留在 workflow artifact（30 日），未按規格長期存入 R2；
   `Deploy production` 目前只把來源 JSON 封存到 R2。
 - `D1 Restore Drill` 只有手動觸發，未有每季執行的紀錄。
+
+## Trustee factsheet PDF archive
+
+The manual `Archive trustee fact sheets to R2` workflow accepts a dated `source_batch` from `data/sources/<YYYY-MM-DD>/trustee-fact-sheet-links.json`. It downloads PDFs sequentially, verifies HTTPS redirects, PDF signatures, byte counts and SHA-256 values, and preserves per-file failures in a manifest. GitHub retains the intermediate artifact for 30 days so the protected archive job can consume it.
+
+When at least one PDF is available, the second job waits for the protected `staging` environment, packages a deterministic archive and index, then stores both under `kwmpf-staging-raw/source-archives/trustee-fact-sheets/<batch>/run-<id>/`. It reads both objects back and compares the bytes with the uploaded files. The workflow does not touch D1 or deploy a site. A successful PR check does not run this workflow; the first real R2 write still needs a manual dispatch and staging approval.
