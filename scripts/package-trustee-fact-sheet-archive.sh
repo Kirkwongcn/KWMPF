@@ -32,7 +32,7 @@ esac
 [[ "$source_run_id" =~ ^[0-9]+$ ]] || { echo "Invalid source workflow run ID" >&2; exit 2; }
 [[ "$source_head_sha" =~ ^[0-9a-f]{40}$ ]] || { echo "Invalid source workflow commit SHA" >&2; exit 2; }
 [[ "$source_artifact_name" == "trustee-fact-sheets-"$source_batch"-"$source_run_id ]] || { echo "Unexpected trustee factsheet artifact name" >&2; exit 2; }
-[[ -n "$source_created_at" ]] || { echo "Missing source workflow creation time" >&2; exit 2; }
+[[ -n "$archive_created_at" ]] || { echo "Missing archive creation time" >&2; exit 2; }
 
 source_manifest="$artifact_dir/manifest.json"
 [[ -d "$artifact_dir" && -f "$source_manifest" && ! -L "$source_manifest" ]] || { echo "Trustee factsheet artifact is missing its manifest" >&2; exit 1; }
