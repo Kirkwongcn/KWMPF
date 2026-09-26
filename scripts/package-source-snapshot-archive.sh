@@ -89,7 +89,7 @@ expected_files=$((declared_files + 1))
 }
 
 mkdir -p "$(dirname "$archive_file")" "$(dirname "$index_file")"
-tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 --numeric-owner --format=gnu \
+tar --sort=name --mtime='@0' --owner=0 --group=0 --numeric-owner --format=gnu \
   -C "$artifact_dir" -cf - "$source_run_id" | gzip -n >"$archive_file"
 
 archive_bytes=$(wc -c <"$archive_file" | tr -d '[:space:]')
