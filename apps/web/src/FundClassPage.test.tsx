@@ -845,10 +845,15 @@ describe("cumulative returns", () => {
     const factSheet = within(
       await screen.findByRole("region", { name: "投資組合披露" }),
     );
-    const dateNote = await factSheet.findByRole("note", {
-      name: /單憑文件日期未能確認每項披露是否反映同一期別/,
-    });
+    const notes = await factSheet.findAllByRole("note");
+    const dateNote = notes.find((note) =>
+      note.textContent?.includes(
+        "單憑文件日期未能確認每項披露是否反映同一期別",
+      ),
+    );
 
+    expect(dateNote).toBeDefined();
+    if (!dateNote) throw new Error("The document-date note was not rendered");
     expect(dateNote).toHaveTextContent("2025-11-30");
     expect(dateNote).toHaveTextContent("2026-07-31");
   });
