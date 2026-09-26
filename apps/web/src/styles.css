@@ -910,6 +910,10 @@ body {
 }
 
 @media (max-width: 760px) {
+  .kw-button,
+  .kw-control {
+    min-height: 44px;
+  }
   .kw-header {
     min-height: 62px;
   }
