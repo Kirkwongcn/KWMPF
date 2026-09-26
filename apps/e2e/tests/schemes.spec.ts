@@ -19,8 +19,9 @@ test("計劃比較頁列出全部已發布計劃及官方管理費", async ({ pa
 
   const first = cards.first();
   await expect(
-    first.locator("dt").filter({ hasText: "官方管理費" }),
+    first.locator("dt").filter({ hasText: "管理費統計" }),
   ).toBeVisible();
+  await expect(first).toContainText("平台已核實");
   await expect(first).toContainText("中位數");
   await expect(first).toContainText(/\d+\.\d{2}% – \d+\.\d{2}%/);
 });

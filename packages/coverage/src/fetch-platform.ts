@@ -15,29 +15,57 @@ const detailUrl = (cfId: number) =>
   `https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=${cfId}`;
 const MAX_HTML_BYTES = 5 * 1024 * 1024;
 
+type FetchFailure = {
+  attempt: number;
+  retrievedAt: string;
+  httpStatus?: number;
+  html?: string;
+  error: string;
+};
+
 function argument(name: string) {
   const index = process.argv.indexOf(name);
   return index === -1 ? undefined : process.argv[index + 1];
 }
 
-async function fetchHtml(url: string) {
+async function fetchHtml(
+  url: string,
+  onFailure?: (failure: FetchFailure) => Promise<void>,
+) {
   let lastError: unknown;
   for (let attempt = 1; attempt <= 4; attempt += 1) {
+    let httpStatus: number | undefined;
+    let html: string | undefined;
+    let retrievedAt = new Date().toISOString();
     try {
       const response = await fetch(url, { signal: AbortSignal.timeout(30_000) });
-      if (!response.ok) throw new Error(`${url} returned HTTP ${response.status}`);
+      httpStatus = response.status;
+      retrievedAt = new Date().toISOString();
       const declaredSize = Number(response.headers.get("content-length") ?? 0);
       if (declaredSize > MAX_HTML_BYTES) throw new Error(`${url} exceeds 5 MiB`);
-      const html = await response.text();
+      html = await response.text();
+      retrievedAt = new Date().toISOString();
       if (Buffer.byteLength(html) > MAX_HTML_BYTES) {
+        html = undefined;
         throw new Error(`${url} exceeds 5 MiB`);
       }
       if (/This page can't be displayed|incident ID:/i.test(html)) {
-        throw new Error(`${url} returned a platform protection page`);
+        throw new Error(url + " returned a platform protection page");
       }
+      if (!response.ok)
+        throw new Error(url + " returned HTTP " + response.status);
       return html;
     } catch (error) {
       lastError = error;
+      retrievedAt = new Date().toISOString();
+      await onFailure?.({
+        attempt,
+        retrievedAt,
+        ...(httpStatus === undefined ? {} : { httpStatus }),
+        ...(html === undefined ? {} : { html }),
+        error:
+          error instanceof Error ? error.message.slice(0, 500) : String(error),
+      });
       if (attempt < 4) {
         await new Promise((resolve) => setTimeout(resolve, 1500 * attempt));
       }
@@ -97,7 +125,47 @@ for (const [name, value] of Object.entries(expectedCounts)) {
 
 const runDirectory = await createRunArchive(rawDirectory, runId);
 const artifacts: RawArtifact[] = [];
-const listHtml = (await readArchivedHtml(runDirectory, "fund-information-table.html")) ?? (await fetchHtml(listUrl));
+async function fetchAndArchive(url: string, relativePath: string) {
+  return fetchHtml(url, async ({ attempt, retrievedAt, httpStatus, html, error }) => {
+    const metadata = {
+      attempt,
+      ...(httpStatus === undefined ? {} : { httpStatus }),
+      error,
+    };
+    if (html !== undefined) {
+      artifacts.push(
+        await archiveHtml(
+          runDirectory,
+          relativePath + ".attempt-" + attempt + ".html",
+          url,
+          html,
+          retrievedAt,
+          "fetch_failed",
+          metadata,
+        ),
+      );
+    } else {
+      artifacts.push(
+        failedFetchArtifact(
+          relativePath + ".attempt-" + attempt + ".fetch-failed",
+          url,
+          retrievedAt,
+          metadata,
+        ),
+      );
+    }
+  });
+}
+
+let listHtml = await readArchivedHtml(runDirectory, "fund-information-table.html");
+if (listHtml === undefined) {
+  try {
+    listHtml = await fetchAndArchive(listUrl, "fund-information-table.html");
+  } catch (error) {
+    await writeArchiveManifest(runDirectory, runId, artifacts);
+    throw error;
+  }
+}
 const listRetrievedAt = new Date().toISOString();
 let fundClassIds: number[];
 try {
@@ -112,7 +180,10 @@ try {
   await writeArchiveManifest(runDirectory, runId, artifacts);
   throw error;
 }
-if (fundClassIds.length === 0) throw new Error("Fund Platform returned no fund classes");
+if (fundClassIds.length === 0) {
+  await writeArchiveManifest(runDirectory, runId, artifacts);
+  throw new Error("Fund Platform returned no fund classes");
+}
 if (fundClassIds.length !== expectedCounts.fundClasses) {
   await writeArchiveManifest(runDirectory, runId, artifacts);
   throw new Error(
@@ -127,11 +198,8 @@ try {
     const relativePath = `details/${cfId}.html`;
     let html = await readArchivedHtml(runDirectory, relativePath);
     try {
-      html ??= await fetchHtml(url);
+      html ??= await fetchAndArchive(url, relativePath);
     } catch (error) {
-      artifacts.push(
-        failedFetchArtifact(relativePath, url, new Date().toISOString()),
-      );
       throw error;
     }
     const retrievedAt = new Date().toISOString();

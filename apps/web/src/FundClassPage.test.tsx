@@ -1,1094 +1,127 @@
-import {
-  cleanup,
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-  within,
-} from "@testing-library/react";
-import { afterEach, describe, expect, it, vi } from "vitest";
-import fixture from "../../../fixtures/mpfa/cf-429.json";
-import { FundClassPage } from "./FundClassPage";
-
-describe("fund class page", () => {
-  afterEach(() => {
-    cleanup();
-    vi.unstubAllGlobals();
-  });
-
-  it("shows the fund identity and publication provenance", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-mpfa-cf-429-2026-06-30",
-          fundClass: fixture.fundClass,
-          provenance: {
-            sourceUrl: fixture.source.url,
-            dataAsOf: fixture.fundClass.dataAsOf,
-            retrievedAt: fixture.source.retrievedAt,
-            rawSha256: "a".repeat(64),
-            verificationStatus: "verified",
-          },
-        }),
-      ),
-    );
-
-    render(
-      <FundClassPage
-        apiBaseUrl="https://api.test"
-        fundClassId="mpfa-cf-429-class-i"
-      />,
-    );
-
-    expect(
-      await screen.findByRole("heading", {
-        name: "Principal Hong Kong Equity Fund",
-      }),
-    ).toBeVisible();
-    expect(screen.getByText("è³‡æ–™æˆªè‡³ï¼š2026-06-30")).toBeVisible();
-    expect(screen.getByText("æ“·å–ç‰ˆæœ¬ï¼š2026-08-11T00:00:00Z")).toBeVisible();
-    expect(screen.getByText("é©—è­‰ç‹€æ…‹ï¼šå·²é©—è­‰")).toBeVisible();
-    expect(screen.getByText("åŸºé‡‘é–‹æ”¯æ¯”ç‡ï¼ˆæ­·å²è²¡æ”¿æœŸï¼‰")).toBeVisible();
-    expect(screen.getByText("ç¶“å¸¸æ€§è²»ç”¨ï¼ˆæ¯å¹´ï¼‰")).toBeVisible();
-    expect(screen.getByText("ä¸€æ¬¡æ€§åŠäº¤æ˜“æ”¶è²»")).toBeVisible();
-    expect(screen.getByText("æŒçºŒæˆæœ¬èªªæ˜ï¼ˆOCIï¼‰")).toBeVisible();
-    expect(screen.getByRole("rowheader", { name: "ç®¡ç†è²»" })).toBeVisible();
-    expect(screen.getByText(/è³‡æ–™æ¯”è¼ƒä¸ä»£è¡¨æŠ•è³‡å»ºè­°/)).toBeVisible();
-    expect(screen.getByText(/é…ç½®åŠæŒå€‰è³‡æ–™çš„æˆªè‡³æ—¥æœŸå¯èƒ½ä¸åŒ/)).toBeVisible();
-    expect(screen.getByText("snapshot-mpfa-cf-429-2026-06-30")).toBeVisible();
-    expect(
-      screen.getByRole("link", { name: "ç©é‡‘å±€åŸå§‹è³‡æ–™" }),
-    ).toHaveAttribute("href", fixture.source.url);
-    expect(fetch).toHaveBeenCalledWith(
-      "https://api.test/fund-classes/mpfa-cf-429-class-i",
-    );
-    expect(screen.queryByText("é è¨­æŠ•è³‡ç­–ç•¥")).not.toBeInTheDocument();
-  });
-
-  it("labels a DIS core accumulation fund from the exact-name tag", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-dis-core",
-          fundClass: {
-            ...fixture.fundClass,
-            constituentFundName: "Principal Core Accumulation Fund",
-            isDisComponent: "core_accumulation",
-          },
-          provenance: {
-            sourceUrl: fixture.source.url,
-            dataAsOf: fixture.fundClass.dataAsOf,
-            retrievedAt: fixture.source.retrievedAt,
-            verificationStatus: "verified",
-          },
-        }),
-      ),
-    );
-
-    render(
-      <FundClassPage apiBaseUrl="https://api.test" fundClassId="dis-core" />,
-    );
-
-    expect(await screen.findByText("é è¨­æŠ•è³‡ç­–ç•¥")).toBeVisible();
-    expect(screen.getByText("æ ¸å¿ƒç´¯ç©åŸºé‡‘")).toBeVisible();
-  });
-
-  it("labels a DIS age 65 plus fund from the exact-name tag", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-dis-age65",
-          fundClass: {
-            ...fixture.fundClass,
-            constituentFundName: "Principal Age 65 Plus Fund",
-            isDisComponent: "age65_plus",
-          },
-          provenance: {
-            sourceUrl: fixture.source.url,
-            dataAsOf: fixture.fundClass.dataAsOf,
-            retrievedAt: fixture.source.retrievedAt,
-            verificationStatus: "verified",
-          },
-        }),
-      ),
-    );
-
-    render(
-      <FundClassPage apiBaseUrl="https://api.test" fundClassId="dis-age65" />,
-    );
-
-    expect(await screen.findByText("é è¨­æŠ•è³‡ç­–ç•¥")).toBeVisible();
-    expect(screen.getByText("65æ­²å¾ŒåŸºé‡‘")).toBeVisible();
-  });
-
-  it("keeps site navigation and the sitewide disclaimer available", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-mpfa-cf-429-2026-06-30",
-          fundClass: fixture.fundClass,
-          provenance: {
-            sourceUrl: fixture.source.url,
-            dataAsOf: fixture.fundClass.dataAsOf,
-            retrievedAt: fixture.source.retrievedAt,
-            verificationStatus: "verified",
-          },
-        }),
-      ),
-    );
-
-    render(
-      <FundClassPage
-        apiBaseUrl="https://api.test"
-        fundClassId="mpfa-cf-429-class-i"
-      />,
-    );
-
-    expect(
-      await screen.findByRole("heading", {
-        name: "Principal Hong Kong Equity Fund",
-      }),
-    ).toBeVisible();
-    expect(
-      screen.getByRole("navigation", { name: "ä¸»è¦å°è¦½" }),
-    ).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "è¨ˆåŠƒæ¯”è¼ƒ" })).toHaveAttribute(
-      "href",
-      "/schemes",
-    );
-    expect(
-      screen.getByText(/æœ¬ç¶²ç«™åªæä¾›è³‡æ–™æ¯”è¼ƒåŠæŠ•è³‡æ•™è‚²ï¼Œä¸æ§‹æˆæŠ•è³‡å»ºè­°/),
-    ).toBeVisible();
-  });
-
-  it("shows the official five and ten year returns alongside the one year figure", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-mpfa-cf-429-2026-06-30",
-          fundClass: {
-            ...fixture.fundClass,
-            annualizedReturn1y: 4.2,
-            annualizedReturn5y: 6.14,
-            annualizedReturn10y: 5.37,
-          },
-          provenance: {
-            sourceUrl: fixture.source.url,
-            dataAsOf: fixture.fundClass.dataAsOf,
-            retrievedAt: fixture.source.retrievedAt,
-            verificationStatus: "verified",
-          },
-        }),
-      ),
-    );
-
-    render(
-      <FundClassPage
-        apiBaseUrl="https://api.test"
-        fundClassId="mpfa-cf-429-class-i"
-      />,
-    );
-
-    const table = await screen.findByRole("table", { name: "å›å ±" });
-    const row = (horizon: string) =>
-      within(table)
-        .getAllByRole("row")
-        .find((candidate) => candidate.textContent?.startsWith(horizon))!;
-    expect(within(row("ä¸€å¹´")).getByText("4.20%")).toBeVisible();
-    expect(within(row("äº”å¹´")).getByText("6.14%")).toBeVisible();
-    expect(within(row("åå¹´")).getByText("5.37%")).toBeVisible();
-  });
-
-  it("marks long horizon returns the official source never published", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-mpfa-cf-429-2026-06-30",
-          fundClass: { ...fixture.fundClass, annualizedReturn1y: 4.2 },
-          provenance: {
-            sourceUrl: fixture.source.url,
-            dataAsOf: fixture.fundClass.dataAsOf,
-            retrievedAt: fixture.source.retrievedAt,
-            verificationStatus: "verified",
-          },
-        }),
-      ),
-    );
-
-    render(
-      <FundClassPage
-        apiBaseUrl="https://api.test"
-        fundClassId="mpfa-cf-429-class-i"
-      />,
-    );
-
-    const table = await screen.findByRole("table", { name: "å›å ±" });
-    const rows = within(table).getAllByRole("row");
-    expect(
-      rows.find((row) => row.textContent?.startsWith("äº”å¹´")),
-    ).toBeVisible();
-    expect(
-      rows.find((row) => row.textContent?.startsWith("åå¹´")),
-    ).toBeVisible();
-    expect(
-      within(table).getAllByText("å®˜æ–¹æœªæä¾›").length,
-    ).toBeGreaterThanOrEqual(2);
-  });
-
-  it("shows the fund risk indicator next to the risk class without conflating them", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-risk-indicator",
-          fundClass: {
-            ...fixture.fundClass,
-            riskClass: 6,
-            fundRiskIndicator: 20.73,
-          },
-          provenance: {
-            sourceUrl: fixture.source.url,
-            dataAsOf: "2026-07-31",
-            retrievedAt: "2026-08-13T00:00:00Z",
-            verificationStatus: "verified",
-          },
-        }),
-      ),
-    );
-
-    render(
-      <FundClassPage
-        apiBaseUrl="https://api.test"
-        fundClassId="risk-indicator"
-      />,
-    );
-
-    expect(await screen.findByText("åŸºé‡‘é¢¨éšªæŒ‡æ¨™")).toBeVisible();
-    expect(screen.getByText("20.73%")).toBeVisible();
-    expect(screen.getByText(/éå»ä¸‰å¹´çš„å¹´åº¦åŒ–æ¨™æº–å·®/)).toBeVisible();
-  });
-
-  it("marks an absent fund risk indicator as officially unavailable", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-no-risk-indicator",
-          fundClass: { ...fixture.fundClass, fundRiskIndicator: undefined },
-          provenance: {
-            sourceUrl: fixture.source.url,
-            dataAsOf: "2026-07-31",
-            retrievedAt: "2026-08-13T00:00:00Z",
-            verificationStatus: "verified",
-          },
-        }),
-      ),
-    );
-
-    render(
-      <FundClassPage
-        apiBaseUrl="https://api.test"
-        fundClassId="no-indicator"
-      />,
-    );
-
-    const indicator = (await screen.findByText("åŸºé‡‘é¢¨éšªæŒ‡æ¨™")).closest("div");
-    expect(indicator).toHaveTextContent("å®˜æ–¹æœªæä¾›");
-  });
-
-  it("shows official unavailability instead of crashing on absent fields", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-missing-fields",
-          fundClass: {
-            ...fixture.fundClass,
-            riskClass: undefined,
-            latestFer: undefined,
-            oci1yHkd: undefined,
-          },
-          provenance: {
-            sourceUrl: fixture.source.url,
-            dataAsOf: "2026-07-31",
-            retrievedAt: "2026-08-13T00:00:00Z",
-            verificationStatus: "verified",
-          },
-        }),
-      ),
-    );
-
-    render(
-      <FundClassPage
-        apiBaseUrl="https://api.test"
-        fundClassId="missing-fields"
-      />,
-    );
-
-    expect(await screen.findAllByText("å®˜æ–¹æœªæä¾›")).toHaveLength(23);
-    expect(screen.getByText(/é©ç”¨æŠ«éœ²è¦å‰‡/)).toBeVisible();
-    expect(screen.getByText("å®˜æ–¹æœªæä¾›å¹´åº¦å›å ±ã€‚")).toBeVisible();
-  });
-
-  it("groups the disclosed fee components and marks `Up to` rates as caps", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-fee-breakdown",
-          fundClass: {
-            ...fixture.fundClass,
-            managementFee: 1.205,
-            trusteeCustodianFee: 0.14,
-            empfPlatformFee: 0.29,
-            memberServicingFee: 0.2,
-            investmentManagementFee: 0.4,
-            guaranteeCharge: 0,
-            joiningFee: 0,
-            contributionCharge: 0,
-            bidSpread: 0,
-            offerSpread: 0,
-            withdrawalCharge: 0,
-            oci1yHkd: 15,
-            oci3yHkd: 46,
-            feeCaps: ["managementFee"],
-            feeDisclosures: {
-              annualFee: "(Based on Number of Members) 1 to 14, Up to HKD3,000",
-            },
-          },
-          provenance: {
-            sourceUrl: fixture.source.url,
-            dataAsOf: "2026-07-31",
-            retrievedAt: "2026-08-13T00:00:00Z",
-            verificationStatus: "verified",
-          },
-        }),
-      ),
-    );
-
-    render(
-      <FundClassPage
-        apiBaseUrl="https://api.test"
-        fundClassId="fee-breakdown"
-      />,
-    );
-
-    // å®˜æ–¹æŠ«éœ² 1.205%ï¼Œé¡¯ç¤ºæ™‚ä¸å¯å››æ¨äº”å…¥æˆ 1.21%ã€‚
-    expect(await screen.findByText("1.205%ï¼ˆä¸Šé™ï¼‰")).toBeVisible();
-    expect(screen.getByText(/æŠ«éœ²çš„æ˜¯æ”¶è²»ä¸Šé™è€Œéå¯¦éš›è²»ç‡/)).toBeVisible();
-    expect(screen.getByText("HK$46")).toBeVisible();
-    expect(
-      screen.getByText("(Based on Number of Members) 1 to 14, Up to HKD3,000"),
-    ).toBeVisible();
-    // å¹´è²»æ˜¯æ–‡å­—æŠ«éœ²ï¼Œä¸å¯ç•¶æˆç¼ºå¤±ï¼Œä¹Ÿä¸å¯è®€æˆåˆ†ç´šé–€æª»çš„æ•¸å­—ã€‚
-    expect(screen.getByText("è¦‹ä¸‹æ–¹æ–‡å­—æŠ«éœ²")).toBeVisible();
-    // å®˜æ–¹æœªæä¾›äº”å¹´ OCIï¼Œä»ç„¶é¡¯ç¤ºç‚ºæœªæä¾›è€Œä¸æ˜¯ 0ã€‚
-    expect(screen.getAllByText("å®˜æ–¹æœªæä¾›").length).toBeGreaterThan(0);
-  });
-
-  it("keeps the official line breaks in a text fee disclosure", async () => {
-    const annualFee = [
-      "(Based on Number of Members)",
-      "1 to 14, Up to HKD3,000",
-      "15 to 29, Up to HKD1,500",
-      "30 or more HKD0",
-    ].join("\n");
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-disclosure",
-          fundClass: { ...fixture.fundClass, feeDisclosures: { annualFee } },
-          provenance: {
-            sourceUrl: fixture.source.url,
-            dataAsOf: "2026-07-31",
-            retrievedAt: "2026-08-13T00:00:00Z",
-            verificationStatus: "verified",
-          },
-        }),
-      ),
-    );
-
-    render(
-      <FundClassPage apiBaseUrl="https://api.test" fundClassId="disclosure" />,
-    );
-
-    const value = await screen.findByText(
-      (_, element) =>
-        element?.tagName === "DD" && element.textContent === annualFee,
-    );
-    // åˆ†è¡Œè¦ç•™åœ¨ DOMï¼Œä¸¦é  pre-line é¡¯ç¤ºï¼›æ“ æˆä¸€è¡Œæœƒè®€æˆ `HKD3,00015 to 29`ã€‚
-    expect(value.textContent).toContain("HKD3,000\n15 to 29");
-    expect(value.closest("dl")).toHaveClass("fee-disclosures");
-  });
-
-  it("shows fund size, launch date and calendar year returns", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-profile",
-          fundClass: {
-            ...fixture.fundClass,
-            fundSizeHkdMillion: 12974.87,
-            fundSizeAsOf: "2026-07-31",
-            returnsAsOf: "2026-07-31",
-            launchDate: "2012-09-03",
-            calendarYearReturns: { 2023: 24.3, 2024: 21.9, 2025: 16.49 },
-            sinceLaunchReturnAnnualized: 12.39,
-            sinceLaunchReturnCumulative: 407.79,
-          },
-          provenance: {
-            sourceUrl: fixture.source.url,
-            dataAsOf: "2026-07-31",
-            retrievedAt: "2026-08-13T00:00:00Z",
-            verificationStatus: "verified",
-          },
-        }),
-      ),
-    );
-
-    render(
-      <FundClassPage apiBaseUrl="https://api.test" fundClassId="profile" />,
-    );
-
-    expect(
-      await screen.findByText("HK$12,974.87 ç™¾è¬ï¼ˆæˆªè‡³ 2026-07-31ï¼‰"),
-    ).toBeVisible();
-    expect(screen.getByText("2012-09-03")).toBeVisible();
-
-    const calendar = screen.getByRole("table", { name: "å¹´åº¦å›å ±" });
-    const years = within(calendar)
-      .getAllByRole("rowheader")
-      .map((cell) => cell.textContent);
-    expect(years).toEqual(["2025", "2024", "2023"]);
-    expect(within(calendar).getByText("16.49%")).toBeVisible();
-
-    const returns = screen.getByRole("table", { name: "å›å ±" });
-    const sinceLaunch = within(returns).getByRole("rowheader", {
-      name: "æˆç«‹è‡³ä»Š",
-    }).parentElement!;
-    expect(within(sinceLaunch).getByText("12.39%")).toBeVisible();
-    expect(within(sinceLaunch).getByText("407.79%")).toBeVisible();
-    expect(screen.getByText(/å¹´åº¦å›å ±æ˜¯è©²å€‹æ›†å¹´çš„ç´¯ç©å›å ±/)).toBeVisible();
-  });
-
-  it("flags a fund size measured on a different date from the returns", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-mixed-dates",
-          fundClass: {
-            ...fixture.fundClass,
-            fundSizeHkdMillion: 3344.42,
-            fundSizeAsOf: "2026-05-31",
-            returnsAsOf: "2026-07-31",
-          },
-          provenance: {
-            sourceUrl: fixture.source.url,
-            dataAsOf: "2026-07-31",
-            retrievedAt: "2026-08-13T00:00:00Z",
-            verificationStatus: "verified",
-          },
-          fundSizeFreshness: {
-            status: "stale",
-            dataAsOf: "2026-05-31",
-            graceDays: 45,
-            ageDays: 90,
-          },
-        }),
-      ),
-    );
-
-    render(
-      <FundClassPage apiBaseUrl="https://api.test" fundClassId="mixed-dates" />,
-    );
-
-    expect(await screen.findByText(/ä¸¦éå®Œå…¨å¯æ¯”/)).toBeVisible();
-    expect(screen.getByText(/åŸºé‡‘è¦æ¨¡å·²è¶…å‡ºå®˜æ–¹æŠ«éœ²å¯¬é™æœŸ/)).toBeVisible();
-  });
-  it("titles the browser tab with the fund being viewed", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-mpfa-cf-429-2026-06-30",
-          fundClass: fixture.fundClass,
-          provenance: {
-            sourceUrl: fixture.source.url,
-            dataAsOf: fixture.fundClass.dataAsOf,
-            retrievedAt: fixture.source.retrievedAt,
-            verificationStatus: "verified",
-          },
-        }),
-      ),
-    );
-
-    render(
-      <FundClassPage
-        apiBaseUrl="https://api.test"
-        fundClassId="mpfa-cf-429-class-i"
-      />,
-    );
-
-    expect(
-      await screen.findByRole("heading", {
-        name: "Principal Hong Kong Equity Fund",
-      }),
-    ).toBeVisible();
-    await waitFor(() =>
-      expect(document.title).toBe("Principal Hong Kong Equity Fundï½œKWMPF"),
-    );
-  });
-
-  it("links to the fund's own comparison group ranking", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-mpfa-cf-429-2026-06-30",
-          fundClass: fixture.fundClass,
-          provenance: {
-            sourceUrl: fixture.source.url,
-            dataAsOf: fixture.fundClass.dataAsOf,
-            retrievedAt: fixture.source.retrievedAt,
-            verificationStatus: "verified",
-          },
-        }),
-      ),
-    );
-
-    render(
-      <FundClassPage
-        apiBaseUrl="https://api.test"
-        fundClassId="mpfa-cf-429-class-i"
-      />,
-    );
-
-    const link = await screen.findByRole("link", { name: /åŒçµ„åŸºé‡‘æ’å/ });
-    expect(link).toHaveAttribute(
-      "href",
-      `/rankings?period=1&group=${encodeURIComponent(fixture.fundClass.fundCategory)}`,
-    );
-  });
-
-  const renderWithFreshness = (freshness: unknown) => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-mpfa-cf-429-2026-06-30",
-          fundClass: fixture.fundClass,
-          provenance: {
-            sourceUrl: fixture.source.url,
-            dataAsOf: fixture.fundClass.dataAsOf,
-            retrievedAt: fixture.source.retrievedAt,
-            verificationStatus: "verified",
-          },
-          freshness,
-        }),
-      ),
-    );
-    render(
-      <FundClassPage
-        apiBaseUrl="https://api.test"
-        fundClassId="mpfa-cf-429-class-i"
-      />,
-    );
-  };
-
-  it("marks a stale figure without hiding it or its original date", async () => {
-    renderWithFreshness({
-      status: "stale",
-      dataAsOf: fixture.fundClass.dataAsOf,
-      graceDays: 45,
-      ageDays: 200,
-    });
-
-    expect(await screen.findByText("è³‡æ–™éæœŸ")).toBeVisible();
-    expect(
-      screen.getByText(
-        new RegExp(`è¶…å‡ºå®˜æ–¹æŠ«éœ²å¯¬é™æœŸ.*${fixture.fundClass.dataAsOf}`),
-      ),
-    ).toBeVisible();
-    const oneYear = within(screen.getByRole("table", { name: "å›å ±" }))
-      .getAllByRole("row")
-      .find((row) => row.textContent?.startsWith("ä¸€å¹´"))!;
-    expect(
-      within(oneYear).getAllByText(
-        `${fixture.fundClass.annualizedReturn1y.toFixed(2)}%`,
-      ).length,
-    ).toBeGreaterThan(0);
-  });
-
-  it("shows a verified status when the data is inside the grace period", async () => {
-    renderWithFreshness({
-      status: "verified",
-      dataAsOf: fixture.fundClass.dataAsOf,
-      graceDays: 45,
-      ageDays: 20,
-    });
-
-    expect(await screen.findByText("è³‡æ–™ç¾è¡Œ")).toBeVisible();
-    expect(screen.queryByText("è³‡æ–™éæœŸ")).not.toBeInTheDocument();
-  });
-});
-
-describe("fund class page without a separate class", () => {
-  afterEach(() => {
-    cleanup();
-    vi.unstubAllGlobals();
-  });
-
-  it("omits the official n.a. placeholder from the subtitle", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-mpfa-cf-429-2026-06-30",
-          fundClass: { ...fixture.fundClass, fundClassName: "n.a." },
-          provenance: {
-            sourceUrl: fixture.source.url,
-            dataAsOf: fixture.fundClass.dataAsOf,
-            retrievedAt: fixture.source.retrievedAt,
-            rawSha256: "a".repeat(64),
-            verificationStatus: "verified",
-          },
-        }),
-      ),
-    );
-
-    render(
-      <FundClassPage
-        apiBaseUrl="https://api.test"
-        fundClassId="mpfa-cf-429-class-i"
-      />,
-    );
-
-    expect(
-      await screen.findByRole("heading", {
-        name: fixture.fundClass.constituentFundName,
-      }),
-    ).toBeVisible();
-    expect(
-      screen.getByText(
-        `${fixture.fundClass.fundType}ï¼${fixture.fundClass.fundCategory}`,
-      ),
-    ).toBeVisible();
-    expect(screen.queryByText(/n\.a\./i)).not.toBeInTheDocument();
-  });
-});
-
-describe("cumulative returns", () => {
-  afterEach(() => {
-    cleanup();
-    vi.unstubAllGlobals();
-  });
-
-  const renderWithFields = (extra: Record<string, number | undefined>) => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-mpfa-cf-429-2026-06-30",
-          fundClass: { ...fixture.fundClass, ...extra },
-          provenance: {
-            sourceUrl: fixture.source.url,
-            dataAsOf: fixture.fundClass.dataAsOf,
-            retrievedAt: fixture.source.retrievedAt,
-            rawSha256: "a".repeat(64),
-            verificationStatus: "verified",
-          },
-        }),
-      ),
-    );
-    render(
-      <FundClassPage
-        apiBaseUrl="https://api.test"
-        fundClassId="mpfa-cf-429-class-i"
-      />,
-    );
-  };
-
-  it("puts each horizon's annualized and cumulative figures on the same row", async () => {
-    renderWithFields({
-      annualizedReturn1y: 29.58,
-      cumulativeReturn1y: 29.58,
-      annualizedReturn5y: 4.2,
-      cumulativeReturn5y: 22.85,
-      annualizedReturn10y: 9.41,
-      cumulativeReturn10y: 145.86,
-    });
-
-    const table = await screen.findByRole("table", { name: "å›å ±" });
-    const rows = within(table).getAllByRole("row");
-    expect(rows[0]).toHaveTextContent("å¹´ç‡åŒ–å›å ±");
-    expect(rows[0]).toHaveTextContent("ç´¯ç©å›å ±");
-
-    const tenYear = rows.find((row) => row.textContent?.startsWith("åå¹´"))!;
-    expect(within(tenYear).getByText("9.41%")).toBeVisible();
-    expect(within(tenYear).getByText("145.86%")).toBeVisible();
-
-    const fiveYear = rows.find((row) => row.textContent?.startsWith("äº”å¹´"))!;
-    expect(within(fiveYear).getByText("4.20%")).toBeVisible();
-    expect(within(fiveYear).getByText("22.85%")).toBeVisible();
-  });
-
-  it("does not invent a cumulative figure the official source omits", async () => {
-    renderWithFields({
-      annualizedReturn5y: 4.2,
-      annualizedReturn10y: undefined,
-      cumulativeReturn5y: undefined,
-      cumulativeReturn10y: undefined,
-    });
-
-    const table = await screen.findByRole("table", { name: "å›å ±" });
-    const fiveYear = within(table)
-      .getAllByRole("row")
-      .find((row) => row.textContent?.startsWith("äº”å¹´"))!;
-    expect(within(fiveYear).getByText("4.20%")).toBeVisible();
-    expect(within(fiveYear).getByText("å®˜æ–¹æœªæä¾›")).toBeVisible();
-    expect(screen.queryByText("22.85%")).not.toBeInTheDocument();
-  });
-
-  it("explains how the annualized and cumulative figures differ", async () => {
-    renderWithFields({
-      annualizedReturn10y: 9.41,
-      cumulativeReturn10y: 145.86,
-    });
-
-    expect(
-      await screen.findByText(
-        /å¹´ç‡åŒ–å›å ±æ˜¯æ¯å¹´å¹³å‡.*ç´¯ç©å›å ±æ˜¯æ•´æ®µæœŸé–“çš„ç¸½è®Šå¹…/,
-      ),
-    ).toBeVisible();
-  });
-
-  function renderWithDisclosure(
-    factSheetDisclosure: unknown,
-    extra: Record<string, unknown> = {},
-  ) {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-fact-sheet",
-          fundClass: fixture.fundClass,
-          provenance: {
-            sourceUrl: fixture.source.url,
-            dataAsOf: "2026-07-31",
-            retrievedAt: "2026-08-29T00:00:00Z",
-            verificationStatus: "verified",
-          },
-          ...(factSheetDisclosure ? { factSheetDisclosure } : {}),
-          ...extra,
-        }),
-      ),
-    );
-    render(
-      <FundClassPage apiBaseUrl="https://api.test" fundClassId="disclosed" />,
-    );
-  }
-
-  const disclosure = {
-    factSheetFile: "MT00172.pdf",
-    factSheetUrl: "https://www.mpfa.org.hk/assets/FF/MT00172.pdf",
-    factSheetSource: "mpfa-registry",
-    factSheetAsOf: "2025-11-30",
-    allocations: [
-      {
-        heading: "ASSET ALLOCATION è³‡ç”¢åˆ†ä½ˆ",
-        entries: [
-          { label: "ä¸­åœ‹China", percent: 62.61 },
-          { label: "ç¾é‡‘åŠå…¶ä»–Cash and Others", percent: 0.7 },
-        ],
-      },
-    ],
-    topHoldings: [
-      { rank: 1, security: "é¨°è¨Šæ§è‚¡TENCENT HOLDINGS LTD", percent: 9.36 },
-    ],
-    unavailableFields: [],
-    unavailableReasons: {},
-    unavailableKinds: {},
-  };
-
-  it("shows the fact sheet allocation and holdings under their own headings", async () => {
-    renderWithDisclosure(disclosure);
-
-    const allocation = await screen.findByRole("table", {
-      name: "ASSET ALLOCATION è³‡ç”¢åˆ†ä½ˆ",
-    });
-    expect(
-      within(allocation).getByRole("rowheader", { name: "ä¸­åœ‹China" }),
-    ).toBeVisible();
-    expect(within(allocation).getByText("62.61%")).toBeVisible();
-    // æŠ«éœ²å¯« 0.7ï¼Œè£œæˆ 0.70 å°±ä¿‚æ”¹å¯«å®˜æ–¹æ•¸å­—ã€‚
-    expect(within(allocation).getByText("0.7%")).toBeVisible();
-
-    const holdings = screen.getByRole("table", { name: "åå¤§æŒå€‰" });
-    expect(
-      within(holdings).getByText("é¨°è¨Šæ§è‚¡TENCENT HOLDINGS LTD"),
-    ).toBeVisible();
-    expect(within(holdings).getByText("9.36%")).toBeVisible();
-  });
-
-  it("marks the fact sheet and platform dates as not fully comparable", async () => {
-    renderWithDisclosure(disclosure);
-
-    expect(
-      await screen.findByText(
-        /ä¾¿è¦½æˆªè‡³ 2025-11-30ï¼Œå¹³å°æ•¸æ“šæˆªè‡³ 2026-07-31ï¼Œå…©è€…æœŸåˆ¥ä¸åŒï¼Œä¸¦éå®Œå…¨å¯æ¯”/,
-      ),
-    ).toBeVisible();
-  });
-
-  it("says the trustee source is simply not transcribed yet", async () => {
-    renderWithDisclosure(disclosure);
-
-    expect(
-      await screen.findByText(/è³‡æ–™ä¾†è‡ªç©é‡‘å±€ä¾¿è¦½åº«å­˜æ”¾çš„è¨ˆåŠƒä¾¿è¦½å‰¯æœ¬/),
-    ).toBeVisible();
-    expect(
-      screen.getByText(/å°šæœªæ”¶éŒ„é€™å€‹è¨ˆåŠƒåœ¨å—è¨—äººå®˜ç¶²çš„ä¾¿è¦½/),
-    ).toBeVisible();
-    expect(
-      screen.getByRole("link", { name: "æŸ¥é–±é€™ä»½è¨ˆåŠƒä¾¿è¦½åŸæ–‡" }),
-    ).toHaveAttribute("href", "https://www.mpfa.org.hk/assets/FF/MT00172.pdf");
-  });
-
-  it("separates a failed trustee read from one that was never transcribed", async () => {
-    // å…©ç¨®æƒ…æ³æªè¾­å””åŒï¼šè©¦éè®€å””åˆ°ï¼ŒåŒå¾ä¾†æœªæŠ„éŒ„ï¼Œå””å¯ä»¥ç•¶æˆåŒä¸€å¥ã€‚
-    renderWithDisclosure({ ...disclosure, trusteeFallback: true });
-
-    expect(await screen.findByText(/å—è¨—äººå®˜ç¶²é‚£ä¸€æœŸæœªèƒ½è®€å–/)).toBeVisible();
-    expect(
-      screen.queryByText(/å°šæœªæ”¶éŒ„é€™å€‹è¨ˆåŠƒåœ¨å—è¨—äººå®˜ç¶²çš„ä¾¿è¦½/),
-    ).not.toBeInTheDocument();
-  });
-
-  it("names the trustee as the source when its own issue was used", async () => {
-    renderWithDisclosure({
-      ...disclosure,
-      factSheetSource: "trustee",
-      factSheetUrl: "https://www.bcthk.com/wr/Simple-Fund-Fact-Sheet",
-      factSheetAsOf: "2026-03-31",
-    });
-
-    expect(
-      await screen.findByText(/è³‡æ–™ä¾†è‡ªå—è¨—äººå®˜ç¶²åˆŠç™¼çš„è¨ˆåŠƒä¾¿è¦½/),
-    ).toBeVisible();
-    expect(
-      screen.queryByText(/å—è¨—äººå®˜ç¶²é‚£ä¸€æœŸæœªèƒ½å–å¾—/),
-    ).not.toBeInTheDocument();
-    expect(
-      screen.getByRole("link", { name: "æŸ¥é–±é€™ä»½è¨ˆåŠƒä¾¿è¦½åŸæ–‡" }),
-    ).toHaveAttribute(
-      "href",
-      "https://www.bcthk.com/wr/Simple-Fund-Fact-Sheet",
-    );
-  });
-
-  it("says the official disclosure is a chart rather than calling it unavailable", async () => {
-    renderWithDisclosure({
-      ...disclosure,
-      allocations: [],
-      unavailableFields: ["allocation"],
-      unavailableReasons: {
-        allocation:
-          "the bar chart's labels and percentages are drawn as vector art, not text",
-      },
-      unavailableKinds: { allocation: "chart-only" },
-    });
-
-    expect(await screen.findByText(/è³‡ç”¢é…ç½®ï¼šå®˜æ–¹ä»¥åœ–è¡¨æŠ«éœ²/)).toBeVisible();
-    expect(
-      screen.queryByRole("table", { name: "ASSET ALLOCATION è³‡ç”¢åˆ†ä½ˆ" }),
-    ).not.toBeInTheDocument();
-    // è¨ºæ–·ç”¨çš„è‹±æ–‡åŸå› å””æ‡‰è©²åŸå°ä¸å‹•å‡ºè¡—ã€‚
-    expect(screen.queryByText(/vector art/)).not.toBeInTheDocument();
-  });
-
-  it("keeps calling a block the fact sheet never carried officially unavailable", async () => {
-    renderWithDisclosure({
-      ...disclosure,
-      topHoldings: [],
-      unavailableFields: ["topHoldings"],
-      unavailableReasons: {
-        topHoldings: "no holdings rows in the disclosed block",
-      },
-      unavailableKinds: { topHoldings: "not-disclosed" },
-    });
-
-    expect(await screen.findByText(/åå¤§æŒå€‰ï¼šå®˜æ–¹æœªæä¾›/)).toBeVisible();
-  });
-
-  it("shows editorial asset-class buckets separately from the verbatim table", async () => {
-    renderWithDisclosure(disclosure, {
-      mappedAllocation: {
-        official: false,
-        mapVersion: "2026-09-08",
-        asOf: "2025-11-30",
-        sourceHeading: "ASSET ALLOCATION è³‡ç”¢åˆ†ä½ˆ",
-        buckets: { equity: 33, bond: 64.48, cashAndOther: 2.52 },
-      },
-    });
-
-    const mapped = await screen.findByRole("table", {
-      name: "ç·¨è¼¯æ­¸é¡çš„è³‡ç”¢é¡åˆ¥",
-    });
-    expect(
-      within(mapped).getByRole("rowheader", { name: "è‚¡ç¥¨" }),
-    ).toBeVisible();
-    expect(within(mapped).getByText("33%")).toBeVisible();
-    expect(within(mapped).getByText("64.48%")).toBeVisible();
-    expect(within(mapped).getByText("2.52%")).toBeVisible();
-    expect(screen.getByText(/ç·¨è¼¯æ­¸é¡ï¼Œéå®˜æ–¹åˆ†é¡/)).toBeVisible();
-    expect(
-      screen.getByRole("table", { name: "ASSET ALLOCATION è³‡ç”¢åˆ†ä½ˆ" }),
-    ).toBeVisible();
-  });
-
-  it("says when the official table is not an asset-class disclosure", async () => {
-    renderWithDisclosure(disclosure, {
-      mappedAllocation: {
-        official: false,
-        mapVersion: "2026-09-08",
-        asOf: "2025-11-30",
-        unavailable: true,
-        reason: "not-asset-class",
-      },
-    });
-
-    expect(await screen.findByText(/æ­¤ç¶­åº¦å®˜æ–¹æœªä»¥è³‡ç”¢é¡åˆ¥æŠ«éœ²/)).toBeVisible();
-    expect(
-      screen.queryByRole("table", { name: "ç·¨è¼¯æ­¸é¡çš„è³‡ç”¢é¡åˆ¥" }),
-    ).not.toBeInTheDocument();
-    expect(
-      screen.getByRole("table", { name: "ASSET ALLOCATION è³‡ç”¢åˆ†ä½ˆ" }),
-    ).toBeVisible();
-  });
-
-  it("says so when no fact sheet disclosure pairs with the fund at all", async () => {
-    renderWithDisclosure(undefined);
-
-    expect(
-      await screen.findByText(/é€™éš»åŸºé‡‘æœªæœ‰å¯å°æ‡‰çš„è¨ˆåŠƒä¾¿è¦½æŠ«éœ²/),
-    ).toBeVisible();
-    expect(
-      screen.queryByRole("table", { name: "åå¤§æŒå€‰" }),
-    ).not.toBeInTheDocument();
-  });
-
-  function interpretationResponse(
-    status: "complete" | "insufficient" = "complete",
-  ) {
-    const unavailable = status === "insufficient";
-    return {
-      snapshotId: "snapshot-interpretation-ui",
-      fundClassId: "interpretation-ui",
-      comparisonGroup: "Hong Kong Equity",
-      comparisonGroupSource: "lipper",
-      values: {
-        equity: {
-          fund: unavailable ? null : 94,
-          groupAverage: unavailable ? null : 92,
-          official: false,
-        },
-        top10Concentration: {
-          fund: unavailable ? null : 33,
-          groupAverage: unavailable ? null : 30,
-        },
-        volatility3y: {
-          fund: unavailable ? null : 17,
-          groupAverage: unavailable ? null : 20,
-        },
-      },
-      interpretation: {
-        thresholdVersion: "2026-09-10-trial-1",
-        thresholdStatus: "trial",
-        equity: {
-          status: unavailable ? "insufficient-sample" : "similar",
-          text: unavailable
-            ? "è‚¡ç¥¨é…ç½®ï¼ˆç·¨è¼¯æ­¸é¡ï¼Œéå®˜æ–¹åˆ†é¡ï¼‰ï¼šåŒçµ„åˆ¥æ¨£æœ¬ä¸è¶³ï¼Œæœªèƒ½æ¯”è¼ƒã€‚"
-            : "è‚¡ç¥¨é…ç½®ï¼ˆç·¨è¼¯æ­¸é¡ï¼Œéå®˜æ–¹åˆ†é¡ï¼‰ 94%ï¼Œèˆ‡åŒçµ„åˆ¥å¹³å‡ç›¸è‹¥ã€‚",
-        },
-        top10Concentration: {
-          status: unavailable ? "insufficient-sample" : "higher",
-          text: unavailable
-            ? "åå¤§æŒå€‰ä½”æ¯”ï¼šåŒçµ„åˆ¥æ¨£æœ¬ä¸è¶³ï¼Œæœªèƒ½æ¯”è¼ƒã€‚"
-            : "åå¤§æŒå€‰ä½”æ¯” 33%ï¼Œæ¯”åŒçµ„åˆ¥å¹³å‡é«˜ 3 å€‹ç™¾åˆ†é»ã€‚",
-        },
-        volatility3y: {
-          status: unavailable ? "insufficient-sample" : "lower",
-          text: unavailable
-            ? "3å¹´æ³¢å¹…ï¼šåŒçµ„åˆ¥æ¨£æœ¬ä¸è¶³ï¼Œæœªèƒ½æ¯”è¼ƒã€‚"
-            : "3å¹´æ³¢å¹… 17%ï¼Œæ¯”åŒçµ„åˆ¥å¹³å‡ä½ 3 å€‹ç™¾åˆ†é»ã€‚",
-        },
-      },
-    };
-  }
-
-  function renderInterpretation(
-    status: "complete" | "insufficient" = "complete",
-  ) {
-    const fetchMock = vi.fn().mockImplementation((url: string) =>
-      Promise.resolve(
-        Response.json(
-          url.endsWith("/interpretation")
-            ? interpretationResponse(status)
-            : {
-                snapshotId: "snapshot-interpretation-ui",
-                fundClass: fixture.fundClass,
-                comparisonGroup: "Hong Kong Equity",
-                provenance: {
-                  sourceUrl: fixture.source.url,
-                  dataAsOf: fixture.fundClass.dataAsOf,
-                  retrievedAt: fixture.source.retrievedAt,
-                  verificationStatus: "verified",
-                },
-              },
-        ),
-      ),
-    );
-    vi.stubGlobal("fetch", fetchMock);
-    render(
-      <FundClassPage
-        apiBaseUrl="https://api.test"
-        fundClassId="interpretation-ui"
-      />,
-    );
-    return fetchMock;
-  }
-
-  it("shows snapshot interpretation text and matching comparison charts", async () => {
-    const fetchMock = renderInterpretation();
-
-    fireEvent.click(await screen.findByRole("tab", { name: "åŸºé‡‘è§£è®€" }));
-
-    expect(await screen.findByText(/è‚¡ç¥¨é…ç½®.*94%.*ç›¸è‹¥/)).toBeVisible();
-    expect(screen.getByText(/åå¤§æŒå€‰ä½”æ¯” 33%.*é«˜ 3 å€‹ç™¾åˆ†é»/)).toBeVisible();
-    expect(screen.getByText(/3å¹´æ³¢å¹… 17%.*ä½ 3 å€‹ç™¾åˆ†é»/)).toBeVisible();
-    expect(screen.getByText(/è¦å‰‡ç‰ˆæœ¬ 2026-09-10-trial-1/)).toBeVisible();
-    expect(screen.getAllByRole("img")).toHaveLength(3);
-    expect(fetchMock).toHaveBeenLastCalledWith(
-      "https://api.test/fund-classes/interpretation-ui/interpretation",
-    );
-  });
-
-  it("shows explicit sample status without partial charts", async () => {
-    renderInterpretation("insufficient");
-
-    fireEvent.click(await screen.findByRole("tab", { name: "åŸºé‡‘è§£è®€" }));
-
-    expect(await screen.findAllByText("æ¨£æœ¬ä¸è¶³")).toHaveLength(3);
-    expect(screen.getAllByText(/åŒçµ„åˆ¥æ¨£æœ¬ä¸è¶³ï¼Œæœªèƒ½æ¯”è¼ƒ/)).toHaveLength(3);
-    expect(screen.queryByRole("img")).not.toBeInTheDocument();
-  });
-});
+YªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éí×_4á:-jZ.¶›­–)Ş³V–×÷'B°¢6ÆVçWÀ¢f—&TWfVçBÀ¢&VæFW"À¢67&VVâÀ¢v—Df÷"À¢v—F†–âÀ§Òg&öÒ$FW7F–ærÖÆ–'&'’÷&V7B#°¦–×÷'B²gFW$V6‚ÂFW67&–&RÂW‡V7BÂ—BÂf’Òg&öÒ'f—FW7B#°¦–×÷'Bf—‡GW&Rg&öÒ"ââòââòââöf—‡GW&W2ö×fö6bÓC#’æ§6öâ#°¦–×÷'B²gVæD6Æ75vRÒg&öÒ"âôgVæD6Æ75vR#° ¦FW67&–&R‚&gVæB6Æ72vR"Â‚’Óâ°¢gFW$V6‚‚‚’Óâ°¢6ÆVçW‚“°¢f’çVç7GV$ÆÄvÆö&Ç2‚“°¢Ò“° ¢—B‚'6†÷w2F†RgVæB–FVçF—G’æBV&Æ–6F–öâ&÷fVææ6R"Â7–æ2‚’Óâ°¢f’ç7GV$vÆö&Â€¢&fWF6‚"À¢f’æfâ‚’æÖö6µ&W6öÇfVEfÇVR€¢&W7öç6Ræ§6öâ‡°¢6æ6†÷D–C¢'6æ6†÷BÖ×fÖ6bÓC#’Ó##bÓbÓ3"À¢gVæD6Æ73¢f—‡GW&RægVæD6Æ72À¢&÷fVææ6S¢°¢6÷W&6UW&Ã¢f—‡GW&Rç6÷W&6RçW&ÂÀ¢FF4öc¢f—‡GW&RægVæD6Æ72æFF4öbÀ¢&WG&–WfVDC¢f—‡GW&Rç6÷W&6Rç&WG&–WfVDBÀ¢&u6†#Sc¢&"ç&WVBƒcB’À¢fW&–f–6F–öå7FGW3¢'fW&–f–VB"À¢ÒÀ¢Ò’À¢’À¢“° ¢&VæFW"€¢ÄgVæD6Æ75vP¢”&6UW&ÃÒ&‡GG3¢òö’çFW7B ¢gVæD6Æ74–CÒ&×fÖ6bÓC#’Ö6Æ72Ö’ ¢óâÀ¢“° ¢W‡V7B€¢v—B67&VVâæf–æD'•&öÆR‚&†VF–ær"Â°¢æÖS¢%&–æ6—Â†öær¶öærWV—G’gVæB"À¢Ò’À¢’çFô&Uf—6–&ÆR‚“°¢W‡V7B‡67&VVâævWD'•FW‡B‚.‹8~iihŠ®ˆ{>ûÉ£##bÓbÓ3"’’çFô&Uf—6–&ÆR‚“°¢W‡V7B‡67&VVâævWD'•FW‡B‚.i;~Xùnx˜iÊÎûÉ£##bÓ‚ÓC££¢"’’çFô&Uf—6–&ÆR‚“°¢W‡V7B‡67&VVâævWD'•FW‡B‚.š™~ŠØx¸hX¾ûÉ®[{.š™~ŠØ’"’’çFô&Uf—6–&ÆR‚“°¢W‡V7B‡67&VVâævWD'•FW‡B‚.Yû®˜y™h¾iJşjùNxè~ûÈjÛ~Xû.‹*iKşiÉşûÈ’"’’çFô&Uf—6–&ÆR‚“°¢W‡V7B‡67&VVâævWD'•FW‡B‚.{i>[‹h
+~‹+¾yJûÈjøş[›NûÈ’"’’çFô&Uf—6–&ÆR‚“°¢W‡V7B‡67&VVâævWD'•FW‡B‚.KˆjÊh
+~Xø®KªNi‰>iKn‹+²"’’çFô&Uf—6–&ÆR‚“°¢W‡V7B‡67&VVâævWD'•FW‡B‚.hÈ{¨Îh‰iÊÎŠª®iˆîûÈ„ô4ûÈ’"’’çFô&Uf—6–&ÆR‚“°¢W‡V7B‡67&VVâævWD'•&öÆR‚'&÷v†VFW""Â²æÖS¢.zêyn‹+²"Ò’’çFô&Uf—6–&ÆR‚“°¢W‡V7B‡67&VVâævWD'•FW‡B‚ş‹8~iijùN‹È>KˆŞKº>Šh©^‹8~[»®ŠÛò’’çFô&Uf—6–&ÆR‚“°¢W‡V7B‡67&VVâævWD'•FW‡B‚ş˜XŞ{ÚîXø®hÈX‹8~iiy¨NhŠ®ˆ{>iz^iÉşXúşˆ;ŞKˆŞYÂò’’çFô&Uf—6–&ÆR‚“°¢W‡V7B‡67&VVâævWD'•FW‡B‚'6æ6†÷BÖ×fÖ6bÓC#’Ó##bÓbÓ3"’’çFô&Uf—6–&ÆR‚“°¢W‡V7B€¢67&VVâævWD'•&öÆR‚&Æ–æ²"Â²æÖS¢.z˜Ş˜y[XéşZx¾‹8~ii’"Ò’À¢’çFô†fTGG&–'WFR‚&‡&Vb"Âf—‡GW&Rç6÷W&6RçW&Â“°¢W‡V7B†fWF6‚’çFô†fT&VVä6ÆÆVEv—F‚€¢&‡GG3¢òö’çFW7BögVæBÖ6Æ76W2ö×fÖ6bÓC#’Ö6Æ72Ö’"À¢“°¢W‡V7B‡67&VVâçVW'”'•FW‡B‚.š	ŠŠŞh©^‹8~zÙnyZR"’’ææ÷BçFô&T–åF†TFö7VÖVçB‚“°¢Ò“° ¢—B‚&Æ&VÇ2D•26÷&R67V×VÆF–öâgVæBg&öÒF†RW†7BÖæÖRFr"Â7–æ2‚’Óâ°¢f’ç7GV$vÆö&Â€¢&fWF6‚"À¢f’æfâ‚’æÖö6µ&W6öÇfVEfÇVR€¢&W7öç6Ræ§6öâ‡°¢6æ6†÷D–C¢'6æ6†÷BÖF—2Ö6÷&R"À¢gVæD6Æ73¢°¢ââæf—‡GW&RægVæD6Æ72À¢6öç7F—GVVçDgVæDæÖS¢%&–æ6—Â6÷&R67V×VÆF–öâgVæB"À¢—4F—46ö×öæVçC¢&6÷&Uö67V×VÆF–öâ"À¢ÒÀ¢&÷fVææ6S¢°¢6÷W&6UW&Ã¢f—‡GW&Rç6÷W&6RçW&ÂÀ¢FF4öc¢f—‡GW&RægVæD6Æ72æFF4öbÀ¢&WG&–WfVDC¢f—‡GW&Rç6÷W&6Rç&WG&–WfVDBÀ¢fW&–f–6F–öå7FGW3¢'fW&–f–VB"À¢ÒÀ¢Ò’À¢’À¢“° ¢&VæFW"€¢ÄgVæD6Æ75vR”&6UW&ÃÒ&‡GG3¢òö’çFW7B"gVæD6Æ74–CÒ&F—2Ö6÷&R"óâÀ¢“° ¢W‡V7B†v—B67&VVâæf–æD'•FW‡B‚.š	ŠŠŞh©^‹8~zÙnyZR"’’çFô&Uf—6–&ÆR‚“°¢W‡V7B‡67&VVâævWD'•FW‡B‚.j[ø>{Jşz˜ŞYû®˜y"’’çFô&Uf—6–&ÆR‚“°¢Ò“° ¢—B‚&Æ&VÇ2D•2vRcRÇW2gVæBg&öÒF†RW†7BÖæÖRFr"Â7–æ2‚’Óâ°¢f’ç7GV$vÆö&Â€¢&fWF6‚"À¢f’æfâ‚’æÖö6µ&W6öÇfVEfÇVR€¢&W7öç6Ræ§6öâ‡°¢6æ6†÷D–C¢'6æ6†÷BÖF—2ÖvScR"À¢gVæD6Æ73¢°¢ââæf—‡GW&RægVæD6Æ72À¢6öç7F—GVVçDgVæDæÖS¢%&–æ6—ÂvRcRÇW2gVæB"À¢—4F—46ö×öæVçC¢&vScU÷ÇW2"À¢ÒÀ¢&÷fVææ6S¢°¢6÷W&6UW&Ã¢f—‡GW&Rç6÷W&6RçW&ÂÀ¢FF4öc¢f—‡GW&RægVæD6Æ72æFF4öbÀ¢&WG&–WfVDC¢f—‡GW&Rç6÷W&6Rç&WG&–WfVDBÀ¢fW&–f–6F–öå7FGW3¢'fW&–f–VB"À¢ÒÀ¢Ò’À¢’À¢“° ¢&VæFW"€¢ÄgVæD6Æ75vR”&6UW&ÃÒ&‡GG3¢òö’çFW7B"gVæD6Æ74–CÒ&F—2ÖvScR"óâÀ¢“° ¢W‡V7B†v—B67&VVâæf–æD'•FW‡B‚.š	ŠŠŞh©^‹8~zÙnyZR"’’çFô&Uf—6–&ÆR‚“°¢W‡V7B‡67&VVâævWD'•FW‡B‚#c^jÛ.[èÎYû®˜y"’’çFô&Uf—6–&ÆR‚“°¢Ò“° ¢—B‚&¶VW26—FRæf–vF–öâæBF†R6—FWv–FRF—66Æ–ÖW"f–Æ&ÆR"Â7–æ2‚’Óâ°¢f’ç7GV$vÆö&Â€¢&fWF6‚"À¢f’æfâ‚’æÖö6µ&W6öÇfVEfÇVR€¢&W7öç6Ræ§6öâ‡°¢6æ6†÷D–C¢'6æ6†÷BÖ×fÖ6bÓC#’Ó##bÓbÓ3"À¢gVæD6Æ73¢f—‡GW&RægVæD6Æ72À¢&÷fVææ6S¢°¢6÷W&6UW&Ã¢f—‡GW&Rç6÷W&6RçW&ÂÀ¢FF4öc¢f—‡GW&RægVæD6Æ72æFF4öbÀ¢&WG&–WfVDC¢f—‡GW&Rç6÷W&6Rç&WG&–WfVDBÀ¢fW&–f–6F–öå7FGW3¢'fW&–f–VB"À¢ÒÀ¢Ò’À¢’À¢“° ¢&VæFW"€¢ÄgVæD6Æ75vP¢”&6UW&ÃÒ&‡GG3¢òö’çFW7B ¢gVæD6Æ74–CÒ&×fÖ6bÓC#’Ö6Æ72Ö’ ¢óâÀ¢“° ¢W‡V7B€¢v—B67&VVâæf–æD'•&öÆR‚&†VF–ær"Â°¢æÖS¢%&–æ6—Â†öær¶öærWV—G’gVæB"À¢Ò’À¢’çFô&Uf—6–&ÆR‚“°¢W‡V7B€¢67&VVâævWD'•&öÆR‚&æf–vF–öâ"Â²æÖS¢.K‹¾Šh[îŠkÒ"Ò’À¢’çFô&T–åF†TFö7VÖVçB‚“°¢W‡V7B‡67&VVâævWD'•&öÆR‚&Æ–æ²"Â²æÖS¢.ŠˆX¨>jùN‹È2"Ò’’çFô†fTGG&–'WFR€¢&‡&Vb"À¢"÷66†VÖW2"À¢“°¢W‡V7B€¢67&VVâævWD'•FW‡B‚şiÊÎ{k.z¹Xú®hùKé¾‹8~iijùN‹È>Xø®h©^‹8~iYˆ+.ûÈÎKˆŞjx¾h‰h©^‹8~[»®ŠÛò’À¢’çFô&Uf—6–&ÆR‚“°¢Ò“° ¢—B‚'6†÷w2F†Röff–6–Âf—fRæBFVâ–V"&WGW&ç2Æöæw6–FRF†RöæR–V"f–wW&R"Â7–æ2‚’Óâ°¢f’ç7GV$vÆö&Â€¢&fWF6‚"À¢f’æfâ‚’æÖö6µ&W6öÇfVEfÇVR€¢&W7öç6Ræ§6öâ‡°¢6æ6†÷D–C¢'6æ6†÷BÖ×fÖ6bÓC#’Ó##bÓbÓ3"À¢gVæD6Æ73¢°¢ââæf—‡GW&RægVæD6Æ72À¢æçVÆ—¦VE&WGW&ã“¢Bã"À¢æçVÆ—¦VE&WGW&ãW“¢bãBÀ¢æçVÆ—¦VE&WGW&ã“¢Rã3rÀ¢ÒÀ¢&÷fVææ6S¢°¢6÷W&6UW&Ã¢f—‡GW&Rç6÷W&6RçW&ÂÀ¢FF4öc¢f—‡GW&RægVæD6Æ72æFF4öbÀ¢&WG&–WfVDC¢f—‡GW&Rç6÷W&6Rç&WG&–WfVDBÀ¢fW&–f–6F–öå7FGW3¢'fW&–f–VB"À¢ÒÀ¢Ò’À¢’À¢“° ¢&VæFW"€¢ÄgVæD6Æ75vP¢”&6UW&ÃÒ&‡GG3¢òö’çFW7B ¢gVæD6Æ74–CÒ&×fÖ6bÓC#’Ö6Æ72Ö’ ¢óâÀ¢“° ¢6öç7BF&ÆRÒv—B67&VVâæf–æD'•&öÆR‚'F&ÆR"Â²æÖS¢.Y¹îZ"Ò“°¢6öç7B&÷rÒ††÷&—¦öã¢7G&–ær’Óà¢v—F†–â‡F&ÆR¢ævWDÆÄ'•&öÆR‚'&÷r"¢æf–æB‚†6æF–FFR’Óâ6æF–FFRçFW‡D6öçFVçCòç7F'G5v—F‚††÷&—¦öâ’’°¢W‡V7B‡v—F†–â‡&÷r‚.Kˆ[›B"’’ævWD'•FW‡B‚#Bã#R"’’çFô&Uf—6–&ÆR‚“°¢W‡V7B‡v—F†–â‡&÷r‚.K©N[›B"’’ævWD'•FW‡B‚#bãBR"’’çFô&Uf—6–&ÆR‚“°¢W‡V7B‡v—F†–â‡&÷r‚.XØ[›B"’’ævWD'•FW‡B‚#Rã3rR"’’çFô&Uf—6–&ÆR‚“°¢Ò“° ¢—B‚&Ö&·2Æöær†÷&—¦öâ&WGW&ç2F†Röff–6–Â6÷W&6RæWfW"V&Æ—6†VB"Â7–æ2‚’Óâ°¢f’ç7GV$vÆö&Â€¢&fWF6‚"À¢f’æfâ‚’æÖö6µ&W6öÇfVEfÇVR€¢&W7öç6Ræ§6öâ‡°¢6æ6†÷D–C¢'6æ6†÷BÖ×fÖ6bÓC#’Ó##bÓbÓ3"À¢gVæD6Æ73¢²ââæf—‡GW&RægVæD6Æ72ÂæçVÆ—¦VE&WGW&ã“¢Bã"ÒÀ¢&÷fVææ6S¢°¢6÷W&6UW&Ã¢f—‡GW&Rç6÷W&6RçW&ÂÀ¢FF4öc¢f—‡GW&RægVæD6Æ72æFF4öbÀ¢&WG&–WfVDC¢f—‡GW&Rç6÷W&6Rç&WG&–WfVDBÀ¢fW&–f–6F–öå7FGW3¢'fW&–f–VB"À¢ÒÀ¢Ò’À¢’À¢“° ¢&VæFW"€¢ÄgVæD6Æ75vP¢”&6UW&ÃÒ&‡GG3¢òö’çFW7B ¢gVæD6Æ74–CÒ&×fÖ6bÓC#’Ö6Æ72Ö’ ¢óâÀ¢“° ¢6öç7BF&ÆRÒv—B67&VVâæf–æD'•&öÆR‚'F&ÆR"Â²æÖS¢.Y¹îZ"Ò“°¢6öç7B&÷w2Òv—F†–â‡F&ÆR’ævWDÆÄ'•&öÆR‚'&÷r"“°¢W‡V7B€¢&÷w2æf–æB‚‡&÷r’Óâ&÷rçFW‡D6öçFVçCòç7F'G5v—F‚‚.K©N[›B"’’À¢’çFô&Un¼Ó‹h‘éì¶»§q«^vU^
+ú,áù¥¦y/¡º!ê¹cåú*%ù.®¹k¦9í¬¹b"¹æo9æ¡:*"9b ù/¯ú)¯KÊKˆ
+KĞ™Uš\ÚX›J
+NÂˆ^Xİ
+ˆØÜ™Y[‹œ]Y\PU^
+ùcåú*%ù.®¹k¦9í¬º`¨ù. 9§'ù§*º ïycå¹o¥ËÊKˆ
+K››İĞ™R[•QØİ[Y[
+
+NÂˆ^Xİ
+ˆØÜ™Y[‹™Ù]T›ÛJ›[šÈ‹È˜[YNˆ¹§éze¬z`&y.ïz*"9b ù/¯ú)¯yc§ù¥¡ÈˆJKˆ
+KÒ]™P]šX]Jˆš™Yˆ‹ˆšÎ‹ËİİİË˜˜İË˜ÛÛKİÜ‹ÔÚ[\KQ[™Q˜XİTÚY]‹ˆ
+NÂˆJNÂ‚ˆ]
+œØ^\ÈHÙ™šXÚX[\ØÛÜİ\™H\ÈHÚ\˜]\ˆ[ˆØ[[™È][˜]˜Z[X›H‹\Ş[˜È
+
+HOˆÂˆ™[™\•Ú]\ØÛÜİ\™JÂˆ‹‹™\ØÛÜİ\™Kˆ[ØØ][ÛœÎˆ×Kˆ[˜]˜Z[X›QšY[ÎˆÈ˜[ØØ][Ûˆ—Kˆ[˜]˜Z[X›T™X\ÛÛœÎˆÂˆ[ØØ][Û‚ˆH˜\ˆÚ\	ÜÈX™[È[™\˜Ù[YÙ\È\™H˜]Ûˆ\È™XİÜˆ\›İ^‹ˆKˆ[˜]˜Z[X›RÚ[™ÎˆÈ[ØØ][Ûˆ˜Ú\[Û›HˆKˆJNÂ‚ˆ^Xİ
+]ØZ]ØÜ™Y[‹™š[™U^
+ú,áùå(ºacyïk»ï&¹k¦9¥®y.éyg%º(j9¢ªúg,‹ÊJKĞ™Uš\ÚX›J
+NÂˆ^Xİ
+ˆØÜ™Y[‹œ]Y\PT›ÛJX›H‹È˜[YNˆTÔÑUSĞĞUSÓˆ:,áùå(¹b!¹/bˆJKˆ
+K››İĞ™R[•QØİ[Y[
+
+NÂˆËÈ:*.¹¥­ùå*9æ¡:"ìy¥¡ùc§ùfè9e%9¡âz*l¹c§ùl y.#ybåyaîº(eøà ‚ˆ^Xİ
+ØÜ™Y[‹œ]Y\PU^
+İ™XİÜˆ\ÊJK››İĞ™R[•QØİ[Y[
+
+NÂˆJNÂ‚ˆ]
+šÙY\ÈØ[[™ÈH›ØÚÈH˜XİÚY]™]™\ˆØ\œšYYÙ™šXÚX[H[˜]˜Z[X›H‹\Ş[˜È
+
+HOˆÂˆ™[™\•Ú]\ØÛÜİ\™JÂˆ‹‹™\ØÛÜİ\™KˆÜÛ[™ÜÎˆ×Kˆ[˜]˜Z[X›QšY[ÎˆÈÜÛ[™ÜÈ—Kˆ[˜]˜Z[X›T™X\ÛÛœÎˆÂˆÜÛ[™ÜÎˆ››ÈÛ[™ÜÈ›İÜÈ[ˆH\ØÛÜÙY›ØÚÈ‹ˆKˆ[˜]˜Z[X›RÚ[™ÎˆÈÜÛ[™ÜÎˆ››İY\ØÛÜÙYˆKˆJNÂ‚ˆ^Xİ
+]ØZ]ØÜ™Y[‹™š[™U^
+ùc`yi)ù£ y`"{ï&¹k¦9¥®y§*¹£ä9/¦ËÊJKĞ™Uš\ÚX›J
+NÂˆJNÂ‚ˆ]
+œÚİÜÈY]ÜšX[\ÜÙ]XÛ\ÜÈXÚÙ]ÈÙ\\˜][Hœ›ÛHH™\˜˜][HX›H‹\Ş[˜È
+
+HOˆÂˆ™[™\•Ú]\ØÛÜİ\™J\ØÛÜİ\™KÂˆX\Y[ØØ][ÛˆÂˆÙ™šXÚX[ˆ˜[ÙKˆX\™\œÚ[ÛˆŒŒ‹LKL‹ˆ\ÓÙˆŒŒKLLKLÌ‹ˆÛİ\˜ÙRXY[™ÎˆTÔÑUSĞĞUSÓˆ:,áùå(¹b!¹/b‹ˆXÚÙ]ÎˆÈ\]Z]NˆÌË›Û™ˆØ\Ú[™İ\ˆ‹LˆKˆKˆJNÂ‚ˆÛÛœİX\YH]ØZ]ØÜ™Y[‹™š[™T›ÛJX›H‹Âˆ˜[YNˆ¹íê:/+ù«n:hg¹æ¡:,áùå(ºhg¹b)H‹ˆJNÂˆ^Xİ
+ˆÚ][ŠX\Y
+K™Ù]T›ÛJœ›İÚXY\ˆ‹È˜[YNˆº ¨yéjˆJKˆ
+KĞ™Uš\ÚX›J
+NÂˆ^Xİ
+Ú][ŠX\Y
+K™Ù]U^
+ŒÌÉHŠJKĞ™Uš\ÚX›J
+NÂˆ^Xİ
+Ú][ŠX\Y
+K™Ù]U^
+	HŠJKĞ™Uš\ÚX›J
+NÂˆ^Xİ
+Ú][ŠX\Y
+K™Ù]U^
+Œ‹L‰HŠJKĞ™Uš\ÚX›J
+NÂˆ^Xİ
+ØÜ™Y[‹™Ù]U^
+ùíê:/+ù«n:hg»ï#:gg¹k¦9¥®yb!ºhg‹ÊJKĞ™Uš\ÚX›J
+NÂˆ^Xİ
+ˆØÜ™Y[‹™Ù]T›ÛJX›H‹È˜[YNˆTÔÑUSĞĞUSÓˆ:,áùå(¹b!¹/bˆJKˆ
+KĞ™Uš\ÚX›J
+NÂˆJNÂ‚ˆ]
+œØ^\ÈÚ[ˆHÙ™šXÚX[X›H\È›İ[ˆ\ÜÙ]XÛ\ÜÈ\ØÛÜİ\™H‹\Ş[˜È
+
+HOˆÂˆ™[™\•Ú]\ØÛÜİ\™J\ØÛÜİ\™KÂˆX\Y[ØØ][ÛˆÂˆÙ™šXÚX[ˆ˜[ÙKˆX\™\œÚ[ÛˆŒŒ‹LKL‹ˆ\ÓÙˆŒŒKLLKLÌ‹ˆ[˜]˜Z[X›NˆYKˆ™X\ÛÛˆ››İX\ÜÙ]XÛ\ÜÈ‹ˆKˆJNÂ‚ˆ^Xİ
+]ØZ]ØÜ™Y[‹™š[™U^
+ù«i9í«yn©¹k¦9¥®y§*¹.éz,áùå(ºhg¹b)y¢ªúg,‹ÊJKĞ™Uš\ÚX›J
+NÂˆ^Xİ
+ˆØÜ™Y[‹œ]Y\PT›ÛJX›H‹È˜[YNˆ¹íê:/+ù«n:hg¹æ¡:,áùå(ºhg¹b)HˆJKˆ
+K››İĞ™R[•QØİ[Y[
+
+NÂˆ^Xİ
+ˆØÜ™Y[‹™Ù]T›ÛJX›H‹È˜[YNˆTÔÑUSĞĞUSÓˆ:,áùå(¹b!¹/bˆJKˆ
+KĞ™Uš\ÚX›J
+NÂˆJNÂ‚ˆ]
+œØ^\ÈÛÈÚ[ˆ›È˜XİÚY]\ØÛÜİ\™HZ\œÈÚ]H[™][‹\Ş[˜È
+
+HOˆÂˆ™[™\•Ú]\ØÛÜİ\™J[™Yš[™Y
+NÂ‚ˆ^Xİ
+ˆ]ØZ]ØÜ™Y[‹™š[™U^
+ú`&zf®ùgîºaäy§*¹§"ycëùl#y¡âyæ¡:*"9b ù/¯ú)¯y¢ªúg,‹ÊKˆ
+KĞ™Uš\ÚX›J
+NÂˆ^Xİ
+ˆØÜ™Y[‹œ]Y\PT›ÛJX›H‹È˜[YNˆ¹c`yi)ù£ y`"HˆJKˆ
+K››İĞ™R[•QØİ[Y[
+
+NÂˆJNÂ‚ˆ[˜İ[Ûˆ[\œ™]][Û”™\ÜÛœÙJˆİ]\Îˆ˜ÛÛ\]Hˆš[œİY™šXÚY[ˆH˜ÛÛ\]H‹ˆ
+HÂˆÛÛœİ[˜]˜Z[X›HHİ]\ÈOOHš[œİY™šXÚY[Âˆ™]\›ˆÂˆÛ˜\ÚİYˆœÛ˜\ÚİZ[\œ™]][Û‹]ZH‹ˆ[™Û\ÜÒYˆš[\œ™]][Û‹]ZH‹ˆÛÛ\\š\ÛÛ‘Ü›İ\ˆ’Û™ÈÛÛ™È\]Z]H‹ˆÛÛ\\š\ÛÛ‘Ü›İ\Ûİ\˜ÙNˆ›\\ˆ‹ˆ˜[Y\ÎˆÂˆ\]Z]NˆÂˆ[™ˆ[˜]˜Z[X›HÈ[ˆMˆÜ›İ\]™\˜YÙNˆ[˜]˜Z[X›HÈ[ˆL‹ˆÙ™šXÚX[ˆ˜[ÙKˆKˆÜLÛÛ˜Ù[˜][ÛˆÂˆ[™ˆ[˜]˜Z[X›HÈ[ˆÌËˆÜ›İ\]™\˜YÙNˆ[˜]˜Z[X›HÈ[ˆÌˆKˆ›Û][]LŞNˆÂˆ[™ˆ[˜]˜Z[X›HÈ[ˆMËˆÜ›İ\]™\˜YÙNˆ[˜]˜Z[X›HÈ[ˆŒˆKˆKˆ[\œ™]][ÛˆÂˆ™\ÚÛ™\œÚ[ÛˆŒŒ‹LKLL]šX[LH‹ˆ™\ÚÛİ]\ÎˆšX[‹ˆ\]Z]NˆÂˆİ]\Îˆ[˜]˜Z[X›HÈš[œİY™šXÚY[\Ø[\HˆˆœÚ[Z[\ˆ‹ˆ^ˆ[˜]˜Z[X›BˆÈº ¨yéj:acyïk»ï"9íê:/+ù«n:hg»ï#:gg¹k¦9¥®yb!ºhg»ï"{ï&¹d#9ía9b)yª(ù§+9.#z-¬ûï#9§*º ïy«å:/ øà ˆ‚ˆˆº ¨yéj:acyïk»ï"9íê:/+ù«n:hg»ï#:gg¹k¦9¥®yb!ºhg»ï"HM	{ï#:"!ùd#9ía9b)ynlùgaùæî:"éxà ˆ‹ˆKˆÜLÛÛ˜Ù[˜][ÛˆÂˆİ]\Îˆ[˜]˜Z[X›HÈš[œİY™šXÚY[\Ø[\HˆˆšYÚ\ˆ‹ˆ^ˆ[˜]˜Z[X›BˆÈ¹c`yi)ù£ y`"y/e9«å;ï&¹d#9ía9b)yª(ù§+9.#z-¬ûï#9§*º ïy«å:/ øà ˆ‚ˆˆ¹c`yi)ù£ y`"y/e9«åÌÉ{ï#9«å9d#9ía9b)ynlùgaújæÈ9`"ùæo¹b!ºnç¸à ˆ‹ˆKˆ›Û][]LŞNˆÂˆİ]\Îˆ[˜]˜Z[X›HÈš[œİY™šXÚY[\Ø[\Hˆˆ›İÙ\ˆ‹ˆ^ˆ[˜]˜Z[X›BˆÈŒùnm9¬è¹na{ï&¹d#9ía9b)yª(ù§+9.#z-¬ûï#9§*º ïy«å:/ øà ˆ‚ˆˆŒùnm9¬è¹naHMÉ{ï#9«å9d#9ía9b)ynlùgaù/cˆÈ9`"ùæo¹b!ºnç¸à ˆ‹ˆKˆKˆNÂˆB‚ˆ[˜İ[Ûˆ™[™\’[\œ™]][ÛŠˆİ]\Îˆ˜ÛÛ\]Hˆš[œİY™šXÚY[ˆH˜ÛÛ\]H‹ˆ
+HÂˆÛÛœİ™]Ú[ØÚÈHšK™›Š
+K›[ØÚÒ[\[Y[][ÛŠ
+\›ˆİš[™ÊHO‚ˆ›ÛZ\ÙKœ™\ÛÛ™Jˆ™\ÜÛœÙKšœÛÛŠˆ\›™[™ÕÚ]
+‹Ú[\œ™]][ÛˆŠBˆÈ[\œ™]][Û”™\ÜÛœÙJİ]\ÊBˆˆÂˆÛ˜\ÚİYˆœÛ˜\ÚİZ[\œ™]][Û‹]ZH‹ˆ[™Û\ÜÎˆš^\™K™[™Û\ÜËˆÛÛ\\š\ÛÛ‘Ü›İ\ˆ’Û™ÈÛÛ™È\]Z]H‹ˆ›İ™[˜[˜ÙNˆÂˆÛİ\˜ÙU\›ˆš^\™KœÛİ\˜ÙK\›ˆ]P\ÓÙˆš^\™K™[™Û\ÜË™]P\ÓÙ‹ˆ™]šY]™Y]ˆš^\™KœÛİ\˜ÙKœ™]šY]™Y]ˆ™\šYšXØ][Û”İ]\Îˆ™\šYšYY‹ˆKˆKˆ
+Kˆ
+Kˆ
+NÂˆšKœİX‘ÛØ˜[
+™™]Ú‹™]Ú[ØÚÊNÂˆ™[™\Šˆ[™Û\ÜÔYÙBˆ\P˜\ÙU\›HšÎ‹ËØ\K\İ‚ˆ[™Û\ÜÒYHš[\œ™]][Û‹]ZH‚ˆÏ‹ˆ
+NÂˆ™]\›ˆ™]Ú[ØÚÎÂˆB‚ˆ]
+œÚİÜÈÛ˜\Úİ[\œ™]][Ûˆ^[™X]Ú[™ÈÛÛ\\š\ÛÛˆÚ\È‹\Ş[˜È
+
+HOˆÂˆÛÛœİ™]Ú[ØÚÈH™[™\’[\œ™]][ÛŠ
+NÂ‚ˆš\™Q]™[˜ÛXÚÊ]ØZ]ØÜ™Y[‹™š[™T›ÛJ˜]Ûˆ‹È˜[YNˆ¹gîºaäz)èú+ ˆJJNÂ‚ˆ^Xİ
+]ØZ]ØÜ™Y[‹™š[™U^
+ú ¨yéj:acyïk‹ŠM	KŠ¹æî:"éKÊJKĞ™Uš\ÚX›J
+NÂˆ^Xİ
+ØÜ™Y[‹™Ù]U^
+ùc`yi)ù£ y`"y/e9«åÌÉKŠºjæÈ9`"ùæo¹b!ºnç‹ÊJKĞ™Uš\ÚX›J
+NÂˆ^Xİ
+ØÜ™Y[‹™Ù]U^
+Ìùnm9¬è¹naHMÉKŠ¹/cˆÈ9`"ùæo¹b!ºnç‹ÊJKĞ™Uš\ÚX›J
+NÂˆ^Xİ
+ØÜ™Y[‹™Ù]U^
+ú)£ùbaùâb9§+Œ‹LKLL]šX[LKÊJKĞ™Uš\ÚX›J
+NÂˆ^Xİ
+ØÜ™Y[‹™Ù][T›ÛJš[YÈŠJKÒ]™S[™İ
+ÊNÂˆ^Xİ
+™]Ú[ØÚÊKÒ]™P™Y[“\İØ[YÚ]
+ˆšÎ‹ËØ\K\İÙ[™XÛ\ÜÙ\ËÚ[\œ™]][Û‹]ZKÚ[\œ™]][Ûˆ‹ˆ
+NÂˆJNÂ‚ˆ]
+œÚİÜÈ^XÚ]Ø[\Hİ]\ÈÚ]İ]\X[Ú\È‹\Ş[˜È
+
+HOˆÂˆ™[™\’[\œ™]][ÛŠš[œİY™šXÚY[ŠNÂ‚ˆš\™Q]™[˜ÛXÚÊ]ØZ]ØÜ™Y[‹™š[™T›ÛJ˜]Ûˆ‹È˜[YNˆ¹gîºaäz)èú+ ˆJJNÂ‚ˆ^Xİ
+]ØZ]ØÜ™Y[‹™š[™[U^
+¹ª(ù§+9.#z-¬ÈŠJKÒ]™S[™İ
+ÊNÂˆ^Xİ
+ØÜ™Y[‹™Ù][U^
+ùd#9ía9b)yª(ù§+9.#z-¬ûï#9§*º ïy«å:/ ËÊJKÒ]™S[™İ
+ÊNÂˆ^Xİ
+ØÜ™Y[‹œ]Y\PT›ÛJš[YÈŠJK››İĞ™R[•QØİ[Y[
+
+NÂˆJNÂŸJNÂ

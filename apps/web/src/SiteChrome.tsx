@@ -37,6 +37,9 @@ export function SiteChrome({
 
   return (
     <>
+      <a className="kw-skip-link" href="#main-content">
+        跳至主內容
+      </a>
       <header className="kw-header">
         <div className="kw-shell kw-header__inner">
           <a className="kw-brand" href="/" aria-label="KWMPF 首頁">
@@ -75,7 +78,9 @@ export function SiteChrome({
           {subtitle && <p className="kw-hero__subtitle">{subtitle}</p>}
         </div>
       </section>
-      <main className="kw-main">{children}</main>
+      <main className="kw-main" id="main-content" tabIndex={-1}>
+        {children}
+      </main>
       <footer className="kw-footer">
         <div className="kw-shell kw-footer__inner">
           <p>

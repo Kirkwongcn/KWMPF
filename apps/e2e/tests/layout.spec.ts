@@ -21,19 +21,24 @@ for (const { path, ready } of pages) {
   });
 }
 
-test("主要導覽的每個項目在窄螢幕都不會摺行", async ({ page }) => {
+test("窄螢幕導覽文字維持單行並保留觸控尺寸", async ({ page }) => {
   await page.setViewportSize({ width: 360, height: 780 });
   await page.goto("/");
 
   const nav = page.getByRole("navigation", { name: "主要導覽" });
   for (const name of ["基金瀏覽", "基金排名", "計劃比較"]) {
-    const { height, lineHeight } = await nav
+    const { height, textLines } = await nav
       .getByRole("link", { name })
-      .evaluate((element) => ({
-        height: element.getBoundingClientRect().height,
-        lineHeight: parseFloat(getComputedStyle(element).lineHeight),
-      }));
-    expect(height, `${name} 佔了多於一行`).toBeLessThan(lineHeight * 1.5);
+      .evaluate((element) => {
+        const range = document.createRange();
+        range.selectNodeContents(element);
+        return {
+          height: element.getBoundingClientRect().height,
+          textLines: range.getClientRects().length,
+        };
+      });
+    expect(textLines, `${name} 的文字摺成多行`).toBe(1);
+    expect(height, `${name} 的觸控範圍不足 44px`).toBeGreaterThanOrEqual(44);
   }
 });
 

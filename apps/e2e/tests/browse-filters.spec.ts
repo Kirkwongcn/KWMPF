@@ -1,11 +1,7 @@
 import { expect, test } from "@playwright/test";
 
-test("未選條件前不會查詢，選受託人後結果全部相符", async ({ page }) => {
+test("開啟基金瀏覽會載入結果，選受託人後結果全部相符", async ({ page }) => {
   await page.goto("/funds");
-
-  await expect(
-    page.getByText("先選擇一項篩選條件或輸入關鍵字，才會查詢已發布快照。"),
-  ).toBeVisible();
 
   const trusteeFilter = page.getByLabel("受託人");
   await expect(trusteeFilter.locator("option")).not.toHaveCount(1);
@@ -73,7 +69,7 @@ test("篩選結果每一行都標示官方截至日期", async ({ page }) => {
   await expect(rows.first()).toBeVisible();
   for (const row of await rows.all()) {
     await expect(row.locator("td").last()).toHaveText(
-      /^\d{4}-\d{2}-\d{2}$|官方未提供/,
+      /^\d{4}-\d{2}-\d{2}(?:\s*過期)?$|官方未提供/,
     );
   }
 });

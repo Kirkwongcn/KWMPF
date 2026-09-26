@@ -112,10 +112,18 @@ jobs:
             tail -c 4000 /tmp/fetch-error.log 2>/dev/null || echo "（沒有擷取到錯誤輸出）"
             echo '```'
           } > /tmp/issue-body.md
+          label_exists="$(gh label list --limit 100 --json name --jq 'any(.[]; .name == "needs-triage")' || true)"
+          label_args=()
+          if [[ "$label_exists" == "true" ]]; then
+            label_args+=(--label "needs-triage")
+          else
+            echo "No needs-triage label is available; creating an unlabelled follow-up issue."
+            echo "No needs-triage label was available when the source-fetch issue was created." >> "$GITHUB_STEP_SUMMARY"
+          fi
           gh issue create \
-            --title "來源擷取失敗：需要核對官方數量（run ${GITHUB_RUN_ID}）" \
+            --title "來源擷取失敗：需要核對官方來源（run ${GITHUB_RUN_ID}）" \
             --body-file /tmp/issue-body.md \
-            --label "data"
+            "${label_args[@]}"
           exit 1
 
       - name: Build the readiness and anomaly reports
@@ -160,11 +168,20 @@ jobs:
           git add "${directory}"
           git commit -m "data: add the ${CANDIDATE_DATA_AS_OF} official source snapshot candidate"
           git push --set-upstream origin "${branch}"
-          gh pr create \
+          if ! gh pr create \
             --base main \
             --head "${branch}" \
             --title "data: ${CANDIDATE_DATA_AS_OF} 官方來源候選批次（${OUTCOME}）" \
-            --body-file /tmp/candidate/refresh-summary.md
+            --body-file /tmp/candidate/refresh-summary.md; then
+            candidate_pr_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/pull/new/${branch}"
+            {
+              echo
+              echo "Candidate data was pushed, but GitHub blocked automatic pull request creation."
+              echo "Review the candidate branch and open a PR manually: ${candidate_pr_url}"
+            } >> "$GITHUB_STEP_SUMMARY"
+            echo "::error::GitHub blocked automatic pull request creation. Candidate branch: ${branch}. Open: ${candidate_pr_url}"
+            exit 1
+          fi
 
       - name: Record that no new batch was published
         if: steps.report.outputs.outcome == 'no_new_data'

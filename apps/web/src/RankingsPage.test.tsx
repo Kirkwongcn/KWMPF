@@ -1,519 +1,2 @@
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
-import { afterEach, describe, expect, it, vi } from "vitest";
-import { RankingsPage } from "./RankingsPage";
-
-describe("published return rankings", () => {
-  afterEach(() => {
-    cleanup();
-    vi.unstubAllGlobals();
-  });
-
-  it("shows traceable rankings and filters them by comparison group", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-2026-07-31",
-          periodYears: 1,
-          methodology: {
-            metric: "annualized_return",
-            grouping: "comparison_group",
-            sortDirection: "descending",
-            displayPrecision: 2,
-          },
-          rankings: [
-            {
-              fundClassId: "fund-a",
-              fundClassName: "Class A",
-              constituentFundName: "North America Fund",
-              schemeName: "Scheme One",
-              trusteeName: "Trustee One",
-              comparisonGroup: "Equity Fund (North America)",
-              value: 17.21,
-              displayValue: "17.21%",
-              rank: 1,
-              dataAsOf: "2026-07-31",
-              sourceUrl: "https://example.test/fund-a",
-            },
-            {
-              fundClassId: "fund-b",
-              fundClassName: "Class B",
-              constituentFundName: "Hong Kong Money Market Fund",
-              schemeName: "Scheme Two",
-              trusteeName: "Trustee Two",
-              comparisonGroup: "Money Market Fund - Hong Kong",
-              value: 1.91,
-              displayValue: "1.91%",
-              rank: 1,
-              dataAsOf: "2026-07-31",
-              sourceUrl: "https://example.test/fund-b",
-            },
-          ],
-        }),
-      ),
-    );
-
-    render(<RankingsPage apiBaseUrl="https://api.test" />);
-
-    expect(
-      await screen.findByRole("heading", { name: "ä¸€å¹´å›žå ±æŽ’å" }),
-    ).toBeVisible();
-    expect(screen.getByText("North America Fund")).toBeVisible();
-    expect(screen.getByText("17.21%")).toBeVisible();
-    expect(screen.getAllByText("2026-07-31")).toHaveLength(2);
-    expect(
-      screen.getByRole("link", { name: "æŸ¥çœ‹ North America Fund è©³æƒ…" }),
-    ).toHaveAttribute("href", "/fund-classes/fund-a");
-    expect(
-      screen.getByRole("link", { name: "North America Fund å®˜æ–¹ä¾†æº" }),
-    ).toHaveAttribute("href", "https://example.test/fund-a");
-
-    fireEvent.change(screen.getByLabelText("æ¯”è¼ƒçµ„åˆ¥"), {
-      target: { value: "Money Market Fund - Hong Kong" },
-    });
-
-    expect(screen.queryByText("North America Fund")).not.toBeInTheDocument();
-    expect(screen.getByText("Hong Kong Money Market Fund")).toBeVisible();
-    expect(fetch).toHaveBeenCalledWith("https://api.test/rankings?period=1");
-  });
-  it("lets the reader switch the ranking period and refetches from the API", async () => {
-    const fetchMock = vi.fn().mockImplementation((url: string) => {
-      const period = new URL(url).searchParams.get("period");
-      const byPeriod = {
-        "1": {
-          fundClassId: "fund-a",
-          constituentFundName: "North America Fund",
-          displayValue: "17.21%",
-          periodYears: 1,
-        },
-        "3": {
-          fundClassId: "fund-mid",
-          constituentFundName: "Mid Horizon Fund",
-          displayValue: "8.40%",
-          periodYears: 3,
-        },
-        "5": {
-          fundClassId: "fund-long",
-          constituentFundName: "Long Horizon Fund",
-          displayValue: "6.14%",
-          periodYears: 5,
-        },
-      } as const;
-      const selected =
-        byPeriod[(period ?? "1") as keyof typeof byPeriod] ?? byPeriod["1"];
-      return Promise.resolve(
-        Response.json({
-          snapshotId: "snapshot-2026-07-31",
-          periodYears: selected.periodYears,
-          rankings: [
-            {
-              fundClassId: selected.fundClassId,
-              fundClassName: "Class A",
-              constituentFundName: selected.constituentFundName,
-              schemeName: "Scheme One",
-              trusteeName: "Trustee One",
-              comparisonGroup: "Equity Fund (North America)",
-              displayValue: selected.displayValue,
-              rank: 1,
-              dataAsOf: "2026-07-31",
-              sourceUrl: "https://example.test/fund",
-            },
-          ],
-        }),
-      );
-    });
-    vi.stubGlobal("fetch", fetchMock);
-
-    render(<RankingsPage apiBaseUrl="https://api.test" />);
-
-    expect(await screen.findByText("17.21%")).toBeVisible();
-    expect(fetchMock).toHaveBeenCalledWith(
-      "https://api.test/rankings?period=1",
-    );
-
-    fireEvent.change(screen.getByLabelText("å›žå ±æœŸé–“"), {
-      target: { value: "3" },
-    });
-
-    expect(await screen.findByText("8.40%")).toBeVisible();
-    expect(
-      await screen.findByRole("heading", { name: "ä¸‰å¹´å›žå ±æŽ’å" }),
-    ).toBeVisible();
-    expect(fetchMock).toHaveBeenCalledWith(
-      "https://api.test/rankings?period=3",
-    );
-
-    fireEvent.change(screen.getByLabelText("å›žå ±æœŸé–“"), {
-      target: { value: "5" },
-    });
-
-    expect(await screen.findByText("6.14%")).toBeVisible();
-    expect(fetchMock).toHaveBeenCalledWith(
-      "https://api.test/rankings?period=5",
-    );
-  });
-
-  it("explains that missing official period returns are excluded instead of inferred", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-2026-07-31",
-          periodYears: 1,
-          rankings: [],
-        }),
-      ),
-    );
-
-    render(<RankingsPage apiBaseUrl="https://api.test" />);
-
-    expect(
-      await screen.findByText(/æ²’æœ‰è©²æœŸé–“æ•¸å€¼çš„åŸºé‡‘ä¸æœƒå…¥æ¦œ/),
-    ).toBeVisible();
-    expect(screen.getByLabelText("å›žå ±æœŸé–“")).toBeVisible();
-    expect(screen.getByRole("option", { name: "ä¸‰å¹´" })).toBeInTheDocument();
-  });
-  it("opens on the comparison group and period named in the link", async () => {
-    const fetchMock = vi.fn().mockImplementation((url: string) =>
-      Promise.resolve(
-        Response.json({
-          snapshotId: "snapshot-2026-07-31",
-          periodYears: Number(new URL(url).searchParams.get("period")),
-          rankings: [
-            {
-              fundClassId: "fund-a",
-              fundClassName: "Class A",
-              constituentFundName: "North America Fund",
-              schemeName: "Scheme One",
-              trusteeName: "Trustee One",
-              comparisonGroup: "Equity Fund (North America)",
-              displayValue: "17.21%",
-              rank: 1,
-              dataAsOf: "2026-07-31",
-              sourceUrl: "https://example.test/fund-a",
-            },
-            {
-              fundClassId: "fund-b",
-              fundClassName: "Class B",
-              constituentFundName: "Money Market Fund",
-              schemeName: "Scheme Two",
-              trusteeName: "Trustee Two",
-              comparisonGroup: "Money Market Fund - Hong Kong",
-              displayValue: "1.91%",
-              rank: 1,
-              dataAsOf: "2026-07-31",
-              sourceUrl: "https://example.test/fund-b",
-            },
-          ],
-        }),
-      ),
-    );
-    vi.stubGlobal("fetch", fetchMock);
-
-    render(
-      <RankingsPage
-        apiBaseUrl="https://api.test"
-        initialPeriod="5"
-        initialComparisonGroup="Money Market Fund - Hong Kong"
-      />,
-    );
-
-    expect(await screen.findByText("1.91%")).toBeVisible();
-    expect(screen.queryByText("17.21%")).not.toBeInTheDocument();
-    expect(fetchMock).toHaveBeenCalledWith(
-      "https://api.test/rankings?period=5",
-    );
-    expect(screen.getByLabelText("å›žå ±æœŸé–“")).toHaveValue("5");
-    expect(screen.getByLabelText("æ¯”è¼ƒçµ„åˆ¥")).toHaveValue(
-      "Money Market Fund - Hong Kong",
-    );
-  });
-  it("keeps showing a linked group that has no eligible funds for the period", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-2026-07-31",
-          periodYears: 10,
-          rankings: [
-            {
-              fundClassId: "fund-a",
-              fundClassName: "Class A",
-              constituentFundName: "North America Fund",
-              schemeName: "Scheme One",
-              trusteeName: "Trustee One",
-              comparisonGroup: "Equity Fund (North America)",
-              displayValue: "8.02%",
-              rank: 1,
-              dataAsOf: "2026-07-31",
-              sourceUrl: "https://example.test/fund-a",
-            },
-          ],
-        }),
-      ),
-    );
-
-    render(
-      <RankingsPage
-        apiBaseUrl="https://api.test"
-        initialPeriod="10"
-        initialComparisonGroup="Guaranteed Fund"
-      />,
-    );
-
-    expect(await screen.findByText(/æ²’æœ‰åˆè³‡æ ¼çš„åå¹´å›žå ±è³‡æ–™/)).toBeVisible();
-    expect(screen.getByLabelText("æ¯”è¼ƒçµ„åˆ¥")).toHaveValue("Guaranteed Fund");
-  });
-
-  it("falls back to every group when an old link names a retired platform category", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-2026-07-31",
-          periodYears: 1,
-          comparisonGroups: ["Global Equity", "Hong Kong Equity"],
-          methodology: {
-            classification: {
-              provider: "Lipper",
-              dataset: "Hong Kong Pension Fund Classification",
-              capturedAt: "2026-08-27",
-            },
-          },
-          rankings: [
-            {
-              fundClassId: "fund-a",
-              fundClassName: "Class A",
-              constituentFundName: "æ¸¯è‚¡åŸºé‡‘",
-              schemeName: "Scheme One",
-              trusteeName: "Trustee One",
-              comparisonGroup: "Hong Kong Equity",
-              comparisonGroupSource: "lipper",
-              displayValue: "8.02%",
-              rank: 1,
-              dataAsOf: "2026-07-31",
-              sourceUrl: "https://example.test/fund-a",
-            },
-          ],
-        }),
-      ),
-    );
-
-    render(
-      <RankingsPage
-        apiBaseUrl="https://api.test"
-        initialComparisonGroup="Equity Fund (North America)"
-      />,
-    );
-
-    expect(
-      await screen.findByText(
-        /ã€ŒEquity Fund \(North America\)ã€ä¸å†æ˜¯ç¨ç«‹çµ„åˆ¥/,
-      ),
-    ).toBeVisible();
-    expect(screen.getByLabelText("æ¯”è¼ƒçµ„åˆ¥")).toHaveValue("all");
-    expect(screen.getByText("æ¸¯è‚¡åŸºé‡‘")).toBeVisible();
-    expect(screen.getByText(/æœŸåˆ¥ 2026-08-27/)).toBeVisible();
-  });
-
-  it("explains how many funds are held out of the ranking as stale", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-2026-07-31",
-          periodYears: 1,
-          excludedStaleCount: 12,
-          methodology: {
-            metric: "annualized_return",
-            grouping: "comparison_group",
-            sortDirection: "descending",
-            displayPrecision: 2,
-            freshness: {
-              graceDays: 45,
-              evaluatedOn: "2026-08-24",
-              rule: "æ¸¬è©¦è¦å‰‡",
-            },
-          },
-          rankings: [],
-        }),
-      ),
-    );
-
-    render(<RankingsPage apiBaseUrl="https://api.test" />);
-
-    expect(
-      await screen.findByText(
-        /12 éš»åŸºé‡‘çš„è³‡æ–™å·²è¶…å‡ºå®˜æ–¹æŠ«éœ²å¯¬é™æœŸï¼ˆ45 æ—¥ï¼‰ï¼Œæš«ä¸åˆ—å…¥æŽ’å/,
-      ),
-    ).toBeVisible();
-  });
-
-  it("says nothing about stale funds when none are held out", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-2026-07-31",
-          periodYears: 1,
-          excludedStaleCount: 0,
-          rankings: [],
-        }),
-      ),
-    );
-
-    render(<RankingsPage apiBaseUrl="https://api.test" />);
-
-    expect(await screen.findByLabelText("æ¯”è¼ƒçµ„åˆ¥")).toBeVisible();
-    expect(screen.queryByText(/æš«ä¸åˆ—å…¥æŽ’å/)).not.toBeInTheDocument();
-  });
-
-  const metricResponse = (metric: string) =>
-    Response.json({
-      snapshotId: "snapshot-2026-07-31",
-      metric,
-      periodYears: metric === "return" ? 1 : null,
-      rankings: [
-        {
-          fundClassId: "fund-a",
-          fundClassName: "Class A",
-          constituentFundName: "North America Fund",
-          schemeName: "Scheme One",
-          trusteeName: "Trustee One",
-          comparisonGroup: "Equity Fund (North America)",
-          displayValue:
-            metric === "fee" ? "0.65%" : metric === "risk" ? "4.70%" : "17.21%",
-          rank: 1,
-          dataAsOf: "2026-07-31",
-          sourceUrl: "https://example.test/fund-a",
-        },
-      ],
-    });
-
-  it("lets the reader rank by management fee instead of return", async () => {
-    const fetchMock = vi
-      .fn()
-      .mockImplementation((url: string) =>
-        Promise.resolve(
-          metricResponse(url.includes("metric=fee") ? "fee" : "return"),
-        ),
-      );
-    vi.stubGlobal("fetch", fetchMock);
-
-    render(<RankingsPage apiBaseUrl="https://api.test" />);
-
-    expect(await screen.findByText("17.21%")).toBeVisible();
-
-    fireEvent.change(screen.getByLabelText("æŽ’åºæŒ‡æ¨™"), {
-      target: { value: "fee" },
-    });
-
-    expect(await screen.findByText("0.65%")).toBeVisible();
-    expect(fetchMock).toHaveBeenCalledWith(
-      "https://api.test/rankings?metric=fee",
-    );
-    expect(screen.getByRole("heading", { name: "ç®¡ç†è²»æŽ’å" })).toBeVisible();
-    expect(screen.getByRole("columnheader", { name: "ç®¡ç†è²»" })).toBeVisible();
-    expect(screen.queryByLabelText("å›žå ±æœŸé–“")).not.toBeInTheDocument();
-  });
-
-  it("ranks the official fund risk indicator as a separate lower volatility view", async () => {
-    const fetchMock = vi
-      .fn()
-      .mockImplementation((url: string) =>
-        Promise.resolve(
-          metricResponse(url.includes("metric=risk") ? "risk" : "return"),
-        ),
-      );
-    vi.stubGlobal("fetch", fetchMock);
-
-    render(<RankingsPage apiBaseUrl="https://api.test" initialMetric="risk" />);
-
-    expect(await screen.findByText("4.70%")).toBeVisible();
-    expect(fetchMock).toHaveBeenCalledWith(
-      "https://api.test/rankings?metric=risk",
-    );
-    expect(screen.getByLabelText("æŽ’åºæŒ‡æ¨™")).toHaveValue("risk");
-    expect(screen.getByRole("heading", { name: "æ³¢å¹…æŽ’å" })).toBeVisible();
-    expect(screen.getByRole("columnheader", { name: "æ³¢å¹…" })).toBeVisible();
-    // æ¨™ç¤ºå¿…é ˆè¬›æ˜Žé€™æ˜¯æ³¢å¹…ï¼Œä¸æ˜¯ã€Œé¢¨éšªè¼ƒä½Žè¼ƒå¥½ã€ã€‚
-    expect(
-      screen.getByText(/åŸºé‡‘é¢¨éšªæŒ‡æ¨™ï¼Œå³éŽåŽ»ä¸‰å¹´çš„å¹´åº¦åŒ–æ¨™æº–å·®/),
-    ).toBeVisible();
-    expect(screen.getByText(/ä¸ä»£è¡¨åŸºé‡‘è¼ƒä½³æˆ–è¼ƒé©åˆä½ /)).toBeVisible();
-  });
-
-  it("puts the ranked value before the long comparison group column", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockImplementation(() => Promise.resolve(metricResponse("fee"))),
-    );
-
-    render(<RankingsPage apiBaseUrl="https://api.test" initialMetric="fee" />);
-
-    expect(await screen.findByText("0.65%")).toBeVisible();
-    expect(
-      screen.getAllByRole("columnheader").map((cell) => cell.textContent),
-    ).toEqual(["åæ¬¡", "åŸºé‡‘", "ç®¡ç†è²»", "æ¯”è¼ƒçµ„åˆ¥", "æˆªè‡³æ—¥æœŸ", "ä¾†æº"]);
-  });
-
-  it("keeps the return metric link format unchanged", async () => {
-    const fetchMock = vi
-      .fn()
-      .mockImplementation(() => Promise.resolve(metricResponse("return")));
-    vi.stubGlobal("fetch", fetchMock);
-
-    render(<RankingsPage apiBaseUrl="https://api.test" />);
-
-    expect(await screen.findByText("17.21%")).toBeVisible();
-    expect(fetchMock).toHaveBeenCalledWith(
-      "https://api.test/rankings?period=1",
-    );
-    expect(screen.getByLabelText("æŽ’åºæŒ‡æ¨™")).toHaveValue("return");
-  });
-});
-
-describe("ranked funds without a separate class", () => {
-  afterEach(() => {
-    cleanup();
-    vi.unstubAllGlobals();
-  });
-
-  it("omits the official n.a. placeholder from the ranking row", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        Response.json({
-          snapshotId: "snapshot-2026-07-31",
-          periodYears: 1,
-          methodology: {
-            metric: "annualized_return",
-            grouping: "comparison_group",
-            sortDirection: "descending",
-            displayPrecision: 2,
-          },
-          rankings: [
-            {
-              fundClassId: "fund-na",
-              fundClassName: "n.a.",
-              constituentFundName: "North America Fund",
-              schemeName: "Scheme One",
-              trusteeName: "Trustee One",
-              comparisonGroup: "Equity Fund (North America)",
-              value: 17.21,
-              displayValue: "17.21%",
-              rank: 1,
-              dataAsOf: "2026-07-31",
-              sourceUrl: "https://example.test/fund-na",
-            },
-          ],
-        }),
-      ),
-    );
-
-    render(<RankingsPage apiBaseUrl="https://api.test" />);
-
-    expect(await screen.findByText("Scheme One")).toBeVisible();
-    expect(screen.queryByText(/n\.a\./i)).not.toBeInTheDocument();
-  });
-});
+YªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éíçÝ»N‹Z–‹­¦ëeŠw¬Õ¥µÁ½ÉÐì±•…¹ÕÀ°™¥É•Ù•¹Ð°É•¹‘•È°ÍÉ••¸ô™É½´€‰Ñ•ÍÑ¥¹œµ±¥‰É…Éä½É•…Ðˆì)¥µÁ½ÉÐì…™Ñ•É… °‘•ÍÉ¥‰”°•áÁ•Ð°¥Ð°Ù¤ô™É½´€‰Ù¥Ñ•ÍÐˆì)¥µÁ½ÉÐìI…¹­¥¹ÍA…”ô™É½´€ˆ¸½I…¹­¥¹ÍA…”ˆì()‘•ÍÉ¥‰” ‰ÁÕ‰±¥Í¡•É•ÑÕÉ¸É…¹­¥¹Ìˆ°€ ¤€ôøì(€…™Ñ•É…   ¤€ôøì(€€€±•…¹ÕÀ ¤ì(€€€Ù¤¹Õ¹ÍÑÕ‰±±±½‰…±Ì ¤ì(€ô¤ì((€¥Ð ‰Í¡½ÝÌÑÉ…•…‰±”É…¹­¥¹Ì…¹™¥±Ñ•ÉÌÑ¡•´‰ä½µÁ…É¥Í½¸É½ÕÀˆ°…Íå¹Œ€ ¤€ôøì(€€€Ù¤¹ÍÑÕ‰±½‰…° (€€€€€€‰™•Ñ ˆ°(€€€€€Ù¤¹™¸ ¤¹µ½­I•Í½±Ù•‘Y…±Õ” (€€€€€€€I•ÍÁ½¹Í”¹©Í½¸¡ì(€€€€€€€€€Í¹…ÁÍ¡½Ñ%è€‰Í¹…ÁÍ¡½Ð´ÈÀÈØ´ÀÜ´ÌÄˆ°(€€€€€€€€€Á•É¥½‘e•…ÉÌè€Ä°(€€€€€€€€€µ•Ñ¡½‘½±½äèì(€€€€€€€€€€€µ•ÑÉ¥Œè€‰…¹¹Õ…±¥é•‘}É•ÑÕÉ¸ˆ°(€€€€€€€€€€€É½ÕÁ¥¹œè€‰½µÁ…É¥Í½¹}É½ÕÀˆ°(€€€€€€€€€€€Í½ÉÑ¥É•Ñ¥½¸è€‰‘•Í•¹‘¥¹œˆ°(€€€€€€€€€€€‘¥ÍÁ±…åAÉ•¥Í¥½¸è€È°(€€€€€€€€€ô°(€€€€€€€€€É…¹­¥¹Ìèl(€€€€€€€€€€€ì(€€€€€€€€€€€€€™Õ¹‘±…ÍÍ%è€‰™Õ¹µ„ˆ°(€€€€€€€€€€€€€™Õ¹‘±…ÍÍ9…µ”è€‰±…ÍÌˆ°(€€€€€€€€€€€€€½¹ÍÑ¥ÑÕ•¹ÑÕ¹‘9…µ”è€‰9½ÉÑ µ•É¥„Õ¹ˆ°(€€€€€€€€€€€€€Í¡•µ•9…µ”è€‰M¡•µ”=¹”ˆ°(€€€€€€€€€€€€€ÑÉÕÍÑ••9…µ”è€‰QÉÕÍÑ•”=¹”ˆ°(€€€€€€€€€€€€€½µÁ…É¥Í½¹É½ÕÀè€‰ÅÕ¥ÑäÕ¹€¡9½ÉÑ µ•É¥„¤ˆ°(€€€€€€€€€€€€€Ù…±Õ”è€ÄÜ¸ÈÄ°(€€€€€€€€€€€€€‘¥ÍÁ±…åY…±Õ”è€ˆÄÜ¸ÈÄ”ˆ°(€€€€€€€€€€€€€É…¹¬è€Ä°(€€€€€€€€€€€€€‘…Ñ…Í=˜è€ˆÈÀÈØ´ÀÜ´ÌÄˆ°(€€€€€€€€€€€€€Í½ÕÉ•UÉ°è€‰¡ÑÑÁÌè¼½•á…µÁ±”¹Ñ•ÍÐ½™Õ¹µ„ˆ°(€€€€€€€€€€€ô°(€€€€€€€€€€€ì(€€€€€€€€€€€€€™Õ¹‘±…ÍÍ%è€‰™Õ¹µˆˆ°(€€€€€€€€€€€€€™Õ¹‘±…ÍÍ9…µ”è€‰±…ÍÌˆ°(€€€€€€€€€€€€€½¹ÍÑ¥ÑÕ•¹ÑÕ¹‘9…µ”è€‰!½¹œ-½¹œ5½¹•ä5…É­•ÐÕ¹ˆ°(€€€€€€€€€€€€€Í¡•µ•9…µ”è€‰M¡•µ”QÝ¼ˆ°(€€€€€€€€€€€€€ÑÉÕÍÑ••9…µ”è€‰QÉÕÍÑ•”QÝ¼ˆ°(€€€€€€€€€€€€€½µÁ…É¥Í½¹É½ÕÀè€‰5½¹•ä5…É­•ÐÕ¹€´!½¹œ-½¹œˆ°(€€€€€€€€€€€€€Ù…±Õ”è€Ä¸äÄ°(€€€€€€€€€€€€€‘¥ÍÁ±…åY…±Õ”è€ˆÄ¸äÄ”ˆ°(€€€€€€€€€€€€€É…¹¬è€Ä°(€€€€€€€€€€€€€‘…Ñ…Í=˜è€ˆÈÀÈØ´ÀÜ´ÌÄˆ°(€€€€€€€€€€€€€Í½ÕÉ•UÉ°è€‰¡ÑÑÁÌè¼½•á…µÁ±”¹Ñ•ÍÐ½™Õ¹µˆˆ°(€€€€€€€€€€€ô°(€€€€€€€€€t°(€€€€€€€ô¤°(€€€€€€¤°(€€€€¤ì((€€€É•¹‘•È ñI…¹­¥¹ÍA…”…Á¥	…Í•UÉ°ô‰¡ÑÑÁÌè¼½…Á¤¹Ñ•ÍÐˆ€¼ø¤ì((€€€•áÁ•Ð (€€€€€…Ý…¥ÐÍÉ••¸¹™¥¹‘	åI½±” ‰¡•…‘¥¹œˆ°ì¹…µ”è€‹’â–æÓ–n{–‚Çš:K–B4ˆô¤°(€€€€¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€€€•áÁ•Ð¡ÍÉ••¸¹•Ñ	åQ•áÐ ‰9½ÉÑ µ•É¥„Õ¹ˆ¤¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€€€•áÁ•Ð¡ÍÉ••¸¹•Ñ	åQ•áÐ ˆÄÜ¸ÈÄ”ˆ¤¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€€€•áÁ•Ð¡ÍÉ••¸¹•Ñ±±	åQ•áÐ ˆÈÀÈØ´ÀÜ´ÌÄˆ¤¤¹Ñ½!…Ù•1•¹Ñ  È¤ì(€€€•áÁ•Ð (€€€€€ÍÉ••¸¹•Ñ	åI½±” ‰±¥¹¬ˆ°ì¹…µ”è€‹š~—žr,9½ÉÑ µ•É¥„Õ¹ƒ¢¦Ïšˆô¤°(€€€€¤¹Ñ½!…Ù•ÑÑÉ¥‰ÕÑ” ‰¡É•˜ˆ°€ˆ½™Õ¹µ±…ÍÍ•Ì½™Õ¹µ„ˆ¤ì(€€€•áÁ•Ð (€€€€€ÍÉ••¸¹•Ñ	åI½±” ‰±¥¹¬ˆ°ì¹…µ”è€‰9½ÉÑ µ•É¥„Õ¹ƒ–ºcšZç’úšê@ˆô¤°(€€€€¤¹Ñ½!…Ù•ÑÑÉ¥‰ÕÑ” ‰¡É•˜ˆ°€‰¡ÑÑÁÌè¼½•á…µÁ±”¹Ñ•ÍÐ½™Õ¹µ„ˆ¤ì((€€€™¥É•Ù•¹Ð¹¡…¹”¡ÍÉ••¸¹•Ñ	å1…‰•±Q•áÐ ‹š¾S¢òžÖ–"”ˆ¤°ì(€€€€€Ñ…É•ÐèìÙ…±Õ”è€‰5½¹•ä5…É­•ÐÕ¹€´!½¹œ-½¹œˆô°(€€€ô¤ì(€€€•áÁ•Ð¡Ý¥¹‘½Ü¹±½…Ñ¥½¸¹Í•…É ¤¹Ñ½½¹Ñ…¥¸ (€€€€€€‰É½ÕÀõ5½¹•ä­5…É­•Ð­Õ¹¬´­!½¹œ­-½¹œˆ°(€€€€¤ì((€€€•áÁ•Ð¡ÍÉ••¸¹ÅÕ•Éå	åQ•áÐ ‰9½ÉÑ µ•É¥„Õ¹ˆ¤¤¹¹½Ð¹Ñ½	•%¹Q¡•½Õµ•¹Ð ¤ì(€€€•áÁ•Ð¡ÍÉ••¸¹•Ñ	åQ•áÐ ‰!½¹œ-½¹œ5½¹•ä5…É­•ÐÕ¹ˆ¤¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€€€•áÁ•Ð¡™•Ñ ¤¹Ñ½!…Ù•	••¹…±±•‘]¥Ñ  (€€€€€€‰¡ÑÑÁÌè¼½…Á¤¹Ñ•ÍÐ½É…¹­¥¹ÌýÁ•É¥½ôÄˆ°(€€€€€•áÁ•Ð¹½‰©•Ñ½¹Ñ…¥¹¥¹œ¡ìÍ¥¹…°è•áÁ•Ð¹…¹åÑ¡¥¹œ ¤ô¤°(€€€€¤ì(€ô¤ì(€¥Ð ‰±•ÑÌÑ¡”É•…‘•ÈÍÝ¥Ñ Ñ¡”É…¹­¥¹œÁ•É¥½…¹É•™•Ñ¡•Ì™É½´Ñ¡”A$ˆ°…Íå¹Œ€ ¤€ôøì(€€€½¹ÍÐ™•Ñ¡5½¬€ôÙ¤¹™¸ ¤¹µ½­%µÁ±•µ•¹Ñ…Ñ¥½¸ ¡ÕÉ°èÍÑÉ¥¹œ¤€ôøì(€€€€€½¹ÍÐÁ•É¥½€ô¹•ÜUI0¡ÕÉ°¤¹Í•…É¡A…É…µÌ¹•Ð ‰Á•É¥½ˆ¤ì(€€€€€½¹ÍÐ‰åA•É¥½€ôì(€€€€€€€€ˆÄˆèì(€€€€€€€€€™Õ¹‘±…ÍÍ%è€‰™Õ¹µ„ˆ°(€€€€€€€€€½¹ÍÑ¥ÑÕ•¹ÑÕ¹‘9…µ”è€‰9½ÉÑ µ•É¥„Õ¹ˆ°(€€€€€€€€€‘¥ÍÁ±…åY…±Õ”è€ˆÄÜ¸ÈÄ”ˆ°(€€€€€€€€€Á•É¥½‘e•…ÉÌè€Ä°(€€€€€€€ô°(€€€€€€€€ˆÌˆèì(€€€€€€€€€™Õ¹‘±…ÍÍ%è€‰™Õ¹µµ¥ˆ°(€€€€€€€€€½¹ÍÑ¥ÑÕ•¹ÑÕ¹‘9…µ”è€‰5¥!½É¥é½¸Õ¹ˆ°(€€€€€€€€€‘¥ÍÁ±…åY…±Õ”è€ˆà¸ÐÀ”ˆ°(€€€€€€€€€Á•É¥½‘e•…ÉÌè€Ì°(€€€€€€€ô°(€€€€€€€€ˆÔˆèì(€€€€€€€€€™Õ¹‘±…ÍÍ%è€‰™Õ¹µ±½¹œˆ°(€€€€€€€€€½¹ÍÑ¥ÑÕ•¹ÑÕ¹‘9…µ”è€‰1½¹œ!½É¥é½¸Õ¹ˆ°(€€€€€€€€€‘¥ÍÁ±…åY…±Õ”è€ˆØ¸ÄÐ”ˆ°(€€€€€€€€€Á•É¥½‘e•…ÉÌè€Ô°(€€€€€€€ô°(€€€€€ô…Ì½¹ÍÐì(€€€€€½¹ÍÐÍ•±•Ñ•€ô(€€€€€€€‰åA•É¥½‘l¡Á•É¥½€üü€ˆÄˆ¤…Ì­•å½˜ÑåÁ•½˜‰åA•É¥½‘t€üü‰åA•É¥½‘lˆÄ‰tì(€€€€€É•ÑÕÉ¸AÉ½µ¥Í”¹É•Í½±Ù” (€€€€€€€I•ÍÁ½¹Í”¹©Í½¸¡ì(€€€€€€€€€Í¹…ÁÍ¡½Ñ%è€‰Í¹…ÁÍ¡½Ð´ÈÀÈØ´ÀÜ´ÌÄˆ°(€€€€€€€€€Á•É¥½‘e•…ÉÌèÍ•±•Ñ•¹Á•É¥½‘e•…ÉÌ°(€€€€€€€€€É…¹­¥¹Ìèl(€€€€€€€€€€€ì(€€€€€€€€€€€€€™Õ¹‘±…ÍÍ%èÍ•±•Ñ•¹™Õ¹‘±…ÍÍ%°(€€€€€€€€€€€€€™Õ¹‘±…ÍÍ9…µ”è€‰±…ÍÌˆ°(€€€€€€€€€€€€€½¹ÍÑ¥ÑÕ•¹ÑÕ¹‘9…µ”èÍ•±•Ñ•¹½¹ÍÑ¥ÑÕ•¹ÑÕ¹‘9…µ”°(€€€€€€€€€€€€€Í¡•µ•9…µ”è€‰M¡•µ”=¹”ˆ°(€€€€€€€€€€€€€ÑÉÕÍÑ••9…µ”è€‰QÉÕÍÑ•”=¹”ˆ°(€€€€€€€€€€€€€½µÁ…É¥Í½¹É½ÕÀè€‰ÅÕ¥ÑäÕ¹€¡9½ÉÑ µ•É¥„¤ˆ°(€€€€€€€€€€€€€‘¥ÍÁ±…åY…±Õ”èÍ•±•Ñ•¹‘¥ÍÁ±…åY…±Õ”°(€€€€€€€€€€€€€É…¹¬è€Ä°(€€€€€€€€€€€€€‘…Ñ…Í=˜è€ˆÈÀÈØ´ÀÜ´ÌÄˆ°(€€€€€€€€€€€€€Í½ÕÉ•UÉ°è€‰¡ÑÑÁÌè¼½•á…µÁ±”¹Ñ•ÍÐ½™Õ¹ˆ°(€€€€€€€€€€€ô°(€€€€€€€€€t°(€€€€€€€ô¤°(€€€€€€¤ì(€€€ô¤ì(€€€Ù¤¹ÍÑÕ‰±½‰…° ‰™•Ñ ˆ°™•Ñ¡5½¬¤ì((€€€É•¹‘•È ñI…¹­¥¹ÍA…”…Á¥	…Í•UÉ°ô‰¡ÑÑÁÌè¼½…Á¤¹Ñ•ÍÐˆ€¼ø¤ì((€€€•áÁ•Ð¡…Ý…¥ÐÍÉ••¸¹™¥¹‘	åQ•áÐ ˆÄÜ¸ÈÄ”ˆ¤¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€€€•áÁ•Ð¡™•Ñ¡5½¬¤¹Ñ½!…Ù•	••¹…±±•‘]¥Ñ  (€€€€€€‰¡ÑÑÁÌè¼½…Á¤¹Ñ•ÍÐ½É…¹­¥¹ÌýÁ•É¥½ôÄˆ°(€€€€€•áÁ•Ð¹½‰©•Ñ½¹Ñ…¥¹¥¹œ¡ìÍ¥¹…°è•áÁ•Ð¹…¹åÑ¡¥¹œ ¤ô¤°(€€€€¤ì((€€€™¥É•Ù•¹Ð¹¡…¹”¡ÍÉ••¸¹•Ñ	å1…‰•±Q•áÐ ‹–n{–‚Çšr¦ZLˆ¤°ì(€€€€€Ñ…É•ÐèìÙ…±Õ”è€ˆÌˆô°(€€€ô¤ì((€€€•áÁ•Ð¡…Ý…¥ÐÍÉ••¸¹™¥¹‘	åQ•áÐ ˆà¸ÐÀ”ˆ¤¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€€€•áÁ•Ð¡Ý¥¹‘½Ü¹±½…Ñ¥½¸¹Í•…É ¤¹Ñ½	” ˆýÁ•É¥½ôÌˆ¤ì(€€€•áÁ•Ð (€€€€€…Ý…¥ÐÍÉ••¸¹™¥¹‘	åI½±” ‰¡•…‘¥¹œˆ°ì¹…µ”è€‹’â'–æÓ–n{–‚Çš:K–B4ˆô¤°(€€€€¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€€€•áÁ•Ð¡™•Ñ¡5½¬¤¹Ñ½!…Ù•	••¹…±±•‘]¥Ñ  (€€€€€€‰¡ÑÑÁÌè¼½…Á¤¹Ñ•ÍÐ½É…¹­¥¹ÌýÁ•É¥½ôÌˆ°(€€€€€•áÁ•Ð¹½‰©•Ñ½¹Ñ…¥¹¥¹œ¡ìÍ¥¹…°è•áÁ•Ð¹…¹åÑ¡¥¹œ ¤ô¤°(€€€€¤ì((€€€™¥É•Ù•¹Ð¹¡…¹”¡ÍÉ••¸¹•Ñ	å1…‰•±Q•áÐ ‹–n{–‚Çšr¦ZLˆ¤°ì(€€€€€Ñ…É•ÐèìÙ…±Õ”è€ˆÔˆô°(€€€ô¤ì((€€€•áÁ•Ð¡…Ý…¥ÐÍÉ••¸¹™¥¹‘	åQ•áÐ ˆØ¸ÄÐ”ˆ¤¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€€€•áÁ•Ð¡™•Ñ¡5½¬¤¹Ñ½!…Ù•	••¹…±±•‘]¥Ñ  (€€€€€€‰¡ÑÑÁÌè¼½…Á¤¹Ñ•ÍÐ½É…¹­¥¹ÌýÁ•É¥½ôÔˆ°(€€€€€•áÁ•Ð¹½‰©•Ñ½¹Ñ…¥¹¥¹œ¡ìÍ¥¹…°è•áÁ•Ð¹…¹åÑ¡¥¹œ ¤ô¤°(€€€€¤ì(€ô¤ì((€¥Ð ‰•áÁ±…¥¹ÌÑ¡…Ðµ¥ÍÍ¥¹œ½™™¥¥…°Á•É¥½É•ÑÕÉ¹Ì…É”•á±Õ‘•¥¹ÍÑ•…½˜¥¹™•ÉÉ•ˆ°…Íå¹Œ€ ¤€ôøì(€€€Ù¤¹ÍÑÕ‰±½‰…° (€€€€€€‰™•Ñ ˆ°(€€€€€Ù¤¹™¸ ¤¹µ½­I•Í½±Ù•‘Y…±Õ” (€€€€€€€I•ÍÁ½¹Í”¹©Í½¸¡ì(€€€€€€€€€Í¹…ÁÍ¡½Ñ%è€‰Í¹…ÁÍ¡½Ð´ÈÀÈØ´ÀÜ´ÌÄˆ°(€€€€€€€€€Á•É¥½‘e•…ÉÌè€Ä°(€€€€€€€€€É…¹­¥¹Ìèmt°(€€€€€€€ô¤°(€€€€€€¤°(€€€€¤ì((€€€É•¹‘•È ñI…¹­¥¹ÍA…”…Á¥	…Í•UÉ°ô‰¡ÑÑÁÌè¼½…Á¤¹Ñ•ÍÐˆ€¼ø¤ì((€€€•áÁ•Ð (€€€€€…Ý…¥ÐÍÉ••¸¹™¥¹‘	åQ•áÐ ¿šÊKšr'¢¦Ëšr¦ZOšVã–óžj–~ë¦G’â7šr–—ššp¼¤°(€€€€¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€€€•áÁ•Ð¡ÍÉ••¸¹•Ñ	å1…‰•±Q•áÐ ‹–n{–‚Çšr¦ZLˆ¤¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€€€•áÁ•Ð¡ÍÉ••¸¹•Ñ	åI½±” ‰½ÁÑ¥½¸ˆ°ì¹…µ”è€‹’â'–æÐˆô¤¤¹Ñ½	•%¹Q¡•½Õµ•¹Ð ¤ì(€ô¤ì(€¥Ð ‰½Á•¹Ì½¸Ñ¡”½µÁ…É¥Í½¸É½ÕÀ…¹Á•É¥½¹…µ•¥¸Ñ¡”±¥¹¬ˆ°…Íå¹Œ€ ¤€ôøì(€€€½¹ÍÐ™•Ñ¡5½¬€ôÙ¤¹™¸ ¤¹µ½­%µÁ±•µ•¹Ñ…Ñ¥½¸ ¡ÕÉ°èÍÑÉ¥¹œ¤€ôø(€€€€€AÉ½µ¥Í”¹É•Í½±Ù” (€€€€€€€I•ÍÁ½¹Í”¹©Í½¸¡ì(€€€€€€€€€Í¹…ÁÍ¡½Ñ%è€‰Í¹…ÁÍ¡½Ð´ÈÀÈØ´ÀÜ´ÌÄˆ°(€€€€€€€€€Á•É¥½‘e•…ÉÌè9Õµ‰•È¡¹•ÜUI0¡ÕÉ°¤¹Í•…É¡A…É…µÌ¹•Ð ‰Á•É¥½ˆ¤¤°(€€€€€€€€€É…¹­¥¹Ìèl(€€€€€€€€€€€ì(€€€€€€€€€€€€€™Õ¹‘±…ÍÍ%è€‰™Õ¹µ„ˆ°(€€€€€€€€€€€€€™Õ¹‘±…ÍÍ9…µ”è€‰±…ÍÌˆ°(€€€€€€€€€€€€€½¹ÍÑ¥ÑÕ•¹ÑÕ¹‘9…µ”è€‰9½ÉÑ µ•É¥„Õ¹ˆ°(€€€€€€€€€€€€€Í¡•µ•9…µ”è€‰M¡•µ”=¹”ˆ°(€€€€€€€€€€€€€ÑÉÕÍÑ••9…µ”è€‰QÉÕÍÑ•”=¹”ˆ°(€€€€€€€€€€€€€½µÁ…É¥Í½¹É½ÕÀè€‰ÅÕ¥ÑäÕ¹€¡9½ÉÑ µ•É¥„¤ˆ°(€€€€€€€€€€€€€‘¥ÍÁ±…åY…±Õ”è€ˆÄÜ¸ÈÄ”ˆ°(€€€€€€€€€€€€€É…¹¬è€Ä°(€€€€€€€€€€€€€‘…Ñ…Í=˜è€ˆÈÀÈØ´ÀÜ´ÌÄˆ°(€€€€€€€€€€€€€Í½ÕÉ•UÉ°è€‰¡ÑÑÁÌè¼½•á…µÁ±”¹Ñ•ÍÐ½™Õ¹µ„ˆ°(€€€€€€€€€€€ô°(€€€€€€€€€€€ì(€€€€€€€€€€€€€™Õ¹‘±…ÍÍ%è€‰™Õ¹µˆˆ°(€€€€€€€€€€€€€™Õ¹‘±…ÍÍ9…µ”è€‰±…ÍÌˆ°(€€€€€€€€€€€€€½¹ÍÑ¥ÑÕ•¹ÑÕ¹‘9…µ”è€‰5½¹•ä5…É­•ÐÕ¹ˆ°(€€€€€€€€€€€€€Í¡•µ•9…µ”è€‰M¡•µ”QÝ¼ˆ°(€€€€€€€€€€€€€ÑÉÕÍÑ••9…µ”è€‰QÉÕÍÑ•”QÝ¼ˆ°(€€€€€€€€€€€€€½µÁ…É¥Í½¹É½ÕÀè€‰5½¹•ä5…É­•ÐÕ¹€´!½¹œ-½¹œˆ°(€€€€€€€€€€€€€‘¥ÍÁ±…åY…±Õ”è€ˆÄ¸äÄ”ˆ°(€€€€€€€€€€€€€É…¹¬è€Ä°(€€€€€€€€€€€€€‘…Ñ…Í=˜è€‹Ý»¶‰žËkºwµç@€€€€€€€€€€€€½µÁ…É¥Í½¹É½ÕÁM½ÕÉ”è€‰±¥ÁÁ•Èˆ°(€€€€€€€€€€€€€‘¥ÍÁ±…åY…±Õ”è€ˆà¸ÀÈ”ˆ°(€€€€€€€€€€€€€É…¹¬è€Ä°(€€€€€€€€€€€€€‘…Ñ…Í=˜è€ˆÈÀÈØ´ÀÜ´ÌÄˆ°(€€€€€€€€€€€€€Í½ÕÉ•UÉ°è€‰¡ÑÑÁÌè¼½•á…µÁ±”¹Ñ•ÍÐ½™Õ¹µ„ˆ°(€€€€€€€€€€€ô°(€€€€€€€€€t°(€€€€€€€ô¤°(€€€€€€¤°(€€€€¤ì((€€€É•¹‘•È (€€€€€€ñI…¹­¥¹ÍA…”(€€€€€€€…Á¥	…Í•UÉ°ô‰¡ÑÑÁÌè¼½…Á¤¹Ñ•ÍÐˆ(€€€€€€€¥¹¥Ñ¥…±½µÁ…É¥Í½¹É½ÕÀô‰ÅÕ¥ÑäÕ¹€¡9½ÉÑ µ•É¥„¤ˆ(€€€€€€¼ø°(€€€€¤ì((€€€•áÁ•Ð (€€€€€…Ý…¥ÐÍÉ••¸¹™¥¹‘	åQ•áÐ (€€€€€€€€¿Ž1ÅÕ¥ÑäÕ¹p¡9½ÉÑ µ•É¥…p§Ž7’â7–7šb¿ž6£ž®/žÖ–"”¼°(€€€€€€¤°(€€€€¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€€€•áÁ•Ð¡ÍÉ••¸¹•Ñ	å1…‰•±Q•áÐ ‹š¾S¢òžÖ–"”ˆ¤¤¹Ñ½!…Ù•Y…±Õ” ‰…±°ˆ¤ì(€€€•áÁ•Ð¡ÍÉ••¸¹•Ñ	åQ•áÐ ‹šâ¿¢
+‡–~ë¦Dˆ¤¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€€€•áÁ•Ð¡ÍÉ••¸¹•Ñ	åQ•áÐ ¿šr–"”€ÈÀÈØ´Àà´ÈÜ¼¤¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€ô¤ì((€¥Ð ‰•áÁ±…¥¹Ì¡½Üµ…¹ä™Õ¹‘Ì…É”¡•±½ÕÐ½˜Ñ¡”É…¹­¥¹œ…ÌÍÑ…±”ˆ°…Íå¹Œ€ ¤€ôøì(€€€Ù¤¹ÍÑÕ‰±½‰…° (€€€€€€‰™•Ñ ˆ°(€€€€€Ù¤¹™¸ ¤¹µ½­I•Í½±Ù•‘Y…±Õ” (€€€€€€€I•ÍÁ½¹Í”¹©Í½¸¡ì(€€€€€€€€€Í¹…ÁÍ¡½Ñ%è€‰Í¹…ÁÍ¡½Ð´ÈÀÈØ´ÀÜ´ÌÄˆ°(€€€€€€€€€Á•É¥½‘e•…ÉÌè€Ä°(€€€€€€€€€•á±Õ‘•‘MÑ…±•½Õ¹Ðè€ÄÈ°(€€€€€€€€€µ•Ñ¡½‘½±½äèì(€€€€€€€€€€€µ•ÑÉ¥Œè€‰…¹¹Õ…±¥é•‘}É•ÑÕÉ¸ˆ°(€€€€€€€€€€€É½ÕÁ¥¹œè€‰½µÁ…É¥Í½¹}É½ÕÀˆ°(€€€€€€€€€€€Í½ÉÑ¥É•Ñ¥½¸è€‰‘•Í•¹‘¥¹œˆ°(€€€€€€€€€€€‘¥ÍÁ±…åAÉ•¥Í¥½¸è€È°(€€€€€€€€€€€™É•Í¡¹•ÍÌèì(€€€€€€€€€€€€€É…•…åÌè€ÐÔ°(€€€€€€€€€€€€€•Ù…±Õ…Ñ•‘=¸è€ˆÈÀÈØ´Àà´ÈÐˆ°(€€€€€€€€€€€€€ÉÕ±”è€‹šâ³¢¦›¢š?–&ˆ°(€€€€€€€€€€€ô°(€€€€€€€€€ô°(€€€€€€€€€É…¹­¥¹Ìèmt°(€€€€€€€ô¤°(€€€€€€¤°(€€€€¤ì((€€€É•¹‘•È ñI…¹­¥¹ÍA…”…Á¥	…Í•UÉ°ô‰¡ÑÑÁÌè¼½…Á¤¹Ñ•ÍÐˆ€¼ø¤ì((€€€•áÁ•Ð (€€€€€…Ý…¥ÐÍÉ••¸¹™¥¹‘	åQ•áÐ (€€€€€€€€¼ÄÈƒ¦jï–~ë¦Gžj¢ÎšZg–ÞË¢Ú–ë–ºcšZçš*¯¦rË–¾³¦fCšr¾ò ÐÔƒš^—¾ò'¾ò3šj¯’â7–"_–—š:K–B4¼°(€€€€€€¤°(€€€€¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€ô¤ì((€¥Ð ‰Í…åÌ¹½Ñ¡¥¹œ…‰½ÕÐÍÑ…±”™Õ¹‘ÌÝ¡•¸¹½¹”…É”¡•±½ÕÐˆ°…Íå¹Œ€ ¤€ôøì(€€€Ù¤¹ÍÑÕ‰±½‰…° (€€€€€€‰™•Ñ ˆ°(€€€€€Ù¤¹™¸ ¤¹µ½­I•Í½±Ù•‘Y…±Õ” (€€€€€€€I•ÍÁ½¹Í”¹©Í½¸¡ì(€€€€€€€€€Í¹…ÁÍ¡½Ñ%è€‰Í¹…ÁÍ¡½Ð´ÈÀÈØ´ÀÜ´ÌÄˆ°(€€€€€€€€€Á•É¥½‘e•…ÉÌè€Ä°(€€€€€€€€€•á±Õ‘•‘MÑ…±•½Õ¹Ðè€À°(€€€€€€€€€É…¹­¥¹Ìèmt°(€€€€€€€ô¤°(€€€€€€¤°(€€€€¤ì((€€€É•¹‘•È ñI…¹­¥¹ÍA…”…Á¥	…Í•UÉ°ô‰¡ÑÑÁÌè¼½…Á¤¹Ñ•ÍÐˆ€¼ø¤ì((€€€•áÁ•Ð¡…Ý…¥ÐÍÉ••¸¹™¥¹‘	å1…‰•±Q•áÐ ‹š¾S¢òžÖ–"”ˆ¤¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€€€•áÁ•Ð¡ÍÉ••¸¹ÅÕ•Éå	åQ•áÐ ¿šj¯’â7–"_–—š:K–B4¼¤¤¹¹½Ð¹Ñ½	•%¹Q¡•½Õµ•¹Ð ¤ì(€ô¤ì((€½¹ÍÐµ•ÑÉ¥I•ÍÁ½¹Í”€ô€¡µ•ÑÉ¥ŒèÍÑÉ¥¹œ¤€ôø(€€€I•ÍÁ½¹Í”¹©Í½¸¡ì(€€€€€Í¹…ÁÍ¡½Ñ%è€‰Í¹…ÁÍ¡½Ð´ÈÀÈØ´ÀÜ´ÌÄˆ°(€€€€€µ•ÑÉ¥Œ°(€€€€€Á•É¥½‘e•…ÉÌèµ•ÑÉ¥Œ€ôôô€‰É•ÑÕÉ¸ˆ€ü€Ä€è¹Õ±°°(€€€€€É…¹­¥¹Ìèl(€€€€€€€ì(€€€€€€€€€™Õ¹‘±…ÍÍ%è€‰™Õ¹µ„ˆ°(€€€€€€€€€™Õ¹‘±…ÍÍ9…µ”è€‰±…ÍÌˆ°(€€€€€€€€€½¹ÍÑ¥ÑÕ•¹ÑÕ¹‘9…µ”è€‰9½ÉÑ µ•É¥„Õ¹ˆ°(€€€€€€€€€Í¡•µ•9…µ”è€‰M¡•µ”=¹”ˆ°(€€€€€€€€€ÑÉÕÍÑ••9…µ”è€‰QÉÕÍÑ•”=¹”ˆ°(€€€€€€€€€½µÁ…É¥Í½¹É½ÕÀè€‰ÅÕ¥ÑäÕ¹€¡9½ÉÑ µ•É¥„¤ˆ°(€€€€€€€€€‘¥ÍÁ±…åY…±Õ”è(€€€€€€€€€€€µ•ÑÉ¥Œ€ôôô€‰™•”ˆ€ü€ˆÀ¸ØÔ”ˆ€èµ•ÑÉ¥Œ€ôôô€‰É¥Í¬ˆ€ü€ˆÐ¸ÜÀ”ˆ€è€ˆÄÜ¸ÈÄ”ˆ°(€€€€€€€€€É…¹¬è€Ä°(€€€€€€€€€‘…Ñ…Í=˜è€ˆÈÀÈØ´ÀÜ´ÌÄˆ°(€€€€€€€€€Í½ÕÉ•UÉ°è€‰¡ÑÑÁÌè¼½•á…µÁ±”¹Ñ•ÍÐ½™Õ¹µ„ˆ°(€€€€€€€ô°(€€€€€t°(€€€ô¤ì((€¥Ð ‰±•ÑÌÑ¡”É•…‘•ÈÉ…¹¬‰äµ…¹…•µ•¹Ð™•”¥¹ÍÑ•…½˜É•ÑÕÉ¸ˆ°…Íå¹Œ€ ¤€ôøì(€€€½¹ÍÐ™•Ñ¡5½¬€ôÙ¤(€€€€€€¹™¸ ¤(€€€€€€¹µ½­%µÁ±•µ•¹Ñ…Ñ¥½¸ ¡ÕÉ°èÍÑÉ¥¹œ¤€ôø(€€€€€€€AÉ½µ¥Í”¹É•Í½±Ù” (€€€€€€€€€µ•ÑÉ¥I•ÍÁ½¹Í”¡ÕÉ°¹¥¹±Õ‘•Ì ‰µ•ÑÉ¥Œõ™•”ˆ¤€ü€‰™•”ˆ€è€‰É•ÑÕÉ¸ˆ¤°(€€€€€€€€¤°(€€€€€€¤ì(€€€Ù¤¹ÍÑÕ‰±½‰…° ‰™•Ñ ˆ°™•Ñ¡5½¬¤ì((€€€É•¹‘•È ñI…¹­¥¹ÍA…”…Á¥	…Í•UÉ°ô‰¡ÑÑÁÌè¼½…Á¤¹Ñ•ÍÐˆ€¼ø¤ì((€€€•áÁ•Ð¡…Ý…¥ÐÍÉ••¸¹™¥¹‘	åQ•áÐ ˆÄÜ¸ÈÄ”ˆ¤¤¹Ñ½	•Y¥Í¥‰±” ¤ì((€€€™¥É•Ù•¹Ð¹¡…¹”¡ÍÉ••¸¹•Ñ	å1…‰•±Q•áÐ ‹š:K–ê?š2š¢dˆ¤°ì(€€€€€Ñ…É•ÐèìÙ…±Õ”è€‰™•”ˆô°(€€€ô¤ì((€€€•áÁ•Ð¡…Ý…¥ÐÍÉ••¸¹™¥¹‘	åQ•áÐ ˆÀ¸ØÔ”ˆ¤¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€€€•áÁ•Ð¡™•Ñ¡5½¬¤¹Ñ½!…Ù•	••¹…±±•‘]¥Ñ  (€€€€€€‰¡ÑÑÁÌè¼½…Á¤¹Ñ•ÍÐ½É…¹­¥¹Ìýµ•ÑÉ¥Œõ™•”ˆ°(€€€€€•áÁ•Ð¹½‰©•Ñ½¹Ñ…¥¹¥¹œ¡ìÍ¥¹…°è•áÁ•Ð¹…¹åÑ¡¥¹œ ¤ô¤°(€€€€¤ì(€€€•áÁ•Ð¡ÍÉ••¸¹•Ñ	åI½±” ‰¡•…‘¥¹œˆ°ì¹…µ”è€‹žº‡žB¢Êïš:K–B4ˆô¤¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€€€•áÁ•Ð¡ÍÉ••¸¹•Ñ	åI½±” ‰½±Õµ¹¡•…‘•Èˆ°ì¹…µ”è€‹žº‡žB¢Êìˆô¤¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€€€•áÁ•Ð¡ÍÉ••¸¹ÅÕ•Éå	å1…‰•±Q•áÐ ‹–n{–‚Çšr¦ZLˆ¤¤¹¹½Ð¹Ñ½	•%¹Q¡•½Õµ•¹Ð ¤ì(€ô¤ì((€¥Ð ‰É…¹­ÌÑ¡”½™™¥¥…°™Õ¹É¥Í¬¥¹‘¥…Ñ½È…Ì„Í•Á…É…Ñ”±½Ý•ÈÙ½±…Ñ¥±¥ÑäÙ¥•Üˆ°…Íå¹Œ€ ¤€ôøì(€€€½¹ÍÐ™•Ñ¡5½¬€ôÙ¤(€€€€€€¹™¸ ¤(€€€€€€¹µ½­%µÁ±•µ•¹Ñ…Ñ¥½¸ ¡ÕÉ°èÍÑÉ¥¹œ¤€ôø(€€€€€€€AÉ½µ¥Í”¹É•Í½±Ù” (€€€€€€€€€µ•ÑÉ¥I•ÍÁ½¹Í”¡ÕÉ°¹¥¹±Õ‘•Ì ‰µ•ÑÉ¥ŒõÉ¥Í¬ˆ¤€ü€‰É¥Í¬ˆ€è€‰É•ÑÕÉ¸ˆ¤°(€€€€€€€€¤°(€€€€€€¤ì(€€€Ù¤¹ÍÑÕ‰±½‰…° ‰™•Ñ ˆ°™•Ñ¡5½¬¤ì((€€€É•¹‘•È ñI…¹­¥¹ÍA…”…Á¥	…Í•UÉ°ô‰¡ÑÑÁÌè¼½…Á¤¹Ñ•ÍÐˆ¥¹¥Ñ¥…±5•ÑÉ¥Œô‰É¥Í¬ˆ€¼ø¤ì((€€€•áÁ•Ð¡…Ý…¥ÐÍÉ••¸¹™¥¹‘	åQ•áÐ ˆÐ¸ÜÀ”ˆ¤¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€€€•áÁ•Ð¡™•Ñ¡5½¬¤¹Ñ½!…Ù•	••¹…±±•‘]¥Ñ  (€€€€€€‰¡ÑÑÁÌè¼½…Á¤¹Ñ•ÍÐ½É…¹­¥¹Ìýµ•ÑÉ¥ŒõÉ¥Í¬ˆ°(€€€€€•áÁ•Ð¹½‰©•Ñ½¹Ñ…¥¹¥¹œ¡ìÍ¥¹…°è•áÁ•Ð¹…¹åÑ¡¥¹œ ¤ô¤°(€€€€¤ì(€€€•áÁ•Ð¡ÍÉ••¸¹•Ñ	å1…‰•±Q•áÐ ‹š:K–ê?š2š¢dˆ¤¤¹Ñ½!…Ù•Y…±Õ” ‰É¥Í¬ˆ¤ì(€€€•áÁ•Ð¡ÍÉ••¸¹•Ñ	åI½±” ‰¡•…‘¥¹œˆ°ì¹…µ”è€‹šÎ‹–æš:K–B4ˆô¤¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€€€•áÁ•Ð¡ÍÉ••¸¹•Ñ	åI½±” ‰½±Õµ¹¡•…‘•Èˆ°ì¹…µ”è€‹šÎ‹–æˆô¤¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€€€€¼¼ƒš¢gž’ë–þ¦‚#¢²ošb;¦gšb¿šÎ‹–æ¾ò3’â7šb¿Ž3¦Š£¦j«¢ò’ö;¢ò––÷Ž7Ž(€€€•áÁ•Ð (€€€€€ÍÉ••¸¹•Ñ	åQ•áÐ ¿–~ë¦G¦Š£¦j«š2š¢g¾ò3–6Ï¦;–:ï’â'–æÓžj–æÓ–ê›–2[š¢gšê[–Þ¸¼¤°(€€€€¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€€€•áÁ•Ð¡ÍÉ••¸¹•Ñ	åQ•áÐ ¿’â7’î¢†£–~ë¦G¢ò’öÏš"[¢ò¦§–B#’ö€¼¤¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€ô¤ì((€¥Ð ‰ÁÕÑÌÑ¡”É…¹­•Ù…±Õ”‰•™½É”Ñ¡”±½¹œ½µÁ…É¥Í½¸É½ÕÀ½±Õµ¸ˆ°…Íå¹Œ€ ¤€ôøì(€€€Ù¤¹ÍÑÕ‰±½‰…° (€€€€€€‰™•Ñ ˆ°(€€€€€Ù¤¹™¸ ¤¹µ½­%µÁ±•µ•¹Ñ…Ñ¥½¸  ¤€ôøAÉ½µ¥Í”¹É•Í½±Ù”¡µ•ÑÉ¥I•ÍÁ½¹Í” ‰™•”ˆ¤¤¤°(€€€€¤ì((€€€É•¹‘•È ñI…¹­¥¹ÍA…”…Á¥	…Í•UÉ°ô‰¡ÑÑÁÌè¼½…Á¤¹Ñ•ÍÐˆ¥¹¥Ñ¥…±5•ÑÉ¥Œô‰™•”ˆ€¼ø¤ì((€€€•áÁ•Ð¡…Ý…¥ÐÍÉ••¸¹™¥¹‘	åQ•áÐ ˆÀ¸ØÔ”ˆ¤¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€€€•áÁ•Ð (€€€€€ÍÉ••¸¹•Ñ±±	åI½±” ‰½±Õµ¹¡•…‘•Èˆ¤¹µ…À ¡•±°¤€ôø•±°¹Ñ•áÑ½¹Ñ•¹Ð¤°(€€€€¤¹Ñ½ÅÕ…°¡l‹–B7š²„ˆ°€‹–~ë¦Dˆ°€‹žº‡žB¢Êìˆ°€‹š¾S¢òžÖ–"”ˆ°€‹š"«¢Ïš^—šr|ˆ°€‹’úšê@‰t¤ì(€ô¤ì((€¥Ð ‰­••ÁÌÑ¡”É•ÑÕÉ¸µ•ÑÉ¥Œ±¥¹¬™½Éµ…ÐÕ¹¡…¹•ˆ°…Íå¹Œ€ ¤€ôøì(€€€½¹ÍÐ™•Ñ¡5½¬€ôÙ¤(€€€€€€¹™¸ ¤(€€€€€€¹µ½­%µÁ±•µ•¹Ñ…Ñ¥½¸  ¤€ôøAÉ½µ¥Í”¹É•Í½±Ù”¡µ•ÑÉ¥I•ÍÁ½¹Í” ‰É•ÑÕÉ¸ˆ¤¤¤ì(€€€Ù¤¹ÍÑÕ‰±½‰…° ‰™•Ñ ˆ°™•Ñ¡5½¬¤ì((€€€É•¹‘•È ñI…¹­¥¹ÍA…”…Á¥	…Í•UÉ°ô‰¡ÑÑÁÌè¼½…Á¤¹Ñ•ÍÐˆ€¼ø¤ì((€€€•áÁ•Ð¡…Ý…¥ÐÍÉ••¸¹™¥¹‘	åQ•áÐ ˆÄÜ¸ÈÄ”ˆ¤¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€€€•áÁ•Ð¡™•Ñ¡5½¬¤¹Ñ½!…Ù•	••¹…±±•‘]¥Ñ  (€€€€€€‰¡ÑÑÁÌè¼½…Á¤¹Ñ•ÍÐ½É…¹­¥¹ÌýÁ•É¥½ôÄˆ°(€€€€€•áÁ•Ð¹½‰©•Ñ½¹Ñ…¥¹¥¹œ¡ìÍ¥¹…°è•áÁ•Ð¹…¹åÑ¡¥¹œ ¤ô¤°(€€€€¤ì(€€€•áÁ•Ð¡ÍÉ••¸¹•Ñ	å1…‰•±Q•áÐ ‹š:K–ê?š2š¢dˆ¤¤¹Ñ½!…Ù•Y…±Õ” ‰É•ÑÕÉ¸ˆ¤ì(€ô¤ì)ô¤ì()‘•ÍÉ¥‰” ‰É…¹­•™Õ¹‘ÌÝ¥Ñ¡½ÕÐ„Í•Á…É…Ñ”±…ÍÌˆ°€ ¤€ôøì(€…™Ñ•É…   ¤€ôøì(€€€±•…¹ÕÀ ¤ì(€€€Ù¤¹Õ¹ÍÑÕ‰±±±½‰…±Ì ¤ì(€ô¤ì((€¥Ð ‰½µ¥ÑÌÑ¡”½™™¥¥…°¸¹„¸Á±…•¡½±‘•È™É½´Ñ¡”É…¹­¥¹œÉ½Üˆ°…Íå¹Œ€ ¤€ôøì(€€€Ù¤¹ÍÑÕ‰±½‰…° (€€€€€€‰™•Ñ ˆ°(€€€€€Ù¤¹™¸ ¤¹µ½­I•Í½±Ù•‘Y…±Õ” (€€€€€€€I•ÍÁ½¹Í”¹©Í½¸¡ì(€€€€€€€€€Í¹…ÁÍ¡½Ñ%è€‰Í¹…ÁÍ¡½Ð´ÈÀÈØ´ÀÜ´ÌÄˆ°(€€€€€€€€€Á•É¥½‘e•…ÉÌè€Ä°(€€€€€€€€€µ•Ñ¡½‘½±½äèì(€€€€€€€€€€€µ•ÑÉ¥Œè€‰…¹¹Õ…±¥é•‘}É•ÑÕÉ¸ˆ°(€€€€€€€€€€€É½ÕÁ¥¹œè€‰½µÁ…É¥Í½¹}É½ÕÀˆ°(€€€€€€€€€€€Í½ÉÑ¥É•Ñ¥½¸è€‰‘•Í•¹‘¥¹œˆ°(€€€€€€€€€€€‘¥ÍÁ±…åAÉ•¥Í¥½¸è€È°(€€€€€€€€€ô°(€€€€€€€€€É…¹­¥¹Ìèl(€€€€€€€€€€€ì(€€€€€€€€€€€€€™Õ¹‘±…ÍÍ%è€‰™Õ¹µ¹„ˆ°(€€€€€€€€€€€€€™Õ¹‘±…ÍÍ9…µ”è€‰¸¹„¸ˆ°(€€€€€€€€€€€€€½¹ÍÑ¥ÑÕ•¹ÑÕ¹‘9…µ”è€‰9½ÉÑ µ•É¥„Õ¹ˆ°(€€€€€€€€€€€€€Í¡•µ•9…µ”è€‰M¡•µ”=¹”ˆ°(€€€€€€€€€€€€€ÑÉÕÍÑ••9…µ”è€‰QÉÕÍÑ•”=¹”ˆ°(€€€€€€€€€€€€€½µÁ…É¥Í½¹É½ÕÀè€‰ÅÕ¥ÑäÕ¹€¡9½ÉÑ µ•É¥„¤ˆ°(€€€€€€€€€€€€€Ù…±Õ”è€ÄÜ¸ÈÄ°(€€€€€€€€€€€€€‘¥ÍÁ±…åY…±Õ”è€ˆÄÜ¸ÈÄ”ˆ°(€€€€€€€€€€€€€É…¹¬è€Ä°(€€€€€€€€€€€€€‘…Ñ…Í=˜è€ˆÈÀÈØ´ÀÜ´ÌÄˆ°(€€€€€€€€€€€€€Í½ÕÉ•UÉ°è€‰¡ÑÑÁÌè¼½•á…µÁ±”¹Ñ•ÍÐ½™Õ¹µ¹„ˆ°(€€€€€€€€€€€ô°(€€€€€€€€€t°(€€€€€€€ô¤°(€€€€€€¤°(€€€€¤ì((€€€É•¹‘•È ñI…¹­¥¹ÍA…”…Á¥	…Í•UÉ°ô‰¡ÑÑÁÌè¼½…Á¤¹Ñ•ÍÐˆ€¼ø¤ì((€€€•áÁ•Ð¡…Ý…¥ÐÍÉ••¸¹™¥¹‘	åQ•áÐ ‰M¡•µ”=¹”ˆ¤¤¹Ñ½	•Y¥Í¥‰±” ¤ì(€€€•áÁ•Ð¡ÍÉ••¸¹ÅÕ•Éå	åQ•áÐ ½¹p¹…p¸½¤¤¤¹¹½Ð¹Ñ½	•%¹Q¡•½Õµ•¹Ð ¤ì(€ô¤ì)ô¤ì(
