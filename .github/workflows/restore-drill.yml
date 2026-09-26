@@ -97,6 +97,15 @@ jobs:
             echo "Wrangler returned exit status $restore_status after local D1 import; checking restored database invariants." >&2
             if [[ -s restore-drill/restore.stderr ]]; then cat restore-drill/restore.stderr >&2; fi
           fi
+          migration_status=0
+          bunx wrangler d1 migrations apply RESTORE_DB --local --config apps/api/wrangler.restore.jsonc > restore-drill/migrations.stdout 2> restore-drill/migrations.stderr || migration_status=$?
+          if (( migration_status != 0 )); then
+            echo "Local D1 migrations failed (Wrangler exit status: $migration_status)." >&2
+            if [[ -s restore-drill/migrations.stdout ]]; then cat restore-drill/migrations.stdout >&2; fi
+            if [[ -s restore-drill/migrations.stderr ]]; then cat restore-drill/migrations.stderr >&2; fi
+            exit 1
+          fi
+          if [[ -s restore-drill/migrations.stdout ]]; then cat restore-drill/migrations.stdout; fi
           expected_snapshot_id="$(jq -r '.snapshotId' restore-drill/manifest.json)"
           query='SELECT
             (SELECT snapshot_id FROM current_publication WHERE singleton = 1) AS snapshot_id,
@@ -112,6 +121,23 @@ jobs:
           else
             echo "Post-restore query produced no JSON (Wrangler exit status: $query_status)." >&2
           fi
+          if (( query_status != 0 )) || ! jq -e '
+            type == "array"
+            and length > 0
+            and .[0].success == true
+            and (.[0].results | type == "array")
+          ' restore-drill/query.json >/dev/null 2>&1; then
+            echo "Post-restore verification query failed (Wrangler exit status: $query_status)." >&2
+            if jq -e 'type == "object" and has("error")' restore-drill/query.json >/dev/null 2>&1; then
+              jq -c '.error' restore-drill/query.json >&2
+            elif [[ -s restore-drill/query.json ]]; then
+              jq -c . restore-drill/query.json >&2 || cat restore-drill/query.json >&2
+            fi
+            if [[ -s restore-drill/query.stderr ]]; then cat restore-drill/query.stderr >&2; fi
+            echo "Post-restore verification failed. Local D1 query result:" >> "$GITHUB_STEP_SUMMARY"
+            jq . restore-drill/query.json >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || echo "No valid JSON query result was produced." >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
           if ! jq -e --arg snapshot_id "$expected_snapshot_id" '
             .[0].results as $rows
             | ($rows | length) == 1
@@ -121,10 +147,10 @@ jobs:
               and $rows[0].fund_class_version_rows > 0
               and $rows[0].comparison_group_stat_rows > 0
           ' restore-drill/query.json >/dev/null; then
-            echo "Post-restore verification failed (Wrangler exit status: $query_status)." >&2
-            if [[ -s restore-drill/query.stderr ]]; then cat restore-drill/query.stderr >&2; fi
-            echo "Post-restore verification failed. Local D1 query result:" >> "$GITHUB_STEP_SUMMARY"
-            jq . restore-drill/query.json >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || echo "No valid JSON query result was produced." >> "$GITHUB_STEP_SUMMARY"
+            echo "Post-restore invariant check failed." >&2
+            echo "Local D1 invariant check failed. Query result:" >> "$GITHUB_STEP_SUMMARY"
+            jq -c '.[0].results[0]' restore-drill/query.json >&2
+            jq '.[0].results[0]' restore-drill/query.json >> "$GITHUB_STEP_SUMMARY"
             exit 1
           fi
           jq -r '.[0].results[0] | "Restored snapshot: \(.snapshot_id); fund classes: \(.fund_class_version_rows); comparison groups: \(.comparison_group_stat_rows)."' restore-drill/query.json >> "$GITHUB_STEP_SUMMARY"
