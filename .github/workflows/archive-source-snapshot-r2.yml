@@ -130,7 +130,7 @@ jobs:
 
           {
             echo "Archived source run ${SOURCE_RUN_ID} from commit ${SOURCE_HEAD_SHA}."
-            echo "- R2 prefix: `\${object_prefix}/`"
+            echo "- R2 prefix: `${object_prefix}/`"
             echo "- Artifact ID: ${SOURCE_ARTIFACT_ID}"
             echo "- Archive SHA-256: $(jq -r '.archive.sha256' "${SOURCE_MANIFEST}")"
             echo "- R2 readback matched both uploaded objects."
