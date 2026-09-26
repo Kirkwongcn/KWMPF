@@ -129,5 +129,3 @@ jq -n --arg sourceWorkflow "Archive trustee fact sheets" --arg sourceRunId "$sou
 }' >"$index_file"
 
 echo "Prepared trustee factsheet batch $source_batch: $downloaded_count/$planned_count PDFs, $failed_count failures, $archive_bytes compressed bytes."
-
-\n
