@@ -48,7 +48,10 @@ export function returnsGraceDays(policy?: FreshnessPolicy) {
   return policy?.returnsGraceDays ?? DEFAULT_RETURNS_GRACE_DAYS;
 }
 
-export function returnGraceDaysForPeriod(policy: FreshnessPolicy | undefined, periodYears: number) {
+export function returnGraceDaysForPeriod(
+  policy: FreshnessPolicy | undefined,
+  periodYears: number,
+) {
   if (periodYears === 3) {
     return policy?.threeYearReturnGraceDays ?? returnsGraceDays(policy);
   }

@@ -754,7 +754,10 @@ app.get("/schemes", async (context) => {
                 period,
                 evaluateFreshness(
                   dataAsOf,
-                  returnGraceDaysForPeriod(provenance?.freshnessPolicy, Number(period)),
+                  returnGraceDaysForPeriod(
+                    provenance?.freshnessPolicy,
+                    Number(period),
+                  ),
                   evaluatedAt,
                 ),
               ],
