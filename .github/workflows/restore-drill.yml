@@ -104,6 +104,8 @@ jobs:
               and $rows[0].comparison_group_stat_rows > 0
           ' restore-drill/query.json >/dev/null; then
             echo "Post-restore verification failed. Local D1 query result:" >> "$GITHUB_STEP_SUMMARY"
+            echo "Post-restore verification JSON (local D1 only):" >&2
+            jq -c . restore-drill/query.json >&2
             jq . restore-drill/query.json >> "$GITHUB_STEP_SUMMARY"
             exit 1
           fi
