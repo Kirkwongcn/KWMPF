@@ -128,13 +128,15 @@ jobs:
         if: steps.e2e-scope.outputs.run_e2e != 'false'
         run: node node_modules/@playwright/test/cli.js install --with-deps chromium
         working-directory: apps/e2e
-      - run: bun run e2e
+      - name: Run Playwright E2E
+        id: playwright-e2e
         if: steps.e2e-scope.outputs.run_e2e != 'false'
+        run: bun run e2e
       - name: Validate the latest publication seed through the local API
         if: steps.e2e-scope.outputs.run_publication_seed == 'true'
         run: bash scripts/check-publication-seed.sh
       - uses: actions/upload-artifact@v4
-        if: failure() && steps.e2e-scope.outputs.run_e2e != 'false'
+        if: steps.playwright-e2e.outcome == 'failure'
         with:
           name: playwright-report
           path: apps/e2e/playwright-report
