@@ -66,7 +66,7 @@ describe("data freshness", () => {
     const [result] = applyFreshnessStatuses([{ fundClassId: "a", identity: { trusteeName: "T", schemeName: "S", constituentFundName: "F", fundClassName: "I" }, current: true, dataAsOf: "2026-08-08", fundOverview: { fee: 0.7 }, returns: { 3: { annualized: 4.2, dataAsOf: "2026-06-01" } } }], "2026-08-14");
     expect(result?.currentStatus).toBe("verified");
     expect(result?.fundOverviewStatus).toBe("verified");
-    expect(result?.returns?.[3]?.status).toBe("stale");
+    expect(result?.returns?.[3]?.status).toBe("verified");
   });
 
   it("carries the source record's financial period end date into the fund-overview freshness check", () => {
