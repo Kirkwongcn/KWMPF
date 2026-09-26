@@ -94,7 +94,7 @@ jobs:
             (SELECT count(*) FROM fund_class_versions WHERE snapshot_id = (SELECT snapshot_id FROM current_publication WHERE singleton = 1)) AS fund_class_version_rows,
             (SELECT count(*) FROM comparison_group_stats WHERE snapshot_id = (SELECT snapshot_id FROM current_publication WHERE singleton = 1)) AS comparison_group_stat_rows'
           bunx wrangler d1 execute RESTORE_DB --local --config apps/api/wrangler.restore.jsonc --command "$query" --json > restore-drill/query.json
-          jq -e --arg snapshot_id "$expected_snapshot_id" '
+          if ! jq -e --arg snapshot_id "$expected_snapshot_id" '
             .[0].results as $rows
             | ($rows | length) == 1
               and $rows[0].snapshot_id == $snapshot_id
