@@ -103,6 +103,7 @@ jobs:
               while IFS= read -r pattern; do
                 case "$pattern" in
                   ''|'#'*) continue ;;
+                  .github/workflows/deploy-staging.yml|.github/workflows/deploy-production.yml) continue ;;
                 esac
                 # shellcheck disable=SC2254
                 case "$path" in
