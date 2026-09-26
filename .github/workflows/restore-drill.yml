@@ -112,7 +112,8 @@ jobs:
             (SELECT count(*) FROM current_publication WHERE singleton = 1) AS current_publication_rows,
             (SELECT count(*) FROM publication_snapshots) AS publication_snapshot_rows,
             (SELECT count(*) FROM fund_class_versions WHERE snapshot_id = (SELECT snapshot_id FROM current_publication WHERE singleton = 1)) AS fund_class_version_rows,
-            (SELECT count(*) FROM comparison_group_stats WHERE snapshot_id = (SELECT snapshot_id FROM current_publication WHERE singleton = 1)) AS comparison_group_stat_rows'
+            (SELECT count(*) FROM comparison_group_stats WHERE snapshot_id = (SELECT snapshot_id FROM current_publication WHERE singleton = 1)) AS comparison_group_stat_rows,
+            (SELECT count(*) FROM comparison_group_stats AS stats LEFT JOIN publication_snapshots AS snapshots ON snapshots.snapshot_id = stats.snapshot_id WHERE snapshots.snapshot_id IS NULL) AS orphan_comparison_group_stat_rows'
           query_status=0
           bunx wrangler d1 execute RESTORE_DB --local --config apps/api/wrangler.restore.jsonc --command "$query" --json > restore-drill/query.json 2> restore-drill/query.stderr || query_status=$?
           if [[ -s restore-drill/query.json ]]; then
@@ -145,7 +146,8 @@ jobs:
               and $rows[0].current_publication_rows == 1
               and $rows[0].publication_snapshot_rows >= 1
               and $rows[0].fund_class_version_rows > 0
-              and $rows[0].comparison_group_stat_rows > 0
+              and ($rows[0].comparison_group_stat_rows | type) == "number"
+              and $rows[0].orphan_comparison_group_stat_rows == 0
           ' restore-drill/query.json >/dev/null; then
             echo "Post-restore invariant check failed." >&2
             echo "Local D1 invariant check failed. Query result:" >> "$GITHUB_STEP_SUMMARY"
@@ -153,6 +155,6 @@ jobs:
             jq '.[0].results[0]' restore-drill/query.json >> "$GITHUB_STEP_SUMMARY"
             exit 1
           fi
-          jq -r '.[0].results[0] | "Restored snapshot: \(.snapshot_id); fund classes: \(.fund_class_version_rows); comparison groups: \(.comparison_group_stat_rows)."' restore-drill/query.json >> "$GITHUB_STEP_SUMMARY"
+          jq -r '.[0].results[0] | "Restored snapshot: \(.snapshot_id); fund classes: \(.fund_class_version_rows); comparison groups: \(.comparison_group_stat_rows); orphan comparison rows: \(.orphan_comparison_group_stat_rows)."' restore-drill/query.json >> "$GITHUB_STEP_SUMMARY"
           printf 'Wrangler local D1 exit statuses: import=%s, verification=%s.\n' "$restore_status" "$query_status" >> "$GITHUB_STEP_SUMMARY"
           echo "Local D1 restore invariants passed (Wrangler exit statuses: import=$restore_status, verification=$query_status)."
