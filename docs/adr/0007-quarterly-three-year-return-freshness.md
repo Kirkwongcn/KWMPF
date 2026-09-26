@@ -19,10 +19,17 @@
 
 ## 背景
 
-2026-09-26 的來源稽核在 57 份成功下載的官方 trustee factsheet 中，最新三年回報截至 2026-07-31，距稽核日 57 日。既有 45 日月度門檻令 211 筆三年回報全部退出排名。候選中有 147 筆資料截至日期在 90 日內；18 筆較早的 2026-05-31 觀察及 48 筆 2025-12-31 觀察仍須排除。官方來源抽查及候選限制記錄於 KWMPF handoff follow-up report dated 2026-09-26.
+2026-09-26 的來源稽核在 57 份成功下載的官方 trustee factsheet 中，最新三年回報截至 2026-07-31，距稽核日 57 日。既有 45 日月度門檻令 211 筆舊觀察全部退出排名。MASS 日期修正後，213 筆候選中 161 筆在 90 日內；18 筆截至 2026-05-31 及 34 筆保留的 2025-12-31 觀察仍須排除。5 筆身份未能安全配對，沒有模糊配對。候選數據及來源限制見 PR #274。
 
 ## 後果
 
 - 90 日內且通過來源與身分驗證的季度回報可以進入三年排名。
 - 介面依 API 提供的 freshness methodology 顯示 90 日規則；排名行保留來源及截至日期，避免把季度資料誤認為當月數值。
 - 每次發布仍須核對非空排名與三筆官方來源；候選本身需獨立審閱及批准。
+
+
+## 驗證紀錄（2026-09-27）
+
+使用 PR #273 修正日期後的候選 observations 及本 ADR 的 90 日規則，以 2026-09-26 platform snapshot（451 個基金類別）產生 seed，套用 213 筆觀察。將兩份 D1 migration 及 seed 載入記憶體 SQLite，再用 API 的 returnGraceDaysForPeriod 與 evaluateFreshness helpers 評估每個三年回報，2026-09-27 結果為 161 筆 eligible、52 筆 stale；排名非空。
+
+三筆官方 factsheet 抽樣一致：AIA 22.31%（2026-05-31，因超過 90 日排除）、BEA 12.95%（2026-06-30，納入）、Fidelity HK Tracker 11.90%（2026-07-31，納入）。本機缺少 Bun/Wrangler，Bash 啟動受限，因此未執行 Wrangler HTTP GET gate，也未接觸 staging 或 production。PR #271 已把候選 overlay 接入該 gate，待 90 日政策及 workflow 可在同一 CI base 使用後重跑。
