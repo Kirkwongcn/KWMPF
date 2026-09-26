@@ -1080,7 +1080,7 @@ app.get("/rankings", async (context) => {
     metric === "return"
       ? returnGraceDaysForPeriod(
           parsed[0]?.publication.provenance.freshnessPolicy,
-          periodYears,
+          periodYears ?? defaultRankingPeriod,
         )
       : fundOverviewGraceDays(
           parsed[0]?.publication.provenance.freshnessPolicy,
