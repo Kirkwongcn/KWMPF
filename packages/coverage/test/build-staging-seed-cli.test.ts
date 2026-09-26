@@ -8,7 +8,7 @@ const seedScript = fileURLToPath(
 
 it("requires a trustee return overlay instead of falling back to a stale file", () => {
   const result = spawnSync(
-    process.execPath,
+    "bun",
     [seedScript, "--source", "unused-source.json", "--output", "unused-seed.sql"],
     { encoding: "utf8" },
   );
