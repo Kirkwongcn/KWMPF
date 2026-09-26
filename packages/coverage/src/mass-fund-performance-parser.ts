@@ -34,7 +34,7 @@ export function parseMassFundPerformance(
 
 function massReportDataAsOf(text: string): string {
   const match = text.match(
-    /Fund Data as at\s+([A-Za-z]+)[\s\S]{0,80}?\b(\d{1,2}),\s*(\d{4})/i,
+    /Fund Data as at\s+([A-Za-z]+)[^\r\n]*(?:\r?\n[^\r\n]*){0,2}?\b(\d{1,2}),\s*(\d{4})/i,
   );
   if (!match) throw new Error("MASS fund data-as-of date is missing");
   return parseMassDate(`${match[1]} ${match[2]}, ${match[3]}`);
