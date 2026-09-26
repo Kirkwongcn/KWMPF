@@ -77,7 +77,7 @@ jobs:
       - name: Download the exact source run artifact
         uses: actions/download-artifact@v5
         with:
-          name: raw-source-archive-${{ github.event.workflow_run.id }}
+          artifact-ids: ${{ needs.discover.outputs.artifact_id }}
           path: ${{ runner.temp }}/raw-source-artifact
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ github.token }}
