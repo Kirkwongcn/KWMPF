@@ -42,6 +42,25 @@ test("窄螢幕導覽文字維持單行並保留觸控尺寸", async ({ page }) 
   }
 });
 
+test("每頁都可經第一個鍵盤焦點跳至主內容", async ({ page }) => {
+  for (const { path } of pages) {
+    await page.goto(path);
+    await expect(
+      page.getByRole("link", { name: "跳至主內容" }),
+    ).toHaveAttribute("href", "#main-content");
+    await expect(page.getByRole("main")).toHaveAttribute("id", "main-content");
+  }
+
+  await page.goto("/");
+  const skipLink = page.getByRole("link", { name: "跳至主內容" });
+  await page.keyboard.press("Tab");
+  await expect(skipLink).toBeFocused();
+  await expect(skipLink).toBeInViewport();
+
+  await page.keyboard.press("Enter");
+  await expect(page.getByRole("main")).toBeFocused();
+});
+
 test("每頁都可經主要導覽互相跳轉", async ({ page }) => {
   await page.goto("/");
 
