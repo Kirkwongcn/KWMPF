@@ -1,0 +1,136 @@
+name: Archive source snapshot in R2
+
+on:
+  workflow_run:
+    workflows:
+      - Refresh source snapshot
+    types:
+      - completed
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: source-archive-${{ github.event.workflow_run.id }}
+  cancel-in-progress: false
+
+jobs:
+  discover:
+    if: >-
+      ${{
+        github.event.workflow_run.head_branch == 'main' &&
+        github.event.workflow_run.head_repository.full_name == github.repository &&
+        contains(fromJSON('["schedule","workflow_dispatch"]'), github.event.workflow_run.event)
+      }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      available: ${{ steps.artifact.outputs.available }}
+      artifact_id: ${{ steps.artifact.outputs.artifact_id }}
+    steps:
+      - name: Find the raw source artifact
+        id: artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_RUN_ID: ${{ github.event.workflow_run.id }}
+        run: |
+          set -euo pipefail
+          artifact_name="raw-source-archive-${SOURCE_RUN_ID}"
+          response="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${SOURCE_RUN_ID}/artifacts?per_page=100")"
+          match_count="$(jq --arg name "${artifact_name}" '[.artifacts[] | select(.name == $name and .expired == false)] | length' <<<"${response}")"
+          if [[ "${match_count}" == "0" ]]; then
+            echo "available=false" >>"${GITHUB_OUTPUT}"
+            echo "No unexpired raw source archive exists for run ${SOURCE_RUN_ID}; no staging approval or R2 job is needed." >>"${GITHUB_STEP_SUMMARY}"
+            exit 0
+          fi
+          [[ "${match_count}" == "1" ]] || { echo "Expected one raw source artifact, found ${match_count}." >&2; exit 1; }
+          artifact_id="$(jq --arg name "${artifact_name}" -r '.artifacts[] | select(.name == $name and .expired == false) | .id' <<<"${response}")"
+          echo "available=true" >>"${GITHUB_OUTPUT}"
+          echo "artifact_id=${artifact_id}" >>"${GITHUB_OUTPUT}"
+          echo "Found raw source artifact ${artifact_id} for run ${SOURCE_RUN_ID}." >>"${GITHUB_STEP_SUMMARY}"
+
+  archive:
+    needs: discover
+    if: ${{ needs.discover.outputs.available == 'true' }}
+    environment: staging
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      actions: read
+      contents: read
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      SOURCE_RUN_ID: ${{ github.event.workflow_run.id }}
+      SOURCE_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+      SOURCE_ARTIFACT_ID: ${{ needs.discover.outputs.artifact_id }}
+      SOURCE_CREATED_AT: ${{ github.event.workflow_run.created_at }}
+      SOURCE_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          persist-credentials: false
+
+      - name: Download the exact source run artifact
+        uses: actions/download-artifact@v5
+        with:
+          name: raw-source-archive-${{ github.event.workflow_run.id }}
+          path: ${{ runner.temp }}/raw-source-artifact
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+
+      - name: Validate and package the source archive
+        run: |
+          set -euo pipefail
+          mkdir -p "${RUNNER_TEMP}/source-archive"
+          scripts/package-source-snapshot-archive.sh \
+            "${RUNNER_TEMP}/raw-source-artifact" \
+            "${SOURCE_RUN_ID}" \
+            "${SOURCE_HEAD_SHA}" \
+            "${SOURCE_ARTIFACT_ID}" \
+            "${SOURCE_CREATED_AT}" \
+            "${SOURCE_CONCLUSION}" \
+            "${RUNNER_TEMP}/source-archive/raw-source.tar.gz" \
+            "${RUNNER_TEMP}/source-archive/manifest.json"
+
+      - name: Upload archive and manifest, then verify both from R2
+        env:
+          SOURCE_ARCHIVE: ${{ runner.temp }}/source-archive/raw-source.tar.gz
+          SOURCE_MANIFEST: ${{ runner.temp }}/source-archive/manifest.json
+        run: |
+          set -euo pipefail
+          object_prefix="source-archives/refresh-source-snapshot/run-${SOURCE_RUN_ID}"
+          archive_key="${object_prefix}/raw-source.tar.gz"
+          manifest_key="${object_prefix}/manifest.json"
+          readback_dir="${RUNNER_TEMP}/r2-readback"
+          mkdir -p "${readback_dir}"
+
+          bash scripts/run-wrangler-redacted.sh npx --yes wrangler@4.120.0 r2 object put \
+            "kwmpf-staging-raw/${archive_key}" \
+            --remote --config apps/api/wrangler.jsonc \
+            --file "${SOURCE_ARCHIVE}" --content-type application/gzip
+          bash scripts/run-wrangler-redacted.sh npx --yes wrangler@4.120.0 r2 object put \
+            "kwmpf-staging-raw/${manifest_key}" \
+            --remote --config apps/api/wrangler.jsonc \
+            --file "${SOURCE_MANIFEST}" --content-type application/json
+
+          bash scripts/run-wrangler-redacted.sh npx --yes wrangler@4.120.0 r2 object get \
+            "kwmpf-staging-raw/${archive_key}" \
+            --remote --config apps/api/wrangler.jsonc \
+            --file "${readback_dir}/raw-source.tar.gz"
+          bash scripts/run-wrangler-redacted.sh npx --yes wrangler@4.120.0 r2 object get \
+            "kwmpf-staging-raw/${manifest_key}" \
+            --remote --config apps/api/wrangler.jsonc \
+            --file "${readback_dir}/manifest.json"
+          cmp "${SOURCE_ARCHIVE}" "${readback_dir}/raw-source.tar.gz"
+          cmp "${SOURCE_MANIFEST}" "${readback_dir}/manifest.json"
+
+          {
+            echo "Archived source run ${SOURCE_RUN_ID} from commit ${SOURCE_HEAD_SHA}."
+            echo "- R2 prefix: `\${object_prefix}/`"
+            echo "- Artifact ID: ${SOURCE_ARTIFACT_ID}"
+            echo "- Archive SHA-256: $(jq -r '.archive.sha256' "${SOURCE_MANIFEST}")"
+            echo "- R2 readback matched both uploaded objects."
+          } >>"${GITHUB_STEP_SUMMARY}"
