@@ -58,8 +58,23 @@ jobs:
             echo "batch=$batch"
             echo "as_of=$as_of"
           } >> "$GITHUB_OUTPUT"
+      - name: Resolve the latest trustee-return candidate
+        id: return-observations
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          candidates=(data/coverage/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]-official-return-observations-candidate.json)
+          if ((${#candidates[@]} == 0)); then
+            echo "No reviewed trustee return observation candidate exists." >&2
+            exit 1
+          fi
+          path="$(printf '%s\n' "${candidates[@]}" | LC_ALL=C sort | tail -n 1)"
+          test -s "$path"
+          echo "Staging will apply $path."
+          echo "path=$path" >> "$GITHUB_OUTPUT"
+          echo "Trustee return observations: $path" >> "$GITHUB_STEP_SUMMARY"
       - name: Build full staging publication seed
-        run: bun run --filter @kwmpf/coverage publication-seed -- --source ../../${{ steps.source.outputs.path }} --output /tmp/kwmpf-staging.sql
+        run: bun run --filter @kwmpf/coverage publication-seed -- --source ../../${{ steps.source.outputs.path }} --return-observations ../../${{ steps.return-observations.outputs.path }} --output /tmp/kwmpf-staging.sql
       - name: Prepare staging Worker configuration
         env:
           D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
@@ -140,6 +155,13 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: apps/api
           command: r2 object put kwmpf-staging-raw/candidates/mpfa-platform-${{ steps.source.outputs.as_of }}/${{ steps.source.outputs.batch }}-mpf-fund-platform.json --remote --file ../../${{ steps.source.outputs.path }}
+      - name: Archive staging return observations
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: apps/api
+          command: r2 object put kwmpf-staging-raw/candidates/mpfa-platform-${{ steps.source.outputs.as_of }}/${{ steps.source.outputs.batch }}-return-observations.json --remote --file ../../${{ steps.return-observations.outputs.path }}
       - name: Publish full staging snapshot
         id: publish-snapshot
         uses: cloudflare/wrangler-action@v4
@@ -167,6 +189,12 @@ jobs:
           test "$funds" -gt 0
           rankings="$(curl --fail --silent --show-error "$url/rankings?metric=return&period=1")"
           test "$(jq -r '.rankings | length' <<<"$rankings")" -gt 0
+          three_year="$(curl --fail --silent --show-error "$url/rankings?metric=return&period=3")"
+          three_year_rows="$(jq -r '.rankings | length' <<<"$three_year")"
+          if ((three_year_rows == 0)); then
+            echo "Staging has no eligible three-year return ranking rows." >&2
+            exit 1
+          fi
       - name: Build web against deployed API
         run: bun run --filter @kwmpf/web build
         env:
