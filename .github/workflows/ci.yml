@@ -96,6 +96,8 @@ jobs:
                 run_publication_seed=true
               elif [[ "$path" =~ ^data/coverage/[0-9]{4}-[0-9]{2}-[0-9]{2}-official-return-observations-report\.json$ ]]; then
                 :
+              elif [[ "$path" =~ ^(apps/(api|web)/.*|packages/coverage/.*)\.(test|spec)\.(ts|tsx)$ ]]; then
+                :
               elif [[ "$path" =~ ^\.github/workflows/[^/]+\.yml$ || "$path" =~ ^docs/ ]]; then
                 :
               else
@@ -119,7 +121,7 @@ jobs:
           echo "run_publication_seed=$run_publication_seed" >> "$GITHUB_OUTPUT"
           echo "return_observations=$return_observations" >> "$GITHUB_OUTPUT"
           if [[ "$run_e2e" == false ]]; then
-            echo "Skipped Playwright E2E: every changed path is documentation, GitHub Actions workflow configuration, or a data-only source/candidate/report; verify and any required publication-seed checks still run." >> "$GITHUB_STEP_SUMMARY"
+            echo "Skipped Playwright E2E: every changed path is documentation, GitHub Actions workflow configuration, unit-test-only code, or a data-only source/candidate/report; verify and any required publication-seed checks still run." >> "$GITHUB_STEP_SUMMARY"
           fi
           if [[ "$run_publication_seed" == true ]]; then
             if [[ -n "$return_observations" ]]; then
