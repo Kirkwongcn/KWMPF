@@ -91,9 +91,7 @@ test(
     await page.goto("/");
 
     const layout = await page.evaluate(() => {
-      const brand = document
-        .querySelector(".kw-brand")
-        ?.getBoundingClientRect();
+      const brand = document.querySelector(".kw-brand")?.getBoundingClientRect();
       const nav = document.querySelector(".kw-nav")?.getBoundingClientRect();
       const links = Array.from(document.querySelectorAll(".kw-nav a"));
       return {
