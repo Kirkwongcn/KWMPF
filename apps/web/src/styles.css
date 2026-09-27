@@ -974,6 +974,25 @@ body {
   }
 }
 
+@media (max-width: 360px) {
+  .kw-header__inner {
+    gap: 8px;
+  }
+  .kw-brand {
+    gap: 8px;
+  }
+  .kw-brand small {
+    font-size: 8px;
+    letter-spacing: 0.04em;
+  }
+  .kw-nav {
+    gap: 6px;
+  }
+  .kw-nav a {
+    font-size: 12px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
