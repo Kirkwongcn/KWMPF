@@ -25,6 +25,9 @@ function disclosure(
     factSheetUrl: "https://example.test/test.pdf",
     factSheetSource: "trustee",
     factSheetAsOf: "2026-06-30",
+    temporalScopes: {
+      allocation: { kind: "point-in-time", asOf: "2026-06-30" },
+    },
     allocations: [
       {
         heading: "Fund Allocation by Asset Class 資產類別投資分布",

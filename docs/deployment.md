@@ -59,6 +59,12 @@ fund class，並且 `Cache-Control` 必須是 `public, max-age=300, stale-while-
 不再硬編在種子腳本內。ADR 0002 的 edge cache 以此識別碼分界，所以每個官方截至日期
 都會得到自己的快取世代。
 
+### Production D1 backup and restore
+
+`Backup production D1` is scheduled for Sundays at 03:17 UTC (11:17 Hong Kong time) and can also be dispatched manually. It uses the protected `production` environment, so each run waits for its environment approval before accessing production credentials. The workflow exports `kwmpf-production`, checks that the published snapshot ID did not change during export, uploads SQL and a SHA-256/byte-count manifest to `kwmpf-production-raw/backups/<backup-id>/`, then reads both objects back and verifies them. It shares a concurrency group with `Deploy production` so the export cannot overlap a deployment.
+
+The D1 export is read-only; the workflow writes new backup objects to production R2. No automatic object expiration is configured while the retention policy remains undecided. A successful staging restore drill does not prove production recovery. `D1 Restore Drill` can select production as its source, but requires production environment approval and restores only into runner-local D1; no production restore has been performed.
+
 ## 來源更新
 
 `Refresh source snapshot` 每星期三 03:00（香港時間）自動執行，也可以手動觸發。它只產生
@@ -83,9 +89,11 @@ fund class，並且 `Cache-Control` 必須是 `public, max-age=300, stale-while-
 
 ### 尚未處理
 
-- 已發布快照的原始 HTML 只保留在 workflow artifact（30 日），未按規格長期存入 R2；
-  `Deploy production` 目前只把來源 JSON 封存到 R2。
+- 已發布快照的原始 HTML 只保留在 workflow artifact（30 日），未按規格長期存入 R2。
+- `Deploy production` 會在資料庫改動前把 D1 匯出、manifest 和 rollback timestamp 存入 production R2；另外封存來源 JSON 及 return-observations 候選資料。
+- Production D1 backups now have a weekly, production-environment-gated workflow, but a successful run and a production-source restore drill still need to be verified.
 - `D1 Restore Drill` 只有手動觸發，未有每季執行的紀錄。
+- R2 retention remains undecided; no automatic expiration or deletion policy is configured.
 
 ## Trustee factsheet PDF archive
 

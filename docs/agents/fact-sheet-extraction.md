@@ -14,6 +14,16 @@
 檔案編號的前綴代表計劃類型（`MT` 集成信託、`IS` 行業、`ES` 僱主營辦），不可由編號推算。
 更新做法：開新的日期目錄，由登記冊重新抄錄全部計劃，再重跑 seed。
 
+## Field date handling
+
+`factSheetAsOf` is the date associated with the factsheet document selector. Do not treat it as the observation date for every table or metric. Use `temporalScopes` for dates or periods tied to a specific field: point-in-time dates for allocations/holdings/commentary, a financial period for FER, and a lookback period for risk. Populate a field scope only when the source explicitly states it and the parser can tie it to that field. Missing scopes stay absent; never inherit the document date.
+
+See `docs/adr/0008-field-scoped-fact-sheet-temporal-scope.md`.
+
+The AIA Prime Value Choice contract records the Top Ten Holdings date only when `TOP TEN HOLDINGS` and `As at <date>` occur on the same reconstructed PDF line. The May 2026 official factsheet labels that field `As at 31 May 2026`; its allocation block has no separate date label, so the document date is not copied there. Other source contracts remain unscoped until their field labels and dates can be tied together from the official PDF.
+
+The Fidelity trustee factsheet contract records FER only from the explicit `Year <year> Fund Expense Ratio` label. It records commentary's `as of` footnote only when the `^` marker is also attached to the Fund Commentary heading, and sets the risk lookback end to the document reporting date only when the official note states that the three-year window runs to that reporting date. It does not infer a Top 10 Holdings date from the document header.
+
 ## Fact sheet allocation and top holdings
 
 便覽的「配置」及「十大持倉」由 `packages/coverage/src/fact-sheet-allocation.ts` 抽取，

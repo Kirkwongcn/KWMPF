@@ -839,14 +839,23 @@ describe("cumulative returns", () => {
     expect(within(holdings).getByText("9.36%")).toBeVisible();
   });
 
-  it("marks the fact sheet and platform dates as not fully comparable", async () => {
+  it("separates the document date from the platform snapshot date", async () => {
     renderWithDisclosure(disclosure);
 
-    expect(
-      await screen.findByText(
-        /便覽截至 2025-11-30，平台數據截至 2026-07-31，兩者期別不同，並非完全可比/,
+    const factSheet = within(
+      await screen.findByRole("region", { name: "投資組合披露" }),
+    );
+    const notes = await factSheet.findAllByRole("note");
+    const dateNote = notes.find((note) =>
+      note.textContent?.includes(
+        "單憑文件日期未能確認每項披露是否反映同一期別",
       ),
-    ).toBeVisible();
+    );
+
+    expect(dateNote).toBeDefined();
+    if (!dateNote) throw new Error("The document-date note was not rendered");
+    expect(dateNote).toHaveTextContent("2025-11-30");
+    expect(dateNote).toHaveTextContent("2026-07-31");
   });
 
   it("says the trustee source is simply not transcribed yet", async () => {

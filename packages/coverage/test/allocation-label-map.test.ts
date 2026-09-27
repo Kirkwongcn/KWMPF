@@ -117,7 +117,7 @@ describe("mapDisclosureAllocation", () => {
 
     const mapped = mapDisclosureAllocation(
       {
-        factSheetAsOf: "2026-05-31",
+        allocationAsOf: "2026-05-31",
         allocations: [
           {
             heading: "ASSET ALLOCATION 資產分佈",
@@ -154,7 +154,7 @@ describe("mapDisclosureAllocation", () => {
     expect(
       mapDisclosureAllocation(
         {
-          factSheetAsOf: "2026-05-31",
+          allocationAsOf: "2026-05-31",
           allocations: [
             {
               heading: "ASSET ALLOCATION 資產分佈",
@@ -187,7 +187,7 @@ describe("mapDisclosureAllocation", () => {
     expect(
       mapDisclosureAllocation(
         {
-          factSheetAsOf: "2026-06-30",
+          allocationAsOf: "2026-06-30",
           allocations: [
             {
               heading: "Portfolio Allocation 投資組合分佈",
@@ -217,7 +217,7 @@ describe("mapDisclosureAllocation", () => {
           allocations: [],
           unavailableFields: ["allocation"],
           unavailableKinds: { allocation: "chart-only" },
-          factSheetAsOf: "2026-06-30",
+          allocationAsOf: "2026-06-30",
         },
         new Map(),
         version,
@@ -469,7 +469,7 @@ describe("buildAllocationLabelMap", () => {
         resolve(repo, "data/sources/2026-08-31/fund-fact-sheet-disclosures.json"),
         "utf8",
       ),
-    ) as { funds: { allocations: { heading: string; entries: { label: string; percent: number }[] }[]; unavailableFields?: string[]; unavailableKinds?: Record<string, "chart-only">; factSheetAsOf: string }[] };
+    ) as { funds: { allocations: { heading: string; entries: { label: string; percent: number }[] }[]; unavailableFields?: string[]; unavailableKinds?: Record<string, "chart-only"> }[] };
     const lookup = toLabelLookup(mapFile);
     let mapped = 0;
     for (const fund of disclosures.funds) {
@@ -478,7 +478,6 @@ describe("buildAllocationLabelMap", () => {
           allocations: fund.allocations ?? [],
           unavailableFields: fund.unavailableFields,
           unavailableKinds: fund.unavailableKinds,
-          factSheetAsOf: fund.factSheetAsOf,
         },
         lookup,
         mapFile.generatedAt,
