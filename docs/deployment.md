@@ -94,3 +94,9 @@ The D1 export is read-only; the workflow writes new backup objects to production
 - Production D1 backups now have a weekly, production-environment-gated workflow, but a successful run and a production-source restore drill still need to be verified.
 - `D1 Restore Drill` 只有手動觸發，未有每季執行的紀錄。
 - R2 retention remains undecided; no automatic expiration or deletion policy is configured.
+
+## Trustee factsheet PDF archive
+
+The manual `Archive trustee fact sheets to R2` workflow accepts a dated `source_batch` from `data/sources/<YYYY-MM-DD>/trustee-fact-sheet-links.json`. It downloads PDFs sequentially, verifies HTTPS redirects, PDF signatures, byte counts and SHA-256 values, and preserves per-file failures in a manifest. GitHub retains the intermediate artifact for 30 days so the protected archive job can consume it.
+
+When at least one PDF is available, the second job waits for the protected `staging` environment, packages a deterministic archive and index, then stores both under `kwmpf-staging-raw/source-archives/trustee-fact-sheets/<batch>/run-<id>/`. It reads both objects back and compares the bytes with the uploaded files. The workflow does not touch D1 or deploy a site. A successful PR check does not run this workflow; the first real R2 write still needs a manual dispatch and staging approval.

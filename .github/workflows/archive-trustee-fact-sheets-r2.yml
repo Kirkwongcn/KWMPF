@@ -1,0 +1,109 @@
+name: Archive trustee fact sheets to R2
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_batch:
+        description: Dated source-link batch in data/sources (YYYY-MM-DD)
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: trustee-fact-sheet-archive-${{ inputs.source_batch }}
+  cancel-in-progress: false
+
+jobs:
+  download:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    outputs:
+      downloaded_count: ${{ steps.fetch.outputs.downloaded_count }}
+    env:
+      SOURCE_BATCH: ${{ inputs.source_batch }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-source-archive.txt
+      - name: Install the pinned source-download dependency
+        run: python -m pip install --requirement requirements-source-archive.txt
+      - name: Download and verify trustee PDF sources
+        id: fetch
+        run: |
+          set -euo pipefail
+          output_dir="$RUNNER_TEMP/trustee-fact-sheets"
+          python scripts/fetch-trustee-fact-sheets.py \
+            --source-batch "$SOURCE_BATCH" \
+            --source-commit "$GITHUB_SHA" \
+            --links "data/sources/$SOURCE_BATCH/trustee-fact-sheet-links.json" \
+            --output-dir "$output_dir"
+          downloaded_count="$(jq -er '.downloadedCount' "$output_dir/manifest.json")"
+          planned_count="$(jq -er '.plannedCount' "$output_dir/manifest.json")"
+          failed_count="$(jq -er '.failedCount' "$output_dir/manifest.json")"
+          echo "downloaded_count=$downloaded_count" >> "$GITHUB_OUTPUT"
+          echo "Downloaded $downloaded_count of $planned_count trustee PDFs; failures: $failed_count." >> "$GITHUB_STEP_SUMMARY"
+          echo "artifact_dir=$output_dir" >> "$GITHUB_OUTPUT"
+      - name: Upload the verified source batch for the protected R2 job
+        uses: actions/upload-artifact@v7
+        with:
+          name: trustee-fact-sheets-${{ inputs.source_batch }}-${{ github.run_id }}
+          path: ${{ steps.fetch.outputs.artifact_dir }}
+          if-no-files-found: error
+          retention-days: 30
+
+  archive:
+    if: github.ref == 'refs/heads/main' && needs.download.result == 'success' && needs.download.outputs.downloaded_count != '0'
+    needs: download
+    environment: staging
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SOURCE_BATCH: ${{ inputs.source_batch }}
+      SOURCE_ARTIFACT_NAME: trustee-fact-sheets-${{ inputs.source_batch }}-${{ github.run_id }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@v7
+        with:
+          name: trustee-fact-sheets-${{ inputs.source_batch }}-${{ github.run_id }}
+          path: ${{ runner.temp }}/trustee-fact-sheets-input
+      - name: Validate and package a deterministic private archive
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/trustee-fact-sheets-package"
+          bash scripts/package-trustee-fact-sheet-archive.sh \
+            "$RUNNER_TEMP/trustee-fact-sheets-input" \
+            "$SOURCE_BATCH" \
+            "$GITHUB_RUN_ID" \
+            "$GITHUB_SHA" \
+            "$SOURCE_ARTIFACT_NAME" \
+            "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            "$RUNNER_TEMP/trustee-fact-sheets-package/trustee-fact-sheets.tar.gz" \
+            "$RUNNER_TEMP/trustee-fact-sheets-package/index.json"
+      - name: Store the archive and index in private staging R2
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          package_dir="$RUNNER_TEMP/trustee-fact-sheets-package"
+          object_prefix="$(jq -er '.objectPrefix' "$package_dir/index.json")"
+          archive_key="$(jq -er '.archive.key' "$package_dir/index.json")"
+          index_key="$object_prefix/index.json"
+          bucket="kwmpf-staging-raw"
+          scripts/run-wrangler-redacted.sh npx --yes wrangler@4.120.0 r2 object put "$bucket/$archive_key" --remote --file "$package_dir/trustee-fact-sheets.tar.gz" --content-type application/gzip
+          scripts/run-wrangler-redacted.sh npx --yes wrangler@4.120.0 r2 object put "$bucket/$index_key" --remote --file "$package_dir/index.json" --content-type application/json
+          scripts/run-wrangler-redacted.sh npx --yes wrangler@4.120.0 r2 object get "$bucket/$archive_key" --remote --file "$RUNNER_TEMP/roundtrip-trustee-fact-sheets.tar.gz"
+          scripts/run-wrangler-redacted.sh npx --yes wrangler@4.120.0 r2 object get "$bucket/$index_key" --remote --file "$RUNNER_TEMP/roundtrip-index.json"
+          cmp "$package_dir/trustee-fact-sheets.tar.gz" "$RUNNER_TEMP/roundtrip-trustee-fact-sheets.tar.gz"
+          cmp "$package_dir/index.json" "$RUNNER_TEMP/roundtrip-index.json"
+          echo "Stored and verified $bucket/$object_prefix (archive and index read back byte-for-byte)." >> "$GITHUB_STEP_SUMMARY"
