@@ -22,11 +22,11 @@ export function parseHaitongFundPerformance(text: string, sourceUrl: string): Fu
     if (annualizedIndex < 0) continue;
     const calendarIndex = block.search(/CALENDAR YEAR RETURN/i);
     const annualizedTable = block.slice(annualizedIndex, calendarIndex < 0 ? undefined : calendarIndex);
-    const rows = [...annualizedTable.matchAll(/\b([AT])\s+((?:N\/A|[+-]?\d+(?:\.\d+)?%)(?:\s+(?:N\/A|[+-]?\d+(?:\.\d+)?%)){3,})/g)];
+    const rows = [...annualizedTable.matchAll(/\b([AT])\s+((?:N\/A(?:▲)?|不適用(?:▲)?|[+-]?\d+(?:\.\d+)?%)(?:\s+(?:N\/A(?:▲)?|不適用(?:▲)?|[+-]?\d+(?:\.\d+)?%))*)/gi)];
     for (const row of rows) {
-      const values = row[2]!.match(/N\/A|[+-]?\d+(?:\.\d+)?%/g) ?? [];
+      const values = row[2]!.match(/N\/A|不適用|[+-]?\d+(?:\.\d+)?%/gi) ?? [];
       const threeYear = values[1];
-      if (!threeYear || /N\/A/i.test(threeYear)) continue;
+      if (!threeYear || /N\/A|不適用/i.test(threeYear)) continue;
       results.push({
         schemeName: "Haitong MPF Retirement Fund",
         constituentFundName: "Haitong " + titleCaseHaitongFundName(name),
