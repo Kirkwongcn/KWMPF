@@ -819,6 +819,7 @@ describe("publication snapshot", () => {
         10,
         12,
         0,
+        JSON.stringify({}),
       )
       .run();
     await bindings.DB.prepare(
@@ -839,6 +840,7 @@ describe("publication snapshot", () => {
         2,
         2,
         1,
+        JSON.stringify({}),
       )
       .run();
 
@@ -1943,8 +1945,8 @@ describe("publication snapshot", () => {
       `INSERT INTO comparison_group_stats (
          snapshot_id, comparison_group, avg_allocation, avg_top10_concentration,
          avg_volatility_3y, fund_count, allocation_count, top10_count, volatility_count,
-         insufficient_sample
-       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+         insufficient_sample, source_dates
+       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     )
       .bind(
         snapshotId,
