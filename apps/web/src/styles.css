@@ -451,6 +451,9 @@ body {
   white-space: nowrap;
 }
 
+.kw-table-hint {
+  display: none;
+}
 .kw-table-wrap,
 .kw-table-scroll {
   width: 100%;
@@ -995,6 +998,21 @@ body {
   }
   .kw-field {
     flex: 1 1 100%;
+  }
+  .kw-table-hint {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0 0 8px;
+    color: var(--kw-muted-strong);
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .kw-table-hint::after {
+    color: var(--kw-teal);
+    content: "↔";
+    font-size: 1rem;
+    margin-inline-start: 6px;
   }
 }
 
