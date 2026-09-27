@@ -7,6 +7,11 @@ const group: ComparisonGroupStatsRow = {
   comparisonGroup: "test", avgAllocation: { equity: 50, bond: 40, cashAndOther: 10 },
   avgTop10Concentration: 50, avgVolatility3y: 50, fundCount: 3,
   allocationCount: 3, top10Count: 3, volatilityCount: 3, insufficientSample: false,
+  sourceDates: {
+    allocation: { from: "2026-06-30", to: "2026-06-30", undatedCount: 0 },
+    top10Concentration: { from: "2026-05-31", to: "2026-05-31", undatedCount: 0 },
+    volatility3y: { from: "2026-08-31", to: "2026-08-31", undatedCount: 0 },
+  },
 };
 const values = (value: number) => ({ equity: value, top10Concentration: value, volatility3y: value });
 

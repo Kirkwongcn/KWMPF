@@ -67,5 +67,65 @@ if ((ranking_count == 0)); then
 fi
 
 excluded_count="$(jq -r '.excludedStaleCount // "unknown"' <<<"$response")"
+fact_sheet_source="$(find "$root/data/sources" -mindepth 2 -maxdepth 2 -type f -name 'fund-fact-sheet-disclosures.json' -print | sort | tail -n 1)"
+if [[ ! -f "$fact_sheet_source" ]]; then
+  echo "The latest publication seed has no factsheet disclosure source." >&2
+  exit 1
+fi
+
+checked_interpretations=0
+while IFS= read -r fund_id; do
+  disclosure="$(jq -ce --arg id "$fund_id" '[.funds[] | select(.fundClassIds | index($id))][0] // empty' "$fact_sheet_source" 2>/dev/null || true)"
+  [[ -n "$disclosure" ]] || continue
+  platform_record="$(jq -ce --arg id "$fund_id" '[.records[] | select(.fundClassId == $id)][0] // empty' "$source_snapshot")"
+  published="$(curl --fail --silent --show-error "$api_url/fund-classes/$fund_id")"
+  interpretation="$(curl --fail --silent --show-error "$api_url/fund-classes/$fund_id/interpretation")"
+
+  if ! jq -e \
+    --argjson disclosure "$disclosure" \
+    --argjson platform "$platform_record" \
+    --argjson published "$published" \
+    '
+      .provenance as $p
+      | ($p.equity.fundSourceUrl == $disclosure.factSheetUrl)
+        and ($p.equity.fundDocumentAsOf == $disclosure.factSheetAsOf)
+        and ($p.equity.fundFieldAsOf == ($published.mappedAllocation.asOf // null))
+        and ($p.top10Concentration.fundSourceUrl == $disclosure.factSheetUrl)
+        and ($p.top10Concentration.fundDocumentAsOf == $disclosure.factSheetAsOf)
+        and ($p.top10Concentration.fundFieldAsOf == (if $disclosure.temporalScopes.topHoldings.kind == "point-in-time" then $disclosure.temporalScopes.topHoldings.asOf else null end))
+        and ($p.volatility3y.fundSourceUrl == $platform.sourceUrl)
+        and ($p.volatility3y.fundFieldAsOf == $platform.dataAsOf)
+        and ($p.equity.groupSourceLabel == "同組已核實基金便覽樣本（來源各異）")
+        and ($p.top10Concentration.groupSourceLabel == "同組已核實基金便覽樣本（來源各異）")
+        and ($p.volatility3y.groupSourceLabel == "積金局基金平台快照")
+        and ([ $p.equity, $p.top10Concentration, $p.volatility3y ] | all(.[];
+          (.groupSampleCount | type) == "number"
+          and (.groupMemberCount | type) == "number"
+          and .groupSampleCount <= .groupMemberCount
+          and (.groupSampleDates | type) == "object"
+          and (.groupSampleDates.undatedCount | type) == "number"
+          and .groupSampleDates.undatedCount <= .groupSampleCount
+        ))
+    ' <<<"$interpretation" >/dev/null; then
+    echo "Interpretation provenance does not match the published payload or source files for $fund_id." >&2
+    jq '{provenance}' <<<"$interpretation" >&2
+    exit 1
+  fi
+
+  printf 'Interpretation provenance passed: fund=%s platformAsOf=%s factsheetAsOf=%s\n' \
+    "$fund_id" \
+    "$(jq -r '.dataAsOf' <<<"$platform_record")" \
+    "$(jq -r '.factSheetAsOf' <<<"$disclosure")"
+  checked_interpretations=$((checked_interpretations + 1))
+  if ((checked_interpretations == 3)); then
+    break
+  fi
+done < <(jq -r '.rankings[].fundClassId' <<<"$response")
+
+if ((checked_interpretations < 3)); then
+  echo "Expected 3 ranked funds with factsheets for interpretation provenance checks; found $checked_interpretations." >&2
+  exit 1
+fi
+
 printf 'Publication seed passed: source=%s dataAsOf=%s rankingRows=%s excludedStaleCount=%s\n' \
   "$source_relative" "$source_as_of" "$ranking_count" "$excluded_count"

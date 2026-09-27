@@ -131,6 +131,23 @@ type InterpretationFactor = {
   text: string;
 };
 
+type MetricSampleDates = {
+  from: string | null;
+  to: string | null;
+  undatedCount: number;
+};
+
+type InterpretationProvenance = {
+  fundSourceLabel: string;
+  fundSourceUrl: string | null;
+  fundFieldAsOf: string | null;
+  fundDocumentAsOf: string | null;
+  groupSourceLabel: string;
+  groupSampleCount: number;
+  groupMemberCount: number;
+  groupSampleDates: MetricSampleDates | null;
+};
+
 type InterpretationResponse = {
   snapshotId: string;
   comparisonGroup: string;
@@ -138,6 +155,10 @@ type InterpretationResponse = {
   values: Record<
     "equity" | "top10Concentration" | "volatility3y",
     { fund: number | null; groupAverage: number | null; official?: false }
+  >;
+  provenance: Record<
+    "equity" | "top10Concentration" | "volatility3y",
+    InterpretationProvenance
   >;
   interpretation: {
     thresholdVersion: string;
@@ -153,6 +174,35 @@ const interpretationFactors = [
   ["top10Concentration", "十大持倉集中度", "十大持倉披露比重合計"],
   ["volatility3y", "3年波幅", "官方基金風險指標"],
 ] as const;
+
+function formatSampleDateRange(dates: MetricSampleDates | null): string {
+  if (!dates) return "樣本日期範圍未記錄";
+  if (dates.from && dates.to) {
+    return dates.from === dates.to
+      ? `截至 ${dates.from}`
+      : `${dates.from} 至 ${dates.to}`;
+  }
+  if (dates.from || dates.to)
+    return `部分日期已記錄（${dates.from ?? dates.to}）`;
+  return dates.undatedCount > 0
+    ? "有值樣本的欄位日期未明示"
+    : "沒有可用樣本日期";
+}
+
+function formatFundSourceDate(
+  factor: "equity" | "top10Concentration" | "volatility3y",
+  evidence: InterpretationProvenance,
+): string {
+  if (evidence.fundFieldAsOf) {
+    return factor === "volatility3y"
+      ? `平台數據截至 ${evidence.fundFieldAsOf}`
+      : `欄位截至 ${evidence.fundFieldAsOf}`;
+  }
+  if (evidence.fundDocumentAsOf) {
+    return `欄位日期未明示；便覽日期 ${evidence.fundDocumentAsOf}`;
+  }
+  return "欄位截至日期未明示";
+}
 
 function InterpretationPanel({
   apiBaseUrl,
@@ -215,18 +265,20 @@ function InterpretationPanel({
       <div className="kw-card kw-interpretation-intro">
         <p>
           以下把基金同 <strong>{result.comparisonGroup}</strong>{" "}
-          組別平均比較。三項因素均為發布快照當期資料，不會隨回報期間改變。
+          組別平均比較。三項因素都固定於同一發布快照，不會隨回報期間改變；基金便覽期別可能與平台快照不同。
         </p>
         <p className="kw-muted" role="note">
           「相若」試用門檻為相差不超過 2 個百分點；規則版本{" "}
           {result.interpretation.thresholdVersion}
-          。高低只描述差距，不代表優劣、適合程度或回報原因。
+          。組別平均按已核實基金的可用樣本計算，樣本可能包括本基金。高低只描述差距，不代表優劣、適合程度或回報原因。
         </p>
       </div>
       <div className="kw-interpretation-grid">
         {interpretationFactors.map(([key, label, note]) => {
           const factor = result.interpretation[key];
           const values = result.values[key];
+          const evidence = result.provenance[key];
+          const sampleDates = evidence.groupSampleDates;
           const comparable =
             factor.status !== "insufficient-sample" &&
             factor.status !== "unavailable" &&
@@ -280,6 +332,49 @@ function InterpretationPanel({
                   ))}
                 </div>
               )}
+              <dl className="kw-interpretation__metadata">
+                <div>
+                  <dt>本基金來源</dt>
+                  <dd>
+                    {evidence.fundSourceUrl ? (
+                      <a
+                        href={evidence.fundSourceUrl}
+                        aria-label={`${evidence.fundSourceLabel}（在新分頁開啟）`}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        {evidence.fundSourceLabel}
+                      </a>
+                    ) : (
+                      evidence.fundSourceLabel
+                    )}
+                  </dd>
+                </div>
+                <div>
+                  <dt>組別平均來源</dt>
+                  <dd>{evidence.groupSourceLabel}</dd>
+                </div>
+                <div>
+                  <dt>本基金日期</dt>
+                  <dd>{formatFundSourceDate(key, evidence)}</dd>
+                </div>
+                <div>
+                  <dt>組別樣本</dt>
+                  <dd>
+                    {evidence.groupSampleCount} / {evidence.groupMemberCount}{" "}
+                    隻已核實基金有可用數值
+                  </dd>
+                </div>
+                <div>
+                  <dt>組別樣本日期</dt>
+                  <dd>
+                    {formatSampleDateRange(sampleDates)}
+                    {sampleDates?.undatedCount
+                      ? `；另有 ${sampleDates.undatedCount} 筆有值樣本未明示欄位日期`
+                      : ""}
+                  </dd>
+                </div>
+              </dl>
             </article>
           );
         })}

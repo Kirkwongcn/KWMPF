@@ -21,7 +21,7 @@ describe("publication snapshot", () => {
       CREATE TABLE candidate_batches (batch_id TEXT PRIMARY KEY, status TEXT NOT NULL, raw_key TEXT NOT NULL, raw_sha256 TEXT NOT NULL);
       CREATE TABLE publication_snapshots (snapshot_id TEXT PRIMARY KEY, published_at TEXT NOT NULL);
       CREATE TABLE fund_class_versions (snapshot_id TEXT NOT NULL, fund_class_id TEXT NOT NULL, payload TEXT NOT NULL, PRIMARY KEY (snapshot_id, fund_class_id));
-      CREATE TABLE comparison_group_stats (snapshot_id TEXT NOT NULL, comparison_group TEXT NOT NULL, avg_allocation TEXT, avg_top10_concentration REAL, avg_volatility_3y REAL, fund_count INTEGER NOT NULL, allocation_count INTEGER NOT NULL, top10_count INTEGER NOT NULL, volatility_count INTEGER NOT NULL, insufficient_sample INTEGER NOT NULL, PRIMARY KEY (snapshot_id, comparison_group));
+      CREATE TABLE comparison_group_stats (snapshot_id TEXT NOT NULL, comparison_group TEXT NOT NULL, avg_allocation TEXT, avg_top10_concentration REAL, avg_volatility_3y REAL, fund_count INTEGER NOT NULL, allocation_count INTEGER NOT NULL, top10_count INTEGER NOT NULL, volatility_count INTEGER NOT NULL, insufficient_sample INTEGER NOT NULL, source_dates TEXT NOT NULL DEFAULT '{}', PRIMARY KEY (snapshot_id, comparison_group));
       CREATE TABLE current_publication (singleton INTEGER PRIMARY KEY CHECK (singleton = 1), snapshot_id TEXT NOT NULL);
     `);
   });
@@ -805,8 +805,8 @@ describe("publication snapshot", () => {
       `INSERT INTO comparison_group_stats (
          snapshot_id, comparison_group, avg_allocation, avg_top10_concentration,
          avg_volatility_3y, fund_count, allocation_count, top10_count, volatility_count,
-         insufficient_sample
-       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+         insufficient_sample, source_dates
+       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     )
       .bind(
         snapshotId,
@@ -819,14 +819,15 @@ describe("publication snapshot", () => {
         10,
         12,
         0,
+        JSON.stringify({}),
       )
       .run();
     await bindings.DB.prepare(
       `INSERT INTO comparison_group_stats (
          snapshot_id, comparison_group, avg_allocation, avg_top10_concentration,
          avg_volatility_3y, fund_count, allocation_count, top10_count, volatility_count,
-         insufficient_sample
-       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+         insufficient_sample, source_dates
+       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     )
       .bind(
         snapshotId,
@@ -839,6 +840,7 @@ describe("publication snapshot", () => {
         2,
         2,
         1,
+        JSON.stringify({}),
       )
       .run();
 
@@ -1915,6 +1917,16 @@ describe("publication snapshot", () => {
                   buckets: { equity: 94, bond: 3, cashAndOther: 3 },
                 },
                 factSheetDisclosure: {
+                  factSheetFile: "test-factsheet.pdf",
+                  factSheetUrl: "https://source.test/test-factsheet.pdf",
+                  factSheetSource: "trustee",
+                  factSheetAsOf: "2026-05-31",
+                  temporalScopes: {
+                    topHoldings: {
+                      kind: "point-in-time",
+                      asOf: "2026-05-31",
+                    },
+                  },
                   unavailableFields: [],
                   topHoldings: [
                     { rank: 1, security: "A", percent: 20 },
@@ -1922,6 +1934,10 @@ describe("publication snapshot", () => {
                   ],
                 },
               }),
+          provenance: {
+            sourceUrl: "https://mpfa.test/fund-class/interpretation-fund",
+            dataAsOf: "2026-08-31",
+          },
         }),
       )
       .run();
@@ -1929,8 +1945,8 @@ describe("publication snapshot", () => {
       `INSERT INTO comparison_group_stats (
          snapshot_id, comparison_group, avg_allocation, avg_top10_concentration,
          avg_volatility_3y, fund_count, allocation_count, top10_count, volatility_count,
-         insufficient_sample
-       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+         insufficient_sample, source_dates
+       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     )
       .bind(
         snapshotId,
@@ -1943,6 +1959,19 @@ describe("publication snapshot", () => {
         options?.insufficientSample ? 2 : 8,
         options?.insufficientSample ? 2 : 8,
         options?.insufficientSample ? 1 : 0,
+        JSON.stringify({
+          allocation: { from: "2026-02-28", to: "2026-06-30", undatedCount: 1 },
+          top10Concentration: {
+            from: "2026-03-31",
+            to: "2026-05-31",
+            undatedCount: 2,
+          },
+          volatility3y: {
+            from: "2026-08-31",
+            to: "2026-08-31",
+            undatedCount: 0,
+          },
+        }),
       )
       .run();
     await bindings.DB.prepare(
@@ -1969,6 +1998,50 @@ describe("publication snapshot", () => {
         equity: { fund: 94, groupAverage: 92, official: false },
         top10Concentration: { fund: 33, groupAverage: 30 },
         volatility3y: { fund: 17, groupAverage: 20 },
+      },
+      provenance: {
+        equity: {
+          fundSourceLabel: "受託人基金便覽",
+          fundSourceUrl: "https://source.test/test-factsheet.pdf",
+          fundFieldAsOf: "2026-06-30",
+          fundDocumentAsOf: "2026-05-31",
+          groupSourceLabel: "同組已核實基金便覽樣本（來源各異）",
+          groupSampleCount: 8,
+          groupMemberCount: 8,
+          groupSampleDates: {
+            from: "2026-02-28",
+            to: "2026-06-30",
+            undatedCount: 1,
+          },
+        },
+        top10Concentration: {
+          fundSourceLabel: "受託人基金便覽",
+          fundSourceUrl: "https://source.test/test-factsheet.pdf",
+          fundFieldAsOf: "2026-05-31",
+          fundDocumentAsOf: "2026-05-31",
+          groupSourceLabel: "同組已核實基金便覽樣本（來源各異）",
+          groupSampleCount: 8,
+          groupMemberCount: 8,
+          groupSampleDates: {
+            from: "2026-03-31",
+            to: "2026-05-31",
+            undatedCount: 2,
+          },
+        },
+        volatility3y: {
+          fundSourceLabel: "積金局基金平台",
+          fundSourceUrl: "https://mpfa.test/fund-class/interpretation-fund",
+          fundFieldAsOf: "2026-08-31",
+          fundDocumentAsOf: null,
+          groupSourceLabel: "積金局基金平台快照",
+          groupSampleCount: 8,
+          groupMemberCount: 8,
+          groupSampleDates: {
+            from: "2026-08-31",
+            to: "2026-08-31",
+            undatedCount: 0,
+          },
+        },
       },
       interpretation: {
         thresholdVersion: "2026-09-10-trial-1",

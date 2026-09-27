@@ -1,4 +1,5 @@
 import type { MappedAllocation } from "./allocation-label-map";
+import { pointInTimeAsOf, type FactSheetTemporalScopes } from "./fact-sheet-temporal";
 
 /**
  * 每個發布快照凍結的比較組別平均值。網站只讀呢份，唔即場重算。
@@ -19,8 +20,10 @@ export type ComparisonGroupStatsFund = {
   unavailableFields?: string[];
   fundRiskIndicator?: number;
   mappedAllocation?: MappedAllocation;
+  fundRiskAsOf?: string;
   factSheetDisclosure?: {
     unavailableFields?: string[];
+    temporalScopes?: FactSheetTemporalScopes;
     topHoldings: { rank: number; percent?: number }[];
   };
 };
@@ -41,6 +44,24 @@ export type ComparisonGroupStatsRow = {
   top10Count: number;
   volatilityCount: number;
   insufficientSample: boolean;
+  sourceDates?: ComparisonGroupSourceDates;
+};
+
+export type ComparisonGroupStatsRowWithSourceDates = Omit<
+  ComparisonGroupStatsRow,
+  "sourceDates"
+> & { sourceDates: ComparisonGroupSourceDates };
+
+export type MetricSampleDates = {
+  from: string | null;
+  to: string | null;
+  undatedCount: number;
+};
+
+export type ComparisonGroupSourceDates = {
+  allocation: MetricSampleDates;
+  top10Concentration: MetricSampleDates;
+  volatility3y: MetricSampleDates;
 };
 
 export function comparisonGroupNameFor(fund: {
@@ -56,7 +77,7 @@ export function comparisonGroupNameFor(fund: {
 
 export function buildComparisonGroupStats(
   funds: ComparisonGroupStatsFund[],
-): ComparisonGroupStatsRow[] {
+): ComparisonGroupStatsRowWithSourceDates[] {
   const groups = new Map<string, ComparisonGroupStatsFund[]>();
   for (const fund of funds) {
     if (fund.verificationStatus !== "verified") continue;
@@ -71,29 +92,76 @@ export function buildComparisonGroupStats(
     .map(([comparisonGroup, members]) => {
       const allocations = members.flatMap((fund) => {
         const buckets = allocationBuckets(fund);
-        return buckets ? [buckets] : [];
+        return buckets ? [{ buckets, asOf: fund.mappedAllocation?.asOf }] : [];
       });
       const concentrations = members.flatMap((fund) => {
         const value = top10Concentration(fund);
-        return value === undefined ? [] : [value];
+        return value === undefined
+          ? []
+          : [
+              {
+                value,
+                asOf: pointInTimeAsOf(
+                  fund.factSheetDisclosure?.temporalScopes?.topHoldings,
+                ),
+              },
+            ];
       });
       const volatilities = members.flatMap((fund) => {
         const value = volatility3y(fund);
-        return value === undefined ? [] : [value];
+        return value === undefined
+          ? []
+          : [{ value, asOf: fund.fundRiskAsOf }];
       });
       const insufficientSample = members.length < COMPARISON_GROUP_STATS_MIN_SAMPLE;
       return {
         comparisonGroup,
-        avgAllocation: averageAllocation(allocations, insufficientSample),
-        avgTop10Concentration: averageMetric(concentrations, insufficientSample),
-        avgVolatility3y: averageMetric(volatilities, insufficientSample),
+        avgAllocation: averageAllocation(
+          allocations.map((sample) => sample.buckets),
+          insufficientSample,
+        ),
+        avgTop10Concentration: averageMetric(
+          concentrations.map((sample) => sample.value),
+          insufficientSample,
+        ),
+        avgVolatility3y: averageMetric(
+          volatilities.map((sample) => sample.value),
+          insufficientSample,
+        ),
         fundCount: members.length,
         allocationCount: allocations.length,
         top10Count: concentrations.length,
         volatilityCount: volatilities.length,
         insufficientSample,
+        sourceDates: {
+          allocation: sampleDates(allocations.map((sample) => sample.asOf)),
+          top10Concentration: sampleDates(
+            concentrations.map((sample) => sample.asOf),
+          ),
+          volatility3y: sampleDates(volatilities.map((sample) => sample.asOf)),
+        },
       };
     });
+}
+
+function sampleDates(values: Array<string | undefined>): MetricSampleDates {
+  const dates = values.flatMap((value) => {
+    if (value === undefined || value === "") return [];
+    if (!isIsoDate(value)) throw new Error(`Invalid source date: ${value}`);
+    return [value];
+  });
+  dates.sort();
+  return {
+    from: dates[0] ?? null,
+    to: dates[dates.length - 1] ?? null,
+    undatedCount: values.length - dates.length,
+  };
+}
+
+function isIsoDate(value: string): boolean {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  const parsed = new Date(`${value}T00:00:00.000Z`);
+  return Number.isFinite(parsed.getTime()) && parsed.toISOString().slice(0, 10) === value;
 }
 
 function allocationBuckets(

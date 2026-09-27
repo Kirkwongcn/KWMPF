@@ -1019,6 +1019,50 @@ describe("cumulative returns", () => {
           groupAverage: unavailable ? null : 20,
         },
       },
+      provenance: {
+        equity: {
+          fundSourceLabel: "受託人基金便覽",
+          fundSourceUrl: "https://source.test/fund-factsheet.pdf",
+          fundFieldAsOf: null,
+          fundDocumentAsOf: "2026-05-31",
+          groupSourceLabel: "同組已核實基金便覽樣本（來源各異）",
+          groupSampleCount: unavailable ? 2 : 8,
+          groupMemberCount: unavailable ? 2 : 12,
+          groupSampleDates: {
+            from: "2026-02-28",
+            to: "2026-06-30",
+            undatedCount: 1,
+          },
+        },
+        top10Concentration: {
+          fundSourceLabel: "受託人基金便覽",
+          fundSourceUrl: "https://source.test/fund-factsheet.pdf",
+          fundFieldAsOf: "2026-05-31",
+          fundDocumentAsOf: "2026-05-31",
+          groupSourceLabel: "同組已核實基金便覽樣本（來源各異）",
+          groupSampleCount: unavailable ? 2 : 8,
+          groupMemberCount: unavailable ? 2 : 12,
+          groupSampleDates: {
+            from: "2026-03-31",
+            to: "2026-05-31",
+            undatedCount: 2,
+          },
+        },
+        volatility3y: {
+          fundSourceLabel: "積金局基金平台",
+          fundSourceUrl: "https://source.test/platform",
+          fundFieldAsOf: "2026-08-31",
+          fundDocumentAsOf: null,
+          groupSourceLabel: "積金局基金平台快照",
+          groupSampleCount: unavailable ? 2 : 8,
+          groupMemberCount: unavailable ? 2 : 12,
+          groupSampleDates: {
+            from: "2026-08-31",
+            to: "2026-08-31",
+            undatedCount: 0,
+          },
+        },
+      },
       interpretation: {
         thresholdVersion: "2026-09-10-trial-1",
         thresholdStatus: "trial",
@@ -1085,6 +1129,25 @@ describe("cumulative returns", () => {
     expect(screen.getByText(/十大持倉佔比 33%.*高 3 個百分點/)).toBeVisible();
     expect(screen.getByText(/3年波幅 17%.*低 3 個百分點/)).toBeVisible();
     expect(screen.getByText(/規則版本 2026-09-10-trial-1/)).toBeVisible();
+    expect(screen.getAllByText("8 / 12 隻已核實基金有可用數值")).toHaveLength(
+      3,
+    );
+    expect(
+      screen.getByText("欄位日期未明示；便覽日期 2026-05-31"),
+    ).toBeVisible();
+    expect(
+      screen.getAllByRole("link", {
+        name: "受託人基金便覽（在新分頁開啟）",
+      }),
+    ).toHaveLength(2);
+    expect(
+      screen.getByText(
+        "2026-02-28 至 2026-06-30；另有 1 筆有值樣本未明示欄位日期",
+      ),
+    ).toBeVisible();
+    expect(
+      screen.getAllByText("同組已核實基金便覽樣本（來源各異）"),
+    ).toHaveLength(2);
     expect(screen.getAllByRole("img")).toHaveLength(3);
     expect(fetchMock).toHaveBeenLastCalledWith(
       "https://api.test/fund-classes/interpretation-ui/interpretation",
