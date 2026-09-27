@@ -67,7 +67,7 @@ fund class，並且 `Cache-Control` 必須是 `public, max-age=300, stale-while-
 不再硬編在種子腳本內。ADR 0002 的 edge cache 以此識別碼分界，所以每個官方截至日期
 都會得到自己的快取世代。
 
-最近一次已驗證的正式發布是 [Deploy production run #19](https://github.com/Kirkwongcn/KWMPF/actions/runs/36300404983)：main SHA `1cb73016b59635e82e8f751c87d57bfa7ededac7`，公開 snapshot `snapshot-mpfa-platform-2026-08-31-1cb73016b596`，451 個基金類別、24 個計劃及 11 個受託人。API、三年排名及快取檢查通過。該次部署前的 D1 備份 ID 為 `d1-2026-09-27T06-33-30Z-run-36300404983`，作為發布前回復點。
+最近一次已驗證的正式發布是 [Deploy production run #21](https://github.com/Kirkwongcn/KWMPF/actions/runs/36321882802)：main SHA `b74ec89f787a4cfececdd8f9286bee1c0685e94f`，公開 snapshot `snapshot-mpfa-platform-2026-08-31-b74ec89f787a`。該版使用 `2026-09-26/mpf-fund-platform.json` 及 `2026-09-27-official-return-observations-candidate.json`；API、三年排名及快取檢查通過，公開三年排名有 209 隻合資格基金，另有 40 隻因披露資料超過 90 日而排除。部署前匯出的舊 D1 snapshot 是 `snapshot-mpfa-platform-2026-08-31-1cb73016b596`；備份 ID 為 `d1-2026-09-27T13-18-11Z-run-36321882802`，R2 prefix `kwmpf-production-raw/backups/d1-2026-09-27T13-18-11Z-run-36321882802/`，SQL 1,982,166 bytes，SHA-256 `755b95bc597b13f916c35fadc8277b5e8e388df4dcd34f4d9fc89615ff67fe33`。該次部署早於以下 R2 read-back guard，因此備份物件尚未經部署 workflow 讀回核對。
 
 ### Production D1 backup and restore
 
@@ -75,7 +75,7 @@ fund class，並且 `Cache-Control` 必須是 `public, max-age=300, stale-while-
 
 The D1 export is read-only; the workflow writes new backup objects to production R2. The current retention decision is to keep automatic expiration disabled for staging and production backups and source archives; review this if the storage policy changes. [Backup production D1 run #1](https://github.com/Kirkwongcn/KWMPF/actions/runs/36291241851) completed on 2026-09-27 with backup ID `d1-2026-09-27T03-24-34Z-run-36291241851` and snapshot `snapshot-mpfa-platform-2026-07-31-b39ba9d1e9d9`; the SQL and manifest were read back and integrity checks passed. [D1 Restore Drill #11](https://github.com/Kirkwongcn/KWMPF/actions/runs/36291477885) then verified the manifest, SHA-256 and byte count, imported the SQL into runner-local D1, and passed checks for 451 fund-class versions, 32 comparison groups, and zero orphan rows. The drill did not write production D1 or deploy the site. The restore workflow remains manual and protected by the source environment; no quarterly drill cadence is configured.
 
-The most recent release also created a pre-deployment production backup at `d1-2026-09-27T06-33-30Z-run-36300404983`. [D1 Restore Drill #12](https://github.com/Kirkwongcn/KWMPF/actions/runs/36301548688) used that backup after approval of the protected `production` gate. It verified the manifest, SHA-256 and byte count, restored to runner-local D1, and passed checks for snapshot `snapshot-mpfa-platform-2026-07-31-b39ba9d1e9d9`, 451 fund-class versions, 32 comparison groups, and zero orphan rows. The restored 2026-07-31 snapshot is expected because the backup was taken before run #19 changed production D1. The drill did not write production D1 or deploy the site. Restore drills remain manual; no quarterly cadence is configured.
+The pre-deployment backup from Deploy production run #19 was `d1-2026-09-27T06-33-30Z-run-36300404983`. [D1 Restore Drill #12](https://github.com/Kirkwongcn/KWMPF/actions/runs/36301548688) used that backup after approval of the protected `production` gate. It verified the manifest, SHA-256 and byte count, restored to runner-local D1, and passed checks for snapshot `snapshot-mpfa-platform-2026-07-31-b39ba9d1e9d9`, 451 fund-class versions, 32 comparison groups, and zero orphan rows. The drill did not write production D1 or deploy the site. The separate [scheduled production backup run #2](https://github.com/Kirkwongcn/KWMPF/actions/runs/36309140770) succeeded with backup ID `d1-2026-09-27T10-35-47Z-run-36309140770`; R2 read-back matched its manifest, SHA-256 and byte count. Restore drills remain manual; no quarterly cadence is configured.
 
 
 ### Production incident handling and rollback
@@ -110,8 +110,8 @@ Do not restore production D1 by itself. Before any manual D1 Time Travel or SQL 
 ### 尚未處理
 
 - 已發布快照的原始 HTML 只保留在 workflow artifact（30 日），未按規格長期存入 R2。
-- `Deploy production` 會在資料庫改動前把 D1 匯出、manifest 和 rollback timestamp 存入 production R2；另外封存來源 JSON 及 return-observations 候選資料。
-- Production backup #1 / Restore Drill #11 and the latest pre-deployment backup from Deploy production #19 / Restore Drill #12 succeeded; the latest release and isolated restore evidence are linked above. Restore drills are manual and have no quarterly cadence.
+- `Deploy production` 會在資料庫改動前把 D1 匯出、manifest 和 rollback timestamp 存入 production R2；另外封存來源 JSON 及 return-observations 候選資料。此 PR 加入在 migration 前由 R2 讀回 SQL 和 manifest、比較 manifest bytes 並驗證 SQL bytes/SHA-256；核對失敗會阻止 D1 migration。
+- Production backup #1 / Restore Drill #11、run #19 的 pre-deploy backup / Restore Drill #12 都已驗證成功。Run #21 的 pre-deploy backup 已寫入 production R2，但由於當時沒有 read-back guard，尚未經讀回或隔離還原演練。最新 staging Restore Drill #13 成功還原 backup #11 到 runner-local D1，但不涵蓋 production。Restore drills remain manual; no quarterly cadence is configured.
 - Current decision: keep automatic R2 object expiration disabled for D1 backups and source archives. Cloudflare lifecycle rules can be scoped by prefix; do not add deletion rules without a renewed retention decision. [R2 lifecycle behavior](https://developers.cloudflare.com/r2/buckets/object-lifecycles/).
 
 ## Trustee factsheet PDF archive
