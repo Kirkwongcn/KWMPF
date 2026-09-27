@@ -33,7 +33,16 @@ const chinaLifeFixture = `\fChina Life Greater China Equity Fund 中國人壽大
 const hsbcFixture = `所載資料截至 All information as at 31/03/2026\fCore Accumulation Fund\nFund Performance Information (%)\nAnnualised return 1 yr 3 yrs 5 yrs 10 yrs\nThis Fund\n12.30 9.42 5.08 6.38`;
 const hangSengFixture = `所載資料截至 All information as at 31/12/2025\fValueChoice Asia Pacific Equity Tracker Fund\nFund Performance Information (%)\nAnnualised return 1 yr 3 yrs 5 yrs 10 yrs\nThis Fund\n28.58 14.54 4.54 0.00`;
 const bocFixture = `BOC-Prudential Hong Kong Equity Fund ◆\nAnnualized Return N/A N/A 11.01 8.22 -2.37 3.92 6.87\fBOC-Prudential MPF Conservative Fund\nAnnualized Return N/A N/A N/A N/A 0.50 0.60`;
-const haitongFixture = `as of 31/12/2025\fHAITONG HONG KONG SAR FUND\nFUND PERFORMANCE\nA 30.82% 7.97% -0.72% 6.43%\nT 30.92% 8.05% -0.64% 6.51%`;
+const haitongFixture = `as of 31/08/2026\fHaitong Hong Kong SAR Fund
+FUND PERFORMANCE
+ANNUALIZED RATE OF RETURN
+CLASS 1 Year 3 Years 5 Years 10 Years Since Inception
+A -0.29% 10.69% -0.89% 5.94% 8.47%
+T -0.25% 10.77% -0.81% 6.02% 8.93%
+CALENDAR YEAR RETURN
+CLASS 2021 2022 2023 2024 2025 2026 YTD
+A -9.05% -15.72% -16.33% 14.98% 30.82% 0.11%
+T -8.98% -15.65% -16.32% 15.12% 30.92% 0.10%`;
 const myChoiceFixture = `As at 30/9/2025\fMY CHOICE GROWTH FUND\nPERFORMANCE IN HKD\nAnnualized Return (%)\n1 Year 3 Years 5 Years 10 Years\n3 Years 12.34 5.20`;
 const massFixture = `YF Life Trustees Ltd.\nAsian Pacific Equity Fund                                                                 Published in February 2026\nFund Data as at                      December 31, 2025\nFund Performance 1 year 3 years 5 years 10 years Since launch\nAnnualized Return 30.27% 14.34% 2.61% 4.48% 3.86%`;
 const shkpFixture = `SHKP MPF Employer Sponsored Scheme\nAs at 31 March 2026\fAllianz Choice Balanced FundNote 1\nPerformance Note 2 & 3\nLast 3 years (p.a.%)+ 8.99 %`;
@@ -91,10 +100,10 @@ describe("official fund fact sheet parser", () => {
       expect.objectContaining({ constituentFundName: "BOC-Prudential Hong Kong Equity Fund", dataAsOf: "2026-03-31", annualizedReturn3Year: 8.22 }),
     ]);
   });
-  it("parses Haitong class-specific annualized returns", () => {
+  it("parses only Haitong annualized returns and ignores calendar-year rows", () => {
     expect(parseHaitongFundPerformance(haitongFixture, "https://example.test/haitong.pdf")).toEqual([
-      expect.objectContaining({ constituentFundName: "Haitong Hong Kong SAR Fund", fundClassName: "A", dataAsOf: "2025-12-31", annualizedReturn3Year: 7.97 }),
-      expect.objectContaining({ fundClassName: "T", annualizedReturn3Year: 8.05 }),
+      expect.objectContaining({ constituentFundName: "Haitong Hong Kong SAR Fund", fundClassName: "A", dataAsOf: "2026-08-31", annualizedReturn3Year: 10.69 }),
+      expect.objectContaining({ constituentFundName: "Haitong Hong Kong SAR Fund", fundClassName: "T", dataAsOf: "2026-08-31", annualizedReturn3Year: 10.77 }),
     ]);
   });
   it("parses My Choice three-year annualized returns", () => {
