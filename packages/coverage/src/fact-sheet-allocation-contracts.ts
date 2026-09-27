@@ -585,8 +585,8 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
     },
     holdings: {
       heading: /^Top 10 Portfolio Holdings$/,
-      // 標題的 left 逐隻基金浮動（589–616），自動推欄界會時而切走 left=565 的證券名稱。
-      band: { minLeft: 550, maxLeft: 900 },
+      // 標題的 left 逐隻基金浮動（589–616）；官方持倉名稱由 x=538 開始，欄界不可裁掉名稱。
+      band: { minLeft: 530, maxLeft: 900 },
       valueMinLeft: 800,
     },
     asOf: { pattern: AS_OF_MONTH_FIRST },

@@ -497,6 +497,53 @@ describe("findSections", () => {
   });
 });
 
+describe("Manulife Global Select holdings", () => {
+  it("keeps security names that start just left of the values column", () => {
+    const contract = factSheetContract(
+      "Manulife Global Select (MPF) Scheme",
+      "trustee",
+    );
+    const pages = pdf(
+      page(1, [
+        { top: 10, left: 30, text: "As at June 30, 2026", width: 145 },
+        {
+          top: 60,
+          left: 30,
+          text: "Manulife MPF Hong Kong Bond Fund",
+          width: 220,
+          size: 14,
+          family: "Arial",
+          color: "#ffffff",
+        },
+        { top: 200, left: 589, text: "Top 10 Portfolio Holdings", width: 200 },
+        {
+          top: 230,
+          left: 538,
+          text: "1. Hong Kong Government Bond 2.02% 07/03/2034",
+          width: 209,
+        },
+        { top: 230, left: 833, text: "3.80%", width: 27 },
+        { top: 250, left: 538, text: "2. GPT RE Ltd 2.2% 18/11/2030", width: 135 },
+        { top: 250, left: 833, text: "2.09%", width: 27 },
+        { top: 270, left: 538, text: "3. NBN Co. Ltd. 4.8% 07/12/2033", width: 140 },
+        { top: 270, left: 833, text: "2.09%", width: 27 },
+      ]),
+    );
+    const [disclosure] = parseFactSheetDisclosures(pages, contract);
+
+    expect(disclosure?.topHoldings).toEqual([
+      {
+        rank: 1,
+        security: "Hong Kong Government Bond 2.02% 07/03/2034",
+        percent: 3.8,
+      },
+      { rank: 2, security: "GPT RE Ltd 2.2% 18/11/2030", percent: 2.09 },
+      { rank: 3, security: "NBN Co. Ltd. 4.8% 07/12/2033", percent: 2.09 },
+    ]);
+    expect(disclosure?.unavailableFields).toEqual(["allocation"]);
+  });
+});
+
 /** 滙豐版面：百分比排在標籤左邊，長標籤換行落在數值那行之後。 */
 const hsbcShaped: FactSheetContract = {
   scheme: "Test Scheme",
