@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { SiteChrome } from "./SiteChrome";
 import { fundClassLabel, joinFundParts } from "./fundClassLabel";
+import {
+  pointInTimeAsOf,
+  type FactSheetTemporalScopes,
+} from "../../../packages/coverage/src/fact-sheet-temporal";
 
 type PublishedFundClass = {
   snapshotId: string;
@@ -87,6 +91,7 @@ type FactSheetDisclosure = {
   /** 有抄錄受託人來源但抽不到，才退回副本；未抄錄的計劃沒有這一欄。 */
   trusteeFallback?: true;
   factSheetAsOf: string;
+  temporalScopes?: FactSheetTemporalScopes;
   allocations: {
     heading: string;
     entries: { label: string; percent: number }[];
@@ -108,7 +113,7 @@ type MappedAllocation =
   | {
       official: false;
       mapVersion: string;
-      asOf: string;
+      asOf?: string;
       sourceHeading: string;
       buckets: { equity: number; bond: number; cashAndOther: number };
     }
@@ -459,7 +464,13 @@ export function FundClassPage({
   );
   const factSheetDisclosure = publication.factSheetDisclosure;
   const mappedAllocation = publication.mappedAllocation;
-  // 便覽比平台快照落後幾個月，兩個截至日期各自保留，唔同期就要講明並非完全可比。
+  const allocationAsOf = pointInTimeAsOf(
+    factSheetDisclosure?.temporalScopes?.allocation,
+  );
+  const topHoldingsAsOf = pointInTimeAsOf(
+    factSheetDisclosure?.temporalScopes?.topHoldings,
+  );
+  // 便覽文件日期同平台快照日期各自保留；欄位日期必須由自身 scope 明確提供。
   const factSheetDatesDiffer = Boolean(
     factSheetDisclosure &&
     factSheetDisclosure.factSheetAsOf !== provenance.dataAsOf,
@@ -800,7 +811,7 @@ export function FundClassPage({
                     {factSheetDisclosure.factSheetSource === "trustee"
                       ? "受託人官網刊發的計劃便覽"
                       : "積金局便覽庫存放的計劃便覽副本"}
-                    ，截至 {factSheetDisclosure.factSheetAsOf}
+                    ；便覽列示日期為 {factSheetDisclosure.factSheetAsOf}
                     ；本頁其他數據來自積金局基金平台，截至 {provenance.dataAsOf}
                     。
                   </p>
@@ -824,8 +835,14 @@ export function FundClassPage({
                   )}
                   {factSheetDatesDiffer && (
                     <p className="kw-muted" role="note">
-                      便覽截至 {factSheetDisclosure.factSheetAsOf}，平台數據截至{" "}
-                      {provenance.dataAsOf}，兩者期別不同，並非完全可比。
+                      便覽列示日期為 {factSheetDisclosure.factSheetAsOf}，
+                      平台快照日期為 {provenance.dataAsOf}
+                      ；單憑文件日期未能確認每項披露是否反映同一期別。
+                    </p>
+                  )}
+                  {allocationAsOf && (
+                    <p className="kw-muted" role="note">
+                      資產配置截至 {allocationAsOf}。
                     </p>
                   )}
                   {mappedAllocation && hasMappedBuckets(mappedAllocation) && (
@@ -916,7 +933,10 @@ export function FundClassPage({
                       aria-label="十大持倉表，可左右捲動查看所有欄位"
                     >
                       <table className="kw-table" aria-label="十大持倉">
-                        <caption>十大持倉</caption>
+                        <caption>
+                          十大持倉
+                          {topHoldingsAsOf ? `（截至 ${topHoldingsAsOf}）` : ""}
+                        </caption>
                         <thead>
                           <tr>
                             <th scope="col">排名</th>

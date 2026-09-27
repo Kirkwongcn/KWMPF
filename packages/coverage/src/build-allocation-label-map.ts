@@ -9,6 +9,7 @@ import {
   type AllocationLabelMapFile,
 } from "./allocation-label-map";
 import type { FactSheetDisclosureFile } from "./fact-sheet-disclosure-lookup";
+import { pointInTimeAsOf } from "./fact-sheet-temporal";
 
 const repoRoot = resolve(import.meta.dirname, "../../..");
 const outputPath = "data/reference/allocation-label-map.json";
@@ -44,7 +45,7 @@ export async function buildAllocationLabelMapFile(disclosuresPath: string) {
         allocations: fund.allocations ?? [],
         unavailableFields: fund.unavailableFields,
         unavailableKinds: fund.unavailableKinds,
-        factSheetAsOf: fund.factSheetAsOf,
+        allocationAsOf: pointInTimeAsOf(fund.temporalScopes?.allocation),
       },
       lookup,
       payload.generatedAt,
