@@ -295,7 +295,7 @@ export function RankingsPage({
                     : `「${effectiveGroup}」組別目前有 ${rankings.length} 隻合資格基金。`}
                 </p>
                 <p className="kw-table-hint" id="ranking-table-scroll-hint">
-                  左右滑動可查看其餘欄位
+                  左右滑動或使用方向鍵查看其餘欄位
                 </p>
                 <div
                   className="kw-table-wrap"
@@ -303,6 +303,35 @@ export function RankingsPage({
                   role="region"
                   aria-label="基金排名結果"
                   aria-describedby="ranking-table-scroll-hint"
+                  onKeyDown={(event) => {
+                    if (
+                      (event.key !== "ArrowLeft" && event.key !== "ArrowRight") ||
+                      event.altKey ||
+                      event.ctrlKey ||
+                      event.metaKey
+                    ) {
+                      return;
+                    }
+
+                    const container = event.currentTarget;
+                    const maxScrollLeft = Math.max(
+                      0,
+                      container.scrollWidth - container.clientWidth,
+                    );
+                    const direction = event.key === "ArrowRight" ? 1 : -1;
+                    const nextScrollLeft = Math.min(
+                      maxScrollLeft,
+                      Math.max(
+                        0,
+                        container.scrollLeft +
+                          direction * Math.max(120, container.clientWidth * 0.75),
+                      ),
+                    );
+
+                    if (nextScrollLeft === container.scrollLeft) return;
+                    event.preventDefault();
+                    container.scrollTo({ left: nextScrollLeft, behavior: "auto" });
+                  }}
                 >
                   <table className="kw-table">
                     <thead>
