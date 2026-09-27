@@ -235,3 +235,27 @@ test("選擇比較組別後，只保留同組基金", async ({ page }) => {
   }
   expectCompetitionRanks(filtered, group);
 });
+
+test("窄螢幕排名表可用左右方向鍵橫向捲動", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 780 });
+  await page.goto("/rankings?metric=return&period=3");
+
+  const tableRegion = page.getByRole("region", { name: "基金排名結果" });
+  await expect(tableRegion).toBeVisible();
+  const dimensions = await tableRegion.evaluate((element) => ({
+    clientWidth: element.clientWidth,
+    scrollWidth: element.scrollWidth,
+  }));
+  expect(dimensions.scrollWidth).toBeGreaterThan(dimensions.clientWidth);
+
+  await tableRegion.focus();
+  await page.keyboard.press("ArrowRight");
+  await expect
+    .poll(() => tableRegion.evaluate((element) => element.scrollLeft))
+    .toBeGreaterThan(0);
+
+  await page.keyboard.press("ArrowLeft");
+  await expect
+    .poll(() => tableRegion.evaluate((element) => element.scrollLeft))
+    .toBe(0);
+});
