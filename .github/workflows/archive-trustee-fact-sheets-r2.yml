@@ -100,10 +100,10 @@ jobs:
           archive_key="$(jq -er '.archive.key' "$package_dir/index.json")"
           index_key="$object_prefix/index.json"
           bucket="kwmpf-staging-raw"
-          scripts/run-wrangler-redacted.sh npx --yes wrangler@4.120.0 r2 object put "$bucket/$archive_key" --remote --file "$package_dir/trustee-fact-sheets.tar.gz" --content-type application/gzip
-          scripts/run-wrangler-redacted.sh npx --yes wrangler@4.120.0 r2 object put "$bucket/$index_key" --remote --file "$package_dir/index.json" --content-type application/json
-          scripts/run-wrangler-redacted.sh npx --yes wrangler@4.120.0 r2 object get "$bucket/$archive_key" --remote --file "$RUNNER_TEMP/roundtrip-trustee-fact-sheets.tar.gz"
-          scripts/run-wrangler-redacted.sh npx --yes wrangler@4.120.0 r2 object get "$bucket/$index_key" --remote --file "$RUNNER_TEMP/roundtrip-index.json"
+          bash scripts/run-wrangler-redacted.sh npx --yes wrangler@4.120.0 r2 object put "$bucket/$archive_key" --remote --config apps/api/wrangler.jsonc --file "$package_dir/trustee-fact-sheets.tar.gz" --content-type application/gzip
+          bash scripts/run-wrangler-redacted.sh npx --yes wrangler@4.120.0 r2 object put "$bucket/$index_key" --remote --config apps/api/wrangler.jsonc --file "$package_dir/index.json" --content-type application/json
+          bash scripts/run-wrangler-redacted.sh npx --yes wrangler@4.120.0 r2 object get "$bucket/$archive_key" --remote --config apps/api/wrangler.jsonc --file "$RUNNER_TEMP/roundtrip-trustee-fact-sheets.tar.gz"
+          bash scripts/run-wrangler-redacted.sh npx --yes wrangler@4.120.0 r2 object get "$bucket/$index_key" --remote --config apps/api/wrangler.jsonc --file "$RUNNER_TEMP/roundtrip-index.json"
           cmp "$package_dir/trustee-fact-sheets.tar.gz" "$RUNNER_TEMP/roundtrip-trustee-fact-sheets.tar.gz"
           cmp "$package_dir/index.json" "$RUNNER_TEMP/roundtrip-index.json"
           echo "Stored and verified $bucket/$object_prefix (archive and index read back byte-for-byte)." >> "$GITHUB_STEP_SUMMARY"
