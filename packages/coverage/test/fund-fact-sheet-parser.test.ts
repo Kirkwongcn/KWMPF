@@ -33,7 +33,7 @@ const chinaLifeFixture = `\fChina Life Greater China Equity Fund 中國人壽大
 const hsbcFixture = `所載資料截至 All information as at 31/03/2026\fCore Accumulation Fund\nFund Performance Information (%)\nAnnualised return 1 yr 3 yrs 5 yrs 10 yrs\nThis Fund\n12.30 9.42 5.08 6.38`;
 const hangSengFixture = `所載資料截至 All information as at 31/12/2025\fValueChoice Asia Pacific Equity Tracker Fund\nFund Performance Information (%)\nAnnualised return 1 yr 3 yrs 5 yrs 10 yrs\nThis Fund\n28.58 14.54 4.54 0.00`;
 const bocFixture = `BOC-Prudential Hong Kong Equity Fund ◆\nAnnualized Return N/A N/A 11.01 8.22 -2.37 3.92 6.87\fBOC-Prudential MPF Conservative Fund\nAnnualized Return N/A N/A N/A N/A 0.50 0.60`;
-const haitongFixture = `as of 31/08/2026\fHaitong Age 65 Plus Fund Issue Price as of 31/08/2026 (Class A) $14.30\fFUND PERFORMANCE
+const haitongFixture = \`as of 31/08/2026\fHaitong Age 65 Plus Fund Issue Price as of 31/08/2026 (Class A) $14.30\fFUND PERFORMANCE
 ANNUALIZED RATE OF RETURN
 CLASS 1 Year 3 Years 5 Years 10 Years Since Inception
 A 10.42% 8.91% 2.94% 不適用▲ 3.87%
@@ -41,25 +41,7 @@ T 10.42% 8.91% 2.94% N/A▲ 3.87%
 CALENDAR YEAR RETURN
 CLASS 2021 2022 2023 2024 2025 2026 YTD
 A 1.88% -15.42% 9.02% 6.27% 9.51% 7.04%
-T 1.88% -15.42% 9.02% 6.27% 9.51% 7.04%`;
-FUND PERFORMANCE
-ANNUALIZED RATE OF RETURN
-CLASS 1 Year 3 Years 5 Years 10 Years Since Inception
-A 10.42% 8.91% 2.94% 不適用▲ 3.87%
-T 10.42% 8.91% 2.94% N/A▲ 3.87%
-CALENDAR YEAR RETURN
-CLASS 2021 2022 2023 2024 2025 2026 YTD
-A 1.88% -15.42% 9.02% 6.27% 9.51% 7.04%
-T 1.88% -15.42% 9.02% 6.27% 9.51% 7.04%`;
-FUND PERFORMANCE
-ANNUALIZED RATE OF RETURN
-CLASS 1 Year 3 Years 5 Years 10 Years Since Inception
-A -0.29% 10.69% -0.89% 5.94% 8.47%
-T -0.25% 10.77% -0.81% 6.02% 8.93%
-CALENDAR YEAR RETURN
-CLASS 2021 2022 2023 2024 2025 2026 YTD
-A -9.05% -15.72% -16.33% 14.98% 30.82% 0.11%
-T -8.98% -15.65% -16.32% 15.12% 30.92% 0.10%`;
+T 1.88% -15.42% 9.02% 6.27% 9.51% 7.04%\`;
 const myChoiceFixture = `As at 30/9/2025\fMY CHOICE GROWTH FUND\nPERFORMANCE IN HKD\nAnnualized Return (%)\n1 Year 3 Years 5 Years 10 Years\n3 Years 12.34 5.20`;
 const massFixture = `YF Life Trustees Ltd.\nAsian Pacific Equity Fund                                                                 Published in February 2026\nFund Data as at                      December 31, 2025\nFund Performance 1 year 3 years 5 years 10 years Since launch\nAnnualized Return 30.27% 14.34% 2.61% 4.48% 3.86%`;
 const shkpFixture = `SHKP MPF Employer Sponsored Scheme\nAs at 31 March 2026\fAllianz Choice Balanced FundNote 1\nPerformance Note 2 & 3\nLast 3 years (p.a.%)+ 8.99 %`;
