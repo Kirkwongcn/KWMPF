@@ -9,6 +9,7 @@
   --kw-gold: #c7a66a;
   --kw-gold-light: #d8b774;
   --kw-line: #d9ddd8;
+  --kw-control-border: #7b8681;
   --kw-soft: #f2f4f1;
   --kw-table-head: #f5f7fa;
   --kw-white: #fff;
@@ -340,14 +341,17 @@ body {
   color: var(--kw-muted);
   cursor: not-allowed;
 }
-.kw-button:focus-visible,
-.kw-control:focus-visible {
+.kw-button:focus-visible {
   outline: 3px solid var(--kw-gold);
+  outline-offset: 2px;
+}
+.kw-control:focus-visible {
+  outline: 3px solid var(--kw-teal);
   outline-offset: 2px;
 }
 .kw-control {
   min-height: 40px;
-  border: 1px solid var(--kw-line);
+  border: 1px solid var(--kw-control-border);
   border-radius: 4px;
   padding: 9px 12px;
   background: var(--kw-white);
