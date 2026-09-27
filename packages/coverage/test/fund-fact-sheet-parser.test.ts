@@ -6,6 +6,7 @@ import { mergeFundFactSheetReturns } from "../src/fund-fact-sheet-merge";
 import { parseAiaFundFactSheet } from "../src/aia-fund-fact-sheet-parser";
 import { parseAmtdFundFactSheet } from "../src/amtd-fund-fact-sheet-parser";
 import { parseBctFundFactSheet } from "../src/bct-fund-fact-sheet-parser";
+import { parseBctProFundPerformance } from "../src/bct-pro-fund-performance-parser";
 import { parsePrincipal800FundFactSheet, parsePrincipalFundFactSheet } from "../src/principal-fund-fact-sheet-parser";
 import { parseSunLifeFundFactSheetXml } from "../src/sun-life-fund-fact-sheet-parser";
 import { parseChinaLifeFundPerformance } from "../src/china-life-fund-performance-parser";
@@ -23,6 +24,7 @@ const aiaFixture = readFileSync(join(import.meta.dirname, "fixtures", "aia-mt001
 const bcomFixture = `BCOM Joyful Retirement MPF Scheme\nBCOM Joyful Retirement MPF Scheme Fund Fact Sheet\n(As of : 31/12/2025)\n\\f\nBCOM Stable Growth (CF) Fund\nAnnualised Rate of Return 1 year 3 years 5 years 10 years\nFund 2.01% 2.85% 1.86% 1.40%`;
 const amtdFixture = `AMTD MPF Scheme\nAMTD Allianz Choice Dynamic Allocation Fund\nAs at 31-Dec-2025 截至 2025 年 12 月 31 日\nAnnualized Return 年率化回報 (% p.a.)\n1 yr 3 yrs 5 yrs 10 yrs\n8.77% 5.12% 2.68% 3.23%`;
 const bctFixture = `BCT (MPF) Industry Choice\nBCT (Industry) China and Hong Kong Equity Fund\nFund Performance Fact Sheet\nas at 截至 31/12/2025\nConstituent Fund Performance 成份基金表現\nAnnualised Return 年率化回報 (p.a.)\n1 Year 一年 3 Years 三年 5 Years 五年 10 Years 十年 Since Launch\n30.67% 8.27% -2.94% 3.67% 6.69%\nDollar Cost Averaging Return (For illustration only)`;
+const bctProFixture = `as at 截至 30/06/2026\fBCT (Pro) China and Hong Kong Equity Fund 8\nConstituent Fund Performance\nCumulative Return\nYear to Date 3 Months 1 Year 3 Years 5 Years\n-8.27% -4.13% 0.73% 22.45% -28.42%\nAnnualised Return\n1 Year 一年 3 Years 三年 5 Years 五年 10 Years 十年 Since Launch\n0.73% 6.98% -6.47% 2.85% 0.38%\nDollar Cost Averaging Return (For illustration only)\nAnnualised Return\n1 Year 一年 3 Years 三年 5 Years 五年 10 Years\n-7.88% 8.79% 4.16% 0.81% 1.98%`;
 const principalFixture = `Principal MPF - Simple Plan Quarterly\nFund Fact Sheet\nData as of 數據截至 31/12/2025\n\\f\nPrincipal Age 65 Plus Fund (MA65F)\nAnnualized Return 年度回報 (%) N/A 7.75 7.75 5.98 0.69`;
 const principal800Fixture = `信安中國股票基金\nPrincipal China Equity Fund\n截至2025年12月31日 As at 31/12/2025\n年均表現 Annualized Return6 (%)\nD類單位 Class D 30.63 30.63 9.16 -4.48 3.34 2.59`;
 const sunLifeXmlFixture = readFileSync(join(import.meta.dirname, "fixtures", "sun-life-page-23.xml"), "utf8");
@@ -32,7 +34,7 @@ const hsbcFixture = `所載資料截至 All information as at 31/03/2026\fCore A
 const hangSengFixture = `所載資料截至 All information as at 31/12/2025\fValueChoice Asia Pacific Equity Tracker Fund\nFund Performance Information (%)\nAnnualised return 1 yr 3 yrs 5 yrs 10 yrs\nThis Fund\n28.58 14.54 4.54 0.00`;
 const bocFixture = `BOC-Prudential Hong Kong Equity Fund ◆\nAnnualized Return N/A N/A 11.01 8.22 -2.37 3.92 6.87\fBOC-Prudential MPF Conservative Fund\nAnnualized Return N/A N/A N/A N/A 0.50 0.60`;
 const haitongFixture = `as of 31/12/2025\fHAITONG HONG KONG SAR FUND\nFUND PERFORMANCE\nA 30.82% 7.97% -0.72% 6.43%\nT 30.92% 8.05% -0.64% 6.51%`;
-const myChoiceFixture = `As at 30/9/2025\fMY CHOICE GROWTH FUND\nPERFORMANCE IN HKD\nAnnualized Return (%)\n1 Year 3 Years 5 Years 10 Years\n3 Years 3 Years 5.20`;
+const myChoiceFixture = `As at 30/9/2025\fMY CHOICE GROWTH FUND\nPERFORMANCE IN HKD\nAnnualized Return (%)\n1 Year 3 Years 5 Years 10 Years\n3 Years 12.34 5.20`;
 const massFixture = `YF Life Trustees Ltd.\nAsian Pacific Equity Fund                                                                 Published in February 2026\nFund Data as at                      December 31, 2025\nFund Performance 1 year 3 years 5 years 10 years Since launch\nAnnualized Return 30.27% 14.34% 2.61% 4.48% 3.86%`;
 const shkpFixture = `SHKP MPF Employer Sponsored Scheme\nAs at 31 March 2026\fAllianz Choice Balanced FundNote 1\nPerformance Note 2 & 3\nLast 3 years (p.a.%)+ 8.99 %`;
 const fidelityFixture = `Fidelity Retirement Master Trust - MPF Conservative Fund *As of 截至 30/06/2025\nCumulative Performance 累積表現\nN/A N/A 2.98% 8.15% 8.15% 9.53% 20.81%\nAnnualised Performance 年率化表現\nN/A N/A 2.98% 2.64% 1.58% 0.91% 0.77%`;
@@ -97,7 +99,7 @@ describe("official fund fact sheet parser", () => {
   });
   it("parses My Choice three-year annualized returns", () => {
     expect(parseMyChoiceFundPerformance(myChoiceFixture, "https://example.test/my-choice.pdf")).toEqual([
-      expect.objectContaining({ constituentFundName: "My Choice GROWTH FUND", dataAsOf: "2025-09-30", annualizedReturn3Year: 5.2 }),
+      expect.objectContaining({ constituentFundName: "My Choice Growth Fund", dataAsOf: "2025-09-30", annualizedReturn3Year: 5.2 }),
     ]);
   });
   it("parses MASS three-year annualized returns", () => {
@@ -180,6 +182,12 @@ describe("official fund fact sheet parser", () => {
   it("parses BCT annualized returns without reading dollar-cost averaging returns", () => {
     expect(parseBctFundFactSheet(bctFixture, "https://www.mpfa.org.hk/assets/FF/IS00017.pdf")).toEqual([
       expect.objectContaining({ constituentFundName: "BCT (Industry) China and Hong Kong Equity Fund", dataAsOf: "2025-12-31", annualizedReturn3Year: 8.27 }),
+    ]);
+  });
+
+  it("parses BCT Pro annualized returns without reading dollar-cost averaging returns", () => {
+    expect(parseBctProFundPerformance(bctProFixture, "https://example.test/bct-pro.pdf")).toEqual([
+      expect.objectContaining({ schemeName: "BCT (MPF) Pro Choice", constituentFundName: "BCT (Pro) China and Hong Kong Equity Fund", dataAsOf: "2026-06-30", annualizedReturn3Year: 6.98 }),
     ]);
   });
 
