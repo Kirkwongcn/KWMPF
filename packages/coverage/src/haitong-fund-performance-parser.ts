@@ -18,7 +18,11 @@ export function parseHaitongFundPerformance(text: string, sourceUrl: string): Fu
     const name = block.match(/Haitong[ \t]+([^\r\n]*?\bFund)\b/i)?.[1]?.replace(/\s+/g, " ").trim();
     if (!name) continue;
 
-    const rows = [...block.matchAll(/\b([AT])\s+((?:N\/A|[+-]?\d+(?:\.\d+)?%)(?:\s+(?:N\/A|[+-]?\d+(?:\.\d+)?%)){3,})/g)];
+    const annualizedIndex = block.search(/ANNUALIZED RATE OF RETURN/i);
+    if (annualizedIndex < 0) continue;
+    const calendarIndex = block.search(/CALENDAR YEAR RETURN/i);
+    const annualizedTable = block.slice(annualizedIndex, calendarIndex < 0 ? undefined : calendarIndex);
+    const rows = [...annualizedTable.matchAll(/\b([AT])\s+((?:N\/A|[+-]?\d+(?:\.\d+)?%)(?:\s+(?:N\/A|[+-]?\d+(?:\.\d+)?%)){3,})/g)];
     for (const row of rows) {
       const values = row[2]!.match(/N\/A|[+-]?\d+(?:\.\d+)?%/g) ?? [];
       const threeYear = values[1];
