@@ -3,9 +3,9 @@ import type { FundFactSheetReturn } from "./fund-fact-sheet-parser";
 function titleCaseHaitongFundName(value: string) {
   return value
     .toLowerCase()
-    .replace(/\\b[a-z]/g, (letter) => letter.toUpperCase())
-    .replace(/\\bSar\\b/g, "SAR")
-    .replace(/\\bMpf\\b/g, "MPF");
+    .replace(/\b[a-z]/g, (letter) => letter.toUpperCase())
+    .replace(/\bSar\b/g, "SAR")
+    .replace(/\bMpf\b/g, "MPF");
 }
 
 export function parseHaitongFundPerformance(text: string, sourceUrl: string): FundFactSheetReturn[] {
