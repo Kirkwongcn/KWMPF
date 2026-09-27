@@ -13,18 +13,28 @@ export function parseHaitongFundPerformance(text: string, sourceUrl: string): Fu
   if (!dateMatch?.[1] || !dateMatch[2] || !dateMatch[3]) throw new Error("Haitong reporting date is missing");
   const dataAsOf = dateMatch[3] + "-" + dateMatch[2].padStart(2, "0") + "-" + dateMatch[1].padStart(2, "0");
   const results: FundFactSheetReturn[] = [];
-  const headings = [...text.matchAll(/Haitong[ \t]+([^\r\n]*?\bFund)\b[^\r\n]*\bIssue Price as of\b/gi)];
+  const sections = new Map<string, string[]>();
+  let currentName: string | undefined;
 
-  for (let index = 0; index < headings.length; index++) {
-    const heading = headings[index]!;
-    const start = heading.index!;
-    const end = headings[index + 1]?.index ?? text.length;
-    const section = text.slice(start, end);
-    const name = heading[1]!.replace(/\s+/g, " ").trim();
+  for (const page of text.split(/\f/)) {
+    const heading = page.match(/^[ \t]*Haitong[ \t]+([^\r\n]*?\bFund)\b/im);
+    if (heading && /Issue Price as of|單位價格/i.test(page.slice(heading.index!))) {
+      currentName = heading[1]!.replace(/\s+/g, " ").trim();
+    }
+    if (currentName) {
+      const pages = sections.get(currentName) ?? [];
+      pages.push(page);
+      sections.set(currentName, pages);
+    }
+  }
+
+  for (const [name, pages] of sections) {
+    const section = pages.join("\f");
     const annualizedIndex = section.search(/ANNUALIZED RATE OF RETURN/i);
     if (annualizedIndex < 0) continue;
-    const calendarIndex = section.search(/CALENDAR YEAR RETURN/i);
-    const annualizedTable = section.slice(annualizedIndex, calendarIndex < 0 ? undefined : calendarIndex);
+    const afterAnnualizedHeading = section.slice(annualizedIndex);
+    const calendarIndex = afterAnnualizedHeading.search(/CALENDAR YEAR RETURN/i);
+    const annualizedTable = afterAnnualizedHeading.slice(0, calendarIndex < 0 ? undefined : calendarIndex);
     const rows = [...annualizedTable.matchAll(/\b([AT])\s+((?:N\/A(?:▲)?|不適用(?:▲)?|[+-]?\d+(?:\.\d+)?%)(?:\s+(?:N\/A(?:▲)?|不適用(?:▲)?|[+-]?\d+(?:\.\d+)?%))*)/gi)];
 
     for (const row of rows) {
