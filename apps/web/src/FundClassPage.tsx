@@ -1089,12 +1089,12 @@ export function FundClassPage({
                         : "kw-status kw-status--positive"
                     }
                   >
-                    {freshness.status === "stale" ? "資料過期" : "資料現行"}
+                    {freshness.status === "stale" ? "回報資料過期" : "回報資料現行"}
                   </p>
                   <p>
                     {freshness.status === "stale"
-                      ? `這項資料已超出官方披露寬限期（${freshness.graceDays} 日），截至日期仍為 ${freshness.dataAsOf}。數值繼續顯示以供參考，但不會參與排名。`
-                      : `資料在官方披露寬限期（${freshness.graceDays} 日）之內。`}
+                      ? `回報資料已超出官方披露寬限期（${freshness.graceDays} 日），截至日期仍為 ${freshness.dataAsOf}。數值繼續顯示以供參考，但不會參與排名。`
+                      : `回報資料在官方披露寬限期（${freshness.graceDays} 日）之內。`}
                   </p>
                 </>
               )}
