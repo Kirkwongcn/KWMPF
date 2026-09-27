@@ -257,7 +257,7 @@ export function RankingsPage({
                   {publication.methodology?.classification
                     ? `比較組別採用 ${publication.methodology.classification.provider}「${publication.methodology.classification.dataset}」（期別 ${publication.methodology.classification.capturedAt}），屬非官方來源；排名數值全部來自官方平台。`
                     : "比較組別分類屬非官方來源；排名數值全部來自官方平台。"}
-                </p>
+                </p> <p className="kw-muted">沒有 Lipper 類別的基金，會按積金局平台的基金種類／類別另行分組，並以「平台分類：」標示，不會併入同名 Lipper 組別。</p>
               </>
             )}
           </div>
