@@ -6,6 +6,7 @@ import { join } from "node:path";
 import { parseAiaFundFactSheet } from "./aia-fund-fact-sheet-parser";
 import { parseAmtdFundFactSheet } from "./amtd-fund-fact-sheet-parser";
 import { parseBctFundFactSheet } from "./bct-fund-fact-sheet-parser";
+import { parseBctProFundPerformance } from "./bct-pro-fund-performance-parser";
 import { parseFundFactSheet } from "./fund-fact-sheet-parser";
 import { parsePrincipalFundFactSheet, parsePrincipal800FundFactSheet } from "./principal-fund-fact-sheet-parser";
 import { parseSunLifeFundFactSheetXml } from "./sun-life-fund-fact-sheet-parser";
@@ -43,6 +44,7 @@ function parser(scheme: string, text: string, url: string): FundFactSheetReturn[
   if (scheme.startsWith("AIA")) return parseAiaFundFactSheet(text, url);
   if (scheme.startsWith("AMTD")) return parseAmtdFundFactSheet(text, url);
   if (scheme === "BCT (MPF) Industry Choice") return parseBctFundFactSheet(text, url);
+  if (scheme === "BCT (MPF) Pro Choice") return parseBctProFundPerformance(text, url);
   if (scheme === "BCT MPF - Simple Plan" || scheme === "BCT MPF - Smart Plan") return parsePrincipalFundFactSheet(text, url, scheme);
   if (scheme === "BCT MPF Scheme Series 800") return parsePrincipal800FundFactSheet(text, url, scheme);
   if (scheme.startsWith("BCT")) throw new Error("No 3-year official return parser for this BCT scheme");
