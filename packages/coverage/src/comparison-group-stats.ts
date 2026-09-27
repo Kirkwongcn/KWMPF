@@ -44,8 +44,13 @@ export type ComparisonGroupStatsRow = {
   top10Count: number;
   volatilityCount: number;
   insufficientSample: boolean;
-  sourceDates: ComparisonGroupSourceDates;
+  sourceDates?: ComparisonGroupSourceDates;
 };
+
+export type ComparisonGroupStatsRowWithSourceDates = Omit<
+  ComparisonGroupStatsRow,
+  "sourceDates"
+> & { sourceDates: ComparisonGroupSourceDates };
 
 export type MetricSampleDates = {
   from: string | null;
@@ -72,7 +77,7 @@ export function comparisonGroupNameFor(fund: {
 
 export function buildComparisonGroupStats(
   funds: ComparisonGroupStatsFund[],
-): ComparisonGroupStatsRow[] {
+): ComparisonGroupStatsRowWithSourceDates[] {
   const groups = new Map<string, ComparisonGroupStatsFund[]>();
   for (const fund of funds) {
     if (fund.verificationStatus !== "verified") continue;
