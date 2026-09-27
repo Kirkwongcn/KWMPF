@@ -33,7 +33,31 @@ const chinaLifeFixture = `\fChina Life Greater China Equity Fund 中國人壽大
 const hsbcFixture = `所載資料截至 All information as at 31/03/2026\fCore Accumulation Fund\nFund Performance Information (%)\nAnnualised return 1 yr 3 yrs 5 yrs 10 yrs\nThis Fund\n12.30 9.42 5.08 6.38`;
 const hangSengFixture = `所載資料截至 All information as at 31/12/2025\fValueChoice Asia Pacific Equity Tracker Fund\nFund Performance Information (%)\nAnnualised return 1 yr 3 yrs 5 yrs 10 yrs\nThis Fund\n28.58 14.54 4.54 0.00`;
 const bocFixture = `BOC-Prudential Hong Kong Equity Fund ◆\nAnnualized Return N/A N/A 11.01 8.22 -2.37 3.92 6.87\fBOC-Prudential MPF Conservative Fund\nAnnualized Return N/A N/A N/A N/A 0.50 0.60`;
-const haitongFixture = `as of 31/12/2025\fHAITONG HONG KONG SAR FUND\nFUND PERFORMANCE\nA 30.82% 7.97% -0.72% 6.43%\nT 30.92% 8.05% -0.64% 6.51%`;
+const haitongIssuePrice = "Issue Price as of 31/08/2026 (Class A) $14.30";
+const haitongHeading = (name: string, issueBeforeName = false) => {
+  const title = name + " 海通基金*";
+  return issueBeforeName ? haitongIssuePrice + "\n" + title : title + "\n" + haitongIssuePrice;
+};
+const haitongAnnualized = (a: string, t: string) => [
+  "FUND PERFORMANCE",
+  "ANNUALIZED RATE OF RETURN",
+  "CLASS 1 Year 3 Years 5 Years 10 Years Since Inception",
+  "A 10.42% " + a + " 2.94% 不適用▲ 3.87%",
+  "T 10.42% " + t + " 2.94% N/A▲ 3.87%",
+  "CALENDAR YEAR RETURN",
+  "CLASS 2021 2022 2023 2024 2025 2026 YTD",
+  "A 99.99% 99.99% 99.99% 99.99% 99.99% 99.99%",
+  "T 99.99% 99.99% 99.99% 99.99% 99.99% 99.99%",
+].join("\n");
+const haitongFund = (name: string, a: string, t: string, issueBeforeName = false) =>
+  haitongHeading(name, issueBeforeName) + "\n" + haitongAnnualized(a, t);
+const haitongFixture = [
+  "as of 31/08/2026\nHaitong MPF Retirement Fund\nConstituent Funds include Haitong Core Accumulation Fund",
+  haitongFund("Haitong Hong Kong SAR Fund", "2.11%", "2.12%") + "\n" + haitongFund("Haitong Asia Pacific Fund", "3.21%", "3.22%", true),
+  haitongFund("Haitong Global Diversification Fund", "4.31%", "4.32%") + "\n" + haitongFund("Haitong Korea Fund", "5.41%", "5.42%"),
+  haitongHeading("Haitong Age 65 Plus Fund") + "\f" + haitongAnnualized("8.91%", "8.91%") + "\n" + haitongFund("Haitong Core Accumulation Fund", "9.11%", "9.12%"),
+  haitongFund("Haitong MPF Conservative Fund", "10.11%", "10.12%"),
+].join("\f");
 const myChoiceFixture = `As at 30/9/2025\fMY CHOICE GROWTH FUND\nPERFORMANCE IN HKD\nAnnualized Return (%)\n1 Year 3 Years 5 Years 10 Years\n3 Years 12.34 5.20`;
 const massFixture = `YF Life Trustees Ltd.\nAsian Pacific Equity Fund                                                                 Published in February 2026\nFund Data as at                      December 31, 2025\nFund Performance 1 year 3 years 5 years 10 years Since launch\nAnnualized Return 30.27% 14.34% 2.61% 4.48% 3.86%`;
 const shkpFixture = `SHKP MPF Employer Sponsored Scheme\nAs at 31 March 2026\fAllianz Choice Balanced FundNote 1\nPerformance Note 2 & 3\nLast 3 years (p.a.%)+ 8.99 %`;
@@ -91,11 +115,23 @@ describe("official fund fact sheet parser", () => {
       expect.objectContaining({ constituentFundName: "BOC-Prudential Hong Kong Equity Fund", dataAsOf: "2026-03-31", annualizedReturn3Year: 8.22 }),
     ]);
   });
-  it("parses Haitong class-specific annualized returns", () => {
-    expect(parseHaitongFundPerformance(haitongFixture, "https://example.test/haitong.pdf")).toEqual([
-      expect.objectContaining({ constituentFundName: "Haitong Hong Kong SAR Fund", fundClassName: "A", dataAsOf: "2025-12-31", annualizedReturn3Year: 7.97 }),
-      expect.objectContaining({ fundClassName: "T", annualizedReturn3Year: 8.05 }),
+  it("parses all Haitong fund sections across pages and ignores calendar-year rows", () => {
+    const result = parseHaitongFundPerformance(haitongFixture, "https://example.test/haitong.pdf");
+    expect(result).toHaveLength(14);
+    expect([...new Set(result.map((row) => row.constituentFundName))]).toEqual([
+      "Haitong Hong Kong SAR Fund",
+      "Haitong Asia Pacific Fund",
+      "Haitong Global Diversification Fund",
+      "Haitong Korea Fund",
+      "Haitong Age 65 Plus Fund",
+      "Haitong Core Accumulation Fund",
+      "Haitong MPF Conservative Fund",
     ]);
+    expect(result).toContainEqual(expect.objectContaining({ constituentFundName: "Haitong Hong Kong SAR Fund", fundClassName: "A", annualizedReturn3Year: 2.11 }));
+    expect(result).toContainEqual(expect.objectContaining({ constituentFundName: "Haitong Asia Pacific Fund", fundClassName: "A", annualizedReturn3Year: 3.21 }));
+    expect(result).toContainEqual(expect.objectContaining({ constituentFundName: "Haitong Age 65 Plus Fund", fundClassName: "T", annualizedReturn3Year: 8.91 }));
+    expect(result).toContainEqual(expect.objectContaining({ constituentFundName: "Haitong MPF Conservative Fund", fundClassName: "T", annualizedReturn3Year: 10.12 }));
+    expect(result.some((row) => row.annualizedReturn3Year === 99.99)).toBe(false);
   });
   it("parses My Choice three-year annualized returns", () => {
     expect(parseMyChoiceFundPerformance(myChoiceFixture, "https://example.test/my-choice.pdf")).toEqual([
