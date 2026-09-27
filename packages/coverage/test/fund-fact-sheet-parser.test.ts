@@ -185,7 +185,13 @@ describe("official fund fact sheet parser", () => {
     ]);
   });
 
-  it("parses BCT Pro annualized returns without reading dollar-cost averaging returns", () => {\n    expect(parseBctProFundPerformance(bctProFixture, "https://example.test/bct-pro.pdf")).toEqual([\n      expect.objectContaining({ schemeName: "BCT (MPF) Pro Choice", constituentFundName: "BCT (Pro) China and Hong Kong Equity Fund", dataAsOf: "2026-06-30", annualizedReturn3Year: 6.98 }),\n    ]);\n  });\n\n  it("parses Principal Simple and Smart annualized three-year returns", () => {
+  it("parses BCT Pro annualized returns without reading dollar-cost averaging returns", () => {
+    expect(parseBctProFundPerformance(bctProFixture, "https://example.test/bct-pro.pdf")).toEqual([
+      expect.objectContaining({ schemeName: "BCT (MPF) Pro Choice", constituentFundName: "BCT (Pro) China and Hong Kong Equity Fund", dataAsOf: "2026-06-30", annualizedReturn3Year: 6.98 }),
+    ]);
+  });
+
+  it("parses Principal Simple and Smart annualized three-year returns", () => {
     expect(parsePrincipalFundFactSheet(principalFixture, "https://example.test/simple.pdf", "BCT MPF - Simple Plan")).toEqual([
       expect.objectContaining({ constituentFundName: "Age 65 Plus Fund", dataAsOf: "2025-12-31", annualizedReturn3Year: 5.98 }),
     ]);
