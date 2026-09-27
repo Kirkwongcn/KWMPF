@@ -66,18 +66,32 @@ jobs:
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v6
-      - name: Classify pull request E2E and publication seed scope
+      - name: Classify change scope for E2E and publication seed
         id: e2e-scope
-        if: github.event_name == 'pull_request'
         env:
+          EVENT_NAME: ${{ github.event_name }}
           BASE_REF: ${{ github.event.pull_request.base.ref }}
+          BEFORE_SHA: ${{ github.event.before }}
           CHECKED_OUT_SHA: ${{ github.sha }}
         run: |
           set -euo pipefail
-          git fetch --no-tags --depth=1 origin "refs/heads/${BASE_REF}:refs/remotes/origin/${BASE_REF}"
-          base_sha="$(git rev-parse "origin/${BASE_REF}")"
-          git diff --name-only -z "$base_sha" "$CHECKED_OUT_SHA" > /tmp/ci-changed-paths
-          mapfile -d '' changed_paths < /tmp/ci-changed-paths
+          if [[ "$EVENT_NAME" == "pull_request" ]]; then
+            git fetch --no-tags --depth=1 origin "refs/heads/${BASE_REF}:refs/remotes/origin/${BASE_REF}"
+            base_sha="$(git rev-parse "origin/${BASE_REF}")"
+          else
+            base_sha="$BEFORE_SHA"
+            if [[ "$base_sha" =~ ^[0]+$ ]]; then
+              base_sha=""
+            else
+              git fetch --no-tags --depth=1 origin "$base_sha"
+            fi
+          fi
+
+          changed_paths=()
+          if [[ -n "$base_sha" ]]; then
+            git diff --name-only -z "$base_sha" "$CHECKED_OUT_SHA" > /tmp/ci-changed-paths
+            mapfile -d '' changed_paths < /tmp/ci-changed-paths
+          fi
 
           run_e2e=true
           run_publication_seed=false
