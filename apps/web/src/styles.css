@@ -241,6 +241,30 @@ body {
   margin: 18px 0;
   font-weight: 650;
 }
+.kw-interpretation__metadata {
+  display: grid;
+  gap: 9px;
+  margin: 16px 0 0;
+  padding-top: 13px;
+  border-top: 1px solid var(--kw-line);
+  color: var(--kw-muted-strong);
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.5;
+}
+.kw-interpretation__metadata > div {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  gap: 10px;
+}
+.kw-interpretation__metadata dt {
+  color: var(--kw-muted);
+}
+.kw-interpretation__metadata dd {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
 .kw-comparison-bars {
   display: grid;
   gap: 10px;

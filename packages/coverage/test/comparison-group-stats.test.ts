@@ -20,6 +20,9 @@ const buckets = (
 });
 
 const holdings = (...percents: number[]) => ({
+  temporalScopes: {
+    topHoldings: { kind: "point-in-time" as const, asOf: "2026-05-31" },
+  },
   topHoldings: percents.map((percent, index) => ({
     rank: index + 1,
     percent,
@@ -36,6 +39,7 @@ function fund(
     lipperCategory: "Hong Kong Equity",
     fundType: "Equity Fund - Hong Kong Equity Fund",
     mappedAllocation: buckets(90, 5, 5),
+    fundRiskAsOf: "2026-08-31",
     factSheetDisclosure: holdings(12, 8, 7),
     fundRiskIndicator: 18,
     ...overrides,
@@ -95,6 +99,11 @@ describe("buildComparisonGroupStats", () => {
       avgAllocation: { equity: 86.67, bond: 6.67, cashAndOther: 6.67 },
       avgTop10Concentration: 27,
       avgVolatility3y: 16,
+      sourceDates: {
+        allocation: { from: "2026-06-30", to: "2026-06-30", undatedCount: 0 },
+        top10Concentration: { from: "2026-05-31", to: "2026-05-31", undatedCount: 0 },
+        volatility3y: { from: "2026-08-31", to: "2026-08-31", undatedCount: 0 },
+      },
     });
     expect(rows[0]?.insufficientSample).toBe(true);
     expect(rows[0]?.avgAllocation).toBeNull();
@@ -193,5 +202,32 @@ describe("buildComparisonGroupStats", () => {
         fund("a", { verificationStatus: "pending_review" }),
       ]),
     ).toEqual([]);
+  });
+
+  it("keeps field dates separate and counts valid samples with no explicit field date", () => {
+    const [row] = buildComparisonGroupStats([
+      fund("dated-a"),
+      fund("undated", {
+        mappedAllocation: { ...buckets(90, 5, 5), asOf: undefined },
+        factSheetDisclosure: { topHoldings: [{ rank: 1, percent: 20 }] },
+        fundRiskAsOf: undefined,
+      }),
+      fund("dated-b", {
+        mappedAllocation: { ...buckets(90, 5, 5), asOf: "2026-07-31" },
+        factSheetDisclosure: {
+          temporalScopes: {
+            topHoldings: { kind: "point-in-time", asOf: "2026-07-31" },
+          },
+          topHoldings: [{ rank: 1, percent: 20 }],
+        },
+        fundRiskAsOf: "2026-08-31",
+      }),
+    ]);
+
+    expect(row?.sourceDates).toEqual({
+      allocation: { from: "2026-06-30", to: "2026-07-31", undatedCount: 1 },
+      top10Concentration: { from: "2026-05-31", to: "2026-07-31", undatedCount: 1 },
+      volatility3y: { from: "2026-08-31", to: "2026-08-31", undatedCount: 1 },
+    });
   });
 });

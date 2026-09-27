@@ -175,6 +175,7 @@ const groupStats = buildComparisonGroupStats(
     fundCategory: publication.fundClass.fundCategory,
     unavailableFields: publication.fundClass.unavailableFields,
     fundRiskIndicator: publication.fundClass.fundRiskIndicator,
+    fundRiskAsOf: publication.fundClass.dataAsOf,
     mappedAllocation: publication.mappedAllocation,
     factSheetDisclosure: publication.factSheetDisclosure,
   })),
@@ -191,7 +192,7 @@ const statements = [
   ),
   ...groupStats.map(
     (row) =>
-      `INSERT INTO comparison_group_stats (snapshot_id, comparison_group, avg_allocation, avg_top10_concentration, avg_volatility_3y, fund_count, allocation_count, top10_count, volatility_count, insufficient_sample) VALUES (${sqlString(snapshotId)}, ${sqlString(row.comparisonGroup)}, ${row.avgAllocation === null ? "NULL" : sqlString(JSON.stringify(row.avgAllocation))}, ${sqlNumber(row.avgTop10Concentration)}, ${sqlNumber(row.avgVolatility3y)}, ${row.fundCount}, ${row.allocationCount}, ${row.top10Count}, ${row.volatilityCount}, ${row.insufficientSample ? 1 : 0});`,
+      `INSERT INTO comparison_group_stats (snapshot_id, comparison_group, avg_allocation, avg_top10_concentration, avg_volatility_3y, fund_count, allocation_count, top10_count, volatility_count, insufficient_sample, source_dates) VALUES (${sqlString(snapshotId)}, ${sqlString(row.comparisonGroup)}, ${row.avgAllocation === null ? "NULL" : sqlString(JSON.stringify(row.avgAllocation))}, ${sqlNumber(row.avgTop10Concentration)}, ${sqlNumber(row.avgVolatility3y)}, ${row.fundCount}, ${row.allocationCount}, ${row.top10Count}, ${row.volatilityCount}, ${row.insufficientSample ? 1 : 0}, ${sqlString(JSON.stringify(row.sourceDates))});`,
   ),
   `INSERT INTO current_publication (singleton, snapshot_id) VALUES (1, ${sqlString(snapshotId)});`,
 ];

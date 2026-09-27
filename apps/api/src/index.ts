@@ -17,6 +17,7 @@ import {
 } from "./freshness";
 import type { PublicationBindings } from "./publication";
 import { interpretFund } from "../../../packages/coverage/src/fund-interpretation";
+import type { ComparisonGroupSourceDates } from "../../../packages/coverage/src/comparison-group-stats";
 import type { FactSheetTemporalScopes } from "../../../packages/coverage/src/fact-sheet-temporal";
 
 type Bindings = PublicationBindings & {
@@ -167,6 +168,7 @@ type PublishedFundPayload = {
   fundClass: BrowseFundClass & { unavailableFields?: string[] };
   mappedAllocation?: MappedAllocation;
   factSheetDisclosure?: FactSheetDisclosure;
+  provenance: { sourceUrl: string; dataAsOf: string };
 };
 
 function top10Concentration(
@@ -401,6 +403,7 @@ type ComparisonGroupStatsRow = {
   top10_count: number;
   volatility_count: number;
   insufficient_sample: number;
+  source_dates: string | null;
 };
 
 function publishedComparisonGroupStats(row: ComparisonGroupStatsRow) {
@@ -411,6 +414,15 @@ function publishedComparisonGroupStats(row: ComparisonGroupStatsRow) {
         cashAndOther: number;
       })
     : null;
+  const sourceDates = row.source_dates
+    ? (JSON.parse(row.source_dates) as Partial<ComparisonGroupSourceDates>)
+    : null;
+  const completeSourceDates =
+    sourceDates?.allocation &&
+    sourceDates.top10Concentration &&
+    sourceDates.volatility3y
+      ? (sourceDates as ComparisonGroupSourceDates)
+      : null;
   return {
     comparisonGroup: row.comparison_group,
     comparisonGroupSource: comparisonGroupSourceOf(row.comparison_group),
@@ -425,6 +437,7 @@ function publishedComparisonGroupStats(row: ComparisonGroupStatsRow) {
     top10Count: row.top10_count,
     volatilityCount: row.volatility_count,
     insufficientSample: row.insufficient_sample === 1,
+    ...(completeSourceDates ? { sourceDates: completeSourceDates } : {}),
   };
 }
 
@@ -458,7 +471,7 @@ app.get("/fund-classes/:id/interpretation", async (context) => {
   const comparisonGroup = comparisonGroupFor(published.fundClass);
   const stats = await context.env.DB.prepare(
     `SELECT comparison_group, avg_allocation, avg_top10_concentration, avg_volatility_3y,
-            fund_count, allocation_count, top10_count, volatility_count, insufficient_sample
+            fund_count, allocation_count, top10_count, volatility_count, insufficient_sample, source_dates
      FROM comparison_group_stats
      WHERE snapshot_id = ? AND comparison_group = ?`,
   )
@@ -504,6 +517,14 @@ app.get("/fund-classes/:id/interpretation", async (context) => {
     volatilityCount: group.volatilityCount,
     insufficientSample: group.insufficientSample,
   });
+  const disclosure = published.factSheetDisclosure;
+  const factsheetSourceLabel =
+    disclosure?.factSheetSource === "trustee"
+      ? "受託人基金便覽"
+      : disclosure?.factSheetSource === "mpfa-registry"
+        ? "積金局登記冊基金便覽"
+        : "基金便覽來源未提供";
+  const groupSourceDates = group.sourceDates;
 
   return context.json({
     snapshotId: row.snapshot_id,
@@ -525,6 +546,41 @@ app.get("/fund-classes/:id/interpretation", async (context) => {
         groupAverage: group.avgVolatility3y,
       },
     },
+    provenance: {
+      equity: {
+        fundSourceLabel: factsheetSourceLabel,
+        fundSourceUrl: disclosure?.factSheetUrl ?? null,
+        fundFieldAsOf: published.mappedAllocation?.asOf ?? null,
+        fundDocumentAsOf: disclosure?.factSheetAsOf ?? null,
+        groupSourceLabel: "同組已核實基金便覽樣本（來源各異）",
+        groupSampleCount: group.allocationCount,
+        groupMemberCount: group.fundCount,
+        groupSampleDates: groupSourceDates?.allocation ?? null,
+      },
+      top10Concentration: {
+        fundSourceLabel: factsheetSourceLabel,
+        fundSourceUrl: disclosure?.factSheetUrl ?? null,
+        fundFieldAsOf:
+          disclosure?.temporalScopes?.topHoldings?.kind === "point-in-time"
+            ? disclosure.temporalScopes.topHoldings.asOf
+            : null,
+        fundDocumentAsOf: disclosure?.factSheetAsOf ?? null,
+        groupSourceLabel: "同組已核實基金便覽樣本（來源各異）",
+        groupSampleCount: group.top10Count,
+        groupMemberCount: group.fundCount,
+        groupSampleDates: groupSourceDates?.top10Concentration ?? null,
+      },
+      volatility3y: {
+        fundSourceLabel: "積金局基金平台",
+        fundSourceUrl: published.provenance.sourceUrl,
+        fundFieldAsOf: published.provenance.dataAsOf,
+        fundDocumentAsOf: null,
+        groupSourceLabel: "積金局基金平台快照",
+        groupSampleCount: group.volatilityCount,
+        groupMemberCount: group.fundCount,
+        groupSampleDates: groupSourceDates?.volatility3y ?? null,
+      },
+    },
     interpretation,
   });
 });
@@ -542,12 +598,12 @@ app.get("/comparison-group-stats", async (context) => {
   const rows = await context.env.DB.prepare(
     requested
       ? `SELECT comparison_group, avg_allocation, avg_top10_concentration, avg_volatility_3y,
-                fund_count, allocation_count, top10_count, volatility_count, insufficient_sample
+                fund_count, allocation_count, top10_count, volatility_count, insufficient_sample, source_dates
          FROM comparison_group_stats
          WHERE snapshot_id = ? AND comparison_group = ?
          ORDER BY comparison_group`
       : `SELECT comparison_group, avg_allocation, avg_top10_concentration, avg_volatility_3y,
-                fund_count, allocation_count, top10_count, volatility_count, insufficient_sample
+                fund_count, allocation_count, top10_count, volatility_count, insufficient_sample, source_dates
          FROM comparison_group_stats
          WHERE snapshot_id = ?
          ORDER BY comparison_group`,
