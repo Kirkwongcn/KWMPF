@@ -974,22 +974,18 @@ body {
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 340px) {
   .kw-header__inner {
-    gap: 8px;
-  }
-  .kw-brand {
-    gap: 8px;
-  }
-  .kw-brand small {
-    font-size: 8px;
-    letter-spacing: 0.04em;
+    flex-wrap: wrap;
+    row-gap: 4px;
   }
   .kw-nav {
-    gap: 6px;
+    flex-basis: 100%;
   }
   .kw-nav a {
-    font-size: 12px;
+    flex: 1 1 0;
+    justify-content: center;
+    font-size: 15px;
   }
 }
 
