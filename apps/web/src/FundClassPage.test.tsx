@@ -612,7 +612,7 @@ describe("fund class page", () => {
       ageDays: 200,
     });
 
-    expect(await screen.findByText("資料過期")).toBeVisible();
+    expect(await screen.findByText("回報資料過期")).toBeVisible();
     expect(
       screen.getByText(
         new RegExp(`超出官方披露寬限期.*${fixture.fundClass.dataAsOf}`),
@@ -636,8 +636,8 @@ describe("fund class page", () => {
       ageDays: 20,
     });
 
-    expect(await screen.findByText("資料現行")).toBeVisible();
-    expect(screen.queryByText("資料過期")).not.toBeInTheDocument();
+    expect(await screen.findByText("回報資料現行")).toBeVisible();
+    expect(screen.queryByText("回報資料過期")).not.toBeInTheDocument();
   });
 });
 
