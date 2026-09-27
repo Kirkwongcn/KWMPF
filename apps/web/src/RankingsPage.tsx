@@ -305,7 +305,8 @@ export function RankingsPage({
                   aria-describedby="ranking-table-scroll-hint"
                   onKeyDown={(event) => {
                     if (
-                      (event.key !== "ArrowLeft" && event.key !== "ArrowRight") ||
+                      (event.key !== "ArrowLeft" &&
+                        event.key !== "ArrowRight") ||
                       event.altKey ||
                       event.ctrlKey ||
                       event.metaKey
@@ -324,13 +325,17 @@ export function RankingsPage({
                       Math.max(
                         0,
                         container.scrollLeft +
-                          direction * Math.max(120, container.clientWidth * 0.75),
+                          direction *
+                            Math.max(120, container.clientWidth * 0.75),
                       ),
                     );
 
                     if (nextScrollLeft === container.scrollLeft) return;
                     event.preventDefault();
-                    container.scrollTo({ left: nextScrollLeft, behavior: "auto" });
+                    container.scrollTo({
+                      left: nextScrollLeft,
+                      behavior: "auto",
+                    });
                   }}
                 >
                   <table className="kw-table">
