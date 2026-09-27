@@ -167,6 +167,40 @@ jobs:
             echo "R2 prefix: kwmpf-production-raw/$prefix"
             cat "$manifest_file"
           } >> "$GITHUB_STEP_SUMMARY"
+      - name: Verify production D1 backup from R2 before migrations
+        working-directory: apps/api
+        env:
+          BACKUP_ID: ${{ steps.pre-deploy-export.outputs.backup_id }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          prefix="backups/$BACKUP_ID"
+          export_file=/tmp/kwmpf-production-before-deploy.sql
+          manifest_file=/tmp/kwmpf-production-before-deploy.manifest.json
+          readback_file=/tmp/kwmpf-production-before-deploy-readback.sql
+          readback_manifest_file=/tmp/kwmpf-production-before-deploy-readback.manifest.json
+
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler r2 object get "kwmpf-production-raw/$prefix/d1.sql" --remote --config wrangler.production.json --file "$readback_file"
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler r2 object get "kwmpf-production-raw/$prefix/manifest.json" --remote --config wrangler.production.json --file "$readback_manifest_file"
+
+          if ! cmp -s "$manifest_file" "$readback_manifest_file"; then
+            echo "The uploaded production backup manifest differs from the local manifest." >&2
+            exit 1
+          fi
+          expected_bytes="$(jq -er '.files[] | select(.key == "d1.sql") | .bytes' "$manifest_file")"
+          expected_sha256="$(jq -er '.files[] | select(.key == "d1.sql") | .sha256' "$manifest_file")"
+          actual_bytes="$(wc -c < "$readback_file" | tr -d '[:space:]')"
+          actual_sha256="$(sha256sum "$readback_file" | awk '{print $1}')"
+          if [[ "$actual_bytes" != "$expected_bytes" ]]; then
+            echo "The production D1 backup size does not match its manifest." >&2
+            exit 1
+          fi
+          if [[ "$actual_sha256" != "$expected_sha256" ]]; then
+            echo "The production D1 backup SHA-256 does not match its manifest." >&2
+            exit 1
+          fi
+          echo "Production D1 backup read-back verified: $actual_bytes bytes; SHA-256 matches the manifest." >> "$GITHUB_STEP_SUMMARY"
       - name: Apply D1 migrations
         id: apply-migrations
         uses: cloudflare/wrangler-action@v4
