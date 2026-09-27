@@ -47,9 +47,9 @@ jobs:
         run: |
           set -euo pipefail
           git fetch --no-tags origin "refs/heads/${BASE_REF}:refs/remotes/origin/${BASE_REF}"
-          diff_base="$(git merge-base "origin/${BASE_REF}" "$HEAD_SHA")"
-          git diff --name-only "$diff_base" "$HEAD_SHA" >/tmp/changed-files.txt
-          printf '%s\n' "$PR_BODY" >/tmp/pr-body.md
+          diff_base="$(git merge-base "origin/${BASE_REF}" "${HEAD_SHA}")"
+          git diff --name-only "${diff_base}" "${HEAD_SHA}" >/tmp/changed-files.txt
+          printf '%s\\n' "${PR_BODY}" >/tmp/pr-body.md
           scripts/check-high-risk-review.sh /tmp/changed-files.txt /tmp/pr-body.md
       - name: Keep source data reviewable separately from code
         env:
@@ -58,8 +58,8 @@ jobs:
         run: |
           set -euo pipefail
           git fetch --no-tags origin "refs/heads/${BASE_REF}:refs/remotes/origin/${BASE_REF}"
-          diff_base="$(git merge-base "origin/${BASE_REF}" "$HEAD_SHA")"
-          scripts/check-pr-composition.sh "$diff_base" "$HEAD_SHA"
+          diff_base="$(git merge-base "origin/${BASE_REF}" "${HEAD_SHA}")"
+          scripts/check-pr-composition.sh "${diff_base}" "${HEAD_SHA}"
 
   e2e:
     runs-on: ubuntu-latest
@@ -76,58 +76,60 @@ jobs:
           set -euo pipefail
           git fetch --no-tags --depth=1 origin "refs/heads/${BASE_REF}:refs/remotes/origin/${BASE_REF}"
           base_sha="$(git rev-parse "origin/${BASE_REF}")"
-          git diff --name-only -z "$base_sha" "$CHECKED_OUT_SHA" > /tmp/ci-changed-paths
+          git diff --name-only -z "${base_sha}" "${CHECKED_OUT_SHA}" > /tmp/ci-changed-paths
           mapfile -d '' changed_paths < /tmp/ci-changed-paths
 
           run_e2e=true
           run_publication_seed=false
           return_observations=""
-          if ((${#changed_paths[@]} > 0)); then
+          if (("${#changed_paths[@]}" > 0)); then
             run_e2e=false
             for path in "${changed_paths[@]}"; do
-              if [[ "$path" =~ ^data/sources/[0-9]{4}-[0-9]{2}-[0-9]{2}/(mpf-fund-platform|refresh-report)\.json$ ]]; then
+              if [[ "${path}" =~ ^data/sources/[0-9]{4}-[0-9]{2}-[0-9]{2}/(mpf-fund-platform|refresh-report)\\.json$ ]]; then
                 run_publication_seed=true
-              elif [[ "$path" =~ ^data/coverage/[0-9]{4}-[0-9]{2}-[0-9]{2}-official-return-observations-candidate\.json$ ]]; then
-                if [[ -n "$return_observations" && "$return_observations" != "$path" ]]; then
+              elif [[ "${path}" =~ ^data/sources/[0-9]{4}-[0-9]{2}-[0-9]{2}/fund-fact-sheet-disclosures\\.json$ ]]; then
+                run_publication_seed=true
+              elif [[ "${path}" =~ ^data/coverage/[0-9]{4}-[0-9]{2}-[0-9]{2}-official-return-observations-candidate\\.json$ ]]; then
+                if [[ -n "${return_observations}" && "${return_observations}" != "${path}" ]]; then
                   echo "Multiple trustee return candidate overlays are not supported in one PR." >&2
                   exit 1
                 fi
-                return_observations="$path"
+                return_observations="${path}"
                 run_publication_seed=true
-              elif [[ "$path" =~ ^data/coverage/[0-9]{4}-[0-9]{2}-[0-9]{2}-official-return-observations-report\.json$ ]]; then
+              elif [[ "${path}" =~ ^data/coverage/[0-9]{4}-[0-9]{2}-[0-9]{2}-official-return-observations-report\\.json$ ]]; then
                 :
-              elif [[ "$path" =~ ^(apps/(api|web)/.*|packages/coverage/.*)\.(test|spec)\.(ts|tsx)$ ]]; then
+              elif [[ "${path}" =~ ^(apps/(api|web)/.*|packages/coverage/.*)\\.(test|spec)\\.(ts|tsx)$ ]]; then
                 :
-              elif [[ "$path" =~ ^\.github/workflows/[^/]+\.yml$ || "$path" =~ ^docs/ ]]; then
+              elif [[ "${path}" =~ ^\\.github/workflows/[^/]+\\.yml$ || "${path}" =~ ^docs/ ]]; then
                 :
               else
                 run_e2e=true
               fi
 
               while IFS= read -r pattern; do
-                case "$pattern" in
+                case "${pattern}" in
                   ''|'#'*) continue ;;
                   .github/workflows/deploy-staging.yml|.github/workflows/deploy-production.yml) continue ;;
                 esac
                 # shellcheck disable=SC2254
-                case "$path" in
-                  $pattern) run_publication_seed=true; break ;;
+                case "${path}" in
+                  ${pattern}) run_publication_seed=true; break ;;
                 esac
               done < scripts/high-risk-paths.txt
             done
           fi
 
-          echo "run_e2e=$run_e2e" >> "$GITHUB_OUTPUT"
-          echo "run_publication_seed=$run_publication_seed" >> "$GITHUB_OUTPUT"
-          echo "return_observations=$return_observations" >> "$GITHUB_OUTPUT"
-          if [[ "$run_e2e" == false ]]; then
-            echo "Skipped Playwright E2E: every changed path is documentation, GitHub Actions workflow configuration, unit-test-only code, or a data-only source/candidate/report; verify and any required publication-seed checks still run." >> "$GITHUB_STEP_SUMMARY"
+          echo "run_e2e=${run_e2e}" >> "${GITHUB_OUTPUT}"
+          echo "run_publication_seed=${run_publication_seed}" >> "${GITHUB_OUTPUT}"
+          echo "return_observations=${return_observations}" >> "${GITHUB_OUTPUT}"
+          if [[ "${run_e2e}" == false ]]; then
+            echo "Skipped Playwright E2E: every changed path is documentation, GitHub Actions workflow configuration, unit-test-only code, or a data-only source/candidate/report; verify and any required publication-seed checks still run." >> "${GITHUB_STEP_SUMMARY}"
           fi
-          if [[ "$run_publication_seed" == true ]]; then
-            if [[ -n "$return_observations" ]]; then
-              echo "Will run the local publication seed check with candidate overlay: $return_observations." >> "$GITHUB_STEP_SUMMARY"
+          if [[ "${run_publication_seed}" == true ]]; then
+            if [[ -n "${return_observations}" ]]; then
+              echo "Will run the local publication seed check with candidate overlay: ${return_observations}." >> "${GITHUB_STEP_SUMMARY}"
             else
-              echo "Will run the local publication seed check against the latest source batch." >> "$GITHUB_STEP_SUMMARY"
+              echo "Will run the local publication seed check against the latest source batch." >> "${GITHUB_STEP_SUMMARY}"
             fi
           fi
       - uses: oven-sh/setup-bun@v2
