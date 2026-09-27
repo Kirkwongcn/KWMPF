@@ -8,7 +8,11 @@ import {
   type PdfPage,
   type PdfTextItem,
 } from "./pdf-xml";
-import type { FactSheetTemporalScopes } from "./fact-sheet-temporal";
+import type {
+  FactSheetTemporalField,
+  FactSheetTemporalScope,
+  FactSheetTemporalScopes,
+} from "./fact-sheet-temporal";
 
 /**
  * 由計劃便覽抽取「配置」及「十大持倉」。
@@ -173,11 +177,34 @@ export type BlockSelector = {
   continueOnNextPage?: boolean;
 };
 
-export type FactSheetFieldDateSelector = {
-  /** Must match the field label and its date together in the same reconstructed PDF line. */
-  pattern: RegExp;
-  sourceLabel: string;
-};
+type FactSheetDataField = Exclude<FactSheetTemporalField, "document">;
+
+export type FactSheetFieldScopeSelector =
+  | {
+      kind: "point-in-time";
+      /** Must capture a date next to its field marker or footnote marker. */
+      pattern: RegExp;
+      /** Require this field label in the same fund section. */
+      fieldLabel?: RegExp;
+      sourceLabel: string;
+    }
+  | {
+      kind: "financial-period";
+      /** Must capture the period label next to the field name. */
+      pattern: RegExp;
+      fieldLabel?: RegExp;
+      sourceLabel: string;
+      labelFromCapture: (capture: string) => string;
+    }
+  | {
+      kind: "lookback-period";
+      /** Evidence that the source defines a lookback ending at the reporting date. */
+      evidencePattern: RegExp;
+      fieldLabel?: RegExp;
+      months: number;
+      endingAt?: "document-date";
+      method: string;
+    };
 
 export type FactSheetContract = {
   scheme: string;
@@ -197,9 +224,9 @@ export type FactSheetContract = {
   title: TitleSelector;
   allocation: BlockSelector;
   holdings: BlockSelector;
-  /** Explicit point-in-time labels tied to a field, never the document header date. */
-  fieldDates?: Partial<
-    Record<"allocation" | "topHoldings" | "commentary", FactSheetFieldDateSelector>
+  /** Explicit temporal evidence tied to a field; never inherit the document date implicitly. */
+  fieldScopes?: Partial<
+    Record<FactSheetDataField, FactSheetFieldScopeSelector>
   >;
   /** 便覽自己的截至日期。抽不到就報錯，不可用平台日期補位。 */
   asOf: {
@@ -878,50 +905,94 @@ export function findFactSheetAsOf(pages: PdfPage[], contract: FactSheetContract)
   throw new Error(`${contract.scheme}: fact sheet as-of date not found`);
 }
 
-function findFieldDate(
+function findFieldScope(
   pages: PdfPage[],
   section: FactSheetSection,
-  selector: FactSheetFieldDateSelector,
-) {
+  factSheetAsOf: string,
+  selector: FactSheetFieldScopeSelector,
+): FactSheetTemporalScope | undefined {
   const items = sectionItems(pages, section);
-  const matches: { asOf: string; page: number }[] = [];
-  const pattern = new RegExp(
-    selector.pattern.source,
-    selector.pattern.flags.includes("g")
-      ? selector.pattern.flags
-      : `${selector.pattern.flags}g`,
-  );
-
-  for (const page of pages) {
-    const scopedItems = items.filter((item) => item.page === page.number);
-    if (scopedItems.length === 0) continue;
-    for (const line of toLines({ ...page, items: scopedItems })) {
-      for (const match of line.text.matchAll(pattern)) {
-          if (match[1]) {
-            matches.push({
-              asOf: parseFactSheetDate(match[1]),
-              page: page.number,
-            });
-          }
-      }
-    }
+  const itemsByPage = new Map<number, PdfTextItem[]>();
+  for (const item of items) {
+    const pageItems = itemsByPage.get(item.page);
+    if (pageItems) pageItems.push(item);
+    else itemsByPage.set(item.page, [item]);
+  }
+  const lines = pages.flatMap((page) => {
+    const pageItems = itemsByPage.get(page.number);
+    return pageItems ? toLines({ ...page, items: pageItems }) : [];
+  });
+  const sectionText = lines.map((line) => line.text).join("\n");
+  if (
+    selector.fieldLabel &&
+    !matchesPattern(selector.fieldLabel, sectionText)
+  ) {
+    return undefined;
   }
 
-  const distinctDates = [...new Set(matches.map(({ asOf }) => asOf))];
-  if (distinctDates.length > 1) {
-    throw new Error(
-      `${section.name}: ambiguous ${selector.sourceLabel} dates (${distinctDates.join(", ")})`,
+  if (selector.kind === "point-in-time" || selector.kind === "financial-period") {
+    const pattern = new RegExp(
+      selector.pattern.source,
+      selector.pattern.flags.includes("g")
+        ? selector.pattern.flags
+        : `${selector.pattern.flags}g`,
     );
-  }
-  const match = matches[0];
-  return match
-    ? {
-        kind: "point-in-time" as const,
-        asOf: match.asOf,
-        sourceLabel: selector.sourceLabel,
-        page: match.page,
+    const matches = lines.flatMap((line) => {
+      return [...line.text.matchAll(pattern)].flatMap((match) =>
+        match[1] ? [{ capture: match[1], page: line.page }] : [],
+      );
+    });
+    if (matches.length === 0) return undefined;
+
+    if (selector.kind === "financial-period") {
+      const labels = [
+        ...new Set(matches.map(({ capture }) => selector.labelFromCapture(capture))),
+      ];
+      if (labels.length > 1) {
+        throw new Error(
+          `${section.name}: ambiguous ${selector.sourceLabel} periods (${labels.join(", ")})`,
+        );
       }
-    : undefined;
+      const label = labels[0];
+      return label ? { kind: "financial-period", label } : undefined;
+    }
+
+    const dated = matches.map(({ capture, page }) => ({
+      asOf: parseFactSheetDate(capture),
+      page,
+    }));
+    const distinctDates = [...new Set(dated.map(({ asOf }) => asOf))];
+    if (distinctDates.length > 1) {
+      throw new Error(
+        `${section.name}: ambiguous ${selector.sourceLabel} dates (${distinctDates.join(", ")})`,
+      );
+    }
+    const match = dated[0];
+    return match
+      ? {
+          kind: "point-in-time",
+          asOf: match.asOf,
+          sourceLabel: selector.sourceLabel,
+          page: match.page,
+        }
+      : undefined;
+  }
+
+  const evidencePattern = new RegExp(
+    selector.evidencePattern.source,
+    selector.evidencePattern.flags.replace(/[gy]/g, ""),
+  );
+  if (!evidencePattern.test(sectionText)) return undefined;
+  return {
+    kind: "lookback-period",
+    months: selector.months,
+    ...(selector.endingAt === "document-date" ? { endingAt: factSheetAsOf } : {}),
+    method: selector.method,
+  };
+}
+
+function matchesPattern(pattern: RegExp, text: string) {
+  return new RegExp(pattern.source, pattern.flags.replace(/[gy]/g, "")).test(text);
 }
 
 function describe(lines: string[]) {
@@ -965,15 +1036,17 @@ export function parseFactSheetDisclosures(
       holdings.orphanValues.length > 0 || holdings.overlaidRows.length > 0
         ? []
         : holdings.holdings;
-    const allocationDate = contract.fieldDates?.allocation
-      ? findFieldDate(pages, section, contract.fieldDates.allocation)
-      : undefined;
-    const topHoldingsDate = contract.fieldDates?.topHoldings
-      ? findFieldDate(pages, section, contract.fieldDates.topHoldings)
-      : undefined;
-    const commentaryDate = contract.fieldDates?.commentary
-      ? findFieldDate(pages, section, contract.fieldDates.commentary)
-      : undefined;
+    const temporalScopes: FactSheetTemporalScopes = {
+      document: { kind: "point-in-time", asOf: factSheetAsOf },
+    };
+    for (
+      const field of Object.keys(contract.fieldScopes ?? {}) as FactSheetDataField[]
+    ) {
+      const selector = contract.fieldScopes?.[field];
+      if (!selector) continue;
+      const scope = findFieldScope(pages, section, factSheetAsOf, selector);
+      if (scope) temporalScopes[field] = scope;
+    }
 
     if (allocations.length === 0) {
       unavailableFields.push("allocation");
@@ -1013,12 +1086,7 @@ export function parseFactSheetDisclosures(
       constituentFundName: section.name,
       ...(section.className ? { fundClassName: section.className } : {}),
       factSheetAsOf,
-      temporalScopes: {
-        document: { kind: "point-in-time", asOf: factSheetAsOf },
-        ...(allocationDate ? { allocation: allocationDate } : {}),
-        ...(topHoldingsDate ? { topHoldings: topHoldingsDate } : {}),
-        ...(commentaryDate ? { commentary: commentaryDate } : {}),
-      },
+      temporalScopes,
       allocations,
       topHoldings,
       unavailableFields,

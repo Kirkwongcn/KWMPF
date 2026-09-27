@@ -79,6 +79,8 @@ const baseContract = {
   title: { pattern: /Fund$/, size: undefined },
   asOf: { pattern: /As at\s+(\d{1,2}\/\d{1,2}\/\d{4})/i },
 } as const;
+const aiaTopHoldingsDatePattern =
+  /TOP TEN HOLDINGS#?.*?\bAs at\s+(\d{1,2}\s+[A-Za-z]{3,}\s+\d{4})/i;
 
 describe("joinItems", () => {
   it("glues runs that touch and keeps a space where the layout has a gap", () => {
@@ -271,9 +273,10 @@ describe("field-scoped dates", () => {
         band: { minLeft: 0, maxLeft: 400 },
       },
       asOf: { pattern: /As at\s+(\d{1,2}\s+[A-Za-z]{3,}\s+\d{4})/i },
-      fieldDates: {
+      fieldScopes: {
         topHoldings: {
-          pattern: /TOP TEN HOLDINGS#?.*?\bAs at\s+(\d{1,2}\s+[A-Za-z]{3,}\s+\d{4})/i,
+          kind: "point-in-time",
+          pattern: aiaTopHoldingsDatePattern,
           sourceLabel: "TOP TEN HOLDINGS",
         },
       },
@@ -307,9 +310,10 @@ describe("field-scoped dates", () => {
       allocation: { heading: /ASSET ALLOCATION/ },
       holdings: { heading: /TOP TEN HOLDINGS/ },
       asOf: { pattern: /As at\s+(\d{1,2}\s+[A-Za-z]{3,}\s+\d{4})/i },
-      fieldDates: {
+      fieldScopes: {
         topHoldings: {
-          pattern: /TOP TEN HOLDINGS#?.*?\bAs at\s+(\d{1,2}\s+[A-Za-z]{3,}\s+\d{4})/i,
+          kind: "point-in-time",
+          pattern: aiaTopHoldingsDatePattern,
           sourceLabel: "TOP TEN HOLDINGS",
         },
       },
@@ -335,9 +339,10 @@ describe("field-scoped dates", () => {
       allocation: { heading: /ASSET ALLOCATION/ },
       holdings: { heading: /TOP TEN HOLDINGS/ },
       asOf: { pattern: /As at\s+(\d{1,2}\s+[A-Za-z]{3,}\s+\d{4})/i },
-      fieldDates: {
+      fieldScopes: {
         topHoldings: {
-          pattern: /TOP TEN HOLDINGS#?.*?\bAs at\s+(\d{1,2}\s+[A-Za-z]{3,}\s+\d{4})/i,
+          kind: "point-in-time",
+          pattern: aiaTopHoldingsDatePattern,
           sourceLabel: "TOP TEN HOLDINGS",
         },
       },
@@ -354,6 +359,88 @@ describe("field-scoped dates", () => {
     expect(() => parseFactSheetDisclosures(pages, contract)).toThrow(
       /ambiguous TOP TEN HOLDINGS dates \(2026-05-31, 2026-04-30\)/,
     );
+  });
+
+  it("keeps the FER, risk lookback, and commentary scopes distinct", () => {
+    const contract = factSheetContract(
+      "Fidelity Retirement Master Trust",
+      "trustee",
+    );
+    const pages = pdf(
+      page(1, [
+        {
+          top: 20,
+          left: 30,
+          text: "Fidelity Retirement Master Trust - World Bond Fund",
+          size: 29,
+          family: "NeuzeitGro-Bol",
+        },
+        { top: 40, left: 30, text: "As of 31/07/2026" },
+        { top: 80, left: 30, text: "Year 2025 Fund Expense Ratio 1.39561%" },
+        { top: 100, left: 30, text: "Fund Risk Indicator 6.00%" },
+        { top: 120, left: 30, text: "Fund Commentary^" },
+        { top: 400, left: 30, text: "^ as of 30/06/2026" },
+        {
+          top: 500,
+          left: 30,
+          text: "Fund Risk Indicator is measured by the annualised standard deviation",
+        },
+        {
+          top: 520,
+          left: 30,
+          text: "of the fund's monthly rates of return over the past 3 years to the reporting date.",
+        },
+      ]),
+    );
+
+    const [disclosure] = parseFactSheetDisclosures(pages, contract);
+
+    expect(disclosure?.factSheetAsOf).toBe("2026-07-31");
+    expect(disclosure?.temporalScopes).toMatchObject({
+      fer: { kind: "financial-period", label: "Year 2025" },
+      riskIndicator: {
+        kind: "lookback-period",
+        months: 36,
+        endingAt: "2026-07-31",
+        method: "annualised standard deviation of monthly returns",
+      },
+      commentary: {
+        kind: "point-in-time",
+        asOf: "2026-06-30",
+        sourceLabel: "Fund Commentary^",
+        page: 1,
+      },
+    });
+    expect(disclosure?.temporalScopes?.topHoldings).toBeUndefined();
+  });
+
+  it("does not associate a footnoted date without its field heading", () => {
+    const contract = {
+      ...baseContract,
+      title: { pattern: /Fund$/ },
+      allocation: { heading: /never/ },
+      holdings: { heading: /never/ },
+      asOf: { pattern: /As at\s+(\d{1,2}\/\d{1,2}\/\d{4})/i },
+      fieldScopes: {
+        commentary: {
+          kind: "point-in-time" as const,
+          pattern: /\^\s*as of\s+(\d{1,2}\/\d{1,2}\/\d{4})/i,
+          fieldLabel: /Fund Commentary\s*\^/i,
+          sourceLabel: "Fund Commentary^",
+        },
+      },
+    } satisfies FactSheetContract;
+    const pages = pdf(
+      page(1, [
+        { top: 20, left: 30, text: "Test Fund", size: 21 },
+        { top: 40, left: 30, text: "As at 31/07/2026" },
+        { top: 80, left: 30, text: "^ as of 30/06/2026" },
+      ]),
+    );
+
+    const [disclosure] = parseFactSheetDisclosures(pages, contract);
+
+    expect(disclosure?.temporalScopes?.commentary).toBeUndefined();
   });
 });
 
