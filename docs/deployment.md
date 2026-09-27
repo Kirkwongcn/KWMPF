@@ -63,8 +63,16 @@ fund class，並且 `Cache-Control` 必須是 `public, max-age=300, stale-while-
 
 `Backup production D1` is scheduled for Sundays at 03:17 UTC (11:17 Hong Kong time) and can also be dispatched manually. It uses the protected `production` environment, so each run waits for its environment approval before accessing production credentials. The workflow exports `kwmpf-production`, checks that the published snapshot ID did not change during export, uploads SQL and a SHA-256/byte-count manifest to `kwmpf-production-raw/backups/<backup-id>/`, then reads both objects back and verifies them. It shares a concurrency group with `Deploy production` so the export cannot overlap a deployment.
 
-The D1 export is read-only; the workflow writes new backup objects to production R2. No automatic object expiration is configured while the retention policy remains undecided. A successful staging restore drill does not prove production recovery. `D1 Restore Drill` can select production as its source, but requires production environment approval and restores only into runner-local D1; no production restore has been performed.
+The D1 export is read-only; the workflow writes new backup objects to production R2. The current retention decision is to keep automatic expiration disabled for staging and production backups and source archives; review this if the storage policy changes. [Backup production D1 run #1](https://github.com/Kirkwongcn/KWMPF/actions/runs/36291241851) completed on 2026-09-27 with backup ID `d1-2026-09-27T03-24-34Z-run-36291241851` and snapshot `snapshot-mpfa-platform-2026-07-31-b39ba9d1e9d9`; the SQL and manifest were read back and integrity checks passed. [D1 Restore Drill #11](https://github.com/Kirkwongcn/KWMPF/actions/runs/36291477885) then verified the manifest, SHA-256 and byte count, imported the SQL into runner-local D1, and passed checks for 451 fund-class versions, 32 comparison groups, and zero orphan rows. The drill did not write production D1 or deploy the site. The restore workflow remains manual and protected by the source environment; no quarterly drill cadence is configured.
 
+
+### Production incident handling and rollback
+
+The deployment workflow restores D1 automatically only when a failure or cancellation occurs after migrations were applied but before Worker deployment was attempted. If that restore step succeeds, verify the run summary and the live API before retrying.
+
+If the run summary says Worker deployment was attempted, the workflow deliberately preserves the pre-deployment recovery point and does not restore D1. Pause further production deploys. Record the failed run, commit SHA, pre-deployment backup ID, rollback timestamp, D1 snapshot, Worker version and Pages deployment. Select a compatible Worker, Pages deployment and D1 schema/publication as one release set. A Worker rollback does not roll back D1 or other bound resources, and a previous Worker may fail against a changed D1 schema ([Cloudflare Workers rollback guidance](https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/)). Pages can be rolled back only to a successful production deployment ([Cloudflare Pages rollback guidance](https://developers.cloudflare.com/pages/configuration/rollbacks/)).
+
+Do not restore production D1 by itself. Before any manual D1 Time Travel or SQL restore, confirm the matching Worker and Pages targets and obtain explicit operator approval because restoring replaces current production data. After a coordinated recovery, verify the public `/summary` snapshot and fund count, the three-year `/rankings?metric=return&period=3` result, cache headers, and the Pages health page. Record the chosen code SHA, Worker version, Pages deployment, D1 snapshot, and backup ID. These steps document the recovery path; production rollback failure cases have not yet been exercised.
 ## 來源更新
 
 `Refresh source snapshot` 每星期三 03:00（香港時間）自動執行，也可以手動觸發。它只產生
@@ -91,12 +99,11 @@ The D1 export is read-only; the workflow writes new backup objects to production
 
 - 已發布快照的原始 HTML 只保留在 workflow artifact（30 日），未按規格長期存入 R2。
 - `Deploy production` 會在資料庫改動前把 D1 匯出、manifest 和 rollback timestamp 存入 production R2；另外封存來源 JSON 及 return-observations 候選資料。
-- Production D1 backups now have a weekly, production-environment-gated workflow, but a successful run and a production-source restore drill still need to be verified.
-- `D1 Restore Drill` 只有手動觸發，未有每季執行的紀錄。
-- R2 retention remains undecided; no automatic expiration or deletion policy is configured.
+- Production backup run #1 and production-source Restore Drill #11 succeeded on 2026-09-27; both are linked above. Restore drills are manual and have no quarterly cadence.
+- Current decision: keep automatic R2 object expiration disabled for D1 backups and source archives. Cloudflare lifecycle rules can be scoped by prefix; do not add deletion rules without a renewed retention decision. [R2 lifecycle behavior](https://developers.cloudflare.com/r2/buckets/object-lifecycles/).
 
 ## Trustee factsheet PDF archive
 
 The manual `Archive trustee fact sheets to R2` workflow accepts a dated `source_batch` from `data/sources/<YYYY-MM-DD>/trustee-fact-sheet-links.json`. It downloads PDFs sequentially, verifies HTTPS redirects, PDF signatures, byte counts and SHA-256 values, and preserves per-file failures in a manifest. GitHub retains the intermediate artifact for 30 days so the protected archive job can consume it.
 
-When at least one PDF is available, the second job waits for the protected `staging` environment, packages a deterministic archive and index, then stores both under `kwmpf-staging-raw/source-archives/trustee-fact-sheets/<batch>/run-<id>/`. It reads both objects back and compares the bytes with the uploaded files. The workflow does not touch D1 or deploy a site. A successful PR check does not run this workflow; the first real R2 write still needs a manual dispatch and staging approval.
+When at least one PDF is available, the second job waits for the protected `staging` environment, packages a deterministic archive and index, then stores both under `kwmpf-staging-raw/source-archives/trustee-fact-sheets/<batch>/run-<id>/`. It reads both objects back and compares the bytes with the uploaded files. The workflow does not touch D1 or deploy a site. The first successful post-merge archive is [run #2](https://github.com/Kirkwongcn/KWMPF/actions/runs/36291323183): 58 of 58 PDFs downloaded, zero failures, and a 63,874,721-byte deterministic archive. It stored `trustee-fact-sheets.tar.gz` and `index.json` under `kwmpf-staging-raw/source-archives/trustee-fact-sheets/2026-08-31/run-36291323183/`; both objects were read back and compared byte-for-byte. No automatic expiry is configured.
