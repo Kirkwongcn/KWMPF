@@ -91,4 +91,3 @@ jobs:
             exit 1
           fi
           echo "R2 read-back verified: $actual_bytes bytes; SHA-256 matches the manifest." >> "$GITHUB_STEP_SUMMARY"
-
