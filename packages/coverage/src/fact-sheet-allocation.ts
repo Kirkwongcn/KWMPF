@@ -8,6 +8,11 @@ import {
   type PdfPage,
   type PdfTextItem,
 } from "./pdf-xml";
+import type {
+  FactSheetTemporalField,
+  FactSheetTemporalScope,
+  FactSheetTemporalScopes,
+} from "./fact-sheet-temporal";
 
 /**
  * 由計劃便覽抽取「配置」及「十大持倉」。
@@ -50,6 +55,8 @@ export type FactSheetDisclosure = {
   constituentFundName: string;
   fundClassName?: string;
   factSheetAsOf: string;
+  /** Date scope by disclosed field; the document date is not inherited by its metrics. */
+  temporalScopes?: FactSheetTemporalScopes;
   allocations: AllocationDimension[];
   topHoldings: TopHolding[];
   unavailableFields: string[];
@@ -170,6 +177,35 @@ export type BlockSelector = {
   continueOnNextPage?: boolean;
 };
 
+type FactSheetDataField = Exclude<FactSheetTemporalField, "document">;
+
+export type FactSheetFieldScopeSelector =
+  | {
+      kind: "point-in-time";
+      /** Must capture a date next to its field marker or footnote marker. */
+      pattern: RegExp;
+      /** Require this field label in the same fund section. */
+      fieldLabel?: RegExp;
+      sourceLabel: string;
+    }
+  | {
+      kind: "financial-period";
+      /** Must capture the period label next to the field name. */
+      pattern: RegExp;
+      fieldLabel?: RegExp;
+      sourceLabel: string;
+      labelFromCapture: (capture: string) => string;
+    }
+  | {
+      kind: "lookback-period";
+      /** Evidence that the source defines a lookback ending at the reporting date. */
+      evidencePattern: RegExp;
+      fieldLabel?: RegExp;
+      months: number;
+      endingAt?: "document-date";
+      method: string;
+    };
+
 export type FactSheetContract = {
   scheme: string;
   /**
@@ -188,6 +224,10 @@ export type FactSheetContract = {
   title: TitleSelector;
   allocation: BlockSelector;
   holdings: BlockSelector;
+  /** Explicit temporal evidence tied to a field; never inherit the document date implicitly. */
+  fieldScopes?: Partial<
+    Record<FactSheetDataField, FactSheetFieldScopeSelector>
+  >;
   /** 便覽自己的截至日期。抽不到就報錯，不可用平台日期補位。 */
   asOf: {
     pattern: RegExp;
@@ -865,6 +905,96 @@ export function findFactSheetAsOf(pages: PdfPage[], contract: FactSheetContract)
   throw new Error(`${contract.scheme}: fact sheet as-of date not found`);
 }
 
+function findFieldScope(
+  pages: PdfPage[],
+  section: FactSheetSection,
+  factSheetAsOf: string,
+  selector: FactSheetFieldScopeSelector,
+): FactSheetTemporalScope | undefined {
+  const items = sectionItems(pages, section);
+  const itemsByPage = new Map<number, PdfTextItem[]>();
+  for (const item of items) {
+    const pageItems = itemsByPage.get(item.page);
+    if (pageItems) pageItems.push(item);
+    else itemsByPage.set(item.page, [item]);
+  }
+  const lines = pages.flatMap((page) => {
+    const pageItems = itemsByPage.get(page.number);
+    return pageItems ? toLines({ ...page, items: pageItems }) : [];
+  });
+  const sectionText = lines.map((line) => line.text).join("\n");
+  if (
+    selector.fieldLabel &&
+    !matchesPattern(selector.fieldLabel, sectionText)
+  ) {
+    return undefined;
+  }
+
+  if (selector.kind === "point-in-time" || selector.kind === "financial-period") {
+    const pattern = new RegExp(
+      selector.pattern.source,
+      selector.pattern.flags.includes("g")
+        ? selector.pattern.flags
+        : `${selector.pattern.flags}g`,
+    );
+    const matches = lines.flatMap((line) => {
+      return [...line.text.matchAll(pattern)].flatMap((match) =>
+        match[1] ? [{ capture: match[1], page: line.page }] : [],
+      );
+    });
+    if (matches.length === 0) return undefined;
+
+    if (selector.kind === "financial-period") {
+      const labels = [
+        ...new Set(matches.map(({ capture }) => selector.labelFromCapture(capture))),
+      ];
+      if (labels.length > 1) {
+        throw new Error(
+          `${section.name}: ambiguous ${selector.sourceLabel} periods (${labels.join(", ")})`,
+        );
+      }
+      const label = labels[0];
+      return label ? { kind: "financial-period", label } : undefined;
+    }
+
+    const dated = matches.map(({ capture, page }) => ({
+      asOf: parseFactSheetDate(capture),
+      page,
+    }));
+    const distinctDates = [...new Set(dated.map(({ asOf }) => asOf))];
+    if (distinctDates.length > 1) {
+      throw new Error(
+        `${section.name}: ambiguous ${selector.sourceLabel} dates (${distinctDates.join(", ")})`,
+      );
+    }
+    const match = dated[0];
+    return match
+      ? {
+          kind: "point-in-time",
+          asOf: match.asOf,
+          sourceLabel: selector.sourceLabel,
+          page: match.page,
+        }
+      : undefined;
+  }
+
+  const evidencePattern = new RegExp(
+    selector.evidencePattern.source,
+    selector.evidencePattern.flags.replace(/[gy]/g, ""),
+  );
+  if (!evidencePattern.test(sectionText)) return undefined;
+  return {
+    kind: "lookback-period",
+    months: selector.months,
+    ...(selector.endingAt === "document-date" ? { endingAt: factSheetAsOf } : {}),
+    method: selector.method,
+  };
+}
+
+function matchesPattern(pattern: RegExp, text: string) {
+  return new RegExp(pattern.source, pattern.flags.replace(/[gy]/g, "")).test(text);
+}
+
 function describe(lines: string[]) {
   return lines.slice(0, 3).map((line) => JSON.stringify(line)).join(", ");
 }
@@ -906,6 +1036,17 @@ export function parseFactSheetDisclosures(
       holdings.orphanValues.length > 0 || holdings.overlaidRows.length > 0
         ? []
         : holdings.holdings;
+    const temporalScopes: FactSheetTemporalScopes = {
+      document: { kind: "point-in-time", asOf: factSheetAsOf },
+    };
+    for (
+      const field of Object.keys(contract.fieldScopes ?? {}) as FactSheetDataField[]
+    ) {
+      const selector = contract.fieldScopes?.[field];
+      if (!selector) continue;
+      const scope = findFieldScope(pages, section, factSheetAsOf, selector);
+      if (scope) temporalScopes[field] = scope;
+    }
 
     if (allocations.length === 0) {
       unavailableFields.push("allocation");
@@ -945,6 +1086,7 @@ export function parseFactSheetDisclosures(
       constituentFundName: section.name,
       ...(section.className ? { fundClassName: section.className } : {}),
       factSheetAsOf,
+      temporalScopes,
       allocations,
       topHoldings,
       unavailableFields,

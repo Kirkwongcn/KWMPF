@@ -17,6 +17,7 @@ import {
 } from "./freshness";
 import type { PublicationBindings } from "./publication";
 import { interpretFund } from "../../../packages/coverage/src/fund-interpretation";
+import type { FactSheetTemporalScopes } from "../../../packages/coverage/src/fact-sheet-temporal";
 
 type Bindings = PublicationBindings & {
   RELEASE_VERSION: string;
@@ -94,6 +95,7 @@ type FactSheetDisclosure = {
   // 有抄錄受託人來源但抽唔到，先至退回副本；未抄錄嘅計劃冇呢一欄。
   trusteeFallback?: true;
   factSheetAsOf: string;
+  temporalScopes?: FactSheetTemporalScopes;
   allocations: {
     heading: string;
     entries: { label: string; percent: number }[];
@@ -116,7 +118,7 @@ type MappedAllocation =
   | {
       official: false;
       mapVersion: string;
-      asOf: string;
+      asOf?: string;
       sourceHeading: string;
       buckets: { equity: number; bond: number; cashAndOther: number };
     }
