@@ -83,3 +83,42 @@ test("每頁都可經主要導覽互相跳轉", async ({ page }) => {
   await page.getByRole("link", { name: "KWMPF 首頁" }).click();
   await expect(page).toHaveURL(/\/$/);
 });
+
+test(
+  "320px navigation stays readable, tappable, and inside the viewport",
+  async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 780 });
+    await page.goto("/");
+
+    const layout = await page.evaluate(() => {
+      const brand = document
+        .querySelector(".kw-brand")
+        ?.getBoundingClientRect();
+      const nav = document.querySelector(".kw-nav")?.getBoundingClientRect();
+      const links = Array.from(document.querySelectorAll(".kw-nav a"));
+      return {
+        overflow:
+          document.documentElement.scrollWidth -
+          document.documentElement.clientWidth,
+        navBelowBrand: Boolean(brand && nav && nav.top >= brand.bottom),
+        links: links.map((link) => {
+          const rect = link.getBoundingClientRect();
+          return {
+            width: rect.width,
+            height: rect.height,
+            fontSize: getComputedStyle(link).fontSize,
+          };
+        }),
+      };
+    });
+
+    expect(layout.overflow).toBeLessThanOrEqual(1);
+    expect(layout.navBelowBrand).toBe(true);
+    expect(layout.links).toHaveLength(3);
+    for (const link of layout.links) {
+      expect(link.width).toBeGreaterThanOrEqual(44);
+      expect(link.height).toBeGreaterThanOrEqual(44);
+      expect(link.fontSize).toBe("15px");
+    }
+  },
+);
