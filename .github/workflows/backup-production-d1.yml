@@ -1,0 +1,104 @@
+name: Backup production D1
+
+on:
+  schedule:
+    - cron: "17 3 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-d1-mutations
+  cancel-in-progress: false
+
+jobs:
+  backup:
+    environment: production
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.11
+      - name: Cache Bun's package download store
+        uses: actions/cache@v6
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-install-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-install-
+      - run: bun install --frozen-lockfile
+      - name: Prepare production Worker configuration
+        run: scripts/render-worker-config.sh production "$D1_DATABASE_ID" apps/api/wrangler.production.json
+      - name: Export production D1
+        id: export
+        working-directory: apps/api
+        run: |
+          set -euo pipefail
+          snapshot_before="$(bash ../../scripts/run-wrangler-redacted.sh bunx wrangler d1 execute kwmpf-production --remote --config wrangler.production.json --command 'SELECT snapshot_id FROM current_publication WHERE singleton = 1' --json | jq -er '.[0].results[0].snapshot_id')"
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler d1 export kwmpf-production --remote --skip-confirmation --config wrangler.production.json --output /tmp/kwmpf-production-backup.sql
+          test -s /tmp/kwmpf-production-backup.sql
+          snapshot_after="$(bash ../../scripts/run-wrangler-redacted.sh bunx wrangler d1 execute kwmpf-production --remote --config wrangler.production.json --command 'SELECT snapshot_id FROM current_publication WHERE singleton = 1' --json | jq -er '.[0].results[0].snapshot_id')"
+          test "$snapshot_before" = "$snapshot_after"
+          echo "snapshot_id=$snapshot_after" >> "$GITHUB_OUTPUT"
+          echo "backup_id=d1-$(date -u +%Y-%m-%dT%H-%M-%SZ)-run-$GITHUB_RUN_ID" >> "$GITHUB_OUTPUT"
+      - name: Build backup manifest
+        working-directory: apps/api
+        run: |
+          set -euo pipefail
+          backup_id="${{ steps.export.outputs.backup_id }}"
+          exported_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          snapshot_id="${{ steps.export.outputs.snapshot_id }}"
+          bytes="$(wc -c < /tmp/kwmpf-production-backup.sql | tr -d '[:space:]')"
+          sha256="$(sha256sum /tmp/kwmpf-production-backup.sql | cut -d' ' -f1)"
+          jq -n \
+            --arg backupId "$backup_id" \
+            --arg databaseName "kwmpf-production" \
+            --arg snapshotId "$snapshot_id" \
+            --arg commit "$GITHUB_SHA" \
+            --arg runId "$GITHUB_RUN_ID" \
+            --arg exportedAt "$exported_at" \
+            --arg key "d1.sql" \
+            --arg sha256 "$sha256" \
+            --argjson bytes "$bytes" \
+            '{backupId:$backupId,databaseName:$databaseName,snapshotId:$snapshotId,commit:$commit,runId:$runId,exportedAt:$exportedAt,files:[{key:$key,bytes:$bytes,sha256:$sha256}]}' \
+            > /tmp/kwmpf-production-backup-manifest.json
+      - name: Upload backup to production R2
+        working-directory: apps/api
+        run: |
+          set -euo pipefail
+          backup_id="${{ steps.export.outputs.backup_id }}"
+          prefix="backups/$backup_id"
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler r2 object put "kwmpf-production-raw/$prefix/d1.sql" --remote --config wrangler.production.json --file /tmp/kwmpf-production-backup.sql --content-type application/sql
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler r2 object put "kwmpf-production-raw/$prefix/manifest.json" --remote --config wrangler.production.json --file /tmp/kwmpf-production-backup-manifest.json --content-type application/json
+      - name: Verify the uploaded backup
+        working-directory: apps/api
+        run: |
+          set -euo pipefail
+          backup_id="${{ steps.export.outputs.backup_id }}"
+          prefix="backups/$backup_id"
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler r2 object get "kwmpf-production-raw/$prefix/d1.sql" --remote --config wrangler.production.json --file /tmp/kwmpf-production-backup-readback.sql
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler r2 object get "kwmpf-production-raw/$prefix/manifest.json" --remote --config wrangler.production.json --file /tmp/kwmpf-production-backup-manifest-readback.json
+          cmp --silent /tmp/kwmpf-production-backup.sql /tmp/kwmpf-production-backup-readback.sql
+          cmp --silent /tmp/kwmpf-production-backup-manifest.json /tmp/kwmpf-production-backup-manifest-readback.json
+          jq -e --arg backup_id "$backup_id" '
+            .backupId == $backup_id
+            and .databaseName == "kwmpf-production"
+            and (.snapshotId | type == "string" and length > 0)
+            and ([.files[]? | select(.key == "d1.sql")] | length) == 1
+            and ([.files[]? | select(.key == "d1.sql") | .sha256 | select(type == "string" and test("^[a-f0-9]{64}$"))] | length) == 1
+            and ([.files[]? | select(.key == "d1.sql") | .bytes | select(type == "number" and . > 0)] | length) == 1
+          ' /tmp/kwmpf-production-backup-manifest-readback.json >/dev/null
+          expected_sha256="$(jq -r '.files[] | select(.key == "d1.sql") | .sha256' /tmp/kwmpf-production-backup-manifest-readback.json)"
+          actual_sha256="$(sha256sum /tmp/kwmpf-production-backup-readback.sql | cut -d' ' -f1)"
+          test "$expected_sha256" = "$actual_sha256"
+          expected_bytes="$(jq -r '.files[] | select(.key == "d1.sql") | .bytes' /tmp/kwmpf-production-backup-manifest-readback.json)"
+          actual_bytes="$(wc -c < /tmp/kwmpf-production-backup-readback.sql | tr -d '[:space:]')"
+          test "$expected_bytes" = "$actual_bytes"
+          echo "Production D1 backup $backup_id was read back and passed SHA-256 and byte-count checks." >> "$GITHUB_STEP_SUMMARY"

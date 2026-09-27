@@ -22,7 +22,7 @@ permissions:
   actions: read
 
 concurrency:
-  group: deploy-production
+  group: production-d1-mutations
   cancel-in-progress: false
 
 jobs:
