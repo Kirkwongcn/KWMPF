@@ -26,6 +26,14 @@ The D1 identifier is inserted into a temporary Wrangler file during the workflow
 
 After deployment, verify that the Pages health page and `GET /health` on the Worker show the same commit SHA. The API must report both `d1` and `r2` as `true` without exposing their names or identifiers.
 
+### Staging D1 backup and restore
+
+The scheduled/manual `Backup D1` workflow runs behind the protected `staging` environment and shares the `staging-d1-mutations` concurrency lock. It records the current publication snapshot before and after export, then uploads the SQL export and a manifest with its SHA-256 and byte count to private staging R2.
+
+After upload, it downloads both objects again. The workflow compares the returned manifest byte-for-byte and checks the SQL byte count and SHA-256 against that manifest. This confirms the stored backup objects are intact; it does not prove the SQL can be restored. The separate Restore Drill verifies that by importing the selected backup into runner-local D1 and checking database invariants.
+
+The backup workflow does not write to remote D1 or deploy the site. Automatic R2 expiration remains disabled.
+
 ## Production
 
 `Deploy production` 是 `workflow_dispatch` 專用，永不自動觸發。它需要三重閘門：
