@@ -58,7 +58,7 @@ describe("published return rankings", () => {
     expect(
       await screen.findByRole("heading", { name: "一年回報排名" }),
     ).toBeVisible();
-    expect(screen.getByText("North America Fund")).toBeVisible();
+    expect(await screen.findByText("North America Fund")).toBeVisible();
     expect(screen.getByText("17.21%")).toBeVisible();
     expect(screen.getAllByText("2026-07-31")).toHaveLength(2);
     expect(
