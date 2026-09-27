@@ -294,10 +294,7 @@ export function RankingsPage({
                     ? `目前顯示 ${rankings.length} 隻合資格基金。`
                     : `「${effectiveGroup}」組別目前有 ${rankings.length} 隻合資格基金。`}
                 </p>
-                <p
-                  className="kw-table-hint"
-                  id="ranking-table-scroll-hint"
-                >
+                <p className="kw-table-hint" id="ranking-table-scroll-hint">
                   左右滑動可查看其餘欄位
                 </p>
                 <div
