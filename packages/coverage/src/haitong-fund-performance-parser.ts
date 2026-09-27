@@ -12,38 +12,34 @@ export function parseHaitongFundPerformance(text: string, sourceUrl: string): Fu
   const dateMatch = text.match(/as of\s+(\d{1,2})\/(\d{1,2})\/(\d{4})/i);
   if (!dateMatch?.[1] || !dateMatch[2] || !dateMatch[3]) throw new Error("Haitong reporting date is missing");
   const dataAsOf = dateMatch[3] + "-" + dateMatch[2].padStart(2, "0") + "-" + dateMatch[1].padStart(2, "0");
-  const results: FundFactSheetReturn[] = [];
-  const sections = new Map<string, string[]>();
-  let currentName: string | undefined;
+  const fundSections: Array<{ name: string; start: number }> = [];
+  const headingPattern = /(?:^|\f|\n)[ \t]*Haitong[ \t]+([^\r\n]*?\bFund)\b/gim;
 
-  for (const page of text.split(/\f/)) {
-    const headings = [...page.matchAll(/^[ \t]*Haitong[ \t]+([^\r\n]*?\bFund)\b/gim)];
-    if (headings.length === 0) {
-      if (currentName) sections.get(currentName)?.push(page);
-      continue;
-    }
-
-    let cursor = 0;
-    for (let index = 0; index < headings.length; index++) {
-      const heading = headings[index]!;
-      const start = heading.index!;
-      const end = headings[index + 1]?.index ?? page.length;
-      if (currentName) sections.get(currentName)?.push(page.slice(cursor, start));
-      const fundSection = page.slice(start, end);
-      if (/Issue Price as of|單位價格/i.test(fundSection)) {
-        currentName = heading[1]!.replace(/\s+/g, " ").trim();
-      }
-      if (currentName) {
-        const pages = sections.get(currentName) ?? [];
-        pages.push(fundSection);
-        sections.set(currentName, pages);
-      }
-      cursor = end;
-    }
+  for (const heading of text.matchAll(headingPattern)) {
+    const headingOffset = heading.index;
+    if (headingOffset === undefined || !heading[1]) continue;
+    const start = headingOffset + heading[0].lastIndexOf("Haitong");
+    const pageStart = text.lastIndexOf("\f", start) + 1;
+    const pageEndIndex = text.indexOf("\f", start);
+    const page = text.slice(pageStart, pageEndIndex < 0 ? undefined : pageEndIndex);
+    const localStart = start - pageStart;
+    const currentLineStart = page.lastIndexOf("\n", localStart - 1) + 1;
+    const currentLineEndIndex = page.indexOf("\n", localStart);
+    const currentLineEnd = currentLineEndIndex < 0 ? page.length : currentLineEndIndex;
+    const previousLineStartIndex = page.lastIndexOf("\n", Math.max(0, currentLineStart - 2));
+    const nearbyStart = previousLineStartIndex < 0 ? 0 : previousLineStartIndex + 1;
+    const nextLineEndIndex = page.indexOf("\n", currentLineEnd + 1);
+    const nearbyEnd = nextLineEndIndex < 0 ? page.length : nextLineEndIndex;
+    const nearby = page.slice(nearbyStart, nearbyEnd);
+    if (!/Issue Price as of|單位價格/i.test(nearby)) continue;
+    fundSections.push({ name: heading[1].replace(/\s+/g, " ").trim(), start });
   }
 
-  for (const [name, pages] of sections) {
-    const section = pages.join("\f");
+  const results: FundFactSheetReturn[] = [];
+  for (let index = 0; index < fundSections.length; index += 1) {
+    const fund = fundSections[index]!;
+    const end = fundSections[index + 1]?.start;
+    const section = text.slice(fund.start, end);
     const annualizedIndex = section.search(/ANNUALIZED RATE OF RETURN/i);
     if (annualizedIndex < 0) continue;
     const afterAnnualizedHeading = section.slice(annualizedIndex);
@@ -55,7 +51,7 @@ export function parseHaitongFundPerformance(text: string, sourceUrl: string): Fu
       const values = row[2]!.match(/N\/A|不適用|[+-]?\d+(?:\.\d+)?%/gi) ?? [];
       const threeYear = values[1];
       if (!threeYear || /N\/A|不適用/i.test(threeYear)) continue;
-      const constituentFundName = "Haitong " + titleCaseHaitongFundName(name);
+      const constituentFundName = "Haitong " + titleCaseHaitongFundName(fund.name);
       const annualizedReturn3Year = Number.parseFloat(threeYear);
       const existing = results.find((result) => result.constituentFundName === constituentFundName && result.fundClassName === row[1]);
       if (existing) {
