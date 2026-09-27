@@ -177,7 +177,7 @@ export function FundsPage({
     <SiteChrome
       eyebrow="基金瀏覽"
       title="按條件瀏覽基金"
-      subtitle="用基金種類、受託人及官方風險級別篩選已發布基金，每項數值均標示官方截至日期。"
+      subtitle="按基金種類、受託人及官方風險級別篩選基金；數值均附官方截至日期。"
       current="funds"
     >
       <section className="kw-section" aria-labelledby="filters-title">
@@ -323,11 +323,15 @@ export function FundsPage({
                 ? `共 ${totalMatches} 隻符合條件，以下顯示首 ${results.length} 隻。可加入更多篩選條件收窄範圍。`
                 : `共 ${results.length} 隻已發布基金。`}
             </p>
+            <p className="kw-table-hint" id="fund-table-scroll-hint">
+              左右滑動可查看其餘欄位
+            </p>
             <div
               className="kw-table-wrap"
               tabIndex={0}
               role="region"
-              aria-label="基金瀏覽結果，可左右捲動查看所有欄位"
+              aria-label="基金瀏覽結果"
+              aria-describedby="fund-table-scroll-hint"
             >
               <table className="kw-table">
                 <thead>
