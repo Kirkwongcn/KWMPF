@@ -87,6 +87,8 @@ jobs:
             for path in "${changed_paths[@]}"; do
               if [[ "$path" =~ ^data/sources/[0-9]{4}-[0-9]{2}-[0-9]{2}/(mpf-fund-platform|refresh-report)\.json$ ]]; then
                 run_publication_seed=true
+              elif [[ "$path" =~ ^data/sources/[0-9]{4}-[0-9]{2}-[0-9]{2}/fund-fact-sheet-disclosures\.json$ ]]; then
+                run_publication_seed=true
               elif [[ "$path" =~ ^data/coverage/[0-9]{4}-[0-9]{2}-[0-9]{2}-official-return-observations-candidate\.json$ ]]; then
                 if [[ -n "$return_observations" && "$return_observations" != "$path" ]]; then
                   echo "Multiple trustee return candidate overlays are not supported in one PR." >&2
