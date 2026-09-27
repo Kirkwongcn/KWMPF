@@ -260,6 +260,103 @@ describe("findFactSheetAsOf", () => {
   });
 });
 
+describe("field-scoped dates", () => {
+  it("records an explicit holdings date without copying the document date to allocation", () => {
+    const contract = {
+      ...baseContract,
+      title: { pattern: /Fund$/ },
+      allocation: { heading: /ASSET ALLOCATION/ },
+      holdings: {
+        heading: /TOP TEN HOLDINGS/,
+        band: { minLeft: 0, maxLeft: 400 },
+      },
+      asOf: { pattern: /As at\s+(\d{1,2}\s+[A-Za-z]{3,}\s+\d{4})/i },
+      fieldDates: {
+        topHoldings: {
+          pattern: /TOP TEN HOLDINGS#?.*?\bAs at\s+(\d{1,2}\s+[A-Za-z]{3,}\s+\d{4})/i,
+          sourceLabel: "TOP TEN HOLDINGS",
+        },
+      },
+    } satisfies FactSheetContract;
+    const pages = pdf(
+      page(1, [
+        { top: 20, left: 30, text: "Test Fund", size: 21 },
+        { top: 40, left: 30, text: "As at 31 May 2026" },
+        { top: 100, left: 30, text: "TOP TEN HOLDINGS# As at 31 May 2026" },
+        { top: 120, left: 30, text: "NVIDIA CORP 3.14%" },
+        { top: 100, left: 500, text: "ASSET ALLOCATION" },
+      ]),
+    );
+
+    const [disclosure] = parseFactSheetDisclosures(pages, contract);
+
+    expect(disclosure?.factSheetAsOf).toBe("2026-05-31");
+    expect(disclosure?.temporalScopes?.topHoldings).toEqual({
+      kind: "point-in-time",
+      asOf: "2026-05-31",
+      sourceLabel: "TOP TEN HOLDINGS",
+      page: 1,
+    });
+    expect(disclosure?.temporalScopes?.allocation).toBeUndefined();
+  });
+
+  it("leaves a field date absent when the section label is not tied to a date", () => {
+    const contract = {
+      ...baseContract,
+      title: { pattern: /Fund$/ },
+      allocation: { heading: /ASSET ALLOCATION/ },
+      holdings: { heading: /TOP TEN HOLDINGS/ },
+      asOf: { pattern: /As at\s+(\d{1,2}\s+[A-Za-z]{3,}\s+\d{4})/i },
+      fieldDates: {
+        topHoldings: {
+          pattern: /TOP TEN HOLDINGS#?.*?\bAs at\s+(\d{1,2}\s+[A-Za-z]{3,}\s+\d{4})/i,
+          sourceLabel: "TOP TEN HOLDINGS",
+        },
+      },
+    } satisfies FactSheetContract;
+    const pages = pdf(
+      page(1, [
+        { top: 20, left: 30, text: "Test Fund", size: 21 },
+        { top: 40, left: 30, text: "As at 31 May 2026" },
+        { top: 100, left: 30, text: "TOP TEN HOLDINGS" },
+        { top: 120, left: 30, text: "NVIDIA CORP 3.14%" },
+      ]),
+    );
+
+    const [disclosure] = parseFactSheetDisclosures(pages, contract);
+
+    expect(disclosure?.temporalScopes?.topHoldings).toBeUndefined();
+  });
+
+  it("fails closed when a field heading is tied to conflicting dates", () => {
+    const contract = {
+      ...baseContract,
+      title: { pattern: /Fund$/ },
+      allocation: { heading: /ASSET ALLOCATION/ },
+      holdings: { heading: /TOP TEN HOLDINGS/ },
+      asOf: { pattern: /As at\s+(\d{1,2}\s+[A-Za-z]{3,}\s+\d{4})/i },
+      fieldDates: {
+        topHoldings: {
+          pattern: /TOP TEN HOLDINGS#?.*?\bAs at\s+(\d{1,2}\s+[A-Za-z]{3,}\s+\d{4})/i,
+          sourceLabel: "TOP TEN HOLDINGS",
+        },
+      },
+    } satisfies FactSheetContract;
+    const pages = pdf(
+      page(1, [
+        { top: 20, left: 30, text: "Test Fund", size: 21 },
+        { top: 40, left: 30, text: "As at 31 May 2026" },
+        { top: 100, left: 30, text: "TOP TEN HOLDINGS# As at 31 May 2026" },
+        { top: 300, left: 30, text: "TOP TEN HOLDINGS# As at 30 April 2026" },
+      ]),
+    );
+
+    expect(() => parseFactSheetDisclosures(pages, contract)).toThrow(
+      /ambiguous TOP TEN HOLDINGS dates \(2026-05-31, 2026-04-30\)/,
+    );
+  });
+});
+
 describe("findSections", () => {
   it("keeps footnote markers out of the fund name", () => {
     const pages = pdf(

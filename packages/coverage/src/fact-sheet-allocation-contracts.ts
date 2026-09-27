@@ -250,6 +250,14 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       valueMinLeft: 330,
     },
     asOf: { pattern: AS_OF_LONG },
+    fieldDates: {
+      // AIA prints this date on the Top Ten Holdings heading line; the document header date
+      // alone is not treated as the holdings date.
+      topHoldings: {
+        pattern: /TOP TEN HOLDINGS#?.*?\bAs at\s+(\d{1,2}\s+[A-Za-z]{3,}\s+\d{4})/i,
+        sourceLabel: "TOP TEN HOLDINGS",
+      },
+    },
   },
   {
     scheme: "AMTD MPF Scheme",

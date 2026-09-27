@@ -9,7 +9,7 @@ A factsheet can contain several temporal scopes. Its document date may differ fr
 
 Official samples reviewed for DATA-08:
 
-- AIA MPF Prime Value Choice, May 2026: document/allocation date 2026-05-31; FER is for the financial year ended 2025-11-30; the risk indicator uses monthly returns over the prior three years.
+- AIA MPF Prime Value Choice, May 2026: the document date is 2026-05-31. The Top Ten Holdings heading explicitly repeats `As at 31 May 2026`; FER is for the financial year ended 2025-11-30; and the risk indicator uses monthly returns over the prior three years. The asset-allocation block has no separate date label in this sample, so its date remains absent.
 - Fidelity Retirement Master Trust World Bond Fund, July 2026: document date 2026-07-31; FER is labelled Year 2025; commentary is as of 2026-06-30; the risk indicator is a three-year standard deviation.
 
 ## Decision
@@ -22,4 +22,4 @@ Official samples reviewed for DATA-08:
 
 ## Consequences
 
-The parser records the selected factsheet date under the document scope. Allocation mapping carries a date only from the allocation scope, and the UI labels field dates only when present. The parser does not yet extract independent dates for every field; source-specific extraction and sample verification remain follow-up work.
+The parser records the selected factsheet date under the document scope. Allocation mapping carries a date only from the allocation scope, and the UI labels field dates only when present. AIA Prime Value Choice now extracts the Top Ten Holdings date only when the field heading and its date occur together on the same reconstructed line. Independent extraction for other fields and source contracts remains follow-up work.

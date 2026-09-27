@@ -20,6 +20,8 @@
 
 See `docs/adr/0008-field-scoped-fact-sheet-temporal-scope.md`.
 
+The AIA Prime Value Choice contract records the Top Ten Holdings date only when `TOP TEN HOLDINGS` and `As at <date>` occur on the same reconstructed PDF line. The May 2026 official factsheet labels that field `As at 31 May 2026`; its allocation block has no separate date label, so the document date is not copied there. Other source contracts remain unscoped until their field labels and dates can be tied together from the official PDF.
+
 ## Fact sheet allocation and top holdings
 
 便覽的「配置」及「十大持倉」由 `packages/coverage/src/fact-sheet-allocation.ts` 抽取，

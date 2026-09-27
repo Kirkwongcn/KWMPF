@@ -173,6 +173,12 @@ export type BlockSelector = {
   continueOnNextPage?: boolean;
 };
 
+export type FactSheetFieldDateSelector = {
+  /** Must match the field label and its date together in the same reconstructed PDF line. */
+  pattern: RegExp;
+  sourceLabel: string;
+};
+
 export type FactSheetContract = {
   scheme: string;
   /**
@@ -191,6 +197,10 @@ export type FactSheetContract = {
   title: TitleSelector;
   allocation: BlockSelector;
   holdings: BlockSelector;
+  /** Explicit point-in-time labels tied to a field, never the document header date. */
+  fieldDates?: Partial<
+    Record<"allocation" | "topHoldings" | "commentary", FactSheetFieldDateSelector>
+  >;
   /** 便覽自己的截至日期。抽不到就報錯，不可用平台日期補位。 */
   asOf: {
     pattern: RegExp;
@@ -868,6 +878,52 @@ export function findFactSheetAsOf(pages: PdfPage[], contract: FactSheetContract)
   throw new Error(`${contract.scheme}: fact sheet as-of date not found`);
 }
 
+function findFieldDate(
+  pages: PdfPage[],
+  section: FactSheetSection,
+  selector: FactSheetFieldDateSelector,
+) {
+  const items = sectionItems(pages, section);
+  const matches: { asOf: string; page: number }[] = [];
+  const pattern = new RegExp(
+    selector.pattern.source,
+    selector.pattern.flags.includes("g")
+      ? selector.pattern.flags
+      : `${selector.pattern.flags}g`,
+  );
+
+  for (const page of pages) {
+    const scopedItems = items.filter((item) => item.page === page.number);
+    if (scopedItems.length === 0) continue;
+    for (const line of toLines({ ...page, items: scopedItems })) {
+      for (const match of line.text.matchAll(pattern)) {
+          if (match[1]) {
+            matches.push({
+              asOf: parseFactSheetDate(match[1]),
+              page: page.number,
+            });
+          }
+      }
+    }
+  }
+
+  const distinctDates = [...new Set(matches.map(({ asOf }) => asOf))];
+  if (distinctDates.length > 1) {
+    throw new Error(
+      `${section.name}: ambiguous ${selector.sourceLabel} dates (${distinctDates.join(", ")})`,
+    );
+  }
+  const match = matches[0];
+  return match
+    ? {
+        kind: "point-in-time" as const,
+        asOf: match.asOf,
+        sourceLabel: selector.sourceLabel,
+        page: match.page,
+      }
+    : undefined;
+}
+
 function describe(lines: string[]) {
   return lines.slice(0, 3).map((line) => JSON.stringify(line)).join(", ");
 }
@@ -909,6 +965,15 @@ export function parseFactSheetDisclosures(
       holdings.orphanValues.length > 0 || holdings.overlaidRows.length > 0
         ? []
         : holdings.holdings;
+    const allocationDate = contract.fieldDates?.allocation
+      ? findFieldDate(pages, section, contract.fieldDates.allocation)
+      : undefined;
+    const topHoldingsDate = contract.fieldDates?.topHoldings
+      ? findFieldDate(pages, section, contract.fieldDates.topHoldings)
+      : undefined;
+    const commentaryDate = contract.fieldDates?.commentary
+      ? findFieldDate(pages, section, contract.fieldDates.commentary)
+      : undefined;
 
     if (allocations.length === 0) {
       unavailableFields.push("allocation");
@@ -950,6 +1015,9 @@ export function parseFactSheetDisclosures(
       factSheetAsOf,
       temporalScopes: {
         document: { kind: "point-in-time", asOf: factSheetAsOf },
+        ...(allocationDate ? { allocation: allocationDate } : {}),
+        ...(topHoldingsDate ? { topHoldings: topHoldingsDate } : {}),
+        ...(commentaryDate ? { commentary: commentaryDate } : {}),
       },
       allocations,
       topHoldings,
