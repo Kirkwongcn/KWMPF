@@ -66,3 +66,28 @@ jobs:
           backup_id="$(jq -r .backupId backup/manifest.json)"
           bash ../../scripts/run-wrangler-redacted.sh bunx wrangler r2 object put "kwmpf-staging-raw/backups/$backup_id/d1.sql" --remote --config wrangler.staging.json --file backup/d1.sql --content-type application/sql
           bash ../../scripts/run-wrangler-redacted.sh bunx wrangler r2 object put "kwmpf-staging-raw/backups/$backup_id/manifest.json" --remote --config wrangler.staging.json --file backup/manifest.json --content-type application/json
+      - name: Verify backup from R2
+        working-directory: apps/api
+        run: |
+          set -euo pipefail
+          backup_id="$(jq -er '.backupId' backup/manifest.json)"
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler r2 object get "kwmpf-staging-raw/backups/$backup_id/d1.sql" --remote --config wrangler.staging.json --file backup/readback-d1.sql
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler r2 object get "kwmpf-staging-raw/backups/$backup_id/manifest.json" --remote --config wrangler.staging.json --file backup/readback-manifest.json
+
+          if ! cmp -s backup/manifest.json backup/readback-manifest.json; then
+            echo "The uploaded R2 manifest differs from the local manifest." >&2
+            exit 1
+          fi
+          expected_bytes="$(jq -er '.files[] | select(.key == "d1.sql") | .bytes' backup/manifest.json)"
+          expected_sha256="$(jq -er '.files[] | select(.key == "d1.sql") | .sha256' backup/manifest.json)"
+          actual_bytes="$(wc -c < backup/readback-d1.sql | tr -d '[:space:]')"
+          actual_sha256="$(sha256sum backup/readback-d1.sql | cut -d' ' -f1)"
+          if [[ "$actual_bytes" != "$expected_bytes" ]]; then
+            echo "The downloaded D1 backup size does not match the manifest." >&2
+            exit 1
+          fi
+          if [[ "$actual_sha256" != "$expected_sha256" ]]; then
+            echo "The downloaded D1 backup SHA-256 does not match the manifest." >&2
+            exit 1
+          fi
+          echo "R2 read-back verified: $actual_bytes bytes; SHA-256 matches the manifest." >> "$GITHUB_STEP_SUMMARY"
