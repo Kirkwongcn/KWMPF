@@ -17,14 +17,28 @@ export function parseHaitongFundPerformance(text: string, sourceUrl: string): Fu
   let currentName: string | undefined;
 
   for (const page of text.split(/\f/)) {
-    const heading = page.match(/^[ \t]*Haitong[ \t]+([^\r\n]*?\bFund)\b/im);
-    if (heading && /Issue Price as of|單位價格/i.test(page.slice(heading.index!))) {
-      currentName = heading[1]!.replace(/\s+/g, " ").trim();
+    const headings = [...page.matchAll(/^[ \t]*Haitong[ \t]+([^\r\n]*?\bFund)\b/gim)];
+    if (headings.length === 0) {
+      if (currentName) sections.get(currentName)?.push(page);
+      continue;
     }
-    if (currentName) {
-      const pages = sections.get(currentName) ?? [];
-      pages.push(page);
-      sections.set(currentName, pages);
+
+    let cursor = 0;
+    for (let index = 0; index < headings.length; index++) {
+      const heading = headings[index]!;
+      const start = heading.index!;
+      const end = headings[index + 1]?.index ?? page.length;
+      if (currentName) sections.get(currentName)?.push(page.slice(cursor, start));
+      const fundSection = page.slice(start, end);
+      if (/Issue Price as of|單位價格/i.test(fundSection)) {
+        currentName = heading[1]!.replace(/\s+/g, " ").trim();
+      }
+      if (currentName) {
+        const pages = sections.get(currentName) ?? [];
+        pages.push(fundSection);
+        sections.set(currentName, pages);
+      }
+      cursor = end;
     }
   }
 
@@ -41,13 +55,22 @@ export function parseHaitongFundPerformance(text: string, sourceUrl: string): Fu
       const values = row[2]!.match(/N\/A|不適用|[+-]?\d+(?:\.\d+)?%/gi) ?? [];
       const threeYear = values[1];
       if (!threeYear || /N\/A|不適用/i.test(threeYear)) continue;
+      const constituentFundName = "Haitong " + titleCaseHaitongFundName(name);
+      const annualizedReturn3Year = Number.parseFloat(threeYear);
+      const existing = results.find((result) => result.constituentFundName === constituentFundName && result.fundClassName === row[1]);
+      if (existing) {
+        if (existing.annualizedReturn3Year !== annualizedReturn3Year) {
+          throw new Error("Conflicting Haitong annualized rows for " + constituentFundName + " class " + row[1]);
+        }
+        continue;
+      }
       results.push({
         schemeName: "Haitong MPF Retirement Fund",
-        constituentFundName: "Haitong " + titleCaseHaitongFundName(name),
+        constituentFundName,
         fundClassName: row[1],
         dataAsOf,
         sourceUrl,
-        annualizedReturn3Year: Number.parseFloat(threeYear),
+        annualizedReturn3Year,
       });
     }
   }
