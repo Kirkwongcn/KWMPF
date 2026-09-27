@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-27T08:31:25Z",
+  "generatedAt": "2026-09-27T16:14:48Z",
   "platformSnapshot": "data/sources/2026-08-29/mpf-fund-platform.json",
   "factSheetBatch": "data/sources/2026-08-28/fund-fact-sheet-links.json",
   "funds": [
@@ -29426,15 +29426,64 @@
       "factSheetSource": "trustee",
       "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "Hong Kong Government Bond 2.02% 07/03/2034",
+          "percent": 3.8
+        },
+        {
+          "rank": 2,
+          "security": "GPT RE Ltd 2.2% 18/11/2030",
+          "percent": 2.09
+        },
+        {
+          "rank": 3,
+          "security": "NBN Co. Ltd. 4.8% 07/12/2033",
+          "percent": 2.09
+        },
+        {
+          "rank": 4,
+          "security": "AGI Finance Pty Ltd 4.66% 28/01/2032",
+          "percent": 2.06
+        },
+        {
+          "rank": 5,
+          "security": "Ausgrid Finance Pty Ltd. 4.51% 03/03/2030",
+          "percent": 2.02
+        },
+        {
+          "rank": 6,
+          "security": "Hong Kong Mortgage Corporation Ltd. 3.45% 17/10/2029",
+          "percent": 2.01
+        },
+        {
+          "rank": 7,
+          "security": "AIA Group Ltd. 3.78% 10/09/2029",
+          "percent": 1.83
+        },
+        {
+          "rank": 8,
+          "security": "HKCG (Finance) Ltd. 1.98% 08/10/2030",
+          "percent": 1.83
+        },
+        {
+          "rank": 9,
+          "security": "Standard Chartered Plc 3.996% 28/05/2030",
+          "percent": 1.76
+        },
+        {
+          "rank": 10,
+          "security": "Commonwealth Bank of Australia 4.22% 04/03/2035",
+          "percent": 1.76
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "10 rows disclose a percentage without an extractable security name: \"3.80%\", \"2.09%\", \"2.09%\""
+        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "values-without-names"
+        "allocation": "chart-only"
       }
     },
     {
@@ -29584,15 +29633,64 @@
       "factSheetSource": "trustee",
       "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "Hong Kong Government Bond 0.0% 08/07/2026",
+          "percent": 1.59
+        },
+        {
+          "rank": 2,
+          "security": "Hong Kong Government Bond 0.0% 15/07/2026",
+          "percent": 1.59
+        },
+        {
+          "rank": 3,
+          "security": "Hong Kong Government Bond 0.0% 02/07/2026",
+          "percent": 1.48
+        },
+        {
+          "rank": 4,
+          "security": "Hong Kong Government Bond 0.0% 29/07/2026",
+          "percent": 1.48
+        },
+        {
+          "rank": 5,
+          "security": "Commonwealth Bank of Australia 5.145% 06/04/2033",
+          "percent": 1.34
+        },
+        {
+          "rank": 6,
+          "security": "BMW Finance N.V. 3.59% 04/10/2029",
+          "percent": 1.24
+        },
+        {
+          "rank": 7,
+          "security": "Hlp Finance Ltd. 2.28% 05/02/2027",
+          "percent": 1.23
+        },
+        {
+          "rank": 8,
+          "security": "Hong Kong Government Bond 2.76% 25/04/2028",
+          "percent": 1.13
+        },
+        {
+          "rank": 9,
+          "security": "Hong Kong Government Bond 0.0% 22/07/2026",
+          "percent": 1.11
+        },
+        {
+          "rank": 10,
+          "security": "Industrial & Commercial Bank of China Ltd. 0% 28/07/2026",
+          "percent": 1.06
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "10 rows disclose a percentage without an extractable security name: \"1.59%\", \"1.59%\", \"1.48%\""
+        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "values-without-names"
+        "allocation": "chart-only"
       }
     },
     {
@@ -29604,15 +29702,64 @@
       "factSheetSource": "trustee",
       "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "Hong Kong Government Bond 0.0% 08/07/2026",
+          "percent": 3.88
+        },
+        {
+          "rank": 2,
+          "security": "Hong Kong Government Bond 0.0% 15/07/2026",
+          "percent": 3.88
+        },
+        {
+          "rank": 3,
+          "security": "Hong Kong Government Bond 0.0% 02/07/2026",
+          "percent": 3.62
+        },
+        {
+          "rank": 4,
+          "security": "Hong Kong Government Bond 0.0% 29/07/2026",
+          "percent": 3.62
+        },
+        {
+          "rank": 5,
+          "security": "Hong Kong Government Bond 0.0% 22/07/2026",
+          "percent": 2.71
+        },
+        {
+          "rank": 6,
+          "security": "Industrial & Commercial Bank of China Ltd. 0% 28/07/2026",
+          "percent": 2.58
+        },
+        {
+          "rank": 7,
+          "security": "Toronto-dominion Bank 0% 08/03/2027",
+          "percent": 2.53
+        },
+        {
+          "rank": 8,
+          "security": "Bank of China (Hong Kong) 0% 07/08/2026",
+          "percent": 2.5
+        },
+        {
+          "rank": 9,
+          "security": "BNP Paribas 0% 20/08/2026",
+          "percent": 2.06
+        },
+        {
+          "rank": 10,
+          "security": "United Overseas Bank (HK) 0% 22/08/2026",
+          "percent": 2.06
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "10 rows disclose a percentage without an extractable security name: \"3.88%\", \"3.88%\", \"3.62%\""
+        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "values-without-names"
+        "allocation": "chart-only"
       }
     },
     {
@@ -29693,15 +29840,64 @@
       "factSheetSource": "trustee",
       "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "Lyxor Core MSCI World (DR) UCITS ETF",
+          "percent": 3.88
+        },
+        {
+          "rank": 2,
+          "security": "Amazon.com, Inc.",
+          "percent": 2.85
+        },
+        {
+          "rank": 3,
+          "security": "Microsoft Corp.",
+          "percent": 2.34
+        },
+        {
+          "rank": 4,
+          "security": "Broadcom Inc.",
+          "percent": 2.09
+        },
+        {
+          "rank": 5,
+          "security": "Alphabet Inc. A",
+          "percent": 1.82
+        },
+        {
+          "rank": 6,
+          "security": "iShares U.S. Financials ETF",
+          "percent": 1.78
+        },
+        {
+          "rank": 7,
+          "security": "Apple Inc.",
+          "percent": 1.51
+        },
+        {
+          "rank": 8,
+          "security": "Nvidia Corporation",
+          "percent": 1.36
+        },
+        {
+          "rank": 9,
+          "security": "Meta Platforms Inc.",
+          "percent": 1.35
+        },
+        {
+          "rank": 10,
+          "security": "iShares MSCI India ETF",
+          "percent": 1.2
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "10 rows disclose a percentage without an extractable security name: \"3.88%\", \"2.85%\", \"2.34%\""
+        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "values-without-names"
+        "allocation": "chart-only"
       }
     },
     {
@@ -29713,15 +29909,64 @@
       "factSheetSource": "trustee",
       "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "Amundi MSCI EMU UCITS ETF",
+          "percent": 10.01
+        },
+        {
+          "rank": 2,
+          "security": "Amundi Core DAX UCITS ETF Dist",
+          "percent": 4.71
+        },
+        {
+          "rank": 3,
+          "security": "ASML Holding",
+          "percent": 3.58
+        },
+        {
+          "rank": 4,
+          "security": "AstraZeneca PLC",
+          "percent": 2.86
+        },
+        {
+          "rank": 5,
+          "security": "iShares Core FTSE 100 UCITS ETF",
+          "percent": 2.83
+        },
+        {
+          "rank": 6,
+          "security": "HSBC Holdings PLC.滙豐控股",
+          "percent": 2.18
+        },
+        {
+          "rank": 7,
+          "security": "Adidas AG",
+          "percent": 2.09
+        },
+        {
+          "rank": 8,
+          "security": "Schneider Electric SE",
+          "percent": 1.77
+        },
+        {
+          "rank": 9,
+          "security": "L'Oreal S.A.",
+          "percent": 1.41
+        },
+        {
+          "rank": 10,
+          "security": "Siemens AG",
+          "percent": 1.35
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "9 rows disclose a percentage without an extractable security name: \"10.01%\", \"4.71%\", \"3.58%\""
+        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "values-without-names"
+        "allocation": "chart-only"
       }
     },
     {
@@ -29733,15 +29978,64 @@
       "factSheetSource": "trustee",
       "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "TSMC 台灣積體電路製造股份",
+          "percent": 7.57
+        },
+        {
+          "rank": 2,
+          "security": "Samsung Electronics Co. Ltd.",
+          "percent": 7.2
+        },
+        {
+          "rank": 3,
+          "security": "SK Hynix Inc.",
+          "percent": 7.17
+        },
+        {
+          "rank": 4,
+          "security": "MediaTek Inc.聯發科技",
+          "percent": 2.67
+        },
+        {
+          "rank": 5,
+          "security": "HSBC Holdings PLC.滙豐控股",
+          "percent": 2.07
+        },
+        {
+          "rank": 6,
+          "security": "ASE Technology Holding Co., Ltd.日月光投資控股股份有限公司",
+          "percent": 1.76
+        },
+        {
+          "rank": 7,
+          "security": "Tencent Holdings Ltd.騰訊控股",
+          "percent": 1.72
+        },
+        {
+          "rank": 8,
+          "security": "BHP Group Ltd",
+          "percent": 1.69
+        },
+        {
+          "rank": 9,
+          "security": "Advantech Co., Ltd.",
+          "percent": 1.53
+        },
+        {
+          "rank": 10,
+          "security": "Hon Hai Precision Industry Co., Ltd.鴻海科技集團",
+          "percent": 1.51
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "4 rows disclose a percentage without an extractable security name: \"7.20%\", \"7.17%\", \"1.69%\""
+        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "values-without-names"
+        "allocation": "chart-only"
       }
     },
     {
@@ -29753,15 +30047,64 @@
       "factSheetSource": "trustee",
       "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "Renesas Electronics Corp",
+          "percent": 4.78
+        },
+        {
+          "rank": 2,
+          "security": "Sumitomo Mitsui Financial Group, Inc.",
+          "percent": 4.74
+        },
+        {
+          "rank": 3,
+          "security": "TDK Corp",
+          "percent": 4.22
+        },
+        {
+          "rank": 4,
+          "security": "Japan Post Bank Co., Ltd.",
+          "percent": 4.2
+        },
+        {
+          "rank": 5,
+          "security": "Sony Group Corporation",
+          "percent": 4.03
+        },
+        {
+          "rank": 6,
+          "security": "Toto Ltd.",
+          "percent": 3.99
+        },
+        {
+          "rank": 7,
+          "security": "Hitachi, Ltd.",
+          "percent": 3.67
+        },
+        {
+          "rank": 8,
+          "security": "Tokyo Ohka Kogyo Co., Ltd.",
+          "percent": 3.6
+        },
+        {
+          "rank": 9,
+          "security": "Toyota Motor Corp.",
+          "percent": 3.34
+        },
+        {
+          "rank": 10,
+          "security": "Recruit Holdings Co., Ltd.",
+          "percent": 3
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "10 rows disclose a percentage without an extractable security name: \"4.78%\", \"4.74%\", \"4.22%\""
+        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "values-without-names"
+        "allocation": "chart-only"
       }
     },
     {
@@ -29773,15 +30116,64 @@
       "factSheetSource": "trustee",
       "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "Government of the USA 3.0% 15/02/2049",
+          "percent": 3.07
+        },
+        {
+          "rank": 2,
+          "security": "Government of the USA 4.375% 15/05/2034",
+          "percent": 2.86
+        },
+        {
+          "rank": 3,
+          "security": "Government of the USA 1.875% 15/02/2032",
+          "percent": 2.47
+        },
+        {
+          "rank": 4,
+          "security": "Government of the USA 0.5% 30/06/2027",
+          "percent": 2.44
+        },
+        {
+          "rank": 5,
+          "security": "Government of the USA 1.375% 15/11/2031",
+          "percent": 2.17
+        },
+        {
+          "rank": 6,
+          "security": "Government of the USA 0.625% 15/05/2030",
+          "percent": 1.85
+        },
+        {
+          "rank": 7,
+          "security": "Government of the USA 2.5% 15/02/2045",
+          "percent": 1.81
+        },
+        {
+          "rank": 8,
+          "security": "Government of the United Kingdom 4.625% 31/01/2034",
+          "percent": 1.23
+        },
+        {
+          "rank": 9,
+          "security": "Government of Germany 0% 15/02/2032",
+          "percent": 1.14
+        },
+        {
+          "rank": 10,
+          "security": "Government of the USA 1.125% 31/08/2028",
+          "percent": 1.02
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "10 rows disclose a percentage without an extractable security name: \"3.07%\", \"2.86%\", \"2.47%\""
+        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "values-without-names"
+        "allocation": "chart-only"
       }
     },
     {
@@ -29793,15 +30185,64 @@
       "factSheetSource": "trustee",
       "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "CSOP FTSE Hong Kong Equity ETF南方東英富時⾹港股票 ETF",
+          "percent": 12.18
+        },
+        {
+          "rank": 2,
+          "security": "HSBC Japan Index Fund Institutional Accumulation HKD",
+          "percent": 5.83
+        },
+        {
+          "rank": 3,
+          "security": "Invesco QQQ Trust",
+          "percent": 4.72
+        },
+        {
+          "rank": 4,
+          "security": "iShares Core CSI 300 ETF 安碩核心滬深 300 ETF",
+          "percent": 4.21
+        },
+        {
+          "rank": 5,
+          "security": "HSBC European Index Fund Institutional Accumulation HKD",
+          "percent": 4.01
+        },
+        {
+          "rank": 6,
+          "security": "HSBC American Index Fund Institutional Accumulation HKD",
+          "percent": 3.3
+        },
+        {
+          "rank": 7,
+          "security": "iShares U.S. Technology ETF",
+          "percent": 2.92
+        },
+        {
+          "rank": 8,
+          "security": "Hong Kong Tracker Fund 盈富基金",
+          "percent": 2.54
+        },
+        {
+          "rank": 9,
+          "security": "SK Hynix Inc.",
+          "percent": 1.43
+        },
+        {
+          "rank": 10,
+          "security": "TSMC 台灣積體電路製造股份",
+          "percent": 1.39
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "6 rows disclose a percentage without an extractable security name: \"5.83%\", \"4.72%\", \"4.01%\""
+        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "values-without-names"
+        "allocation": "chart-only"
       }
     },
     {
@@ -29951,15 +30392,64 @@
       "factSheetSource": "trustee",
       "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "Lyxor Core MSCI World (DR) UCITS ETF",
+          "percent": 4.14
+        },
+        {
+          "rank": 2,
+          "security": "iShares Treasury Bond ETF",
+          "percent": 2.31
+        },
+        {
+          "rank": 3,
+          "security": "iShares U.S. Technology ETF",
+          "percent": 2.22
+        },
+        {
+          "rank": 4,
+          "security": "HSBC Holdings PLC.滙豐控股",
+          "percent": 1.95
+        },
+        {
+          "rank": 5,
+          "security": "iShares MSCI India ETF",
+          "percent": 1.92
+        },
+        {
+          "rank": 6,
+          "security": "Tencent Holdings Ltd.騰訊控股",
+          "percent": 1.67
+        },
+        {
+          "rank": 7,
+          "security": "Alibaba Group Holding Ltd.阿里巴巴集團",
+          "percent": 1.43
+        },
+        {
+          "rank": 8,
+          "security": "iShares U.S. Financials ETF",
+          "percent": 1.2
+        },
+        {
+          "rank": 9,
+          "security": "TSMC 台灣積體電路製造股份",
+          "percent": 1.1
+        },
+        {
+          "rank": 10,
+          "security": "HSBC Term Deposit 3.34% 02/07/2026",
+          "percent": 1.09
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "6 rows disclose a percentage without an extractable security name: \"4.14%\", \"2.31%\", \"2.22%\""
+        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "values-without-names"
+        "allocation": "chart-only"
       }
     },
     {
@@ -29971,15 +30461,64 @@
       "factSheetSource": "trustee",
       "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "Amazon.com, Inc.",
+          "percent": 6.29
+        },
+        {
+          "rank": 2,
+          "security": "Broadcom Inc.",
+          "percent": 5.67
+        },
+        {
+          "rank": 3,
+          "security": "Microsoft Corp.",
+          "percent": 5.21
+        },
+        {
+          "rank": 4,
+          "security": "Alphabet Inc. A",
+          "percent": 4.2
+        },
+        {
+          "rank": 5,
+          "security": "Nvidia Corporation",
+          "percent": 4.14
+        },
+        {
+          "rank": 6,
+          "security": "Apple Inc.",
+          "percent": 3.52
+        },
+        {
+          "rank": 7,
+          "security": "Meta Platforms Inc.",
+          "percent": 3.49
+        },
+        {
+          "rank": 8,
+          "security": "Alphabet Inc. C",
+          "percent": 3.06
+        },
+        {
+          "rank": 9,
+          "security": "Advanced Micro Devices",
+          "percent": 2.86
+        },
+        {
+          "rank": 10,
+          "security": "TSMC",
+          "percent": 2.34
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "10 rows disclose a percentage without an extractable security name: \"6.29%\", \"5.67%\", \"5.21%\""
+        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "values-without-names"
+        "allocation": "chart-only"
       }
     },
     {
@@ -30474,15 +31013,64 @@
       "factSheetSource": "trustee",
       "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "Government of The Philippines 4.375% 05/03/2030",
+          "percent": 1.83
+        },
+        {
+          "rank": 2,
+          "security": "Government of Malaysia 3.336% 15/05/2030",
+          "percent": 1.81
+        },
+        {
+          "rank": 3,
+          "security": "Macquarie Group Ltd. 6.255% 07/12/2034",
+          "percent": 1.61
+        },
+        {
+          "rank": 4,
+          "security": "Hong Kong Mortgage Corporation Ltd. 4.875% 13/09/2028",
+          "percent": 1.49
+        },
+        {
+          "rank": 5,
+          "security": "Standard Chartered Plc 6.228% 21/01/2036",
+          "percent": 1.44
+        },
+        {
+          "rank": 6,
+          "security": "Khazanah Capital Ltd 4.876% 01/06/2033",
+          "percent": 1.38
+        },
+        {
+          "rank": 7,
+          "security": "The Bank Of East Asia, Limited 5.375% 13/05/2032",
+          "percent": 1.38
+        },
+        {
+          "rank": 8,
+          "security": "Government of Philippines 5.6% 14/05/2049",
+          "percent": 1.36
+        },
+        {
+          "rank": 9,
+          "security": "Nippon Life Insurance Company 6.5% 30/04/2055",
+          "percent": 1.35
+        },
+        {
+          "rank": 10,
+          "security": "Guangzhou Metro Investment Finance (BVI) Ltd. 2.31% 17/09/2030",
+          "percent": 1.33
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "10 rows disclose a percentage without an extractable security name: \"1.83%\", \"1.81%\", \"1.61%\""
+        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "values-without-names"
+        "allocation": "chart-only"
       }
     },
     {
@@ -30632,15 +31220,64 @@
       "factSheetSource": "trustee",
       "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "Nvidia Corporation",
+          "percent": 2.73
+        },
+        {
+          "rank": 2,
+          "security": "Apple Inc.",
+          "percent": 2.45
+        },
+        {
+          "rank": 3,
+          "security": "Microsoft Corp.",
+          "percent": 1.62
+        },
+        {
+          "rank": 4,
+          "security": "Amazon.com, Inc.",
+          "percent": 1.35
+        },
+        {
+          "rank": 5,
+          "security": "Alphabet Inc. A",
+          "percent": 1.21
+        },
+        {
+          "rank": 6,
+          "security": "TSMC 台灣積體電路製造股份",
+          "percent": 1.08
+        },
+        {
+          "rank": 7,
+          "security": "Broadcom Inc.",
+          "percent": 1.02
+        },
+        {
+          "rank": 8,
+          "security": "Alphabet Inc. C",
+          "percent": 0.98
+        },
+        {
+          "rank": 9,
+          "security": "Micron Technology",
+          "percent": 0.76
+        },
+        {
+          "rank": 10,
+          "security": "Meta Platforms Inc.",
+          "percent": 0.73
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "9 rows disclose a percentage without an extractable security name: \"2.73%\", \"2.45%\", \"1.62%\""
+        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "values-without-names"
+        "allocation": "chart-only"
       }
     },
     {
@@ -30652,15 +31289,64 @@
       "factSheetSource": "trustee",
       "factSheetAsOf": "2026-06-30",
       "allocations": [],
-      "topHoldings": [],
-      "unavailableFields": ["allocation", "topHoldings"],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "Nvidia Corporation",
+          "percent": 0.92
+        },
+        {
+          "rank": 2,
+          "security": "Apple Inc.",
+          "percent": 0.83
+        },
+        {
+          "rank": 3,
+          "security": "Microsoft Corp.",
+          "percent": 0.55
+        },
+        {
+          "rank": 4,
+          "security": "Amazon.com, Inc.",
+          "percent": 0.45
+        },
+        {
+          "rank": 5,
+          "security": "Alphabet Inc. A",
+          "percent": 0.41
+        },
+        {
+          "rank": 6,
+          "security": "TSMC 台灣積體電路製造股份",
+          "percent": 0.36
+        },
+        {
+          "rank": 7,
+          "security": "Broadcom Inc.",
+          "percent": 0.34
+        },
+        {
+          "rank": 8,
+          "security": "Alphabet Inc. C",
+          "percent": 0.33
+        },
+        {
+          "rank": 9,
+          "security": "Government of the USA 0.625% 15/02/2035",
+          "percent": 0.3
+        },
+        {
+          "rank": 10,
+          "security": "Government of the USA 4.25% 15/05/2035",
+          "percent": 0.29
+        }
+      ],
+      "unavailableFields": ["allocation"],
       "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text",
-        "topHoldings": "9 rows disclose a percentage without an extractable security name: \"0.92%\", \"0.83%\", \"0.55%\""
+        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
-        "topHoldings": "values-without-names"
+        "allocation": "chart-only"
       }
     },
     {
