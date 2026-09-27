@@ -1,0 +1,632 @@
+{
+  "generatedAt": "2026-09-27T05:53:10.105Z",
+  "sourceSnapshot": "data/sources/2026-09-26/mpf-fund-platform.json",
+  "sourceDocumentsDownloaded": 57,
+  "sourceDocumentsFailed": [
+    {
+      "scheme": "China Life MPF Master Trust Scheme",
+      "error": "fetch failed"
+    }
+  ],
+  "parserFailures": [
+    {
+      "scheme": "BCT Strategic MPF Scheme",
+      "error": "No 3-year official return parser for this BCT scheme"
+    },
+    {
+      "scheme": "Manulife RetireChoice (MPF) Scheme",
+      "error": "Fund fact sheet header is missing"
+    }
+  ],
+  "correctedMassRows": 14,
+  "correctedMassDates": [
+    "2026-06-30"
+  ],
+  "parsedReturnRows": 227,
+  "currentSourceRowsAfterDateValidation": 213,
+  "normalizedRows": 208,
+  "unmatched": 0,
+  "manuallyResolvedRows": 5,
+  "ambiguous": 0,
+  "replacedOldRows": 181,
+  "retainedNewerOldRows": 0,
+  "previousRows": 217,
+  "candidateRows": 249,
+  "invalidRows": 0,
+  "latestDates": {
+    "2026-05-31": 18,
+    "2026-06-30": 172,
+    "2026-07-31": 23,
+    "2025-12-31": 22,
+    "2026-08-31": 14
+  },
+  "freshnessPolicyDays": 90,
+  "freshWithin45Days": 14,
+  "freshWithin60Days": 37,
+  "freshWithin90Days": 209,
+  "unmatchedExamples": [],
+  "ambiguousExamples": [],
+  "manualReview": {
+    "reviewedAt": "2026-09-27",
+    "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf",
+    "sourceSha256": "03e4f0d65efb040c340ea6b0e9c00436f894bae9f189ae6695aac293010e4864",
+    "checkedPages": [
+      2,
+      4,
+      6,
+      7,
+      8
+    ],
+    "method": "Verified fund headings and the three-year return column against the official PDF, then matched exact fund names to MPFA platform IDs.",
+    "corrections": [
+      {
+        "fundClassId": "mpfa-cf-206",
+        "fundName": "BCOM Guaranteed (CF) Fund",
+        "page": 2,
+        "sourceLabel": "Guaranteed Fund",
+        "annualizedThreeYear": 4.66
+      },
+      {
+        "fundClassId": "mpfa-cf-208",
+        "fundName": "BCOM Dynamic Growth (CF) Fund",
+        "page": 4,
+        "sourceLabel": "The Fund",
+        "annualizedThreeYear": 15.1,
+        "replacedCandidateObservation": {
+          "annualized": 3.75,
+          "dataAsOf": "2025-12-31"
+        }
+      },
+      {
+        "fundClassId": "mpfa-cf-798",
+        "fundName": "BCOM HSI ESG Tracking (CF) Fund",
+        "page": 6,
+        "sourceLabel": "Equity Fund",
+        "annualizedThreeYear": 4.25
+      },
+      {
+        "fundClassId": "mpfa-cf-831",
+        "fundName": "BCOM Greater China Equity (CF) Fund",
+        "page": 7,
+        "sourceLabel": "Equity Fund",
+        "annualizedThreeYear": 20.71
+      },
+      {
+        "fundClassId": "mpfa-cf-1979",
+        "fundName": "BCOM North American Equity (CF) Fund",
+        "page": 8,
+        "sourceLabel": "Equity Fund",
+        "annualizedThreeYear": 18.04,
+        "priorExtraction": {
+          "value": 19.63,
+          "periodYears": 1
+        },
+        "note": "19.63% is the one-year column; 18.04% is the three-year column."
+      }
+    ]
+  },
+  "sourceManifest": [
+    {
+      "scheme": "BCT (MPF) Industry Choice",
+      "factSheetUrl": "https://www.bcthk.com/IS-Fund-Fact-Sheet",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:17:10.414Z",
+      "sha256": "dbb187a1edc3a6b842b8c549f80af31334761f8485df718da4c1d68b9029e4cd",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "BCT MPF - Simple Plan",
+      "factSheetUrl": "https://www.bcthk.com/wr/Simple-Fund-Fact-Sheet",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:17:19.807Z",
+      "sha256": "685c2c606f15633e4529af16696857f57f26e4ec0cbdfc64254f1a025f7b3990",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "BCT MPF - Smart Plan",
+      "factSheetUrl": "https://www.bcthk.com/wr/Smart-Fund-Fact-Sheet",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:17:26.159Z",
+      "sha256": "e1a5a6bb5a3e7c0e23390696bc8ac4b6f611b7e472e6f323cf4e711b9f507096",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "BCT MPF Scheme Series 800",
+      "factSheetUrl": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:17:32.843Z",
+      "sha256": "c7bd331ddf0ffbc1da6dfc162fbadb3a40a37a1bd6b36088e3df98b45e367939",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "Sun Life Rainbow MPF Scheme",
+      "factSheetUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:17:40.972Z",
+      "sha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "factSheetUrl": "https://www.hangseng.com/cms/pws/files/pdfs/FFS.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:17:56.817Z",
+      "sha256": "f45affbe095b69c4300210fdf58b6bd7af5cea2b515d27f1a170a75ac1e6343c",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "AIA MPF - Prime Value Choice",
+      "factSheetUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-may-2026.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:05.87Z",
+      "sha256": "17bb20a2781687acf2ed67adba8a0768187c5c7523073d4e6c7c64cf6f591ac8",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+      "factSheetUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:06.532Z",
+      "sha256": "3516ffdf96ad288942d8f6ae4b50e08b136cdda4267f0a227bc191f25f09f6bd",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "BCOM Joyful Retirement MPF Scheme",
+      "factSheetUrl": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:18:05.411Z",
+      "sha256": "03e4f0d65efb040c340ea6b0e9c00436f894bae9f189ae6695aac293010e4864",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "My Choice Mandatory Provident Fund Scheme",
+      "factSheetUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:06.585Z",
+      "sha256": "c5e8f2eb3916ed7ea304f6501117081a0a6916f03c53cc45039004bf47fc9adb",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "BCT Strategic MPF Scheme",
+      "factSheetUrl": "https://www.bcthk.com/wr/ST-Fund-Fact-Sheet",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:19:29.11Z",
+      "sha256": "042b1261fc31cb9e50f394ba242c52d6c9e7c96dd4d30353a5b543b90bbc5e66",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "BEA (MPF) Industry Scheme",
+      "factSheetUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:19:31.968Z",
+      "sha256": "c6a9e28161a5ac338422b0a7ddbfd10e05384d4394245bc9bc5c31bf9ce76636",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "BEA (MPF) Master Trust Scheme",
+      "factSheetUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:19:30.904Z",
+      "sha256": "7ea4bbfab38cc00f3aacabadfab25bcbe9bbe565348cbd73f98dff0edb72e6e8",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "factSheetUrl": "https://www.hsbc.com.hk/content/dam/hsbc/hk/docs/mpf/2q2026.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:08.121Z",
+      "sha256": "7d42806321ab76848e0a6bcf731e62d74f163b96c196e1a6eafb91d0e0360085",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "BEA (MPF) Value Scheme",
+      "factSheetUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:19:35.497Z",
+      "sha256": "90f1c4d143d8dde176e530f893c65f4068d9f42c03a40f21174e23bcc85db649",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "Manulife Global Select (MPF) Scheme",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:08.577Z",
+      "sha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "Manulife RetireChoice (MPF) Scheme",
+      "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/mpf/retirechoice-scheme/fundfact-sheet.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:08.559Z",
+      "sha256": "0248313a0e14d2e9b5abb1599473b21bb984db60f549c958f741a4e31e45f4a5",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "China Life MPF Master Trust Scheme",
+      "factSheetUrl": "https://www.chinalife.com.hk/sites/default/files/2026-08/2026%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%9F%BA%E9%87%91%E8%A1%A8%E7%8F%BE%E4%BE%BF%E8%A6%BD.pdf",
+      "status": "failed",
+      "retrievedAt": "2026-09-26T13:19:29.11Z",
+      "sha256": null,
+      "downloadMethod": null,
+      "error": "fetch failed"
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme :: Global Stable Fund",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLSF_E.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:19:39.74Z",
+      "sha256": "b4cc15eae32d57574699d0814b4bd563946a8cb5e0e781381e9833ef5cf5cb25",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme :: Global Growth Fund",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLGF_E.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:19:43.918Z",
+      "sha256": "abc51aeaa13e1c117bcc481e5783a10670947018fe454027cb2ce4336b897ef9",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "BCT (MPF) Pro Choice",
+      "factSheetUrl": "https://www.bcthk.com/MTS-Fund-Fact-Sheet",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:19:36.857Z",
+      "sha256": "26b2b813c83e5bc29307e45d1a043ca95b25a6e1773e2806f9a346654e6e81fd",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme :: Guaranteed Fund",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GUAF_E.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:19:45.998Z",
+      "sha256": "e3749106dc2af5cc667ac84d030277e7b879088609475b7c2bb47ec9839cdb11",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "SHKP MPF Employer Sponsored Scheme",
+      "factSheetUrl": "https://www.shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:11.337Z",
+      "sha256": "9ca21cadc386b31efb7527e86350ce9c3751a328c16d5940187c127846a13a20",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme :: MPF Conservative Fund",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/CAPF_E.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:19:47.208Z",
+      "sha256": "b75862fdeeac6139a92f92d2ad0a562f853556a0458de56b354b99aaeb3cfa15",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme :: Global Equity Fund",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLEF_E.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:19:48.013Z",
+      "sha256": "08dddb098f64e299d6466a109604ab487720628a00959869e563e9393fbc208e",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme :: Global Bond Fund",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLBF_E.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:19:49.517Z",
+      "sha256": "810a3fe22d814c89d0a952ffcb2c3e39c75a2464047f29db7c369b2621c0dbda",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme :: Asian Bond Fund",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/ASBF_E.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:19:49.797Z",
+      "sha256": "dae3d78d6c9523f19bac02d4721026ea3c53b9f8347acaebe2621e2ddf983231",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme :: Asian Pacific Equity Fund",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/APEF_E.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:19:50.147Z",
+      "sha256": "f6ed608d4069d24aea3b6ef21a09c42619c7403daee4c03264f508579bc15c98",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "Haitong MPF Retirement Fund",
+      "factSheetUrl": "https://gthtam.com.hk/hti_content/images/mpf/Haitong_MPF_Conservative_Fund/FundDocument/4/en-US/Haitong%20MPF%20Conservative%20Fund%20-%20Fund%20Monitor.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:19:36.752Z",
+      "sha256": "8251667ff0cbd90a7aada82c099fcc642c7e4b683d8730c570c125ebe1326502",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme :: European Equity Fund",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/EUEF_E.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:19:52.341Z",
+      "sha256": "d972c798710a389a86176bc0cc4c128679fa7d17526c7d30ae1c65078276d698",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme :: Hong Kong Equities Fund",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/HKEF_E.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:19:52.478Z",
+      "sha256": "dfb4e12e67c775d150bb6225a58dcd0b9da09c73fa554d489aff47eab494b3e5",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme :: US Equity Fund",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/USEF_E.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:19:52.009Z",
+      "sha256": "38bb1cc8ca45074c4856a76f2da9f59f7499314ceb7706b267d055d6971b8e16",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme :: Greater China Equity Fund",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GCEF_E.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:19:52.909Z",
+      "sha256": "ea7d2f7193c059b297d24fed0db3cf9741f449b0fa72b81b32e7e051a926221c",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme :: Age 65 Plus Fund",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/A65F2_E.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:19:55.072Z",
+      "sha256": "0280bc22baad5d66daf6f317b71ec388f080b8a105aca33360d161b474609dc7",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Age 65 Plus Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-C65P.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:10.809Z",
+      "sha256": "100abc8d118d2195a556c426dd91ff0f9948d10354d637ecafefc639b5de85f4",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme :: Core Accumulation Fund",
+      "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/CAF2_E.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:19:54.544Z",
+      "sha256": "da93c3ed4169a7dd8a05b418dfd7077d8bfbf629cc08169838947a29d3fe9dc8",
+      "downloadMethod": null,
+      "error": null
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Americas Equity Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CAME.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:11.536Z",
+      "sha256": "1731955340d285990a04d45ed9171938a73b9c075fcdee076470ad73d34ab205",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: European Equity Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CEUR.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:13.733Z",
+      "sha256": "2fafde0e544b6a678e92e564291de1409a4f247a182b4f62a442b2cb5cb23887",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Core Accumulation Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFAF.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:12.087Z",
+      "sha256": "5a2035eae3de0c8ff39587538068cd74a90a55d728fa5e45e41c38d7114ac7da",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Asia Pacific Equity Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFAP.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:12.728Z",
+      "sha256": "dd70cde4e574bf4c73d4c9daaacceb9a8428e0e30f11103bc2804da312398407",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Balanced Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFBF.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:13.401Z",
+      "sha256": "837fcabf23c901477867880eed28cef4915e7ec730df625146e987f8acc78f02",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Capital Stable Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFCF.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:14.058Z",
+      "sha256": "5b09233247b3a3eb3be378b105578e73baedf8083148d8370c77899feb641ece",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: MPF Conservative Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFCP.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:14.454Z",
+      "sha256": "25b60af07c73611635a9e00adb9caf5471deaf79ba677b7af222460f6e1906f6",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Global Equity Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFGE.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:14.701Z",
+      "sha256": "1f1f1e00677504845b3d470e438359f0e543f7e36e5c1d47923e920a1be5dcd5",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Growth Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFGF.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:15.252Z",
+      "sha256": "1b3ef568b5e2bf1558b8bf578bcad6c8d8758548ab3dde89e584e8bd6a7cf1c2",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Hong Kong Bond Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFHB.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:15.362Z",
+      "sha256": "13715492f7f9fd1cdbcf32a1dcec42d9e581698904441394c97fd50f2a61def4",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Hong Kong Equity Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFHK.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:15.931Z",
+      "sha256": "81aa5447ab961ddc78acca75c01050d998794b3a686308278c8d7bd3156b2fdc",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: RMB Bond Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFRB.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:16.031Z",
+      "sha256": "97aea10bd2eff272899087ffa5beb6b6cb29e31182d6066e84a2ebb83ed7c315",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Stable Growth Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFSF.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:16.977Z",
+      "sha256": "e285606f82eacc0f7e12505dce080b8e527dc6a279a5dc57bbd05178cc9c1357",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Fidelity Hong Kong Tracker Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFTF.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:16.694Z",
+      "sha256": "2fcdff182df7d791faad9a5d18a23f20bc251123db2614c94f41a53e73535685",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Fidelity SaveEasy 2025 Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS25.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:17.344Z",
+      "sha256": "427d41c93a72590541ebee0272e735a7af5b6ceadf422b5b7a3231b96b0bb30b",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Fidelity SaveEasy 2035 Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS35.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:18.047Z",
+      "sha256": "85f1dc47fe0a180c619af4d98402959c4aa139b2abf27cf4eb9c78ee0cf10588",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Fidelity SaveEasy 2030 Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS30.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:18.719Z",
+      "sha256": "97a78c9a6bfaca0babfc165f4feaef997a9ec7a3b8249221f20ec96105a6e695",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: World Bond Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFWB.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:19.082Z",
+      "sha256": "f7d49bf6f6c7910f56bea29673468a22a2f02b9017ba47cc7347562a5adb3a54",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Fidelity SaveEasy 2040 Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS40.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:20.808Z",
+      "sha256": "69f4d4fbe2415200334c824da803290b3e33acccce5128c92057129fc64ee5f1",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Fidelity SaveEasy 2045 Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS45.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:19.368Z",
+      "sha256": "0e91ab18204d060786cb1275dc5860fa16f89cdddb63933661784bbded8613a4",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Fidelity SaveEasy 2050 Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS50.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:19.783Z",
+      "sha256": "fd00b95d57f21b4435e5bbc90cea867b83b5616414251f6c4c7a36b0c9a20977",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: RetireEasy Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CTEF.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-09-26T13:22:20.087Z",
+      "sha256": "3fa566e30ae763dd67ef52112436296221857f68af5a1d7069af44b26cc4b3f5",
+      "downloadMethod": "full-get-fallback",
+      "error": null
+    }
+  ]
+}
