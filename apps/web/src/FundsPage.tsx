@@ -323,10 +323,7 @@ export function FundsPage({
                 ? `共 ${totalMatches} 隻符合條件，以下顯示首 ${results.length} 隻。可加入更多篩選條件收窄範圍。`
                 : `共 ${results.length} 隻已發布基金。`}
             </p>
-            <p
-              className="kw-table-hint"
-              id="fund-table-scroll-hint"
-            >
+            <p className="kw-table-hint" id="fund-table-scroll-hint">
               左右滑動可查看其餘欄位
             </p>
             <div
