@@ -1959,8 +1959,16 @@ describe("publication snapshot", () => {
         options?.insufficientSample ? 1 : 0,
         JSON.stringify({
           allocation: { from: "2026-02-28", to: "2026-06-30", undatedCount: 1 },
-          top10Concentration: { from: "2026-03-31", to: "2026-05-31", undatedCount: 2 },
-          volatility3y: { from: "2026-08-31", to: "2026-08-31", undatedCount: 0 },
+          top10Concentration: {
+            from: "2026-03-31",
+            to: "2026-05-31",
+            undatedCount: 2,
+          },
+          volatility3y: {
+            from: "2026-08-31",
+            to: "2026-08-31",
+            undatedCount: 0,
+          },
         }),
       )
       .run();

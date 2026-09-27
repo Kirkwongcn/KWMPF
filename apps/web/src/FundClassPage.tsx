@@ -182,8 +182,11 @@ function formatSampleDateRange(dates: MetricSampleDates | null): string {
       ? `截至 ${dates.from}`
       : `${dates.from} 至 ${dates.to}`;
   }
-  if (dates.from || dates.to) return `部分日期已記錄（${dates.from ?? dates.to}）`;
-  return dates.undatedCount > 0 ? "有值樣本的欄位日期未明示" : "沒有可用樣本日期";
+  if (dates.from || dates.to)
+    return `部分日期已記錄（${dates.from ?? dates.to}）`;
+  return dates.undatedCount > 0
+    ? "有值樣本的欄位日期未明示"
+    : "沒有可用樣本日期";
 }
 
 function formatFundSourceDate(

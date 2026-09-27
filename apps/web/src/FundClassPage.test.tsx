@@ -1129,9 +1129,9 @@ describe("cumulative returns", () => {
     expect(screen.getByText(/十大持倉佔比 33%.*高 3 個百分點/)).toBeVisible();
     expect(screen.getByText(/3年波幅 17%.*低 3 個百分點/)).toBeVisible();
     expect(screen.getByText(/規則版本 2026-09-10-trial-1/)).toBeVisible();
-    expect(
-      screen.getAllByText("8 / 12 隻已核實基金有可用數值"),
-    ).toHaveLength(3);
+    expect(screen.getAllByText("8 / 12 隻已核實基金有可用數值")).toHaveLength(
+      3,
+    );
     expect(
       screen.getByText("欄位日期未明示；便覽日期 2026-05-31"),
     ).toBeVisible();
