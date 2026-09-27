@@ -1089,7 +1089,9 @@ export function FundClassPage({
                         : "kw-status kw-status--positive"
                     }
                   >
-                    {freshness.status === "stale" ? "回報資料過期" : "回報資料現行"}
+                    {freshness.status === "stale"
+                      ? "回報資料過期"
+                      : "回報資料現行"}
                   </p>
                   <p>
                     {freshness.status === "stale"
