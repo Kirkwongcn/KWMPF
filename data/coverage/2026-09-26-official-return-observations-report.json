@@ -1,0 +1,118 @@
+{
+  "generatedAt": "2026-09-26T13:22:20.809Z",
+  "sourceSnapshot": "data/sources/2026-09-26/mpf-fund-platform.json",
+  "sourceDocumentsDownloaded": 57,
+  "sourceDocumentsFailed": [
+    {
+      "scheme": "China Life MPF Master Trust Scheme",
+      "error": "fetch failed"
+    }
+  ],
+  "parserFailures": [
+    {
+      "scheme": "My Choice Mandatory Provident Fund Scheme",
+      "error": "No My Choice three-year returns found"
+    },
+    {
+      "scheme": "BCT Strategic MPF Scheme",
+      "error": "No 3-year official return parser for this BCT scheme"
+    },
+    {
+      "scheme": "Manulife RetireChoice (MPF) Scheme",
+      "error": "Fund fact sheet header is missing"
+    },
+    {
+      "scheme": "BCT (MPF) Pro Choice",
+      "error": "No 3-year official return parser for this BCT scheme"
+    },
+    {
+      "scheme": "Haitong MPF Retirement Fund",
+      "error": "No Haitong three-year returns found"
+    }
+  ],
+  "correctedMassRows": 14,
+  "correctedMassDates": [
+    "2026-06-30"
+  ],
+  "parsedReturnRows": 184,
+  "currentSourceRowsAfterDateValidation": 184,
+  "normalizedRows": 184,
+  "unmatched": 0,
+  "ambiguous": 0,
+  "replacedOldRows": 178,
+  "retainedNewerOldRows": 0,
+  "previousRows": 211,
+  "candidateRows": 217,
+  "invalidRows": 0,
+  "latestDates": {
+    "2025-12-31": 33,
+    "2026-05-31": 18,
+    "2026-06-30": 143,
+    "2026-07-31": 23
+  },
+  "freshWithin45Days": 0,
+  "freshWithin60Days": 23,
+  "freshWithin90Days": 166,
+  "unmatchedExamples": [],
+  "ambiguousExamples": [],
+  "identityCrosscheckSource": "data/sources/2026-09-26/mpf-fund-platform.json",
+  "manualReview": {
+    "reviewedAt": "2026-09-27",
+    "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf",
+    "sourceSha256": "03e4f0d65efb040c340ea6b0e9c00436f894bae9f189ae6695aac293010e4864",
+    "checkedPages": [
+      2,
+      4,
+      6,
+      7,
+      8
+    ],
+    "method": "Verified fund headings and the three-year return column against the official PDF, then matched exact fund names to MPFA platform IDs.",
+    "corrections": [
+      {
+        "fundClassId": "mpfa-cf-206",
+        "fundName": "BCOM Guaranteed (CF) Fund",
+        "page": 2,
+        "sourceLabel": "Guaranteed Fund",
+        "annualizedThreeYear": 4.66
+      },
+      {
+        "fundClassId": "mpfa-cf-208",
+        "fundName": "BCOM Dynamic Growth (CF) Fund",
+        "page": 4,
+        "sourceLabel": "The Fund",
+        "annualizedThreeYear": 15.1,
+        "replacedCandidateObservation": {
+          "annualized": 3.75,
+          "dataAsOf": "2025-12-31"
+        }
+      },
+      {
+        "fundClassId": "mpfa-cf-798",
+        "fundName": "BCOM HSI ESG Tracking (CF) Fund",
+        "page": 6,
+        "sourceLabel": "Equity Fund",
+        "annualizedThreeYear": 4.25
+      },
+      {
+        "fundClassId": "mpfa-cf-831",
+        "fundName": "BCOM Greater China Equity (CF) Fund",
+        "page": 7,
+        "sourceLabel": "Equity Fund",
+        "annualizedThreeYear": 20.71
+      },
+      {
+        "fundClassId": "mpfa-cf-1979",
+        "fundName": "BCOM North American Equity (CF) Fund",
+        "page": 8,
+        "sourceLabel": "Equity Fund",
+        "annualizedThreeYear": 18.04,
+        "priorExtraction": {
+          "value": 19.63,
+          "periodYears": 1
+        },
+        "note": "19.63% is the one-year column; 18.04% is the three-year column."
+      }
+    ]
+  }
+}

@@ -250,6 +250,16 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       valueMinLeft: 330,
     },
     asOf: { pattern: AS_OF_LONG },
+    fieldScopes: {
+      // AIA prints this date on the Top Ten Holdings heading line; the document header date
+      // alone is not treated as the holdings date.
+      topHoldings: {
+        kind: "point-in-time",
+        pattern:
+          /TOP TEN HOLDINGS#?.*?\bAs at\s+(\d{1,2}\s+[A-Za-z]{3,}\s+\d{4})/i,
+        sourceLabel: "TOP TEN HOLDINGS",
+      },
+    },
   },
   {
     scheme: "AMTD MPF Scheme",
@@ -453,6 +463,29 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
     scheme: "Fidelity Retirement Master Trust",
     source: "trustee",
     ...fidelityBlocks,
+    fieldScopes: {
+      fer: {
+        kind: "financial-period",
+        pattern: /Year\s+(\d{4})\s+Fund Expense Ratio/i,
+        sourceLabel: "Fund Expense Ratio",
+        labelFromCapture: (year) => `Year ${year}`,
+      },
+      riskIndicator: {
+        kind: "lookback-period",
+        fieldLabel: /Fund Risk Indicator/i,
+        evidencePattern:
+          /Fund Risk Indicator[\s\S]*?over the past 3 years to the reporting date/i,
+        months: 36,
+        endingAt: "document-date",
+        method: "annualised standard deviation of monthly returns",
+      },
+      commentary: {
+        kind: "point-in-time",
+        pattern: /\^\s*as of\s+(\d{1,2}\/\d{1,2}\/\d{4})/i,
+        fieldLabel: /Fund Commentary\s*\^/i,
+        sourceLabel: "Fund Commentary^",
+      },
+    },
   },
   {
     // 積金局便覽庫嗰份，版面全大寫標題、密集報告式配置表，持倉數字帶 `%`。

@@ -9,6 +9,7 @@ import {
   type MappedAllocation,
 } from "./allocation-label-map";
 import type { PublishedFactSheetDisclosure } from "./fact-sheet-disclosure-lookup";
+import { pointInTimeAsOf } from "./fact-sheet-temporal";
 
 export const DEFAULT_ALLOCATION_LABEL_MAP_PATH = join(
   dirname(fileURLToPath(import.meta.url)),
@@ -42,7 +43,7 @@ export function toAllocationLabelLookup(file: AllocationLabelMapFile): Allocatio
           allocations: disclosure.allocations,
           unavailableFields: disclosure.unavailableFields,
           unavailableKinds: disclosure.unavailableKinds,
-          factSheetAsOf: disclosure.factSheetAsOf,
+          allocationAsOf: pointInTimeAsOf(disclosure.temporalScopes?.allocation),
         },
         lookup,
         file.generatedAt,
