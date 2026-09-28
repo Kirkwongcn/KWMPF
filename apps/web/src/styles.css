@@ -127,7 +127,10 @@ body {
       rgba(18, 59, 70, 0.88) 52%,
       rgba(18, 59, 70, 0.34)
     ),
-    url("/images/kirk-wong-hero.png") center/cover;
+    image-set(
+      url("/images/kirk-wong-hero.webp") type("image/webp"),
+      url("/images/kirk-wong-hero.png") type("image/png")
+    ) center/cover;
 }
 .kw-hero__inner {
   width: min(var(--kw-content), 100%);
@@ -573,6 +576,11 @@ body {
   color: var(--kw-muted);
   font-size: 12px;
 }
+.kw-footer {
+  padding-block: 24px;
+  background: var(--kw-navy);
+  color: var(--kw-white);
+}
 .kw-footer .kw-muted {
   color: #c6d4dd;
 }
@@ -1001,6 +1009,9 @@ body {
   .kw-toolbar {
     padding: 14px;
   }
+  .kw-toolbar__notes {
+    min-block-size: 16.75rem;
+  }
   .kw-field {
     flex: 1 1 100%;
   }
@@ -1022,6 +1033,9 @@ body {
 }
 
 @media (max-width: 340px) {
+  .kw-toolbar__notes {
+    min-block-size: 19.25rem;
+  }
   .kw-header__inner {
     flex-wrap: wrap;
     row-gap: 4px;
@@ -1033,6 +1047,12 @@ body {
     flex: 1 1 0;
     justify-content: center;
     font-size: 15px;
+  }
+}
+
+@media (max-width: 300px) {
+  .kw-toolbar__notes {
+    min-block-size: 22rem;
   }
 }
 

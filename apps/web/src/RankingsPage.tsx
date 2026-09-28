@@ -218,27 +218,30 @@ export function RankingsPage({
                 </select>
               </p>
             )}
-            {publication && (
-              <p className="kw-field">
-                <label htmlFor="comparison-group">比較組別</label>
-                <select
-                  className="kw-control"
-                  id="comparison-group"
-                  value={effectiveGroup}
-                  onChange={(event) => {
-                    setComparisonGroup(event.target.value);
-                    pushRankingUrl(metric, period, event.target.value);
-                  }}
-                >
-                  <option value="all">全部比較組別</option>
-                  {comparisonGroups.map((group) => (
+            <p className="kw-field">
+              <label htmlFor="comparison-group">比較組別</label>
+              <select
+                className="kw-control"
+                id="comparison-group"
+                value={publication ? effectiveGroup : "all"}
+                disabled={!publication}
+                aria-busy={!publication}
+                onChange={(event) => {
+                  setComparisonGroup(event.target.value);
+                  pushRankingUrl(metric, period, event.target.value);
+                }}
+              >
+                <option value="all">
+                  {publication ? "全部比較組別" : "正在載入比較組別…"}
+                </option>
+                {publication &&
+                  comparisonGroups.map((group) => (
                     <option key={group} value={group}>
                       {group}
                     </option>
                   ))}
-                </select>
-              </p>
-            )}
+              </select>
+            </p>
           </div>
           <div className="kw-toolbar__notes">
             <p className="kw-muted">
@@ -248,23 +251,26 @@ export function RankingsPage({
                   ? "管理費為官方公布的當前費率，不包括基金開支比率所涵蓋的歷史費用。"
                   : "波幅用官方公布的基金風險指標，即過去三年的年度化標準差。數字越低代表過往價格波動越小，不代表基金較佳或較適合你。成立不足三年的基金官方沒有這項數據，不會出現在此排名。"}
             </p>
-            {publication && (
-              <>
-                <p className="kw-muted">
-                  公開快照：<code>{publication.snapshotId}</code>
-                </p>
-                <p className="kw-muted">
-                  {publication.methodology?.classification
-                    ? `比較組別採用 ${publication.methodology.classification.provider}「${publication.methodology.classification.dataset}」（期別 ${publication.methodology.classification.capturedAt}），屬非官方來源；排名數值全部來自官方平台。`
-                    : "比較組別分類屬非官方來源；排名數值全部來自官方平台。"}
-                </p>
-                <p className="kw-muted">
-                  沒有 Lipper
-                  類別的基金，會按積金局平台的基金種類／類別另行分組，並以「平台分類：」標示，不會併入同名
-                  Lipper 組別。
-                </p>
-              </>
-            )}
+            <p className="kw-muted">
+              公開快照：
+              {publication ? (
+                <code>{publication.snapshotId}</code>
+              ) : (
+                "讀取中…"
+              )}
+            </p>
+            <p className="kw-muted">
+              {publication?.methodology?.classification
+                ? `比較組別採用 ${publication.methodology.classification.provider}「${publication.methodology.classification.dataset}」（期別 ${publication.methodology.classification.capturedAt}），屬非官方來源；排名數值全部來自官方平台。`
+                : publication
+                  ? "比較組別分類屬非官方來源；排名數值全部來自官方平台。"
+                  : "比較組別資料載入中；排名數值全部來自官方平台。"}
+            </p>
+            <p className="kw-muted">
+              沒有 Lipper
+              類別的基金，會按積金局平台的基金種類／類別另行分組，並以「平台分類：」標示，不會併入同名
+              Lipper 組別。
+            </p>
           </div>
         </div>
         {failed ? (
