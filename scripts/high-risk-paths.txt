@@ -20,3 +20,4 @@ apps/api/migrations/*
 data/reference/*
 .github/workflows/deploy-staging.yml
 .github/workflows/deploy-production.yml
+.github/workflows/restore-r2-d1.yml
