@@ -1,0 +1,174 @@
+name: Verify production release manifest
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_run_id:
+        description: Original production deployment run ID
+        required: true
+        type: string
+      release_run_attempt:
+        description: Original production deployment run attempt
+        required: true
+        type: string
+      release_commit_sha:
+        description: Full commit SHA recorded in the release manifest
+        required: true
+        type: string
+      snapshot_id:
+        description: Published snapshot ID recorded in the release manifest
+        required: true
+        type: string
+      source_data_as_of:
+        description: Official platform data date recorded in the release manifest
+        required: true
+        type: string
+      expected_size_bytes:
+        description: Optional size from the R2 object listing
+        required: false
+        type: string
+      expected_etag:
+        description: Optional ETag from the R2 object listing
+        required: false
+        type: string
+
+permissions: {}
+
+concurrency:
+  group: production-release-manifest-readback-${{ inputs.release_run_id }}-${{ inputs.release_run_attempt }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    environment: production
+    env:
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      RELEASE_RUN_ID: ${{ inputs.release_run_id }}
+      RELEASE_RUN_ATTEMPT: ${{ inputs.release_run_attempt }}
+      RELEASE_COMMIT_SHA: ${{ inputs.release_commit_sha }}
+      SNAPSHOT_ID: ${{ inputs.snapshot_id }}
+      SOURCE_DATA_AS_OF: ${{ inputs.source_data_as_of }}
+      EXPECTED_SIZE_BYTES: ${{ inputs.expected_size_bytes }}
+      EXPECTED_ETAG: ${{ inputs.expected_etag }}
+    steps:
+      - name: Read and validate the production R2 object
+        run: |
+          set -euo pipefail
+
+          if [[ "$GITHUB_REF" != "refs/heads/main" ]]; then
+            echo "This verifier must run from main." >&2
+            exit 1
+          fi
+          if [[ ! "$CLOUDFLARE_ACCOUNT_ID" =~ ^[a-fA-F0-9]{32}$ ]]; then
+            echo "Cloudflare account ID is missing or malformed." >&2
+            exit 1
+          fi
+          if [[ -z "$CLOUDFLARE_API_TOKEN" ]]; then
+            echo "Cloudflare API token is unavailable in the protected production environment." >&2
+            exit 1
+          fi
+          if [[ ! "$RELEASE_RUN_ID" =~ ^[0-9]+$ || ! "$RELEASE_RUN_ATTEMPT" =~ ^[1-9][0-9]*$ ]]; then
+            echo "Release run ID or attempt is malformed." >&2
+            exit 1
+          fi
+          if [[ ! "$RELEASE_COMMIT_SHA" =~ ^[a-fA-F0-9]{40}$ ]]; then
+            echo "Release commit SHA must be a full 40-character SHA." >&2
+            exit 1
+          fi
+          if [[ ! "$SNAPSHOT_ID" =~ ^[A-Za-z0-9._-]+$ || ! "$SOURCE_DATA_AS_OF" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
+            echo "Snapshot ID or source data date is malformed." >&2
+            exit 1
+          fi
+
+          key="releases/$RELEASE_COMMIT_SHA/run-$RELEASE_RUN_ID-attempt-$RELEASE_RUN_ATTEMPT/manifest.json"
+          url="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/r2/buckets/kwmpf-production-raw/objects/$key"
+          work_dir="$(mktemp -d "$RUNNER_TEMP/kwmpf-release-manifest.XXXXXX")"
+          manifest_file="$work_dir/manifest.json"
+          headers_file="$work_dir/headers.txt"
+          trap 'rm -f "$manifest_file" "$headers_file"; rmdir "$work_dir"' EXIT
+
+          http_status="$(curl --fail --silent --show-error --retry 3 --retry-delay 1 \
+            --dump-header "$headers_file" \
+            --output "$manifest_file" \
+            --write-out '%{http_code}' \
+            --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "$url")"
+          if [[ "$http_status" != "200" ]]; then
+            echo "R2 object request did not return HTTP 200." >&2
+            exit 1
+          fi
+
+          actual_bytes="$(wc -c < "$manifest_file" | tr -d '[:space:]')"
+          actual_etag="$(awk 'tolower($1) == "etag:" { gsub(/\r/, "", $2); gsub(/"/, "", $2); print $2; exit }' "$headers_file")"
+          actual_content_type="$(awk 'tolower($1) == "content-type:" { gsub(/\r/, "", $2); print tolower($2); exit }' "$headers_file")"
+          case "$actual_content_type" in
+            application/json*|application/octet-stream*) ;;
+            *)
+              echo "Unexpected R2 content type." >&2
+              exit 1
+              ;;
+          esac
+
+          if [[ -n "$EXPECTED_SIZE_BYTES" ]]; then
+            if [[ ! "$EXPECTED_SIZE_BYTES" =~ ^[0-9]+$ || "$actual_bytes" != "$EXPECTED_SIZE_BYTES" ]]; then
+              echo "R2 object size does not match the supplied expected size." >&2
+              exit 1
+            fi
+          fi
+          if [[ -n "$EXPECTED_ETAG" ]]; then
+            if [[ ! "$EXPECTED_ETAG" =~ ^[a-fA-F0-9]+$ ]]; then
+              echo "Expected ETag is malformed." >&2
+              exit 1
+            fi
+            expected_etag_lower="$(printf '%s' "$EXPECTED_ETAG" | tr '[:upper:]' '[:lower:]')"
+            actual_etag_lower="$(printf '%s' "$actual_etag" | tr '[:upper:]' '[:lower:]')"
+            if [[ "$actual_etag_lower" != "$expected_etag_lower" ]]; then
+              echo "R2 object ETag does not match the supplied expected ETag." >&2
+              exit 1
+            fi
+          fi
+
+          expected_run_url="https://github.com/Kirkwongcn/KWMPF/actions/runs/$RELEASE_RUN_ID"
+          expected_release_marker="KWMPF-release-run=$RELEASE_RUN_ID-attempt=$RELEASE_RUN_ATTEMPT-sha=$RELEASE_COMMIT_SHA"
+          jq --exit-status \
+            --arg run_id "$RELEASE_RUN_ID" \
+            --arg attempt "$RELEASE_RUN_ATTEMPT" \
+            --arg commit_sha "$RELEASE_COMMIT_SHA" \
+            --arg run_url "$expected_run_url" \
+            --arg snapshot_id "$SNAPSHOT_ID" \
+            --arg source_data_as_of "$SOURCE_DATA_AS_OF" \
+            --arg release_marker "$expected_release_marker" \
+            '
+              .schemaVersion == 1
+              and .repository == "Kirkwongcn/KWMPF"
+              and .workflowRun.id == $run_id
+              and .workflowRun.attempt == $attempt
+              and .workflowRun.commit == $commit_sha
+              and .workflowRun.url == $run_url
+              and .releaseMarker == $release_marker
+              and .publicationAfterRelease.snapshotId == $snapshot_id
+              and .publicationAfterRelease.sourceSnapshot.dataAsOf == $source_data_as_of
+              and .smokeChecks.workflowStepOutcome == "success"
+              and ((.smokeChecks.fundClassCount | type) == "number")
+              and (.smokeChecks.fundClassCount > 0)
+              and ((.smokeChecks.threeYearRankingRows | type) == "number")
+              and (.smokeChecks.threeYearRankingRows >= 0)
+            ' "$manifest_file" > /dev/null
+
+          manifest_sha256="$(sha256sum "$manifest_file" | awk '{ print $1 }')"
+          {
+            echo "### Production release manifest read-back verified"
+            echo
+            printf -- "- R2 object: %s\n" "$key"
+            printf -- "- HTTP status: %s\n" "$http_status"
+            printf -- "- Size: %s bytes\n" "$actual_bytes"
+            printf -- "- Content type: %s\n" "$actual_content_type"
+            printf -- "- ETag: %s\n" "$actual_etag"
+            printf -- "- SHA-256: %s\n" "$manifest_sha256"
+            printf -- "- Release run: %s, attempt %s\n" "$RELEASE_RUN_ID" "$RELEASE_RUN_ATTEMPT"
+            printf -- "- Commit: %s\n" "$RELEASE_COMMIT_SHA"
+            printf -- "- Snapshot: %s, source data as of %s\n" "$SNAPSHOT_ID" "$SOURCE_DATA_AS_OF"
+          } >> "$GITHUB_STEP_SUMMARY"
