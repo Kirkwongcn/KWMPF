@@ -168,8 +168,34 @@ jobs:
         run: |
           set -euo pipefail
           database_name="kwmpf-${TARGET_ENVIRONMENT}"
+          reset_objects_query="SELECT type, name FROM sqlite_master WHERE type IN ('trigger', 'view', 'table') AND name <> '_cf_KV' AND name NOT LIKE 'sqlite_%' ORDER BY CASE type WHEN 'trigger' THEN 0 WHEN 'view' THEN 1 ELSE 2 END, name"
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler d1 execute "$database_name" --remote --config wrangler.restore-target.json --command "$reset_objects_query" --json > ../../restore-r2/reset-objects.json
+          jq -e '
+            type == "array"
+            and length == 1
+            and .[0].success == true
+            and (.[0].results | type == "array" and length > 0)
+            and (.[0].results | all(.[]; (.type == "table" or .type == "view" or .type == "trigger") and (.name | type == "string" and length > 0 and test("^[A-Za-z_][A-Za-z0-9_]*$"))))
+            and (.[0].results | all(.[]; .name != "_cf_KV" and ((.name | startswith("sqlite_")) | not)))
+            and (.[0].results | any(.[]; .type == "table" and .name == "current_publication"))
+          ' ../../restore-r2/reset-objects.json >/dev/null
+          jq -r '.[0].results[] |
+            "DROP " +
+            (if .type == "trigger" then "TRIGGER"
+             elif .type == "view" then "VIEW"
+             else "TABLE" end) +
+            " IF EXISTS [" + .name + "];"
+          ' ../../restore-r2/reset-objects.json > ../../restore-r2/reset.sql
+          reset_object_count="$(jq -er '[.[0].results[] | select(.type == "table")] | length' ../../restore-r2/reset-objects.json)"
+          {
+            echo 'PRAGMA defer_foreign_keys = ON;'
+            cat ../../restore-r2/reset.sql
+            cat ../../restore-r2/source.sql
+          } > ../../restore-r2/restore.sql
+          echo "reset_object_count=$reset_object_count" >> "$GITHUB_OUTPUT"
+          echo "Replacing $reset_object_count application tables in the same atomic import; Cloudflare _cf_KV and SQLite sqlite_* objects are excluded." >> "$GITHUB_STEP_SUMMARY"
           status=0
-          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler d1 execute "$database_name" --remote --config wrangler.restore-target.json --file ../../restore-r2/source.sql --json > ../../restore-r2/apply.json 2> ../../restore-r2/apply.stderr || status=$?
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler d1 execute "$database_name" --remote --config wrangler.restore-target.json --file ../../restore-r2/restore.sql --json > ../../restore-r2/apply.json 2> ../../restore-r2/apply.stderr || status=$?
           echo "import_exit_status=$status" >> "$GITHUB_OUTPUT"
           if (( status != 0 )); then
             echo "The remote D1 restore command failed (Wrangler status: $status). Cloudflare documents that a failed file import returns the database to its original state; still verify the live database before further changes. The verified pre-restore backup is recorded below." >&2
