@@ -238,19 +238,21 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: apps/api
-          command: deploy --config wrangler.production.json --var RELEASE_VERSION:${{ github.sha }}
+          command: deploy --config wrangler.production.json --var RELEASE_VERSION:${{ github.sha }} --message KWMPF-release-run=${{ github.run_id }}-attempt=${{ github.run_attempt }}-sha=${{ github.sha }}
       - name: Build web against deployed API
         run: bun run --filter @kwmpf/web build
         env:
           VITE_API_URL: ${{ steps.deploy-worker.outputs.deployment-url }}
       - name: Deploy Pages
+        id: deploy-pages
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: apps/api
-          command: pages deploy ../web/dist --project-name kwmpf-web-production --branch main
+          command: pages deploy ../web/dist --project-name kwmpf-web-production --branch main --commit-hash ${{ github.sha }} --commit-message KWMPF-release-run=${{ github.run_id }}-attempt=${{ github.run_attempt }}-sha=${{ github.sha }}
       - name: Verify the public deployment serves a published snapshot
+        id: verify-publication
         run: |
           set -euo pipefail
           url="${{ steps.deploy-worker.outputs.deployment-url }}"
@@ -258,6 +260,8 @@ jobs:
           echo "$summary"
           snapshot=$(jq -r '.snapshotId // "null"' <<<"$summary")
           funds=$(jq -r '.fundClassCount' <<<"$summary")
+          echo "snapshot_id=$snapshot" >> "$GITHUB_OUTPUT"
+          echo "fund_class_count=$funds" >> "$GITHUB_OUTPUT"
           if [ "$snapshot" = "null" ] || [ "$funds" -lt 1 ]; then
             echo "Public API is not serving a published snapshot." >&2
             exit 1
@@ -265,6 +269,7 @@ jobs:
           echo "Serving snapshot $snapshot with $funds fund classes."
           three_year="$(curl --fail --silent --show-error "$url/rankings?metric=return&period=3")"
           three_year_rows="$(jq -r '.rankings | length' <<<"$three_year")"
+          echo "three_year_rows=$three_year_rows" >> "$GITHUB_OUTPUT"
           if ((three_year_rows == 0)); then
             echo "Production has no eligible three-year return ranking rows." >&2
             exit 1
@@ -272,8 +277,130 @@ jobs:
           echo "Serving $three_year_rows eligible three-year return ranking rows."
           cache=$(curl --fail --silent --show-error --dump-header - --output /dev/null "$url/summary" \
             | tr -d '\r' | awk 'tolower($1) == "cache-control:" { $1=""; sub(/^ /, ""); print }')
+          echo "cache_control=$cache" >> "$GITHUB_OUTPUT"
           echo "Cache-Control: $cache"
           test "$cache" = "public, max-age=300, stale-while-revalidate=600"
+      - name: Record and verify the production release tuple in private R2
+        if: ${{ always() && steps.deploy-worker.outcome == 'success' && steps.deploy-pages.outcome == 'success' }}
+        working-directory: apps/api
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          RELEASE_MARKER: KWMPF-release-run=${{ github.run_id }}-attempt=${{ github.run_attempt }}-sha=${{ github.sha }}
+          SOURCE_SNAPSHOT: ${{ inputs.source_snapshot }}
+          RETURN_OBSERVATIONS_PATH: ${{ steps.return-observations.outputs.path }}
+          BACKUP_ID: ${{ steps.pre-deploy-export.outputs.backup_id }}
+          ROLLBACK_TIMESTAMP: ${{ steps.rollback-point.outputs.timestamp }}
+          WORKER_URL: ${{ steps.deploy-worker.outputs.deployment-url }}
+          VERIFY_OUTCOME: ${{ steps.verify-publication.outcome }}
+          PUBLISHED_SNAPSHOT_ID: ${{ steps.verify-publication.outputs.snapshot_id }}
+          FUND_CLASS_COUNT: ${{ steps.verify-publication.outputs.fund_class_count }}
+          THREE_YEAR_ROWS: ${{ steps.verify-publication.outputs.three_year_rows }}
+          CACHE_CONTROL: ${{ steps.verify-publication.outputs.cache_control }}
+        run: |
+          set -euo pipefail
+          api_base="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID"
+          worker_response=/tmp/kwmpf-worker-deployments.json
+          pages_response=/tmp/kwmpf-pages-deployments.json
+          manifest_file=/tmp/kwmpf-production-release.manifest.json
+          readback_file=/tmp/kwmpf-production-release-readback.manifest.json
+
+          curl --fail --silent --show-error --retry 3 --retry-all-errors \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "$api_base/workers/scripts/kwmpf-api-production/deployments?per_page=100" \
+            > "$worker_response"
+          jq -e '.success == true and (.result.deployments | length > 0)' "$worker_response" > /dev/null
+          worker_deployment="$(jq -ce --arg marker "$RELEASE_MARKER" '
+            .result.deployments[0]
+            | select(.annotations["workers/message"] == $marker)
+            | select((.id | type) == "string" and (.id | length) > 0)
+            | select((.created_on | type) == "string" and (.created_on | length) > 0)
+            | select((.versions | length) == 1)
+            | select(.versions[0].percentage == 100)
+            | select((.versions[0].version_id | type) == "string" and (.versions[0].version_id | length) > 0)
+          ' "$worker_response")"
+
+          curl --fail --silent --show-error --retry 3 --retry-all-errors \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            --get "$api_base/pages/projects/kwmpf-web-production/deployments" \
+            --data-urlencode "env=production" --data-urlencode "per_page=100" \
+            > "$pages_response"
+          jq -e '.success == true and (.result | length > 0)' "$pages_response" > /dev/null
+          pages_deployment="$(jq -ce --arg marker "$RELEASE_MARKER" --arg sha "$GITHUB_SHA" '
+            .result
+            | map(select(.environment == "production"))
+            | sort_by(.created_on)
+            | last
+            | select((.is_skipped // false) == false)
+            | select(.latest_stage.status == "success")
+            | select(.deployment_trigger.metadata.branch == "main")
+            | select(.deployment_trigger.metadata.commit_hash == $sha)
+            | select(.deployment_trigger.metadata.commit_message == $marker)
+            | select((.id | type) == "string" and (.id | length) > 0)
+            | select((.url | type) == "string" and (.url | length) > 0)
+          ' "$pages_response")"
+
+          source_file="../../data/sources/$SOURCE_SNAPSHOT"
+          return_observations_file="../../$RETURN_OBSERVATIONS_PATH"
+          backup_manifest_file=/tmp/kwmpf-production-before-deploy.manifest.json
+          test -s "$source_file"
+          test -s "$return_observations_file"
+          test -s "$backup_manifest_file"
+          source_data_as_of="$(jq -er '.sourceDataAsOf' "$source_file")"
+
+          fund_count_json=null
+          if [[ "$FUND_CLASS_COUNT" =~ ^[0-9]+$ ]]; then
+            fund_count_json="$FUND_CLASS_COUNT"
+          fi
+          three_year_rows_json=null
+          if [[ "$THREE_YEAR_ROWS" =~ ^[0-9]+$ ]]; then
+            three_year_rows_json="$THREE_YEAR_ROWS"
+          fi
+
+          jq -n -S \
+            --arg recordedAt "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            --arg repository "$GITHUB_REPOSITORY" \
+            --arg runId "$GITHUB_RUN_ID" \
+            --arg runAttempt "$GITHUB_RUN_ATTEMPT" \
+            --arg runUrl "https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" \
+            --arg commit "$GITHUB_SHA" \
+            --arg releaseMarker "$RELEASE_MARKER" \
+            --arg workerUrl "$WORKER_URL" \
+            --arg sourcePath "data/sources/$SOURCE_SNAPSHOT" \
+            --arg sourceDataAsOf "$source_data_as_of" \
+            --arg sourceKey "candidates/$GITHUB_SHA/source.json" \
+            --arg returnObservationsPath "data/coverage/$(basename "$RETURN_OBSERVATIONS_PATH")" \
+            --arg returnObservationsKey "candidates/$GITHUB_SHA/return-observations.json" \
+            --arg backupId "$BACKUP_ID" \
+            --arg rollbackTimestamp "$ROLLBACK_TIMESTAMP" \
+            --arg verifyOutcome "$VERIFY_OUTCOME" \
+            --arg snapshotId "$PUBLISHED_SNAPSHOT_ID" \
+            --argjson fundClassCount "$fund_count_json" \
+            --argjson threeYearRows "$three_year_rows_json" \
+            --arg cacheControl "$CACHE_CONTROL" \
+            --slurpfile backupManifest "$backup_manifest_file" \
+            --argjson worker "$worker_deployment" \
+            --argjson pages "$pages_deployment" \
+            '{schemaVersion:1,recordedAt:$recordedAt,repository:$repository,workflowRun:{id:$runId,attempt:$runAttempt,url:$runUrl,commit:$commit},releaseMarker:$releaseMarker,worker:{name:"kwmpf-api-production",url:$workerUrl,deploymentId:$worker.id,deployedOn:$worker.created_on,versionId:$worker.versions[0].version_id,trafficPercent:$worker.versions[0].percentage},pages:{project:"kwmpf-web-production",deploymentId:$pages.id,url:$pages.url,createdOn:$pages.created_on,environment:$pages.environment,branch:$pages.deployment_trigger.metadata.branch,commitHash:$pages.deployment_trigger.metadata.commit_hash,commitMessage:$pages.deployment_trigger.metadata.commit_message,stageStatus:$pages.latest_stage.status},databaseBeforeRelease:($backupManifest[0] + {r2Prefix:("backups/" + $backupId),rollbackTimestamp:$rollbackTimestamp}),publicationAfterRelease:{snapshotId:(if $snapshotId == "" or $snapshotId == "null" then null else $snapshotId end),sourceSnapshot:{path:$sourcePath,dataAsOf:$sourceDataAsOf,r2Key:$sourceKey},returnObservations:{path:$returnObservationsPath,r2Key:$returnObservationsKey}},smokeChecks:{workflowStepOutcome:$verifyOutcome,fundClassCount:$fundClassCount,threeYearRankingRows:$threeYearRows,cacheControl:(if $cacheControl == "" then null else $cacheControl end)}}' \
+            > "$manifest_file"
+
+          prefix="releases/$GITHUB_SHA/run-$GITHUB_RUN_ID-attempt-$GITHUB_RUN_ATTEMPT"
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler r2 object put "kwmpf-production-raw/$prefix/manifest.json" --remote --config wrangler.production.json --file "$manifest_file" --content-type application/json
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler r2 object get "kwmpf-production-raw/$prefix/manifest.json" --remote --config wrangler.production.json --file "$readback_file"
+          if ! cmp -s "$manifest_file" "$readback_file"; then
+            echo "The production release manifest differs from the R2 object read back." >&2
+            exit 1
+          fi
+
+          manifest_sha256="$(sha256sum "$manifest_file" | awk '{print $1}')"
+          {
+            echo "Production release tuple manifest: kwmpf-production-raw/$prefix/manifest.json"
+            echo "Manifest SHA-256: $manifest_sha256"
+            echo "Worker deployment/version: $(jq -r '.worker.deploymentId + " / " + .worker.versionId' "$manifest_file")"
+            echo "Pages deployment: $(jq -r '.pages.deploymentId' "$manifest_file")"
+            echo "Pre-deploy D1 backup: $BACKUP_ID"
+            echo "R2 read-back verified byte-for-byte."
+          } >> "$GITHUB_STEP_SUMMARY"
       - name: Restore production D1 after a failed mutation before Worker deployment
         if: ${{ (failure() || cancelled()) && steps.rollback-point.outcome == 'success' && steps.apply-migrations.outcome != 'skipped' && steps.deploy-worker.outcome == 'skipped' }}
         env:
