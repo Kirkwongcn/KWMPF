@@ -112,3 +112,13 @@
 官網逐隻基金嗰份淨係英文，「Fund Data as at June 30, 2026」排喺左窄欄斷開兩行，而同一條
 基線右邊仲有「Fund Price (HKD)」。所以 `asOf` 加咗兩個原語：`band` 只喺指定橫向範圍搵日期
 （唔限範圍就會併埋隔籬欄，日期唔再連續），`joinWrappedLines` 連埋下一行再試一次式樣。
+
+## 三年年化回報：來源期數核對（2026-09-28）
+
+本次逐頁核對兩份官方受託人便覽，目的是判斷三年期數值是否真的有披露：
+
+- [BCT Strategic 官方便覽](https://www.bcthk.com/content/dam/bcthk-sites/documents/publications/images/IV_Fact_Sheet.pdf)封面截至 2026-08-31；13 份基金便覽在第 5 至 17 頁。各基金表格有其他期間回報，但沒有三年期欄。當日取得 PDF 的 SHA-256 為 `807fd5b1e04ed6686430c3cdf86831c12fe53ebc2895268b980563c5842de8c6`。它與 2026-09-26 候選來源 manifest 所記的 `042b1261fc31cb9e50f394ba242c52d6c9e7c96dd4d30353a5b543b90bbc5e66` 不同，因此本次核對是同一官方連結的另一份位元組版本，不能當作原封不動重讀了 manifest 內的檔案。
+- [Manulife RetireChoice 官方便覽](https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/mpf/retirechoice-scheme/fundfact-sheet.pdf)截至 2026-07-31；13 份基金便覽在第 1、3、5……25 頁。累積回報表列有 1 個月、3 個月、1 年、5 年、10 年及成立至今；年化回報表列有 1 年、5 年、10 年及成立至今，沒有三年期欄。**3 個月不是 3 年。** SHA-256 為 `0248313a0e14d2e9b5abb1599473b21bb984db60f549c958f741a4e31e45f4a5`，與 2026-09-26 候選來源 manifest 相同。已目視抽查代表頁面，並逐頁檢索 13 份基金表格的期間標題。
+- 因此，候選報告的「No 3-year official return parser」及「Fund fact sheet header is missing」不能解讀為已找到三年數值但抽取失敗：這兩份本期便覽都沒有公布所需的三年期數值。Manulife 的 header error 仍反映現有通用 parser 不識別其標題／日期格式，應與「來源未披露三年期」分開記錄。
+- 不得以 1 年、3 個月、5 年或成立至今回報推算三年回報。後續候選報告應分開列出「來源未披露所需期間」與「來源有該欄但 parser 失敗」，並附上來源日期、SHA-256 及頁碼；在報告格式支援前，保留原 parser error 並加上此來源核對紀錄，不要手改回報候選數值。
+
