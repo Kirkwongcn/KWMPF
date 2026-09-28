@@ -11,6 +11,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: configure-kwmpf-domain
+  cancel-in-progress: false
+
 jobs:
   configure:
     environment: staging
