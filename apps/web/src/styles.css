@@ -127,6 +127,14 @@ body {
       rgba(18, 59, 70, 0.88) 52%,
       rgba(18, 59, 70, 0.34)
     ),
+    url("/images/kirk-wong-hero.png") center/cover;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(12, 29, 48, 0.98),
+      rgba(18, 59, 70, 0.88) 52%,
+      rgba(18, 59, 70, 0.34)
+    ),
     image-set(
         url("/images/kirk-wong-hero.webp") type("image/webp"),
         url("/images/kirk-wong-hero.png") type("image/png")
