@@ -306,7 +306,6 @@ export function RankingsPage({
                 </p>
                 <div
                   className="kw-table-wrap"
-                  tabIndex={0}
                   role="region"
                   aria-label="基金排名結果"
                   aria-describedby="ranking-table-scroll-hint"
@@ -348,7 +347,7 @@ export function RankingsPage({
                   <table className="kw-table">
                     <thead>
                       <tr>
-                        <th scope="col">名次</th>
+                        <th scope="col" tabIndex={0} aria-describedby="ranking-table-scroll-hint">名次</th>
                         <th scope="col">基金</th>
                         <th scope="col">{valueLabel}</th>
                         <th scope="col">比較組別</th>
