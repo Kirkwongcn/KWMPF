@@ -122,12 +122,12 @@ export function App({ apiUrl }: { apiUrl: string }) {
             </div>
           </form>
           {searchFailed && (
-            <p className="kw-status kw-status--warning">
+            <p className="kw-status kw-status--warning" role="status">
               暫時無法搜尋已發布資料，請稍後再試。
             </p>
           )}
           {searched !== null && results.length === 0 && (
-            <p className="kw-status kw-status--warning">
+            <p className="kw-status kw-status--warning" role="status">
               沒有符合「{searched}」的已發布基金。
             </p>
           )}
