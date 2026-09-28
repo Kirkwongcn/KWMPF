@@ -63,7 +63,7 @@ describe("scheme comparison page", () => {
       "/rankings",
     );
     expect(
-      screen.getByRole("link", { name: "kWKirk Wong ResearchKWMPF" }),
+      screen.getByRole("link", { name: /Kirk Wong Research/ }),
     ).toHaveAttribute("href", "/");
     expect(
       screen.getByText(/本網站只提供資料比較及投資教育，不構成投資建議/),
