@@ -133,9 +133,12 @@ export function App({ apiUrl }: { apiUrl: string }) {
           )}
           {results.length > 0 && (
             <>
+              <p className="kw-muted" role="status">
+                共 {totalMatches} 項符合。
+              </p>
               {totalMatches > results.length && (
                 <p className="kw-muted">
-                  共 {totalMatches} 項符合，以下顯示首 {results.length} 項。{" "}
+                  以下顯示首 {results.length} 項。{" "}
                   <a href={`/funds?q=${encodeURIComponent(searched ?? "")}`}>
                     按條件瀏覽全部結果
                   </a>
