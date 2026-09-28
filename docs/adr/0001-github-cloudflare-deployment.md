@@ -32,5 +32,6 @@ GitHub Actions 處理較重的擷取、PDF 解析、標準化及交叉核對。�
 ## 未決事項
 
 - 具體網站框架及 Cloudflare Pages build 設定。
-- D1 schema、R2 保留期限及備份方案。
+- D1 schema、歷史資料保留及回退窗口仍待 review。
+- R2 lifecycle：使用者於 2026-09-27 決定 D1 備份及來源封存目前不設自動到期。固定保留年期、不同類型物件的清理程序及費用覆核仍未完成；不得把「沒有自動到期」描述成已確定某個保留期限。
 - GitHub Actions 與 Cloudflare 的最小權限 token 配置。
