@@ -81,7 +81,7 @@ test("每頁都可經主要導覽互相跳轉", async ({ page }) => {
   await expect(page).toHaveURL(/\/funds$/);
 
   await page
-    .getByRole("link", { name: "kW Kirk Wong Research KWMPF 首頁" })
+    .getByRole("link", { name: "kW KIRK WONG RESEARCH KWMPF 首頁" })
     .click();
   await expect(page).toHaveURL(/\/$/);
 });
