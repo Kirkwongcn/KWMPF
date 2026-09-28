@@ -126,7 +126,8 @@ jobs:
             expected_etag_lower="$(printf '%s' "$EXPECTED_ETAG" | tr '[:upper:]' '[:lower:]')"
             actual_etag_lower="$(printf '%s' "$actual_etag" | tr '[:upper:]' '[:lower:]')"
             if [[ "$actual_etag_lower" != "$expected_etag_lower" ]]; then
-              echo "R2 object ETag does not match the supplied expected ETag." >&2
+              printf 'R2 object ETag mismatch (expected: %s; received from Get Object: %s).\n' \
+                "$expected_etag_lower" "$actual_etag_lower" >&2
               exit 1
             fi
           fi

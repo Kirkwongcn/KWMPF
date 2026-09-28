@@ -195,21 +195,15 @@ jobs:
           echo "reset_object_count=$reset_object_count" >> "$GITHUB_OUTPUT"
           echo "Replacing $reset_object_count application tables in the same atomic import; Cloudflare _cf_KV and SQLite sqlite_* objects are excluded." >> "$GITHUB_STEP_SUMMARY"
           status=0
-          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler d1 execute "$database_name" --remote --config wrangler.restore-target.json --file ../../restore-r2/restore.sql --json > ../../restore-r2/apply.json 2> ../../restore-r2/apply.stderr || status=$?
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler d1 execute "$database_name" --remote --config wrangler.restore-target.json --file ../../restore-r2/restore.sql --json > ../../restore-r2/apply.stdout 2> ../../restore-r2/apply.stderr || status=$?
           echo "import_exit_status=$status" >> "$GITHUB_OUTPUT"
           if (( status != 0 )); then
             echo "The remote D1 restore command failed (Wrangler status: $status). Cloudflare documents that a failed file import returns the database to its original state; still verify the live database before further changes. The verified pre-restore backup is recorded below." >&2
-            if [[ -s ../../restore-r2/apply.json ]]; then jq -c . ../../restore-r2/apply.json >&2 || cat ../../restore-r2/apply.json >&2; fi
+            if [[ -s ../../restore-r2/apply.stdout ]]; then cat ../../restore-r2/apply.stdout >&2; fi
             if [[ -s ../../restore-r2/apply.stderr ]]; then cat ../../restore-r2/apply.stderr >&2; fi
             exit 1
           fi
-          if ! jq -e 'type == "array" and length > 0 and all(.[]; .success == true)' ../../restore-r2/apply.json >/dev/null 2>&1; then
-            echo "The remote D1 import returned failed or incomplete statements. Stop further D1 changes and verify the database; use the verified pre-restore backup recorded below only if recovery is needed." >&2
-            jq -c '[.[] | select(.success != true)] | .[:10]' ../../restore-r2/apply.json >&2 || true
-            if [[ -s ../../restore-r2/apply.stderr ]]; then cat ../../restore-r2/apply.stderr >&2; fi
-            exit 1
-          fi
-          echo "remote D1 import returned all-success SQL results (Wrangler exit status: $status)." >> "$GITHUB_STEP_SUMMARY"
+          echo "Wrangler completed the remote SQL-file import with exit status 0. The following step verifies the restored D1 snapshot and integrity invariants." >> "$GITHUB_STEP_SUMMARY"
       - name: Verify restored remote D1 invariants
         id: verify-restore
         if: ${{ always() && steps.apply-restore.outcome != 'skipped' }}
