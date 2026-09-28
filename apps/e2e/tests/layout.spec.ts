@@ -80,7 +80,9 @@ test("每頁都可經主要導覽互相跳轉", async ({ page }) => {
   await nav.getByRole("link", { name: "基金瀏覽" }).click();
   await expect(page).toHaveURL(/\/funds$/);
 
-  await page.getByRole("link", { name: "kW Kirk Wong Research KWMPF" }).click();
+  await page
+    .getByRole("link", { name: "kWKirk Wong ResearchKWMPF" })
+    .click();
   await expect(page).toHaveURL(/\/$/);
 });
 
