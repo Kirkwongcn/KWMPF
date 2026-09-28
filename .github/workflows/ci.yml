@@ -62,6 +62,8 @@ jobs:
           scripts/check-pr-composition.sh "$diff_base" "$HEAD_SHA"
 
   e2e:
+    # Pull-request CI is the pre-merge E2E gate; main pushes keep the post-merge verify job only.
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
