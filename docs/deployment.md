@@ -86,6 +86,15 @@ After this workflow change reaches `main`, a production run that successfully de
 
 The manifest records the exact Worker deployment and version IDs, Pages deployment ID and URL, production commit, published snapshot, source and trustee-return object keys, pre-deploy D1 backup manifest and Time Travel timestamp, plus the publication smoke-check results. The workflow reads the R2 manifest back and compares it byte-for-byte. If both services deployed but a later publication smoke check failed, the tuple is still recorded with that check's failure status for incident investigation. The artifact does not contain API credentials or the D1 database identifier. It improves release identification; it does not restore D1 or coordinate a rollback. R2 expiration remains disabled by the current retention decision.
 
+
+#### Deploy production run #22 — 2026-09-28
+
+[Run #22](https://github.com/Kirkwongcn/KWMPF/actions/runs/36433388885) deployed main commit `19639687a44dc3f8a2a8d5863d37bf24a11383ac` with the 2026-08-31 source snapshot. The published snapshot is `snapshot-mpfa-platform-2026-08-31-19639687a44d`. Worker deployment `ce2d678f-7f45-47f0-93ff-ec16971be8f2` serves version `d229676c-9507-4bec-8935-ad4e5df6ff65` at 100%; Pages deployment `77149d51-8b46-4071-a836-50b614a0eb7b` completed successfully.
+
+The pre-deployment D1 backup `d1-2026-09-28T14-09-49Z-run-36433388885` was written to private R2 and read back successfully; Time Travel rollback timestamp: `1790604589`. Migrations, publication seed, Worker/Pages deployments and public smoke checks all passed. The public API serves 451 fund classes and 209 three-year return rows (40 stale rows excluded) with the expected cache header. A post-deploy desktop lab trace recorded LCP 930 ms and CLS 0.00; CrUX field data is unavailable for this page.
+
+The Actions run is marked failed because its final release-tuple step requested the Pages deployments list with `per_page=100`, which Cloudflare rejected as invalid (error `8000024`). The step stopped before uploading the release manifest, so no run-#22 tuple manifest exists in production R2. This PR removes that unsupported query parameter; it does not retroactively write the missing manifest or rerun production deployment. Because Worker deployment had already been attempted, the workflow preserved the D1 recovery point and did not restore the old database.
+
 ### Production incident handling and coordinated rollback
 
 KWMPF production is a release tuple: the API Worker version, the Pages production deployment, the D1 schema and `current_publication` snapshot, plus the source snapshot and trustee-return candidate. These resources do not roll back as one transaction. A Worker version rollback does not restore D1 data or other bound resources, and a Pages rollback only targets a successful production deployment ([Workers rollback guidance](https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/), [Pages rollback guidance](https://developers.cloudflare.com/pages/configuration/rollbacks/)). Confirm that the selected code, schema, and publication are compatible before changing any part of the tuple.
