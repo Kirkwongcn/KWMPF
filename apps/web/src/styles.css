@@ -1074,3 +1074,14 @@ body {
     animation-duration: 0.01ms !important;
   }
 }
+
+@media (min-width: 761px) {
+  html {
+    scrollbar-gutter: stable;
+  }
+
+  /* Keep rankings from pushing the footer into view while results load. */
+  .kw-section:has(> .kw-status) {
+    min-height: calc(100vh - 15rem);
+  }
+}
