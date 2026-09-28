@@ -114,6 +114,8 @@ jobs:
                 :
               elif [[ "$path" =~ ^(apps/(api|web)/.*|packages/coverage/.*)\.(test|spec)\.(ts|tsx)$ ]]; then
                 :
+              elif [[ "$path" == ".github/workflows/ci.yml" ]]; then
+                run_e2e=true
               elif [[ "$path" =~ ^\.github/workflows/[^/]+\.yml$ || "$path" =~ ^docs/ ]]; then
                 :
               else
