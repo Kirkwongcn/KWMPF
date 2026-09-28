@@ -19616,6 +19616,85 @@
       "unavailableKinds": {}
     },
     {
+      "fundClassIds": ["mpfa-cf-230"],
+      "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "BOC-Prudential MPF Conservative Fund",
+      "factSheetFile": "BOCPrudential_EasyChoice.pdf",
+      "factSheetUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+      "factSheetSource": "trustee",
+      "factSheetAsOf": "2026-06-30",
+      "allocations": [
+        {
+          "heading": "Asset Allocation 基金資產分佈",
+          "entries": [
+            {
+              "label": "債券 Bond",
+              "percent": 36.4
+            },
+            {
+              "label": "現金及其他 Cash & Others",
+              "percent": 63.6
+            }
+          ]
+        }
+      ],
+      "topHoldings": [
+        {
+          "rank": 1,
+          "security": "WESTPAC BANKING 3% A 28JAN2027",
+          "percent": 3.6
+        },
+        {
+          "rank": 2,
+          "security": "MACQUARIE GROUP 2.905% A 19MAR2027",
+          "percent": 1.7
+        },
+        {
+          "rank": 3,
+          "security": "BARCLAYS BK PLC 2.8% A 13JAN2027",
+          "percent": 1.4
+        },
+        {
+          "rank": 4,
+          "security": "NTT FINANCE 3.15% A 23APR2027",
+          "percent": 1.4
+        },
+        {
+          "rank": 5,
+          "security": "HANA SECURITIES H+0.51% Q 23DEC2026",
+          "percent": 1.4
+        },
+        {
+          "rank": 6,
+          "security": "SAUDI NTL BK SG 3.04% A 08JUL2026",
+          "percent": 1.3
+        },
+        {
+          "rank": 7,
+          "security": "NATIXIS/HK 2.95% A 27AUG2026",
+          "percent": 1.3
+        },
+        {
+          "rank": 8,
+          "security": "MIZUHO SECURITIE 3.11% A 16SEP2026",
+          "percent": 1.2
+        },
+        {
+          "rank": 9,
+          "security": "SAUDI NTL BK SG 3.4% A 22DEC2026",
+          "percent": 1.1
+        },
+        {
+          "rank": 10,
+          "security": "COM BK AUSTRALIA 3.08% A 10DEC2026",
+          "percent": 1.1
+        }
+      ],
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {}
+    },
+    {
       "fundClassIds": ["mpfa-cf-231"],
       "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
       "constituentFundName": "BOC-Prudential Global Equity Fund",
