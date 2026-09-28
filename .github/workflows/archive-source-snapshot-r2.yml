@@ -75,7 +75,7 @@ jobs:
           persist-credentials: false
 
       - name: Download the exact source run artifact
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v8
         with:
           artifact-ids: ${{ needs.discover.outputs.artifact_id }}
           path: ${{ runner.temp }}/raw-source-artifact
