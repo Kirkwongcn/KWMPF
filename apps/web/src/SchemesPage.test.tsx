@@ -62,10 +62,9 @@ describe("scheme comparison page", () => {
       "href",
       "/rankings",
     );
-    expect(screen.getByRole("link", { name: "KWMPF 首頁" })).toHaveAttribute(
-      "href",
-      "/",
-    );
+    expect(
+      screen.getByRole("link", { name: "kW Kirk Wong Research KWMPF 首頁" }),
+    ).toHaveAttribute("href", "/");
     expect(
       screen.getByText(/本網站只提供資料比較及投資教育，不構成投資建議/),
     ).toBeVisible();
