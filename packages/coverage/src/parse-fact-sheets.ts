@@ -83,12 +83,13 @@ for (const entry of manifest.entries) {
   try {
     const pdfPath = join(pdfRoot, `${id}.pdf`);
     sourceSha256 = await sha256File(pdfPath);
-    if (entry.sha256 && entry.sha256 !== sourceSha256) {
+    if (!entry.sha256) {
+      throw new Error(`Downloaded PDF manifest is missing SHA-256 for ${entry.scheme}`);
+    }
+    if (entry.sha256 !== sourceSha256) {
       throw new Error(`Downloaded PDF SHA-256 does not match the manifest for ${entry.scheme}`);
     }
-    const auditedNonDisclosure = entry.sha256 === sourceSha256
-      ? findAuditedFactSheetPeriodNonDisclosure(entry, 3)
-      : undefined;
+    const auditedNonDisclosure = findAuditedFactSheetPeriodNonDisclosure(entry, 3);
     if (auditedNonDisclosure) {
       periodNotDisclosed.push(auditedNonDisclosure);
       continue;
