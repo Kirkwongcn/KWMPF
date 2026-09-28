@@ -12,7 +12,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: configure-production-domain
+  group: configure-kwmpf-domain
   cancel-in-progress: false
 
 jobs:
