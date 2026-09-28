@@ -499,6 +499,10 @@ body {
   color: var(--kw-muted-strong);
   font-size: 12px;
 }
+.kw-table th:focus-visible {
+  outline: 3px solid var(--kw-teal);
+  outline-offset: -3px;
+}
 .kw-table th[scope="col"] {
   white-space: nowrap;
 }
