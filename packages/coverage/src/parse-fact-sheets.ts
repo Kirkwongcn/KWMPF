@@ -20,15 +20,23 @@ import { parseShkpFundPerformance } from "./shkp-fund-performance-parser";
 import { parseFidelityFundPerformance } from "./fidelity-fund-performance-parser";
 import { parseManulifeGlobalSelect } from "./manulife-global-select-parser";
 import type { FundFactSheetReturn } from "./fund-fact-sheet-parser";
+import {
+  findAuditedFactSheetPeriodNonDisclosure,
+  UnsupportedFactSheetParserError,
+  type FactSheetSourceManifestEntry,
+  type AuditedFactSheetPeriodNonDisclosure,
+} from "./return-period-disclosure-audit";
 
 const exec = promisify(execFile);
 const manifestPath = process.argv[2];
 const outputPath = process.argv[3];
 if (!manifestPath || !outputPath) throw new Error("Usage: bun parse-fact-sheets.ts <manifest.json> <returns.json>");
-const manifest = JSON.parse(await readFile(manifestPath, "utf8")) as { entries: Array<{ scheme: string; factSheetUrl: string; status: string; sha256?: string }> };
+const manifest = JSON.parse(await readFile(manifestPath, "utf8")) as { entries: FactSheetSourceManifestEntry[] };
 const pdfRoot = manifestPath.replace(/\.json$/, "");
 const returns: FundFactSheetReturn[] = [];
 const failures: Array<{ scheme: string; error: string }> = [];
+const unsupportedParsers: Array<{ scheme: string; error: string }> = [];
+const periodNotDisclosed: AuditedFactSheetPeriodNonDisclosure[] = [];
 
 function parser(scheme: string, text: string, url: string): FundFactSheetReturn[] {
   if (scheme.startsWith("China Life")) return parseChinaLifeFundPerformance(text, url);
@@ -47,7 +55,7 @@ function parser(scheme: string, text: string, url: string): FundFactSheetReturn[
   if (scheme === "BCT (MPF) Pro Choice") return parseBctProFundPerformance(text, url);
   if (scheme === "BCT MPF - Simple Plan" || scheme === "BCT MPF - Smart Plan") return parsePrincipalFundFactSheet(text, url, scheme);
   if (scheme === "BCT MPF Scheme Series 800") return parsePrincipal800FundFactSheet(text, url, scheme);
-  if (scheme.startsWith("BCT")) throw new Error("No 3-year official return parser for this BCT scheme");
+  if (scheme.startsWith("BCT")) throw new UnsupportedFactSheetParserError("No 3-year official return parser for this BCT scheme");
   if (scheme.startsWith("BEA")) return parseFundFactSheet(text, url, scheme);
   if (scheme.startsWith("Principal")) return parsePrincipalFundFactSheet(text, url, scheme);
   if (scheme.includes("Series 800")) return parsePrincipal800FundFactSheet(text, url, scheme);
@@ -56,6 +64,11 @@ function parser(scheme: string, text: string, url: string): FundFactSheetReturn[
 
 for (const entry of manifest.entries) {
   if (entry.status !== "downloaded") continue;
+  const auditedNonDisclosure = findAuditedFactSheetPeriodNonDisclosure(entry, 3);
+  if (auditedNonDisclosure) {
+    periodNotDisclosed.push(auditedNonDisclosure);
+    continue;
+  }
   const id = createHash("sha256").update(entry.scheme).digest("hex").slice(0, 16);
   try {
     const pdfPath = join(pdfRoot, `${id}.pdf`);
@@ -67,10 +80,12 @@ for (const entry of manifest.entries) {
       returns.push(...parser(entry.scheme, stdout, entry.factSheetUrl));
     }
   } catch (error) {
-    failures.push({ scheme: entry.scheme, error: error instanceof Error ? error.message : String(error) });
+    const failure = { scheme: entry.scheme, error: error instanceof Error ? error.message : String(error) };
+    if (error instanceof UnsupportedFactSheetParserError) unsupportedParsers.push(failure);
+    else failures.push(failure);
   }
 }
 
 await mkdir(join(outputPath, ".."), { recursive: true });
-await writeFile(outputPath, `${JSON.stringify({ returns, failures }, null, 2)}\n`);
-console.log(JSON.stringify({ outputPath, parsed: returns.length, failures: failures.length }));
+await writeFile(outputPath, `${JSON.stringify({ returns, failures, unsupportedParsers, periodNotDisclosed }, null, 2)}\n`);
+console.log(JSON.stringify({ outputPath, parsed: returns.length, parserFailures: failures.length, unsupportedParsers: unsupportedParsers.length, periodNotDisclosed: periodNotDisclosed.length }));
