@@ -1,3 +1,4 @@
+import { createReadStream } from "node:fs";
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
@@ -28,14 +29,27 @@ import {
 } from "./return-period-disclosure-audit";
 
 const exec = promisify(execFile);
+
+async function sha256File(path: string): Promise<string> {
+  const digest = createHash("sha256");
+  for await (const chunk of createReadStream(path)) digest.update(chunk);
+  return digest.digest("hex");
+}
 const manifestPath = process.argv[2];
 const outputPath = process.argv[3];
 if (!manifestPath || !outputPath) throw new Error("Usage: bun parse-fact-sheets.ts <manifest.json> <returns.json>");
 const manifest = JSON.parse(await readFile(manifestPath, "utf8")) as { entries: FactSheetSourceManifestEntry[] };
 const pdfRoot = manifestPath.replace(/\.json$/, "");
 const returns: FundFactSheetReturn[] = [];
-const failures: Array<{ scheme: string; error: string }> = [];
-const unsupportedParsers: Array<{ scheme: string; error: string }> = [];
+type FactSheetParseDiagnostic = {
+  scheme: string;
+  sourceUrl: string;
+  manifestSha256?: string;
+  sourceSha256?: string;
+  error: string;
+};
+const failures: FactSheetParseDiagnostic[] = [];
+const unsupportedParsers: FactSheetParseDiagnostic[] = [];
 const periodNotDisclosed: AuditedFactSheetPeriodNonDisclosure[] = [];
 
 function parser(scheme: string, text: string, url: string): FundFactSheetReturn[] {
@@ -65,9 +79,10 @@ function parser(scheme: string, text: string, url: string): FundFactSheetReturn[
 for (const entry of manifest.entries) {
   if (entry.status !== "downloaded") continue;
   const id = createHash("sha256").update(entry.scheme).digest("hex").slice(0, 16);
+  let sourceSha256: string | undefined;
   try {
     const pdfPath = join(pdfRoot, `${id}.pdf`);
-    const sourceSha256 = createHash("sha256").update(await readFile(pdfPath)).digest("hex");
+    sourceSha256 = await sha256File(pdfPath);
     if (entry.sha256 && entry.sha256 !== sourceSha256) {
       throw new Error(`Downloaded PDF SHA-256 does not match the manifest for ${entry.scheme}`);
     }
@@ -86,7 +101,13 @@ for (const entry of manifest.entries) {
       returns.push(...parser(entry.scheme, stdout, entry.factSheetUrl));
     }
   } catch (error) {
-    const failure = { scheme: entry.scheme, error: error instanceof Error ? error.message : String(error) };
+    const failure: FactSheetParseDiagnostic = {
+      scheme: entry.scheme,
+      sourceUrl: entry.factSheetUrl,
+      manifestSha256: entry.sha256,
+      sourceSha256,
+      error: error instanceof Error ? error.message : String(error),
+    };
     if (error instanceof UnsupportedFactSheetParserError) unsupportedParsers.push(failure);
     else failures.push(failure);
   }
