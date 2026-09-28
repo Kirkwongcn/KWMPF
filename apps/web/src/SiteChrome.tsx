@@ -42,10 +42,7 @@ export function SiteChrome({
       </a>
       <header className="kw-header">
         <div className="kw-shell kw-header__inner">
-          <a
-            className="kw-brand"
-            href="/"
-          >
+          <a className="kw-brand" href="/">
             <span className="kw-brand__mark">kW</span>
             <span>
               <small>Kirk Wong Research</small>
