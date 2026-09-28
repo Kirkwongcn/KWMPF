@@ -3,6 +3,7 @@ import {
   DEFAULT_FUND_OVERVIEW_GRACE_DAYS,
   DEFAULT_RETURNS_GRACE_DAYS,
   evaluateFreshness,
+  returnGraceDaysForPeriod,
   fundOverviewGraceDays,
   returnsGraceDays,
 } from "../src/freshness";
@@ -35,6 +36,27 @@ describe("published data freshness", () => {
     expect(evaluateFreshness("2026-07-09", 45, today)).toMatchObject({
       status: "stale",
       ageDays: 46,
+    });
+  });
+
+  it("applies the 90-day three-year return boundary", () => {
+    const policy = {
+      returnsGraceDays: 45,
+      threeYearReturnGraceDays: 90,
+    };
+    const graceDays = returnGraceDaysForPeriod(policy, 3);
+
+    expect(graceDays).toBe(90);
+    expect(returnGraceDaysForPeriod(policy, 1)).toBe(45);
+    expect(evaluateFreshness("2026-05-26", graceDays, today)).toMatchObject({
+      status: "verified",
+      ageDays: 90,
+      graceDays: 90,
+    });
+    expect(evaluateFreshness("2026-05-25", graceDays, today)).toMatchObject({
+      status: "stale",
+      ageDays: 91,
+      graceDays: 90,
     });
   });
 
