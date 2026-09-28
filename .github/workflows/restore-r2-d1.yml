@@ -1,0 +1,281 @@
+name: Restore D1 from R2 backup
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_environment:
+        description: D1 environment to restore; each option uses its own protected GitHub environment.
+        required: true
+        type: choice
+        options:
+          - staging
+          - production
+      backup_id:
+        description: Existing backup directory in the selected environment's private R2 bucket.
+        required: true
+        type: string
+      confirm:
+        description: Type restore-staging-d1 or restore-production-d1 to match the selected target.
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ inputs.target_environment }}-d1-mutations
+  cancel-in-progress: false
+
+jobs:
+  restore:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    environment: ${{ inputs.target_environment }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      TARGET_ENVIRONMENT: ${{ inputs.target_environment }}
+      BACKUP_ID: ${{ inputs.backup_id }}
+      CONFIRM: ${{ inputs.confirm }}
+    steps:
+      - name: Require main and target-specific confirmation
+        run: |
+          set -euo pipefail
+          if [[ "$GITHUB_REF" != "refs/heads/main" ]]; then
+            echo "Remote D1 restore is only allowed from main." >&2
+            exit 1
+          fi
+          case "$TARGET_ENVIRONMENT" in
+            staging) expected_confirmation=restore-staging-d1 ;;
+            production) expected_confirmation=restore-production-d1 ;;
+            *) echo "Unsupported target environment." >&2; exit 1 ;;
+          esac
+          if [[ "$CONFIRM" != "$expected_confirmation" ]]; then
+            echo "The target-specific confirmation phrase did not match; refusing to restore." >&2
+            exit 1
+          fi
+          if [[ ! "$BACKUP_ID" =~ ^d1-[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}-[0-9]{2}-[0-9]{2}Z(-run-[0-9]+)?$ ]]; then
+            echo "The backup ID must use the generated d1-YYYY-MM-DDTHH-MM-SSZ[-run-ID] format." >&2
+            exit 1
+          fi
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.11
+      - name: Cache Bun's package download store
+        uses: actions/cache@v6
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-install-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-install-
+      - run: bun install --frozen-lockfile
+      - name: Prepare target D1 configuration
+        env:
+          D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+        run: scripts/render-worker-config.sh "$TARGET_ENVIRONMENT" "$D1_DATABASE_ID" apps/api/wrangler.restore-target.json
+      - name: Download selected backup from the target environment's R2
+        working-directory: apps/api
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          mkdir -p ../../restore-r2
+          bucket="kwmpf-${TARGET_ENVIRONMENT}-raw"
+          prefix="backups/$BACKUP_ID"
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler r2 object get "$bucket/$prefix/d1.sql" --remote --config wrangler.restore-target.json --file ../../restore-r2/source.sql
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler r2 object get "$bucket/$prefix/manifest.json" --remote --config wrangler.restore-target.json --file ../../restore-r2/source-manifest.json
+      - name: Verify selected backup integrity and target
+        id: source-backup
+        run: |
+          set -euo pipefail
+          test -s restore-r2/source.sql
+          test -s restore-r2/source-manifest.json
+          jq -e --arg backup_id "$BACKUP_ID" --arg environment "$TARGET_ENVIRONMENT" '
+            .backupId == $backup_id
+            and .databaseName == ("kwmpf-" + $environment)
+            and (.snapshotId | type == "string" and test("^snapshot-mpfa-platform-[0-9]{4}-[0-9]{2}-[0-9]{2}(-[a-f0-9]{12})?$"))
+            and ([.files[]? | select(.key == "d1.sql")] | length) == 1
+            and ([.files[]? | select(.key == "d1.sql") | .sha256 | select(type == "string" and test("^[a-f0-9]{64}$"))] | length) == 1
+            and ([.files[]? | select(.key == "d1.sql") | .bytes | select(type == "number" and . > 0 and . <= 5368709120)] | length) == 1
+          ' restore-r2/source-manifest.json >/dev/null
+          expected_sha256="$(jq -er '.files[] | select(.key == "d1.sql") | .sha256' restore-r2/source-manifest.json)"
+          actual_sha256="$(sha256sum restore-r2/source.sql | cut -d' ' -f1)"
+          expected_bytes="$(jq -er '.files[] | select(.key == "d1.sql") | .bytes' restore-r2/source-manifest.json)"
+          actual_bytes="$(wc -c < restore-r2/source.sql | tr -d '[:space:]')"
+          test "$expected_sha256" = "$actual_sha256"
+          test "$expected_bytes" = "$actual_bytes"
+          echo "snapshot_id=$(jq -er '.snapshotId' restore-r2/source-manifest.json)" >> "$GITHUB_OUTPUT"
+          echo "Selected $BACKUP_ID for $TARGET_ENVIRONMENT; $actual_bytes bytes passed SHA-256 verification." >> "$GITHUB_STEP_SUMMARY"
+      - name: Back up current target D1 to R2 before restoration
+        id: pre-restore-backup
+        working-directory: apps/api
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          mkdir -p ../../restore-r2/pre-restore
+          database_name="kwmpf-${TARGET_ENVIRONMENT}"
+          snapshot_before="$(bash ../../scripts/run-wrangler-redacted.sh bunx wrangler d1 execute "$database_name" --remote --config wrangler.restore-target.json --command 'SELECT snapshot_id FROM current_publication WHERE singleton = 1' --json | jq -er '.[0].results[0].snapshot_id')"
+          if [[ ! "$snapshot_before" =~ ^snapshot-mpfa-platform-[0-9]{4}-[0-9]{2}-[0-9]{2}(-[a-f0-9]{12})?$ ]]; then
+            echo "The current D1 snapshot ID is missing or malformed; refusing to continue." >&2
+            exit 1
+          fi
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler d1 export "$database_name" --remote --skip-confirmation --config wrangler.restore-target.json --output ../../restore-r2/pre-restore/d1.sql
+          test -s ../../restore-r2/pre-restore/d1.sql
+          snapshot_after="$(bash ../../scripts/run-wrangler-redacted.sh bunx wrangler d1 execute "$database_name" --remote --config wrangler.restore-target.json --command 'SELECT snapshot_id FROM current_publication WHERE singleton = 1' --json | jq -er '.[0].results[0].snapshot_id')"
+          test "$snapshot_before" = "$snapshot_after"
+          backup_id="d1-$(date -u +%Y-%m-%dT%H-%M-%SZ)-run-$GITHUB_RUN_ID"
+          bytes="$(wc -c < ../../restore-r2/pre-restore/d1.sql | tr -d '[:space:]')"
+          sha256="$(sha256sum ../../restore-r2/pre-restore/d1.sql | cut -d' ' -f1)"
+          jq -n -S \
+            --arg backupId "$backup_id" \
+            --arg databaseName "$database_name" \
+            --arg snapshotId "$snapshot_after" \
+            --arg commit "$GITHUB_SHA" \
+            --arg runId "$GITHUB_RUN_ID" \
+            --arg exportedAt "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            --arg restoreSourceBackupId "$BACKUP_ID" \
+            --arg sha256 "$sha256" \
+            --argjson bytes "$bytes" \
+            '{backupId:$backupId,databaseName:$databaseName,snapshotId:$snapshotId,commit:$commit,runId:$runId,exportedAt:$exportedAt,restoreSourceBackupId:$restoreSourceBackupId,files:[{key:"d1.sql",bytes:$bytes,sha256:$sha256}]}' \
+            > ../../restore-r2/pre-restore/manifest.json
+          prefix="backups/$backup_id"
+          bucket="kwmpf-${TARGET_ENVIRONMENT}-raw"
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler r2 object put "$bucket/$prefix/d1.sql" --remote --config wrangler.restore-target.json --file ../../restore-r2/pre-restore/d1.sql --content-type application/sql
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler r2 object put "$bucket/$prefix/manifest.json" --remote --config wrangler.restore-target.json --file ../../restore-r2/pre-restore/manifest.json --content-type application/json
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler r2 object get "$bucket/$prefix/d1.sql" --remote --config wrangler.restore-target.json --file ../../restore-r2/pre-restore/readback.sql
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler r2 object get "$bucket/$prefix/manifest.json" --remote --config wrangler.restore-target.json --file ../../restore-r2/pre-restore/readback-manifest.json
+          cmp --silent ../../restore-r2/pre-restore/d1.sql ../../restore-r2/pre-restore/readback.sql
+          cmp --silent ../../restore-r2/pre-restore/manifest.json ../../restore-r2/pre-restore/readback-manifest.json
+          expected_sha256="$(jq -er '.files[] | select(.key == "d1.sql") | .sha256' ../../restore-r2/pre-restore/readback-manifest.json)"
+          actual_sha256="$(sha256sum ../../restore-r2/pre-restore/readback.sql | cut -d' ' -f1)"
+          expected_bytes="$(jq -er '.files[] | select(.key == "d1.sql") | .bytes' ../../restore-r2/pre-restore/readback-manifest.json)"
+          actual_bytes="$(wc -c < ../../restore-r2/pre-restore/readback.sql | tr -d '[:space:]')"
+          test "$expected_sha256" = "$actual_sha256"
+          test "$expected_bytes" = "$actual_bytes"
+          echo "backup_id=$backup_id" >> "$GITHUB_OUTPUT"
+          echo "snapshot_id=$snapshot_after" >> "$GITHUB_OUTPUT"
+          echo "pre_restore_backup_id=$backup_id" >> "$GITHUB_STEP_SUMMARY"
+          echo "Pre-restore D1 backup was read back and verified: $backup_id, snapshot $snapshot_after." >> "$GITHUB_STEP_SUMMARY"
+      - name: Restore selected SQL into remote D1
+        id: apply-restore
+        working-directory: apps/api
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          database_name="kwmpf-${TARGET_ENVIRONMENT}"
+          status=0
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler d1 execute "$database_name" --remote --config wrangler.restore-target.json --file ../../restore-r2/source.sql --json > ../../restore-r2/apply.json 2> ../../restore-r2/apply.stderr || status=$?
+          echo "import_exit_status=$status" >> "$GITHUB_OUTPUT"
+          if (( status != 0 )); then
+            echo "The remote D1 restore command failed (Wrangler status: $status). Cloudflare documents that a failed file import returns the database to its original state; still verify the live database before further changes. The verified pre-restore backup is recorded below." >&2
+            if [[ -s ../../restore-r2/apply.json ]]; then jq -c . ../../restore-r2/apply.json >&2 || cat ../../restore-r2/apply.json >&2; fi
+            if [[ -s ../../restore-r2/apply.stderr ]]; then cat ../../restore-r2/apply.stderr >&2; fi
+            exit 1
+          fi
+          if ! jq -e 'type == "array" and length > 0 and all(.[]; .success == true)' ../../restore-r2/apply.json >/dev/null 2>&1; then
+            echo "The remote D1 import returned failed or incomplete statements. Stop further D1 changes and verify the database; use the verified pre-restore backup recorded below only if recovery is needed." >&2
+            jq -c '[.[] | select(.success != true)] | .[:10]' ../../restore-r2/apply.json >&2 || true
+            if [[ -s ../../restore-r2/apply.stderr ]]; then cat ../../restore-r2/apply.stderr >&2; fi
+            exit 1
+          fi
+          echo "remote D1 import returned all-success SQL results (Wrangler exit status: $status)." >> "$GITHUB_STEP_SUMMARY"
+      - name: Verify restored remote D1 invariants
+        id: verify-restore
+        if: ${{ always() && steps.apply-restore.outcome != 'skipped' }}
+        working-directory: apps/api
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          EXPECTED_SNAPSHOT_ID: ${{ steps.source-backup.outputs.snapshot_id }}
+        run: |
+          set -euo pipefail
+          database_name="kwmpf-${TARGET_ENVIRONMENT}"
+          query='SELECT
+            (SELECT snapshot_id FROM current_publication WHERE singleton = 1) AS snapshot_id,
+            (SELECT count(*) FROM current_publication WHERE singleton = 1) AS current_publication_rows,
+            (SELECT count(*) FROM publication_snapshots) AS publication_snapshot_rows,
+            (SELECT count(*) FROM fund_class_versions WHERE snapshot_id = (SELECT snapshot_id FROM current_publication WHERE singleton = 1)) AS fund_class_version_rows,
+            (SELECT count(*) FROM comparison_group_stats WHERE snapshot_id = (SELECT snapshot_id FROM current_publication WHERE singleton = 1)) AS comparison_group_stat_rows,
+            (SELECT count(*) FROM comparison_group_stats AS stats LEFT JOIN publication_snapshots AS snapshots ON snapshots.snapshot_id = stats.snapshot_id WHERE snapshots.snapshot_id IS NULL) AS orphan_comparison_group_stat_rows'
+          status=0
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler d1 execute "$database_name" --remote --config wrangler.restore-target.json --command "$query" --json > ../../restore-r2/verify.json 2> ../../restore-r2/verify.stderr || status=$?
+          if (( status != 0 )) || ! jq -e 'type == "array" and length > 0 and .[0].success == true and (.[0].results | type == "array")' ../../restore-r2/verify.json >/dev/null 2>&1; then
+            echo "Remote D1 verification query failed (Wrangler status: $status). The database may be restored but not verified; stop further D1 changes." >&2
+            if [[ -s ../../restore-r2/verify.stderr ]]; then cat ../../restore-r2/verify.stderr >&2; fi
+            exit 1
+          fi
+          if ! jq -e --arg snapshot_id "$EXPECTED_SNAPSHOT_ID" '
+            .[0].results as $rows
+            | ($rows | length) == 1
+              and $rows[0].snapshot_id == $snapshot_id
+              and $rows[0].current_publication_rows == 1
+              and $rows[0].publication_snapshot_rows >= 1
+              and $rows[0].fund_class_version_rows > 0
+              and ($rows[0].comparison_group_stat_rows | type) == "number"
+              and $rows[0].orphan_comparison_group_stat_rows == 0
+          ' ../../restore-r2/verify.json >/dev/null; then
+            echo "Restored D1 snapshot or integrity invariants did not match the selected backup." >&2
+            exit 1
+          fi
+          jq -r '.[0].results[0] | "snapshot_id=\(.snapshot_id)"' ../../restore-r2/verify.json >> "$GITHUB_OUTPUT"
+          jq -r '.[0].results[0] | "fund_class_version_rows=\(.fund_class_version_rows)"' ../../restore-r2/verify.json >> "$GITHUB_OUTPUT"
+          jq -r '.[0].results[0] | "comparison_group_stat_rows=\(.comparison_group_stat_rows)"' ../../restore-r2/verify.json >> "$GITHUB_OUTPUT"
+          jq -r '.[0].results[0] | "orphan_comparison_group_stat_rows=\(.orphan_comparison_group_stat_rows)"' ../../restore-r2/verify.json >> "$GITHUB_OUTPUT"
+          jq -r '.[0].results[0] | "Remote D1 restored snapshot: \(.snapshot_id); fund classes: \(.fund_class_version_rows); comparison groups: \(.comparison_group_stat_rows); orphan comparison rows: \(.orphan_comparison_group_stat_rows)."' ../../restore-r2/verify.json >> "$GITHUB_STEP_SUMMARY"
+      - name: Record restore outcome in private R2
+        if: ${{ always() && steps.apply-restore.outcome != 'skipped' }}
+        working-directory: apps/api
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          SOURCE_SNAPSHOT_ID: ${{ steps.source-backup.outputs.snapshot_id }}
+          PRE_RESTORE_BACKUP_ID: ${{ steps.pre-restore-backup.outputs.backup_id }}
+          PRE_RESTORE_SNAPSHOT_ID: ${{ steps.pre-restore-backup.outputs.snapshot_id }}
+          RESTORE_OUTCOME: ${{ steps.apply-restore.outcome }}
+          VERIFY_OUTCOME: ${{ steps.verify-restore.outcome }}
+          RESTORED_SNAPSHOT_ID: ${{ steps.verify-restore.outputs.snapshot_id }}
+          FUND_CLASS_VERSION_ROWS: ${{ steps.verify-restore.outputs.fund_class_version_rows }}
+          COMPARISON_GROUP_STAT_ROWS: ${{ steps.verify-restore.outputs.comparison_group_stat_rows }}
+          ORPHAN_ROWS: ${{ steps.verify-restore.outputs.orphan_comparison_group_stat_rows }}
+          IMPORT_EXIT_STATUS: ${{ steps.apply-restore.outputs.import_exit_status }}
+        run: |
+          set -euo pipefail
+          result_file=../../restore-r2/outcome.json
+          readback_file=../../restore-r2/outcome-readback.json
+          manifest_key="restores/run-$GITHUB_RUN_ID-attempt-$GITHUB_RUN_ATTEMPT/manifest.json"
+          bucket="kwmpf-${TARGET_ENVIRONMENT}-raw"
+          fund_rows_json=null
+          [[ "$FUND_CLASS_VERSION_ROWS" =~ ^[0-9]+$ ]] && fund_rows_json="$FUND_CLASS_VERSION_ROWS"
+          comparison_rows_json=null
+          [[ "$COMPARISON_GROUP_STAT_ROWS" =~ ^[0-9]+$ ]] && comparison_rows_json="$COMPARISON_GROUP_STAT_ROWS"
+          orphan_rows_json=null
+          [[ "$ORPHAN_ROWS" =~ ^[0-9]+$ ]] && orphan_rows_json="$ORPHAN_ROWS"
+          jq -n -S \
+            --arg recordedAt "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            --arg environment "$TARGET_ENVIRONMENT" \
+            --arg backupId "$BACKUP_ID" \
+            --arg sourceSnapshotId "$SOURCE_SNAPSHOT_ID" \
+            --arg preRestoreBackupId "$PRE_RESTORE_BACKUP_ID" \
+            --arg preRestoreSnapshotId "$PRE_RESTORE_SNAPSHOT_ID" \
+            --arg restoredSnapshotId "$RESTORED_SNAPSHOT_ID" \
+            --arg runId "$GITHUB_RUN_ID" \
+            --arg runAttempt "$GITHUB_RUN_ATTEMPT" \
+            --arg commit "$GITHUB_SHA" \
+            --arg runUrl "https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" \
+            --arg restoreOutcome "$RESTORE_OUTCOME" \
+            --arg verifyOutcome "$VERIFY_OUTCOME" \
+            --arg importExitStatus "$IMPORT_EXIT_STATUS" \
+            --argjson fundRows "$fund_rows_json" \
+            --argjson comparisonRows "$comparison_rows_json" \
+            --argjson orphanRows "$orphan_rows_json" \
+            '{schemaVersion:1,recordedAt:$recordedAt,targetEnvironment:$environment,sourceBackup:{backupId:$backupId,snapshotId:$sourceSnapshotId},preRestoreBackup:{backupId:$preRestoreBackupId,snapshotId:$preRestoreSnapshotId},result:{restoreStep:$restoreOutcome,verificationStep:$verifyOutcome,restoredSnapshotId:(if $restoredSnapshotId == "" then null else $restoredSnapshotId end),importExitStatus:(if $importExitStatus == "" then null else $importExitStatus end),fundClassVersionRows:$fundRows,comparisonGroupStatRows:$comparisonRows,orphanRows:$orphanRows},workflowRun:{id:$runId,attempt:$runAttempt,commit:$commit,url:$runUrl}}' \
+            > "$result_file"
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler r2 object put "$bucket/$manifest_key" --remote --config wrangler.restore-target.json --file "$result_file" --content-type application/json
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler r2 object get "$bucket/$manifest_key" --remote --config wrangler.restore-target.json --file "$readback_file"
+          cmp --silent "$result_file" "$readback_file"
+          echo "Restore outcome manifest: $bucket/$manifest_key (R2 read-back matched)." >> "$GITHUB_STEP_SUMMARY"
