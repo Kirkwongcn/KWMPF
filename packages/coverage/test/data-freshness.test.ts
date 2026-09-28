@@ -13,6 +13,25 @@ describe("data freshness", () => {
     expect(classifyFreshness({ kind: "current_status", asOf: "2026-08-01", today: "2026-08-14" })).toBe("stale");
   });
 
+  it("keeps monthly data through day 45 and marks it stale on day 46", () => {
+    expect(classifyFreshness({ kind: "monthly", asOf: "2026-01-01", today: "2026-02-15" })).toBe("verified");
+    expect(classifyFreshness({ kind: "monthly", asOf: "2026-01-01", today: "2026-02-16" })).toBe("stale");
+  });
+
+  it("keeps quarterly three-year returns through day 90 and marks them stale on day 91", () => {
+    const records = [{
+      fundClassId: "a",
+      identity: { trusteeName: "T", schemeName: "S", constituentFundName: "F", fundClassName: "I" },
+      current: true,
+      dataAsOf: "2026-01-01",
+      returns: { 3: { annualized: 4.2, dataAsOf: "2026-01-01" } },
+    }];
+    const [day90] = applyFreshnessStatuses(records, "2026-04-01");
+    const [day91] = applyFreshnessStatuses(records, "2026-04-02");
+    expect(day90?.returns?.[3]?.status).toBe("verified");
+    expect(day91?.returns?.[3]?.status).toBe("stale");
+  });
+
   it("keeps a fund overview usable until the next official monthly release can arrive", () => {
     // 官方平台在月結後約 13 日才發布，所以一份概覽在被取代之前最多會舊到約 44 日。
     expect(classifyFreshness({ kind: "fund_overview", asOf: "2026-07-31", today: "2026-09-13" })).toBe("verified");
