@@ -7,6 +7,7 @@
   --kw-muted: #5b666c;
   --kw-muted-strong: #537080;
   --kw-gold: #c7a66a;
+  --kw-gold-strong: #765b24;
   --kw-gold-light: #d8b774;
   --kw-line: #d9ddd8;
   --kw-control-border: #7b8681;
@@ -55,7 +56,7 @@ body {
 }
 .kw-skip-link:focus {
   transform: translateY(0);
-  outline: 3px solid var(--kw-gold-light);
+  outline: 3px solid var(--kw-gold-strong);
   outline-offset: 2px;
 }
 .kw-header {
@@ -188,7 +189,7 @@ body {
   color: var(--kw-navy);
 }
 .kw-tabs__tab:focus-visible {
-  outline: 3px solid var(--kw-gold);
+  outline: 3px solid var(--kw-gold-strong);
   outline-offset: 2px;
 }
 .kw-interpretation-intro {
@@ -290,7 +291,7 @@ body {
   background: var(--kw-teal);
 }
 .kw-comparison-bars__row:nth-child(2) .kw-comparison-bars__track span {
-  background: var(--kw-gold);
+  background: var(--kw-gold-strong);
 }
 .kw-grid {
   display: grid;
@@ -342,7 +343,7 @@ body {
   cursor: not-allowed;
 }
 .kw-button:focus-visible {
-  outline: 3px solid var(--kw-gold);
+  outline: 3px solid var(--kw-gold-strong);
   outline-offset: 2px;
 }
 .kw-control:focus-visible {
@@ -830,7 +831,7 @@ body {
   font-size: 12px;
 }
 .kw-disclosure summary:focus-visible {
-  outline: 3px solid var(--kw-gold);
+  outline: 3px solid var(--kw-gold-strong);
   outline-offset: 2px;
 }
 .kw-fund-disclosure {
