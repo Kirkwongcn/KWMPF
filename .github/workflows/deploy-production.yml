@@ -323,7 +323,7 @@ jobs:
           curl --fail --silent --show-error --retry 3 --retry-all-errors \
             -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
             --get "$api_base/pages/projects/kwmpf-web-production/deployments" \
-            --data-urlencode "env=production" --data-urlencode "per_page=100" \
+            --data-urlencode "env=production" \
             > "$pages_response"
           jq -e '.success == true and (.result | length > 0)' "$pages_response" > /dev/null
           pages_deployment="$(jq -ce --arg marker "$RELEASE_MARKER" --arg sha "$GITHUB_SHA" '
