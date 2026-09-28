@@ -253,11 +253,7 @@ export function RankingsPage({
             </p>
             <p className="kw-muted">
               公開快照：
-              {publication ? (
-                <code>{publication.snapshotId}</code>
-              ) : (
-                "讀取中…"
-              )}
+              {publication ? <code>{publication.snapshotId}</code> : "讀取中…"}
             </p>
             <p className="kw-muted">
               {publication?.methodology?.classification

@@ -128,9 +128,10 @@ body {
       rgba(18, 59, 70, 0.34)
     ),
     image-set(
-      url("/images/kirk-wong-hero.webp") type("image/webp"),
-      url("/images/kirk-wong-hero.png") type("image/png")
-    ) center/cover;
+        url("/images/kirk-wong-hero.webp") type("image/webp"),
+        url("/images/kirk-wong-hero.png") type("image/png")
+      )
+      center/cover;
 }
 .kw-hero__inner {
   width: min(var(--kw-content), 100%);
