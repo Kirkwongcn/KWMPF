@@ -114,6 +114,8 @@ jobs:
                 :
               elif [[ "$path" =~ ^(apps/(api|web)/.*|packages/coverage/.*)\.(test|spec)\.(ts|tsx)$ ]]; then
                 :
+              elif [[ "$path" == ".github/workflows/ci.yml" ]]; then
+                run_e2e=true
               elif [[ "$path" =~ ^\.github/workflows/[^/]+\.yml$ || "$path" =~ ^docs/ ]]; then
                 :
               else
@@ -162,7 +164,7 @@ jobs:
         if: steps.e2e-scope.outputs.run_e2e != 'false' || steps.e2e-scope.outputs.run_publication_seed == 'true'
       - name: Install Playwright browser
         if: steps.e2e-scope.outputs.run_e2e != 'false'
-        run: node node_modules/@playwright/test/cli.js install --with-deps chromium
+        run: node node_modules/@playwright/test/cli.js install chromium --with-deps --only-shell
         working-directory: apps/e2e
       - name: Run Playwright E2E
         id: playwright-e2e
