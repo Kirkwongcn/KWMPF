@@ -195,13 +195,41 @@ jobs:
         run: |
           set -euo pipefail
           database_name="kwmpf-${TARGET_ENVIRONMENT}"
-          query='SELECT
-            (SELECT snapshot_id FROM current_publication WHERE singleton = 1) AS snapshot_id,
-            (SELECT count(*) FROM current_publication WHERE singleton = 1) AS current_publication_rows,
-            (SELECT count(*) FROM publication_snapshots) AS publication_snapshot_rows,
-            (SELECT count(*) FROM fund_class_versions WHERE snapshot_id = (SELECT snapshot_id FROM current_publication WHERE singleton = 1)) AS fund_class_version_rows,
-            (SELECT count(*) FROM comparison_group_stats WHERE snapshot_id = (SELECT snapshot_id FROM current_publication WHERE singleton = 1)) AS comparison_group_stat_rows,
-            (SELECT count(*) FROM comparison_group_stats AS stats LEFT JOIN publication_snapshots AS snapshots ON snapshots.snapshot_id = stats.snapshot_id WHERE snapshots.snapshot_id IS NULL) AS orphan_comparison_group_stat_rows'
+          comparison_table_query="SELECT count(*) AS present FROM sqlite_master WHERE type = 'table' AND name = 'comparison_group_stats'"
+          comparison_table_status=0
+          bash ../../scripts/run-wrangler-redacted.sh bunx wrangler d1 execute "$database_name" --remote --config wrangler.restore-target.json --command "$comparison_table_query" --json > ../../restore-r2/comparison-table.json 2> ../../restore-r2/comparison-table.stderr || comparison_table_status=$?
+          if (( comparison_table_status != 0 )) || ! jq -e 'type == "array" and length > 0 and .[0].success == true and (.[0].results[0].present | type) == "number"' ../../restore-r2/comparison-table.json >/dev/null 2>&1; then
+            echo "Could not determine whether the restored D1 schema contains comparison_group_stats." >&2
+            if [[ -s ../../restore-r2/comparison-table.stderr ]]; then cat ../../restore-r2/comparison-table.stderr >&2; fi
+            exit 1
+          fi
+          comparison_group_stats_available="$(jq -er '.[0].results[0].present' ../../restore-r2/comparison-table.json)"
+          case "$comparison_group_stats_available" in
+            0)
+              query='SELECT
+                (SELECT snapshot_id FROM current_publication WHERE singleton = 1) AS snapshot_id,
+                (SELECT count(*) FROM current_publication WHERE singleton = 1) AS current_publication_rows,
+                (SELECT count(*) FROM publication_snapshots) AS publication_snapshot_rows,
+                (SELECT count(*) FROM fund_class_versions WHERE snapshot_id = (SELECT snapshot_id FROM current_publication WHERE singleton = 1)) AS fund_class_version_rows,
+                0 AS comparison_group_stats_available,
+                NULL AS comparison_group_stat_rows,
+                NULL AS orphan_comparison_group_stat_rows'
+              ;;
+            1)
+              query='SELECT
+                (SELECT snapshot_id FROM current_publication WHERE singleton = 1) AS snapshot_id,
+                (SELECT count(*) FROM current_publication WHERE singleton = 1) AS current_publication_rows,
+                (SELECT count(*) FROM publication_snapshots) AS publication_snapshot_rows,
+                (SELECT count(*) FROM fund_class_versions WHERE snapshot_id = (SELECT snapshot_id FROM current_publication WHERE singleton = 1)) AS fund_class_version_rows,
+                1 AS comparison_group_stats_available,
+                (SELECT count(*) FROM comparison_group_stats WHERE snapshot_id = (SELECT snapshot_id FROM current_publication WHERE singleton = 1)) AS comparison_group_stat_rows,
+                (SELECT count(*) FROM comparison_group_stats AS stats LEFT JOIN publication_snapshots AS snapshots ON snapshots.snapshot_id = stats.snapshot_id WHERE snapshots.snapshot_id IS NULL) AS orphan_comparison_group_stat_rows'
+              ;;
+            *)
+              echo "Unexpected comparison_group_stats table count: $comparison_group_stats_available" >&2
+              exit 1
+              ;;
+          esac
           status=0
           bash ../../scripts/run-wrangler-redacted.sh bunx wrangler d1 execute "$database_name" --remote --config wrangler.restore-target.json --command "$query" --json > ../../restore-r2/verify.json 2> ../../restore-r2/verify.stderr || status=$?
           if (( status != 0 )) || ! jq -e 'type == "array" and length > 0 and .[0].success == true and (.[0].results | type == "array")' ../../restore-r2/verify.json >/dev/null 2>&1; then
@@ -216,8 +244,15 @@ jobs:
               and $rows[0].current_publication_rows == 1
               and $rows[0].publication_snapshot_rows >= 1
               and $rows[0].fund_class_version_rows > 0
-              and ($rows[0].comparison_group_stat_rows | type) == "number"
-              and $rows[0].orphan_comparison_group_stat_rows == 0
+              and (
+                ($rows[0].comparison_group_stats_available == 0
+                  and $rows[0].comparison_group_stat_rows == null
+                  and $rows[0].orphan_comparison_group_stat_rows == null)
+                or
+                ($rows[0].comparison_group_stats_available == 1
+                  and ($rows[0].comparison_group_stat_rows | type) == "number"
+                  and $rows[0].orphan_comparison_group_stat_rows == 0)
+              )
           ' ../../restore-r2/verify.json >/dev/null; then
             echo "Restored D1 snapshot or integrity invariants did not match the selected backup." >&2
             exit 1
@@ -225,8 +260,9 @@ jobs:
           jq -r '.[0].results[0] | "snapshot_id=\(.snapshot_id)"' ../../restore-r2/verify.json >> "$GITHUB_OUTPUT"
           jq -r '.[0].results[0] | "fund_class_version_rows=\(.fund_class_version_rows)"' ../../restore-r2/verify.json >> "$GITHUB_OUTPUT"
           jq -r '.[0].results[0] | "comparison_group_stat_rows=\(.comparison_group_stat_rows)"' ../../restore-r2/verify.json >> "$GITHUB_OUTPUT"
+          jq -r '.[0].results[0] | "comparison_group_stats_available=\(.comparison_group_stats_available)"' ../../restore-r2/verify.json >> "$GITHUB_OUTPUT"
           jq -r '.[0].results[0] | "orphan_comparison_group_stat_rows=\(.orphan_comparison_group_stat_rows)"' ../../restore-r2/verify.json >> "$GITHUB_OUTPUT"
-          jq -r '.[0].results[0] | "Remote D1 restored snapshot: \(.snapshot_id); fund classes: \(.fund_class_version_rows); comparison groups: \(.comparison_group_stat_rows); orphan comparison rows: \(.orphan_comparison_group_stat_rows)."' ../../restore-r2/verify.json >> "$GITHUB_STEP_SUMMARY"
+          jq -r '.[0].results[0] | if .comparison_group_stats_available == 1 then "Remote D1 restored snapshot: \(.snapshot_id); fund classes: \(.fund_class_version_rows); comparison groups: \(.comparison_group_stat_rows); orphan comparison rows: \(.orphan_comparison_group_stat_rows)." else "Remote D1 restored snapshot: \(.snapshot_id); fund classes: \(.fund_class_version_rows); comparison-group stats table is absent from the restored schema." end' ../../restore-r2/verify.json >> "$GITHUB_STEP_SUMMARY"
       - name: Record restore outcome in private R2
         if: ${{ always() && steps.apply-restore.outcome != 'skipped' }}
         working-directory: apps/api
@@ -242,6 +278,7 @@ jobs:
           FUND_CLASS_VERSION_ROWS: ${{ steps.verify-restore.outputs.fund_class_version_rows }}
           COMPARISON_GROUP_STAT_ROWS: ${{ steps.verify-restore.outputs.comparison_group_stat_rows }}
           ORPHAN_ROWS: ${{ steps.verify-restore.outputs.orphan_comparison_group_stat_rows }}
+          COMPARISON_GROUP_STATS_AVAILABLE: ${{ steps.verify-restore.outputs.comparison_group_stats_available }}
           IMPORT_EXIT_STATUS: ${{ steps.apply-restore.outputs.import_exit_status }}
         run: |
           set -euo pipefail
@@ -255,6 +292,12 @@ jobs:
           [[ "$COMPARISON_GROUP_STAT_ROWS" =~ ^[0-9]+$ ]] && comparison_rows_json="$COMPARISON_GROUP_STAT_ROWS"
           orphan_rows_json=null
           [[ "$ORPHAN_ROWS" =~ ^[0-9]+$ ]] && orphan_rows_json="$ORPHAN_ROWS"
+          comparison_stats_available_json=null
+          if [[ "$COMPARISON_GROUP_STATS_AVAILABLE" == "1" ]]; then
+            comparison_stats_available_json=true
+          elif [[ "$COMPARISON_GROUP_STATS_AVAILABLE" == "0" ]]; then
+            comparison_stats_available_json=false
+          fi
           jq -n -S \
             --arg recordedAt "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
             --arg environment "$TARGET_ENVIRONMENT" \
@@ -273,7 +316,8 @@ jobs:
             --argjson fundRows "$fund_rows_json" \
             --argjson comparisonRows "$comparison_rows_json" \
             --argjson orphanRows "$orphan_rows_json" \
-            '{schemaVersion:1,recordedAt:$recordedAt,targetEnvironment:$environment,sourceBackup:{backupId:$backupId,snapshotId:$sourceSnapshotId},preRestoreBackup:{backupId:$preRestoreBackupId,snapshotId:$preRestoreSnapshotId},result:{restoreStep:$restoreOutcome,verificationStep:$verifyOutcome,restoredSnapshotId:(if $restoredSnapshotId == "" then null else $restoredSnapshotId end),importExitStatus:(if $importExitStatus == "" then null else $importExitStatus end),fundClassVersionRows:$fundRows,comparisonGroupStatRows:$comparisonRows,orphanRows:$orphanRows},workflowRun:{id:$runId,attempt:$runAttempt,commit:$commit,url:$runUrl}}' \
+            --argjson comparisonStatsAvailable "$comparison_stats_available_json" \
+            '{schemaVersion:1,recordedAt:$recordedAt,targetEnvironment:$environment,sourceBackup:{backupId:$backupId,snapshotId:$sourceSnapshotId},preRestoreBackup:{backupId:$preRestoreBackupId,snapshotId:$preRestoreSnapshotId},result:{restoreStep:$restoreOutcome,verificationStep:$verifyOutcome,restoredSnapshotId:(if $restoredSnapshotId == "" then null else $restoredSnapshotId end),importExitStatus:(if $importExitStatus == "" then null else $importExitStatus end),fundClassVersionRows:$fundRows,comparisonGroupStatsAvailable:$comparisonStatsAvailable,comparisonGroupStatRows:$comparisonRows,orphanRows:$orphanRows},workflowRun:{id:$runId,attempt:$runAttempt,commit:$commit,url:$runUrl}}' \
             > "$result_file"
           bash ../../scripts/run-wrangler-redacted.sh bunx wrangler r2 object put "$bucket/$manifest_key" --remote --config wrangler.restore-target.json --file "$result_file" --content-type application/json
           bash ../../scripts/run-wrangler-redacted.sh bunx wrangler r2 object get "$bucket/$manifest_key" --remote --config wrangler.restore-target.json --file "$readback_file"
