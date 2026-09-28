@@ -1,10 +1,6 @@
 import { readFile, writeFile } from "node:fs/promises";
-import { buildCandidateAuditReport } from "./candidate-audit-report";
-import { buildPublicationInputs } from "./build-publication-input";
-import { buildPublicationReadinessReport } from "./publication-readiness-report";
-import { DEFAULT_CANDIDATE_ANOMALY_POLICY } from "./candidate-anomalies";
-import { decideRefresh, renderRefreshSummary } from "./refresh-decision";
 import { parseSourceSnapshot } from "./input";
+import { buildRefreshReport } from "./refresh-report";
 
 function argument(name: string) {
   const index = process.argv.indexOf(name);
@@ -32,53 +28,33 @@ if (!candidate.sourceDataAsOf) {
 }
 
 const batchId = argument("--batch") ?? `candidate-${candidate.sourceDataAsOf}`;
-const readiness = buildPublicationReadinessReport(
-  buildPublicationInputs(candidate.records),
-);
-const audit = buildCandidateAuditReport(
+const report = buildRefreshReport(candidate, previous, {
   batchId,
-  candidate.records,
-  previous?.records ?? [],
-  [],
-  DEFAULT_CANDIDATE_ANOMALY_POLICY,
-  [
-    {
-      url: candidate.sourceUrl,
-      dataAsOf: candidate.sourceDataAsOf,
-      retrievedAt: candidate.retrievedAt,
-    },
-  ],
-);
-const decision = decideRefresh({
-  previousDataAsOf: previous?.sourceDataAsOf,
-  candidateDataAsOf: candidate.sourceDataAsOf,
-  candidateContentChanged:
-    previous !== undefined &&
-    JSON.stringify(candidate.records) !== JSON.stringify(previous.records),
-  readiness,
-  audit,
-});
-const markdown = renderRefreshSummary(decision, {
-  readiness,
-  audit,
   snapshotPath: argument("--publish-path") ?? candidatePath,
   deployInput: argument("--deploy-input"),
-  expectedCounts: candidate.expectedCounts,
-  expectedCountsSource: candidate.expectedCountsSource,
 });
 
 await writeFile(
   outputJsonPath,
-  `${JSON.stringify({ generatedAt: new Date().toISOString(), decision, readiness, audit }, null, 2)}\n`,
+  JSON.stringify(
+    {
+      generatedAt: new Date().toISOString(),
+      decision: report.decision,
+      readiness: report.readiness,
+      audit: report.audit,
+    },
+    null,
+    2,
+  ) + "\n",
 );
-await writeFile(outputMarkdownPath, markdown);
+await writeFile(outputMarkdownPath, report.markdown);
 console.log(
   JSON.stringify({
-    outcome: decision.outcome,
-    publishable: decision.publishable,
-    previousDataAsOf: decision.previousDataAsOf ?? null,
-    candidateDataAsOf: decision.candidateDataAsOf,
-    blockedRecords: readiness.blockedRecords,
-    anomalies: audit.anomalies.length,
+    outcome: report.decision.outcome,
+    publishable: report.decision.publishable,
+    previousDataAsOf: report.decision.previousDataAsOf ?? null,
+    candidateDataAsOf: report.decision.candidateDataAsOf,
+    blockedRecords: report.readiness.blockedRecords,
+    anomalies: report.audit.anomalies.length,
   }),
 );
