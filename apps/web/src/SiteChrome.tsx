@@ -45,7 +45,6 @@ export function SiteChrome({
           <a
             className="kw-brand"
             href="/"
-            aria-label="kW KIRK WONG RESEARCH KWMPF 首頁"
           >
             <span className="kw-brand__mark">kW</span>
             <span>
