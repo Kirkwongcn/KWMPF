@@ -64,14 +64,20 @@ function parser(scheme: string, text: string, url: string): FundFactSheetReturn[
 
 for (const entry of manifest.entries) {
   if (entry.status !== "downloaded") continue;
-  const auditedNonDisclosure = findAuditedFactSheetPeriodNonDisclosure(entry, 3);
-  if (auditedNonDisclosure) {
-    periodNotDisclosed.push(auditedNonDisclosure);
-    continue;
-  }
   const id = createHash("sha256").update(entry.scheme).digest("hex").slice(0, 16);
   try {
     const pdfPath = join(pdfRoot, `${id}.pdf`);
+    const sourceSha256 = createHash("sha256").update(await readFile(pdfPath)).digest("hex");
+    if (entry.sha256 && entry.sha256 !== sourceSha256) {
+      throw new Error(`Downloaded PDF SHA-256 does not match the manifest for ${entry.scheme}`);
+    }
+    const auditedNonDisclosure = entry.sha256 === sourceSha256
+      ? findAuditedFactSheetPeriodNonDisclosure(entry, 3)
+      : undefined;
+    if (auditedNonDisclosure) {
+      periodNotDisclosed.push(auditedNonDisclosure);
+      continue;
+    }
     if (entry.scheme.startsWith("Sun Life")) {
       const { stdout } = await exec("pdftohtml", ["-xml", "-stdout", pdfPath], { maxBuffer: 32 * 1024 * 1024 });
       returns.push(...parseSunLifeFundFactSheetXml(stdout, entry.factSheetUrl));
