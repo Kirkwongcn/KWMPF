@@ -236,7 +236,7 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
                 }}
               >
                 <option value="name">按計劃名稱</option>
-                <option value="fee">按官方管理費中位數</option>
+                <option value="fee">按已披露管理費中位數</option>
               </select>
             </p>
             <p className="kw-field">
