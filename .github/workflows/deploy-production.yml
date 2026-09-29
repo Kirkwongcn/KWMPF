@@ -65,8 +65,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-bun-install-
       - run: bun install --frozen-lockfile
-      - name: Confirm the requested source snapshot exists
-        run: test -f "data/sources/${{ inputs.source_snapshot }}"
+      - name: Require a matching, reviewed source refresh report
+        env:
+          SOURCE_SNAPSHOT: ${{ inputs.source_snapshot }}
+          ALLOW_OLDER: ${{ inputs.allow_older_snapshot }}
+        run: bun scripts/check-production-source-review.mjs "$SOURCE_SNAPSHOT" "$ALLOW_OLDER"
       - name: Resolve the latest trustee-return candidate
         id: return-observations
         run: |
@@ -82,26 +85,17 @@ jobs:
           echo "Production will apply $path."
           echo "path=$path" >> "$GITHUB_OUTPUT"
           echo "Trustee return observations: $path" >> "$GITHUB_STEP_SUMMARY"
-      - name: Confirm the requested snapshot is the newest batch in the repository
+      - name: Build full production publication seed
         env:
-          ALLOW_OLDER: ${{ inputs.allow_older_snapshot }}
+          SOURCE_SNAPSHOT: ${{ inputs.source_snapshot }}
+          RETURN_OBSERVATIONS: ${{ steps.return-observations.outputs.path }}
         run: |
           set -euo pipefail
-          latest="$(scripts/resolve-previous-snapshot.sh data/sources)"
-          requested="data/sources/${{ inputs.source_snapshot }}"
-          echo "Newest batch committed: $latest"
-          echo "Requested batch:        $requested"
-          if [ "$requested" = "$latest" ]; then
-            exit 0
-          fi
-          if [ "$ALLOW_OLDER" = "true" ]; then
-            echo "::warning::Publishing $requested while $latest is newer, as explicitly requested."
-            exit 0
-          fi
-          echo "Refusing to publish a stale batch. Re-run with allow_older_snapshot to override." >&2
-          exit 1
-      - name: Build full production publication seed
-        run: bun run --filter @kwmpf/coverage publication-seed -- --source ../../data/sources/${{ inputs.source_snapshot }} --return-observations ../../${{ steps.return-observations.outputs.path }} --output /tmp/kwmpf-production.sql --snapshot snapshot-mpfa-platform-$(jq -r .sourceDataAsOf data/sources/${{ inputs.source_snapshot }})-${GITHUB_SHA::12}
+          source_file="data/sources/$SOURCE_SNAPSHOT"
+          return_file="$RETURN_OBSERVATIONS"
+          source_as_of="$(jq -er '.sourceDataAsOf' "$source_file")"
+          snapshot="snapshot-mpfa-platform-${source_as_of}-${GITHUB_SHA::12}"
+          bun run --filter @kwmpf/coverage publication-seed -- --source "../../$source_file" --return-observations "../../$return_file" --output /tmp/kwmpf-production.sql --snapshot "$snapshot"
       - name: Prepare production Worker configuration
         env:
           D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
