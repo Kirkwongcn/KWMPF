@@ -357,11 +357,38 @@ export function SchemeComparePage({
               快照 {result.snapshotId ?? "尚未發布"}。行政評分 v1
               暫不評分，欄位預留為空。
             </p>
+            <p className="kw-table-hint" id="scheme-compare-scroll-hint">
+              左右滑動或使用方向鍵查看其餘欄位
+            </p>
             <div
               className="kw-table-scroll"
               tabIndex={0}
               role="region"
-              aria-label="計劃逐項比較表，可左右捲動查看所有欄位"
+              aria-label="計劃逐項比較表"
+              aria-describedby="scheme-compare-scroll-hint"
+              onKeyDown={(event) => {
+                if (
+                  event.altKey ||
+                  event.ctrlKey ||
+                  event.metaKey ||
+                  event.shiftKey ||
+                  (event.key !== "ArrowLeft" && event.key !== "ArrowRight")
+                ) {
+                  return;
+                }
+                const element = event.currentTarget;
+                const offset = event.key === "ArrowRight" ? 80 : -80;
+                const nextScrollLeft = Math.max(
+                  0,
+                  Math.min(
+                    element.scrollLeft + offset,
+                    element.scrollWidth - element.clientWidth,
+                  ),
+                );
+                if (nextScrollLeft === element.scrollLeft) return;
+                event.preventDefault();
+                element.scrollLeft = nextScrollLeft;
+              }}
             >
               <table className="kw-table scheme-compare-table">
                 <thead>

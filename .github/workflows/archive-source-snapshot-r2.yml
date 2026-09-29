@@ -1,6 +1,13 @@
 name: Archive source snapshot in R2
 
 on:
+  workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: Reuse an existing completed source-refresh artifact without refetching official pages
+        required: true
+        type: string
+
   workflow_run:
     workflows:
       - Refresh source snapshot
@@ -12,31 +19,64 @@ permissions:
   contents: read
 
 concurrency:
-  group: source-archive-${{ github.event.workflow_run.id }}
+  group: source-archive-${{ github.event.workflow_run.id || inputs.source_run_id }}
   cancel-in-progress: false
 
 jobs:
   discover:
     if: >-
       ${{
-        github.event.workflow_run.head_branch == 'main' &&
-        github.event.workflow_run.head_repository.full_name == github.repository &&
-        contains(fromJSON('["schedule","workflow_dispatch"]'), github.event.workflow_run.event) &&
-        contains(fromJSON('["success","failure"]'), github.event.workflow_run.conclusion)
+        (
+          github.event_name == 'workflow_dispatch' &&
+          github.ref == 'refs/heads/main'
+        ) ||
+        (
+          github.event_name == 'workflow_run' &&
+          github.event.workflow_run.head_branch == 'main' &&
+          github.event.workflow_run.head_repository.full_name == github.repository &&
+          contains(fromJSON('["schedule","workflow_dispatch"]'), github.event.workflow_run.event) &&
+          contains(fromJSON('["success","failure"]'), github.event.workflow_run.conclusion)
+        )
       }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
       available: ${{ steps.artifact.outputs.available }}
       artifact_id: ${{ steps.artifact.outputs.artifact_id }}
+      source_run_id: ${{ steps.artifact.outputs.source_run_id }}
+      source_head_sha: ${{ steps.artifact.outputs.source_head_sha }}
+      source_created_at: ${{ steps.artifact.outputs.source_created_at }}
+      source_conclusion: ${{ steps.artifact.outputs.source_conclusion }}
     steps:
-      - name: Find the raw source artifact
+      - name: Find and validate the exact source run artifact
         id: artifact
         env:
           GH_TOKEN: ${{ github.token }}
-          SOURCE_RUN_ID: ${{ github.event.workflow_run.id }}
+          SOURCE_RUN_ID: ${{ github.event.workflow_run.id || inputs.source_run_id }}
         run: |
           set -euo pipefail
+          [[ "${SOURCE_RUN_ID}" =~ ^[0-9]{1,20}$ ]] || { echo "Source run ID must contain only digits." >&2; exit 2; }
+
+          run_json="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${SOURCE_RUN_ID}")"
+          refresh_workflow_id="$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/refresh-source-snapshot.yml" --jq '.id')"
+          jq -e \
+            --arg repository "${GITHUB_REPOSITORY}" \
+            --arg source_run_id "${SOURCE_RUN_ID}" \
+            --argjson refresh_workflow_id "${refresh_workflow_id}" \
+            '
+              (.id | tostring) == $source_run_id and
+              .workflow_id == $refresh_workflow_id and
+              .name == "Refresh source snapshot" and
+              .status == "completed" and
+              .head_branch == "main" and
+              .head_repository.full_name == $repository and
+              (.event == "schedule" or .event == "workflow_dispatch") and
+              (.conclusion == "success" or .conclusion == "failure")
+            ' <<<"${run_json}" >/dev/null || {
+              echo "Source run must be a completed schedule/manual refresh from this repository's main branch." >&2
+              exit 1
+            }
+
           artifact_name="raw-source-archive-${SOURCE_RUN_ID}"
           response="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${SOURCE_RUN_ID}/artifacts?per_page=100")"
           match_count="$(jq --arg name "${artifact_name}" '[.artifacts[] | select(.name == $name and .expired == false)] | length' <<<"${response}")"
@@ -46,10 +86,23 @@ jobs:
             exit 0
           fi
           [[ "${match_count}" == "1" ]] || { echo "Expected one raw source artifact, found ${match_count}." >&2; exit 1; }
+
           artifact_id="$(jq --arg name "${artifact_name}" -r '.artifacts[] | select(.name == $name and .expired == false) | .id' <<<"${response}")"
-          echo "available=true" >>"${GITHUB_OUTPUT}"
-          echo "artifact_id=${artifact_id}" >>"${GITHUB_OUTPUT}"
-          echo "Found raw source artifact ${artifact_id} for run ${SOURCE_RUN_ID}." >>"${GITHUB_STEP_SUMMARY}"
+          source_head_sha="$(jq -er '.head_sha' <<<"${run_json}")"
+          source_created_at="$(jq -er '.created_at' <<<"${run_json}")"
+          source_conclusion="$(jq -er '.conclusion' <<<"${run_json}")"
+          {
+            echo "available=true"
+            echo "artifact_id=${artifact_id}"
+            echo "source_run_id=${SOURCE_RUN_ID}"
+            echo "source_head_sha=${source_head_sha}"
+            echo "source_created_at=${source_created_at}"
+            echo "source_conclusion=${source_conclusion}"
+          } >>"${GITHUB_OUTPUT}"
+          echo "Found raw source artifact ${artifact_id} for refresh run ${SOURCE_RUN_ID}." >>"${GITHUB_STEP_SUMMARY}"
+          if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]]; then
+            echo "Manual replay uses the retained artifact and does not refetch official pages." >>"${GITHUB_STEP_SUMMARY}"
+          fi
 
   archive:
     needs: discover
@@ -63,11 +116,11 @@ jobs:
     env:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-      SOURCE_RUN_ID: ${{ github.event.workflow_run.id }}
-      SOURCE_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+      SOURCE_RUN_ID: ${{ needs.discover.outputs.source_run_id }}
+      SOURCE_HEAD_SHA: ${{ needs.discover.outputs.source_head_sha }}
       SOURCE_ARTIFACT_ID: ${{ needs.discover.outputs.artifact_id }}
-      SOURCE_CREATED_AT: ${{ github.event.workflow_run.created_at }}
-      SOURCE_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+      SOURCE_CREATED_AT: ${{ needs.discover.outputs.source_created_at }}
+      SOURCE_CONCLUSION: ${{ needs.discover.outputs.source_conclusion }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -79,7 +132,7 @@ jobs:
         with:
           artifact-ids: ${{ needs.discover.outputs.artifact_id }}
           path: ${{ runner.temp }}/raw-source-artifact
-          run-id: ${{ github.event.workflow_run.id }}
+          run-id: ${{ needs.discover.outputs.source_run_id }}
           github-token: ${{ github.token }}
 
       - name: Validate and package the source archive

@@ -124,3 +124,36 @@ test("320px nav wraps cleanly", async ({ page }) => {
     expect(link.fontSize).toBe("15px");
   }
 });
+
+test("320px 計劃比較表提示橫向捲動並可用方向鍵查看", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 780 });
+  await page.goto(
+    "/schemes/compare?ids=AIA%20MPF%20-%20Prime%20Value%20Choice,AMTD%20MPF%20Scheme",
+  );
+
+  const region = page.getByRole("region", { name: "計劃逐項比較表" });
+  await expect(region).toBeVisible();
+  await expect(
+    page.getByText("左右滑動或使用方向鍵查看其餘欄位"),
+  ).toBeVisible();
+  await expect(region).toHaveAttribute(
+    "aria-describedby",
+    "scheme-compare-scroll-hint",
+  );
+
+  const dimensions = await region.evaluate((element) => ({
+    clientWidth: element.clientWidth,
+    scrollWidth: element.scrollWidth,
+    pageOverflow:
+      document.documentElement.scrollWidth -
+      document.documentElement.clientWidth,
+  }));
+  expect(dimensions.scrollWidth).toBeGreaterThan(dimensions.clientWidth);
+  expect(dimensions.pageOverflow).toBeLessThanOrEqual(1);
+
+  await region.focus();
+  const before = await region.evaluate((element) => element.scrollLeft);
+  await page.keyboard.press("ArrowRight");
+  const after = await region.evaluate((element) => element.scrollLeft);
+  expect(after).toBeGreaterThan(before);
+});
