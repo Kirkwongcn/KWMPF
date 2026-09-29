@@ -699,7 +699,7 @@ describe("scheme fact sheet link", () => {
     render(<SchemesPage apiBaseUrl="https://api.test" />);
 
     const link = await screen.findByRole("link", {
-      name: "有便覽的計劃 積金局基金便覽 PDF",
+      name: "有便覽的計劃 積金局基金便覽（PDF）",
     });
     expect(link).toHaveAttribute(
       "href",
