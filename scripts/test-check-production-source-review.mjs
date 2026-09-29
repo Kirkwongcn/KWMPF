@@ -109,6 +109,7 @@ function makeDisposition(files) {
     reviewer: "fixture-reviewer",
     reviewedAt: "2026-09-29T00:00:00.000Z",
     decision: "accept",
+    decisionReasons: report.decision.reasons,
     reason:
       "Each flagged value was checked against its official MPFA fund detail page.",
     anomalies: report.audit.anomalies.map((anomaly) => {

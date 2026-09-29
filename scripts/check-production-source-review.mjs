@@ -118,6 +118,15 @@ function validateReviewDisposition({
     fail("review disposition decision must be accept.");
   }
   if (
+    !Array.isArray(disposition.decisionReasons) ||
+    disposition.decisionReasons.length !== report.decision.reasons.length ||
+    disposition.decisionReasons.some(
+      (reason, index) => reason !== report.decision.reasons[index],
+    )
+  ) {
+    fail("review disposition must reproduce every refresh decision reason exactly.");
+  }
+  if (
     typeof disposition.reason !== "string" ||
     disposition.reason.trim().length < 20
   ) {
