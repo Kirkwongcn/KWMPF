@@ -30,7 +30,7 @@ After deployment, verify that the Pages health page and `GET /health` on the Wor
 
 The scheduled/manual `Backup D1` workflow runs behind the protected `staging` environment and shares the `staging-d1-mutations` concurrency lock. It records the current publication snapshot before and after export, then uploads the SQL export and a manifest with its SHA-256 and byte count to private staging R2.
 
-After upload, it downloads both objects again. The workflow compares the returned manifest byte-for-byte and checks the SQL byte count and SHA-256 against that manifest. This confirms the stored backup objects are intact; it does not prove the SQL can be restored. The separate Restore Drill verifies that by importing the selected backup into runner-local D1 and checking database invariants.
+After upload, it downloads both objects again. The workflow compares the returned manifest byte-for-byte and checks the SQL byte count and SHA-256 against that manifest. This confirms the stored backup objects are intact; it does not prove the SQL can be restored. The separate `D1 Restore Drill` workflow verifies restorability by importing the selected backup into runner-local D1 and checking database invariants; it does not write to a Cloudflare D1. By contrast, `Restore D1 from R2 backup` targets the selected remote environment's D1. After that environment's protected gate, it verifies the chosen backup, creates and reads back a recovery backup of the current D1, then imports the selected SQL and checks live database invariants. Treat the remote restore as a separate, approved D1 mutation.
 
 The backup workflow does not write to remote D1 or deploy the site. Automatic R2 expiration remains disabled.
 
@@ -117,7 +117,7 @@ KWMPF production is a release tuple: the API Worker version, the Pages productio
 2. Choose a forward fix or a rollback. Prefer a forward fix when the compatibility of an older release with the current D1 state cannot be demonstrated.
 3. Identify a known-good release tuple from a previously successful production run. Confirm the exact Worker version, successful Pages production deployment, D1 snapshot/schema, source snapshot, and trustee-return candidate. Check the active D1 state and the target restore point before making changes.
 4. Check the D1 Time Travel timestamp with the production backup manifest and Cloudflare's current retention limits. A Time Travel restore overwrites production D1 in place; capture the current point first so an accidental restore can be undone. Obtain explicit owner approval for any production D1 restore.
-5. Plan Worker, Pages, and D1 changes as one operation. Select an order that keeps every intermediate combination compatible. If no safe order is known, stop and plan a controlled maintenance window before changing resources. The manual `Restore D1 from R2 backup` workflow can restore only the selected environment's D1 from its private R2 SQL archive. It permits `main` only, uses that environment's protected GitHub gate and D1-mutation concurrency lock, requires a target-specific confirmation phrase, and accepts SQL files up to Cloudflare's 5 GiB import limit. It verifies the chosen backup, writes and reads back a fresh pre-restore backup, then imports and checks the selected snapshot. This is a D1-only operation: it does not roll back the Worker or Pages, and it has not yet been rehearsed against staging. Do not treat it as a coordinated production rollback or run it before a staging rehearsal and an approved release-tuple plan ([D1 import limit](https://developers.cloudflare.com/d1/platform/limits/)).
+5. Plan Worker, Pages, and D1 changes as one operation. Select an order that keeps every intermediate combination compatible. If no safe order is known, stop and plan a controlled maintenance window before changing resources. The manual `Restore D1 from R2 backup` workflow can restore only the selected environment's D1 from its private R2 SQL archive. It permits `main` only, uses that environment's protected GitHub gate and D1-mutation concurrency lock, requires a target-specific confirmation phrase, and accepts SQL files up to Cloudflare's 5 GiB import limit. It verifies the chosen backup, writes and reads back a fresh pre-restore backup, then imports and checks the selected snapshot. This is a D1-only operation: it does not roll back the Worker or Pages. Staging Restore D1 run #2 on 2026-09-28 applied the selected SQL, and the post-restore checks found the expected snapshot and 451 fund-class rows. The overall job was marked failed because that version tried to parse Wrangler's human-readable SQL-file output as JSON. PR #341 fixed the import result check to use Wrangler's exit status; the run is useful partial staging evidence, not a successful end-to-end rehearsal. A fresh run on fixed `main` is still needed. Do not treat this workflow as a coordinated production rollback. For a production recovery, first establish a compatible release-tuple plan; a staging drill remains a separate protected D1 write. ([D1 import limit](https://developers.cloudflare.com/d1/platform/limits/)).
 6. After the approved change, verify `/summary` returns the chosen snapshot and a non-zero fund count; verify `/rankings?metric=return&period=3` has the expected non-zero rows, cache headers match policy, and the Pages health page shows the intended release. Record the final Worker version, Pages deployment, D1 snapshot, source candidate, and backup ID.
 
 #### Recovery evidence and remaining validation
@@ -132,7 +132,7 @@ D1 Time Travel is a separate recovery point with plan-dependent retention. Check
 
 1. 以 `scripts/resolve-previous-snapshot.sh` 找出 `data/sources/` 之下最新、而且真正帶有 `mpf-fund-platform.json` 的日期目錄（`YYYY-MM-DD`）作為上一批次，讀取它的獨立數量核對值。只放其他官方檔案的日期目錄（例如基金便覽連結批次）會被略過。
    其他名稱的目錄（例如存放使用者提供資料的 `data/sources/lipper/`）不會被當成批次。
-2. 擷取官方強積金基金平台，寫出候選快照及原始 HTML 封存（上載為 workflow artifact，保留 30 日）。
+2. 擷取官方強積金基金平台，寫出候選快照及原始 HTML 封存（workflow artifact 保留 30 日）。如需長期保存原始 HTML，另以受保護的 staging archive workflow 封存到 private R2；run #2 已封存 refresh run #10 的 452 份來源頁並逐位元讀回核對。
 3. 產生發布前檢查報告及異常核對報告，判斷結果為
    `no_new_data`、`blocked`、`needs_review` 或 `ready`。
 4. 若官方截至日期沒有改變，就此結束，不開 PR。
@@ -147,13 +147,14 @@ D1 Time Travel is a separate recovery point with plan-dependent retention. Check
 核對現行數量，再以 `workflow_dispatch` 填入新數量重跑。不要為了令 workflow 通過而
 放寬這個檢查。
 
-### 尚未處理
+### 已完成與仍待驗證
 
-- 已發布快照的原始 HTML 只保留在 workflow artifact（30 日），未按規格長期存入 R2。
-- `Deploy production` 會在資料庫改動前把 D1 匯出、manifest 和 rollback timestamp 存入 production R2；另外封存來源 JSON 及 return-observations 候選資料。此 PR 加入在 migration 前由 R2 讀回 SQL 和 manifest、比較 manifest bytes 並驗證 SQL bytes/SHA-256；核對失敗會阻止 D1 migration。
-- Production backup #1 / Restore Drill #11、run #19 的 pre-deploy backup / Restore Drill #12 都已驗證成功。Run #21 的 pre-deploy backup 已寫入 production R2，但由於當時沒有 read-back guard，尚未經讀回或隔離還原演練。最新 staging Restore Drill #13 成功還原 backup #11 到 runner-local D1，但不涵蓋 production。Restore drills remain manual; no quarterly cadence is configured.
+- MPFA raw HTML 已由 [archive run #2](https://github.com/Kirkwongcn/KWMPF/actions/runs/36460730619) 封存 refresh run #10 的 452 個 source entries / bodies 到 private staging R2：`kwmpf-staging-raw/source-archives/refresh-source-snapshot/run-36460369839/`。Deterministic tar.gz 為 1,893,953 bytes；archive 與 manifest 均讀回並逐位元相同。R2 物件沒有自動到期；這不是 offsite 或 immutable backup。
+- `Deploy production` 會在資料庫改動前將 D1 export、manifest 和 rollback timestamp 寫入 production R2，並封存 source JSON 和 return-observations candidate。現行 workflow 在 migration 前讀回 SQL 與 manifest，逐位元核對 manifest，並驗證 SQL bytes / SHA-256；核對失敗會停止 migration。
+- Production Backup #1 / Restore Drill #11、run #19 pre-deploy backup / Restore Drill #12 已通過。Deploy #21 的 pre-deploy backup 在部署當時沒有 read-back guard；[Restore Drill #14](https://github.com/Kirkwongcn/KWMPF/actions/runs/36360500072) 後來讀回並驗證該 backup，亦在 runner-local D1 還原及核對 snapshot、451 fund classes、32 comparison groups、zero orphan rows。這證明該備份可隔離還原，不證明 production D1 可安全覆寫還原，也不涵蓋 Worker / Pages 協同回滾。
+- 隔離的 staging [Restore Drill #13](https://github.com/Kirkwongcn/KWMPF/actions/runs/36317081116) 還原到 runner-local D1，並不會寫 Cloudflare D1。遠端 staging [Restore D1 run #2](https://github.com/Kirkwongcn/KWMPF/actions/runs/36488749768) 則已套用來源 SQL；套用前建立並讀回驗證復原點 `d1-2026-09-28T23-10-14Z-run-36488749768`。還原後 snapshot 及 451 筆基金類別核對通過，但舊 workflow 將 Wrangler 輸出誤當 JSON 而標記失敗。PR #341 已修正這個判斷；待修正版再次完成 staging gate 後，才算有完整遠端還原演練證據。
+- Restore drills 仍是手動執行，尚未設定季度演練週期。
 - Current decision: keep automatic R2 object expiration disabled for D1 backups and source archives. Cloudflare lifecycle rules can be scoped by prefix; do not add deletion rules without a renewed retention decision. [R2 lifecycle behavior](https://developers.cloudflare.com/r2/buckets/object-lifecycles/).
-
 ## Trustee factsheet PDF archive
 
 The manual `Archive trustee fact sheets to R2` workflow accepts a dated `source_batch` from `data/sources/<YYYY-MM-DD>/trustee-fact-sheet-links.json`. It downloads PDFs sequentially, verifies HTTPS redirects, PDF signatures, byte counts and SHA-256 values, and preserves per-file failures in a manifest. GitHub retains the intermediate artifact for 30 days so the protected archive job can consume it.
