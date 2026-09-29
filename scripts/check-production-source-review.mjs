@@ -3,11 +3,8 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const [
-  sourceSnapshot,
-  allowOlder,
-  sourcesRootArgument = "data/sources",
-] = process.argv.slice(2);
+const [sourceSnapshot, allowOlder, sourcesRootArgument = "data/sources"] =
+  process.argv.slice(2);
 
 function fail(message) {
   console.error(`Production source preflight failed: ${message}`);
@@ -145,4 +142,3 @@ if (!publishableReady && !unchangedCleanBatch) {
       "only ready or clean no_new_data batches may be deployed.",
   );
 }
-
