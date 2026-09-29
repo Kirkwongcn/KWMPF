@@ -32,3 +32,4 @@
 /.github/workflows/deploy-staging.yml                      @Kirkwongcn
 /.github/workflows/deploy-production.yml                   @Kirkwongcn
 /.github/workflows/restore-r2-d1.yml                        @Kirkwongcn
+/scripts/check-production-source-review.mjs                 @Kirkwongcn
