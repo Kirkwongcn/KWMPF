@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "batchId": "candidate-36219709026",
+  "sourceSnapshotSha256": "04b78cfc1e4953d48311740d68f98b313ad5b265f486b2584e52c75baddcca5a",
+  "refreshReportSha256": "f41979a07e6a7c57af2aaf683ecac3c8f989bd9a96dc71bc40358748b5924cf1",
+  "reviewer": "Repository owner (approval recorded 2026-09-29), with Codex-assisted source review",
+  "reviewedAt": "2026-09-29 15:45:35.000Z",
+  "decision": "accept",
+  "decisionReasons": [
+    "異常核對政策 2026-09-10.v5 標記了 14 項異常，涉及 6 個基金類別；必須人手核對後才可發布。",
+    "費率改變：14 項。"
+  ],
+  "reason": "All 13 reported OCI changes match AIA's official May 2026 On-going Cost Illustrations for the financial period ended November 2025. The CF-1579 candidate FER 1.24313% matches that illustration and AIA's 2025 annual report. MPFA's overall as-of date does not separately date every fee field, and MPFA warns that fee inclusion may lag. Accept these exact values for this SHA-bound 2026-08-31 source batch; keep the refresh report unchanged.",
+  "anomalies": [
+    {
+      "kind": "fee_changed",
+      "fundClassId": "mpfa-cf-131",
+      "field": "oci1yHkd",
+      "reportDetail": "oci1yHkd 由 17 改為 18",
+      "candidateValue": 18,
+      "reviewedAsOf": "2026-08-31",
+      "evidenceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=131",
+      "evidenceNote": "AIA official On-going Cost Illustrations (May 2026), p.1, financial period ended November 2025, lists Capital Stable Portfolio after 1 year cost as HKD 18; candidate matches. Source: https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/on-going-cost-illustrations-may-2026-en.pdf.coredownload.inline.pdf"
+    },
+    {
+      "kind": "fee_changed",
+      "fundClassId": "mpfa-cf-131",
+      "field": "oci3yHkd",
+      "reportDetail": "oci3yHkd 由 54 改為 55",
+      "candidateValue": 55,
+      "reviewedAsOf": "2026-08-31",
+      "evidenceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=131",
+      "evidenceNote": "AIA official On-going Cost Illustrations (May 2026), p.1, financial period ended November 2025, lists Capital Stable Portfolio after 3 years cost as HKD 55; candidate matches. Source: https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/on-going-cost-illustrations-may-2026-en.pdf.coredownload.inline.pdf"
+    },
+    {
+      "kind": "fee_changed",
+      "fundClassId": "mpfa-cf-131",
+      "field": "oci5yHkd",
+      "reportDetail": "oci5yHkd 由 93 改為 94",
+      "candidateValue": 94,
+      "reviewedAsOf": "2026-08-31",
+      "evidenceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=131",
+      "evidenceNote": "AIA official On-going Cost Illustrations (May 2026), p.1, financial period ended November 2025, lists Capital Stable Portfolio after 5 years cost as HKD 94; candidate matches. Source: https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/on-going-cost-illustrations-may-2026-en.pdf.coredownload.inline.pdf"
+    },
+    {
+      "kind": "fee_changed",
+      "fundClassId": "mpfa-cf-141",
+      "field": "oci5yHkd",
+      "reportDetail": "oci5yHkd 由 79 改為 80",
+      "candidateValue": 80,
+      "reviewedAsOf": "2026-08-31",
+      "evidenceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=141",
+      "evidenceNote": "AIA official On-going Cost Illustrations (May 2026), p.1, financial period ended November 2025, lists Green Fund after 5 years cost as HKD 80; candidate matches. Source: https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/on-going-cost-illustrations-may-2026-en.pdf.coredownload.inline.pdf"
+    },
+    {
+      "kind": "fee_changed",
+      "fundClassId": "mpfa-cf-145",
+      "field": "oci1yHkd",
+      "reportDetail": "oci1yHkd 由 18 改為 17",
+      "candidateValue": 17,
+      "reviewedAsOf": "2026-08-31",
+      "evidenceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=145",
+      "evidenceNote": "AIA official On-going Cost Illustrations (May 2026), p.1, financial period ended November 2025, lists European Equity Fund after 1 year cost as HKD 17; candidate matches. Source: https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/on-going-cost-illustrations-may-2026-en.pdf.coredownload.inline.pdf"
+    },
+    {
+      "kind": "fee_changed",
+      "fundClassId": "mpfa-cf-145",
+      "field": "oci3yHkd",
+      "reportDetail": "oci3yHkd 由 55 改為 54",
+      "candidateValue": 54,
+      "reviewedAsOf": "2026-08-31",
+      "evidenceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=145",
+      "evidenceNote": "AIA official On-going Cost Illustrations (May 2026), p.1, financial period ended November 2025, lists European Equity Fund after 3 years cost as HKD 54; candidate matches. Source: https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/on-going-cost-illustrations-may-2026-en.pdf.coredownload.inline.pdf"
+    },
+    {
+      "kind": "fee_changed",
+      "fundClassId": "mpfa-cf-145",
+      "field": "oci5yHkd",
+      "reportDetail": "oci5yHkd 由 94 改為 93",
+      "candidateValue": 93,
+      "reviewedAsOf": "2026-08-31",
+      "evidenceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=145",
+      "evidenceNote": "AIA official On-going Cost Illustrations (May 2026), p.1, financial period ended November 2025, lists European Equity Fund after 5 years cost as HKD 93; candidate matches. Source: https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/on-going-cost-illustrations-may-2026-en.pdf.coredownload.inline.pdf"
+    },
+    {
+      "kind": "fee_changed",
+      "fundClassId": "mpfa-cf-876",
+      "field": "oci1yHkd",
+      "reportDetail": "oci1yHkd 由 9 改為 10",
+      "candidateValue": 10,
+      "reviewedAsOf": "2026-08-31",
+      "evidenceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=876",
+      "evidenceNote": "AIA official On-going Cost Illustrations (May 2026), p.1, financial period ended November 2025, lists Eurasia Fund after 1 year cost as HKD 10; candidate matches. Source: https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/on-going-cost-illustrations-may-2026-en.pdf.coredownload.inline.pdf"
+    },
+    {
+      "kind": "fee_changed",
+      "fundClassId": "mpfa-cf-876",
+      "field": "oci3yHkd",
+      "reportDetail": "oci3yHkd 由 28 改為 30",
+      "candidateValue": 30,
+      "reviewedAsOf": "2026-08-31",
+      "evidenceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=876",
+      "evidenceNote": "AIA official On-going Cost Illustrations (May 2026), p.1, financial period ended November 2025, lists Eurasia Fund after 3 years cost as HKD 30; candidate matches. Source: https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/on-going-cost-illustrations-may-2026-en.pdf.coredownload.inline.pdf"
+    },
+    {
+      "kind": "fee_changed",
+      "fundClassId": "mpfa-cf-876",
+      "field": "oci5yHkd",
+      "reportDetail": "oci5yHkd 由 48 改為 52",
+      "candidateValue": 52,
+      "reviewedAsOf": "2026-08-31",
+      "evidenceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=876",
+      "evidenceNote": "AIA official On-going Cost Illustrations (May 2026), p.1, financial period ended November 2025, lists Eurasia Fund after 5 years cost as HKD 52; candidate matches. Source: https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/on-going-cost-illustrations-may-2026-en.pdf.coredownload.inline.pdf"
+    },
+    {
+      "kind": "fee_changed",
+      "fundClassId": "mpfa-cf-877",
+      "field": "oci1yHkd",
+      "reportDetail": "oci1yHkd 由 8 改為 9",
+      "candidateValue": 9,
+      "reviewedAsOf": "2026-08-31",
+      "evidenceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=877",
+      "evidenceNote": "AIA official On-going Cost Illustrations (May 2026), p.1, financial period ended November 2025, lists Hong Kong and China Fund after 1 year cost as HKD 9; candidate matches. Source: https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/on-going-cost-illustrations-may-2026-en.pdf.coredownload.inline.pdf"
+    },
+    {
+      "kind": "fee_changed",
+      "fundClassId": "mpfa-cf-877",
+      "field": "oci3yHkd",
+      "reportDetail": "oci3yHkd 由 25 改為 28",
+      "candidateValue": 28,
+      "reviewedAsOf": "2026-08-31",
+      "evidenceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=877",
+      "evidenceNote": "AIA official On-going Cost Illustrations (May 2026), p.1, financial period ended November 2025, lists Hong Kong and China Fund after 3 years cost as HKD 28; candidate matches. Source: https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/on-going-cost-illustrations-may-2026-en.pdf.coredownload.inline.pdf"
+    },
+    {
+      "kind": "fee_changed",
+      "fundClassId": "mpfa-cf-877",
+      "field": "oci5yHkd",
+      "reportDetail": "oci5yHkd 由 44 改為 49",
+      "candidateValue": 49,
+      "reviewedAsOf": "2026-08-31",
+      "evidenceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=877",
+      "evidenceNote": "AIA official On-going Cost Illustrations (May 2026), p.1, financial period ended November 2025, lists Hong Kong and China Fund after 5 years cost as HKD 49; candidate matches. Source: https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/on-going-cost-illustrations-may-2026-en.pdf.coredownload.inline.pdf"
+    },
+    {
+      "kind": "fee_changed",
+      "fundClassId": "mpfa-cf-1579",
+      "field": "latestFer",
+      "reportDetail": "latestFer 由 1.24314 改為 1.24313",
+      "candidateValue": 1.24313,
+      "reviewedAsOf": "2026-08-31",
+      "evidenceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1579",
+      "evidenceNote": "AIA official On-going Cost Illustrations (May 2026), p.1, lists China HK Dynamic Asset Allocation Fund 2025 FER as 1.24313%; AIA 2025 Annual Consolidated Report, p.206, independently confirms 1.24313%. Candidate matches. Source: https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/on-going-cost-illustrations-may-2026-en.pdf.coredownload.inline.pdf"
+    }
+  ]
+}
