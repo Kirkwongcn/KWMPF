@@ -426,7 +426,7 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
                       href={scheme.factSheet.url}
                       target="_blank"
                       rel="noreferrer"
-                      aria-label={`${scheme.schemeName} 積金局基金便覽 PDF`}
+                      aria-label={`${scheme.schemeName} 積金局基金便覽（PDF）`}
                     >
                       積金局基金便覽（PDF）
                     </a>
