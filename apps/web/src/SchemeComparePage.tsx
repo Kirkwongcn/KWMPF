@@ -366,6 +366,29 @@ export function SchemeComparePage({
               role="region"
               aria-label="計劃逐項比較表"
               aria-describedby="scheme-compare-scroll-hint"
+              onKeyDown={(event) => {
+                if (
+                  event.altKey ||
+                  event.ctrlKey ||
+                  event.metaKey ||
+                  event.shiftKey ||
+                  (event.key !== "ArrowLeft" && event.key !== "ArrowRight")
+                ) {
+                  return;
+                }
+                const element = event.currentTarget;
+                const offset = event.key === "ArrowRight" ? 80 : -80;
+                const nextScrollLeft = Math.max(
+                  0,
+                  Math.min(
+                    element.scrollLeft + offset,
+                    element.scrollWidth - element.clientWidth,
+                  ),
+                );
+                if (nextScrollLeft === element.scrollLeft) return;
+                event.preventDefault();
+                element.scrollLeft = nextScrollLeft;
+              }}
             >
               <table className="kw-table scheme-compare-table">
                 <thead>
