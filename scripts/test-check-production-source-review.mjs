@@ -313,6 +313,16 @@ try {
     /cannot approve an empty anomaly list/,
   );
 
+  const inconsistentAnomalyFiles = writeBatch("2026-09-30", {
+    requiresReview: false,
+    anomalies: anomalyFixtures,
+  });
+  assertFails(
+    check("2026-09-30/mpf-fund-platform.json"),
+    /lists anomalies but does not require human review/,
+  );
+  fs.rmSync(inconsistentAnomalyFiles.directory, { recursive: true, force: true });
+
   const olderReviewedFiles = writeBatch("2026-09-28", {
     outcome: "needs_review",
     publishable: false,
