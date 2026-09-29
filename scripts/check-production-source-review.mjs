@@ -94,13 +94,17 @@ function validateReviewDisposition({
     fail("review disposition has an invalid sourceSnapshotSha256.");
   }
   if (disposition.sourceSnapshotSha256 !== sha256(sourceFile)) {
-    fail("review disposition source snapshot hash does not match the source file.");
+    fail(
+      "review disposition source snapshot hash does not match the source file.",
+    );
   }
   if (!/^[a-f0-9]{64}$/.test(disposition.refreshReportSha256 ?? "")) {
     fail("review disposition has an invalid refreshReportSha256.");
   }
   if (disposition.refreshReportSha256 !== sha256(reportFile)) {
-    fail("review disposition refresh report hash does not match the report file.");
+    fail(
+      "review disposition refresh report hash does not match the report file.",
+    );
   }
   if (
     typeof disposition.reviewer !== "string" ||
@@ -124,7 +128,9 @@ function validateReviewDisposition({
       (reason, index) => reason !== report.decision.reasons[index],
     )
   ) {
-    fail("review disposition must reproduce every refresh decision reason exactly.");
+    fail(
+      "review disposition must reproduce every refresh decision reason exactly.",
+    );
   }
   if (
     typeof disposition.reason !== "string" ||
@@ -179,7 +185,9 @@ function validateReviewDisposition({
       fail("source snapshot contains a record without a fundClassId.");
     }
     if (sourceRecords.has(record.fundClassId)) {
-      fail(`source snapshot contains duplicate records for ${record.fundClassId}.`);
+      fail(
+        `source snapshot contains duplicate records for ${record.fundClassId}.`,
+      );
     }
     sourceRecords.set(record.fundClassId, record);
   }
@@ -202,7 +210,9 @@ function validateReviewDisposition({
 
     const record = sourceRecords.get(item.fundClassId);
     if (!record || record.dataAsOf !== source.sourceDataAsOf) {
-      fail(`review disposition has no same-date source record for ${item.fundClassId}.`);
+      fail(
+        `review disposition has no same-date source record for ${item.fundClassId}.`,
+      );
     }
     if (
       !record.fundOverview ||
@@ -211,30 +221,42 @@ function validateReviewDisposition({
       !Number.isFinite(record.fundOverview[item.field]) ||
       item.candidateValue !== record.fundOverview[item.field]
     ) {
-      fail(`review disposition candidateValue does not match ${item.fundClassId}.${item.field}.`);
+      fail(
+        `review disposition candidateValue does not match ${item.fundClassId}.${item.field}.`,
+      );
     }
     if (item.reportDetail !== reported.detail) {
-      fail(`review disposition reportDetail does not match ${item.fundClassId}.${item.field}.`);
+      fail(
+        `review disposition reportDetail does not match ${item.fundClassId}.${item.field}.`,
+      );
     }
     if (item.reviewedAsOf !== source.sourceDataAsOf) {
-      fail(`review disposition reviewedAsOf does not match the source date for ${item.fundClassId}.${item.field}.`);
+      fail(
+        `review disposition reviewedAsOf does not match the source date for ${item.fundClassId}.${item.field}.`,
+      );
     }
     if (
       typeof item.evidenceNote !== "string" ||
       item.evidenceNote.trim().length < 10
     ) {
-      fail(`review disposition is missing evidence notes for ${item.fundClassId}.${item.field}.`);
+      fail(
+        `review disposition is missing evidence notes for ${item.fundClassId}.${item.field}.`,
+      );
     }
     if (
       item.evidenceUrl !== record.sourceUrl ||
       !validateOfficialEvidenceUrl(item.evidenceUrl, item.fundClassId)
     ) {
-      fail(`review disposition evidence URL is not the official MPFA detail page for ${item.fundClassId}.`);
+      fail(
+        `review disposition evidence URL is not the official MPFA detail page for ${item.fundClassId}.`,
+      );
     }
   }
 
   if (seen.size !== reportedByKey.size) {
-    fail("review disposition does not cover every reported anomaly exactly once.");
+    fail(
+      "review disposition does not cover every reported anomaly exactly once.",
+    );
   }
   return disposition;
 }
@@ -345,7 +367,9 @@ if (audit.requiresReview === true) {
   acceptedDisposition = true;
 } else if (audit.requiresReview === false) {
   if (fs.existsSync(dispositionFile)) {
-    fail("review disposition is unexpected because the report requires no review.");
+    fail(
+      "review disposition is unexpected because the report requires no review.",
+    );
   }
   if (!publishableReady && !unchangedCleanBatch) {
     fail(
@@ -355,7 +379,9 @@ if (audit.requiresReview === true) {
     );
   }
 } else {
-  fail("refresh report must explicitly state whether human review is required.");
+  fail(
+    "refresh report must explicitly state whether human review is required.",
+  );
 }
 
 const summaryLines = [

@@ -48,15 +48,18 @@ const sourceRecords = [
   },
 ];
 
-function makeReport({
-  outcome = "ready",
-  publishable = true,
-  requiresReview = false,
-  candidateDataAsOf = sourceDate,
-  sourceFailures = [],
-  blockedRecords = 0,
-  anomalies = requiresReview ? anomalyFixtures : [],
-} = {}, date) {
+function makeReport(
+  {
+    outcome = "ready",
+    publishable = true,
+    requiresReview = false,
+    candidateDataAsOf = sourceDate,
+    sourceFailures = [],
+    blockedRecords = 0,
+    anomalies = requiresReview ? anomalyFixtures : [],
+  } = {},
+  date,
+) {
   return {
     decision: {
       outcome,
@@ -177,7 +180,10 @@ try {
   addDisposition(reviewedFiles);
   const accepted = check("2026-09-29/mpf-fund-platform.json");
   assert.equal(accepted.status, 0, accepted.stderr);
-  assert.match(accepted.stdout, /Review disposition: `accepted for this exact source and report`/);
+  assert.match(
+    accepted.stdout,
+    /Review disposition: `accepted for this exact source and report`/,
+  );
 
   addDisposition(reviewedFiles, (value) => {
     value.anomalies.pop();
@@ -317,10 +323,7 @@ try {
     check("2026-09-28/mpf-fund-platform.json"),
     /older than 2026-09-29/,
   );
-  assert.equal(
-    check("2026-09-28/mpf-fund-platform.json", "true").status,
-    0,
-  );
+  assert.equal(check("2026-09-28/mpf-fund-platform.json", "true").status, 0);
 
   const noNewDataFiles = writeBatch("2026-09-30", {
     outcome: "no_new_data",
@@ -352,10 +355,7 @@ try {
     /does not match source date/,
   );
 
-  assertFails(
-    check("../2026-09-30/mpf-fund-platform.json"),
-    /must use/,
-  );
+  assertFails(check("../2026-09-30/mpf-fund-platform.json"), /must use/);
 
   console.log("Production source review preflight checks passed.");
 } finally {
