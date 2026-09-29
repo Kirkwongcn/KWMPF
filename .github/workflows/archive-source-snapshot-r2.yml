@@ -34,8 +34,8 @@ jobs:
           github.event_name == 'workflow_run' &&
           github.event.workflow_run.head_branch == 'main' &&
           github.event.workflow_run.head_repository.full_name == github.repository &&
-          contains(fromJSON('[\"schedule\",\"workflow_dispatch\"]'), github.event.workflow_run.event) &&
-          contains(fromJSON('[\"success\",\"failure\"]'), github.event.workflow_run.conclusion)
+          contains(fromJSON('["schedule","workflow_dispatch"]'), github.event.workflow_run.event) &&
+          contains(fromJSON('["success","failure"]'), github.event.workflow_run.conclusion)
         )
       }}
     runs-on: ubuntu-latest
@@ -55,7 +55,7 @@ jobs:
           SOURCE_RUN_ID: ${{ github.event.workflow_run.id || inputs.source_run_id }}
         run: |
           set -euo pipefail
-          [[ "${SOURCE_RUN_ID}" =~ ^[0-9]+$ ]] || { echo "Source run ID must contain only digits." >&2; exit 2; }
+          [[ "${SOURCE_RUN_ID}" =~ ^[0-9]{1,20}$ ]] || { echo "Source run ID must contain only digits." >&2; exit 2; }
 
           run_json="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${SOURCE_RUN_ID}")"
           refresh_workflow_id="$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/refresh-source-snapshot.yml" --jq '.id')"
