@@ -4,7 +4,7 @@
   "sourceSnapshotSha256": "04b78cfc1e4953d48311740d68f98b313ad5b265f486b2584e52c75baddcca5a",
   "refreshReportSha256": "f41979a07e6a7c57af2aaf683ecac3c8f989bd9a96dc71bc40358748b5924cf1",
   "reviewer": "Repository owner (approval recorded 2026-09-29), with Codex-assisted source review",
-  "reviewedAt": "2026-09-29 15:45:35.000Z",
+  "reviewedAt": "2026-09-29T15:45:57.000Z",
   "decision": "accept",
   "decisionReasons": [
     "異常核對政策 2026-09-10.v5 標記了 14 項異常，涉及 6 個基金類別；必須人手核對後才可發布。",
