@@ -133,14 +133,14 @@
 - 未發布候選批次保留 90 日；失敗擷取內容保留 30 日；調查中資料暫停清理直至結案。
 - D1 長期保留發布快照、批次、來源及稽核關係。
 - 使用 D1 Time Travel 作短期時間點復原。
-- 每週完整匯出 D1 至獨立 R2 備份位置並保留一年。
+- 每週完整匯出 D1 至私有 R2 備份位置並讀回驗證。最低保存目標一年；現行按使用者決定不設定自動到期，固定保留年期及人工清理程序仍待覆核。
 - 每季在非正式環境執行實際還原測試並保存結果。
 
-#### 現況核對（2026-09-28；需求與已驗收能力分開記錄）
+#### 現況核對（2026-09-29；需求與已驗收能力分開記錄）
 
 - 每週 production D1 備份已運行；[Backup production D1 run #2](https://github.com/Kirkwongcn/KWMPF/actions/runs/36309140770) 的 SQL 與 manifest 已寫入 private R2 並讀回核對。這證明備份物件可讀回，不等於完成還原。
 - [Restore Drill #14](https://github.com/Kirkwongcn/KWMPF/actions/runs/36360500072) 使用 production R2 的部署前備份，在 GitHub runner 的臨時 D1 還原，核對 checksum、snapshot、核心資料表及 orphan rows；它沒有寫入 production D1，也不證明可在遠端 D1 安全還原。
-- main 已包含受保護的 [R2-to-D1 還原 workflow](https://github.com/Kirkwongcn/KWMPF/blob/main/.github/workflows/restore-r2-d1.yml)，有環境 gate 和每環境 D1 concurrency lock；遠端 staging D1 還原及 Worker／Pages／D1 聯合復原演練仍未完成。季度演練排程亦未設定。
+- main 已包含受保護的 [R2-to-D1 還原 workflow](https://github.com/Kirkwongcn/KWMPF/blob/main/.github/workflows/restore-r2-d1.yml)，有環境 gate 和每環境 D1 concurrency lock。遠端 staging Restore D1 run #2 已套用 SQL，snapshot 與 451 筆 fund-class 核對通過，但舊 workflow 因誤解析 Wrangler stdout 而標記失敗；PR #341 已修正 import 結果判斷，仍需新的 protected staging run 完成端到端驗收。Worker／Pages／D1 聯合復原演練仍未完成，季度演練排程亦未設定。
 - 使用者決定 D1 backups 及 source archives 暫不設 R2 自動到期。這是目前操作選擇，不代表已訂定固定保留年期或人工清理程序；設定 lifecycle 或刪除物件前須重新覆核。
 
 ### API 及公開行為
