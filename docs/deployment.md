@@ -75,6 +75,8 @@ fund class，並且 `Cache-Control` 必須是 `public, max-age=300, stale-while-
 
 The production workflow now requires a same-batch refresh report before resolving return observations, building a seed, exporting production D1, or writing the backup to R2. The report's candidate date must match the source snapshot, readiness must pass, and the audit must not require human review or record source failures. Only `ready`/publishable batches and clean `no_new_data` batches may proceed. Missing reports, date mismatches, `blocked`, and `needs_review` decisions stop the workflow before production access. Run #24 predates this guard; the 2026-08-31 source batch remains blocked until its reported anomalies are reviewed and the source candidate is regenerated or explicitly corrected.
 
+PR #345 adds this preflight. For that PR only, the repository owner accepted the documented manual diff review as equivalent to the unavailable `/code-review` command on 2026-09-29. This review-evidence exception does not clear the source batch's `needs_review` status or authorize a production deployment.
+
 ### Production D1 backup and restore
 
 `Backup production D1` is scheduled for Sundays at 03:17 UTC (11:17 Hong Kong time) and can also be dispatched manually. It uses the protected `production` environment, so each run waits for its environment approval before accessing production credentials. The workflow exports `kwmpf-production`, checks that the published snapshot ID did not change during export, uploads SQL and a SHA-256/byte-count manifest to `kwmpf-production-raw/backups/<backup-id>/`, then reads both objects back and verifies them. It shares a concurrency group with `Deploy production` so the export cannot overlap a deployment.
