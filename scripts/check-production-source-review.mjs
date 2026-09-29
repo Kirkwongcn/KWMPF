@@ -342,6 +342,13 @@ if (!Array.isArray(audit.sourceFailures) || audit.sourceFailures.length !== 0) {
   );
 }
 
+if (!Array.isArray(audit.anomalies)) {
+  fail("refresh report omits its anomaly list.");
+}
+if (audit.requiresReview === false && audit.anomalies.length > 0) {
+  fail("refresh report lists anomalies but does not require human review.");
+}
+
 const publishableReady =
   decision.outcome === "ready" && decision.publishable === true;
 const unchangedCleanBatch =
