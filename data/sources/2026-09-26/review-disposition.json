@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "batchId": "candidate-36219709026",
-  "sourceSnapshotSha256": "04b78cfc1e4953d48311740d68f98b313ad5b265f486b2584e52c75baddcca5a",
-  "refreshReportSha256": "f41979a07e6a7c57af2aaf683ecac3c8f989bd9a96dc71bc40358748b5924cf1",
+  "sourceSnapshotSha256": "495491743fdb0cfe0c4c53f0c89b1840fad5b90410d8e6edf7fbedad8c95f767",
+  "refreshReportSha256": "dc15abf2dc251c9f4694eb15d44ec4a2b6cad3f0c1459d2f6eb29c05f7f6c55c",
   "reviewer": "Repository owner (approval recorded 2026-09-29), with Codex-assisted source review",
   "reviewedAt": "2026-09-29T15:45:57.000Z",
   "decision": "accept",
