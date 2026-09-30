@@ -44,7 +44,7 @@ test("加入風險級別條件後結果收窄且仍全部相符", async ({ page 
   await expect(rows.first()).toBeVisible();
   const beforeCount = await rows.count();
 
-  const riskCell = rows.first().locator("td").nth(2);
+  const riskCell = rows.first().locator("td").nth(3);
   const riskClass = (await riskCell.textContent())!.trim();
   test.skip(!/^\d+$/.test(riskClass), "首行沒有官方風險級別可用作篩選");
 
@@ -65,7 +65,7 @@ test("加入風險級別條件後結果收窄且仍全部相符", async ({ page 
             .map((element) => ({
               text: element.textContent ?? "",
               riskClass:
-                element.querySelectorAll("td")[2]?.textContent?.trim() ?? "",
+                element.querySelectorAll("td")[3]?.textContent?.trim() ?? "",
             }))
             .filter(
               (row) =>

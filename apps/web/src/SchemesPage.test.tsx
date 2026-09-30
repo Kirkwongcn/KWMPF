@@ -58,15 +58,16 @@ describe("scheme comparison page", () => {
     expect(
       screen.getByRole("navigation", { name: "主要導覽" }),
     ).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "基金排名" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "同類排名" })).toHaveAttribute(
       "href",
       "/rankings",
     );
+    expect(screen.getByRole("link", { name: "KWMPF 首頁" })).toHaveAttribute(
+      "href",
+      "/",
+    );
     expect(
-      screen.getByRole("link", { name: /Kirk Wong Research/ }),
-    ).toHaveAttribute("href", "/");
-    expect(
-      screen.getByText(/本網站只提供資料比較及投資教育，不構成投資建議/),
+      screen.getByText(/本網站提供資料比較及投資教育，不構成投資建議/),
     ).toBeVisible();
   });
 
@@ -327,7 +328,7 @@ describe("scheme fund returns", () => {
     expect(await screen.findByText("一年年率化 6.09%")).toBeInTheDocument();
     expandFundLists();
     expect(screen.getByText("一年年率化 6.09%")).toBeVisible();
-    expect(screen.getByText("一年年率化 2.50%")).toBeVisible();
+    expect(screen.getByText("一年年率化 2.5%")).toBeVisible();
   });
 
   it("switches every fund to the selected return horizon", async () => {

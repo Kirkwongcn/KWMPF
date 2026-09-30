@@ -78,6 +78,13 @@ export function FundsPage({
   const [results, setResults] = useState<FundSummary[] | null>(null);
   const [totalMatches, setTotalMatches] = useState(0);
   const [failed, setFailed] = useState(false);
+  const [page, setPage] = useState(
+    () => Number(new URLSearchParams(window.location.search).get("page")) || 1,
+  );
+  const [sort, setSort] = useState(
+    () => new URLSearchParams(window.location.search).get("sort") ?? "name",
+  );
+  const [selected, setSelected] = useState<string[]>([]);
 
   function pushFilters(
     overrides: Partial<{
@@ -86,6 +93,8 @@ export function FundsPage({
       trustee: string;
       riskClass: string;
       query: string;
+      page: number;
+      sort: string;
     }> = {},
   ) {
     const next = {
@@ -94,14 +103,29 @@ export function FundsPage({
       trustee,
       riskClass,
       query: submittedQuery,
+      page: 1,
+      sort,
       ...overrides,
     };
-    const params = new URLSearchParams();
+    const params = new URLSearchParams(window.location.search);
+    for (const key of [
+      "q",
+      "category",
+      "fundType",
+      "trustee",
+      "riskClass",
+      "page",
+      "sort",
+    ])
+      params.delete(key);
+    setPage(next.page);
     if (next.query.trim()) params.set("q", next.query.trim());
     if (next.category !== "all") params.set("category", next.category);
     if (next.fundType !== "all") params.set("fundType", next.fundType);
     if (next.trustee !== "all") params.set("trustee", next.trustee);
     if (next.riskClass !== "all") params.set("riskClass", next.riskClass);
+    if (next.page > 1) params.set("page", String(next.page));
+    if (next.sort !== "name") params.set("sort", next.sort);
     const search = params.toString();
     window.history.pushState(
       {},
@@ -139,6 +163,8 @@ export function FundsPage({
       setRiskClass(params.get("riskClass") ?? "all");
       setQuery(nextQuery);
       setSubmittedQuery(nextQuery);
+      setPage(Number(params.get("page")) || 1);
+      setSort(params.get("sort") ?? "name");
     }
     window.addEventListener("popstate", restoreFilters);
     return () => window.removeEventListener("popstate", restoreFilters);
@@ -152,14 +178,19 @@ export function FundsPage({
     if (fundType !== "all") params.set("fundType", fundType);
     if (trustee !== "all") params.set("trustee", trustee);
     if (riskClass !== "all") params.set("riskClass", riskClass);
+    params.set("page", String(page));
+    params.set("pageSize", "50");
+    params.set("sort", sort);
 
     setFailed(false);
+    setResults(null);
     fetch(`${apiBaseUrl}/search?${params.toString()}`, {
       signal: controller.signal,
     })
       .then(async (response) => {
         if (!response.ok) throw new Error("Search unavailable");
-        const total = Number(response.headers.get("X-Total-Matches"));
+        const totalHeader = response.headers.get("X-Total-Matches");
+        const total = totalHeader === null ? NaN : Number(totalHeader);
         const payload = (await response.json()) as FundSummary[];
         setResults(payload);
         setTotalMatches(Number.isFinite(total) ? total : payload.length);
@@ -171,7 +202,16 @@ export function FundsPage({
         setFailed(true);
       });
     return () => controller.abort();
-  }, [apiBaseUrl, submittedQuery, category, fundType, trustee, riskClass]);
+  }, [
+    apiBaseUrl,
+    submittedQuery,
+    category,
+    fundType,
+    trustee,
+    riskClass,
+    page,
+    sort,
+  ]);
 
   return (
     <SiteChrome
@@ -276,8 +316,10 @@ export function FundsPage({
                   className="kw-control"
                   id="filter-query"
                   value={query}
+                  type="search"
+                  maxLength={120}
                   onChange={(event) => setQuery(event.target.value)}
-                  placeholder="例如：Principal、BCT"
+                  placeholder="例如：滙豐、富達、保守基金"
                 />
                 <button className="kw-button" type="submit">
                   套用
@@ -295,13 +337,49 @@ export function FundsPage({
         <h2 className="kw-section__heading" id="results-title">
           瀏覽結果
         </h2>
+        <div className="kw-results-toolbar">
+          <div>
+            <label htmlFor="fund-sort">顯示順序</label>
+            <select
+              className="kw-control"
+              id="fund-sort"
+              value={sort}
+              onChange={(event) => {
+                setSort(event.target.value);
+                pushFilters({ sort: event.target.value });
+              }}
+            >
+              <option value="name">官方基金名稱</option>
+              <option value="return">一年回報（高至低）</option>
+              <option value="fee">管理費（低至高）</option>
+              <option value="risk">風險級別（低至高）</option>
+            </select>
+          </div>
+          <span>
+            選取 {selected.length} / 4 個基金{" "}
+            {selected.length > 0 && (
+              <a
+                className="kw-button"
+                href={`/funds/compare?ids=${selected.map(encodeURIComponent).join(",")}`}
+              >
+                並列比較
+              </a>
+            )}
+          </span>
+        </div>
+        {sort !== "name" && (
+          <p className="kw-status kw-status--warning">
+            這是瀏覽順序，可包含不同組別及過期數值；要作同類排名，請使用
+            <a href="/rankings">同類排名頁</a>。
+          </p>
+        )}
         {failed ? (
           <p className="kw-status kw-status--warning" role="alert">
             暫時無法讀取已發布資料
           </p>
         ) : results === null ? (
           <p className="kw-status" role="status" aria-live="polite">
-            正在讀取基金，並按官方一年回報排序⋯⋯
+            正在讀取基金…
           </p>
         ) : results.length === 0 ? (
           <p
@@ -319,9 +397,7 @@ export function FundsPage({
               aria-live="polite"
               aria-atomic="true"
             >
-              {totalMatches > results.length
-                ? `共 ${totalMatches} 隻符合條件，以下顯示首 ${results.length} 隻。可加入更多篩選條件收窄範圍。`
-                : `共 ${results.length} 隻已發布基金。`}
+              {`共 ${totalMatches} 隻符合條件；第 ${page} / ${Math.max(1, Math.ceil(totalMatches / 50))} 頁，顯示 ${(page - 1) * 50 + 1}–${(page - 1) * 50 + results.length} 隻。`}
             </p>
             <p className="kw-table-hint" id="fund-table-scroll-hint">
               左右滑動可查看其餘欄位
@@ -333,9 +409,10 @@ export function FundsPage({
               aria-label="基金瀏覽結果"
               aria-describedby="fund-table-scroll-hint"
             >
-              <table className="kw-table">
+              <table className="kw-table kw-fund-results">
                 <thead>
                   <tr>
+                    <th scope="col">比較</th>
                     <th scope="col">基金</th>
                     <th scope="col">一年回報</th>
                     <th scope="col">管理費</th>
@@ -348,6 +425,25 @@ export function FundsPage({
                 <tbody>
                   {results.map((fund) => (
                     <tr key={fund.id}>
+                      <td>
+                        <input
+                          type="checkbox"
+                          aria-label={`選取 ${fund.constituentFundName} ${fundClassLabel(fund.fundClassName)} 作比較`}
+                          checked={selected.includes(fund.id)}
+                          disabled={
+                            !selected.includes(fund.id) && selected.length >= 4
+                          }
+                          onChange={() =>
+                            setSelected((current) =>
+                              current.includes(fund.id)
+                                ? current.filter((id) => id !== fund.id)
+                                : current.length < 4
+                                  ? [...current, fund.id]
+                                  : current,
+                            )
+                          }
+                        />
+                      </td>
                       <th scope="row">
                         <a
                           href={`/fund-classes/${encodeURIComponent(fund.id)}`}
@@ -401,6 +497,25 @@ export function FundsPage({
                 </tbody>
               </table>
             </div>
+            <nav className="kw-pagination" aria-label="基金結果頁次">
+              <button
+                className="kw-button kw-button--secondary"
+                disabled={page <= 1}
+                onClick={() => pushFilters({ page: page - 1 })}
+              >
+                上一頁
+              </button>
+              <span>
+                第 {page} / {Math.max(1, Math.ceil(totalMatches / 50))} 頁
+              </span>
+              <button
+                className="kw-button kw-button--secondary"
+                disabled={page * 50 >= totalMatches}
+                onClick={() => pushFilters({ page: page + 1 })}
+              >
+                下一頁
+              </button>
+            </nav>
           </>
         )}
         <p className="kw-muted">

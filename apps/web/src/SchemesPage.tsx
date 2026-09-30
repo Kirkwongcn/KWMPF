@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { SiteChrome } from "./SiteChrome";
+import { matchesSearch } from "../../api/src/search";
 import { fundClassLabel, joinFundParts } from "./fundClassLabel";
 
 type SchemeFund = {
@@ -129,7 +130,8 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
     nextQuery: string,
     historyAction: "push" | "replace",
   ) {
-    const params = new URLSearchParams();
+    const params = new URLSearchParams(window.location.search);
+    for (const key of ["sort", "period", "q"]) params.delete(key);
     if (nextSort !== "name") params.set("sort", nextSort);
     if (nextHorizon !== "1") params.set("period", nextHorizon);
     if (nextQuery.trim()) params.set("q", nextQuery.trim());
@@ -172,9 +174,7 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
     const query = searchQuery.trim().toLowerCase();
     if (!query) return sortedSchemes;
     return sortedSchemes.filter((scheme) =>
-      `${scheme.schemeName} ${scheme.trusteeName}`
-        .toLowerCase()
-        .includes(query),
+      matchesSearch(query, [scheme.schemeName, scheme.trusteeName]),
     );
   }, [sortedSchemes, searchQuery]);
 
@@ -363,11 +363,12 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
                       {scheme.managementFee ? (
                         <>
                           <span className="kw-nowrap">
-                            {scheme.managementFee.min.toFixed(2)}% –{" "}
-                            {scheme.managementFee.max.toFixed(2)}%
+                            {scheme.managementFee.min}% –{" "}
+                            {scheme.managementFee.max}%
                           </span>
                           <small className="kw-fee-note">
-                            中位數 {scheme.managementFee.median.toFixed(2)}%
+                            中位數{" "}
+                            {Number(scheme.managementFee.median.toFixed(5))}%
                           </small>
                           <small className="kw-fee-note">
                             平台已核實 {scheme.fundClassCount} 隻基金中，
@@ -486,7 +487,7 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
                                 {horizons[horizon].label}年率化
                                 {value === undefined
                                   ? "官方未提供"
-                                  : ` ${value.toFixed(2)}%`}
+                                  : ` ${value}%`}
                                 {fund.returnsFreshness?.[horizon]?.status ===
                                   "stale" && (
                                   <small className="kw-data-state kw-data-state--stale">

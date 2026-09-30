@@ -6,6 +6,10 @@ import { FundsPage } from "./FundsPage";
 import { RankingsPage } from "./RankingsPage";
 import { SchemeComparePage } from "./SchemeComparePage";
 import { SchemesPage } from "./SchemesPage";
+import { FundComparePage } from "./FundComparePage";
+import { DataStatusPage } from "./DataStatusPage";
+import { MethodologyPage } from "./MethodologyPage";
+import { SiteChrome } from "./SiteChrome";
 import "./styles.css";
 
 const apiBaseUrl = import.meta.env.VITE_API_URL ?? "http://localhost:8787";
@@ -40,6 +44,12 @@ createRoot(root).render(
   <StrictMode>
     {fundClassId ? (
       <FundClassPage apiBaseUrl={apiBaseUrl} fundClassId={fundClassId} />
+    ) : window.location.pathname === "/funds/compare" ? (
+      <FundComparePage apiBaseUrl={apiBaseUrl} />
+    ) : window.location.pathname === "/data-status" ? (
+      <DataStatusPage apiBaseUrl={apiBaseUrl} />
+    ) : window.location.pathname === "/methodology" ? (
+      <MethodologyPage />
     ) : isFundsPage ? (
       <FundsPage
         apiBaseUrl={apiBaseUrl}
@@ -63,8 +73,14 @@ createRoot(root).render(
         initialComparisonGroup={initialComparisonGroup}
         initialMetric={initialMetric}
       />
-    ) : (
+    ) : window.location.pathname === "/" ? (
       <App apiUrl={`${apiBaseUrl}/health`} />
+    ) : (
+      <SiteChrome title="找不到這個頁面">
+        <p>
+          請使用導覽尋找基金，或<a href="/">返回首頁</a>。
+        </p>
+      </SiteChrome>
     )}
   </StrictMode>,
 );

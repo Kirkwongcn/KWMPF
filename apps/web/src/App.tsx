@@ -1,20 +1,7 @@
-import { FormEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { SiteChrome } from "./SiteChrome";
-import { fundClassLabel, joinFundParts } from "./fundClassLabel";
-
-type SearchResult = {
-  id: string;
-  fundClassName: string;
-  constituentFundName: string;
-  schemeName: string;
-  trusteeName: string;
-};
-
-type Health = {
-  version: string;
-  status: "ok" | "error";
-};
-
+import { ArrowIcon } from "./ArrowIcon";
+import { AvailabilityChart, type DataQuality } from "./DataCharts";
 type Summary = {
   snapshotId: string | null;
   fundClassCount: number;
@@ -22,248 +9,160 @@ type Summary = {
   trusteeCount: number;
   dataAsOf: { earliest: string; latest: string } | null;
 };
-
 export function App({ apiUrl }: { apiUrl: string }) {
-  const [health, setHealth] = useState<Health | null>(null);
-  const [summary, setSummary] = useState<Summary | null>(null);
-  const [summaryStatus, setSummaryStatus] = useState<
-    "loading" | "loaded" | "error"
-  >("loading");
-  const [query, setQuery] = useState("");
-  const [results, setResults] = useState<SearchResult[]>([]);
-  const [searched, setSearched] = useState<string | null>(null);
-  const [totalMatches, setTotalMatches] = useState(0);
-  const [searchFailed, setSearchFailed] = useState(false);
-
+  const [summary, setSummary] = useState<Summary | null>(null),
+    [quality, setQuality] = useState<DataQuality | null>(null),
+    [failed, setFailed] = useState(false),
+    [query, setQuery] = useState("");
   useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => {
-        if (!response.ok) throw new Error("Health check failed");
-        return response.json() as Promise<Health>;
-      })
-      .then(setHealth)
-      .catch(() => setHealth({ version: "未能取得", status: "error" }));
-  }, [apiUrl]);
-
-  useEffect(() => {
-    fetch(`${new URL(apiUrl).origin}/summary`)
-      .then((response) => {
-        if (!response.ok) throw new Error("Summary unavailable");
-        return response.json() as Promise<Summary>;
-      })
-      .then((payload) => {
-        setSummary(payload);
-        setSummaryStatus("loaded");
+    const controller = new AbortController(),
+      origin = new URL(apiUrl).origin;
+    Promise.all([
+      fetch(`${origin}/summary`, { signal: controller.signal }),
+      fetch(`${origin}/data-quality`, { signal: controller.signal }),
+    ])
+      .then(async ([a, b]) => {
+        if (!a.ok || !b.ok) throw new Error("Data unavailable");
+        const nextSummary = (await a.json()) as Summary,
+          nextQuality = (await b.json()) as DataQuality;
+        if (
+          !nextSummary.snapshotId ||
+          nextSummary.snapshotId !== nextQuality.snapshotId
+        )
+          throw new Error("Snapshot changed");
+        setSummary(nextSummary);
+        setQuality(nextQuality);
       })
       .catch(() => {
-        setSummary(null);
-        setSummaryStatus("error");
+        if (!controller.signal.aborted) setFailed(true);
       });
+    return () => controller.abort();
   }, [apiUrl]);
-
-  function search(event: FormEvent) {
-    event.preventDefault();
-    const term = query.trim();
-    setSearchFailed(false);
-    if (!term) {
-      setResults([]);
-      setTotalMatches(0);
-      return setSearched(null);
-    }
-    fetch(`${new URL(apiUrl).origin}/search?q=${encodeURIComponent(term)}`)
-      .then(async (response) => {
-        if (!response.ok) throw new Error("Search failed");
-        const total = Number(response.headers.get("X-Total-Matches"));
-        const payload = (await response.json()) as SearchResult[];
-        setResults(payload);
-        setTotalMatches(Number.isFinite(total) ? total : payload.length);
-        setSearched(term);
-      })
-      .catch(() => {
-        setResults([]);
-        setTotalMatches(0);
-        setSearched(null);
-        setSearchFailed(true);
-      });
-  }
-
-  const apiStatus =
-    health?.status === "ok"
-      ? "正常"
-      : health?.status === "error"
-        ? "無法連線"
-        : "檢查中";
-
   return (
-    <SiteChrome
-      isHome
-      eyebrow="香港強積金研究"
-      title="用可追溯資料，讀懂強積金選擇"
-      subtitle="基金類別、比較組別、官方來源與截至日期，放在同一個清晰框架內。"
-    >
-      <section className="kw-section" aria-labelledby="search-title">
-        <h2 className="kw-section__heading" id="search-title">
-          搜尋及查閱
-        </h2>
-        <div className="kw-card kw-card--accent">
-          <form className="search-form" onSubmit={search}>
+    <SiteChrome isHome title="查清資料，再作比較">
+      <section className="kw-home-intro" aria-labelledby="page-title">
+        <div className="kw-home-intro__search">
+          <h1 id="page-title">
+            你的強積金，
+            <br />
+            從看清資料開始。
+          </h1>
+          <p className="kw-home-intro__lead">
+            查閱基金、比較同類表現，逐項核對費用、風險與官方來源。
+          </p>
+          <form className="search-form" action="/funds" method="get">
             <label htmlFor="fund-search">搜尋基金、計劃或受託人</label>
             <div>
               <input
                 className="kw-control"
                 id="fund-search"
+                name="q"
+                type="search"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="例如：Principal、BCT"
+                maxLength={120}
+                placeholder="例如：滙豐、富達、保守基金"
               />
               <button className="kw-button" type="submit">
-                搜尋
+                搜尋基金
               </button>
             </div>
           </form>
-          {searchFailed && (
-            <p className="kw-status kw-status--warning" role="status">
-              暫時無法搜尋已發布資料，請稍後再試。
-            </p>
-          )}
-          {searched !== null && results.length === 0 && (
-            <p className="kw-status kw-status--warning" role="status">
-              沒有符合「{searched}」的已發布基金。
-            </p>
-          )}
-          {results.length > 0 && (
-            <>
-              <p className="kw-muted" role="status">
-                共 {totalMatches} 項符合。
-              </p>
-              {totalMatches > results.length && (
-                <p className="kw-muted">
-                  以下顯示首 {results.length} 項。{" "}
-                  <a href={`/funds?q=${encodeURIComponent(searched ?? "")}`}>
-                    按條件瀏覽全部結果
-                  </a>
-                </p>
-              )}
-              <ul aria-label="搜尋結果" className="search-results">
-                {results.map((result) => (
-                  <li key={result.id}>
-                    <a href={`/fund-classes/${encodeURIComponent(result.id)}`}>
-                      {joinFundParts(
-                        result.constituentFundName,
-                        fundClassLabel(result.fundClassName),
-                      )}
-                    </a>
-                    <span>
-                      {result.schemeName}／{result.trusteeName}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </>
-          )}
-          <p className="kw-home-actions">
-            <a className="kw-button" href="/funds">
-              按條件瀏覽基金
-            </a>{" "}
-            <a className="kw-button" href="/rankings">
-              查看基金排名
-            </a>{" "}
-            <a className="kw-button" href="/schemes">
-              比較強積金計劃
-            </a>
+          <p className="kw-search-help">
+            可用中文常用名稱或英文名稱；結果保留官方名稱。
           </p>
+          <div className="kw-home-shortcuts">
+            <a href="/funds">瀏覽全部基金</a>
+            <a href="/rankings">按同類組別比較</a>
+          </div>
         </div>
+        <aside className="kw-home-intro__quality">
+          {quality ? (
+            <AvailabilityChart quality={quality} />
+          ) : (
+            <div className="kw-loading-block" role="status">
+              {failed ? (
+                <>
+                  未能載入資料覆蓋。<a href="/data-status">查看資料狀態</a>
+                  ，或重新整理再試。
+                </>
+              ) : (
+                "正在讀取回報資料覆蓋…"
+              )}
+            </div>
+          )}
+          <a className="kw-text-link" href="/data-status">
+            查看截至日期及缺口
+          </a>
+        </aside>
       </section>
-
-      <section className="kw-section" aria-labelledby="coverage-title">
-        <h2 className="kw-section__heading" id="coverage-title">
-          目前涵蓋範圍
-        </h2>
-        {summary?.snapshotId ? (
+      <section className="kw-coverage-strip" aria-label="已發布資料範圍">
+        {summary ? (
           <>
-            <dl className="status-list">
-              <div>
-                <dt>已核實基金類別</dt>
-                <dd>{summary.fundClassCount}</dd>
-              </div>
-              <div>
-                <dt>強積金計劃</dt>
-                <dd>{summary.schemeCount}</dd>
-              </div>
-              <div>
-                <dt>受託人</dt>
-                <dd>{summary.trusteeCount}</dd>
-              </div>
-              <div>
-                <dt>資料截至</dt>
-                <dd>
-                  {summary.dataAsOf
-                    ? summary.dataAsOf.earliest === summary.dataAsOf.latest
-                      ? summary.dataAsOf.latest
-                      : `${summary.dataAsOf.earliest} 至 ${summary.dataAsOf.latest}`
-                    : "官方未提供"}
-                </dd>
-              </div>
-            </dl>
-            <p className="kw-muted">
-              以上數字全部來自目前公開快照 <code>{summary.snapshotId}</code>
-              ，並非預估值。不同基金的官方截至日期可能不同，比較時請留意。
-            </p>
+            <span>
+              <strong>{summary.fundClassCount}</strong> 個基金類別
+            </span>
+            <span>
+              <strong>{summary.schemeCount}</strong> 個計劃
+            </span>
+            <span>
+              <strong>{summary.trusteeCount}</strong> 個受託人
+            </span>
+            <span>
+              平台資料截至{" "}
+              <strong>{summary.dataAsOf?.latest ?? "官方未提供"}</strong>
+            </span>
           </>
         ) : (
-          <p className="kw-status kw-status--warning" role="status">
-            {summaryStatus === "loading"
-              ? "正在載入已發布快照…"
-              : summaryStatus === "error"
-                ? "目前未能載入已發布快照資料，請稍後重新整理頁面。"
-                : "尚未有已發布快照"}
-          </p>
+          <span>{failed ? "資料範圍暫時無法取得" : "正在讀取公開快照…"}</span>
         )}
       </section>
-
-      <section className="kw-section" aria-labelledby="principles-title">
-        <h2 className="kw-section__heading" id="principles-title">
-          我們怎樣處理資料
-        </h2>
-        <div className="kw-grid">
-          <article className="kw-card">
-            <h3>只用官方來源</h3>
-            <p className="kw-muted">
-              數值來自積金局強積金基金平台及受託人官方基金便覽。每項公開數值都保留來源連結、官方截至日期及擷取版本，可逐項追查。
-            </p>
-          </article>
-          <article className="kw-card">
-            <h3>同類別才比較</h3>
-            <p className="kw-muted">
-              排名只在相同基金種類及資產配置組別內進行，不會把股票基金與保守基金放在同一個名次表內。
-            </p>
-          </article>
-          <article className="kw-card">
-            <h3>缺失不補值</h3>
-            <p className="kw-muted">
-              官方按披露規則沒有提供的欄位會標示「官方未提供」，網站不會以估算、年化或第三方數值填補。
-            </p>
-          </article>
+      <section className="kw-task-section" aria-labelledby="next-title">
+        <div>
+          <h2 id="next-title">由你的問題出發</h2>
+          <p className="kw-muted">
+            所有比較都保留來源；缺失與過期資料分開呈現。
+          </p>
         </div>
-        <p className="disclaimer">
-          本網站不提供個人化建議、不設推薦總分，亦不會替你決定基金選擇。
-        </p>
+        <div className="kw-task-list">
+          <a href="/funds">
+            <span>
+              <strong>找出你持有的基金</strong>
+              <small>查閱回報、費用、配置與持倉</small>
+            </span>
+            <span>
+              <ArrowIcon />
+            </span>
+          </a>
+          <a href="/rankings">
+            <span>
+              <strong>比較同類基金表現</strong>
+              <small>回報、費用、波幅分開排序</small>
+            </span>
+            <span>
+              <ArrowIcon />
+            </span>
+          </a>
+          <a href="/schemes">
+            <span>
+              <strong>了解不同計劃</strong>
+              <small>並列最多四個計劃的實際數據</small>
+            </span>
+            <span>
+              <ArrowIcon />
+            </span>
+          </a>
+        </div>
       </section>
-
-      <section className="kw-section" aria-labelledby="service-title">
-        <h2 className="kw-section__heading" id="service-title">
-          服務狀態
-        </h2>
-        <dl className="status-list">
-          <div>
-            <dt>版本</dt>
-            <dd>{health?.version ?? "檢查中"}</dd>
-          </div>
-          <div>
-            <dt>服務狀態</dt>
-            <dd>API：{apiStatus}</dd>
-          </div>
-        </dl>
+      <section className="kw-research-note kw-advanced">
+        <h2>深入分析，先看資料邊界。</h2>
+        <p>
+          平台快照與受託人便覽的日期可能不同。三年回報採用最長 90
+          日的網站門檻；其他排名指標一般為 45
+          日。切換期間後，可排名的基金數量會改變。
+        </p>
+        <a href="/methodology">閱讀完整比較方法</a>
+        <p className="kw-muted">公開快照：{summary?.snapshotId ?? "讀取中"}</p>
       </section>
     </SiteChrome>
   );

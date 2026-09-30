@@ -10,6 +10,7 @@ import {
   cacheKeyFor,
   currentPublicationVersion,
   isCacheablePath,
+  representationEtag,
 } from "../src/caching";
 
 describe("edge caching", () => {
@@ -47,7 +48,8 @@ describe("edge caching", () => {
     expect(response.headers.get("Cache-Control")).toBe(
       "public, max-age=300, stale-while-revalidate=600",
     );
-    expect(response.headers.get("ETag")).toBe(`"${snapshotId}"`);
+    expect(response.headers.get("ETag")).toMatch(/^"[a-f0-9]{64}"$/u);
+    expect(response.headers.get("X-Snapshot-Id")).toBe(snapshotId);
   });
 
   it("never caches a response produced while nothing is published", async () => {
@@ -78,7 +80,8 @@ describe("edge caching", () => {
       expect(response.headers.get("Cache-Control"), path).toBe(
         "public, max-age=300, stale-while-revalidate=600",
       );
-      expect(response.headers.get("ETag"), path).toBe(`"${snapshotId}"`);
+      expect(response.headers.get("ETag"), path).toMatch(/^"[a-f0-9]{64}"$/u);
+      expect(response.headers.get("X-Snapshot-Id"), path).toBe(snapshotId);
     }
   });
 
@@ -121,14 +124,109 @@ describe("edge caching", () => {
     const archived = await archiveCandidate(bindings, fundFixture);
     const snapshotId = await publishCandidate(bindings, fundFixture, archived);
 
+    const original = await SELF.fetch("https://kwmpf.test/summary");
     const response = await SELF.fetch("https://kwmpf.test/summary", {
-      headers: { "If-None-Match": `"${snapshotId}"` },
+      headers: { "If-None-Match": original.headers.get("ETag")! },
     });
 
     expect(response.status).toBe(304);
     expect(await response.text()).toBe("");
     expect(response.headers.get("Cache-Control")).toBe(
       "public, max-age=300, stale-while-revalidate=600",
+    );
+  });
+
+  it("validates a route even when the client computes its matching validator", async () => {
+    const archived = await archiveCandidate(bindings, fundFixture);
+    await publishCandidate(bindings, fundFixture, archived);
+    const version = (await currentPublicationVersion(bindings.DB))!;
+    const release =
+      (env as unknown as { RELEASE_VERSION?: string }).RELEASE_VERSION ??
+      "unknown";
+    for (const [path, status] of [
+      ["/rankings?period=2", 400],
+      ["/fund-classes/missing", 404],
+    ] as const) {
+      const url = "https://kwmpf.test" + path;
+      const etag = await representationEtag(
+        url,
+        version.contentVersion,
+        release,
+        new Date().toISOString().slice(0, 10),
+      );
+      const response = await SELF.fetch(url, {
+        headers: { "If-None-Match": etag },
+      });
+      expect(response.status).toBe(status);
+      expect(response.headers.get("ETag")).toBeNull();
+    }
+  });
+
+  it("does not reuse another endpoint's validator for an invalid period or unknown fund", async () => {
+    const archived = await archiveCandidate(bindings, fundFixture);
+    await publishCandidate(bindings, fundFixture, archived);
+    const summary = await SELF.fetch("https://kwmpf.test/summary");
+    for (const [path, status] of [
+      ["/rankings?period=2", 400],
+      ["/fund-classes/unknown", 404],
+    ] as const) {
+      const response = await SELF.fetch(`https://kwmpf.test${path}`, {
+        headers: { "If-None-Match": summary.headers.get("ETag")! },
+      });
+      expect(response.status).toBe(status);
+      expect(response.headers.get("Cache-Control")).toBe("no-store");
+    }
+  });
+
+  it("invalidates validators for day boundaries, source bytes, code version and query", async () => {
+    const baseline = await representationEtag(
+      "https://kwmpf.test/rankings?period=3",
+      "snapshot:sha-a",
+      "release-a",
+      "2026-09-28",
+    );
+    const alternatives = await Promise.all([
+      representationEtag(
+        "https://kwmpf.test/rankings?period=3",
+        "snapshot:sha-a",
+        "release-a",
+        "2026-09-29",
+      ),
+      representationEtag(
+        "https://kwmpf.test/rankings?period=1",
+        "snapshot:sha-a",
+        "release-a",
+        "2026-09-28",
+      ),
+      representationEtag(
+        "https://kwmpf.test/rankings?period=3",
+        "snapshot:sha-b",
+        "release-a",
+        "2026-09-28",
+      ),
+      representationEtag(
+        "https://kwmpf.test/rankings?period=3",
+        "snapshot:sha-a",
+        "release-b",
+        "2026-09-28",
+      ),
+    ]);
+    for (const alternative of alternatives)
+      expect(alternative).not.toBe(baseline);
+    expect(
+      await representationEtag(
+        "https://kwmpf.test/search?page=1&q=abc",
+        "s",
+        "r",
+        "2026-09-30",
+      ),
+    ).toBe(
+      await representationEtag(
+        "https://kwmpf.test/search?q=abc&page=1",
+        "s",
+        "r",
+        "2026-09-30",
+      ),
     );
   });
 });

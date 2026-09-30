@@ -177,7 +177,7 @@ describe("fund browse page", () => {
     expect(
       fetchMock.mock.calls
         .map((call) => String(call[0]))
-        .some((url) => url.endsWith("/search?")),
+        .some((url) => url.includes("/search?page=1&pageSize=50&sort=name")),
     ).toBe(true);
   });
 
@@ -219,7 +219,7 @@ describe("fund browse page", () => {
     });
 
     expect(
-      await screen.findByText(/共 137 隻符合條件，以下顯示首 50 隻/),
+      await screen.findByText(/共 137 隻符合條件；第 1 \/ 3 頁，顯示 1–50 隻/),
     ).toBeVisible();
   });
 
@@ -244,7 +244,9 @@ describe("fund browse page", () => {
       target: { value: "Equity Fund" },
     });
 
-    expect(await screen.findByText(/共 1 隻已發布基金/)).toBeVisible();
+    expect(
+      await screen.findByText(/共 1 隻符合條件；第 1 \/ 1 頁/),
+    ).toBeVisible();
     expect(screen.queryByText(/顯示首 50 隻/)).not.toBeInTheDocument();
   });
 
@@ -258,7 +260,7 @@ describe("fund browse page", () => {
       screen.getByRole("navigation", { name: "主要導覽" }),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/本網站只提供資料比較及投資教育，不構成投資建議/),
+      screen.getByText(/本網站提供資料比較及投資教育，不構成投資建議/),
     ).toBeVisible();
   });
 });

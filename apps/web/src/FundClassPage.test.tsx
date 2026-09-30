@@ -62,6 +62,7 @@ describe("fund class page", () => {
     ).toHaveAttribute("href", fixture.source.url);
     expect(fetch).toHaveBeenCalledWith(
       "https://api.test/fund-classes/mpfa-cf-429-class-i",
+      expect.objectContaining({ signal: expect.any(AbortSignal) }),
     );
     expect(screen.queryByText("預設投資策略")).not.toBeInTheDocument();
   });
@@ -161,7 +162,7 @@ describe("fund class page", () => {
       "/schemes",
     );
     expect(
-      screen.getByText(/本網站只提供資料比較及投資教育，不構成投資建議/),
+      screen.getByText(/本網站提供資料比較及投資教育，不構成投資建議/),
     ).toBeVisible();
   });
 
@@ -199,7 +200,7 @@ describe("fund class page", () => {
       within(table)
         .getAllByRole("row")
         .find((candidate) => candidate.textContent?.startsWith(horizon))!;
-    expect(within(row("一年")).getByText("4.20%")).toBeVisible();
+    expect(within(row("一年")).getByText("4.2%")).toBeVisible();
     expect(within(row("五年")).getByText("6.14%")).toBeVisible();
     expect(within(row("十年")).getByText("5.37%")).toBeVisible();
   });
@@ -331,7 +332,7 @@ describe("fund class page", () => {
       />,
     );
 
-    expect(await screen.findAllByText("官方未提供")).toHaveLength(23);
+    expect(await screen.findAllByText("官方未提供")).toHaveLength(28);
     expect(screen.getByText(/適用披露規則/)).toBeVisible();
     expect(screen.getByText("官方未提供年度回報。")).toBeVisible();
   });
@@ -459,7 +460,7 @@ describe("fund class page", () => {
     );
 
     expect(
-      await screen.findByText("HK$12,974.87 百萬（截至 2026-07-31）"),
+      await screen.findByText("HK$12974.87 百萬（截至 2026-07-31）"),
     ).toBeVisible();
     expect(screen.getByText("2012-09-03")).toBeVisible();
 
@@ -512,7 +513,7 @@ describe("fund class page", () => {
     );
 
     expect(await screen.findByText(/並非完全可比/)).toBeVisible();
-    expect(screen.getByText(/基金規模已超出官方披露寬限期/)).toBeVisible();
+    expect(screen.getByText(/基金規模已超出網站時效門檻/)).toBeVisible();
   });
   it("titles the browser tab with the fund being viewed", async () => {
     vi.stubGlobal(
@@ -615,7 +616,7 @@ describe("fund class page", () => {
     expect(await screen.findByText("回報資料過期")).toBeVisible();
     expect(
       screen.getByText(
-        new RegExp(`超出官方披露寬限期.*${fixture.fundClass.dataAsOf}`),
+        new RegExp(`超出網站時效門檻.*${fixture.fundClass.dataAsOf}`),
       ),
     ).toBeVisible();
     const oneYear = within(screen.getByRole("table", { name: "回報" }))
@@ -737,7 +738,7 @@ describe("cumulative returns", () => {
     expect(within(tenYear).getByText("145.86%")).toBeVisible();
 
     const fiveYear = rows.find((row) => row.textContent?.startsWith("五年"))!;
-    expect(within(fiveYear).getByText("4.20%")).toBeVisible();
+    expect(within(fiveYear).getByText("4.2%")).toBeVisible();
     expect(within(fiveYear).getByText("22.85%")).toBeVisible();
   });
 
@@ -753,7 +754,7 @@ describe("cumulative returns", () => {
     const fiveYear = within(table)
       .getAllByRole("row")
       .find((row) => row.textContent?.startsWith("五年"))!;
-    expect(within(fiveYear).getByText("4.20%")).toBeVisible();
+    expect(within(fiveYear).getByText("4.2%")).toBeVisible();
     expect(within(fiveYear).getByText("官方未提供")).toBeVisible();
     expect(screen.queryByText("22.85%")).not.toBeInTheDocument();
   });

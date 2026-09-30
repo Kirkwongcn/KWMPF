@@ -27,7 +27,11 @@ export function evaluateFreshness(
   today: Date = new Date(),
 ): PublishedFreshness {
   const asOf = Date.parse(`${dataAsOf}T00:00:00Z`);
-  if (!Number.isFinite(asOf)) {
+  if (
+    !/^\d{4}-\d{2}-\d{2}$/u.test(dataAsOf) ||
+    !Number.isFinite(asOf) ||
+    new Date(asOf).toISOString().slice(0, 10) !== dataAsOf
+  ) {
     return { status: "stale", dataAsOf, graceDays, ageDays: null };
   }
   const midnight = Date.UTC(
@@ -36,6 +40,8 @@ export function evaluateFreshness(
     today.getUTCDate(),
   );
   const ageDays = Math.floor((midnight - asOf) / DAY_MS);
+  if (ageDays < 0)
+    return { status: "stale", dataAsOf, graceDays, ageDays: null };
   return {
     status: ageDays > graceDays ? "stale" : "verified",
     dataAsOf,

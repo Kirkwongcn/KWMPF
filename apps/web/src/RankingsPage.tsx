@@ -1,6 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { SiteChrome } from "./SiteChrome";
 import { fundClassLabel, joinFundParts } from "./fundClassLabel";
+import { ValueBars } from "./DataCharts";
+import { useViewMode } from "./viewMode";
+import { downloadCsv } from "./downloadCsv";
 
 type RankingRow = {
   fundClassId: string;
@@ -10,6 +13,7 @@ type RankingRow = {
   trusteeName: string;
   comparisonGroup: string;
   displayValue: string;
+  value: number;
   feeCap?: boolean;
   rank: number;
   dataAsOf: string;
@@ -69,16 +73,26 @@ export function RankingsPage({
   );
   const [period, setPeriod] = useState<RankingPeriod>(initialPeriod);
   const [metric, setMetric] = useState<RankingMetric>(initialMetric);
+  const [mode] = useViewMode();
+  const [display, setDisplay] = useState<"table" | "chart">(() =>
+    new URLSearchParams(window.location.search).get("display") === "chart"
+      ? "chart"
+      : "table",
+  );
 
   function pushRankingUrl(
     nextMetric: RankingMetric,
     nextPeriod: RankingPeriod,
     nextGroup: string,
+    nextDisplay = display,
   ) {
-    const params = new URLSearchParams();
+    const params = new URLSearchParams(window.location.search);
+    for (const key of ["metric", "period", "group"]) params.delete(key);
     if (nextMetric === "return") params.set("period", nextPeriod);
     else params.set("metric", nextMetric);
     if (nextGroup !== "all") params.set("group", nextGroup);
+    if (nextDisplay === "chart") params.set("display", "chart");
+    else params.delete("display");
     window.history.pushState(
       {},
       "",
@@ -104,6 +118,7 @@ export function RankingsPage({
       setPeriod(nextPeriod);
       setMetric(nextMetric);
       setComparisonGroup(params.get("group") ?? "all");
+      setDisplay(params.get("display") === "chart" ? "chart" : "table");
     }
     window.addEventListener("popstate", restoreRankingUrl);
     return () => window.removeEventListener("popstate", restoreRankingUrl);
@@ -243,7 +258,8 @@ export function RankingsPage({
               </select>
             </p>
           </div>
-          <div className="kw-toolbar__notes">
+          <details className="kw-toolbar__notes" open={mode === "analysis"}>
+            <summary>來源及比較方法（含非官方分類說明）</summary>
             <p className="kw-muted">
               {metric === "return"
                 ? "只採用官方已披露的年率化回報；沒有該期間數值的基金不會入榜，本站不會由其他期間推算。同一比較組別內按回報由高至低排列。"
@@ -257,17 +273,17 @@ export function RankingsPage({
             </p>
             <p className="kw-muted">
               {publication?.methodology?.classification
-                ? `比較組別採用 ${publication.methodology.classification.provider}「${publication.methodology.classification.dataset}」（期別 ${publication.methodology.classification.capturedAt}），屬非官方來源；排名數值全部來自官方平台。`
+                ? `比較組別採用 ${publication.methodology.classification.provider}「${publication.methodology.classification.dataset}」（期別 ${publication.methodology.classification.capturedAt}），屬非官方來源；數值來自官方平台或受託人便覽，每筆保留自己的日期及來源。`
                 : publication
-                  ? "比較組別分類屬非官方來源；排名數值全部來自官方平台。"
-                  : "比較組別資料載入中；排名數值全部來自官方平台。"}
+                  ? "比較組別分類屬非官方來源；數值來自官方平台或受託人便覽，每筆保留自己的日期及來源。"
+                  : "比較組別及官方數據載入中。"}
             </p>
             <p className="kw-muted">
               沒有 Lipper
               類別的基金，會按積金局平台的基金種類／類別另行分組，並以「平台分類：」標示，不會併入同名
               Lipper 組別。
             </p>
-          </div>
+          </details>
         </div>
         {failed ? (
           <p className="kw-status kw-status--negative" role="alert">
@@ -286,11 +302,116 @@ export function RankingsPage({
             ) : null}
             {publication.excludedStaleCount ? (
               <p className="kw-status kw-status--warning">
-                {`有 ${publication.excludedStaleCount} 隻基金的資料已超出官方披露寬限期（${publication.methodology?.freshness?.graceDays ?? 45} 日），暫不列入排名。這些數值仍可在各基金詳情頁連同原截至日期查看。`}
+                {`有 ${publication.excludedStaleCount} 隻基金的資料已超出網站時效門檻（${publication.methodology?.freshness?.graceDays ?? 45} 日），暫不列入排名。這些數值仍可在各基金詳情頁連同原截至日期查看。`}
               </p>
             ) : null}
             {rankings?.length ? (
               <>
+                <div className="kw-advanced kw-export">
+                  <button
+                    className="kw-button kw-button--secondary"
+                    onClick={() =>
+                      downloadCsv(`kwmpf-${metric}-${period}-ranking.csv`, [
+                        [
+                          "快照",
+                          "基金類別 ID",
+                          "官方基金名稱",
+                          "類別",
+                          "計劃",
+                          "比较組別（非官方分類）",
+                          "組内名次",
+                          "指標",
+                          "官方原值（%）",
+                          "費率上限",
+                          "截至日期",
+                          "官方來源",
+                        ],
+                        ...rankings.map((row) => [
+                          publication.snapshotId,
+                          row.fundClassId,
+                          row.constituentFundName,
+                          row.fundClassName,
+                          row.schemeName,
+                          row.comparisonGroup,
+                          row.rank,
+                          valueLabel,
+                          row.value,
+                          row.feeCap ? "是" : "否",
+                          row.dataAsOf,
+                          row.sourceUrl,
+                        ]),
+                      ])
+                    }
+                  >
+                    下載目前排名 CSV
+                  </button>
+                  <p className="kw-muted">
+                    包含目前篩選的全部 {rankings.length}{" "}
+                    筆；附來源、截至日期及快照。不同組別名次分開計算。
+                  </p>
+                </div>
+                <div
+                  className="kw-display-switch"
+                  role="group"
+                  aria-label="排名顯示方式"
+                >
+                  {(["table", "chart"] as const).map((choice) => (
+                    <button
+                      key={choice}
+                      className="kw-button kw-button--secondary"
+                      aria-pressed={display === choice}
+                      onClick={() => {
+                        setDisplay(choice);
+                        pushRankingUrl(metric, period, effectiveGroup, choice);
+                      }}
+                    >
+                      {choice === "table" ? "完整表格" : "同組圖表"}
+                    </button>
+                  ))}
+                </div>
+                {display === "chart" &&
+                  (effectiveGroup !== "all" ? (
+                    <ValueBars
+                      label={`${effectiveGroup} · ${valueLabel}（首 ${Math.min(10, rankings.length)} 個；切換完整表格查看全部及來源）`}
+                      rows={rankings.slice(0, 10).map((row) => ({
+                        label: joinFundParts(
+                          row.constituentFundName,
+                          fundClassLabel(row.fundClassName),
+                        ),
+                        value: row.value,
+                        display: row.displayValue,
+                        href: `/fund-classes/${encodeURIComponent(row.fundClassId)}`,
+                        note: `截至 ${row.dataAsOf}${row.feeCap ? " · 費率上限" : ""}`,
+                      }))}
+                    />
+                  ) : (
+                    <div className="kw-group-picker">
+                      <h3>先選比較組別，才看圖表</h3>
+                      <p className="kw-muted">
+                        下列數量代表各組合資格樣本，並非跨組別優劣排名。
+                      </p>
+                      <div>
+                        {comparisonGroups.map((group) => (
+                          <button
+                            key={group}
+                            onClick={() => {
+                              setComparisonGroup(group);
+                              pushRankingUrl(metric, period, group);
+                            }}
+                          >
+                            {group}
+                            <strong>
+                              {
+                                publication.rankings.filter(
+                                  (row) => row.comparisonGroup === group,
+                                ).length
+                              }
+                            </strong>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
                 <p
                   className="kw-muted"
                   role="status"
@@ -301,105 +422,110 @@ export function RankingsPage({
                     ? `目前顯示 ${rankings.length} 隻合資格基金。`
                     : `「${effectiveGroup}」組別目前有 ${rankings.length} 隻合資格基金。`}
                 </p>
-                <p className="kw-table-hint" id="ranking-table-scroll-hint">
-                  左右滑動或使用方向鍵查看其餘欄位
-                </p>
-                <div
-                  className="kw-table-wrap"
-                  role="region"
-                  aria-label="基金排名結果"
-                  aria-describedby="ranking-table-scroll-hint"
-                  onKeyDown={(event) => {
-                    if (
-                      (event.key !== "ArrowLeft" &&
-                        event.key !== "ArrowRight") ||
-                      event.altKey ||
-                      event.ctrlKey ||
-                      event.metaKey
-                    ) {
-                      return;
-                    }
+                {display === "table" && (
+                  <>
+                    <p className="kw-table-hint" id="ranking-table-scroll-hint">
+                      左右滑動或使用方向鍵查看其餘欄位
+                    </p>
+                    <div
+                      className="kw-table-wrap"
+                      role="region"
+                      aria-label="基金排名結果"
+                      aria-describedby="ranking-table-scroll-hint"
+                      onKeyDown={(event) => {
+                        if (
+                          (event.key !== "ArrowLeft" &&
+                            event.key !== "ArrowRight") ||
+                          event.altKey ||
+                          event.ctrlKey ||
+                          event.metaKey
+                        ) {
+                          return;
+                        }
 
-                    const container = event.currentTarget;
-                    const maxScrollLeft = Math.max(
-                      0,
-                      container.scrollWidth - container.clientWidth,
-                    );
-                    const direction = event.key === "ArrowRight" ? 1 : -1;
-                    const nextScrollLeft = Math.min(
-                      maxScrollLeft,
-                      Math.max(
-                        0,
-                        container.scrollLeft +
-                          direction *
-                            Math.max(120, container.clientWidth * 0.75),
-                      ),
-                    );
+                        const container = event.currentTarget;
+                        const maxScrollLeft = Math.max(
+                          0,
+                          container.scrollWidth - container.clientWidth,
+                        );
+                        const direction = event.key === "ArrowRight" ? 1 : -1;
+                        const roundedStep = Math.ceil(
+                          Math.max(120, container.clientWidth * 0.75),
+                        );
+                        const nextScrollLeft = Math.min(
+                          maxScrollLeft,
+                          Math.max(
+                            0,
+                            container.scrollLeft + direction * roundedStep,
+                          ),
+                        );
 
-                    if (nextScrollLeft === container.scrollLeft) return;
-                    event.preventDefault();
-                    container.scrollTo({
-                      left: nextScrollLeft,
-                      behavior: "auto",
-                    });
-                  }}
-                >
-                  <table className="kw-table">
-                    <thead>
-                      <tr>
-                        <th
-                          scope="col"
-                          tabIndex={0}
-                          aria-describedby="ranking-table-scroll-hint"
-                        >
-                          名次
-                        </th>
-                        <th scope="col">基金</th>
-                        <th scope="col">{valueLabel}</th>
-                        <th scope="col">比較組別</th>
-                        <th scope="col">截至日期</th>
-                        <th scope="col">來源</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {rankings.map((row) => (
-                        <tr key={row.fundClassId}>
-                          <td className="kw-rank">第 {row.rank}</td>
-                          <td className="kw-table__name">
-                            <a
-                              href={`/fund-classes/${encodeURIComponent(row.fundClassId)}`}
-                              aria-label={`查看 ${row.constituentFundName} 詳情`}
+                        if (nextScrollLeft === container.scrollLeft) return;
+                        event.preventDefault();
+                        container.scrollTo({
+                          left: nextScrollLeft,
+                          behavior: "auto",
+                        });
+                      }}
+                    >
+                      <table className="kw-table">
+                        <thead>
+                          <tr>
+                            <th
+                              scope="col"
+                              tabIndex={0}
+                              aria-describedby="ranking-table-scroll-hint"
                             >
-                              {row.constituentFundName}
-                            </a>
-                            <small>
-                              {joinFundParts(
-                                fundClassLabel(row.fundClassName),
-                                row.schemeName,
-                              )}
-                            </small>
-                          </td>
-                          <td className="kw-return">
-                            {row.displayValue}
-                            {row.feeCap ? "（上限）" : ""}
-                          </td>
-                          <td>{row.comparisonGroup}</td>
-                          <td className="kw-nowrap">{row.dataAsOf}</td>
-                          <td className="kw-nowrap">
-                            <a
-                              href={row.sourceUrl}
-                              target="_blank"
-                              rel="noreferrer"
-                              aria-label={`${row.constituentFundName} 官方來源`}
-                            >
-                              官方來源
-                            </a>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                              名次
+                            </th>
+                            <th scope="col">基金</th>
+                            <th scope="col">{valueLabel}</th>
+                            <th scope="col">比較組別</th>
+                            <th scope="col">截至日期</th>
+                            <th scope="col">來源</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {rankings.map((row) => (
+                            <tr key={row.fundClassId}>
+                              <td className="kw-rank">第 {row.rank}</td>
+                              <td className="kw-table__name">
+                                <a
+                                  href={`/fund-classes/${encodeURIComponent(row.fundClassId)}`}
+                                  aria-label={`查看 ${row.constituentFundName} 詳情`}
+                                >
+                                  {row.constituentFundName}
+                                </a>
+                                <small>
+                                  {joinFundParts(
+                                    fundClassLabel(row.fundClassName),
+                                    row.schemeName,
+                                  )}
+                                </small>
+                              </td>
+                              <td className="kw-return">
+                                {row.displayValue}
+                                {row.feeCap ? "（上限）" : ""}
+                              </td>
+                              <td>{row.comparisonGroup}</td>
+                              <td className="kw-nowrap">{row.dataAsOf}</td>
+                              <td className="kw-nowrap">
+                                <a
+                                  href={row.sourceUrl}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  aria-label={`${row.constituentFundName} 官方來源`}
+                                >
+                                  官方來源
+                                </a>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </>
+                )}
               </>
             ) : (
               <p
