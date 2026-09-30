@@ -946,7 +946,7 @@ describe("cumulative returns", () => {
     });
 
     expect(await screen.findByText(/十大持倉：官方未提供/)).toBeVisible();
-    const row = within(screen.getByRole("table", { name: "回報", exact: true }))
+    const row = within(screen.getByRole("table", { name: /^回報$/ }))
       .getByRole("rowheader", { name: "三年" })
       .closest("tr")!;
     expect(row).toHaveTextContent("官方未提供（N/A）");
