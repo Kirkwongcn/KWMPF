@@ -86,9 +86,26 @@ const beaBlocks = {
   allocation: {
     heading: /^Portfolio Allocation$/,
     headingLabel: () => "Portfolio Allocation 投資組合分佈",
-    ignore: /Commentary|評論/,
+    band: { minLeft: 40, maxLeft: 545 },
+    // The summary bar repeats the detailed pie's assets. Read that entire pie.
+    minDepth: 45,
+    stopAt: /^Commentary/,
+    labelIgnore: /^4$/,
+    callouts: {
+      overlap: true,
+      inlineValues: true,
+      horizontalGap: 16,
+      requireValues: true,
+      allowBarePercent: true,
+      numericSpacing: true,
+    },
+    expectedTotal: { percent: 100, tolerance: 0.5 },
   },
-  holdings: { heading: /^Top 10 Portfolio Holdings/ },
+  holdings: {
+    heading: /^Top 10 Portfolio Holdings/,
+    band: { minLeft: 545, maxLeft: 850 },
+    stopAt: /^Commentary/,
+  },
 } as const;
 
 const bctTitle = (color: string) => ({

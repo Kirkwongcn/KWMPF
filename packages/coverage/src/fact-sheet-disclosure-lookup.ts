@@ -17,6 +17,15 @@ import type {
 
 export const FACT_SHEET_DISCLOSURES_FILENAME = "fund-fact-sheet-disclosures.json";
 
+/** Explicit N/A in an identified official return cell, never inferred from a gap. */
+export type OfficialReturnUnavailable = {
+  reason: "official-na";
+  dataAsOf: string;
+  sourceUrl: string;
+  sourceSha256: string;
+  page: number;
+};
+
 export type FactSheetDisclosureFund = {
   fundClassIds: string[];
   schemeName: string;
@@ -33,6 +42,7 @@ export type FactSheetDisclosureFund = {
   allocations: FactSheetDisclosure["allocations"];
   topHoldings: FactSheetDisclosure["topHoldings"];
   unavailableFields: string[];
+  returnUnavailable?: Record<string, OfficialReturnUnavailable>;
   unavailableReasons: Record<string, string>;
   unavailableKinds: FactSheetDisclosure["unavailableKinds"];
 };

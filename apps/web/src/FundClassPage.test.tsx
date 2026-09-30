@@ -929,7 +929,16 @@ describe("cumulative returns", () => {
     renderWithDisclosure({
       ...disclosure,
       topHoldings: [],
-      unavailableFields: ["topHoldings"],
+      unavailableFields: ["topHoldings", "annualizedReturn3y"],
+      returnUnavailable: {
+        "3": {
+          reason: "official-na",
+          dataAsOf: "2026-06-30",
+          sourceUrl: "https://example.test/official.pdf",
+          sourceSha256: "a".repeat(64),
+          page: 9,
+        },
+      },
       unavailableReasons: {
         topHoldings: "no holdings rows in the disclosed block",
       },
@@ -937,6 +946,14 @@ describe("cumulative returns", () => {
     });
 
     expect(await screen.findByText(/十大持倉：官方未提供/)).toBeVisible();
+    const row = within(screen.getByRole("table", { name: "回報", exact: true }))
+      .getByRole("rowheader", { name: "三年" })
+      .closest("tr")!;
+    expect(row).toHaveTextContent("官方未提供（N/A）");
+    expect(row).toHaveTextContent("截至 2026-06-30");
+    expect(
+      within(row).getByRole("link", { name: "官方便覽（第 9 頁）" }),
+    ).toHaveAttribute("href", "https://example.test/official.pdf");
   });
 
   it("shows editorial asset-class buckets separately from the verbatim table", async () => {

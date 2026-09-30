@@ -8,7 +8,10 @@ import { parseAmtdFundFactSheet } from "../src/amtd-fund-fact-sheet-parser";
 import { parseBctFundFactSheet } from "../src/bct-fund-fact-sheet-parser";
 import { parseBctProFundPerformance } from "../src/bct-pro-fund-performance-parser";
 import { parsePrincipal800FundFactSheet, parsePrincipalFundFactSheet } from "../src/principal-fund-fact-sheet-parser";
-import { parseSunLifeFundFactSheetXml } from "../src/sun-life-fund-fact-sheet-parser";
+import {
+  parseSunLifeFundFactSheetXmlAudit,
+  parseSunLifeFundFactSheetXml,
+} from "../src/sun-life-fund-fact-sheet-parser";
 import { parseChinaLifeFundPerformance } from "../src/china-life-fund-performance-parser";
 import { parseHsbcFundFactSheet } from "../src/hsbc-fund-fact-sheet-parser";
 import { parseBocPrudentialFundPerformance } from "../src/boc-prudential-fund-performance-parser";
@@ -19,6 +22,8 @@ import { parseShkpFundPerformance } from "../src/shkp-fund-performance-parser";
 import { parseFidelityFundPerformance } from "../src/fidelity-fund-performance-parser";
 import { downloadPdfInRanges } from "../src/resumable-download";
 
+import { parseBeaFundFactSheetXml } from "../src/bea-fund-fact-sheet-parser";
+
 const fixture = readFileSync(join(import.meta.dirname, "fixtures", "bea-fund-fact-sheet.txt"), "utf8");
 const aiaFixture = readFileSync(join(import.meta.dirname, "fixtures", "aia-mt00172-layout.txt"), "utf8");
 const bcomFixture = `BCOM Joyful Retirement MPF Scheme\nBCOM Joyful Retirement MPF Scheme Fund Fact Sheet\n(As of : 31/12/2025)\n\\f\nBCOM Stable Growth (CF) Fund\nAnnualised Rate of Return 1 year 3 years 5 years 10 years\nFund 2.01% 2.85% 1.86% 1.40%`;
@@ -27,6 +32,18 @@ const bctFixture = `BCT (MPF) Industry Choice\nBCT (Industry) China and Hong Kon
 const bctProFixture = `as at 截至 30/06/2026\fBCT (Pro) China and Hong Kong Equity Fund 8\nConstituent Fund Performance\nCumulative Return\nYear to Date 3 Months 1 Year 3 Years 5 Years\n-8.27% -4.13% 0.73% 22.45% -28.42%\nAnnualised Return\n1 Year 一年 3 Years 三年 5 Years 五年 10 Years 十年 Since Launch\n0.73% 6.98% -6.47% 2.85% 0.38%\nDollar Cost Averaging Return (For illustration only)\nAnnualised Return\n1 Year 一年 3 Years 三年 5 Years 五年 10 Years\n-7.88% 8.79% 4.16% 0.81% 1.98%`;
 const principalFixture = `Principal MPF - Simple Plan Quarterly\nFund Fact Sheet\nData as of 數據截至 31/12/2025\n\\f\nPrincipal Age 65 Plus Fund (MA65F)\nAnnualized Return 年度回報 (%) N/A 7.75 7.75 5.98 0.69`;
 const principal800Fixture = `信安中國股票基金\nPrincipal China Equity Fund\n截至2025年12月31日 As at 31/12/2025\n年均表現 Annualized Return6 (%)\nD類單位 Class D 30.63 30.63 9.16 -4.48 3.34 2.59`;
+const sunLifeClasses = readFileSync(
+  join(import.meta.dirname, "fixtures", "sun-life-2026-classes.xml"),
+  "utf8",
+);
+const sunLifeIncome = readFileSync(
+  join(import.meta.dirname, "fixtures", "sun-life-2026-income.xml"),
+  "utf8",
+);
+const beaTwoFunds = readFileSync(
+  join(import.meta.dirname, "fixtures", "bea-2026-two-funds.xml"),
+  "utf8",
+);
 const sunLifeXmlFixture = readFileSync(join(import.meta.dirname, "fixtures", "sun-life-page-23.xml"), "utf8");
 const sunLifePage24XmlFixture = readFileSync(join(import.meta.dirname, "fixtures", "sun-life-page-24.xml"), "utf8");
 const chinaLifeFixture = `\fChina Life Greater China Equity Fund 中國人壽大中華股票基金\nFund Performance 基金表現\nAnnualized 年率化 (%) - - 30.16 8.44 - - 0.13\fChina Life MPF Conservative Fund 中國人壽強積金保守基金\nAnnualized 年率化 (%) - - 2.00 2.88 1.93 1.19 0.76`;
@@ -187,6 +204,23 @@ describe("official fund fact sheet parser", () => {
         annualizedReturn3Year: 14.01,
       },
     ]);
+    expect(
+      parseBeaFundFactSheetXml(
+        beaTwoFunds,
+        "https://example.test/bea.pdf",
+        "BEA (MPF) Industry Scheme",
+      ),
+    ).toEqual([
+      expect.objectContaining({
+        constituentFundName: "BEA (Industry Scheme) Growth Fund",
+        dataAsOf: "2026-06-30",
+        annualizedReturn3Year: 12.86,
+      }),
+      expect.objectContaining({
+        constituentFundName: "BEA (Industry Scheme) Balanced Fund",
+        annualizedReturn3Year: 9.33,
+      }),
+    ]);
   });
 
   it("accepts the alternate official rate-of-return label", () => {
@@ -256,17 +290,64 @@ describe("official fund fact sheet parser", () => {
     ]);
   });
 
-  it("separates an official class suffix instead of treating it as part of the fund name", () => {
-    const classFixture = sunLifeXmlFixture.replace("<text top=\"434\" left=\"488\" width=\"184\" height=\"13\" font=\"3\">Sun Life MPF Core Accumulation Fund</text>", "<text top=\"434\" left=\"488\" width=\"184\" height=\"13\" font=\"3\">Sun Life MPF Core Accumulation Fund – Class B</text>");
-    expect(parseSunLifeFundFactSheetXml(classFixture, "https://www.mpfa.org.hk/assets/FF/MT00067.pdf")[0]).toEqual(
-      expect.objectContaining({ constituentFundName: "Sun Life MPF Core Accumulation Fund", fundClassName: "Class B" }),
+  it("binds the official class to its own performance row", () => {
+    expect(
+      parseSunLifeFundFactSheetXml(
+        sunLifeClasses,
+        "https://example.test/sun-life.pdf",
+      ),
+    ).toEqual([
+      expect.objectContaining({
+        constituentFundName: "Sun Life MPF Conservative Fund",
+        fundClassName: "Class A",
+        annualizedReturn3Year: 2.84,
+      }),
+      expect.objectContaining({
+        constituentFundName: "Sun Life MPF Conservative Fund",
+        fundClassName: "Class B",
+        annualizedReturn3Year: 2.84,
+      }),
+    ]);
+    // A graph legend is not the performance table's class identity.
+    const legend = sunLifeXmlFixture.replace(
+      "Sun Life MPF Core Accumulation Fund</text>",
+      "Sun Life MPF Core Accumulation Fund – Class B</text>",
     );
+    expect(
+      parseSunLifeFundFactSheetXml(
+        legend,
+        "https://example.test/sun-life.pdf",
+      )[0]?.fundClassName,
+    ).toBeUndefined();
   });
 
-  it("accepts distinct classes for the same fund and rejects duplicate class rows", () => {
-    const classFixture = sunLifeXmlFixture
-      .replace("<text top=\"434\" left=\"488\" width=\"184\" height=\"13\" font=\"3\">Sun Life MPF Core Accumulation Fund</text>", "<text top=\"434\" left=\"488\" width=\"184\" height=\"13\" font=\"3\">Sun Life MPF Core Accumulation Fund – Class A</text><text top=\"434\" left=\"488\" width=\"184\" height=\"13\" font=\"3\">Sun Life MPF Core Accumulation Fund – Class B</text>");
-    expect(() => parseSunLifeFundFactSheetXml(classFixture, "https://example.test/sun-life.pdf")).not.toThrow();
+  it("accepts distinct classes and rejects duplicate class rows", () => {
+    expect(() =>
+      parseSunLifeFundFactSheetXml(
+        sunLifeClasses,
+        "https://example.test/sun-life.pdf",
+      ),
+    ).not.toThrow();
+    expect(() =>
+      parseSunLifeFundFactSheetXml(
+        sunLifeClasses.replaceAll("Class A", "Class B"),
+        "https://example.test/sun-life.pdf",
+      ),
+    ).toThrow("ambiguous");
+    const income = parseSunLifeFundFactSheetXmlAudit(
+      sunLifeIncome,
+      "https://example.test/sun-life.pdf",
+    );
+    expect(income.returns).toEqual([]);
+    expect(income.unavailable).toEqual([
+      expect.objectContaining({
+        constituentFundName: "Sun Life MPF Income Fund",
+        reason: "official-na",
+        dataAsOf: "2026-06-30",
+        periodYears: 3,
+        page: 9,
+      }),
+    ]);
   });
 
   it("fails closed when the performance row is missing", () => {

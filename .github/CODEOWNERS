@@ -6,6 +6,8 @@
 # 規則見 docs/agents/change-policy.md。
 
 /packages/coverage/src/fact-sheet-allocation.ts            @Kirkwongcn
+/packages/coverage/src/*fund-fact-sheet-parser.ts          @Kirkwongcn
+/packages/coverage/src/parse-fact-sheets.ts                 @Kirkwongcn
 /packages/coverage/src/fact-sheet-allocation-contracts.ts  @Kirkwongcn
 /packages/coverage/src/fact-sheet-allocation-pairing.ts    @Kirkwongcn
 /packages/coverage/src/fact-sheet-lookup.ts                @Kirkwongcn

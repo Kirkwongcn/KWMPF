@@ -2,6 +2,8 @@
 # 每行一個 shell glob（對照 repo 根目錄的相對路徑）。
 # 與 .github/CODEOWNERS 同一組路徑，改其中一邊要一併改另一邊。
 packages/coverage/src/fact-sheet-*.ts
+packages/coverage/src/*fund-fact-sheet-parser.ts
+packages/coverage/src/parse-fact-sheets.ts
 packages/coverage/src/trustee-fact-sheet-lookup.ts
 packages/coverage/src/platform-parser.ts
 packages/coverage/src/data-freshness.ts

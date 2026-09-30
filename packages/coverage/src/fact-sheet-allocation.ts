@@ -115,6 +115,10 @@ export type BlockSelector = {
   band?: { minLeft: number; maxLeft: number };
   /** 由標題往下最多幾多 pt；預設到區段結尾。 */
   maxDepth?: number;
+  /** Start below a separately drawn summary bar; retain the complete detailed chart. */
+  minDepth?: number;
+  /** A complete allocation must reconcile within the source's rounding tolerance. */
+  expectedTotal?: { percent: number; tolerance: number };
   /** 讀到符合這個式樣的行就停（例如註腳）。 */
   stopAt?: RegExp;
   /** 略過符合這個式樣的行。 */
@@ -138,6 +142,16 @@ export type BlockSelector = {
      * 在餅右邊靠左對齊，中心對唔上；但標籤同佢自己個百分比一定橫向相交。
      */
     overlap?: boolean;
+    /** Close a callout whose label and percentage share one text item. */
+    inlineValues?: boolean;
+    /** Join adjacent fragments of one horizontal callout, never distant callouts. */
+    horizontalGap?: number;
+    /** Fail the document if any detailed-chart callout cannot be read. */
+    requireValues?: boolean;
+    /** Some pie labels omit the percent sign; the chart still uses percentage units. */
+    allowBarePercent?: boolean;
+    /** Rejoin whitespace inside a standalone decimal percentage text item. */
+    numericSpacing?: boolean;
   };
   /** 部分計劃的數字不帶 `%`（標題已寫 `(%)`）。 */
   numberFormat?: "percent" | "bare";
@@ -588,6 +602,11 @@ function blockLines(
 
     for (const line of lines) {
       if (page.number === heading.page && line.top <= heading.top) continue;
+      if (
+        page.number === heading.page &&
+        line.top < heading.top + (selector.minDepth ?? 0)
+      )
+        continue;
       if (page.number === heading.page && line.top >= bottom) continue;
       if (page.number === section.end.page && line.top >= section.end.top) continue;
       if (selector.stopAt?.test(line.text)) break pages;
@@ -597,7 +616,46 @@ function blockLines(
   }
   if (selector.callouts) {
     const pattern = selector.numberFormat === "bare" ? BARE_NUMBER_ITEM : PERCENT_ITEM;
-    return groupCallouts(collected, selector.callouts, (item) => pattern.test(item.text));
+    const gap = selector.callouts.horizontalGap;
+    const prepared =
+      gap === undefined
+        ? collected
+        : collected.map((line) => {
+            const runs: PdfTextItem[][] = [];
+            let right = -Infinity;
+            for (const raw of line.items.filter(
+              (part) => !selector.labelIgnore?.test(part.text),
+            )) {
+              const item =
+                selector.callouts?.numericSpacing &&
+                /^[+-]?\d+\s*\.\s*\d+\s*%$/.test(raw.text)
+                  ? { ...raw, text: raw.text.replaceAll(/\s/g, "") }
+                  : raw;
+              if (!runs.length || item.left - right > gap) runs.push([]);
+              runs.at(-1)!.push(item);
+              right = Math.max(right, item.left + item.width);
+            }
+            return {
+              ...line,
+              items: runs.map((run) => ({
+                ...run[0]!,
+                text: joinLabelItems(run),
+                width:
+                  Math.max(...run.map((item) => item.left + item.width)) -
+                  run[0]!.left,
+              })),
+            };
+          });
+    return groupCallouts(
+      prepared,
+      selector.callouts,
+      (item) =>
+        pattern.test(item.text) ||
+        (selector.callouts?.inlineValues === true &&
+          (PERCENT_TRAILING.test(item.text) ||
+            (selector.callouts.allowBarePercent === true &&
+              BARE_TRAILING.test(item.text)))),
+    );
   }
   return selector.rowGap === undefined ? collected : mergeRows(collected, selector.rowGap);
 }
@@ -665,7 +723,10 @@ function groupCallouts(
         page: cluster.page,
         top: items[0]?.top ?? 0,
         items,
-        text: joinItems(items),
+        text:
+          options.horizontalGap === undefined
+            ? joinItems(items)
+            : joinLabelItems(items),
       };
     });
 }
@@ -742,9 +803,11 @@ function readValue(line: PdfLine, selector: BlockSelector) {
   }
   // 圓餅圖的標籤與百分比常常在同一段文字（例如「股票 72.7%」），要由行尾抽數字。
   // 數字不帶 `%` 的計劃（標題已寫 `(%)`）同樣要處理換行後的名稱＋數值。
-  const trailing = line.text.match(
-    format === "bare" ? BARE_TRAILING : PERCENT_TRAILING,
-  );
+  const trailing =
+    line.text.match(format === "bare" ? BARE_TRAILING : PERCENT_TRAILING) ??
+    (selector.callouts?.allowBarePercent
+      ? line.text.match(BARE_TRAILING)
+      : null);
   if (trailing?.[1] && trailing[2]) {
     const label = stripFootnote(trailing[1].trim(), selector);
     if (label !== "") return { label, percent: Number(trailing[2]) };
@@ -757,7 +820,11 @@ function readAllocation(
   section: FactSheetSection,
   items: PdfTextItem[],
   contract: FactSheetContract,
-): { dimensions: AllocationDimension[]; orphanValues: string[]; overlaidRows: string[] } {
+): {
+  dimensions: AllocationDimension[];
+  orphanValues: string[];
+  overlaidRows: string[];
+} {
   const dimensions: AllocationDimension[] = [];
   const orphanValues: string[] = [];
   const overlaidRows: string[] = [];
@@ -781,6 +848,14 @@ function readAllocation(
       }
       const value = readValue(line, contract.allocation);
       if (!value) {
+        if (contract.allocation.callouts?.requireValues)
+          throw new Error(
+            contract.scheme +
+              ": unreadable allocation callout for " +
+              section.name +
+              ": " +
+              line.text,
+          );
         if (contract.allocation.joinWrappedLabels) wrapped = line.text;
         const previous = entries.at(-1);
         if (contract.allocation.joinTrailingLabels && previous && previousLine) {
@@ -803,6 +878,27 @@ function readAllocation(
         continue;
       }
       entries.push({ label, percent: value.percent });
+    }
+    const total = contract.allocation.expectedTotal;
+    if (
+      total &&
+      (entries.length === 0 ||
+        entries.some(
+          (entry) => !Number.isFinite(entry.percent) || /%/.test(entry.label),
+        ) ||
+        new Set(entries.map((entry) => entry.label)).size !== entries.length ||
+        Math.abs(
+          entries.reduce((sum, entry) => sum + entry.percent, 0) -
+            total.percent,
+        ) > total.tolerance)
+    ) {
+      throw new Error(
+        contract.scheme +
+          ": allocation does not reconcile for " +
+          section.name +
+          ": " +
+          JSON.stringify(entries),
+      );
     }
     if (entries.length === 0) continue;
     const label = contract.allocation.headingLabel
