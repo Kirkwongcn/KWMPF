@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { joinItems, markWordStarts, parsePdfXml, toLines } from "../src/pdf-xml";
 import { factSheetContract } from "../src/fact-sheet-allocation-contracts";
@@ -1024,6 +1026,37 @@ describe("callouts grouped by horizontal overlap", () => {
       // 標註以百分比作結；不封組的話「日本股票」會被上一個標註吸走。
       { label: "Japanequities", percent: 1.3 },
     ]);
+    const beaXml = readFileSync(
+      join(import.meta.dirname, "fixtures", "bea-2026-two-funds.xml"),
+      "utf8",
+    );
+    const bea = parseFactSheetDisclosures(
+      parsePdfXml(beaXml),
+      factSheetContract("BEA (MPF) Industry Scheme", "trustee"),
+    );
+    expect(bea).toHaveLength(2);
+    for (const fund of bea) {
+      const entries = fund.allocations[0]!.entries;
+      expect(
+        Math.abs(entries.reduce((sum, entry) => sum + entry.percent, 0) - 100),
+      ).toBeLessThanOrEqual(0.5);
+      expect(
+        entries.every(
+          (entry) =>
+            !/%|Annualised|Cumulative|Reference Portfolio/.test(entry.label),
+        ),
+      ).toBe(true);
+      expect(fund.topHoldings).toHaveLength(10);
+    }
+    expect(bea[0]!.allocations[0]!.entries).toContainEqual(
+      expect.objectContaining({ percent: 44 }),
+    );
+    expect(() =>
+      parseFactSheetDisclosures(
+        parsePdfXml(beaXml.replace("21.3%", "121.3%")),
+        factSheetContract("BEA (MPF) Industry Scheme", "trustee"),
+      ),
+    ).toThrow("does not reconcile");
   });
 });
 

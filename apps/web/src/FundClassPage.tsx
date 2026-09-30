@@ -7,6 +7,7 @@ import {
   isUsableAllocation,
 } from "./DataCharts";
 import { fundClassLabel, joinFundParts } from "./fundClassLabel";
+import type { OfficialReturnUnavailable } from "../../../packages/coverage/src/fact-sheet-disclosure-lookup";
 import {
   pointInTimeAsOf,
   type FactSheetTemporalScopes,
@@ -111,6 +112,7 @@ type FactSheetDisclosure = {
   }[];
   topHoldings: { rank: number; security: string; percent?: number }[];
   unavailableFields: string[];
+  returnUnavailable?: Record<string, OfficialReturnUnavailable>;
   unavailableReasons: Record<string, string>;
   /** 帶代號之前發布的快照沒有這一欄。 */
   unavailableKinds?: Record<string, FactSheetUnavailableKind>;
@@ -602,6 +604,28 @@ export function FundClassPage({
     fundClass.fundSizeAsOf !== fundClass.returnsAsOf,
   );
   const factSheetDisclosure = publication.factSheetDisclosure;
+  const periodOf: Record<string, string> = {
+    一年: "1",
+    三年: "3",
+    五年: "5",
+    十年: "10",
+  };
+  const returnUnavailable = (period: string) => {
+    const reported: Record<string, number | undefined> = {
+      "1": fundClass.annualizedReturn1y,
+      "3": fundClass.annualizedReturn3y,
+      "5": fundClass.annualizedReturn5y,
+      "10": fundClass.annualizedReturn10y,
+    };
+    if (typeof reported[period] === "number") return undefined;
+    const declaration = factSheetDisclosure?.returnUnavailable?.[period];
+    return declaration?.reason === "official-na" &&
+      factSheetDisclosure?.unavailableFields.includes(
+        `annualizedReturn${period}y`,
+      )
+      ? declaration
+      : undefined;
+  };
   const mappedAllocation = publication.mappedAllocation;
   const allocationAsOf = pointInTimeAsOf(
     factSheetDisclosure?.temporalScopes?.allocation,
@@ -754,10 +778,41 @@ export function FundClassPage({
                     <tr key={horizon}>
                       <th scope="row">{horizon}</th>
                       <td className="kw-return">
-                        {formatNumber(annualized, 2, "%")}
+                        {typeof annualized !== "number" &&
+                        returnUnavailable(periodOf[horizon] ?? "")
+                          ? "官方未提供（N/A）"
+                          : formatNumber(annualized, 2, "%")}
                         {horizon !== "成立至今" &&
                           typeof annualized !== "number" && (
-                            <small>日期未記錄</small>
+                            <small>
+                              {returnUnavailable(periodOf[horizon] ?? "") ? (
+                                <>
+                                  截至{" "}
+                                  {
+                                    returnUnavailable(periodOf[horizon]!)!
+                                      .dataAsOf
+                                  }{" "}
+                                  ·{" "}
+                                  <a
+                                    href={
+                                      returnUnavailable(periodOf[horizon]!)!
+                                        .sourceUrl
+                                    }
+                                    target="_blank"
+                                    rel="noreferrer"
+                                  >
+                                    官方便覽（第{" "}
+                                    {
+                                      returnUnavailable(periodOf[horizon]!)!
+                                        .page
+                                    }{" "}
+                                    頁）
+                                  </a>
+                                </>
+                              ) : (
+                                "日期未記錄"
+                              )}
+                            </small>
                           )}
                         {horizon !== "成立至今" &&
                           typeof annualized === "number" && (
@@ -840,10 +895,14 @@ export function FundClassPage({
                         publication.returnsFreshness?.[period]?.status !==
                           "verified"
                       ? "未核實，暫不繪圖"
-                      : undefined,
+                      : returnUnavailable(period)
+                        ? "官方未提供（N/A）"
+                        : undefined,
                 note: publication.returnsFreshness?.[period]?.dataAsOf
                   ? `${publication.returnsFreshness[period].status === "stale" ? "過期 · " : ""}截至 ${publication.returnsFreshness[period].dataAsOf}`
-                  : "日期未記錄",
+                  : returnUnavailable(period)
+                    ? `截至 ${returnUnavailable(period)!.dataAsOf}`
+                    : "日期未記錄",
               }))}
             />
             <dl className="status-list">

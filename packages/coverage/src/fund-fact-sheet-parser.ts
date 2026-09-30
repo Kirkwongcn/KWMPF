@@ -7,6 +7,15 @@ export type FundFactSheetReturn = {
   annualizedReturn3Year: number;
 };
 
+export type FundReturnUnavailable = Omit<
+  FundFactSheetReturn,
+  "annualizedReturn3Year"
+> & {
+  periodYears: 3;
+  reason: "official-na";
+  page: number;
+};
+
 function normalize(value: string) {
   return value.replace(/\s+/g, " ").trim();
 }
