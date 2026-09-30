@@ -1,0 +1,1542 @@
+{
+  "generatedAt": "2026-09-30T11:14:33.475Z",
+  "sourceSnapshot": "data/sources/2026-09-26/mpf-fund-platform.json",
+  "previousCandidate": "data/coverage/2026-09-27-official-return-observations-candidate.json",
+  "repairScope": [
+    {
+      "key": "sunlife",
+      "scheme": "Sun Life Rainbow MPF Scheme",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "sha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+      "bytes": 7206638,
+      "platformClasses": 31,
+      "returns": 29,
+      "officialNa": 2,
+      "matchedIds": [
+        "mpfa-cf-506",
+        "mpfa-cf-507",
+        "mpfa-cf-504",
+        "mpfa-cf-505",
+        "mpfa-cf-910",
+        "mpfa-cf-911",
+        "mpfa-cf-809",
+        "mpfa-cf-810",
+        "mpfa-cf-498",
+        "mpfa-cf-499",
+        "mpfa-cf-500",
+        "mpfa-cf-501",
+        "mpfa-cf-508",
+        "mpfa-cf-509",
+        "mpfa-cf-2065",
+        "mpfa-cf-691",
+        "mpfa-cf-692",
+        "mpfa-cf-2064",
+        "mpfa-cf-689",
+        "mpfa-cf-690",
+        "mpfa-cf-2063",
+        "mpfa-cf-693",
+        "mpfa-cf-694",
+        "mpfa-cf-1199",
+        "mpfa-cf-1200",
+        "mpfa-cf-502",
+        "mpfa-cf-503",
+        "mpfa-cf-1503",
+        "mpfa-cf-1505"
+      ],
+      "retrievedAt": "2026-09-30T10:27:36.193Z",
+      "retrievalTimeEvidence": "fresh-download-file-write-completion"
+    },
+    {
+      "key": "bea-is",
+      "scheme": "BEA (MPF) Industry Scheme",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+      "sha256": "598833c402d1a047832cb9a324fbaadde6546362c30bda6b5187026a3b9f4308",
+      "bytes": 1022475,
+      "platformClasses": 12,
+      "returns": 12,
+      "officialNa": 0,
+      "matchedIds": [
+        "mpfa-cf-215",
+        "mpfa-cf-212",
+        "mpfa-cf-214",
+        "mpfa-cf-899",
+        "mpfa-cf-812",
+        "mpfa-cf-811",
+        "mpfa-cf-900",
+        "mpfa-cf-901",
+        "mpfa-cf-913",
+        "mpfa-cf-213",
+        "mpfa-cf-1535",
+        "mpfa-cf-1536"
+      ],
+      "retrievedAt": "2026-09-30T10:27:39.068Z",
+      "retrievalTimeEvidence": "fresh-download-file-write-completion"
+    },
+    {
+      "key": "bea-mt",
+      "scheme": "BEA (MPF) Master Trust Scheme",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "sha256": "0e3b5b731bccf242c8517684568702265a8fb5d56d82e53ca5463420406e6473",
+      "bytes": 904260,
+      "platformClasses": 17,
+      "returns": 17,
+      "officialNa": 0,
+      "matchedIds": [
+        "mpfa-cf-224",
+        "mpfa-cf-216",
+        "mpfa-cf-223",
+        "mpfa-cf-813",
+        "mpfa-cf-814",
+        "mpfa-cf-896",
+        "mpfa-cf-221",
+        "mpfa-cf-218",
+        "mpfa-cf-217",
+        "mpfa-cf-220",
+        "mpfa-cf-897",
+        "mpfa-cf-898",
+        "mpfa-cf-219",
+        "mpfa-cf-912",
+        "mpfa-cf-225",
+        "mpfa-cf-1537",
+        "mpfa-cf-1538"
+      ],
+      "retrievedAt": "2026-09-30T10:27:42.042Z",
+      "retrievalTimeEvidence": "fresh-download-file-write-completion"
+    },
+    {
+      "key": "bea-vs",
+      "scheme": "BEA (MPF) Value Scheme",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf",
+      "sha256": "90f1c4d143d8dde176e530f893c65f4068d9f42c03a40f21174e23bcc85db649",
+      "bytes": 751497,
+      "platformClasses": 11,
+      "returns": 11,
+      "officialNa": 0,
+      "matchedIds": [
+        "mpfa-cf-1040",
+        "mpfa-cf-1041",
+        "mpfa-cf-1042",
+        "mpfa-cf-1043",
+        "mpfa-cf-1044",
+        "mpfa-cf-1045",
+        "mpfa-cf-1047",
+        "mpfa-cf-1048",
+        "mpfa-cf-1039",
+        "mpfa-cf-1539",
+        "mpfa-cf-1540"
+      ],
+      "retrievedAt": "2026-09-30T10:27:43.393Z",
+      "retrievalTimeEvidence": "fresh-download-file-write-completion"
+    }
+  ],
+  "unchangedObservations": 226,
+  "previousRows": 249,
+  "candidateRows": 295,
+  "addedRows": 47,
+  "changedRows": 5,
+  "removedRows": 1,
+  "changed": [
+    {
+      "fundClassId": "mpfa-cf-507",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Conservative Fund",
+        "fundClassName": "Class B"
+      },
+      "previous": {
+        "fundClassId": "mpfa-cf-507",
+        "periodYears": 3,
+        "annualized": 12,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+        "retrievedAt": "2026-09-26T13:17:40.972Z"
+      },
+      "repaired": {
+        "fundClassId": "mpfa-cf-507",
+        "periodYears": 3,
+        "annualized": 2.84,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+        "retrievedAt": "2026-09-30T10:27:36.193Z"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-505",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Hong Kong Dollar Bond Fund",
+        "fundClassName": "Class B"
+      },
+      "previous": {
+        "fundClassId": "mpfa-cf-505",
+        "periodYears": 3,
+        "annualized": 4.4,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+        "retrievedAt": "2026-09-26T13:17:40.972Z"
+      },
+      "repaired": {
+        "fundClassId": "mpfa-cf-505",
+        "periodYears": 3,
+        "annualized": 3.68,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+        "retrievedAt": "2026-09-30T10:27:36.193Z"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-911",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF RMB and HKD Fund",
+        "fundClassName": "Class B"
+      },
+      "previous": {
+        "fundClassId": "mpfa-cf-911",
+        "periodYears": 3,
+        "annualized": 16.9,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+        "retrievedAt": "2026-09-26T13:17:40.972Z"
+      },
+      "repaired": {
+        "fundClassId": "mpfa-cf-911",
+        "periodYears": 3,
+        "annualized": 2.99,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+        "retrievedAt": "2026-09-30T10:27:36.193Z"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-810",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Global Bond Fund",
+        "fundClassName": "Class B"
+      },
+      "previous": {
+        "fundClassId": "mpfa-cf-810",
+        "periodYears": 3,
+        "annualized": 16.9,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+        "retrievedAt": "2026-09-26T13:17:40.972Z"
+      },
+      "repaired": {
+        "fundClassId": "mpfa-cf-810",
+        "periodYears": 3,
+        "annualized": 1.58,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+        "retrievedAt": "2026-09-30T10:27:36.193Z"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-2065",
+      "identity": {
+        "trusteeName": "Sun Life Trustee Company Limited",
+        "schemeName": "Sun Life Rainbow MPF Scheme",
+        "constituentFundName": "Sun Life MPF Global Low Carbon Index Fund",
+        "fundClassName": "n.a."
+      },
+      "previous": {
+        "fundClassId": "mpfa-cf-2065",
+        "periodYears": 3,
+        "annualized": 24.53,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+        "retrievedAt": "2026-09-26T13:17:40.972Z"
+      },
+      "repaired": {
+        "fundClassId": "mpfa-cf-2065",
+        "periodYears": 3,
+        "annualized": 16.9,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+        "retrievedAt": "2026-09-30T10:27:36.193Z"
+      }
+    }
+  ],
+  "added": [
+    {
+      "fundClassId": "mpfa-cf-506",
+      "periodYears": 3,
+      "annualized": 2.84,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "retrievedAt": "2026-09-30T10:27:36.193Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-504",
+      "periodYears": 3,
+      "annualized": 3.6,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "retrievedAt": "2026-09-30T10:27:36.193Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-910",
+      "periodYears": 3,
+      "annualized": 2.94,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "retrievedAt": "2026-09-30T10:27:36.193Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-809",
+      "periodYears": 3,
+      "annualized": 1.4,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "retrievedAt": "2026-09-30T10:27:36.193Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-498",
+      "periodYears": 3,
+      "annualized": 5.75,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "retrievedAt": "2026-09-30T10:27:36.193Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-499",
+      "periodYears": 3,
+      "annualized": 5.94,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "retrievedAt": "2026-09-30T10:27:36.193Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-500",
+      "periodYears": 3,
+      "annualized": 8.8,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "retrievedAt": "2026-09-30T10:27:36.193Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-501",
+      "periodYears": 3,
+      "annualized": 9,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "retrievedAt": "2026-09-30T10:27:36.193Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-508",
+      "periodYears": 3,
+      "annualized": 11.85,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "retrievedAt": "2026-09-30T10:27:36.193Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-509",
+      "periodYears": 3,
+      "annualized": 12.05,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "retrievedAt": "2026-09-30T10:27:36.193Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-691",
+      "periodYears": 3,
+      "annualized": 16.76,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "retrievedAt": "2026-09-30T10:27:36.193Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-692",
+      "periodYears": 3,
+      "annualized": 16.98,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "retrievedAt": "2026-09-30T10:27:36.193Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-2064",
+      "periodYears": 3,
+      "annualized": 13.27,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "retrievedAt": "2026-09-30T10:27:36.193Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-689",
+      "periodYears": 3,
+      "annualized": 21.77,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "retrievedAt": "2026-09-30T10:27:36.193Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-690",
+      "periodYears": 3,
+      "annualized": 21.99,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "retrievedAt": "2026-09-30T10:27:36.193Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-2063",
+      "periodYears": 3,
+      "annualized": 18.47,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "retrievedAt": "2026-09-30T10:27:36.193Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-693",
+      "periodYears": 3,
+      "annualized": 18.42,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "retrievedAt": "2026-09-30T10:27:36.193Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-694",
+      "periodYears": 3,
+      "annualized": 18.64,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "retrievedAt": "2026-09-30T10:27:36.193Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-1199",
+      "periodYears": 3,
+      "annualized": 9.55,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "retrievedAt": "2026-09-30T10:27:36.193Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-1200",
+      "periodYears": 3,
+      "annualized": 9.55,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "retrievedAt": "2026-09-30T10:27:36.193Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-502",
+      "periodYears": 3,
+      "annualized": 4.4,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "retrievedAt": "2026-09-30T10:27:36.193Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-503",
+      "periodYears": 3,
+      "annualized": 4.59,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "retrievedAt": "2026-09-30T10:27:36.193Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-1503",
+      "periodYears": 3,
+      "annualized": 12,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "retrievedAt": "2026-09-30T10:27:36.193Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-1505",
+      "periodYears": 3,
+      "annualized": 5.21,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "retrievedAt": "2026-09-30T10:27:36.193Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-212",
+      "periodYears": 3,
+      "annualized": 9.33,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+      "retrievedAt": "2026-09-30T10:27:39.068Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-899",
+      "periodYears": 3,
+      "annualized": 34.38,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+      "retrievedAt": "2026-09-30T10:27:39.068Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-811",
+      "periodYears": 3,
+      "annualized": 9.53,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+      "retrievedAt": "2026-09-30T10:27:39.068Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-901",
+      "periodYears": 3,
+      "annualized": 9.86,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+      "retrievedAt": "2026-09-30T10:27:39.068Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-913",
+      "periodYears": 3,
+      "annualized": 3.06,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+      "retrievedAt": "2026-09-30T10:27:39.068Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-213",
+      "periodYears": 3,
+      "annualized": 2.62,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+      "retrievedAt": "2026-09-30T10:27:39.068Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-1535",
+      "periodYears": 3,
+      "annualized": 12.67,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+      "retrievedAt": "2026-09-30T10:27:39.068Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-1536",
+      "periodYears": 3,
+      "annualized": 5.29,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+      "retrievedAt": "2026-09-30T10:27:39.068Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-216",
+      "periodYears": 3,
+      "annualized": 9.39,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "retrievedAt": "2026-09-30T10:27:42.042Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-813",
+      "periodYears": 3,
+      "annualized": 18.98,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "retrievedAt": "2026-09-30T10:27:42.042Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-896",
+      "periodYears": 3,
+      "annualized": 18.2,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "retrievedAt": "2026-09-30T10:27:42.042Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-218",
+      "periodYears": 3,
+      "annualized": 22.93,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "retrievedAt": "2026-09-30T10:27:42.042Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-220",
+      "periodYears": 3,
+      "annualized": 9.46,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "retrievedAt": "2026-09-30T10:27:42.042Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-898",
+      "periodYears": 3,
+      "annualized": 9.81,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "retrievedAt": "2026-09-30T10:27:42.042Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-912",
+      "periodYears": 3,
+      "annualized": 3.12,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "retrievedAt": "2026-09-30T10:27:42.042Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-1537",
+      "periodYears": 3,
+      "annualized": 12.68,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "retrievedAt": "2026-09-30T10:27:42.042Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-1538",
+      "periodYears": 3,
+      "annualized": 5.31,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "retrievedAt": "2026-09-30T10:27:42.042Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-1041",
+      "periodYears": 3,
+      "annualized": 11,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf",
+      "retrievedAt": "2026-09-30T10:27:43.393Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-1043",
+      "periodYears": 3,
+      "annualized": 19.37,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf",
+      "retrievedAt": "2026-09-30T10:27:43.393Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-1045",
+      "periodYears": 3,
+      "annualized": 23.77,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf",
+      "retrievedAt": "2026-09-30T10:27:43.393Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-1048",
+      "periodYears": 3,
+      "annualized": 1.05,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf",
+      "retrievedAt": "2026-09-30T10:27:43.393Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-1539",
+      "periodYears": 3,
+      "annualized": 12.64,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf",
+      "retrievedAt": "2026-09-30T10:27:43.393Z"
+    },
+    {
+      "fundClassId": "mpfa-cf-1540",
+      "periodYears": 3,
+      "annualized": 5.26,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf",
+      "retrievedAt": "2026-09-30T10:27:43.393Z"
+    }
+  ],
+  "removed": [
+    {
+      "fundClassId": "mpfa-cf-2239",
+      "periodYears": 3,
+      "annualized": 3.23,
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "retrievedAt": "2026-09-26T13:17:40.972Z"
+    }
+  ],
+  "officialNa": [
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Income Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "periodYears": 3,
+      "reason": "official-na",
+      "page": 9,
+      "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+      "fundClassId": "mpfa-cf-2239"
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF US & Hong Kong Equity Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "periodYears": 3,
+      "reason": "official-na",
+      "page": 19,
+      "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+      "fundClassId": "mpfa-cf-2099"
+    }
+  ],
+  "invalidRows": 0,
+  "unmatched": 0,
+  "ambiguous": 0,
+  "freshnessAsOf": "2026-09-30",
+  "freshnessPolicyDays": 90,
+  "eligible3Year": 37,
+  "stale3Year": 258,
+  "missing3Year": 156,
+  "allocationMapDiff": {
+    "added": [
+      {
+        "key": "asia (ex chinese mainland / hk / japan) 亞太股票 ( 中國內地 / 香港 / 日本除外 )",
+        "bucket": "equity"
+      },
+      {
+        "key": "chinese mainland 中國內地",
+        "bucket": "not_asset_class"
+      },
+      {
+        "key": "chinese mainland and hong kong 中國內地與香港",
+        "bucket": "not_asset_class"
+      },
+      {
+        "key": "chinese mainland and hong kong equities 中國內地與香港股票",
+        "bucket": "equity"
+      },
+      {
+        "key": "consumption related 消費相關",
+        "bucket": "not_asset_class"
+      },
+      {
+        "key": "deposits 存款",
+        "bucket": "cash_and_other"
+      },
+      {
+        "key": "eur 歐羅",
+        "bucket": "not_asset_class"
+      },
+      {
+        "key": "eur bonds 歐羅債券",
+        "bucket": "bond"
+      },
+      {
+        "key": "financial services & insurance 金融服務及保險",
+        "bucket": "not_asset_class"
+      },
+      {
+        "key": "global equities (u.s., japan and europe) 環球股票 ( 美國、日本及歐洲 )",
+        "bucket": "equity"
+      },
+      {
+        "key": "jpy 日圓",
+        "bucket": "not_asset_class"
+      },
+      {
+        "key": "power & water utilities 電力及水務事業",
+        "bucket": "not_asset_class"
+      },
+      {
+        "key": "telecommunications & media 電訊及媒體",
+        "bucket": "not_asset_class"
+      },
+      {
+        "key": "usd 美元",
+        "bucket": "not_asset_class"
+      }
+    ],
+    "removed": [
+      {
+        "key": "cash & others4 :",
+        "bucket": "cash_and_other"
+      },
+      {
+        "key": "cash & others4 現金及其他",
+        "bucket": "cash_and_other"
+      },
+      {
+        "key": "cash & others4 現金及其他 4 hong kong and chinese equities",
+        "bucket": "not_asset_class"
+      },
+      {
+        "key": "equity 股票 :",
+        "bucket": "equity"
+      },
+      {
+        "key": "環球股票 ( 美國、日本及歐洲 )",
+        "bucket": "equity"
+      },
+      {
+        "key": "醫藥及醫療保健",
+        "bucket": "not_asset_class"
+      },
+      {
+        "key": "香港及中國股票",
+        "bucket": "equity"
+      }
+    ],
+    "recategorized": []
+  },
+  "beaAllocations": [
+    {
+      "fund": "BEA (Industry Scheme) Balanced Fund",
+      "scheme": "BEA (MPF) Industry Scheme",
+      "entries": 9,
+      "total": 100,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "sourceHeading": "Portfolio Allocation 投資組合分佈",
+        "buckets": {
+          "equity": 56.8,
+          "bond": 36.5,
+          "cashAndOther": 6.7
+        }
+      }
+    },
+    {
+      "fund": "BEA (Industry Scheme) MPF Conservative Fund",
+      "scheme": "BEA (MPF) Industry Scheme",
+      "entries": 3,
+      "total": 100,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "sourceHeading": "Portfolio Allocation 投資組合分佈",
+        "buckets": {
+          "equity": 0,
+          "bond": 1.4,
+          "cashAndOther": 98.6
+        }
+      }
+    },
+    {
+      "fund": "BEA (Industry Scheme) Stable Fund",
+      "scheme": "BEA (MPF) Industry Scheme",
+      "entries": 9,
+      "total": 100.19999999999999,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "sourceHeading": "Portfolio Allocation 投資組合分佈",
+        "buckets": {
+          "equity": 37.7,
+          "bond": 55.8,
+          "cashAndOther": 6.7
+        }
+      }
+    },
+    {
+      "fund": "BEA (Industry Scheme) Growth Fund",
+      "scheme": "BEA (MPF) Industry Scheme",
+      "entries": 9,
+      "total": 100.1,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "sourceHeading": "Portfolio Allocation 投資組合分佈",
+        "buckets": {
+          "equity": 76.9,
+          "bond": 14.3,
+          "cashAndOther": 8.9
+        }
+      }
+    },
+    {
+      "fund": "BEA (Industry Scheme) Hong Kong Equity Fund",
+      "scheme": "BEA (MPF) Industry Scheme",
+      "entries": 11,
+      "total": 100.10000000000001,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "unavailable": true,
+        "reason": "not-asset-class"
+      }
+    },
+    {
+      "fund": "BEA (Industry Scheme) Greater China Equity Fund",
+      "scheme": "BEA (MPF) Industry Scheme",
+      "entries": 11,
+      "total": 100.1,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "unavailable": true,
+        "reason": "not-asset-class"
+      }
+    },
+    {
+      "fund": "BEA (Industry Scheme) Asian Equity Fund",
+      "scheme": "BEA (MPF) Industry Scheme",
+      "entries": 9,
+      "total": 100.10000000000001,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "unavailable": true,
+        "reason": "not-asset-class"
+      }
+    },
+    {
+      "fund": "BEA China Tracker Fund",
+      "scheme": "BEA (MPF) Industry Scheme",
+      "entries": 10,
+      "total": 100,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "unavailable": true,
+        "reason": "not-asset-class"
+      }
+    },
+    {
+      "fund": "BEA Hong Kong Tracker Fund",
+      "scheme": "BEA (MPF) Industry Scheme",
+      "entries": 11,
+      "total": 100.1,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "unavailable": true,
+        "reason": "not-asset-class"
+      }
+    },
+    {
+      "fund": "BEA (Industry Scheme) RMB & HKD Money Market Fund",
+      "scheme": "BEA (MPF) Industry Scheme",
+      "entries": 2,
+      "total": 100,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "sourceHeading": "Portfolio Allocation 投資組合分佈",
+        "buckets": {
+          "equity": 0,
+          "bond": 0,
+          "cashAndOther": 100
+        }
+      }
+    },
+    {
+      "fund": "BEA (Industry Scheme) Core Accumulation Fund",
+      "scheme": "BEA (MPF) Industry Scheme",
+      "entries": 8,
+      "total": 99.9,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "sourceHeading": "Portfolio Allocation 投資組合分佈",
+        "buckets": {
+          "equity": 60.9,
+          "bond": 36.5,
+          "cashAndOther": 2.5
+        }
+      }
+    },
+    {
+      "fund": "BEA (Industry Scheme) Age 65 Plus Fund",
+      "scheme": "BEA (MPF) Industry Scheme",
+      "entries": 8,
+      "total": 100,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "sourceHeading": "Portfolio Allocation 投資組合分佈",
+        "buckets": {
+          "equity": 22,
+          "bond": 75.4,
+          "cashAndOther": 2.6
+        }
+      }
+    },
+    {
+      "fund": "BEA (MPF) Balanced Fund",
+      "scheme": "BEA (MPF) Master Trust Scheme",
+      "entries": 9,
+      "total": 100,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "sourceHeading": "Portfolio Allocation 投資組合分佈",
+        "buckets": {
+          "equity": 56.9,
+          "bond": 36.5,
+          "cashAndOther": 6.6
+        }
+      }
+    },
+    {
+      "fund": "BEA (MPF) Japan Equity Fund",
+      "scheme": "BEA (MPF) Master Trust Scheme",
+      "entries": 11,
+      "total": 99.89999999999999,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "unavailable": true,
+        "reason": "not-asset-class"
+      }
+    },
+    {
+      "fund": "BEA (MPF) Greater China Equity Fund",
+      "scheme": "BEA (MPF) Master Trust Scheme",
+      "entries": 11,
+      "total": 100.09999999999998,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "unavailable": true,
+        "reason": "not-asset-class"
+      }
+    },
+    {
+      "fund": "BEA (MPF) Global Bond Fund",
+      "scheme": "BEA (MPF) Master Trust Scheme",
+      "entries": 5,
+      "total": 100.10000000000001,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "unavailable": true,
+        "reason": "not-asset-class"
+      }
+    },
+    {
+      "fund": "BEA (MPF) Hong Kong Equity Fund",
+      "scheme": "BEA (MPF) Master Trust Scheme",
+      "entries": 11,
+      "total": 100.00000000000003,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "unavailable": true,
+        "reason": "not-asset-class"
+      }
+    },
+    {
+      "fund": "BEA (MPF) Asian Equity Fund",
+      "scheme": "BEA (MPF) Master Trust Scheme",
+      "entries": 9,
+      "total": 100.10000000000001,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "unavailable": true,
+        "reason": "not-asset-class"
+      }
+    },
+    {
+      "fund": "BEA (MPF) Stable Fund",
+      "scheme": "BEA (MPF) Master Trust Scheme",
+      "entries": 9,
+      "total": 100,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "sourceHeading": "Portfolio Allocation 投資組合分佈",
+        "buckets": {
+          "equity": 37.9,
+          "bond": 56.4,
+          "cashAndOther": 5.7
+        }
+      }
+    },
+    {
+      "fund": "BEA (MPF) Growth Fund",
+      "scheme": "BEA (MPF) Master Trust Scheme",
+      "entries": 9,
+      "total": 100.10000000000001,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "sourceHeading": "Portfolio Allocation 投資組合分佈",
+        "buckets": {
+          "equity": 77,
+          "bond": 14.8,
+          "cashAndOther": 8.3
+        }
+      }
+    },
+    {
+      "fund": "BEA (MPF) Conservative Fund",
+      "scheme": "BEA (MPF) Master Trust Scheme",
+      "entries": 3,
+      "total": 100,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "sourceHeading": "Portfolio Allocation 投資組合分佈",
+        "buckets": {
+          "equity": 0,
+          "bond": 1.4,
+          "cashAndOther": 98.6
+        }
+      }
+    },
+    {
+      "fund": "BEA (MPF) Global Equity Fund",
+      "scheme": "BEA (MPF) Master Trust Scheme",
+      "entries": 7,
+      "total": 100.10000000000001,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "unavailable": true,
+        "reason": "not-asset-class"
+      }
+    },
+    {
+      "fund": "BEA (MPF) European Equity Fund",
+      "scheme": "BEA (MPF) Master Trust Scheme",
+      "entries": 12,
+      "total": 99.9,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "unavailable": true,
+        "reason": "not-asset-class"
+      }
+    },
+    {
+      "fund": "BEA (MPF) North American Equity Fund",
+      "scheme": "BEA (MPF) Master Trust Scheme",
+      "entries": 11,
+      "total": 99.99999999999999,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "unavailable": true,
+        "reason": "not-asset-class"
+      }
+    },
+    {
+      "fund": "BEA China Tracker Fund",
+      "scheme": "BEA (MPF) Master Trust Scheme",
+      "entries": 10,
+      "total": 100.19999999999999,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "unavailable": true,
+        "reason": "not-asset-class"
+      }
+    },
+    {
+      "fund": "BEA Hong Kong Tracker Fund",
+      "scheme": "BEA (MPF) Master Trust Scheme",
+      "entries": 11,
+      "total": 100,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "unavailable": true,
+        "reason": "not-asset-class"
+      }
+    },
+    {
+      "fund": "BEA (MPF) RMB & HKD Money Market Fund",
+      "scheme": "BEA (MPF) Master Trust Scheme",
+      "entries": 2,
+      "total": 100,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "sourceHeading": "Portfolio Allocation 投資組合分佈",
+        "buckets": {
+          "equity": 0,
+          "bond": 0,
+          "cashAndOther": 100
+        }
+      }
+    },
+    {
+      "fund": "BEA (MPF) Core Accumulation Fund",
+      "scheme": "BEA (MPF) Master Trust Scheme",
+      "entries": 8,
+      "total": 99.9,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "sourceHeading": "Portfolio Allocation 投資組合分佈",
+        "buckets": {
+          "equity": 60.9,
+          "bond": 36.4,
+          "cashAndOther": 2.6
+        }
+      }
+    },
+    {
+      "fund": "BEA (MPF) Age 65 Plus Fund",
+      "scheme": "BEA (MPF) Master Trust Scheme",
+      "entries": 8,
+      "total": 100,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "sourceHeading": "Portfolio Allocation 投資組合分佈",
+        "buckets": {
+          "equity": 22.1,
+          "bond": 75.5,
+          "cashAndOther": 2.4
+        }
+      }
+    },
+    {
+      "fund": "BEA MPF Conservative Fund",
+      "scheme": "BEA (MPF) Value Scheme",
+      "entries": 2,
+      "total": 100,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "sourceHeading": "Portfolio Allocation 投資組合分佈",
+        "buckets": {
+          "equity": 0,
+          "bond": 0,
+          "cashAndOther": 100
+        }
+      }
+    },
+    {
+      "fund": "BEA Growth Fund",
+      "scheme": "BEA (MPF) Value Scheme",
+      "entries": 9,
+      "total": 100,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "sourceHeading": "Portfolio Allocation 投資組合分佈",
+        "buckets": {
+          "equity": 73,
+          "bond": 13.9,
+          "cashAndOther": 13.1
+        }
+      }
+    },
+    {
+      "fund": "BEA Balanced Fund",
+      "scheme": "BEA (MPF) Value Scheme",
+      "entries": 9,
+      "total": 100,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "sourceHeading": "Portfolio Allocation 投資組合分佈",
+        "buckets": {
+          "equity": 53.8,
+          "bond": 35.8,
+          "cashAndOther": 10.4
+        }
+      }
+    },
+    {
+      "fund": "BEA Stable Fund",
+      "scheme": "BEA (MPF) Value Scheme",
+      "entries": 9,
+      "total": 99.99999999999997,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "sourceHeading": "Portfolio Allocation 投資組合分佈",
+        "buckets": {
+          "equity": 34.9,
+          "bond": 55.8,
+          "cashAndOther": 9.3
+        }
+      }
+    },
+    {
+      "fund": "BEA Global Equity Fund",
+      "scheme": "BEA (MPF) Value Scheme",
+      "entries": 7,
+      "total": 100.1,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "unavailable": true,
+        "reason": "not-asset-class"
+      }
+    },
+    {
+      "fund": "BEA Asian Equity Fund",
+      "scheme": "BEA (MPF) Value Scheme",
+      "entries": 9,
+      "total": 100,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "unavailable": true,
+        "reason": "not-asset-class"
+      }
+    },
+    {
+      "fund": "BEA Greater China Equity Fund",
+      "scheme": "BEA (MPF) Value Scheme",
+      "entries": 10,
+      "total": 100.1,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "unavailable": true,
+        "reason": "not-asset-class"
+      }
+    },
+    {
+      "fund": "BEA Hong Kong Tracker Fund",
+      "scheme": "BEA (MPF) Value Scheme",
+      "entries": 11,
+      "total": 100.10000000000001,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "unavailable": true,
+        "reason": "not-asset-class"
+      }
+    },
+    {
+      "fund": "BEA Global Bond Fund",
+      "scheme": "BEA (MPF) Value Scheme",
+      "entries": 5,
+      "total": 100,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "unavailable": true,
+        "reason": "not-asset-class"
+      }
+    },
+    {
+      "fund": "BEA Core Accumulation Fund",
+      "scheme": "BEA (MPF) Value Scheme",
+      "entries": 8,
+      "total": 99.89999999999998,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "sourceHeading": "Portfolio Allocation 投資組合分佈",
+        "buckets": {
+          "equity": 61,
+          "bond": 36.5,
+          "cashAndOther": 2.4
+        }
+      }
+    },
+    {
+      "fund": "BEA Age 65 Plus Fund",
+      "scheme": "BEA (MPF) Value Scheme",
+      "entries": 8,
+      "total": 99.89999999999999,
+      "mapped": {
+        "official": false,
+        "mapVersion": "2026-09-30",
+        "sourceHeading": "Portfolio Allocation 投資組合分佈",
+        "buckets": {
+          "equity": 22.1,
+          "bond": 75.5,
+          "cashAndOther": 2.3
+        }
+      }
+    }
+  ],
+  "reviewStatus": "local-source-and-publication-verified; PR-code-review-and-CI-pending; not-deployed",
+  "extractionPipeline": {
+    "returns": 69,
+    "officialNa": 2,
+    "failures": 0,
+    "unsupported": 0
+  },
+  "rawSourceArchive": {
+    "status": "new-versions-pending-private-archive",
+    "changedKnownUrl": "bea-mt",
+    "previousSha256": "7ea4bbfab38cc00f3aacabadfab25bcbe9bbe565348cbd73f98dff0edb72e6e8",
+    "cloudWritesPerformed": false
+  },
+  "publicationEvidence": {
+    "scope": "isolated-local-publication-seed",
+    "evaluatedAt": "2026-09-30T11:51:50.073Z",
+    "snapshotId": "snapshot-mpfa-platform-2026-08-31-local-repair-5265ca6094ba",
+    "quality": {
+      "snapshotId": "snapshot-mpfa-platform-2026-08-31-local-repair-5265ca6094ba",
+      "evaluatedOn": "2026-09-30",
+      "evaluationTimezone": "UTC",
+      "fundClassCount": 451,
+      "retrievedAt": "2026-09-26T05:07:28.559Z",
+      "returns": [
+        {
+          "periodYears": 1,
+          "eligible": 447,
+          "stale": 0,
+          "missing": 4,
+          "unverified": 0,
+          "total": 451,
+          "dataAsOf": {
+            "earliest": "2026-08-31",
+            "latest": "2026-08-31"
+          }
+        },
+        {
+          "periodYears": 3,
+          "eligible": 37,
+          "stale": 258,
+          "missing": 156,
+          "unverified": 0,
+          "total": 451,
+          "dataAsOf": {
+            "earliest": "2025-12-31",
+            "latest": "2026-08-31"
+          }
+        },
+        {
+          "periodYears": 5,
+          "eligible": 427,
+          "stale": 0,
+          "missing": 24,
+          "unverified": 0,
+          "total": 451,
+          "dataAsOf": {
+            "earliest": "2026-08-31",
+            "latest": "2026-08-31"
+          }
+        },
+        {
+          "periodYears": 10,
+          "eligible": 358,
+          "stale": 0,
+          "missing": 93,
+          "unverified": 0,
+          "total": 451,
+          "dataAsOf": {
+            "earliest": "2026-08-31",
+            "latest": "2026-08-31"
+          }
+        }
+      ],
+      "methodology": "按每個基金類別、每個期間的官方截至日期及已發布 freshness policy 評估；可用不代表基金較佳，不同組別不可合併排名。"
+    },
+    "rankingCount": 37,
+    "excludedStaleCount": 258,
+    "checks": [
+      {
+        "fundClassId": "mpfa-cf-507",
+        "identity": {
+          "trusteeName": "Sun Life Trustee Company Limited",
+          "schemeName": "Sun Life Rainbow MPF Scheme",
+          "constituentFundName": "Sun Life MPF Conservative Fund",
+          "fundClassName": "Class B"
+        },
+        "expected": 2.84,
+        "actual": 2.84,
+        "oneYear": 1.78,
+        "returnSource": {
+          "dataAsOf": "2026-06-30",
+          "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+          "retrievedAt": "2026-09-30T10:27:36.193Z"
+        },
+        "freshness": {
+          "status": "stale",
+          "dataAsOf": "2026-06-30",
+          "graceDays": 90,
+          "ageDays": 92
+        }
+      },
+      {
+        "fundClassId": "mpfa-cf-212",
+        "identity": {
+          "trusteeName": "Bank of East Asia (Trustees) Limited",
+          "schemeName": "BEA (MPF) Industry Scheme",
+          "constituentFundName": "BEA (Industry Scheme) Balanced Fund",
+          "fundClassName": "n.a."
+        },
+        "expected": 9.33,
+        "actual": 9.33,
+        "oneYear": 10.19,
+        "returnSource": {
+          "dataAsOf": "2026-06-30",
+          "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+          "retrievedAt": "2026-09-30T10:27:39.068Z"
+        },
+        "freshness": {
+          "status": "stale",
+          "dataAsOf": "2026-06-30",
+          "graceDays": 90,
+          "ageDays": 92
+        }
+      },
+      {
+        "fundClassId": "mpfa-cf-1040",
+        "identity": {
+          "trusteeName": "Bank of East Asia (Trustees) Limited",
+          "schemeName": "BEA (MPF) Value Scheme",
+          "constituentFundName": "BEA Growth Fund",
+          "fundClassName": "n.a."
+        },
+        "expected": 14.73,
+        "actual": 14.73,
+        "oneYear": 15.87,
+        "returnSource": {
+          "dataAsOf": "2026-06-30",
+          "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf",
+          "retrievedAt": "2026-09-30T10:27:43.393Z"
+        },
+        "freshness": {
+          "status": "stale",
+          "dataAsOf": "2026-06-30",
+          "graceDays": 90,
+          "ageDays": 92
+        }
+      },
+      {
+        "fundClassId": "mpfa-cf-2239",
+        "identity": {
+          "trusteeName": "Sun Life Trustee Company Limited",
+          "schemeName": "Sun Life Rainbow MPF Scheme",
+          "constituentFundName": "Sun Life MPF Income Fund",
+          "fundClassName": "n.a."
+        },
+        "expected": null,
+        "actual": null,
+        "oneYear": 2.58,
+        "freshness": null,
+        "officialNa": {
+          "reason": "official-na",
+          "dataAsOf": "2026-06-30",
+          "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+          "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+          "page": 9
+        }
+      }
+    ],
+    "beaFundsVerified": 40,
+    "beaMapped": 20,
+    "beaNotAssetClass": 20
+  },
+  "verification": {
+    "bunVersion": "1.3.11",
+    "coverage": 333,
+    "web": 115,
+    "api": 80,
+    "workspaceTypechecks": 4,
+    "e2e": {
+      "passed": 66,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0
+    },
+    "rootCheck": "Linux CI #803 format and shell checks passed; typecheck found an unsupported test-query option, corrected and locally rechecked. Updated-head Linux CI pending.",
+    "codeReview": "manual diff completed; this PR equivalent acceptance pending; /code-review unavailable",
+    "deployment": "none",
+    "latestLocalTypecheckAt": "2026-09-30T12:26:54Z",
+    "latestLocalWebCheck": {
+      "passed": 115,
+      "failed": 0
+    }
+  },
+  "finalDataVerification": {
+    "verifiedAt": "2026-09-30T12:26:17.260Z",
+    "scope": "repository-default-disclosure-and-label-map",
+    "snapshotId": "snapshot-mpfa-platform-2026-08-31-local-repair-5265ca6094ba",
+    "sqlSha256": "936a6f38263219dab4c3fdc67121fdc7ccc0f9faa64d5cf37a8f8d528c6725c6",
+    "identicalToVerifiedLocalSeed": true,
+    "source": "data/sources/2026-09-26/mpf-fund-platform.json",
+    "returnCandidate": "data/coverage/2026-09-30-official-return-observations-candidate.json",
+    "factSheetDisclosures": "data/sources/2026-09-30/fund-fact-sheet-disclosures.json",
+    "allocationLabelMap": "data/reference/allocation-label-map.json"
+  }
+}
