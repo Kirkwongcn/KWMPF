@@ -11,4 +11,7 @@
 /schemes / 200
 /rankings / 200
 /funds / 200
+/funds/compare / 200
+/data-status / 200
+/methodology / 200
 /fund-classes/* / 200

@@ -35,7 +35,7 @@ async function expectHonestEmptyReturnState(page: Page, period: string) {
   ).toContainText(`目前沒有合資格的${period}回報資料。`);
   await expect(
     page.locator(".kw-status--warning").filter({
-      hasText: "超出官方披露寬限期",
+      hasText: "超出網站時效門檻",
     }),
   ).toBeVisible();
 }
@@ -188,7 +188,7 @@ test("切換至管理費指標會改為由低至高排序，並隱藏回報期�
     ).toContainText("目前沒有合資格的管理費資料。");
     await expect(
       page.locator(".kw-status--warning").filter({
-        hasText: "超出官方披露寬限期",
+        hasText: "超出網站時效門檻",
       }),
     ).toBeVisible();
     return;
@@ -217,7 +217,7 @@ test("選擇比較組別後，只保留同組基金", async ({ page }) => {
     ).toContainText("目前沒有合資格的管理費資料。");
     await expect(
       page.locator(".kw-status--warning").filter({
-        hasText: "超出官方披露寬限期",
+        hasText: "超出網站時效門檻",
       }),
     ).toBeVisible();
     return;

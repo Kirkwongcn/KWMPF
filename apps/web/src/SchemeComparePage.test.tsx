@@ -21,7 +21,21 @@ const completeScheme = {
         "5y": null,
         "10y": null,
       },
-      fundClasses: [],
+      fundClasses: [
+        {
+          id: "core-a",
+          fundClassName: "Class A",
+          observations: {
+            "3y": {
+              value: 5,
+              dataAsOf: "2026-06-30",
+              sourceUrl: "https://trustee.test/june.pdf",
+              status: "stale",
+              graceDays: 90,
+            },
+          },
+        },
+      ],
     },
     age65Plus: {
       constituentFundName: "Age 65 Plus Fund",
@@ -115,14 +129,29 @@ describe("SchemeComparePage", () => {
     );
     expect(screen.getByText("受託人甲")).toBeVisible();
     expect(screen.getByText("受託人乙")).toBeVisible();
-    expect(screen.getByText("完整")).toBeVisible();
+    expect(screen.getByText("成分齊備")).toBeVisible();
+    expect(screen.getByText(/1 筆過期/)).toBeVisible();
+    const disclosure = screen.getByText("DIS 逐筆披露：日期、來源及時效");
+    disclosure.click();
+    expect(
+      screen.getByText(/過期，僅供歷史參考；截至 2026-06-30/),
+    ).toBeVisible();
+    expect(
+      screen.getByRole("link", { name: "Class A · 查看基金詳情" }),
+    ).toHaveAttribute("href", "/fund-classes/core-a");
+    expect(screen.getByRole("link", { name: "官方來源" })).toHaveAttribute(
+      "href",
+      "https://trustee.test/june.pdf",
+    );
     expect(screen.getByText("不完整")).toBeVisible();
     expect(screen.getByText(/缺少65歲後基金/)).toBeVisible();
     expect(screen.getAllByText("不完整，不顯示").length).toBeGreaterThan(0);
     expect(screen.getAllByText("v1 暫不評分").length).toBe(2);
-    expect(screen.getByRole("heading", { name: "雷達圖概覽" })).toBeVisible();
-    expect(screen.getByRole("img", { name: /計劃比較雷達圖/ })).toBeVisible();
-    expect(screen.getByText("DIS 不完整")).toBeVisible();
+    expect(screen.getByRole("heading", { name: "逐項數據圖" })).toBeVisible();
+    expect(
+      screen.getByRole("figure", { name: "FER 中位數（本站統計）" }),
+    ).toBeVisible();
+    expect(screen.getByText("不完整")).toBeVisible();
   });
 
   it("shows the API error when a scheme id is missing", async () => {
@@ -146,9 +175,8 @@ describe("SchemeComparePage", () => {
     );
 
     expect(await screen.findByText("Scheme not found")).toBeVisible();
-    expect(screen.getByRole("link", { name: "返回計劃概覽" })).toHaveAttribute(
-      "href",
-      "/schemes",
-    );
+    expect(
+      screen.getAllByRole("link", { name: "返回計劃概覽" })[0],
+    ).toHaveAttribute("href", "/schemes");
   });
 });

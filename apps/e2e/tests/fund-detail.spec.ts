@@ -52,7 +52,9 @@ test("基金詳情頁顯示逐期回報、費用及可追溯來源", async ({ pa
 
   const provenance = page.getByRole("region", { name: "資料來源及驗證" });
   await expect(provenance).toContainText(/資料截至：\d{4}-\d{2}-\d{2}/);
-  await expect(provenance).toContainText("snapshot-mpfa-platform-2026-07-31");
+  await expect(provenance).toContainText(
+    /snapshot-mpfa-platform-\d{4}-\d{2}-\d{2}/,
+  );
   await expect(
     provenance.getByRole("link", { name: "積金局原始資料" }),
   ).toHaveAttribute("href", /^https?:\/\//);

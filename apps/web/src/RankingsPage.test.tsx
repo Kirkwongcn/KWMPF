@@ -1,11 +1,15 @@
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { RankingsPage } from "./RankingsPage";
 
 describe("published return rankings", () => {
+  beforeEach(() => {
+    localStorage.setItem("kwmpf-view", "analysis");
+  });
   afterEach(() => {
     cleanup();
     vi.unstubAllGlobals();
+    localStorage.clear();
   });
 
   it("shows traceable rankings and filters them by comparison group", async () => {
@@ -81,6 +85,20 @@ describe("published return rankings", () => {
       "https://api.test/rankings?period=1",
       expect.objectContaining({ signal: expect.anything() }),
     );
+    fireEvent.click(screen.getByRole("button", { name: "同組圖表" }));
+    expect(
+      screen.getByRole("figure", { name: /Money Market Fund.*一年回報/ }),
+    ).toBeVisible();
+    expect(
+      screen.queryByRole("region", { name: "基金排名結果" }),
+    ).not.toBeInTheDocument();
+    expect(window.location.search).toContain("display=chart");
+    expect(window.location.search).toContain(
+      "group=Money+Market+Fund+-+Hong+Kong",
+    );
+    fireEvent.click(screen.getByRole("button", { name: "完整表格" }));
+    expect(screen.getByRole("region", { name: "基金排名結果" })).toBeVisible();
+    expect(screen.queryByRole("figure")).not.toBeInTheDocument();
   });
   it("lets the reader switch the ranking period and refetches from the API", async () => {
     const fetchMock = vi.fn().mockImplementation((url: string) => {
@@ -228,7 +246,7 @@ describe("published return rankings", () => {
       />,
     );
 
-    expect(await screen.findByText("1.91%")).toBeVisible();
+    expect((await screen.findAllByText("1.91%"))[0]).toBeVisible();
     expect(screen.queryByText("17.21%")).not.toBeInTheDocument();
     expect(fetchMock).toHaveBeenCalledWith(
       "https://api.test/rankings?period=5",
@@ -355,7 +373,7 @@ describe("published return rankings", () => {
 
     expect(
       await screen.findByText(
-        /12 隻基金的資料已超出官方披露寬限期（45 日），暫不列入排名/,
+        /12 隻基金的資料已超出網站時效門檻（45 日），暫不列入排名/,
       ),
     ).toBeVisible();
   });

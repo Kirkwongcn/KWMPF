@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { SiteChrome } from "./SiteChrome";
+import { ValueBars, AllocationChart } from "./DataCharts";
 import { fundClassLabel, joinFundParts } from "./fundClassLabel";
 import {
   pointInTimeAsOf,
   type FactSheetTemporalScopes,
 } from "../../../packages/coverage/src/fact-sheet-temporal";
 
-type PublishedFundClass = {
+export type PublishedFundClass = {
   snapshotId: string;
   comparisonGroup?: string;
   classification?: {
@@ -22,7 +23,10 @@ type PublishedFundClass = {
     fundClassName: string;
     fundType: string;
     fundCategory: string;
-    annualizedReturn1y: number;
+    annualizedReturn1y?: number;
+    annualizedReturn3y?: number;
+    cumulativeReturn3y?: number;
+    returnSources?: Record<string, { dataAsOf: string; sourceUrl: string }>;
     annualizedReturn5y?: number;
     annualizedReturn10y?: number;
     cumulativeReturn1y?: number;
@@ -75,6 +79,10 @@ type PublishedFundClass = {
     graceDays: number;
     ageDays: number | null;
   };
+  returnsFreshness?: Record<
+    string,
+    { status: "verified" | "stale"; dataAsOf: string }
+  >;
   factSheetDisclosure?: FactSheetDisclosure;
   mappedAllocation?: MappedAllocation;
 };
@@ -487,28 +495,50 @@ export function FundClassPage({
   const unavailable = "官方未提供";
   const formatNumber = (
     value: number | undefined,
-    digits: number,
+    _digits: number,
     suffix = "",
-  ) =>
-    typeof value === "number"
-      ? `${value.toFixed(digits)}${suffix}`
-      : unavailable;
+  ) => (typeof value === "number" ? `${value}${suffix}` : unavailable);
   const [publication, setPublication] = useState<PublishedFundClass | null>(
     null,
   );
   const [failed, setFailed] = useState(false);
   const [activeTab, setActiveTab] = useState<"details" | "interpretation">(
-    "details",
+    new URLSearchParams(window.location.search).get("tab") === "interpretation"
+      ? "interpretation"
+      : "details",
   );
+  function changeTab(next: "details" | "interpretation") {
+    setActiveTab(next);
+    const url = new URL(window.location.href);
+    url.searchParams.set("tab", next);
+    window.history.pushState({}, "", url.pathname + url.search);
+  }
+  useEffect(() => {
+    const restore = () =>
+      setActiveTab(
+        new URLSearchParams(window.location.search).get("tab") ===
+          "interpretation"
+          ? "interpretation"
+          : "details",
+      );
+    window.addEventListener("popstate", restore);
+    return () => window.removeEventListener("popstate", restore);
+  }, []);
 
   useEffect(() => {
-    fetch(`${apiBaseUrl}/fund-classes/${encodeURIComponent(fundClassId)}`)
+    const controller = new AbortController();
+    fetch(`${apiBaseUrl}/fund-classes/${encodeURIComponent(fundClassId)}`, {
+      signal: controller.signal,
+    })
       .then((response) => {
         if (!response.ok) throw new Error("Fund class unavailable");
         return response.json() as Promise<PublishedFundClass>;
       })
       .then(setPublication)
-      .catch(() => setFailed(true));
+      .catch(() => {
+        if (!controller.signal.aborted) setFailed(true);
+      });
+    return () => controller.abort();
   }, [apiBaseUrl, fundClassId]);
 
   if (failed)
@@ -583,7 +613,7 @@ export function FundClassPage({
         <button
           aria-pressed={activeTab === "details"}
           className="kw-tabs__tab"
-          onClick={() => setActiveTab("details")}
+          onClick={() => changeTab("details")}
           type="button"
         >
           基金資料
@@ -591,7 +621,7 @@ export function FundClassPage({
         <button
           aria-pressed={activeTab === "interpretation"}
           className="kw-tabs__tab"
-          onClick={() => setActiveTab("interpretation")}
+          onClick={() => changeTab("interpretation")}
           type="button"
         >
           基金解讀
@@ -617,13 +647,7 @@ export function FundClassPage({
                   <dt>基金規模</dt>
                   <dd>
                     {typeof fundClass.fundSizeHkdMillion === "number"
-                      ? `HK$${fundClass.fundSizeHkdMillion.toLocaleString(
-                          "en-US",
-                          {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2,
-                          },
-                        )} 百萬`
+                      ? `HK$${String(fundClass.fundSizeHkdMillion)} 百萬`
                       : unavailable}
                     {fundClass.fundSizeAsOf
                       ? `（截至 ${fundClass.fundSizeAsOf}）`
@@ -647,7 +671,7 @@ export function FundClassPage({
               </dl>
               {fundSizeFreshness?.status === "stale" && (
                 <p className="kw-status kw-status--warning">
-                  基金規模已超出官方披露寬限期（{fundSizeFreshness.graceDays}{" "}
+                  基金規模已超出網站時效門檻（{fundSizeFreshness.graceDays}{" "}
                   日），截至日期仍為 {fundSizeFreshness.dataAsOf}。
                 </p>
               )}
@@ -658,7 +682,7 @@ export function FundClassPage({
                 </p>
               )}
               <p className="kw-muted">
-                成立日期是靜態事實，不設過期；基金規模按月披露，沿用月度寬限期。
+                成立日期是靜態事實，不設過期；基金規模沿用網站的月度時效門檻。
               </p>
             </div>
           </section>
@@ -689,6 +713,11 @@ export function FundClassPage({
                         fundClass.cumulativeReturn1y,
                       ],
                       [
+                        "三年",
+                        fundClass.annualizedReturn3y,
+                        fundClass.cumulativeReturn3y,
+                      ],
+                      [
                         "五年",
                         fundClass.annualizedReturn5y,
                         fundClass.cumulativeReturn5y,
@@ -709,6 +738,54 @@ export function FundClassPage({
                       <th scope="row">{horizon}</th>
                       <td className="kw-return">
                         {formatNumber(annualized, 2, "%")}
+                        {horizon !== "成立至今" && (
+                          <small>
+                            {publication.returnsFreshness?.[
+                              (
+                                {
+                                  一年: "1",
+                                  三年: "3",
+                                  五年: "5",
+                                  十年: "10",
+                                } as const
+                              )[horizon]
+                            ]?.status === "stale"
+                              ? "過期 · "
+                              : ""}
+                            截至{" "}
+                            {publication.returnsFreshness?.[
+                              (
+                                {
+                                  一年: "1",
+                                  三年: "3",
+                                  五年: "5",
+                                  十年: "10",
+                                } as const
+                              )[horizon]
+                            ]?.dataAsOf ??
+                              fundClass.returnsAsOf ??
+                              provenance.dataAsOf}{" "}
+                            ·{" "}
+                            <a
+                              href={
+                                fundClass.returnSources?.[
+                                  (
+                                    {
+                                      一年: "1",
+                                      三年: "3",
+                                      五年: "5",
+                                      十年: "10",
+                                    } as const
+                                  )[horizon]
+                                ]?.sourceUrl ?? provenance.sourceUrl
+                              }
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              官方來源
+                            </a>
+                          </small>
+                        )}
                       </td>
                       <td className="kw-return">
                         {formatNumber(cumulative, 2, "%")}
@@ -718,6 +795,27 @@ export function FundClassPage({
                 </tbody>
               </table>
             </div>
+            <ValueBars
+              label="各期間年率化回報（獨立披露，非走勢）"
+              rows={(
+                [
+                  ["1", "annualizedReturn1y"],
+                  ["3", "annualizedReturn3y"],
+                  ["5", "annualizedReturn5y"],
+                  ["10", "annualizedReturn10y"],
+                ] as const
+              ).map(([period, field]) => ({
+                label: period + " 年",
+                value: fundClass[field],
+                note:
+                  (publication.returnsFreshness?.[period]?.status === "stale"
+                    ? "過期 · "
+                    : "") +
+                  "截至 " +
+                  (publication.returnsFreshness?.[period]?.dataAsOf ??
+                    "官方未提供"),
+              }))}
+            />
             <dl className="status-list">
               <div>
                 <dt>風險級別</dt>
@@ -737,13 +835,24 @@ export function FundClassPage({
               1 至 7 級。成立不足三年的基金官方不會提供指標。
             </p>
             <p className="kw-muted" role="note">
-              年率化回報是每年平均變幅，適合與其他基金比較；累積回報是整段期間的總變幅，反映同一筆本金實際增減。兩者均為積金局公布數值，網站不會自行換算。
+              年率化回報是每年平均變幅，適合與其他基金比較；累積回報是整段期間的總變幅，反映同一筆本金實際增減。數值來自官方平台或受託人便覽，網站不會自行換算。
             </p>
           </section>
           <section className="kw-section" aria-labelledby="fund-calendar-title">
             <h2 className="kw-section__heading" id="fund-calendar-title">
               年度回報
             </h2>
+            {calendarYears.length > 0 && (
+              <div className="kw-advanced">
+                <ValueBars
+                  label="曆年累積回報（各年獨立）"
+                  rows={calendarYears.map((year) => ({
+                    label: year,
+                    value: fundClass.calendarYearReturns?.[year],
+                  }))}
+                />
+              </div>
+            )}
             {calendarYears.length === 0 ? (
               <p className="kw-status">官方未提供年度回報。</p>
             ) : (
@@ -785,7 +894,7 @@ export function FundClassPage({
             <h2 className="kw-section__heading" id="fund-fees-title">
               費用及資料限制
             </h2>
-            <div className="kw-card provenance">
+            <div className="kw-detail-stack provenance">
               <dl className="status-list">
                 <div>
                   <dt>基金開支比率（歷史財政期）</dt>
@@ -898,7 +1007,7 @@ export function FundClassPage({
             <h2 className="kw-section__heading" id="fund-fact-sheet-title">
               投資組合披露
             </h2>
-            <div className="kw-card">
+            <div className="kw-detail-stack">
               {factSheetDisclosure ? (
                 <>
                   <p>
@@ -985,6 +1094,13 @@ export function FundClassPage({
                       </p>
                     )}
                   {factSheetDisclosure.allocations.map((dimension) => (
+                    <AllocationChart
+                      key={"chart-" + dimension.heading}
+                      heading={dimension.heading}
+                      entries={dimension.entries}
+                    />
+                  ))}
+                  {factSheetDisclosure.allocations.map((dimension) => (
                     <div
                       className="kw-table-scroll"
                       key={dimension.heading}
@@ -1019,6 +1135,20 @@ export function FundClassPage({
                       資產配置：
                       {unavailableNote("allocation", factSheetDisclosure)}
                     </p>
+                  )}
+                  {factSheetDisclosure.topHoldings.length > 0 && (
+                    <ValueBars
+                      label={
+                        "十大持倉比重" +
+                        (topHoldingsAsOf
+                          ? " · 截至 " + topHoldingsAsOf
+                          : " · 欄位日期未明示")
+                      }
+                      rows={factSheetDisclosure.topHoldings.map((holding) => ({
+                        label: holding.security,
+                        value: holding.percent,
+                      }))}
+                    />
                   )}
                   {factSheetDisclosure.topHoldings.length > 0 && (
                     <div
@@ -1095,8 +1225,8 @@ export function FundClassPage({
                   </p>
                   <p>
                     {freshness.status === "stale"
-                      ? `回報資料已超出官方披露寬限期（${freshness.graceDays} 日），截至日期仍為 ${freshness.dataAsOf}。數值繼續顯示以供參考，但不會參與排名。`
-                      : `回報資料在官方披露寬限期（${freshness.graceDays} 日）之內。`}
+                      ? `回報資料已超出網站時效門檻（${freshness.graceDays} 日），截至日期仍為 ${freshness.dataAsOf}。數值繼續顯示以供參考，但不會參與排名。`
+                      : `回報資料在網站時效門檻（${freshness.graceDays} 日）之內。`}
                   </p>
                 </>
               )}

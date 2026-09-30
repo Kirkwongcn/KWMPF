@@ -14,6 +14,7 @@ const CACHEABLE_PATHS = [
   /^\/search$/,
   /^\/filters$/,
   /^\/summary$/,
+  /^\/data-quality$/,
   /^\/schemes$/,
   /^\/rankings$/,
   /^\/comparison-group-stats$/,
@@ -54,13 +55,39 @@ export const cacheKeyFor = (url: string, contentVersion: string): Request => {
   return new Request(keyUrl.toString(), { method: "GET" });
 };
 
+/** Freshness is evaluated each UTC calendar day; validators also bind the URL and code version. */
+export async function representationEtag(
+  url: string,
+  contentVersion: string,
+  releaseVersion: string,
+  evaluatedOn: string,
+): Promise<string> {
+  const parsed = new URL(url);
+  parsed.hash = "";
+  parsed.searchParams.sort();
+  const input = new TextEncoder().encode(
+    JSON.stringify([
+      parsed.pathname,
+      parsed.search,
+      contentVersion,
+      releaseVersion,
+      evaluatedOn,
+    ]),
+  );
+  const digest = await crypto.subtle.digest("SHA-256", input);
+  const hash = [...new Uint8Array(digest)]
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
+  return `"${hash}"`;
+}
+
 const edgeCache = (): Cache | null => {
   if (typeof caches === "undefined") return null;
   return (caches as CacheStorage & { default?: Cache }).default ?? null;
 };
 
 export const publicationCache = (): MiddlewareHandler<{
-  Bindings: PublicationBindings;
+  Bindings: PublicationBindings & { RELEASE_VERSION?: string };
 }> =>
   async function publicationCacheMiddleware(context, next) {
     if (context.req.method !== "GET" || !isCacheablePath(context.req.path)) {
@@ -70,24 +97,36 @@ export const publicationCache = (): MiddlewareHandler<{
     }
 
     const published = await currentPublicationVersion(context.env.DB);
-    const etag = published === null ? null : `"${published.snapshotId}"`;
-
-    if (published !== null && context.req.header("If-None-Match") === etag) {
-      return context.body(null, 304, {
-        "Cache-Control": PUBLISHED_CACHE_CONTROL,
-        ETag: etag!,
-      });
-    }
+    const evaluatedOn = new Date().toISOString().slice(0, 10);
+    const releaseVersion = context.env.RELEASE_VERSION ?? "unknown";
+    const version =
+      published === null
+        ? null
+        : `${published.contentVersion}:${releaseVersion}:${evaluatedOn}`;
+    const etag =
+      published === null
+        ? null
+        : await representationEtag(
+            context.req.url,
+            published.contentVersion,
+            releaseVersion,
+            evaluatedOn,
+          );
 
     const cache = published === null ? null : edgeCache();
-    const key =
-      cache === null
-        ? null
-        : cacheKeyFor(context.req.url, published!.contentVersion);
+    const key = cache === null ? null : cacheKeyFor(context.req.url, version!);
 
     if (cache !== null && key !== null) {
       const hit = await cache.match(key).catch(() => undefined);
-      if (hit) return hit;
+      if (hit) {
+        if (context.req.header("If-None-Match") === hit.headers.get("ETag"))
+          return context.body(null, 304, {
+            "Cache-Control": PUBLISHED_CACHE_CONTROL,
+            ETag: etag!,
+            "X-Snapshot-Id": published!.snapshotId,
+          });
+        return hit;
+      }
     }
 
     await next();
@@ -100,6 +139,15 @@ export const publicationCache = (): MiddlewareHandler<{
 
     context.res.headers.set("Cache-Control", PUBLISHED_CACHE_CONTROL);
     context.res.headers.set("ETag", etag);
+    context.res.headers.set("X-Snapshot-Id", published!.snapshotId);
+
+    // Validate the route before returning 304; an invented validator must not hide a 400/404.
+    if (context.req.header("If-None-Match") === etag)
+      return context.body(null, 304, {
+        "Cache-Control": PUBLISHED_CACHE_CONTROL,
+        ETag: etag,
+        "X-Snapshot-Id": published!.snapshotId,
+      });
 
     if (cache !== null && key !== null) {
       context.executionCtx.waitUntil(

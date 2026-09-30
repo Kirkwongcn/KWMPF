@@ -1,97 +1,113 @@
 import { ReactNode, useEffect } from "react";
-
-type NavKey = "funds" | "rankings" | "schemes";
-
-const siteName = "KWMPF";
-const homeDescription =
-  "以積金局及受託人官方資料比較香港強積金計劃及基金，每項數值均可追溯來源及截至日期。";
-
+import { useViewMode } from "./viewMode";
+type NavKey = "funds" | "rankings" | "schemes" | "data";
 export function SiteChrome({
-  eyebrow,
   title,
   subtitle,
   current,
   isHome,
   children,
 }: {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   subtitle?: string;
   current?: NavKey;
   isHome?: boolean;
   children: ReactNode;
 }) {
+  const [mode, changeMode] = useViewMode();
   useEffect(() => {
-    document.title = isHome
-      ? `${siteName}｜香港強積金比較`
-      : `${title}｜${siteName}`;
-    const description = subtitle ?? homeDescription;
+    document.title = isHome ? "KWMPF｜香港強積金比較" : `${title}｜KWMPF`;
     let meta = document.querySelector('meta[name="description"]');
     if (!meta) {
       meta = document.createElement("meta");
       meta.setAttribute("name", "description");
       document.head.appendChild(meta);
     }
-    meta.setAttribute("content", description);
+    meta.setAttribute(
+      "content",
+      subtitle ??
+        "以積金局及受託人官方資料比較香港強積金基金，追溯每項數值的來源及截至日期。",
+    );
   }, [title, subtitle, isHome]);
-
   return (
-    <>
+    <div className={`kw-app kw-mode--${mode}`}>
       <a className="kw-skip-link" href="#main-content">
         跳至主內容
       </a>
       <header className="kw-header">
         <div className="kw-shell kw-header__inner">
-          <a className="kw-brand" href="/">
-            <span className="kw-brand__mark">kW</span>
-            <span>
-              <small>Kirk Wong Research</small>
-              <strong>KWMPF</strong>
-            </span>
+          <a className="kw-brand" href="/" aria-label="KWMPF 首頁">
+            <strong>
+              KW<span>MPF</span>
+            </strong>
           </a>
           <nav className="kw-nav" aria-label="主要導覽">
-            <a
-              href="/funds"
-              aria-current={current === "funds" ? "page" : undefined}
-            >
-              基金瀏覽
-            </a>
-            <a
-              href="/rankings"
-              aria-current={current === "rankings" ? "page" : undefined}
-            >
-              基金排名
-            </a>
-            <a
-              href="/schemes"
-              aria-current={current === "schemes" ? "page" : undefined}
-            >
-              計劃比較
-            </a>
+            {(
+              [
+                ["funds", "基金瀏覽", "/funds"],
+                ["rankings", "同類排名", "/rankings"],
+                ["schemes", "計劃比較", "/schemes"],
+                ["data", "資料狀態", "/data-status"],
+              ] as const
+            ).map(([key, label, href]) => (
+              <a
+                key={key}
+                href={href}
+                aria-current={current === key ? "page" : undefined}
+              >
+                {label}
+              </a>
+            ))}
           </nav>
+          <div className="kw-mode" role="group" aria-label="閱讀模式">
+            <button
+              aria-pressed={mode === "simple"}
+              onClick={() => changeMode("simple")}
+            >
+              簡潔
+            </button>
+            <button
+              aria-pressed={mode === "analysis"}
+              onClick={() => changeMode("analysis")}
+            >
+              深入分析
+            </button>
+          </div>
         </div>
       </header>
-      <section className="kw-hero" aria-labelledby="page-title">
-        <div className="kw-hero__inner">
-          <p className="kw-eyebrow">{eyebrow}</p>
-          <h1 id="page-title">{title}</h1>
-          {subtitle && <p className="kw-hero__subtitle">{subtitle}</p>}
-        </div>
-      </section>
-      <main className="kw-main" id="main-content" tabIndex={-1}>
+      <main
+        className={`kw-main${isHome ? " kw-main--home" : ""}`}
+        id="main-content"
+        tabIndex={-1}
+      >
+        {!isHome && (
+          <header className="kw-page-heading">
+            <h1 id="page-title">{title}</h1>
+            {subtitle && <p>{subtitle}</p>}
+          </header>
+        )}
         {children}
       </main>
       <footer className="kw-footer">
         <div className="kw-shell kw-footer__inner">
+          <div className="kw-footer__links">
+            <strong>KWMPF</strong>
+            <a href="/methodology">比較方法與來源</a>
+            <a href="/data-status">資料時效及覆蓋</a>
+            <a href="https://mfp.mpfa.org.hk/" target="_blank" rel="noreferrer">
+              積金局基金平台
+            </a>
+          </div>
           <p>
-            本網站只提供資料比較及投資教育，不構成投資建議、要約或招攬。過往表現不代表未來結果，投資涉及風險。
+            本網站提供資料比較及投資教育，不構成投資建議、要約或招攬。過往表現不代表未來結果，投資涉及風險。
           </p>
           <p className="kw-muted">
-            資料來源：積金局強積金基金平台及受託人官方基金便覽。每項公開數值均標示截至日期及來源連結，網站不會以估算值補足官方未提供的欄位。
+            數值來自積金局平台及受託人官方便覽；分類及衍生統計另行標示。官方未提供的欄位不補估值。Kirk
+            Wong Research
           </p>
-          <p className="kw-muted">KWMPF · Kirk Wong Research</p>
         </div>
       </footer>
-    </>
+    </div>
   );
 }

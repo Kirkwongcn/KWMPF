@@ -66,6 +66,12 @@ describe("publication snapshot", () => {
         dataAsOf: fixture.fundClass.dataAsOf,
         graceDays: 45,
       }),
+      returnsFreshness: {
+        "1": expect.objectContaining({
+          dataAsOf: fixture.fundClass.dataAsOf,
+          graceDays: 45,
+        }),
+      },
     });
   });
 
@@ -230,6 +236,10 @@ describe("publication snapshot", () => {
               fundClassName: "Class A",
               dataAsOf: "2026-06-30",
               verificationStatus: "verified",
+            },
+            provenance: {
+              verificationStatus: "verified",
+              dataAsOf: "2026-06-30",
             },
           }),
         )
@@ -1115,7 +1125,23 @@ describe("publication snapshot", () => {
               verificationStatus: "verified",
               ...(fund.component ? { isDisComponent: fund.component } : {}),
               ...(fund.fer === undefined ? {} : { latestFer: fund.fer }),
+              returnsAsOf: "2026-08-31",
+              returnSources: {
+                "3": {
+                  dataAsOf: "2026-06-30",
+                  sourceUrl: "https://trustee.test/june.pdf",
+                },
+              },
               ...fund.returns,
+            },
+            provenance: {
+              verificationStatus: "verified",
+              dataAsOf: "2026-08-31",
+              sourceUrl: "https://mpfa.test/platform",
+              freshnessPolicy: {
+                returnsGraceDays: 45,
+                threeYearReturnGraceDays: 90,
+              },
             },
           }),
         )
@@ -1146,6 +1172,29 @@ describe("publication snapshot", () => {
             status: "complete",
             missing: [],
             coreAccumulation: expect.objectContaining({
+              fundClasses: expect.arrayContaining([
+                expect.objectContaining({
+                  id: "core-a",
+                  observations: expect.objectContaining({
+                    "1y": expect.objectContaining({
+                      value: 8.11,
+                      dataAsOf: "2026-08-31",
+                      sourceUrl: "https://mpfa.test/platform",
+                      graceDays: 45,
+                    }),
+                    "3y": expect.objectContaining({
+                      value: 5.2,
+                      dataAsOf: "2026-06-30",
+                      sourceUrl: "https://trustee.test/june.pdf",
+                      graceDays: 90,
+                    }),
+                    "5y": expect.objectContaining({
+                      value: null,
+                      status: "missing",
+                    }),
+                  }),
+                }),
+              ]),
               returns: expect.objectContaining({
                 "1y": { min: 8.1, max: 8.11, fundClassCount: 2 },
                 "3y": { min: 5.2, max: 5.2, fundClassCount: 2 },

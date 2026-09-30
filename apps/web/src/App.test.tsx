@@ -1,278 +1,101 @@
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { App } from "./App";
-
-function stubSearch(searchResponse: () => Promise<Response>) {
-  const fetchMock = vi.fn((input: RequestInfo | URL) => {
-    const url = String(input);
-    if (url.includes("/search")) return searchResponse();
-    if (url.endsWith("/summary"))
-      return Promise.resolve(
-        Response.json({
-          snapshotId: "snapshot-2026-06-30",
-          fundClassCount: 451,
-          schemeCount: 27,
-          trusteeCount: 12,
-          dataAsOf: { earliest: "2026-03-31", latest: "2026-06-30" },
-        }),
-      );
-    return Promise.resolve(
-      Response.json({
-        status: "ok",
-        version: "test-release",
-        bindings: { d1: true, r2: true },
-      }),
-    );
-  });
-  vi.stubGlobal("fetch", fetchMock);
-  return fetchMock;
-}
-
-async function submitSearch(term: string) {
-  fireEvent.change(await screen.findByLabelText("搜尋基金、計劃或受託人"), {
-    target: { value: term },
-  });
-  fireEvent.click(screen.getByRole("button", { name: "搜尋" }));
-}
-
-describe("health page", () => {
-  afterEach(() => {
-    cleanup();
-    vi.unstubAllGlobals();
-  });
-
-  it("shows the release and service state returned by the public API", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        new Response(
-          JSON.stringify({
-            status: "ok",
-            version: "test-release",
-            bindings: { d1: true, r2: true },
-          }),
-          { status: 200 },
-        ),
-      ),
-    );
-
-    render(<App apiUrl="https://api.test/health" />);
-
-    expect(
-      screen.getByRole("heading", { name: "用可追溯資料，讀懂強積金選擇" }),
-    ).toBeVisible();
-    expect(await screen.findByText("test-release")).toBeVisible();
-    expect(await screen.findByText("API：正常")).toBeVisible();
-    expect(fetch).toHaveBeenCalledWith("https://api.test/health");
-  });
-
-  it("shows the published coverage and data principles from the live summary", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockImplementation((url: string) =>
-        Promise.resolve(
-          url.endsWith("/summary")
-            ? Response.json({
-                snapshotId: "snapshot-2026-06-30",
-                fundClassCount: 451,
-                schemeCount: 27,
-                trusteeCount: 12,
-                dataAsOf: { earliest: "2026-03-31", latest: "2026-06-30" },
-              })
-            : Response.json({
-                status: "ok",
-                version: "test-release",
-                bindings: { d1: true, r2: true },
-              }),
-        ),
-      ),
-    );
-
-    render(<App apiUrl="https://api.test/health" />);
-
-    expect(await screen.findByText("451")).toBeVisible();
-    expect(screen.getByText("已核實基金類別")).toBeVisible();
-    expect(screen.getByText("27")).toBeVisible();
-    expect(screen.getByText("12")).toBeVisible();
-    expect(screen.getByText("2026-03-31 至 2026-06-30")).toBeVisible();
-    expect(fetch).toHaveBeenCalledWith("https://api.test/summary");
-  });
-
-  it("does not invent coverage numbers when nothing is published", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockImplementation((url: string) =>
-        Promise.resolve(
-          url.endsWith("/summary")
-            ? Response.json({
-                snapshotId: null,
-                fundClassCount: 0,
-                schemeCount: 0,
-                trusteeCount: 0,
-                dataAsOf: null,
-              })
-            : Response.json({
-                status: "ok",
-                version: "test-release",
-                bindings: { d1: true, r2: true },
-              }),
-        ),
-      ),
-    );
-
-    render(<App apiUrl="https://api.test/health" />);
-
-    expect(await screen.findByText("尚未有已發布快照")).toBeVisible();
-  });
-
-  it("distinguishes a summary still loading from no published snapshot", async () => {
-    let resolveSummary!: (response: Response) => void;
-    const summaryResponse = new Promise<Response>((resolve) => {
-      resolveSummary = resolve;
-    });
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockImplementation((input: RequestInfo | URL) => {
-        const url = String(input);
-        if (url.endsWith("/summary")) return summaryResponse;
-        return Promise.resolve(
-          Response.json({
-            status: "ok",
-            version: "test-release",
-            bindings: { d1: true, r2: true },
-          }),
-        );
-      }),
-    );
-
-    render(<App apiUrl="https://api.test/health" />);
-
-    expect(screen.getByRole("status")).toHaveTextContent("正在載入已發布快照");
-    expect(screen.queryByText("尚未有已發布快照")).not.toBeInTheDocument();
-
-    resolveSummary(
-      Response.json({
-        snapshotId: "snapshot-2026-06-30",
-        fundClassCount: 451,
-        schemeCount: 27,
-        trusteeCount: 12,
-        dataAsOf: { earliest: "2026-03-31", latest: "2026-06-30" },
-      }),
-    );
-
-    expect(await screen.findByText("451")).toBeVisible();
-  });
-
-  it("explains when the published snapshot summary cannot be loaded", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockImplementation((input: RequestInfo | URL) => {
-        const url = String(input);
-        if (url.endsWith("/summary")) {
-          return Promise.reject(new Error("offline"));
-        }
-        return Promise.resolve(
-          Response.json({
-            status: "ok",
-            version: "test-release",
-            bindings: { d1: true, r2: true },
-          }),
-        );
-      }),
-    );
-
-    render(<App apiUrl="https://api.test/health" />);
-
-    expect(await screen.findByRole("status")).toHaveTextContent(
-      "目前未能載入已發布快照資料，請稍後重新整理頁面。",
-    );
-    expect(screen.queryByText("尚未有已發布快照")).not.toBeInTheDocument();
-  });
-
-  it("says so when a search matches nothing instead of doing nothing", async () => {
-    stubSearch(() => Promise.resolve(Response.json([])));
-
-    render(<App apiUrl="https://api.test/health" />);
-    await submitSearch("不存在的基金");
-
-    expect(
-      await screen.findByText(/沒有符合「不存在的基金」的已發布基金/),
-    ).toBeVisible();
-  });
-
-  it("distinguishes a failed search from an empty result", async () => {
-    stubSearch(() => Promise.reject(new Error("offline")));
-
-    render(<App apiUrl="https://api.test/health" />);
-    await submitSearch("Principal");
-
-    expect(await screen.findByText(/暫時無法搜尋已發布資料/)).toBeVisible();
-    expect(screen.queryByText(/沒有符合/)).not.toBeInTheDocument();
-  });
-
-  it("tells the reader when a search returns more matches than it shows", async () => {
-    stubSearch(() =>
+const summary = {
+  snapshotId: "published-1",
+  fundClassCount: 451,
+  schemeCount: 24,
+  trusteeCount: 11,
+  dataAsOf: { earliest: "2026-08-31", latest: "2026-08-31" },
+};
+const quality = {
+  snapshotId: "published-1",
+  fundClassCount: 451,
+  evaluatedOn: "2026-09-30",
+  returns: [1, 3, 5, 10].map((periodYears) => ({
+    periodYears,
+    eligible: 37,
+    stale: 212,
+    missing: 202,
+    unverified: 0,
+  })),
+};
+function stub(nextQuality = quality) {
+  vi.stubGlobal(
+    "fetch",
+    vi.fn((input: RequestInfo | URL) =>
       Promise.resolve(
         Response.json(
-          [
-            {
-              id: "fund-a",
-              fundClassName: "Class A",
-              constituentFundName: "港股基金",
-              schemeName: "計劃甲",
-              trusteeName: "受託人甲",
-            },
-          ],
-          { headers: { "X-Total-Matches": "88" } },
+          String(input).endsWith("/summary") ? summary : nextQuality,
         ),
       ),
-    );
-
-    render(<App apiUrl="https://api.test/health" />);
-    await submitSearch("基金");
-
-    expect(await screen.findByText(/共 88 項符合/)).toBeVisible();
-    expect(
-      screen.getByRole("link", { name: /按條件瀏覽全部結果/ }),
-    ).toHaveAttribute("href", "/funds?q=%E5%9F%BA%E9%87%91");
-  });
-
-  it("does not claim the API is healthy when the health check fails", async () => {
-    vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("offline")));
-
-    render(<App apiUrl="https://api.test/health" />);
-
-    expect(await screen.findByText("API：無法連線")).toBeVisible();
-    expect(screen.getByText("未能取得")).toBeVisible();
-  });
+    ),
+  );
+}
+afterEach(() => {
+  cleanup();
+  vi.unstubAllGlobals();
+  localStorage.clear();
+  window.history.replaceState({}, "", "/");
 });
-
-describe("funds without a separate class", () => {
-  afterEach(() => {
-    cleanup();
-    vi.unstubAllGlobals();
-  });
-
-  it("omits the official n.a. placeholder from search results", async () => {
-    stubSearch(() =>
-      Promise.resolve(
-        Response.json([
-          {
-            id: "fund-na",
-            fundClassName: "n.a.",
-            constituentFundName: "港股基金",
-            schemeName: "計劃甲",
-            trusteeName: "受託人甲",
-          },
-        ]),
-      ),
-    );
-
+describe("home data workbench", () => {
+  it("shows the real published coverage and distinguishes stale from missing", async () => {
+    stub();
     render(<App apiUrl="https://api.test/health" />);
-    await submitSearch("基金");
-
-    const link = await screen.findByRole("link", { name: "港股基金" });
-    expect(link).toBeVisible();
-    expect(screen.queryByText(/n\.a\./i)).not.toBeInTheDocument();
+    expect(await screen.findByText("451")).toBeVisible();
+    expect(screen.getByText("2026-08-31")).toBeVisible();
+    expect(screen.getAllByText("37 可排名")).toHaveLength(4);
+    expect(screen.getAllByText("212 過期 · 202 官方未提供")).toHaveLength(4);
+  });
+  it("submits the search to the paginated fund browser", () => {
+    stub();
+    render(<App apiUrl="https://api.test/health" />);
+    fireEvent.change(screen.getByRole("searchbox"), {
+      target: { value: "滙豐" },
+    });
+    expect(screen.getByRole("searchbox")).toHaveValue("滙豐");
+    expect(screen.getByRole("searchbox").closest("form")).toHaveAttribute(
+      "action",
+      "/funds",
+    );
+    expect(screen.getByRole("searchbox")).toHaveAttribute("name", "q");
+  });
+  it("does not combine data from different published snapshots", async () => {
+    stub({ ...quality, snapshotId: "published-2" });
+    render(<App apiUrl="https://api.test/health" />);
+    expect(await screen.findByText(/未能載入資料覆蓋/)).toBeVisible();
+    expect(screen.queryByText("451")).not.toBeInTheDocument();
+  });
+  it("reports service errors without inventing data", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("Offline")));
+    render(<App apiUrl="https://api.test/health" />);
+    expect(await screen.findByText("資料範圍暫時無法取得")).toBeVisible();
+    expect(screen.queryByText("451")).not.toBeInTheDocument();
+  });
+  it("keeps useful actions available while the data is loading", () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(() => new Promise(() => {})),
+    );
+    render(<App apiUrl="https://api.test/health" />);
+    expect(screen.getByText("正在讀取回報資料覆蓋…")).toBeVisible();
+    expect(
+      screen.getByRole("link", { name: "按同類組別比較" }),
+    ).toHaveAttribute("href", "/rankings");
+  });
+  it("persists a shareable analysis mode without losing query state", () => {
+    window.history.replaceState({}, "", "/?q=HSBC");
+    stub();
+    render(<App apiUrl="https://api.test/health" />);
+    fireEvent.click(screen.getByRole("button", { name: "深入分析" }));
+    expect(screen.getByRole("button", { name: "深入分析" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    expect(new URLSearchParams(window.location.search).get("view")).toBe(
+      "analysis",
+    );
+    expect(new URLSearchParams(window.location.search).get("q")).toBe("HSBC");
+    expect(localStorage.getItem("kwmpf-view")).toBe("analysis");
   });
 });

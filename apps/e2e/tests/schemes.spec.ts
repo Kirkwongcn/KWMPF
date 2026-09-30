@@ -67,7 +67,7 @@ test("計劃的基金列表預設收起，展開後按回報由高至低排列",
     .allTextContents();
   const published = returns
     .filter((text) => !text.includes("官方未提供"))
-    .map((text) => Number(/-?\d+\.\d{2}(?=%)/.exec(text)?.[0]));
+    .map((text) => Number(/-?\d+(?:\.\d+)?(?=%)/.exec(text)?.[0]));
   expect(published.length).toBeGreaterThan(1);
   for (let index = 1; index < published.length; index += 1) {
     expect(published[index]!).toBeLessThanOrEqual(published[index - 1]!);
@@ -102,8 +102,10 @@ test("勾選兩個計劃後可進入逐項比較頁", async ({ page }) => {
   await page.getByRole("link", { name: "比較已選計劃" }).click();
   await expect(page).toHaveURL(/\/schemes\/compare\?ids=/);
   await expect(page.getByRole("heading", { name: "逐項對比" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "雷達圖概覽" })).toBeVisible();
-  await expect(page.getByRole("img", { name: /計劃比較雷達圖/ })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "逐項數據圖" })).toBeVisible();
+  await expect(
+    page.getByRole("figure", { name: "FER 中位數（本站統計）" }),
+  ).toBeVisible();
 });
 
 test("每個計劃都連到積金局的官方基金便覽", async ({ page }) => {

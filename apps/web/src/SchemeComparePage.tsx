@@ -1,5 +1,15 @@
 import { useEffect, useMemo, useState } from "react";
 import { SiteChrome } from "./SiteChrome";
+import { ValueBars } from "./DataCharts";
+import { useViewMode } from "./viewMode";
+
+type DisObservation = {
+  value: number | null;
+  dataAsOf: string | null;
+  sourceUrl: string | null;
+  graceDays: number;
+  status: "verified" | "stale" | "missing" | "unverified";
+};
 
 type FeeRange = {
   min: number;
@@ -24,6 +34,7 @@ type DisComponent = {
     annualizedReturn3y?: number;
     annualizedReturn5y?: number;
     annualizedReturn10y?: number;
+    observations?: Partial<Record<"1y" | "3y" | "5y" | "10y", DisObservation>>;
   }>;
 } | null;
 
@@ -51,8 +62,6 @@ type CompareResponse = {
   maximum?: number;
 };
 
-const schemeColors = ["#0f414e", "#267786", "#c7a66a", "#9a3b3b"] as const;
-
 const missingLabels = {
   core_accumulation: "核心累積基金",
   age65_plus: "65歲後基金",
@@ -72,12 +81,94 @@ function parseSchemeIds(search: string) {
   return raw
     .split(",")
     .map((id) => id.trim())
-    .filter((id, index, all) => id.length > 0 && all.indexOf(id) === index)
-    .slice(0, 4);
+    .filter((id, index, all) => id.length > 0 && all.indexOf(id) === index);
+}
+
+function observationStatus(observation: DisObservation | undefined) {
+  return observation?.status === "verified"
+    ? "符合網站時效門檻"
+    : observation?.status === "stale"
+      ? "過期，僅供歷史參考"
+      : observation?.status === "missing"
+        ? "官方未提供"
+        : "日期或來源未核實";
+}
+
+function DisSources({ schemes }: { schemes: ComparedScheme[] }) {
+  const [mode] = useViewMode();
+  return (
+    <details
+      className="kw-section kw-source-details"
+      open={mode === "analysis"}
+    >
+      <summary>DIS 逐筆披露：日期、來源及時效</summary>
+      <p className="kw-muted">
+        上表範圍是已發布的歷史原值，可能混合不同日期及過期數字；不作當期排名。成分齊備只表示兩類
+        DIS 基金存在，不代表全部期間均有合資格回報。
+      </p>
+      {schemes.map((scheme) => (
+        <section key={scheme.id} className="kw-section">
+          <h3>{scheme.schemeName}</h3>
+          {(["coreAccumulation", "age65Plus"] as const).map((key) => {
+            const component = scheme.disPerformance[key];
+            if (!component)
+              return (
+                <p key={key}>
+                  未收錄
+                  {key === "coreAccumulation" ? "核心累積基金" : "65歲後基金"}。
+                </p>
+              );
+            return (
+              <div key={key}>
+                <h4>{component.constituentFundName}</h4>
+                {component.fundClasses.map((fund) => (
+                  <div className="kw-dis-source" key={fund.id}>
+                    <a href={`/fund-classes/${encodeURIComponent(fund.id)}`}>
+                      {fund.fundClassName} · 查看基金詳情
+                    </a>
+                    <dl className="kw-dis-observations">
+                      {returnPeriods.map((period) => {
+                        const observation = fund.observations?.[period];
+                        return (
+                          <div key={period}>
+                            <dt>{returnPeriodLabels[period]}年率化回報</dt>
+                            <dd>
+                              <strong>
+                                {observation?.value == null
+                                  ? "官方未提供"
+                                  : formatPercent(observation.value)}
+                              </strong>
+                              <span>
+                                {observationStatus(observation)}；截至{" "}
+                                {observation?.dataAsOf ?? "日期未提供"}
+                              </span>
+                              {observation?.sourceUrl && (
+                                <a
+                                  href={observation.sourceUrl}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                >
+                                  官方來源
+                                </a>
+                              )}
+                            </dd>
+                          </div>
+                        );
+                      })}
+                    </dl>
+                  </div>
+                ))}
+              </div>
+            );
+          })}
+        </section>
+      ))}
+    </details>
+  );
 }
 
 function formatPercent(value: number) {
-  return `${value.toFixed(2)}%`;
+  return `${value}%`;
 }
 
 function formatRange(band: DisReturnBand | FeeRange | null) {
@@ -86,187 +177,34 @@ function formatRange(band: DisReturnBand | FeeRange | null) {
   return `${formatPercent(band.min)} – ${formatPercent(band.max)}`;
 }
 
-function midpoint(band: DisReturnBand) {
-  if (!band) return null;
-  return (band.min + band.max) / 2;
-}
-
-type RadarAxisKey = "fundChoiceCount" | "fer" | "disCore1y" | "disAge651y";
-
-const radarAxes: Array<{
-  key: RadarAxisKey;
-  label: string;
-  higherIsBetter: boolean;
-}> = [
-  { key: "fundChoiceCount", label: "基金選擇", higherIsBetter: true },
-  { key: "fer", label: "FER", higherIsBetter: false },
-  { key: "disCore1y", label: "DIS核心1年", higherIsBetter: true },
-  { key: "disAge651y", label: "DIS65歲1年", higherIsBetter: true },
-];
-
-function radarRawValue(scheme: ComparedScheme, key: RadarAxisKey) {
-  if (key === "fundChoiceCount") return scheme.fundChoiceCount;
-  if (key === "fer") {
-    return scheme.fer ? scheme.fer.median : null;
-  }
-  if (scheme.disPerformance.status !== "complete") return null;
-  if (key === "disCore1y")
-    return midpoint(
-      scheme.disPerformance.coreAccumulation?.returns["1y"] ?? null,
-    );
-  return midpoint(scheme.disPerformance.age65Plus?.returns["1y"] ?? null);
-}
-
-/** 只在今次揀中的計劃之間做 0–100 相對分數；缺值唔當成 0。 */
-function radarScores(schemes: ComparedScheme[]) {
-  const ranges = Object.fromEntries(
-    radarAxes.map(({ key, higherIsBetter }) => {
-      const values = schemes
-        .map((scheme) => radarRawValue(scheme, key))
-        .filter((value): value is number => typeof value === "number");
-      if (values.length === 0) return [key, null];
-      const min = Math.min(...values);
-      const max = Math.max(...values);
-      return [key, { min, max, higherIsBetter }];
-    }),
-  ) as Record<
-    RadarAxisKey,
-    { min: number; max: number; higherIsBetter: boolean } | null
-  >;
-
-  return schemes.map((scheme) => ({
-    scheme,
-    incompleteDis: scheme.disPerformance.status !== "complete",
-    scores: Object.fromEntries(
-      radarAxes.map(({ key }) => {
-        const value = radarRawValue(scheme, key);
-        const range = ranges[key];
-        if (value === null || !range) return [key, null];
-        if (range.max === range.min) return [key, 50];
-        const ratio = (value - range.min) / (range.max - range.min);
-        return [key, (range.higherIsBetter ? ratio : 1 - ratio) * 100];
-      }),
-    ) as Record<RadarAxisKey, number | null>,
-  }));
-}
-
-function polarPoint(cx: number, cy: number, radius: number, angle: number) {
-  return {
-    x: cx + radius * Math.cos(angle),
-    y: cy + radius * Math.sin(angle),
-  };
-}
-
-function SchemeCompareRadar({ schemes }: { schemes: ComparedScheme[] }) {
-  const scored = useMemo(() => radarScores(schemes), [schemes]);
-  const size = 360;
-  const cx = size / 2;
-  const cy = size / 2;
-  const maxRadius = 108;
-  const axisCount = radarAxes.length;
-
+function SchemeCompareCharts({ schemes }: { schemes: ComparedScheme[] }) {
   return (
-    <div className="scheme-compare-radar">
-      <svg
-        viewBox={`0 0 ${size} ${size}`}
-        role="img"
-        aria-label="計劃比較雷達圖：基金選擇、FER、DIS 核心累積一年回報、DIS 65歲後一年回報，各軸獨立標準化為 0 至 100 分"
-      >
-        {[0.25, 0.5, 0.75, 1].map((scale) => {
-          const points = radarAxes
-            .map((_, index) => {
-              const angle = -Math.PI / 2 + (index * 2 * Math.PI) / axisCount;
-              const point = polarPoint(cx, cy, maxRadius * scale, angle);
-              return `${point.x},${point.y}`;
-            })
-            .join(" ");
-          return (
-            <polygon
-              key={scale}
-              className="scheme-compare-radar__grid"
-              points={points}
-            />
-          );
-        })}
-        {radarAxes.map((axis, index) => {
-          const angle = -Math.PI / 2 + (index * 2 * Math.PI) / axisCount;
-          const end = polarPoint(cx, cy, maxRadius, angle);
-          const label = polarPoint(cx, cy, maxRadius + 36, angle);
-          const anchor =
-            Math.abs(Math.cos(angle)) < 0.1
-              ? "middle"
-              : Math.cos(angle) > 0
-                ? "start"
-                : "end";
-          return (
-            <g key={axis.key}>
-              <line
-                className="scheme-compare-radar__axis"
-                x1={cx}
-                y1={cy}
-                x2={end.x}
-                y2={end.y}
-              />
-              <text
-                className="scheme-compare-radar__label"
-                x={label.x}
-                y={label.y}
-                textAnchor={anchor}
-                dominantBaseline="middle"
-              >
-                {axis.label}
-              </text>
-            </g>
-          );
-        })}
-        {scored.map(({ scheme, scores, incompleteDis }, schemeIndex) => {
-          const points = radarAxes.map((axis, index) => {
-            const angle = -Math.PI / 2 + (index * 2 * Math.PI) / axisCount;
-            const score = scores[axis.key];
-            // 缺值唔畫到中心（會被誤讀成最低分），改畫在外框內側虛線位置並用虛線多邊形標示。
-            const radius =
-              score === null ? maxRadius * 0.08 : (score / 100) * maxRadius;
-            return polarPoint(cx, cy, radius, angle);
-          });
-          const polygon = points
-            .map((point) => `${point.x},${point.y}`)
-            .join(" ");
-          const color = schemeColors[schemeIndex % schemeColors.length]!;
-          return (
-            <polygon
-              key={scheme.id}
-              points={polygon}
-              fill={color}
-              fillOpacity={incompleteDis ? 0.08 : 0.18}
-              stroke={color}
-              strokeWidth={incompleteDis ? 1.5 : 2}
-              strokeDasharray={incompleteDis ? "5 4" : undefined}
-            />
-          );
-        })}
-      </svg>
-      <ul className="scheme-compare-radar__legend">
-        {scored.map(({ scheme, incompleteDis }, index) => (
-          <li key={scheme.id}>
-            <span
-              className="scheme-compare-radar__swatch"
-              style={{ background: schemeColors[index % schemeColors.length] }}
-              aria-hidden="true"
-            />
-            <span>
-              {scheme.schemeName}
-              {incompleteDis && (
-                <small className="scheme-compare-badge">DIS 不完整</small>
-              )}
-            </span>
-          </li>
-        ))}
-      </ul>
-      <p className="kw-muted" role="note">
-        雷達圖各軸只在今次比較的計劃之間標準化成 0–100
-        分，並非單一總分，亦不是官方評分。FER 愈低分愈高；DIS
-        回報用一年年率化中位數。虛線表示該計劃 DIS
-        表現不完整，對應軸沒有可比較數值。
+    <div className="kw-scheme-charts">
+      <ValueBars
+        label="獨立成分基金數目"
+        unit=""
+        rows={schemes.map((scheme) => ({
+          label: scheme.schemeName,
+          value: scheme.fundChoiceCount,
+        }))}
+      />
+      <ValueBars
+        label="FER 中位數（本站統計）"
+        rows={schemes.map((scheme) => ({
+          label: scheme.schemeName,
+          value: scheme.fer ? Number(scheme.fer.median.toFixed(5)) : null,
+          note: scheme.fer
+            ? "範圍 " +
+              formatRange(scheme.fer) +
+              " · " +
+              scheme.fer.fundCount +
+              " 個有值樣本；原值見基金詳情"
+            : "官方未提供",
+        }))}
+      />
+      <p className="kw-muted">
+        每幅圖使用自己的實際單位及共同零起點，不作標準分或總分。DIS
+        多類別回報範圍保留於上表；不把範圍中點當作官方回報。
       </p>
     </div>
   );
@@ -321,10 +259,10 @@ export function SchemeComparePage({
       current="schemes"
       eyebrow="香港強積金比較"
       title="計劃逐項比較"
-      subtitle="一次最多比較 4 個計劃。表格列出官方可追溯數字；雷達圖只做相對視覺化，不會合成單一總分。"
+      subtitle="一次最多比較 4 個計劃。表格列出可追溯數字；圖表使用實際單位，不會合成評分。"
     >
       <p className="kw-compare-back">
-        <a href="/schemes">← 返回計劃概覽</a>
+        <a href="/schemes">返回計劃概覽</a>
       </p>
 
       {ids.length === 0 && (
@@ -430,8 +368,11 @@ export function SchemeComparePage({
                               {formatRange(scheme.fer)}
                             </span>
                             <small className="kw-fee-note">
-                              中位數 {formatPercent(scheme.fer.median)}；
-                              {scheme.fer.fundCount} 隻有 FER
+                              中位數{" "}
+                              {formatPercent(
+                                Number(scheme.fer.median.toFixed(5)),
+                              )}
+                              ；{scheme.fer.fundCount} 隻有 FER
                             </small>
                           </>
                         ) : (
@@ -451,7 +392,7 @@ export function SchemeComparePage({
                     ))}
                   </tr>
                   <tr>
-                    <th scope="row">DIS 表現</th>
+                    <th scope="row">DIS 成分覆蓋</th>
                     {result.schemes.map((scheme) => {
                       const incomplete =
                         scheme.disPerformance.status === "incomplete";
@@ -479,7 +420,7 @@ export function SchemeComparePage({
                             </>
                           ) : (
                             <span className="scheme-compare-badge scheme-compare-badge--ok">
-                              完整
+                              成分齊備
                             </span>
                           )}
                         </td>
@@ -504,6 +445,16 @@ export function SchemeComparePage({
                               scheme.disPerformance[component]?.returns[
                                 period
                               ] ?? null;
+                            const observations =
+                              scheme.disPerformance[component]?.fundClasses
+                                .map((fund) => fund.observations?.[period])
+                                .filter((row) => row?.value != null) ?? [];
+                            const staleCount = observations.filter(
+                              (row) => row?.status === "stale",
+                            ).length;
+                            const unverifiedCount = observations.filter(
+                              (row) => row?.status === "unverified",
+                            ).length;
                             return (
                               <td
                                 key={scheme.id}
@@ -516,6 +467,13 @@ export function SchemeComparePage({
                                 {incomplete
                                   ? "不完整，不顯示"
                                   : formatRange(band)}
+                                {!incomplete && band && (
+                                  <small className="kw-fee-note">
+                                    歷史披露；{staleCount} 筆過期，
+                                    {unverifiedCount}{" "}
+                                    筆未核實。逐筆日期及來源見下方披露。
+                                  </small>
+                                )}
                               </td>
                             );
                           })}
@@ -528,19 +486,19 @@ export function SchemeComparePage({
             </div>
           </section>
 
+          <DisSources schemes={result.schemes} />
+
           <section
             className="kw-section"
             aria-labelledby="scheme-compare-radar-title"
           >
             <h2 className="kw-section__heading" id="scheme-compare-radar-title">
-              雷達圖概覽
+              逐項數據圖
             </h2>
             <p className="kw-muted">
-              每條軸只按今次選取的計劃換算為相對 0–100
-              分；高低方向因指標而異，不能跨軸比較或視為官方總分。兩邊相同時顯示
-              50，缺值不當作零；逐項原始數值請以對比表為準。
+              逐項比較實際數量及百分比，缺失數據不繪成零；不同指標不能合成推薦分數。
             </p>
-            <SchemeCompareRadar schemes={result.schemes} />
+            <SchemeCompareCharts schemes={result.schemes} />
           </section>
         </>
       )}

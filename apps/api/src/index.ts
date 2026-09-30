@@ -1,6 +1,8 @@
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { publicationCache } from "./caching";
+import { matchesSearch, positiveInteger } from "./search";
+import { buildDataQuality } from "./data-quality";
 import {
   classificationOf,
   comparisonGroupFor,
@@ -28,7 +30,21 @@ const app = new Hono<{ Bindings: Bindings }>();
 
 const SEARCH_RESULT_LIMIT = 50;
 
-app.use("*", cors({ origin: "*", exposeHeaders: ["X-Total-Matches"] }));
+app.use(
+  "*",
+  cors({
+    origin: "*",
+    exposeHeaders: [
+      "X-Total-Matches",
+      "X-Page",
+      "X-Page-Size",
+      "X-Snapshot-Id",
+      "X-Search-Sort",
+      "ETag",
+      "Cache-Control",
+    ],
+  }),
+);
 app.use("*", publicationCache());
 
 app.get("/health", (context) =>
@@ -73,6 +89,27 @@ app.get("/fund-classes/:id", async (context) => {
         published.fundClass.returnsAsOf ??
         published.provenance.dataAsOf,
       returnsGraceDays(published.provenance.freshnessPolicy),
+    ),
+    returnsFreshness: Object.fromEntries(
+      [1, 3, 5, 10].flatMap((period) => {
+        const field = `annualizedReturn${period}y` as keyof BrowseFundClass;
+        if (typeof published.fundClass[field] !== "number") return [];
+        const source = published.fundClass.returnSources?.[String(period)];
+        return [
+          [
+            String(period),
+            evaluateFreshness(
+              source?.dataAsOf ??
+                published.fundClass.returnsAsOf ??
+                published.provenance.dataAsOf,
+              returnGraceDaysForPeriod(
+                published.provenance.freshnessPolicy,
+                period,
+              ),
+            ),
+          ],
+        ];
+      }),
     ),
     // 基金規模按月披露，沿用回報的月度寬限期；成立日期是靜態事實，不設過期。
     ...(fundSizeAsOf
@@ -213,7 +250,13 @@ async function loadPublishedFundClasses(
 
 type PublishedSearchFund = {
   fundClass: BrowseFundClass;
-  provenance?: { dataAsOf?: string; freshnessPolicy?: FreshnessPolicy };
+  provenance?: {
+    sourceUrl?: string;
+    dataAsOf?: string;
+    retrievedAt?: string;
+    verificationStatus?: string;
+    freshnessPolicy?: FreshnessPolicy;
+  };
 };
 
 async function loadPublishedSearchFunds(
@@ -260,16 +303,46 @@ function knownReturn(value: number | undefined) {
 }
 
 app.get("/search", async (context) => {
-  const query = context.req.query("q")?.trim().toLocaleLowerCase();
+  const query = context.req.query("q")?.trim() ?? "";
+  const page = positiveInteger(context.req.query("page"), 1, 10000);
+  const pageSize = positiveInteger(
+    context.req.query("pageSize"),
+    SEARCH_RESULT_LIMIT,
+    100,
+  );
+  const sort = context.req.query("sort") ?? "name";
+  if (
+    query.length > 120 ||
+    page === null ||
+    pageSize === null ||
+    !["name", "return", "fee", "risk"].includes(sort)
+  )
+    return context.json(
+      {
+        error: "Invalid search parameters",
+        reason: "請使用 120 字以內關鍵字、有效頁碼及排序方式。",
+      },
+      400,
+    );
   const category = context.req.query("category")?.trim();
   const fundType = context.req.query("fundType")?.trim();
   const fundCategory = context.req.query("fundCategory")?.trim();
   const trustee = context.req.query("trustee")?.trim();
   const riskClassParam = context.req.query("riskClass")?.trim();
   const riskClass = riskClassParam ? Number(riskClassParam) : undefined;
+  if (
+    riskClass !== undefined &&
+    (!Number.isInteger(riskClass) || riskClass < 1 || riskClass > 7)
+  )
+    return context.json({ error: "Invalid risk class" }, 400);
 
   const evaluatedAt = new Date();
   const matches = (await loadPublishedSearchFunds(context.env.DB))
+    .filter(
+      (published) =>
+        published.fundClass.verificationStatus === "verified" &&
+        published.provenance?.verificationStatus === "verified",
+    )
     .map((published) => {
       const dataAsOf =
         published.fundClass.returnSources?.["1"]?.dataAsOf ??
@@ -290,12 +363,12 @@ app.get("/search", async (context) => {
     .filter(({ fundClass }) => {
       if (
         query &&
-        ![
+        !matchesSearch(query, [
           fundClass.fundClassName,
           fundClass.constituentFundName,
           fundClass.schemeName,
           fundClass.trusteeName,
-        ].some((value) => value.toLocaleLowerCase().includes(query))
+        ])
       )
         return false;
       if (category && comparisonGroupFor(fundClass).name !== category)
@@ -312,20 +385,31 @@ app.get("/search", async (context) => {
       return true;
     });
 
-  // 先按官方一年年率化回報由高至低排序，讓被截斷的結果仍然是表現最好的一批；
-  // 官方未提供回報的基金排在最後，同值再以識別碼穩定排序。
+  // 名稱是中性的預設排序；指標排序由使用者選擇，搜尋不構成跨組推薦。
   matches.sort((a, b) => {
-    const left = knownReturn(a.fundClass.annualizedReturn1y);
-    const right = knownReturn(b.fundClass.annualizedReturn1y);
-    if (left !== undefined && right !== undefined && left !== right)
-      return right - left;
-    if ((left === undefined) !== (right === undefined))
-      return left === undefined ? 1 : -1;
+    if (sort !== "name") {
+      const field =
+        sort === "return"
+          ? "annualizedReturn1y"
+          : sort === "fee"
+            ? "managementFee"
+            : "riskClass";
+      const left = knownReturn(a.fundClass[field]);
+      const right = knownReturn(b.fundClass[field]);
+      if ((left === undefined) !== (right === undefined))
+        return left === undefined ? 1 : -1;
+      if (left !== undefined && right !== undefined && left !== right)
+        return sort === "return" ? right - left : left - right;
+    }
+    const byName = a.fundClass.constituentFundName.localeCompare(
+      b.fundClass.constituentFundName,
+    );
+    if (byName !== 0) return byName;
     return a.fundClass.id.localeCompare(b.fundClass.id);
   });
 
   const results = matches
-    .slice(0, SEARCH_RESULT_LIMIT)
+    .slice((page - 1) * pageSize, page * pageSize)
     .map(({ fundClass, freshness }) => {
       const group = comparisonGroupFor(fundClass);
       return {
@@ -350,7 +434,12 @@ app.get("/search", async (context) => {
     });
 
   return context.json(results, {
-    headers: { "X-Total-Matches": String(matches.length) },
+    headers: {
+      "X-Total-Matches": String(matches.length),
+      "X-Page": String(page),
+      "X-Page-Size": String(pageSize),
+      "X-Search-Sort": sort,
+    },
   });
 });
 
@@ -674,6 +763,18 @@ app.get("/summary", async (context) => {
   });
 });
 
+app.get("/data-quality", async (context) => {
+  const rows = await context.env.DB.prepare(
+    `SELECT c.snapshot_id, f.payload FROM current_publication c JOIN fund_class_versions f ON f.snapshot_id = c.snapshot_id WHERE c.singleton = 1`,
+  ).all<{ snapshot_id: string; payload: string }>();
+  return context.json(
+    buildDataQuality(
+      rows.results.map((row) => JSON.parse(row.payload) as PublishedSearchFund),
+      rows.results[0]?.snapshot_id ?? null,
+    ),
+  );
+});
+
 app.get("/schemes", async (context) => {
   const rows = await context.env.DB.prepare(
     `SELECT f.payload
@@ -853,7 +954,9 @@ app.get("/schemes", async (context) => {
   );
 });
 
-type SchemeComparisonFund = BrowseFundClass;
+type SchemeComparisonFund = BrowseFundClass & {
+  provenance?: PublishedSearchFund["provenance"];
+};
 
 function summarizeDisReturns(funds: SchemeComparisonFund[]) {
   const values = (period: 1 | 3 | 5 | 10) => {
@@ -897,6 +1000,44 @@ function disComponentSummary(
       id: fund.id,
       fundClassName: fund.fundClassName,
       ...definedReturns(fund),
+      observations: Object.fromEntries(
+        ([1, 3, 5, 10] as const).map((period) => {
+          const value = fund[`annualizedReturn${period}y`];
+          const source = fund.returnSources?.[String(period)];
+          const dataAsOf =
+            source?.dataAsOf ??
+            fund.returnsAsOf ??
+            fund.provenance?.dataAsOf ??
+            fund.dataAsOf ??
+            null;
+          const sourceUrl =
+            source?.sourceUrl ?? fund.provenance?.sourceUrl ?? null;
+          const graceDays = returnGraceDaysForPeriod(
+            fund.provenance?.freshnessPolicy,
+            period,
+          );
+          const freshness = evaluateFreshness(dataAsOf ?? "", graceDays);
+          return [
+            `${period}y`,
+            {
+              value:
+                typeof value === "number" && Number.isFinite(value)
+                  ? value
+                  : null,
+              dataAsOf,
+              sourceUrl,
+              graceDays,
+              status:
+                typeof value !== "number" || !Number.isFinite(value)
+                  ? "missing"
+                  : fund.provenance?.verificationStatus !== "verified" ||
+                      !sourceUrl
+                    ? "unverified"
+                    : freshness.status,
+            },
+          ];
+        }),
+      ),
     })),
   };
 }
@@ -954,9 +1095,10 @@ app.get("/schemes/compare", async (context) => {
   ).first<{ snapshot_id: string }>();
   if (!current) return context.json({ snapshotId: null, schemes: [] });
 
-  const published = await loadPublishedFundClasses(context.env.DB);
+  const published = await loadPublishedSearchFunds(context.env.DB);
   const grouped = new Map<string, SchemeComparisonFund[]>();
-  for (const fund of published) {
+  for (const item of published) {
+    const fund = { ...item.fundClass, provenance: item.provenance };
     if (fund.verificationStatus !== "verified") continue;
     const members = grouped.get(fund.schemeName) ?? [];
     members.push(fund);
@@ -1241,7 +1383,7 @@ app.get("/rankings", async (context) => {
       freshness: {
         graceDays: methodologyGraceDays,
         evaluatedOn: evaluatedAt.toISOString().slice(0, 10),
-        rule: "資料截至日期超出官方披露寬限期的數值不參與排名，但仍可在基金詳情頁連同原截至日期查看。",
+        rule: "資料截至日期超出網站時效門檻的數值不參與排名，但仍可在基金詳情頁連同原截至日期查看。",
       },
     },
     rankings,
