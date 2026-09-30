@@ -129,4 +129,11 @@ Master Trust 相同 URL 的舊 SHA 是 `7ea4bbfab38cc00f3aacabadfab25bcbe9bbe565
 - 程式修復：[PR #358](https://github.com/Kirkwongcn/KWMPF/pull/358)，target main。
 - 7 個資料檔案：[PR #359](https://github.com/Kirkwongcn/KWMPF/pull/359)，依賴 #358；先分開覆核，合併前重新核對 main 差異。
 - 預設最新 disclosures／map 產生的 seed 與本機讀回驗證版本逐位元相同，SQL SHA-256：`936a6f38263219dab4c3fdc67121fdc7ccc0f9faa64d5cf37a8f8d528c6725c6`。
-- 本次等效人工覆核接受已提出，仍待使用者答覆；必要 CI 通過後按已有合併授權處理。正式網站尚未套用這兩個 PR。
+- 使用者於 2026-09-30 在本次等效覆核、合併請求後回覆「批准合法及發佈」，按上下文作批准合併及發布，接受 #358／#359 已完成的人工覆核作等效憑證；沒有聲稱不可用的 `/code-review` 曾執行。必要 gate 全通過後依序合併並發布，保存原件版本、備份、release tuple 與公開驗證。
+
+## 9. 合併及發布批准紀錄
+
+- 修復程式 `b9be566` 的 CI #806、修復資料 `1fe43a2` 的 CI #807，完整 verify、E2E 及 publication-seed 通過；先前 high-risk-review 僅因本次等效接受尚未記錄而失敗。
+- 本次批准涵蓋兩個 PR 合併及本次正式發布里程碑；部署沿用受保護 production workflow，在 mutation 前完整備份 production D1、保存 private R2 並讀回驗證，然後 publication seed／migration、Worker／Pages 及 smoke checks。
+- 發布前仍須保留新原件版本並核對 SHA；平台來源使用已接受且對應 exact source／report 的 review-disposition，不由批准清除來源異常。R2 保留原本不自動到期的決定。
+- 發布完成才記錄 production snapshot、備份 ID、Worker／Pages deployment ID 及正式站抽查；目前本段是批准及操作次序，不是完成發布的證明。
