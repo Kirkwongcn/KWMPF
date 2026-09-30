@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { SiteChrome } from "./SiteChrome";
-import { ValueBars } from "./DataCharts";
+import { ValueBars, ReturnHeatmap } from "./DataCharts";
 import { joinFundParts, fundClassLabel } from "./fundClassLabel";
 type ComparedFund = {
   snapshotId: string;
@@ -106,12 +106,33 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
               </select>
             </label>
           </div>
+          <ReturnHeatmap
+            rows={funds.map((fund, index) => ({
+              label: joinFundParts(
+                fund.fundClass.constituentFundName,
+                fundClassLabel(fund.fundClass.fundClassName),
+                fund.fundClass.schemeName,
+              ),
+              href: `/fund-classes/${encodeURIComponent(ids[index]!)}`,
+              cells: periods.map(([key, field]) => ({
+                period: key,
+                value: fund.fundClass[field],
+                status: fund.returnsFreshness?.[key]?.status,
+                dataAsOf: fund.returnsFreshness?.[key]?.dataAsOf,
+                sourceUrl:
+                  fund.fundClass.returnSources?.[key]?.sourceUrl ??
+                  fund.provenance.sourceUrl,
+              })),
+            }))}
+          />
           <ValueBars
+            variant="dot"
             label={`${period} 年年率化回報（只繪製未過期數值）`}
             rows={funds.map((fund, index) => ({
               label: joinFundParts(
                 fund.fundClass.constituentFundName,
                 fundClassLabel(fund.fundClass.fundClassName),
+                fund.fundClass.schemeName,
               ),
               value:
                 fund.returnsFreshness?.[period]?.status === "verified"
@@ -120,12 +141,14 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
               display:
                 fund.returnsFreshness?.[period]?.status === "stale"
                   ? "過期，暫不繪圖"
-                  : undefined,
+                  : typeof fund.fundClass[periodField] === "number" &&
+                      fund.returnsFreshness?.[period]?.status !== "verified"
+                    ? "未核實，暫不繪圖"
+                    : undefined,
               href: `/fund-classes/${encodeURIComponent(ids[index]!)}`,
-              note:
-                fund.returnsFreshness?.[period]?.status === "stale"
-                  ? `過期 · 截至 ${fund.returnsFreshness[period].dataAsOf}`
-                  : `截至 ${fund.returnsFreshness?.[period]?.dataAsOf ?? "官方未提供"}`,
+              note: fund.returnsFreshness?.[period]?.dataAsOf
+                ? `${fund.returnsFreshness[period].status === "stale" ? "過期 · " : ""}截至 ${fund.returnsFreshness[period].dataAsOf}`
+                : "日期未記錄",
             }))}
           />
           <p className="kw-table-hint">左右滑動可查看所有基金及來源欄位</p>
@@ -148,6 +171,7 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
                         {joinFundParts(
                           fund.fundClass.constituentFundName,
                           fundClassLabel(fund.fundClass.fundClassName),
+                          fund.fundClass.schemeName,
                         )}
                       </a>
                     </th>
@@ -179,9 +203,9 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
                               {fund.returnsFreshness?.[key]?.status === "stale"
                                 ? "過期 · "
                                 : ""}
-                              截至{" "}
-                              {fund.returnsFreshness?.[key]?.dataAsOf ??
-                                "官方未提供"}{" "}
+                              {fund.returnsFreshness?.[key]?.dataAsOf
+                                ? `截至 ${fund.returnsFreshness[key].dataAsOf}`
+                                : "日期未記錄"}{" "}
                               ·{" "}
                               <a
                                 href={
@@ -196,7 +220,7 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
                             </small>
                           </>
                         ) : (
-                          "官方未提供"
+                          "未取得"
                         )}
                       </td>
                     ))}
@@ -215,7 +239,7 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
                       <td key={index}>
                         {typeof fund.fundClass[field] === "number"
                           ? `${fund.fundClass[field]}%${fund.fundClass.feeCaps?.includes(field) ? "（上限）" : ""}`
-                          : "官方未提供"}
+                          : "未取得"}
                         <small>
                           平台截至 {fund.provenance.dataAsOf} ·{" "}
                           <a

@@ -4,6 +4,7 @@ type NavKey = "funds" | "rankings" | "schemes" | "data";
 export function SiteChrome({
   title,
   subtitle,
+  eyebrow,
   current,
   isHome,
   children,
@@ -38,17 +39,20 @@ export function SiteChrome({
       <header className="kw-header">
         <div className="kw-shell kw-header__inner">
           <a className="kw-brand" href="/" aria-label="KWMPF 首頁">
-            <strong>
-              KW<span>MPF</span>
-            </strong>
+            <span className="kw-brand__mark" aria-hidden="true">
+              kW
+            </span>
+            <span className="kw-brand__name">
+              <small>Kirk Wong Research</small>
+              <strong>KWMPF</strong>
+            </span>
           </a>
           <nav className="kw-nav" aria-label="主要導覽">
             {(
               [
                 ["funds", "基金瀏覽", "/funds"],
-                ["rankings", "同類排名", "/rankings"],
+                ["rankings", "基金排名", "/rankings"],
                 ["schemes", "計劃比較", "/schemes"],
-                ["data", "資料狀態", "/data-status"],
               ] as const
             ).map(([key, label, href]) => (
               <a
@@ -60,6 +64,32 @@ export function SiteChrome({
               </a>
             ))}
           </nav>
+        </div>
+      </header>
+      <section className="kw-hero" aria-labelledby="page-title">
+        <div className="kw-shell kw-hero__inner">
+          {(isHome || eyebrow) && (
+            <p className="kw-eyebrow">{isHome ? "香港強積金研究" : eyebrow}</p>
+          )}
+          <h1 id="page-title">
+            {isHome ? "用可追溯資料，讀懂強積金選擇" : title}
+          </h1>
+          <p>
+            {isHome
+              ? "基金類別、比較組別、官方來源與截至日期，放在同一個清晰框架內。"
+              : subtitle}
+          </p>
+        </div>
+      </section>
+      <div className="kw-shell kw-reading-tools">
+        <a
+          href="/data-status"
+          aria-current={current === "data" ? "page" : undefined}
+        >
+          資料時效及覆蓋
+        </a>
+        <div className="kw-reading-tools__mode">
+          <span>閱讀模式</span>
           <div className="kw-mode" role="group" aria-label="閱讀模式">
             <button
               aria-pressed={mode === "simple"}
@@ -75,18 +105,12 @@ export function SiteChrome({
             </button>
           </div>
         </div>
-      </header>
+      </div>
       <main
         className={`kw-main${isHome ? " kw-main--home" : ""}`}
         id="main-content"
         tabIndex={-1}
       >
-        {!isHome && (
-          <header className="kw-page-heading">
-            <h1 id="page-title">{title}</h1>
-            {subtitle && <p>{subtitle}</p>}
-          </header>
-        )}
         {children}
       </main>
       <footer className="kw-footer">

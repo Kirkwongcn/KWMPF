@@ -58,7 +58,7 @@ describe("scheme comparison page", () => {
     expect(
       screen.getByRole("navigation", { name: "主要導覽" }),
     ).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "同類排名" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "基金排名" })).toHaveAttribute(
       "href",
       "/rankings",
     );

@@ -1,56 +1,61 @@
 ---
-name: KWMPF
-description: 以原值、日期與來源建立可查證的強積金資料比較介面
+name: "KWMPF"
+description: "沿用原有研究品牌，呈現可查證的強積金原值、日期與來源"
 colors:
-  paper: "#f6f7f9"
-  ink: "#172231"
-  action: "#244ac2"
-  action-hover: "#183694"
-  muted: "#586475"
-  muted-strong: "#46566c"
-  line: "#dce1e8"
-  control-border: "#8b96a7"
-  soft: "#edf1f7"
+  paper: "#f6f5f1"
+  ink: "#16252c"
+  navy: "#123b46"
+  action: "#0f414e"
+  teal: "#267786"
+  gold: "#c7a66a"
+  gold-light: "#d8b774"
+  muted: "#5b666c"
+  muted-strong: "#537080"
+  line: "#d9ddd8"
+  control-border: "#7b8681"
+  soft: "#f2f4f1"
+  table-head: "#f5f7fa"
   white: "#fff"
-  positive: "#146344"
-  positive-bg: "#edf7f1"
-  negative: "#a32d3d"
-  negative-bg: "#fff0f1"
-  negative-text: "#8b2230"
+  nav-link: "#d3e0eb"
+  brand-subtitle: "#b7cbd1"
+  positive: "#006b37"
+  negative: "#9a3b3b"
   warning-bg: "#fff6e8"
-  warning-text: "#69480c"
-  warning-border: "#966311"
   stale: "#a57837"
   missing: "#c7cfda"
-  category-teal: "#238477"
-  category-amber: "#ad7b37"
-  category-violet: "#9867a0"
-  category-slate: "#637189"
-  category-rose: "#b45967"
+  category-ochre: "#a7864e"
+  category-slate: "#536e7b"
+  category-violet: "#81768c"
+  category-green: "#61887a"
+  category-rose: "#a96065"
 typography:
-  headline:
-    fontSize: "2.5rem"
+  display:
+    fontFamily: 'Georgia, "Times New Roman", "PMingLiU", serif'
+    fontSize: "clamp(28px, 3.4vw, 50px)"
+    fontWeight: 400
     lineHeight: 1.3
-    letterSpacing: "-0.035em"
+    letterSpacing: "-0.02em"
   title:
+    fontFamily: 'Georgia, "Times New Roman", "PMingLiU", serif'
     fontSize: "1.65rem"
     lineHeight: 1.3
     letterSpacing: "-0.02em"
   subheading:
+    fontFamily: 'Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Microsoft JhengHei", sans-serif'
     fontSize: "1.2rem"
     lineHeight: 1.3
   body:
-    fontFamily: '"Segoe UI", "Microsoft JhengHei", system-ui, sans-serif'
+    fontFamily: 'Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Microsoft JhengHei", sans-serif'
     fontSize: "16px"
     fontWeight: 400
     lineHeight: 1.65
   control:
-    fontFamily: '"Segoe UI", "Microsoft JhengHei", system-ui, sans-serif'
+    fontFamily: 'Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Microsoft JhengHei", sans-serif'
     fontSize: "0.95rem"
     fontWeight: 400
     lineHeight: 1.65
   action-label:
-    fontFamily: '"Segoe UI", "Microsoft JhengHei", system-ui, sans-serif'
+    fontFamily: 'Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Microsoft JhengHei", sans-serif'
     fontSize: "0.95rem"
     fontWeight: 600
     lineHeight: 1.65
@@ -69,13 +74,19 @@ typography:
     fontSize: "1.15rem"
     fontWeight: 650
     lineHeight: 1.65
+  brand:
+    fontFamily: 'Georgia, "Times New Roman", "PMingLiU", serif'
+    fontSize: "18px"
+    fontWeight: 600
+    lineHeight: 1.3
 rounded:
+  panel: "4px"
   control: "8px"
-  panel: "12px"
   table: "10px"
   badge: "5px"
-  mode-track: "9px"
-  mode-option: "6px"
+  mode-track: "4px"
+  mode-option: "3px"
+  brand-mark: "50%"
 spacing:
   "8": "8px"
   "12": "12px"
@@ -94,9 +105,6 @@ components:
     typography: "{typography.action-label}"
     rounded: "{rounded.control}"
     padding: "10px 18px"
-  button-primary-hover:
-    backgroundColor: "{colors.action-hover}"
-    textColor: "{colors.white}"
   button-secondary:
     backgroundColor: "{colors.white}"
     textColor: "{colors.action}"
@@ -113,11 +121,12 @@ components:
     rounded: "{rounded.control}"
     padding: "10px 12px"
   navigation:
-    textColor: "{colors.muted-strong}"
+    backgroundColor: "{colors.navy}"
+    textColor: "{colors.nav-link}"
     typography: "{typography.body}"
-    padding: "24px 0"
+    padding: "20px 0"
   navigation-current:
-    textColor: "{colors.action}"
+    textColor: "{colors.white}"
   reading-mode:
     backgroundColor: "{colors.soft}"
     rounded: "{rounded.mode-track}"
@@ -150,6 +159,19 @@ components:
     textColor: "{colors.ink}"
     rounded: "{rounded.panel}"
     padding: "{spacing.24}"
+  return-heatmap:
+    backgroundColor: "{colors.white}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.panel}"
+    padding: "{spacing.24}"
+  calendar-columns:
+    backgroundColor: "{colors.white}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.panel}"
+    padding: "{spacing.24}"
+  allocation-composition:
+    textColor: "{colors.ink}"
+    typography: "{typography.supporting}"
   disclosure:
     textColor: "{colors.action}"
 ---
@@ -160,157 +182,138 @@ components:
 
 **Creative North Star: "可查證的資料工作台"**
 
-這個介面以日間研究場景為出發點：明亮灰白底、石墨文字、白色資料面板與鈷藍操作色。繁體中文是主要閱讀語言；資訊密度可以隨簡潔及深入分析模式改變，但基金數值、日期、來源與資料限制始終可以查閱。
+沿用使用者於 2026-09-30 明確要求恢復的 KWMPF 原有風格：深青色頁首、金色 kW 圓形標記、Kirk Wong Research 名稱、serif KWMPF 字樣，以及既有世界地圖 hero。暖白底與小圓角資料面板承接品牌，不延續先前的鈷藍替代方案。
 
-視覺重點是閱讀與核對。標題直接命名內容，表格、原值文字及條形圖共同承載證據，色彩協助辨認操作和狀態。一般強積金成員與專業研究者同等重要，因此共同控制項保留清楚標籤、鍵盤焦點及手機操作空間。
+一般強積金成員與專業研究者同等重要。簡潔與深入分析共用資料、選取與來源入口；圖表協助辨認幅度、期間及組成，完整原值表格負責核對。繁體中文、清楚標籤、鍵盤焦點及手機可操作的捲動入口是共同閱讀條件。
 
-此文件由完成後的 CSS 與元件抽取。使用者確認的是雙重用途與閱讀模式；色盤、字型及尺寸屬本次實作的現況，並非使用者逐項指定或批准的品牌選擇。標題字型尚未形成可供新頁繼承的展示字型決策。
+此文件由目前 CSS 與元件抽取，記錄已實作的視覺規則。原有風格是使用者指定的方向；這不代表所有資料來源或發布流程已獲完整正確性認證。既有 hero 沿用 repository 圖片，本次沒有新增或生成 raster。
 
 **Key Characteristics:**
 
-- 明亮底色、石墨文字及單一鈷藍操作色。
-- 白色面板以細邊界分組，常態不浮起。
-- 原值文字、欄位日期及來源與圖表共同呈現。
-- 簡潔與深入分析共用資料與控制項。
-- 表格數字採等寬數字，手機保留完整內容的捲動入口。
+- 原有深青與金色品牌，暖白閱讀底。
+- serif 品牌與主標題，sans 正文及控制項。
+- 4px 資料面板、8px 控制項及等寬資料數字。
+- 圖表類型按資料語意選擇，原值、日期與來源保留。
+- 兩種閱讀模式均可進入核對資料，手機保留完整表格入口。
 
 ## Colors
 
-色盤由冷灰白閱讀底、深色文字及鈷藍操作色構成，資料狀態與配置類別另有語意色。
+暖白、深青與金色延續原有研究品牌；青綠與資料語意色服務比較。
 
 ### Primary
 
-- **操作鈷藍**（`action`）：連結、主要按鈕、當前導覽、選取狀態、焦點框及正向條形圖；按鈕滑入使用較深的 `action-hover`。
+- **深青頁首**（`navy`）與 **深青操作色**（`action`）：前者承載品牌導覽，後者用於連結、按鈕及白色表面的鍵盤焦點。
+- **資料青綠**（`teal`）：點圖、曆年正值柱及配置第一類；負值使用 `negative`。
 
 ### Secondary
 
-- **資料狀態色**：`positive` 與 `positive-bg` 用於符合狀態；`negative`、`negative-bg`、`negative-text` 用於負值或錯誤；`warning-bg`、`warning-text`、`warning-border` 用於警示。可用度圖以 `stale` 及 `missing` 分辨過期與官方未提供。
-- **配置類別色**：鈷藍配合 `category-teal`、`category-amber`、`category-violet`、`category-slate`、`category-rose` 區分配置項目。這些色彩表達類別，不表示優劣、風險或推薦。
+- **品牌金**（`gold`）與 **亮金**（`gold-light`）：沿用的品牌標記、深色表面焦點、當前導覽底線及部分面板識別。
+- **資料狀態色**：`positive`、`negative`、`warning-bg`、`stale`、`missing` 分別協助辨認符合、負值／未核實、警示、過期與缺項；仍須有文字。
+- **配置類別色**：`teal` 配合 `category-ochre`、`category-slate`、`category-violet`、`category-green`、`category-rose` 區分項目，不代表優劣。
 
 ### Neutral
 
-- **冷白紙底**（`paper`）與 **白色面板**（`white`）：頁面與內容的主要表面。
-- **石墨文字**（`ink`）：標題、正文及主要資料；`muted-strong` 用於次要說明與未選取導覽，`muted` 用於來源、日期及輔助文字。
-- **柔灰表面**（`soft`）：表頭、圖軌、閱讀模式底層及資料缺口容器。
-- **細灰邊界**（`line`）與 **控制項邊界**（`control-border`）：前者分組，後者讓輸入框保持可辨識。
+- `paper` 為暖白頁面，`white` 為資料面，`soft` 為圖軌與未著色狀態，`table-head` 為表頭。
+- `ink`、`muted-strong`、`muted` 分別承擔主文字、次要說明及日期來源；深色頁首使用 `nav-link` 與 `brand-subtitle`。
+- `line` 用於分組邊界；`control-border` 讓輸入框與零線清楚可辨。
 
 ### Named Rules
 
-**The 狀態要有文字 Rule.** 顏色只提供第二條辨識線索；過期、缺失、未核實與錯誤必須同時以文字交代。
-
-**The 操作與分類分工 Rule.** 鈷藍標示可操作或已選取的介面；配置類別色不承擔推薦或綜合評分。
+**The 狀態要有文字 Rule.** 顏色只提供第二條辨識線索；過期、未取得、未核實與抽取異常必須同時以文字交代。
 
 ## Typography
 
-**Display Font:** 尚未定為規範；目前大標題沿用正文的系統 sans，此項保留為未規範化的現況。
-**Body Font:** `body` 的 Segoe UI / Microsoft JhengHei 系統字型組合。
-**Label/Mono Font:** 控制項沿用正文；數字以 tabular numerals 對齊，程式碼與快照識別碼才使用瀏覽器的 code 字體。
-
-**Character:** 正文與控制項採統一 sans，透過尺寸、字重及留白分層。資料值比註解更醒目，原值的字串形態不因視覺整齊而改寫。
+**Display Font:** `display` 的 Georgia / Times New Roman / PMingLiU serif 組合，承接原有品牌及主標題。
+**Body Font:** `body` 的 Inter 優先、系統 sans 備援組合；記錄的是 CSS 宣告，不宣稱另行安裝或下載字型。
+**Label/Mono Font:** 控制項沿用正文；資料使用 tabular numerals，快照識別碼才使用 code 字體。
 
 ### Hierarchy
 
-- **Headline**：內頁主標題使用 `headline`；手機降至 (1.9rem)。字型選擇不在此角色承諾內。
-- **Title**：主要段落標題使用 `title`；手機降至 (1.4rem)。
-- **Subheading**：面板與次段標題使用 `subheading`。
-- **Body**：`body` 用於內容及說明；長篇方法說明的行長上限為 (72ch)。
-- **Control / Action Label**：輸入框與按鈕共用尺寸；操作文字使用較重的 `action-label`。
-- **Label / Supporting**：欄位標籤使用 `label`；日期與短註解使用 `supporting`。狀態、圖例等緊湊輔助字在來源中另有較小尺寸，不擴張成新的全站字級。
-- **Data / Caption**：`data` 用於醒目原值，`caption` 用於圖表標題；資料表與資料值採等寬數字。
+- **Display**：hero 主標題使用 `display`，正常字重與平衡換行。
+- **Title / Subheading**：主段使用 serif `title`，手機降至 (1.4rem)；次段使用 sans `subheading`。
+- **Body**：`body` 用於內容；長篇方法說明上限 (72ch)。
+- **Control / Action Label / Label**：控制項共用尺寸，按鈕和欄位標籤以較重文字辨認。
+- **Supporting / Data / Caption**：輔助文字交代日期來源，等寬原值方便核對，圖題直接命名圖表。
+- **Brand**：`brand` 專供 KWMPF 字樣；Kirk Wong Research 是品牌識別文字，不擴張為全站眉題樣式。
 
 ### Named Rules
 
-**The 原值先行 Rule.** 官方披露的百分比保留原始顯示精度；零值以零值顯示，缺失值以「官方未提供」或對應狀態顯示。
+**The 原值先行 Rule.** 官方百分比保留原始精度；零值、尚未取得、官方明示未披露及抽取異常分開呈現。
 
 ## Layout
 
-內容置於置中的最大寬度 (1360px) 容器；桌面左右內距為 (40px)，在 (1050px) 以下改為 (28px)，在 (700px) 以下改為 (20px)。內頁主要區域上下留白為 (40px / 72px)，手機改為 (28px / 48px)。
+內容最大寬度 (1520px)，桌面側內距為 `clamp(18px, 4vw, 64px)`；來源在 (1050px) 以下覆寫為 (28px)，在 (700px) 以下覆寫為 (20px)。頁首最小高度為 (72px)，窄螢幕導覽換行，連結保持至少 (44px) 操作高度。
 
-相鄰控制項常用 `spacing.8`，欄位與表格內容使用 `spacing.16`，面板內距及相關資料間隔使用 `spacing.24`。段落及跨區塊的距離逐步擴大至 `spacing.32`、`spacing.48` 及 `spacing.64`。來源中存在針對個別元件的其他間距；不把每個單次值擴張成全站尺度。
+閱讀模式與資料覆蓋入口位於 hero 下方。內頁主要上下留白為 (40px / 72px)，手機為 (28px / 48px)。篩選列由四欄改為兩欄，再改為單欄；相關資料使用 `spacing.16` 至 `spacing.24`，跨區塊採更大的留白。
 
-篩選列在桌面採四欄，於中等寬度改為兩欄，手機改為單欄。深入解讀與計劃列表以網格分組，窄螢幕按內容需要改為單欄。導覽在 (1050px) 以下換行；手機導覽連結保持至少 (44px) 操作高度。閱讀模式始終留在頁首。
+一般寬表保留完整欄位並在自己的容器水平捲動；回報矩陣最小寬度為 (640px)。捲動提示與可取得焦點的區域一起提供。兩欄費用、配置、曆年表取消一般 (600px) 最小寬度，採固定欄寬與文字換行，首欄約佔 (60%)。
 
-表格維持欄位完整性，在自己的容器內水平捲動；一般資料表的最小寬度為 (600px)，計劃逐項比較為 (760px)。捲動提示及方向鍵入口與表格一起提供。條形圖在手機將標籤與原值置於第一列，圖軌置於第二列。
-
-目前頁首來源的最小高度為 (80px)，與方向契約的 (72px) 有差異；這是記錄的偏差，不是新增的全站高度規範。
+點圖與條形圖在手機將標籤、身份及原值置於上列，圖軌移至下列。配置圖例由兩欄改為單欄，圓環由 (200px) 改為 (180px)。標籤保留計劃／類別身份，不能只以同名成分基金名稱辨認。
 
 ## Elevation & Depth
 
-系統常態以白色內容面、冷白紙底、柔灰表頭和單像素邊界建立層次。資料面板與圖表不用投影；少量深度僅用於閱讀模式的已選取選項。選取計劃的內描邊是狀態邊界，沒有把卡片抬離頁面。
-
-### Shadow Vocabulary
-
-- **閱讀模式選取**（`0 2px 5px #17223114`）：白色選項在柔灰模式軌道上輕微浮起。
-- **計劃選取內框**（`inset 0 0 0 1px var(--kw-action)`）：與鈷藍邊界共同標示已勾選計劃。
+資料面常態以白底、細邊界及表頭分層。沒有資料卡片投影；閱讀模式選取仍沿用 `0 2px 5px #17223114`，計劃選取使用 `inset 0 0 0 1px var(--kw-action)` 作狀態內框。點圖的外描邊用於辨認資料點，不是容器浮起。
 
 ### Named Rules
 
-**The 平面資料面 Rule.** 資料面板以細邊界分組；投影只沿用已實作的選取控制狀態，不擴張成卡片裝飾。
+**The 平面資料面 Rule.** 資料面板以細邊界分組；投影只沿用已實作的選取控制狀態，不擴張為卡片裝飾。
 
 ## Shapes
 
-內容面板使用 `rounded.panel`，主要輸入與按鈕使用 `rounded.control`，表格容器使用 `rounded.table`。小型狀態標籤使用 `rounded.badge`；閱讀模式軌道及其選項分別使用專屬圓角。
-
-邊界以單像素為主。圖形由矩形條、共享零線及小型色塊構成；標籤和原值承擔主要資訊，幾何形狀補充比例。來源沒有使用裝飾照片、紋理或漸層作為本次視覺語言。
+資料面板、圖表、工具列及組別選擇使用 `rounded.panel`；按鈕與輸入使用 `rounded.control`。表格容器保留 `rounded.table`，狀態標籤使用 `rounded.badge`。品牌 kW 圓形、資料圓點與配置圓環有實際識別或數據用途，並非裝飾遮罩。
 
 ## Components
 
-### Buttons
+### Buttons and Fields
 
-操作直接且可辨識。主要按鈕使用鈷藍底與白字；次要按鈕使用白底、鈷藍字與鈷藍邊界。兩者使用 `rounded.control`、實際內距 (10px 18px) 及最小高度 (44px)。
+主要按鈕為深青底白字，次要為白底深青字；內距 (10px 18px)，最小高度 (44px)。輸入內距 (10px 12px)，有明確邊界及上方標籤。白色表面焦點為深青外框 (3px)，偏移 (3px)；深色頁首與 hero 焦點使用亮金。背景狀態轉換為 (180ms ease-out)，reduced-motion 時移除。來源目前仍有主要按鈕的鈷藍滑入遺留；此值不列為品牌 token。
 
-滑入時主要按鈕變深，次要按鈕切換到柔灰底。背景狀態轉換使用 (180ms ease-out)。鍵盤焦點為鈷藍外框 (3px)，偏移 (3px)。停用按鈕使用灰色表面與文字並變更游標；不沿用可操作狀態。
+### Navigation and Reading Mode
 
-### Chips
+頁首保留 kW 圓形、Kirk Wong Research 與 serif KWMPF；導覽為「基金瀏覽／基金排名／計劃比較」。當前頁以白字、較重字及亮金底線共同標示。閱讀模式是帶 `aria-pressed` 的兩個按鈕；深入分析預設展開更多資料，簡潔仍可進入來源、限制與完整表格。頁尾保留方法、覆蓋、官方平台與免責入口。
 
-標籤簡短且不冒充操作。解讀及 DIS 狀態標籤使用柔灰底、`rounded.badge` 及內距 (3px 7px)；成分齊備標籤採符合狀態的底色及文字。標籤中必須出現可理解的狀態名稱。
+### Chips and Panels
 
-### Cards / Containers
+狀態標籤為柔灰底、短文字及 (3px 7px) 內距。資料面板使用白底細邊界、`rounded.panel` 及 `spacing.24`，手機內距為 (18px)。既有 hero 上方小標籤僅記錄為現況，不作新頁的通用標題模式。
 
-容器服務資料分組。白色面板使用細灰邊界、`rounded.panel` 及 `spacing.24` 內距；手機內距改為 (18px)。工具列、組別選擇與圖表沿用此形態。計劃已選取狀態改用鈷藍邊界與內框。
+### Tables and Disclosures
 
-### Inputs / Fields
+表格用柔淡表頭、左對齊、等寬數字及原值旁的日期來源。原生 details / summary 在兩種模式均可操作。過期數值仍可保留在原值表格，但日期及狀態必須在場。「未取得」表示本快照沒有可用值；不自行推論官方未披露。
 
-白底、石墨文字、控制項邊界與 `rounded.control` 構成輸入形態。內距為 (10px 12px)，最小高度為 (44px)。欄位標籤置於控制項上方；複合欄位在窄螢幕留足寬度。焦點沿用全站外框，文字游標使用操作色。
+### Numeric Comparisons
 
-### Navigation
+排名的圖表／完整表格選擇，以及組別、期間與指標保留在網址。點圖／橫條的 chartKind 選擇目前只保存在元件內的本機狀態，不保存在網址。每幅圖共用含零的實際尺度，各指標使用自己的單位；選同一比較組別才作排名圖，跨組只可明示並列。排名圖限制首十個時保留說明與完整入口。基金並列的點圖只繪 verified 期間；過期、未核實及缺失保留狀態文字而不畫數值點。
 
-文字導覽以強次要文字呈現；滑入轉為鈷藍。當前頁面以 `aria-current`、較重字及底部 (3px) 鈷藍線一起標示。閱讀模式是帶 `aria-pressed` 的兩個按鈕；選取項為白底鈷藍字，普通項留在柔灰軌道上。跳至主內容連結在鍵盤取得焦點時出現。
+### Return Matrix
 
-### Disclosures
+四個年率化期間形成回報矩陣，每格保留原值、時效、日期與來源。已核實可用值依絕對幅度使用青綠／負值紅透明度 (0.06–0.28)；過期及未核實值保留文字，使用柔灰底且不參與色階。不同期間不構成時間走勢。
 
-來源與比較方法使用原生 details / summary。深入分析模式預設展開，簡潔模式仍可自行展開；來源、日期及非官方分類說明不能因模式而失去入口。全站頁尾持續提供方法、資料狀態、官方平台與免責文字。
+### Calendar Returns
 
-### Data Tables
+曆年回報使用獨立柱形與共同零線；每柱代表完整曆年，不連線、不推造 NAV。缺失不畫成零，下方緊湊表格保留原值。
 
-欄位名稱使用柔灰表頭；欄內左對齊、垂直靠上並使用等寬數字。來源與日期以原值旁的文字或獨立欄位呈現，長基金名稱允許換行。行滑入增加柔灰表面；手機透過可操作的水平捲動查看完整欄位。
+### Allocation
 
-### Evidence Charts
-
-ValueBars 在每幅圖內共用含零的實際尺度；負值向零線左側延伸，缺失不繪成零。原值文字不依賴圖形讀取，基金標籤可以進入詳情。每幅不同指標圖採自己的單位與尺度。
-
-可用度圖把相同快照的基金類別分為可排名、過期、缺失及未核實，旁列實際數量。配置圖只在非負且合計介乎 (99–101%) 時堆疊；圖形如按合計調整，披露數字仍保留原值並交代合計。其餘情況退回獨立條形圖。
-
-排名的完整表格與同組圖表共用資料；顯示選擇保存在網址，返回或分享後可以恢復。先選同一比較組別，再畫排名比較圖；圖表只取首十個時必須說明並保留完整表格入口。不同期間的官方回報各自顯示，不能連接成價格走勢。
-
-回報、費用、規模與便覽資料各自顯示截至日期；發布快照日期不能代替欄位日期。排名只在同一比較組別內，圖表各自使用實際單位與共享零線，不合成跨指標總分。簡潔與深入分析模式都保留官方來源、資料限制與完整表格的可操作入口。
+先經保守的顯示守門核對標籤及有限數值。異常抽取暫不顯示圖表與數值表，提供便覽入口並說明這不代表官方沒有披露。通過守門、非負且合計 (99–101%) 的配置，最多六項用圓環，更多項用堆疊；合計調整只影響圖形長度，原值不改。不完整但可用的配置退回獨立條形。前端守門不能替代來源 parser 修復。
 
 ## Do's and Don'ts
 
 ### Do:
 
-- **Do** 保留官方百分比原值與原有精度，並讓零值與缺失值在文字及圖形上明確分開。
-- **Do** 為每項時間性數值呈現自己的截至日期與來源；非官方分類及本站統計必須標明。
-- **Do** 先選比較組別再提供同組圖表，並保留完整表格與網址中的顯示選擇。
-- **Do** 為不同指標各自使用實際單位及共同零線；用文字原值、狀態及圖例補充色彩。
-- **Do** 讓簡潔模式可以展開來源與比較限制，讓深入分析模式直接看到核對資料。
-- **Do** 沿用白色細邊界面板、可辨識的控制項邊界、鍵盤焦點及 reduced-motion 處理。
+- **Do** 沿用原有深青頁首、金色品牌標記、serif 品牌字與既有地圖 hero。
+- **Do** 保留官方百分比原值、各欄位日期及來源；非官方分類與本站統計明示身份。
+- **Do** 用點圖或條形比較數值、矩陣比較期間、獨立柱圖呈現曆年回報，完整表格保留核對入口。
+- **Do** 只有有效的非負完整組成使用圓環或堆疊；不完整但可用的配置退回獨立條形。
+- **Do** 保留同名基金的計劃與類別身份，讓簡潔及深入分析都能查看來源與限制。
+- **Do** 使用「未取得」描述未知缺項；只有來源明示沒有披露時，才使用「官方未提供」及原因。
+- **Do** 為寬表提供捲動提示，兩欄費用、配置及曆年表在手機使用緊湊可換行版面。
 
 ### Don't:
 
 - **Don't** 為了對齊而補零、四捨五入或固定官方百分比的小數位。
-- **Don't** 把缺失資料畫成零、用風險級別代替波幅，或用別隻基金的披露補欄位。
-- **Don't** 把跨組別數量當成優劣排名，或把回報、費用與風險合成推薦分數。
-- **Don't** 把不同期間的獨立披露連成價格時間序列，或以範圍中點冒充官方回報。
-- **Don't** 用同一快照日期覆蓋所有欄位的日期，或讓閱讀模式隱藏來源入口。
-- **Don't** 把未使用的歷史圖片、舊色彩別名或未解決的展示字型偏差視為新頁的品牌規則。
+- **Don't** 把過期或未核實回報繪成可用數值圖；矩陣可保留原值但不著色、不參與色階。
+- **Don't** 把跨組別並列當排名，或把回報、費用與風險合成推薦分數。
+- **Don't** 把不同期間或獨立曆年回報連成未披露的 NAV／價格走勢。
+- **Don't** 用同一快照日期覆蓋欄位日期，或讓閱讀模式隱藏來源入口。
+- **Don't** 把被隔離的解析異常當作官方沒有披露，或將前端顯示守門當作來源 parser 已修復。
+- **Don't** 將未驗收的生產資料、遺留滑入色或既有 hero 上方小標籤擴張成新頁的規範。

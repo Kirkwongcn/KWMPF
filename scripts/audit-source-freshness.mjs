@@ -70,6 +70,87 @@ export function auditSourceFreshness(source, observations, evaluatedOn) {
         : null,
     };
   });
+  const evaluatedDate = new Date(evaluatedOn + "T00:00:00Z");
+  const threeYearCutoff = `${evaluatedDate.getUTCFullYear() - 3}${evaluatedOn.slice(4)}`;
+  const byScheme = new Map();
+  const threeYearGaps = [];
+  const shortTenureObservations = [];
+  for (const record of source.records) {
+    const field =
+      observations.find(
+        (row) =>
+          row.fundClassId === record.fundClassId && row.periodYears === 3,
+      ) ?? record.returns?.["3"];
+    const present =
+      typeof field?.annualized === "number" &&
+      Number.isFinite(field.annualized);
+    const asOf = present ? (field.dataAsOf ?? record.dataAsOf) : null;
+    const ageDays = present ? dateAge(asOf, evaluatedOn) : null;
+    const status = !present
+      ? "missing"
+      : ageDays === null
+        ? "invalidDate"
+        : ageDays > 90
+          ? "stale"
+          : "eligible";
+    const schemeName = record.identity?.schemeName ?? "Unknown scheme";
+    if (!byScheme.has(schemeName))
+      byScheme.set(schemeName, {
+        schemeName,
+        total: 0,
+        eligible: 0,
+        stale: 0,
+        missing: 0,
+        invalidDate: 0,
+        shortTrackRecord: 0,
+        matureMissing: 0,
+        unknownTrackRecord: 0,
+      });
+    const scheme = byScheme.get(schemeName);
+    scheme.total++;
+    scheme[status]++;
+    // This is a tenure clue, not proof that the trustee did not disclose a period.
+    const validLaunch = dateAge(record.launchDate, evaluatedOn) !== null;
+    const tenure = !validLaunch
+      ? "unknown"
+      : record.launchDate > threeYearCutoff
+        ? "under-three-years"
+        : "at-least-three-years";
+    if (present && tenure === "under-three-years")
+      shortTenureObservations.push({
+        fundClassId: record.fundClassId,
+        ...record.identity,
+        launchDate: record.launchDate,
+        dataAsOf: asOf,
+        sourceUrl: field.sourceUrl ?? record.sourceUrl,
+        diagnosis: "period-and-track-record-review-required",
+      });
+    if (status === "missing")
+      scheme[
+        tenure === "unknown"
+          ? "unknownTrackRecord"
+          : tenure === "under-three-years"
+            ? "shortTrackRecord"
+            : "matureMissing"
+      ]++;
+    if (status !== "eligible")
+      threeYearGaps.push({
+        fundClassId: record.fundClassId,
+        ...record.identity,
+        status,
+        dataAsOf: asOf,
+        ageDays,
+        sourceUrl: present ? (field.sourceUrl ?? record.sourceUrl) : null,
+        launchDate: record.launchDate ?? null,
+        tenure,
+        diagnosis:
+          status === "stale"
+            ? "newer-source-required"
+            : status === "invalidDate"
+              ? "date-review-required"
+              : "source-and-class-reconciliation-required",
+      });
+  }
   return {
     scope: "candidate-only; published API validation is separately required",
     evaluatedOn,
@@ -78,6 +159,13 @@ export function auditSourceFreshness(source, observations, evaluatedOn) {
     sourceRecordCount: source.records.length,
     returnObservationCount: observations.length,
     returns,
+    threeYearGapScope:
+      "Tenure is diagnostic only; missing does not prove official non-disclosure. No return values are estimated or changed.",
+    threeYearByScheme: [...byScheme.values()].sort((a, b) =>
+      a.schemeName.localeCompare(b.schemeName, "en"),
+    ),
+    threeYearGaps,
+    shortTenureObservations,
   };
 }
 if (
@@ -101,5 +189,13 @@ if (
     arg("--date") ?? new Date().toISOString().slice(0, 10),
   );
   await writeFile(output, JSON.stringify(report, null, 2) + "\n");
-  console.log(JSON.stringify(report));
+  console.log(
+    JSON.stringify({
+      output,
+      evaluatedOn: report.evaluatedOn,
+      sourceRecordCount: report.sourceRecordCount,
+      returns: report.returns,
+      threeYearGapCount: report.threeYearGaps.length,
+    }),
+  );
 }

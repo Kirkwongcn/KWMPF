@@ -40,13 +40,9 @@ export function App({ apiUrl }: { apiUrl: string }) {
   }, [apiUrl]);
   return (
     <SiteChrome isHome title="查清資料，再作比較">
-      <section className="kw-home-intro" aria-labelledby="page-title">
+      <section className="kw-home-intro" aria-labelledby="home-search-title">
         <div className="kw-home-intro__search">
-          <h1 id="page-title">
-            你的強積金，
-            <br />
-            從看清資料開始。
-          </h1>
+          <h2 id="home-search-title">搜尋及查閱</h2>
           <p className="kw-home-intro__lead">
             查閱基金、比較同類表現，逐項核對費用、風險與官方來源。
           </p>

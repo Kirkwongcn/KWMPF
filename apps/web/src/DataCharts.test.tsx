@@ -23,7 +23,7 @@ describe("honest data graphics", () => {
     expect(
       container.querySelector(".kw-bars__bar--negative"),
     ).toBeInTheDocument();
-    expect(screen.getByText("官方未提供")).toBeVisible();
+    expect(screen.getByText("未取得")).toBeVisible();
   });
   it("does not invent an allocation bucket for partial totals", () => {
     const { container } = render(
@@ -49,7 +49,7 @@ describe("honest data graphics", () => {
         ]}
       />,
     );
-    expect(container.querySelectorAll(".kw-allocation__part")).toHaveLength(2);
+    expect(container.querySelectorAll(".kw-donut__part")).toHaveLength(2);
     expect(screen.getByText("60.1%")).toBeVisible();
   });
   it("escapes CSV formulas and quotations and preserves decimals", () => {

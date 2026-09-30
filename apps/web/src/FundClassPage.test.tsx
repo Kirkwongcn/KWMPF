@@ -237,9 +237,9 @@ describe("fund class page", () => {
     expect(
       rows.find((row) => row.textContent?.startsWith("十年")),
     ).toBeVisible();
-    expect(
-      within(table).getAllByText("官方未提供").length,
-    ).toBeGreaterThanOrEqual(2);
+    expect(within(table).getAllByText("未取得").length).toBeGreaterThanOrEqual(
+      2,
+    );
   });
 
   it("shows the fund risk indicator next to the risk class without conflating them", async () => {
@@ -300,7 +300,7 @@ describe("fund class page", () => {
     );
 
     const indicator = (await screen.findByText("基金風險指標")).closest("div");
-    expect(indicator).toHaveTextContent("官方未提供");
+    expect(indicator).toHaveTextContent("未取得");
   });
 
   it("shows official unavailability instead of crashing on absent fields", async () => {
@@ -332,8 +332,8 @@ describe("fund class page", () => {
       />,
     );
 
-    expect(await screen.findAllByText("官方未提供")).toHaveLength(28);
-    expect(screen.getByText(/適用披露規則/)).toBeVisible();
+    expect(await screen.findAllByText("未取得")).toHaveLength(28);
+    expect(screen.getByText(/不足以判定官方沒有披露/)).toBeVisible();
     expect(screen.getByText("官方未提供年度回報。")).toBeVisible();
   });
 
@@ -390,7 +390,7 @@ describe("fund class page", () => {
     // 年費是文字披露，不可當成缺失，也不可讀成分級門檻的數字。
     expect(screen.getByText("見下方文字披露")).toBeVisible();
     // 官方未提供五年 OCI，仍然顯示為未提供而不是 0。
-    expect(screen.getAllByText("官方未提供").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("未取得").length).toBeGreaterThan(0);
   });
 
   it("keeps the official line breaks in a text fee disclosure", async () => {
@@ -755,7 +755,7 @@ describe("cumulative returns", () => {
       .getAllByRole("row")
       .find((row) => row.textContent?.startsWith("五年"))!;
     expect(within(fiveYear).getByText("4.2%")).toBeVisible();
-    expect(within(fiveYear).getByText("官方未提供")).toBeVisible();
+    expect(within(fiveYear).getByText("未取得")).toBeVisible();
     expect(screen.queryByText("22.85%")).not.toBeInTheDocument();
   });
 
@@ -965,7 +965,7 @@ describe("cumulative returns", () => {
     ).toBeVisible();
   });
 
-  it("says when the official table is not an asset-class disclosure", async () => {
+  it("explains an unavailable editorial mapping without rewriting the official disclosure", async () => {
     renderWithDisclosure(disclosure, {
       mappedAllocation: {
         official: false,
@@ -976,7 +976,9 @@ describe("cumulative returns", () => {
       },
     });
 
-    expect(await screen.findByText(/此維度官方未以資產類別披露/)).toBeVisible();
+    expect(
+      await screen.findByText(/目前未產生可用的三桶編輯歸類/),
+    ).toBeVisible();
     expect(
       screen.queryByRole("table", { name: "編輯歸類的資產類別" }),
     ).not.toBeInTheDocument();

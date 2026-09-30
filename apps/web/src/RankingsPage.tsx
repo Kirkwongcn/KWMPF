@@ -79,6 +79,7 @@ export function RankingsPage({
       ? "chart"
       : "table",
   );
+  const [chartKind, setChartKind] = useState<"dot" | "bar">("dot");
 
   function pushRankingUrl(
     nextMetric: RankingMetric,
@@ -305,6 +306,15 @@ export function RankingsPage({
                 {`有 ${publication.excludedStaleCount} 隻基金的資料已超出網站時效門檻（${publication.methodology?.freshness?.graceDays ?? 45} 日），暫不列入排名。這些數值仍可在各基金詳情頁連同原截至日期查看。`}
               </p>
             ) : null}
+            {metric === "return" && period === "3" && (
+              <p className="kw-gap-guidance">
+                三年資料未齊或已過期時，可先比較{" "}
+                <a href="/rankings?period=1">一年</a> 或{" "}
+                <a href="/rankings?period=5">五年</a>；亦可{" "}
+                <a href="/data-status">查看缺口及時效說明</a>
+                。期間不同，結果須分開解讀。
+              </p>
+            )}
             {rankings?.length ? (
               <>
                 <div className="kw-advanced kw-export">
@@ -369,10 +379,30 @@ export function RankingsPage({
                     </button>
                   ))}
                 </div>
+                {display === "chart" && effectiveGroup !== "all" && (
+                  <div
+                    className="kw-chart-controls"
+                    role="group"
+                    aria-label="圖表類型"
+                  >
+                    <span>圖表類型</span>
+                    {(["dot", "bar"] as const).map((kind) => (
+                      <button
+                        key={kind}
+                        className="kw-button kw-button--secondary"
+                        aria-pressed={chartKind === kind}
+                        onClick={() => setChartKind(kind)}
+                      >
+                        {kind === "dot" ? "點圖" : "橫條圖"}
+                      </button>
+                    ))}
+                  </div>
+                )}
                 {display === "chart" &&
                   (effectiveGroup !== "all" ? (
                     <ValueBars
-                      label={`${effectiveGroup} · ${valueLabel}（首 ${Math.min(10, rankings.length)} 個；切換完整表格查看全部及來源）`}
+                      variant={chartKind}
+                      label={`${effectiveGroup} · ${valueLabel}（${rankings.length === 1 ? "只有 1 個合資格觀察值" : `首 ${Math.min(10, rankings.length)} 個`}；切換完整表格查看全部及來源）`}
                       rows={rankings.slice(0, 10).map((row) => ({
                         label: joinFundParts(
                           row.constituentFundName,
@@ -381,6 +411,7 @@ export function RankingsPage({
                         value: row.value,
                         display: row.displayValue,
                         href: `/fund-classes/${encodeURIComponent(row.fundClassId)}`,
+                        identifier: row.schemeName,
                         note: `截至 ${row.dataAsOf}${row.feeCap ? " · 費率上限" : ""}`,
                       }))}
                     />

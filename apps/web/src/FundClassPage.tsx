@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { SiteChrome } from "./SiteChrome";
-import { ValueBars, AllocationChart } from "./DataCharts";
+import {
+  ValueBars,
+  AllocationChart,
+  CalendarColumns,
+  isUsableAllocation,
+} from "./DataCharts";
 import { fundClassLabel, joinFundParts } from "./fundClassLabel";
 import {
   pointInTimeAsOf,
@@ -420,10 +425,19 @@ function hasMappedBuckets(
   return !("unavailable" in mapped && mapped.unavailable);
 }
 
-function mappedUnavailableNote(mapped: MappedAllocation): string | undefined {
+function mappedUnavailableNote(
+  mapped: MappedAllocation,
+  dimensions: FactSheetDisclosure["allocations"],
+): string | undefined {
   if (hasMappedBuckets(mapped) || mapped.reason !== "not-asset-class")
     return undefined;
-  return "此維度官方未以資產類別披露。便覽用的是地區、行業或其他分類，本網站不會把那些百分比改寫成股票／債券／現金比例。";
+  if (
+    dimensions.some((dimension) =>
+      /asset\s+class|資產類別/i.test(dimension.heading),
+    )
+  )
+    return "便覽有下列資產類別披露，但目前未產生可用的三桶編輯歸類。請以保留原文的官方配置及表格為準。";
+  return "目前未產生可用的三桶編輯歸類。地區、行業及其他維度會各自保留原文，不會改寫為股票／債券／現金比例。";
 }
 
 function formatEditorialPercent(value: number) {
@@ -492,7 +506,7 @@ export function FundClassPage({
   apiBaseUrl: string;
   fundClassId: string;
 }) {
-  const unavailable = "官方未提供";
+  const unavailable = "未取得";
   const formatNumber = (
     value: number | undefined,
     _digits: number,
@@ -690,6 +704,9 @@ export function FundClassPage({
             <h2 className="kw-section__heading" id="fund-figures-title">
               主要數據
             </h2>
+            <p className="kw-table-hint">
+              左右滑動可查看年率化、累積回報及來源
+            </p>
             <div
               className="kw-table-scroll"
               tabIndex={0}
@@ -738,54 +755,59 @@ export function FundClassPage({
                       <th scope="row">{horizon}</th>
                       <td className="kw-return">
                         {formatNumber(annualized, 2, "%")}
-                        {horizon !== "成立至今" && (
-                          <small>
-                            {publication.returnsFreshness?.[
-                              (
-                                {
-                                  一年: "1",
-                                  三年: "3",
-                                  五年: "5",
-                                  十年: "10",
-                                } as const
-                              )[horizon]
-                            ]?.status === "stale"
-                              ? "過期 · "
-                              : ""}
-                            截至{" "}
-                            {publication.returnsFreshness?.[
-                              (
-                                {
-                                  一年: "1",
-                                  三年: "3",
-                                  五年: "5",
-                                  十年: "10",
-                                } as const
-                              )[horizon]
-                            ]?.dataAsOf ??
-                              fundClass.returnsAsOf ??
-                              provenance.dataAsOf}{" "}
-                            ·{" "}
-                            <a
-                              href={
-                                fundClass.returnSources?.[
-                                  (
-                                    {
-                                      一年: "1",
-                                      三年: "3",
-                                      五年: "5",
-                                      十年: "10",
-                                    } as const
-                                  )[horizon]
-                                ]?.sourceUrl ?? provenance.sourceUrl
-                              }
-                              target="_blank"
-                              rel="noreferrer"
-                            >
-                              官方來源
-                            </a>
-                          </small>
-                        )}
+                        {horizon !== "成立至今" &&
+                          typeof annualized !== "number" && (
+                            <small>日期未記錄</small>
+                          )}
+                        {horizon !== "成立至今" &&
+                          typeof annualized === "number" && (
+                            <small>
+                              {publication.returnsFreshness?.[
+                                (
+                                  {
+                                    一年: "1",
+                                    三年: "3",
+                                    五年: "5",
+                                    十年: "10",
+                                  } as const
+                                )[horizon]
+                              ]?.status === "stale"
+                                ? "過期 · "
+                                : ""}
+                              截至{" "}
+                              {publication.returnsFreshness?.[
+                                (
+                                  {
+                                    一年: "1",
+                                    三年: "3",
+                                    五年: "5",
+                                    十年: "10",
+                                  } as const
+                                )[horizon]
+                              ]?.dataAsOf ??
+                                fundClass.returnsAsOf ??
+                                provenance.dataAsOf}{" "}
+                              ·{" "}
+                              <a
+                                href={
+                                  fundClass.returnSources?.[
+                                    (
+                                      {
+                                        一年: "1",
+                                        三年: "3",
+                                        五年: "5",
+                                        十年: "10",
+                                      } as const
+                                    )[horizon]
+                                  ]?.sourceUrl ?? provenance.sourceUrl
+                                }
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                官方來源
+                              </a>
+                            </small>
+                          )}
                       </td>
                       <td className="kw-return">
                         {formatNumber(cumulative, 2, "%")}
@@ -796,6 +818,7 @@ export function FundClassPage({
               </table>
             </div>
             <ValueBars
+              variant="dot"
               label="各期間年率化回報（獨立披露，非走勢）"
               rows={(
                 [
@@ -806,14 +829,21 @@ export function FundClassPage({
                 ] as const
               ).map(([period, field]) => ({
                 label: period + " 年",
-                value: fundClass[field],
-                note:
-                  (publication.returnsFreshness?.[period]?.status === "stale"
-                    ? "過期 · "
-                    : "") +
-                  "截至 " +
-                  (publication.returnsFreshness?.[period]?.dataAsOf ??
-                    "官方未提供"),
+                value:
+                  publication.returnsFreshness?.[period]?.status === "verified"
+                    ? fundClass[field]
+                    : null,
+                display:
+                  publication.returnsFreshness?.[period]?.status === "stale"
+                    ? "過期，暫不繪圖"
+                    : typeof fundClass[field] === "number" &&
+                        publication.returnsFreshness?.[period]?.status !==
+                          "verified"
+                      ? "未核實，暫不繪圖"
+                      : undefined,
+                note: publication.returnsFreshness?.[period]?.dataAsOf
+                  ? `${publication.returnsFreshness[period].status === "stale" ? "過期 · " : ""}截至 ${publication.returnsFreshness[period].dataAsOf}`
+                  : "日期未記錄",
               }))}
             />
             <dl className="status-list">
@@ -844,9 +874,9 @@ export function FundClassPage({
             </h2>
             {calendarYears.length > 0 && (
               <div className="kw-advanced">
-                <ValueBars
+                <CalendarColumns
                   label="曆年累積回報（各年獨立）"
-                  rows={calendarYears.map((year) => ({
+                  rows={[...calendarYears].reverse().map((year) => ({
                     label: year,
                     value: fundClass.calendarYearReturns?.[year],
                   }))}
@@ -862,7 +892,10 @@ export function FundClassPage({
                 role="region"
                 aria-label="年度回報表，可左右捲動查看所有欄位"
               >
-                <table className="kw-table" aria-label="年度回報">
+                <table
+                  className="kw-table kw-table--compact"
+                  aria-label="年度回報"
+                >
                   <thead>
                     <tr>
                       <th scope="col">年度</th>
@@ -907,7 +940,10 @@ export function FundClassPage({
                 role="region"
                 aria-label="基金經常性費用表，可左右捲動查看所有欄位"
               >
-                <table className="kw-table" aria-label="經常性費用">
+                <table
+                  className="kw-table kw-table--compact"
+                  aria-label="經常性費用"
+                >
                   <caption>經常性費用（每年）</caption>
                   <thead>
                     <tr>
@@ -931,7 +967,10 @@ export function FundClassPage({
                 role="region"
                 aria-label="一次性及交易收費表，可左右捲動查看所有欄位"
               >
-                <table className="kw-table" aria-label="一次性及交易收費">
+                <table
+                  className="kw-table kw-table--compact"
+                  aria-label="一次性及交易收費"
+                >
                   <caption>一次性及交易收費</caption>
                   <thead>
                     <tr>
@@ -955,7 +994,10 @@ export function FundClassPage({
                 role="region"
                 aria-label="持續成本說明表，可左右捲動查看所有欄位"
               >
-                <table className="kw-table" aria-label="持續成本說明">
+                <table
+                  className="kw-table kw-table--compact"
+                  aria-label="持續成本說明"
+                >
                   <caption>持續成本說明（OCI）</caption>
                   <thead>
                     <tr>
@@ -996,7 +1038,7 @@ export function FundClassPage({
               )}
               <p>配置及持倉資料的截至日期可能不同，使用時請留意可比性限制。</p>
               <p role="note">
-                顯示「官方未提供」代表積金局資料按適用披露規則沒有該欄位；常見原因包括基金運作年期不足或保證／資本保存安排。網站不會以估算值補足。
+                「未取得」代表本快照沒有可用數值，不足以判定官方沒有披露。只有來源明示缺項時才列出「官方未提供」及原因；網站不會以估算值補足。
               </p>
             </div>
           </section>
@@ -1049,48 +1091,59 @@ export function FundClassPage({
                       資產配置截至 {allocationAsOf}。
                     </p>
                   )}
-                  {mappedAllocation && hasMappedBuckets(mappedAllocation) && (
-                    <div
-                      className="kw-table-scroll"
-                      tabIndex={0}
-                      role="region"
-                      aria-label="編輯歸類的資產類別表，可左右捲動查看所有欄位"
-                    >
-                      <table
-                        className="kw-table"
-                        aria-label="編輯歸類的資產類別"
-                      >
-                        <caption>編輯歸類的資產類別</caption>
-                        <thead>
-                          <tr>
-                            <th scope="col">項目</th>
-                            <th scope="col">比重</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {mappedBucketLabels.map(([key, label]) => (
-                            <tr key={key}>
-                              <th scope="row">{label}</th>
-                              <td className="kw-return">
-                                {formatEditorialPercent(
-                                  mappedAllocation.buckets[key],
-                                )}
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                      <p className="kw-muted" role="note">
-                        編輯歸類，非官方分類。對照表期別{" "}
-                        {mappedAllocation.mapVersion}
-                        。下面的表仍是便覽原文。
-                      </p>
-                    </div>
-                  )}
                   {mappedAllocation &&
-                    mappedUnavailableNote(mappedAllocation) && (
+                    hasMappedBuckets(mappedAllocation) &&
+                    factSheetDisclosure.allocations.every((dimension) =>
+                      isUsableAllocation(dimension.entries),
+                    ) && (
+                      <div
+                        className="kw-table-scroll"
+                        tabIndex={0}
+                        role="region"
+                        aria-label="編輯歸類的資產類別表，可左右捲動查看所有欄位"
+                      >
+                        <table
+                          className="kw-table kw-table--compact"
+                          aria-label="編輯歸類的資產類別"
+                        >
+                          <caption>編輯歸類的資產類別</caption>
+                          <thead>
+                            <tr>
+                              <th scope="col">項目</th>
+                              <th scope="col">比重</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {mappedBucketLabels.map(([key, label]) => (
+                              <tr key={key}>
+                                <th scope="row">{label}</th>
+                                <td className="kw-return">
+                                  {formatEditorialPercent(
+                                    mappedAllocation.buckets[key],
+                                  )}
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                        <p className="kw-muted" role="note">
+                          編輯歸類，非官方分類。對照表期別{" "}
+                          {mappedAllocation.mapVersion}
+                          。下面的表仍是便覽原文。
+                        </p>
+                      </div>
+                    )}
+                  {mappedAllocation &&
+                    mappedUnavailableNote(
+                      mappedAllocation,
+                      factSheetDisclosure.allocations,
+                    ) && (
                       <p className="kw-muted" role="note">
-                        編輯歸類：{mappedUnavailableNote(mappedAllocation)}
+                        編輯歸類：
+                        {mappedUnavailableNote(
+                          mappedAllocation,
+                          factSheetDisclosure.allocations,
+                        )}
                       </p>
                     )}
                   {factSheetDisclosure.allocations.map((dimension) => (
@@ -1098,38 +1151,43 @@ export function FundClassPage({
                       key={"chart-" + dimension.heading}
                       heading={dimension.heading}
                       entries={dimension.entries}
+                      sourceUrl={factSheetDisclosure.factSheetUrl}
                     />
                   ))}
-                  {factSheetDisclosure.allocations.map((dimension) => (
-                    <div
-                      className="kw-table-scroll"
-                      key={dimension.heading}
-                      tabIndex={0}
-                      role="region"
-                      aria-label={`${dimension.heading}，可左右捲動查看所有欄位`}
-                    >
-                      <table
-                        className="kw-table"
-                        aria-label={dimension.heading}
+                  {factSheetDisclosure.allocations
+                    .filter((dimension) =>
+                      isUsableAllocation(dimension.entries),
+                    )
+                    .map((dimension) => (
+                      <div
+                        className="kw-table-scroll"
+                        key={dimension.heading}
+                        tabIndex={0}
+                        role="region"
+                        aria-label={`${dimension.heading}，可左右捲動查看所有欄位`}
                       >
-                        <caption>{dimension.heading}</caption>
-                        <thead>
-                          <tr>
-                            <th scope="col">項目</th>
-                            <th scope="col">比重</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {dimension.entries.map((entry) => (
-                            <tr key={entry.label}>
-                              <th scope="row">{entry.label}</th>
-                              <td className="kw-return">{entry.percent}%</td>
+                        <table
+                          className="kw-table kw-table--compact"
+                          aria-label={dimension.heading}
+                        >
+                          <caption>{dimension.heading}</caption>
+                          <thead>
+                            <tr>
+                              <th scope="col">項目</th>
+                              <th scope="col">比重</th>
                             </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  ))}
+                          </thead>
+                          <tbody>
+                            {dimension.entries.map((entry) => (
+                              <tr key={entry.label}>
+                                <th scope="row">{entry.label}</th>
+                                <td className="kw-return">{entry.percent}%</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    ))}
                   {unavailableNote("allocation", factSheetDisclosure) && (
                     <p className="kw-muted" role="note">
                       資產配置：
@@ -1149,6 +1207,11 @@ export function FundClassPage({
                         value: holding.percent,
                       }))}
                     />
+                  )}
+                  {factSheetDisclosure.topHoldings.length > 0 && (
+                    <p className="kw-table-hint">
+                      左右滑動可查看持倉名稱及比重
+                    </p>
                   )}
                   {factSheetDisclosure.topHoldings.length > 0 && (
                     <div

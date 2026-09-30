@@ -1,4 +1,4 @@
-import { render, screen, cleanup } from "@testing-library/react";
+import { render, screen, cleanup, within } from "@testing-library/react";
 import { afterEach, describe, it, expect, vi } from "vitest";
 import { FundComparePage } from "./FundComparePage";
 const fund = {
@@ -33,9 +33,12 @@ describe("fund comparison", () => {
     window.history.replaceState({}, "", "/funds/compare?ids=a");
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue(Response.json(fund)));
     render(<FundComparePage apiBaseUrl="https://api.test" />);
-    expect(await screen.findByRole("table")).toBeVisible();
-    expect(screen.getByText("1.205%")).toBeVisible();
-    expect(screen.getByText(/過期 · 截至 2026-06-30/)).toBeVisible();
+    const table = await screen.findByRole("table", {
+      name: "原始數值與來源（過期值仍保留）",
+    });
+    expect(table).toBeVisible();
+    expect(within(table).getByText("1.205%")).toBeVisible();
+    expect(within(table).getByText(/過期 · 截至 2026-06-30/)).toBeVisible();
     expect(
       screen
         .getAllByRole("link", { name: /官方來源/ })
