@@ -1,5 +1,8 @@
 # Deployment
 
+最新狀態（2026-09-30）：PR #358／#359 已合併，main 3f65596 已由 production run #28 成功發布；私有原件、D1 備份及 release tuple 讀回、正式 API 與桌面／手機畫面已核對。詳見 [本次實際發布記錄](reviews/2026-09-30-production-repair-release.md)。以下較早的待辦／未發布敘述保留作歷史紀錄；三年 258 過期／156 未取得及其他 P1／P2 仍須跟進。
+
+
 正式網站是 `https://kwmpf.kirkwongcn.com`，由 Cloudflare Pages 專案 `kwmpf-web-production` 提供，
 DNS 以 proxied CNAME 指向 `kwmpf-web-production.pages.dev`，前端讀取 Worker `kwmpf-api-production`。
 更換網域或改變公開發布狀態，一律要先取得使用者確認。
