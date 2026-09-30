@@ -466,7 +466,7 @@ describe("buildAllocationLabelMap", () => {
     ) as AllocationLabelMapFile;
     const disclosures = JSON.parse(
       readFileSync(
-        resolve(repo, "data/sources/2026-08-31/fund-fact-sheet-disclosures.json"),
+        resolve(repo, mapFile.source),
         "utf8",
       ),
     ) as { funds: { allocations: { heading: string; entries: { label: string; percent: number }[] }[]; unavailableFields?: string[]; unavailableKinds?: Record<string, "chart-only"> }[] };

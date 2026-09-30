@@ -77,7 +77,7 @@ Master Trust 相同 URL 的舊 SHA 是 `7ea4bbfab38cc00f3aacabadfab25bcbe9bbe565
 - 既有 coverage 333、Web 115、API 80 個測試通過；四個 workspace typecheck 通過。僅延伸既有 assertion 與真實 fixture，沒有新增測試案例。
 - Web production build／API dry-run bundle 已驗證，沒有部署遠端。
 - 首輪 E2E 因自訂快照名稱不符既有格式而 64 pass／2 fail；調整隔離名稱後通過。加入官方 N/A 顯示後的最後完整流程為 66 pass（34.9 秒）／0 skipped／0 flaky。桌面及 390px 手機已目視核對回報表的 N/A、日期及原文頁數。
-- 根目錄 format check 因 61 個既有 CRLF 檔案停下，沒有為消除警告改寫原件。未改 Bash suite 交 Linux CI，不能把分項通過稱為根目錄 `bun run check` 全通過。
+- Windows 根目錄 format check 因 61 個既有 CRLF 檔案停下。Linux CI #803 找到檢查查詢不支援的 `exact` 選項，修正後 #804 的完整 `bun run check`、E2E 及 publication-seed 通過。資料 PR #359 的 #805 發現既有 allocation-map 檢查固定讀取舊批次；現改為讀對照表自己宣告的 source，既有 333 項本機檢查通過，更新後 CI 待確認。
 - 正式 seed 路徑在隔離 D1：451 類別、295 overlay、32 比較組、56 DIS 元件、24 計劃完整；API 三年排名 37 筆、excludedStaleCount 258，與 data-quality 一致。
 - 三筆原文／API 核對：Sun Life Conservative Class B（507）2.84%；BEA Industry Balanced（212）9.33%；BEA Value Growth（1040）14.73%，均為 6 月 30 日披露且過期。另核對 Income（2239）沒有三年數值，一年仍為 8 月平台 2.58%，帶官方 N/A 日期與原件頁數。
 - 全部 40 隻東亞 detail／interpretation API 已核對配置、總和、十大持倉及三桶可用／不可用狀態。
@@ -93,3 +93,40 @@ Master Trust 相同 URL 的舊 SHA 是 `7ea4bbfab38cc00f3aacabadfab25bcbe9bbe565
 5. #355／#356 只有程式與修正資料都合併後才記 repository 修復完成；正式發布及原品牌新版設計另按里程碑確認。目前沒有 production D1／R2／Worker／Pages 操作。
 
 本機修復預覽：`http://127.0.0.1:5181/`，與舊候選的 5180 分開。原 header／風格、多種圖表及來源表保留，本輪補充官方 N/A 狀態。
+
+
+## 8. 最新 24 計劃跟進表及 PR 狀態
+
+| 計劃 | 總數 | 可排名 | 過期 | 未取得 | 下一步 |
+| --- | ---: | ---: | ---: | ---: | --- |
+| AIA MPF - Prime Value Choice | 21 | 0 | 18 | 3 | 逐基金／類別及期間 reconciliation；記錄下載、解析或未披露證據 |
+| AMTD MPF Scheme | 16 | 0 | 16 | 0 | 核查較新官方原件、hash、實際日期及取得限制 |
+| BCOM Joyful Retirement MPF Scheme | 14 | 0 | 7 | 7 | 逐基金／類別及期間 reconciliation；記錄下載、解析或未披露證據 |
+| BCT (MPF) Industry Choice | 12 | 0 | 12 | 0 | 核查較新官方原件、hash、實際日期及取得限制 |
+| BCT (MPF) Pro Choice | 26 | 0 | 26 | 0 | 核查較新官方原件、hash、實際日期及取得限制 |
+| BCT MPF - Simple Plan | 10 | 0 | 10 | 0 | 核查較新官方原件、hash、實際日期及取得限制 |
+| BCT MPF - Smart Plan | 14 | 0 | 14 | 0 | 核查較新官方原件、hash、實際日期及取得限制 |
+| BCT MPF Scheme Series 800 | 28 | 0 | 22 | 6 | 逐基金／類別及期間 reconciliation；記錄下載、解析或未披露證據 |
+| BCT Strategic MPF Scheme | 26 | 0 | 0 | 26 | 已檢便覽沒有三年欄；找獨立官方來源，未知不填 N/A |
+| BEA (MPF) Industry Scheme | 12 | 0 | 12 | 0 | 抽取已補齊；找新季度原件，自己的日期重新評估 |
+| BEA (MPF) Master Trust Scheme | 17 | 0 | 17 | 0 | 抽取已補齊；找新季度原件，自己的日期重新評估 |
+| BEA (MPF) Value Scheme | 11 | 0 | 11 | 0 | 抽取已補齊；找新季度原件，自己的日期重新評估 |
+| BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme | 17 | 0 | 3 | 14 | 逐基金／類別及期間 reconciliation；記錄下載、解析或未披露證據 |
+| China Life MPF Master Trust Scheme | 10 | 0 | 6 | 4 | 逐基金／類別及期間 reconciliation；記錄下載、解析或未披露證據 |
+| Fidelity Retirement Master Trust | 23 | 23 | 0 | 0 | 監察官方更新及 90 日到期；數量不代替準確度 |
+| Haitong MPF Retirement Fund | 14 | 14 | 0 | 0 | 監察官方更新及 90 日到期；數量不代替準確度 |
+| Hang Seng Mandatory Provident Fund - SuperTrust Plus | 20 | 0 | 9 | 11 | 查年率化／類別；月度累積回報另設同口徑 |
+| HSBC Mandatory Provident Fund - SuperTrust Plus | 20 | 0 | 9 | 11 | 查年率化／類別；月度累積回報另設同口徑 |
+| Manulife Global Select (MPF) Scheme | 29 | 0 | 12 | 17 | 逐基金官方代碼／類別核對；累積與年率化分開 |
+| Manulife RetireChoice (MPF) Scheme | 39 | 0 | 0 | 39 | 已檢便覽沒有三年欄；找獨立官方來源，未知不填 N/A |
+| MASS Mandatory Provident Fund Scheme | 14 | 0 | 14 | 0 | 核查較新官方原件、hash、實際日期及取得限制 |
+| My Choice Mandatory Provident Fund Scheme | 17 | 0 | 3 | 14 | 逐基金／類別及期間 reconciliation；記錄下載、解析或未披露證據 |
+| SHKP MPF Employer Sponsored Scheme | 10 | 0 | 8 | 2 | 逐基金／類別及期間 reconciliation；記錄下載、解析或未披露證據 |
+| Sun Life Rainbow MPF Scheme | 31 | 0 | 29 | 2 | 29 值及 2 官方 N/A；找新季度原件並保存版本 |
+
+合計 451＝37 可排名＋258 過期＋156 未取得。表中下一步是待辦，沒有把待查來源寫成已取得。成立年期不足的 6 筆須保留獨立原因；只有原文明確的 2 筆使用官方 N/A。
+
+- 程式修復：[PR #358](https://github.com/Kirkwongcn/KWMPF/pull/358)，target main。
+- 7 個資料檔案：[PR #359](https://github.com/Kirkwongcn/KWMPF/pull/359)，依賴 #358；先分開覆核，合併前重新核對 main 差異。
+- 預設最新 disclosures／map 產生的 seed 與本機讀回驗證版本逐位元相同，SQL SHA-256：`936a6f38263219dab4c3fdc67121fdc7ccc0f9faa64d5cf37a8f8d528c6725c6`。
+- 本次等效人工覆核接受已提出，仍待使用者答覆；必要 CI 通過後按已有合併授權處理。正式網站尚未套用這兩個 PR。
