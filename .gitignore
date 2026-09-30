@@ -11,3 +11,4 @@ dist-e2e/
 apps/e2e/.e2e-state/
 .tmp-*/
 .tmp-*
+.impeccable/review/

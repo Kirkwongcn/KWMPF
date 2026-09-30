@@ -45,7 +45,7 @@ describe("home data workbench", () => {
     expect(await screen.findByText("451")).toBeVisible();
     expect(screen.getByText("2026-08-31")).toBeVisible();
     expect(screen.getAllByText("37 可排名")).toHaveLength(4);
-    expect(screen.getAllByText("212 過期 · 202 官方未提供")).toHaveLength(4);
+    expect(screen.getAllByText("212 過期 · 202 未取得")).toHaveLength(4);
   });
   it("submits the search to the paginated fund browser", () => {
     stub();

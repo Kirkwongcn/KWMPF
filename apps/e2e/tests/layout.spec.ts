@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 const pages = [
-  { path: "/", ready: "由你的問題出發" },
+  { path: "/", ready: "搜尋及查閱" },
   { path: "/funds?q=BCT", ready: "瀏覽結果" },
   { path: "/rankings", ready: "已發布基金排名" },
   { path: "/schemes", ready: "計劃概覽" },
@@ -26,7 +26,7 @@ test("窄螢幕導覽文字維持單行並保留觸控尺寸", async ({ page }) 
   await page.goto("/");
 
   const nav = page.getByRole("navigation", { name: "主要導覽" });
-  for (const name of ["基金瀏覽", "同類排名", "計劃比較", "資料狀態"]) {
+  for (const name of ["基金瀏覽", "基金排名", "計劃比較"]) {
     const { height, textLines } = await nav
       .getByRole("link", { name })
       .evaluate((element) => {
@@ -67,7 +67,7 @@ test("每頁都可經主要導覽互相跳轉", async ({ page }) => {
   await page.goto("/");
 
   const nav = page.getByRole("navigation", { name: "主要導覽" });
-  await nav.getByRole("link", { name: "同類排名" }).click();
+  await nav.getByRole("link", { name: "基金排名" }).click();
   await expect(page).toHaveURL(/\/rankings$/);
 
   await nav.getByRole("link", { name: "計劃比較" }).click();
@@ -117,7 +117,7 @@ test("320px nav wraps cleanly", async ({ page }) => {
 
   expect(layout.overflow).toBeLessThanOrEqual(1);
   expect(layout.navBelowBrand).toBe(true);
-  expect(layout.links).toHaveLength(4);
+  expect(layout.links).toHaveLength(3);
   for (const link of layout.links) {
     expect(link.width).toBeGreaterThanOrEqual(44);
     expect(link.height).toBeGreaterThanOrEqual(44);

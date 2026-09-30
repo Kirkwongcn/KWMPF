@@ -61,7 +61,7 @@ export function DataStatusPage({ apiBaseUrl }: { apiBaseUrl: string }) {
                   <th scope="col">期間</th>
                   <th scope="col">可排名</th>
                   <th scope="col">過期</th>
-                  <th scope="col">官方未提供</th>
+                  <th scope="col">未取得</th>
                   <th scope="col">未核實</th>
                   <th scope="col">已提供數值的截至日期範圍</th>
                 </tr>
@@ -103,14 +103,28 @@ export function DataStatusPage({ apiBaseUrl }: { apiBaseUrl: string }) {
           <dd>
             數值仍保留在詳情頁；已超出時效門檻、日期不合法或日期在未來，因此排除排名。
           </dd>
-          <dt>官方未提供</dt>
-          <dd>本快照沒有該期間的可用官方數值，並不代表回報為零。</dd>
+          <dt>未取得</dt>
+          <dd>
+            本快照沒有該期間的可用官方數值。可能是來源未披露、基金運作年期不足、下載或配對尚未完成；單看這個數量不能判斷原因，也不代表回報為零。
+          </dd>
           <dt>未核實</dt>
           <dd>數值或來源未通過核實，不用於公開比較。</dd>
         </dl>
+        <h2>三年資料有缺口，可以怎樣比較？</h2>
+        <p>
+          先查看一年、五年或十年的同類排名，或在基金並列比較中核對各期間的可用狀態。過期三年數值仍可在詳情查看，但會清楚標示日期並排除排名。
+        </p>
+        <p>
+          三年累積回報與三年年率化回報是不同口徑。即使找到較新的官方累積數值，也不會換算或直接加入這裡的年率化排名。
+        </p>
+        <div className="kw-home-shortcuts">
+          <a href="/rankings?period=1">查看一年同類排名</a>
+          <a href="/rankings?period=5">查看五年同類排名</a>
+          <a href="/funds">選取基金並列比較</a>
+        </div>
         <p>
           三年回報最長 90 日；其他回報一般為 45
-          日。這是本站資料政策，並非受託人的统一法律發布期限。快取有效期最長約
+          日。這是本站資料政策，並非受託人的統一法律發布期限。快取有效期最長約
           15 分鐘，UTC 日期切換時可能短暫沿用前一天狀態。
         </p>
         <a href="/methodology">查看來源、排名規則與限制</a>
