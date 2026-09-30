@@ -6,6 +6,7 @@
 
 - [2026-09-30 全流程審視與網站改版跟進手冊](docs/reviews/2026-09-30-full-process-and-design-review.md)：資料時效、来源搜尋、準確度、架構缺口、驗收及下一步。
 - [介面設計系統](DESIGN.md)：簡潔首頁、深入分析模式、圖表與表格的共用規則。
+- [三年缺口解決手冊](docs/reviews/2026-09-30-three-year-gap-resolution.md)：逐計劃缺口、原文證據、期間錯配、解析修正及替代比較口徑。
 
 ## Development
 

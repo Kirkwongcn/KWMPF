@@ -1,138 +1,194 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-30T03:19:59Z",
+  "generatedAt": "2026-09-30T10:09:54Z",
   "title": "Design System: KWMPF",
   "extensions": {
     "colorMeta": {
       "paper": {
         "role": "neutral",
-        "displayName": "冷白紙底",
+        "displayName": "暖白紙底",
         "tonalRamp": [
-          "oklch(15.00% 0.0029 264.54)",
-          "oklch(26.43% 0.0029 264.54)",
-          "oklch(37.86% 0.0029 264.54)",
-          "oklch(49.29% 0.0029 264.54)",
-          "oklch(60.71% 0.0029 264.54)",
-          "oklch(72.14% 0.0029 264.54)",
-          "oklch(83.57% 0.0029 264.54)",
-          "oklch(95.00% 0.0029 264.54)"
+          "oklch(15.00% 0.0054 95.10)",
+          "oklch(26.43% 0.0054 95.10)",
+          "oklch(37.86% 0.0054 95.10)",
+          "oklch(49.29% 0.0054 95.10)",
+          "oklch(60.71% 0.0054 95.10)",
+          "oklch(72.14% 0.0054 95.10)",
+          "oklch(83.57% 0.0054 95.10)",
+          "oklch(95.00% 0.0054 95.10)"
         ]
       },
       "ink": {
         "role": "neutral",
-        "displayName": "石墨文字",
+        "displayName": "深墨文字",
         "tonalRamp": [
-          "oklch(15.00% 0.0327 256.31)",
-          "oklch(26.43% 0.0327 256.31)",
-          "oklch(37.86% 0.0327 256.31)",
-          "oklch(49.29% 0.0327 256.31)",
-          "oklch(60.71% 0.0327 256.31)",
-          "oklch(72.14% 0.0327 256.31)",
-          "oklch(83.57% 0.0327 256.31)",
-          "oklch(95.00% 0.0327 256.31)"
+          "oklch(15.00% 0.0243 228.85)",
+          "oklch(26.43% 0.0243 228.85)",
+          "oklch(37.86% 0.0243 228.85)",
+          "oklch(49.29% 0.0243 228.85)",
+          "oklch(60.71% 0.0243 228.85)",
+          "oklch(72.14% 0.0243 228.85)",
+          "oklch(83.57% 0.0243 228.85)",
+          "oklch(95.00% 0.0243 228.85)"
+        ]
+      },
+      "navy": {
+        "role": "primary",
+        "displayName": "原有深青頁首",
+        "tonalRamp": [
+          "oklch(15.00% 0.0486 218.84)",
+          "oklch(26.43% 0.0486 218.84)",
+          "oklch(37.86% 0.0486 218.84)",
+          "oklch(49.29% 0.0486 218.84)",
+          "oklch(60.71% 0.0486 218.84)",
+          "oklch(72.14% 0.0486 218.84)",
+          "oklch(83.57% 0.0486 218.84)",
+          "oklch(95.00% 0.0486 218.84)"
         ]
       },
       "action": {
         "role": "primary",
-        "displayName": "操作鈷藍",
+        "displayName": "深青操作色",
         "tonalRamp": [
-          "oklch(15.00% 0.1924 265.56)",
-          "oklch(26.43% 0.1924 265.56)",
-          "oklch(37.86% 0.1924 265.56)",
-          "oklch(49.29% 0.1924 265.56)",
-          "oklch(60.71% 0.1924 265.56)",
-          "oklch(72.14% 0.1924 265.56)",
-          "oklch(83.57% 0.1924 265.56)",
-          "oklch(95.00% 0.1924 265.56)"
+          "oklch(15.00% 0.0556 219.18)",
+          "oklch(26.43% 0.0556 219.18)",
+          "oklch(37.86% 0.0556 219.18)",
+          "oklch(49.29% 0.0556 219.18)",
+          "oklch(60.71% 0.0556 219.18)",
+          "oklch(72.14% 0.0556 219.18)",
+          "oklch(83.57% 0.0556 219.18)",
+          "oklch(95.00% 0.0556 219.18)"
         ]
       },
-      "action-hover": {
+      "teal": {
         "role": "primary",
-        "displayName": "深鈷藍操作狀態",
+        "displayName": "資料青綠",
         "tonalRamp": [
-          "oklch(15.00% 0.1584 265.44)",
-          "oklch(26.43% 0.1584 265.44)",
-          "oklch(37.86% 0.1584 265.44)",
-          "oklch(49.29% 0.1584 265.44)",
-          "oklch(60.71% 0.1584 265.44)",
-          "oklch(72.14% 0.1584 265.44)",
-          "oklch(83.57% 0.1584 265.44)",
-          "oklch(95.00% 0.1584 265.44)"
+          "oklch(15.00% 0.0791 212.48)",
+          "oklch(26.43% 0.0791 212.48)",
+          "oklch(37.86% 0.0791 212.48)",
+          "oklch(49.29% 0.0791 212.48)",
+          "oklch(60.71% 0.0791 212.48)",
+          "oklch(72.14% 0.0791 212.48)",
+          "oklch(83.57% 0.0791 212.48)",
+          "oklch(95.00% 0.0791 212.48)"
+        ]
+      },
+      "gold": {
+        "role": "secondary",
+        "displayName": "品牌金",
+        "tonalRamp": [
+          "oklch(15.00% 0.0871 81.67)",
+          "oklch(26.43% 0.0871 81.67)",
+          "oklch(37.86% 0.0871 81.67)",
+          "oklch(49.29% 0.0871 81.67)",
+          "oklch(60.71% 0.0871 81.67)",
+          "oklch(72.14% 0.0871 81.67)",
+          "oklch(83.57% 0.0871 81.67)",
+          "oklch(95.00% 0.0871 81.67)"
+        ]
+      },
+      "gold-light": {
+        "role": "secondary",
+        "displayName": "亮金",
+        "tonalRamp": [
+          "oklch(15.00% 0.0936 84.17)",
+          "oklch(26.43% 0.0936 84.17)",
+          "oklch(37.86% 0.0936 84.17)",
+          "oklch(49.29% 0.0936 84.17)",
+          "oklch(60.71% 0.0936 84.17)",
+          "oklch(72.14% 0.0936 84.17)",
+          "oklch(83.57% 0.0936 84.17)",
+          "oklch(95.00% 0.0936 84.17)"
         ]
       },
       "muted": {
         "role": "neutral",
         "displayName": "輔助灰字",
         "tonalRamp": [
-          "oklch(15.00% 0.0310 257.08)",
-          "oklch(26.43% 0.0310 257.08)",
-          "oklch(37.86% 0.0310 257.08)",
-          "oklch(49.29% 0.0310 257.08)",
-          "oklch(60.71% 0.0310 257.08)",
-          "oklch(72.14% 0.0310 257.08)",
-          "oklch(83.57% 0.0310 257.08)",
-          "oklch(95.00% 0.0310 257.08)"
+          "oklch(15.00% 0.0166 231.49)",
+          "oklch(26.43% 0.0166 231.49)",
+          "oklch(37.86% 0.0166 231.49)",
+          "oklch(49.29% 0.0166 231.49)",
+          "oklch(60.71% 0.0166 231.49)",
+          "oklch(72.14% 0.0166 231.49)",
+          "oklch(83.57% 0.0166 231.49)",
+          "oklch(95.00% 0.0166 231.49)"
         ]
       },
       "muted-strong": {
         "role": "neutral",
         "displayName": "強次要文字",
         "tonalRamp": [
-          "oklch(15.00% 0.0415 256.43)",
-          "oklch(26.43% 0.0415 256.43)",
-          "oklch(37.86% 0.0415 256.43)",
-          "oklch(49.29% 0.0415 256.43)",
-          "oklch(60.71% 0.0415 256.43)",
-          "oklch(72.14% 0.0415 256.43)",
-          "oklch(83.57% 0.0415 256.43)",
-          "oklch(95.00% 0.0415 256.43)"
+          "oklch(15.00% 0.0421 232.73)",
+          "oklch(26.43% 0.0421 232.73)",
+          "oklch(37.86% 0.0421 232.73)",
+          "oklch(49.29% 0.0421 232.73)",
+          "oklch(60.71% 0.0421 232.73)",
+          "oklch(72.14% 0.0421 232.73)",
+          "oklch(83.57% 0.0421 232.73)",
+          "oklch(95.00% 0.0421 232.73)"
         ]
       },
       "line": {
         "role": "neutral",
-        "displayName": "細灰邊界",
+        "displayName": "細邊界",
         "tonalRamp": [
-          "oklch(15.00% 0.0110 256.70)",
-          "oklch(26.43% 0.0110 256.70)",
-          "oklch(37.86% 0.0110 256.70)",
-          "oklch(49.29% 0.0110 256.70)",
-          "oklch(60.71% 0.0110 256.70)",
-          "oklch(72.14% 0.0110 256.70)",
-          "oklch(83.57% 0.0110 256.70)",
-          "oklch(95.00% 0.0110 256.70)"
+          "oklch(15.00% 0.0080 139.44)",
+          "oklch(26.43% 0.0080 139.44)",
+          "oklch(37.86% 0.0080 139.44)",
+          "oklch(49.29% 0.0080 139.44)",
+          "oklch(60.71% 0.0080 139.44)",
+          "oklch(72.14% 0.0080 139.44)",
+          "oklch(83.57% 0.0080 139.44)",
+          "oklch(95.00% 0.0080 139.44)"
         ]
       },
       "control-border": {
         "role": "neutral",
         "displayName": "控制項邊界",
         "tonalRamp": [
-          "oklch(15.00% 0.0282 259.04)",
-          "oklch(26.43% 0.0282 259.04)",
-          "oklch(37.86% 0.0282 259.04)",
-          "oklch(49.29% 0.0282 259.04)",
-          "oklch(60.71% 0.0282 259.04)",
-          "oklch(72.14% 0.0282 259.04)",
-          "oklch(83.57% 0.0282 259.04)",
-          "oklch(95.00% 0.0282 259.04)"
+          "oklch(15.00% 0.0149 166.88)",
+          "oklch(26.43% 0.0149 166.88)",
+          "oklch(37.86% 0.0149 166.88)",
+          "oklch(49.29% 0.0149 166.88)",
+          "oklch(60.71% 0.0149 166.88)",
+          "oklch(72.14% 0.0149 166.88)",
+          "oklch(83.57% 0.0149 166.88)",
+          "oklch(95.00% 0.0149 166.88)"
         ]
       },
       "soft": {
         "role": "neutral",
-        "displayName": "柔灰表面",
+        "displayName": "柔淡表面",
         "tonalRamp": [
-          "oklch(15.00% 0.0091 258.34)",
-          "oklch(26.43% 0.0091 258.34)",
-          "oklch(37.86% 0.0091 258.34)",
-          "oklch(49.29% 0.0091 258.34)",
-          "oklch(60.71% 0.0091 258.34)",
-          "oklch(72.14% 0.0091 258.34)",
-          "oklch(83.57% 0.0091 258.34)",
-          "oklch(95.00% 0.0091 258.34)"
+          "oklch(15.00% 0.0045 134.85)",
+          "oklch(26.43% 0.0045 134.85)",
+          "oklch(37.86% 0.0045 134.85)",
+          "oklch(49.29% 0.0045 134.85)",
+          "oklch(60.71% 0.0045 134.85)",
+          "oklch(72.14% 0.0045 134.85)",
+          "oklch(83.57% 0.0045 134.85)",
+          "oklch(95.00% 0.0045 134.85)"
+        ]
+      },
+      "table-head": {
+        "role": "neutral",
+        "displayName": "淡色表頭",
+        "tonalRamp": [
+          "oklch(15.00% 0.0045 258.32)",
+          "oklch(26.43% 0.0045 258.32)",
+          "oklch(37.86% 0.0045 258.32)",
+          "oklch(49.29% 0.0045 258.32)",
+          "oklch(60.71% 0.0045 258.32)",
+          "oklch(72.14% 0.0045 258.32)",
+          "oklch(83.57% 0.0045 258.32)",
+          "oklch(95.00% 0.0045 258.32)"
         ]
       },
       "white": {
         "role": "neutral",
-        "displayName": "白色面板",
+        "displayName": "白色資料面",
         "tonalRamp": [
           "oklch(15.00% 0.0000 0.00)",
           "oklch(26.43% 0.0000 0.00)",
@@ -144,74 +200,60 @@
           "oklch(95.00% 0.0000 0.00)"
         ]
       },
+      "nav-link": {
+        "role": "neutral",
+        "displayName": "深色導覽文字",
+        "tonalRamp": [
+          "oklch(15.00% 0.0206 243.44)",
+          "oklch(26.43% 0.0206 243.44)",
+          "oklch(37.86% 0.0206 243.44)",
+          "oklch(49.29% 0.0206 243.44)",
+          "oklch(60.71% 0.0206 243.44)",
+          "oklch(72.14% 0.0206 243.44)",
+          "oklch(83.57% 0.0206 243.44)",
+          "oklch(95.00% 0.0206 243.44)"
+        ]
+      },
+      "brand-subtitle": {
+        "role": "neutral",
+        "displayName": "品牌副名",
+        "tonalRamp": [
+          "oklch(15.00% 0.0233 217.67)",
+          "oklch(26.43% 0.0233 217.67)",
+          "oklch(37.86% 0.0233 217.67)",
+          "oklch(49.29% 0.0233 217.67)",
+          "oklch(60.71% 0.0233 217.67)",
+          "oklch(72.14% 0.0233 217.67)",
+          "oklch(83.57% 0.0233 217.67)",
+          "oklch(95.00% 0.0233 217.67)"
+        ]
+      },
       "positive": {
         "role": "secondary",
         "displayName": "符合狀態綠",
         "tonalRamp": [
-          "oklch(15.00% 0.0899 161.68)",
-          "oklch(26.43% 0.0899 161.68)",
-          "oklch(37.86% 0.0899 161.68)",
-          "oklch(49.29% 0.0899 161.68)",
-          "oklch(60.71% 0.0899 161.68)",
-          "oklch(72.14% 0.0899 161.68)",
-          "oklch(83.57% 0.0899 161.68)",
-          "oklch(95.00% 0.0899 161.68)"
-        ]
-      },
-      "positive-bg": {
-        "role": "secondary",
-        "displayName": "符合狀態底",
-        "tonalRamp": [
-          "oklch(15.00% 0.0132 159.92)",
-          "oklch(26.43% 0.0132 159.92)",
-          "oklch(37.86% 0.0132 159.92)",
-          "oklch(49.29% 0.0132 159.92)",
-          "oklch(60.71% 0.0132 159.92)",
-          "oklch(72.14% 0.0132 159.92)",
-          "oklch(83.57% 0.0132 159.92)",
-          "oklch(95.00% 0.0132 159.92)"
+          "oklch(15.00% 0.1187 153.18)",
+          "oklch(26.43% 0.1187 153.18)",
+          "oklch(37.86% 0.1187 153.18)",
+          "oklch(49.29% 0.1187 153.18)",
+          "oklch(60.71% 0.1187 153.18)",
+          "oklch(72.14% 0.1187 153.18)",
+          "oklch(83.57% 0.1187 153.18)",
+          "oklch(95.00% 0.1187 153.18)"
         ]
       },
       "negative": {
         "role": "secondary",
-        "displayName": "負值及未核實紅",
+        "displayName": "負值紅",
         "tonalRamp": [
-          "oklch(15.00% 0.1533 17.58)",
-          "oklch(26.43% 0.1533 17.58)",
-          "oklch(37.86% 0.1533 17.58)",
-          "oklch(49.29% 0.1533 17.58)",
-          "oklch(60.71% 0.1533 17.58)",
-          "oklch(72.14% 0.1533 17.58)",
-          "oklch(83.57% 0.1533 17.58)",
-          "oklch(95.00% 0.1533 17.58)"
-        ]
-      },
-      "negative-bg": {
-        "role": "secondary",
-        "displayName": "錯誤底",
-        "tonalRamp": [
-          "oklch(15.00% 0.0163 12.78)",
-          "oklch(26.43% 0.0163 12.78)",
-          "oklch(37.86% 0.0163 12.78)",
-          "oklch(49.29% 0.0163 12.78)",
-          "oklch(60.71% 0.0163 12.78)",
-          "oklch(72.14% 0.0163 12.78)",
-          "oklch(83.57% 0.0163 12.78)",
-          "oklch(95.00% 0.0163 12.78)"
-        ]
-      },
-      "negative-text": {
-        "role": "secondary",
-        "displayName": "錯誤文字",
-        "tonalRamp": [
-          "oklch(15.00% 0.1395 18.28)",
-          "oklch(26.43% 0.1395 18.28)",
-          "oklch(37.86% 0.1395 18.28)",
-          "oklch(49.29% 0.1395 18.28)",
-          "oklch(60.71% 0.1395 18.28)",
-          "oklch(72.14% 0.1395 18.28)",
-          "oklch(83.57% 0.1395 18.28)",
-          "oklch(95.00% 0.1395 18.28)"
+          "oklch(15.00% 0.1277 23.12)",
+          "oklch(26.43% 0.1277 23.12)",
+          "oklch(37.86% 0.1277 23.12)",
+          "oklch(49.29% 0.1277 23.12)",
+          "oklch(60.71% 0.1277 23.12)",
+          "oklch(72.14% 0.1277 23.12)",
+          "oklch(83.57% 0.1277 23.12)",
+          "oklch(95.00% 0.1277 23.12)"
         ]
       },
       "warning-bg": {
@@ -226,34 +268,6 @@
           "oklch(72.14% 0.0208 79.10)",
           "oklch(83.57% 0.0208 79.10)",
           "oklch(95.00% 0.0208 79.10)"
-        ]
-      },
-      "warning-text": {
-        "role": "secondary",
-        "displayName": "警示文字",
-        "tonalRamp": [
-          "oklch(15.00% 0.0839 76.41)",
-          "oklch(26.43% 0.0839 76.41)",
-          "oklch(37.86% 0.0839 76.41)",
-          "oklch(49.29% 0.0839 76.41)",
-          "oklch(60.71% 0.0839 76.41)",
-          "oklch(72.14% 0.0839 76.41)",
-          "oklch(83.57% 0.0839 76.41)",
-          "oklch(95.00% 0.0839 76.41)"
-        ]
-      },
-      "warning-border": {
-        "role": "secondary",
-        "displayName": "警示邊界",
-        "tonalRamp": [
-          "oklch(15.00% 0.1102 72.12)",
-          "oklch(26.43% 0.1102 72.12)",
-          "oklch(37.86% 0.1102 72.12)",
-          "oklch(49.29% 0.1102 72.12)",
-          "oklch(60.71% 0.1102 72.12)",
-          "oklch(72.14% 0.1102 72.12)",
-          "oklch(83.57% 0.1102 72.12)",
-          "oklch(95.00% 0.1102 72.12)"
         ]
       },
       "stale": {
@@ -272,7 +286,7 @@
       },
       "missing": {
         "role": "neutral",
-        "displayName": "缺失灰",
+        "displayName": "缺項灰",
         "tonalRamp": [
           "oklch(15.00% 0.0176 256.29)",
           "oklch(26.43% 0.0176 256.29)",
@@ -284,101 +298,101 @@
           "oklch(95.00% 0.0176 256.29)"
         ]
       },
-      "category-teal": {
+      "category-ochre": {
         "role": "secondary",
-        "displayName": "配置青綠",
+        "displayName": "配置赭金",
         "tonalRamp": [
-          "oklch(15.00% 0.0892 181.98)",
-          "oklch(26.43% 0.0892 181.98)",
-          "oklch(37.86% 0.0892 181.98)",
-          "oklch(49.29% 0.0892 181.98)",
-          "oklch(60.71% 0.0892 181.98)",
-          "oklch(72.14% 0.0892 181.98)",
-          "oklch(83.57% 0.0892 181.98)",
-          "oklch(95.00% 0.0892 181.98)"
-        ]
-      },
-      "category-amber": {
-        "role": "secondary",
-        "displayName": "配置琥珀",
-        "tonalRamp": [
-          "oklch(15.00% 0.1047 71.94)",
-          "oklch(26.43% 0.1047 71.94)",
-          "oklch(37.86% 0.1047 71.94)",
-          "oklch(49.29% 0.1047 71.94)",
-          "oklch(60.71% 0.1047 71.94)",
-          "oklch(72.14% 0.1047 71.94)",
-          "oklch(83.57% 0.1047 71.94)",
-          "oklch(95.00% 0.1047 71.94)"
-        ]
-      },
-      "category-violet": {
-        "role": "secondary",
-        "displayName": "配置紫",
-        "tonalRamp": [
-          "oklch(15.00% 0.1015 321.75)",
-          "oklch(26.43% 0.1015 321.75)",
-          "oklch(37.86% 0.1015 321.75)",
-          "oklch(49.29% 0.1015 321.75)",
-          "oklch(60.71% 0.1015 321.75)",
-          "oklch(72.14% 0.1015 321.75)",
-          "oklch(83.57% 0.1015 321.75)",
-          "oklch(95.00% 0.1015 321.75)"
+          "oklch(15.00% 0.0842 79.59)",
+          "oklch(26.43% 0.0842 79.59)",
+          "oklch(37.86% 0.0842 79.59)",
+          "oklch(49.29% 0.0842 79.59)",
+          "oklch(60.71% 0.0842 79.59)",
+          "oklch(72.14% 0.0842 79.59)",
+          "oklch(83.57% 0.0842 79.59)",
+          "oklch(95.00% 0.0842 79.59)"
         ]
       },
       "category-slate": {
         "role": "secondary",
         "displayName": "配置灰藍",
         "tonalRamp": [
-          "oklch(15.00% 0.0412 261.18)",
-          "oklch(26.43% 0.0412 261.18)",
-          "oklch(37.86% 0.0412 261.18)",
-          "oklch(49.29% 0.0412 261.18)",
-          "oklch(60.71% 0.0412 261.18)",
-          "oklch(72.14% 0.0412 261.18)",
-          "oklch(83.57% 0.0412 261.18)",
-          "oklch(95.00% 0.0412 261.18)"
+          "oklch(15.00% 0.0377 229.02)",
+          "oklch(26.43% 0.0377 229.02)",
+          "oklch(37.86% 0.0377 229.02)",
+          "oklch(49.29% 0.0377 229.02)",
+          "oklch(60.71% 0.0377 229.02)",
+          "oklch(72.14% 0.0377 229.02)",
+          "oklch(83.57% 0.0377 229.02)",
+          "oklch(95.00% 0.0377 229.02)"
+        ]
+      },
+      "category-violet": {
+        "role": "secondary",
+        "displayName": "配置灰紫",
+        "tonalRamp": [
+          "oklch(15.00% 0.0355 307.79)",
+          "oklch(26.43% 0.0355 307.79)",
+          "oklch(37.86% 0.0355 307.79)",
+          "oklch(49.29% 0.0355 307.79)",
+          "oklch(60.71% 0.0355 307.79)",
+          "oklch(72.14% 0.0355 307.79)",
+          "oklch(83.57% 0.0355 307.79)",
+          "oklch(95.00% 0.0355 307.79)"
+        ]
+      },
+      "category-green": {
+        "role": "secondary",
+        "displayName": "配置灰綠",
+        "tonalRamp": [
+          "oklch(15.00% 0.0485 170.38)",
+          "oklch(26.43% 0.0485 170.38)",
+          "oklch(37.86% 0.0485 170.38)",
+          "oklch(49.29% 0.0485 170.38)",
+          "oklch(60.71% 0.0485 170.38)",
+          "oklch(72.14% 0.0485 170.38)",
+          "oklch(83.57% 0.0485 170.38)",
+          "oklch(95.00% 0.0485 170.38)"
         ]
       },
       "category-rose": {
         "role": "secondary",
         "displayName": "配置玫瑰",
         "tonalRamp": [
-          "oklch(15.00% 0.1185 11.84)",
-          "oklch(26.43% 0.1185 11.84)",
-          "oklch(37.86% 0.1185 11.84)",
-          "oklch(49.29% 0.1185 11.84)",
-          "oklch(60.71% 0.1185 11.84)",
-          "oklch(72.14% 0.1185 11.84)",
-          "oklch(83.57% 0.1185 11.84)",
-          "oklch(95.00% 0.1185 11.84)"
+          "oklch(15.00% 0.0949 16.11)",
+          "oklch(26.43% 0.0949 16.11)",
+          "oklch(37.86% 0.0949 16.11)",
+          "oklch(49.29% 0.0949 16.11)",
+          "oklch(60.71% 0.0949 16.11)",
+          "oklch(72.14% 0.0949 16.11)",
+          "oklch(83.57% 0.0949 16.11)",
+          "oklch(95.00% 0.0949 16.11)"
         ]
       }
     },
     "typographyMeta": {
-      "headline": {
-        "displayName": "內頁主標題",
-        "purpose": "重用的內頁標題尺寸與行距；未規範展示字型。"
+      "display": {
+        "displayName": "原有 serif 主標題",
+        "purpose": "hero 主標題，承接使用者指定恢復的原有風格。"
       },
       "title": {
-        "displayName": "主要段落標題",
-        "purpose": "段落及資料區塊名稱，手機採來源中的較小尺寸。"
+        "displayName": "serif 段落標題",
+        "purpose": "主要資料段落，手機採較小尺寸。"
       },
       "subheading": {
-        "displayName": "次段標題",
+        "displayName": "sans 次段標題",
         "purpose": "面板及次級資料組名稱。"
       },
       "body": {
         "displayName": "正文",
-        "purpose": "繁體中文閱讀；長篇方法說明上限72ch。"
+        "purpose": "Inter 優先、系統 sans 備援；記錄 CSS 宣告，不宣稱安裝字型。"
       },
       "control": {
         "displayName": "控制項文字",
-        "purpose": "輸入框與資料表一般文字。"
+        "purpose": "輸入與表格文字。"
       },
       "action-label": {
         "displayName": "操作文字",
-        "purpose": "主要及次要按鈕的較重文字。"
+        "purpose": "主要及次要按鈕。"
       },
       "label": {
         "displayName": "欄位標籤",
@@ -389,12 +403,16 @@
         "purpose": "日期、來源及短註解。"
       },
       "data": {
-        "displayName": "醒目原值",
-        "purpose": "原值採等寬數字對齊；不改寫百分比精度。"
+        "displayName": "原值",
+        "purpose": "等寬數字；保留官方精度與狀態。"
       },
       "caption": {
         "displayName": "圖表標題",
-        "purpose": "說明圖表內容及其尺度。"
+        "purpose": "說明內容、單位及尺度。"
+      },
+      "brand": {
+        "displayName": "KWMPF 品牌字",
+        "purpose": "原有 serif 品牌身份，不擴張為眉題模式。"
       }
     },
     "shadows": [
@@ -437,9 +455,9 @@
       "name": "主要按鈕",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "搜尋等主要操作，保持可辨識的操作高度與焦點。",
+      "description": "主要操作的現況快照；來源鈷藍滑入遺留不列為品牌 token。",
       "html": "<button class=\"ds-button-primary\">搜尋基金</button>",
-      "css": ".ds-button-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 18px;border:1px solid var(--kw-action,#244ac2);border-radius:8px;font-family:var(--kw-font-body,\"Segoe UI\",\"Microsoft JhengHei\",system-ui,sans-serif);font-size:.95rem;line-height:1.65;font-weight:600;text-decoration:none;white-space:nowrap;cursor:pointer;transition:background-color 180ms ease-out;background:var(--kw-action,#244ac2);color:var(--kw-white,#fff)}.ds-button-primary:hover{background:#183694;color:var(--kw-white,#fff)}.ds-button-primary:focus-visible{outline:3px solid var(--kw-action,#244ac2);outline-offset:3px;}.ds-button-primary:disabled{background:#e8ebf0;color:#667181;border-color:#c9d0da;cursor:not-allowed}@media(prefers-reduced-motion:reduce){.ds-button-primary{transition:none}}"
+      "css": ".ds-button-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 18px;border:1px solid var(--kw-action,#0f414e);border-radius:8px;font-family:var(--kw-font-body,Inter,ui-sans-serif,system-ui,-apple-system,\"Segoe UI\",\"Microsoft JhengHei\",sans-serif);font-size:.95rem;line-height:1.65;font-weight:600;text-decoration:none;white-space:nowrap;cursor:pointer;transition:background-color 180ms ease-out;background:var(--kw-action,#0f414e);color:var(--kw-white,#fff)}.ds-button-primary:hover{background:#183694;color:var(--kw-white,#fff)}.ds-button-primary:focus-visible{outline:3px solid var(--kw-action,#0f414e);outline-offset:3px;}.ds-button-primary:disabled{background:#e8ebf0;color:#667181;border-color:#c9d0da;cursor:not-allowed}@media(prefers-reduced-motion:reduce){.ds-button-primary{transition:none}}"
     },
     {
       "name": "次要按鈕",
@@ -447,7 +465,7 @@
       "refersTo": "button-secondary",
       "description": "返回、次要操作與表格／圖表顯示選擇。",
       "html": "<button class=\"ds-button-secondary\">完整表格</button>",
-      "css": ".ds-button-secondary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 18px;border:1px solid var(--kw-action,#244ac2);border-radius:8px;font-family:var(--kw-font-body,\"Segoe UI\",\"Microsoft JhengHei\",system-ui,sans-serif);font-size:.95rem;line-height:1.65;font-weight:600;text-decoration:none;white-space:nowrap;cursor:pointer;transition:background-color 180ms ease-out;background:var(--kw-white,#fff);color:var(--kw-action,#244ac2)}.ds-button-secondary:hover{background:var(--kw-soft,#edf1f7);color:var(--kw-action,#244ac2)}.ds-button-secondary[aria-pressed=\"true\"]{background:var(--kw-action,#244ac2);color:var(--kw-white,#fff)}.ds-button-secondary:focus-visible{outline:3px solid var(--kw-action,#244ac2);outline-offset:3px;}.ds-button-secondary:disabled{background:#e8ebf0;color:#667181;border-color:#c9d0da;cursor:not-allowed}@media(prefers-reduced-motion:reduce){.ds-button-secondary{transition:none}}"
+      "css": ".ds-button-secondary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 18px;border:1px solid var(--kw-action,#0f414e);border-radius:8px;font-family:var(--kw-font-body,Inter,ui-sans-serif,system-ui,-apple-system,\"Segoe UI\",\"Microsoft JhengHei\",sans-serif);font-size:.95rem;line-height:1.65;font-weight:600;text-decoration:none;white-space:nowrap;cursor:pointer;transition:background-color 180ms ease-out;background:var(--kw-white,#fff);color:var(--kw-action,#0f414e)}.ds-button-secondary:hover{background:var(--kw-soft,#f2f4f1);color:var(--kw-action,#0f414e)}.ds-button-secondary[aria-pressed=\"true\"]{background:var(--kw-action,#0f414e);color:var(--kw-white,#fff)}.ds-button-secondary:focus-visible{outline:3px solid var(--kw-action,#0f414e);outline-offset:3px;}.ds-button-secondary:disabled{background:#e8ebf0;color:#667181;border-color:#c9d0da;cursor:not-allowed}@media(prefers-reduced-motion:reduce){.ds-button-secondary{transition:none}}"
     },
     {
       "name": "有標籤輸入框",
@@ -455,23 +473,15 @@
       "refersTo": "input",
       "description": "搜尋與篩選使用白色、明確邊界的控制項。",
       "html": "<div class=\"ds-field\"><label for=\"ds-fund-search\">基金或計劃名稱</label><input class=\"ds-input\" id=\"ds-fund-search\" type=\"search\" placeholder=\"輸入基金或計劃名稱\"></div>",
-      "css": ".ds-field{font-family:var(--kw-font-body,\"Segoe UI\",\"Microsoft JhengHei\",system-ui,sans-serif);color:var(--kw-ink,#172231);line-height:1.65}.ds-field label{display:block;font-size:.9rem;font-weight:600;margin-bottom:6px}.ds-input{background:var(--kw-white,#fff);color:var(--kw-ink,#172231);border:1px solid var(--kw-control-border,#8b96a7);padding:10px 12px;border-radius:8px;min-height:44px;max-width:100%;font-family:var(--kw-font-body,\"Segoe UI\",\"Microsoft JhengHei\",system-ui,sans-serif);font-size:.95rem;line-height:1.65;caret-color:var(--kw-action,#244ac2)}.ds-input::placeholder{color:#636e7d;opacity:1}.ds-input:focus-visible{outline:3px solid var(--kw-action,#244ac2);outline-offset:3px;}"
+      "css": ".ds-field{font-family:var(--kw-font-body,Inter,ui-sans-serif,system-ui,-apple-system,\"Segoe UI\",\"Microsoft JhengHei\",sans-serif);color:var(--kw-ink,#16252c);line-height:1.65}.ds-field label{display:block;font-size:.9rem;font-weight:600;margin-bottom:6px}.ds-input{background:var(--kw-white,#fff);color:var(--kw-ink,#16252c);border:1px solid var(--kw-control-border,#7b8681);padding:10px 12px;border-radius:8px;min-height:44px;max-width:100%;font-family:var(--kw-font-body,Inter,ui-sans-serif,system-ui,-apple-system,\"Segoe UI\",\"Microsoft JhengHei\",sans-serif);font-size:.95rem;line-height:1.65;caret-color:var(--kw-action,#0f414e)}.ds-input::placeholder{color:#636e7d;opacity:1}.ds-input:focus-visible{outline:3px solid var(--kw-action,#0f414e);outline-offset:3px;}"
     },
     {
-      "name": "文字導覽",
+      "name": "原有品牌導覽",
       "kind": "nav",
       "refersTo": "navigation",
-      "description": "當前頁面以文字、底線及語意屬性共同標示。",
-      "html": "<nav class=\"ds-nav\" aria-label=\"主要導覽\"><a href=\"/funds\">基金瀏覽</a><a href=\"/rankings\" aria-current=\"page\">同類排名</a><a href=\"/schemes\">計劃比較</a></nav>",
-      "css": ".ds-nav{display:flex;align-items:center;gap:26px;font-family:var(--kw-font-body,\"Segoe UI\",\"Microsoft JhengHei\",system-ui,sans-serif);font-size:16px;line-height:1.65}.ds-nav a{color:var(--kw-muted-strong,#46566c);text-decoration:none;padding:24px 0;position:relative;white-space:nowrap}.ds-nav a:hover{color:var(--kw-action,#244ac2)}.ds-nav a[aria-current=\"page\"]{color:var(--kw-action,#244ac2);font-weight:650}.ds-nav a[aria-current=\"page\"]::after{content:\"\";height:3px;background:var(--kw-action,#244ac2);position:absolute;bottom:0;left:0;right:0}.ds-nav a:focus-visible{outline:3px solid var(--kw-action,#244ac2);outline-offset:3px;}@media(max-width:1050px){.ds-nav{gap:12px;flex-wrap:wrap}.ds-nav a{padding:8px 0}}@media(max-width:700px){.ds-nav a{font-size:.875rem;min-height:44px;display:flex;align-items:center}}"
-    },
-    {
-      "name": "閱讀模式",
-      "kind": "button",
-      "refersTo": "reading-mode",
-      "description": "簡潔與深入分析使用相同資料；選取態浮於柔灰軌道上。",
-      "html": "<div class=\"ds-mode\" role=\"group\" aria-label=\"閱讀模式\"><button aria-pressed=\"true\">簡潔</button><button aria-pressed=\"false\">深入分析</button></div>",
-      "css": ".ds-mode{display:flex;background:var(--kw-soft,#edf1f7);border-radius:9px;padding:4px;white-space:nowrap;font-family:var(--kw-font-body,\"Segoe UI\",\"Microsoft JhengHei\",system-ui,sans-serif);line-height:1.65;width:max-content}.ds-mode button{border:0;border-radius:6px;background:transparent;padding:7px 12px;cursor:pointer;color:var(--kw-muted-strong,#46566c);font-family:var(--kw-font-body,\"Segoe UI\",\"Microsoft JhengHei\",system-ui,sans-serif);font-size:.875rem;line-height:1.65;transition:background-color 180ms ease-out}.ds-mode button[aria-pressed=\"true\"]{background:var(--kw-white,#fff);color:var(--kw-action,#244ac2);box-shadow:0 2px 5px #17223114;font-weight:650}.ds-mode button:focus-visible{outline:3px solid var(--kw-action,#244ac2);outline-offset:3px;}@media(max-width:700px){.ds-mode button{padding:9px 10px}}@media(prefers-reduced-motion:reduce){.ds-mode button{transition:none}}"
+      "description": "72px 深青頁首與金色 kW 標記；手機導覽換行。",
+      "html": "<header class=\"ds-header\"><a class=\"ds-brand\" href=\"/\" aria-label=\"KWMPF 首頁\"><span class=\"ds-mark\" aria-hidden=\"true\">kW</span><span class=\"ds-brand-name\"><small>Kirk Wong Research</small><strong>KWMPF</strong></span></a><nav class=\"ds-nav\" aria-label=\"主要導覽\"><a href=\"/funds\">基金瀏覽</a><a href=\"/rankings\" aria-current=\"page\">基金排名</a><a href=\"/schemes\">計劃比較</a></nav></header>",
+      "css": ".ds-header{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px;padding:0 20px;background:var(--kw-navy,#123b46);color:white;font-family:var(--kw-font-body,Inter,ui-sans-serif,system-ui,-apple-system,\"Segoe UI\",\"Microsoft JhengHei\",sans-serif);font-size:16px;line-height:1.65}.ds-brand{display:flex;align-items:center;gap:14px;color:white;text-decoration:none;white-space:nowrap}.ds-mark{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--kw-gold-light,#d8b774);border-radius:50%;color:var(--kw-gold-light,#d8b774);font-size:14px}.ds-brand-name{display:grid;line-height:1.3}.ds-brand-name small{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#b7cbd1}.ds-brand-name strong{font-family:var(--kw-font-display,Georgia,\"Times New Roman\",\"PMingLiU\",serif);font-size:18px;font-weight:600}.ds-nav{display:flex;align-items:center;gap:18px}.ds-nav a{color:#d3e0eb;text-decoration:none;padding:20px 0;position:relative;white-space:nowrap}.ds-nav a:hover{color:var(--kw-gold-light,#d8b774)}.ds-nav a[aria-current=\"page\"]{color:white;font-weight:650}.ds-nav a[aria-current=\"page\"]::after{content:\"\";height:3px;background:var(--kw-gold-light,#d8b774);position:absolute;bottom:0;left:0;right:0}.ds-header a:focus-visible{outline:3px solid var(--kw-gold-light,#d8b774);outline-offset:3px}@media(max-width:1050px){.ds-header{gap:24px;flex-wrap:wrap;padding-block:16px}.ds-nav{flex-basis:100%;justify-content:space-between;gap:12px}.ds-nav a{padding:8px 0}}@media(max-width:700px){.ds-nav a{font-size:.875rem;min-height:44px;display:flex;align-items:center}}"
     },
     {
       "name": "資料狀態標籤",
@@ -479,7 +489,7 @@
       "refersTo": "status-badge",
       "description": "文字交代覆蓋狀態，不以顏色代替狀態名稱。",
       "html": "<div class=\"ds-badges\"><span class=\"ds-badge\">不完整</span><span class=\"ds-badge ds-badge-ok\">成分齊備</span></div>",
-      "css": ".ds-badges{display:flex;gap:8px;flex-wrap:wrap;font-family:var(--kw-font-body,\"Segoe UI\",\"Microsoft JhengHei\",system-ui,sans-serif);line-height:1.65;color:var(--kw-ink,#172231)}.ds-badge{display:inline-block;background:var(--kw-soft,#edf1f7);border-radius:5px;padding:3px 7px;font-size:.8rem;white-space:nowrap}.ds-badge-ok{background:#edf7f1;color:var(--kw-positive,#146344)}"
+      "css": ".ds-badges{display:flex;gap:8px;flex-wrap:wrap;font-family:var(--kw-font-body,Inter,ui-sans-serif,system-ui,-apple-system,\"Segoe UI\",\"Microsoft JhengHei\",sans-serif);line-height:1.65;color:var(--kw-ink,#16252c)}.ds-badge{display:inline-block;background:var(--kw-soft,#f2f4f1);border-radius:5px;padding:3px 7px;font-size:.8rem;white-space:nowrap}.ds-badge-ok{background:#edf7f1;color:var(--kw-positive,#006b37)}"
     },
     {
       "name": "資料面板",
@@ -487,80 +497,85 @@
       "refersTo": "panel",
       "description": "白色細邊界容器為相關資料分組，常態不用投影。",
       "html": "<section class=\"ds-panel\"><h3>基金概況</h3><p>資料樣式示例；日期與來源和數值一起呈現。</p></section>",
-      "css": ".ds-panel{padding:24px;border:1px solid var(--kw-line,#dce1e8);background:var(--kw-white,#fff);border-radius:12px;min-width:0;font-family:var(--kw-font-body,\"Segoe UI\",\"Microsoft JhengHei\",system-ui,sans-serif);color:var(--kw-ink,#172231);font-size:16px;line-height:1.65}.ds-panel h3{font-size:1.2rem;line-height:1.3;text-wrap:balance;margin:0 0 12px}.ds-panel p{margin:0 0 16px}@media(max-width:700px){.ds-panel{padding:18px}}"
+      "css": ".ds-panel{padding:24px;border:1px solid var(--kw-line,#d9ddd8);background:var(--kw-white,#fff);border-radius:4px;min-width:0;font-family:var(--kw-font-body,Inter,ui-sans-serif,system-ui,-apple-system,\"Segoe UI\",\"Microsoft JhengHei\",sans-serif);color:var(--kw-ink,#16252c);font-size:16px;line-height:1.65}.ds-panel h3{font-size:1.2rem;line-height:1.3;text-wrap:balance;margin:0 0 12px}.ds-panel p{margin:0 0 16px}@media(max-width:700px){.ds-panel{padding:18px}}"
     },
     {
-      "name": "來源披露",
-      "kind": "custom",
-      "refersTo": "disclosure",
-      "description": "兩種模式都有可展開的來源與比較方法入口。",
-      "html": "<details class=\"ds-disclosure\"><summary>來源及比較方法（含非官方分類說明）</summary><p>每筆數值保留自己的日期及來源。<a href=\"/methodology\">查看比較方法與來源</a></p></details>",
-      "css": ".ds-disclosure{border-top:1px solid var(--kw-line,#dce1e8);margin-top:20px;padding-top:16px;font-family:var(--kw-font-body,\"Segoe UI\",\"Microsoft JhengHei\",system-ui,sans-serif);font-size:16px;line-height:1.65;color:var(--kw-ink,#172231)}.ds-disclosure summary{cursor:pointer;color:var(--kw-action,#244ac2);font-weight:600;padding:5px 0}.ds-disclosure summary:focus-visible{outline:3px solid var(--kw-action,#244ac2);outline-offset:3px;}.ds-disclosure p{margin:12px 0 16px}.ds-disclosure a{color:var(--kw-action,#244ac2);text-underline-offset:4px;text-decoration-thickness:1px}.ds-disclosure a:hover{text-decoration-thickness:2px}.ds-disclosure a:focus-visible{outline:3px solid var(--kw-action,#244ac2);outline-offset:3px;}"
-    },
-    {
-      "name": "完整資料表格",
-      "kind": "custom",
-      "refersTo": "data-table",
-      "description": "原值、日期及來源保留完整欄位；示例數據明示。",
-      "html": "<div class=\"ds-table-scroll\" tabindex=\"0\" role=\"region\" aria-label=\"樣式示例表格，可左右捲動\"><table class=\"ds-table\"><caption>樣式示例（非已發布資料）</caption><thead><tr><th scope=\"col\">基金</th><th scope=\"col\">原值</th><th scope=\"col\">截至日期</th><th scope=\"col\">來源</th></tr></thead><tbody><tr><th scope=\"row\">示例基金</th><td>1.205%</td><td>示例日期</td><td><a href=\"https://mfp.mpfa.org.hk/\">積金局基金平台</a></td></tr><tr><th scope=\"row\">缺失示例</th><td>官方未提供</td><td>日期未提供</td><td>來源未提供</td></tr></tbody></table></div>",
-      "css": ".ds-table-scroll{overflow-x:auto;border:1px solid var(--kw-line,#dce1e8);border-radius:10px;background:var(--kw-white,#fff);max-width:100%;font-family:var(--kw-font-body,\"Segoe UI\",\"Microsoft JhengHei\",system-ui,sans-serif);color:var(--kw-ink,#172231);line-height:1.65}.ds-table-scroll:focus-visible{outline:3px solid var(--kw-action,#244ac2);outline-offset:3px;}.ds-table{border-collapse:collapse;width:100%;min-width:600px;font-size:.95rem}.ds-table caption{text-align:left;padding:16px;font-weight:600}.ds-table th,.ds-table td{text-align:left;padding:16px;border-bottom:1px solid var(--kw-line,#dce1e8);vertical-align:top;font-variant-numeric:tabular-nums}.ds-table th[scope=\"col\"]{background:var(--kw-soft,#edf1f7);font-weight:600;font-size:.875rem;white-space:nowrap}.ds-table th[scope=\"row\"]{font-weight:600}.ds-table tr:last-child td,.ds-table tr:last-child th[scope=\"row\"]{border-bottom:0}.ds-table tbody tr:hover{background:#f6f8fc}.ds-table a{color:var(--kw-action,#244ac2);text-underline-offset:4px;text-decoration-thickness:1px}.ds-table a:hover{text-decoration-thickness:2px}.ds-table a:focus-visible{outline:3px solid var(--kw-action,#244ac2);outline-offset:3px;}@media(max-width:700px){.ds-table th,.ds-table td{padding:14px}}"
-    },
-    {
-      "name": "原值條形圖",
+      "name": "原值點圖／條形",
       "kind": "custom",
       "refersTo": "value-chart",
-      "description": "共用含零尺度，負值向左；缺失沒有假造的零值條。",
-      "html": "<figure class=\"ds-chart\"><figcaption>樣式示例（非已發布資料）<span>共同尺度 · % · 零起點</span></figcaption><ul class=\"ds-bars\"><li><div class=\"ds-label\">正值示例</div><div class=\"ds-plot\" aria-hidden=\"true\"><span class=\"ds-zero\" style=\"left:25%\"></span><span class=\"ds-bar\" style=\"left:25%;width:75%\"></span></div><strong class=\"ds-value\">3%</strong></li><li><div class=\"ds-label\">負值示例</div><div class=\"ds-plot\" aria-hidden=\"true\"><span class=\"ds-zero\" style=\"left:25%\"></span><span class=\"ds-bar ds-negative\" style=\"left:0;width:25%\"></span></div><strong class=\"ds-value\">-1%</strong></li><li><div class=\"ds-label\">缺失示例</div><div class=\"ds-plot\" aria-hidden=\"true\"><span class=\"ds-zero\" style=\"left:25%\"></span></div><strong class=\"ds-value\">官方未提供</strong></li></ul><div class=\"ds-scale\" aria-hidden=\"true\"><span>-1%</span><span>3%</span></div></figure>",
-      "css": ".ds-chart{padding:24px;background:var(--kw-white,#fff);border:1px solid var(--kw-line,#dce1e8);border-radius:12px;margin:24px 0;font-family:var(--kw-font-body,\"Segoe UI\",\"Microsoft JhengHei\",system-ui,sans-serif);color:var(--kw-ink,#172231);font-size:16px;line-height:1.65}.ds-chart figcaption{display:flex;align-items:baseline;flex-wrap:wrap;justify-content:space-between;gap:8px;font-weight:650;font-size:1.15rem;margin-bottom:14px}.ds-chart figcaption span{font-size:.8rem;font-weight:400;color:var(--kw-muted,#586475)}.ds-bars{list-style:none;padding:0;margin:0}.ds-bars li{display:grid;grid-template-columns:minmax(150px,1fr) minmax(100px,1.3fr) minmax(75px,auto);gap:20px;align-items:center;padding:12px 0;border-bottom:1px solid var(--kw-line,#dce1e8)}.ds-bars li:last-child{border-bottom:0}.ds-label{font-size:.9rem;overflow-wrap:anywhere}.ds-plot{height:20px;background:var(--kw-soft,#edf1f7);position:relative}.ds-bar{position:absolute;top:3px;height:14px;background:var(--kw-action,#244ac2)}.ds-negative{background:var(--kw-negative,#a32d3d)}.ds-zero{position:absolute;top:-3px;bottom:-3px;width:1px;background:#78879e}.ds-value{font-size:.95rem;font-weight:600;font-variant-numeric:tabular-nums;text-align:right}.ds-scale{display:flex;justify-content:space-between;font-size:.8rem;color:var(--kw-muted,#586475);margin-top:16px;border-top:1px solid var(--kw-line,#dce1e8);padding-top:6px}@media(max-width:700px){.ds-chart{padding:18px}.ds-bars li{grid-template-columns:1fr auto;gap:8px 16px;padding:16px 0}.ds-plot{grid-column:1/-1;grid-row:2;height:16px}.ds-bar{height:10px}.ds-value{grid-column:2;grid-row:1;max-width:100px;font-size:.875rem}}"
+      "description": "共享含零實際尺度，保留數值及身份。排名網址保存圖表／表格、組別、期間及指標；點圖／橫條 chartKind 只在元件內保留。",
+      "html": "<figure class=\"ds-chart\"><figcaption>樣式示例（非已發布資料）<span>共同尺度 · % · 零起點</span></figcaption><ul class=\"ds-bars\"><li><div class=\"ds-label\">示例基金<small>示例計劃 · A 類</small></div><div class=\"ds-plot\" aria-hidden=\"true\"><span class=\"ds-zero\" style=\"left:25%\"></span><span class=\"ds-dot\" style=\"left:100%\"></span></div><strong class=\"ds-value\">3%</strong></li><li><div class=\"ds-label\">示例基金<small>另一示例計劃 · B 類</small></div><div class=\"ds-plot\" aria-hidden=\"true\"><span class=\"ds-zero\" style=\"left:25%\"></span><span class=\"ds-dot ds-negative\" style=\"left:0\"></span></div><strong class=\"ds-value\">-1%</strong></li><li><div class=\"ds-label\">缺失示例</div><div class=\"ds-plot\" aria-hidden=\"true\"><span class=\"ds-zero\" style=\"left:25%\"></span></div><strong class=\"ds-value\">未取得</strong></li></ul><div class=\"ds-scale\" aria-hidden=\"true\"><span>-1%</span><span>3%</span></div></figure>",
+      "css": ".ds-chart{padding:24px;background:var(--kw-white,#fff);border:1px solid var(--kw-line,#d9ddd8);border-radius:4px;margin:24px 0;font-family:var(--kw-font-body,Inter,ui-sans-serif,system-ui,-apple-system,\"Segoe UI\",\"Microsoft JhengHei\",sans-serif);color:var(--kw-ink,#16252c);font-size:16px;line-height:1.65}.ds-chart figcaption{display:flex;align-items:baseline;flex-wrap:wrap;justify-content:space-between;gap:8px;font-weight:650;font-size:1.15rem;margin-bottom:14px}.ds-chart figcaption span{font-size:.8rem;font-weight:400;color:var(--kw-muted,#5b666c)}.ds-bars{list-style:none;padding:0;margin:0}.ds-bars li{display:grid;grid-template-columns:minmax(150px,1fr) minmax(100px,1.3fr) minmax(75px,auto);gap:20px;align-items:center;padding:12px 0;border-bottom:1px solid var(--kw-line,#d9ddd8)}.ds-bars li:last-child{border-bottom:0}.ds-label{font-size:.9rem;overflow-wrap:anywhere}.ds-plot{height:20px;background:var(--kw-soft,#f2f4f1);position:relative}.ds-bar{position:absolute;top:3px;height:14px;background:var(--kw-action,#0f414e)}.ds-negative{background:var(--kw-negative,#9a3b3b)}.ds-zero{position:absolute;top:-3px;bottom:-3px;width:1px;background:#78879e}.ds-value{font-size:.95rem;font-weight:600;font-variant-numeric:tabular-nums;text-align:right}.ds-scale{display:flex;justify-content:space-between;font-size:.8rem;color:var(--kw-muted,#5b666c);margin-top:16px;border-top:1px solid var(--kw-line,#d9ddd8);padding-top:6px}@media(max-width:700px){.ds-chart{padding:18px}.ds-bars li{grid-template-columns:1fr auto;gap:8px 16px;padding:16px 0}.ds-plot{grid-column:1/-1;grid-row:2;height:16px}.ds-bar{height:10px}.ds-value{grid-column:2;grid-row:1;max-width:100px;font-size:.875rem}}.ds-label small{display:block;color:var(--kw-muted,#5b666c);font-size:.8rem;margin-top:3px}.ds-dot{position:absolute;width:14px;height:14px;border-radius:50%;top:3px;background:var(--kw-teal,#267786);transform:translateX(-50%);border:2px solid white;box-shadow:0 0 0 1px var(--kw-teal,#267786)}.ds-dot.ds-negative{background:var(--kw-negative,#9a3b3b);box-shadow:0 0 0 1px var(--kw-negative,#9a3b3b)}"
+    },
+    {
+      "name": "回報矩陣",
+      "kind": "custom",
+      "refersTo": "return-heatmap",
+      "description": "不同期間原值、時效、日期及來源同格呈現；只有 verified 值著色。",
+      "html": "<figure class=\"ds-matrix\"><figcaption>樣式示例（非已發布資料）</figcaption><p>不同期間並非時間走勢；左右滑動可查看所有期間。</p><div class=\"ds-matrix-scroll\" tabindex=\"0\" role=\"region\" aria-label=\"示例回報矩陣\"><table><thead><tr><th>基金</th><th>1 年</th><th>3 年</th><th>5 年</th><th>10 年</th></tr></thead><tbody><tr><th>示例基金<br>示例計劃 · A 類</th><td style=\"background:rgba(38,119,134,.28)\"><strong>1.205%</strong><small>可用 · 示例日期</small><a href=\"https://mfp.mpfa.org.hk/\">官方來源</a></td><td><strong>2%</strong><small>過期 · 示例日期</small></td><td><strong>未取得</strong><small>缺資料</small></td><td><strong>未取得</strong><small>缺資料</small></td></tr></tbody></table></div></figure>",
+      "css": ".ds-matrix{padding:24px;background:var(--kw-white,#fff);border:1px solid var(--kw-line,#d9ddd8);border-radius:4px;margin:24px 0;font-family:var(--kw-font-body,Inter,ui-sans-serif,system-ui,-apple-system,\"Segoe UI\",\"Microsoft JhengHei\",sans-serif);color:var(--kw-ink,#16252c);font-size:16px;line-height:1.65;}.ds-matrix figcaption{font-size:1.15rem;font-weight:650;margin-bottom:14px}.ds-matrix p{font-size:.875rem;max-width:75ch}.ds-matrix-scroll{overflow-x:auto;border:1px solid var(--kw-line,#d9ddd8);border-radius:10px}.ds-matrix-scroll:focus-visible{outline:3px solid var(--kw-action,#0f414e);outline-offset:3px;}.ds-matrix table{border-collapse:collapse;width:100%;min-width:640px;table-layout:fixed;font-size:.95rem}.ds-matrix th,.ds-matrix td{text-align:left;padding:16px;border-bottom:1px solid var(--kw-line,#d9ddd8);vertical-align:top;font-variant-numeric:tabular-nums}.ds-matrix th:first-child{width:30%}.ds-matrix thead th{background:var(--kw-table-head,#f5f7fa);font-size:.875rem;font-weight:600}.ds-matrix td{background:var(--kw-soft,#f2f4f1)}.ds-matrix small{display:block;margin-top:4px;font-size:.75rem;color:var(--kw-muted,#5b666c)}.ds-matrix a{font-size:.75rem;color:var(--kw-action,#0f414e);text-underline-offset:4px}.ds-matrix a:hover{text-decoration-thickness:2px}.ds-matrix a:focus-visible{outline:3px solid var(--kw-action,#0f414e);outline-offset:3px;}@media(max-width:700px){.ds-matrix{padding:18px}.ds-matrix th,.ds-matrix td{padding:14px}}"
+    },
+    {
+      "name": "獨立曆年柱形",
+      "kind": "custom",
+      "refersTo": "calendar-columns",
+      "description": "一柱代表完整曆年，共同零線；不是 NAV 或價格走勢。",
+      "html": "<figure class=\"ds-calendar\"><figcaption>樣式示例（非已發布資料）</figcaption><ul><li><div class=\"ds-calendar-plot\" aria-hidden=\"true\"><span class=\"ds-calendar-zero\"></span><span class=\"ds-calendar-bar\" style=\"top:0;height:75%\"></span></div><span>2022</span><strong>3%</strong></li><li><div class=\"ds-calendar-plot\" aria-hidden=\"true\"><span class=\"ds-calendar-zero\"></span><span class=\"ds-calendar-bar ds-calendar-negative\" style=\"top:75%;height:25%\"></span></div><span>2023</span><strong>-1%</strong></li><li><div class=\"ds-calendar-plot\" aria-hidden=\"true\"><span class=\"ds-calendar-zero\"></span></div><span>2024</span><strong>未取得</strong></li></ul><p>每柱為獨立完整曆年；原值保留於下方表格。</p></figure>",
+      "css": ".ds-calendar{padding:24px;background:var(--kw-white,#fff);border:1px solid var(--kw-line,#d9ddd8);border-radius:4px;margin:24px 0;font-family:var(--kw-font-body,Inter,ui-sans-serif,system-ui,-apple-system,\"Segoe UI\",\"Microsoft JhengHei\",sans-serif);color:var(--kw-ink,#16252c);font-size:16px;line-height:1.65;}.ds-calendar figcaption{font-size:1.15rem;font-weight:650;margin-bottom:14px}.ds-calendar ul{display:flex;list-style:none;margin:0;padding:0}.ds-calendar li{flex:1;min-width:0;text-align:center;font-variant-numeric:tabular-nums;font-size:.875rem}.ds-calendar-plot{height:180px;position:relative;margin-bottom:12px}.ds-calendar-zero{position:absolute;top:75%;left:0;right:0;height:1px;background:var(--kw-control-border,#7b8681)}.ds-calendar-bar{position:absolute;left:25%;width:50%;background:var(--kw-teal,#267786)}.ds-calendar-negative{background:var(--kw-negative,#9a3b3b)}.ds-calendar strong{display:block;font-size:.8rem;overflow-wrap:anywhere}.ds-calendar p{margin:18px 0 0;font-size:.8rem;color:var(--kw-muted,#5b666c)}@media(max-width:700px){.ds-calendar{padding:18px}}"
+    },
+    {
+      "name": "有效配置組成",
+      "kind": "custom",
+      "refersTo": "allocation-composition",
+      "description": "有效非負完整組成最多六項用圓環；較多項堆疊，不完整則用條形。",
+      "html": "<figure class=\"ds-allocation\"><figcaption>樣式示例（非已發布資料）</figcaption><div class=\"ds-composition\"><svg class=\"ds-donut\" viewBox=\"0 0 200 200\" aria-hidden=\"true\"><circle cx=\"100\" cy=\"100\" r=\"70\" fill=\"none\" stroke=\"#267786\" stroke-width=\"26\" stroke-dasharray=\"263.8938 439.823\" transform=\"rotate(-90 100 100)\"/><circle cx=\"100\" cy=\"100\" r=\"70\" fill=\"none\" stroke=\"#a7864e\" stroke-width=\"26\" stroke-dasharray=\"175.9292 439.823\" stroke-dashoffset=\"-263.8938\" transform=\"rotate(-90 100 100)\"/><text x=\"100\" y=\"94\" text-anchor=\"middle\" class=\"ds-donut-caption\">披露合計</text><text x=\"100\" y=\"119\" text-anchor=\"middle\" class=\"ds-donut-total\">100%</text></svg><ul><li><i style=\"background:#267786\"></i><span>示例類別 A</span><strong>60%</strong></li><li><i style=\"background:#a7864e\"></i><span>示例類別 B</span><strong>40%</strong></li></ul></div></figure>",
+      "css": ".ds-allocation{margin:24px 0;font-family:var(--kw-font-body,Inter,ui-sans-serif,system-ui,-apple-system,\"Segoe UI\",\"Microsoft JhengHei\",sans-serif);font-size:16px;line-height:1.65;color:var(--kw-ink,#16252c)}.ds-allocation figcaption{font-size:1.15rem;font-weight:650;margin-bottom:14px}.ds-composition{display:flex;align-items:center;flex-wrap:wrap;gap:36px}.ds-donut{width:200px;height:200px;flex:0 0 200px}.ds-donut-caption{font:12px var(--kw-font-body,Inter,system-ui,sans-serif);fill:var(--kw-muted,#5b666c)}.ds-donut-total{font:600 20px var(--kw-font-body,Inter,system-ui,sans-serif);fill:var(--kw-ink,#16252c)}.ds-allocation ul{list-style:none;padding:0;margin:0;flex:1;min-width:250px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 24px}.ds-allocation li{display:grid;grid-template-columns:10px minmax(0,1fr) auto;gap:8px;align-items:center;font-size:.875rem}.ds-allocation i{width:10px;height:10px}.ds-allocation strong{font-variant-numeric:tabular-nums;white-space:nowrap}@media(max-width:700px){.ds-composition{align-items:flex-start;gap:16px}.ds-donut{width:180px;height:180px;flex-basis:180px;margin-inline:auto}.ds-allocation ul{grid-template-columns:1fr;min-width:0;flex-basis:100%}}"
     }
   ],
   "narrative": {
     "northStar": "可查證的資料工作台",
-    "overview": "這個介面以日間研究場景為出發點：明亮灰白底、石墨文字、白色資料面板與鈷藍操作色。繁體中文是主要閱讀語言；資訊密度可以隨簡潔及深入分析模式改變，但基金數值、日期、來源與資料限制始終可以查閱。\n\n視覺重點是閱讀與核對。標題直接命名內容，表格、原值文字及條形圖共同承載證據，色彩協助辨認操作和狀態。一般強積金成員與專業研究者同等重要，因此共同控制項保留清楚標籤、鍵盤焦點及手機操作空間。\n\n此文件由完成後的 CSS 與元件抽取。使用者確認的是雙重用途與閱讀模式；色盤、字型及尺寸屬本次實作的現況，並非使用者逐項指定或批准的品牌選擇。標題字型尚未形成可供新頁繼承的展示字型決策。",
+    "overview": "沿用使用者於 2026-09-30 明確要求恢復的 KWMPF 原有風格：深青色頁首、金色 kW 圓形標記、Kirk Wong Research 名稱、serif KWMPF 字樣，以及既有世界地圖 hero。暖白底與小圓角資料面板承接品牌，不延續先前的鈷藍替代方案。\n\n一般強積金成員與專業研究者同等重要。簡潔與深入分析共用資料、選取與來源入口；圖表協助辨認幅度、期間及組成，完整原值表格負責核對。繁體中文、清楚標籤、鍵盤焦點及手機可操作的捲動入口是共同閱讀條件。\n\n此文件由目前 CSS 與元件抽取，記錄已實作的視覺規則。原有風格是使用者指定的方向；這不代表所有資料來源或發布流程已獲完整正確性認證。既有 hero 沿用 repository 圖片，本次沒有新增或生成 raster。",
     "keyCharacteristics": [
-      "明亮底色、石墨文字及單一鈷藍操作色。",
-      "白色面板以細邊界分組，常態不浮起。",
-      "原值文字、欄位日期及來源與圖表共同呈現。",
-      "簡潔與深入分析共用資料與控制項。",
-      "表格數字採等寬數字，手機保留完整內容的捲動入口。"
+      "原有深青與金色品牌，暖白閱讀底。",
+      "serif 品牌與主標題，sans 正文及控制項。",
+      "4px 資料面板、8px 控制項及等寬資料數字。",
+      "圖表類型按資料語意選擇，原值、日期與來源保留。",
+      "兩種閱讀模式均可進入核對資料，手機保留完整表格入口。"
     ],
     "rules": [
       {
         "name": "The 狀態要有文字 Rule",
-        "body": "顏色只提供第二條辨識線索；過期、缺失、未核實與錯誤必須同時以文字交代。",
-        "section": "colors"
-      },
-      {
-        "name": "The 操作與分類分工 Rule",
-        "body": "鈷藍標示可操作或已選取的介面；配置類別色不承擔推薦或綜合評分。",
+        "body": "顏色只提供第二條辨識線索；過期、未取得、未核實與抽取異常必須同時以文字交代。",
         "section": "colors"
       },
       {
         "name": "The 原值先行 Rule",
-        "body": "官方披露的百分比保留原始顯示精度；零值以零值顯示，缺失值以「官方未提供」或對應狀態顯示。",
+        "body": "官方百分比保留原始精度；零值、尚未取得、官方明示未披露及抽取異常分開呈現。",
         "section": "typography"
       },
       {
         "name": "The 平面資料面 Rule",
-        "body": "資料面板以細邊界分組；投影只沿用已實作的選取控制狀態，不擴張成卡片裝飾。",
+        "body": "資料面板以細邊界分組；投影只沿用已實作的選取控制狀態，不擴張為卡片裝飾。",
         "section": "elevation"
       }
     ],
     "dos": [
-      "**Do** 保留官方百分比原值與原有精度，並讓零值與缺失值在文字及圖形上明確分開。",
-      "**Do** 為每項時間性數值呈現自己的截至日期與來源；非官方分類及本站統計必須標明。",
-      "**Do** 先選比較組別再提供同組圖表，並保留完整表格與網址中的顯示選擇。",
-      "**Do** 為不同指標各自使用實際單位及共同零線；用文字原值、狀態及圖例補充色彩。",
-      "**Do** 讓簡潔模式可以展開來源與比較限制，讓深入分析模式直接看到核對資料。",
-      "**Do** 沿用白色細邊界面板、可辨識的控制項邊界、鍵盤焦點及 reduced-motion 處理。"
+      "**Do** 沿用原有深青頁首、金色品牌標記、serif 品牌字與既有地圖 hero。",
+      "**Do** 保留官方百分比原值、各欄位日期及來源；非官方分類與本站統計明示身份。",
+      "**Do** 用點圖或條形比較數值、矩陣比較期間、獨立柱圖呈現曆年回報，完整表格保留核對入口。",
+      "**Do** 只有有效的非負完整組成使用圓環或堆疊；不完整但可用的配置退回獨立條形。",
+      "**Do** 保留同名基金的計劃與類別身份，讓簡潔及深入分析都能查看來源與限制。",
+      "**Do** 使用「未取得」描述未知缺項；只有來源明示沒有披露時，才使用「官方未提供」及原因。",
+      "**Do** 為寬表提供捲動提示，兩欄費用、配置及曆年表在手機使用緊湊可換行版面。"
     ],
     "donts": [
       "**Don't** 為了對齊而補零、四捨五入或固定官方百分比的小數位。",
-      "**Don't** 把缺失資料畫成零、用風險級別代替波幅，或用別隻基金的披露補欄位。",
-      "**Don't** 把跨組別數量當成優劣排名，或把回報、費用與風險合成推薦分數。",
-      "**Don't** 把不同期間的獨立披露連成價格時間序列，或以範圍中點冒充官方回報。",
-      "**Don't** 用同一快照日期覆蓋所有欄位的日期，或讓閱讀模式隱藏來源入口。",
-      "**Don't** 把未使用的歷史圖片、舊色彩別名或未解決的展示字型偏差視為新頁的品牌規則。"
+      "**Don't** 把過期或未核實回報繪成可用數值圖；矩陣可保留原值但不著色、不參與色階。",
+      "**Don't** 把跨組別並列當排名，或把回報、費用與風險合成推薦分數。",
+      "**Don't** 把不同期間或獨立曆年回報連成未披露的 NAV／價格走勢。",
+      "**Don't** 用同一快照日期覆蓋欄位日期，或讓閱讀模式隱藏來源入口。",
+      "**Don't** 把被隔離的解析異常當作官方沒有披露，或將前端顯示守門當作來源 parser 已修復。",
+      "**Don't** 將未驗收的生產資料、遺留滑入色或既有 hero 上方小標籤擴張成新頁的規範。"
     ]
   }
 }
