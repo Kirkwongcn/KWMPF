@@ -1,0 +1,536 @@
+{
+  "returns": [
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Conservative Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "fundClassName": "Class A",
+      "annualizedReturn3Year": 2.84
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Conservative Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "fundClassName": "Class B",
+      "annualizedReturn3Year": 2.84
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Hong Kong Dollar Bond Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "fundClassName": "Class A",
+      "annualizedReturn3Year": 3.6
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Hong Kong Dollar Bond Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "fundClassName": "Class B",
+      "annualizedReturn3Year": 3.68
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF RMB and HKD Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "fundClassName": "Class A",
+      "annualizedReturn3Year": 2.94
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF RMB and HKD Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "fundClassName": "Class B",
+      "annualizedReturn3Year": 2.99
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Global Bond Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "fundClassName": "Class A",
+      "annualizedReturn3Year": 1.4
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Global Bond Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "fundClassName": "Class B",
+      "annualizedReturn3Year": 1.58
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Stable Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "fundClassName": "Class A",
+      "annualizedReturn3Year": 5.75
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Stable Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "fundClassName": "Class B",
+      "annualizedReturn3Year": 5.94
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Balanced Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "fundClassName": "Class A",
+      "annualizedReturn3Year": 8.8
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Balanced Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "fundClassName": "Class B",
+      "annualizedReturn3Year": 9
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Growth Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "fundClassName": "Class A",
+      "annualizedReturn3Year": 11.85
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Growth Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "fundClassName": "Class B",
+      "annualizedReturn3Year": 12.05
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Global Low Carbon Index Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "annualizedReturn3Year": 16.9
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Multi-Sector Equity Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "fundClassName": "Class A",
+      "annualizedReturn3Year": 16.76
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Multi-Sector Equity Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "fundClassName": "Class B",
+      "annualizedReturn3Year": 16.98
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF European Equity Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "annualizedReturn3Year": 13.27
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Asian Equity Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "fundClassName": "Class A",
+      "annualizedReturn3Year": 21.77
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Asian Equity Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "fundClassName": "Class B",
+      "annualizedReturn3Year": 21.99
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF US Equity Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "annualizedReturn3Year": 18.47
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Greater China Equity Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "fundClassName": "Class A",
+      "annualizedReturn3Year": 18.42
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Greater China Equity Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "fundClassName": "Class B",
+      "annualizedReturn3Year": 18.64
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life FTSE MPF Hong Kong Index Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "fundClassName": "Class A",
+      "annualizedReturn3Year": 9.55
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life FTSE MPF Hong Kong Index Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "fundClassName": "Class B",
+      "annualizedReturn3Year": 9.55
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Hong Kong Equity Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "fundClassName": "Class A",
+      "annualizedReturn3Year": 4.4
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Hong Kong Equity Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "fundClassName": "Class B",
+      "annualizedReturn3Year": 4.59
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Core Accumulation Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "annualizedReturn3Year": 12
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Age 65 Plus Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "annualizedReturn3Year": 5.21
+    },
+    {
+      "schemeName": "BEA (MPF) Industry Scheme",
+      "constituentFundName": "BEA (Industry Scheme) Growth Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+      "annualizedReturn3Year": 12.86
+    },
+    {
+      "schemeName": "BEA (MPF) Industry Scheme",
+      "constituentFundName": "BEA (Industry Scheme) Balanced Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+      "annualizedReturn3Year": 9.33
+    },
+    {
+      "schemeName": "BEA (MPF) Industry Scheme",
+      "constituentFundName": "BEA (Industry Scheme) Stable Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+      "annualizedReturn3Year": 6.14
+    },
+    {
+      "schemeName": "BEA (MPF) Industry Scheme",
+      "constituentFundName": "BEA (Industry Scheme) Asian Equity Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+      "annualizedReturn3Year": 34.38
+    },
+    {
+      "schemeName": "BEA (MPF) Industry Scheme",
+      "constituentFundName": "BEA (Industry Scheme) Greater China Equity Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+      "annualizedReturn3Year": 22.51
+    },
+    {
+      "schemeName": "BEA (MPF) Industry Scheme",
+      "constituentFundName": "BEA (Industry Scheme) Hong Kong Equity Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+      "annualizedReturn3Year": 9.53
+    },
+    {
+      "schemeName": "BEA (MPF) Industry Scheme",
+      "constituentFundName": "BEA China Tracker Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+      "annualizedReturn3Year": 7.9
+    },
+    {
+      "schemeName": "BEA (MPF) Industry Scheme",
+      "constituentFundName": "BEA Hong Kong Tracker Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+      "annualizedReturn3Year": 9.86
+    },
+    {
+      "schemeName": "BEA (MPF) Industry Scheme",
+      "constituentFundName": "BEA (Industry Scheme) RMB & HKD Money Market Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+      "annualizedReturn3Year": 3.06
+    },
+    {
+      "schemeName": "BEA (MPF) Industry Scheme",
+      "constituentFundName": "BEA (Industry Scheme) MPF Conservative Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+      "annualizedReturn3Year": 2.62
+    },
+    {
+      "schemeName": "BEA (MPF) Industry Scheme",
+      "constituentFundName": "BEA (Industry Scheme) Core Accumulation Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+      "annualizedReturn3Year": 12.67
+    },
+    {
+      "schemeName": "BEA (MPF) Industry Scheme",
+      "constituentFundName": "BEA (Industry Scheme) Age 65 Plus Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+      "annualizedReturn3Year": 5.29
+    },
+    {
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) Growth Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "annualizedReturn3Year": 12.95
+    },
+    {
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) Balanced Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "annualizedReturn3Year": 9.39
+    },
+    {
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) Stable Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "annualizedReturn3Year": 6.15
+    },
+    {
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) Global Equity Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "annualizedReturn3Year": 18.98
+    },
+    {
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) European Equity Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "annualizedReturn3Year": 13.22
+    },
+    {
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) North American Equity Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "annualizedReturn3Year": 18.2
+    },
+    {
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) Asian Equity Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "annualizedReturn3Year": 34.76
+    },
+    {
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) Greater China Equity Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "annualizedReturn3Year": 22.93
+    },
+    {
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) Japan Equity Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "annualizedReturn3Year": 18.78
+    },
+    {
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) Hong Kong Equity Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "annualizedReturn3Year": 9.46
+    },
+    {
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA China Tracker Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "annualizedReturn3Year": 7.8
+    },
+    {
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA Hong Kong Tracker Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "annualizedReturn3Year": 9.81
+    },
+    {
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) Global Bond Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "annualizedReturn3Year": 1.35
+    },
+    {
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) RMB & HKD Money Market Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "annualizedReturn3Year": 3.12
+    },
+    {
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) Conservative Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "annualizedReturn3Year": 2.61
+    },
+    {
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) Core Accumulation Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "annualizedReturn3Year": 12.68
+    },
+    {
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) Age 65 Plus Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "annualizedReturn3Year": 5.31
+    },
+    {
+      "schemeName": "BEA (MPF) Value Scheme",
+      "constituentFundName": "BEA Growth Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf",
+      "annualizedReturn3Year": 14.73
+    },
+    {
+      "schemeName": "BEA (MPF) Value Scheme",
+      "constituentFundName": "BEA Balanced Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf",
+      "annualizedReturn3Year": 11
+    },
+    {
+      "schemeName": "BEA (MPF) Value Scheme",
+      "constituentFundName": "BEA Stable Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf",
+      "annualizedReturn3Year": 7.58
+    },
+    {
+      "schemeName": "BEA (MPF) Value Scheme",
+      "constituentFundName": "BEA Global Equity Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf",
+      "annualizedReturn3Year": 19.37
+    },
+    {
+      "schemeName": "BEA (MPF) Value Scheme",
+      "constituentFundName": "BEA Asian Equity Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf",
+      "annualizedReturn3Year": 33.73
+    },
+    {
+      "schemeName": "BEA (MPF) Value Scheme",
+      "constituentFundName": "BEA Greater China Equity Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf",
+      "annualizedReturn3Year": 23.77
+    },
+    {
+      "schemeName": "BEA (MPF) Value Scheme",
+      "constituentFundName": "BEA Hong Kong Tracker Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf",
+      "annualizedReturn3Year": 9.57
+    },
+    {
+      "schemeName": "BEA (MPF) Value Scheme",
+      "constituentFundName": "BEA Global Bond Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf",
+      "annualizedReturn3Year": 1.05
+    },
+    {
+      "schemeName": "BEA (MPF) Value Scheme",
+      "constituentFundName": "BEA MPF Conservative Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf",
+      "annualizedReturn3Year": 2.63
+    },
+    {
+      "schemeName": "BEA (MPF) Value Scheme",
+      "constituentFundName": "BEA Core Accumulation Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf",
+      "annualizedReturn3Year": 12.64
+    },
+    {
+      "schemeName": "BEA (MPF) Value Scheme",
+      "constituentFundName": "BEA Age 65 Plus Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf",
+      "annualizedReturn3Year": 5.26
+    }
+  ],
+  "failures": [],
+  "unsupportedParsers": [],
+  "periodNotDisclosed": [],
+  "fundPeriodNotDisclosed": [
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Income Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "periodYears": 3,
+      "reason": "official-na",
+      "page": 9,
+      "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293"
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF US & Hong Kong Equity Fund",
+      "dataAsOf": "2026-06-30",
+      "sourceUrl": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "periodYears": 3,
+      "reason": "official-na",
+      "page": 19,
+      "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293"
+    }
+  ]
+}

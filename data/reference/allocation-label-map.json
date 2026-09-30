@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-08",
-  "source": "data/sources/2026-08-31/fund-fact-sheet-disclosures.json",
+  "generatedAt": "2026-09-30",
+  "source": "data/sources/2026-09-30/fund-fact-sheet-disclosures.json",
   "version": 1,
   "buckets": ["equity", "bond", "cash_and_other"],
   "entries": [
@@ -212,7 +212,7 @@
     {
       "key": "a 股 a shares",
       "bucket": "not_asset_class",
-      "examples": ["1 3 A股 A Shares"]
+      "examples": ["1 3 A股 A Shares", "1 3 A 股 A Shares"]
     },
     {
       "key": "aa",
@@ -237,7 +237,7 @@
     {
       "key": "americas equities 美國股票",
       "bucket": "equity",
-      "examples": ["AMERICAS EQUITIES美國股票"]
+      "examples": ["AMERICAS EQUITIES美國股票", "AMERICAS EQUITIES 美國股票"]
     },
     {
       "key": "americas equity 美國股票",
@@ -311,12 +311,12 @@
     {
       "key": "australia 澳洲",
       "bucket": "not_asset_class",
-      "examples": ["AUSTRALIA澳洲"]
+      "examples": ["AUSTRALIA澳洲", "AUSTRALIA 澳洲"]
     },
     {
       "key": "australian dollar 澳元",
       "bucket": "not_asset_class",
-      "examples": ["AUSTRALIAN DOLLAR澳元"]
+      "examples": ["AUSTRALIAN DOLLAR澳元", "AUSTRALIAN DOLLAR 澳元"]
     },
     {
       "key": "austria",
@@ -356,12 +356,12 @@
     {
       "key": "belgium 比利時",
       "bucket": "not_asset_class",
-      "examples": ["BELGIUM比利時"]
+      "examples": ["BELGIUM比利時", "Belgium 比利時"]
     },
     {
       "key": "bond 債券",
       "bucket": "bond",
-      "examples": ["Bond債券"]
+      "examples": ["Bond債券", "Bond 債券"]
     },
     {
       "key": "bonds",
@@ -402,21 +402,6 @@
       "key": "cash & others※ 現金及其他 ※",
       "bucket": "cash_and_other",
       "examples": ["Cash & Others※ 現金及其他※"]
-    },
-    {
-      "key": "cash & others4 :",
-      "bucket": "cash_and_other",
-      "examples": ["Cash & Others4 ："]
-    },
-    {
-      "key": "cash & others4 現金及其他",
-      "bucket": "cash_and_other",
-      "examples": ["Cash & Others4現金及其他 4"]
-    },
-    {
-      "key": "cash & others4 現金及其他 4 hong kong and chinese equities",
-      "bucket": "not_asset_class",
-      "examples": ["Cash & Others4現金及其他 4 Hong Kong and Chinese Equities"]
     },
     {
       "key": "cash & short-term investments",
@@ -481,7 +466,10 @@
     {
       "key": "china onshore equities 中國在岸股票",
       "bucket": "equity",
-      "examples": ["CHINA ONSHORE EQUITIES中國在岸股票"]
+      "examples": [
+        "CHINA ONSHORE EQUITIES中國在岸股票",
+        "CHINA ONSHORE EQUITIES 中國在岸股票"
+      ]
     },
     {
       "key": "china onshore equitity 中國在岸股票",
@@ -576,7 +564,7 @@
     {
       "key": "denmark 丹麥",
       "bucket": "not_asset_class",
-      "examples": ["DENMARK丹麥"]
+      "examples": ["DENMARK丹麥", "DENMARK 丹麥"]
     },
     {
       "key": "dollar bloc 美元債券",
@@ -586,7 +574,10 @@
     {
       "key": "emerging markets equities 新興市場股票",
       "bucket": "equity",
-      "examples": ["EMERGING MARKETS EQUITIES新興市場股票"]
+      "examples": [
+        "EMERGING MARKETS EQUITIES新興市場股票",
+        "EMERGING MARKETS EQUITIES 新興市場股票"
+      ]
     },
     {
       "key": "emerging markets equity 新興市場股票",
@@ -619,11 +610,6 @@
       "examples": ["Equities 股票"]
     },
     {
-      "key": "equity 股票 :",
-      "bucket": "equity",
-      "examples": ["Equity 股票 ："]
-    },
-    {
       "key": "eur bonds 歐元債券",
       "bucket": "bond",
       "examples": ["EUR Bonds 歐元債券"]
@@ -636,7 +622,7 @@
     {
       "key": "euro 歐元",
       "bucket": "not_asset_class",
-      "examples": ["EURO歐元"]
+      "examples": ["EURO歐元", "EURO 歐元"]
     },
     {
       "key": "europe equities",
@@ -741,7 +727,7 @@
     {
       "key": "france 法國",
       "bucket": "not_asset_class",
-      "examples": ["FRANCE法國"]
+      "examples": ["FRANCE法國", "France 法國"]
     },
     {
       "key": "gbp bonds 英鎊債券",
@@ -803,7 +789,7 @@
     {
       "key": "h 股 h shares",
       "bucket": "not_asset_class",
-      "examples": ["2 H股 H Shares"]
+      "examples": ["2 H股 H Shares", "2 H 股 H Shares"]
     },
     {
       "key": "health care",
@@ -828,7 +814,10 @@
     {
       "key": "higher grade bond 高評級債券",
       "bucket": "bond",
-      "examples": ["HIGHER GRADE BOND高評級債券"]
+      "examples": [
+        "HIGHER GRADE BOND高評級債券",
+        "HIGHER GRADE BOND 高評級債券"
+      ]
     },
     {
       "key": "hk $ bond fund 港元債券基金",
@@ -893,7 +882,7 @@
     {
       "key": "hong kong dollar 港元",
       "bucket": "not_asset_class",
-      "examples": ["HONG KONG DOLLAR港元"]
+      "examples": ["HONG KONG DOLLAR港元", "HONG KONG DOLLAR 港元"]
     },
     {
       "key": "hong kong equities 香港股票",
@@ -913,7 +902,7 @@
     {
       "key": "hong kong 香港",
       "bucket": "not_asset_class",
-      "examples": ["HONG KONG香港"]
+      "examples": ["HONG KONG香港", "Hong Kong 香港"]
     },
     {
       "key": "hong kong/china equities",
@@ -943,7 +932,7 @@
     {
       "key": "india 印度",
       "bucket": "not_asset_class",
-      "examples": ["INDIA印度"]
+      "examples": ["INDIA印度", "India 印度"]
     },
     {
       "key": "indonesia",
@@ -958,7 +947,7 @@
     {
       "key": "indonesia 印尼",
       "bucket": "not_asset_class",
-      "examples": ["INDONESIA印尼"]
+      "examples": ["INDONESIA印尼", "INDONESIA 印尼"]
     },
     {
       "key": "industrial 工業",
@@ -1023,7 +1012,7 @@
     {
       "key": "italy 意大利",
       "bucket": "not_asset_class",
-      "examples": ["ITALY意大利"]
+      "examples": ["ITALY意大利", "Italy 意大利"]
     },
     {
       "key": "japan",
@@ -1078,7 +1067,7 @@
     {
       "key": "japanese yen 日元",
       "bucket": "not_asset_class",
-      "examples": ["JAPANESE YEN日元"]
+      "examples": ["JAPANESE YEN日元", "JAPANESE YEN 日元"]
     },
     {
       "key": "jpy bonds 日圓債券",
@@ -1133,7 +1122,7 @@
     {
       "key": "malaysia 馬來西亞",
       "bucket": "not_asset_class",
-      "examples": ["MALAYSIA馬來西亞"]
+      "examples": ["MALAYSIA馬來西亞", "MALAYSIA 馬來西亞"]
     },
     {
       "key": "materials",
@@ -1163,7 +1152,7 @@
     {
       "key": "money fund 貨幣基金",
       "bucket": "not_asset_class",
-      "examples": ["MONEY FUND貨幣基金"]
+      "examples": ["MONEY FUND貨幣基金", "MONEY FUND 貨幣基金"]
     },
     {
       "key": "money market instruments 貨幣市場工具",
@@ -1512,7 +1501,7 @@
     {
       "key": "spain 西班牙",
       "bucket": "not_asset_class",
-      "examples": ["SPAIN西班牙"]
+      "examples": ["SPAIN西班牙", "Spain 西班牙"]
     },
     {
       "key": "supranational 跨國組織",
@@ -1527,7 +1516,7 @@
     {
       "key": "sweden 瑞典",
       "bucket": "not_asset_class",
-      "examples": ["SWEDEN瑞典"]
+      "examples": ["SWEDEN瑞典", "Sweden 瑞典"]
     },
     {
       "key": "switzerland",
@@ -1572,7 +1561,7 @@
     {
       "key": "taiwan 台灣",
       "bucket": "not_asset_class",
-      "examples": ["TAIWAN台灣"]
+      "examples": ["TAIWAN台灣", "Taiwan 台灣"]
     },
     {
       "key": "technology 科技",
@@ -1612,7 +1601,7 @@
     {
       "key": "thailand 泰國",
       "bucket": "not_asset_class",
-      "examples": ["THAILAND泰國"]
+      "examples": ["THAILAND泰國", "THAILAND 泰國"]
     },
     {
       "key": "time deposit",
@@ -1637,7 +1626,7 @@
     {
       "key": "uk pound 英鎊",
       "bucket": "not_asset_class",
-      "examples": ["UK POUND英鎊"]
+      "examples": ["UK POUND英鎊", "UK POUND 英鎊"]
     },
     {
       "key": "united kingdom",
@@ -1667,12 +1656,12 @@
     {
       "key": "united states 美國",
       "bucket": "not_asset_class",
-      "examples": ["UNITED STATES美國"]
+      "examples": ["UNITED STATES美國", "United States 美國"]
     },
     {
       "key": "us dollar 美元",
       "bucket": "not_asset_class",
-      "examples": ["US DOLLAR美元"]
+      "examples": ["US DOLLAR美元", "US DOLLAR 美元"]
     },
     {
       "key": "us equities 美國股票",
@@ -1727,7 +1716,7 @@
     {
       "key": "world equities 世界股票",
       "bucket": "equity",
-      "examples": ["WORLD EQUITIES世界股票"]
+      "examples": ["WORLD EQUITIES世界股票", "WORLD EQUITIES 世界股票"]
     },
     {
       "key": "world equity 世界股票",
@@ -1936,7 +1925,7 @@
     {
       "key": "其他 others",
       "bucket": "cash_and_other",
-      "examples": ["其他 Others"]
+      "examples": ["其他 Others", "10 其他 Others"]
     },
     {
       "key": "其他亞太地區 other asia pacific",
@@ -2196,7 +2185,7 @@
     {
       "key": "政府 government",
       "bucket": "not_asset_class",
-      "examples": ["2 政府Government"]
+      "examples": ["2 政府Government", "2 政府 Government"]
     },
     {
       "key": "新加坡 singapore",
@@ -2323,7 +2312,7 @@
     {
       "key": "港元 hkd",
       "bucket": "not_asset_class",
-      "examples": ["1 港元HKD"]
+      "examples": ["1 港元HKD", "1 港元 HKD"]
     },
     {
       "key": "港元債券 hk dollar bond",
@@ -2378,12 +2367,12 @@
     {
       "key": "物料 materials",
       "bucket": "not_asset_class",
-      "examples": ["物料 Materials"]
+      "examples": ["物料 Materials", "3 2 9 物料 Materials"]
     },
     {
       "key": "現金 cash",
       "bucket": "cash_and_other",
-      "examples": ["現金 Cash"]
+      "examples": ["現金 Cash", "11 現金 Cash"]
     },
     {
       "key": "現金及其他 cash & others",
@@ -2419,11 +2408,6 @@
       "key": "環球債券 world bonds",
       "bucket": "bond",
       "examples": ["環球債券 World Bonds"]
-    },
-    {
-      "key": "環球股票 ( 美國、日本及歐洲 )",
-      "bucket": "equity",
-      "examples": ["環球股票﹙美國﹑日本及歐洲﹚"]
     },
     {
       "key": "生活必需品 consumer staples",
@@ -2513,7 +2497,7 @@
     {
       "key": "能源 energy",
       "bucket": "not_asset_class",
-      "examples": ["能源 Energy"]
+      "examples": ["能源 Energy", "1 3 能源 Energy"]
     },
     {
       "key": "芬蘭 finland",
@@ -2611,14 +2595,9 @@
       "examples": ["醫療保健 Healthcare"]
     },
     {
-      "key": "醫藥及醫療保健",
-      "bucket": "not_asset_class",
-      "examples": ["醫藥及醫療保健"]
-    },
-    {
       "key": "金融 financials",
       "bucket": "not_asset_class",
-      "examples": ["金融 Financials"]
+      "examples": ["金融 Financials", "11 1 金融 Financials"]
     },
     {
       "key": "金融地產 financials",
@@ -2671,11 +2650,6 @@
       "examples": ["香港 Hong Kong"]
     },
     {
-      "key": "香港及中國股票",
-      "bucket": "equity",
-      "examples": ["香港及中國股票"]
-    },
-    {
       "key": "香港股票 hong kong equities",
       "bucket": "equity",
       "examples": ["1 香港股票 Hong Kong Equities"]
@@ -2689,6 +2663,80 @@
       "key": "高度集中於北亞地區 : 南韓綜合股價指數急升 , 台灣加權指",
       "bucket": "not_asset_class",
       "examples": ["高度集中於北亞地區：南韓綜合股價指數急升 ，台灣加權指"]
+    },
+    {
+      "key": "asia (ex chinese mainland / hk / japan) 亞太股票 ( 中國內地 / 香港 / 日本除外 )",
+      "bucket": "equity",
+      "examples": [
+        "Asia (ex Chinese Mainland / HK / Japan) 亞太股票 ( 中國內地 / 香港 / 日本除外 )"
+      ]
+    },
+    {
+      "key": "chinese mainland 中國內地",
+      "bucket": "not_asset_class",
+      "examples": ["Chinese Mainland 中國內地"]
+    },
+    {
+      "key": "chinese mainland and hong kong 中國內地與香港",
+      "bucket": "not_asset_class",
+      "examples": ["Chinese Mainland and Hong Kong 中國內地與香港"]
+    },
+    {
+      "key": "chinese mainland and hong kong equities 中國內地與香港股票",
+      "bucket": "equity",
+      "examples": ["Chinese Mainland and Hong Kong Equities 中國內地與香港股票"]
+    },
+    {
+      "key": "consumption related 消費相關",
+      "bucket": "not_asset_class",
+      "examples": ["Consumption Related 消費相關"]
+    },
+    {
+      "key": "deposits 存款",
+      "bucket": "cash_and_other",
+      "examples": ["Deposits 存款"]
+    },
+    {
+      "key": "eur 歐羅",
+      "bucket": "not_asset_class",
+      "examples": ["EUR 歐羅"]
+    },
+    {
+      "key": "eur bonds 歐羅債券",
+      "bucket": "bond",
+      "examples": ["EUR Bonds 歐羅債券"]
+    },
+    {
+      "key": "financial services & insurance 金融服務及保險",
+      "bucket": "not_asset_class",
+      "examples": ["Financial Services & Insurance 金融服務及保險"]
+    },
+    {
+      "key": "global equities (u.s., japan and europe) 環球股票 ( 美國、日本及歐洲 )",
+      "bucket": "equity",
+      "examples": [
+        "Global Equities (U.S., Japan and Europe) 環球股票﹙美國﹑日本及歐洲﹚"
+      ]
+    },
+    {
+      "key": "jpy 日圓",
+      "bucket": "not_asset_class",
+      "examples": ["JPY 日圓"]
+    },
+    {
+      "key": "power & water utilities 電力及水務事業",
+      "bucket": "not_asset_class",
+      "examples": ["Power & Water Utilities 電力及水務事業"]
+    },
+    {
+      "key": "telecommunications & media 電訊及媒體",
+      "bucket": "not_asset_class",
+      "examples": ["Telecommunications & Media 電訊及媒體"]
+    },
+    {
+      "key": "usd 美元",
+      "bucket": "not_asset_class",
+      "examples": ["USD 美元"]
     }
   ]
 }
