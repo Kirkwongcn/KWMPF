@@ -135,7 +135,23 @@ PR 會執行 CI，但本次不建立 PR、合併或發布。公開推送只包�
 | `KWMPF_PUBLICATION_SEED_SOURCE`、`KWMPF_PUBLICATION_SEED_RETURN_OBSERVATIONS`、`KWMPF_PUBLICATION_SEED_PORT` | 本機 publication-seed gate |
 | `WRANGLER_SEND_METRICS`、`CI`、`RUNNER_TEMP`、`GITHUB_SHA`／`GITHUB_RUN_ID`／`GITHUB_RUN_ATTEMPT` | CLI／runner 行為及版本標識；不是自訂憑證 |
 
-## 8. 待核實
+## 8. 雲端交接儲存補充（2026-10-01）
+
+非網站 runtime 設定：[config/storage.json](../config/storage.json)；操作與跨 LLM 取回方式：[CLOUD_STORAGE](CLOUD_STORAGE.md)。
+GitHub public code／文件和私有 R2 附件分開。`kwmpf-handoff` 是待批准的新 Standard 私有 bucket，
+目前沒有建立／上傳／current pointer，也沒有新增 Worker／MCP／GitHub workflow／environment secrets。
+既有 production／staging raw bucket 不改名、不搬移，未將其所有物件複製到交接區。
+
+取回工具的變數名稱：`CLOUDFLARE_ACCOUNT_ID`、`CLOUDFLARE_API_TOKEN`；S3 客戶端為
+`R2_ACCESS_KEY_ID`、`R2_SECRET_ACCESS_KEY`、`R2_ENDPOINT`。此處沒有值；S3 object token 不自動適用管理 REST API。
+新客戶端優先只讀交接 bucket，實際 credential 尚未配置；Codex 的授權不會自動轉給 Claude／Zo。
+NAS 使用者報稱 AS5402T／HDD／RAID 後 12 TB，但尚未設置，沒有已核實備份或備用入口。
+
+本輪追加只讀查核：兩個 KWMPF Worker Build triggers 仍空；Pages API 無 source 欄位（不是回傳明確 null），
+canonical production deployment／commit 與上次一致。rulesets GET 空；classic main protection GET 403。
+以上是本轮較精確的 API 表述；既有手冊 `source=null` 指未見 Git source，不應解讀為本輪存在明確 null 欄位。
+
+## 9. 仍待核實
 
 - GitHub production／staging environment required reviewers、deployment branch policy、全部 branch protection／rulesets：
   本次 connector 不允許 environment endpoint；workflow 有 environment 不等於 gate 一定啟用。

@@ -79,6 +79,10 @@ canonical implementation spec（`docs/specs/2026-08-08-hk-mpf-comparison-v1-impl
 - 不提交 secrets、`.env*`、`.dev.vars`、API key、token、憑證、signed download URL、
   私人資料、remote D1 匯出、本機 SQLite、依賴、build 輸出及大型暫存原件。
   文件只列環境變數名稱；不要把值寫入日誌、PR、交接或畫面。
+- 雲端交接依 `config/storage.json` 及 `docs/CLOUD_STORAGE.md`；設定宣告不是權限或
+  已部署證據。GitHub 保存 code／公開文件；私有附件只進已批准的私有儲存。
+  每個接手客戶端獨立授權；完整版本上傳／讀回核對後才更新 current pointer。
+  不把儲存成功當成網站發布、NAS 備份成功或另一個 LLM 已讀到資料。
 
 ### 主要程式及核實過的指令
 

@@ -17,6 +17,7 @@
 | 2026-09-30 | 保留原 header／品牌風格；簡潔首頁與深入分析同等重要；圖表用實際單位及來源 | [DESIGN](../DESIGN.md)、[全流程審查](reviews/2026-09-30-full-process-and-design-review.md)、已合併 [PR #357](https://github.com/Kirkwongcn/KWMPF/pull/357)；按使用者原風格要求修訂，沒有畫虛構連續走勢 |
 | 2026-09-30 | ETag／edge cache 綁定 route、query、程式版本及 UTC 評估日 | [ADR 0009](adr/0009-time-scoped-representation-caching.md)，修正跨 route／期間／日期 validator；仍保留既有 300／600 秒政策，不宣稱日界即時失效 |
 | 2026-10-01 | 暫停新增功能，以核實／保存／Claude 交接為優先；不得未經批准合併正式分支、修改 Cloudflare 或部署 | 使用者本次明確交接要求；更新 [AGENTS](../AGENTS.md) 作共用權限邊界。此決定優先於舊文件的自動發布構想或較早自行合併授權 |
+| 2026-10-01 | 先安排 GitHub／Cloudflare 儲存及更新交接；NAS 稍後設定 | 使用者明確說 NAS 未設置。GitHub code／文件與私有附件分開；具體新 R2 bucket 仍待批准，不能把方案當已建立。見 [CLOUD_STORAGE](CLOUD_STORAGE.md) |
 
 ## 仍是試用／待決，不能升格為定案
 

@@ -2,6 +2,10 @@
 
 公開 repo 有五份接手文件及全部既有 source／data／docs；完整歷史附件保留於交接 ZIP，不公開 push。
 
+2026-10-01 雲端儲存跟進：另讀 [CLOUD_STORAGE](../CLOUD_STORAGE.md) 與 [config/storage.json](../../config/storage.json)。
+私有 `kwmpf-handoff` 目前等待具體批准，尚未建立或上傳；初始 ZIP 仍在本機。
+GitHub 文件更新不代表附件、NAS、Codex Cloud 或另一個 LLM 已取得資料。
+
 ## 閱讀順序
 
 1. 根目錄 CLAUDE → AGENTS，共用規則及批准邊界。
