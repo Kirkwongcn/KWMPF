@@ -17,6 +17,8 @@
 交接附件已按批准上傳、逐件下載核對，`current.json` 指向完整版本；詳見有日期的交接及外部 receipt。
 NAS 尚未設置；另一個 LLM 的獨立授權及資料取回尚未驗證。
 
+完全不依賴舊本機的重建及最新準備狀態見 [LOCAL_INDEPENDENCE](docs/LOCAL_INDEPENDENCE.md)。補充保存包已備妥；額外上傳、獨立client及雲端驗收尚未完成。
+
 ## 審查及設計跟進
 
 - [2026-09-30 全流程審視與網站改版跟進手冊](docs/reviews/2026-09-30-full-process-and-design-review.md)：資料時效、来源搜尋、準確度、架構缺口、驗收及下一步。

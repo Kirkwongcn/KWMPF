@@ -43,5 +43,25 @@
     "capacityAfterRaidTbReportedByUser": 12,
     "scheduledBackupEnabled": false,
     "secondaryAccessVerified": false
+  },
+  "localIndependence": {
+    "status": "prepared-not-uploaded",
+    "scope": "GitHub plus private R2; no old Windows files required after independent cloud restoration acceptance",
+    "index": {
+      "filename": "PRESERVATION_INDEX.json",
+      "key": "independence/2026-10-01/snapshot-20261001-153225/preservation-index.json",
+      "bytes": 2976331,
+      "sha256": "d17b0602e064a1e91c8a6ea60b0fdfb101877bbba87a67294c998c083720cb72"
+    },
+    "preparedPayloadBytes": 394359318,
+    "requestedUploadLimitBytes": 420000000,
+    "preservedPaths": 8443,
+    "uniqueBlobs": 3744,
+    "gitBundles": 4,
+    "localArchiveIntegrityVerified": true,
+    "cloudRestoreVerified": false,
+    "newClientAccessVerified": false,
+    "cloudEnvironmentVerified": "UI environment list empty; not created",
+    "futurePointer": "independence-current.json"
   }
 }

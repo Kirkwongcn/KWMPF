@@ -86,23 +86,12 @@ canonical implementation spec（`docs/specs/2026-08-08-hk-mpf-comparison-v1-impl
 
 ### 主要程式及核實過的指令
 
-| 位置／指令                                | 用途及前提                                                                                             |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| `apps/web/`                               | React／Vite；`src/main.tsx` 路由入口、`SiteChrome.tsx` 共用 header、`styles.css`／`DESIGN.md` 品牌規則 |
-| `apps/api/`                               | Hono Worker；`src/index.ts` API、`migrations/` D1 schema、`wrangler.jsonc` 本機模板                    |
-| `packages/coverage/`                      | 官方來源抓取、抽取、身分核對、候選報告及 publication seed                                              |
-| `apps/e2e/`                               | Playwright 桌面／手機、本機 Worker／Vite 隔離流程                                                      |
-| `data/`、`scripts/`、`.github/workflows/` | 來源／候選／reference、操作腳本及 CI／受保護發布                                                       |
-| `bun install --frozen-lockfile`           | 使用 `package.json` 指定的 Bun 版本；必須保留 `bun.lock`，不得為安裝方便升級依賴                       |
-| `bun run typecheck`                       | 全 workspace TypeScript 檢查                                                                           |
-| `bun run test`                            | coverage、API、Web 單元／整合測試；不包括 E2E                                                          |
-| `bun run build`                           | Web production bundle、coverage 型別檢查、Worker **dry-run** bundle；不是發布                          |
-| `bun run check`                           | format、Bash／Python 腳本檢查、typecheck、test、build；需要可用 POSIX Bash、Python 3、Node、Bun        |
-| `bun run e2e`                             | 另行執行桌面／手機流程；依 Playwright 設定準備 Chromium、Bash 及隔離本機 D1                            |
-| `bash scripts/check-publication-seed.sh`  | 以最新來源及明確指定的 return overlay 驗證本機 API，並另核對三筆官方原文                               |
-
-指令定義及 CI 路徑已核實；實跑結果以 `docs/HANDOFF.md` 為準。
-Windows 環境差異不代表測試成功或 code 缺陷。已核准來源／disposition 綁定 Git blob bytes，不得全庫格式化。
+目錄／前提／實跑結果讀 [開發指令](docs/agents/development-commands.md) 及 HANDOFF。
+主要程式是 `apps/web`、`apps/api`、`packages/coverage`、`apps/e2e`；資料及自動化在 `data`、`scripts`、`.github/workflows`。
+使用 package.json 指定 Bun 與 lockfile：`bun install --frozen-lockfile`。
+檢查 `bun run typecheck`／`bun run test`／`bun run check`；build 是 `bun run build`（Worker dry-run）；E2E 另跑 `bun run e2e`。
+publication seed 用 `bash scripts/check-publication-seed.sh`，按改動政策核對官方原文。
+指令定義已核實；實際執行結果必須另外記錄，不得為交接擅自升級依賴或全庫格式化。
 
 ### 編碼及交接維護
 
@@ -116,3 +105,9 @@ Windows 環境差異不代表測試成功或 code 缺陷。已核准來源／dis
   只有已確定的重要決定才追加 `DECISIONS.md`（日期、原因及佐證）。
 - 共用規則只放本檔案；每日狀態不放這裡。保留歷史文件，透過
   `docs/handoff/DOCUMENT_INDEX.md` 指明時效及新文件優先順序，避免覆蓋證據。
+
+### 可攜接手
+
+- 接手重建依GitHub exact commit、私有R2 manifest及lockfile；不把舊本機絕對路徑、OAuth、node_modules或聊天記憶當先決條件。
+- 實際保存及雲端取回狀態讀`docs/LOCAL_INDEPENDENCE.md`與HANDOFF；完整archive核對及新環境還原/依賴準備分別記錄，未完成不能聲稱已脫離本機。
+- 歷史Git bundles/dirty檔案/skills放私人保存區；不批次覆蓋active repo、不推歷史私有refs，不擴大新client權限。

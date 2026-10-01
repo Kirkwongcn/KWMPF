@@ -22,6 +22,10 @@
 
 | 2026-10-01 | 批准清單內兩份私有 ZIP、五份入口文件、manifest／current.json 與記錄完成結果的最終交接修訂上傳及下載核對，本輪上限 15 MB | 使用者明確批准具體清單；僅 `kwmpf-handoff`，完整物件不自動到期。每個版本讀回核對後才更新 latest pointer；不涵蓋網站部署／D1／NAS／新 client credentials。見 [CLOUD_STORAGE](CLOUD_STORAGE.md) |
 
+## 2026-10-01 新增已確定目標
+
+使用者明確要求「完全不依賴現有本機文件」。因此接手以GitHub及私有R2可重建為收貨目標，原路徑只作歷史 provenance，套件依lockfile重新安裝，客戶端獨立授權。這是已確定目標；額外394MB補充上傳、新client權限及雲端驗收仍待對該次操作批准，不能寫成已完成或已授權。見 [LOCAL_INDEPENDENCE](LOCAL_INDEPENDENCE.md)。
+
 ## 仍是試用／待決，不能升格為定案
 
 - 比較組／個別指標最少三個有效樣本：已核實 `CONTEXT.md`、`comparison-group-stats.ts` 及試用解讀契約，維持現有規則。

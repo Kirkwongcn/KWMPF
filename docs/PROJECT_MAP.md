@@ -165,3 +165,14 @@ rulesets GET 曾回空；classic main protection GET 曾回 403，環境 reviewe
 
 完整核實附件不在公開分支；本機 archive commit／私有交接 ZIP 的附件為：
 `private-preservation/docs/handoff/archive/remote-and-deployment-verification.json`（白名單 metadata；沒有憑證／變數值）。
+
+## 無舊本機依賴的接手入口（2026-10-01；準備階段）
+
+- [LOCAL_INDEPENDENCE](LOCAL_INDEPENDENCE.md) 列完整保存範圍、固定index、精確hash、重建指令、credentials及各驗證狀態。
+- `scripts/restore-private-handoff.py`：Python標準庫，S3 HTTPS GET；驗固定manifest SHA/bytes、archive及逐路徑blob，還原到新的私人保存區；不覆蓋active repo，不寫remote。
+- `scripts/prepare-cloud-workspace.sh`：從package.json核對Bun版本，frozen install，產生忽略的`.tmp-cloud-workspace-receipt.json`；無網站測試/build/deploy。
+- `scripts/cloud/setup-handoff.sh`／`maintenance-handoff.sh`：已備妥的legacy UI配置範例；setup取回固定Git SHA及已批准的私有附件，maintenance只核對cache。此輪尚未執行或保存為雲端設定。
+- GitHub保存腳本與公開入口；R2保存私人資料索引、ZIP/bundles/skills/原件。旧`current.json`仍定位既有handoff；新`independence-current.json`只在補充remote讀回成功後建立。
+- 新變數**名稱**：`R2_ENDPOINT`、`R2_ACCESS_KEY_ID`、`R2_SECRET_ACCESS_KEY`。憑證限定`kwmpf-handoff`只讀S3；不提供production部署token。目前所見legacy UI的R2憑證用encrypted setup secrets；setup取回後不留給agent。current環境proxy placeholder不能直接作SigV4 signing key，配置方式見手冊。
+- 本次Codex Cloud repository選單有KWMPF；環境頁顯示「沒有環境」。環境建立/網絡policy/認證/發布/雲端執行結果全部待配置及核實；沒有把GitHub選项當環境部署證據。
+- 本輪没有增加GitHub Actions；feature push仍不觸發CI，production/staging仍manual workflow_dispatch。兩個Worker Builds triggers空白，Pages回應没有source欄位；外部hooks仍待核實。

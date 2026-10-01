@@ -1,5 +1,29 @@
 # KWMPF → Claude Code 即時交接
 
+## 本機獨立接手跟進（2026-10-01 15:47；以本節為最新保存狀態）
+
+使用者要求完全不依賴現有本機文件。詳細重建/來源/驗證及待批准操作見 [LOCAL_INDEPENDENCE](LOCAL_INDEPENDENCE.md)。
+目前仍在 Windows；**本輪補充已備妥但未上傳，Codex Cloud還原未完成，不能聲稱已脫離本機**。
+盤點16個checkout（包括四個sibling及publication-seed）；8份補充ZIP+index為 394,359,318 bytes；
+8,443 路徑／3,744 去重blobs全部本機 archive SHA/bytes核對相符，4份Git bundles在空repo核對通過。
+原始DownloadsZIP／手冊、PDF/XML、未提交檔案、舊Git refs/reflogs及403個skills檔案已納入保存清單。
+本輪有限敏感模式/ZIP文字/Git blobs檢查無匹配；credentials不傳，工具快取重新安裝。
+
+**GitHub已驗證基線**：repo `https://github.com/Kirkwongcn/KWMPF.git`、功能 branch `docs/claude-handoff-20261001-safe`，
+基線 `a5b565823297d7ff85ed6a612fc83e70d0a2d8ac` 在遠端。本文與重建腳本的最終 commit/push狀態以外部回執及branch HEAD核對；文件不能含自己的最終SHA。
+本機checkout仍是 `C:/Users/user/Documents/Codex/2026-09-26/kwmpf/work/kwmpf-review-redesign`，這只記錄來源，不是接手必需路徑。
+main `6a593dba460b905badbfca9e9eac85a16318309e`、production Pages SHA `3f655960c620b019f245886d709283c0e1b67590` 未變。
+
+**雲端已驗證/未核實**：登入Codex Cloud頁面，repository選單有KWMPF，但環境頁目前顯示「沒有環境」。
+獨立read-only credentials/可用環境/真正雲端還原均尚未建立或執行；NAS仍未設定。
+今輪未跑網站測試/build；`prepare-cloud-workspace.sh`安裝流程尚未執行。
+舊Windows錯誤或歷史CI不升格為雲端結果；下面較早「只索引/原件在本機」描述只適用2026-10-01 14:47舊包，新的補充目前只是備妥。
+
+**Claude/Codex Cloud頭三步**：1. clone此功能branch並核對使用者回執exact SHA；2. 按LOCAL_INDEPENDENCE準備固定版本工具及frozen install；3. 在補充上传批准及只讀認證配置後按pinned index取回、核對、產生獨立雲端回執。不要merge/deploy或套用舊patch。
+**需使用者批准**：額外約394MB私有補充+完成記錄（本輪put上限420MB）；建立私有KWMPF雲端環境、限定bucket讀取憑證及一個新只讀雲端還原驗收任務。此前15MB範圍已完成。
+
+---
+
 更新：2026-10-01 14:47（Asia/Hong_Kong；網站驗收基線保留 00:55 證據，時效 API 使用 UTC 日界）。
 任務：暫停新增功能與重構，核實並安全保存網站／資料／工作差異及接手文件。
 今次按使用者明確批准建立私有交接 bucket，並上傳／讀回清單內附件（上傳上限 15 MB）；不合併、不 dispatch／批准網站部署。入口共用規則 [AGENTS](../AGENTS.md)，Claude 入口 [CLAUDE](../CLAUDE.md)。

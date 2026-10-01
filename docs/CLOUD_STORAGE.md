@@ -4,6 +4,10 @@
 [HANDOFF](HANDOFF.md)、外部 `HANDOFF_RECEIPT.json` 及 R2 `current.json` 為準。
 設定宣告在 [config/storage.json](../config/storage.json)，不是 Terraform，也不會自行建立資源。
 
+## 0. 完全不依賴舊本機：最新狀態
+
+使用者新增此目標；另讀 [LOCAL_INDEPENDENCE](LOCAL_INDEPENDENCE.md)。約394MB補充保存包及4份Git bundles已備妥並本機核對；**額外上傳、只讀client、Codex Cloud環境與獨立雲端還原尚未完成**。下列15MB批准與初次上傳是已完成的歷史範圍，不包含本輪補充。沒有修改正式設定。
+
 ## 1. 本輪範圍及狀態
 
 使用者要求先安排 GitHub／Cloudflare，再重寫交接；NAS 尚未設置。

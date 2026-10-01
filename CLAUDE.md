@@ -9,3 +9,5 @@
 
 私有附件的取得、SHA／bytes 核對及每個客戶端的獨立授權讀 `docs/CLOUD_STORAGE.md`。
 `config/storage.json` 是設定宣告，不代表 bucket、NAS 或客戶端存取已經可用。
+
+獨立雲端或其他LLM接手另讀 `docs/LOCAL_INDEPENDENCE.md`；先核對保存、認證及實際還原狀態。

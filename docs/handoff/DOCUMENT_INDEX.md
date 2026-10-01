@@ -8,6 +8,10 @@
 GitHub 文件更新不代表附件、NAS、Codex Cloud 或另一個 LLM 已取得資料。
 本輪 Cloudflare 設定讀回摘要：[CLOUD_STATUS.json](CLOUD_STATUS.json)。
 
+## 最新補充保存（準備階段）
+
+[LOCAL_INDEPENDENCE](../LOCAL_INDEPENDENCE.md) 列8份約391MB補充ZIP、逐檔可攜索引、4份Git bundles及403個skills檔案。已本機核對，但尚未上傳/雲端還原。下面舊包15-checkout/301-entry/266-attachment/32手冊數量保留為歷史checkpoint；新盤點16個checkout及全部保存範圍由補充index定位。舊Downloads原ZIP及binary在新補充包中，不因此聲稱已到雲端。
+
 ## 閱讀順序
 
 1. 根目錄 CLAUDE → AGENTS，共用規則及批准邊界。
