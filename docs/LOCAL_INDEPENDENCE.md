@@ -98,7 +98,7 @@ Codex Cloud 保存狀態不取代 GitHub/R2；重要變更仍 commit到安全分
 | 正式網站 | main及production Pages SHA未變；以兩個Worker immutable tag重新查Workers Builds，triggers空白；Pages無source欄位 | 外部webhook/environment branch policy仍未核實 |
 
 私有补充保存/讀回已通過，但獨立雲端還原/依賴核對尚未執行，因此目前仍不符合全部「接手毋須舊本機文件」驗收標準。
-**2026-10-01 20:42 補充**：Claude Code 雲端容器已完成 GitHub exact commit、R2 固定 index 取回／逐檔還原、bundles 驗證及 frozen install；`independence-current.json` 已讀並與固定 index 相符。仍未核實的是 token 是否只讀／只限此 bucket、pointer 指定的 final manifest／文件包，以及 50 個過時 tracked 修改的逐檔語義比對。Codex Cloud 及其他 LLM 仍需各自驗收。
+**2026-10-01 20:42 補充**：Claude Code 雲端容器已完成 GitHub exact commit、R2 固定 index 取回／逐檔還原、bundles 驗證及 frozen install；`independence-current.json` 已讀並與固定 index 相符。仍未核實的是 token 是否只讀／只限此 bucket、pointer 指定的 final manifest／文件包，以及 1,074 個 `work/` 暫存檔內容（50 個過時 tracked 修改已逐檔核對，見 reviews/2026-10-01-preserved-worktree-review.md）。Codex Cloud 及其他 LLM 仍需各自驗收。
 
 本轮新payload：8份ZIP及index共394,359,318 bytes。完整回執`REMOTE_PRESERVATION_VERIFICATION.json`、逐件`SUPPLEMENT_REMOTE_RECEIPT.json`和正式分支安全查核保存在完成版私人文件包。最後Git commit、文件包SHA及讀回/pointer以`independence-current.json`引用的manifest為準；原`current.json`保留舊schema。文件包不含自己的hash或之後的讀回回執，以免循環自引。
 

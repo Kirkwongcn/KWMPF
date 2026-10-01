@@ -4,6 +4,7 @@
 
 - [claude-review-2026-10-01](../reviews/claude-review-2026-10-01.md)：實跑指令、15 項發現（已驗證／推測／未核實）、24 計劃三年缺口重算、修復次序。
 - [CLAUDE_RETURN](CLAUDE_RETURN.md)：回交模板填寫版；exact SHA 以最終回覆及 `origin/claude/brave-cerf-17etdq` 為準。
+- [preserved-worktree-review 2026-10-01](../reviews/2026-10-01-preserved-worktree-review.md)：R2 還原後 50 個未同步 tracked 修改逐檔核對；47 已被 main 取代，P-01／P-02 兩項文件問題待決定。
 - [evidence/claude-2026-10-01](../reviews/evidence/claude-2026-10-01/)：時效邊界、OPS-02 重現、UI lab 審查腳本及摘要（腳本含本環境絕對路徑，重跑前請調整）。
 
 ## 目前要交Claude的文件

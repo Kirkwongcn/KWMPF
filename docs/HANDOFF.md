@@ -8,8 +8,8 @@ Claude Code（Anthropic 雲端 Linux 容器，`/home/user/KWMPF`）由 `claude/e
 **首次嘗試失敗**：上一個 session 的 `R2_ENDPOINT` 是佔位值，腳本在任何請求前停止；使用者修正環境設定後重跑成功。
 **Pointer（已驗證）**：其後單件 GET `independence-current.json`（1896 bytes／`45833234…85d5d861`）：指向 branch `docs/claude-handoff-20261001-safe` @ `2e71153`，其 `index` 欄 key／bytes／SHA 與上述固定 index 完全相同。pointer 指定的 final `manifest.json`（8439／`20921118…`）及文件包 `handoff.zip`（3398155／`857c864a…`）**未取回**：該下載被本環境自動權限審查拒絕，沒有改用其他方式。
 **保存內容與 GitHub 比對（已驗證，只在私人區分析，沒有套用）**：4 份 bundles 共 24 個 commit 不在 GitHub 任何分支。8 個 patch 與 main 相同；15 個的檔案內容已在 main 歷史出現，或殘餘檔案在 main 已有更新版本（squash 前版本，已被 #354／#357／#358／#359／#360 取代）；`78e84da` 是刻意只留私人區的歷史保存 commit。
-各 checkout 未提交項目展開後共 1,165 檔：26 個內容已在 main；11 個在其他 GitHub 分支；1,074 個不在 GitHub，全是 `work/` 暫存（`returns-refresh-2026-09-26` 851、`pr269-format` 201、本機 D1／SQLite seed 輸出 22）；4 個按設計排除（pyc、poppler.zip）；另 **50 個 tracked 檔案修改**不在 GitHub 任何位置——全部基於比 main 舊的 HEAD，且全部 50 個檔案 main 其後均已再修改，屬過時分支上的修改（推測已被取代，**未逐檔語義核對**）。依規則不批次套回。
-**未核實／未執行**：上述 50 檔逐檔語義比對；網站 tests／build 本輪未重跑；沒有 R2 寫入、合併、部署或 Cloudflare 變更。私人還原只在本容器，容器回收即消失，需要時按同一指令重做。
+各 checkout 未提交項目展開後共 1,165 檔：26 個內容已在 main；11 個在其他 GitHub 分支；1,074 個不在 GitHub，全是 `work/` 暫存（`returns-refresh-2026-09-26` 851、`pr269-format` 201、本機 D1／SQLite seed 輸出 22）；4 個按設計排除（pyc、poppler.zip）；另 **50 個 tracked 檔案修改**不在 GitHub 任何位置——全部基於比 main 舊的 HEAD，且全部 50 個檔案 main 其後均已再修改，屬過時分支上的修改。**其後已逐檔核對**（[報告](reviews/2026-10-01-preserved-worktree-review.md)）：47 檔已被 main 取代；沒有程式碼／測試／workflow／資料需搬回；發現兩項 main 文件問題——P-01 `docs/deployment.md:46` 稱部署重跑 check／E2E，實際重用同 SHA CI 且 E2E 只在 PR；P-02 ADR-0001／v1 規格仍寫自動發布及每日預算排名。兩項待使用者決定是否開獨立文件 PR。依規則不批次套回。
+**未核實／未執行**：網站 tests／build 本輪未重跑；沒有 R2 寫入、合併、部署或 Cloudflare 變更。私人還原只在本容器，容器回收即消失，需要時按同一指令重做。
 詳見 [CLAUDE_RETURN](handoff/CLAUDE_RETURN.md) §D／§E 及 [LOCAL_INDEPENDENCE](LOCAL_INDEPENDENCE.md)。
 
 ## 最新：Claude Code 檢查完成，待使用者檢視（2026-10-01 17:35 香港）
