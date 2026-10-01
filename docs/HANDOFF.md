@@ -1,5 +1,14 @@
 # KWMPF → Claude Code 即時交接
 
+## 最新：Claude 雲端 R2 還原完成（2026-10-01 20:42 香港）
+
+Claude Code（Anthropic 雲端 Linux 容器，`/home/user/KWMPF`）由 `claude/eager-hawking-a491zc` @ `24c19a9a0684bd4fcde39edaba69ea742fa3363b` 接續，工作分支 `claude/relaxed-goldberg-5ytvfk`；最後 SHA 以 GitHub 該分支為準，本檔不自引。
+**已驗證**：環境設定提供 `R2_ENDPOINT`／`R2_ACCESS_KEY_ID`／`R2_SECRET_ACCESS_KEY`（值不入 Git／日誌；token 是否只讀／只限此 bucket **未核實**，本輪只發 GET）。以固定 index（2976331 bytes／`d17b0602…720cb72`）執行 `scripts/restore-private-handoff.py`，exit 0：index、舊基底 ZIP、8 份補充 ZIP 逐件 SHA／bytes 相符；8,443 路徑、3,744 blobs、9 archives 逐檔核對並取出至 repo 外私人位置 `/home/user/kwmpf-private`（926 MB，不入 Git）。
+4 份 Git bundles SHA／bytes 相符，`git bundle verify` 全 okay，fetch 入空白 bare repo 後 16 個保存 checkout HEAD 全部可達。同容器以固定 Bun 1.3.11（npm `@oven/bun-linux-x64`；預裝 1.3.14 被腳本拒絕）執行 `scripts/prepare-cloud-workspace.sh`，frozen install exit 0。
+**首次嘗試失敗**：上一個 session 的 `R2_ENDPOINT` 是佔位值，腳本在任何請求前停止；使用者修正環境設定後重跑成功。
+**未核實／未執行**：`independence-current.json` pointer 未讀（腳本只容許 `handoffs/`／`independence/` namespace，故以文件固定 index 為準）；保存區內容未逐項語義比對、未套用任何舊 patch；網站 tests／build 本輪未重跑；沒有 R2 寫入、合併、部署或 Cloudflare 變更。私人還原只在本容器，容器回收即消失，需要時按同一指令重做。
+詳見 [CLAUDE_RETURN](handoff/CLAUDE_RETURN.md) §D／§E 及 [LOCAL_INDEPENDENCE](LOCAL_INDEPENDENCE.md)。
+
 ## 最新：Claude Code 檢查完成，待使用者檢視（2026-10-01 17:35 香港）
 
 Claude Code（Anthropic 雲端 Linux 容器，`/home/user/KWMPF`）由接手基線 `2e711533cd19a4c002b7d1b47f0cb80d548f947b` 建立 `claude/brave-cerf-17etdq`，只保存文件及非敏感 evidence。報告：[claude-review-2026-10-01](reviews/claude-review-2026-10-01.md)；回交：[CLAUDE_RETURN](handoff/CLAUDE_RETURN.md)。

@@ -1,6 +1,6 @@
 # KWMPF 完全不依賴舊本機：保存及雲端接手
 
-更新：2026-10-01 16:23（Asia/Hong_Kong）。**狀態：私有R2補充上傳及全部下載核對已完成；獨立雲端認證、環境建立及雲端還原尚未完成。**
+更新：2026-10-01 16:23（Asia/Hong_Kong）。**狀態：私有R2補充上傳及全部下載核對已完成；2026-10-01 20:42 Claude Code 雲端容器以獨立環境認證完成固定 index 還原、bundles 驗證及 frozen install（詳見 HANDOFF 最新節）。Codex Cloud 環境仍未建立。**
 目前 executor 仍是 Windows。本文件不構成部署或憑證授權。
 
 ## 最新接手順序（2026-10-01）
@@ -91,13 +91,14 @@ Codex Cloud 保存狀態不取代 GitHub/R2；重要變更仍 commit到安全分
 | 項目 | 已驗證 | 未完成 |
 | --- | --- | --- |
 | 檔案盤點 | 無讀取錯誤；包含原附件及四個 sibling checkouts | credentials 另配，衍生快取另建 |
-| ZIP內容/manifest | 9件新payload逐件R2 put/get；另GET舊基底；以下載副本核對8,443路徑、3,744 blobs及9個archives全部SHA/bytes相符 | 獨立雲端client取得 |
-| Git bundles | 4/4 R2下載副本在新的空白repo驗證self-contained及advertised refs；Git blob有限敏感檢查通過 | 雲端環境重做 |
-| 環境/依賴 | 指令及固定版本已從 repo核實 | 此輪 frozen install及雲端執行未完成 |
+| ZIP內容/manifest | 9件新payload逐件R2 put/get；另GET舊基底；以下載副本核對8,443路徑、3,744 blobs及9個archives全部SHA/bytes相符 | 獨立雲端client取得：2026-10-01 Claude 容器已完成並逐件／逐檔核對 |
+| Git bundles | 4/4 R2下載副本在新的空白repo驗證self-contained及advertised refs；Git blob有限敏感檢查通過 | 雲端環境重做：2026-10-01 Claude 容器 4/4 verify okay、16 個 checkout HEAD 可達 |
+| 環境/依賴 | 指令及固定版本已從 repo核實 | 此輪 frozen install及雲端執行未完成；2026-10-01 Claude 容器以 Bun 1.3.11 執行 `prepare-cloud-workspace.sh` 通過 |
 | 網站測試/build | 本輪未執行 | 不把舊 CI當本輪測試 |
 | 正式網站 | main及production Pages SHA未變；以兩個Worker immutable tag重新查Workers Builds，triggers空白；Pages無source欄位 | 外部webhook/environment branch policy仍未核實 |
 
 私有补充保存/讀回已通過，但獨立雲端還原/依賴核對尚未執行，因此目前仍不符合全部「接手毋須舊本機文件」驗收標準。
+**2026-10-01 20:42 補充**：Claude Code 雲端容器已完成 GitHub exact commit、R2 固定 index 取回／逐檔還原、bundles 驗證及 frozen install；仍未核實的是 token 是否只讀／只限此 bucket、`independence-current.json` pointer，以及保存內容的逐項語義比對。Codex Cloud 及其他 LLM 仍需各自驗收。
 
 本轮新payload：8份ZIP及index共394,359,318 bytes。完整回執`REMOTE_PRESERVATION_VERIFICATION.json`、逐件`SUPPLEMENT_REMOTE_RECEIPT.json`和正式分支安全查核保存在完成版私人文件包。最後Git commit、文件包SHA及讀回/pointer以`independence-current.json`引用的manifest為準；原`current.json`保留舊schema。文件包不含自己的hash或之後的讀回回執，以免循環自引。
 

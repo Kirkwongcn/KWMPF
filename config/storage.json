@@ -74,9 +74,11 @@
     "verifiedAtHongKong": "2026-10-01 16:23",
     "handoffSequence": "Claude Code review first; return to Codex Cloud after user reviews the completed report",
     "codexCloudSetupStatus": "deferred-by-user-until-claude-review-complete",
-    "claudeClientAccessVerified": false,
+    "claudeClientAccessVerified": true,
     "claudeReviewCompleted": false,
     "reviewBrief": "docs/CLAUDE_REVIEW_BRIEF.md",
-    "returnTemplate": "docs/handoff/RETURN_TO_CODEX_TEMPLATE.md"
+    "returnTemplate": "docs/handoff/RETURN_TO_CODEX_TEMPLATE.md",
+    "claudeCloudRestoreVerifiedAtHongKong": "2026-10-01 20:42",
+    "claudeCloudRestoreEvidence": "docs/HANDOFF.md latest section; credential scope (read-only/bucket-only) not verified; independence-current.json not read"
   }
 }

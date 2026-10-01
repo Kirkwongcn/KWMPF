@@ -55,7 +55,7 @@
 | 指令 | HEAD／來源／overlay／UTC評估日 | exit code | 通過／失敗／未開始／未執行 | 原因／限制 | 證據位置／SHA |
 | --- | --- | --- | --- | --- | --- |
 | 工具／frozen install（`scripts/prepare-cloud-workspace.sh`） | `2e71153` | 0 | 通過 | – | scratch `install.log` `a5ebd16d…` |
-| R2 index／archive／逐檔／bundles | – | – | 未執行 | 無 `R2_*` 認證 | – |
+| R2 index／archive／逐檔／bundles（2026-10-01 補做，見下方補充） | `24c19a9`；固定 index `d17b0602…`；UTC 12:41 | 0 | 通過：8,443 路徑／3,744 blobs／9 archives；4 bundles verify okay，16 個 checkout HEAD 可達 | 首次因 `R2_ENDPOINT` 佔位值在請求前停止；修正環境後重跑 | 容器 `restore.log` `7f22f8b6…`、`RESTORATION_RECEIPT.json` `78d634c4…` |
 | `bun run check` | `2e71153` | 0 | 通過（333＋80＋115 tests；build dry-run） | – | scratch `check.log` `c3e567ce…` |
 | E2E 第一次 | 最新 source／overlay；09:2xZ | 1 | 未開始 | 缺 Chromium rev 1200 | `e2e-latest.log` `59502a26…` |
 | E2E 第二次 | `2026-09-26` source＋`2026-09-30` overlay；09:23Z | 0 | 通過 66/66 | Chromium 141 代替 143 | `e2e-latest2.log` `69057e22…` |
@@ -70,12 +70,12 @@
 | --- | --- | --- | --- | --- |
 | 檢查報告／回交文件 | `docs/reviews/claude-review-2026-10-01.md`、本文件、`docs/reviews/evidence/claude-2026-10-01/*` | 見 Git blob | 已 commit／push（見最終回覆） | – |
 | 新PDF／HTML／截圖／私人logs | session scratch：logs、`shots/*.png`（28）、`api-state/`、`web-dist/` | 見報告 §2 | 只在本容器 | 不含秘密；如需保存，使用者批准後上傳私人 R2，或在新環境按報告指令重跑 |
-| 原R2 preservation index／manifest | `independence/2026-10-01/snapshot-20261001-153225/preservation-index.json` | 2976331／`d17b0602…720cb72` | **未取得** | 需在環境設定提供 bucket-scoped 只讀 `R2_ENDPOINT`、`R2_ACCESS_KEY_ID`、`R2_SECRET_ACCESS_KEY` |
+| 原R2 preservation index／archives | `independence/2026-10-01/snapshot-20261001-153225/preservation-index.json` 及同 prefix `local-preservation-01..08.zip`、`handoffs/2026-10-01/a5b5658…/handoff.zip` | index 2976331／`d17b0602…720cb72`；其餘見 index | **已取得並逐件核對**（2026-10-01 UTC 12:41） | 還原於容器 `/home/user/kwmpf-private`（926 MB），私人內容不入 Git；容器回收即消失，需要時以同一固定 index 重做 |
 
 ## F. 批准／未核實／回到Codex Cloud
 
 - 使用者已批准的操作及範圍：本輪只讀檢查、隔離安裝／測試、在安全功能分支保存非敏感報告。沒有其他新批准。
-- 尚待決定：修復範圍及次序（報告 §5）；F-01 發布時程與 smoke 語義；F-07 原字串政策；F-10 通知管道；F-11 waiting run 處理；是否提供 R2 只讀認證及官方網域網絡存取以補做 F-14／F-15／原文核對。
+- 尚待決定：修復範圍及次序（報告 §5）；F-01 發布時程與 smoke 語義；F-07 原字串政策；F-10 通知管道；F-11 waiting run 處理；是否提供官方網域網絡存取以補做 F-14／F-15／原文核對（R2 認證已提供，還原已完成；token 權限範圍未核實）。
 - GitHub／Cloudflare部署觸發：已讀全部 13 個 workflow，push 功能分支不觸發任何 workflow；Cloudflare Builds／Pages Git 連結本次未核實。
-- 是否完全靠 GitHub/R2 重建：GitHub 部分是（code、依賴、測試均由 clone＋lockfile 重建）；R2 部分**未完成**。
+- 是否完全靠 GitHub/R2 重建：GitHub 部分是（code、依賴、測試均由 clone＋lockfile 重建）；R2 部分已於 2026-10-01 補做：固定 index 取回、逐件／逐檔／bundles 核對及同容器 frozen install 通過；`independence-current.json` pointer 未讀，保存內容未逐項語義比對。
 - Codex 頭三步：(1) 核對 `claude/brave-cerf-17etdq` 最終 SHA／diff 只含文件與 evidence；(2) 讀報告 §3／§5，優先處理 F-01 時程（10-16）及 F-02；(3) 在使用者確認範圍後，在可連官方網域且有只讀 R2 的環境補做 F-14／原文核對。
