@@ -13,9 +13,12 @@ describe("data freshness", () => {
     expect(classifyFreshness({ kind: "current_status", asOf: "2026-08-01", today: "2026-08-14" })).toBe("stale");
   });
 
-  it("keeps monthly data through day 45 and marks it stale on day 46", () => {
-    expect(classifyFreshness({ kind: "monthly", asOf: "2026-01-01", today: "2026-02-15" })).toBe("verified");
-    expect(classifyFreshness({ kind: "monthly", asOf: "2026-01-01", today: "2026-02-16" })).toBe("stale");
+  it("keeps monthly data through day 60 and marks it stale on day 61", () => {
+    expect(classifyFreshness({ kind: "monthly", asOf: "2026-01-01", today: "2026-03-02" })).toBe("verified");
+    expect(classifyFreshness({ kind: "monthly", asOf: "2026-01-01", today: "2026-03-03" })).toBe("stale");
+    // 2026-08-31 的平台回報有效至 2026-10-30。
+    expect(classifyFreshness({ kind: "monthly", asOf: "2026-08-31", today: "2026-10-30" })).toBe("verified");
+    expect(classifyFreshness({ kind: "monthly", asOf: "2026-08-31", today: "2026-10-31" })).toBe("stale");
   });
 
   it("keeps quarterly three-year returns through day 90 and marks them stale on day 91", () => {

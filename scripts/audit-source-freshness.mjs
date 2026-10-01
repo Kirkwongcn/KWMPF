@@ -32,7 +32,8 @@ export function auditSourceFreshness(source, observations, evaluatedOn) {
     seen.add(key);
   }
   const returns = [1, 3, 5, 10].map((periodYears) => {
-    const graceDays = periodYears === 3 ? 90 : 45;
+    // 與 packages/coverage/src/data-freshness.ts 一致（ADR 0007、ADR 0010）。
+    const graceDays = periodYears === 3 ? 90 : 60;
     const counts = { eligible: 0, stale: 0, missing: 0, invalidDate: 0 };
     const dates = [];
     for (const record of source.records) {
