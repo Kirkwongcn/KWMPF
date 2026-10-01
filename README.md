@@ -13,8 +13,8 @@
 ## 雲端儲存及私有附件
 
 讀 [GitHub／Cloudflare 儲存及跨工具接手](docs/CLOUD_STORAGE.md) 與
-[設定宣告](config/storage.json)。目前 GitHub 交接分支可讀；新私有 R2 交接區等待具體批准，
-NAS 尚未設置。設定檔與文件存在不代表資源、備份或另一個 LLM 的存取已啟用。
+[設定宣告](config/storage.json)。GitHub 交接分支可讀；私有 R2 `kwmpf-handoff` 已建立，
+交接附件上傳另待具體批准。NAS 尚未設置；另一個 LLM 的授權及資料取回尚未驗證。
 
 ## 審查及設計跟進
 

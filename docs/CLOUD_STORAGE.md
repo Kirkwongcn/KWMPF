@@ -9,10 +9,15 @@
 使用者要求先安排 GitHub／Cloudflare，再重寫交接；NAS 尚未設置。
 先處理 KWMPF。其他項目需各自盤點 repo、資料、用途及權限，未宣稱已設定。
 
-**目前私有交接 bucket 狀態：等待具體批准，尚未建立。**
-自動批准審查拒絕首次建立 `kwmpf-handoff`，因先前規則要求 Cloudflare 設定變更先取得批准。
-已提交可審閱的 bucket、具體 ZIP、bytes／SHA 及上傳範圍方案；沒有使用另一條路徑繞過拒絕。
-此段及設定宣告只在實際建立／上傳／讀回成功後更新。
+**已建立：`kwmpf-handoff` 私有 bucket；交接資料未上傳。**
+使用者於 2026-10-01 明確批准建立；Cloudflare API 200，建立時間為香港 14:18:51.869，
+Standard／APAC、r2.dev enabled=false、自訂域名空清單。完整物件沒有自動到期規則。
+預設 lifecycle 只有七日中止未完成 multipart upload；沒有刪掉此預設規則。
+物件清單讀回為空，因此目前沒有 ZIP、manifest、入口文件或 `current.json`。
+
+先前 bucket creation 曾被自動批准審查拒絕，取得明確批准後才成功。
+之後初始 ZIP 上傳又被審查拒絕，理由為「建立 bucket 的批准未明確授權匯出私有交接 payload」。
+這個上傳命令沒有執行；沒有改用別的工具繞過。具體檔案／SHA／目的地清單準備好後再申請資料上傳批准。
 
 ## 2. 資料分工
 
@@ -20,7 +25,7 @@
 | --- | --- | --- |
 | 公開 GitHub `Kirkwongcn/KWMPF` | code、已公開來源 JSON、ADR、規則、五份入口文件 | 私有附件、憑證、D1 SQL、SQLite、node_modules 不進 Git |
 | 既有 `kwmpf-production-raw`／`kwmpf-staging-raw` | 網站來源封存、D1 備份及發布證據 | 既有資料沒有全部複製到交接 bucket；不能當成同一份備份 |
-| 規劃 `kwmpf-handoff` 私有 R2 | 接手 ZIP、入口文件、歷史手冊保存、版本 manifest | 不綁定現有 Worker／Pages，不改網站 runtime 或正式資料庫 |
+| 已建立 `kwmpf-handoff` 私有 R2 | 規劃接手 ZIP、入口文件、歷史保存及 manifest；目前空 bucket | 不綁定現有 Worker／Pages；上傳未批准，不能當成附件已保存 |
 | NAS | 使用者提供 AS5402T、HDD、RAID 後 12 TB | 尚未設置；空閒容量、ADM、檔案系統及網絡未核實，沒有自動備份或備用入口 |
 
 原本約 1.78 GB 的本機實體佔用包括依賴、快取、重複 checkout 及暫存；不等於需要上傳的資料量。
@@ -30,6 +35,7 @@
 
 - bucket 使用 Standard；APAC 是 location hint，不是嚴格資料所在地保證。
 - 不開公開 `r2.dev`、custom domain 或公用下載站；不設自動到期。
+- 此處「不設自動到期」指完整物件；Cloudflare 預設七日清理未完成 multipart upload 仍啟用。
 - 每個版本：`handoffs/<香港日期>/<完整 Git commit>/`。
 - `original-handoff.zip` 是已掃描的 2026-10-01 初始保存包，指向 `2c08f15...`；它不是後續文件版本。
 - 新版本使用 `handoff.zip`、`manifest.json`，以及同一 prefix 的 `entrypoints/` 五份文件。
@@ -50,7 +56,7 @@
 ### 已安裝 Wrangler 的取回範例
 
 此範例使用 repo pinned Wrangler 4.120.0。先於 fresh clone 安裝依賴、確認身分及目標帳戶。
-bucket 完成前這些取回命令不應被當成已執行成功。
+`current.json`／附件未上傳前，以下取回命令不能被當成已執行成功。
 
 ```bash
 cd apps/api
@@ -87,7 +93,7 @@ R2 bucket-scoped object token 用於 S3 API；不能假設它亦可呼叫 Cloudf
 - 有限秘密模式掃描及 SHA 核對，不等於完整 credential history 或全部來源內容認證。
 - R2 10 GB 是 Standard 免費額度，不是容量上限；現有帳戶使用量與免費餘額未核實。
 - 本輪預計總儲存少於 15 MB；實際 bytes 與檔案清單記於 manifest。不因資料小就宣稱沒有費用。
-- NAS 未設置前，私有 R2 仍只有雲端保存；本機交接 ZIP 保留。沒有已核實的自動異地備份。
+- 私有 R2 bucket 已建立，但交接附件仍只在本機 ZIP；沒有已核實的雲端附件保存或自動異地備份。
 
 ## 7. 下一階段
 

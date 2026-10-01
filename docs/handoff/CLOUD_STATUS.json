@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "verifiedAtHongKong": "2026-10-01 14:22",
+  "bucket": {
+    "name": "kwmpf-handoff",
+    "createdAtUtc": "2026-10-01T06:18:51.869Z",
+    "storageClass": "Standard",
+    "location": "APAC",
+    "jurisdiction": "default"
+  },
+  "publicAccess": {
+    "r2DevEnabled": false,
+    "customDomains": []
+  },
+  "retention": {
+    "completeObjectExpirationConfigured": false,
+    "incompleteMultipartAbortAfterSeconds": 604800
+  },
+  "objectCount": 0,
+  "objectsUploaded": false,
+  "objectReadBackVerified": false,
+  "currentPointerPublished": false,
+  "bucketCreationApprovalReceived": true,
+  "privatePayloadUploadApprovalReceived": false,
+  "privatePayloadUploadRejectedByAutomaticReview": true,
+  "nasConfigured": false,
+  "productionDeploymentPerformed": false
+}

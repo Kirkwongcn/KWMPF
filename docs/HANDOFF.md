@@ -1,10 +1,10 @@
 # KWMPF → Claude Code 即時交接
 
-更新：2026-10-01 14:07（Asia/Hong_Kong；網站驗收基線保留 00:55 證據，時效 API 使用 UTC 日界）。
+更新：2026-10-01 14:22（Asia/Hong_Kong；網站驗收基線保留 00:55 證據，時效 API 使用 UTC 日界）。
 任務：暫停新增功能與重構，核實並安全保存網站／資料／工作差異及接手文件。
-今次不合併、不改 Cloudflare、不 dispatch／批准部署。入口共用規則 [AGENTS](../AGENTS.md)，Claude 入口 [CLAUDE](../CLAUDE.md)。
+今次只按使用者批准建立獨立私有 R2 交接 bucket；不合併、不 dispatch／批准網站部署。入口共用規則 [AGENTS](../AGENTS.md)，Claude 入口 [CLAUDE](../CLAUDE.md)。
 
-## 本輪雲端儲存跟進（2026-10-01；尚待 R2 批准）
+## 本輪雲端儲存跟進（2026-10-01；bucket 已建立，資料上傳待批准）
 
 使用者要求先安排 GitHub／Cloudflare，再更新交接；NAS 尚未設置。先以 KWMPF 處理，沒有把其他項目視為已完成。
 本段是較新的儲存狀態；下列網站開發、來源及驗收仍保留原來的證據日期。
@@ -14,10 +14,13 @@ main 仍為 `6a593dba460b905badbfca9e9eac85a16318309e`，正式 Pages canonical 
 兩個 Worker Build triggers 仍為空，Pages 詳情無 source 欄位；repo CI 是 PR／push main，部署仍 manual。
 rulesets GET 回空清單；classic main protection GET 403，不能据此說 main 未受保護。
 
-**已準備、未啟用**：[storage declaration](../config/storage.json) 與 [雲端儲存／取回手冊](CLOUD_STORAGE.md)。
-擬建 `kwmpf-handoff` Standard 私有 bucket，保存交接包／入口文件及核對清單；不綁現有 Worker／Pages。
-自動批准審查因先前 Cloudflare 批准要求，拒絕首次 bucket creation；已提交具體方案待使用者批准，沒有繞過。
-因此目前 **bucket 尚未建立、没有新增 R2 上傳／讀回、没有設定新 token／NAS／自動備份**。
+**已建立並讀回**：[storage declaration](../config/storage.json) 與 [雲端儲存手冊](CLOUD_STORAGE.md) 記錄
+`kwmpf-handoff` Standard 私有 bucket，建立時間香港 14:18:51.869；APAC、公開 enabled=false、沒有 custom domain。
+完整物件沒有到期規則；預設七日中止未完成 multipart upload 保留。沒有綁現有 Worker／Pages。
+使用者已明確批准建立 bucket，首次建立拒絕已按批准解決；ZIP 上傳則被自動批准審查另行拒絕，
+理由為 bucket creation 的批准沒有明確授權匯出私有 payload。命令未執行，沒有改用其他工具繞過。
+物件清單為空：**尚未上傳 ZIP／manifest／入口文件／current pointer，未有附件讀回核對；新 token／NAS／自動備份均未配置**。
+較新的 GitHub 交接起始 HEAD 為 `8758f13c734d2911980e240ca16cdcd1020b702f`；main 及正式 Pages tuple 仍未變。
 
 既有初始交接 ZIP 的 bytes `4270131`、SHA-256 `57534ae6bcdecc80b25a44845b1b09a45dbd1c2b5109d859f3b475514bf73c8f`；
 425 個文字 entries 經有限秘密模式／檔名／path 檢查無 finding，CRC 無錯誤。不是完整 credential history 認證。
@@ -28,7 +31,7 @@ rulesets GET 回空清單；classic main protection GET 403，不能据此說 ma
 Codex Cloud 環境由使用者報稱已設定；本次仍在 Windows 本機，沒有證據已把任務移到雲端 executor。
 
 本輪文件保存後的 exact commit／GitHub push 及 cloud package 結果，讀外部
-`C:/Users/user/Documents/Codex/2026-09-26/kwmpf/outputs/cloud-storage-handoff-2026-10-01/HANDOFF_RECEIPT.json`
+`C:/Users/user/Documents/Codex/2026-09-26/kwmpf/outputs/cloud-storage-handoff-2026-10-01-bucket-created/HANDOFF_RECEIPT.json`
 （不是本檔自己的 hash，也不是公開 repo 路徑），與使用者最後回報核對。
 保存初始 ZIP，不能覆寫它而把舊 SHA 當成新包。沒有新增網站功能、合併 main 或正式部署。
 
@@ -217,7 +220,7 @@ push `main` 只觸发 CI；候選refresh與raw R2 archive不等於production dep
 - 正式監察通知管道與 SLO、ruleset／Cloudflare設定調整：須有具體可審方案及批准。
 - 三年累積回報是否獨立新增、完整時序來源／權利是否可接受；目前不混入年率化。
 - Zo若需要私有 PDF／R2／D1資料，採甚麼私有傳送及權限；不能從 public repo拿到所有私有原件。
-- 本輪具體 `kwmpf-handoff` 私有 bucket／交接包上傳方案尚待批准；新 LLM 需獨立授權，NAS稍後設定。
+- `kwmpf-handoff` 已按批准建立；私有交接包及入口文件上傳／讀回需明確資料傳送批准。新 LLM 需獨立授權，NAS稍後設定。
 - 每一次合併正式分支／改Cloudflare／production deploy／restore仍須新批准；本次交接授權不涵蓋這些操作。
 
 未聲稱已登入 Zo、Claude 已讀到文檔，或本次 Cloudflare 已部署。

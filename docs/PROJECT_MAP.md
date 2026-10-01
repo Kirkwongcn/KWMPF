@@ -138,8 +138,10 @@ PR 會執行 CI，但本次不建立 PR、合併或發布。公開推送只包�
 ## 8. 雲端交接儲存補充（2026-10-01）
 
 非網站 runtime 設定：[config/storage.json](../config/storage.json)；操作與跨 LLM 取回方式：[CLOUD_STORAGE](CLOUD_STORAGE.md)。
-GitHub public code／文件和私有 R2 附件分開。`kwmpf-handoff` 是待批准的新 Standard 私有 bucket，
-目前沒有建立／上傳／current pointer，也沒有新增 Worker／MCP／GitHub workflow／environment secrets。
+GitHub public code／文件和私有 R2 附件分開。`kwmpf-handoff` 已按使用者批准建立，Standard／APAC，
+公開 enabled=false、無 custom domain、完整物件無自動到期；預設七日中止未完成 multipart upload 保留。
+建立時間香港 2026-10-01 14:18:51.869，物件清單空。私有資料上傳另被自動批准審查拒絕，需明確傳送批准。
+目前沒有 ZIP／manifest／current pointer，也沒有新增 Worker／MCP／GitHub workflow／environment secrets。
 既有 production／staging raw bucket 不改名、不搬移，未將其所有物件複製到交接區。
 
 取回工具的變數名稱：`CLOUDFLARE_ACCOUNT_ID`、`CLOUDFLARE_API_TOKEN`；S3 客戶端為
