@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { SiteChrome } from "./SiteChrome";
 import { ArrowIcon } from "./ArrowIcon";
 import { AvailabilityChart, type DataQuality } from "./DataCharts";
+import { StatTiles } from "./Charts";
+import { MarketOverview } from "./MarketOverview";
 type Summary = {
   snapshotId: string | null;
   fundClassCount: number;
@@ -92,27 +94,31 @@ export function App({ apiUrl }: { apiUrl: string }) {
           </a>
         </aside>
       </section>
-      <section className="kw-coverage-strip" aria-label="已發布資料範圍">
-        {summary ? (
-          <>
-            <span>
-              <strong>{summary.fundClassCount}</strong> 個基金類別
-            </span>
-            <span>
-              <strong>{summary.schemeCount}</strong> 個計劃
-            </span>
-            <span>
-              <strong>{summary.trusteeCount}</strong> 個受託人
-            </span>
-            <span>
-              平台資料截至{" "}
-              <strong>{summary.dataAsOf?.latest ?? "官方未提供"}</strong>
-            </span>
-          </>
-        ) : (
+      {summary ? (
+        <StatTiles
+          label="已發布資料範圍"
+          className="kw-coverage-strip"
+          items={[
+            { label: "基金類別", value: summary.fundClassCount },
+            { label: "強積金計劃", value: summary.schemeCount },
+            { label: "受託人", value: summary.trusteeCount },
+            {
+              label: "平台資料截至",
+              value: summary.dataAsOf?.latest ?? "官方未提供",
+            },
+          ]}
+        />
+      ) : (
+        <section className="kw-coverage-strip" aria-label="已發布資料範圍">
           <span>{failed ? "資料範圍暫時無法取得" : "正在讀取公開快照…"}</span>
-        )}
-      </section>
+        </section>
+      )}
+      {summary?.snapshotId && (
+        <MarketOverview
+          apiOrigin={new URL(apiUrl).origin}
+          snapshotId={summary.snapshotId}
+        />
+      )}
       <section className="kw-task-section" aria-labelledby="next-title">
         <div>
           <h2 id="next-title">由你的問題出發</h2>

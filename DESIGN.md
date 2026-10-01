@@ -28,6 +28,23 @@ colors:
   category-violet: "#81768c"
   category-green: "#61887a"
   category-rose: "#a96065"
+  viz-1: "#00879f"
+  viz-2: "#c07f12"
+  viz-3: "#d0577a"
+  viz-4: "#5560c4"
+  viz-5: "#4b9a3a"
+  viz-6: "#7b4fa0"
+  viz-context: "#b8c2c4"
+  viz-grid: "#e6e9e6"
+  viz-axis: "#9aa39f"
+  risk-1: "#7cc2cb"
+  risk-2: "#55aab5"
+  risk-3: "#33919e"
+  risk-4: "#1c7a88"
+  risk-5: "#106472"
+  risk-6: "#094f5b"
+  risk-7: "#043b45"
+  action-hover: "#0a2f38"
 typography:
   display:
     fontFamily: 'Georgia, "Times New Roman", "PMingLiU", serif'
@@ -80,7 +97,7 @@ typography:
     fontWeight: 600
     lineHeight: 1.3
 rounded:
-  panel: "4px"
+  panel: "6px"
   control: "8px"
   table: "10px"
   badge: "5px"
@@ -217,6 +234,14 @@ components:
 - `ink`、`muted-strong`、`muted` 分別承擔主文字、次要說明及日期來源；深色頁首使用 `nav-link` 與 `brand-subtitle`。
 - `line` 用於分組邊界；`control-border` 讓輸入框與零線清楚可辨。
 
+### Chart palette（2026-10-01）
+
+- 圖表色由 dataviz `validate_palette.js` 驗證（淺色、白底）：類別色 `viz-1`–`viz-5` 次序固定、不循環，相鄰色在紅綠色盲模擬下 ΔE ≥ 8、正常視覺 ≥ 15，對白底對比 ≥ 3:1。舊 `category-*` 色太灰（色度低於 0.10、色盲下不可分），只保留給既有配置圖例，不用於新圖。
+- 配置圓環／堆疊最多六項，用 `viz-1`–`viz-6`；圓環首尾相接，`viz-1`↔`viz-6` 色盲 ΔE 約 7.1（6–8 區間），因此必須保留逐項文字標籤及原值列表作第二辨識。
+- 單一系列一律用 `viz-1`；「本基金」等強調點用 `viz-2`，其餘用 `viz-context` 灰作背景。
+- 風險級別 1–7 用 `risk-1`–`risk-7` 單一青色序列色階（ordinal 檢查通過，淺端對白底 ≥ 2:1）。
+- 網站只有淺色模式，故未建立深色色階。
+
 ### Named Rules
 
 **The 狀態要有文字 Rule.** 顏色只提供第二條辨識線索；過期、未取得、未核實與抽取異常必須同時以文字交代。
@@ -252,11 +277,11 @@ components:
 
 ## Elevation & Depth
 
-資料面常態以白底、細邊界及表頭分層。沒有資料卡片投影；閱讀模式選取仍沿用 `0 2px 5px #17223114`，計劃選取使用 `inset 0 0 0 1px var(--kw-action)` 作狀態內框。點圖的外描邊用於辨認資料點，不是容器浮起。
+資料面以白底、細邊界及表頭分層；2026-10 改版加入一層極淡投影 `0 1px 2px rgb(22 37 44 / 0.06)` 統一卡片、表格、圖表與工具列，tooltip 用 `0 6px 18px rgb(22 37 44 / 0.14)`。閱讀模式選取仍沿用 `0 2px 5px #17223114`，計劃選取使用 `inset 0 0 0 1px var(--kw-action)` 作狀態內框。點圖的外描邊用於辨認資料點，不是容器浮起。
 
 ### Named Rules
 
-**The 平面資料面 Rule.** 資料面板以細邊界分組；投影只沿用已實作的選取控制狀態，不擴張為卡片裝飾。
+**The 平面資料面 Rule.** 資料面板以細邊界分組；投影只用上述兩級，不疊加、不作裝飾性浮起。
 
 ## Shapes
 
@@ -266,11 +291,15 @@ components:
 
 ### Buttons and Fields
 
-主要按鈕為深青底白字，次要為白底深青字；內距 (10px 18px)，最小高度 (44px)。輸入內距 (10px 12px)，有明確邊界及上方標籤。白色表面焦點為深青外框 (3px)，偏移 (3px)；深色頁首與 hero 焦點使用亮金。背景狀態轉換為 (180ms ease-out)，reduced-motion 時移除。來源目前仍有主要按鈕的鈷藍滑入遺留；此值不列為品牌 token。
+主要按鈕為深青底白字，次要為白底深青字；內距 (10px 18px)，最小高度 (44px)。輸入內距 (10px 12px)，有明確邊界及上方標籤。白色表面焦點為深青外框 (3px)，偏移 (3px)；深色頁首與 hero 焦點使用亮金。背景狀態轉換為 (180ms ease-out)，reduced-motion 時移除。主要按鈕滑入改為較深的品牌青 `action-hover`，舊鈷藍滑入已移除。
 
 ### Navigation and Reading Mode
 
 頁首保留 kW 圓形、Kirk Wong Research 與 serif KWMPF；導覽為「基金瀏覽／基金排名／計劃比較」。當前頁以白字、較重字及亮金底線共同標示。閱讀模式是帶 `aria-pressed` 的兩個按鈕；深入分析預設展開更多資料，簡潔仍可進入來源、限制與完整表格。頁尾保留方法、覆蓋、官方平台與免責入口。
+
+### Page Rhythm（2026-10 改版）
+
+頁首、kW 標記、serif KWMPF 與 hero 圖片不變；hero 底部加 3px `gold` 線。閱讀工具列改為全寬白帶。段落標題用 1px `line` 底線加 56px 金色短線，取代原 2px 深青粗線。首頁搜尋區與覆蓋圖放在同一張白卡；頁尾改為深青底、金色頂線，與頁首呼應。
 
 ### Chips and Panels
 
@@ -295,6 +324,18 @@ components:
 ### Allocation
 
 先經保守的顯示守門核對標籤及有限數值。異常抽取暫不顯示圖表與數值表，提供便覽入口並說明這不代表官方沒有披露。通過守門、非負且合計 (99–101%) 的配置，最多六項用圓環，更多項用堆疊；合計調整只影響圖形長度，原值不改。不完整但可用的配置退回獨立條形。前端守門不能替代來源 parser 修復。
+
+### Chart Components（`Charts.tsx`）
+
+所有新圖表共用 `ChartFrame`：標題、副題、圖例、圖、註腳及「查看數據表」對照表（打開才渲染）。標記可用滑鼠指向或鍵盤聚焦取得 tooltip；tooltip 只作輔助，數值同時見數據表或列尾文字。
+
+- **StatTiles**：一排 KPI 數字卡（首頁資料範圍、市場概覽摘要、排名摘要）。大數字用比例數字；衍生值標「本站計算」。
+- **Histogram**：官方原值分布；組距由本站按刻度決定，負值區間用 `negative`，中位數用墨色實線標示。
+- **Scatter**：兩項官方指標同一平面（一年／五年等回報對三年波幅），只有一條 y 軸；以最近點（24px 內）取 tooltip，點擊開啟基金詳情。
+- **RangeChart**：每列最低至最高（`viz-context`）、中位數（墨色短線）及可選強調點（`viz-2`）。用於各比較組別並列、基金同組位置、各計劃管理費範圍、DIS 回報；跨組並列必須註明不是排名。
+- **StackedBars**：每列組成（風險級別、官方基金種類大類），2px 白隙分段，列尾印合計。
+- **RiskScale**：官方風險級別 1–7 刻度，當前級別放大並印出數字。
+- 需要額外資料的圖（市場概覽、同組位置）捲動到附近才載入；所有資料必須與頁面同一 `snapshotId`，否則顯示未能取得，不混合快照。
 
 ## Do's and Don'ts
 

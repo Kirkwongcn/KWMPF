@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { SiteChrome } from "./SiteChrome";
 import { matchesSearch } from "../../api/src/search";
 import { fundClassLabel, joinFundParts } from "./fundClassLabel";
+import { SchemeOverview } from "./SchemeOverview";
 
 type SchemeFund = {
   id: string;
@@ -317,6 +318,9 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
           <p className="kw-status kw-status--warning" role="status">
             目前沒有已發布的計劃資料。
           </p>
+        )}
+        {filteredSchemes && filteredSchemes.length > 0 && (
+          <SchemeOverview schemes={filteredSchemes} />
         )}
         <div className="kw-grid scheme-list">
           {filteredSchemes?.map((scheme) => {

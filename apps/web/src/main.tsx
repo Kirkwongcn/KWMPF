@@ -11,6 +11,8 @@ import { DataStatusPage } from "./DataStatusPage";
 import { MethodologyPage } from "./MethodologyPage";
 import { SiteChrome } from "./SiteChrome";
 import "./styles.css";
+import "./viz.css";
+import "./refresh.css";
 
 const apiBaseUrl = import.meta.env.VITE_API_URL ?? "http://localhost:8787";
 const root = document.getElementById("root");

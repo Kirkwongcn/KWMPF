@@ -2,6 +2,13 @@ import { useEffect, useMemo, useState } from "react";
 import { SiteChrome } from "./SiteChrome";
 import { fundClassLabel, joinFundParts } from "./fundClassLabel";
 import { ValueBars } from "./DataCharts";
+import {
+  Histogram,
+  RangeChart,
+  StatTiles,
+  formatDerived,
+  median,
+} from "./Charts";
 import { useViewMode } from "./viewMode";
 import { downloadCsv } from "./downloadCsv";
 
@@ -306,6 +313,13 @@ export function RankingsPage({
                 {`有 ${publication.excludedStaleCount} 隻基金的資料已超出網站時效門檻（${publication.methodology?.freshness?.graceDays ?? 45} 日），暫不列入排名。這些數值仍可在各基金詳情頁連同原截至日期查看。`}
               </p>
             ) : null}
+            {rankings?.length ? (
+              <RankingSummary
+                rows={rankings}
+                metric={metric}
+                valueLabel={valueLabel}
+              />
+            ) : null}
             {metric === "return" && period === "3" && (
               <p className="kw-gap-guidance">
                 三年資料未齊或已過期時，可先比較{" "}
@@ -416,33 +430,63 @@ export function RankingsPage({
                       }))}
                     />
                   ) : (
-                    <div className="kw-group-picker">
-                      <h3>先選比較組別，才看圖表</h3>
-                      <p className="kw-muted">
-                        下列數量代表各組合資格樣本，並非跨組別優劣排名。
-                      </p>
-                      <div>
-                        {comparisonGroups.map((group) => (
-                          <button
-                            key={group}
-                            onClick={() => {
-                              setComparisonGroup(group);
-                              pushRankingUrl(metric, period, group);
-                            }}
-                          >
-                            {group}
-                            <strong>
-                              {
-                                publication.rankings.filter(
-                                  (row) => row.comparisonGroup === group,
-                                ).length
-                              }
-                            </strong>
-                          </button>
-                        ))}
+                    <>
+                      <GroupSpread
+                        rows={publication.rankings}
+                        metric={metric}
+                        period={period}
+                        valueLabel={valueLabel}
+                      />
+                      <div className="kw-group-picker">
+                        <h3>先選比較組別，才看圖表</h3>
+                        <p className="kw-muted">
+                          下列數量代表各組合資格樣本，並非跨組別優劣排名。
+                        </p>
+                        <div>
+                          {comparisonGroups.map((group) => (
+                            <button
+                              key={group}
+                              onClick={() => {
+                                setComparisonGroup(group);
+                                pushRankingUrl(metric, period, group);
+                              }}
+                            >
+                              {group}
+                              <strong>
+                                {
+                                  publication.rankings.filter(
+                                    (row) => row.comparisonGroup === group,
+                                  ).length
+                                }
+                              </strong>
+                            </button>
+                          ))}
+                        </div>
                       </div>
-                    </div>
+                    </>
                   ))}
+                {display === "chart" &&
+                  effectiveGroup !== "all" &&
+                  rankings.length > 2 && (
+                    <Histogram
+                      title={`${effectiveGroup} · ${valueLabel}分布`}
+                      subtitle={`組內全部 ${rankings.length} 隻合資格基金；每柱代表一個數值區間內的基金數目`}
+                      values={rankings.map((row) => row.value)}
+                      markers={(() => {
+                        const middle = median(rankings.map((row) => row.value));
+                        return middle === undefined
+                          ? []
+                          : [
+                              {
+                                value: middle,
+                                label: `中位數 ${formatDerived(middle)}`,
+                              },
+                            ];
+                      })()}
+                      binTarget={12}
+                      note="分組及中位數由本站按官方原值計算；完整原值、日期及來源見完整表格。"
+                    />
+                  )}
                 <p
                   className="kw-muted"
                   role="status"
@@ -574,5 +618,119 @@ export function RankingsPage({
         )}
       </section>
     </SiteChrome>
+  );
+}
+
+function RankingSummary({
+  rows,
+  metric,
+  valueLabel,
+}: {
+  rows: RankingRow[];
+  metric: RankingMetric;
+  valueLabel: string;
+}) {
+  const sorted = [...rows].sort((a, b) => a.value - b.value);
+  const lowest = sorted[0]!,
+    highest = sorted[sorted.length - 1]!;
+  const middle = median(rows.map((row) => row.value));
+  const name = (row: RankingRow) =>
+    joinFundParts(row.constituentFundName, fundClassLabel(row.fundClassName));
+  return (
+    <StatTiles
+      label="目前篩選摘要"
+      className="kw-stats--compact"
+      items={[
+        { label: "合資格基金", value: `${rows.length} 隻` },
+        {
+          label: `${valueLabel}中位數（本站計算）`,
+          value: middle === undefined ? "未取得" : formatDerived(middle),
+        },
+        {
+          label: "範圍（官方原值）",
+          value: `${lowest.displayValue} 至 ${highest.displayValue}`,
+          note:
+            metric === "return"
+              ? `最高：${name(highest)}`
+              : `最低：${name(lowest)}`,
+        },
+      ]}
+    />
+  );
+}
+
+/** Side-by-side spread per comparison group — a context view, never a cross-group ranking. */
+function GroupSpread({
+  rows,
+  metric,
+  period,
+  valueLabel,
+}: {
+  rows: RankingRow[];
+  metric: RankingMetric;
+  period: RankingPeriod;
+  valueLabel: string;
+}) {
+  const groups = new Map<string, number[]>();
+  for (const row of rows)
+    groups.set(row.comparisonGroup, [
+      ...(groups.get(row.comparisonGroup) ?? []),
+      row.value,
+    ]);
+  const spread = [...groups.entries()]
+    .map(([group, values]) => ({
+      group,
+      values,
+      min: Math.min(...values),
+      max: Math.max(...values),
+      median: median(values)!,
+    }))
+    .sort((a, b) =>
+      metric === "return" ? b.median - a.median : a.median - b.median,
+    );
+  const query = (group: string) => {
+    const params = new URLSearchParams();
+    if (metric === "return") params.set("period", period);
+    else params.set("metric", metric);
+    params.set("group", group);
+    params.set("display", "chart");
+    return `/rankings?${params.toString()}`;
+  };
+  return (
+    <RangeChart
+      title={`各比較組別的${valueLabel}分布`}
+      subtitle="灰線為組內最低至最高，黑線為中位數；只作並列參考，不是跨組別排名"
+      legend={[
+        { label: "組內範圍（官方原值）", color: "var(--kw-viz-context)" },
+        { label: "中位數（本站計算）", color: "var(--kw-ink)", shape: "line" },
+      ]}
+      rows={spread.map((item) => ({
+        key: item.group,
+        label: <a href={query(item.group)}>{item.group}</a>,
+        min: item.min,
+        max: item.max,
+        median: item.median,
+        count: item.values.length,
+        summary: `${item.group}：${item.values.length} 隻，範圍 ${item.min}% 至 ${item.max}%，中位數 ${formatDerived(item.median)}（本站計算）`,
+      }))}
+      note="不同組別的基金種類及風險不同，跨組並列不代表優劣。點擊組別名稱查看該組完整排名圖表。"
+      table={{
+        caption: `各比較組別的${valueLabel}分布`,
+        columns: [
+          "比較組別（非官方分類）",
+          "基金數目",
+          "最低",
+          "中位數（本站計算）",
+          "最高",
+        ],
+        rows: spread.map((item) => [
+          item.group,
+          `${item.values.length}`,
+          `${item.min}%`,
+          formatDerived(item.median),
+          `${item.max}%`,
+        ]),
+      }}
+    />
   );
 }

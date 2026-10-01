@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { SiteChrome } from "./SiteChrome";
 import { ValueBars } from "./DataCharts";
+import { RangeChart, type RangeRow } from "./Charts";
 import { useViewMode } from "./viewMode";
 
 type DisObservation = {
@@ -202,6 +203,57 @@ function SchemeCompareCharts({ schemes }: { schemes: ComparedScheme[] }) {
             : "官方未提供",
         }))}
       />
+      {(
+        [
+          ["coreAccumulation", "核心累積基金"],
+          ["age65Plus", "65歲後基金"],
+        ] as const
+      ).map(([component, componentLabel]) => {
+        const rows = returnPeriods.flatMap((period) =>
+          schemes.flatMap((scheme): RangeRow[] => {
+            const values =
+              scheme.disPerformance[component]?.fundClasses.flatMap((fund) => {
+                const observation = fund.observations?.[period];
+                return observation?.status === "verified" &&
+                  typeof observation.value === "number"
+                  ? [observation.value]
+                  : [];
+              }) ?? [];
+            if (!values.length) return [];
+            const min = Math.min(...values),
+              max = Math.max(...values);
+            const text = min === max ? `${min}%` : `${min}% – ${max}%`;
+            return [
+              {
+                key: `${period}-${scheme.id}`,
+                label: scheme.schemeName,
+                sub: `${returnPeriodLabels[period]}年率化 · ${values.length} 個類別`,
+                min,
+                max,
+                marker:
+                  min === max
+                    ? { value: min, label: `${scheme.schemeName} ${text}` }
+                    : undefined,
+                value: text,
+                summary: `${componentLabel} ${returnPeriodLabels[period]}：${scheme.schemeName} ${text}（${values.length} 個合資格基金類別）`,
+              },
+            ];
+          }),
+        );
+        return rows.length ? (
+          <RangeChart
+            key={component}
+            title={`${componentLabel}：各期間官方年率化回報`}
+            subtitle="只畫未過期、已核實的官方數值；多個基金類別時顯示最低至最高，不取中點"
+            legend={[
+              { label: "單一類別數值", color: "var(--kw-viz-2)", shape: "dot" },
+              { label: "多個類別的範圍", color: "var(--kw-viz-context)" },
+            ]}
+            rows={rows}
+            note="過期、未核實或官方未提供的期間不繪圖，請以上表及逐筆披露核對；不同期間是獨立披露，不構成時間走勢。"
+          />
+        ) : null;
+      })}
       <p className="kw-muted">
         每幅圖使用自己的實際單位及共同零起點，不作標準分或總分。DIS
         多類別回報範圍保留於上表；不把範圍中點當作官方回報。
