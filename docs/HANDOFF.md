@@ -1,5 +1,10 @@
 # KWMPF → Claude Code 即時交接
 
+## 最新：F-01 現況及 F-02 修正（2026-10-01 23:40 香港）
+
+**F-01（已驗證）**：本環境而家可連官方網站（`mfp.mpfa.org.hk` 200）。積金局基金平台列表頁 UTC 2026-10-01 仍寫「Latest information as of 31 Aug 2026」；每週 refresh 最近一次（run #11，09-29 排程）成功但冇新候選 PR，下次排程 10-06 19:00 UTC。一年等回報寬限 45 日（`apps/api/src/freshness.ts` `DEFAULT_RETURNS_GRACE_DAYS`），8 月底資料 10-16 起過期；9 月底資料要 10-15 前上線先無缺口。**推測**：平台通常月底後三至四星期先更新，所以每月可能有一段全數過期期，屬時效政策問題，待使用者決定（例如寬限日數或過期顯示方式）。三年 trustee 新期別 discovery（F-14）而家有網絡可做，未開始。
+**F-02（已實作，未開 PR）**：branch `claude/relaxed-goldberg-5ytvfk-ci-seed-overlay`（由 main `6a593db`），code 與文件分兩個 commit。新增 `scripts/resolve-latest-return-candidate.sh`（揀法同 deploy workflows）及其 shell 測試；`check-publication-seed.sh` 預設用最新候選並印 source／overlay 路徑及 SHA；CI 在 seed 腳本改動時跑 publication-seed；`change-policy.md` 手動步驟補 overlay。重現：main 版本空 overlay → 23 rows／188 stale；修正後 → 37／258（與正式一致）。`bun run check` 通過（333／80／115）。deploy workflows（高危路徑）未改。開 PR 待使用者同意。
+
 ## 最新：Claude 雲端 R2 還原完成（2026-10-01 20:42 香港）
 
 Claude Code（Anthropic 雲端 Linux 容器，`/home/user/KWMPF`）由 `claude/eager-hawking-a491zc` @ `24c19a9a0684bd4fcde39edaba69ea742fa3363b` 接續，工作分支 `claude/relaxed-goldberg-5ytvfk`；最後 SHA 以 GitHub 該分支為準，本檔不自引。
