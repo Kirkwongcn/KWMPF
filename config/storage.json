@@ -10,10 +10,10 @@
   "handoff": {
     "provider": "cloudflare-r2",
     "bucket": "kwmpf-handoff",
-    "status": "created-private-upload-awaiting-approval",
+    "status": "private-handoff-readback-verified",
     "bucketCreated": true,
     "bucketCreatedAtUtc": "2026-10-01T06:18:51.869Z",
-    "objectsUploaded": false,
+    "objectsUploaded": true,
     "storageClass": "Standard",
     "locationHint": "apac",
     "snapshotPrefix": "handoffs/",
@@ -21,10 +21,13 @@
     "publicAccess": false,
     "automaticExpiry": false,
     "incompleteMultipartAbortAfterSeconds": 604800,
-    "currentPointerPublished": false,
+    "currentPointerPublished": true,
     "promotionRequiresCompleteReadBack": true,
     "integrity": "sha256-and-byte-length",
-    "applicationBinding": false
+    "applicationBinding": false,
+    "firstVerifiedSnapshotCommit": "0e3a38ebb952869f72abd7c4d2b0ae782828bfc6",
+    "verifiedAtHongKong": "2026-10-01 14:47",
+    "currentPointerCompletionEvidence": "Read current.json and the external HANDOFF_RECEIPT.json for the final tuple; repository status is a dated checkpoint"
   },
   "access": {
     "authenticationRequired": true,
