@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { PeerPosition } from "./PeerPosition";
+import { RiskScale } from "./Charts";
 import { SiteChrome } from "./SiteChrome";
 import {
   ValueBars,
@@ -908,7 +910,10 @@ export function FundClassPage({
             <dl className="status-list">
               <div>
                 <dt>風險級別</dt>
-                <dd>{fundClass.riskClass ?? unavailable}</dd>
+                <dd>
+                  {fundClass.riskClass ?? unavailable}
+                  <RiskScale riskClass={fundClass.riskClass} />
+                </dd>
               </div>
               <div>
                 <dt>基金風險指標</dt>
@@ -1386,6 +1391,12 @@ export function FundClassPage({
                 </a>
               </p>
             </div>
+            <PeerPosition
+              apiBaseUrl={apiBaseUrl}
+              fundClassId={fundClassId}
+              comparisonGroup={comparisonGroup}
+              snapshotId={snapshotId}
+            />
           </section>
         </div>
       )}
