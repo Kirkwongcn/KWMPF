@@ -114,6 +114,9 @@ jobs:
                 run_publication_seed=true
               elif [[ "$path" =~ ^data/coverage/[0-9]{4}-[0-9]{2}-[0-9]{2}-official-return-observations-report\.json$ ]]; then
                 :
+              elif [[ "$path" =~ ^scripts/(check-publication-seed|resolve-latest-return-candidate|resolve-previous-snapshot|e2e-serve-api)\.sh$ ]]; then
+                run_e2e=true
+                run_publication_seed=true
               elif [[ "$path" =~ ^(apps/(api|web)/.*|packages/coverage/.*)\.(test|spec)\.(ts|tsx)$ ]]; then
                 :
               elif [[ "$path" == ".github/workflows/ci.yml" ]]; then
@@ -149,7 +152,7 @@ jobs:
             if [[ -n "$return_observations" ]]; then
               echo "Will run the local publication seed check with candidate overlay: $return_observations." >> "$GITHUB_STEP_SUMMARY"
             else
-              echo "Will run the local publication seed check against the latest source batch." >> "$GITHUB_STEP_SUMMARY"
+              echo "Will run the local publication seed check against the latest source batch and the latest trustee-return candidate overlay." >> "$GITHUB_STEP_SUMMARY"
             fi
           fi
       - uses: oven-sh/setup-bun@v2
