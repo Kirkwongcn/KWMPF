@@ -1,0 +1,598 @@
+{
+ "note": "Local lab only: vite preview 127.0.0.1:4180 + local Worker 127.0.0.1:8898; source 2026-09-26 platform, overlay 2026-09-30 candidate; Chromium 141.0.7390.37 headless shell mapped to Playwright rev 1200; not production, not field data.",
+ "evaluatedAtUtc": "2026-10-01T09:28Z",
+ "results": [
+  {
+   "device": "desktop",
+   "route": "/",
+   "status": 200,
+   "title": "KWMPF｜香港強積金比較",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 1269,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 1,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  },
+  {
+   "device": "desktop",
+   "route": "/?view=analysis",
+   "status": 200,
+   "title": "KWMPF｜香港強積金比較",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 1269,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 2,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  },
+  {
+   "device": "desktop",
+   "route": "/funds",
+   "status": 200,
+   "title": "按條件瀏覽基金｜KWMPF",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 1269,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 70,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  },
+  {
+   "device": "desktop",
+   "route": "/funds?q=%E6%9D%B1%E4%BA%9E",
+   "status": 200,
+   "title": "按條件瀏覽基金｜KWMPF",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 1269,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 1,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  },
+  {
+   "device": "desktop",
+   "route": "/funds/compare?ids=mpfa-cf-102,mpfa-cf-1159,mpfa-cf-1040",
+   "status": 200,
+   "title": "基金並列比較｜KWMPF",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 1269,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 40,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  },
+  {
+   "device": "desktop",
+   "route": "/fund-classes/mpfa-cf-1040",
+   "status": 200,
+   "title": "BEA Growth Fund｜KWMPF",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 1269,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 7,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  },
+  {
+   "device": "desktop",
+   "route": "/rankings",
+   "status": 200,
+   "title": "一年回報排名｜KWMPF",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 1269,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 863,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  },
+  {
+   "device": "desktop",
+   "route": "/rankings?period=3",
+   "status": 200,
+   "title": "三年回報排名｜KWMPF",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 1269,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 78,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  },
+  {
+   "device": "desktop",
+   "route": "/schemes",
+   "status": 200,
+   "title": "強積金計劃比較｜KWMPF",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 1269,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 500,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  },
+  {
+   "device": "desktop",
+   "route": "/schemes/compare",
+   "status": 200,
+   "title": "計劃逐項比較｜KWMPF",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 1269,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 3,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  },
+  {
+   "device": "desktop",
+   "route": "/data-status",
+   "status": 200,
+   "title": "資料時效與覆蓋｜KWMPF",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 1269,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 2,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  },
+  {
+   "device": "desktop",
+   "route": "/methodology",
+   "status": 200,
+   "title": "比較方法與資料來源｜KWMPF",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 1269,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 3,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  },
+  {
+   "device": "desktop",
+   "route": "/fund-classes/does-not-exist",
+   "status": 200,
+   "title": "未能取得基金資料｜KWMPF",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 1269,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 1,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+   ],
+   "unnamedCount": 0
+  },
+  {
+   "device": "desktop",
+   "route": "/nope",
+   "status": 200,
+   "title": "找不到這個頁面｜KWMPF",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 1269,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 2,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  },
+  {
+   "device": "mobile",
+   "route": "/",
+   "status": 200,
+   "title": "KWMPF｜香港強積金比較",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 393,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 1,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  },
+  {
+   "device": "mobile",
+   "route": "/?view=analysis",
+   "status": 200,
+   "title": "KWMPF｜香港強積金比較",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 393,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 2,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  },
+  {
+   "device": "mobile",
+   "route": "/funds",
+   "status": 200,
+   "title": "按條件瀏覽基金｜KWMPF",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 393,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 76,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  },
+  {
+   "device": "mobile",
+   "route": "/funds?q=%E6%9D%B1%E4%BA%9E",
+   "status": 200,
+   "title": "按條件瀏覽基金｜KWMPF",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 393,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 1,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  },
+  {
+   "device": "mobile",
+   "route": "/funds/compare?ids=mpfa-cf-102,mpfa-cf-1159,mpfa-cf-1040",
+   "status": 200,
+   "title": "基金並列比較｜KWMPF",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 393,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 38,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  },
+  {
+   "device": "mobile",
+   "route": "/fund-classes/mpfa-cf-1040",
+   "status": 200,
+   "title": "BEA Growth Fund｜KWMPF",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 393,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 7,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  },
+  {
+   "device": "mobile",
+   "route": "/rankings",
+   "status": 200,
+   "title": "一年回報排名｜KWMPF",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 393,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 632,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  },
+  {
+   "device": "mobile",
+   "route": "/rankings?period=3",
+   "status": 200,
+   "title": "三年回報排名｜KWMPF",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 393,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 62,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  },
+  {
+   "device": "mobile",
+   "route": "/schemes",
+   "status": 200,
+   "title": "強積金計劃比較｜KWMPF",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 393,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 500,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  },
+  {
+   "device": "mobile",
+   "route": "/schemes/compare",
+   "status": 200,
+   "title": "計劃逐項比較｜KWMPF",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 393,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 2,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  },
+  {
+   "device": "mobile",
+   "route": "/data-status",
+   "status": 200,
+   "title": "資料時效與覆蓋｜KWMPF",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 393,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 2,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  },
+  {
+   "device": "mobile",
+   "route": "/methodology",
+   "status": 200,
+   "title": "比較方法與資料來源｜KWMPF",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 393,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 2,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  },
+  {
+   "device": "mobile",
+   "route": "/fund-classes/does-not-exist",
+   "status": 200,
+   "title": "未能取得基金資料｜KWMPF",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 393,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 1,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+   ],
+   "unnamedCount": 0
+  },
+  {
+   "device": "mobile",
+   "route": "/nope",
+   "status": 200,
+   "title": "找不到這個頁面｜KWMPF",
+   "h1": 1,
+   "headingSkips": 0,
+   "overflowX": false,
+   "scrollW": 393,
+   "main": true,
+   "skipLink": true,
+   "smallTargets": 2,
+   "canonical": false,
+   "tabs": [
+    "A:跳至主內容:outline=solid/3px",
+    "A:kWKirk Wong :outline=solid/3px",
+    "A:基金瀏覽:outline=solid/3px"
+   ],
+   "errors": [],
+   "unnamedCount": 0
+  }
+ ]
+}

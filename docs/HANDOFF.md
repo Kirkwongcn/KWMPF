@@ -1,5 +1,12 @@
 # KWMPF → Claude Code 即時交接
 
+## 最新：Claude Code 檢查完成，待使用者檢視（2026-10-01 17:35 香港）
+
+Claude Code（Anthropic 雲端 Linux 容器，`/home/user/KWMPF`）由接手基線 `2e711533cd19a4c002b7d1b47f0cb80d548f947b` 建立 `claude/brave-cerf-17etdq`，只保存文件及非敏感 evidence。報告：[claude-review-2026-10-01](reviews/claude-review-2026-10-01.md)；回交：[CLAUDE_RETURN](handoff/CLAUDE_RETURN.md)。
+**本次實跑**：Bun 1.3.11 frozen install、`bun run check` 通過（333／80／115）、最新 publication-seed 通過（37 合資格／258 過期）、E2E 66/66（Chromium 141 代替 rev 1200，已注明）。**未執行**：R2 還原（無 `R2_*` 認證）、官方網站／正式網站讀取（環境 egress 拒絕）、PDF 原文核對。
+**最急**：一年等平台回報 2026-10-16（UTC）起全數過期；三年合資格 10-30 降至 14、11-30 降至 0，之後 production smoke 會令任何發布失敗（F-01）。CI publication-seed 對 code PR 使用 2026-08-13 舊 overlay（F-02）；OPS-02 已重現（F-03）。
+沒有修改網站 code／資料、合併、部署、dispatch／批准 workflow、改 Cloudflare 或寫 R2。修復範圍待使用者確認後才回 Codex Cloud。
+
 ## 最新工作安排：Claude先檢查，再回Codex Cloud（2026-10-01）
 
 使用者明確決定先讓Claude Code接手檢查；Codex Cloud環境／新client憑證及新雲端驗收任務的建立均延後，待Claude完成工作後再確認。沒有替Claude或Codex建立／發送新任務。

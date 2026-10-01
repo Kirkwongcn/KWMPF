@@ -1,5 +1,11 @@
 # KWMPF 完整文件與私有附件索引
 
+## Claude 檢查結果（2026-10-01）
+
+- [claude-review-2026-10-01](../reviews/claude-review-2026-10-01.md)：實跑指令、15 項發現（已驗證／推測／未核實）、24 計劃三年缺口重算、修復次序。
+- [CLAUDE_RETURN](CLAUDE_RETURN.md)：回交模板填寫版；exact SHA 以最終回覆及 `origin/claude/brave-cerf-17etdq` 為準。
+- [evidence/claude-2026-10-01](../reviews/evidence/claude-2026-10-01/)：時效邊界、OPS-02 重現、UI lab 審查腳本及摘要（腳本含本環境絕對路徑，重跑前請調整）。
+
 ## 目前要交Claude的文件
 
 - [CLAUDE_REVIEW_BRIEF](../CLAUDE_REVIEW_BRIEF.md)：本輪檢查委託、三個開始步驟、優先級、技術／來源／R2及驗證指令。
