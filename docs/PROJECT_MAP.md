@@ -3,6 +3,11 @@
 核實日期：2026-10-01（香港）。這份是實際 code／workflow／只讀 API 地圖；未實作的 spec 構想不當作現有能力。
 即時版本、測試及 push 結果讀 [HANDOFF](HANDOFF.md)；歷史／附件讀 [文件索引](handoff/DOCUMENT_INDEX.md)。
 
+## 本輪協作流程（2026-10-01）
+
+GitHub接手分支及私有R2 → Claude Code按[檢查委託](CLAUDE_REVIEW_BRIEF.md)獨立核對 → 檢查報告／[回交模板](handoff/RETURN_TO_CODEX_TEMPLATE.md)填寫版、exact SHA、未同步及私人證據清單 → 使用者檢視 → 再回Codex Cloud。
+這是文件／版本交接，沒有LLM間自動傳送、沒有啟動Claude新任務或Codex Cloud環境。新的私人取回認證、R2写入及正式操作按共用授權規則處理。
+
 ## 1. Repo、技術與目錄
 
 - Repo：<https://github.com/Kirkwongcn/KWMPF>；Git clone：`https://github.com/Kirkwongcn/KWMPF.git`；public、預設 `main`。

@@ -3,6 +3,11 @@
 更新：2026-10-01 16:23（Asia/Hong_Kong）。**狀態：私有R2補充上傳及全部下載核對已完成；獨立雲端認證、環境建立及雲端還原尚未完成。**
 目前 executor 仍是 Windows。本文件不構成部署或憑證授權。
 
+## 最新接手順序（2026-10-01）
+
+使用者已決定**Claude Code先檢查，完成後才回到Codex Cloud**。先讀 [CLAUDE_REVIEW_BRIEF](CLAUDE_REVIEW_BRIEF.md)及[回交模板](handoff/RETURN_TO_CODEX_TEMPLATE.md)。Codex Cloud環境／其新認證／新驗收任務目前延後；下文setup/maintenance只是備妥範例，不在本輪建立或執行。
+Claude用自己的可用開發環境、GitHub及獨立只讀R2認證驗證可重建性；實際取得、依賴、測試結果回填報告。完成檢查不自動授權修改網站、合併或發布。
+
 ## 完成標準
 
 新環境只用 GitHub、已認證的私有 R2 和可重新安裝的工具，即可取得 code、資料原件、歷史證據、未同步差異、相關 skills；不用原 Windows 路徑、檔案、OAuth、現有 node_modules 或聊天記憶。
@@ -102,7 +107,7 @@ Claude Code、其他具Git/檔案及HTTPS工具的LLM可clone相同repo/branch/e
 
 ### 此次授權與剩餘批准
 
-本次「批准上傳到R2」涵蓋已提出的補充清單及完成記錄，已按此執行。使用者問其他LLM能否接手，不等於批准建立新雲端環境、授予新客戶端敏感讀取權限或建立新任務；這三項仍待具體批准。
+本次「批准上傳到R2」涵蓋已提出的補充清單及完成記錄，已按此執行。最新決定延後Codex Cloud環境／新認證／新任務，待Claude檢查完成後再安排；不沿用先前未答覆的環境建立提問作批准。Claude私人R2讀取需要自己的獨立安全認證，尚未由本次設定或驗收。
 
 ## 官方來源
 

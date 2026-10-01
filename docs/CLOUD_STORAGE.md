@@ -6,6 +6,8 @@
 
 ## 0. 完全不依賴舊本機：最新狀態
 
+**2026-10-01工作順序已確定**：Claude Code先按[檢查委託](CLAUDE_REVIEW_BRIEF.md)檢查；報告與exact SHA依[回交模板](handoff/RETURN_TO_CODEX_TEMPLATE.md)保存，再由使用者交回Codex Cloud。此輪只整理及保存交接文件，Codex Cloud建立、新憑證及新任務延後。沒有為Claude設定認證或聲稱已取得資料。
+
 使用者新增此目標；另讀 [LOCAL_INDEPENDENCE](LOCAL_INDEPENDENCE.md)。使用者已另外批准本輪上傳（put-attempt預算420MB）。394,359,318 bytes補充payload已上傳私有R2並逐件GET核對；全部8,443路徑及4份Git bundles用R2副本完整驗證。完成文件包/manifest及`independence-current.json`由外部完成回執定位；**只讀client、Codex Cloud環境與獨立雲端還原尚未完成**。下列15MB批准與初次上傳是歷史checkpoint；没有修改正式設定或部署。
 
 ## 1. 本輪範圍及狀態

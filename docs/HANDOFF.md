@@ -1,5 +1,19 @@
 # KWMPF → Claude Code 即時交接
 
+## 最新工作安排：Claude先檢查，再回Codex Cloud（2026-10-01）
+
+使用者明確決定先讓Claude Code接手檢查；Codex Cloud環境／新client憑證及新雲端驗收任務的建立均延後，待Claude完成工作後再確認。沒有替Claude或Codex建立／發送新任務。
+閱讀 [CLAUDE_REVIEW_BRIEF](CLAUDE_REVIEW_BRIEF.md)，檢查後使用 [回交模板](handoff/RETURN_TO_CODEX_TEMPLATE.md)；模板是待填文件，不能当成檢查已完成。
+
+**已驗證起始狀態**：此分支`docs/claude-handoff-20261001-safe`／origin同名分支，HEAD `a928b8e383446e34034173de0770cc38a5b14d21`；本輪開始git status乾淨。本輪只有文件及非敏感儲存狀態修訂；最後SHA／push／R2文件包由外部新回執及`independence-current.json`指定。
+2026-10-01 16:51重新核對main及Pages仍為下節基線；兩個Worker以immutable tag查Build triggers均空、Pages API無source；repo CI只PR/push main、網站deploy manual。外部hooks／environment reviewer／branch policy仍未核實。
+
+**Claude頭三步**：clone接手branch並核對使用者最後SHA；讀CLAUDE/AGENTS/檢查委託/PROJECT_MAP並記錄自己的平台及工具；以獨立已批准只讀R2認證取回index與原件，按固定版本安裝、分項檢查。沒有認證可先公開repo檢查，原文核對列未核實。
+**回交**：檢查報告、實跑指令與結果、exact branch/commit/PR、待辦及優先級、已驗證／推測／未核實、所有未同步檔案和私人證據key/hash。使用者檢視後才回到Codex Cloud並決定修復範圍。
+網站新增／重構仍暫停；未批准不merge main、改Cloudflare／remote D1或部署。本次整理沒有執行網站tests/build，沒有聲稱Claude已登入／收到／執行。
+
+以下是有日期的保存及網站歷史checkpoint；新工作順序以本節為準。
+
 ## 本機獨立接手跟進（2026-10-01 16:23；以本節為最新保存狀態）
 
 詳細重建/來源/驗收讀 [LOCAL_INDEPENDENCE](LOCAL_INDEPENDENCE.md)。
@@ -16,7 +30,7 @@
 
 **Claude/Codex Cloud頭三步**：1. clone此功能branch並核對完成回執exact SHA，讀CLAUDE→AGENTS→本頁→PROJECT_MAP/DECISIONS；2. 配置已獨立批准的只讀R2認證及固定Bun1.3.11工具，frozen install；3. 按LOCAL_INDEPENDENCE pinned index下載到新的私人保存區，逐檔及空repo bundles驗證，記錄真正雲端工具/commit/安裝回執。不得merge/deploy或套舊patch。
 
-**批准狀態**：本輪420MB put-attempt預算內R2補充及完成記錄已批准；建立私人KWMPF雲端環境、新bucket只讀憑證及一個雲端還原驗收任務仍待批准。條件式提問「建立後其他LLM可否接手」不當成建立/授權批准。
+**批准狀態（保存checkpoint）**：本輪420MB put-attempt預算內R2補充及完成記錄已批准；最新工作順序已改為Claude先檢查，Codex Cloud建立／新認證／新任務延後，不再把上一個環境批准提問視作正在執行的工作。
 下面14:47/15:47或更早紀錄保留歷史；新補充已保存/下載核對，取代「本輪未上傳/部分binary只在本機」狀態。R2成功不等於完全雲端驗收。
 
 ---

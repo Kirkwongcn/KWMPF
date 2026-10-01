@@ -19,6 +19,8 @@ NAS 尚未設置；另一個 LLM 的獨立授權及資料取回尚未驗證。
 
 完全不依賴舊本機的重建及最新準備狀態見 [LOCAL_INDEPENDENCE](docs/LOCAL_INDEPENDENCE.md)。補充保存包已上傳私有R2並完成下載核對；獨立client、Codex Cloud環境及雲端重建驗收尚未完成。
 
+目前先交Claude Code按[檢查委託](docs/CLAUDE_REVIEW_BRIEF.md)檢查，再依[回交模板](docs/handoff/RETURN_TO_CODEX_TEMPLATE.md)交回；Codex Cloud建立待Claude完成後再安排。
+
 ## 審查及設計跟進
 
 - [2026-09-30 全流程審視與網站改版跟進手冊](docs/reviews/2026-09-30-full-process-and-design-review.md)：資料時效、来源搜尋、準確度、架構缺口、驗收及下一步。

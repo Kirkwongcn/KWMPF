@@ -1,5 +1,11 @@
 # KWMPF 完整文件與私有附件索引
 
+## 目前要交Claude的文件
+
+- [CLAUDE_REVIEW_BRIEF](../CLAUDE_REVIEW_BRIEF.md)：本輪檢查委託、三個開始步驟、優先級、技術／來源／R2及驗證指令。
+- [RETURN_TO_CODEX_TEMPLATE](RETURN_TO_CODEX_TEMPLATE.md)：待填回交格式。真正報告及回交文件由Claude完成後另建；目前沒有Claude結果。
+- 最新工作順序：Claude先檢查，使用者檢視後才回Codex Cloud；即時狀態讀HANDOFF最上節。Cloud setup草稿及更早待批准安排均以此順序為準。
+
 公開 repo 有五份接手文件及全部既有 source／data／docs；完整歷史附件保留於交接 ZIP，不公開 push。
 
 2026-10-01 雲端儲存跟進：另讀 [CLOUD_STORAGE](../CLOUD_STORAGE.md) 與 [config/storage.json](../../config/storage.json)。

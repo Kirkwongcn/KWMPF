@@ -24,7 +24,11 @@
 
 ## 2026-10-01 新增已確定目標
 
-使用者明確要求「完全不依賴現有本機文件」。因此接手以GitHub及私有R2可重建為收貨目標，原路徑只作歷史 provenance，套件依lockfile重新安裝，客戶端獨立授權。這是已確定目標；額外約394MB補充上傳及420MB預算內完成記錄已於本輪獲明確批准；新client權限/環境及新雲端验收任務仍待批准。見 [LOCAL_INDEPENDENCE](LOCAL_INDEPENDENCE.md)。
+使用者明確要求「完全不依賴現有本機文件」。因此接手以GitHub及私有R2可重建為收貨目標，原路徑只作歷史 provenance，套件依lockfile重新安裝，客戶端獨立授權。這是已確定目標；額外約394MB補充上傳及420MB預算內完成記錄已於本輪獲明確批准。最新工作順序見下一節，Codex Cloud建立與驗收延後。見 [LOCAL_INDEPENDENCE](LOCAL_INDEPENDENCE.md)。
+
+## 2026-10-01 接手順序
+
+使用者明確決定先讓Claude Code接手檢查，完成工作後才回到Codex Cloud。原因是先取得另一工具的獨立檢查，再決定後續修復。此輪整理檢查範圍與可攜回交資料，延後Codex Cloud環境／其新憑證／新任務；不是放寬合併、設定修改或發布批准。見[檢查委託](CLAUDE_REVIEW_BRIEF.md)。
 
 ## 仍是試用／待決，不能升格為定案
 
