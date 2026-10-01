@@ -17,7 +17,7 @@
 交接附件已按批准上傳、逐件下載核對，`current.json` 指向完整版本；詳見有日期的交接及外部 receipt。
 NAS 尚未設置；另一個 LLM 的獨立授權及資料取回尚未驗證。
 
-完全不依賴舊本機的重建及最新準備狀態見 [LOCAL_INDEPENDENCE](docs/LOCAL_INDEPENDENCE.md)。補充保存包已備妥；額外上傳、獨立client及雲端驗收尚未完成。
+完全不依賴舊本機的重建及最新準備狀態見 [LOCAL_INDEPENDENCE](docs/LOCAL_INDEPENDENCE.md)。補充保存包已上傳私有R2並完成下載核對；獨立client、Codex Cloud環境及雲端重建驗收尚未完成。
 
 ## 審查及設計跟進
 

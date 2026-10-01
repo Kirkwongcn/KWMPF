@@ -1,26 +1,23 @@
 # KWMPF → Claude Code 即時交接
 
-## 本機獨立接手跟進（2026-10-01 15:47；以本節為最新保存狀態）
+## 本機獨立接手跟進（2026-10-01 16:23；以本節為最新保存狀態）
 
-使用者要求完全不依賴現有本機文件。詳細重建/來源/驗證及待批准操作見 [LOCAL_INDEPENDENCE](LOCAL_INDEPENDENCE.md)。
-目前仍在 Windows；**本輪補充已備妥但未上傳，Codex Cloud還原未完成，不能聲稱已脫離本機**。
-盤點16個checkout（包括四個sibling及publication-seed）；8份補充ZIP+index為 394,359,318 bytes；
-8,443 路徑／3,744 去重blobs全部本機 archive SHA/bytes核對相符，4份Git bundles在空repo核對通過。
-原始DownloadsZIP／手冊、PDF/XML、未提交檔案、舊Git refs/reflogs及403個skills檔案已納入保存清單。
-本輪有限敏感模式/ZIP文字/Git blobs檢查無匹配；credentials不傳，工具快取重新安裝。
+詳細重建/來源/驗收讀 [LOCAL_INDEPENDENCE](LOCAL_INDEPENDENCE.md)。
 
-**GitHub已驗證基線**：repo `https://github.com/Kirkwongcn/KWMPF.git`、功能 branch `docs/claude-handoff-20261001-safe`，
-基線 `a5b565823297d7ff85ed6a612fc83e70d0a2d8ac` 在遠端。本文與重建腳本的最終 commit/push狀態以外部回執及branch HEAD核對；文件不能含自己的最終SHA。
-本機checkout仍是 `C:/Users/user/Documents/Codex/2026-09-26/kwmpf/work/kwmpf-review-redesign`，這只記錄來源，不是接手必需路徑。
-main `6a593dba460b905badbfca9e9eac85a16318309e`、production Pages SHA `3f655960c620b019f245886d709283c0e1b67590` 未變。
+**已驗證**：使用者已批准本輪R2上傳。8份補充ZIP及index共394,359,318 bytes已寫入私有`kwmpf-handoff`，9件逐件GET下載核對SHA/bytes；另從R2下載舊基底ZIP，以遠端副本核對8,443路徑／3,744去重blobs／9個archives；4份Git bundles從遠端副本取出，在新的空repo驗證self-contained與refs通過。
+包含原Downloads ZIP/手冊、16個checkout的相關檔案、官方PDF/XML、未提交差異、Git refs/reflogs、403個skills檔案。沒有傳credentials；工具快取及套件從lockfile重建。
 
-**雲端已驗證/未核實**：登入Codex Cloud頁面，repository選單有KWMPF，但環境頁目前顯示「沒有環境」。
-獨立read-only credentials/可用環境/真正雲端還原均尚未建立或執行；NAS仍未設定。
-今輪未跑網站測試/build；`prepare-cloud-workspace.sh`安裝流程尚未執行。
-舊Windows錯誤或歷史CI不升格為雲端結果；下面較早「只索引/原件在本機」描述只適用2026-10-01 14:47舊包，新的補充目前只是備妥。
+**Git狀態checkpoint**：repo `https://github.com/Kirkwongcn/KWMPF.git`；功能branch `docs/claude-handoff-20261001-safe`／`origin/docs/claude-handoff-20261001-safe`；重建工具commit `1236b7a0304b7fe555402324e5b3c1f18f968105`及準備文件commit `ec0fe46033462992cab8279394547a91a3bd0cf1`均已核對在GitHub，本輪開始status乾淨。此完成紀錄另commit/push；**最後exact commit／push／文件包讀回以外部完成回執及R2 `independence-current.json`指定manifest為準**，文檔不能引用自己的最終SHA。
+來源checkout `C:/Users/user/Documents/Codex/2026-09-26/kwmpf/work/kwmpf-review-redesign`只供provenance；不是新client必需路徑。舊checkout dirty檔案及私有refs只保存在R2，不能批次套回active repo或公開推送。
 
-**Claude/Codex Cloud頭三步**：1. clone此功能branch並核對使用者回執exact SHA；2. 按LOCAL_INDEPENDENCE準備固定版本工具及frozen install；3. 在補充上传批准及只讀認證配置後按pinned index取回、核對、產生獨立雲端回執。不要merge/deploy或套用舊patch。
-**需使用者批准**：額外約394MB私有補充+完成記錄（本輪put上限420MB）；建立私有KWMPF雲端環境、限定bucket讀取憑證及一個新只讀雲端還原驗收任務。此前15MB範圍已完成。
+**部署核實**：main `6a593dba460b905badbfca9e9eac85a16318309e`、正式Pages id `48675d4f-4815-4f87-bb8f-b1f3aa5df51d`／commit `3f655960c620b019f245886d709283c0e1b67590`未變。CI只PR/push main；網站deploy只manual workflow_dispatch。以Worker immutable tag（不是script name）重新查兩個Workers Builds triggers，均空；Pages API無source欄位。舊name lookup的空回應本身不足作證，已補正。外部hooks、environment reviewers/branch policy、classic branch protection仍未核實。本輪沒有網站合併或部署。
+
+**未完成／未核實**：executor仍是Windows；Codex Cloud環境只填草稿，未建立/保存；獨立只讀client、雲端還原及依賴安裝未執行；NAS未設定；其他LLM實際取得未驗收。網站測試/build **未執行**。一次Windows核對工具首次讀index因預設cp950失敗，改明確UTF-8後完整R2副本核對通過；不當作網站測試結果。
+
+**Claude/Codex Cloud頭三步**：1. clone此功能branch並核對完成回執exact SHA，讀CLAUDE→AGENTS→本頁→PROJECT_MAP/DECISIONS；2. 配置已獨立批准的只讀R2認證及固定Bun1.3.11工具，frozen install；3. 按LOCAL_INDEPENDENCE pinned index下載到新的私人保存區，逐檔及空repo bundles驗證，記錄真正雲端工具/commit/安裝回執。不得merge/deploy或套舊patch。
+
+**批准狀態**：本輪420MB put-attempt預算內R2補充及完成記錄已批准；建立私人KWMPF雲端環境、新bucket只讀憑證及一個雲端還原驗收任務仍待批准。條件式提問「建立後其他LLM可否接手」不當成建立/授權批准。
+下面14:47/15:47或更早紀錄保留歷史；新補充已保存/下載核對，取代「本輪未上傳/部分binary只在本機」狀態。R2成功不等於完全雲端驗收。
 
 ---
 

@@ -166,7 +166,7 @@ rulesets GET 曾回空；classic main protection GET 曾回 403，環境 reviewe
 完整核實附件不在公開分支；本機 archive commit／私有交接 ZIP 的附件為：
 `private-preservation/docs/handoff/archive/remote-and-deployment-verification.json`（白名單 metadata；沒有憑證／變數值）。
 
-## 無舊本機依賴的接手入口（2026-10-01；準備階段）
+## 無舊本機依賴的接手入口（2026-10-01；R2補充已驗證）
 
 - [LOCAL_INDEPENDENCE](LOCAL_INDEPENDENCE.md) 列完整保存範圍、固定index、精確hash、重建指令、credentials及各驗證狀態。
 - `scripts/restore-private-handoff.py`：Python標準庫，S3 HTTPS GET；驗固定manifest SHA/bytes、archive及逐路徑blob，還原到新的私人保存區；不覆蓋active repo，不寫remote。
@@ -176,3 +176,7 @@ rulesets GET 曾回空；classic main protection GET 曾回 403，環境 reviewe
 - 新變數**名稱**：`R2_ENDPOINT`、`R2_ACCESS_KEY_ID`、`R2_SECRET_ACCESS_KEY`。憑證限定`kwmpf-handoff`只讀S3；不提供production部署token。目前所見legacy UI的R2憑證用encrypted setup secrets；setup取回後不留給agent。current環境proxy placeholder不能直接作SigV4 signing key，配置方式見手冊。
 - 本次Codex Cloud repository選單有KWMPF；環境頁顯示「沒有環境」。環境建立/網絡policy/認證/發布/雲端執行結果全部待配置及核實；沒有把GitHub選项當環境部署證據。
 - 本輪没有增加GitHub Actions；feature push仍不觸發CI，production/staging仍manual workflow_dispatch。兩個Worker Builds triggers空白，Pages回應没有source欄位；外部hooks仍待核實。
+
+### 2026-10-01 16:23 已核實補充
+
+9件payload共394,359,318 bytes已put/get核對；R2下載副本8,443路徑/3,744 blobs/9個archives及4份冷Git bundle驗證通過。最後文件包/manifest及safe branch SHA以`independence-current.json`為準；此頁不能自引最後commit。Worker Builds重新用immutable tag `e9c1e982d2344992bd082136ea1887e4`（kwmpf-api）、`24fe0367d217401b9ea15543d13cd5ab`（production）查triggers，均空；舊用script name查空不足作安全證據。Pages無source，正式deployment id/commit未變。沒有Cloudflare設定修改/網站部署。其他LLM透過同一GitHub/S3協定及独立只讀認證接手；不是共享Codex Cloud secret或聊天。雲端環境/新認證/新任務仍未建立。

@@ -1,6 +1,6 @@
 # KWMPF 完全不依賴舊本機：保存及雲端接手
 
-更新：2026-10-01 15:47（Asia/Hong_Kong）。**狀態：保存包已備妥並完成本機完整性核對；補充上傳、獨立雲端認證及雲端還原尚未完成。**
+更新：2026-10-01 16:23（Asia/Hong_Kong）。**狀態：私有R2補充上傳及全部下載核對已完成；獨立雲端認證、環境建立及雲端還原尚未完成。**
 目前 executor 仍是 Windows。本文件不構成部署或憑證授權。
 
 ## 完成標準
@@ -14,7 +14,7 @@
 | 保存位置 | 內容 | 現況 |
 | --- | --- | --- |
 | GitHub `Kirkwongcn/KWMPF` | 網站 code、公開資料、五份入口文件、重建腳本、lockfile | 既有交接 commit `a5b565823297d7ff85ed6a612fc83e70d0a2d8ac` 已核實在遠端；本輪更新的 exact commit 以最後回執/GitHub branch 為準 |
-| private R2 `kwmpf-handoff` | 舊交接 ZIP、補充保存 ZIP、逐檔索引、讀回證據 | 舊 ZIP 已存；本輪補充 **未上傳** |
+| private R2 `kwmpf-handoff` | 舊交接 ZIP、補充保存 ZIP、逐檔索引、讀回證據 | 舊 ZIP及本輪補充均已存並下載核對；完成版文件/pointer以外部回執為準 |
 | private production/staging R2 | 正式來源封存、SQL 備份、發布證據 | 既有網站運作資料；不以本機 SQLite 暫存當正式備份 |
 | Codex Cloud | 可重建的開發工作環境 | 本次已登入頁面檢視；環境列表顯示「沒有環境」。GitHub repository 選單有 KWMPF，不等於環境已建立/發布 |
 | NAS | 第二備份及取回入口 | 尚未設定 |
@@ -27,7 +27,7 @@
 實際盤點 16 個可用 checkout；舊 inventory 的 15 是歷史 checkpoint，今輪多包含 publication-seed 目錄。
 保存 8,443 個可攜檔案路徑，去重後 3,744 blobs。
 8 份 ZIP 共 **391,382,987 bytes**；連精確索引 **394,359,318 bytes**，約 394 MB。
-另預留完成文件、讀回回執及 pointer，擬議整輪 put attempts 上限 420,000,000 bytes；此前 15 MB 批准已完成，不當作本輪批准。
+使用者於本輪明確批准補充上傳，整輪 put attempts 上限 420,000,000 bytes，涵蓋完成文件、讀回回執及 pointer；此前 15 MB 是已完成的歷史範圍。補充 payload 已寫入 394,359,318 bytes，全部 R2 GET SHA/長度相符。
 
 - 原始 `KWMPF-Handoff-2026-09-25.zip` 及完整建構手冊、以前交接/審查手冊、官方 PDF/XML、截圖、來源修復與驗收證據。
 - 未提交及未追蹤檔案保留 raw bytes；不是直接套回最新程式。
@@ -39,7 +39,7 @@
 排除 node_modules、dist、Python bytecode、pnpm 工具快取、Windows Poppler、操作 CLI logs及認證檔。兩個不跟隨的 symlink 已核實只是 pnpm 工具快取。
 排除項按 lockfile及官方工具重建；憑證要重新獨立配置。完整私人 inventory 僅進 R2，不放公開 GitHub。
 
-## 精確取回位置（尚待本輪上傳）
+## 精確取回位置（補充上傳及讀回已完成）
 
 - Bucket: `kwmpf-handoff`；prefix: `independence/2026-10-01/snapshot-20261001-153225/`。
 - Index key: `independence/2026-10-01/snapshot-20261001-153225/preservation-index.json`。
@@ -54,7 +54,7 @@
 1. 從 GitHub clone `docs/claude-handoff-20261001-safe`，按用戶最終回執 checkout exact commit；核對 remote/HEAD/status。不要只 clone main，因交接更新尚未合併。
 2. 安裝 Git、Bash、Python 3、Node、Bun **1.3.11**；PDF 抽取安裝 Linux `poppler-utils`。以 `bash scripts/prepare-cloud-workspace.sh` 執行 frozen-lockfile 安裝及產生工具回執。此脚本不測試、不 build、不部署。
 3. 由受保護的環境設定提供 `R2_ENDPOINT`、`R2_ACCESS_KEY_ID`、`R2_SECRET_ACCESS_KEY`；**只讀 `kwmpf-handoff` 的獨立 S3 憑證**。不得複製 Windows OAuth 或提供 production deployment token。
-4. 補充上傳核對成功後執行：
+4. 已核對的補充可由具獨立只讀授權的新環境執行：
 
 ```bash
 python3 scripts/restore-private-handoff.py \
@@ -86,13 +86,23 @@ Codex Cloud 保存狀態不取代 GitHub/R2；重要變更仍 commit到安全分
 | 項目 | 已驗證 | 未完成 |
 | --- | --- | --- |
 | 檔案盤點 | 無讀取錯誤；包含原附件及四個 sibling checkouts | credentials 另配，衍生快取另建 |
-| ZIP內容/manifest | 8,443 路徑、3,744 blobs及9個archives（含舊基底）全部 SHA/bytes 相符 | remote put/get |
-| Git bundles | 4/4 在空白 repo 验證 self-contained及 advertised refs；Git blob有限敏感檢查通過 | 雲端環境重做 |
+| ZIP內容/manifest | 9件新payload逐件R2 put/get；另GET舊基底；以下載副本核對8,443路徑、3,744 blobs及9個archives全部SHA/bytes相符 | 獨立雲端client取得 |
+| Git bundles | 4/4 R2下載副本在新的空白repo驗證self-contained及advertised refs；Git blob有限敏感檢查通過 | 雲端環境重做 |
 | 環境/依賴 | 指令及固定版本已從 repo核實 | 此輪 frozen install及雲端執行未完成 |
 | 網站測試/build | 本輪未執行 | 不把舊 CI當本輪測試 |
-| 正式網站 | main及現有 production Pages SHA未變；兩個 Workers Builds triggers空白 | 外部 webhook/environment branch policy仍未核實 |
+| 正式網站 | main及production Pages SHA未變；以兩個Worker immutable tag重新查Workers Builds，triggers空白；Pages無source欄位 | 外部webhook/environment branch policy仍未核實 |
 
-只有私有補充上傳/讀回和独立雲端還原/依賴核對通過，才可聲稱「接手毋須舊本機文件」。現在仍不符合全部標準。
+私有补充保存/讀回已通過，但獨立雲端還原/依賴核對尚未執行，因此目前仍不符合全部「接手毋須舊本機文件」驗收標準。
+
+本轮新payload：8份ZIP及index共394,359,318 bytes。完整回執`REMOTE_PRESERVATION_VERIFICATION.json`、逐件`SUPPLEMENT_REMOTE_RECEIPT.json`和正式分支安全查核保存在完成版私人文件包。最後Git commit、文件包SHA及讀回/pointer以`independence-current.json`引用的manifest為準；原`current.json`保留舊schema。文件包不含自己的hash或之後的讀回回執，以免循環自引。
+
+### 交給其他LLM
+
+Claude Code、其他具Git/檔案及HTTPS工具的LLM可clone相同repo/branch/exact SHA，閱讀AGENTS/CLAUDE/HANDOFF，再以自己的bucket-scoped Object Read憑證使用同一標準S3 GET重建。R2不依赖Codex專用格式，Python腳本只用標準庫。Codex Cloud的聊天、環境secret與未提交工作不會自動共享；code另commit/push，私人證據另作不可變R2保存。只開普通聊天而沒有檔案/網絡工具不能直接取回私人資料。另一客戶端尚未實際驗收。
+
+### 此次授權與剩餘批准
+
+本次「批准上傳到R2」涵蓋已提出的補充清單及完成記錄，已按此執行。使用者問其他LLM能否接手，不等於批准建立新雲端環境、授予新客戶端敏感讀取權限或建立新任務；這三項仍待具體批准。
 
 ## 官方來源
 

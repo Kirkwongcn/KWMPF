@@ -45,7 +45,7 @@
     "secondaryAccessVerified": false
   },
   "localIndependence": {
-    "status": "prepared-not-uploaded",
+    "status": "r2-payload-readback-verified-cloud-acceptance-pending",
     "scope": "GitHub plus private R2; no old Windows files required after independent cloud restoration acceptance",
     "index": {
       "filename": "PRESERVATION_INDEX.json",
@@ -62,6 +62,15 @@
     "cloudRestoreVerified": false,
     "newClientAccessVerified": false,
     "cloudEnvironmentVerified": "UI environment list empty; not created",
-    "futurePointer": "independence-current.json"
+    "futurePointer": "independence-current.json",
+    "objectsUploaded": true,
+    "remoteArchiveIntegrityVerified": true,
+    "remotePayloadBytes": 394359318,
+    "remoteArchivePathsVerified": 8443,
+    "remoteColdGitBundlesVerified": 4,
+    "uploadApprovalLimitBytes": 420000000,
+    "currentPointer": "independence-current.json",
+    "pointerPublished": "consult external final receipt; published only after final document readback",
+    "verifiedAtHongKong": "2026-10-01 16:23"
   }
 }

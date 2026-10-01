@@ -24,7 +24,7 @@
 
 ## 2026-10-01 新增已確定目標
 
-使用者明確要求「完全不依賴現有本機文件」。因此接手以GitHub及私有R2可重建為收貨目標，原路徑只作歷史 provenance，套件依lockfile重新安裝，客戶端獨立授權。這是已確定目標；額外394MB補充上傳、新client權限及雲端驗收仍待對該次操作批准，不能寫成已完成或已授權。見 [LOCAL_INDEPENDENCE](LOCAL_INDEPENDENCE.md)。
+使用者明確要求「完全不依賴現有本機文件」。因此接手以GitHub及私有R2可重建為收貨目標，原路徑只作歷史 provenance，套件依lockfile重新安裝，客戶端獨立授權。這是已確定目標；額外約394MB補充上傳及420MB預算內完成記錄已於本輪獲明確批准；新client權限/環境及新雲端验收任務仍待批准。見 [LOCAL_INDEPENDENCE](LOCAL_INDEPENDENCE.md)。
 
 ## 仍是試用／待決，不能升格為定案
 
@@ -32,3 +32,7 @@
 - ±2 百分點（`2026-09-10-trial-1`）只屬已批准試用；[原契約](specs/interpretation-thresholds.md) 有日期及原因。
   使用者選擇維持試用，不代表經驗證的正式門檻。
 - 另設三年累積回報、完整日／月價格序列、正式監察通知管道、未來保留期限及 branch rules 強化：仍待核實／決策，沒有替使用者定案。
+
+## 2026-10-01 補充保存批准
+
+使用者明確「批准上傳到R2」：執行已提出的8份ZIP、索引、完成文件/讀回回執及`independence-current.json`，總put attempts不超過420,000,000 bytes；只寫私人`kwmpf-handoff`，完整物件無自動到期，逐件讀回後才升級指標。此批准不涵蓋新增client憑證、環境/新任務、NAS或正式網站。
