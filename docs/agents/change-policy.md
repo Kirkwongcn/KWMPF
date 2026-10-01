@@ -22,17 +22,24 @@
 **做法**（本機，唔使部署）：
 
 ```bash
-# 1. 搵出最新批次
+# 1. 搵出最新批次同最新受託人回報候選 overlay（同正式部署揀法一致）
 snapshot="$(scripts/resolve-previous-snapshot.sh data/sources)"
+overlay="$(scripts/resolve-latest-return-candidate.sh data/coverage)"
 
 # 2. 用同 production 一模一樣嗰條 seed 路徑（publication-seed 就係
 #    build-staging-seed.ts）起一個本機 D1 並啟動 Worker
-KWMPF_E2E_SOURCE="$PWD/$snapshot" scripts/e2e-serve-api.sh
+KWMPF_E2E_SOURCE="$PWD/$snapshot" \
+KWMPF_PUBLICATION_SEED_RETURN_OBSERVATIONS="$PWD/$overlay" \
+  scripts/e2e-serve-api.sh
 
 # 3. 另開一個 shell，打真嗰個端點
 curl -s 'http://127.0.0.1:8799/rankings?metric=return&period=3' \
   | jq '{n: (.rankings | length), excluded: .excludedStaleCount}'
 ```
+
+`bash scripts/check-publication-seed.sh` 會自動做第 1、2 步，並印出 source 同 overlay
+嘅路徑及 SHA-256。唔好漏咗 overlay：`e2e-serve-api.sh` 冇指定時會用 E2E 固定嘅
+2026-08-13 舊 overlay（見第 4 節例外），結果同正式發布唔一樣。
 
 第三步唔可以只睇 HTTP 200：要睇**行數非零**，再由 `data/sources` 嘅原文
 （或者對應嗰份便覽 PDF）抽三筆逐個數字對。對唔到就唔算收貨。

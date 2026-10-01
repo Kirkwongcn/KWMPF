@@ -9,6 +9,33 @@ if [[ ! -f "$source_snapshot" ]]; then
   exit 1
 fi
 
+# 冇明確指定 overlay（CI 只在 PR 改到候選 overlay 時先傳路徑）就用同正式部署一樣的
+# 最新候選，唔可以落到 e2e-serve-api.sh 為 E2E 固定的舊 overlay。
+return_observations="${KWMPF_PUBLICATION_SEED_RETURN_OBSERVATIONS:-}"
+if [[ -z "$return_observations" ]]; then
+  return_observations="$(cd "$root" && bash scripts/resolve-latest-return-candidate.sh data/coverage)"
+fi
+if [[ "$return_observations" != /* ]]; then
+  return_observations="$root/$return_observations"
+fi
+if [[ ! -f "$return_observations" ]]; then
+  echo "Publication seed return observations do not exist: $return_observations" >&2
+  exit 1
+fi
+
+source_label="${source_snapshot#"$root/"}"
+return_label="${return_observations#"$root/"}"
+source_sha256="$(sha256sum "$source_snapshot" | cut -d' ' -f1)"
+return_sha256="$(sha256sum "$return_observations" | cut -d' ' -f1)"
+printf 'Publication seed inputs: source=%s sha256=%s returnObservations=%s sha256=%s\n' \
+  "$source_label" "$source_sha256" "$return_label" "$return_sha256"
+if [[ -n "${GITHUB_STEP_SUMMARY:-}" ]]; then
+  {
+    echo "Publication seed source: \`$source_label\` (SHA-256 \`$source_sha256\`)"
+    echo "Publication seed trustee-return overlay: \`$return_label\` (SHA-256 \`$return_sha256\`)"
+  } >>"$GITHUB_STEP_SUMMARY"
+fi
+
 source_as_of="$(jq -er '.sourceDataAsOf' "$source_snapshot")"
 temporary_root="${RUNNER_TEMP:-${TMPDIR:-/tmp}}"
 mkdir -p "$temporary_root"
@@ -35,6 +62,7 @@ cleanup() {
 trap cleanup EXIT
 
 KWMPF_E2E_SOURCE="$source_snapshot" \
+KWMPF_PUBLICATION_SEED_RETURN_OBSERVATIONS="$return_observations" \
 KWMPF_E2E_STATE="$state_dir" \
 KWMPF_E2E_API_PORT="$port" \
 WRANGLER_SEND_METRICS=false \
@@ -127,5 +155,5 @@ if ((checked_interpretations < 3)); then
   exit 1
 fi
 
-printf 'Publication seed passed: source=%s dataAsOf=%s rankingRows=%s excludedStaleCount=%s\n' \
-  "$source_relative" "$source_as_of" "$ranking_count" "$excluded_count"
+printf 'Publication seed passed: source=%s returnObservations=%s dataAsOf=%s rankingRows=%s excludedStaleCount=%s\n' \
+  "$source_label" "$return_label" "$source_as_of" "$ranking_count" "$excluded_count"
