@@ -77,5 +77,5 @@
 - 使用者已批准的操作及範圍：本輪只讀檢查、隔離安裝／測試、在安全功能分支保存非敏感報告。沒有其他新批准。
 - 尚待決定：修復範圍及次序（報告 §5）；F-01 發布時程與 smoke 語義；F-07 原字串政策；F-10 通知管道；F-11 waiting run 處理；是否提供官方網域網絡存取以補做 F-14／F-15／原文核對（R2 認證已提供，還原已完成；token 權限範圍未核實）。
 - GitHub／Cloudflare部署觸發：已讀全部 13 個 workflow，push 功能分支不觸發任何 workflow；Cloudflare Builds／Pages Git 連結本次未核實。
-- 是否完全靠 GitHub/R2 重建：GitHub 部分是（code、依賴、測試均由 clone＋lockfile 重建）；R2 部分已於 2026-10-01 補做：固定 index 取回、逐件／逐檔／bundles 核對及同容器 frozen install 通過；`independence-current.json` pointer 未讀，保存內容未逐項語義比對。
+- 是否完全靠 GitHub/R2 重建：GitHub 部分是（code、依賴、測試均由 clone＋lockfile 重建）；R2 部分已於 2026-10-01 補做：固定 index 取回、逐件／逐檔／bundles 核對及同容器 frozen install 通過；`independence-current.json` 已讀並與固定 index 相符；pointer 指定的 final manifest／文件包未取回（自動權限審查拒絕）；保存 commits／未提交檔案已與 GitHub 比對（見 HANDOFF 最新節），餘 50 個過時 tracked 修改未逐檔語義核對。
 - Codex 頭三步：(1) 核對 `claude/brave-cerf-17etdq` 最終 SHA／diff 只含文件與 evidence；(2) 讀報告 §3／§5，優先處理 F-01 時程（10-16）及 F-02；(3) 在使用者確認範圍後，在可連官方網域且有只讀 R2 的環境補做 F-14／原文核對。

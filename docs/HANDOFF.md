@@ -6,7 +6,10 @@ Claude Code（Anthropic 雲端 Linux 容器，`/home/user/KWMPF`）由 `claude/e
 **已驗證**：環境設定提供 `R2_ENDPOINT`／`R2_ACCESS_KEY_ID`／`R2_SECRET_ACCESS_KEY`（值不入 Git／日誌；token 是否只讀／只限此 bucket **未核實**，本輪只發 GET）。以固定 index（2976331 bytes／`d17b0602…720cb72`）執行 `scripts/restore-private-handoff.py`，exit 0：index、舊基底 ZIP、8 份補充 ZIP 逐件 SHA／bytes 相符；8,443 路徑、3,744 blobs、9 archives 逐檔核對並取出至 repo 外私人位置 `/home/user/kwmpf-private`（926 MB，不入 Git）。
 4 份 Git bundles SHA／bytes 相符，`git bundle verify` 全 okay，fetch 入空白 bare repo 後 16 個保存 checkout HEAD 全部可達。同容器以固定 Bun 1.3.11（npm `@oven/bun-linux-x64`；預裝 1.3.14 被腳本拒絕）執行 `scripts/prepare-cloud-workspace.sh`，frozen install exit 0。
 **首次嘗試失敗**：上一個 session 的 `R2_ENDPOINT` 是佔位值，腳本在任何請求前停止；使用者修正環境設定後重跑成功。
-**未核實／未執行**：`independence-current.json` pointer 未讀（腳本只容許 `handoffs/`／`independence/` namespace，故以文件固定 index 為準）；保存區內容未逐項語義比對、未套用任何舊 patch；網站 tests／build 本輪未重跑；沒有 R2 寫入、合併、部署或 Cloudflare 變更。私人還原只在本容器，容器回收即消失，需要時按同一指令重做。
+**Pointer（已驗證）**：其後單件 GET `independence-current.json`（1896 bytes／`45833234…85d5d861`）：指向 branch `docs/claude-handoff-20261001-safe` @ `2e71153`，其 `index` 欄 key／bytes／SHA 與上述固定 index 完全相同。pointer 指定的 final `manifest.json`（8439／`20921118…`）及文件包 `handoff.zip`（3398155／`857c864a…`）**未取回**：該下載被本環境自動權限審查拒絕，沒有改用其他方式。
+**保存內容與 GitHub 比對（已驗證，只在私人區分析，沒有套用）**：4 份 bundles 共 24 個 commit 不在 GitHub 任何分支。8 個 patch 與 main 相同；15 個的檔案內容已在 main 歷史出現，或殘餘檔案在 main 已有更新版本（squash 前版本，已被 #354／#357／#358／#359／#360 取代）；`78e84da` 是刻意只留私人區的歷史保存 commit。
+各 checkout 未提交項目展開後共 1,165 檔：26 個內容已在 main；11 個在其他 GitHub 分支；1,074 個不在 GitHub，全是 `work/` 暫存（`returns-refresh-2026-09-26` 851、`pr269-format` 201、本機 D1／SQLite seed 輸出 22）；4 個按設計排除（pyc、poppler.zip）；另 **50 個 tracked 檔案修改**不在 GitHub 任何位置——全部基於比 main 舊的 HEAD，且全部 50 個檔案 main 其後均已再修改，屬過時分支上的修改（推測已被取代，**未逐檔語義核對**）。依規則不批次套回。
+**未核實／未執行**：上述 50 檔逐檔語義比對；網站 tests／build 本輪未重跑；沒有 R2 寫入、合併、部署或 Cloudflare 變更。私人還原只在本容器，容器回收即消失，需要時按同一指令重做。
 詳見 [CLAUDE_RETURN](handoff/CLAUDE_RETURN.md) §D／§E 及 [LOCAL_INDEPENDENCE](LOCAL_INDEPENDENCE.md)。
 
 ## 最新：Claude Code 檢查完成，待使用者檢視（2026-10-01 17:35 香港）
