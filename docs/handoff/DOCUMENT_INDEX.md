@@ -3,7 +3,8 @@
 公開 repo 有五份接手文件及全部既有 source／data／docs；完整歷史附件保留於交接 ZIP，不公開 push。
 
 2026-10-01 雲端儲存跟進：另讀 [CLOUD_STORAGE](../CLOUD_STORAGE.md) 與 [config/storage.json](../../config/storage.json)。
-私有 `kwmpf-handoff` 已按批准建立及核實；資料上傳另待明確批准，物件清單為空，ZIP 仍在本機。
+私有 `kwmpf-handoff` 已按批准建立；清單內 ZIP／入口文件／manifest／current 指標已上傳及逐件讀回核對。
+目前最新完整版本由 R2 `current.json` 與外部 `HANDOFF_RECEIPT.json` 定位；本機原件沒有刪除。
 GitHub 文件更新不代表附件、NAS、Codex Cloud 或另一個 LLM 已取得資料。
 本輪 Cloudflare 設定讀回摘要：[CLOUD_STATUS.json](CLOUD_STATUS.json)。
 
@@ -26,7 +27,7 @@ GitHub 文件更新不代表附件、NAS、Codex Cloud 或另一個 LLM 已取�
 - `private-preservation/docs/handoff/verification/`：本次本機指令失敗logs與有限安全／連結核對；不是測試成功或全歷史認證。
 - 原件PDF、D1備份及其他binary仍依manifest本機路徑／已有私有R2取回，需適當授權／私有傳送，不公開token或signed URL。
 
-自動批准審查拒絕整批歷史payload公開push；完整保存commit只在本機分支，不在公開GitHub。未用別的工具繞過，亦未聲稱Claude已收到。使用者須把ZIP私下交給Zo；歷史patch不能直接套進最新網站。
+自動批准審查拒絕整批歷史payload公開push；完整保存commit只在本機分支，不在公開GitHub。未用別的工具繞過，亦未聲稱Claude已收到。可由用戶私下傳送 ZIP，或在獨立授權後從 R2 下載並驗證 SHA；不聲稱 Zo／Claude 已取得資料。歷史 patch 不能直接套進最新網站。
 
 ## 以往手冊／報告（私有附件，原樣保存）
 

@@ -101,7 +101,7 @@ Bindings `DB`（D1）、`RAW_ARCHIVE`（R2）、`RELEASE_VERSION`（程式版本
 production 使用 `pages deploy ... --project-name kwmpf-web-production --branch main --commit-hash ...`。
 **`--branch main` 是 Pages 對該次 upload 的環境標記，不代表 push main 自動發布。**
 
-Cloudflare 只讀 API 已核實兩個 Pages project `source=null`、`production_branch=main`；
+Cloudflare 只讀 API 已核實兩個 Pages project 無 source 欄位（不是明確 null）、`production_branch=main`；
 兩個 KWMPF Worker 的 Workers Builds triggers 都是空清單。沒有已核實的 Cloudflare Git 自動部署。
 故推送 `docs/claude-handoff-20261001-safe` 不符合 repo CI push main 或任何部署 workflow 觸發條件。
 PR 會執行 CI，但本次不建立 PR、合併或發布。公開推送只包含入口／技術摘要；歷史 payload 已改為本機 ZIP 保存。
@@ -138,20 +138,20 @@ PR 會執行 CI，但本次不建立 PR、合併或發布。公開推送只包�
 ## 8. 雲端交接儲存補充（2026-10-01）
 
 非網站 runtime 設定：[config/storage.json](../config/storage.json)；操作與跨 LLM 取回方式：[CLOUD_STORAGE](CLOUD_STORAGE.md)。
-GitHub public code／文件和私有 R2 附件分開。`kwmpf-handoff` 已按使用者批准建立，Standard／APAC，
-公開 enabled=false、無 custom domain、完整物件無自動到期；預設七日中止未完成 multipart upload 保留。
-建立時間香港 2026-10-01 14:18:51.869，物件清單空。私有資料上傳另被自動批准審查拒絕，需明確傳送批准。
-目前沒有 ZIP／manifest／current pointer，也沒有新增 Worker／MCP／GitHub workflow／environment secrets。
-既有 production／staging raw bucket 不改名、不搬移，未將其所有物件複製到交接區。
+GitHub public code／文件和私有 R2 附件分開。`kwmpf-handoff` 已按使用者批准建立，Standard／APAC，r2.dev 關閉、無 custom domain。
+完整物件無自動到期；預設七日中止未完成 multipart 保留，未綁網站 Worker／Pages。
 
-取回工具的變數名稱：`CLOUDFLARE_ACCOUNT_ID`、`CLOUDFLARE_API_TOKEN`；S3 客戶端為
-`R2_ACCESS_KEY_ID`、`R2_SECRET_ACCESS_KEY`、`R2_ENDPOINT`。此處沒有值；S3 object token 不自動適用管理 REST API。
-新客戶端優先只讀交接 bucket，實際 credential 尚未配置；Codex 的授權不會自動轉給 Claude／Zo。
-NAS 使用者報稱 AS5402T／HDD／RAID 後 12 TB，但尚未設置，沒有已核實備份或備用入口。
+使用者其後明確批准清單內私有 ZIP、入口文件、manifest／current.json 及最終交接修訂上傳／讀回，上限 15 MB。
+2026-10-01 14:47 香港時間首次完整版本：10 件／8619851 bytes，下載後長度及 SHA-256 全相符，current 已指向 `0e3a38ebb952869f72abd7c4d2b0ae782828bfc6` manifest。
+該 checkpoint 見 [CLOUD_STATUS](handoff/CLOUD_STATUS.json)；完成文件的最終 SHA／ZIP／pointer 由外部 receipt 及最新 `current.json` 定位，避免自我引用。
+既有 production／staging raw bucket 不改名、不搬移，沒有將其所有物件複製到交接區。
 
-本輪追加只讀查核：兩個 KWMPF Worker Build triggers 仍空；Pages API 無 source 欄位（不是回傳明確 null），
-canonical production deployment／commit 與上次一致。rulesets GET 空；classic main protection GET 403。
-以上是本轮較精確的 API 表述；既有手冊 `source=null` 指未見 Git source，不應解讀為本輪存在明確 null 欄位。
+取回工具變數：`CLOUDFLARE_ACCOUNT_ID`、`CLOUDFLARE_API_TOKEN`；S3 客戶端：`R2_ACCESS_KEY_ID`、`R2_SECRET_ACCESS_KEY`、`R2_ENDPOINT`。不列值；S3 object token 不自動適用管理 REST API。
+現有 Wrangler 4.120.0 在本機已完成 remote put/get；新客戶端優先 bucket-scoped read-only，尚未配置／驗證，不能把本機 OAuth 交給其他 LLM。
+沒有新增公開 Worker／MCP／workflow／environment secrets。NAS 未設置，使用者資料 AS5402T／HDD／RAID 後 12 TB，無自動備份／備用入口。
+
+兩個 KWMPF Worker Builds triggers 空；兩個 Pages API 無 source 欄位，canonical production id／commit 未變。
+rulesets GET 曾回空；classic main protection GET 曾回 403，環境 reviewer 與外部 hooks 未核實。
 
 ## 9. 仍待核實
 

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "verifiedAtHongKong": "2026-10-01 14:22",
+  "verifiedAtHongKong": "2026-10-01 14:47",
   "bucket": {
     "name": "kwmpf-handoff",
     "createdAtUtc": "2026-10-01T06:18:51.869Z",
@@ -16,13 +16,88 @@
     "completeObjectExpirationConfigured": false,
     "incompleteMultipartAbortAfterSeconds": 604800
   },
-  "objectCount": 0,
-  "objectsUploaded": false,
-  "objectReadBackVerified": false,
-  "currentPointerPublished": false,
+  "objectCount": 10,
+  "objectsUploaded": true,
+  "objectReadBackVerified": true,
+  "currentPointerPublished": true,
   "bucketCreationApprovalReceived": true,
-  "privatePayloadUploadApprovalReceived": false,
+  "privatePayloadUploadApprovalReceived": true,
   "privatePayloadUploadRejectedByAutomaticReview": true,
   "nasConfigured": false,
-  "productionDeploymentPerformed": false
+  "productionDeploymentPerformed": false,
+  "objectBytes": 8619851,
+  "privatePayloadUploadPriorRejectionResolvedByExplicitApproval": true,
+  "newClientAccessVerified": false,
+  "currentPointerAtVerification": {
+    "commit": "0e3a38ebb952869f72abd7c4d2b0ae782828bfc6",
+    "manifestKey": "handoffs/2026-10-01/0e3a38ebb952869f72abd7c4d2b0ae782828bfc6/manifest.json",
+    "manifestBytes": 3513,
+    "manifestSha256": "3c17644086839b0931de67bf75bed3e26cd159a4accc53e4b4c93ebf7fd8912e",
+    "packageKey": "handoffs/2026-10-01/0e3a38ebb952869f72abd7c4d2b0ae782828bfc6/handoff.zip",
+    "packageBytes": 4289401,
+    "packageSha256": "80c1fc19c55309077b2717c034612edbfad6301fc8e5e031b596d37e34802b5a"
+  },
+  "readBackEvidence": [
+    {
+      "objectKey": "handoffs/2026-10-01/2c08f15cd14d50e3fa60a5bc983f8f6d0311c5a0/original-handoff.zip",
+      "bytes": 4270131,
+      "sha256": "57534ae6bcdecc80b25a44845b1b09a45dbd1c2b5109d859f3b475514bf73c8f",
+      "verifiedAtUtc": "2026-10-01T06:41:42.813723+00:00"
+    },
+    {
+      "objectKey": "handoffs/2026-10-01/0e3a38ebb952869f72abd7c4d2b0ae782828bfc6/handoff.zip",
+      "bytes": 4289401,
+      "sha256": "80c1fc19c55309077b2717c034612edbfad6301fc8e5e031b596d37e34802b5a",
+      "verifiedAtUtc": "2026-10-01T06:41:51.008574+00:00"
+    },
+    {
+      "objectKey": "handoffs/2026-10-01/0e3a38ebb952869f72abd7c4d2b0ae782828bfc6/entrypoints/AGENTS.md",
+      "bytes": 10358,
+      "sha256": "02e91d7370d48c509f232636829ac1963bcc712f278983866f30518238700760",
+      "verifiedAtUtc": "2026-10-01T06:41:54.940704+00:00"
+    },
+    {
+      "objectKey": "handoffs/2026-10-01/0e3a38ebb952869f72abd7c4d2b0ae782828bfc6/entrypoints/CLAUDE.md",
+      "bytes": 549,
+      "sha256": "f66d6973c899d99ab4e3472ac2c19618ef587731e86f83c01acf388476f1edc6",
+      "verifiedAtUtc": "2026-10-01T06:41:59.467426+00:00"
+    },
+    {
+      "objectKey": "handoffs/2026-10-01/0e3a38ebb952869f72abd7c4d2b0ae782828bfc6/entrypoints/docs/PROJECT_MAP.md",
+      "bytes": 15424,
+      "sha256": "23dad6d62e34345bac2662a36a5245a894ac47b4eb826f61040d959b76148f7d",
+      "verifiedAtUtc": "2026-10-01T06:42:03.657408+00:00"
+    },
+    {
+      "objectKey": "handoffs/2026-10-01/0e3a38ebb952869f72abd7c4d2b0ae782828bfc6/entrypoints/docs/HANDOFF.md",
+      "bytes": 21698,
+      "sha256": "03ca893d333741bb983cd259efdc4b788ff385f7d68c398a457fc579a6f33f12",
+      "verifiedAtUtc": "2026-10-01T06:42:07.827661+00:00"
+    },
+    {
+      "objectKey": "handoffs/2026-10-01/0e3a38ebb952869f72abd7c4d2b0ae782828bfc6/entrypoints/docs/DECISIONS.md",
+      "bytes": 4368,
+      "sha256": "eebd191ddd25d73c9195ed235e6b4deab5e78da7b15a16971e5c5c5127b458c9",
+      "verifiedAtUtc": "2026-10-01T06:42:12.120301+00:00"
+    },
+    {
+      "objectKey": "handoffs/2026-10-01/0e3a38ebb952869f72abd7c4d2b0ae782828bfc6/manifest.json",
+      "bytes": 3513,
+      "sha256": "3c17644086839b0931de67bf75bed3e26cd159a4accc53e4b4c93ebf7fd8912e",
+      "verifiedAtUtc": "2026-10-01T06:43:48.061934+00:00"
+    },
+    {
+      "objectKey": "handoffs/2026-10-01/0e3a38ebb952869f72abd7c4d2b0ae782828bfc6/readback.json",
+      "bytes": 3277,
+      "sha256": "affc24bed0fdfdc7fa1495fcb9aa04e4065027227e3d7342fe5ff459923123b0",
+      "verifiedAtUtc": "2026-10-01T06:44:11.803347+00:00"
+    },
+    {
+      "objectKey": "current.json",
+      "bytes": 1132,
+      "sha256": "410cad82d3050dfefc3c18a0d5968c7595f2f22b27a3188920a6a6bac60ca075",
+      "verifiedAtUtc": "2026-10-01T06:44:25.135907+00:00"
+    }
+  ],
+  "finalization": "This checkpoint proves the initial complete tuple. The final docs commit/package is later promoted only after its own read-back; latest exact tuple is in R2 current.json and external receipt."
 }

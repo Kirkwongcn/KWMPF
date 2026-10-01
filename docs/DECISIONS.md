@@ -18,7 +18,9 @@
 | 2026-09-30 | ETag／edge cache 綁定 route、query、程式版本及 UTC 評估日 | [ADR 0009](adr/0009-time-scoped-representation-caching.md)，修正跨 route／期間／日期 validator；仍保留既有 300／600 秒政策，不宣稱日界即時失效 |
 | 2026-10-01 | 暫停新增功能，以核實／保存／Claude 交接為優先；不得未經批准合併正式分支、修改 Cloudflare 或部署 | 使用者本次明確交接要求；更新 [AGENTS](../AGENTS.md) 作共用權限邊界。此決定優先於舊文件的自動發布構想或較早自行合併授權 |
 | 2026-10-01 | 先安排 GitHub／Cloudflare 儲存及更新交接；NAS 稍後設定 | 使用者明確說 NAS 未設置。GitHub code／文件與私有附件分開；其後 bucket 的獨立批准見下一行。[CLOUD_STORAGE](CLOUD_STORAGE.md) |
-| 2026-10-01 | 批准建立獨立私有 `kwmpf-handoff`，Standard／APAC，完整物件不自動到期 | 使用者明確「批准建立 kwmpf-handoff」；API 200／設定讀回。預設未完成 multipart 七日清理保留。私有 payload 上傳另待批准，沒有擴大到正式網站／D1 操作 |
+| 2026-10-01 | 批准建立獨立私有 `kwmpf-handoff`，Standard／APAC，完整物件不自動到期 | 使用者明確「批准建立 kwmpf-handoff」；API 200／設定讀回。預設未完成 multipart 七日清理保留。當時私有 payload 上傳另待批准；後續独立批准見下一行，沒有擴大到正式網站／D1 操作 |
+
+| 2026-10-01 | 批准清單內兩份私有 ZIP、五份入口文件、manifest／current.json 與記錄完成結果的最終交接修訂上傳及下載核對，本輪上限 15 MB | 使用者明確批准具體清單；僅 `kwmpf-handoff`，完整物件不自動到期。每個版本讀回核對後才更新 latest pointer；不涵蓋網站部署／D1／NAS／新 client credentials。見 [CLOUD_STORAGE](CLOUD_STORAGE.md) |
 
 ## 仍是試用／待決，不能升格為定案
 

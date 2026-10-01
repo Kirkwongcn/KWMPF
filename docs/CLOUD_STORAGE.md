@@ -9,15 +9,18 @@
 使用者要求先安排 GitHub／Cloudflare，再重寫交接；NAS 尚未設置。
 先處理 KWMPF。其他項目需各自盤點 repo、資料、用途及權限，未宣稱已設定。
 
-**已建立：`kwmpf-handoff` 私有 bucket；交接資料未上傳。**
-使用者於 2026-10-01 明確批准建立；Cloudflare API 200，建立時間為香港 14:18:51.869，
-Standard／APAC、r2.dev enabled=false、自訂域名空清單。完整物件沒有自動到期規則。
-預設 lifecycle 只有七日中止未完成 multipart upload；沒有刪掉此預設規則。
-物件清單讀回為空，因此目前沒有 ZIP、manifest、入口文件或 `current.json`。
+**已完成私有儲存及初次讀回核對（2026-10-01 14:47 香港時間）。**
+使用者已分別批准建立 `kwmpf-handoff` 及清單內私有資料上傳／下載核對，總上傳上限 15 MB。
+Cloudflare API 核實 Standard／APAC、r2.dev 關閉、無自訂域名；完整物件無自動到期，預設只有七日中止未完成 multipart。
 
-先前 bucket creation 曾被自動批准審查拒絕，取得明確批准後才成功。
-之後初始 ZIP 上傳又被審查拒絕，理由為「建立 bucket 的批准未明確授權匯出私有交接 payload」。
-這個上傳命令沒有執行；沒有改用別的工具繞過。具體檔案／SHA／目的地清單準備好後再申請資料上傳批准。
+原始 ZIP、新版 ZIP、五份入口文件、manifest、讀回報告與 current 指標共 10 件／8619851 bytes，remote put/get 後各檔長度及 SHA-256 相符。
+初次成功 manifest 是 `handoffs/2026-10-01/0e3a38ebb952869f72abd7c4d2b0ae782828bfc6/manifest.json`；current 亦已讀回。
+先前自動批准審查拒絕建立／匯出；其後都取得對該次操作的明確批准才執行，沒有換工具繞過。
+
+本頁與 [CLOUD_STATUS](handoff/CLOUD_STATUS.json) 是有日期 checkpoint。把完成結果另 commit／push 後，再保存最終 ZIP並核對後才更新 current。
+**最新 exact branch／commit／ZIP hash 以外部 `HANDOFF_RECEIPT.json` 和 R2 `current.json` 指定 manifest 為準**；本頁不預先宣稱最終 revision 成功。
+早期 ZIP repo/ 使用 Windows CRLF 匯出；入口文件使用 Git blob bytes，fresh clone exact commit 是 canonical。
+最終 ZIP 改用 `core.autocrlf=false` 匯出並逐檔核對 Git blob，不重寫早期保存包。
 
 ## 2. 資料分工
 
@@ -25,7 +28,7 @@ Standard／APAC、r2.dev enabled=false、自訂域名空清單。完整物件沒
 | --- | --- | --- |
 | 公開 GitHub `Kirkwongcn/KWMPF` | code、已公開來源 JSON、ADR、規則、五份入口文件 | 私有附件、憑證、D1 SQL、SQLite、node_modules 不進 Git |
 | 既有 `kwmpf-production-raw`／`kwmpf-staging-raw` | 網站來源封存、D1 備份及發布證據 | 既有資料沒有全部複製到交接 bucket；不能當成同一份備份 |
-| 已建立 `kwmpf-handoff` 私有 R2 | 規劃接手 ZIP、入口文件、歷史保存及 manifest；目前空 bucket | 不綁定現有 Worker／Pages；上傳未批准，不能當成附件已保存 |
+| 已建立 `kwmpf-handoff` 私有 R2 | 已保存接手 ZIP、入口文件、歷史保存及 manifest | 不綁定現有 Worker／Pages；獨立客户端授權尚待配置 |
 | NAS | 使用者提供 AS5402T、HDD、RAID 後 12 TB | 尚未設置；空閒容量、ADM、檔案系統及網絡未核實，沒有自動備份或備用入口 |
 
 原本約 1.78 GB 的本機實體佔用包括依賴、快取、重複 checkout 及暫存；不等於需要上傳的資料量。
@@ -56,7 +59,7 @@ Standard／APAC、r2.dev enabled=false、自訂域名空清單。完整物件沒
 ### 已安裝 Wrangler 的取回範例
 
 此範例使用 repo pinned Wrangler 4.120.0。先於 fresh clone 安裝依賴、確認身分及目標帳戶。
-`current.json`／附件未上傳前，以下取回命令不能被當成已執行成功。
+本機透過 pinned Wrangler 4.120.0 已執行同類 remote put/get 並核對；下列 fresh-clone 範例仍需在接手客戶端獨立授權及驗證。
 
 ```bash
 cd apps/api
@@ -93,7 +96,7 @@ R2 bucket-scoped object token 用於 S3 API；不能假設它亦可呼叫 Cloudf
 - 有限秘密模式掃描及 SHA 核對，不等於完整 credential history 或全部來源內容認證。
 - R2 10 GB 是 Standard 免費額度，不是容量上限；現有帳戶使用量與免費餘額未核實。
 - 本輪預計總儲存少於 15 MB；實際 bytes 與檔案清單記於 manifest。不因資料小就宣稱沒有費用。
-- 私有 R2 bucket 已建立，但交接附件仍只在本機 ZIP；沒有已核實的雲端附件保存或自動異地備份。
+- 私有 R2 交接附件保存及逐檔讀回已核實；NAS 自動異地備份尚未設置。最終外部 receipt 記實際物件 bytes；不以初次 checkpoint 代替最新 tuple。
 
 ## 7. 下一階段
 

@@ -1,47 +1,51 @@
 # KWMPF → Claude Code 即時交接
 
-更新：2026-10-01 14:22（Asia/Hong_Kong；網站驗收基線保留 00:55 證據，時效 API 使用 UTC 日界）。
+更新：2026-10-01 14:47（Asia/Hong_Kong；網站驗收基線保留 00:55 證據，時效 API 使用 UTC 日界）。
 任務：暫停新增功能與重構，核實並安全保存網站／資料／工作差異及接手文件。
-今次只按使用者批准建立獨立私有 R2 交接 bucket；不合併、不 dispatch／批准網站部署。入口共用規則 [AGENTS](../AGENTS.md)，Claude 入口 [CLAUDE](../CLAUDE.md)。
+今次按使用者明確批准建立私有交接 bucket，並上傳／讀回清單內附件（上傳上限 15 MB）；不合併、不 dispatch／批准網站部署。入口共用規則 [AGENTS](../AGENTS.md)，Claude 入口 [CLAUDE](../CLAUDE.md)。
 
-## 本輪雲端儲存跟進（2026-10-01；bucket 已建立，資料上傳待批准）
+## 本輪雲端儲存跟進（2026-10-01；已上傳及讀回，NAS 尚未設置）
 
-使用者要求先安排 GitHub／Cloudflare，再更新交接；NAS 尚未設置。先以 KWMPF 處理，沒有把其他項目視為已完成。
-本段是較新的儲存狀態；下列網站開發、來源及驗收仍保留原來的證據日期。
+使用者要求先安排 GitHub／Cloudflare，再更新交接。本段是較新的儲存紀錄；下列網站開發、來源及測試保留原來證據日期，不假稱本輪重跑。
 
-**已驗證**：本機與 GitHub 交接分支起始 HEAD 均為 `2c08f15cd14d50e3fa60a5bc983f8f6d0311c5a0`；
-main 仍為 `6a593dba460b905badbfca9e9eac85a16318309e`，正式 Pages canonical id／code SHA 未變。
-兩個 Worker Build triggers 仍為空，Pages 詳情無 source 欄位；repo CI 是 PR／push main，部署仍 manual。
-rulesets GET 回空清單；classic main protection GET 403，不能据此說 main 未受保護。
+**已驗證（2026-10-01 14:47 香港時間）**：GitHub repo `https://github.com/Kirkwongcn/KWMPF.git`，本機
+`C:/Users/user/Documents/Codex/2026-09-26/kwmpf/work/kwmpf-review-redesign`；功能 branch
+`docs/claude-handoff-20261001-safe`／`origin/docs/claude-handoff-20261001-safe`，上傳起始 HEAD `0e3a38ebb952869f72abd7c4d2b0ae782828bfc6` 已 push，工作目錄乾淨。
+main 仍為 `6a593dba460b905badbfca9e9eac85a16318309e`，正式 Pages id `48675d4f-4815-4f87-bb8f-b1f3aa5df51d`、程式 SHA `3f655960c620b019f245886d709283c0e1b67590` 未变。
+两個 Worker Builds triggers 空白，兩個 Pages 詳情沒有 source 欄位；CI 只在 PR／push main，網站部署仍 manual。classic main protection 曾回 403，實際狀態仍未核實。
 
-**已建立並讀回**：[storage declaration](../config/storage.json) 與 [雲端儲存手冊](CLOUD_STORAGE.md) 記錄
-`kwmpf-handoff` Standard 私有 bucket，建立時間香港 14:18:51.869；APAC、公開 enabled=false、沒有 custom domain。
-完整物件沒有到期規則；預設七日中止未完成 multipart upload 保留。沒有綁現有 Worker／Pages。
-使用者已明確批准建立 bucket，首次建立拒絕已按批准解決；ZIP 上傳則被自動批准審查另行拒絕，
-理由為 bucket creation 的批准沒有明確授權匯出私有 payload。命令未執行，沒有改用其他工具繞過。
-物件清單為空：**尚未上傳 ZIP／manifest／入口文件／current pointer，未有附件讀回核對；新 token／NAS／自動備份均未配置**。
-較新的 GitHub 交接起始 HEAD 為 `8758f13c734d2911980e240ca16cdcd1020b702f`；main 及正式 Pages tuple 仍未變。
+**已完成**：私有 `kwmpf-handoff`，Standard／APAC、r2.dev 關閉、沒有 custom domain，完整物件不自動到期；只有預設七日中止未完成 multipart upload。
+使用者已分別批准建立及清單內私有資料上傳／下載核對。原先自動批准審查拒絕已經該次明確批准解決，沒有繞過。
+已保存原始 ZIP、新版 ZIP、五份入口文件、manifest、讀回報告與 `current.json`；API 物件清單 10 件、8619851 bytes，逐件下載長度／SHA-256 全相符。
+初次完整 tuple 的 manifest：`handoffs/2026-10-01/0e3a38ebb952869f72abd7c4d2b0ae782828bfc6/manifest.json`。
+五份独立入口文件取 exact Git blob bytes；早期 ZIP 的 repo/ 是 Windows CRLF 匯出，clone Git commit 才是 canonical，不能拿 ZIP 字節取代原始來源 blob／disposition。
 
-既有初始交接 ZIP 的 bytes `4270131`、SHA-256 `57534ae6bcdecc80b25a44845b1b09a45dbd1c2b5109d859f3b475514bf73c8f`；
-425 個文字 entries 經有限秘密模式／檔名／path 檢查無 finding，CRC 無錯誤。不是完整 credential history 認證。
-本機路徑：`C:/Users/user/Documents/Codex/2026-09-26/kwmpf/outputs/claude-handoff-2026-10-01/KWMPF-Claude-Code-完整交接-2026-10-01.zip`。
+| 已核對的保存包 | bytes | SHA-256 |
+| --- | ---: | --- |
+| 原始 `original-handoff.zip`（`2c08f15...`） | 4270131 | `57534ae6bcdecc80b25a44845b1b09a45dbd1c2b5109d859f3b475514bf73c8f` |
+| 初次新版 `handoff.zip`（`0e3a38e...`） | 4289401 | `80c1fc19c55309077b2717c034612edbfad6301fc8e5e031b596d37e34802b5a` |
 
-使用者提供 NAS 為 ASUSTOR AS5402T／HDD／RAID 後 12 TB；這是使用者資料，不是本次登入 NAS 核實。
-剩餘容量、ADM、Btrfs／ext4、RAM、網絡及每個 LLM 的私人網絡能力均未核實。
-Codex Cloud 環境由使用者報稱已設定；本次仍在 Windows 本機，沒有證據已把任務移到雲端 executor。
+新版 454 entries／435 文字檔有限敏感模式检查無匹配，CRC 與逐檔 hash 相符，32 份舊手冊原始內容全保留。不是完整 credential history／全部私人資料認證。
+詳見 [CLOUD_STATUS](handoff/CLOUD_STATUS.json)、[storage declaration](../config/storage.json)、[雲端儲存手冊](CLOUD_STORAGE.md)。
 
-本輪文件保存後的 exact commit／GitHub push 及 cloud package 結果，讀外部
-`C:/Users/user/Documents/Codex/2026-09-26/kwmpf/outputs/cloud-storage-handoff-2026-10-01-bucket-created/HANDOFF_RECEIPT.json`
-（不是本檔自己的 hash，也不是公開 repo 路徑），與使用者最後回報核對。
-保存初始 ZIP，不能覆寫它而把舊 SHA 當成新包。沒有新增網站功能、合併 main 或正式部署。
+**最終版本定位**：本節是初次成功讀回的有日期 checkpoint。把本輪完成文件另 commit／push、產生最終 ZIP，且全數讀回後才再次更新 `current.json`。
+文件不能包含自己的最終 Git SHA 或 ZIP SHA；**交接使用者收到的 final commit、R2 `current.json` 及其指定 manifest，不能以本節初次 tuple 覆蓋最新版本**。
+完整最終回執／本機可交予其他 LLM 的檔案：
+`C:/Users/user/Documents/Codex/2026-09-26/kwmpf/outputs/cloud-storage-handoff-2026-10-01-final/HANDOFF_RECEIPT.json`；
+最終 ZIP 同目錄 `KWMPF-Cloud-Handoff-2026-10-01-final.zip`。初始及中間版本保留原 SHA，不覆寫。
 
+**未核實／尚未設置**：沒有新增 client token、公開 Worker／MCP、NAS、自動備份或其他項目的儲存。
+另一個 LLM 仍需独立認證，Codex 的既有 OAuth 不會跟文件轉移。使用者提供 NAS ASUSTOR AS5402T／HDD／RAID 後 12 TB；不是本次登入核實，ADM／檔案系統／空閒容量／網絡仍未知。
+Codex Cloud 環境由使用者報稱已設定；本次 executor 仍在 Windows 本機，沒有任務搬到雲端的證據。
+原件 PDF／D1 SQL／SQLite／部分大型暫存仍依 inventory 或既有 production/staging R2 另取，沒有把本機約 1.78 GB 全搬上雲。
+本輪只做文件、JSON、有限秘密檢查、ZIP／讀回 integrity；網站測試／build **未執行**。
 
 ## 保存邊界（本次實際狀態）
 
 公開 GitHub 接手分支保存五份入口文件、README、文件索引、非敏感狀態摘要及雲端儲存設定宣告／手冊。
 自動批准審查拒絕將整批 production evidence／歷史報告／本機 patch 公開推送，理由是可能含敏感內容，未有明確公開輸出批准。
 因此本機原分支 `docs/claude-handoff-20261001` 的保存 commit `78e84da4a24e848fa278b129089f2728e33d8d4e` **未 push**；没有换工具繞過。
-全部資料另在交接 ZIP 的 `private-preservation/`，供使用者以私有檔案傳給 Zo。Zip `repo/` 是公開分支的完整網站 snapshot，兩部分不可互相覆蓋。
+已安全保存的差異／手冊另在交接 ZIP 的 `private-preservation/`，已按批准存入私有 R2；未打包的原件另依 inventory 取得。Zip `repo/` 是公開分支的完整網站 snapshot，兩部分不可互相覆蓋。
 本文提到的 `handoff/archive/`／`handoff/verification/` 路徑均指 ZIP 的 `private-preservation/docs/` 下附件，**不是公開分支已有檔案**。
 公開可讀摘要是 [STATE_SUMMARY.json](handoff/STATE_SUMMARY.json)；最終 commit／push 實證是 ZIP 根目錄 `HANDOFF_RECEIPT.json`。
 不能聲稱 Claude 已得到這個 ZIP；接手時需由使用者提供，先核對回執 SHA。
@@ -193,7 +197,7 @@ smoke／release tuple steps success；失敗後復原 steps skipped。這是已�
 同 exact SHA main CI success、匹配來源／report／disposition、production environment。
 push `main` 只觸发 CI；候選refresh與raw R2 archive不等於production deploy。還原／改域名／backup另有 workflow。
 
-**已核實 Cloudflare API**：兩 Pages project `source=null`、`production_branch=main`；
+**已核實 Cloudflare API**：兩 Pages project 無 source 欄位（不是明確 null）、`production_branch=main`；
 兩個 KWMPF Worker Build trigger 清單為空。功能分支 push不會經這些已核實路徑自動正式發布。
 沒有自行修改此設定。最新 Pages deployment 是既有 9 月 30 日 #28，不是交接造成。
 
