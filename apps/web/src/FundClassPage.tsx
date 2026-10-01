@@ -987,125 +987,6 @@ export function FundClassPage({
               年度回報是該個曆年的累積回報，不是年率化回報，不可與上表的年率化數字直接比較。官方沒有公布的年度不會顯示。
             </p>
           </section>
-          <section className="kw-section" aria-labelledby="fund-fees-title">
-            <h2 className="kw-section__heading" id="fund-fees-title">
-              費用及資料限制
-            </h2>
-            <div className="kw-detail-stack provenance">
-              <dl className="status-list">
-                <div>
-                  <dt>基金開支比率（歷史財政期）</dt>
-                  <dd>{formatNumber(fundClass.latestFer, 5, "%")}</dd>
-                </div>
-              </dl>
-              <div
-                className="kw-table-scroll"
-                tabIndex={0}
-                role="region"
-                aria-label="基金經常性費用表，可左右捲動查看所有欄位"
-              >
-                <table
-                  className="kw-table kw-table--compact"
-                  aria-label="經常性費用"
-                >
-                  <caption>經常性費用（每年）</caption>
-                  <thead>
-                    <tr>
-                      <th scope="col">項目</th>
-                      <th scope="col">披露費率</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {recurringFeeRows.map(([label, field]) => (
-                      <tr key={field}>
-                        <th scope="row">{label}</th>
-                        <td className="kw-return">{feeRate(field)}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <div
-                className="kw-table-scroll"
-                tabIndex={0}
-                role="region"
-                aria-label="一次性及交易收費表，可左右捲動查看所有欄位"
-              >
-                <table
-                  className="kw-table kw-table--compact"
-                  aria-label="一次性及交易收費"
-                >
-                  <caption>一次性及交易收費</caption>
-                  <thead>
-                    <tr>
-                      <th scope="col">項目</th>
-                      <th scope="col">披露收費</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {oneOffChargeRows.map(([label, field]) => (
-                      <tr key={field}>
-                        <th scope="row">{label}</th>
-                        <td className="kw-return">{feeRate(field)}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <div
-                className="kw-table-scroll"
-                tabIndex={0}
-                role="region"
-                aria-label="持續成本說明表，可左右捲動查看所有欄位"
-              >
-                <table
-                  className="kw-table kw-table--compact"
-                  aria-label="持續成本說明"
-                >
-                  <caption>持續成本說明（OCI）</caption>
-                  <thead>
-                    <tr>
-                      <th scope="col">期間</th>
-                      <th scope="col">每 HK$1,000 投資的成本</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {ociRows.map(([label, field]) => (
-                      <tr key={field}>
-                        <th scope="row">{label}</th>
-                        <td className="kw-return">{feeAmount(field)}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              {feeCaps.length > 0 && (
-                <p className="kw-muted" role="note">
-                  標示「上限」的項目，官方原文寫的是 <code>Up to</code>
-                  ，即披露的是收費上限而非實際費率；實際扣費可能較低。
-                </p>
-              )}
-              {feeDisclosureRows.length > 0 && (
-                <div>
-                  <p className="kw-muted">
-                    以下項目不是單一費率，官方以文字披露，原文照錄：
-                  </p>
-                  <dl className="status-list fee-disclosures">
-                    {feeDisclosureRows.map(([field, text]) => (
-                      <div key={field}>
-                        <dt>{feeLabels[field] ?? field}</dt>
-                        <dd>{text}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                </div>
-              )}
-              <p>配置及持倉資料的截至日期可能不同，使用時請留意可比性限制。</p>
-              <p role="note">
-                「未取得」代表本快照沒有可用數值，不足以判定官方沒有披露。只有來源明示缺項時才列出「官方未提供」及原因；網站不會以估算值補足。
-              </p>
-            </div>
-          </section>
           <section
             className="kw-section"
             aria-labelledby="fund-fact-sheet-title"
@@ -1397,6 +1278,125 @@ export function FundClassPage({
               comparisonGroup={comparisonGroup}
               snapshotId={snapshotId}
             />
+          </section>
+          <section className="kw-section" aria-labelledby="fund-fees-title">
+            <h2 className="kw-section__heading" id="fund-fees-title">
+              費用及資料限制
+            </h2>
+            <div className="kw-detail-stack provenance">
+              <dl className="status-list">
+                <div>
+                  <dt>基金開支比率（歷史財政期）</dt>
+                  <dd>{formatNumber(fundClass.latestFer, 5, "%")}</dd>
+                </div>
+              </dl>
+              <div
+                className="kw-table-scroll"
+                tabIndex={0}
+                role="region"
+                aria-label="基金經常性費用表，可左右捲動查看所有欄位"
+              >
+                <table
+                  className="kw-table kw-table--compact"
+                  aria-label="經常性費用"
+                >
+                  <caption>經常性費用（每年）</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">項目</th>
+                      <th scope="col">披露費率</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {recurringFeeRows.map(([label, field]) => (
+                      <tr key={field}>
+                        <th scope="row">{label}</th>
+                        <td className="kw-return">{feeRate(field)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div
+                className="kw-table-scroll"
+                tabIndex={0}
+                role="region"
+                aria-label="一次性及交易收費表，可左右捲動查看所有欄位"
+              >
+                <table
+                  className="kw-table kw-table--compact"
+                  aria-label="一次性及交易收費"
+                >
+                  <caption>一次性及交易收費</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">項目</th>
+                      <th scope="col">披露收費</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {oneOffChargeRows.map(([label, field]) => (
+                      <tr key={field}>
+                        <th scope="row">{label}</th>
+                        <td className="kw-return">{feeRate(field)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div
+                className="kw-table-scroll"
+                tabIndex={0}
+                role="region"
+                aria-label="持續成本說明表，可左右捲動查看所有欄位"
+              >
+                <table
+                  className="kw-table kw-table--compact"
+                  aria-label="持續成本說明"
+                >
+                  <caption>持續成本說明（OCI）</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">期間</th>
+                      <th scope="col">每 HK$1,000 投資的成本</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {ociRows.map(([label, field]) => (
+                      <tr key={field}>
+                        <th scope="row">{label}</th>
+                        <td className="kw-return">{feeAmount(field)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              {feeCaps.length > 0 && (
+                <p className="kw-muted" role="note">
+                  標示「上限」的項目，官方原文寫的是 <code>Up to</code>
+                  ，即披露的是收費上限而非實際費率；實際扣費可能較低。
+                </p>
+              )}
+              {feeDisclosureRows.length > 0 && (
+                <div>
+                  <p className="kw-muted">
+                    以下項目不是單一費率，官方以文字披露，原文照錄：
+                  </p>
+                  <dl className="status-list fee-disclosures">
+                    {feeDisclosureRows.map(([field, text]) => (
+                      <div key={field}>
+                        <dt>{feeLabels[field] ?? field}</dt>
+                        <dd>{text}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              )}
+              <p>配置及持倉資料的截至日期可能不同，使用時請留意可比性限制。</p>
+              <p role="note">
+                「未取得」代表本快照沒有可用數值，不足以判定官方沒有披露。只有來源明示缺項時才列出「官方未提供」及原因；網站不會以估算值補足。
+              </p>
+            </div>
           </section>
         </div>
       )}

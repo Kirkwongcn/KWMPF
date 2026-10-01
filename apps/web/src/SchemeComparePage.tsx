@@ -189,20 +189,6 @@ function SchemeCompareCharts({ schemes }: { schemes: ComparedScheme[] }) {
           value: scheme.fundChoiceCount,
         }))}
       />
-      <ValueBars
-        label="FER 中位數（本站統計）"
-        rows={schemes.map((scheme) => ({
-          label: scheme.schemeName,
-          value: scheme.fer ? Number(scheme.fer.median.toFixed(5)) : null,
-          note: scheme.fer
-            ? "範圍 " +
-              formatRange(scheme.fer) +
-              " · " +
-              scheme.fer.fundCount +
-              " 個有值樣本；原值見基金詳情"
-            : "官方未提供",
-        }))}
-      />
       {(
         [
           ["coreAccumulation", "核心累積基金"],
@@ -254,6 +240,20 @@ function SchemeCompareCharts({ schemes }: { schemes: ComparedScheme[] }) {
           />
         ) : null;
       })}
+      <ValueBars
+        label="FER 中位數（本站統計）"
+        rows={schemes.map((scheme) => ({
+          label: scheme.schemeName,
+          value: scheme.fer ? Number(scheme.fer.median.toFixed(5)) : null,
+          note: scheme.fer
+            ? "範圍 " +
+              formatRange(scheme.fer) +
+              " · " +
+              scheme.fer.fundCount +
+              " 個有值樣本；原值見基金詳情"
+            : "官方未提供",
+        }))}
+      />
       <p className="kw-muted">
         每幅圖使用自己的實際單位及共同零起點，不作標準分或總分。DIS
         多類別回報範圍保留於上表；不把範圍中點當作官方回報。
@@ -411,29 +411,6 @@ export function SchemeComparePage({
                     ))}
                   </tr>
                   <tr>
-                    <th scope="row">FER 範圍</th>
-                    {result.schemes.map((scheme) => (
-                      <td key={scheme.id}>
-                        {scheme.fer ? (
-                          <>
-                            <span className="kw-nowrap">
-                              {formatRange(scheme.fer)}
-                            </span>
-                            <small className="kw-fee-note">
-                              中位數{" "}
-                              {formatPercent(
-                                Number(scheme.fer.median.toFixed(5)),
-                              )}
-                              ；{scheme.fer.fundCount} 隻有 FER
-                            </small>
-                          </>
-                        ) : (
-                          "官方未提供"
-                        )}
-                      </td>
-                    ))}
-                  </tr>
-                  <tr>
                     <th scope="row">行政評分</th>
                     {result.schemes.map((scheme) => (
                       <td key={scheme.id}>
@@ -533,6 +510,29 @@ export function SchemeComparePage({
                       ));
                     },
                   )}
+                  <tr>
+                    <th scope="row">FER 範圍</th>
+                    {result.schemes.map((scheme) => (
+                      <td key={scheme.id}>
+                        {scheme.fer ? (
+                          <>
+                            <span className="kw-nowrap">
+                              {formatRange(scheme.fer)}
+                            </span>
+                            <small className="kw-fee-note">
+                              中位數{" "}
+                              {formatPercent(
+                                Number(scheme.fer.median.toFixed(5)),
+                              )}
+                              ；{scheme.fer.fundCount} 隻有 FER
+                            </small>
+                          </>
+                        ) : (
+                          "官方未提供"
+                        )}
+                      </td>
+                    ))}
+                  </tr>
                 </tbody>
               </table>
             </div>

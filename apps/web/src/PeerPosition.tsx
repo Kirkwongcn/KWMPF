@@ -163,16 +163,6 @@ export function PeerPosition({
             />
           )}
           <div className="kw-viz-grid">
-            {pick(["管理費"]).map((row) => (
-              <RangeChart
-                key="fee"
-                title="管理費位置"
-                subtitle="由低至高；費率較低不代表總開支較低"
-                rows={[row]}
-                legend={legend}
-                note="官方以上限披露的費率按上限值比較。"
-              />
-            ))}
             {pick(["波幅"]).map((row) => (
               <RangeChart
                 key="risk"
@@ -181,6 +171,16 @@ export function PeerPosition({
                 rows={[row]}
                 legend={legend}
                 note="波幅較低代表過往價格波動較小，不代表較佳。"
+              />
+            ))}
+            {pick(["管理費"]).map((row) => (
+              <RangeChart
+                key="fee"
+                title="管理費位置"
+                subtitle="由低至高；費率較低不代表總開支較低"
+                rows={[row]}
+                legend={legend}
+                note="官方以上限披露的費率按上限值比較。"
               />
             ))}
           </div>

@@ -230,7 +230,7 @@ describe("scheme comparison page", () => {
         .map((node) => node.textContent),
     ).toEqual(["Cheap Scheme", "Pricey Scheme", "Unknown Fee Scheme"]);
   });
-  it("leads each card with the fee and keeps long fund type lists collapsed", async () => {
+  it("puts fee information last on each card and keeps long fund type lists collapsed", async () => {
     const fundTypes = Array.from(
       { length: 12 },
       (_, index) => `Mixed Assets Fund - Long Descriptor ${index}`,
@@ -265,7 +265,11 @@ describe("scheme comparison page", () => {
     const terms = Array.from(card?.querySelectorAll("dt") ?? []).map(
       (node) => node.textContent,
     );
-    expect(terms[0]).toBe("管理費統計");
+    expect(terms[0]).toBe("資料截至");
+    expect(terms[terms.length - 1]).toBe("管理費統計");
+    // 費用資料排在卡內所有其他內容之後，包括基金種類及基金列表。
+    const children = Array.from(card?.children ?? []);
+    expect(children[children.length - 1]).toHaveClass("scheme-card__fees");
 
     const fundTypeSummary = screen.getByText("基金種類（12）");
     expect(fundTypeSummary.closest("details")).not.toHaveAttribute("open");

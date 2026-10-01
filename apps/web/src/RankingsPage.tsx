@@ -56,8 +56,8 @@ type RankingMetric = "return" | "fee" | "risk";
 
 const metricLabels = {
   return: "年率化回報",
-  fee: "管理費（低至高）",
   risk: "波幅（低至高）",
+  fee: "管理費（低至高）",
 } as const;
 
 export function RankingsPage({
