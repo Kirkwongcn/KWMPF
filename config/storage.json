@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "project": "KWMPF",
+  "code": {
+    "repository": "https://github.com/Kirkwongcn/KWMPF.git",
+    "handoffBranch": "docs/claude-handoff-20261001-safe",
+    "visibility": "public",
+    "privateAttachmentsInGit": false
+  },
+  "handoff": {
+    "provider": "cloudflare-r2",
+    "bucket": "kwmpf-handoff",
+    "status": "awaiting-specific-approval",
+    "storageClass": "Standard",
+    "locationHint": "apac",
+    "snapshotPrefix": "handoffs/",
+    "currentPointer": "current.json",
+    "publicAccess": false,
+    "automaticExpiry": false,
+    "promotionRequiresCompleteReadBack": true,
+    "integrity": "sha256-and-byte-length",
+    "applicationBinding": false
+  },
+  "access": {
+    "authenticationRequired": true,
+    "newClientAccessVerified": false,
+    "recommendedClientPermission": "bucket-scoped-read-only",
+    "credentialsInGit": false,
+    "signedUrlsInGit": false
+  },
+  "nas": {
+    "status": "not-configured",
+    "modelReportedByUser": "ASUSTOR AS5402T",
+    "mediaReportedByUser": "HDD",
+    "capacityAfterRaidTbReportedByUser": 12,
+    "scheduledBackupEnabled": false,
+    "secondaryAccessVerified": false
+  }
+}
