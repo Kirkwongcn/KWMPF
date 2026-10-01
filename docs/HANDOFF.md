@@ -1,5 +1,12 @@
 # KWMPF → Claude Code 即時交接
 
+## 最新：網站改版已正式發布（2026-10-02 07:34 香港）
+
+**已驗證**：使用者批准後合併 [Kirkwongcn/KWMPF#361](https://github.com/Kirkwongcn/KWMPF/pull/361)（文件 P-01／P-02）、[#362](https://github.com/Kirkwongcn/KWMPF/pull/362)（F-02 CI overlay）及 [#363](https://github.com/Kirkwongcn/KWMPF/pull/363)（網站改版及圖表，main `e9ab024cc9e2c2fe9c1799b569ca4ff6d49435ca`）。main CI run #820 成功後由 Claude dispatch [Deploy production run #29](https://github.com/Kirkwongcn/KWMPF/actions/runs/36939569164)（source `2026-09-26/mpf-fund-platform.json`、overlay `2026-09-30-official-return-observations-candidate.json`、不容許舊批次）；`production` 閘門由使用者在 GitHub 親自批准（Claude 無權限代批）。全部步驟 success，回復步驟 skipped。
+發布結果：snapshot `snapshot-mpfa-platform-2026-08-31-e9ab024cc9e2`；451 基金類別；三年排名 37 行；Cache-Control `public, max-age=300, stale-while-revalidate=600`；pre-deploy D1 backup `d1-2026-10-01T23-33-36Z-run-36939569164`（R2 讀回核對），rollback timestamp `1790897616`；release tuple manifest `kwmpf-production-raw/releases/e9ab024…/run-36939569164-attempt-1/manifest.json` 逐 byte 讀回。正式網站 `kwmpf.kirkwongcn.com` 已提供新 bundle（含 favicon、theme-color、新圖表程式）。
+**未核實**：本環境連唔到 `*.workers.dev` API，正式 API 數值只依 workflow smoke 檢查；未以真瀏覽器檢視正式網站圖表。已合併分支刪除被拒（HTTP 403），需使用者在 GitHub 刪除 `claude/relaxed-goldberg-5ytvfk-docs-deploy-reality`、`-ci-seed-overlay`、`-redesign`。
+**仍待決定**：F-01 一年回報 10-16 起過期（寬限政策）；F-14 三年新期別 discovery；deploy workflows 改用共用 overlay resolver（高危路徑）。
+
 ## 最新：F-01 現況及 F-02 修正（2026-10-01 23:40 香港）
 
 **F-01（已驗證）**：本環境而家可連官方網站（`mfp.mpfa.org.hk` 200）。積金局基金平台列表頁 UTC 2026-10-01 仍寫「Latest information as of 31 Aug 2026」；每週 refresh 最近一次（run #11，09-29 排程）成功但冇新候選 PR，下次排程 10-06 19:00 UTC。一年等回報寬限 45 日（`apps/api/src/freshness.ts` `DEFAULT_RETURNS_GRACE_DAYS`），8 月底資料 10-16 起過期；9 月底資料要 10-15 前上線先無缺口。**推測**：平台通常月底後三至四星期先更新，所以每月可能有一段全數過期期，屬時效政策問題，待使用者決定（例如寬限日數或過期顯示方式）。三年 trustee 新期別 discovery（F-14）而家有網絡可做，未開始。
