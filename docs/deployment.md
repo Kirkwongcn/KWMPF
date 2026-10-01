@@ -43,7 +43,7 @@ The backup workflow does not write to remote D1 or deploy the site. Automatic R2
 
 1. 觸發時必須在 `confirm` 輸入框逐字輸入 `deploy-production`。
 2. `production` GitHub environment 受保護，需要 repository owner 批准。
-3. 部署前先跑 `bun run check` 及完整 `bun run e2e`（desktop + Pixel 5），任何一項失敗即中止。
+3. 部署本身不重跑 `bun run check` 或 E2E。「Require main and reuse successful checks for this exact commit」步驟要求同一 SHA 在 `main` 已有成功的 `CI` push run，否則中止，並沿用該 run `verify` job 的 `bun run check`。完整 Playwright E2E（desktop + Pixel 5）只在 PR 的 `CI` 按改動範圍執行（`ci.yml` 的 `e2e` job）；`main` push 只跑 `verify`，因此部署前的 E2E 證據來自合併前的 PR。
 
 `source_snapshot` 輸入指定要發布的官方來源快照（`data/sources/` 之下的路徑）。
 Workflow 會先確認該檔案存在，才建立發布種子。
