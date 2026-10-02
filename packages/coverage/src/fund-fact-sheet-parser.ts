@@ -12,7 +12,8 @@ export type FundReturnUnavailable = Omit<
   "annualizedReturn3Year"
 > & {
   periodYears: 3;
-  reason: "official-na";
+  /** `official-na`：原文寫 N/A；`official-dash`：原文寫「-」（例如成立未滿該期間），兩者不可互換。 */
+  reason: "official-na" | "official-dash";
   page: number;
 };
 

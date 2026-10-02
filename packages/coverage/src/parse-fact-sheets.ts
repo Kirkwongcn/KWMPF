@@ -19,7 +19,7 @@ import { parseHaitongFundPerformance } from "./haitong-fund-performance-parser";
 import { parseMyChoiceFundPerformance } from "./my-choice-fund-performance-parser";
 import { parseMassFundPerformance } from "./mass-fund-performance-parser";
 import { parseShkpFundPerformance } from "./shkp-fund-performance-parser";
-import { parseFidelityFundPerformance } from "./fidelity-fund-performance-parser";
+import { parseFidelityFundPerformanceAudit } from "./fidelity-fund-performance-parser";
 import { parseManulifeGlobalSelect } from "./manulife-global-select-parser";
 import type {
   FundFactSheetReturn,
@@ -38,6 +38,12 @@ async function sha256File(path: string): Promise<string> {
   const digest = createHash("sha256");
   for await (const chunk of createReadStream(path)) digest.update(chunk);
   return digest.digest("hex");
+}
+async function pdfXml(path: string) {
+  return (await exec("pdftohtml", ["-xml", "-stdout", path], { maxBuffer: 32 * 1024 * 1024 })).stdout;
+}
+async function pdfWordBoxes(path: string) {
+  return (await exec("pdftotext", ["-bbox", path, "-"], { maxBuffer: 32 * 1024 * 1024 })).stdout;
 }
 const manifestPath = process.argv[2];
 const outputPath = process.argv[3];
@@ -72,7 +78,6 @@ function parser(
   if (scheme.startsWith("My Choice")) return parseMyChoiceFundPerformance(text, url);
   if (scheme.startsWith("MASS")) return parseMassFundPerformance(text, url);
   if (scheme.startsWith("SHKP")) return parseShkpFundPerformance(text, url);
-  if (scheme.startsWith("Fidelity")) return parseFidelityFundPerformance(text, url);
   if (scheme === "Manulife Global Select (MPF) Scheme") return parseManulifeGlobalSelect(text, url);
   if (scheme.startsWith("AIA")) return parseAiaFundFactSheet(text, url);
   if (scheme.startsWith("AMTD")) return parseAmtdFundFactSheet(text, url);
@@ -104,15 +109,14 @@ for (const entry of manifest.entries) {
       periodNotDisclosed.push(auditedNonDisclosure);
       continue;
     }
-    if (entry.scheme.startsWith("Sun Life") || entry.scheme.startsWith("BEA")) {
-      const { stdout } = await exec("pdftohtml", ["-xml", "-stdout", pdfPath], { maxBuffer: 32 * 1024 * 1024 });
-      const parsed = entry.scheme.startsWith("Sun Life")
-        ? parseSunLifeFundFactSheetXmlAudit(stdout, entry.factSheetUrl)
-        : parseBeaFundFactSheetXmlAudit(
-            stdout,
-            entry.factSheetUrl,
-            entry.scheme,
-          );
+    const parsed = entry.scheme.startsWith("Fidelity")
+      ? parseFidelityFundPerformanceAudit(await pdfWordBoxes(pdfPath), entry.factSheetUrl)
+      : entry.scheme.startsWith("Sun Life")
+        ? parseSunLifeFundFactSheetXmlAudit(await pdfXml(pdfPath), entry.factSheetUrl)
+        : entry.scheme.startsWith("BEA")
+          ? parseBeaFundFactSheetXmlAudit(await pdfXml(pdfPath), entry.factSheetUrl, entry.scheme)
+          : undefined;
+    if (parsed) {
       returns.push(...parsed.returns);
       fundPeriodNotDisclosed.push(
         ...parsed.unavailable.map((row) => ({
