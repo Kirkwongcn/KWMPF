@@ -362,38 +362,6 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
                 </p>
                 <dl className="status-list">
                   <div>
-                    <dt>管理費統計</dt>
-                    <dd>
-                      {scheme.managementFee ? (
-                        <>
-                          <span className="kw-nowrap">
-                            {scheme.managementFee.min}% –{" "}
-                            {scheme.managementFee.max}%
-                          </span>
-                          <small className="kw-fee-note">
-                            中位數{" "}
-                            {Number(scheme.managementFee.median.toFixed(5))}%
-                          </small>
-                          <small className="kw-fee-note">
-                            平台已核實 {scheme.fundClassCount} 隻基金中，
-                            {scheme.managementFee.fundCount} 隻有官方管理費（
-                            {Math.round(
-                              (scheme.managementFee.fundCount /
-                                scheme.fundClassCount) *
-                                100,
-                            )}
-                            % 覆蓋）
-                          </small>
-                          <small className="kw-fee-note">
-                            中位數由本站按有披露的基金類別計算；不等於計劃總開支，低覆蓋計劃的結果較難直接比較。
-                          </small>
-                        </>
-                      ) : (
-                        "官方未提供"
-                      )}
-                    </dd>
-                  </div>
-                  <div>
                     <dt>資料截至</dt>
                     <dd>
                       <span className="kw-nowrap">
@@ -527,6 +495,40 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
                     </ul>
                   </details>
                 )}
+                <dl className="status-list scheme-card__fees">
+                  <div>
+                    <dt>管理費統計</dt>
+                    <dd>
+                      {scheme.managementFee ? (
+                        <>
+                          <span className="kw-nowrap">
+                            {scheme.managementFee.min}% –{" "}
+                            {scheme.managementFee.max}%
+                          </span>
+                          <small className="kw-fee-note">
+                            中位數{" "}
+                            {Number(scheme.managementFee.median.toFixed(5))}%
+                          </small>
+                          <small className="kw-fee-note">
+                            平台已核實 {scheme.fundClassCount} 隻基金中，
+                            {scheme.managementFee.fundCount} 隻有官方管理費（
+                            {Math.round(
+                              (scheme.managementFee.fundCount /
+                                scheme.fundClassCount) *
+                                100,
+                            )}
+                            % 覆蓋）
+                          </small>
+                          <small className="kw-fee-note">
+                            中位數由本站按有披露的基金類別計算；不等於計劃總開支，低覆蓋計劃的結果較難直接比較。
+                          </small>
+                        </>
+                      ) : (
+                        "官方未提供"
+                      )}
+                    </dd>
+                  </div>
+                </dl>
               </article>
             );
           })}

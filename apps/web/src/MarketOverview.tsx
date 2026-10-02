@@ -20,7 +20,7 @@ type MarketRow = {
   dataAsOf: string;
 };
 type MarketPublication = { snapshotId: string; rankings: MarketRow[] };
-type View = "returns" | "riskReturn" | "fees";
+type View = "returns" | "riskReturn";
 type Period = "1" | "3" | "5" | "10";
 const periodLabel: Record<Period, string> = {
   "1": "一年",
@@ -50,7 +50,6 @@ export function MarketOverview({
   const [data, setData] = useState<{
     returns: MarketPublication;
     risk?: MarketPublication;
-    fees?: MarketPublication;
   } | null>(null);
   const [failed, setFailed] = useState(false);
 
@@ -63,14 +62,9 @@ export function MarketOverview({
       view === "riskReturn"
         ? load(`${apiOrigin}/rankings?metric=risk`, controller.signal)
         : Promise.resolve(undefined),
-      view === "fees"
-        ? load(`${apiOrigin}/rankings?metric=fee`, controller.signal)
-        : Promise.resolve(undefined),
     ])
-      .then(([returns, risk, fees]) => {
-        const all = [returns, risk, fees].filter(
-          Boolean,
-        ) as MarketPublication[];
+      .then(([returns, risk]) => {
+        const all = [returns, risk].filter(Boolean) as MarketPublication[];
         if (
           all.some(
             (item) =>
@@ -78,7 +72,7 @@ export function MarketOverview({
           )
         )
           throw new Error("Snapshot changed");
-        setData({ returns, risk, fees });
+        setData({ returns, risk });
       })
       .catch(() => {
         if (!controller.signal.aborted) setFailed(true);
@@ -90,8 +84,6 @@ export function MarketOverview({
     joinFundParts(row.constituentFundName, fundClassLabel(row.fundClassName));
   const returnValues = data?.returns.rankings.map((row) => row.value) ?? [];
   const returnMedian = median(returnValues);
-  const feeValues = data?.fees?.rankings.map((row) => row.value) ?? [];
-  const feeMedian = median(feeValues);
   const riskById = new Map(
     (data?.risk?.rankings ?? []).map((row) => [row.fundClassId, row]),
   );
@@ -126,7 +118,6 @@ export function MarketOverview({
             [
               ["returns", "回報分布"],
               ["riskReturn", "風險與回報"],
-              ["fees", "管理費分布"],
             ] as const
           ).map(([key, text]) => (
             <button
@@ -139,23 +130,21 @@ export function MarketOverview({
             </button>
           ))}
         </div>
-        {view !== "fees" && (
-          <p className="kw-field kw-field--inline">
-            <label htmlFor="market-period">回報期間</label>
-            <select
-              className="kw-control"
-              id="market-period"
-              value={period}
-              onChange={(event) => setPeriod(event.target.value as Period)}
-            >
-              {(Object.keys(periodLabel) as Period[]).map((key) => (
-                <option key={key} value={key}>
-                  {periodLabel[key]}
-                </option>
-              ))}
-            </select>
-          </p>
-        )}
+        <p className="kw-field kw-field--inline">
+          <label htmlFor="market-period">回報期間</label>
+          <select
+            className="kw-control"
+            id="market-period"
+            value={period}
+            onChange={(event) => setPeriod(event.target.value as Period)}
+          >
+            {(Object.keys(periodLabel) as Period[]).map((key) => (
+              <option key={key} value={key}>
+                {periodLabel[key]}
+              </option>
+            ))}
+          </select>
+        </p>
       </div>
       {!visible ? (
         <p className="kw-status">
@@ -180,54 +169,26 @@ export function MarketOverview({
           <StatTiles
             label="市場概覽摘要"
             className="kw-stats--compact"
-            items={
-              view === "fees"
-                ? [
-                    {
-                      label: "有官方管理費的基金",
-                      value: feeValues.length,
-                    },
-                    {
-                      label: "中位數（本站計算）",
-                      value:
-                        feeMedian === undefined
-                          ? "未取得"
-                          : formatDerived(feeMedian),
-                    },
-                    {
-                      label: "最低／最高",
-                      value: data.fees?.rankings.length
-                        ? (() => {
-                            const sorted = [...data.fees.rankings].sort(
-                              (a, b) => a.value - b.value,
-                            );
-                            return `${sorted[0]!.displayValue}／${sorted[sorted.length - 1]!.displayValue}`;
-                          })()
-                        : "未取得",
-                      note: "按官方原值",
-                    },
-                  ]
-                : [
-                    {
-                      label: `${periodLabel[period]}回報合資格基金`,
-                      value: returnValues.length,
-                    },
-                    {
-                      label: "中位數（本站計算）",
-                      value:
-                        returnMedian === undefined
-                          ? "未取得"
-                          : formatDerived(returnMedian),
-                    },
-                    {
-                      label: "正回報基金",
-                      value: `${positive} 隻`,
-                      note: returnValues.length
-                        ? `佔 ${formatDerived((positive / returnValues.length) * 100)}`
-                        : undefined,
-                    },
-                  ]
-            }
+            items={[
+              {
+                label: `${periodLabel[period]}回報合資格基金`,
+                value: returnValues.length,
+              },
+              {
+                label: "中位數（本站計算）",
+                value:
+                  returnMedian === undefined
+                    ? "未取得"
+                    : formatDerived(returnMedian),
+              },
+              {
+                label: "正回報基金",
+                value: `${positive} 隻`,
+                note: returnValues.length
+                  ? `佔 ${formatDerived((positive / returnValues.length) * 100)}`
+                  : undefined,
+              },
+            ]}
           />
           {view === "returns" && (
             <Histogram
@@ -255,24 +216,6 @@ export function MarketOverview({
               xLabel="波幅（三年年度化標準差）"
               yLabel={`${periodLabel[period]}年率化回報`}
               note={`波幅為官方「基金風險指標」，固定量度過去三年；與所選回報期間長度未必相同，只作並列參考，不是風險調整後回報。只列兩項數值均可用的 ${points.length} 隻基金。`}
-            />
-          )}
-          {view === "fees" && (
-            <Histogram
-              title="當前管理費分布"
-              subtitle="每柱代表一個費率區間內的基金類別數目"
-              values={feeValues}
-              markers={
-                feeMedian === undefined
-                  ? []
-                  : [
-                      {
-                        value: feeMedian,
-                        label: `中位數 ${formatDerived(feeMedian)}`,
-                      },
-                    ]
-              }
-              note="管理費不等於總開支；基金開支比率（FER）見各基金詳情。官方以上限披露的費率按上限值計入。"
             />
           )}
         </div>

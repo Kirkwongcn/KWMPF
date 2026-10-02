@@ -351,8 +351,8 @@ export function FundsPage({
             >
               <option value="name">官方基金名稱</option>
               <option value="return">一年回報（高至低）</option>
-              <option value="fee">管理費（低至高）</option>
               <option value="risk">風險級別（低至高）</option>
+              <option value="fee">管理費（低至高）</option>
             </select>
           </div>
           <span>
@@ -415,11 +415,11 @@ export function FundsPage({
                     <th scope="col">比較</th>
                     <th scope="col">基金</th>
                     <th scope="col">一年回報</th>
-                    <th scope="col">管理費</th>
                     <th scope="col">風險級別</th>
                     <th scope="col">計劃／受託人</th>
                     <th scope="col">比較組別</th>
                     <th scope="col">資料截至</th>
+                    <th scope="col">管理費</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -465,12 +465,6 @@ export function FundsPage({
                           </span>
                         )}
                       </td>
-                      <td className="kw-nowrap">
-                        {percent(
-                          fund.managementFee,
-                          fund.feeCaps?.includes("managementFee"),
-                        )}
-                      </td>
                       <td>{fund.riskClass ?? unavailable}</td>
                       <td>
                         {fund.schemeName}
@@ -490,6 +484,12 @@ export function FundsPage({
                           <span className="kw-data-state kw-data-state--stale">
                             過期
                           </span>
+                        )}
+                      </td>
+                      <td className="kw-nowrap">
+                        {percent(
+                          fund.managementFee,
+                          fund.feeCaps?.includes("managementFee"),
                         )}
                       </td>
                     </tr>

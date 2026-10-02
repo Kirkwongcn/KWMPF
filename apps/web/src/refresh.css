@@ -279,8 +279,29 @@
 }
 
 /* Fund browser: the fee column must fit a capped rate such as 1.255%（上限）. */
+/* Column order: 比較, 基金, 一年回報, 風險級別, 計劃, 比較組別, 資料截至, 管理費（費用置後）. */
 .kw-fund-results th:nth-child(4) {
+  width: 90px;
+}
+.kw-fund-results th:nth-child(5) {
+  width: 280px;
+}
+.kw-fund-results th:nth-child(6) {
+  width: 240px;
+}
+.kw-fund-results th:nth-child(7) {
+  width: 120px;
+}
+.kw-fund-results th:nth-child(8) {
   width: 150px;
+}
+.kw-fund-results td:nth-child(5),
+.kw-fund-results td:nth-child(6) {
+  white-space: normal;
+}
+.kw-fund-results td:nth-child(4),
+.kw-fund-results td:nth-child(7) {
+  white-space: nowrap;
 }
 .kw-fund-results {
   min-width: 1330px;
@@ -325,4 +346,11 @@
 }
 .kw-allocation__part--5 {
   background: var(--kw-viz-6);
+}
+
+/* Fee information sits last on each scheme card. */
+.scheme-card__fees {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--kw-line);
 }

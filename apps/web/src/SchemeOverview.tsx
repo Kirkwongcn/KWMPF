@@ -32,7 +32,7 @@ const fundTypes = [
 ] as const;
 
 export function SchemeOverview({ schemes }: { schemes: OverviewScheme[] }) {
-  const [view, setView] = useState<View>("fee");
+  const [view, setView] = useState<View>("risk");
   if (!schemes.length) return null;
   const withFee = schemes
     .filter((scheme) => scheme.managementFee)
@@ -83,9 +83,9 @@ export function SchemeOverview({ schemes }: { schemes: OverviewScheme[] }) {
         <div className="kw-segmented" role="group" aria-label="計劃一覽圖表">
           {(
             [
-              ["fee", "管理費範圍"],
               ["risk", "風險級別分布"],
               ["types", "基金種類組合"],
+              ["fee", "管理費範圍"],
             ] as const
           ).map(([key, text]) => (
             <button

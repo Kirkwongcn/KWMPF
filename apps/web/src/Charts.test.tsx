@@ -172,6 +172,19 @@ describe("lazy data views", () => {
     );
   });
 
+  it("keeps fee comparisons off the home market overview", () => {
+    vi.stubGlobal("fetch", vi.fn());
+    render(<MarketOverview apiOrigin="https://api.test" snapshotId="snap-1" />);
+    const views = screen
+      .getByRole("group", { name: "圖表" })
+      .querySelectorAll("button");
+    expect(Array.from(views).map((button) => button.textContent)).toEqual([
+      "回報分布",
+      "風險與回報",
+    ]);
+    expect(screen.queryByText(/管理費/)).not.toBeInTheDocument();
+  });
+
   it("refuses to mix a different snapshot into the market overview", async () => {
     vi.stubGlobal(
       "fetch",
@@ -254,6 +267,13 @@ describe("scheme overview", () => {
         ]}
       />,
     );
+    // 費用放最後：預設先看風險級別，管理費範圍是最後一個選項。
+    const views = screen
+      .getAllByRole("button")
+      .map((button) => button.textContent);
+    expect(views).toEqual(["風險級別分布", "基金種類組合", "管理費範圍"]);
+    expect(screen.queryByText("各計劃管理費範圍")).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "管理費範圍" }));
     expect(screen.getByText("各計劃管理費範圍")).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "基金種類組合" }));
     expect(

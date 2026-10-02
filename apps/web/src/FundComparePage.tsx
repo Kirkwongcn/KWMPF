@@ -228,9 +228,9 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
                 ))}
                 {(
                   [
+                    ["fundRiskIndicator", "三年波幅"],
                     ["managementFee", "管理費"],
                     ["latestFer", "基金開支比率（歷史期別）"],
-                    ["fundRiskIndicator", "三年波幅"],
                   ] as const
                 ).map(([field, label]) => (
                   <tr key={field}>
@@ -258,7 +258,7 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
             </table>
           </div>
           <p className="kw-muted">
-            回報期間是獨立披露，並非連續走勢；基金開支比率、管理費及波幅口徑不同，不合成總分。
+            回報期間是獨立披露，並非連續走勢；波幅、管理費及基金開支比率口徑不同，不合成總分。
           </p>
           <p className="kw-muted kw-advanced">
             公開快照：<code>{funds[0]?.snapshotId}</code>
