@@ -1,6 +1,13 @@
 # KWMPF → Claude Code 即時交接
 
-## 最新：60 日時效及費用置後已正式發布（2026-10-02 08:06 香港）
+## 最新：富達三年錯值及 2026-10-02 回報候選（2026-10-02 香港，未開 PR、未部署）
+
+**已驗證（正式網站錯值）**：run #30 snapshot 富達 Age 65 Plus（`mpfa-cf-1552`）三年 3.70%、Core Accumulation（`mpfa-cf-1551`）12.36% 其實係一年欄；原文三年 4.31%、10.91%（07-31）。原因係左欄「invest 20%／60% of its NAV」令舊 parser 數錯位；積金局 MT00288 亦把 Americas／European Equity「-」當成立至今回報。詳見 [review](reviews/2026-10-02-fidelity-three-year-column-and-return-refresh.md)。
+**修正**：code 分支 `claude/relaxed-goldberg-5ytvfk-fidelity-3y-column` @ `0506a64`（由 main `ad3a75b`）：富達改用 `pdftotext -bbox` 按欄位讀，標籤／七格不符即報錯，N/A／「-」入 `fundPeriodNotDisclosed`。`bun run check` 通過（336／80／129）；`/code-review` 多輪，最後一輪零發現（high-risk 憑證）。
+**資料**：data 分支 `claude/relaxed-goldberg-5ytvfk-returns-2026-10-02` @ `1a095ac`（疊喺 code 分支上，data／docs 分 commit）：`2026-10-02-official-return-observations-candidate.json` 富達 23 行→08-31、友邦 17 行→07-31，其餘 255 行不變；友邦一隻因標題字距唔做模糊配對、保留舊行。publication-seed 通過 `rankingRows=54`；三筆原文（渲染頁面）對得上：富達 Age 65 Plus 4.70%、HK Equity 10.75%、友邦 Greater China 17.01%。三年合資格 10-02 54／10-30 起 37／11-30 起 0。
+**未做**：兩個 PR 未開（待使用者批准）；未合併、未部署；本環境抽友邦要裝 `poppler-data`。11-30 前要有 9 月月度或 Q3 便覽，否則正式部署 smoke 失敗。
+
+## 60 日時效及費用置後已正式發布（2026-10-02 08:06 香港）
 
 **已驗證**：使用者指示「合併並發布」後合併 [Kirkwongcn/KWMPF#364](https://github.com/Kirkwongcn/KWMPF/pull/364)（一、五、十年回報及基金規模寬限 60 日，ADR 0010；2026-08-31 數據有效至 10-30，10-31 起過期）及 [#365](https://github.com/Kirkwongcn/KWMPF/pull/365)（所有費用展示置後，首頁市場概覽移除費用比較；main `ad3a75b686b97b9db7f054b299701f69287e3173`）。main CI 成功後由 Claude dispatch [Deploy production run #30](https://github.com/Kirkwongcn/KWMPF/actions/runs/36944070054)（source `2026-09-26/mpf-fund-platform.json`、overlay `2026-09-30-official-return-observations-candidate.json`、不容許舊批次）；`production` 閘門由使用者在 GitHub 親自批准。全部步驟 success，回復步驟 skipped。
 發布結果：snapshot `snapshot-mpfa-platform-2026-08-31-ad3a75b686b9`；451 基金類別；三年排名 37 行；Cache-Control `public, max-age=300, stale-while-revalidate=600`；pre-deploy D1 backup `d1-2026-10-02T00-06-03Z-run-36944070054`，rollback timestamp `1790899563`；release tuple manifest `kwmpf-production-raw/releases/ad3a75b…/run-36944070054-attempt-1/manifest.json` 逐 byte 讀回。seed 由 main `build-staging-seed.ts` 以 `MONTHLY_GRACE_DAYS = 60` 凍結 `provenance.freshnessPolicy.returnsGraceDays`。正式網站 bundle `index-CUAG0ASV.js` 已無「費用比較」、無「45 日」，含「60 日」及 `scheme-card__fees`。
