@@ -1,6 +1,13 @@
 # KWMPF → Claude Code 即時交接
 
-## 最新：網站改版已正式發布（2026-10-02 07:34 香港）
+## 最新：60 日時效及費用置後已正式發布（2026-10-02 08:06 香港）
+
+**已驗證**：使用者指示「合併並發布」後合併 [Kirkwongcn/KWMPF#364](https://github.com/Kirkwongcn/KWMPF/pull/364)（一、五、十年回報及基金規模寬限 60 日，ADR 0010；2026-08-31 數據有效至 10-30，10-31 起過期）及 [#365](https://github.com/Kirkwongcn/KWMPF/pull/365)（所有費用展示置後，首頁市場概覽移除費用比較；main `ad3a75b686b97b9db7f054b299701f69287e3173`）。main CI 成功後由 Claude dispatch [Deploy production run #30](https://github.com/Kirkwongcn/KWMPF/actions/runs/36944070054)（source `2026-09-26/mpf-fund-platform.json`、overlay `2026-09-30-official-return-observations-candidate.json`、不容許舊批次）；`production` 閘門由使用者在 GitHub 親自批准。全部步驟 success，回復步驟 skipped。
+發布結果：snapshot `snapshot-mpfa-platform-2026-08-31-ad3a75b686b9`；451 基金類別；三年排名 37 行；Cache-Control `public, max-age=300, stale-while-revalidate=600`；pre-deploy D1 backup `d1-2026-10-02T00-06-03Z-run-36944070054`，rollback timestamp `1790899563`；release tuple manifest `kwmpf-production-raw/releases/ad3a75b…/run-36944070054-attempt-1/manifest.json` 逐 byte 讀回。seed 由 main `build-staging-seed.ts` 以 `MONTHLY_GRACE_DAYS = 60` 凍結 `provenance.freshnessPolicy.returnsGraceDays`。正式網站 bundle `index-CUAG0ASV.js` 已無「費用比較」、無「45 日」，含「60 日」及 `scheme-card__fees`。
+**未核實**：本環境連唔到 `*.workers.dev` API，未直接讀正式 payload 的 `returnsGraceDays`（只由 seed 程式碼推定）；未以真瀏覽器檢視。已合併分支刪除被拒（HTTP 403），需使用者刪除 `-docs-deploy-reality`、`-ci-seed-overlay`、`-redesign`、`-freshness-60d`、`-fees-last`。
+**仍待決定**：F-14 三年新期別 discovery；deploy workflows 改用共用 overlay resolver（高危路徑）；下一批平台數據（9 月底）須於 10-30 前發布，否則一、五、十年回報 10-31 起顯示過期。
+
+## 網站改版已正式發布（2026-10-02 07:34 香港）
 
 **已驗證**：使用者批准後合併 [Kirkwongcn/KWMPF#361](https://github.com/Kirkwongcn/KWMPF/pull/361)（文件 P-01／P-02）、[#362](https://github.com/Kirkwongcn/KWMPF/pull/362)（F-02 CI overlay）及 [#363](https://github.com/Kirkwongcn/KWMPF/pull/363)（網站改版及圖表，main `e9ab024cc9e2c2fe9c1799b569ca4ff6d49435ca`）。main CI run #820 成功後由 Claude dispatch [Deploy production run #29](https://github.com/Kirkwongcn/KWMPF/actions/runs/36939569164)（source `2026-09-26/mpf-fund-platform.json`、overlay `2026-09-30-official-return-observations-candidate.json`、不容許舊批次）；`production` 閘門由使用者在 GitHub 親自批准（Claude 無權限代批）。全部步驟 success，回復步驟 skipped。
 發布結果：snapshot `snapshot-mpfa-platform-2026-08-31-e9ab024cc9e2`；451 基金類別；三年排名 37 行；Cache-Control `public, max-age=300, stale-while-revalidate=600`；pre-deploy D1 backup `d1-2026-10-01T23-33-36Z-run-36939569164`（R2 讀回核對），rollback timestamp `1790897616`；release tuple manifest `kwmpf-production-raw/releases/e9ab024…/run-36939569164-attempt-1/manifest.json` 逐 byte 讀回。正式網站 `kwmpf.kirkwongcn.com` 已提供新 bundle（含 favicon、theme-color、新圖表程式）。
