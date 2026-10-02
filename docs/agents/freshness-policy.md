@@ -27,4 +27,4 @@ fee|risk` 逐個基金類別讀自己嗰份 `freshnessPolicy`，唔可以淨係�
 
 ## 三年回報 freshness
 
-受託人季度 factsheet 的三年年化回報最多採用 90 個日曆日；截至日仍須隨每行數值顯示，超過 90 日即轉為 stale 並退出回報排名。其他月度回報和基金規模仍採用 45 日。新發布快照將 `threeYearReturnGraceDays: 90` 凍結在 freshnessPolicy；舊快照缺少此欄位時沿用原有 `returnsGraceDays`，避免回溯改寫舊判斷。決策見 `docs/adr/0007-quarterly-three-year-return-freshness.md`。
+受託人季度 factsheet 的三年年化回報最多採用 90 個日曆日；截至日仍須隨每行數值顯示，超過 90 日即轉為 stale 並退出回報排名。其他月度回報（一、五、十年）和基金規模採用 60 日（2026-10-02 起；之前為 45 日，見 `docs/adr/0010-monthly-return-freshness-60-days.md`）。新發布快照將 `threeYearReturnGraceDays: 90` 凍結在 freshnessPolicy；舊快照缺少此欄位時沿用原有 `returnsGraceDays`，避免回溯改寫舊判斷。決策見 `docs/adr/0007-quarterly-three-year-return-freshness.md`。

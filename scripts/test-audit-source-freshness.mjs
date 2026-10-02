@@ -39,6 +39,16 @@ test("period-specific overlay dates cross the 90-day boundary", () => {
     1,
   );
 });
+test("monthly platform returns stay eligible through day 60 (ADR 0010)", () => {
+  assert.equal(
+    auditSourceFreshness(source, [], "2026-10-30").returns[0].eligible,
+    1,
+  );
+  assert.equal(
+    auditSourceFreshness(source, [], "2026-10-31").returns[0].stale,
+    1,
+  );
+});
 test("future and impossible dates are invalid", () => {
   for (const date of ["2026-02-31", "2026-10-01", "2026-2-3"]) {
     assert.equal(dateAge(date, "2026-09-30"), null);

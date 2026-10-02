@@ -2,7 +2,9 @@ import type { SourceRecord } from "./build-coverage";
 
 export type FreshnessStatus = "verified" | "stale" | "failed_with_last_verified";
 
-export const MONTHLY_GRACE_DAYS = 45;
+// 一、五、十年回報及基金規模（積金局平台月度資料）自截至日起 60 日內有效；
+// 2026-10-02 由 45 日改為 60 日，只影響之後建立的快照（見 docs/adr/0010-monthly-return-freshness-60-days.md）。
+export const MONTHLY_GRACE_DAYS = 60;
 export const THREE_YEAR_RETURN_GRACE_DAYS = 90;
 export const CURRENT_STATUS_GRACE_DAYS = 7;
 
