@@ -55,6 +55,7 @@ canonical implementation spec（`docs/specs/2026-08-08-hk-mpf-comparison-v1-impl
 | `docs/adr/0004-overlaid-text-layer-by-draw-order.md`        | 疊印文字層靠落筆次序分層，唔靠座標         |
 | `docs/adr/0005-editorial-asset-class-buckets.md`            | 第一版只做股票／債券／現金及其他三桶       |
 | `docs/adr/0006-fund-overview-freshness-by-fiscal-period.md` | 基金概覽過期按財政年結日及法定發布期限計算 |
+| `docs/adr/0010-monthly-return-freshness-60-days.md`         | 一、五、十年回報及基金規模 60 日時效       |
 
 ## 使用者里程碑偏好
 
