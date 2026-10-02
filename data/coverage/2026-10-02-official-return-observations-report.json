@@ -1,0 +1,950 @@
+{
+  "generatedAt": "2026-10-02T06:11:58.278Z",
+  "sourceSnapshot": "data/sources/2026-09-26/mpf-fund-platform.json",
+  "baselineCandidate": "data/coverage/2026-09-30-official-return-observations-candidate.json",
+  "method": "Re-downloaded official trustee factsheets whose fixed or monthly URLs carry a newer period (curl_cffi chrome124 impersonation, full GET, %PDF- signature), parsed with packages/coverage/src/parse-fact-sheets.ts (Fidelity via pdftotext -bbox column positions; AIA via pdftotext -layout with poppler-data), matched with normalizeFundFactSheetReturns against the platform snapshot (exact names, no fuzzy matching), and replaced a baseline row only when the new dataAsOf is later. All other baseline rows are byte-identical.",
+  "discovery": [
+    {
+      "trustee": "Fidelity",
+      "indexUrl": "https://www.fidelity.com.hk/en/our-funds/mpf",
+      "result": "23 fixed URLs re-served 2026-09-30 (Last-Modified Wed, 30 Sep 2026 03:33 GMT); all As of 31/08/2026"
+    },
+    {
+      "trustee": "AIA",
+      "indexUrl": "https://www.aia.com.hk/en/products/useful-tools-and-information/knowledge-and-insight/mpf-fund-performance-review",
+      "result": "Latest listed review jul-2026 (As at 31 July 2026); aug-2026 URL returns 404 on 2026-10-02"
+    },
+    {
+      "trustee": "Haitong",
+      "result": "Fund Monitor still As of 31/08/2026; no newer period"
+    },
+    {
+      "trustee": "Quarterly trustees (BCT, BEA, BOCI-Prudential, BCOM, Hang Seng, HSBC, Manulife, MASS, SHKP, Sun Life, AMTD, China Life)",
+      "result": "Not re-fetched: Q3 (2026-09-30) factsheets are not expected before late October; existing 2026-06-30 rows unchanged"
+    }
+  ],
+  "sourceManifest": [
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Age 65 Plus Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-C65P.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-10-02T05:29:19.958964Z",
+      "httpStatus": 200,
+      "lastModified": "Wed, 30 Sep 2026 03:33:50 GMT",
+      "sha256": "be334700571a8535bd78576069621f16551105de022e98586317bab74cf33276",
+      "bytes": 1053207
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Americas Equity Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CAME.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-10-02T05:29:21.778945Z",
+      "httpStatus": 200,
+      "lastModified": "Wed, 30 Sep 2026 03:33:47 GMT",
+      "sha256": "10c47482a5c362569def45391a25cd73b19c769f370a3df9b7a21f032a8c371a",
+      "bytes": 1014155
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: European Equity Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CEUR.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-10-02T05:29:22.951713Z",
+      "httpStatus": 200,
+      "lastModified": "Wed, 30 Sep 2026 03:33:49 GMT",
+      "sha256": "d8512e4eec2d7c817cfba0edac28aec2005547739c356b76d6568c93a9b041b7",
+      "bytes": 1013933
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Core Accumulation Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFAF.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-10-02T05:29:24.026671Z",
+      "httpStatus": 200,
+      "lastModified": "Wed, 30 Sep 2026 03:33:47 GMT",
+      "sha256": "f271b32c85cd1987cc9ae44e52cc105e3584bb047ffbcd49346997c2c8ac68b9",
+      "bytes": 1052280
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Asia Pacific Equity Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFAP.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-10-02T05:29:25.131267Z",
+      "httpStatus": 200,
+      "lastModified": "Wed, 30 Sep 2026 03:33:48 GMT",
+      "sha256": "61ec4d6933c96859751c80c071128e7c508734410b4bc297ab8f3358b175356f",
+      "bytes": 1055740
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Balanced Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFBF.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-10-02T05:29:26.463209Z",
+      "httpStatus": 200,
+      "lastModified": "Wed, 30 Sep 2026 03:33:46 GMT",
+      "sha256": "29b01757e148ec064e2034d4033058c907a06be84a7a8261eefec2eff66b01da",
+      "bytes": 1052859
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Capital Stable Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFCF.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-10-02T05:29:27.593363Z",
+      "httpStatus": 200,
+      "lastModified": "Wed, 30 Sep 2026 03:33:43 GMT",
+      "sha256": "9d20d438cdd14283a652d16ef956fc4102ad7927871e937fb2a755d454069c9b",
+      "bytes": 1050497
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: MPF Conservative Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFCP.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-10-02T05:29:29.094621Z",
+      "httpStatus": 200,
+      "lastModified": "Wed, 30 Sep 2026 03:33:44 GMT",
+      "sha256": "b18acf5033f9025b8bae2161068326928602469c2ee34db2d6f318c199369c93",
+      "bytes": 1008950
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Global Equity Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFGE.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-10-02T05:29:30.224156Z",
+      "httpStatus": 200,
+      "lastModified": "Wed, 30 Sep 2026 03:33:44 GMT",
+      "sha256": "ca09659a0478d23dadde0a7002920dfb2ddd7223e4b6740dbbf25f7a4d1f8141",
+      "bytes": 1035306
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Growth Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFGF.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-10-02T05:29:31.678383Z",
+      "httpStatus": 200,
+      "lastModified": "Wed, 30 Sep 2026 03:33:49 GMT",
+      "sha256": "3ecab138f82947f4514463109158eb9056de36bfcc3e7339be3206b95dc885df",
+      "bytes": 1051561
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Hong Kong Bond Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFHB.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-10-02T05:29:33.422684Z",
+      "httpStatus": 200,
+      "lastModified": "Wed, 30 Sep 2026 03:33:48 GMT",
+      "sha256": "ddbb2a3fad49d724fdfa0cabaf673378601f4ab55e3699016c18e9245263e388",
+      "bytes": 1039023
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Hong Kong Equity Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFHK.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-10-02T05:29:35.171345Z",
+      "httpStatus": 200,
+      "lastModified": "Wed, 30 Sep 2026 03:33:49 GMT",
+      "sha256": "b3609d0c8729941043d6edb6cba637a1ece972318b5b20ad00523bab40023302",
+      "bytes": 1038905
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: RMB Bond Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFRB.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-10-02T05:29:36.678157Z",
+      "httpStatus": 200,
+      "lastModified": "Wed, 30 Sep 2026 03:33:49 GMT",
+      "sha256": "559094c7c39bb0e642a38b3cdd639a95018ce2319e509f217d53502851527ceb",
+      "bytes": 501188
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Stable Growth Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFSF.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-10-02T05:29:37.798168Z",
+      "httpStatus": 200,
+      "lastModified": "Wed, 30 Sep 2026 03:33:46 GMT",
+      "sha256": "ac579544ddb0a392696da9c7d708caa11c6c91c0f4a8533908c2b4f82f1fe243",
+      "bytes": 1051216
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Fidelity Hong Kong Tracker Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFTF.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-10-02T05:29:38.814955Z",
+      "httpStatus": 200,
+      "lastModified": "Wed, 30 Sep 2026 03:33:47 GMT",
+      "sha256": "efeba71e256bd095dc4421fd0763fc94a8489f6af225765d2a4187b33acec146",
+      "bytes": 1050036
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Fidelity SaveEasy 2025 Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS25.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-10-02T05:29:39.604671Z",
+      "httpStatus": 200,
+      "lastModified": "Wed, 30 Sep 2026 03:33:43 GMT",
+      "sha256": "2c1c85242d22ab5315b6bd07e1d2a4b0dec7098e83bab62a933d2b509b632992",
+      "bytes": 1090042
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Fidelity SaveEasy 2035 Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS35.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-10-02T05:29:40.711253Z",
+      "httpStatus": 200,
+      "lastModified": "Wed, 30 Sep 2026 03:33:47 GMT",
+      "sha256": "5fd98df17187cdc63d0c40a77b24ea251f3fca80f5c63eff116f47ed2a93ba51",
+      "bytes": 1091399
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Fidelity SaveEasy 2030 Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS30.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-10-02T05:29:41.827918Z",
+      "httpStatus": 200,
+      "lastModified": "Wed, 30 Sep 2026 03:33:48 GMT",
+      "sha256": "54182a68dfd07025d0b44e6822133d3f0a0f69737d1f4c560986618453595641",
+      "bytes": 1090125
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: World Bond Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFWB.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-10-02T05:29:42.918702Z",
+      "httpStatus": 200,
+      "lastModified": "Wed, 30 Sep 2026 03:33:43 GMT",
+      "sha256": "67d8498b084dbe383f9d6662d5048189a39b85d5494ae40b6588109453382ef3",
+      "bytes": 1059103
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Fidelity SaveEasy 2040 Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS40.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-10-02T05:29:43.985491Z",
+      "httpStatus": 200,
+      "lastModified": "Wed, 30 Sep 2026 03:33:46 GMT",
+      "sha256": "59cd0eb0b04f6a1a0c1fdef163a9b761a56e7e21a464f1dd13be9190d1247508",
+      "bytes": 1090743
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Fidelity SaveEasy 2045 Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS45.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-10-02T05:29:45.055975Z",
+      "httpStatus": 200,
+      "lastModified": "Wed, 30 Sep 2026 03:33:47 GMT",
+      "sha256": "119b7758c55ebde40365b54a5127f9d5fa7abcb89da329a677a89cfedfcafc9b",
+      "bytes": 1083673
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: Fidelity SaveEasy 2050 Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS50.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-10-02T05:29:46.098989Z",
+      "httpStatus": 200,
+      "lastModified": "Wed, 30 Sep 2026 03:33:44 GMT",
+      "sha256": "186a349595b2a932fe1795da2db6d161704d4c71f5345886531c7ce605642879",
+      "bytes": 1066937
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust :: RetireEasy Fund",
+      "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CTEF.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-10-02T05:29:47.185992Z",
+      "httpStatus": 200,
+      "lastModified": "Wed, 30 Sep 2026 03:33:48 GMT",
+      "sha256": "22021cc0bf46d08d8b67e74a3a9a7e84ff1940692233ddff952cfd3d31900a3a",
+      "bytes": 1152139
+    },
+    {
+      "scheme": "AIA MPF - Prime Value Choice",
+      "factSheetUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-jul-2026.pdf",
+      "status": "downloaded",
+      "retrievedAt": "2026-10-02T05:29:48.271637Z",
+      "httpStatus": 200,
+      "lastModified": "Mon, 28 Sep 2026 10:37:45 GMT",
+      "sha256": "b1bd6ed0f474251054b2a4ee35744dd0e4b7e4b85470ed1a8d825777dccfaea7",
+      "bytes": 6116920
+    }
+  ],
+  "parsedReturnRows": 41,
+  "parserFailures": [],
+  "fundPeriodNotDisclosed": [],
+  "unmatched": [
+    {
+      "schemeName": "AIA MPF - Prime Value Choice",
+      "constituentFundName": "China HK DynamicAssetAllocation Fund",
+      "dataAsOf": "2026-07-31",
+      "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-jul-2026.pdf",
+      "annualizedReturn3Year": 7.14,
+      "disposition": "Not applied. pdftotext -layout renders this heading as \"China HK DynamicAssetAllocation Fund\" (kerned PDF text); the platform name is \"China HK Dynamic Asset Allocation Fund\". Whitespace-collapsing match is not an allowed normalization, so mpfa-cf-1579 keeps its 2026-05-31 row (stale, not ranked)."
+    }
+  ],
+  "regression": {
+    "aiaMay2026Sha256": "17bb20a2781687acf2ed67adba8a0768187c5c7523073d4e6c7c64cf6f591ac8",
+    "result": "Re-parsing the archived May 2026 AIA review reproduces all 18 published 2026-05-31 rows exactly"
+  },
+  "correctedPublishedValues": [
+    {
+      "fundClassId": "mpfa-cf-1552",
+      "fund": "Fidelity Age 65 Plus Fund",
+      "published": {
+        "annualized": 3.7,
+        "dataAsOf": "2026-07-31",
+        "note": "1-year column misread as 3-year"
+      },
+      "official3Year": {
+        "annualized": 4.31,
+        "dataAsOf": "2026-07-31"
+      },
+      "thisCandidate": {
+        "annualized": 4.7,
+        "dataAsOf": "2026-08-31"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-1551",
+      "fund": "Fidelity Core Accumulation Fund",
+      "published": {
+        "annualized": 12.36,
+        "dataAsOf": "2026-07-31",
+        "note": "1-year column misread as 3-year"
+      },
+      "official3Year": {
+        "annualized": 10.91,
+        "dataAsOf": "2026-07-31"
+      },
+      "thisCandidate": {
+        "annualized": 12.06,
+        "dataAsOf": "2026-08-31"
+      }
+    }
+  ],
+  "replacedOldRows": 40,
+  "changes": [
+    {
+      "fundClassId": "mpfa-cf-1552",
+      "periodYears": 3,
+      "from": {
+        "annualized": 3.7,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-C65P.pdf"
+      },
+      "to": {
+        "annualized": 4.7,
+        "dataAsOf": "2026-08-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-C65P.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-2079",
+      "periodYears": 3,
+      "from": {
+        "annualized": 17.28,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CAME.pdf"
+      },
+      "to": {
+        "annualized": 17.61,
+        "dataAsOf": "2026-08-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CAME.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-2080",
+      "periodYears": 3,
+      "from": {
+        "annualized": 11.6,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CEUR.pdf"
+      },
+      "to": {
+        "annualized": 11.65,
+        "dataAsOf": "2026-08-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CEUR.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-1551",
+      "periodYears": 3,
+      "from": {
+        "annualized": 12.36,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFAF.pdf"
+      },
+      "to": {
+        "annualized": 12.06,
+        "dataAsOf": "2026-08-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFAF.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-278",
+      "periodYears": 3,
+      "from": {
+        "annualized": 21.63,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFAP.pdf"
+      },
+      "to": {
+        "annualized": 24.49,
+        "dataAsOf": "2026-08-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFAP.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-280",
+      "periodYears": 3,
+      "from": {
+        "annualized": 9.03,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFBF.pdf"
+      },
+      "to": {
+        "annualized": 11.03,
+        "dataAsOf": "2026-08-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFBF.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-272",
+      "periodYears": 3,
+      "from": {
+        "annualized": 4.46,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFCF.pdf"
+      },
+      "to": {
+        "annualized": 5.52,
+        "dataAsOf": "2026-08-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFCF.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-274",
+      "periodYears": 3,
+      "from": {
+        "annualized": 2.76,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFCP.pdf"
+      },
+      "to": {
+        "annualized": 2.73,
+        "dataAsOf": "2026-08-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFCP.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-275",
+      "periodYears": 3,
+      "from": {
+        "annualized": 14.74,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFGE.pdf"
+      },
+      "to": {
+        "annualized": 16.87,
+        "dataAsOf": "2026-08-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFGE.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-268",
+      "periodYears": 3,
+      "from": {
+        "annualized": 11.35,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFGF.pdf"
+      },
+      "to": {
+        "annualized": 13.93,
+        "dataAsOf": "2026-08-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFGF.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-276",
+      "periodYears": 3,
+      "from": {
+        "annualized": 4.36,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFHB.pdf"
+      },
+      "to": {
+        "annualized": 4.16,
+        "dataAsOf": "2026-08-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFHB.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-273",
+      "periodYears": 3,
+      "from": {
+        "annualized": 8.34,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFHK.pdf"
+      },
+      "to": {
+        "annualized": 10.75,
+        "dataAsOf": "2026-08-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFHK.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-1439",
+      "periodYears": 3,
+      "from": {
+        "annualized": 4.5,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFRB.pdf"
+      },
+      "to": {
+        "annualized": 5.06,
+        "dataAsOf": "2026-08-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFRB.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-271",
+      "periodYears": 3,
+      "from": {
+        "annualized": 6.73,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFSF.pdf"
+      },
+      "to": {
+        "annualized": 8.29,
+        "dataAsOf": "2026-08-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFSF.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-1159",
+      "periodYears": 3,
+      "from": {
+        "annualized": 11.9,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFTF.pdf"
+      },
+      "to": {
+        "annualized": 14.52,
+        "dataAsOf": "2026-08-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFTF.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-706",
+      "periodYears": 3,
+      "from": {
+        "annualized": 4.79,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS25.pdf"
+      },
+      "to": {
+        "annualized": 6.23,
+        "dataAsOf": "2026-08-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS25.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-709",
+      "periodYears": 3,
+      "from": {
+        "annualized": 11.49,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS35.pdf"
+      },
+      "to": {
+        "annualized": 13.89,
+        "dataAsOf": "2026-08-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS35.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-708",
+      "periodYears": 3,
+      "from": {
+        "annualized": 10.52,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS30.pdf"
+      },
+      "to": {
+        "annualized": 12.75,
+        "dataAsOf": "2026-08-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS30.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-270",
+      "periodYears": 3,
+      "from": {
+        "annualized": 0.84,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFWB.pdf"
+      },
+      "to": {
+        "annualized": 1.11,
+        "dataAsOf": "2026-08-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFWB.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-711",
+      "periodYears": 3,
+      "from": {
+        "annualized": 12.1,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS40.pdf"
+      },
+      "to": {
+        "annualized": 14.61,
+        "dataAsOf": "2026-08-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS40.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-1419",
+      "periodYears": 3,
+      "from": {
+        "annualized": 12.13,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS45.pdf"
+      },
+      "to": {
+        "annualized": 14.62,
+        "dataAsOf": "2026-08-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS45.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-1420",
+      "periodYears": 3,
+      "from": {
+        "annualized": 12.34,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS50.pdf"
+      },
+      "to": {
+        "annualized": 14.86,
+        "dataAsOf": "2026-08-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS50.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-1799",
+      "periodYears": 3,
+      "from": {
+        "annualized": 6.54,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CTEF.pdf"
+      },
+      "to": {
+        "annualized": 7.4,
+        "dataAsOf": "2026-08-31",
+        "sourceUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CTEF.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-1519",
+      "periodYears": 3,
+      "from": {
+        "annualized": 13.3,
+        "dataAsOf": "2026-05-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-may-2026.pdf"
+      },
+      "to": {
+        "annualized": 11.23,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-jul-2026.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-1520",
+      "periodYears": 3,
+      "from": {
+        "annualized": 5.12,
+        "dataAsOf": "2026-05-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-may-2026.pdf"
+      },
+      "to": {
+        "annualized": 4.48,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-jul-2026.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-878",
+      "periodYears": 3,
+      "from": {
+        "annualized": 21.41,
+        "dataAsOf": "2026-05-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-may-2026.pdf"
+      },
+      "to": {
+        "annualized": 17.37,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-jul-2026.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-876",
+      "periodYears": 3,
+      "from": {
+        "annualized": 18.71,
+        "dataAsOf": "2026-05-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-may-2026.pdf"
+      },
+      "to": {
+        "annualized": 15.74,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-jul-2026.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-877",
+      "periodYears": 3,
+      "from": {
+        "annualized": 14.41,
+        "dataAsOf": "2026-05-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-may-2026.pdf"
+      },
+      "to": {
+        "annualized": 11.87,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-jul-2026.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-658",
+      "periodYears": 3,
+      "from": {
+        "annualized": 20.44,
+        "dataAsOf": "2026-05-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-may-2026.pdf"
+      },
+      "to": {
+        "annualized": 16.76,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-jul-2026.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-875",
+      "periodYears": 3,
+      "from": {
+        "annualized": 4.12,
+        "dataAsOf": "2026-05-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-may-2026.pdf"
+      },
+      "to": {
+        "annualized": 3.59,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-jul-2026.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-657",
+      "periodYears": 3,
+      "from": {
+        "annualized": 2.62,
+        "dataAsOf": "2026-05-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-may-2026.pdf"
+      },
+      "to": {
+        "annualized": 1.95,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-jul-2026.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-699",
+      "periodYears": 3,
+      "from": {
+        "annualized": 11.46,
+        "dataAsOf": "2026-05-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-may-2026.pdf"
+      },
+      "to": {
+        "annualized": 9.63,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-jul-2026.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-137",
+      "periodYears": 3,
+      "from": {
+        "annualized": 25.75,
+        "dataAsOf": "2026-05-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-may-2026.pdf"
+      },
+      "to": {
+        "annualized": 20.9,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-jul-2026.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-145",
+      "periodYears": 3,
+      "from": {
+        "annualized": 16.68,
+        "dataAsOf": "2026-05-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-may-2026.pdf"
+      },
+      "to": {
+        "annualized": 14.9,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-jul-2026.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-102",
+      "periodYears": 3,
+      "from": {
+        "annualized": 22.31,
+        "dataAsOf": "2026-05-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-may-2026.pdf"
+      },
+      "to": {
+        "annualized": 17.01,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-jul-2026.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-142",
+      "periodYears": 3,
+      "from": {
+        "annualized": 20.65,
+        "dataAsOf": "2026-05-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-may-2026.pdf"
+      },
+      "to": {
+        "annualized": 15.89,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-jul-2026.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-141",
+      "periodYears": 3,
+      "from": {
+        "annualized": 21.31,
+        "dataAsOf": "2026-05-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-may-2026.pdf"
+      },
+      "to": {
+        "annualized": 18.11,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-jul-2026.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-133",
+      "periodYears": 3,
+      "from": {
+        "annualized": 17.34,
+        "dataAsOf": "2026-05-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-may-2026.pdf"
+      },
+      "to": {
+        "annualized": 13.99,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-jul-2026.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-132",
+      "periodYears": 3,
+      "from": {
+        "annualized": 10.33,
+        "dataAsOf": "2026-05-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-may-2026.pdf"
+      },
+      "to": {
+        "annualized": 8.3,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-jul-2026.pdf"
+      }
+    },
+    {
+      "fundClassId": "mpfa-cf-131",
+      "periodYears": 3,
+      "from": {
+        "annualized": 7.2,
+        "dataAsOf": "2026-05-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-may-2026.pdf"
+      },
+      "to": {
+        "annualized": 5.81,
+        "dataAsOf": "2026-07-31",
+        "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-jul-2026.pdf"
+      }
+    }
+  ],
+  "previousRows": 295,
+  "candidateRows": 295,
+  "latestDates": {
+    "2026-07-31": 17,
+    "2026-06-30": 218,
+    "2026-08-31": 37,
+    "2025-12-31": 22,
+    "2026-05-31": 1
+  },
+  "threeYearEligibility": {
+    "2026-10-02": {
+      "eligible": 54,
+      "stale": 241,
+      "missing": 156
+    },
+    "2026-10-29": {
+      "eligible": 54,
+      "stale": 241,
+      "missing": 156
+    },
+    "2026-10-30": {
+      "eligible": 37,
+      "stale": 258,
+      "missing": 156
+    },
+    "2026-11-29": {
+      "eligible": 37,
+      "stale": 258,
+      "missing": 156
+    },
+    "2026-11-30": {
+      "eligible": 0,
+      "stale": 295,
+      "missing": 156
+    }
+  },
+  "officialSourceChecks": [
+    {
+      "fundClassId": "mpfa-cf-1552",
+      "fund": "Fidelity Age 65 Plus Fund",
+      "source": "hffs.HK-zh_en.HK.H-C65P.pdf page 2 (rendered)",
+      "annualised": {
+        "1Y": "3.86%",
+        "3Y": "4.70%"
+      },
+      "candidate": 4.7
+    },
+    {
+      "fundClassId": "mpfa-cf-273",
+      "fund": "Fidelity Hong Kong Equity Fund",
+      "source": "hffs.HK-zh_en.HK.H-CFHK.pdf page 2 (rendered)",
+      "annualised": {
+        "3Y": "10.75%"
+      },
+      "candidate": 10.75
+    },
+    {
+      "fundClassId": "mpfa-cf-102",
+      "fund": "AIA Greater China Equity Fund",
+      "source": "aia-mpf-prime-value-choice-fund-performance-review-jul-2026.pdf page 20 (rendered)",
+      "annualised": {
+        "3Y": "17.01"
+      },
+      "candidate": 17.01
+    }
+  ]
+}
