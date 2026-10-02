@@ -19,7 +19,7 @@ import { parseHaitongFundPerformance } from "../src/haitong-fund-performance-par
 import { parseMyChoiceFundPerformance } from "../src/my-choice-fund-performance-parser";
 import { parseMassFundPerformance } from "../src/mass-fund-performance-parser";
 import { parseShkpFundPerformance } from "../src/shkp-fund-performance-parser";
-import { parseFidelityFundPerformance } from "../src/fidelity-fund-performance-parser";
+import { parseFidelityFundPerformanceAudit } from "../src/fidelity-fund-performance-parser";
 import { downloadPdfInRanges } from "../src/resumable-download";
 
 import { parseBeaFundFactSheetXml } from "../src/bea-fund-fact-sheet-parser";
@@ -78,7 +78,8 @@ const haitongFixture = [
 const myChoiceFixture = `As at 30/9/2025\fMY CHOICE GROWTH FUND\nPERFORMANCE IN HKD\nAnnualized Return (%)\n1 Year 3 Years 5 Years 10 Years\n3 Years 12.34 5.20`;
 const massFixture = `YF Life Trustees Ltd.\nAsian Pacific Equity Fund                                                                 Published in February 2026\nFund Data as at                      December 31, 2025\nFund Performance 1 year 3 years 5 years 10 years Since launch\nAnnualized Return 30.27% 14.34% 2.61% 4.48% 3.86%`;
 const shkpFixture = `SHKP MPF Employer Sponsored Scheme\nAs at 31 March 2026\fAllianz Choice Balanced FundNote 1\nPerformance Note 2 & 3\nLast 3 years (p.a.%)+ 8.99 %`;
-const fidelityFixture = `Fidelity Retirement Master Trust - MPF Conservative Fund *As of 截至 30/06/2025\nCumulative Performance 累積表現\nN/A N/A 2.98% 8.15% 8.15% 9.53% 20.81%\nAnnualised Performance 年率化表現\nN/A N/A 2.98% 2.64% 1.58% 0.91% 0.77%`;
+const fidelityTrusteeFixture = readFileSync(join(import.meta.dirname, "fixtures", "fidelity-2026-08-age-65-plus.bbox.html"), "utf8");
+const fidelityMpfaFixture = readFileSync(join(import.meta.dirname, "fixtures", "fidelity-mt00288-2025-12.bbox.html"), "utf8");
 
 describe("official fund fact sheet parser", () => {
   it("exposes the resumable PDF downloader seam", () => {
@@ -165,10 +166,54 @@ describe("official fund fact sheet parser", () => {
       expect.objectContaining({ constituentFundName: "Allianz Choice Balanced Fund", dataAsOf: "2026-03-31", annualizedReturn3Year: 8.99 }),
     ]);
   });
-  it("parses Fidelity annualized performance instead of cumulative performance", () => {
-    expect(parseFidelityFundPerformance(fidelityFixture, "https://www.mpfa.org.hk/assets/FF/MT00288.pdf")).toEqual([
-      expect.objectContaining({ schemeName: "Fidelity Retirement Master Trust", constituentFundName: "MPF Conservative Fund", dataAsOf: "2025-06-30", annualizedReturn3Year: 2.64 }),
+  it("reads the Fidelity three-year column by position, not the left-column objective's numbers", () => {
+    // hffs H-C65P 2026-08-31 page 2 (`pdftotext -bbox`, trimmed): the objective's "20%" shares the table's lines.
+    expect(parseFidelityFundPerformanceAudit(fidelityTrusteeFixture, "https://example.test/fidelity.pdf")).toEqual({
+      returns: [
+        { schemeName: "Fidelity Retirement Master Trust", constituentFundName: "Age 65 Plus Fund", dataAsOf: "2026-08-31", sourceUrl: "https://example.test/fidelity.pdf", annualizedReturn3Year: 4.7 },
+      ],
+      unavailable: [],
+    });
+    const objectiveFigureOnRow = fidelityTrusteeFixture.replace(
+      "</page>",
+      '  <word xMin="183.746500" yMin="176.760000" xMax="195.023500" yMax="184.733000">20%</word>\n</page>',
+    );
+    expect(parseFidelityFundPerformanceAudit(objectiveFigureOnRow, "https://example.test/fidelity.pdf").returns[0]?.annualizedReturn3Year).toBe(4.7);
+    // Left-column words near the title or naming another section do not move the table's bounds.
+    const leftColumnNoise = fidelityTrusteeFixture.replace(
+      "</page>",
+      '  <word xMin="43.000000" yMin="168.700000" xMax="80.000000" yMax="176.700000">Calendar</word>\n</page>',
+    );
+    expect(parseFidelityFundPerformanceAudit(leftColumnNoise, "https://example.test/fidelity.pdf").returns[0]?.annualizedReturn3Year).toBe(4.7);
+    const wrappedTitle = fidelityTrusteeFixture.replace('xMin="281.624700" yMin="166.757000" xMax="320.530700" yMax="174.730000">Performance', 'xMin="245.203700" yMin="196.757000" xMax="284.109700" yMax="204.730000">Performance');
+    expect(() => parseFidelityFundPerformanceAudit(wrappedTitle, "https://example.test/fidelity.pdf")).toThrow(/Age 65 Plus Fund: annualised performance title is missing/);
+  });
+  it("records an official Fidelity three-year dash as not disclosed instead of borrowing since-launch", () => {
+    // MPFA MT00288 2025-12-31 (trimmed pages): Americas Equity shows "-" for three years, Global Equity 16.93%.
+    const result = parseFidelityFundPerformanceAudit(fidelityMpfaFixture, "https://www.mpfa.org.hk/assets/FF/MT00288.pdf");
+    expect(result.returns).toEqual([expect.objectContaining({ constituentFundName: "Global Equity Fund", dataAsOf: "2025-12-31", annualizedReturn3Year: 16.93 })]);
+    expect(result.unavailable).toEqual([
+      expect.objectContaining({ constituentFundName: "Americas Equity Fund", dataAsOf: "2025-12-31", periodYears: 3, reason: "official-dash", page: 2 }),
     ]);
+  });
+  it("requires the single-row Fidelity table to carry its title label", () => {
+    const unlabelled = fidelityMpfaFixture.replace(/\n {2}<word [^>]*>年率化表現<\/word>/g, "");
+    expect(unlabelled).not.toContain(">年率化表現</word>");
+    expect(() => parseFidelityFundPerformanceAudit(unlabelled, "https://www.mpfa.org.hk/assets/FF/MT00288.pdf")).toThrow(/first annualised row is labelled "", not the fund/);
+  });
+  it("stops the Fidelity factsheet when the fund row cannot be read cell by cell", () => {
+    const droppedCell = fidelityTrusteeFixture.replace('  <word xMin="477.533700" yMin="176.760000" xMax="494.725700" yMax="184.733000">0.05%</word>\n', "");
+    const enDash = fidelityTrusteeFixture.replace('xMax="521.388700" yMax="184.733000">-</word>', 'xMax="521.388700" yMax="184.733000">–</word>');
+    const footnote = fidelityTrusteeFixture.replace("</page>", '  <word xMin="461.000000" yMin="176.760000" xMax="464.000000" yMax="184.733000">*</word>\n</page>');
+    const noFundRow = fidelityTrusteeFixture
+      .split("\n")
+      .filter((line) => !line.includes('yMin="176.760000"') && !line.includes(">基金</word>"))
+      .join("\n");
+    expect(noFundRow).toContain(">4.66%</word>");
+    expect(parseFidelityFundPerformanceAudit(footnote, "https://example.test/fidelity.pdf").returns[0]?.annualizedReturn3Year).toBe(4.7);
+    for (const fixture of [droppedCell, enDash, noFundRow]) {
+      expect(() => parseFidelityFundPerformanceAudit(fixture, "https://example.test/fidelity.pdf")).toThrow(/Fidelity annualized return table could not be read: Age 65 Plus Fund/);
+    }
   });
   it("parses AIA layout text without confusing cumulative and annualized returns", () => {
     const result = parseAiaFundFactSheet(aiaFixture, "https://www.mpfa.org.hk/assets/FF/MT00172.pdf");

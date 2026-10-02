@@ -139,6 +139,33 @@ const BBOX_WORD = /<word xMin="([\d.]+)" yMin="([\d.]+)"[^>]*>/g;
  */
 const WORD_START_TOLERANCE = 2;
 
+export type BboxWord = {
+  xMin: number;
+  yMin: number;
+  xMax: number;
+  yMax: number;
+  text: string;
+};
+
+const BBOX_FULL_WORD =
+  /<word xMin="([\d.]+)" yMin="([\d.]+)" xMax="([\d.]+)" yMax="([\d.]+)">([\s\S]*?)<\/word>/g;
+
+/** `pdftotext -bbox` 逐版逐詞（poppler 自己的切詞），第 N 個元素係第 N 版。 */
+export function parseBboxWords(xml: string): BboxWord[][] {
+  return xml
+    .split(/(?=<page width=")/)
+    .filter((chunk) => BBOX_PAGE.test(chunk))
+    .map((chunk) =>
+      [...chunk.matchAll(BBOX_FULL_WORD)].map((word) => ({
+        xMin: Number(word[1]),
+        yMin: Number(word[2]),
+        xMax: Number(word[3]),
+        yMax: Number(word[4]),
+        text: decode(word[5]!),
+      })),
+    );
+}
+
 function bboxPageWordStarts(xml: string) {
   return xml
     .split(/(?=<page width=")/)
