@@ -172,6 +172,29 @@ describe("official narrative text", () => {
 });
 
 describe("narrative layouts", () => {
+  it("reads every page that repeats the heading, without treating the pages as overlays", () => {
+    const page2 = (top: number, left: number, text: string) => ({ ...item(top, left, text), page: 2 });
+    const selector: TextBlockSelector = {
+      heading: /^市場評論$/,
+      occurrence: "all",
+      band: { minLeft: 600, maxLeft: 900 },
+      languages: "bilingual",
+    };
+    const result = readNarrative(
+      [
+        item(170, 607, "市場評論"),
+        item(200, 607, "大中華股票上升。"),
+        page2(170, 607, "市場評論"),
+        page2(200, 607, "Greater China equities rose."),
+      ],
+      selector,
+    );
+    expect(result).toEqual({
+      status: "ok",
+      text: { heading: "市場評論", zh: "大中華股票上升。", en: "Greater China equities rose." },
+    });
+  });
+
   it("merges English and Chinese printed on separate pages, failing the field if either is missing", () => {
     const en: TextBlockSelector = {
       heading: /^Investment Objective$/,

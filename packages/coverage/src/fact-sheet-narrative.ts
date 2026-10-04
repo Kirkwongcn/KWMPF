@@ -32,6 +32,12 @@ export type TextBlockSelector = {
   /** 標題；中英分開兩段時，兩段都要配得到，取最上嗰段做錨點。 */
   heading: RegExp;
   headingFontSize?: number[];
+  /**
+   * 用第幾個符合的標題（由 0 起，按頁次及高度排）；`"all"` 即係每一頁第一個符合
+   * 的標題都讀，按頁次接駁。我的強積金計劃有啲基金中英評論同一頁，有啲中文一頁、
+   * 英文下一頁，兩頁標題一樣係「市場評論 MARKET COMMENTARY」。
+   */
+  occurrence?: number | "all";
   /** 明確欄界。文字欄冇表格咁整齊，唔靠自動推斷。 */
   band: { minLeft: number; maxLeft: number };
   /**
@@ -153,6 +159,7 @@ function overlapping(items: PdfTextItem[]) {
       if (
         item.text.trim().length > 2 &&
         other.text.trim().length > 2 &&
+        other.page === item.page &&
         Math.abs(other.top - item.top) <= 2 &&
         horizontalOverlap(item, other) > 0.5 &&
         other.text.trim() !== item.text.trim()
@@ -237,64 +244,78 @@ export function readNarrative(
           selector.headingFontSize.includes(item.fontSize)),
     )
     .sort((a, b) => a.page - b.page || a.top - b.top);
-  const anchor = headings[0];
-  if (!anchor) {
+  const anchors =
+    selector.occurrence === "all"
+      ? headings.filter(
+          (item, index) => headings.findIndex((other) => other.page === item.page) === index,
+        )
+      : headings.slice(selector.occurrence ?? 0, (selector.occurrence ?? 0) + 1);
+  if (anchors.length === 0) {
     return { status: "not-disclosed", reason: `no heading matching ${selector.heading}` };
   }
-  const headingLine = headings.filter(
-    (item) => item.page === anchor.page && Math.abs(item.top - anchor.top) <= LINE_TOLERANCE + 2,
-  );
-  const headingBottom = Math.max(...headingLine.map((item) => item.top));
+  const headingLineOf = (anchor: PdfTextItem) =>
+    headings.filter(
+      (item) => item.page === anchor.page && Math.abs(item.top - anchor.top) <= LINE_TOLERANCE + 2,
+    );
+  const headingLine = headingLineOf(anchors[0]!);
   const inBand = (item: PdfTextItem) =>
     item.left >= selector.band.minLeft && item.left < selector.band.maxLeft;
-
-  const below = items.filter(
-    (item) =>
-      item.page === anchor.page &&
-      (selector.minDepth !== undefined
-        ? item.top >= anchor.top + selector.minDepth
-        : selector.sameLine
-          ? item.top >= anchor.top - LINE_TOLERANCE
-          : item.top > headingBottom + LINE_TOLERANCE) &&
-      (selector.maxDepth === undefined || item.top <= anchor.top + selector.maxDepth) &&
-      inBand(item) &&
-      item.text.trim() !== "" &&
-      (selector.minFontSize === undefined || item.fontSize >= selector.minFontSize) &&
-      (selector.maxFontSize === undefined || item.fontSize <= selector.maxFontSize),
-  );
-  const columns: NonNullable<TextBlockSelector["columns"]> = selector.columns ?? [selector.band];
   const kept: Line[] = [];
-  for (const column of columns) {
-    const columnLines = toLines(
-      dropReprints(
-        below.filter((item) => item.left >= column.minLeft && item.left < column.maxLeft),
-      ),
+  for (const anchor of anchors) {
+    kept.push(...readBlock(anchor, headingLineOf(anchor)));
+  }
+
+  function readBlock(anchor: PdfTextItem, headingLine: PdfTextItem[]): Line[] {
+    const headingBottom = Math.max(...headingLine.map((item) => item.top));
+    const below = items.filter(
+      (item) =>
+        item.page === anchor.page &&
+        (selector.minDepth !== undefined
+          ? item.top >= anchor.top + selector.minDepth
+          : selector.sameLine
+            ? item.top >= anchor.top - LINE_TOLERANCE
+            : item.top > headingBottom + LINE_TOLERANCE) &&
+        (selector.maxDepth === undefined || item.top <= anchor.top + selector.maxDepth) &&
+        inBand(item) &&
+        item.text.trim() !== "" &&
+        (selector.minFontSize === undefined || item.fontSize >= selector.minFontSize) &&
+        (selector.maxFontSize === undefined || item.fontSize <= selector.maxFontSize),
     );
-    const start = column.after
-      ? columnLines.findLastIndex((line) => column.after!.test(line.text)) + 1
-      : 0;
-    if (column.after && start === 0) continue;
-    const lineStart = column.lineStart;
-    const sliced = columnLines.slice(start);
-    const first = selector.startAt
-      ? sliced.findIndex((line) => selector.startAt!.test(line.text))
-      : 0;
-    const lines = (first < 0 ? [] : sliced.slice(first))
-      .filter(
-        (line) =>
-          !lineStart ||
-          (line.items[0]!.left >= lineStart.minLeft && line.items[0]!.left < lineStart.maxLeft),
+    const columns: NonNullable<TextBlockSelector["columns"]> = selector.columns ?? [selector.band];
+    const block: Line[] = [];
+    for (const column of columns) {
+      const columnLines = toLines(
+        dropReprints(
+          below.filter((item) => item.left >= column.minLeft && item.left < column.maxLeft),
+        ),
       );
-    const columnKept: Line[] = [];
-    for (const line of lines) {
-      const previous = columnKept.at(-1);
-      if (previous && selector.maxGap !== undefined && line.top - previous.top > selector.maxGap) break;
-      if (selector.stopAt?.test(line.text)) break;
-      if (stopHeadings.some((pattern) => pattern.test(line.text))) break;
-      if (selector.ignore?.test(line.text)) continue;
-      columnKept.push(line);
+      const start = column.after
+        ? columnLines.findLastIndex((line) => column.after!.test(line.text)) + 1
+        : 0;
+      if (column.after && start === 0) continue;
+      const lineStart = column.lineStart;
+      const sliced = columnLines.slice(start);
+      const first = selector.startAt
+        ? sliced.findIndex((line) => selector.startAt!.test(line.text))
+        : 0;
+      const lines = (first < 0 ? [] : sliced.slice(first))
+        .filter(
+          (line) =>
+            !lineStart ||
+            (line.items[0]!.left >= lineStart.minLeft && line.items[0]!.left < lineStart.maxLeft),
+        );
+      const columnKept: Line[] = [];
+      for (const line of lines) {
+        const previous = columnKept.at(-1);
+        if (previous && selector.maxGap !== undefined && line.top - previous.top > selector.maxGap) break;
+        if (selector.stopAt?.test(line.text)) break;
+        if (stopHeadings.some((pattern) => pattern.test(line.text))) break;
+        if (selector.ignore?.test(line.text)) continue;
+        columnKept.push(line);
+      }
+      block.push(...columnKept);
     }
-    kept.push(...columnKept);
+    return block;
   }
   const overlaid = overlapping(kept.flatMap((line) => line.items));
   if (overlaid.length > 0) {
