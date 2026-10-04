@@ -407,6 +407,24 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       maxLeft: 400,
       name: (text) => text.replace(/[\^*]+$/, "").trim(),
     },
+    narrative: {
+      // 投資目標在左欄，右欄同一高度係資產分布；「-」分隔記號得 8 pt。
+      investmentObjective: {
+        heading: /^投資目標$/,
+        band: { minLeft: 30, maxLeft: 295 },
+        stopAt: /^(基金資料|\| FUND FACTS)/,
+        minFontSize: 9,
+        languages: "bilingual",
+      },
+      // 基金經理報告橫跨全頁，以「資料來源 Source」收尾。
+      managerCommentary: {
+        heading: /^基金經理報告$/,
+        band: { minLeft: 30, maxLeft: 600 },
+        stopAt: /^(資料來源|Source\b)/,
+        maxGap: 24,
+        languages: "bilingual",
+      },
+    },
     allocation: {
       // 資產分布在右欄（值 left≈410、標籤 left≈442），十大投資項目在左欄，
       // 兩個標題不同欄，自動推下界推唔到，要靠「基金表現」這條分隔線收尾。
