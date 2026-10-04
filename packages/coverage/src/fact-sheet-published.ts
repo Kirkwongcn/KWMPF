@@ -86,6 +86,11 @@ export type PublishedFactSheetPayload = {
   allocations: AllocationDimension[];
   topHoldings: TopHolding[];
   narrative?: FactSheetNarrative;
+  /**
+   * 計劃層面、只印一次而唔屬任何一隻基金的文字（海通首兩頁的基金經理評論）。
+   * 同一份便覽每隻基金一樣；網站要標明係計劃整體，唔可以當成呢隻基金的評論。
+   */
+  schemeNarrative?: FactSheetNarrative;
   unavailableFields: string[];
   returnUnavailable?: Record<string, OfficialReturnUnavailable>;
   unavailableReasons: Record<string, string>;

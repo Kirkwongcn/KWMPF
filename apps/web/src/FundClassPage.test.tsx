@@ -859,6 +859,46 @@ describe("cumulative returns", () => {
     expect(dateNote).toHaveTextContent("2026-07-31");
   });
 
+  it("falls back to scheme-level commentary and says so", async () => {
+    renderWithDisclosure({
+      ...disclosure,
+      schemeNarrative: {
+        managerCommentary: {
+          heading: "MANAGER’S REPORT 基金經理評論",
+          zh: "發達市場股市在8月錄得 2.48% 的漲幅。",
+          en: "Developed market equities rose 2.48% in August.",
+        },
+      },
+    });
+
+    const direction = within(
+      await screen.findByRole("region", { name: "最新投資方向" }),
+    );
+    expect(
+      direction.getByText("發達市場股市在8月錄得 2.48% 的漲幅。"),
+    ).toBeVisible();
+    expect(direction.getByRole("note")).toHaveTextContent("計劃層面的市場評論");
+  });
+
+  it("prefers the fund's own commentary over scheme-level text", async () => {
+    renderWithDisclosure({
+      ...disclosure,
+      narrative: {
+        managerCommentary: { heading: "評論", zh: "本基金增持科技股。" },
+      },
+      schemeNarrative: {
+        managerCommentary: { heading: "基金經理評論", zh: "整體市場評論。" },
+      },
+    });
+
+    const direction = within(
+      await screen.findByRole("region", { name: "最新投資方向" }),
+    );
+    expect(direction.getByText("本基金增持科技股。")).toBeVisible();
+    expect(direction.queryByText("整體市場評論。")).not.toBeInTheDocument();
+    expect(direction.queryByRole("note")).not.toBeInTheDocument();
+  });
+
   it("says the trustee source is simply not transcribed yet", async () => {
     renderWithDisclosure(disclosure);
 

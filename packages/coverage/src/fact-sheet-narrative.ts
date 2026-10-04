@@ -243,7 +243,7 @@ function joinParagraphs(lines: string[], script: "zh" | "en") {
  * 原文分段：同一區內兩行之間的空隙大過正常行距（區內行距中位數）的 1.6 倍，就當
  * 係段落之間。少過三個行距唔夠判斷正常行距，唔分。
  */
-function markParagraphBreaks(lines: Line[]) {
+function markParagraphBreaks(lines: Line[], ratio = 1.6) {
   const gaps = lines.flatMap((line, index) => {
     const previous = lines[index - 1];
     return previous && previous.segment === line.segment ? [line.top - previous.top] : [];
@@ -253,7 +253,7 @@ function markParagraphBreaks(lines: Line[]) {
   const normal = sorted[Math.floor(sorted.length / 2)]!;
   for (const [index, line] of lines.entries()) {
     const previous = lines[index - 1];
-    if (previous && previous.segment === line.segment && line.top - previous.top > normal * 1.6) {
+    if (previous && previous.segment === line.segment && line.top - previous.top > normal * ratio) {
       line.breakBefore = true;
     }
   }
@@ -583,3 +583,100 @@ export function readAppendixNarrative(
   return { status: "ok", text: composeText(lines, subheading.text, "bilingual") };
 }
 
+
+export type SchemeNarrativeSpec = {
+  /**
+   * 計劃層面文字的標題（文字層原文，中英各一段都要搵到）。只用嚟確認呢份便覽有呢段同
+   * 記低標題；正文唔靠佢定位（海通嘅標題喺文字層，但畫面被重要事項框遮住）。
+   */
+  heading: RegExp;
+  /** 每頁正文由最後一行符合嘅行之下開始（頁首、重要事項框嘅最後一句）。 */
+  startAfter: RegExp;
+  /** 每頁讀到第一行符合嘅行就停（註腳、頁尾）；搵唔到即係版面變咗。 */
+  stopAt: RegExp;
+  band: { minLeft: number; maxLeft: number };
+  minFontSize?: number;
+  maxFontSize?: number;
+  /**
+   * 段距同正常行距之比超過幾多就分段（預設 1.6）。海通段距只大約 1.17 倍（17 對 14.6 pt），
+   * 用預設會成篇接埋一段；只加換行，唔改字。
+   */
+  paragraphGap?: number;
+};
+
+/**
+ * 計劃層面、只印一次而唔屬任何一隻基金的文字（海通首兩頁嘅基金經理評論）。由標題
+ * 所在頁讀到第一隻基金區段之前一頁，逐頁由 `startAfter` 讀到 `stopAt`。
+ *
+ * 任何一頁搵唔到起點或終點、或者第一隻基金標題之上仲有正文（即係評論續落基金頁），
+ * 都報 `unreadable-layout`，唔出半段（紅線 3）。標題出現多過一次報錯。
+ */
+export function readSchemeNarrative(
+  pages: PdfPage[],
+  firstSection: { page: number; top: number },
+  spec: SchemeNarrativeSpec,
+): NarrativeReadResult {
+  const headingItems = pages.flatMap((page) =>
+    page.items.filter((item) => spec.heading.test(item.text.trim())),
+  );
+  if (headingItems.length === 0) {
+    return { status: "not-disclosed", reason: "no scheme-level heading" };
+  }
+  const headingPages = new Set(headingItems.map((item) => item.page));
+  if (headingPages.size > 1) {
+    throw new Error(`scheme-level heading appears on ${headingPages.size} pages; refusing to pick one`);
+  }
+  const headingPage = headingItems[0]!.page;
+  if (firstSection.page <= headingPage) {
+    return {
+      status: "unreadable-layout",
+      reason: `the first fund section starts on page ${firstSection.page}, not after the scheme-level text on page ${headingPage}`,
+    };
+  }
+  // 中英標題各自一段文字，按版位先後連埋，中間一個空格。
+  const heading = headingItems
+    .toSorted((a, b) => a.top - b.top || a.left - b.left)
+    .map((item) => item.text.trim())
+    .join(" ");
+  const isBody = (item: PdfTextItem) =>
+    item.text.trim() !== "" &&
+    item.left >= spec.band.minLeft &&
+    item.left < spec.band.maxLeft &&
+    (spec.minFontSize === undefined || item.fontSize >= spec.minFontSize) &&
+    (spec.maxFontSize === undefined || item.fontSize <= spec.maxFontSize);
+
+  const kept: Line[] = [];
+  for (const page of pages) {
+    if (page.number < headingPage || page.number >= firstSection.page) continue;
+    const lines = toLines(dropReprints(page.items.filter(isBody)));
+    const start = lines.findLastIndex((line) => spec.startAfter.test(line.text));
+    if (start < 0) {
+      return { status: "unreadable-layout", reason: `no start marker on page ${page.number}` };
+    }
+    const stop = lines.findIndex((line, index) => index > start && spec.stopAt.test(line.text));
+    if (stop < 0) {
+      return { status: "unreadable-layout", reason: `no end marker on page ${page.number}` };
+    }
+    const body = lines.slice(start + 1, stop);
+    const overlaid = overlapping(body.flatMap((line) => line.items));
+    if (overlaid.length > 0) {
+      return {
+        status: "overlaid",
+        reason: `${overlaid.length} text runs overlap with different wording: ${overlaid.slice(0, 2).join(", ")}`,
+      };
+    }
+    kept.push(...body.map((line) => ({ ...line, segment: page.number })));
+  }
+  const sectionPage = pages.find((page) => page.number === firstSection.page);
+  if (sectionPage?.items.some((item) => isBody(item) && item.top < firstSection.top - LINE_TOLERANCE)) {
+    return {
+      status: "unreadable-layout",
+      reason: `text above the first fund title on page ${firstSection.page}; the scheme-level text may continue there`,
+    };
+  }
+  if (kept.length === 0) {
+    return { status: "not-disclosed", reason: "scheme-level heading found but no text" };
+  }
+  markParagraphBreaks(kept, spec.paragraphGap);
+  return { status: "ok", text: composeText(kept, heading, "bilingual") };
+}

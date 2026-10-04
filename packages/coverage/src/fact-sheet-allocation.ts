@@ -1,7 +1,9 @@
 import {
   readAppendixNarrative,
   readNarrativeField,
+  readSchemeNarrative,
   type AppendixNarrativeSpec,
+  type SchemeNarrativeSpec,
   type NarrativeReadResult,
   type NarrativeField,
   type NarrativeText,
@@ -62,6 +64,8 @@ export type FactSheetDisclosure = {
   topHoldings: TopHolding[];
   /** 官方文字欄位（ADR 0012），只有契約聲明咗嘅欄位先會出現。 */
   narrative?: FactSheetNarrative;
+  /** 計劃層面文字（`FactSheetContract.schemeNarrative`），同一份便覽每隻基金一樣。 */
+  schemeNarrative?: FactSheetNarrative;
   unavailableFields: string[];
   /** 走 `unavailableFields` 的原因，逐項寫明，供配對報告逐份列出。 */
   unavailableReasons: Record<string, string>;
@@ -262,6 +266,11 @@ export type FactSheetContract = {
   layerEnd?: RegExp;
   /** 評論集中印喺附錄（中銀保誠），按基金名稱小標題讀，見 `readAppendixNarrative`。 */
   narrativeAppendix?: { field: NarrativeField } & AppendixNarrativeSpec;
+  /**
+   * 計劃層面、只印一次而唔屬任何一隻基金的文字（海通首兩頁的基金經理評論），見
+   * `readSchemeNarrative`。每隻基金帶同一份 `schemeNarrative`，網站要標明係計劃整體。
+   */
+  schemeNarrative?: { field: NarrativeField } & SchemeNarrativeSpec;
   /** Explicit temporal evidence tied to a field; never inherit the document date implicitly. */
   fieldScopes?: Partial<
     Record<FactSheetDataField, FactSheetFieldScopeSelector>
@@ -1216,6 +1225,13 @@ export function parseFactSheetDisclosures(
     throw new Error(`${contract.scheme}: no constituent fund sections found`);
   }
 
+  const scheme = contract.schemeNarrative
+    ? (() => {
+        const { field, ...spec } = contract.schemeNarrative;
+        return { field, result: readSchemeNarrative(pages, sections[0]!.start, spec) };
+      })()
+    : undefined;
+
   const disclosures = sections.map((titleSection) => {
     const layer = contract.layerEnd
       ? layerItems(pages, titleSection, contract.layerEnd, contract.title)
@@ -1323,6 +1339,13 @@ export function parseFactSheetDisclosures(
       unavailableKinds[field] = narrativeUnavailableKind(result.status);
     }
 
+    if (scheme && scheme.result.status !== "ok") {
+      const key = `schemeNarrative.${scheme.field}`;
+      unavailableFields.push(key);
+      unavailableReasons[key] = scheme.result.reason;
+      unavailableKinds[key] = narrativeUnavailableKind(scheme.result.status);
+    }
+
     if (contract.narrativeAppendix) {
       const { field, ...spec } = contract.narrativeAppendix;
       const result = readAppendixNarrative(pages, section.name, spec);
@@ -1344,6 +1367,9 @@ export function parseFactSheetDisclosures(
       allocations,
       topHoldings,
       ...(narrativeSelectors.length > 0 || contract.narrativeAppendix ? { narrative } : {}),
+      ...(scheme?.result.status === "ok"
+        ? { schemeNarrative: { [scheme.field]: scheme.result.text } }
+        : {}),
       unavailableFields,
       unavailableReasons,
       unavailableKinds,

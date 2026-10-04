@@ -36,6 +36,7 @@ export type FactSheetDisclosureFund = {
   allocations: FactSheetDisclosure["allocations"];
   topHoldings: FactSheetDisclosure["topHoldings"];
   narrative?: FactSheetDisclosure["narrative"];
+  schemeNarrative?: FactSheetDisclosure["schemeNarrative"];
   unavailableFields: string[];
   returnUnavailable?: Record<string, OfficialReturnUnavailable>;
   unavailableReasons: Record<string, string>;

@@ -910,6 +910,22 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       // 下一列嘅英文標籤同呢一列最後一段最少相差 14 pt，8 夾喺中間，兩頭都留返容差。
       rowGap: 8,
     },
+    // 首兩頁嘅基金經理評論係計劃整體嘅市場評論，唔屬任何一隻基金。標題「基金經理評論
+    // MANAGER’S REPORT」喺文字層，但畫面被重要事項框遮住，所以正文唔靠標題定位：
+    // 第一頁由重要事項最後一句之下、第二頁由頁首受託人名之下讀起，讀到頁尾
+    // 「Fund Manager and Issuer」。註腳（§）同頁碼係 10 號字，正文 12 號。
+    schemeNarrative: {
+      field: "managerCommentary",
+      heading: /^(基金經理評論|MANAGER[’']S REPORT)$/,
+      startAfter:
+        /閣下的投資或會承受重大損失。$|^Haitong International Investment Managers Limited 海通國際投資經理有限公司$/,
+      stopAt: /^Fund Manager and Issuer:/,
+      band: { minLeft: 0, maxLeft: 900 },
+      minFontSize: 12,
+      maxFontSize: 12,
+      // 正常行距 14.6 pt，段距 17–20 pt；1.12 倍即 16.4 pt，兩邊各留一 pt 有多。
+      paragraphGap: 1.12,
+    },
     holdings: {
       heading: /^TOP TEN HOLDINGS$/,
       band: { minLeft: 420, maxLeft: 900 },

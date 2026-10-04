@@ -13,6 +13,7 @@ import {
   readAppendixNarrative,
   readNarrative,
   readNarrativeField,
+  readSchemeNarrative,
   type TextBlockSelector,
 } from "../src/fact-sheet-narrative";
 
@@ -717,3 +718,73 @@ describe("appendix commentary", () => {
   });
 });
 
+
+describe("scheme-level commentary", () => {
+  const spec = {
+    heading: /^(基金經理評論|MANAGER’S REPORT)$/,
+    startAfter: /閣下的投資或會承受重大損失。$|^Haitong International Investment Managers Limited$/,
+    stopAt: /^Fund Manager and Issuer:/,
+    band: { minLeft: 0, maxLeft: 900 },
+    minFontSize: 12,
+    maxFontSize: 12,
+  };
+  const at = (pageNumber: number, top: number, text: string, fontSize = 12) => ({
+    ...item(top, 40, text, text.length * 6, fontSize),
+    page: pageNumber,
+  });
+  const scheme = (secondPage: PdfTextItem[] = [at(2, 110, "Haitong International Investment Managers Limited")]) => [
+    {
+      number: 1,
+      width: 900,
+      height: 1200,
+      items: [
+        at(1, 352, "基金經理評論", 18),
+        at(1, 355, "MANAGER’S REPORT", 18),
+        at(1, 541, "投資回報並無擔保，而閣下的投資或會承受重大損失。"),
+        at(1, 575, "Developed market equities rose."),
+        at(1, 589, "Bonds were flat."),
+        at(1, 1055, "§ Constituent Funds is defined in the brochure.", 10),
+        at(1, 1132, "Fund Manager and Issuer: Haitong"),
+      ],
+    },
+    {
+      number: 2,
+      width: 900,
+      height: 1200,
+      items: [
+        ...secondPage,
+        at(2, 193, "Japan rose."),
+        at(2, 300, "發達市場股市上漲。"),
+        at(2, 1111, "Fund Manager and Issuer: Haitong"),
+      ],
+    },
+    { number: 3, width: 900, height: 1200, items: [at(3, 48, "Haitong Hong Kong SAR Fund", 18)] },
+  ];
+
+  it("reads from below the notes to the page before the first fund, skipping footnotes and footers", () => {
+    const result = readSchemeNarrative(scheme(), { page: 3, top: 48 }, spec);
+    expect(result).toMatchObject({
+      status: "ok",
+      text: {
+        heading: "基金經理評論 MANAGER’S REPORT",
+        en: "Developed market equities rose. Bonds were flat. Japan rose.",
+        zh: "發達市場股市上漲。",
+      },
+    });
+  });
+
+  it("refuses partial text when a page's start marker is missing or text sits above the first fund", () => {
+    expect(readSchemeNarrative(scheme([]), { page: 3, top: 48 }, spec)).toMatchObject({
+      status: "unreadable-layout",
+      reason: expect.stringMatching(/no start marker on page 2/),
+    });
+    const spill = scheme();
+    spill[2]!.items.unshift(at(3, 20, "(continued) Outlook remains cautious."));
+    expect(readSchemeNarrative(spill, { page: 3, top: 48 }, spec).status).toBe("unreadable-layout");
+  });
+
+  it("refuses a heading printed on two pages", () => {
+    const twice = scheme([at(2, 110, "Haitong International Investment Managers Limited"), at(2, 150, "MANAGER’S REPORT", 18)]);
+    expect(() => readSchemeNarrative(twice, { page: 3, top: 48 }, spec)).toThrow(/refusing to pick one/);
+  });
+});

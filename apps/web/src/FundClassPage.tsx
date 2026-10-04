@@ -727,7 +727,15 @@ export function FundClassPage({
             title="最新投資方向"
             collapsible
             aside={<MarketForecast disclosure={factSheetDisclosure} />}
-            text={factSheetDisclosure?.narrative?.managerCommentary}
+            text={
+              factSheetDisclosure?.narrative?.managerCommentary ??
+              factSheetDisclosure?.schemeNarrative?.managerCommentary
+            }
+            schemeLevel={
+              !factSheetDisclosure?.narrative?.managerCommentary &&
+              factSheetDisclosure?.schemeNarrative?.managerCommentary !==
+                undefined
+            }
             missing={narrativeMissing("managerCommentary", factSheetDisclosure)}
             source={
               factSheetDisclosure?.factSheetUrl
