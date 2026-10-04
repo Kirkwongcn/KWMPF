@@ -86,7 +86,7 @@ export function formatDerived(value: number, unit = "%") {
 }
 
 /** Callback ref so a chart that first renders empty still measures once its plot mounts. */
-function useChartWidth(fallback = 640) {
+export function useChartWidth(fallback = 640) {
   const [element, setElement] = useState<HTMLDivElement | null>(null);
   const [width, setWidth] = useState(fallback);
   useLayoutEffect(() => {
@@ -106,7 +106,7 @@ function useChartWidth(fallback = 640) {
 
 type Tip = { x: number; y: number; content: ReactNode } | null;
 
-function useTooltip() {
+export function useTooltip() {
   const frame = useRef<HTMLDivElement>(null);
   const [tip, setTip] = useState<Tip>(null);
   function at(clientX: number, clientY: number, content: ReactNode) {
@@ -121,7 +121,7 @@ function useTooltip() {
   return { frame, tip, at, atElement, hide: () => setTip(null) };
 }
 
-function Tooltip({ tip }: { tip: Tip }) {
+export function Tooltip({ tip }: { tip: Tip }) {
   if (!tip) return null;
   return (
     <div

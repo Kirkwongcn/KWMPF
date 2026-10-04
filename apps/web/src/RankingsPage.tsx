@@ -184,10 +184,10 @@ export function RankingsPage({
         : "波幅";
   const subtitle =
     metric === "return"
-      ? `只比較相同基金種類及配置組別，名次按官方${periodLabels[period]}年率化回報排列。`
+      ? `只在同一積金局基金類型內比較，名次按官方${periodLabels[period]}年率化回報排列。`
       : metric === "fee"
-        ? "只比較相同基金種類及配置組別，名次按官方當前管理費由低至高排列。"
-        : "只比較相同基金種類及配置組別，名次按官方基金風險指標（年度化標準差）由低至高排列。";
+        ? "只在同一積金局基金類型內比較，名次按官方當前管理費由低至高排列。"
+        : "只在同一積金局基金類型內比較，名次按官方基金風險指標（年度化標準差）由低至高排列。";
 
   return (
     <SiteChrome
@@ -708,7 +708,7 @@ function GroupSpread({
         count: item.values.length,
         summary: `${item.group}：${item.values.length} 隻，範圍 ${item.min}% 至 ${item.max}%，中位數 ${formatDerived(item.median)}（本站計算）`,
       }))}
-      note="不同組別的基金種類及風險不同，跨組並列不代表優劣。點擊組別名稱查看該組完整排名圖表。"
+      note="不同積金局基金類型的投資範圍及風險不同，跨類型並列不代表優劣。點擊組別名稱查看該組完整排名圖表。"
       table={{
         caption: `各比較組別的${valueLabel}分布`,
         columns: [

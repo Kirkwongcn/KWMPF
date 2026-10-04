@@ -216,62 +216,8 @@ figcaption {
 .kw-nav a:hover {
   color: var(--kw-gold-light);
 }
-.kw-header :focus-visible,
-.kw-hero :focus-visible {
+.kw-header :focus-visible {
   outline-color: var(--kw-gold-light);
-}
-.kw-hero {
-  color: white;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(12, 29, 48, 0.98),
-      rgba(18, 59, 70, 0.82) 50%,
-      rgba(18, 59, 70, 0.34)
-    ),
-    url("/images/kirk-wong-hero.webp") center/cover;
-}
-.kw-hero__inner {
-  padding-block: 44px 50px;
-}
-.kw-hero h1 {
-  font-size: clamp(28px, 3.4vw, 50px);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  margin: 0 0 10px;
-  overflow-wrap: anywhere;
-  max-width: none;
-}
-.kw-hero p {
-  margin: 0;
-  max-width: 75ch;
-  font-size: 0.9rem;
-}
-.kw-hero .kw-eyebrow {
-  margin-bottom: 12px;
-  color: var(--kw-gold-light);
-  font-size: 0.8rem;
-}
-.kw-reading-tools {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  padding-block: 16px;
-  border-bottom: 1px solid var(--kw-line);
-  font-size: 0.875rem;
-}
-.kw-reading-tools__mode {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-.kw-reading-tools__mode > span {
-  color: var(--kw-muted);
-}
-.kw-reading-tools .kw-mode {
-  margin-left: 0;
 }
 .kw-mode {
   display: flex;
@@ -306,60 +252,6 @@ figcaption {
 .kw-main--home {
   padding-top: 56px;
 }
-.kw-page-heading {
-  margin: 0 0 36px;
-  max-width: 80ch;
-}
-.kw-page-heading h1 {
-  font-size: 2.5rem;
-  margin: 0 0 12px;
-  letter-spacing: -0.035em;
-  overflow-wrap: anywhere;
-}
-.kw-page-heading p {
-  color: var(--kw-muted);
-  margin: 0;
-}
-.kw-home-intro {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 64px;
-  align-items: start;
-}
-.kw-home-intro h2 {
-  font-size: 2rem;
-  line-height: 1.35;
-  letter-spacing: -0.02em;
-  margin: 8px 0 20px;
-}
-.kw-home-intro__lead {
-  color: var(--kw-muted-strong);
-  max-width: 36ch;
-  font-size: 1.1rem;
-  margin-bottom: 32px;
-}
-.kw-home-intro__quality {
-  border-left: 1px solid var(--kw-line);
-  padding-left: 36px;
-}
-.search-form label {
-  font-weight: 600;
-  display: block;
-  margin-bottom: 10px;
-}
-.search-form > div {
-  display: flex;
-  gap: 8px;
-}
-.search-form input {
-  min-width: 0;
-  flex: 1;
-}
-.kw-search-help {
-  font-size: 0.875rem;
-  color: var(--kw-muted);
-  margin: 10px 0 24px;
-}
 .kw-home-shortcuts {
   display: flex;
   gap: 24px;
@@ -369,71 +261,6 @@ figcaption {
 .kw-text-link {
   font-weight: 600;
   font-size: 0.95rem;
-}
-.kw-home-intro__quality > .kw-text-link {
-  display: inline-block;
-  margin-top: 20px;
-}
-.kw-coverage-strip {
-  display: flex;
-  gap: 28px;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  border-block: 1px solid var(--kw-line);
-  padding-block: 22px;
-  margin-top: 48px;
-  color: var(--kw-muted-strong);
-  font-size: 0.95rem;
-}
-.kw-coverage-strip strong {
-  color: var(--kw-ink);
-  font-variant-numeric: tabular-nums;
-  font-weight: 650;
-}
-.kw-task-section {
-  display: grid;
-  grid-template-columns: 1fr 1.7fr;
-  gap: 48px;
-  margin-top: 48px;
-}
-.kw-task-list a {
-  border-bottom: 1px solid var(--kw-line);
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 18px 8px;
-  text-decoration: none;
-  color: var(--kw-ink);
-  transition: background-color 180ms ease-out;
-}
-.kw-task-list a:first-child {
-  padding-top: 0;
-}
-.kw-task-list a:hover {
-  background: var(--kw-soft);
-  color: var(--kw-action);
-}
-.kw-task-list strong {
-  display: block;
-  font-size: 1.15rem;
-  font-weight: 600;
-}
-.kw-task-list small {
-  display: block;
-  color: var(--kw-muted);
-  margin-top: 5px;
-}
-.kw-task-list a > span:last-child {
-  color: var(--kw-action);
-  font-size: 1.6rem;
-  align-self: center;
-}
-.kw-research-note {
-  margin-top: 48px;
-  padding: 28px;
-  border-left: 1px solid var(--kw-action);
-  background: white;
-  max-width: 85ch;
 }
 .kw-loading-block {
   min-height: 340px;
@@ -1410,13 +1237,6 @@ input[type="checkbox"] {
   border-top: 1px solid var(--kw-line);
   padding-block: 32px;
 }
-.kw-footer__links {
-  display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-  align-items: center;
-}
 .kw-footer p {
   font-size: 0.875rem;
   max-width: 100ch;
@@ -1442,12 +1262,6 @@ input[type="checkbox"] {
   }
   .kw-mode {
     margin-left: auto;
-  }
-  .kw-home-intro {
-    gap: 36px;
-  }
-  .kw-home-intro h2 {
-    font-size: 2.4rem;
   }
   .kw-filters {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1482,50 +1296,21 @@ input[type="checkbox"] {
     display: flex;
     align-items: center;
   }
-  .kw-home-intro,
-  .kw-task-section,
+
   .kw-status-layout,
   .kw-methodology-layout {
     grid-template-columns: 1fr;
     gap: 28px;
   }
-  .kw-home-intro h2 {
-    font-size: 2.1rem;
-    margin-top: 0;
-  }
-  .kw-home-intro__lead {
-    font-size: 1rem;
-    margin-bottom: 24px;
-  }
-  .kw-home-intro__quality,
+
   .kw-publication {
     border-left: 0;
     padding-left: 0;
     border-top: 1px solid var(--kw-line);
     padding-top: 24px;
   }
-  .kw-coverage-strip {
-    gap: 12px 24px;
-    margin-top: 28px;
-    font-size: 0.875rem;
-  }
-  .kw-task-section {
-    margin-top: 32px;
-  }
-  .kw-task-section > div > p {
-    margin-bottom: 0;
-  }
-  .search-form > div {
-    flex-direction: column;
-  }
   .kw-home-shortcuts {
     gap: 12px 20px;
-  }
-  .kw-hero__inner {
-    padding-block: 30px 34px;
-  }
-  .kw-reading-tools__mode > span {
-    display: none;
   }
   .kw-allocation__composition {
     align-items: flex-start;
@@ -1542,12 +1327,6 @@ input[type="checkbox"] {
     grid-template-columns: 1fr;
     min-width: 0;
     flex-basis: 100%;
-  }
-  .kw-page-heading {
-    margin-bottom: 24px;
-  }
-  .kw-page-heading h1 {
-    font-size: 1.9rem;
   }
   .kw-section__heading,
   h2 {
@@ -1622,12 +1401,6 @@ input[type="checkbox"] {
     gap: 10px 20px;
     border-bottom: 1px solid var(--kw-line);
     padding-bottom: 20px;
-  }
-  .kw-footer__links {
-    gap: 10px 20px;
-  }
-  .kw-footer__links strong {
-    flex-basis: 100%;
   }
   .kw-status {
     padding: 14px 16px;

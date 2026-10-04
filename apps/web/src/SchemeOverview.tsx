@@ -71,7 +71,6 @@ export function SchemeOverview({ schemes }: { schemes: OverviewScheme[] }) {
       aria-labelledby="scheme-overview-title"
     >
       <header className="kw-section-head">
-        <p className="kw-section-head__kicker">計劃一覽</p>
         <h2 id="scheme-overview-title">
           {schemes.length} 個計劃，三個角度並列
         </h2>

@@ -680,7 +680,7 @@ describe("fund class page without a separate class", () => {
     ).toBeVisible();
     expect(
       screen.getByText(
-        `${fixture.fundClass.fundType}／${fixture.fundClass.fundCategory}`,
+        `${fixture.fundClass.schemeName} · ${fixture.fundClass.fundType}／${fixture.fundClass.fundCategory}`,
       ),
     ).toBeVisible();
     expect(screen.queryByText(/n\.a\./i)).not.toBeInTheDocument();

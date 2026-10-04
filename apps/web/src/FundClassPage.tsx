@@ -591,6 +591,7 @@ export function FundClassPage({
       eyebrow={fundClass.schemeName}
       title={fundClass.constituentFundName}
       subtitle={joinFundParts(
+        fundClass.schemeName,
         fundClassLabel(fundClass.fundClassName),
         `${fundClass.fundType}／${fundClass.fundCategory}`,
       )}
