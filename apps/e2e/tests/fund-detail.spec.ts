@@ -69,7 +69,7 @@ test("詳情頁的同組比較連結會帶著比較組別回到排名", async ({
   await peers.getByRole("link", { name: "查看同組基金排名" }).click();
 
   await expect(page).toHaveURL(/\/rankings\?/);
-  await expect(page.getByLabel("比較組別")).toHaveValue(group);
+  await expect(page.getByLabel("積金局基金類型")).toHaveValue(group);
 
   const rows = page.locator("table.kw-table tbody tr");
   if ((await rows.count()) === 0) {
@@ -85,17 +85,19 @@ test("詳情頁的同組比較連結會帶著比較組別回到排名", async ({
   }
 });
 
-test("基金解讀分頁以同一快照顯示三項比較", async ({ page }) => {
+test("基金解讀分頁以同一快照顯示兩項比較，不含編輯配置因素", async ({
+  page,
+}) => {
   await openFirstFundDetail(page);
 
   await page.getByRole("button", { name: "基金解讀" }).click();
 
   const interpretation = page.getByRole("region", { name: "基金解讀" });
-  await expect(interpretation).toContainText(/股票配置/);
   await expect(interpretation).toContainText(/十大持倉/);
   await expect(interpretation).toContainText(/3年波幅/);
   await expect(interpretation).toContainText("2026-09-10-trial-1");
   await expect(interpretation).toContainText(/不會隨回報期間改變/);
+  await expect(interpretation).not.toContainText(/股票配置/);
 });
 
 test("找不到的基金不會顯示估算資料", async ({ page }) => {

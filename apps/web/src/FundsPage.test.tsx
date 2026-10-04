@@ -4,11 +4,12 @@ import { FundsPage } from "./FundsPage";
 
 const filters = {
   snapshotId: "snapshot-1",
-  categories: ["Global Bond", "Hong Kong Equity"],
+  categories: ["股票基金 - 香港股票基金", "債券基金 - 環球債券基金"],
+  families: ["股票基金", "債券基金"],
   classification: {
-    provider: "Lipper",
-    dataset: "Hong Kong Pension Fund Classification",
-    capturedAt: "2026-08-27",
+    provider: "積金局強積金基金平台",
+    capturedAt: "2026-10-04",
+    official: true,
   },
   fundTypes: ["Bond Fund", "Equity Fund"],
   trustees: ["Trustee One", "Trustee Two"],
@@ -24,8 +25,8 @@ const equityResults = [
     trusteeName: "Trustee One",
     fundType: "Equity Fund",
     fundCategory: "Hong Kong Equity Fund",
-    comparisonGroup: "Hong Kong Equity",
-    comparisonGroupSource: "lipper",
+    comparisonGroup: "股票基金 - 香港股票基金",
+    comparisonGroupSource: "mpfa",
     riskClass: 6,
     annualizedReturn1y: 8.12,
     managementFee: 1.25,
@@ -71,15 +72,15 @@ describe("fund browse page", () => {
     expect(screen.getByRole("option", { name: "風險級別 3" })).toBeVisible();
   });
 
-  it("filters by the Lipper comparison category and names its non-official source", async () => {
+  it("filters by the official MPFA fund type and names its source", async () => {
     const fetchMock = stubFetch((url) =>
       url.includes("/filters") ? filters : equityResults,
     );
 
     render(<FundsPage apiBaseUrl="https://api.test" />);
 
-    fireEvent.change(await screen.findByLabelText("同類比較分類"), {
-      target: { value: "Hong Kong Equity" },
+    fireEvent.change(await screen.findByLabelText("積金局基金類型"), {
+      target: { value: "股票基金 - 香港股票基金" },
     });
 
     expect(await screen.findByText("港股基金")).toBeVisible();
@@ -87,9 +88,14 @@ describe("fund browse page", () => {
       .map((call) => String(call[0]))
       .filter((url) => url.includes("/search"))
       .at(-1);
-    expect(searchCall).toContain("category=Hong+Kong+Equity");
-    expect(screen.getByText(/Lipper/)).toBeVisible();
-    expect(screen.getByText(/期別 2026-08-27/)).toBeVisible();
+    expect(searchCall).toContain(
+      "category=" +
+        encodeURIComponent("股票基金 - 香港股票基金").replaceAll("%20", "+"),
+    );
+    expect(
+      screen.getByText(/積金局強積金基金平台的官方分類（擷取 2026-10-04）/),
+    ).toBeVisible();
+    expect(screen.queryByText(/Lipper|非官方/)).toBeNull();
   });
 
   it("shows the comparison group rather than the platform descriptor", async () => {
@@ -97,12 +103,12 @@ describe("fund browse page", () => {
 
     render(<FundsPage apiBaseUrl="https://api.test" />);
 
-    fireEvent.change(await screen.findByLabelText("同類比較分類"), {
-      target: { value: "Hong Kong Equity" },
+    fireEvent.change(await screen.findByLabelText("積金局基金類型"), {
+      target: { value: "股票基金 - 香港股票基金" },
     });
 
     expect(
-      await screen.findByRole("cell", { name: "Hong Kong Equity" }),
+      await screen.findByRole("cell", { name: "股票基金 - 香港股票基金" }),
     ).toBeVisible();
     expect(
       screen.queryByRole("cell", { name: "Hong Kong Equity Fund" }),

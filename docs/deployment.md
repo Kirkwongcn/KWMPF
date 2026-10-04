@@ -165,7 +165,7 @@ OPS-03 remains incomplete until one approved rehearsal has restored all three co
 候選批次，**永遠不會改動公開網站**：
 
 1. 以 `scripts/resolve-previous-snapshot.sh` 找出 `data/sources/` 之下最新、而且真正帶有 `mpf-fund-platform.json` 的日期目錄（`YYYY-MM-DD`）作為上一批次，讀取它的獨立數量核對值。只放其他官方檔案的日期目錄（例如基金便覽連結批次）會被略過。
-   其他名稱的目錄（例如存放使用者提供資料的 `data/sources/lipper/`）不會被當成批次。
+   其他名稱（非 `YYYY-MM-DD`）的目錄不會被當成批次。
 2. 擷取官方強積金基金平台，寫出候選快照及原始 HTML 封存（workflow artifact 保留 30 日）。如需長期保存原始 HTML，另以受保護的 staging archive workflow 封存到 private R2；run #2 已封存 refresh run #10 的 452 份來源頁並逐位元讀回核對。
 3. 產生發布前檢查報告及異常核對報告，判斷結果為
    `no_new_data`、`blocked`、`needs_review` 或 `ready`。

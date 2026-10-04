@@ -225,7 +225,7 @@ test("選擇比較組別後，只保留同組基金", async ({ page }) => {
   expect(allRows.length).toBeGreaterThan(0);
   const group = allRows[0]!.group;
 
-  await page.getByLabel("比較組別").selectOption(group);
+  await page.getByLabel("積金局基金類型").selectOption(group);
 
   await expect(rows.first()).toBeVisible();
   const filtered = await readRows(page);

@@ -1,46 +1,50 @@
 import { describe, expect, it } from "vitest";
 import {
+  classificationOf,
   comparisonGroupFor,
   comparisonGroupSourceOf,
+  UNCLASSIFIED_GROUP,
 } from "../src/comparison-group";
 
 describe("comparison group", () => {
-  it("uses the Lipper category as the primary comparison group", () => {
+  it("uses the official MPFA Chinese fund type and its family", () => {
+    expect(
+      comparisonGroupFor({ fundType: "Equity Fund - Hong Kong Equity Fund" }),
+    ).toEqual({
+      name: "股票基金 - 香港股票基金",
+      source: "mpfa",
+      family: "股票基金",
+    });
     expect(
       comparisonGroupFor({
-        lipperCategory: "Hong Kong Equity",
-        fundType: "Equity Fund - Hong Kong Equity Fund",
-        fundCategory: "Equity Fund (Hong Kong)",
+        fundType: "Money Market Fund - MPF Conservative Fund",
       }),
-    ).toEqual({ name: "Hong Kong Equity", source: "lipper" });
-  });
-
-  it("never merges an unclassified fund into a same-named Lipper category", () => {
-    const lipper = comparisonGroupFor({ lipperCategory: "Guaranteed Fund" });
-    const platform = comparisonGroupFor({ fundType: "Guaranteed Fund" });
-
-    expect(platform.source).toBe("platform");
-    expect(platform.name).not.toBe(lipper.name);
-  });
-
-  it("falls back to the platform descriptor when no fund type is published", () => {
-    expect(
-      comparisonGroupFor({ fundCategory: "Equity Fund (North America)" }),
     ).toEqual({
-      name: "平台分類：Equity Fund (North America)",
-      source: "platform",
+      name: "貨幣市場基金 — 強積金保守基金",
+      source: "mpfa",
+      family: "貨幣市場基金 — 強積金保守基金",
     });
   });
 
-  it("labels a fund with neither classification rather than dropping it", () => {
-    expect(comparisonGroupFor({})).toEqual({
-      name: "平台分類：未分類",
-      source: "platform",
-    });
+  it("does not guess a type that is missing or not on the MPFA list", () => {
+    for (const fundType of [
+      undefined,
+      "Equity Fund (North America)",
+      "Equity Fund - Hong Kong",
+    ]) {
+      expect(comparisonGroupFor({ fundType })).toEqual({
+        name: UNCLASSIFIED_GROUP,
+        source: "mpfa",
+        family: null,
+      });
+    }
   });
 
-  it("recovers the source from a group name alone", () => {
-    expect(comparisonGroupSourceOf("Hong Kong Equity")).toBe("lipper");
-    expect(comparisonGroupSourceOf("平台分類：Bond Fund")).toBe("platform");
+  it("reports MPFA as the only, official classification source", () => {
+    expect(comparisonGroupSourceOf("股票基金 - 香港股票基金")).toBe("mpfa");
+    expect(classificationOf()).toMatchObject({
+      provider: "積金局強積金基金平台",
+      official: true,
+    });
   });
 });

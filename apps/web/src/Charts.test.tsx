@@ -11,7 +11,6 @@ import {
   median,
   niceTicks,
 } from "./Charts";
-import { MarketOverview } from "./MarketOverview";
 import { PeerPosition } from "./PeerPosition";
 import { SchemeOverview } from "./SchemeOverview";
 
@@ -144,57 +143,7 @@ describe("chart components", () => {
 const rankings = (snapshotId: string, rows: object[]) =>
   Response.json({ snapshotId, rankings: rows });
 
-describe("lazy data views", () => {
-  it("waits for the reader before loading the market overview", async () => {
-    const fetchMock = vi.fn(() =>
-      Promise.resolve(
-        rankings("snap-1", [
-          {
-            fundClassId: "a",
-            fundClassName: "n.a.",
-            constituentFundName: "Fund A",
-            schemeName: "Scheme",
-            value: 5,
-            displayValue: "5%",
-            dataAsOf: "2026-08-31",
-          },
-        ]),
-      ),
-    );
-    vi.stubGlobal("fetch", fetchMock);
-    render(<MarketOverview apiOrigin="https://api.test" snapshotId="snap-1" />);
-    expect(fetchMock).not.toHaveBeenCalled();
-    fireEvent.click(screen.getByRole("button", { name: "載入市場概覽" }));
-    expect(await screen.findByText("一年年率化回報分布")).toBeInTheDocument();
-    expect(fetchMock).toHaveBeenCalledWith(
-      "https://api.test/rankings?period=1",
-      expect.anything(),
-    );
-  });
-
-  it("keeps fee comparisons off the home market overview", () => {
-    vi.stubGlobal("fetch", vi.fn());
-    render(<MarketOverview apiOrigin="https://api.test" snapshotId="snap-1" />);
-    const views = screen
-      .getByRole("group", { name: "圖表" })
-      .querySelectorAll("button");
-    expect(Array.from(views).map((button) => button.textContent)).toEqual([
-      "回報分布",
-      "風險與回報",
-    ]);
-    expect(screen.queryByText(/管理費/)).not.toBeInTheDocument();
-  });
-
-  it("refuses to mix a different snapshot into the market overview", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn(() => Promise.resolve(rankings("snap-2", []))),
-    );
-    render(<MarketOverview apiOrigin="https://api.test" snapshotId="snap-1" />);
-    fireEvent.click(screen.getByRole("button", { name: "載入市場概覽" }));
-    expect(await screen.findByText(/暫時未能取得市場概覽/)).toBeInTheDocument();
-  });
-
+describe("peer position", () => {
   it("places the fund inside its comparison group only from the same snapshot", async () => {
     vi.stubGlobal(
       "fetch",

@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 const pages = [
-  { path: "/", ready: "搜尋及查閱" },
+  { path: "/", ready: "強積金基金圖" },
   { path: "/funds?q=BCT", ready: "瀏覽結果" },
   { path: "/rankings", ready: "已發布基金排名" },
   { path: "/schemes", ready: "計劃概覽" },

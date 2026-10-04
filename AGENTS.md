@@ -20,8 +20,7 @@ canonical implementation spec（`docs/specs/2026-08-08-hk-mpf-comparison-v1-impl
 4. **配對唔做模糊比對。** 只做大小寫／引號／破折號正規化加契約聲明嘅前綴。
    同名兩個就報錯，唔可以隨便揀一個。
 5. **唔可以拿另一隻基金嘅披露頂上。** 一個基金類別對多過一份披露要報錯。
-6. **編輯判斷要標明。** 三桶資產歸類、比較組別都係編輯層，payload 寫
-   `official: false`，顯示時要講明「非官方分類」。
+6. **編輯判斷要標明。** 基金分類只用積金局基金類型（ADR 0011），唔再有編輯分類；本站計算嘅平均、分布等衍生數值仍然係編輯層，要標明「本站計算」。
 7. **每個來源保留自己嘅截至日期。** 便覽比平台落後四至八個月，唔可以沿用
    平台嘅 `dataAsOf`，唔可以攞最舊嗰個冚全份。
 
@@ -33,10 +32,9 @@ canonical implementation spec（`docs/specs/2026-08-08-hk-mpf-comparison-v1-impl
 | 便覽連結、PDF 抽取、版面原語、覆蓋報告、缺口分類               | `docs/agents/fact-sheet-extraction.md`   |
 | 便覽來源政策：受託人官網優先、來源檔結構                       | `docs/agents/fact-sheet-sources.md`      |
 | 逐個受託人嘅實戰紀錄：反爬蟲、連結陷阱、換版缺口               | `docs/agents/fact-sheet-source-notes.md` |
-| 三桶資產映射、比較組別平均                                     | `docs/agents/editorial-mapping.md`       |
+| 基金分類（積金局基金類型）、比較組別平均                       | `docs/agents/fund-classification.md`     |
 | 官方平台欄位：DIS、規模、成立日期、年度回報、風險指標、費用    | `docs/agents/platform-fields.md`         |
 | 過期政策（財政年結日）                                         | `docs/agents/freshness-policy.md`        |
-| 非官方參考數據（Lipper 分類、對照表）                          | `docs/agents/reference-datasets.md`      |
 | GitHub issues 用法、收貨條件、`needs-info` 處理                | `docs/agents/issue-tracker.md`           |
 | Triage labels                                                  | `docs/agents/triage-labels.md`           |
 | Domain docs、ubiquitous language                               | `docs/agents/domain.md`                  |
@@ -53,9 +51,10 @@ canonical implementation spec（`docs/specs/2026-08-08-hk-mpf-comparison-v1-impl
 | `docs/adr/0002-publication-scoped-edge-caching.md`          | 以發布快照為界的邊緣快取                   |
 | `docs/adr/0003-trustee-first-fact-sheet-sources.md`         | 便覽內容抓受託人官網、配對用積金局登記冊   |
 | `docs/adr/0004-overlaid-text-layer-by-draw-order.md`        | 疊印文字層靠落筆次序分層，唔靠座標         |
-| `docs/adr/0005-editorial-asset-class-buckets.md`            | 第一版只做股票／債券／現金及其他三桶       |
+| `docs/adr/0005-editorial-asset-class-buckets.md`            | （已被 0011 取代）三桶資產歸類             |
 | `docs/adr/0006-fund-overview-freshness-by-fiscal-period.md` | 基金概覽過期按財政年結日及法定發布期限計算 |
 | `docs/adr/0010-monthly-return-freshness-60-days.md`         | 一、五、十年回報及基金規模 60 日時效       |
+| `docs/adr/0011-mpfa-fund-type-only-classification.md`       | 基金分類只用積金局基金類型                 |
 
 ## 使用者里程碑偏好
 

@@ -1,23 +1,10 @@
 import { describe, expect, it } from "vitest";
-import type { MappedAllocation } from "../src/allocation-label-map";
 import {
   COMPARISON_GROUP_STATS_MIN_SAMPLE,
   buildComparisonGroupStats,
   comparisonGroupNameFor,
   type ComparisonGroupStatsFund,
 } from "../src/comparison-group-stats";
-
-const buckets = (
-  equity: number,
-  bond: number,
-  cashAndOther: number,
-): MappedAllocation => ({
-  official: false,
-  mapVersion: "2026-09-08",
-  asOf: "2026-06-30",
-  sourceHeading: "Asset Allocation",
-  buckets: { equity, bond, cashAndOther },
-});
 
 const holdings = (...percents: number[]) => ({
   temporalScopes: {
@@ -36,9 +23,7 @@ function fund(
   return {
     fundClassId: id,
     verificationStatus: "verified",
-    lipperCategory: "Hong Kong Equity",
     fundType: "Equity Fund - Hong Kong Equity Fund",
-    mappedAllocation: buckets(90, 5, 5),
     fundRiskAsOf: "2026-08-31",
     factSheetDisclosure: holdings(12, 8, 7),
     fundRiskIndicator: 18,
@@ -47,29 +32,16 @@ function fund(
 }
 
 describe("comparison group naming", () => {
-  it("uses the Lipper category when present", () => {
-    expect(
-      comparisonGroupNameFor({
-        lipperCategory: "Hong Kong Equity",
-        fundType: "Equity Fund - Hong Kong Equity Fund",
-      }),
-    ).toBe("Hong Kong Equity");
+  it("uses the official MPFA Chinese fund type only", () => {
+    expect(comparisonGroupNameFor({ fundType: "Equity Fund - Hong Kong Equity Fund" })).toBe(
+      "股票基金 - 香港股票基金",
+    );
+    expect(comparisonGroupNameFor({ fundType: "Guaranteed Fund" })).toBe("保證基金");
   });
 
-  it("prefixes a platform-only group so it cannot merge into a same-named Lipper category", () => {
-    expect(comparisonGroupNameFor({ lipperCategory: "Guaranteed Fund" })).toBe(
-      "Guaranteed Fund",
-    );
-    expect(comparisonGroupNameFor({ fundType: "Guaranteed Fund" })).toBe(
-      "平台分類：Guaranteed Fund",
-    );
-  });
-
-  it("falls back to the platform descriptor, then 未分類", () => {
-    expect(
-      comparisonGroupNameFor({ fundCategory: "Equity Fund (North America)" }),
-    ).toBe("平台分類：Equity Fund (North America)");
-    expect(comparisonGroupNameFor({})).toBe("平台分類：未分類");
+  it("puts a fund with no official MPFA type in no group", () => {
+    expect(comparisonGroupNameFor({ fundType: "Equity Fund (North America)" })).toBeUndefined();
+    expect(comparisonGroupNameFor({})).toBeUndefined();
   });
 });
 
@@ -78,35 +50,31 @@ describe("buildComparisonGroupStats", () => {
     const rows = buildComparisonGroupStats([
       fund("hk-a"),
       fund("hk-b"),
-      fund("hk-c", { mappedAllocation: buckets(80, 10, 10), fundRiskIndicator: 12 }),
+      fund("hk-c", { fundRiskIndicator: 12 }),
       fund("bond-a", {
-        lipperCategory: "Hong Kong Dollar Bond",
-        mappedAllocation: buckets(0, 95, 5),
+        fundType: "Bond Fund - Hong Kong Dollar Bond Fund",
         fundRiskIndicator: 3,
       }),
+      fund("unofficial", { fundType: "Equity Fund (North America)" }),
     ]);
 
     expect(rows.map((row) => row.comparisonGroup)).toEqual([
-      "Hong Kong Dollar Bond",
-      "Hong Kong Equity",
+      "債券基金 - 港元債券基金",
+      "股票基金 - 香港股票基金",
     ]);
     expect(rows[1]).toMatchObject({
       fundCount: 3,
-      allocationCount: 3,
       top10Count: 3,
       volatilityCount: 3,
       insufficientSample: false,
-      avgAllocation: { equity: 86.67, bond: 6.67, cashAndOther: 6.67 },
       avgTop10Concentration: 27,
       avgVolatility3y: 16,
       sourceDates: {
-        allocation: { from: "2026-06-30", to: "2026-06-30", undatedCount: 0 },
         top10Concentration: { from: "2026-05-31", to: "2026-05-31", undatedCount: 0 },
         volatility3y: { from: "2026-08-31", to: "2026-08-31", undatedCount: 0 },
       },
     });
     expect(rows[0]?.insufficientSample).toBe(true);
-    expect(rows[0]?.avgAllocation).toBeNull();
     expect(rows[0]?.avgTop10Concentration).toBeNull();
     expect(rows[0]?.avgVolatility3y).toBeNull();
   });
@@ -117,7 +85,6 @@ describe("buildComparisonGroupStats", () => {
     expect(row).toMatchObject({
       fundCount: 2,
       insufficientSample: true,
-      avgAllocation: null,
       avgTop10Concentration: null,
       avgVolatility3y: null,
     });
@@ -127,17 +94,15 @@ describe("buildComparisonGroupStats", () => {
     const [row] = buildComparisonGroupStats([
       fund("a"),
       fund("b"),
-      fund("c", { mappedAllocation: { official: false, mapVersion: "x", unavailable: true, reason: "not-asset-class" } }),
-      fund("d", {
-        mappedAllocation: { official: false, mapVersion: "x", unavailable: true, reason: "chart-only" },
-      }),
+      fund("c", { unavailableFields: ["fundRiskIndicator"] }),
+      fund("d", { unavailableFields: ["fundRiskIndicator"] }),
     ]);
 
     expect(row).toMatchObject({
       fundCount: 4,
-      allocationCount: 2,
+      volatilityCount: 2,
       insufficientSample: false,
-      avgAllocation: null,
+      avgVolatility3y: null,
       avgTop10Concentration: 27,
     });
   });
@@ -208,12 +173,10 @@ describe("buildComparisonGroupStats", () => {
     const [row] = buildComparisonGroupStats([
       fund("dated-a"),
       fund("undated", {
-        mappedAllocation: { ...buckets(90, 5, 5), asOf: undefined },
         factSheetDisclosure: { topHoldings: [{ rank: 1, percent: 20 }] },
         fundRiskAsOf: undefined,
       }),
       fund("dated-b", {
-        mappedAllocation: { ...buckets(90, 5, 5), asOf: "2026-07-31" },
         factSheetDisclosure: {
           temporalScopes: {
             topHoldings: { kind: "point-in-time", asOf: "2026-07-31" },
@@ -225,7 +188,6 @@ describe("buildComparisonGroupStats", () => {
     ]);
 
     expect(row?.sourceDates).toEqual({
-      allocation: { from: "2026-06-30", to: "2026-07-31", undatedCount: 1 },
       top10Concentration: { from: "2026-05-31", to: "2026-07-31", undatedCount: 1 },
       volatility3y: { from: "2026-08-31", to: "2026-08-31", undatedCount: 1 },
     });

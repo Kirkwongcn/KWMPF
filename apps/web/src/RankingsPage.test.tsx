@@ -72,7 +72,7 @@ describe("published return rankings", () => {
       screen.getByRole("link", { name: "North America Fund 官方來源" }),
     ).toHaveAttribute("href", "https://example.test/fund-a");
 
-    fireEvent.change(screen.getByLabelText("比較組別"), {
+    fireEvent.change(screen.getByLabelText("積金局基金類型"), {
       target: { value: "Money Market Fund - Hong Kong" },
     });
     expect(window.location.search).toContain(
@@ -253,7 +253,7 @@ describe("published return rankings", () => {
       expect.objectContaining({ signal: expect.anything() }),
     );
     expect(screen.getByLabelText("回報期間")).toHaveValue("5");
-    expect(screen.getByLabelText("比較組別")).toHaveValue(
+    expect(screen.getByLabelText("積金局基金類型")).toHaveValue(
       "Money Market Fund - Hong Kong",
     );
   });
@@ -291,22 +291,27 @@ describe("published return rankings", () => {
     );
 
     expect(await screen.findByText(/沒有合資格的十年回報資料/)).toBeVisible();
-    expect(screen.getByLabelText("比較組別")).toHaveValue("Guaranteed Fund");
+    expect(screen.getByLabelText("積金局基金類型")).toHaveValue(
+      "Guaranteed Fund",
+    );
   });
 
-  it("falls back to every group when an old link names a retired platform category", async () => {
+  it("falls back to every group when an old link names a retired Lipper or platform category", async () => {
     vi.stubGlobal(
       "fetch",
       vi.fn().mockResolvedValue(
         Response.json({
           snapshotId: "snapshot-2026-07-31",
           periodYears: 1,
-          comparisonGroups: ["Global Equity", "Hong Kong Equity"],
+          comparisonGroups: [
+            "股票基金 - 環球股票基金",
+            "股票基金 - 香港股票基金",
+          ],
           methodology: {
             classification: {
-              provider: "Lipper",
-              dataset: "Hong Kong Pension Fund Classification",
-              capturedAt: "2026-08-27",
+              provider: "積金局強積金基金平台",
+              capturedAt: "2026-10-04",
+              official: true,
             },
           },
           rankings: [
@@ -316,8 +321,8 @@ describe("published return rankings", () => {
               constituentFundName: "港股基金",
               schemeName: "Scheme One",
               trusteeName: "Trustee One",
-              comparisonGroup: "Hong Kong Equity",
-              comparisonGroupSource: "lipper",
+              comparisonGroup: "股票基金 - 香港股票基金",
+              comparisonGroupSource: "mpfa",
               displayValue: "8.02%",
               rank: 1,
               dataAsOf: "2026-07-31",
@@ -337,12 +342,12 @@ describe("published return rankings", () => {
 
     expect(
       await screen.findByText(
-        /「Equity Fund \(North America\)」不再是獨立組別/,
+        /「Equity Fund \(North America\)」不是積金局基金類型/,
       ),
     ).toBeVisible();
-    expect(screen.getByLabelText("比較組別")).toHaveValue("all");
+    expect(screen.getByLabelText("積金局基金類型")).toHaveValue("all");
     expect(screen.getByText("港股基金")).toBeVisible();
-    expect(screen.getByText(/期別 2026-08-27/)).toBeVisible();
+    expect(screen.getByText(/類型來自.*（擷取 2026-10-04）/)).toBeVisible();
   });
 
   it("explains how many funds are held out of the ranking as stale", async () => {
@@ -393,7 +398,7 @@ describe("published return rankings", () => {
 
     render(<RankingsPage apiBaseUrl="https://api.test" />);
 
-    expect(await screen.findByLabelText("比較組別")).toBeVisible();
+    expect(await screen.findByLabelText("積金局基金類型")).toBeVisible();
     expect(screen.queryByText(/暫不列入排名/)).not.toBeInTheDocument();
   });
 
@@ -488,7 +493,7 @@ describe("published return rankings", () => {
     ).toBeVisible();
     expect(
       screen.getAllByRole("columnheader").map((cell) => cell.textContent),
-    ).toEqual(["名次", "基金", "管理費", "比較組別", "截至日期", "來源"]);
+    ).toEqual(["名次", "基金", "管理費", "積金局基金類型", "截至日期", "來源"]);
   });
 
   it("keeps the return metric link format unchanged", async () => {

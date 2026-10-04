@@ -27,8 +27,8 @@ type FundSummary = {
 
 type Classification = {
   provider: string;
-  dataset: string;
   capturedAt: string;
+  official: true;
 };
 
 type PublishedFilters = {
@@ -44,8 +44,8 @@ const unavailable = "官方未提供";
 
 export function classificationNote(classification: Classification | null) {
   return classification
-    ? `同類比較分類採用 ${classification.provider}「${classification.dataset}」（期別 ${classification.capturedAt}），屬非官方來源，與官方平台的基金種類分開列示。`
-    : "同類比較分類屬非官方來源，與官方平台的基金種類分開列示。";
+    ? `基金類型只採用${classification.provider}的官方分類（擷取 ${classification.capturedAt}），本站不另設分類。`
+    : "基金類型只採用積金局強積金基金平台的官方分類，本站不另設分類。";
 }
 
 function percent(value?: number, capped = false) {
@@ -217,8 +217,12 @@ export function FundsPage({
     <SiteChrome
       eyebrow="基金瀏覽"
       title="按條件瀏覽基金"
-      subtitle="按基金種類、受託人及官方風險級別篩選基金；數值均附官方截至日期。"
+      subtitle="按積金局基金類型、受託人及官方風險級別篩選基金；數值均附官方截至日期。"
       current="funds"
+      titleBlock={[
+        { label: "分類", value: "積金局基金類型" },
+        { label: "來源", value: "積金局強積金基金平台、受託人便覽" },
+      ]}
     >
       <section className="kw-section" aria-labelledby="filters-title">
         <h2 className="kw-section__heading" id="filters-title">
@@ -234,7 +238,7 @@ export function FundsPage({
             }}
           >
             <p className="kw-filter">
-              <label htmlFor="filter-category">同類比較分類</label>
+              <label htmlFor="filter-category">積金局基金類型</label>
               <select
                 className="kw-control"
                 id="filter-category"
@@ -244,7 +248,7 @@ export function FundsPage({
                   pushFilters({ category: event.target.value });
                 }}
               >
-                <option value="all">全部同類比較分類</option>
+                <option value="all">全部基金類型</option>
                 {filters?.categories?.map((value) => (
                   <option key={value} value={value}>
                     {value}

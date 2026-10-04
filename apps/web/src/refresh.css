@@ -1,39 +1,12 @@
 /*
- * 2026-10 layout refresh. Header, brand mark, hero image and colour tokens are
- * unchanged by request; this layer only refines surfaces, rhythm and typography.
+ * 2026-10 layout refresh: surfaces, rhythm and typography. atlas.css (loaded
+ * after this file) carries the survey-atlas redesign and overrides shared tokens.
  */
 :root {
   --kw-radius: 6px;
   --kw-shadow-1: 0 1px 2px rgb(22 37 44 / 0.06);
   --kw-shadow-2: 0 4px 14px rgb(22 37 44 / 0.08);
   --kw-action-hover: #0a2f38;
-}
-
-/* Hero keeps the original image and gradient; a gold hairline closes it. */
-.kw-hero {
-  border-bottom: 3px solid var(--kw-gold);
-}
-.kw-hero__inner {
-  padding-block: 48px 54px;
-}
-.kw-hero p {
-  font-size: 0.95rem;
-  color: #dfe9ec;
-}
-
-/* Reading tools sit on a white band under the hero. */
-.kw-reading-tools {
-  width: 100%;
-  max-width: none;
-  padding-inline: max(
-    var(--kw-gutter),
-    calc((100% - var(--kw-content)) / 2 + var(--kw-gutter))
-  );
-  background: var(--kw-white);
-  box-shadow: var(--kw-shadow-1);
-}
-.kw-reading-tools > a {
-  font-weight: 600;
 }
 
 /* Section rhythm */
@@ -62,13 +35,6 @@
 .kw-section-head h2 {
   margin-bottom: 8px;
 }
-.kw-section-head__kicker {
-  margin: 0 0 6px;
-  color: var(--kw-gold-strong);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-}
 .kw-section-head .kw-muted {
   margin: 0;
 }
@@ -79,8 +45,7 @@
 .kw-chart,
 .kw-group-picker,
 .kw-viz,
-.scheme-card,
-.kw-research-note {
+.scheme-card {
   border-radius: var(--kw-radius);
   box-shadow: var(--kw-shadow-1);
 }
@@ -127,49 +92,12 @@
   border-left-width: 3px;
   border-radius: 0 var(--kw-radius) var(--kw-radius) 0;
 }
-
-/* Home */
-.kw-home-intro {
-  padding: 32px;
-  border: 1px solid var(--kw-line);
-  border-radius: var(--kw-radius);
-  background: var(--kw-white);
-  box-shadow: var(--kw-shadow-1);
-}
-.kw-home-intro h2 {
-  margin-top: 0;
-}
-.kw-stats.kw-coverage-strip {
-  display: grid;
-  margin-top: 32px;
-  padding: 0;
-  border-block: 0;
-  justify-content: stretch;
-}
-.kw-coverage-strip:not(.kw-stats) {
-  margin-top: 32px;
-}
-.kw-market {
-  margin-top: 48px;
-}
 .kw-filter-row .kw-field {
   flex: 0 0 auto;
 }
 .kw-filter-row .kw-control {
   width: auto;
   min-width: 140px;
-}
-.kw-market__body .kw-stats {
-  margin-bottom: 20px;
-}
-.kw-task-section {
-  margin-top: 56px;
-  padding-top: 40px;
-  border-top: 1px solid var(--kw-line);
-}
-.kw-research-note {
-  border: 1px solid var(--kw-line);
-  border-left: 3px solid var(--kw-gold);
 }
 
 /* Legacy chart components adopt the same chart chrome. */
@@ -219,36 +147,8 @@
 }
 
 /* Footer: a navy bookend that mirrors the header. */
-.kw-footer {
-  margin-top: 0;
-  border-top: 3px solid var(--kw-gold);
-  background: var(--kw-navy);
-  color: #dfe9ec;
-}
-.kw-footer a {
-  color: #ffffff;
-}
-.kw-footer a:hover {
-  color: var(--kw-gold-light);
-}
-.kw-footer strong {
-  color: var(--kw-gold-light);
-  font-family: var(--kw-font-display);
-}
-.kw-footer .kw-muted {
-  color: #b7cbd1;
-}
-.kw-footer :focus-visible {
-  outline-color: var(--kw-gold-light);
-}
 
 @media (max-width: 700px) {
-  .kw-home-intro {
-    padding: 20px;
-  }
-  .kw-reading-tools {
-    padding-inline: 20px;
-  }
   .kw-filter-row {
     align-items: stretch;
   }

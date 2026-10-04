@@ -2,7 +2,7 @@
 
 便覽去邊度攞、點樣由 PDF 抽出配置同十大持倉、抽唔到嗰陣點記低。
 受託人版對積金局副本嘅取捨見 `fact-sheet-sources.md`；
-跨計劃嘅資產三桶歸類見 `editorial-mapping.md`。
+基金分類只用積金局基金類型，見 `fund-classification.md`；便覽配置不做任何跨計劃歸類。
 
 ## Official scheme fact sheets
 
@@ -30,7 +30,7 @@ The Fidelity trustee factsheet contract records FER only from the explicit `Year
 24 個計劃各自一份契約寫在 `fact-sheet-allocation-contracts.ts`。抽取靠座標：便覽是多欄
 雙語版面，`pdftotext -layout` 會把相鄰欄位併成同一行，所以一律行 `pdftohtml -xml`
 （`pdf-xml.ts`）。契約只描述「去邊度攞」，不描述「點樣改寫」——維度標題、標籤及證券名稱
-一律原文照錄，不做正規化或跨計劃映射。跨計劃的三桶資產歸類是另一層，見下節。
+一律原文照錄，不做正規化或跨計劃映射（ADR 0011 已移除三桶歸類）。
 
 五條不可繞過的規則：
 

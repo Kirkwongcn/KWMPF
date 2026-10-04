@@ -1,51 +1,48 @@
-export type ComparisonGroupSource = "lipper" | "platform";
+import {
+  mpfaFundTypeOf,
+  MPFA_FUND_TYPE_SOURCE,
+} from "../../../packages/coverage/src/mpfa-fund-type";
+
+export type ComparisonGroupSource = "mpfa";
 
 export type ComparisonGroup = {
   name: string;
   source: ComparisonGroupSource;
+  family: string | null;
 };
-
-export const PLATFORM_GROUP_PREFIX = "平台分類：";
 
 export type ClassifiableFundClass = {
-  lipperCategory?: string;
   fundType?: string;
-  fundCategory?: string;
 };
 
+/** 平台快照冇基金類型、或者類型唔喺積金局清單入面時的組別名；呢啲基金唔參與同組排名。 */
+export const UNCLASSIFIED_GROUP = "積金局未提供基金類型";
+
 /**
- * Lipper 分類是同類比較的主口徑。少數基金所屬計劃不在 Lipper 來源內
- * （現時只有 SHKP MPF Employer Sponsored Scheme），改以平台分類自成一組，
- * 並加上前綴，避免與同名的 Lipper 分類（例如 Guaranteed Fund）混為一組。
+ * 比較組別只用積金局基金類型（ADR 0011）：組名係積金局中文基金類型原文，
+ * 例如「股票基金 - 大中華股票基金」。唔再用 Lipper 或任何編輯歸類。
  */
 export function comparisonGroupFor(
   fundClass: ClassifiableFundClass,
 ): ComparisonGroup {
-  const lipper = fundClass.lipperCategory?.trim();
-  if (lipper) return { name: lipper, source: "lipper" };
-
-  const platform =
-    fundClass.fundType?.trim() || fundClass.fundCategory?.trim() || "未分類";
-  return { name: `${PLATFORM_GROUP_PREFIX}${platform}`, source: "platform" };
+  const type = mpfaFundTypeOf(fundClass.fundType);
+  return type
+    ? { name: type.zh, source: "mpfa", family: type.family.zh }
+    : { name: UNCLASSIFIED_GROUP, source: "mpfa", family: null };
 }
 
-export function comparisonGroupSourceOf(name: string): ComparisonGroupSource {
-  return name.startsWith(PLATFORM_GROUP_PREFIX) ? "platform" : "lipper";
+export function comparisonGroupSourceOf(_name: string): ComparisonGroupSource {
+  return "mpfa";
 }
 
 export type Classification = {
   provider: string;
-  dataset: string;
+  urls: readonly string[];
   capturedAt: string;
-  official: boolean;
+  official: true;
 };
 
-/**
- * 分類來自非官方的 Lipper 資料集，顯示時必須連同提供者及期別，
- * 不可與官方平台數據混為一談。
- */
-export function classificationOf(publication?: {
-  classification?: Classification;
-}): Classification | null {
-  return publication?.classification ?? null;
+/** 分類來源：積金局強積金基金平台的基金類型。 */
+export function classificationOf(): Classification {
+  return { ...MPFA_FUND_TYPE_SOURCE };
 }

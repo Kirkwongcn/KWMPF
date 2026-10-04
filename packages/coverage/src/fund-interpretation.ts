@@ -5,14 +5,12 @@ import {
 import { interpretationThresholds } from "./interpretation-thresholds";
 
 export type InterpretationValues = {
-  equity?: number | null;
   top10Concentration?: number | null;
   volatility3y?: number | null;
 };
 export type InterpretationThresholds = {
   version: string;
   status: string;
-  equity: number;
   top10Concentration: number;
   volatility3y: number;
 };
@@ -26,7 +24,7 @@ export function interpretFund(
   group: ComparisonGroupStatsRow,
   thresholds: InterpretationThresholds = interpretationThresholds,
 ) {
-  for (const value of [thresholds.equity, thresholds.top10Concentration, thresholds.volatility3y]) {
+  for (const value of [thresholds.top10Concentration, thresholds.volatility3y]) {
     if (!Number.isFinite(value) || value < 0) throw new Error("Invalid interpretation threshold");
   }
   function factor(
@@ -56,7 +54,6 @@ export function interpretFund(
   return {
     thresholdVersion: thresholds.version,
     thresholdStatus: thresholds.status,
-    equity: factor("股票配置（編輯歸類，非官方分類）", values.equity, group.avgAllocation?.equity ?? null, group.allocationCount, thresholds.equity),
     top10Concentration: factor("十大持倉佔比", values.top10Concentration, group.avgTop10Concentration, group.top10Count, thresholds.top10Concentration),
     volatility3y: factor("3年波幅", values.volatility3y, group.avgVolatility3y, group.volatilityCount, thresholds.volatility3y),
   };

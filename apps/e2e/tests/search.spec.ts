@@ -2,12 +2,12 @@ import { expect, test } from "@playwright/test";
 test("首頁顯示同一快照的覆蓋並把搜尋送往基金瀏覽", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-    "用可追溯資料，讀懂強積金選擇",
+    "強積金基金圖",
   );
   const coverage = page.getByRole("region", { name: "已發布資料範圍" });
   await expect(coverage).toContainText("451");
   await expect(coverage).toContainText("24");
-  await expect(coverage).toContainText(/資料截至 \d{4}-\d{2}-\d{2}/);
+  await expect(coverage).toContainText(/資料截至\s*\d{4}-\d{2}-\d{2}/);
   await page.getByLabel("搜尋基金、計劃或受託人").fill("BCT");
   await page.getByRole("button", { name: "搜尋基金" }).click();
   await expect(page).toHaveURL(/\/funds\?q=BCT/);

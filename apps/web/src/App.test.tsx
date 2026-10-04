@@ -80,7 +80,7 @@ describe("home data workbench", () => {
     render(<App apiUrl="https://api.test/health" />);
     expect(screen.getByText("正在讀取回報資料覆蓋…")).toBeVisible();
     expect(
-      screen.getByRole("link", { name: "按同類組別比較" }),
+      screen.getByRole("link", { name: "按積金局基金類型比較" }),
     ).toHaveAttribute("href", "/rankings");
   });
   it("persists a shareable analysis mode without losing query state", () => {
