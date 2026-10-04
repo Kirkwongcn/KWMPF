@@ -157,6 +157,40 @@ const bctBlocks = {
   },
 } as const;
 
+/**
+ * BCT Industry Choice／Pro Choice 同一版面：左欄投資目標中英逐句交替（每行只有一種語文），
+ * 右邊係投資組合分布（left≈361）；投資經理喺成份基金資料之下一格；市場評論左英（left≈30）
+ * 右中（left≈366）兩欄並排，去到成份基金表現就停。
+ */
+const bctNarrative: FactSheetContract["narrative"] = {
+  investmentObjective: {
+    heading: /^(投資目標|Investment Objective)$/,
+    band: { minLeft: 20, maxLeft: 357 },
+    stopAt: /^(Constituent Fund Information|成份基金資料)/,
+    minFontSize: 8,
+    maxGap: 24,
+    languages: "bilingual",
+  },
+  investmentManager: {
+    heading: /^(投資經理|Investment Manager)$/,
+    band: { minLeft: 20, maxLeft: 357 },
+    maxDepth: 20,
+    languages: "value",
+  },
+  managerCommentary: {
+    heading: /^(市場評論|Market Commentary)$/,
+    band: { minLeft: 20, maxLeft: 610 },
+    columns: [
+      { minLeft: 20, maxLeft: 360 },
+      { minLeft: 360, maxLeft: 610 },
+    ],
+    stopAt: /^(成份基金表現|Constituent Fund Performance)/,
+    minFontSize: 7,
+    maxGap: 24,
+    languages: "bilingual",
+  },
+};
+
 /** BCT Series 800（前信安 800 系列）：左邊十大投資、右邊投資分布，數字不帶 `%`。 */
 const series800Blocks = {
   allocation: {
@@ -383,6 +417,7 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
     platformNamePrefix: /^BCT \((?:Industry|Pro)\)\s+/,
     title: bctTitle("#346fc0"),
     ...bctBlocks,
+    narrative: bctNarrative,
     asOf: { pattern: AS_OF_SLASH },
   },
   {
@@ -391,6 +426,7 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
     platformNamePrefix: /^BCT \((?:Industry|Pro)\)\s+/,
     title: bctTitle("#639e1d"),
     ...bctBlocks,
+    narrative: bctNarrative,
     asOf: { pattern: AS_OF_SLASH },
   },
   {

@@ -1113,6 +1113,9 @@ function overlaidReason(lines: string[]) {
   return `${lines.length} rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: ${describe(lines)}`;
 }
 
+/** 會被標記為計劃共用的文字欄位。 */
+const SHARED_FIELDS = new Set<string>(["managerCommentary", "marketForecast"]);
+
 export function parseFactSheetDisclosures(
   pages: PdfPage[],
   contract: FactSheetContract,
@@ -1230,18 +1233,21 @@ export function parseFactSheetDisclosures(
     } satisfies FactSheetDisclosure;
   });
 
-  // 同一份便覽多隻基金同一欄位一字不差，即係計劃共用的市場評論（ADR 0012），要標明。
+  // 同一份便覽多隻基金的評論或市場預測一字不差，即係計劃共用的市場評論（ADR 0012），
+  // 要標明。投資目標、投資經理相同係正常（例如同一經理），唔係「共用評論」，唔標。
   const textCounts = new Map<string, number>();
   const textKey = (field: string, text: NarrativeText) =>
     `${field}\u0000${text.zh ?? ""}\u0000${text.en ?? ""}`;
   for (const disclosure of disclosures) {
     for (const [field, text] of Object.entries(disclosure.narrative ?? {})) {
+      if (!SHARED_FIELDS.has(field)) continue;
       const key = textKey(field, text);
       textCounts.set(key, (textCounts.get(key) ?? 0) + 1);
     }
   }
   for (const disclosure of disclosures) {
     for (const [field, text] of Object.entries(disclosure.narrative ?? {})) {
+      if (!SHARED_FIELDS.has(field)) continue;
       const count = textCounts.get(textKey(field, text)) ?? 1;
       if (count > 1) text.sharedAcrossFunds = count;
     }

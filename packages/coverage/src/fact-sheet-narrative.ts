@@ -249,14 +249,22 @@ export function readNarrative(
     .join(" ");
   const text: NarrativeText = { heading };
   if (selector.languages === "bilingual") {
-    const byScript = { zh: [] as string[], en: [] as string[] };
+    // 同一語文連續嘅行係一段；語文轉咗再轉返嚟就係新一段（BCT 投資目標中英逐句交替，
+    // 目標同投資政策係兩段，唔分段就會接成「…capital appreciation Invests in…」）。
+    const runs = { zh: [] as string[][], en: [] as string[][] };
     let current: "zh" | "en" | undefined;
     for (const line of kept) {
-      current = scriptOf(line.text) ?? current;
-      if (current) byScript[current].push(line.text);
+      const script = scriptOf(line.text) ?? current;
+      if (!script) continue;
+      if (script !== current || runs[script].length === 0) runs[script].push([]);
+      runs[script].at(-1)!.push(line.text);
+      current = script;
     }
-    if (byScript.zh.length > 0) text.zh = joinParagraphs(byScript.zh, "zh");
-    if (byScript.en.length > 0) text.en = joinParagraphs(byScript.en, "en");
+    for (const script of ["zh", "en"] as const) {
+      if (runs[script].length > 0) {
+        text[script] = runs[script].map((run) => joinParagraphs(run, script)).join("\n");
+      }
+    }
   } else {
     const all = kept.map((line) => line.text);
     const script =
