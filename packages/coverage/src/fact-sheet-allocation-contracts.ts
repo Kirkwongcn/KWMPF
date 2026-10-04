@@ -916,7 +916,7 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
     // 「Fund Manager and Issuer」。註腳（§）同頁碼係 10 號字，正文 12 號。
     schemeNarrative: {
       field: "managerCommentary",
-      heading: /^(基金經理評論|MANAGER[’']S REPORT)$/,
+      heading: [/^基金經理評論$/, /^MANAGER[’']S REPORT$/],
       startAfter:
         /閣下的投資或會承受重大損失。$|^Haitong International Investment Managers Limited 海通國際投資經理有限公司$/,
       stopAt: /^Fund Manager and Issuer:/,

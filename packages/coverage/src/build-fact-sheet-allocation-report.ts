@@ -16,6 +16,7 @@ import {
   type PairingResult,
 } from "./fact-sheet-allocation-pairing";
 import { markWordStarts, parsePdfXml } from "./pdf-xml";
+import type { FactSheetDisclosureFile } from "./fact-sheet-disclosure-lookup";
 import { loadTrusteeFactSheetLookup } from "./trustee-fact-sheet-lookup";
 
 /**
@@ -60,30 +61,7 @@ export type SchemeReport = {
  * 發布用的披露檔：逐個基金類別一筆，帶住便覽的原文披露及自己的截至日期。
  * 覆蓋報告只收數目，唔會帶住成份披露，所以兩份檔各自輸出。
  */
-export type FactSheetDisclosureFile = {
-  generatedAt: string;
-  platformSnapshot: string;
-  factSheetBatch: string;
-  funds: {
-    fundClassIds: string[];
-    schemeName: string;
-    constituentFundName: string;
-    factSheetFile: string;
-    factSheetUrl: string;
-    factSheetSource: FactSheetSource;
-    /** 有抄錄受託人來源但抽唔到，先至退回副本；未抄錄嘅計劃冇呢一欄。 */
-    trusteeFallback?: true;
-    factSheetAsOf: string;
-    temporalScopes?: FactSheetDisclosure["temporalScopes"];
-    allocations: FactSheetDisclosure["allocations"];
-    topHoldings: FactSheetDisclosure["topHoldings"];
-    narrative?: FactSheetDisclosure["narrative"];
-    schemeNarrative?: FactSheetDisclosure["schemeNarrative"];
-    unavailableFields: string[];
-    unavailableReasons: Record<string, string>;
-    unavailableKinds: FactSheetDisclosure["unavailableKinds"];
-  }[];
-};
+export type { FactSheetDisclosureFile } from "./fact-sheet-disclosure-lookup";
 
 export type FactSheetAllocationReport = {
   generatedAt: string;
@@ -372,27 +350,18 @@ if (import.meta.main) {
     });
     for (const { fundClassIds, disclosure } of pairedDisclosures) {
       const from = fileOf.get(disclosure)!;
+      // 抽取結果整份帶入（只剝走配對用的 `fundClassName`），加欄位唔使改呢度。
+      const { schemeName, constituentFundName, fundClassName, ...extracted } = disclosure;
+      void fundClassName;
       disclosureFunds.push({
         fundClassIds,
-        schemeName: disclosure.schemeName,
-        constituentFundName: disclosure.constituentFundName,
+        schemeName,
+        constituentFundName,
         factSheetFile: from.file,
         factSheetUrl: from.factSheetUrl,
         factSheetSource: chosen.source,
         ...(trusteeFallbackReason ? { trusteeFallback: true as const } : {}),
-        factSheetAsOf: disclosure.factSheetAsOf,
-        ...(disclosure.temporalScopes
-          ? { temporalScopes: disclosure.temporalScopes }
-          : {}),
-        allocations: disclosure.allocations,
-        topHoldings: disclosure.topHoldings,
-        ...(disclosure.narrative ? { narrative: disclosure.narrative } : {}),
-        ...(disclosure.schemeNarrative
-          ? { schemeNarrative: disclosure.schemeNarrative }
-          : {}),
-        unavailableFields: disclosure.unavailableFields,
-        unavailableReasons: disclosure.unavailableReasons,
-        unavailableKinds: disclosure.unavailableKinds,
+        ...extracted,
       });
     }
   }

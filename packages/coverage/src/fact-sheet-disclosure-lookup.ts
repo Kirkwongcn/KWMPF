@@ -5,7 +5,10 @@ import type {
   FactSheetDisclosure,
   FactSheetSource,
 } from "./fact-sheet-allocation";
-import type { OfficialReturnUnavailable } from "./fact-sheet-published";
+import type {
+  OfficialReturnUnavailable,
+  PublishedFactSheetPayload,
+} from "./fact-sheet-published";
 
 /**
  * 便覽的配置及十大持倉由 `coverage:fact-sheet-allocation-report --disclosures` 抽出，
@@ -20,10 +23,12 @@ export const FACT_SHEET_DISCLOSURES_FILENAME = "fund-fact-sheet-disclosures.json
 
 export type { OfficialReturnUnavailable } from "./fact-sheet-published";
 
-export type FactSheetDisclosureFund = {
+/**
+ * 披露檔入面一筆：抽取結果（剝走只供配對用的 `fundClassName`）加來源欄位。直接由
+ * `FactSheetDisclosure` 推出，抽取加欄位就自動帶埋，唔會喺寫檔嗰度靜靜漏咗。
+ */
+export type FactSheetDisclosureFund = Omit<FactSheetDisclosure, "fundClassName"> & {
   fundClassIds: string[];
-  schemeName: string;
-  constituentFundName: string;
   factSheetFile: string;
   /** 實際用咗嗰份便覽的下載連結，詳情頁會連去呢度。 */
   factSheetUrl: string;
@@ -31,16 +36,7 @@ export type FactSheetDisclosureFund = {
   factSheetSource: FactSheetSource;
   /** 有抄錄受託人來源但抽唔到，先至退回副本；未抄錄嘅計劃冇呢一欄。 */
   trusteeFallback?: true;
-  factSheetAsOf: string;
-  temporalScopes?: FactSheetDisclosure["temporalScopes"];
-  allocations: FactSheetDisclosure["allocations"];
-  topHoldings: FactSheetDisclosure["topHoldings"];
-  narrative?: FactSheetDisclosure["narrative"];
-  schemeNarrative?: FactSheetDisclosure["schemeNarrative"];
-  unavailableFields: string[];
   returnUnavailable?: Record<string, OfficialReturnUnavailable>;
-  unavailableReasons: Record<string, string>;
-  unavailableKinds: FactSheetDisclosure["unavailableKinds"];
 };
 
 export type FactSheetDisclosureFile = {
@@ -55,6 +51,17 @@ export type PublishedFactSheetDisclosure = Omit<
   FactSheetDisclosureFund,
   "fundClassIds"
 >;
+
+// API 同網站讀 payload 用 `PublishedFactSheetPayload`。seed 寫入嘅每個欄位都要喺嗰度
+// 有聲明而且型別相容，否則 app 會當冇呢個欄位；呢兩行喺型別檢查時把關。
+const payloadCoversSeed: PublishedFactSheetPayload = {} as PublishedFactSheetDisclosure;
+const payloadHasEveryKey: [
+  Exclude<keyof PublishedFactSheetDisclosure, keyof PublishedFactSheetPayload>,
+] extends [never]
+  ? true
+  : false = true;
+void payloadCoversSeed;
+void payloadHasEveryKey;
 
 export type FactSheetDisclosureLookup = {
   capturedAt: string;

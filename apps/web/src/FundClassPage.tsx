@@ -383,7 +383,8 @@ function unavailableNote(field: string, disclosure: FactSheetDisclosure) {
 
 /** 文字欄位的缺口措辭：同表格分開，因為文字冇「圖表」或「名稱畫成圖形」之分。 */
 function narrativeMissing(
-  field: keyof FundNarrativeFields,
+  field:
+    keyof FundNarrativeFields | `schemeNarrative.${keyof FundNarrativeFields}`,
   disclosure: FactSheetDisclosure | undefined,
 ) {
   if (!disclosure) return "未取得：這隻基金未配對到官方便覽。";
@@ -397,6 +398,36 @@ function narrativeMissing(
     return "官方未提供。這份便覽沒有披露這一項。";
   }
   return "未取得：本站暫未抽取這份便覽的文字欄位，可開啟官方便覽查閱。";
+}
+
+/**
+ * 最新投資方向：基金本身的評論優先。基金本身官方未提供（或者契約冇呢個欄位）先用
+ * 計劃層面評論（ADR 0012 第 5 點）；基金本身官方有但讀唔到（疊印、讀唔齊），要講缺口，
+ * 唔可以用計劃層面文字蓋過。
+ */
+function directionText(disclosure: FactSheetDisclosure | undefined) {
+  const own = disclosure?.narrative?.managerCommentary;
+  if (own) return { text: own, schemeLevel: false };
+  const ownKind = disclosure?.unavailableFields.includes("managerCommentary")
+    ? (disclosure.unavailableKinds?.managerCommentary ?? "not-disclosed")
+    : undefined;
+  const scheme =
+    ownKind === undefined || ownKind === "not-disclosed"
+      ? disclosure?.schemeNarrative?.managerCommentary
+      : undefined;
+  if (scheme) return { text: scheme, schemeLevel: true };
+  // 計劃層面讀過但讀唔到，而基金本身冇失敗紀錄，就講計劃層面嗰個原因。
+  const schemeFailed =
+    ownKind === undefined &&
+    disclosure?.unavailableFields.includes("schemeNarrative.managerCommentary");
+  return {
+    text: undefined,
+    schemeLevel: false,
+    missing: narrativeMissing(
+      schemeFailed ? "schemeNarrative.managerCommentary" : "managerCommentary",
+      disclosure,
+    ),
+  };
 }
 
 /**
@@ -608,6 +639,7 @@ export function FundClassPage({
     fundClass.fundSizeAsOf !== fundClass.returnsAsOf,
   );
   const factSheetDisclosure = publication.factSheetDisclosure;
+  const direction = directionText(factSheetDisclosure);
   const periodOf: Record<string, string> = {
     一年: "1",
     三年: "3",
@@ -727,16 +759,12 @@ export function FundClassPage({
             title="最新投資方向"
             collapsible
             aside={<MarketForecast disclosure={factSheetDisclosure} />}
-            text={
-              factSheetDisclosure?.narrative?.managerCommentary ??
-              factSheetDisclosure?.schemeNarrative?.managerCommentary
+            text={direction.text}
+            schemeLevel={direction.schemeLevel}
+            missing={
+              direction.missing ??
+              narrativeMissing("managerCommentary", factSheetDisclosure)
             }
-            schemeLevel={
-              !factSheetDisclosure?.narrative?.managerCommentary &&
-              factSheetDisclosure?.schemeNarrative?.managerCommentary !==
-                undefined
-            }
-            missing={narrativeMissing("managerCommentary", factSheetDisclosure)}
             source={
               factSheetDisclosure?.factSheetUrl
                 ? {

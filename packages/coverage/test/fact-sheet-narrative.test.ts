@@ -550,6 +550,26 @@ describe("commentary shared across funds", () => {
     expect(byTitle[0]?.topHoldings.map((holding) => holding.security)).toContain("HSBC");
     const layered = parseFactSheetDisclosures(pages, { ...contract, layerEnd: /^Manager’s Commentary$/ });
     expect(layered.map((d) => d.topHoldings.map((holding) => holding.security))).toEqual([["Tencent"]]);
+    // 記號同版數對唔上（Beta 冇印記號），分唔到層：唔可以退返標題切出 Beta 的持倉，
+    // 成塊當疊印。
+    const unmarked = parsePdfXml(
+      `<pdf2xml>${page([
+        { top: 20, left: 40, text: "As at 30/06/2026" },
+        { top: 82, left: 40, text: "Alpha Fund", size: 20 },
+        { top: 300, left: 40, text: "Top 10 Holdings" },
+        { top: 320, left: 40, text: "Tencent" },
+        { top: 320, left: 200, text: "9.1%" },
+        { top: 680, left: 140, text: "Manager’s Commentary" },
+        { top: 300, left: 41, text: "Top 10 Holdings" },
+        { top: 340, left: 41, text: "HSBC" },
+        { top: 340, left: 201, text: "8.0%" },
+        { top: 82, left: 41, text: "Beta Fund", size: 20 },
+      ])}</pdf2xml>`,
+    );
+    const [ambiguous] = parseFactSheetDisclosures(unmarked, { ...contract, layerEnd: /^Manager’s Commentary$/ });
+    expect(ambiguous?.topHoldings).toEqual([]);
+    expect(ambiguous?.unavailableKinds.topHoldings).toBe("overlaid-text-layer");
+    expect(ambiguous?.unavailableReasons.topHoldings).toMatch(/layer markers do not match/);
   });
 
   it("reads a one-fund file's front page when the narrative scope is the whole document", () => {
@@ -706,6 +726,14 @@ describe("appendix commentary", () => {
     expect(
       readAppendixNarrative(remarks, "BOC-Prudential Asia Equity Fund", { ...spec, followedBy: /^(備註|Remarks)$/ }),
     ).toMatchObject({ status: "ok", text: { zh: "亞洲經濟展現韌性。" } });
+    // 評論續落嚟、印喺備註標題之上：唔可以因為嗰頁有備註標題就當冇續頁。
+    const spilled = [
+      ...appendix(),
+      { number: 24, width: 900, height: 1200, items: [at(24, 20, "（續）展望審慎。"), at(24, 54, "備註", 10)] },
+    ];
+    expect(
+      readAppendixNarrative(spilled, "BOC-Prudential Asia Equity Fund", { ...spec, followedBy: /^(備註|Remarks)$/ }).status,
+    ).toBe("unreadable-layout");
     // 下一頁只得頁碼（字級唔係正文）就唔當續頁；最後一頁亦唔使查。
     const footerOnly = [
       ...appendix(),
@@ -721,7 +749,7 @@ describe("appendix commentary", () => {
 
 describe("scheme-level commentary", () => {
   const spec = {
-    heading: /^(基金經理評論|MANAGER’S REPORT)$/,
+    heading: [/^基金經理評論$/, /^MANAGER’S REPORT$/],
     startAfter: /閣下的投資或會承受重大損失。$|^Haitong International Investment Managers Limited$/,
     stopAt: /^Fund Manager and Issuer:/,
     band: { minLeft: 0, maxLeft: 900 },
@@ -767,7 +795,8 @@ describe("scheme-level commentary", () => {
       status: "ok",
       text: {
         heading: "基金經理評論 MANAGER’S REPORT",
-        en: "Developed market equities rose. Bonds were flat. Japan rose.",
+        // 第一頁最後一句完咗，換頁當新一段。
+        en: "Developed market equities rose. Bonds were flat.\nJapan rose.",
         zh: "發達市場股市上漲。",
       },
     });
@@ -781,6 +810,15 @@ describe("scheme-level commentary", () => {
     const spill = scheme();
     spill[2]!.items.unshift(at(3, 20, "(continued) Outlook remains cautious."));
     expect(readSchemeNarrative(spill, { page: 3, top: 48 }, spec).status).toBe("unreadable-layout");
+  });
+
+  it("needs every language's heading", () => {
+    const englishOnly = scheme();
+    englishOnly[0]!.items.splice(0, 1);
+    expect(readSchemeNarrative(englishOnly, { page: 3, top: 48 }, spec)).toMatchObject({
+      status: "not-disclosed",
+      reason: expect.stringMatching(/no scheme-level heading/),
+    });
   });
 
   it("refuses a heading printed on two pages", () => {

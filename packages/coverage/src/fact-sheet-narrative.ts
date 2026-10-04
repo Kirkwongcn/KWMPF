@@ -117,6 +117,8 @@ export type NarrativeReadResult =
   | { status: "unreadable-layout"; reason: string };
 
 const LINE_TOLERANCE = 4;
+/** 一句完結：句號、問號、感嘆號（中英），後面可以跟收引號或括號。 */
+const SENTENCE_END = /[.!?。！？][”’"')）」』]*$/;
 const BULLET = /^[•●▪■◆]\s*/;
 const CJK_CHAR = new RegExp(CJK.source);
 const CJK_SPACE = new RegExp(`(${CJK.source})\\s+(?=${CJK.source})`, "g");
@@ -543,11 +545,18 @@ export function readAppendixNarrative(
     // 下一頁唔一定有附錄頁標題：續頁可能冇印。契約冇列明係其他頁，就分唔到係續頁
     // 定係另一份內容，只要有正文格式的字就當跨頁（寧願報讀唔齊，都唔好出半段；紅線 3）。
     const following = pages.find((page) => page.number === subheading.page.number + 1);
+    // 列明的頁標題要係嗰頁最先嘅正文格式字之前（或者同一行）；標題之上仲有正文，
+    // 即係評論續落嚟、印喺備註標題之上，一樣當跨頁。
+    const otherHeading =
+      following && !appendixPages.includes(following) && spec.followedBy
+        ? following.items
+            .filter((item) => spec.followedBy!.test(item.text.trim()))
+            .sort((a, b) => a.top - b.top)[0]
+        : undefined;
     const declaredOther =
       following !== undefined &&
-      !appendixPages.includes(following) &&
-      spec.followedBy !== undefined &&
-      following.items.some((item) => spec.followedBy!.test(item.text.trim()));
+      otherHeading !== undefined &&
+      !following.items.some((item) => isBody(item) && item.top < otherHeading.top - LINE_TOLERANCE);
     if (following && !declaredOther) {
       const firstSubheading = Math.min(
         ...subheadings.filter((other) => other.page === following).map((other) => other.top),
@@ -586,10 +595,11 @@ export function readAppendixNarrative(
 
 export type SchemeNarrativeSpec = {
   /**
-   * 計劃層面文字的標題（文字層原文，中英各一段都要搵到）。只用嚟確認呢份便覽有呢段同
-   * 記低標題；正文唔靠佢定位（海通嘅標題喺文字層，但畫面被重要事項框遮住）。
+   * 計劃層面文字的標題（文字層原文），每個語文一條，全部都要搵到，而且同一頁、各得一個
+   * 位置（粗體重印唔計）。只用嚟確認呢份便覽有呢段同記低標題；正文唔靠佢定位（海通嘅
+   * 標題喺文字層，但畫面被重要事項框遮住）。
    */
-  heading: RegExp;
+  heading: RegExp[];
   /** 每頁正文由最後一行符合嘅行之下開始（頁首、重要事項框嘅最後一句）。 */
   startAfter: RegExp;
   /** 每頁讀到第一行符合嘅行就停（註腳、頁尾）；搵唔到即係版面變咗。 */
@@ -616,15 +626,24 @@ export function readSchemeNarrative(
   firstSection: { page: number; top: number },
   spec: SchemeNarrativeSpec,
 ): NarrativeReadResult {
-  const headingItems = pages.flatMap((page) =>
-    page.items.filter((item) => spec.heading.test(item.text.trim())),
-  );
-  if (headingItems.length === 0) {
-    return { status: "not-disclosed", reason: "no scheme-level heading" };
+  const headingItems: PdfTextItem[] = [];
+  for (const pattern of spec.heading) {
+    const found = dropReprints(
+      pages.flatMap((page) => page.items.filter((item) => pattern.test(item.text.trim()))),
+    );
+    if (found.length === 0) {
+      return { status: "not-disclosed", reason: `no scheme-level heading matching ${pattern}` };
+    }
+    if (found.length > 1) {
+      throw new Error(
+        `scheme-level heading ${pattern} appears ${found.length} times; refusing to pick one`,
+      );
+    }
+    headingItems.push(found[0]!);
   }
   const headingPages = new Set(headingItems.map((item) => item.page));
   if (headingPages.size > 1) {
-    throw new Error(`scheme-level heading appears on ${headingPages.size} pages; refusing to pick one`);
+    throw new Error(`scheme-level heading is split over pages ${[...headingPages].join(", ")}`);
   }
   const headingPage = headingItems[0]!.page;
   if (firstSection.page <= headingPage) {
@@ -678,5 +697,13 @@ export function readSchemeNarrative(
     return { status: "not-disclosed", reason: "scheme-level heading found but no text" };
   }
   markParagraphBreaks(kept, spec.paragraphGap);
+  // 換頁處冇行距可比：上一頁最後一行以句號作結，就當新一段（只加換行，唔改字）。
+  // 句子喺頁底啱啱完而段落未完，會多咗一個換行，好過成段黐埋。
+  for (const [index, line] of kept.entries()) {
+    const previous = kept[index - 1];
+    if (previous && previous.segment !== line.segment && SENTENCE_END.test(previous.text)) {
+      line.breakBefore = true;
+    }
+  }
   return { status: "ok", text: composeText(kept, heading, "bilingual") };
 }

@@ -1151,37 +1151,55 @@ function narrativeUnavailableKind(
   return "not-disclosed";
 }
 
+/** 每頁的分層記號（落筆次序）同疊印版數；同一份便覽每個區段共用，只計一次。 */
+type PageLayering = { markers: number[]; titles: number };
+
+function pageLayering(pages: PdfPage[], marker: RegExp, titleSelector: TitleSelector) {
+  return new Map<number, PageLayering>(
+    pages.map((page) => [
+      page.number,
+      {
+        markers: page.items
+          .filter((item) => marker.test(item.text.trim()))
+          .map((item) => item.drawIndex)
+          .sort((a, b) => a - b),
+        titles: page.items.filter((item) => matchesTitle(item, titleSelector)).length,
+      },
+    ]),
+  );
+}
+
 /**
  * 區段內按分層記號切出本版的文字（見 `FactSheetContract.layerEnd`）。
  * 一頁有幾個記號，就有幾版；本版係本區段標題落筆之後第一個記號收尾嗰一段（標題頁），
  * 其他頁用最先落筆嗰版。
+ *
+ * 記號數目要同本頁疊印的版數一樣，本版亦要搵到自己的記號；對唔上就退返用標題落筆
+ * 次序切（`withinSection`）。只得一版的頁冇嘢要分，退返冇問題；有疊印而切唔到就記低
+ * 頁碼（`ambiguousPages`）：標題切可能混入下一版開頭，文字欄位有疊印檢查把關，
+ * 配置同持倉冇，要當疊印處理。
  */
 function layerItems(
   pages: PdfPage[],
   section: FactSheetSection,
-  marker: RegExp,
-  titleSelector: TitleSelector,
+  layering: Map<number, PageLayering>,
 ) {
-  return pages.flatMap((page) => {
-    const inRange = page.items.filter((item) =>
-      withinSectionBounds(item, section),
-    );
-    const markers = page.items
-      .filter((item) => marker.test(item.text.trim()))
-      .map((item) => item.drawIndex)
-      .sort((a, b) => a - b);
-    // 記號數目要同本頁疊印的版數一樣，本版亦要搵到自己的記號；對唔上就退返用標題
-    // 落筆次序切（`withinSection`），令疊印檢查照樣把關，唔會把幾版文字混埋。
-    const layers = page.items.filter((item) => matchesTitle(item, titleSelector)).length;
+  const ambiguousPages: number[] = [];
+  const items = pages.flatMap((page) => {
+    const inRange = page.items.filter((item) => withinSectionBounds(item, section));
+    if (inRange.length === 0) return [];
+    const { markers, titles } = layering.get(page.number) ?? { markers: [], titles: 0 };
     const title = section.layer?.page === page.number ? section.layer.titleDrawIndex : -1;
     const own = markers.findIndex((drawIndex) => drawIndex >= title);
-    if (markers.length <= 1 || own < 0 || (section.layer && markers.length !== layers)) {
+    if (markers.length <= 1 || own < 0 || (section.layer && markers.length !== titles)) {
+      if (markers.length > 1 || titles > 1) ambiguousPages.push(page.number);
       return inRange.filter((item) => withinSection(item, section));
     }
     const start = own === 0 ? -1 : markers[own - 1]!;
     const end = markers[own]!;
     return inRange.filter((item) => item.drawIndex > start && item.drawIndex <= end);
   });
+  return { items, ambiguousPages };
 }
 
 /**
@@ -1232,13 +1250,20 @@ export function parseFactSheetDisclosures(
       })()
     : undefined;
 
+  const layering = contract.layerEnd
+    ? pageLayering(pages, contract.layerEnd, contract.title)
+    : undefined;
+
   const disclosures = sections.map((titleSection) => {
-    const layer = contract.layerEnd
-      ? layerItems(pages, titleSection, contract.layerEnd, contract.title)
-      : undefined;
+    const layered = layering ? layerItems(pages, titleSection, layering) : undefined;
+    const layer = layered?.items;
     const section: FactSheetSection = layer
       ? { ...titleSection, members: new Set(layer) }
       : titleSection;
+    const ambiguousLayers =
+      layered && layered.ambiguousPages.length > 0
+        ? `layer markers do not match the overlaid layers on page ${layered.ambiguousPages.join(", ")}; cannot tell which layer belongs to this fund`
+        : undefined;
     const items = sectionItems(pages, section);
     const allocation = contract.allocation.unextractable
       ? { dimensions: [], orphanValues: [], overlaidRows: [] }
@@ -1253,12 +1278,18 @@ export function parseFactSheetDisclosures(
     // 有數值但抽唔到名稱，代表該份便覽把名稱畫成向量而非文字（宏利環球精選）。
     // 靜默丟走這些行會令餘下的名單短一截、排名整體移位，等同改寫官方披露，
     // 所以整塊當作官方未提供，唔出局部名單。
+    // 疊印頁分唔到層：標題切可能混入下一版的配置或持倉，而且唔一定有一行帶兩個
+    // 數值俾 `rejectOverlaidRows` 捉到，所以成塊當疊印（紅線 5）。
+    const allocationLayerProblem = ambiguousLayers !== undefined && allocation.dimensions.length > 0;
+    const holdingsLayerProblem = ambiguousLayers !== undefined && holdings.holdings.length > 0;
     const allocations =
-      allocation.orphanValues.length > 0 || allocation.overlaidRows.length > 0
+      allocation.orphanValues.length > 0 ||
+      allocation.overlaidRows.length > 0 ||
+      allocationLayerProblem
         ? []
         : allocation.dimensions;
     const topHoldings =
-      holdings.orphanValues.length > 0 || holdings.overlaidRows.length > 0
+      holdings.orphanValues.length > 0 || holdings.overlaidRows.length > 0 || holdingsLayerProblem
         ? []
         : holdings.holdings;
     const temporalScopes: FactSheetTemporalScopes = {
@@ -1278,6 +1309,9 @@ export function parseFactSheetDisclosures(
       if (contract.allocation.unextractable) {
         unavailableReasons.allocation = contract.allocation.unextractable;
         unavailableKinds.allocation = "chart-only";
+      } else if (allocationLayerProblem) {
+        unavailableReasons.allocation = ambiguousLayers;
+        unavailableKinds.allocation = "overlaid-text-layer";
       } else if (allocation.overlaidRows.length > 0) {
         unavailableReasons.allocation = overlaidReason(allocation.overlaidRows);
         unavailableKinds.allocation = "overlaid-text-layer";
@@ -1294,6 +1328,9 @@ export function parseFactSheetDisclosures(
       if (contract.holdings.unextractable) {
         unavailableReasons.topHoldings = contract.holdings.unextractable;
         unavailableKinds.topHoldings = "chart-only";
+      } else if (holdingsLayerProblem) {
+        unavailableReasons.topHoldings = ambiguousLayers;
+        unavailableKinds.topHoldings = "overlaid-text-layer";
       } else if (holdings.overlaidRows.length > 0) {
         unavailableReasons.topHoldings = overlaidReason(holdings.overlaidRows);
         unavailableKinds.topHoldings = "overlaid-text-layer";

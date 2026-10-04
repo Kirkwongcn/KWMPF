@@ -899,6 +899,39 @@ describe("cumulative returns", () => {
     expect(direction.queryByRole("note")).not.toBeInTheDocument();
   });
 
+  it("keeps the gap when the fund's own commentary exists but cannot be read", async () => {
+    renderWithDisclosure({
+      ...disclosure,
+      narrative: {},
+      unavailableFields: ["managerCommentary"],
+      unavailableKinds: { managerCommentary: "overlaid-text-layer" },
+      schemeNarrative: {
+        managerCommentary: { heading: "基金經理評論", zh: "整體市場評論。" },
+      },
+    });
+
+    const direction = within(
+      await screen.findByRole("region", { name: "最新投資方向" }),
+    );
+    expect(direction.queryByText("整體市場評論。")).not.toBeInTheDocument();
+    expect(direction.getByText(/官方文件無法可靠讀取/)).toBeVisible();
+  });
+
+  it("states why scheme-level commentary could not be read", async () => {
+    renderWithDisclosure({
+      ...disclosure,
+      unavailableFields: ["schemeNarrative.managerCommentary"],
+      unavailableKinds: {
+        "schemeNarrative.managerCommentary": "unreadable-layout",
+      },
+    });
+
+    const direction = within(
+      await screen.findByRole("region", { name: "最新投資方向" }),
+    );
+    expect(direction.getByText(/官方有披露，但本站未能完整讀取/)).toBeVisible();
+  });
+
   it("says the trustee source is simply not transcribed yet", async () => {
     renderWithDisclosure(disclosure);
 
