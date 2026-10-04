@@ -210,6 +210,7 @@ export function AllocationChart({
         rows={entries.map((entry) => ({
           label: entry.label,
           value: entry.percent,
+          ...(entry.printed ? { display: entry.printed } : {}),
         }))}
       />
     );

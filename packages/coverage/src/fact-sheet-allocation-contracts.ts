@@ -1236,8 +1236,9 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
         region: { minLeft: 15, maxLeft: 595, top: 15, bottom: 260 },
         stopAt: /^(十大資產項目|TOP TEN HOLDINGS)$/,
         splitGap: 40,
-        // 長標註中文一行、英文同數值下一行，數值行最近嗰行就係佢的圖例。
-        wrap: "nearest",
+        // 長標註中文一行、英文同數值下一行；標註散落圓餅圖兩邊，按垂直加水平距離
+        // 搵最近的數值。
+        wrap: "nearest-2d",
         secondRead: "text-layer",
         textLayerMinFontSize: 7,
         sumTolerance: 0.5,

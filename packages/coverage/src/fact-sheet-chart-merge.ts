@@ -1,5 +1,34 @@
+import { factSheetContract } from "./fact-sheet-allocation-contracts";
 import type { FactSheetDisclosureFund } from "./fact-sheet-disclosure-lookup";
-import type { ChartAllocationFile } from "./fact-sheet-chart-read";
+import type { ChartAllocationFile, ChartAllocationRecord } from "./fact-sheet-chart-read";
+
+/**
+ * 覆核期間 JSON 可能被人手改過：合併前再核一次，數值同印出原樣、合計、圖例清單有任何
+ * 一樣對唔上就報錯，唔會靜靜發布（讀圖時嘅核對結果唔可以當成永遠成立）。
+ */
+function assertConsistent(record: Extract<ChartAllocationRecord, { status: "ok" }>) {
+  const where = `${record.schemeName} ${record.constituentFundName}`;
+  const spec = factSheetContract(record.schemeName, "trustee").allocation.chartRead;
+  if (!spec) throw new Error(`${where}: contract has no chartRead`);
+  if (record.entries.length < 2 || record.entries.length !== record.printed.length) {
+    throw new Error(`${where}: ${record.entries.length} entries but ${record.printed.length} printed values`);
+  }
+  const labels = new Set(spec.vocabulary.map((entry) => entry.label));
+  let total = 0;
+  const decimals = Math.max(...record.printed.map((value) => value.replace("%", "").split(".")[1]?.length ?? 0));
+  for (const [index, entry] of record.entries.entries()) {
+    const printed = record.printed[index]!;
+    if (!/^-?\d+(\.\d+)?%$/.test(printed) || Number(printed.slice(0, -1)) !== entry.percent) {
+      throw new Error(`${where}: "${printed}" does not match ${entry.percent}`);
+    }
+    if (!labels.has(entry.label)) throw new Error(`${where}: "${entry.label}" is not in the legend list`);
+    total += Math.round(entry.percent * 10 ** decimals);
+  }
+  total /= 10 ** decimals;
+  if (total !== record.total || Math.abs(total - 100) > spec.sumTolerance) {
+    throw new Error(`${where}: entries total ${total}, recorded ${record.total}`);
+  }
+}
 
 /**
  * 把已覆核的讀圖結果（`fund-fact-sheet-chart-allocations.json`，ADR 0013）合併入披露檔。
@@ -30,6 +59,7 @@ export function applyChartAllocations(
     }
     const record = records[0];
     if (!record || record.status !== "ok") continue;
+    assertConsistent(record);
     if (record.sourceSha256 !== sha256Of(fund.factSheetFile)) {
       stale.push(`${fund.schemeName} ${fund.constituentFundName} (${fund.factSheetFile})`);
       continue;

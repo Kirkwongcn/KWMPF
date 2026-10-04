@@ -94,4 +94,21 @@ describe("merging chart-read allocations", () => {
       /2 chart-read records/,
     );
   });
+
+  it("re-checks the reviewed file instead of trusting it", () => {
+    const edited = structuredClone(chart);
+    const record = edited.funds[0]!;
+    if (record.status !== "ok") throw new Error("fixture");
+    record.entries[1]!.percent = 27.8;
+    expect(() => applyChartAllocations([fund("Alpha Fund")], edited, () => "abc")).toThrow(
+      /does not match/,
+    );
+    const dropped = structuredClone(chart);
+    const short = dropped.funds[0]!;
+    if (short.status !== "ok") throw new Error("fixture");
+    short.printed.pop();
+    expect(() => applyChartAllocations([fund("Alpha Fund")], dropped, () => "abc")).toThrow(
+      /2 entries but 1 printed/,
+    );
+  });
 });

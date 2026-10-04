@@ -233,4 +233,145 @@ describe("chart-read allocation", () => {
       reason: "text layer not supplied",
     });
   });
+
+  it("rejects a chart whose text touches the crop edge, since a row may be cut off", () => {
+    const ocr = {
+      rapidocr: rapid([
+        ["金融Financials", "61.5%"],
+        ["消費Consumer", "38.5%"],
+      ]),
+      tesseract: tesseract([
+        ["金融 Financials", "61.5%"],
+        ["消費 Consumer", "38.5%"],
+      ]),
+      crop: { width: 900, height: 61 },
+    } as OcrOutput;
+    expect(readChartAllocation(ocr, spec, 1)).toMatchObject({
+      status: "rejected",
+      reason: expect.stringMatching(/touches the crop edge/),
+    });
+    expect(readChartAllocation({ ...ocr, crop: { width: 900, height: 200 } }, spec, 1)).toMatchObject({ status: "ok" });
+  });
+
+  it("rejects a Chinese legend that differs from the list even when the English matches", () => {
+    expect(
+      read(
+        [
+          ["健康護理Financials", "61.5%"],
+          ["消費Consumer", "38.5%"],
+        ],
+        [
+          ["健康 護理 Financials", "61.5%"],
+          ["消費 Consumer", "38.5%"],
+        ],
+      ),
+    ).toMatchObject({ status: "rejected", reason: expect.stringMatching(/does not fit the listed "金融"/) });
+    // RapidOCR 讀繁體漏一個字照樣接受（「貨市場工具」對「貨幣市場工具」）。
+    expect(
+      read(
+        [
+          ["貨市場工具（港元）", "70.0%"],
+          ["MoneyMarketInstruments(HKD)", ""],
+          ["金融Financials", "30.0%"],
+        ],
+        [
+          ["貨 幣 市 場 工具 (港元 )", "70.0%"],
+          ["Money Market Instruments (HKD)", ""],
+          ["金融 Financials", "30.0%"],
+        ],
+      ),
+    ).toMatchObject({ status: "ok" });
+  });
+
+  it("needs tesseract to confirm a short legend that a longer one could have dropped into", () => {
+    const cash: ChartReadSpec = {
+      ...spec,
+      vocabulary: chartLabels([
+        ["現金", "Cash"],
+        ["現金及其他", "Cash"],
+        ["金融", "Financials"],
+      ]),
+    };
+    const readCash = (tesseractLabel: string) =>
+      readChartAllocation(
+        {
+          rapidocr: rapid([
+            ["現金Cash", "60.0%"],
+            ["金融Financials", "40.0%"],
+          ]),
+          tesseract: tesseract([
+            [tesseractLabel, "60.0%"],
+            ["金融 Financials", "40.0%"],
+          ]),
+        } as OcrOutput,
+        cash,
+        1,
+      );
+    // RapidOCR 讀到「現金」，但圖上其實係「現金及其他」：Tesseract 讀到較長嗰個就拒絕。
+    expect(readCash("現金 及 其 他 Cash")).toMatchObject({
+      status: "rejected",
+      reason: expect.stringMatching(/not confirmed by tesseract/),
+    });
+    expect(readCash("現 金 Cash")).toMatchObject({ status: "ok", entries: [{ label: "現金 Cash" }, {}] });
+    expect(readCash("Cash")).toMatchObject({ status: "rejected" });
+  });
+
+  it("lets RapidOCR miss the traditional characters its model cannot read", () => {
+    const bonds: ChartReadSpec = {
+      ...spec,
+      vocabulary: chartLabels([
+        ["人民幣債券", "RMB Bonds"],
+        ["金融", "Financials"],
+      ]),
+    };
+    expect(
+      readChartAllocation(
+        {
+          rapidocr: rapid([
+            ["人民券RMBBonds", "60.0%"],
+            ["金融Financials", "40.0%"],
+          ]),
+          tesseract: tesseract([
+            ["人民 幣 債券 RMB Bonds", "60.0%"],
+            ["金融 Financials", "40.0%"],
+          ]),
+        } as OcrOutput,
+        bonds,
+        1,
+      ),
+    ).toMatchObject({ status: "ok" });
+  });
+
+  it("does not glue a footnote digit onto the next percentage", () => {
+    const glued = readChartAllocation(
+      {
+        rapidocr: [box("現金及其他Cash and Others 7", 50, 0), box("1.2%", 650, 0, 60), box("金融Financials", 50, 40), box("98.8%", 650, 40, 60)],
+        tesseract: tesseract([
+          ["現金 及 其 他 Cash and Others", "1.2%"],
+          ["金融 Financials", "98.8%"],
+        ]),
+      } as OcrOutput,
+      spec,
+      1,
+    );
+    expect(glued).toMatchObject({ status: "ok", printed: ["1.2%", "98.8%"] });
+  });
+
+  it("holds the text layer's Chinese to the list exactly", () => {
+    const callouts: ChartReadSpec = { ...spec, secondRead: "text-layer", splitGap: 40 };
+    const ocr: OcrOutput = {
+      rapidocr: [box("金融Financials61.5%", 0, 0, 180), box("消費Consumer38.5%", 400, 0, 180)],
+      tesseract: [],
+      textLayer: [
+        box("金融業", 0, 0, 30),
+        box("Financials 61.5%", 35, 1, 140),
+        box("消費", 400, 0, 30),
+        box("Consumer 38.5%", 435, 1, 140),
+      ],
+    };
+    expect(readChartAllocation(ocr, callouts, 1)).toMatchObject({
+      status: "rejected",
+      reason: expect.stringMatching(/text layer/),
+    });
+  });
 });

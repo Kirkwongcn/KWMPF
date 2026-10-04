@@ -60,9 +60,10 @@ export type ChartReadSpec = {
    * 冇數值的行（圖例過長換行）屬邊一行：`"below"`（預設）即係接上一行數值的圖例
    * （永明「貨幣市場工具（港元） 28.1%」下一行「Money Market Instruments (HKD)」），
    * `"above"` 即係接下一行，`"nearest"` 即係接垂直中線最近嗰行（宏利：數值印喺兩行
-   * 圖例中間，可能同上一行亦可能同下一行分成一組）。
+   * 圖例中間，可能同上一行亦可能同下一行分成一組）；`"nearest-2d"` 再計水平距離
+   * （我的強積金：標註散落圓餅圖兩邊）。
    */
-  wrap?: "below" | "above" | "nearest";
+  wrap?: "below" | "above" | "nearest" | "nearest-2d";
   vocabulary: ChartLabel[];
   sumTolerance: number;
 };
@@ -73,10 +74,18 @@ export type OcrOutput = {
   tesseract: { words: OcrBox[] }[];
   /** 文字層（`secondRead: "text-layer"`），座標已換成同一張裁圖的像素。 */
   textLayer?: OcrBox[];
+  /** 裁圖大細（像素），用嚟查有冇字貼住裁圖邊（即係範圍切走咗部分圖例）。 */
+  crop?: { width: number; height: number };
 };
 
 export type ChartRow = { label: string; printed: string };
-type CandidateRow = { text: string; printed: string; candidates: ChartLabel[] };
+type CandidateRow = {
+  text: string;
+  printed: string;
+  candidates: ChartLabel[];
+  top: number;
+  bottom: number;
+};
 
 export type ChartReadResult =
   | { status: "ok"; entries: { label: string; percent: number }[]; printed: string[]; total: number }
@@ -104,6 +113,19 @@ const TRADITIONAL: Record<string, string> = Object.fromEntries(
   ),
 );
 
+/**
+ * RapidOCR 模型讀唔到嘅繁體字（2026-06-30 便覽實測：「債」、「幣」、「鎊」會漏讀）。
+ * 核對中文時呢啲字缺席唔當不符，其他字最多漏一個。
+ */
+const RAPIDOCR_UNREADABLE = "債幣鎊";
+
+/** `part` 每個字按次序都喺 `whole` 入面（可以有字跳過）。 */
+function isSubsequence(part: string, whole: string) {
+  let at = 0;
+  for (const char of whole) if (char === part[at]) at += 1;
+  return at === part.length;
+}
+
 /** 只留中文字，用嚟分辨英文一樣、中文唔同的圖例（「非必需消費品」對「非必需性消費」）。 */
 function han(text: string) {
   return [...text.normalize("NFKC")]
@@ -112,7 +134,14 @@ function han(text: string) {
     .join("");
 }
 
-type Segment = { text: string; top: number; left: number; middle: number };
+type Segment = {
+  text: string;
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
+  middle: number;
+};
 
 /** 按垂直中線分行；同一行內空隙大過 `splitGap` 就拆開兩個標註。 */
 function segmentsOf(
@@ -150,7 +179,9 @@ function segmentsOf(
       return {
         text: part.map((box) => box.text).join(joiner).trim(),
         top,
+        bottom,
         left: part[0]!.left,
+        right: Math.max(...part.map((box) => box.right)),
         middle: (top + bottom) / 2,
       };
     });
@@ -164,20 +195,35 @@ function segmentsOf(
 function rowsOf(
   segments: Segment[],
   vocabulary: ChartLabel[],
-  wrap: "below" | "above" | "nearest",
+  wrap: "below" | "above" | "nearest" | "nearest-2d",
   engine: string,
 ): CandidateRow[] | string {
   // 先按數值分行：有數值的段落開一行，冇數值的段落按 `wrap` 接上一行或者下一行。
   const ordered = segments
     .sort((a, b) => a.top - b.top || a.left - b.left)
-    // 圖表邊緣的雜訊（圖例色塊、圓環邊）讀成一兩個字，唔係圖例。
-    .filter((segment) => VALUE.test(segment.text) || segment.text.replace(/\s/g, "").length > 2);
-  if (wrap === "nearest") {
+    // 圖表邊緣的雜訊（圖例色塊、圓環邊）讀成一兩個符號或字母，唔係圖例；兩個中文字
+    // 可以係圖例（「瑞典」），要留。
+    .filter(
+      (segment) =>
+        VALUE.test(segment.text) ||
+        /\p{Script=Han}/u.test(segment.text) ||
+        segment.text.replace(/\s/g, "").length > 2,
+    );
+  if (wrap === "nearest" || wrap === "nearest-2d") {
     const valued = ordered.filter((segment) => VALUE.test(segment.text));
     const parts = new Map(valued.map((segment) => [segment, [segment]]));
     for (const segment of ordered) {
       if (VALUE.test(segment.text)) continue;
-      const distances = valued.map((row) => Math.abs(row.middle - segment.middle));
+      // `nearest-2d` 再加水平空隙：同一行緊貼數值的中文（「瑞典」貼住「Sweden 0.09%」）
+      // 一定係佢嘅圖例，唔會被圓餅圖另一邊高度相近的標註搶走。條形圖唔用：數值印喺
+      // 條尾，同圖例隔住成條柱。
+      const distances = valued.map(
+        (row) =>
+          Math.abs(row.middle - segment.middle) +
+          (wrap === "nearest-2d"
+            ? Math.max(0, row.left - segment.right, segment.left - row.right)
+            : 0),
+      );
       const nearest = Math.min(...distances);
       const owners = valued.filter((_, index) => distances[index] === nearest);
       if (owners.length !== 1) {
@@ -189,12 +235,17 @@ function rowsOf(
       const lines = parts.get(row)!.sort((a, b) => a.top - b.top);
       const text = lines.map((line) => line.text).join(" ");
       const value = row.text.match(VALUE)!;
-      return { label: text.replace(value[0], "").trim(), printed: value[1]! };
+      return {
+        label: text.replace(value[0], "").trim(),
+        printed: value[1]!,
+        top: Math.min(...lines.map((line) => line.top)),
+        bottom: Math.max(...lines.map((line) => line.bottom)),
+      };
     });
     return matchRows(raw, vocabulary, engine);
   }
-  const raw: { label: string; printed: string }[] = [];
-  let pending = "";
+  const raw: RawRow[] = [];
+  let pending: Segment[] = [];
   for (const segment of ordered) {
     const value = segment.text.match(VALUE);
     if (!value) {
@@ -202,22 +253,34 @@ function rowsOf(
         const previous = raw.at(-1);
         if (!previous) return `${engine}: "${segment.text}" sits above every percentage`;
         previous.label = `${previous.label} ${segment.text}`;
+        previous.bottom = Math.max(previous.bottom, segment.bottom);
       } else {
-        pending = `${pending} ${segment.text}`;
+        pending.push(segment);
       }
       continue;
     }
-    const label = `${pending} ${segment.text.slice(0, value.index)}`.trim();
-    pending = "";
-    raw.push({ label, printed: value[1]! });
+    const label = [...pending.map((line) => line.text), segment.text.slice(0, value.index)]
+      .join(" ")
+      .trim();
+    raw.push({
+      label,
+      printed: value[1]!,
+      top: Math.min(segment.top, ...pending.map((line) => line.top)),
+      bottom: segment.bottom,
+    });
+    pending = [];
   }
-  if (pending.trim() !== "") return `${engine}: "${pending.trim()}" sits below every percentage`;
+  if (pending.length > 0) {
+    return `${engine}: "${pending.map((line) => line.text).join(" ")}" sits below every percentage`;
+  }
   return matchRows(raw, vocabulary, engine);
 }
 
+type RawRow = { label: string; printed: string; top: number; bottom: number };
+
 /** 每行圖例文字對到詞彙表邊幾項（只比英文，見 `latin`）。 */
 function matchRows(
-  raw: { label: string; printed: string }[],
+  raw: RawRow[],
   vocabulary: ChartLabel[],
   engine: string,
 ): CandidateRow[] | string {
@@ -228,7 +291,7 @@ function matchRows(
     if (candidates.length === 0) {
       return `${engine}: legend "${row.label}" matches no vocabulary entry`;
     }
-    rows.push({ text: row.label, printed: row.printed, candidates });
+    rows.push({ text: row.label, printed: row.printed, candidates, top: row.top, bottom: row.bottom });
   }
   return rows;
 }
@@ -243,9 +306,22 @@ export function readChartAllocation(
 ): ChartReadResult {
   const splitGap = spec.splitGap === undefined ? undefined : spec.splitGap * scale;
   const wrap = spec.wrap ?? "below";
-  const rapid = rowsOf(segmentsOf(ocr.rapidocr, "", splitGap), spec.vocabulary, wrap, "rapidocr");
+  // 有字貼住裁圖的左、右或下邊，即係範圍可能切走咗部分圖例；兩次讀取用同一張裁圖，
+  // 行數一樣都證明唔到冇漏行，合計容差又遮得住 0.1% 嗰類細項，所以直接拒絕。
+  if (ocr.crop) {
+    const { width, height } = ocr.crop;
+    // 只查左邊同底邊：漏行只會喺底；右邊係數值欄，數值切走一截兩次讀取會對唔上。
+    void width;
+    const touching = ocr.rapidocr.find((box) => box.left <= 1 || box.bottom >= height - 2);
+    if (touching) {
+      return { status: "rejected", reason: `"${touching.text}" touches the crop edge` };
+    }
+  }
+  // 框之間加空格，註腳數字（「(7)」）唔會黐落隔籬嘅百分比變成「71.99%」。
+  const rapid = rowsOf(segmentsOf(ocr.rapidocr, " ", splitGap), spec.vocabulary, wrap, "rapidocr");
   if (typeof rapid === "string") return { status: "rejected", reason: rapid };
   const second = spec.secondRead ?? "tesseract";
+  const tesseractWords = ocr.tesseract.flatMap((line) => line.words);
   const chosen: ChartRow[] = [];
   for (const [index, row] of rapid.entries()) {
     // 英文一樣的圖例按 RapidOCR 讀到的中文分；仍然分唔到就拒絕。
@@ -259,7 +335,49 @@ export function readChartAllocation(
         reason: `row ${index + 1} legend "${row.text}" fits ${entries.length} vocabulary entries`,
       };
     }
-    chosen.push({ label: entries[0]!.label, printed: row.printed });
+    const entry = entries[0]!;
+    if (second === "tesseract") {
+      // 清單的中文要同圖上讀到的對得上：RapidOCR 讀到的中文字要按次序喺清單中文入面，
+      // 最多漏一個字（佢讀繁體會漏字），否則即係圖例用字唔同，要對圖更新清單。
+      const read = han(row.text);
+      const listed = han(entry.zh);
+      const unreadable = [...listed].filter((char) => RAPIDOCR_UNREADABLE.includes(char)).length;
+      if (!isSubsequence(read, listed) || read.length < listed.length - unreadable - 1) {
+        return {
+          status: "rejected",
+          reason: `row ${index + 1} Chinese "${read}" does not fit the listed "${entry.zh}"`,
+        };
+      }
+      // 英文一樣、靠中文分的圖例，而較短嗰個可以由較長嗰個漏字得出（「現金」對
+      // 「現金及其他」、「地產」對「房地產」）：RapidOCR 漏字就會揀錯，要 Tesseract 喺同一行
+      // 讀到嘅中文確認，佢讀到較長嗰個或者讀唔到就拒絕。
+      const droppable = row.candidates.some(
+        (candidate) =>
+          candidate !== entry &&
+          han(candidate.zh).length > han(entry.zh).length &&
+          isSubsequence(han(entry.zh), han(candidate.zh)),
+      );
+      if (droppable) {
+        const band = tesseractWords.filter((word) => {
+          const middle = (word.top + word.bottom) / 2;
+          return middle >= row.top && middle <= row.bottom && !VALUE.test(word.text.trim());
+        });
+        const other = han(band.map((word) => word.text).join(""));
+        const longer = row.candidates.some(
+          (candidate) =>
+            candidate !== entry &&
+            han(candidate.zh).length > han(entry.zh).length &&
+            isSubsequence(han(candidate.zh), other),
+        );
+        if (!isSubsequence(han(entry.zh), other) || longer) {
+          return {
+            status: "rejected",
+            reason: `row ${index + 1} legend "${entry.label}" is not confirmed by tesseract ("${other}")`,
+          };
+        }
+      }
+    }
+    chosen.push({ label: entry.label, printed: row.printed });
   }
 
   if (second === "text-layer") {
@@ -271,7 +389,13 @@ export function readChartAllocation(
     }
     for (const [index, row] of chosen.entries()) {
       const other = layer[index]!;
-      if (!other.candidates.some((entry) => entry.label === row.label) || other.printed !== row.printed) {
+      // 文字層係官方原文：中文要同清單一字不差。
+      const listed = spec.vocabulary.find((entry) => entry.label === row.label)!;
+      if (
+        !other.candidates.includes(listed) ||
+        han(other.text) !== han(listed.zh) ||
+        other.printed !== row.printed
+      ) {
         return {
           status: "rejected",
           reason: `row ${index + 1} differs: rapidocr "${row.label} ${row.printed}%" vs text layer "${other.text} ${other.printed}%"`,

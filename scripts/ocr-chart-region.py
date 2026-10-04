@@ -125,8 +125,8 @@ def axis_left(crop):
 
 
 def tesseract_boxes(crop, values_left):
-    # 圖例：`--psm 6` 當成一整塊文字讀中英文；有數值欄就剔走呢一輪讀到的數字，
-    # 數值改由 `value_column` 另讀。
+    # 圖例：`--psm 6` 當成一整塊文字讀中英文（核對英文一樣、中文唔同的圖例用）；
+    # 有數值欄就剔走呢一輪讀到的數字，數值改由 `value_column` 另讀。
     words = tesseract_tsv(crop, ["-l", "chi_tra+eng", "--psm", "6"])
     if values_left is not None:
         words = [
@@ -168,6 +168,7 @@ def main():
     )
     result = {
         "image": {"width": image.shape[1], "height": image.shape[0]},
+        "crop": {"width": crop.shape[1], "height": crop.shape[0]},
         "engines": engine_versions(),
         "rapidocr": rapidocr_boxes(crop),
         "tesseract": tesseract_boxes(crop, values_left),
