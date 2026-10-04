@@ -22,11 +22,13 @@ import {
 import type {
   AllocationDimension,
   AllocationEntry,
+  AllocationSource,
   FactSheetNarrative,
   FactSheetSource,
   FactSheetUnavailableKind,
   TopHolding,
 } from "./fact-sheet-published";
+import type { ChartReadSpec } from "./fact-sheet-chart-read";
 import type {
   FactSheetTemporalField,
   FactSheetTemporalScope,
@@ -61,6 +63,8 @@ export type FactSheetDisclosure = {
   /** Date scope by disclosed field; the document date is not inherited by its metrics. */
   temporalScopes?: FactSheetTemporalScopes;
   allocations: AllocationDimension[];
+  /** 配置由官方圖表讀出（ADR 0013）先有，由 `applyChartAllocations` 合併時加上。 */
+  allocationSource?: AllocationSource;
   topHoldings: TopHolding[];
   /** 官方文字欄位（ADR 0012），只有契約聲明咗嘅欄位先會出現。 */
   narrative?: FactSheetNarrative;
@@ -109,6 +113,11 @@ export type BlockSelector = {
    * 向量而唔係文字。設咗就一律走 `unavailableFields` 並附上原因，唔出局部資料。
    */
   unextractable?: string;
+  /**
+   * 圖表式配置點樣由渲染後的圖讀（ADR 0013，見 `fact-sheet-chart-read.ts`）。要同
+   * `unextractable` 一齊用：文字層冇嘢，抽取照報 `chart-only`；讀圖結果另行核對後先合併。
+   */
+  chartRead?: ChartReadSpec;
   /** 由標題原文取維度標題；預設照錄整段標題文字。 */
   headingLabel?: (text: string) => string;
   /** 自動推欄界時，向左預留的容差。 */
@@ -1233,6 +1242,79 @@ export function markSharedNarrative(disclosures: FactSheetDisclosure[]) {
 // 市場預測只係一個評級字（永明「Neutral」），多隻基金相同唔代表係共用評論，唔計。
 const SHARED_FIELDS = new Set<string>(["managerCommentary"]);
 
+/**
+ * 每個基金區段實際讀邊啲字：有 `layerEnd` 就按記號切本版（見 `layerItems`），冇就用
+ * 標題切。抽文字同讀圖表（`allocationHeadings`）共用，確保兩邊認同一版。
+ */
+function scopeSections(
+  pages: PdfPage[],
+  contract: FactSheetContract,
+  sections: FactSheetSection[],
+) {
+  const layering = contract.layerEnd
+    ? pageLayering(pages, contract.layerEnd, contract.title)
+    : undefined;
+  return sections.map((titleSection) => {
+    const layered = layering ? layerItems(pages, titleSection, layering) : undefined;
+    const layer = layered?.items;
+    const section: FactSheetSection = layer
+      ? { ...titleSection, members: new Set(layer) }
+      : titleSection;
+    const ambiguousLayers =
+      layered && layered.ambiguousPages.length > 0
+        ? `layer markers do not match the overlaid layers on page ${layered.ambiguousPages.join(", ")}; cannot tell which layer belongs to this fund`
+        : undefined;
+    return { section, layer, ambiguousLayers, items: sectionItems(pages, section) };
+  });
+}
+
+/**
+ * 圖表式配置（`BlockSelector.chartRead`）每個區段的配置標題，交畀圖表讀取定位。
+ * 搵唔到或者多過一個（疊印唔同位置）就交原因，唔揀其中一個。
+ */
+export function allocationHeadings(pages: PdfPage[], contract: FactSheetContract) {
+  const sections = findSections(pages, contract.title);
+  return scopeSections(pages, contract, sections).map(({ section, ambiguousLayers, items }) => {
+    const base = {
+      constituentFundName: section.name,
+      ...(section.className ? { fundClassName: section.className } : {}),
+    };
+    if (ambiguousLayers) return { ...base, reason: ambiguousLayers };
+    const headings = dropDuplicatePositions(headingsIn(items, contract.allocation));
+    if (headings.length !== 1) {
+      return { ...base, reason: `${headings.length} allocation headings in the section` };
+    }
+    const heading = headings[0]!;
+    // 下一個標題（例如十大持倉）頂住範圍下界：圖例行數逐隻基金唔同。
+    const stopAt = contract.allocation.chartRead?.stopAt;
+    const below = stopAt
+      ? items
+          .filter((item) => item.page === heading.page && item.top > heading.top && stopAt.test(item.text.trim()))
+          .map((item) => item.top)
+      : [];
+    return {
+      ...base,
+      heading,
+      ...(below.length > 0 ? { stopTop: Math.min(...below) } : {}),
+    };
+  });
+}
+
+/** 同一位置重印（粗體）嘅標題當一個；位置唔同就係兩個。 */
+function dropDuplicatePositions(items: PdfTextItem[]) {
+  return items.filter(
+    (item, index) =>
+      !items
+        .slice(0, index)
+        .some(
+          (other) =>
+            other.page === item.page &&
+            Math.abs(other.top - item.top) <= 2 &&
+            Math.abs(other.left - item.left) <= 2,
+        ),
+  );
+}
+
 export function parseFactSheetDisclosures(
   pages: PdfPage[],
   contract: FactSheetContract,
@@ -1250,21 +1332,8 @@ export function parseFactSheetDisclosures(
       })()
     : undefined;
 
-  const layering = contract.layerEnd
-    ? pageLayering(pages, contract.layerEnd, contract.title)
-    : undefined;
-
-  const disclosures = sections.map((titleSection) => {
-    const layered = layering ? layerItems(pages, titleSection, layering) : undefined;
-    const layer = layered?.items;
-    const section: FactSheetSection = layer
-      ? { ...titleSection, members: new Set(layer) }
-      : titleSection;
-    const ambiguousLayers =
-      layered && layered.ambiguousPages.length > 0
-        ? `layer markers do not match the overlaid layers on page ${layered.ambiguousPages.join(", ")}; cannot tell which layer belongs to this fund`
-        : undefined;
-    const items = sectionItems(pages, section);
+  const disclosures = scopeSections(pages, contract, sections).map(
+    ({ section, layer, ambiguousLayers, items }) => {
     const allocation = contract.allocation.unextractable
       ? { dimensions: [], orphanValues: [], overlaidRows: [] }
       : readAllocation(pages, section, items, contract);
@@ -1411,7 +1480,8 @@ export function parseFactSheetDisclosures(
       unavailableReasons,
       unavailableKinds,
     } satisfies FactSheetDisclosure;
-  });
+    },
+  );
 
   markSharedNarrative(disclosures);
 

@@ -840,6 +840,41 @@ describe("cumulative returns", () => {
     expect(within(holdings).getByText("9.36%")).toBeVisible();
   });
 
+  it("labels an allocation read from the official chart and keeps its printed figures", async () => {
+    renderWithDisclosure({
+      ...disclosure,
+      allocations: [
+        {
+          heading: "Portfolio Allocation 投資組合分佈",
+          entries: [
+            { label: "金融 Financials", percent: 71.2, printed: "71.20%" },
+            {
+              label: "現金及其他 Cash & Others",
+              percent: 28.8,
+              printed: "28.80%",
+            },
+          ],
+        },
+      ],
+      allocationSource: {
+        method: "chart-read",
+        readAt: "2026-10-04T16:00:00.000Z",
+        reads: ["rapidocr-onnxruntime 1.4.4", "tesseract 5.3.4"],
+        total: 100,
+        page: 22,
+      },
+    });
+
+    const allocation = await screen.findByRole("table", {
+      name: "Portfolio Allocation 投資組合分佈",
+    });
+    // 圖上印「28.80%」，唔可以食咗尾隨的 0。
+    expect(within(allocation).getByText("28.80%")).toBeVisible();
+    expect(screen.getByText(/資產配置由官方圖表讀取/)).toHaveTextContent(
+      "用兩套文字辨識程式各讀一次，逐個數字核對一致，合計 100%（本站計算）",
+    );
+  });
+
   it("separates the document date from the platform snapshot date", async () => {
     renderWithDisclosure(disclosure);
 

@@ -171,7 +171,8 @@ export function AllocationChart({
   heading,
   sourceUrl,
 }: {
-  entries: { label: string; percent: number }[];
+  /** `printed` 係圖表讀出時圖上印的原樣（保留尾隨的 0），有就照用。 */
+  entries: { label: string; percent: number; printed?: string }[];
   heading: string;
   sourceUrl?: string;
 }) {
@@ -271,7 +272,7 @@ export function AllocationChart({
             <li key={index}>
               <i className={`kw-allocation__part--${index % 6}`} />
               <span>{entry.label}</span>
-              <strong>{entry.percent}%</strong>
+              <strong>{entry.printed ?? `${entry.percent}%`}</strong>
             </li>
           ))}
         </ul>
