@@ -395,6 +395,18 @@ const massBlocks: Pick<FactSheetContract, "title" | "allocation" | "holdings"> =
   holdings: { heading: /^Top 10 Holdings/ },
 } as const;
 
+const retireChoiceObjective = {
+  band: { minLeft: 15, maxLeft: 440 },
+  stopAt: /^(Fund Descriptor|基金類型)$/,
+  minFontSize: 11,
+  maxGap: 24,
+} as const;
+const retireChoiceComment = {
+  band: { minLeft: 450, maxLeft: 900 },
+  minFontSize: 11,
+  maxGap: 24,
+} as const;
+
 export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
   {
     scheme: "AIA MPF - Prime Value Choice",
@@ -914,6 +926,18 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       // 內文用 `ArialMT`，加 `,Bold` 唔會誤中。
       fontFamily: /Arial(?:,Bold)?$/,
       fontColor: ["#ffffff"],
+    },
+    narrative: {
+      // 每隻基金英文版一頁、中文版下一頁，版面相同：投資目標在左欄（12 pt），
+      // 基金經理評論在右欄（left≈459）。兩頁分開讀再合併。
+      investmentObjective: [
+        { heading: /^Investment Objective$/, languages: "en", ...retireChoiceObjective },
+        { heading: /^投資目標$/, languages: "zh", ...retireChoiceObjective },
+      ],
+      managerCommentary: [
+        { heading: /^Manager's Comments?$/, languages: "en", ...retireChoiceComment },
+        { heading: /^基金經理評論$/, languages: "zh", ...retireChoiceComment },
+      ],
     },
     allocation: {
       // 自在人生的圓餅圖冇自己的標題，整欄由「Portfolio Analysis」帶起，
