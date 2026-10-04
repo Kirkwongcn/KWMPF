@@ -108,6 +108,37 @@ const beaBlocks = {
   },
 } as const;
 
+/**
+ * 東亞三個計劃同一版面：左上「Investment Objective 投資目標」先英文後中文，右邊係基金資料欄
+ * （left≈315），下面係投資組合分佈；「Commentary 評論」分兩欄並排，左英（left≈60）右中
+ * （left≈526），兩欄的行喺同一高度，所以要逐欄讀。右欄評論之上係十大持倉，由評論標題下面先開始讀。
+ */
+const beaNarrative: FactSheetContract["narrative"] = {
+  investmentObjective: {
+    heading: /^Investment Objective 投資目標$/,
+    band: { minLeft: 50, maxLeft: 305 },
+    stopAt: /^Portfolio Allocation/,
+    minFontSize: 8,
+    maxGap: 24,
+    languages: "bilingual",
+  },
+  managerCommentary: {
+    heading: /^Commentary 評論$/,
+    band: { minLeft: 50, maxLeft: 860 },
+    // DIS 基金的十大持倉延伸到評論標題右邊，正文由標題下約 24 pt 先開始。
+    minDepth: 15,
+    // DIS 基金評論之後係法定的「重大差異理由」，唔屬評論。
+    stopAt: /^(Reason\(s\) for Material Difference|年度回報與參考投資組合的重大差異理由)/,
+    columns: [
+      { minLeft: 50, maxLeft: 520 },
+      { minLeft: 520, maxLeft: 860 },
+    ],
+    minFontSize: 7,
+    maxGap: 24,
+    languages: "bilingual",
+  },
+};
+
 const bctTitle = (color: string) => ({
   pattern: /Fund$/,
   fontSize: [18],
@@ -429,18 +460,21 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
     scheme: "BEA (MPF) Industry Scheme",
     title: beaTitle,
     ...beaBlocks,
+    narrative: beaNarrative,
     asOf: { pattern: AS_OF_SLASH },
   },
   {
     scheme: "BEA (MPF) Master Trust Scheme",
     title: beaTitle,
     ...beaBlocks,
+    narrative: beaNarrative,
     asOf: { pattern: AS_OF_SLASH },
   },
   {
     scheme: "BEA (MPF) Value Scheme",
     title: beaTitle,
     ...beaBlocks,
+    narrative: beaNarrative,
     asOf: { pattern: AS_OF_SLASH },
   },
   {

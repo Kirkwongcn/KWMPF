@@ -19,6 +19,11 @@ export type NarrativeField = (typeof NARRATIVE_FIELDS)[number];
 export type NarrativeText = {
   /** 便覽自己的標題原文（中英對照時連埋兩個語文）。 */
   heading: string;
+  /**
+   * 同一份便覽有幾多隻基金的同一欄位一字不差（包括本基金）。多過一隻即係計劃
+   * 共用的市場評論，網站要標明，唔可以當成呢隻基金專屬的評論（ADR 0012）。
+   */
+  sharedAcrossFunds?: number;
   zh?: string;
   en?: string;
 };
@@ -29,8 +34,19 @@ export type TextBlockSelector = {
   headingFontSize?: number[];
   /** 明確欄界。文字欄冇表格咁整齊，唔靠自動推斷。 */
   band: { minLeft: number; maxLeft: number };
+  /**
+   * 文字分幾欄並排（東亞的評論：左欄英文、右欄中文，兩欄的行喺同一高度）。
+   * 設咗就逐欄各自併行、各自計 `stopAt`／`maxGap`，再按欄次序接駁；
+   * 唔分欄的話同一高度的中英兩行會被併成一行。每欄都要喺 `band` 之內。
+   */
+  columns?: { minLeft: number; maxLeft: number }[];
   /** 由標題往下最多幾多 pt；預設讀到區段結尾、`stopAt` 或下一個欄位標題。 */
   maxDepth?: number;
+  /**
+   * 由標題往下幾多 pt 先開始讀。東亞 DIS 基金的十大持倉表一路延伸到評論標題右邊
+   * （標題 top≈1036，持倉 1043），正文由標題下 24 pt 先開始。
+   */
+  minDepth?: number;
   /** 讀到符合呢個式樣的行就停（例如下一塊披露的標題）。 */
   stopAt?: RegExp;
   /** 略過符合呢個式樣的行（例如註腳說明）。 */
@@ -190,23 +206,31 @@ export function readNarrative(
     (item) =>
       item.page === anchor.page &&
       item.top > headingBottom + LINE_TOLERANCE &&
+      (selector.minDepth === undefined || item.top >= anchor.top + selector.minDepth) &&
       (selector.maxDepth === undefined || item.top <= anchor.top + selector.maxDepth) &&
       inBand(item) &&
       item.text.trim() !== "" &&
       (selector.minFontSize === undefined || item.fontSize >= selector.minFontSize) &&
       (selector.maxFontSize === undefined || item.fontSize <= selector.maxFontSize),
   );
-  const candidates = dropReprints(below);
-  const lines = toLines(candidates);
-
+  const columns = selector.columns ?? [selector.band];
   const kept: Line[] = [];
-  for (const line of lines) {
-    const previous = kept.at(-1);
-    if (previous && selector.maxGap !== undefined && line.top - previous.top > selector.maxGap) break;
-    if (selector.stopAt?.test(line.text)) break;
-    if (stopHeadings.some((pattern) => pattern.test(line.text))) break;
-    if (selector.ignore?.test(line.text)) continue;
-    kept.push(line);
+  for (const column of columns) {
+    const lines = toLines(
+      dropReprints(
+        below.filter((item) => item.left >= column.minLeft && item.left < column.maxLeft),
+      ),
+    );
+    const columnKept: Line[] = [];
+    for (const line of lines) {
+      const previous = columnKept.at(-1);
+      if (previous && selector.maxGap !== undefined && line.top - previous.top > selector.maxGap) break;
+      if (selector.stopAt?.test(line.text)) break;
+      if (stopHeadings.some((pattern) => pattern.test(line.text))) break;
+      if (selector.ignore?.test(line.text)) continue;
+      columnKept.push(line);
+    }
+    kept.push(...columnKept);
   }
   const overlaid = overlapping(kept.flatMap((line) => line.items));
   if (overlaid.length > 0) {

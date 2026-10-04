@@ -2,7 +2,11 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { parsePdfXml, type PdfTextItem } from "../src/pdf-xml";
-import { findSections, sectionItems } from "../src/fact-sheet-allocation";
+import {
+  findSections,
+  parseFactSheetDisclosures,
+  sectionItems,
+} from "../src/fact-sheet-allocation";
 import { factSheetContract } from "../src/fact-sheet-allocation-contracts";
 import { readNarrative, type TextBlockSelector } from "../src/fact-sheet-narrative";
 
@@ -119,5 +123,89 @@ describe("official narrative text", () => {
       { ...selector, maxGap: 24 },
     );
     expect(result).toMatchObject({ status: "ok", text: { en: "Seeks growth." } });
+  });
+});
+
+describe("narrative layouts", () => {
+  const commentary: TextBlockSelector = {
+    heading: /^Commentary 評論$/,
+    band: { minLeft: 0, maxLeft: 900 },
+    columns: [
+      { minLeft: 0, maxLeft: 500 },
+      { minLeft: 500, maxLeft: 900 },
+    ],
+    minDepth: 15,
+    stopAt: /^(Reason\(s\) for Material Difference|年度回報與參考投資組合的重大差異理由)/,
+    languages: "bilingual",
+  };
+
+  it("reads side-by-side English and Chinese columns without mixing lines", () => {
+    const result = readNarrative(
+      [
+        item(100, 40, "Commentary 評論"),
+        item(104, 520, "Alphabet Inc C 1.03%"),
+        item(124, 40, "U.S. equities rose in Q2 2026,"),
+        item(124, 520, "美國股市在2026年第二季上漲，"),
+        item(133, 40, "though a mild pullback occurred."),
+        item(133, 520, "惟6月出現溫和回調。"),
+        item(160, 40, "Reason(s) for Material Difference: N/A"),
+        item(160, 520, "年度回報與參考投資組合的重大差異理由： 不適用"),
+      ],
+      commentary,
+    );
+    expect(result).toMatchObject({
+      status: "ok",
+      text: {
+        zh: "美國股市在2026年第二季上漲，惟6月出現溫和回調。",
+        en: "U.S. equities rose in Q2 2026, though a mild pullback occurred.",
+      },
+    });
+  });
+});
+
+describe("commentary shared across funds", () => {
+  function page(runs: { top: number; left: number; text: string; size?: number }[]) {
+    const fonts = new Map<number, number>();
+    const texts = runs.map((run) => {
+      const size = run.size ?? 9;
+      if (!fonts.has(size)) fonts.set(size, fonts.size);
+      return `<text top="${run.top}" left="${run.left}" width="${run.text.length * 6}" height="12" font="${fonts.get(size)}">${run.text}</text>`;
+    });
+    const specs = [...fonts].map(([size, id]) => `<fontspec id="${id}" size="${size}" family="Arial" color="#000000"/>`);
+    return `<page number="1" height="1200" width="900">${specs.join("")}${texts.join("")}</page>`;
+  }
+
+  it("marks text that several funds in one fact sheet print word for word", () => {
+    const shared = "Global equities rose over the quarter.";
+    const pages = parsePdfXml(
+      `<pdf2xml>${page([
+        { top: 20, left: 40, text: "As at 30/06/2026" },
+        { top: 100, left: 40, text: "Alpha Fund", size: 20 },
+        { top: 140, left: 40, text: "Commentary" },
+        { top: 160, left: 40, text: shared },
+        { top: 400, left: 40, text: "Beta Fund", size: 20 },
+        { top: 440, left: 40, text: "Commentary" },
+        { top: 460, left: 40, text: shared },
+        { top: 700, left: 40, text: "Gamma Fund", size: 20 },
+        { top: 740, left: 40, text: "Commentary" },
+        { top: 760, left: 40, text: "Gamma rose on stock selection." },
+      ])}</pdf2xml>`,
+    );
+    const disclosures = parseFactSheetDisclosures(pages, {
+      scheme: "Test Scheme",
+      title: { pattern: /Fund$/, fontSize: [20] },
+      allocation: { heading: /^Portfolio Allocation$/ },
+      holdings: { heading: /^Top 10 Holdings$/ },
+      narrative: {
+        managerCommentary: {
+          heading: /^Commentary$/,
+          band: { minLeft: 0, maxLeft: 900 },
+          languages: "en",
+        },
+      },
+      asOf: { pattern: /As at\s+(\d{1,2}\/\d{1,2}\/\d{4})/ },
+    });
+    expect(disclosures.map((d) => d.narrative?.managerCommentary?.sharedAcrossFunds)).toEqual([2, 2, undefined]);
+    expect(disclosures[2]?.narrative?.managerCommentary?.en).toBe("Gamma rose on stock selection.");
   });
 });

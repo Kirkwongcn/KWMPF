@@ -1230,6 +1230,23 @@ export function parseFactSheetDisclosures(
     } satisfies FactSheetDisclosure;
   });
 
+  // 同一份便覽多隻基金同一欄位一字不差，即係計劃共用的市場評論（ADR 0012），要標明。
+  const textCounts = new Map<string, number>();
+  const textKey = (field: string, text: NarrativeText) =>
+    `${field}\u0000${text.zh ?? ""}\u0000${text.en ?? ""}`;
+  for (const disclosure of disclosures) {
+    for (const [field, text] of Object.entries(disclosure.narrative ?? {})) {
+      const key = textKey(field, text);
+      textCounts.set(key, (textCounts.get(key) ?? 0) + 1);
+    }
+  }
+  for (const disclosure of disclosures) {
+    for (const [field, text] of Object.entries(disclosure.narrative ?? {})) {
+      const count = textCounts.get(textKey(field, text)) ?? 1;
+      if (count > 1) text.sharedAcrossFunds = count;
+    }
+  }
+
   const keys = disclosures.map(
     (disclosure) => `${disclosure.constituentFundName} ${disclosure.fundClassName ?? ""}`,
   );
