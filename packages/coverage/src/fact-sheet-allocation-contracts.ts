@@ -473,6 +473,35 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       fontSize: [15],
       fontFamily: /\+Arial$/,
     },
+    narrative: {
+      // 只有積金局副本。左欄投資目標（英文段、中文段），止於「Fund Performance
+      // 基金表現」；右欄基金資料表的「Fund Manager 基金經理」值係管理公司（同一格
+      // 中文值低 14 pt）；右欄下面基金評論（英文段、中文段），止於「Remarks 備註」。
+      investmentObjective: {
+        heading: /^Investment Objective$/,
+        // 左邊界逐版漂移（11–21）。
+        band: { minLeft: 5, maxLeft: 445 },
+        stopAt: /^(Fund Performance|基金表現)/,
+        minFontSize: 9.5,
+        maxGap: 24,
+        languages: "bilingual",
+      },
+      investmentManager: {
+        heading: /^Fund Manager$/,
+        band: { minLeft: 600, maxLeft: 900 },
+        sameLine: true,
+        maxDepth: 20,
+        languages: "bilingual",
+      },
+      managerCommentary: {
+        heading: /^Fund Commentary$/,
+        band: { minLeft: 455, maxLeft: 900 },
+        stopAt: /^(Remarks|備註)/,
+        minFontSize: 9.5,
+        maxGap: 30,
+        languages: "bilingual",
+      },
+    },
     allocation: {
       heading: /^Portfolio Allocation$/,
       headingLabel: () => "Portfolio Allocation 投資組合分佈",
