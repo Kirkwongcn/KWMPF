@@ -956,52 +956,16 @@ describe("cumulative returns", () => {
     ).toHaveAttribute("href", "https://example.test/official.pdf");
   });
 
-  it("shows editorial asset-class buckets separately from the verbatim table", async () => {
-    renderWithDisclosure(disclosure, {
-      mappedAllocation: {
-        official: false,
-        mapVersion: "2026-09-08",
-        asOf: "2025-11-30",
-        sourceHeading: "ASSET ALLOCATION 資產分佈",
-        buckets: { equity: 33, bond: 64.48, cashAndOther: 2.52 },
-      },
-    });
-
-    const mapped = await screen.findByRole("table", {
-      name: "編輯歸類的資產類別",
-    });
-    expect(
-      within(mapped).getByRole("rowheader", { name: "股票" }),
-    ).toBeVisible();
-    expect(within(mapped).getByText("33%")).toBeVisible();
-    expect(within(mapped).getByText("64.48%")).toBeVisible();
-    expect(within(mapped).getByText("2.52%")).toBeVisible();
-    expect(screen.getByText(/編輯歸類，非官方分類/)).toBeVisible();
-    expect(
-      screen.getByRole("table", { name: "ASSET ALLOCATION 資產分佈" }),
-    ).toBeVisible();
-  });
-
-  it("explains an unavailable editorial mapping without rewriting the official disclosure", async () => {
-    renderWithDisclosure(disclosure, {
-      mappedAllocation: {
-        official: false,
-        mapVersion: "2026-09-08",
-        asOf: "2025-11-30",
-        unavailable: true,
-        reason: "not-asset-class",
-      },
-    });
+  it("shows only the verbatim allocation table, with no editorial asset-class buckets", async () => {
+    renderWithDisclosure(disclosure);
 
     expect(
-      await screen.findByText(/目前未產生可用的三桶編輯歸類/),
+      await screen.findByRole("table", { name: "ASSET ALLOCATION 資產分佈" }),
     ).toBeVisible();
     expect(
       screen.queryByRole("table", { name: "編輯歸類的資產類別" }),
     ).not.toBeInTheDocument();
-    expect(
-      screen.getByRole("table", { name: "ASSET ALLOCATION 資產分佈" }),
-    ).toBeVisible();
+    expect(screen.queryByText(/編輯歸類|非官方分類|三桶/)).toBeNull();
   });
 
   it("says so when no fact sheet disclosure pairs with the fund at all", async () => {
@@ -1022,14 +986,9 @@ describe("cumulative returns", () => {
     return {
       snapshotId: "snapshot-interpretation-ui",
       fundClassId: "interpretation-ui",
-      comparisonGroup: "Hong Kong Equity",
-      comparisonGroupSource: "lipper",
+      comparisonGroup: "股票基金 - 香港股票基金",
+      comparisonGroupSource: "mpfa",
       values: {
-        equity: {
-          fund: unavailable ? null : 94,
-          groupAverage: unavailable ? null : 92,
-          official: false,
-        },
         top10Concentration: {
           fund: unavailable ? null : 33,
           groupAverage: unavailable ? null : 30,
@@ -1040,20 +999,6 @@ describe("cumulative returns", () => {
         },
       },
       provenance: {
-        equity: {
-          fundSourceLabel: "受託人基金便覽",
-          fundSourceUrl: "https://source.test/fund-factsheet.pdf",
-          fundFieldAsOf: null,
-          fundDocumentAsOf: "2026-05-31",
-          groupSourceLabel: "同組已核實基金便覽樣本（來源各異）",
-          groupSampleCount: unavailable ? 2 : 8,
-          groupMemberCount: unavailable ? 2 : 12,
-          groupSampleDates: {
-            from: "2026-02-28",
-            to: "2026-06-30",
-            undatedCount: 1,
-          },
-        },
         top10Concentration: {
           fundSourceLabel: "受託人基金便覽",
           fundSourceUrl: "https://source.test/fund-factsheet.pdf",
@@ -1086,12 +1031,6 @@ describe("cumulative returns", () => {
       interpretation: {
         thresholdVersion: "2026-09-10-trial-1",
         thresholdStatus: "trial",
-        equity: {
-          status: unavailable ? "insufficient-sample" : "similar",
-          text: unavailable
-            ? "股票配置（編輯歸類，非官方分類）：同組別樣本不足，未能比較。"
-            : "股票配置（編輯歸類，非官方分類） 94%，與同組別平均相若。",
-        },
         top10Concentration: {
           status: unavailable ? "insufficient-sample" : "higher",
           text: unavailable
@@ -1119,7 +1058,7 @@ describe("cumulative returns", () => {
             : {
                 snapshotId: "snapshot-interpretation-ui",
                 fundClass: fixture.fundClass,
-                comparisonGroup: "Hong Kong Equity",
+                comparisonGroup: "股票基金 - 香港股票基金",
                 provenance: {
                   sourceUrl: fixture.source.url,
                   dataAsOf: fixture.fundClass.dataAsOf,
@@ -1145,30 +1084,29 @@ describe("cumulative returns", () => {
 
     fireEvent.click(await screen.findByRole("button", { name: "基金解讀" }));
 
-    expect(await screen.findByText(/股票配置.*94%.*相若/)).toBeVisible();
-    expect(screen.getByText(/十大持倉佔比 33%.*高 3 個百分點/)).toBeVisible();
+    expect(
+      await screen.findByText(/十大持倉佔比 33%.*高 3 個百分點/),
+    ).toBeVisible();
+    expect(screen.queryByText(/股票配置|編輯歸類/)).toBeNull();
     expect(screen.getByText(/3年波幅 17%.*低 3 個百分點/)).toBeVisible();
     expect(screen.getByText(/規則版本 2026-09-10-trial-1/)).toBeVisible();
     expect(screen.getAllByText("8 / 12 隻已核實基金有可用數值")).toHaveLength(
-      3,
+      2,
     );
-    expect(
-      screen.getByText("欄位日期未明示；便覽日期 2026-05-31"),
-    ).toBeVisible();
     expect(
       screen.getAllByRole("link", {
         name: "受託人基金便覽（在新分頁開啟）",
       }),
-    ).toHaveLength(2);
+    ).toHaveLength(1);
     expect(
       screen.getByText(
-        "2026-02-28 至 2026-06-30；另有 1 筆有值樣本未明示欄位日期",
+        "2026-03-31 至 2026-05-31；另有 2 筆有值樣本未明示欄位日期",
       ),
     ).toBeVisible();
     expect(
       screen.getAllByText("同組已核實基金便覽樣本（來源各異）"),
-    ).toHaveLength(2);
-    expect(screen.getAllByRole("img")).toHaveLength(3);
+    ).toHaveLength(1);
+    expect(screen.getAllByRole("img")).toHaveLength(2);
     expect(fetchMock).toHaveBeenLastCalledWith(
       "https://api.test/fund-classes/interpretation-ui/interpretation",
     );
@@ -1179,8 +1117,8 @@ describe("cumulative returns", () => {
 
     fireEvent.click(await screen.findByRole("button", { name: "基金解讀" }));
 
-    expect(await screen.findAllByText("樣本不足")).toHaveLength(3);
-    expect(screen.getAllByText(/同組別樣本不足，未能比較/)).toHaveLength(3);
+    expect(await screen.findAllByText("樣本不足")).toHaveLength(2);
+    expect(screen.getAllByText(/同組別樣本不足，未能比較/)).toHaveLength(2);
     expect(screen.queryByRole("img")).not.toBeInTheDocument();
   });
 });

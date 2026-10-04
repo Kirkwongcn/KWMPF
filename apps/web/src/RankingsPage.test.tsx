@@ -294,19 +294,22 @@ describe("published return rankings", () => {
     expect(screen.getByLabelText("比較組別")).toHaveValue("Guaranteed Fund");
   });
 
-  it("falls back to every group when an old link names a retired platform category", async () => {
+  it("falls back to every group when an old link names a retired Lipper or platform category", async () => {
     vi.stubGlobal(
       "fetch",
       vi.fn().mockResolvedValue(
         Response.json({
           snapshotId: "snapshot-2026-07-31",
           periodYears: 1,
-          comparisonGroups: ["Global Equity", "Hong Kong Equity"],
+          comparisonGroups: [
+            "股票基金 - 環球股票基金",
+            "股票基金 - 香港股票基金",
+          ],
           methodology: {
             classification: {
-              provider: "Lipper",
-              dataset: "Hong Kong Pension Fund Classification",
-              capturedAt: "2026-08-27",
+              provider: "積金局強積金基金平台",
+              capturedAt: "2026-10-04",
+              official: true,
             },
           },
           rankings: [
@@ -316,8 +319,8 @@ describe("published return rankings", () => {
               constituentFundName: "港股基金",
               schemeName: "Scheme One",
               trusteeName: "Trustee One",
-              comparisonGroup: "Hong Kong Equity",
-              comparisonGroupSource: "lipper",
+              comparisonGroup: "股票基金 - 香港股票基金",
+              comparisonGroupSource: "mpfa",
               displayValue: "8.02%",
               rank: 1,
               dataAsOf: "2026-07-31",
@@ -342,7 +345,7 @@ describe("published return rankings", () => {
     ).toBeVisible();
     expect(screen.getByLabelText("比較組別")).toHaveValue("all");
     expect(screen.getByText("港股基金")).toBeVisible();
-    expect(screen.getByText(/期別 2026-08-27/)).toBeVisible();
+    expect(screen.getByText(/官方基金類型（擷取 2026-10-04）/)).toBeVisible();
   });
 
   it("explains how many funds are held out of the ranking as stale", async () => {

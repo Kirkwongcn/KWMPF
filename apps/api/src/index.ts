@@ -7,8 +7,9 @@ import {
   classificationOf,
   comparisonGroupFor,
   comparisonGroupSourceOf,
-  type Classification,
+  UNCLASSIFIED_GROUP,
 } from "./comparison-group";
+import { MPFA_FUND_TYPES } from "../../../packages/coverage/src/mpfa-fund-type";
 import {
   evaluateFreshness,
   fundOverviewGraceDays,
@@ -75,15 +76,29 @@ app.get("/fund-classes/:id", async (context) => {
     // 便覽的配置及十大持倉原文照錄，帶住自己的 `factSheetAsOf`（比平台快照落後幾個月）。
     // 配對唔到或者官方以圖表披露的基金冇呢一段，唔可以留白當零。
     factSheetDisclosure?: FactSheetDisclosure;
-    // 編輯歸類的三桶資產比例，不是官方分類。原文表仍在 factSheetDisclosure。
-    mappedAllocation?: MappedAllocation;
   };
+  // 基金分類只用積金局基金類型（ADR 0011）：舊快照可能仍帶 Lipper 分類或三桶歸類，一律唔再輸出。
+  const {
+    mappedAllocation: _mappedAllocation,
+    classification: _classification,
+    ...publication
+  } = published as typeof published & {
+    mappedAllocation?: unknown;
+    classification?: unknown;
+  };
+  const { lipperCategory: _lipperCategory, ...fundClass } =
+    published.fundClass as BrowseFundClass & {
+      lipperCategory?: string;
+    };
   const group = comparisonGroupFor(published.fundClass);
   const fundSizeAsOf = published.fundClass.fundSizeAsOf;
   return context.json({
-    ...published,
+    ...publication,
+    fundClass,
     comparisonGroup: group.name,
     comparisonGroupSource: group.source,
+    comparisonGroupFamily: group.family,
+    classification: classificationOf(),
     freshness: evaluateFreshness(
       published.fundClass.returnSources?.["1"]?.dataAsOf ??
         published.fundClass.returnsAsOf ??
@@ -152,27 +167,6 @@ type FactSheetDisclosure = {
   >;
 };
 
-type MappedAllocation =
-  | {
-      official: false;
-      mapVersion: string;
-      asOf?: string;
-      sourceHeading: string;
-      buckets: { equity: number; bond: number; cashAndOther: number };
-    }
-  | {
-      official: false;
-      mapVersion: string;
-      asOf?: string;
-      unavailable: true;
-      reason:
-        | "not-asset-class"
-        | "not-disclosed"
-        | "chart-only"
-        | "values-without-names"
-        | "overlaid-text-layer";
-    };
-
 type BrowseFundClass = {
   id: string;
   fundClassName: string;
@@ -181,7 +175,6 @@ type BrowseFundClass = {
   trusteeName: string;
   fundType: string;
   fundCategory?: string;
-  lipperCategory?: string;
   riskClass?: number;
   fundRiskIndicator?: number;
   annualizedReturn1y?: number;
@@ -203,7 +196,6 @@ type BrowseFundClass = {
 
 type PublishedFundPayload = {
   fundClass: BrowseFundClass & { unavailableFields?: string[] };
-  mappedAllocation?: MappedAllocation;
   factSheetDisclosure?: FactSheetDisclosure;
   provenance: { sourceUrl: string; dataAsOf: string };
 };
@@ -276,26 +268,6 @@ async function loadPublishedSearchFunds(
   );
 }
 
-async function loadClassification(
-  db: PublicationBindings["DB"],
-): Promise<Classification | null> {
-  const row = await db
-    .prepare(
-      `SELECT f.payload
-     FROM current_publication c
-     JOIN fund_class_versions f ON f.snapshot_id = c.snapshot_id
-     WHERE c.singleton = 1
-     LIMIT 1`,
-    )
-    .first<{ payload: string }>();
-
-  return row
-    ? classificationOf(
-        JSON.parse(row.payload) as { classification?: Classification },
-      )
-    : null;
-}
-
 function knownReturn(value: number | undefined) {
   return typeof value === "number" && Number.isFinite(value)
     ? value
@@ -325,6 +297,7 @@ app.get("/search", async (context) => {
       400,
     );
   const category = context.req.query("category")?.trim();
+  const family = context.req.query("family")?.trim();
   const fundType = context.req.query("fundType")?.trim();
   const fundCategory = context.req.query("fundCategory")?.trim();
   const trustee = context.req.query("trustee")?.trim();
@@ -372,6 +345,8 @@ app.get("/search", async (context) => {
       )
         return false;
       if (category && comparisonGroupFor(fundClass).name !== category)
+        return false;
+      if (family && comparisonGroupFor(fundClass).family !== family)
         return false;
       if (fundType && fundClass.fundType !== fundType) return false;
       if (fundCategory && fundClass.fundCategory !== fundCategory) return false;
@@ -422,6 +397,7 @@ app.get("/search", async (context) => {
         fundCategory: fundClass.fundCategory,
         comparisonGroup: group.name,
         comparisonGroupSource: group.source,
+        comparisonGroupFamily: group.family,
         riskClass: fundClass.riskClass,
         fundRiskIndicator: fundClass.fundRiskIndicator,
         annualizedReturn1y: fundClass.annualizedReturn1y,
@@ -452,6 +428,7 @@ app.get("/filters", async (context) => {
     return context.json({
       snapshotId: null,
       categories: [],
+      families: [],
       classification: null,
       fundTypes: [],
       trustees: [],
@@ -465,7 +442,8 @@ app.get("/filters", async (context) => {
   const riskClasses = new Set<number>();
 
   for (const fundClass of fundClasses) {
-    categories.add(comparisonGroupFor(fundClass).name);
+    const group = comparisonGroupFor(fundClass).name;
+    if (group !== UNCLASSIFIED_GROUP) categories.add(group);
     if (fundClass.fundType) fundTypes.add(fundClass.fundType);
     if (fundClass.trusteeName) trustees.add(fundClass.trusteeName);
     if (typeof fundClass.riskClass === "number")
@@ -474,8 +452,18 @@ app.get("/filters", async (context) => {
 
   return context.json({
     snapshotId: current.snapshot_id,
-    categories: [...categories].sort(),
-    classification: await loadClassification(context.env.DB),
+    // 積金局基金平台自己的次序（股票、債券、混合資產、保證、貨幣市場）。
+    categories: MPFA_FUND_TYPES.map((type) => type.zh).filter((name) =>
+      categories.has(name),
+    ),
+    families: [
+      ...new Set(
+        MPFA_FUND_TYPES.filter((type) => categories.has(type.zh)).map(
+          (type) => type.family.zh,
+        ),
+      ),
+    ],
+    classification: classificationOf(),
     fundTypes: [...fundTypes].sort(),
     trustees: [...trustees].sort(),
     riskClasses: [...riskClasses].sort((a, b) => a - b),
@@ -496,33 +484,22 @@ type ComparisonGroupStatsRow = {
 };
 
 function publishedComparisonGroupStats(row: ComparisonGroupStatsRow) {
-  const avgAllocation = row.avg_allocation
-    ? (JSON.parse(row.avg_allocation) as {
-        equity: number;
-        bond: number;
-        cashAndOther: number;
-      })
-    : null;
   const sourceDates = row.source_dates
     ? (JSON.parse(row.source_dates) as Partial<ComparisonGroupSourceDates>)
     : null;
   const completeSourceDates =
-    sourceDates?.allocation &&
-    sourceDates.top10Concentration &&
-    sourceDates.volatility3y
-      ? (sourceDates as ComparisonGroupSourceDates)
+    sourceDates?.top10Concentration && sourceDates.volatility3y
+      ? {
+          top10Concentration: sourceDates.top10Concentration,
+          volatility3y: sourceDates.volatility3y,
+        }
       : null;
   return {
     comparisonGroup: row.comparison_group,
     comparisonGroupSource: comparisonGroupSourceOf(row.comparison_group),
-    avgAllocation:
-      avgAllocation === null
-        ? null
-        : { official: false as const, ...avgAllocation },
     avgTop10Concentration: row.avg_top10_concentration,
     avgVolatility3y: row.avg_volatility_3y,
     fundCount: row.fund_count,
-    allocationCount: row.allocation_count,
     top10Count: row.top10_count,
     volatilityCount: row.volatility_count,
     insufficientSample: row.insufficient_sample === 1,
@@ -540,7 +517,7 @@ app.get("/fund-classes/:id/interpretation", async (context) => {
       {
         error: "Interpretation periods are not supported",
         reason:
-          "資產配置、十大持倉集中度及三年波幅均為發布快照當期資料，不會隨回報期間改變。",
+          "十大持倉集中度及三年波幅均為發布快照當期資料，不會隨回報期間改變。",
       },
       400,
     );
@@ -575,13 +552,7 @@ app.get("/fund-classes/:id/interpretation", async (context) => {
   }
 
   const group = publishedComparisonGroupStats(stats);
-  const mappedAllocation = published.mappedAllocation;
-  const equity =
-    mappedAllocation && !("unavailable" in mappedAllocation)
-      ? mappedAllocation.buckets.equity
-      : undefined;
   const values = {
-    equity,
     top10Concentration: top10Concentration(published.factSheetDisclosure),
     volatility3y: published.fundClass.unavailableFields?.includes(
       "fundRiskIndicator",
@@ -591,17 +562,9 @@ app.get("/fund-classes/:id/interpretation", async (context) => {
   };
   const interpretation = interpretFund(values, {
     comparisonGroup: group.comparisonGroup,
-    avgAllocation: group.avgAllocation
-      ? {
-          equity: group.avgAllocation.equity,
-          bond: group.avgAllocation.bond,
-          cashAndOther: group.avgAllocation.cashAndOther,
-        }
-      : null,
     avgTop10Concentration: group.avgTop10Concentration,
     avgVolatility3y: group.avgVolatility3y,
     fundCount: group.fundCount,
-    allocationCount: group.allocationCount,
     top10Count: group.top10Count,
     volatilityCount: group.volatilityCount,
     insufficientSample: group.insufficientSample,
@@ -621,11 +584,6 @@ app.get("/fund-classes/:id/interpretation", async (context) => {
     comparisonGroup: comparisonGroup.name,
     comparisonGroupSource: comparisonGroup.source,
     values: {
-      equity: {
-        fund: values.equity ?? null,
-        groupAverage: group.avgAllocation?.equity ?? null,
-        official: false,
-      },
       top10Concentration: {
         fund: values.top10Concentration ?? null,
         groupAverage: group.avgTop10Concentration,
@@ -636,16 +594,6 @@ app.get("/fund-classes/:id/interpretation", async (context) => {
       },
     },
     provenance: {
-      equity: {
-        fundSourceLabel: factsheetSourceLabel,
-        fundSourceUrl: disclosure?.factSheetUrl ?? null,
-        fundFieldAsOf: published.mappedAllocation?.asOf ?? null,
-        fundDocumentAsOf: disclosure?.factSheetAsOf ?? null,
-        groupSourceLabel: "同組已核實基金便覽樣本（來源各異）",
-        groupSampleCount: group.allocationCount,
-        groupMemberCount: group.fundCount,
-        groupSampleDates: groupSourceDates?.allocation ?? null,
-      },
       top10Concentration: {
         fundSourceLabel: factsheetSourceLabel,
         fundSourceUrl: disclosure?.factSheetUrl ?? null,
@@ -702,7 +650,15 @@ app.get("/comparison-group-stats", async (context) => {
     )
     .all<ComparisonGroupStatsRow>();
 
-  const groups = rows.results.map(publishedComparisonGroupStats);
+  // 依積金局基金平台的類型次序，而唔係字碼次序。
+  const order = new Map(MPFA_FUND_TYPES.map((type, index) => [type.zh, index]));
+  const groups = rows.results
+    .map(publishedComparisonGroupStats)
+    .sort(
+      (left, right) =>
+        (order.get(left.comparisonGroup) ?? Number.MAX_SAFE_INTEGER) -
+        (order.get(right.comparisonGroup) ?? Number.MAX_SAFE_INTEGER),
+    );
   if (requested && groups.length === 0) {
     return context.json({ error: "Comparison group not found" }, 404);
   }
@@ -842,7 +798,6 @@ app.get("/schemes", async (context) => {
         fundClassName: string;
         fundType: string;
         fundCategory?: string;
-        lipperCategory?: string;
         riskClass?: number;
         managementFee?: number;
         dataAsOf?: string;
@@ -1238,7 +1193,6 @@ app.get("/rankings", async (context) => {
   const parsed = rows.results.map((row) => ({
     snapshotId: row.snapshot_id,
     publication: JSON.parse(row.payload) as {
-      classification?: Classification;
       fundClass: {
         id: string;
         fundClassName: string;
@@ -1247,7 +1201,6 @@ app.get("/rankings", async (context) => {
         trusteeName: string;
         fundType?: string;
         fundCategory: string;
-        lipperCategory?: string;
         annualizedReturn1y?: number;
         annualizedReturn3y?: number;
         annualizedReturn5y?: number;
@@ -1317,8 +1270,12 @@ app.get("/rankings", async (context) => {
     }
     return [{ snapshotId, publication, value, dataAsOf, sourceUrl }];
   });
+  // 冇積金局基金類型的基金唔可以同人同組排名。
   const groups = Map.groupBy(
-    eligible,
+    eligible.filter(
+      ({ publication }) =>
+        comparisonGroupFor(publication.fundClass).name !== UNCLASSIFIED_GROUP,
+    ),
     ({ publication }) => comparisonGroupFor(publication.fundClass).name,
   );
   const precision = selected.displayPrecision;
@@ -1364,20 +1321,23 @@ app.get("/rankings", async (context) => {
 
   return context.json({
     snapshotId: rows.results[0]?.snapshot_id ?? null,
-    comparisonGroups: [
-      ...new Set(
+    comparisonGroups: (() => {
+      const present = new Set(
         parsed.map(
           ({ publication }) => comparisonGroupFor(publication.fundClass).name,
         ),
-      ),
-    ].sort(),
+      );
+      return MPFA_FUND_TYPES.map((type) => type.zh).filter((name) =>
+        present.has(name),
+      );
+    })(),
     metric,
     periodYears,
     excludedStaleCount,
     methodology: {
       metric: selected.methodology,
       grouping: "comparison_group",
-      classification: classificationOf(parsed[0]?.publication),
+      classification: classificationOf(),
       sortDirection: selected.sortDirection,
       displayPrecision: precision,
       freshness: {

@@ -115,18 +115,21 @@ while IFS= read -r fund_id; do
     --argjson published "$published" \
     '
       .provenance as $p
-      | ($p.equity.fundSourceUrl == $disclosure.factSheetUrl)
-        and ($p.equity.fundDocumentAsOf == $disclosure.factSheetAsOf)
-        and ($p.equity.fundFieldAsOf == ($published.mappedAllocation.asOf // null))
+      # ADR 0011：只用積金局基金類型，唔可以再出現 Lipper 或三桶編輯歸類。
+      | ($published.comparisonGroupSource == "mpfa")
+        and (.comparisonGroupSource == "mpfa")
+        and ($published | has("mappedAllocation") | not)
+        and ($published.fundClass | has("lipperCategory") | not)
+        and ($published.classification.official == true)
+        and ($p | has("equity") | not)
         and ($p.top10Concentration.fundSourceUrl == $disclosure.factSheetUrl)
         and ($p.top10Concentration.fundDocumentAsOf == $disclosure.factSheetAsOf)
         and ($p.top10Concentration.fundFieldAsOf == (if $disclosure.temporalScopes.topHoldings.kind == "point-in-time" then $disclosure.temporalScopes.topHoldings.asOf else null end))
         and ($p.volatility3y.fundSourceUrl == $platform.sourceUrl)
         and ($p.volatility3y.fundFieldAsOf == $platform.dataAsOf)
-        and ($p.equity.groupSourceLabel == "同組已核實基金便覽樣本（來源各異）")
         and ($p.top10Concentration.groupSourceLabel == "同組已核實基金便覽樣本（來源各異）")
         and ($p.volatility3y.groupSourceLabel == "積金局基金平台快照")
-        and ([ $p.equity, $p.top10Concentration, $p.volatility3y ] | all(.[];
+        and ([ $p.top10Concentration, $p.volatility3y ] | all(.[];
           (.groupSampleCount | type) == "number"
           and (.groupMemberCount | type) == "number"
           and .groupSampleCount <= .groupMemberCount

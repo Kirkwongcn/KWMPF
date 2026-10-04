@@ -156,7 +156,7 @@ export function PeerPosition({
           {returnRows.length > 0 && (
             <RangeChart
               title="本基金在同組的回報位置"
-              subtitle={`比較組別：${comparisonGroup}（非官方分類）· 各期間年率化回報，共同尺度`}
+              subtitle={`積金局基金類型：${comparisonGroup} · 各期間年率化回報，共同尺度`}
               legend={legend}
               rows={returnRows}
               note="只計同一快照內未過期的官方數值；不同期間是獨立披露，不構成時間走勢。"

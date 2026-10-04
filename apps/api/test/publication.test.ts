@@ -53,8 +53,13 @@ describe("publication snapshot", () => {
     expect(await response.json()).toEqual({
       snapshotId,
       fundClass: fixture.fundClass,
-      comparisonGroup: "Hong Kong Equity",
-      comparisonGroupSource: "lipper",
+      comparisonGroup: "股票基金 - 香港股票基金",
+      comparisonGroupSource: "mpfa",
+      comparisonGroupFamily: "股票基金",
+      classification: expect.objectContaining({
+        provider: "積金局強積金基金平台",
+        official: true,
+      }),
       provenance: {
         sourceUrl: fixture.source.url,
         dataAsOf: fixture.fundClass.dataAsOf,
@@ -162,8 +167,9 @@ describe("publication snapshot", () => {
         trusteeName: fundFixture.fundClass.trusteeName,
         fundType: fundFixture.fundClass.fundType,
         fundCategory: fundFixture.fundClass.fundCategory,
-        comparisonGroup: "Hong Kong Equity",
-        comparisonGroupSource: "lipper",
+        comparisonGroup: "股票基金 - 香港股票基金",
+        comparisonGroupSource: "mpfa",
+        comparisonGroupFamily: "股票基金",
         riskClass: fundFixture.fundClass.riskClass,
         fundRiskIndicator: fundFixture.fundClass.fundRiskIndicator,
         annualizedReturn1y: fundFixture.fundClass.annualizedReturn1y,
@@ -190,27 +196,24 @@ describe("publication snapshot", () => {
       {
         id: "equity-low",
         constituentFundName: "港股基金",
-        fundType: "Equity Fund",
-        fundCategory: "Hong Kong Equity Fund",
-        lipperCategory: "Hong Kong Equity",
+        fundType: "Equity Fund - Hong Kong Equity Fund",
+        fundCategory: "Equity Fund - Hong Kong",
         trusteeName: "受託人甲",
         riskClass: 6,
       },
       {
         id: "equity-high",
         constituentFundName: "環球股票基金",
-        fundType: "Equity Fund",
-        fundCategory: "Global Equity Fund",
-        lipperCategory: "Global Equity",
+        fundType: "Equity Fund - Global Equity Fund",
+        fundCategory: "Equity Fund - Global",
         trusteeName: "受託人乙",
         riskClass: 5,
       },
       {
-        // 計劃不在 Lipper 來源內，改以平台分類自成一組。
         id: "bond-fund",
         constituentFundName: "債券基金",
-        fundType: "Bond Fund",
-        fundCategory: "Global Bond Fund",
+        fundType: "Bond Fund - Global Bond Fund",
+        fundCategory: "Bond Fund - Global",
         trusteeName: "受託人甲",
         riskClass: 3,
       },
@@ -224,12 +227,6 @@ describe("publication snapshot", () => {
           fund.id,
           JSON.stringify({
             snapshotId,
-            classification: {
-              provider: "Lipper",
-              dataset: "Hong Kong Pension Fund Classification",
-              capturedAt: "2026-08-27",
-              official: false,
-            },
             fundClass: {
               ...fund,
               schemeName: "瀏覽測試計劃",
@@ -256,7 +253,9 @@ describe("publication snapshot", () => {
     await publishBrowseFixture();
 
     const results = (await (
-      await SELF.fetch("https://kwmpf.test/search?fundType=Equity+Fund")
+      await SELF.fetch(
+        "https://kwmpf.test/search?family=" + encodeURIComponent("股票基金"),
+      )
     ).json()) as { id: string }[];
 
     expect(results.map((result) => result.id).sort()).toEqual([
@@ -270,7 +269,9 @@ describe("publication snapshot", () => {
 
     const results = (await (
       await SELF.fetch(
-        "https://kwmpf.test/search?q=基金&fundType=Equity+Fund&trustee=" +
+        "https://kwmpf.test/search?q=基金&family=" +
+          encodeURIComponent("股票基金") +
+          "&trustee=" +
           encodeURIComponent("受託人甲"),
       )
     ).json()) as { id: string }[];
@@ -311,9 +312,8 @@ describe("publication snapshot", () => {
               constituentFundName: `寬度測試基金 ${index}`,
               schemeName: "測試計劃",
               trusteeName: "測試受託人",
-              fundType: "Equity Fund",
+              fundType: "Equity Fund - Global Equity Fund",
               fundCategory: "環球股票基金",
-              lipperCategory: "Global Equity",
               riskClass: 5,
               dataAsOf: "2026-07-31",
               verificationStatus: "verified",
@@ -345,7 +345,7 @@ describe("publication snapshot", () => {
     await publishBrowseFixture();
 
     const response = await SELF.fetch(
-      "https://kwmpf.test/search?fundType=Equity+Fund",
+      "https://kwmpf.test/search?family=" + encodeURIComponent("股票基金"),
     );
 
     expect(
@@ -371,43 +371,47 @@ describe("publication snapshot", () => {
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({
       snapshotId: "snapshot-browse-test",
-      categories: ["Global Equity", "Hong Kong Equity", "平台分類：Bond Fund"],
-      classification: {
-        provider: "Lipper",
-        dataset: "Hong Kong Pension Fund Classification",
-        capturedAt: "2026-08-27",
-        official: false,
-      },
-      fundTypes: ["Bond Fund", "Equity Fund"],
+      categories: [
+        "股票基金 - 環球股票基金",
+        "股票基金 - 香港股票基金",
+        "債券基金 - 環球債券基金",
+      ],
+      families: ["股票基金", "債券基金"],
+      classification: expect.objectContaining({
+        provider: "積金局強積金基金平台",
+        official: true,
+      }),
+      fundTypes: [
+        "Bond Fund - Global Bond Fund",
+        "Equity Fund - Global Equity Fund",
+        "Equity Fund - Hong Kong Equity Fund",
+      ],
       trustees: ["受託人乙", "受託人甲"],
       riskClasses: [3, 5, 6],
     });
   });
 
-  it("filters by Lipper category and keeps schemes outside the source in their own group", async () => {
+  it("filters by MPFA fund type and leaves a fund without an official type out of every group", async () => {
     await publishBrowseFixture();
 
     const grouped = (await (
-      await SELF.fetch("https://kwmpf.test/search?category=Hong+Kong+Equity")
+      await SELF.fetch(
+        "https://kwmpf.test/search?category=" +
+          encodeURIComponent("股票基金 - 香港股票基金"),
+      )
     ).json()) as { id: string; comparisonGroupSource: string }[];
     expect(grouped).toHaveLength(1);
     expect(grouped[0]).toMatchObject({
       id: "equity-low",
-      comparisonGroup: "Hong Kong Equity",
-      comparisonGroupSource: "lipper",
+      comparisonGroup: "股票基金 - 香港股票基金",
+      comparisonGroupSource: "mpfa",
+      comparisonGroupFamily: "股票基金",
     });
 
-    const unmapped = (await (
-      await SELF.fetch(
-        "https://kwmpf.test/search?category=" +
-          encodeURIComponent("平台分類：Bond Fund"),
-      )
-    ).json()) as { id: string; comparisonGroupSource: string }[];
-    expect(unmapped).toHaveLength(1);
-    expect(unmapped[0]).toMatchObject({
-      id: "bond-fund",
-      comparisonGroupSource: "platform",
-    });
+    const legacy = (await (
+      await SELF.fetch("https://kwmpf.test/search?category=Hong+Kong+Equity")
+    ).json()) as unknown[];
+    expect(legacy).toEqual([]);
   });
 
   it("summarizes the published coverage for the landing page", async () => {
@@ -449,7 +453,7 @@ describe("publication snapshot", () => {
         schemeName: fundFixture.fundClass.schemeName,
         trusteeName: fundFixture.fundClass.trusteeName,
         fundClassCount: 1,
-        categories: ["Hong Kong Equity"],
+        categories: ["股票基金 - 香港股票基金"],
         fundTypes: [fundFixture.fundClass.fundType],
         riskClassDistribution: { "6": 1 },
         managementFee: {
@@ -469,7 +473,7 @@ describe("publication snapshot", () => {
             constituentFundName: fundFixture.fundClass.constituentFundName,
             fundClassName: fundFixture.fundClass.fundClassName,
             fundType: fundFixture.fundClass.fundType,
-            comparisonGroup: "Hong Kong Equity",
+            comparisonGroup: "股票基金 - 香港股票基金",
             riskClass: fundFixture.fundClass.riskClass,
             dataAsOf: fundFixture.fundClass.dataAsOf,
             sourceUrl: fundFixture.source.url,
@@ -514,7 +518,7 @@ describe("publication snapshot", () => {
               trusteeName: "測試受託人",
               constituentFundName: fund.id,
               fundClassName: "Class A",
-              fundType: "Equity Fund",
+              fundType: "Equity Fund - Global Equity Fund",
               verificationStatus: "verified",
               ...(fund.returns[1] === undefined
                 ? {}
@@ -602,7 +606,7 @@ describe("publication snapshot", () => {
               trusteeName: "測試受託人",
               constituentFundName: fund.id,
               fundClassName: "Class A",
-              fundType: "Equity Fund",
+              fundType: "Equity Fund - Global Equity Fund",
               verificationStatus: "verified",
             },
           }),
@@ -675,7 +679,7 @@ describe("publication snapshot", () => {
               trusteeName: "測試受託人",
               constituentFundName: fund.id,
               fundClassName: "Class A",
-              fundType: "Equity Fund",
+              fundType: "Equity Fund - Global Equity Fund",
               dataAsOf: "2026-07-31",
               verificationStatus: "verified",
             },
@@ -705,7 +709,7 @@ describe("publication snapshot", () => {
     expect(undisclosed).not.toHaveProperty("factSheetDisclosure");
   });
 
-  it("serves the editorial asset-class buckets beside the verbatim fact sheet table", async () => {
+  it("never serves editorial classifications left in an older snapshot payload", async () => {
     const snapshotId = "snapshot-mapped-allocation";
     const mappedAllocation = {
       official: false,
@@ -728,13 +732,15 @@ describe("publication snapshot", () => {
         JSON.stringify({
           snapshotId,
           mappedAllocation,
+          classification: { provider: "Lipper", official: false },
           fundClass: {
             id: "fund-mapped",
+            lipperCategory: "Mixed Asset HKD Balanced",
             schemeName: "AIA MPF - Prime Value Choice",
             trusteeName: "測試受託人",
             constituentFundName: "Capital Stable Portfolio",
             fundClassName: "n.a.",
-            fundType: "Mixed Assets Fund",
+            fundType: "Mixed Assets Fund - 61% to 80% Equity",
             dataAsOf: "2026-07-31",
             verificationStatus: "verified",
           },
@@ -750,9 +756,20 @@ describe("publication snapshot", () => {
 
     const body = (await (
       await SELF.fetch("https://kwmpf.test/fund-classes/fund-mapped")
-    ).json()) as { mappedAllocation: unknown };
+    ).json()) as {
+      mappedAllocation?: unknown;
+      classification: unknown;
+      fundClass: Record<string, unknown>;
+      comparisonGroup: string;
+    };
 
-    expect(body.mappedAllocation).toEqual(mappedAllocation);
+    expect(body).not.toHaveProperty("mappedAllocation");
+    expect(body.fundClass).not.toHaveProperty("lipperCategory");
+    expect(body.classification).toMatchObject({
+      provider: "積金局強積金基金平台",
+      official: true,
+    });
+    expect(body.comparisonGroup).toBe("混合資產基金 - 61% 至 80% 股票");
   });
 
   it("serves the DIS constituent-fund tag from the published payload", async () => {
@@ -799,7 +816,7 @@ describe("publication snapshot", () => {
     expect(body.fundClass.isDisComponent).toBe("core_accumulation");
   });
 
-  it("serves frozen comparison-group averages from the snapshot, not a live recalculation", async () => {
+  it("serves frozen comparison-group averages from the snapshot, not a live recalculation, without three-bucket averages", async () => {
     const snapshotId = "snapshot-group-stats";
     await bindings.DB.prepare(
       "INSERT INTO publication_snapshots (snapshot_id, published_at) VALUES (?, ?)",
@@ -820,7 +837,7 @@ describe("publication snapshot", () => {
     )
       .bind(
         snapshotId,
-        "Hong Kong Equity",
+        "股票基金 - 香港股票基金",
         JSON.stringify({ equity: 92.5, bond: 2.5, cashAndOther: 5 }),
         31.2,
         18.4,
@@ -841,7 +858,7 @@ describe("publication snapshot", () => {
     )
       .bind(
         snapshotId,
-        "平台分類：Guaranteed Fund",
+        "保證基金",
         null,
         null,
         null,
@@ -860,30 +877,21 @@ describe("publication snapshot", () => {
     expect(all.snapshotId).toBe(snapshotId);
     expect(all.groups).toEqual([
       {
-        comparisonGroup: "Hong Kong Equity",
-        comparisonGroupSource: "lipper",
-        avgAllocation: {
-          official: false,
-          equity: 92.5,
-          bond: 2.5,
-          cashAndOther: 5,
-        },
+        comparisonGroup: "股票基金 - 香港股票基金",
+        comparisonGroupSource: "mpfa",
         avgTop10Concentration: 31.2,
         avgVolatility3y: 18.4,
         fundCount: 12,
-        allocationCount: 8,
         top10Count: 10,
         volatilityCount: 12,
         insufficientSample: false,
       },
       {
-        comparisonGroup: "平台分類：Guaranteed Fund",
-        comparisonGroupSource: "platform",
-        avgAllocation: null,
+        comparisonGroup: "保證基金",
+        comparisonGroupSource: "mpfa",
         avgTop10Concentration: null,
         avgVolatility3y: null,
         fundCount: 2,
-        allocationCount: 1,
         top10Count: 2,
         volatilityCount: 2,
         insufficientSample: true,
@@ -892,11 +900,12 @@ describe("publication snapshot", () => {
 
     const one = (await (
       await SELF.fetch(
-        "https://kwmpf.test/comparison-group-stats?comparisonGroup=Hong%20Kong%20Equity",
+        "https://kwmpf.test/comparison-group-stats?comparisonGroup=" +
+          encodeURIComponent("股票基金 - 香港股票基金"),
       )
     ).json()) as { groups: Array<{ comparisonGroup: string }> };
     expect(one.groups).toHaveLength(1);
-    expect(one.groups[0]?.comparisonGroup).toBe("Hong Kong Equity");
+    expect(one.groups[0]?.comparisonGroup).toBe("股票基金 - 香港股票基金");
 
     const missing = await SELF.fetch(
       "https://kwmpf.test/comparison-group-stats?comparisonGroup=Missing",
@@ -933,7 +942,7 @@ describe("publication snapshot", () => {
               trusteeName: "測試受託人",
               constituentFundName: fund.id,
               fundClassName: "Class A",
-              fundType: "Equity Fund",
+              fundType: "Equity Fund - Global Equity Fund",
               verificationStatus: "verified",
               ...(fund.dataAsOf === undefined
                 ? {}
@@ -1006,7 +1015,7 @@ describe("publication snapshot", () => {
               trusteeName: "測試受託人",
               constituentFundName: fund.id,
               fundClassName: "Class A",
-              fundType: "Equity Fund",
+              fundType: "Equity Fund - Global Equity Fund",
               managementFee: fund.fee,
               verificationStatus: "verified",
             },
@@ -1121,7 +1130,7 @@ describe("publication snapshot", () => {
               trusteeName: "比較受託人",
               constituentFundName: fund.constituentFundName,
               fundClassName: fund.fundClassName,
-              fundType: "Mixed Assets Fund",
+              fundType: "Mixed Assets Fund - 61% to 80% Equity",
               verificationStatus: "verified",
               ...(fund.component ? { isDisComponent: fund.component } : {}),
               ...(fund.fer === undefined ? {} : { latestFer: fund.fer }),
@@ -1270,7 +1279,7 @@ describe("publication snapshot", () => {
               schemeName: "測試計劃",
               trusteeName: "測試受託人",
               fundCategory: "環球股票基金",
-              lipperCategory: "Global Equity",
+              fundType: "Equity Fund - Global Equity Fund",
               annualizedReturn1y: fund.value,
               dataAsOf,
               verificationStatus: "verified",
@@ -1295,14 +1304,17 @@ describe("publication snapshot", () => {
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({
       snapshotId,
-      comparisonGroups: ["Global Equity"],
+      comparisonGroups: ["股票基金 - 環球股票基金"],
       metric: "return",
       periodYears: 1,
       excludedStaleCount: 0,
       methodology: {
         metric: "annualized_return",
         grouping: "comparison_group",
-        classification: null,
+        classification: expect.objectContaining({
+          provider: "積金局強積金基金平台",
+          official: true,
+        }),
         sortDirection: "descending",
         displayPrecision: 2,
         freshness: expect.objectContaining({ graceDays: 45 }),
@@ -1310,8 +1322,8 @@ describe("publication snapshot", () => {
       rankings: [
         expect.objectContaining({
           fundClassId: "fund-a",
-          comparisonGroup: "Global Equity",
-          comparisonGroupSource: "lipper",
+          comparisonGroup: "股票基金 - 環球股票基金",
+          comparisonGroupSource: "mpfa",
           displayValue: "8.12%",
           rank: 1,
         }),
@@ -1373,7 +1385,7 @@ describe("publication snapshot", () => {
               schemeName: "測試計劃",
               trusteeName: "測試受託人",
               fundCategory: "環球股票基金",
-              lipperCategory: "Global Equity",
+              fundType: "Equity Fund - Global Equity Fund",
               annualizedReturn1y: 1,
               annualizedReturn3y: fund.return3y,
               annualizedReturn5y: fund.return5y,
@@ -1457,7 +1469,7 @@ describe("publication snapshot", () => {
             schemeName: "測試計劃",
             trusteeName: "測試受託人",
             fundCategory: "環球股票基金",
-            lipperCategory: "Global Equity",
+            fundType: "Equity Fund - Global Equity Fund",
             annualizedReturn1y: 4.2,
             annualizedReturn5y: 6.1,
             annualizedReturn10y: 5.4,
@@ -1549,7 +1561,7 @@ describe("publication snapshot", () => {
             schemeName: "測試計劃",
             trusteeName: "測試受託人",
             fundCategory: "環球股票基金",
-            lipperCategory: "Global Equity",
+            fundType: "Equity Fund - Global Equity Fund",
             annualizedReturn1y: 9.99,
             dataAsOf: fund.dataAsOf,
             verificationStatus: "verified",
@@ -1620,7 +1632,7 @@ describe("publication snapshot", () => {
             schemeName: "測試計劃",
             trusteeName: "測試受託人",
             fundCategory: "環球股票基金",
-            lipperCategory: "Global Equity",
+            fundType: "Equity Fund - Global Equity Fund",
             annualizedReturn1y: 1,
             managementFee: fund.managementFee,
             feeCaps: fund.feeCaps,
@@ -1840,7 +1852,7 @@ describe("publication snapshot", () => {
       schemeName: "測試計劃",
       trusteeName: "測試受託人",
       fundCategory: "環球股票基金",
-      lipperCategory: "Global Equity",
+      fundType: "Equity Fund - Global Equity Fund",
       managementFee,
       dataAsOf,
       verificationStatus: "verified",
@@ -1949,22 +1961,14 @@ describe("publication snapshot", () => {
             constituentFundName: "測試基金",
             schemeName: "測試計劃",
             trusteeName: "測試受託人",
-            fundType: "Equity Fund",
+            fundType: "Equity Fund - Hong Kong Equity Fund",
             fundCategory: "Hong Kong Equity Fund",
-            lipperCategory: "Hong Kong Equity",
             verificationStatus: "verified",
             ...(options?.missingFundValues ? {} : { fundRiskIndicator: 17 }),
           },
           ...(options?.missingFundValues
             ? {}
             : {
-                mappedAllocation: {
-                  official: false,
-                  mapVersion: "test",
-                  asOf: "2026-06-30",
-                  sourceHeading: "Asset Allocation",
-                  buckets: { equity: 94, bond: 3, cashAndOther: 3 },
-                },
                 factSheetDisclosure: {
                   factSheetFile: "test-factsheet.pdf",
                   factSheetUrl: "https://source.test/test-factsheet.pdf",
@@ -1999,8 +2003,8 @@ describe("publication snapshot", () => {
     )
       .bind(
         snapshotId,
-        "Hong Kong Equity",
-        JSON.stringify({ equity: 92, bond: 3, cashAndOther: 5 }),
+        "股票基金 - 香港股票基金",
+        null,
         30,
         20,
         options?.insufficientSample ? 2 : 8,
@@ -2009,7 +2013,6 @@ describe("publication snapshot", () => {
         options?.insufficientSample ? 2 : 8,
         options?.insufficientSample ? 1 : 0,
         JSON.stringify({
-          allocation: { from: "2026-02-28", to: "2026-06-30", undatedCount: 1 },
           top10Concentration: {
             from: "2026-03-31",
             to: "2026-05-31",
@@ -2041,28 +2044,13 @@ describe("publication snapshot", () => {
     expect(await response.json()).toEqual({
       snapshotId,
       fundClassId: "interpretation-fund",
-      comparisonGroup: "Hong Kong Equity",
-      comparisonGroupSource: "lipper",
+      comparisonGroup: "股票基金 - 香港股票基金",
+      comparisonGroupSource: "mpfa",
       values: {
-        equity: { fund: 94, groupAverage: 92, official: false },
         top10Concentration: { fund: 33, groupAverage: 30 },
         volatility3y: { fund: 17, groupAverage: 20 },
       },
       provenance: {
-        equity: {
-          fundSourceLabel: "受託人基金便覽",
-          fundSourceUrl: "https://source.test/test-factsheet.pdf",
-          fundFieldAsOf: "2026-06-30",
-          fundDocumentAsOf: "2026-05-31",
-          groupSourceLabel: "同組已核實基金便覽樣本（來源各異）",
-          groupSampleCount: 8,
-          groupMemberCount: 8,
-          groupSampleDates: {
-            from: "2026-02-28",
-            to: "2026-06-30",
-            undatedCount: 1,
-          },
-        },
         top10Concentration: {
           fundSourceLabel: "受託人基金便覽",
           fundSourceUrl: "https://source.test/test-factsheet.pdf",
@@ -2095,10 +2083,6 @@ describe("publication snapshot", () => {
       interpretation: {
         thresholdVersion: "2026-09-10-trial-1",
         thresholdStatus: "trial",
-        equity: {
-          status: "similar",
-          text: "股票配置（編輯歸類，非官方分類） 94%，與同組別平均相若。",
-        },
         top10Concentration: {
           status: "higher",
           text: "十大持倉佔比 33%，比同組別平均高 3 個百分點。",
@@ -2128,7 +2112,7 @@ describe("publication snapshot", () => {
     expect(
       Object.values(body.values).every((value) => value.fund === null),
     ).toBe(true);
-    expect(body.interpretation.equity?.status).toBe("insufficient-sample");
+    expect(body.interpretation).not.toHaveProperty("equity");
     expect(body.interpretation.top10Concentration?.status).toBe(
       "insufficient-sample",
     );
@@ -2153,7 +2137,7 @@ describe("publication snapshot", () => {
     expect(await response.json()).toEqual({
       error: "Interpretation periods are not supported",
       reason:
-        "資產配置、十大持倉集中度及三年波幅均為發布快照當期資料，不會隨回報期間改變。",
+        "十大持倉集中度及三年波幅均為發布快照當期資料，不會隨回報期間改變。",
     });
   });
 });

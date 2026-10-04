@@ -36,8 +36,8 @@ type PublishedRankings = {
     freshness?: { graceDays: number; evaluatedOn: string };
     classification?: {
       provider: string;
-      dataset: string;
       capturedAt: string;
+      official: true;
     } | null;
   };
   rankings: RankingRow[];
@@ -149,7 +149,7 @@ export function RankingsPage({
     return () => controller.abort();
   }, [apiBaseUrl, period, metric]);
 
-  // 舊網址可能帶著已停用的平台分類組別。快照內完全沒有這個組別時退回「全部」，
+  // 舊網址可能帶著已停用的組別（例如 Lipper 分類）。快照內完全沒有這個組別時退回「全部」，
   // 並說明分類口徑已改；組別仍然存在但今期沒有合資格數值的情況維持原狀。
   const retiredGroup =
     publication?.comparisonGroups &&
@@ -267,10 +267,10 @@ export function RankingsPage({
             </p>
           </div>
           <details className="kw-toolbar__notes" open={mode === "analysis"}>
-            <summary>來源及比較方法（含非官方分類說明）</summary>
+            <summary>來源及比較方法（含基金類型說明）</summary>
             <p className="kw-muted">
               {metric === "return"
-                ? "只採用官方已披露的年率化回報；沒有該期間數值的基金不會入榜，本站不會由其他期間推算。同一比較組別內按回報由高至低排列。"
+                ? "只採用官方已披露的年率化回報；沒有該期間數值的基金不會入榜，本站不會由其他期間推算。同一積金局基金類型內按回報由高至低排列。"
                 : metric === "fee"
                   ? "管理費為官方公布的當前費率，不包括基金開支比率所涵蓋的歷史費用。"
                   : "波幅用官方公布的基金風險指標，即過去三年的年度化標準差。數字越低代表過往價格波動越小，不代表基金較佳或較適合你。成立不足三年的基金官方沒有這項數據，不會出現在此排名。"}
@@ -281,15 +281,10 @@ export function RankingsPage({
             </p>
             <p className="kw-muted">
               {publication?.methodology?.classification
-                ? `比較組別採用 ${publication.methodology.classification.provider}「${publication.methodology.classification.dataset}」（期別 ${publication.methodology.classification.capturedAt}），屬非官方來源；數值來自官方平台或受託人便覽，每筆保留自己的日期及來源。`
+                ? `比較組別即${publication.methodology.classification.provider}的官方基金類型（擷取 ${publication.methodology.classification.capturedAt}），本站不另設分類；數值來自官方平台或受託人便覽，每筆保留自己的日期及來源。`
                 : publication
-                  ? "比較組別分類屬非官方來源；數值來自官方平台或受託人便覽，每筆保留自己的日期及來源。"
+                  ? "比較組別即積金局的官方基金類型；數值來自官方平台或受託人便覽，每筆保留自己的日期及來源。"
                   : "比較組別及官方數據載入中。"}
-            </p>
-            <p className="kw-muted">
-              沒有 Lipper
-              類別的基金，會按積金局平台的基金種類／類別另行分組，並以「平台分類：」標示，不會併入同名
-              Lipper 組別。
             </p>
           </details>
         </div>
@@ -342,7 +337,7 @@ export function RankingsPage({
                           "官方基金名稱",
                           "類別",
                           "計劃",
-                          "比较組別（非官方分類）",
+                          "積金局基金類型",
                           "組内名次",
                           "指標",
                           "官方原值（%）",
@@ -717,7 +712,7 @@ function GroupSpread({
       table={{
         caption: `各比較組別的${valueLabel}分布`,
         columns: [
-          "比較組別（非官方分類）",
+          "積金局基金類型",
           "基金數目",
           "最低",
           "中位數（本站計算）",

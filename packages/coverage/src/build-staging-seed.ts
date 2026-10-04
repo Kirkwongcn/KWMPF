@@ -7,11 +7,7 @@ import {
 } from "./data-freshness";
 import { buildPublicationInputs } from "./build-publication-input";
 import { buildPublicationPayload } from "./build-publication-payload";
-import {
-  assertCategoryCoverage,
-  loadCategoryLookup,
-} from "./category-map-lookup";
-import { loadAllocationLabelLookup } from "./allocation-label-lookup";
+import { assertMpfaFundTypes } from "./mpfa-fund-type";
 import { buildComparisonGroupStats } from "./comparison-group-stats";
 import {
   assertDisNameTypeAgreement,
@@ -72,11 +68,8 @@ if (!payload.ready) {
   throw new Error(`Publication preflight blocked ${payload.preflight.blocked} records`);
 }
 
-const categories = await loadCategoryLookup(argument("--category-map"));
-assertCategoryCoverage(
-  categories,
-  payload.records.map((record) => record.fundClassId),
-);
+// 基金分類只用積金局基金類型（ADR 0011）；任何一隻對唔上官方清單就成份發布停下。
+assertMpfaFundTypes(sourceRecords);
 
 const factSheets = await loadFactSheetLookup(argument("--fact-sheet-sources"));
 assertFactSheetCoverage(
@@ -88,9 +81,6 @@ assertFactSheetCoverage(
 // 所以只逐個基金類別查，查唔到就唔寫入 payload，唔做覆蓋率斷言。
 const disclosures = await loadFactSheetDisclosureLookup(
   argument("--fact-sheet-disclosures"),
-);
-const allocationLabels = await loadAllocationLabelLookup(
-  argument("--allocation-label-map"),
 );
 
 const disFunds = sourceRecords.map((record) => ({
@@ -115,7 +105,6 @@ const publications = payload.records.map((record) => {
     ...record.identity,
     fundType: sourceRecord?.fundType ?? "",
     fundCategory: sourceRecord?.fundTypeDescriptor ?? "",
-    lipperCategory: categories.categoryOf(record.fundClassId),
     annualizedReturn1y: record.publicFields?.annualizedReturn1y,
     ...record.publicFields,
     ...(isDisComponent ? { isDisComponent } : {}),
@@ -124,29 +113,19 @@ const publications = payload.records.map((record) => {
     dataAsOf: record.dataAsOf,
   };
   const factSheetDisclosure = disclosures.disclosureOf(record.fundClassId);
-  const mappedAllocation = factSheetDisclosure
-    ? allocationLabels.mapOf(factSheetDisclosure)
-    : undefined;
   return {
     fundClassId: record.fundClassId,
     fundClass,
     factSheetDisclosure,
-    mappedAllocation,
     body: JSON.stringify({
       snapshotId,
       fundClass,
-      classification: {
-        provider: "Lipper",
-        dataset: "Hong Kong Pension Fund Classification",
-        capturedAt: categories.capturedAt,
-        official: false,
-      },
       schemeFactSheet: {
         url: factSheets.urlOf(record.identity.schemeName),
         capturedAt: factSheets.capturedAt,
         registerUrl: factSheets.registerUrl,
       },
-      ...(factSheetDisclosure ? { factSheetDisclosure, mappedAllocation } : {}),
+      ...(factSheetDisclosure ? { factSheetDisclosure } : {}),
       provenance: {
         sourceUrl: record.sourceUrl,
         dataAsOf: record.dataAsOf,
@@ -170,13 +149,10 @@ const groupStats = buildComparisonGroupStats(
   publications.map((publication) => ({
     fundClassId: publication.fundClassId,
     verificationStatus: publication.fundClass.verificationStatus,
-    lipperCategory: publication.fundClass.lipperCategory,
     fundType: publication.fundClass.fundType,
-    fundCategory: publication.fundClass.fundCategory,
     unavailableFields: publication.fundClass.unavailableFields,
     fundRiskIndicator: publication.fundClass.fundRiskIndicator,
     fundRiskAsOf: publication.fundClass.dataAsOf,
-    mappedAllocation: publication.mappedAllocation,
     factSheetDisclosure: publication.factSheetDisclosure,
   })),
 );
@@ -192,7 +168,7 @@ const statements = [
   ),
   ...groupStats.map(
     (row) =>
-      `INSERT INTO comparison_group_stats (snapshot_id, comparison_group, avg_allocation, avg_top10_concentration, avg_volatility_3y, fund_count, allocation_count, top10_count, volatility_count, insufficient_sample, source_dates) VALUES (${sqlString(snapshotId)}, ${sqlString(row.comparisonGroup)}, ${row.avgAllocation === null ? "NULL" : sqlString(JSON.stringify(row.avgAllocation))}, ${sqlNumber(row.avgTop10Concentration)}, ${sqlNumber(row.avgVolatility3y)}, ${row.fundCount}, ${row.allocationCount}, ${row.top10Count}, ${row.volatilityCount}, ${row.insufficientSample ? 1 : 0}, ${sqlString(JSON.stringify(row.sourceDates))});`,
+      `INSERT INTO comparison_group_stats (snapshot_id, comparison_group, avg_allocation, avg_top10_concentration, avg_volatility_3y, fund_count, allocation_count, top10_count, volatility_count, insufficient_sample, source_dates) VALUES (${sqlString(snapshotId)}, ${sqlString(row.comparisonGroup)}, NULL, ${sqlNumber(row.avgTop10Concentration)}, ${sqlNumber(row.avgVolatility3y)}, ${row.fundCount}, 0, ${row.top10Count}, ${row.volatilityCount}, ${row.insufficientSample ? 1 : 0}, ${sqlString(JSON.stringify(row.sourceDates))});`,
   ),
   `INSERT INTO current_publication (singleton, snapshot_id) VALUES (1, ${sqlString(snapshotId)});`,
 ];

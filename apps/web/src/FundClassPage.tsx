@@ -18,13 +18,13 @@ import {
 export type PublishedFundClass = {
   snapshotId: string;
   comparisonGroup?: string;
+  comparisonGroupFamily?: string | null;
   classification?: {
     provider: string;
-    dataset: string;
     capturedAt: string;
+    official: true;
   } | null;
   fundClass: {
-    lipperCategory?: string;
     trusteeName: string;
     schemeName: string;
     constituentFundName: string;
@@ -92,7 +92,6 @@ export type PublishedFundClass = {
     { status: "verified" | "stale"; dataAsOf: string }
   >;
   factSheetDisclosure?: FactSheetDisclosure;
-  mappedAllocation?: MappedAllocation;
 };
 
 /**
@@ -126,22 +125,6 @@ type FactSheetUnavailableKind =
   | "values-without-names"
   | "overlaid-text-layer";
 
-type MappedAllocation =
-  | {
-      official: false;
-      mapVersion: string;
-      asOf?: string;
-      sourceHeading: string;
-      buckets: { equity: number; bond: number; cashAndOther: number };
-    }
-  | {
-      official: false;
-      mapVersion: string;
-      asOf?: string;
-      unavailable: true;
-      reason: FactSheetUnavailableKind | "not-asset-class";
-    };
-
 type InterpretationFactor = {
   status:
     "higher" | "lower" | "similar" | "insufficient-sample" | "unavailable";
@@ -168,26 +151,24 @@ type InterpretationProvenance = {
 type InterpretationResponse = {
   snapshotId: string;
   comparisonGroup: string;
-  comparisonGroupSource: "lipper" | "platform";
+  comparisonGroupSource: "mpfa";
   values: Record<
-    "equity" | "top10Concentration" | "volatility3y",
+    "top10Concentration" | "volatility3y",
     { fund: number | null; groupAverage: number | null; official?: false }
   >;
   provenance: Record<
-    "equity" | "top10Concentration" | "volatility3y",
+    "top10Concentration" | "volatility3y",
     InterpretationProvenance
   >;
   interpretation: {
     thresholdVersion: string;
     thresholdStatus: string;
-    equity: InterpretationFactor;
     top10Concentration: InterpretationFactor;
     volatility3y: InterpretationFactor;
   };
 };
 
 const interpretationFactors = [
-  ["equity", "股票配置", "編輯歸類，非官方分類"],
   ["top10Concentration", "十大持倉集中度", "十大持倉披露比重合計"],
   ["volatility3y", "3年波幅", "官方基金風險指標"],
 ] as const;
@@ -207,7 +188,7 @@ function formatSampleDateRange(dates: MetricSampleDates | null): string {
 }
 
 function formatFundSourceDate(
-  factor: "equity" | "top10Concentration" | "volatility3y",
+  factor: "top10Concentration" | "volatility3y",
   evidence: InterpretationProvenance,
 ): string {
   if (evidence.fundFieldAsOf) {
@@ -414,40 +395,6 @@ const unavailableWording: Record<FactSheetUnavailableKind, string> = {
     "官方文件無法可靠讀取。便覽的文字層把另一隻基金的同一張表疊印在同一位置，分不清哪個數值屬哪一隻基金。",
 };
 
-const mappedBucketLabels = [
-  ["equity", "股票"],
-  ["bond", "債券"],
-  ["cashAndOther", "現金及其他"],
-] as const;
-
-function hasMappedBuckets(
-  mapped: MappedAllocation,
-): mapped is Extract<
-  MappedAllocation,
-  { buckets: { equity: number; bond: number; cashAndOther: number } }
-> {
-  return !("unavailable" in mapped && mapped.unavailable);
-}
-
-function mappedUnavailableNote(
-  mapped: MappedAllocation,
-  dimensions: FactSheetDisclosure["allocations"],
-): string | undefined {
-  if (hasMappedBuckets(mapped) || mapped.reason !== "not-asset-class")
-    return undefined;
-  if (
-    dimensions.some((dimension) =>
-      /asset\s+class|資產類別/i.test(dimension.heading),
-    )
-  )
-    return "便覽有下列資產類別披露，但目前未產生可用的三桶編輯歸類。請以保留原文的官方配置及表格為準。";
-  return "目前未產生可用的三桶編輯歸類。地區、行業及其他維度會各自保留原文，不會改寫為股票／債券／現金比例。";
-}
-
-function formatEditorialPercent(value: number) {
-  return `${value}%`;
-}
-
 function unavailableNote(field: string, disclosure: FactSheetDisclosure) {
   if (!disclosure.unavailableFields.includes(field)) return undefined;
   // 帶代號之前發布的快照沒有這一欄，當「未提供」處理，好過留白。
@@ -628,7 +575,6 @@ export function FundClassPage({
       ? declaration
       : undefined;
   };
-  const mappedAllocation = publication.mappedAllocation;
   const allocationAsOf = pointInTimeAsOf(
     factSheetDisclosure?.temporalScopes?.allocation,
   );
@@ -1036,61 +982,6 @@ export function FundClassPage({
                       資產配置截至 {allocationAsOf}。
                     </p>
                   )}
-                  {mappedAllocation &&
-                    hasMappedBuckets(mappedAllocation) &&
-                    factSheetDisclosure.allocations.every((dimension) =>
-                      isUsableAllocation(dimension.entries),
-                    ) && (
-                      <div
-                        className="kw-table-scroll"
-                        tabIndex={0}
-                        role="region"
-                        aria-label="編輯歸類的資產類別表，可左右捲動查看所有欄位"
-                      >
-                        <table
-                          className="kw-table kw-table--compact"
-                          aria-label="編輯歸類的資產類別"
-                        >
-                          <caption>編輯歸類的資產類別</caption>
-                          <thead>
-                            <tr>
-                              <th scope="col">項目</th>
-                              <th scope="col">比重</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {mappedBucketLabels.map(([key, label]) => (
-                              <tr key={key}>
-                                <th scope="row">{label}</th>
-                                <td className="kw-return">
-                                  {formatEditorialPercent(
-                                    mappedAllocation.buckets[key],
-                                  )}
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                        <p className="kw-muted" role="note">
-                          編輯歸類，非官方分類。對照表期別{" "}
-                          {mappedAllocation.mapVersion}
-                          。下面的表仍是便覽原文。
-                        </p>
-                      </div>
-                    )}
-                  {mappedAllocation &&
-                    mappedUnavailableNote(
-                      mappedAllocation,
-                      factSheetDisclosure.allocations,
-                    ) && (
-                      <p className="kw-muted" role="note">
-                        編輯歸類：
-                        {mappedUnavailableNote(
-                          mappedAllocation,
-                          factSheetDisclosure.allocations,
-                        )}
-                      </p>
-                    )}
                   {factSheetDisclosure.allocations.map((dimension) => (
                     <AllocationChart
                       key={"chart-" + dimension.heading}
@@ -1200,7 +1091,7 @@ export function FundClassPage({
                     </p>
                   )}
                   <p className="kw-muted">
-                    維度標題、項目名稱及證券名稱一律照便覽原文，比重的小數位數沿用披露本身。股票／債券／現金及其他三個桶是編輯歸類，不是官方分類，不會覆蓋原文。
+                    維度標題、項目名稱及證券名稱一律照便覽原文，比重的小數位數沿用披露本身。
                   </p>
                 </>
               ) : (
@@ -1255,13 +1146,11 @@ export function FundClassPage({
             </h2>
             <div className="kw-card">
               <p>
-                這隻基金的比較組別是 <strong>{comparisonGroup}</strong>
-                。排名只在同一組別內進行，不會與其他基金種類混合。
+                這隻基金的積金局基金類型是 <strong>{comparisonGroup}</strong>
+                。排名只在同一基金類型內進行，不會與其他類型混合。
               </p>
               <p className="kw-muted">
-                {publication.classification
-                  ? `分類來自 ${publication.classification.provider}「${publication.classification.dataset}」（期別 ${publication.classification.capturedAt}），屬非官方來源。官方平台基金種類為 ${fundClass.fundType}／${fundClass.fundCategory}。`
-                  : `官方平台基金種類為 ${fundClass.fundType}／${fundClass.fundCategory}。`}
+                {`分類來自${publication.classification?.provider ?? "積金局強積金基金平台"}（官方，擷取 ${publication.classification?.capturedAt ?? "日期未記錄"}）；平台英文原文為 ${fundClass.fundType}。受託人自述的基金描述「${fundClass.fundCategory}」只作參考，不用作分組。`}
               </p>
               <p className="kw-home-actions">
                 <a

@@ -186,7 +186,7 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
                   ))}
                 </tr>
                 <tr>
-                  <th scope="row">比較組別（非官方分類）</th>
+                  <th scope="row">積金局基金類型</th>
                   {funds.map((fund, index) => (
                     <td key={index}>{fund.comparisonGroup ?? "未提供"}</td>
                   ))}
