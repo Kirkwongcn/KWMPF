@@ -224,6 +224,43 @@ const PRINCIPAL_DIMENSION_ZH: Record<string, string> = {
   "Crediting Rating Breakdown": "信貸評級投資分布",
 };
 
+/**
+ * BCT Simple／Smart（前信安版面）：右欄「Investment Objective 投資目標」先英後中，之下係
+ * 「Balance of Investments 投資比重」（投資政策，唔屬目標）；投資經理喺左邊基金資料表，
+ * 標籤（left≈43）同經理名（left≈183）同一行開始；左下「Fund Commentary 基金評論」先英後中，
+ * 右邊係表現表（left≥347），之下係十大主要投資項目。
+ */
+const principalNarrative: FactSheetContract["narrative"] = {
+  investmentObjective: {
+    heading: /^(投資目標|Investment Objective)$/,
+    // 右上角「Risk Level 風險程度」格由 left≈775 起，唔屬目標。
+    band: { minLeft: 340, maxLeft: 770 },
+    stopAt: /^(Balance of Investments|投資比重)/,
+    minFontSize: 9,
+    maxGap: 24,
+    languages: "bilingual",
+  },
+  investmentManager: {
+    // 恒指追蹤基金的標籤換行位置唔同，寫「Investment Manager of」。
+    heading: /^Investment Manager( of)?$/,
+    // 經理名欄由 left≈175 至 183 起（逐隻基金唔同）；標籤欄由 left≈43 起。
+    band: { minLeft: 170, maxLeft: 340 },
+    sameLine: true,
+    // 恒指追蹤基金的經理名連「由 2022 年 9 月 19 日起」共六行；之後隔一大格先係成立日期。
+    maxDepth: 70,
+    maxGap: 18,
+    minFontSize: 9,
+    languages: "bilingual",
+  },
+  managerCommentary: {
+    heading: /^(基金評論|Fund Commentary)$/,
+    band: { minLeft: 30, maxLeft: 340 },
+    minFontSize: 9,
+    maxGap: 24,
+    languages: "bilingual",
+  },
+};
+
 const principalBlocks = {
   allocation: {
     heading: PRINCIPAL_DIMENSION,
@@ -438,6 +475,7 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       fontColor: ["#ffffff"],
     },
     ...principalBlocks,
+    narrative: principalNarrative,
     asOf: { pattern: AS_OF_SLASH },
   },
   {
@@ -449,6 +487,7 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       fontColor: ["#ffffff"],
     },
     ...principalBlocks,
+    narrative: principalNarrative,
     asOf: { pattern: AS_OF_SLASH },
   },
   {

@@ -209,3 +209,23 @@ describe("commentary shared across funds", () => {
     expect(disclosures[2]?.narrative?.managerCommentary?.en).toBe("Gamma rose on stock selection.");
   });
 });
+
+describe("Chinese layout spacing", () => {
+  it("drops layout gaps beside brackets in Chinese text but keeps English spacing", () => {
+    const result = readNarrative(
+      [
+        item(100, 40, "Investment Objective"),
+        item(120, 40, "信安資金管理 ( 亞洲 ) 有限公司"),
+        item(132, 40, "Principal Asset Management Company (Asia) Limited"),
+      ],
+      selector,
+    );
+    expect(result).toMatchObject({
+      status: "ok",
+      text: {
+        zh: "信安資金管理(亞洲)有限公司",
+        en: "Principal Asset Management Company (Asia) Limited",
+      },
+    });
+  });
+});

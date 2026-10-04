@@ -47,6 +47,12 @@ export type TextBlockSelector = {
    * （標題 top≈1036，持倉 1043），正文由標題下 24 pt 先開始。
    */
   minDepth?: number;
+  /**
+   * 值同標籤喺同一行開始（BCT Simple／Smart 的「Investment Manager of the Underlying APIF」
+   * 標籤喺左欄，經理名由同一行起喺右欄）。設咗就由標題嗰行開始讀 `band` 入面的文字，
+   * 唔係由標題下一行開始；`band` 要排除標籤欄。
+   */
+  sameLine?: boolean;
   /** 讀到符合呢個式樣的行就停（例如下一塊披露的標題）。 */
   stopAt?: RegExp;
   /** 略過符合呢個式樣的行（例如註腳說明）。 */
@@ -84,6 +90,13 @@ const LINE_TOLERANCE = 4;
 const BULLET = /^[•●▪■◆]\s*/;
 const CJK_CHAR = new RegExp(CJK.source);
 const CJK_SPACE = new RegExp(`(${CJK.source})\\s+(?=${CJK.source})`, "g");
+/** 中文同括號之間的排版空隙（「信安資金管理 ( 亞洲 ) 有限公司」），唔係原文空格。 */
+const CJK_BRACKET_SPACE = [
+  [new RegExp(`(${CJK.source})\\s+(?=[(（])`, "g"), "$1"],
+  [new RegExp(`([(（])\\s+(?=${CJK.source})`, "g"), "$1"],
+  [new RegExp(`(${CJK.source})\\s+(?=[)）])`, "g"), "$1"],
+  [new RegExp(`([)）])\\s+(?=${CJK.source})`, "g"), "$1"],
+] as const;
 
 type Line = { top: number; items: PdfTextItem[]; text: string };
 
@@ -168,7 +181,14 @@ function joinParagraphs(lines: string[], script: "zh" | "en") {
     paragraphs[last] = previous + glue + line;
   }
   return paragraphs
-    .map((paragraph) => paragraph.replace(CJK_SPACE, "$1").replace(/\s+/g, " ").trim())
+    .map((paragraph) =>
+      CJK_BRACKET_SPACE.reduce(
+        (text, [pattern, replacement]) => text.replace(pattern, replacement),
+        paragraph.replace(CJK_SPACE, "$1"),
+      )
+        .replace(/\s+/g, " ")
+        .trim(),
+    )
     .filter((paragraph) => paragraph !== "")
     .join("\n");
 }
@@ -205,7 +225,9 @@ export function readNarrative(
   const below = items.filter(
     (item) =>
       item.page === anchor.page &&
-      item.top > headingBottom + LINE_TOLERANCE &&
+      (selector.sameLine
+        ? item.top >= anchor.top - LINE_TOLERANCE
+        : item.top > headingBottom + LINE_TOLERANCE) &&
       (selector.minDepth === undefined || item.top >= anchor.top + selector.minDepth) &&
       (selector.maxDepth === undefined || item.top <= anchor.top + selector.maxDepth) &&
       inBand(item) &&
