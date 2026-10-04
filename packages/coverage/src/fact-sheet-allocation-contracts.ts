@@ -213,6 +213,31 @@ const hsbcBlocks = {
 } as const;
 
 /**
+ * 滙豐逐隻基金一頁：左欄「投資目標及其他詳情」先中文後英文，右欄「評論」先中文要點
+ * 後英文要點。評論欄之下係基金表現表，表頭有幾欄落喺同一欄界，所以喺累積回報表頭停。
+ * 註腳編號用 6 級字，正文 8 至 11 級（逐隻基金唔同）；環球股票基金評論欄之下仲有一個合併通告，
+ * 部分落喺同一欄界，同評論隔咗一大段空白，靠 `maxGap` 排除。
+ */
+const hsbcNarrative: FactSheetContract["narrative"] = {
+  investmentObjective: {
+    heading: /^(投資目標及其他詳情|Investment objectives and other particulars)$/,
+    band: { minLeft: 30, maxLeft: 400 },
+    stopAt: /^(基金資料|Fund details)/,
+    minFontSize: 7,
+    maxGap: 24,
+    languages: "bilingual",
+  },
+  managerCommentary: {
+    heading: /^(評論|Commentary)$/,
+    band: { minLeft: 590, maxLeft: 892 },
+    stopAt: /Cumulative return|累\s*積\s*回\s*報/,
+    minFontSize: 7,
+    maxGap: 24,
+    languages: "bilingual",
+  },
+};
+
+/**
  * MASS：積金局副本同受託人官網逐隻基金那份係同一套版面（藍色基金名做頁眉、右邊圓餅圖
  * 標註、左下角十大持倉），只有截至日期的寫法唔同，所以標題同兩塊披露共用。
  */
@@ -580,6 +605,7 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       name: (text) => text.replace(/^•\s*/, ""),
     },
     ...hsbcBlocks,
+    narrative: hsbcNarrative,
     asOf: { pattern: /All information as at\s+(\d{1,2}\/\d{1,2}\/\d{4})/i },
   },
   {

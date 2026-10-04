@@ -1,4 +1,10 @@
 import {
+  readNarrative,
+  type NarrativeField,
+  type NarrativeText,
+  type TextBlockSelector,
+} from "./fact-sheet-narrative";
+import {
   CJK,
   NUMERIC_FRAGMENT,
   documentOrder,
@@ -27,6 +33,7 @@ import type {
  */
 
 export type FactSheetSource = "trustee" | "mpfa-registry";
+
 
 export type AllocationEntry = { label: string; percent: number };
 
@@ -59,6 +66,8 @@ export type FactSheetDisclosure = {
   temporalScopes?: FactSheetTemporalScopes;
   allocations: AllocationDimension[];
   topHoldings: TopHolding[];
+  /** 官方文字欄位（ADR 0012），只有契約聲明咗嘅欄位先會出現。 */
+  narrative?: Partial<Record<NarrativeField, NarrativeText>>;
   unavailableFields: string[];
   /** 走 `unavailableFields` 的原因，逐項寫明，供配對報告逐份列出。 */
   unavailableReasons: Record<string, string>;
@@ -238,6 +247,11 @@ export type FactSheetContract = {
   title: TitleSelector;
   allocation: BlockSelector;
   holdings: BlockSelector;
+  /**
+   * 官方文字欄位（投資目標、基金經理評論、市場預測、投資經理）。聲明咗就一定要讀到，
+   * 讀唔到就走 `unavailableFields`；冇聲明即係未做呢個計劃，網站顯示「未取得」。
+   */
+  narrative?: Partial<Record<NarrativeField, TextBlockSelector>>;
   /** Explicit temporal evidence tied to a field; never inherit the document date implicitly. */
   fieldScopes?: Partial<
     Record<FactSheetDataField, FactSheetFieldScopeSelector>
@@ -492,7 +506,7 @@ function withinSection(item: PdfTextItem, section: FactSheetSection) {
   return !overlaid(item, section);
 }
 
-function sectionItems(pages: PdfPage[], section: FactSheetSection) {
+export function sectionItems(pages: PdfPage[], section: FactSheetSection) {
   return documentOrder(pages).filter((item) => withinSection(item, section));
 }
 
@@ -1177,6 +1191,30 @@ export function parseFactSheetDisclosures(
       }
     }
 
+    const narrative: Partial<Record<NarrativeField, NarrativeText>> = {};
+    const narrativeSelectors = Object.entries(contract.narrative ?? {}) as [
+      NarrativeField,
+      TextBlockSelector,
+    ][];
+    for (const [field, selector] of narrativeSelectors) {
+      const stopHeadings = [
+        contract.allocation.heading,
+        contract.holdings.heading,
+        ...narrativeSelectors
+          .filter(([other]) => other !== field)
+          .map(([, other]) => other.heading),
+      ];
+      const result = readNarrative(items, selector, stopHeadings);
+      if (result.status === "ok") {
+        narrative[field] = result.text;
+        continue;
+      }
+      unavailableFields.push(field);
+      unavailableReasons[field] = result.reason;
+      unavailableKinds[field] =
+        result.status === "overlaid" ? "overlaid-text-layer" : "not-disclosed";
+    }
+
     return {
       schemeName: contract.scheme,
       constituentFundName: section.name,
@@ -1185,6 +1223,7 @@ export function parseFactSheetDisclosures(
       temporalScopes,
       allocations,
       topHoldings,
+      ...(narrativeSelectors.length > 0 ? { narrative } : {}),
       unavailableFields,
       unavailableReasons,
       unavailableKinds,

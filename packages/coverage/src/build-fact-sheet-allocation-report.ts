@@ -76,6 +76,7 @@ export type FactSheetDisclosureFile = {
     temporalScopes?: FactSheetDisclosure["temporalScopes"];
     allocations: FactSheetDisclosure["allocations"];
     topHoldings: FactSheetDisclosure["topHoldings"];
+    narrative?: FactSheetDisclosure["narrative"];
     unavailableFields: string[];
     unavailableReasons: Record<string, string>;
     unavailableKinds: FactSheetDisclosure["unavailableKinds"];
@@ -378,6 +379,7 @@ if (import.meta.main) {
           : {}),
         allocations: disclosure.allocations,
         topHoldings: disclosure.topHoldings,
+        ...(disclosure.narrative ? { narrative: disclosure.narrative } : {}),
         unavailableFields: disclosure.unavailableFields,
         unavailableReasons: disclosure.unavailableReasons,
         unavailableKinds: disclosure.unavailableKinds,
