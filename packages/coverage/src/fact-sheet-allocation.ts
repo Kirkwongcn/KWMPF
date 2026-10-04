@@ -1,4 +1,13 @@
 import {
+  readAppendixNarrative,
+  readNarrativeField,
+  type AppendixNarrativeSpec,
+  type NarrativeReadResult,
+  type NarrativeField,
+  type NarrativeText,
+  type TextBlockSelector,
+} from "./fact-sheet-narrative";
+import {
   CJK,
   NUMERIC_FRAGMENT,
   documentOrder,
@@ -28,6 +37,7 @@ import type {
 
 export type FactSheetSource = "trustee" | "mpfa-registry";
 
+
 export type AllocationEntry = { label: string; percent: number };
 
 /** 一個披露維度。`heading` 是便覽自己用的標題原文，不是我們改寫的維度名。 */
@@ -48,7 +58,8 @@ export type FactSheetUnavailableKind =
   | "not-disclosed"
   | "chart-only"
   | "values-without-names"
-  | "overlaid-text-layer";
+  | "overlaid-text-layer"
+  | "unreadable-layout";
 
 export type FactSheetDisclosure = {
   schemeName: string;
@@ -59,6 +70,8 @@ export type FactSheetDisclosure = {
   temporalScopes?: FactSheetTemporalScopes;
   allocations: AllocationDimension[];
   topHoldings: TopHolding[];
+  /** 官方文字欄位（ADR 0012），只有契約聲明咗嘅欄位先會出現。 */
+  narrative?: Partial<Record<NarrativeField, NarrativeText>>;
   unavailableFields: string[];
   /** 走 `unavailableFields` 的原因，逐項寫明，供配對報告逐份列出。 */
   unavailableReasons: Record<string, string>;
@@ -238,6 +251,27 @@ export type FactSheetContract = {
   title: TitleSelector;
   allocation: BlockSelector;
   holdings: BlockSelector;
+  /**
+   * 官方文字欄位（投資目標、基金經理評論、市場預測、投資經理）。聲明咗就一定要讀到，
+   * 讀唔到就走 `unavailableFields`；冇聲明即係未做呢個計劃，網站顯示「未取得」。
+   */
+  /** 一個欄位可以由幾份契約合併（中英分頁印），見 `readNarrativeField`。 */
+  narrative?: Partial<Record<NarrativeField, TextBlockSelector | TextBlockSelector[]>>;
+  /**
+   * 文字欄位喺邊度搵：`"section"`（預設）只喺基金區段內；`"document"` 即係成份檔，
+   * 只限逐隻基金一份便覽（強積金集成信託的投資目標印喺第一頁，基金標題喺第二頁）。
+   * 一份檔多過一個基金區段而用 `"document"` 係契約錯，直接報錯。
+   */
+  narrativeScope?: "section" | "document";
+  /**
+   * 整版疊印（`TitleSelector.overlaidPages`）時文字欄位用的分層記號：每一版各印一次、
+   * 而且係嗰版最後落筆的固定標題（永明「Manager’s Commentary」）。每版的文字落筆喺
+   * 上一版記號之後、自己記號或之前；疊上去嗰版會喺佢自己標題之前已經開始落筆，所以
+   * 唔可以用標題切。見 `layerItems`。
+   */
+  narrativeLayerEnd?: RegExp;
+  /** 評論集中印喺附錄（中銀保誠），按基金名稱小標題讀，見 `readAppendixNarrative`。 */
+  narrativeAppendix?: { field: NarrativeField } & AppendixNarrativeSpec;
   /** Explicit temporal evidence tied to a field; never inherit the document date implicitly. */
   fieldScopes?: Partial<
     Record<FactSheetDataField, FactSheetFieldScopeSelector>
@@ -271,7 +305,7 @@ export type FactSheetSection = {
    * 整版疊印時，本頁自己嗰一層嘅落筆範圍上界（見 `TitleSelector.overlaidPages`）。
    * 座標同疊上去嗰版完全重疊，只有呢個界分得開。
    */
-  layer?: { page: number; endDrawIndex: number };
+  layer?: { page: number; endDrawIndex: number; titleDrawIndex: number };
 };
 
 const PERCENT_ITEM = /^\(?([+-]?\d+(?:\.\d+)?)\s*%\)?$/;
@@ -463,7 +497,7 @@ export function findSections(
         ? { page: next.page, top: next.top }
         : { page: lastPage.number, top: Number.POSITIVE_INFINITY },
       ...(Number.isFinite(endDrawIndex)
-        ? { layer: { page: item.page, endDrawIndex } }
+        ? { layer: { page: item.page, endDrawIndex, titleDrawIndex: item.drawIndex } }
         : {}),
     };
   });
@@ -485,14 +519,18 @@ function overlaid(item: PdfTextItem, section: FactSheetSection) {
   );
 }
 
-function withinSection(item: PdfTextItem, section: FactSheetSection) {
+function withinSectionBounds(item: PdfTextItem, section: FactSheetSection) {
   if (item.page < section.start.page || item.page > section.end.page) return false;
   if (item.page === section.start.page && item.top < section.start.top) return false;
   if (item.page === section.end.page && item.top >= section.end.top) return false;
-  return !overlaid(item, section);
+  return true;
 }
 
-function sectionItems(pages: PdfPage[], section: FactSheetSection) {
+function withinSection(item: PdfTextItem, section: FactSheetSection) {
+  return withinSectionBounds(item, section) && !overlaid(item, section);
+}
+
+export function sectionItems(pages: PdfPage[], section: FactSheetSection) {
   return documentOrder(pages).filter((item) => withinSection(item, section));
 }
 
@@ -1099,6 +1137,79 @@ function overlaidReason(lines: string[]) {
   return `${lines.length} rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: ${describe(lines)}`;
 }
 
+/** 文字欄位讀唔到的狀態對應 `unavailableKinds` 代號。 */
+function narrativeUnavailableKind(
+  status: Exclude<NarrativeReadResult["status"], "ok">,
+): FactSheetUnavailableKind {
+  if (status === "overlaid") return "overlaid-text-layer";
+  if (status === "unreadable-layout") return "unreadable-layout";
+  return "not-disclosed";
+}
+
+/**
+ * 區段內按分層記號切出本版的文字（見 `FactSheetContract.narrativeLayerEnd`）。
+ * 一頁有幾個記號，就有幾版；本版係本區段標題落筆之後第一個記號收尾嗰一段（標題頁），
+ * 其他頁用最先落筆嗰版。
+ */
+function layerItems(
+  pages: PdfPage[],
+  section: FactSheetSection,
+  marker: RegExp,
+  titleSelector: TitleSelector,
+) {
+  return pages.flatMap((page) => {
+    const inRange = page.items.filter((item) =>
+      withinSectionBounds(item, section),
+    );
+    const markers = page.items
+      .filter((item) => marker.test(item.text.trim()))
+      .map((item) => item.drawIndex)
+      .sort((a, b) => a - b);
+    // 記號數目要同本頁疊印的版數一樣，本版亦要搵到自己的記號；對唔上就退返用標題
+    // 落筆次序切（`withinSection`），令疊印檢查照樣把關，唔會把幾版文字混埋。
+    const layers = page.items.filter((item) => matchesTitle(item, titleSelector)).length;
+    const title = section.layer?.page === page.number ? section.layer.titleDrawIndex : -1;
+    const own = markers.findIndex((drawIndex) => drawIndex >= title);
+    if (markers.length <= 1 || own < 0 || (section.layer && markers.length !== layers)) {
+      return inRange.filter((item) => withinSection(item, section));
+    }
+    const start = own === 0 ? -1 : markers[own - 1]!;
+    const end = markers[own]!;
+    return inRange.filter((item) => item.drawIndex > start && item.drawIndex <= end);
+  });
+}
+
+/**
+ * 同一份便覽（或者同一計劃同一期逐隻基金的便覽）多隻基金的評論或市場預測一字不差，
+ * 即係計劃共用的市場評論（ADR 0012），記低共用隻數，網站要標明唔係基金專屬。
+ * 每次重新計，唔會累加上一次的結果。
+ */
+export function markSharedNarrative(disclosures: FactSheetDisclosure[]) {
+  const textCounts = new Map<string, number>();
+  // 同一期先算：逐隻基金一份便覽時，唔同期的檔案即使評論一樣都唔當共用。
+  const textKey = (disclosure: FactSheetDisclosure, field: string, text: NarrativeText) =>
+    `${disclosure.factSheetAsOf}\u0000${field}\u0000${text.zh ?? ""}\u0000${text.en ?? ""}`;
+  for (const disclosure of disclosures) {
+    for (const [field, text] of Object.entries(disclosure.narrative ?? {})) {
+      if (!SHARED_FIELDS.has(field)) continue;
+      const key = textKey(disclosure, field, text);
+      textCounts.set(key, (textCounts.get(key) ?? 0) + 1);
+    }
+  }
+  for (const disclosure of disclosures) {
+    for (const [field, text] of Object.entries(disclosure.narrative ?? {})) {
+      if (!SHARED_FIELDS.has(field)) continue;
+      const count = textCounts.get(textKey(disclosure, field, text)) ?? 1;
+      if (count > 1) text.sharedAcrossFunds = count;
+      else delete text.sharedAcrossFunds;
+    }
+  }
+}
+
+/** 會被標記為計劃共用的文字欄位。 */
+// 市場預測只係一個評級字（永明「Neutral」），多隻基金相同唔代表係共用評論，唔計。
+const SHARED_FIELDS = new Set<string>(["managerCommentary"]);
+
 export function parseFactSheetDisclosures(
   pages: PdfPage[],
   contract: FactSheetContract,
@@ -1177,6 +1288,53 @@ export function parseFactSheetDisclosures(
       }
     }
 
+    const narrative: Partial<Record<NarrativeField, NarrativeText>> = {};
+    if (contract.narrativeScope === "document" && sections.length > 1) {
+      throw new Error(
+        `${contract.scheme}: narrativeScope "document" needs one fund per file, found ${sections.length} sections`,
+      );
+    }
+    const narrativeItems =
+      contract.narrativeScope === "document"
+        ? pages.flatMap((page) => page.items)
+        : contract.narrativeLayerEnd
+          ? layerItems(pages, section, contract.narrativeLayerEnd, contract.title)
+          : items;
+    const narrativeSelectors = Object.entries(contract.narrative ?? {}) as [
+      NarrativeField,
+      TextBlockSelector | TextBlockSelector[],
+    ][];
+    for (const [field, selector] of narrativeSelectors) {
+      const stopHeadings = [
+        contract.allocation.heading,
+        contract.holdings.heading,
+        ...narrativeSelectors
+          .filter(([other]) => other !== field)
+          .flatMap(([, other]) => (Array.isArray(other) ? other : [other]))
+          .map((other) => other.heading),
+      ];
+      const result = readNarrativeField(narrativeItems, selector, stopHeadings);
+      if (result.status === "ok") {
+        narrative[field] = result.text;
+        continue;
+      }
+      unavailableFields.push(field);
+      unavailableReasons[field] = result.reason;
+      unavailableKinds[field] = narrativeUnavailableKind(result.status);
+    }
+
+    if (contract.narrativeAppendix) {
+      const { field, ...spec } = contract.narrativeAppendix;
+      const result = readAppendixNarrative(pages, section.name, spec);
+      if (result.status === "ok") {
+        narrative[field] = result.text;
+      } else {
+        unavailableFields.push(field);
+        unavailableReasons[field] = result.reason;
+        unavailableKinds[field] = narrativeUnavailableKind(result.status);
+      }
+    }
+
     return {
       schemeName: contract.scheme,
       constituentFundName: section.name,
@@ -1185,11 +1343,14 @@ export function parseFactSheetDisclosures(
       temporalScopes,
       allocations,
       topHoldings,
+      ...(narrativeSelectors.length > 0 || contract.narrativeAppendix ? { narrative } : {}),
       unavailableFields,
       unavailableReasons,
       unavailableKinds,
     } satisfies FactSheetDisclosure;
   });
+
+  markSharedNarrative(disclosures);
 
   const keys = disclosures.map(
     (disclosure) => `${disclosure.constituentFundName} ${disclosure.fundClassName ?? ""}`,

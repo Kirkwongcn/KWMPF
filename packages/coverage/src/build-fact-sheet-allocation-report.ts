@@ -3,6 +3,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { promisify } from "node:util";
 import {
+  markSharedNarrative,
   parseFactSheetDisclosures,
   type FactSheetDisclosure,
   type FactSheetSource,
@@ -76,6 +77,7 @@ export type FactSheetDisclosureFile = {
     temporalScopes?: FactSheetDisclosure["temporalScopes"];
     allocations: FactSheetDisclosure["allocations"];
     topHoldings: FactSheetDisclosure["topHoldings"];
+    narrative?: FactSheetDisclosure["narrative"];
     unavailableFields: string[];
     unavailableReasons: Record<string, string>;
     unavailableKinds: FactSheetDisclosure["unavailableKinds"];
@@ -182,6 +184,11 @@ export async function parseFactSheetCandidate(
       },
       disclosure,
     });
+  }
+  // 逐隻基金一份便覽（富達、強積金集成信託）：同一計劃同一期的評論逐份分開，
+  // 共用評論要跨份數。
+  if (candidate.files.some((entry) => entry.constituentFund !== undefined)) {
+    markSharedNarrative(parsed.map((item) => item.disclosure));
   }
   return parsed;
 }
@@ -378,6 +385,7 @@ if (import.meta.main) {
           : {}),
         allocations: disclosure.allocations,
         topHoldings: disclosure.topHoldings,
+        ...(disclosure.narrative ? { narrative: disclosure.narrative } : {}),
         unavailableFields: disclosure.unavailableFields,
         unavailableReasons: disclosure.unavailableReasons,
         unavailableKinds: disclosure.unavailableKinds,

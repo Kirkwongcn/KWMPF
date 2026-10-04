@@ -27,6 +27,14 @@ export type PdfTextItem = {
    * 就係 `undefined`，接字時只靠水平空隙判斷。
    */
   startsWord?: boolean;
+  /**
+   * `pdftohtml` 原文段落頭／尾有空格（例如「CSI HK 」「100」「 Tracker」三段座標黐埋），
+   * `text` 已經修剪咗，呢度記低。只有原文文字欄位接字時用（見 `joinItems` 的
+   * `explicitSpaces`，該模式唔再用 `startsWord`）；配置及持倉標籤照舊只靠空隙及
+   * `startsWord`。
+   */
+  spaceBefore?: true;
+  spaceAfter?: true;
 };
 
 export type PdfPage = {
@@ -64,8 +72,7 @@ function decode(value: string) {
       String.fromCodePoint(Number.parseInt(code, 16)),
     )
     .replaceAll(/&[a-z]+;/gi, (entity) => ENTITIES[entity.toLowerCase()] ?? " ")
-    .replaceAll(/\s+/g, " ")
-    .trim();
+    .replaceAll(/\s+/g, " ");
 }
 
 export function parsePdfXml(xml: string): PdfPage[] {
@@ -88,7 +95,8 @@ export function parsePdfXml(xml: string): PdfPage[] {
     const number = Number(header[1]);
     const items: PdfTextItem[] = [];
     for (const match of chunk.matchAll(TEXT)) {
-      const text = decode(match[6] ?? "");
+      const raw = decode(match[6] ?? "");
+      const text = raw.trim();
       if (text === "") continue;
       const font = fonts.get(Number(match[5]));
       items.push({
@@ -102,6 +110,8 @@ export function parsePdfXml(xml: string): PdfPage[] {
         fontFamily: font?.family ?? "",
         fontColor: font?.color ?? "",
         text,
+        ...(raw.startsWith(" ") ? { spaceBefore: true as const } : {}),
+        ...(raw.endsWith(" ") ? { spaceAfter: true as const } : {}),
       });
     }
 
@@ -161,7 +171,7 @@ export function parseBboxWords(xml: string): BboxWord[][] {
         yMin: Number(word[2]),
         xMax: Number(word[3]),
         yMax: Number(word[4]),
-        text: decode(word[5]!),
+        text: decode(word[5]!).trim(),
       })),
     );
 }
@@ -243,18 +253,29 @@ export const NUMERIC_FRAGMENT = /[\d.,%+-]/;
  * 新詞（`startsWord`，見 `markWordStarts`）先加空格，其餘緊貼的直接接埋——但兩段都係
  * 數值碎片（見 `NUMERIC_FRAGMENT`）就唔信 `startsWord`，只認水平空隙。
  */
-export function joinItems(items: PdfTextItem[], gap = 1) {
+export function joinItems(
+  items: PdfTextItem[],
+  gap = 1,
+  { explicitSpaces = false }: { explicitSpaces?: boolean } = {},
+) {
   let text = "";
   let right: number | undefined;
+  let previous: PdfTextItem | undefined;
   for (const item of items) {
     if (right !== undefined) {
-      const hasGap = item.left - right > gap;
+      const hasGap =
+        item.left - right > gap ||
+        (explicitSpaces && (previous?.spaceAfter === true || item.spaceBefore === true));
       const numericFragment =
         NUMERIC_FRAGMENT.test(text.at(-1) ?? "") && NUMERIC_FRAGMENT.test(item.text[0] ?? "");
-      text += hasGap || (item.startsWord === true && !numericFragment) ? " " : "";
+      // 原文文字欄位唔信 `startsWord`：poppler 換字款就當新詞，「Mana」接「ger’s」、
+      // 「Fund」接另一字款的「’s」都會被拆開；有冇空格以空隙及原文空格為準。
+      const startsWord = !explicitSpaces && item.startsWord === true && !numericFragment;
+      text += hasGap || startsWord ? " " : "";
     }
     text += item.text;
     right = item.left + item.width;
+    previous = item;
   }
   return text;
 }

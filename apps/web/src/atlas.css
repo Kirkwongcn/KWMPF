@@ -1311,3 +1311,99 @@ table,
   color: white;
   box-shadow: none;
 }
+
+/* ---------- 基金頁：官方文字欄位（投資目標、最新投資方向） ---------- */
+.kw-narrative__sheet {
+  padding: 16px 20px 14px;
+  background: var(--kw-sheet);
+  border: 1px solid var(--kw-rule);
+  border-top: 1px solid var(--kw-navy);
+}
+.kw-narrative__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--kw-rule);
+}
+.kw-narrative__meta p {
+  margin: 0;
+  color: var(--kw-muted);
+  font-size: 0.82rem;
+}
+.kw-narrative__meta .kw-segmented button {
+  min-height: 36px;
+  padding: 4px 12px;
+}
+.kw-narrative__body {
+  max-width: 75ch;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+.kw-narrative__body:lang(en) {
+  line-height: 1.65;
+}
+.kw-narrative__body p {
+  margin: 0 0 10px;
+}
+.kw-narrative__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.kw-narrative__list li {
+  position: relative;
+  padding: 8px 0 8px 18px;
+  border-bottom: 1px solid var(--kw-rule);
+}
+.kw-narrative__list li:last-child {
+  border-bottom: 0;
+}
+.kw-narrative__list li::before {
+  content: "";
+  position: absolute;
+  top: 1.05em;
+  left: 2px;
+  width: 7px;
+  height: 1px;
+  background: var(--kw-gold-strong);
+}
+.kw-narrative__more {
+  margin-top: 6px;
+  padding: 6px 0;
+  border: 0;
+  background: none;
+  color: var(--kw-action);
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.kw-narrative__heading-note {
+  margin: 10px 0 0;
+  color: var(--kw-muted);
+  font-size: 0.75rem;
+}
+.kw-narrative__shared {
+  margin: 0 0 10px;
+  padding: 6px 10px;
+  border-left: 1px solid var(--kw-gold-strong);
+  background: var(--kw-soft);
+  color: var(--kw-muted-strong);
+  font-size: 0.85rem;
+}
+.kw-narrative__forecast {
+  margin: 0 0 10px;
+  color: var(--kw-muted-strong);
+  font-size: 0.9rem;
+}
+.kw-narrative__forecast strong {
+  color: var(--kw-ink);
+  font-weight: 600;
+}
+.kw-narrative__forecast small {
+  margin-left: 4px;
+  color: var(--kw-muted);
+}

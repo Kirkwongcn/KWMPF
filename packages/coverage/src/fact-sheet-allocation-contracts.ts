@@ -108,6 +108,37 @@ const beaBlocks = {
   },
 } as const;
 
+/**
+ * 東亞三個計劃同一版面：左上「Investment Objective 投資目標」先英文後中文，右邊係基金資料欄
+ * （left≈315），下面係投資組合分佈；「Commentary 評論」分兩欄並排，左英（left≈60）右中
+ * （left≈526），兩欄的行喺同一高度，所以要逐欄讀。右欄評論之上係十大持倉，由評論標題下面先開始讀。
+ */
+const beaNarrative: FactSheetContract["narrative"] = {
+  investmentObjective: {
+    heading: /^Investment Objective 投資目標$/,
+    band: { minLeft: 50, maxLeft: 305 },
+    stopAt: /^Portfolio Allocation/,
+    minFontSize: 8,
+    maxGap: 24,
+    languages: "bilingual",
+  },
+  managerCommentary: {
+    heading: /^Commentary 評論$/,
+    band: { minLeft: 50, maxLeft: 860 },
+    // DIS 基金的十大持倉延伸到評論標題右邊，正文由標題下約 24 pt 先開始。
+    minDepth: 15,
+    // DIS 基金評論之後係法定的「重大差異理由」，唔屬評論。
+    stopAt: /^(Reason\(s\) for Material Difference|年度回報與參考投資組合的重大差異理由)/,
+    columns: [
+      { minLeft: 50, maxLeft: 520 },
+      { minLeft: 520, maxLeft: 860 },
+    ],
+    minFontSize: 7,
+    maxGap: 24,
+    languages: "bilingual",
+  },
+};
+
 const bctTitle = (color: string) => ({
   pattern: /Fund$/,
   fontSize: [18],
@@ -125,6 +156,74 @@ const bctBlocks = {
     ignore: /may consist of less than/i,
   },
 } as const;
+
+/**
+ * BCT Industry Choice／Pro Choice 同一版面：左欄投資目標中英逐句交替（每行只有一種語文），
+ * 右邊係投資組合分布（left≈361）；投資經理喺成份基金資料之下一格；市場評論左英（left≈30）
+ * 右中（left≈366）兩欄並排，去到成份基金表現就停。
+ */
+const bctNarrative: FactSheetContract["narrative"] = {
+  investmentObjective: {
+    heading: /^(投資目標|Investment Objective)$/,
+    band: { minLeft: 20, maxLeft: 357 },
+    stopAt: /^(Constituent Fund Information|成份基金資料)/,
+    minFontSize: 8,
+    maxGap: 24,
+    languages: "bilingual",
+  },
+  investmentManager: {
+    heading: /^(投資經理|Investment Manager)$/,
+    band: { minLeft: 20, maxLeft: 357 },
+    maxDepth: 20,
+    languages: "value",
+  },
+  managerCommentary: {
+    heading: /^(市場評論|Market Commentary)$/,
+    band: { minLeft: 20, maxLeft: 610 },
+    columns: [
+      { minLeft: 20, maxLeft: 360 },
+      { minLeft: 360, maxLeft: 610 },
+    ],
+    stopAt: /^(成份基金表現|Constituent Fund Performance)/,
+    minFontSize: 7,
+    maxGap: 24,
+    languages: "bilingual",
+  },
+};
+
+/**
+ * BCT Series 800：左欄「投資目標 Investment Objective」先中後英，右邊係表現表（left≥444）；
+ * 基金資料表的投資經理標籤（left≈40）同經理名（left≈189）同一行開始；左下「基金評論」
+ * 先中後英，右邊係投資分布，之下隔一格係頁尾客戶服務熱線。
+ */
+const series800Narrative: FactSheetContract["narrative"] = {
+  investmentObjective: {
+    heading: /^(投資目標|Investment Objective)$/,
+    band: { minLeft: 35, maxLeft: 440 },
+    stopAt: /^(基金資料|Fund Information)/,
+    minFontSize: 9,
+    maxGap: 24,
+    languages: "bilingual",
+  },
+  investmentManager: {
+    heading: /^(投資經理|Investment Manager)$/,
+    band: { minLeft: 185, maxLeft: 440 },
+    sameLine: true,
+    maxDepth: 40,
+    maxGap: 18,
+    languages: "bilingual",
+  },
+  managerCommentary: {
+    heading: /^(基金評論|Fund Commentary)$/,
+    band: { minLeft: 35, maxLeft: 440 },
+    // 債券基金評論下面緊接債券統計數字的註腳（「∞ 其他指…」「~ 加權平均信貸評級」
+    // 「^ 當期收益率」「# 存續期」），行距同正文一樣，靠行首記號停。
+    stopAt: /^[∞~^#]\s/,
+    minFontSize: 9,
+    maxGap: 16,
+    languages: "bilingual",
+  },
+};
 
 /** BCT Series 800（前信安 800 系列）：左邊十大投資、右邊投資分布，數字不帶 `%`。 */
 const series800Blocks = {
@@ -157,6 +256,43 @@ const PRINCIPAL_DIMENSION_ZH: Record<string, string> = {
   "Fund Allocation by Asset Class": "資產類別投資分布",
   "Geographical Breakdown": "地區投資分布",
   "Crediting Rating Breakdown": "信貸評級投資分布",
+};
+
+/**
+ * BCT Simple／Smart（前信安版面）：右欄「Investment Objective 投資目標」先英後中，之下係
+ * 「Balance of Investments 投資比重」（投資政策，唔屬目標）；投資經理喺左邊基金資料表，
+ * 標籤（left≈43）同經理名（left≈183）同一行開始；左下「Fund Commentary 基金評論」先英後中，
+ * 右邊係表現表（left≥347），之下係十大主要投資項目。
+ */
+const principalNarrative: FactSheetContract["narrative"] = {
+  investmentObjective: {
+    heading: /^(投資目標|Investment Objective)$/,
+    // 右上角「Risk Level 風險程度」格由 left≈775 起，唔屬目標。
+    band: { minLeft: 340, maxLeft: 770 },
+    stopAt: /^(Balance of Investments|投資比重)/,
+    minFontSize: 9,
+    maxGap: 24,
+    languages: "bilingual",
+  },
+  investmentManager: {
+    // 恒指追蹤基金的標籤換行位置唔同，寫「Investment Manager of」。
+    heading: /^Investment Manager( of)?$/,
+    // 經理名欄由 left≈175 至 183 起（逐隻基金唔同）；標籤欄由 left≈43 起。
+    band: { minLeft: 170, maxLeft: 340 },
+    sameLine: true,
+    // 恒指追蹤基金的經理名連「由 2022 年 9 月 19 日起」共六行；之後隔一大格先係成立日期。
+    maxDepth: 70,
+    maxGap: 18,
+    minFontSize: 9,
+    languages: "bilingual",
+  },
+  managerCommentary: {
+    heading: /^(基金評論|Fund Commentary)$/,
+    band: { minLeft: 30, maxLeft: 340 },
+    minFontSize: 9,
+    maxGap: 24,
+    languages: "bilingual",
+  },
 };
 
 const principalBlocks = {
@@ -213,6 +349,31 @@ const hsbcBlocks = {
 } as const;
 
 /**
+ * 滙豐及恒生（同一受託人、同一版面）逐隻基金一頁：左欄「投資目標及其他詳情」先中文後英文，右欄「評論」先中文要點
+ * 後英文要點。評論欄之下係基金表現表，表頭有幾欄落喺同一欄界，所以喺累積回報表頭停。
+ * 註腳編號用 6 級字，正文 8 至 11 級（逐隻基金唔同）；環球股票基金評論欄之下仲有一個合併通告，
+ * 部分落喺同一欄界，同評論隔咗一大段空白，靠 `maxGap` 排除。
+ */
+const hsbcNarrative: FactSheetContract["narrative"] = {
+  investmentObjective: {
+    heading: /^(投資目標及其他詳情|Investment objectives and other particulars)$/,
+    band: { minLeft: 30, maxLeft: 400 },
+    stopAt: /^(基金資料|Fund details)/,
+    minFontSize: 7,
+    maxGap: 24,
+    languages: "bilingual",
+  },
+  managerCommentary: {
+    heading: /^(評論|Commentary)$/,
+    band: { minLeft: 590, maxLeft: 892 },
+    stopAt: /Cumulative return|累\s*積\s*回\s*報/,
+    minFontSize: 7,
+    maxGap: 24,
+    languages: "bilingual",
+  },
+};
+
+/**
  * MASS：積金局副本同受託人官網逐隻基金那份係同一套版面（藍色基金名做頁眉、右邊圓餅圖
  * 標註、左下角十大持倉），只有截至日期的寫法唔同，所以標題同兩塊披露共用。
  */
@@ -237,6 +398,18 @@ const massBlocks: Pick<FactSheetContract, "title" | "allocation" | "holdings"> =
   holdings: { heading: /^Top 10 Holdings/ },
 } as const;
 
+const retireChoiceObjective = {
+  band: { minLeft: 15, maxLeft: 440 },
+  stopAt: /^(Fund Descriptor|基金類型)$/,
+  minFontSize: 11,
+  maxGap: 24,
+} as const;
+const retireChoiceComment = {
+  band: { minLeft: 450, maxLeft: 900 },
+  minFontSize: 11,
+  maxGap: 24,
+} as const;
+
 export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
   {
     scheme: "AIA MPF - Prime Value Choice",
@@ -248,6 +421,24 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       fontFamily: /AIAEverest$/,
       maxLeft: 400,
       name: (text) => text.replace(/[\^*]+$/, "").trim(),
+    },
+    narrative: {
+      // 投資目標在左欄，右欄同一高度係資產分布；「-」分隔記號得 8 pt。
+      investmentObjective: {
+        heading: /^投資目標$/,
+        band: { minLeft: 30, maxLeft: 295 },
+        stopAt: /^(基金資料|\| FUND FACTS)/,
+        minFontSize: 9,
+        languages: "bilingual",
+      },
+      // 基金經理報告橫跨全頁，以「資料來源 Source」收尾。
+      managerCommentary: {
+        heading: /^基金經理報告$/,
+        band: { minLeft: 30, maxLeft: 600 },
+        stopAt: /^(資料來源|Source\b)/,
+        maxGap: 24,
+        languages: "bilingual",
+      },
     },
     allocation: {
       // 資產分布在右欄（值 left≈410、標籤 left≈442），十大投資項目在左欄，
@@ -285,6 +476,35 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       fontSize: [15],
       fontFamily: /\+Arial$/,
     },
+    narrative: {
+      // 只有積金局副本。左欄投資目標（英文段、中文段），止於「Fund Performance
+      // 基金表現」；右欄基金資料表的「Fund Manager 基金經理」值係管理公司（同一格
+      // 中文值低 14 pt）；右欄下面基金評論（英文段、中文段），止於「Remarks 備註」。
+      investmentObjective: {
+        heading: /^Investment Objective$/,
+        // 左邊界逐版漂移（11–21）。
+        band: { minLeft: 5, maxLeft: 445 },
+        stopAt: /^(Fund Performance|基金表現)/,
+        minFontSize: 9.5,
+        maxGap: 24,
+        languages: "bilingual",
+      },
+      investmentManager: {
+        heading: /^Fund Manager$/,
+        band: { minLeft: 600, maxLeft: 900 },
+        sameLine: true,
+        maxDepth: 20,
+        languages: "bilingual",
+      },
+      managerCommentary: {
+        heading: /^Fund Commentary$/,
+        band: { minLeft: 455, maxLeft: 900 },
+        stopAt: /^(Remarks|備註)/,
+        minFontSize: 9.5,
+        maxGap: 30,
+        languages: "bilingual",
+      },
+    },
     allocation: {
       heading: /^Portfolio Allocation$/,
       headingLabel: () => "Portfolio Allocation 投資組合分佈",
@@ -310,6 +530,42 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       fontFamily: /MHei-Xbold/,
       name: (text) => text.replace(/[\^*†]+$/, "").trim(),
     },
+    narrative: {
+      // 左欄（left≈50）由上而下：投資目標、評論；右欄係基金資料及表現。下一隻基金
+      // 的中文名（15 pt）緊接評論之後，靠字級上限隔開。
+      // 右欄標籤（「單位資產淨值」left≈381）同左欄標題同一高度，左欄要收窄到 375。
+      investmentObjective: {
+        heading: /^投資目標 Investment Objective$/,
+        band: { minLeft: 40, maxLeft: 375 },
+        minFontSize: 9,
+        maxFontSize: 11,
+        maxGap: 24,
+        languages: "bilingual",
+      },
+      // 長評論用 8 pt，由左欄溢到右欄十大資產來源行之下（left≈389）。保守基金
+      // 評論之後係收費扣除機制說明，唔屬評論。
+      managerCommentary: {
+        heading: /^評論 Commentary\*?$/,
+        band: { minLeft: 40, maxLeft: 900 },
+        columns: [
+          { minLeft: 40, maxLeft: 375 },
+          // 來源行可能同圓餅圖百分比併成一行（「19.0% Source: …」），唔可以錨定行首。
+          // 溢出的評論行一律由右欄邊（left≈379–393，逐隻基金唔同）開始；圓餅圖
+          // 標註唔係。
+          {
+            minLeft: 375,
+            maxLeft: 900,
+            after: /\bSource:/,
+            lineStart: { minLeft: 375, maxLeft: 395 },
+          },
+        ],
+        stopAt:
+          /^(強積金保守基金收費扣除機制|MPF Conservative Fund Fee Deduction|重要 Important|#)/,
+        maxFontSize: 11,
+        maxGap: 24,
+        languages: "bilingual",
+      },
+    },
     allocation: {
       // 圓餅圖旁邊的置中標註：中文名、英文名、百分比同一個中心 x。
       // 右界 570 把 left≈580 的十大資產隔開。
@@ -327,6 +583,7 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
     platformNamePrefix: /^BCT \((?:Industry|Pro)\)\s+/,
     title: bctTitle("#346fc0"),
     ...bctBlocks,
+    narrative: bctNarrative,
     asOf: { pattern: AS_OF_SLASH },
   },
   {
@@ -335,6 +592,7 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
     platformNamePrefix: /^BCT \((?:Industry|Pro)\)\s+/,
     title: bctTitle("#639e1d"),
     ...bctBlocks,
+    narrative: bctNarrative,
     asOf: { pattern: AS_OF_SLASH },
   },
   {
@@ -346,6 +604,7 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       fontColor: ["#ffffff"],
     },
     ...principalBlocks,
+    narrative: principalNarrative,
     asOf: { pattern: AS_OF_SLASH },
   },
   {
@@ -357,6 +616,7 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       fontColor: ["#ffffff"],
     },
     ...principalBlocks,
+    narrative: principalNarrative,
     asOf: { pattern: AS_OF_SLASH },
   },
   {
@@ -368,6 +628,7 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       fontColor: ["#ffffff"],
     },
     ...series800Blocks,
+    narrative: series800Narrative,
     asOf: { pattern: AS_OF_SLASH },
   },
   {
@@ -378,6 +639,30 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       fontFamily: /InvescoEditor/,
       // 便覽的中文版把同一批基金再印一次，只取第一次（英文版）出現的區段。
       dedupeByName: true,
+    },
+    // 右欄「投資目標」先中後英，之下係基金表現；左欄「基金評論」先中後英（中英之間隔一大段
+    // 空白，約 34 pt），之下隔更大一段係「附註 Remarks」。
+    narrative: {
+      investmentObjective: {
+        heading: /^(投資目標|Investment Objective)$/,
+        band: { minLeft: 350, maxLeft: 860 },
+        stopAt: /^(基金表現|Fund Performance)/,
+        minFontSize: 10,
+        maxGap: 24,
+        languages: "bilingual",
+      },
+      managerCommentary: {
+        heading: /^(基金評論|Fund Commentary)$/,
+        band: { minLeft: 30, maxLeft: 345 },
+        // 評論之後可能係「主要風險」、「重要提示」方框，或者預設投資策略基金按法例
+        // 解釋同參考組合重大差異的粗體段（「++」記號只得 6 pt，被字級下限濾走，
+        // 所以認段首句式）；三者都唔係評論。
+        stopAt:
+          /^(附註|Remarks|重要提示|Important Information|主要風險|Key Risks|截至\d{4}年\d{1,2}月底，基金的|As at end of \w+ \d{4}, the fund recorded)/,
+        minFontSize: 10,
+        maxGap: 45,
+        languages: "bilingual",
+      },
     },
     allocation: {
       heading: /^Asset Allocation\* \(%\)$/,
@@ -404,18 +689,21 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
     scheme: "BEA (MPF) Industry Scheme",
     title: beaTitle,
     ...beaBlocks,
+    narrative: beaNarrative,
     asOf: { pattern: AS_OF_SLASH },
   },
   {
     scheme: "BEA (MPF) Master Trust Scheme",
     title: beaTitle,
     ...beaBlocks,
+    narrative: beaNarrative,
     asOf: { pattern: AS_OF_SLASH },
   },
   {
     scheme: "BEA (MPF) Value Scheme",
     title: beaTitle,
     ...beaBlocks,
+    narrative: beaNarrative,
     asOf: { pattern: AS_OF_SLASH },
   },
   {
@@ -428,6 +716,40 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       fontFamily: /HelveticaNeue-Condens/,
       fontColor: ["#ffffff"],
       maxTop: 30,
+    },
+    narrative: {
+      // 中銀保誠只披露「投資政策」（包括投資目標），冇基金經理評論；投資經理
+      // 印在封面，屬計劃層面，唔逐隻基金記。註腳上標得 9 pt。
+      investmentObjective: {
+        heading: /^投資政策$/,
+        // 行首的全形括號會凸出欄邊（left≈18），欄界要留位。每行一定由左邊
+        // （left 18–40）開始；人民幣及港元貨幣市場基金的投資政策長，頁底改為中文
+        // 左欄、英文右欄（left≈383）並排，逐行讀會中英交錯，所以見到右邊起行就
+        // 成段報讀唔齊，唔出交錯的文字。
+        band: { minLeft: 10, maxLeft: 420 },
+        columns: [
+          {
+            minLeft: 10,
+            maxLeft: 420,
+            lineStart: { minLeft: 10, maxLeft: 45, otherwise: "fail" },
+          },
+        ],
+        // 欄底可能緊接行業分類更新註腳及計劃說明書、投資風險聲明。
+        stopAt:
+          /^(\*|此成分基金之|計劃詳情|Please refer to the MPF Scheme Brochure|投資涉及風險|Investment involves risks)/,
+        minFontSize: 12,
+        maxGap: 30,
+        languages: "bilingual",
+      },
+    },
+    // 基金經理評論集中印喺尾段附錄（第 23 頁起「基金經理評論 MANAGER'S COMMENT」），
+    // 每隻基金一個 20 pt 中英名稱小標題，下面 11 pt 中文段及英文段。
+    narrativeAppendix: {
+      field: "managerCommentary",
+      pageHeading: /^基金經理評論$/,
+      subheadingFontSize: [20],
+      band: { minLeft: 10, maxLeft: 880 },
+      maxFontSize: 11,
     },
     allocation: {
       // 圓餅圖旁邊的置中標註：中文名、英文名、百分比三段同一個中心 x。
@@ -449,6 +771,18 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       fontSize: [21],
       fontFamily: /ArialNarrow/,
       fontColor: ["#ffffff"],
+    },
+    narrative: {
+      // 只有投資目標，冇評論。左欄（left≈45）；右欄（left≥455，逐隻基金唔同）
+      // 係資產分布及風險指標，同一高度。
+      investmentObjective: {
+        heading: /^Investment Objective$/,
+        band: { minLeft: 40, maxLeft: 450 },
+        stopAt: /^(Fund Expense Ratio|基金開支比率|Fund Performance|基金表現)/,
+        minFontSize: 10,
+        maxGap: 24,
+        languages: "bilingual",
+      },
     },
     allocation: {
       heading: /^Portfolio Allocation$/,
@@ -480,6 +814,29 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
     scheme: "Fidelity Retirement Master Trust",
     source: "trustee",
     ...fidelityBlocks,
+    narrative: {
+      // 逐隻基金一份便覽，左欄（left≈43，11 pt）由上而下：基金概要（英文段、
+      // 中文段）、基金資料、基金評論（英文段、中文段）。頁腳 9 pt。「基金經理」
+      // 一欄係個人名，唔係投資經理公司，唔當 `investmentManager`。
+      investmentObjective: {
+        heading: /^About the Fund$/,
+        band: { minLeft: 30, maxLeft: 355 },
+        stopAt: /^(基金資料|Fund Details)/,
+        minFontSize: 10,
+        maxGap: 24,
+        languages: "bilingual",
+      },
+      // 評論長的基金（人民幣債券基金）縮到 9 pt，同頁腳一樣，所以靠頁腳的
+      // 風險聲明停，唔靠字級。
+      managerCommentary: {
+        heading: /^Fund Commentary$/,
+        band: { minLeft: 30, maxLeft: 355 },
+        stopAt: /^(Investment involves risks|投 ?資 ?涉 ?及 ?風 ?險)/,
+        minFontSize: 9,
+        maxGap: 24,
+        languages: "bilingual",
+      },
+    },
     fieldScopes: {
       fer: {
         kind: "financial-period",
@@ -569,6 +926,7 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       name: (text) => text.replace(/^•\s*/, ""),
     },
     ...hsbcBlocks,
+    narrative: hsbcNarrative,
     asOf: { pattern: /All information as at\s+(\d{1,2}\/\d{1,2}\/\d{4})/i },
   },
   {
@@ -580,6 +938,7 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       name: (text) => text.replace(/^•\s*/, ""),
     },
     ...hsbcBlocks,
+    narrative: hsbcNarrative,
     asOf: { pattern: /All information as at\s+(\d{1,2}\/\d{1,2}\/\d{4})/i },
   },
   {
@@ -589,6 +948,32 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       fontSize: [14, 15],
       fontFamily: /Arial$/,
       fontColor: ["#ffffff"],
+    },
+    narrative: {
+      // 投資目標在左欄（left 30–260），右邊同一高度係投資組合分布。冇基金經理評論。
+      // 目標長的基金（2045 退休基金）下面緊接表現表，靠標題停。
+      investmentObjective: {
+        heading: /^投資目標$/,
+        band: { minLeft: 20, maxLeft: 265 },
+        stopAt: /^(累積回報|Cumulative Return)/,
+        minFontSize: 10,
+        maxGap: 30,
+        languages: "bilingual",
+      },
+      // 基金資料表：標籤「投資經理 Investment Manager」在 left 349–363，數值在
+      // left 426–580（逐隻基金唔同），垂直置中對住標籤：一行長的中文值比標籤高
+      // 1–3 pt，兩行長的（「宏利投資管理（香港）有限公司投資於由富達基金……管理之
+      // 基金」）第一行高 17 pt。上一格基金類型描述的英文值最低落到標籤上 17 pt，
+      // 所以由第一行中文開始讀。
+      investmentManager: {
+        heading: /^投資經理$/,
+        band: { minLeft: 420, maxLeft: 900 },
+        minDepth: -20,
+        maxDepth: 30,
+        startAt: /\p{Script=Han}/u,
+        maxGap: 18,
+        languages: "bilingual",
+      },
     },
     allocation: {
       // 環球精選的投資組合分布係向量條形圖，標籤及百分比都唔係可抽取文字
@@ -618,6 +1003,18 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       // 內文用 `ArialMT`，加 `,Bold` 唔會誤中。
       fontFamily: /Arial(?:,Bold)?$/,
       fontColor: ["#ffffff"],
+    },
+    narrative: {
+      // 每隻基金英文版一頁、中文版下一頁，版面相同：投資目標在左欄（12 pt），
+      // 基金經理評論在右欄（left≈459）。兩頁分開讀再合併。
+      investmentObjective: [
+        { heading: /^Investment Objective$/, languages: "en", ...retireChoiceObjective },
+        { heading: /^投資目標$/, languages: "zh", ...retireChoiceObjective },
+      ],
+      managerCommentary: [
+        { heading: /^Manager's Comments?$/, languages: "en", ...retireChoiceComment },
+        { heading: /^基金經理評論$/, languages: "zh", ...retireChoiceComment },
+      ],
     },
     allocation: {
       // 自在人生的圓餅圖冇自己的標題，整欄由「Portfolio Analysis」帶起，
@@ -652,6 +1049,33 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
     scheme: "MASS Mandatory Provident Fund Scheme",
     source: "trustee",
     ...massBlocks,
+    // 受託人版只有英文。投資目標及投資經理印喺第一頁，基金標題同「Fund Review」
+    // 喺第二頁，一份檔一隻基金，所以文字欄位喺成份檔搵。
+    narrativeScope: "document",
+    narrative: {
+      investmentObjective: {
+        heading: /^Investment Objective$/,
+        band: { minLeft: 20, maxLeft: 900 },
+        stopAt: /^Fund Data/,
+        maxGap: 24,
+        languages: "en",
+      },
+      // 左欄基金資料：「Investment Manager:」下面一至兩行，右邊同一高度係價格表。
+      investmentManager: {
+        heading: /^Investment Manager:$/,
+        band: { minLeft: 20, maxLeft: 220 },
+        maxDepth: 40,
+        maxGap: 18,
+        languages: "en",
+      },
+      managerCommentary: {
+        heading: /^Fund Review$/,
+        band: { minLeft: 20, maxLeft: 900 },
+        stopAt: /^(Fund Performance|[#^]\s)/,
+        maxGap: 30,
+        languages: "en",
+      },
+    },
     asOf: {
       pattern: AS_OF_MONTH_FIRST,
       band: { minLeft: 0, maxLeft: 200 },
@@ -665,6 +1089,32 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       fontSize: [26],
       fontFamily: /ITCSymbolStd$/,
       fontColor: ["#ffffff"],
+    },
+    narrative: {
+      // 投資目標在左欄（中文段後接英文段），止於「基金資料 FUND DATA」。
+      investmentObjective: {
+        heading: /^投資目標$/,
+        band: { minLeft: 15, maxLeft: 590 },
+        stopAt: /^(基金資料|FUND DATA)/,
+        // 追蹤指數基金的投資目標用 9 pt；註腳記號「(9)」得 5 pt。
+        minFontSize: 8,
+        maxGap: 30,
+        languages: "bilingual",
+      },
+      // 市場評論在右欄（left≈607）。有啲基金中英同一頁，有啲中文一頁、英文
+      // 「(cont'd)」下一頁，兩頁標題一樣，所以每頁都讀。段落之間空 33 pt；頁腳的
+      // 計劃說明書提示（11 pt）遠在 300 pt 以下。投資經理的標籤逐隻基金唔同
+      // （「基礎核准匯集投資基金的投資經理」、「成分基金及核准緊貼指數集體投資計劃
+      // 的投資經理」，有時拆兩行），暫不抽。
+      managerCommentary: {
+        heading: /^市場評論$/,
+        occurrence: "all",
+        band: { minLeft: 600, maxLeft: 900 },
+        // 評論逐隻基金用 11 或 12 pt。
+        minFontSize: 10,
+        maxGap: 40,
+        languages: "bilingual",
+      },
     },
     allocation: {
       // 圓餅圖的標註散落在 left 22–484，標題自己在 165，自動推欄界會切走最左的標註；
@@ -697,6 +1147,30 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       maxLeft: 60,
       maxTop: 160,
       name: (text) => text.replace(SHKP_NOTE, "").trim(),
+    },
+    narrative: {
+      // 「Fund Objective 基金投資目標」標題置中，下面英文一段、中文一段，全頁闊。
+      investmentObjective: {
+        heading: /^基金投資目標$/,
+        band: { minLeft: 30, maxLeft: 900 },
+        minFontSize: 11,
+        maxGap: 20,
+        languages: "bilingual",
+      },
+      // 第二頁「評論：市場回顧，市場展望及基金表現」：英文「Market Review and
+      // Outlook」一段，緊接中文「市場回顧及展望」一段，再之後係資料來源、免責聲明
+      // 及備註。中英同頁連續，一個讀取器讀晒，中間的中文標題略過。
+      managerCommentary: {
+        heading: /^Market Review and Outlook$/,
+        band: { minLeft: 30, maxLeft: 900 },
+        // 結束標記係計劃來源行「^Sources: …」（複數；評論內文引用的「Source:
+        // Bloomberg」係單數）、免責聲明或「備註 Notes」（安聯精選均衡基金冇來源行）。
+        // 同一頁見唔到就係評論續落下一頁（宏利保證基金），成段當讀唔齊。
+        endAt: /^(\^?\s*Sources\s*:|Any view or comment|在「評論|Notes\b|備註)/,
+        ignore: /^市場回顧及展望$/,
+        minFontSize: 10,
+        languages: "bilingual",
+      },
     },
     allocation: {
       // 新地披露的是基礎基金而非成分基金本身，標題必須保留這個分別。
@@ -741,6 +1215,53 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       // 幾個標題同樣落喺 top≈82，只有落筆次序分得開本頁自己嗰層。
       overlaidPages: true,
       maxTop: 160,
+    },
+    // 疊上去嗰版會喺自己標題之前已經開始落筆，文字欄位改用每版最後落筆的
+    // 「Manager’s Commentary」標題分層（見 `narrativeLayerEnd`）。
+    narrativeLayerEnd: /^Manager[’']s Commentary$/,
+    narrative: {
+      // 右上角「市場預測 Market Forecast」，值只有英文一個字（Positive／Neutral／
+      // Negative），喺標題右邊，比中文標題低 11–19 pt；標題旁的「1」係註腳記號。
+      // 混合資產及保守類基金印「^^ N/A ^^」（「^^」係註腳記號），即係官方冇預測。
+      marketForecast: {
+        heading: /^市場預測$/,
+        band: { minLeft: 760, maxLeft: 900 },
+        minDepth: -6,
+        maxDepth: 22,
+        ignore: /^\^+$/,
+        unavailableValue: /^N\/A(\s*\^+)?$/,
+        languages: "en",
+      },
+      // 右欄投資目標（中文段、英文段），止於「基金表現 Fund Performance」；標題旁
+      // 「▲」係 8 pt 記號。
+      investmentObjective: {
+        heading: /^投資目標$/,
+        band: { minLeft: 465, maxLeft: 900 },
+        stopAt: /^(基金表現|Fund Performance)/,
+        // 正文 9–11 pt；收益基金最後一行同 14 pt「基金表現」標題只差 3 pt，會併成一行，
+        // 所以用字級上限隔開標題。
+        minFontSize: 9,
+        maxFontSize: 12,
+        maxGap: 24,
+        languages: "bilingual",
+      },
+      // 左欄基本資料表：值喺標籤右邊，中文值比標籤低約 5 pt，英文再低 14 pt。
+      investmentManager: {
+        heading: /^投資經理$/,
+        band: { minLeft: 190, maxLeft: 440 },
+        minDepth: -6,
+        maxDepth: 25,
+        maxGap: 18,
+        languages: "bilingual",
+      },
+      // 左欄下半「基金經理評論 Manager's Commentary」，頁腳 9 pt 委任說明遠在下面。
+      managerCommentary: {
+        heading: /^基金經理評論$/,
+        band: { minLeft: 35, maxLeft: 445 },
+        minFontSize: 10,
+        maxGap: 30,
+        languages: "bilingual",
+      },
     },
     allocation: {
       heading: /^Portfolio Allocation$/,

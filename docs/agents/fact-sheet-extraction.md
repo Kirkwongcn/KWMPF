@@ -1,7 +1,7 @@
 # 基金便覽：連結、抽取與缺口分類
 
 便覽去邊度攞、點樣由 PDF 抽出配置同十大持倉、抽唔到嗰陣點記低。
-受託人版對積金局副本嘅取捨見 `fact-sheet-sources.md`；
+受託人版對積金局副本嘅取捨見 `fact-sheet-sources.md`；投資目標、評論等文字欄位見 `fact-sheet-narrative.md`；
 基金分類只用積金局基金類型，見 `fund-classification.md`；便覽配置不做任何跨計劃歸類。
 
 ## Official scheme fact sheets

@@ -158,6 +158,16 @@ type FactSheetDisclosure = {
   }[];
   // 官方只列名次同證券名、冇披露持有量時 `percent` 會缺席，唔可以當成 0。
   topHoldings: { rank: number; security: string; percent?: number }[];
+  // 便覽官方文字欄位（ADR 0012），原文照錄；未寫契約的計劃冇呢一欄。
+  narrative?: Partial<
+    Record<
+      | "investmentObjective"
+      | "managerCommentary"
+      | "marketForecast"
+      | "investmentManager",
+      { heading: string; zh?: string; en?: string }
+    >
+  >;
   unavailableFields: string[];
   unavailableReasons: Record<string, string>;
   // 原因文字係診斷用的英文長句，網站唔可以靠字串比對反推分類，所以另附代號。
@@ -167,6 +177,7 @@ type FactSheetDisclosure = {
     | "chart-only"
     | "values-without-names"
     | "overlaid-text-layer"
+    | "unreadable-layout"
   >;
 };
 
