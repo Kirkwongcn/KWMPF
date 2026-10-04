@@ -56,6 +56,9 @@ export type TextBlockSelector = {
   /**
    * 由標題往下幾多 pt 先開始讀。東亞 DIS 基金的十大持倉表一路延伸到評論標題右邊
    * （標題 top≈1036，持倉 1043），正文由標題下 24 pt 先開始。
+   *
+   * 可以係負數：設咗就取代「標題下一行」的上界。宏利環球精選的投資經理值垂直置中
+   * 對住標籤，兩行長的值第一行比標籤高 17 pt。
    */
   minDepth?: number;
   /**
@@ -64,6 +67,11 @@ export type TextBlockSelector = {
    * 唔係由標題下一行開始；`band` 要排除標籤欄。
    */
   sameLine?: boolean;
+  /**
+   * 由第一行符合呢個式樣的行開始讀（包埋嗰行），之前的行唔要；冇一行符合就當冇文字。
+   * 配合負數 `minDepth`，略過上一格數值溢落嚟的行。
+   */
+  startAt?: RegExp;
   /** 讀到符合呢個式樣的行就停（例如下一塊披露的標題）。 */
   stopAt?: RegExp;
   /** 略過符合呢個式樣的行（例如註腳說明）。 */
@@ -243,10 +251,11 @@ export function readNarrative(
   const below = items.filter(
     (item) =>
       item.page === anchor.page &&
-      (selector.sameLine
-        ? item.top >= anchor.top - LINE_TOLERANCE
-        : item.top > headingBottom + LINE_TOLERANCE) &&
-      (selector.minDepth === undefined || item.top >= anchor.top + selector.minDepth) &&
+      (selector.minDepth !== undefined
+        ? item.top >= anchor.top + selector.minDepth
+        : selector.sameLine
+          ? item.top >= anchor.top - LINE_TOLERANCE
+          : item.top > headingBottom + LINE_TOLERANCE) &&
       (selector.maxDepth === undefined || item.top <= anchor.top + selector.maxDepth) &&
       inBand(item) &&
       item.text.trim() !== "" &&
@@ -266,8 +275,11 @@ export function readNarrative(
       : 0;
     if (column.after && start === 0) continue;
     const lineStart = column.lineStart;
-    const lines = columnLines
-      .slice(start)
+    const sliced = columnLines.slice(start);
+    const first = selector.startAt
+      ? sliced.findIndex((line) => selector.startAt!.test(line.text))
+      : 0;
+    const lines = (first < 0 ? [] : sliced.slice(first))
       .filter(
         (line) =>
           !lineStart ||

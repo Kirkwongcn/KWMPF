@@ -203,6 +203,54 @@ describe("narrative layouts", () => {
     });
   });
 
+  it("reads a value centred on its label from the first Chinese line", () => {
+    const manager: TextBlockSelector = {
+      heading: /^投資經理$/,
+      band: { minLeft: 420, maxLeft: 900 },
+      minDepth: -20,
+      maxDepth: 30,
+      startAt: /\p{Script=Han}/u,
+      maxGap: 18,
+      languages: "bilingual",
+    };
+    // 一行長的值：上一格（基金類型描述）的英文值落到標籤上 19 pt，要略過。
+    const single = readNarrative(
+      [
+        item(100, 360, "投資經理"),
+        item(81, 580, "Equity Fund - Global"),
+        item(98, 580, "宏利投資管理（香港）有限公司"),
+        item(114, 580, "Manulife Investment Management (Hong Kong) Limited"),
+        item(160, 580, "1. Tencent Holdings"),
+      ],
+      manager,
+    );
+    expect(single).toMatchObject({
+      status: "ok",
+      text: {
+        zh: "宏利投資管理（香港）有限公司",
+        en: "Manulife Investment Management (Hong Kong) Limited",
+      },
+    });
+    // 兩行長的值：第一行比標籤高 17 pt。
+    const wrapped = readNarrative(
+      [
+        item(100, 360, "投資經理"),
+        item(83, 580, "宏利投資管理（香港）有限公司投資於由富達基金"),
+        item(99, 580, "管理之基金"),
+        item(114, 580, "Manulife Investment Management invests in the fund"),
+        item(126, 580, "managed by FIL"),
+      ],
+      manager,
+    );
+    expect(wrapped).toMatchObject({
+      status: "ok",
+      text: {
+        zh: "宏利投資管理（香港）有限公司投資於由富達基金管理之基金",
+        en: "Manulife Investment Management invests in the fund managed by FIL",
+      },
+    });
+  });
+
   it("reads nothing from a marker column whose marker never appears", () => {
     const result = readNarrative(
       [item(100, 40, "Commentary"), item(120, 40, "Markets rose."), item(150, 384, "Fund facts table")],
