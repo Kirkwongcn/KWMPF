@@ -1,0 +1,3613 @@
+{
+  "generatedAt": "2026-10-04T17:37:42.592Z",
+  "method": {
+    "renderer": "pdftoppm -r 300"
+  },
+  "funds": [
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Conservative Fund",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+      "page": 5,
+      "region": {
+        "left": 466,
+        "right": 718,
+        "top": 698,
+        "bottom": 882
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "rejected",
+      "reason": "row 2 differs: rapidocr 19.1% vs tesseract 119.1%"
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Hong Kong Dollar Bond Fund",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+      "page": 6,
+      "region": {
+        "left": 466,
+        "right": 718,
+        "top": 698,
+        "bottom": 882
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "港元債券 HKD Bonds",
+          "percent": 90.7
+        },
+        {
+          "label": "美元債券 USD Bonds",
+          "percent": 8.1
+        },
+        {
+          "label": "現金及其他 Cash and Others",
+          "percent": 1.2
+        }
+      ],
+      "printed": ["90.7%", "8.1%", "1.2%"],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF RMB and HKD Fund",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+      "page": 7,
+      "region": {
+        "left": 466,
+        "right": 718,
+        "top": 698,
+        "bottom": 882
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "貨幣市場工具 (港元) Money Market Instruments (HKD)",
+          "percent": 28.1
+        },
+        {
+          "label": "債券 (人民幣) Bond (RMB)",
+          "percent": 26.7
+        },
+        {
+          "label": "現金及存款 (人民幣) Cash & Deposit (RMB)",
+          "percent": 22.1
+        },
+        {
+          "label": "現金及存款 (港元) Cash & Deposit (HKD)",
+          "percent": 11.7
+        },
+        {
+          "label": "貨幣市場工具 (人民幣) Money Market Instruments (RMB)",
+          "percent": 10.4
+        },
+        {
+          "label": "債券 (港元) Bond (HKD)",
+          "percent": 1
+        }
+      ],
+      "printed": ["28.1%", "26.7%", "22.1%", "11.7%", "10.4%", "1.0%"],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Global Bond Fund",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+      "page": 8,
+      "region": {
+        "left": 466,
+        "right": 718,
+        "top": 698,
+        "bottom": 882
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "美元債券 USD Bonds",
+          "percent": 31.2
+        },
+        {
+          "label": "亞洲債券 Asian Bonds",
+          "percent": 18.5
+        },
+        {
+          "label": "港元債券 HKD Bonds",
+          "percent": 15.4
+        },
+        {
+          "label": "日本債券 Japanese Bonds",
+          "percent": 4
+        },
+        {
+          "label": "歐洲債券 European Bonds",
+          "percent": 11.2
+        },
+        {
+          "label": "其他債券 Other Bonds",
+          "percent": 2.9
+        },
+        {
+          "label": "現金及其他 Cash and Others",
+          "percent": 16.8
+        }
+      ],
+      "printed": ["31.2%", "18.5%", "15.4%", "4.0%", "11.2%", "2.9%", "16.8%"],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Income Fund",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+      "status": "rejected",
+      "reason": "2 allocation headings in the section"
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Stable Fund",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+      "page": 11,
+      "region": {
+        "left": 466,
+        "right": 718,
+        "top": 698,
+        "bottom": 882
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "rejected",
+      "reason": "row 6 differs: rapidocr 4.7% vs tesseract 47%"
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Balanced Fund",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+      "page": 12,
+      "region": {
+        "left": 466,
+        "right": 718,
+        "top": 698,
+        "bottom": 882
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "環球股票 Global Equities",
+          "percent": 34.7
+        },
+        {
+          "label": "亞洲股票 Asian Equities",
+          "percent": 20.2
+        },
+        {
+          "label": "環球債券 Global Bonds",
+          "percent": 18.2
+        },
+        {
+          "label": "香港股票 Hong Kong Equities",
+          "percent": 8.4
+        },
+        {
+          "label": "亞洲債券 Asian Bonds",
+          "percent": 6.9
+        },
+        {
+          "label": "港元債券 HKD Bonds",
+          "percent": 5.9
+        },
+        {
+          "label": "其他債券 Other Bonds",
+          "percent": 1.1
+        },
+        {
+          "label": "其他股票 Other Equities",
+          "percent": 0.1
+        },
+        {
+          "label": "現金及其他 Cash and Others",
+          "percent": 4.5
+        }
+      ],
+      "printed": [
+        "34.7%",
+        "20.2%",
+        "18.2%",
+        "8.4%",
+        "6.9%",
+        "5.9%",
+        "1.1%",
+        "0.1%",
+        "4.5%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Growth Fund",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+      "page": 13,
+      "region": {
+        "left": 466,
+        "right": 718,
+        "top": 698,
+        "bottom": 882
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "環球股票 Global Equities",
+          "percent": 44.6
+        },
+        {
+          "label": "亞洲股票 Asian Equities",
+          "percent": 26.7
+        },
+        {
+          "label": "香港股票 Hong Kong Equities",
+          "percent": 12
+        },
+        {
+          "label": "環球債券 Global Bonds",
+          "percent": 8.3
+        },
+        {
+          "label": "亞洲債券 Asian Bonds",
+          "percent": 3.3
+        },
+        {
+          "label": "港元債券 HKD Bonds",
+          "percent": 2.7
+        },
+        {
+          "label": "其他債券 Other Bonds",
+          "percent": 0.5
+        },
+        {
+          "label": "其他股票 Other Equities",
+          "percent": 0.1
+        },
+        {
+          "label": "現金及其他 Cash and Others",
+          "percent": 1.8
+        }
+      ],
+      "printed": [
+        "44.6%",
+        "26.7%",
+        "12.0%",
+        "8.3%",
+        "3.3%",
+        "2.7%",
+        "0.5%",
+        "0.1%",
+        "1.8%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Global Low Carbon Index Fund",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+      "page": 14,
+      "region": {
+        "left": 466,
+        "right": 718,
+        "top": 698,
+        "bottom": 882
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "資訊科技 Information Technology",
+          "percent": 32.2
+        },
+        {
+          "label": "金融 Financials",
+          "percent": 27.4
+        },
+        {
+          "label": "消費 Consumer",
+          "percent": 12
+        },
+        {
+          "label": "健康護理 Health Care",
+          "percent": 11.8
+        },
+        {
+          "label": "通信服務 Communication Services",
+          "percent": 5.1
+        },
+        {
+          "label": "工業 Industrials",
+          "percent": 4.2
+        },
+        {
+          "label": "原材料 Materials",
+          "percent": 3.9
+        },
+        {
+          "label": "公用事業 Utilities",
+          "percent": 2.3
+        },
+        {
+          "label": "能源 Energy",
+          "percent": 0.7
+        },
+        {
+          "label": "現金及其他 Cash and Others",
+          "percent": 0.4
+        }
+      ],
+      "printed": [
+        "32.2%",
+        "27.4%",
+        "12.0%",
+        "11.8%",
+        "5.1%",
+        "4.2%",
+        "3.9%",
+        "2.3%",
+        "0.7%",
+        "0.4%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Multi-Sector Equity Fund",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+      "page": 15,
+      "region": {
+        "left": 466,
+        "right": 718,
+        "top": 698,
+        "bottom": 882
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "資訊科技 Information Technology",
+          "percent": 43.9
+        },
+        {
+          "label": "金融 Financials",
+          "percent": 25.5
+        },
+        {
+          "label": "健康護理 Health Care",
+          "percent": 18.2
+        },
+        {
+          "label": "主要消費品 Consumer Staples",
+          "percent": 3.5
+        },
+        {
+          "label": "工業 Industrials",
+          "percent": 2.5
+        },
+        {
+          "label": "非必需消費品 Consumer Discretionary",
+          "percent": 2.1
+        },
+        {
+          "label": "通信服務 Communication Services",
+          "percent": 1.8
+        },
+        {
+          "label": "原材料 Materials",
+          "percent": 0.8
+        },
+        {
+          "label": "能源 Energy",
+          "percent": 0.6
+        },
+        {
+          "label": "公用事業 Utilities",
+          "percent": 0.2
+        },
+        {
+          "label": "房地產 Real Estate",
+          "percent": 0.2
+        },
+        {
+          "label": "現金及其他 Cash and Others",
+          "percent": 0.7
+        }
+      ],
+      "printed": [
+        "43.9%",
+        "25.5%",
+        "18.2%",
+        "3.5%",
+        "2.5%",
+        "2.1%",
+        "1.8%",
+        "0.8%",
+        "0.6%",
+        "0.2%",
+        "0.2%",
+        "0.7%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF European Equity Fund",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+      "page": 16,
+      "region": {
+        "left": 466,
+        "right": 718,
+        "top": 698,
+        "bottom": 882
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "金融 Financials",
+          "percent": 24.4
+        },
+        {
+          "label": "工業 Industrials",
+          "percent": 19.4
+        },
+        {
+          "label": "資訊科技 Information Technology",
+          "percent": 11.1
+        },
+        {
+          "label": "健康護理 Health Care",
+          "percent": 11
+        },
+        {
+          "label": "主要消費品 Consumer Staples",
+          "percent": 7.3
+        },
+        {
+          "label": "非必需消費品 Consumer Discretionary",
+          "percent": 6.6
+        },
+        {
+          "label": "公用事業 Utilities",
+          "percent": 5.8
+        },
+        {
+          "label": "能源 Energy",
+          "percent": 4.6
+        },
+        {
+          "label": "原材料 Materials",
+          "percent": 4.3
+        },
+        {
+          "label": "通信服務 Communication Services",
+          "percent": 3.2
+        },
+        {
+          "label": "房地產 Real Estate",
+          "percent": 0.5
+        },
+        {
+          "label": "現金及其他 Cash and Others",
+          "percent": 1.8
+        }
+      ],
+      "printed": [
+        "24.4%",
+        "19.4%",
+        "11.1%",
+        "11.0%",
+        "7.3%",
+        "6.6%",
+        "5.8%",
+        "4.6%",
+        "4.3%",
+        "3.2%",
+        "0.5%",
+        "1.8%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Asian Equity Fund",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+      "page": 17,
+      "region": {
+        "left": 466,
+        "right": 718,
+        "top": 698,
+        "bottom": 882
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "南韓 South Korea",
+          "percent": 37.8
+        },
+        {
+          "label": "台灣 Taiwan",
+          "percent": 32.7
+        },
+        {
+          "label": "香港 / 中國 Hong Kong / China",
+          "percent": 16.5
+        },
+        {
+          "label": "印度 India",
+          "percent": 7
+        },
+        {
+          "label": "澳洲 Australia",
+          "percent": 2.2
+        },
+        {
+          "label": "新加坡 Singapore",
+          "percent": 0.9
+        },
+        {
+          "label": "泰國 Thailand",
+          "percent": 0.2
+        },
+        {
+          "label": "現金及其他 Cash and Others",
+          "percent": 2.7
+        }
+      ],
+      "printed": [
+        "37.8%",
+        "32.7%",
+        "16.5%",
+        "7.0%",
+        "2.2%",
+        "0.9%",
+        "0.2%",
+        "2.7%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF US Equity Fund",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+      "page": 18,
+      "region": {
+        "left": 466,
+        "right": 718,
+        "top": 698,
+        "bottom": 882
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "資訊科技 Information Technology",
+          "percent": 51.3
+        },
+        {
+          "label": "金融 Financials",
+          "percent": 21.6
+        },
+        {
+          "label": "健康護理 Health Care",
+          "percent": 10.5
+        },
+        {
+          "label": "通信服務 Communication Services",
+          "percent": 10
+        },
+        {
+          "label": "非必需消費品 Consumer Discretionary",
+          "percent": 2.1
+        },
+        {
+          "label": "工業 Industrials",
+          "percent": 2
+        },
+        {
+          "label": "主要消費品 Consumer Staples",
+          "percent": 0.4
+        },
+        {
+          "label": "房地產 Real Estate",
+          "percent": 0.2
+        },
+        {
+          "label": "公用事業 Utilities",
+          "percent": 0.2
+        },
+        {
+          "label": "能源 Energy",
+          "percent": 0.1
+        },
+        {
+          "label": "原材料 Materials",
+          "percent": 0.1
+        },
+        {
+          "label": "現金及其他 Cash and Others",
+          "percent": 1.5
+        }
+      ],
+      "printed": [
+        "51.3%",
+        "21.6%",
+        "10.5%",
+        "10.0%",
+        "2.1%",
+        "2.0%",
+        "0.4%",
+        "0.2%",
+        "0.2%",
+        "0.1%",
+        "0.1%",
+        "1.5%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF US & Hong Kong Equity Fund",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+      "page": 19,
+      "region": {
+        "left": 466,
+        "right": 718,
+        "top": 698,
+        "bottom": 882
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "美國股票 US equities",
+          "percent": 65.8
+        },
+        {
+          "label": "香港股票 Hong Kong equities",
+          "percent": 33.5
+        },
+        {
+          "label": "現金及其他 Cash and Others",
+          "percent": 0.7
+        }
+      ],
+      "printed": ["65.8%", "33.5%", "0.7%"],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Greater China Equity Fund",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+      "page": 20,
+      "region": {
+        "left": 466,
+        "right": 718,
+        "top": 698,
+        "bottom": 882
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "資訊科技 Information Technology",
+          "percent": 51.8
+        },
+        {
+          "label": "金融 Financials",
+          "percent": 19.6
+        },
+        {
+          "label": "消費 Consumer",
+          "percent": 7.3
+        },
+        {
+          "label": "通信服務 Communication Services",
+          "percent": 6.4
+        },
+        {
+          "label": "工業 Industrials",
+          "percent": 6.3
+        },
+        {
+          "label": "原材料 Materials",
+          "percent": 2.9
+        },
+        {
+          "label": "健康護理 Health Care",
+          "percent": 2.1
+        },
+        {
+          "label": "能源 Energy",
+          "percent": 0.8
+        },
+        {
+          "label": "公用事業 Utilities",
+          "percent": 0.7
+        },
+        {
+          "label": "現金及其他 Cash and Others",
+          "percent": 2.1
+        }
+      ],
+      "printed": [
+        "51.8%",
+        "19.6%",
+        "7.3%",
+        "6.4%",
+        "6.3%",
+        "2.9%",
+        "2.1%",
+        "0.8%",
+        "0.7%",
+        "2.1%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life FTSE MPF Hong Kong Index Fund",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+      "page": 21,
+      "region": {
+        "left": 466,
+        "right": 718,
+        "top": 698,
+        "bottom": 882
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "金融 Financials",
+          "percent": 36.3
+        },
+        {
+          "label": "非必需性消費 Consumer Discretionary",
+          "percent": 20
+        },
+        {
+          "label": "資訊科技 Information Technology",
+          "percent": 16.7
+        },
+        {
+          "label": "工業 Industrials",
+          "percent": 7.1
+        },
+        {
+          "label": "健康護理 Health Care",
+          "percent": 4.4
+        },
+        {
+          "label": "必需性消費 Consumer Staples",
+          "percent": 3.1
+        },
+        {
+          "label": "原材料 Basic Materials",
+          "percent": 3
+        },
+        {
+          "label": "通信服務 Communication Services",
+          "percent": 2.9
+        },
+        {
+          "label": "公用事業 Utilities",
+          "percent": 2.8
+        },
+        {
+          "label": "能源 Energy",
+          "percent": 2.7
+        },
+        {
+          "label": "現金及現金等價物 Cash & Cash Equivalent",
+          "percent": 1
+        }
+      ],
+      "printed": [
+        "36.3%",
+        "20.0%",
+        "16.7%",
+        "7.1%",
+        "4.4%",
+        "3.1%",
+        "3.0%",
+        "2.9%",
+        "2.8%",
+        "2.7%",
+        "1.0%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Hong Kong Equity Fund",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+      "page": 22,
+      "region": {
+        "left": 466,
+        "right": 718,
+        "top": 699,
+        "bottom": 884
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "金融 Financials",
+          "percent": 28.5
+        },
+        {
+          "label": "消費 Consumer",
+          "percent": 19.5
+        },
+        {
+          "label": "資訊科技 Information Technology",
+          "percent": 14.9
+        },
+        {
+          "label": "通信服務 Communication Services",
+          "percent": 9.3
+        },
+        {
+          "label": "健康護理 Health Care",
+          "percent": 9
+        },
+        {
+          "label": "工業 Industrials",
+          "percent": 7.2
+        },
+        {
+          "label": "原材料 Materials",
+          "percent": 5
+        },
+        {
+          "label": "公用事業 Utilities",
+          "percent": 2.3
+        },
+        {
+          "label": "能源 Energy",
+          "percent": 2.3
+        },
+        {
+          "label": "現金及其他 Cash and Others",
+          "percent": 2
+        }
+      ],
+      "printed": [
+        "28.5%",
+        "19.5%",
+        "14.9%",
+        "9.3%",
+        "9.0%",
+        "7.2%",
+        "5.0%",
+        "2.3%",
+        "2.3%",
+        "2.0%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Core Accumulation Fund",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+      "page": 23,
+      "region": {
+        "left": 466,
+        "right": 718,
+        "top": 699,
+        "bottom": 884
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "rejected",
+      "reason": "row 8 differs: rapidocr 1.5% vs tesseract 15%"
+    },
+    {
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Age 65 Plus Fund",
+      "factSheetFile": "SunLife_Rainbow.pdf",
+      "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+      "page": 24,
+      "region": {
+        "left": 466,
+        "right": 718,
+        "top": 699,
+        "bottom": 884
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "國際貨幣(除美元及港元)債券 Global Currencies ex USD ex HKD Bond",
+          "percent": 41.8
+        },
+        {
+          "label": "美元債券 USD Bond",
+          "percent": 31.9
+        },
+        {
+          "label": "美國股票 US equities",
+          "percent": 14.9
+        },
+        {
+          "label": "亞洲(不包括香港及日本)股票 Asia ex HK ex Japan equities",
+          "percent": 3.2
+        },
+        {
+          "label": "歐洲股票 Europe equities",
+          "percent": 3
+        },
+        {
+          "label": "香港股票 Hong Kong equities",
+          "percent": 1.1
+        },
+        {
+          "label": "日本股票 Japan equities",
+          "percent": 1
+        },
+        {
+          "label": "其他股票 Other Equities",
+          "percent": 0.6
+        },
+        {
+          "label": "現金或現金等值 Cash and cash equivalent",
+          "percent": 2.5
+        }
+      ],
+      "printed": [
+        "41.8%",
+        "31.9%",
+        "14.9%",
+        "3.2%",
+        "3.0%",
+        "1.1%",
+        "1.0%",
+        "0.6%",
+        "2.5%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Healthcare Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 2,
+      "region": {
+        "left": 295,
+        "right": 549,
+        "top": 255,
+        "bottom": 529
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "rejected",
+      "reason": "row 8 legend \"現金 Cash\" is not confirmed by tesseract (\"\")"
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Pacific Asia Equity Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 2,
+      "region": {
+        "left": 295,
+        "right": 522,
+        "top": 807,
+        "bottom": 1081
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "中國 China",
+          "percent": 24.2
+        },
+        {
+          "label": "韓國 Korea",
+          "percent": 21.2
+        },
+        {
+          "label": "台灣 Taiwan",
+          "percent": 16.6
+        },
+        {
+          "label": "印度 India",
+          "percent": 12.5
+        },
+        {
+          "label": "澳洲 Australia",
+          "percent": 10.7
+        },
+        {
+          "label": "香港 Hong Kong",
+          "percent": 5.5
+        },
+        {
+          "label": "現金 Cash",
+          "percent": 4.2
+        },
+        {
+          "label": "其他 Others",
+          "percent": 2.6
+        },
+        {
+          "label": "新加坡 Singapore",
+          "percent": 0.9
+        },
+        {
+          "label": "印尼 Indonesia",
+          "percent": 0.8
+        },
+        {
+          "label": "馬來西亞 Malaysia",
+          "percent": 0.8
+        }
+      ],
+      "printed": [
+        "24.2%",
+        "21.2%",
+        "16.6%",
+        "12.5%",
+        "10.7%",
+        "5.5%",
+        "4.2%",
+        "2.6%",
+        "0.9%",
+        "0.8%",
+        "0.8%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF China Value Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 3,
+      "region": {
+        "left": 275,
+        "right": 538,
+        "top": 207,
+        "bottom": 511
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "科技 Technology",
+          "percent": 51.5
+        },
+        {
+          "label": "金融 Financials",
+          "percent": 15.8
+        },
+        {
+          "label": "生活消費品 Consumer Discretionary",
+          "percent": 9.9
+        },
+        {
+          "label": "工業 Industrials",
+          "percent": 6.1
+        },
+        {
+          "label": "原材料 Basic Materials",
+          "percent": 4.8
+        },
+        {
+          "label": "電訊 Telecommunications",
+          "percent": 3.5
+        },
+        {
+          "label": "醫療保健 Healthcare",
+          "percent": 2.5
+        },
+        {
+          "label": "能源 Energy",
+          "percent": 2.1
+        },
+        {
+          "label": "地產 Real Estate",
+          "percent": 1.5
+        },
+        {
+          "label": "現金 Cash",
+          "percent": 1.2
+        },
+        {
+          "label": "生活必需品 Consumer Staples",
+          "percent": 1.1
+        }
+      ],
+      "printed": [
+        "51.5%",
+        "15.8%",
+        "9.9%",
+        "6.1%",
+        "4.8%",
+        "3.5%",
+        "2.5%",
+        "2.1%",
+        "1.5%",
+        "1.2%",
+        "1.1%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Hong Kong Equity Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 3,
+      "region": {
+        "left": 268,
+        "right": 522,
+        "top": 782,
+        "bottom": 1076
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "rejected",
+      "reason": "row 7 legend \"地產 Real Estate\" is not confirmed by tesseract (\"\")"
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Hang Seng Index ESG Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 4,
+      "region": {
+        "left": 268,
+        "right": 535,
+        "top": 208,
+        "bottom": 498
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "金融 Financials",
+          "percent": 33.6
+        },
+        {
+          "label": "非必需消費 Consumer Discretionary",
+          "percent": 18.3
+        },
+        {
+          "label": "電訊 Communication Services",
+          "percent": 17.9
+        },
+        {
+          "label": "資訊科技 Information Technology",
+          "percent": 5.2
+        },
+        {
+          "label": "醫療保健 Healthcare",
+          "percent": 5
+        },
+        {
+          "label": "現金及其他 Cash",
+          "percent": 4.6
+        },
+        {
+          "label": "工業 Industrials",
+          "percent": 4.4
+        },
+        {
+          "label": "房地產 Real Estate",
+          "percent": 4.2
+        },
+        {
+          "label": "公用事業 Utilities",
+          "percent": 2.3
+        },
+        {
+          "label": "物料 Materials",
+          "percent": 2.3
+        },
+        {
+          "label": "必需消費 Consumer Staples",
+          "percent": 2.2
+        }
+      ],
+      "printed": [
+        "33.6%",
+        "18.3%",
+        "17.9%",
+        "5.2%",
+        "5.0%",
+        "4.6%",
+        "4.4%",
+        "4.2%",
+        "2.3%",
+        "2.3%",
+        "2.2%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Japan Equity Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 4,
+      "region": {
+        "left": 268,
+        "right": 522,
+        "top": 805,
+        "bottom": 1083
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "工業 Industrials",
+          "percent": 25.4
+        },
+        {
+          "label": "生活消費品 Consumer Discretionary",
+          "percent": 19.4
+        },
+        {
+          "label": "金融 Financials",
+          "percent": 17.2
+        },
+        {
+          "label": "科技 Technology",
+          "percent": 16.6
+        },
+        {
+          "label": "醫療保健 Healthcare",
+          "percent": 5.2
+        },
+        {
+          "label": "現金 Cash",
+          "percent": 4
+        },
+        {
+          "label": "生活必需品 Consumer Staples",
+          "percent": 3.9
+        },
+        {
+          "label": "原材料 Basic Materials",
+          "percent": 3.6
+        },
+        {
+          "label": "電訊 Telecommunications",
+          "percent": 2.4
+        },
+        {
+          "label": "地產 Real Estate",
+          "percent": 1.9
+        },
+        {
+          "label": "公用事業 Utilities",
+          "percent": 0.5
+        }
+      ],
+      "printed": [
+        "25.4%",
+        "19.4%",
+        "17.2%",
+        "16.6%",
+        "5.2%",
+        "4.0%",
+        "3.9%",
+        "3.6%",
+        "2.4%",
+        "1.9%",
+        "0.5%"
+      ],
+      "total": 100.1,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF European Equity Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 5,
+      "region": {
+        "left": 268,
+        "right": 522,
+        "top": 210,
+        "bottom": 511
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "德國 Germany",
+          "percent": 25.2
+        },
+        {
+          "label": "英國 United Kingdom",
+          "percent": 23.2
+        },
+        {
+          "label": "法國 France",
+          "percent": 18.5
+        },
+        {
+          "label": "其他 Others",
+          "percent": 8.2
+        },
+        {
+          "label": "荷蘭 Netherlands",
+          "percent": 6.5
+        },
+        {
+          "label": "瑞士 Switzerland",
+          "percent": 5.3
+        },
+        {
+          "label": "瑞典 Sweden",
+          "percent": 3.5
+        },
+        {
+          "label": "丹麥 Denmark",
+          "percent": 3.1
+        },
+        {
+          "label": "意大利 Italy",
+          "percent": 3
+        },
+        {
+          "label": "現金 Cash",
+          "percent": 2.6
+        },
+        {
+          "label": "愛爾蘭 Ireland",
+          "percent": 0.9
+        }
+      ],
+      "printed": [
+        "25.2%",
+        "23.2%",
+        "18.5%",
+        "8.2%",
+        "6.5%",
+        "5.3%",
+        "3.5%",
+        "3.1%",
+        "3.0%",
+        "2.6%",
+        "0.9%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF North American Equity Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 5,
+      "region": {
+        "left": 268,
+        "right": 522,
+        "top": 786,
+        "bottom": 1067
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "rejected",
+      "reason": "rapidocr: legend \"公用事業Utilies\" matches no vocabulary entry"
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF International Equity Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 6,
+      "region": {
+        "left": 282,
+        "right": 522,
+        "top": 213,
+        "bottom": 478
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "北美洲股票 North American Equities",
+          "percent": 58.5
+        },
+        {
+          "label": "歐洲股票 European Equities",
+          "percent": 17.2
+        },
+        {
+          "label": "其他亞太股票 Other Asia Pacific Equities",
+          "percent": 15.7
+        },
+        {
+          "label": "日本股票 Japan Equities",
+          "percent": 5
+        },
+        {
+          "label": "現金 Cash",
+          "percent": 3
+        },
+        {
+          "label": "香港股票 Hong Kong Equities",
+          "percent": 0.4
+        },
+        {
+          "label": "其他 Others",
+          "percent": 0.3
+        }
+      ],
+      "printed": ["58.5%", "17.2%", "15.7%", "5.0%", "3.0%", "0.4%", "0.3%"],
+      "total": 100.1,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Aggressive Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 6,
+      "region": {
+        "left": 295,
+        "right": 529,
+        "top": 818,
+        "bottom": 1090
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "其他亞太股票 Other Asia Pacific Equities",
+          "percent": 23.3
+        },
+        {
+          "label": "北美洲股票 North American Equities",
+          "percent": 19.6
+        },
+        {
+          "label": "歐洲股票 European Equities",
+          "percent": 18.3
+        },
+        {
+          "label": "香港股票 Hong Kong Equities",
+          "percent": 17.3
+        },
+        {
+          "label": "日本股票 Japan Equities",
+          "percent": 11.7
+        },
+        {
+          "label": "現金 Cash",
+          "percent": 6.4
+        },
+        {
+          "label": "國際債券 International Bonds",
+          "percent": 2.8
+        },
+        {
+          "label": "港元債券 HKD Bonds",
+          "percent": 0.5
+        }
+      ],
+      "printed": [
+        "23.3%",
+        "19.6%",
+        "18.3%",
+        "17.3%",
+        "11.7%",
+        "6.4%",
+        "2.8%",
+        "0.5%"
+      ],
+      "total": 99.9,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Fidelity Growth Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 7,
+      "region": {
+        "left": 275,
+        "right": 529,
+        "top": 231,
+        "bottom": 498
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "美洲股票 American Equities",
+          "percent": 20.8
+        },
+        {
+          "label": "香港股票 Hong Kong Equities",
+          "percent": 17.1
+        },
+        {
+          "label": "其他亞太股票 Other Asia Pacific Equities",
+          "percent": 16.4
+        },
+        {
+          "label": "歐洲股票 European Equities",
+          "percent": 15.6
+        },
+        {
+          "label": "日本股票 Japanese Equities",
+          "percent": 12.2
+        },
+        {
+          "label": "中國在岸股票 China Onshore Equities",
+          "percent": 10.9
+        },
+        {
+          "label": "債券 Bonds",
+          "percent": 3.8
+        },
+        {
+          "label": "現金及其他 Cash and Others",
+          "percent": 2.7
+        },
+        {
+          "label": "其他股票 Other Equities",
+          "percent": 0.5
+        }
+      ],
+      "printed": [
+        "20.8%",
+        "17.1%",
+        "16.4%",
+        "15.6%",
+        "12.2%",
+        "10.9%",
+        "3.8%",
+        "2.7%",
+        "0.5%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Growth Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 7,
+      "region": {
+        "left": 295,
+        "right": 535,
+        "top": 791,
+        "bottom": 1053
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "rejected",
+      "reason": "rapidocr: legend \"國際券IntermationalBonds\" matches no vocabulary entry"
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Fidelity Stable Growth Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 8,
+      "region": {
+        "left": 295,
+        "right": 535,
+        "top": 222,
+        "bottom": 474
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "債券 Bonds",
+          "percent": 41.9
+        },
+        {
+          "label": "美洲股票 American Equities",
+          "percent": 12.9
+        },
+        {
+          "label": "其他亞太股票 Other Asia Pacific Equities",
+          "percent": 9.2
+        },
+        {
+          "label": "歐洲股票 European Equities",
+          "percent": 8.6
+        },
+        {
+          "label": "香港股票 Hong Kong Equities",
+          "percent": 8
+        },
+        {
+          "label": "中國在岸股票 China Onshore Equities",
+          "percent": 7.7
+        },
+        {
+          "label": "日本股票 Japanese Equities",
+          "percent": 7.1
+        },
+        {
+          "label": "現金及其他 Cash and Others",
+          "percent": 4.1
+        },
+        {
+          "label": "其他股票 Other Equities",
+          "percent": 0.5
+        }
+      ],
+      "printed": [
+        "41.9%",
+        "12.9%",
+        "9.2%",
+        "8.6%",
+        "8.0%",
+        "7.7%",
+        "7.1%",
+        "4.1%",
+        "0.5%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Retirement Income Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 8,
+      "region": {
+        "left": 305,
+        "right": 525,
+        "top": 766,
+        "bottom": 1005
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "國際債券 International Bonds",
+          "percent": 33.1
+        },
+        {
+          "label": "港元債券 HKD Bonds",
+          "percent": 28.5
+        },
+        {
+          "label": "其他亞太股票 Other Asia Pacific Equities",
+          "percent": 9.8
+        },
+        {
+          "label": "北美洲股票 North American Equities",
+          "percent": 8.9
+        },
+        {
+          "label": "現金 Cash",
+          "percent": 7.5
+        },
+        {
+          "label": "歐洲股票 European Equities",
+          "percent": 5
+        },
+        {
+          "label": "香港股票 Hong Kong Equities",
+          "percent": 4.2
+        },
+        {
+          "label": "日本股票 Japan Equities",
+          "percent": 3
+        }
+      ],
+      "printed": [
+        "33.1%",
+        "28.5%",
+        "9.8%",
+        "8.9%",
+        "7.5%",
+        "5.0%",
+        "4.2%",
+        "3.0%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF 2045 Retirement Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 9,
+      "region": {
+        "left": 309,
+        "right": 543,
+        "top": 265,
+        "bottom": 519
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "香港股票 Hong Kong Equities",
+          "percent": 27.1
+        },
+        {
+          "label": "其他亞太股票 Other Asia Pacific Equities",
+          "percent": 25.8
+        },
+        {
+          "label": "北美洲股票 North American Equities",
+          "percent": 22.7
+        },
+        {
+          "label": "歐洲股票 European Equities",
+          "percent": 11.6
+        },
+        {
+          "label": "日本股票 Japan Equities",
+          "percent": 7.9
+        },
+        {
+          "label": "現金 Cash",
+          "percent": 4.8
+        }
+      ],
+      "printed": ["27.1%", "25.8%", "22.7%", "11.6%", "7.9%", "4.8%"],
+      "total": 99.9,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF 2040 Retirement Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 9,
+      "region": {
+        "left": 302,
+        "right": 537,
+        "top": 798,
+        "bottom": 1053
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "香港股票 Hong Kong Equities",
+          "percent": 26
+        },
+        {
+          "label": "其他亞太股票 Other Asia Pacific Equities",
+          "percent": 25.5
+        },
+        {
+          "label": "北美洲股票 North American Equities",
+          "percent": 22.4
+        },
+        {
+          "label": "歐洲股票 European Equities",
+          "percent": 11.4
+        },
+        {
+          "label": "日本股票 Japan Equities",
+          "percent": 7.4
+        },
+        {
+          "label": "現金 Cash",
+          "percent": 5
+        },
+        {
+          "label": "國際債券 International Bonds",
+          "percent": 1.7
+        },
+        {
+          "label": "港元債券 HKD Bonds",
+          "percent": 0.6
+        }
+      ],
+      "printed": [
+        "26.0%",
+        "25.5%",
+        "22.4%",
+        "11.4%",
+        "7.4%",
+        "5.0%",
+        "1.7%",
+        "0.6%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF 2035 Retirement Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 10,
+      "region": {
+        "left": 288,
+        "right": 540,
+        "top": 228,
+        "bottom": 495
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "其他亞太股票 Other Asia Pacific Equities",
+          "percent": 23.9
+        },
+        {
+          "label": "香港股票 Hong Kong Equities",
+          "percent": 20.8
+        },
+        {
+          "label": "北美洲股票 North American Equities",
+          "percent": 20.4
+        },
+        {
+          "label": "歐洲股票 European Equities",
+          "percent": 10.1
+        },
+        {
+          "label": "國際債券 International Bonds",
+          "percent": 7.7
+        },
+        {
+          "label": "現金 Cash",
+          "percent": 6.8
+        },
+        {
+          "label": "日本股票 Japan Equities",
+          "percent": 5.2
+        },
+        {
+          "label": "港元債券 HKD Bonds",
+          "percent": 5.1
+        }
+      ],
+      "printed": [
+        "23.9%",
+        "20.8%",
+        "20.4%",
+        "10.1%",
+        "7.7%",
+        "6.8%",
+        "5.2%",
+        "5.1%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF 2030 Retirement Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 10,
+      "region": {
+        "left": 288,
+        "right": 540,
+        "top": 784,
+        "bottom": 1052
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "rejected",
+      "reason": "rapidocr: legend \"國際券IntermnationalBonds\" matches no vocabulary entry"
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF 2025 Retirement Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 11,
+      "region": {
+        "left": 295,
+        "right": 547,
+        "top": 222,
+        "bottom": 488
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "國際債券 International Bonds",
+          "percent": 27.5
+        },
+        {
+          "label": "港元債券 HKD Bonds",
+          "percent": 24.8
+        },
+        {
+          "label": "其他亞太股票 Other Asia Pacific Equities",
+          "percent": 15.5
+        },
+        {
+          "label": "北美洲股票 North American Equities",
+          "percent": 11.7
+        },
+        {
+          "label": "香港股票 Hong Kong Equities",
+          "percent": 8.2
+        },
+        {
+          "label": "現金 Cash",
+          "percent": 7.2
+        },
+        {
+          "label": "歐洲股票 European Equities",
+          "percent": 4.9
+        },
+        {
+          "label": "日本股票 Japan Equities",
+          "percent": 0.1
+        }
+      ],
+      "printed": [
+        "27.5%",
+        "24.8%",
+        "15.5%",
+        "11.7%",
+        "8.2%",
+        "7.2%",
+        "4.9%",
+        "0.1%"
+      ],
+      "total": 99.9,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Smart Retirement Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 11,
+      "region": {
+        "left": 282,
+        "right": 534,
+        "top": 763,
+        "bottom": 1032
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "國際債券 International Bonds",
+          "percent": 27.5
+        },
+        {
+          "label": "港元債券 HKD Bonds",
+          "percent": 25.1
+        },
+        {
+          "label": "其他亞太股票 Other Asia Pacific Equities",
+          "percent": 15.5
+        },
+        {
+          "label": "北美洲股票 North American Equities",
+          "percent": 11.7
+        },
+        {
+          "label": "香港股票 Hong Kong Equities",
+          "percent": 8.2
+        },
+        {
+          "label": "現金 Cash",
+          "percent": 7
+        },
+        {
+          "label": "歐洲股票 European Equities",
+          "percent": 5
+        }
+      ],
+      "printed": ["27.5%", "25.1%", "15.5%", "11.7%", "8.2%", "7.0%", "5.0%"],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Core Accumulation Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 12,
+      "region": {
+        "left": 282,
+        "right": 526,
+        "top": 278,
+        "bottom": 462
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "環球股票 Global Equity",
+          "percent": 60.4
+        },
+        {
+          "label": "環球債券 Global Bond",
+          "percent": 36
+        },
+        {
+          "label": "現金及其他 Cash and Others",
+          "percent": 3.6
+        }
+      ],
+      "printed": ["60.4%", "36.0%", "3.6%"],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Age 65 Plus Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 12,
+      "region": {
+        "left": 302,
+        "right": 530,
+        "top": 823,
+        "bottom": 993
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "環球債券 Global Bond",
+          "percent": 75.4
+        },
+        {
+          "label": "環球股票 Global Equity",
+          "percent": 20.3
+        },
+        {
+          "label": "現金及其他 Cash and Others",
+          "percent": 4.3
+        }
+      ],
+      "printed": ["75.4%", "20.3%", "4.3%"],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF RMB Bond Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 13,
+      "region": {
+        "left": 376,
+        "right": 567,
+        "top": 258,
+        "bottom": 496
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "人民幣債券 RMB Bonds",
+          "percent": 85.4
+        },
+        {
+          "label": "港元債券 HKD Bonds",
+          "percent": 12
+        },
+        {
+          "label": "美元債券 USD Bonds",
+          "percent": 1.7
+        },
+        {
+          "label": "現金 Cash",
+          "percent": 0.8
+        }
+      ],
+      "printed": ["85.4%", "12.0%", "1.7%", "0.8%"],
+      "total": 99.9,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Sustainable Pacific Asia Bond Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 13,
+      "region": {
+        "left": 298,
+        "right": 518,
+        "top": 805,
+        "bottom": 1079
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "美元債券 USD Bonds",
+          "percent": 87
+        },
+        {
+          "label": "現金 Cash",
+          "percent": 3.6
+        },
+        {
+          "label": "人民幣債券 RMB Bonds",
+          "percent": 2.4
+        },
+        {
+          "label": "印度債券 INR Bonds",
+          "percent": 2.4
+        },
+        {
+          "label": "澳元債券 AUD Bonds",
+          "percent": 2.1
+        },
+        {
+          "label": "馬幣債券 MYR Bonds",
+          "percent": 1.8
+        },
+        {
+          "label": "菲律賓債券 PHP Bonds",
+          "percent": 0.7
+        }
+      ],
+      "printed": ["87.0%", "3.6%", "2.4%", "2.4%", "2.1%", "1.8%", "0.7%"],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF International Bond Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 14,
+      "region": {
+        "left": 309,
+        "right": 529,
+        "top": 230,
+        "bottom": 504
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "美元債券 USD Bonds",
+          "percent": 35.6
+        },
+        {
+          "label": "歐元債券 EUR Bonds",
+          "percent": 26.2
+        },
+        {
+          "label": "其他 Others",
+          "percent": 10.5
+        },
+        {
+          "label": "日圓債券 JPY Bonds",
+          "percent": 7.7
+        },
+        {
+          "label": "英鎊債券 GBP Bonds",
+          "percent": 6.2
+        },
+        {
+          "label": "澳元債券 AUD Bonds",
+          "percent": 6.1
+        },
+        {
+          "label": "現金 Cash",
+          "percent": 5.2
+        },
+        {
+          "label": "加元債券 CAD Bonds",
+          "percent": 2.5
+        }
+      ],
+      "printed": [
+        "35.6%",
+        "26.2%",
+        "10.5%",
+        "7.7%",
+        "6.2%",
+        "6.1%",
+        "5.2%",
+        "2.5%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Hong Kong Bond Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 14,
+      "region": {
+        "left": 295,
+        "right": 529,
+        "top": 803,
+        "bottom": 1006
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "港元債券 HKD Bonds",
+          "percent": 86.1
+        },
+        {
+          "label": "美元債券 USD Bonds",
+          "percent": 12.1
+        },
+        {
+          "label": "現金 Cash",
+          "percent": 1.5
+        },
+        {
+          "label": "其他 Others",
+          "percent": 0.3
+        }
+      ],
+      "printed": ["86.1%", "12.1%", "1.5%", "0.3%"],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Conservative Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 15,
+      "region": {
+        "left": 295,
+        "right": 530,
+        "top": 274,
+        "bottom": 477
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "港元債券 HKD Bonds",
+          "percent": 93.1
+        },
+        {
+          "label": "現金及存款 Cash & Deposits",
+          "percent": 6.9
+        }
+      ],
+      "printed": ["93.1%", "6.9%"],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Stable Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 15,
+      "region": {
+        "left": 329,
+        "right": 543,
+        "top": 823,
+        "bottom": 1090
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "港元債券 HKD Bonds",
+          "percent": 61.2
+        },
+        {
+          "label": "國際債券 International Bonds",
+          "percent": 10.7
+        },
+        {
+          "label": "北美洲股票 North American Equities",
+          "percent": 8.2
+        },
+        {
+          "label": "歐洲股票 European Equities",
+          "percent": 5.6
+        },
+        {
+          "label": "香港股票 Hong Kong Equities",
+          "percent": 5.3
+        },
+        {
+          "label": "日本股票 Japan Equities",
+          "percent": 5.2
+        },
+        {
+          "label": "現金 Cash",
+          "percent": 2.7
+        },
+        {
+          "label": "其他亞太股票 Other Asia Pacific Equities",
+          "percent": 1.1
+        }
+      ],
+      "printed": [
+        "61.2%",
+        "10.7%",
+        "8.2%",
+        "5.6%",
+        "5.3%",
+        "5.2%",
+        "2.7%",
+        "1.1%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Interest Fund",
+      "factSheetFile": "Manulife_GlobalSelect.pdf",
+      "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "page": 16,
+      "region": {
+        "left": 295,
+        "right": 530,
+        "top": 225,
+        "bottom": 417
+      },
+      "heading": "Portfolio Allocation 投資組合分佈",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "港元債券 HKD Bonds",
+          "percent": 81.1
+        },
+        {
+          "label": "美元債券 USD Bonds",
+          "percent": 21.7
+        },
+        {
+          "label": "其他 Others",
+          "percent": 0.1
+        },
+        {
+          "label": "現金 Cash",
+          "percent": -2.9
+        }
+      ],
+      "printed": ["81.1%", "21.7%", "0.1%", "-2.9%"],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+      ]
+    },
+    {
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "MY CHOICE HONG KONG EQUITY FUND",
+      "factSheetFile": "MyChoice.pdf",
+      "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
+      "page": 2,
+      "region": {
+        "left": 15,
+        "right": 595,
+        "top": 768,
+        "bottom": 957
+      },
+      "heading": "ASSET ALLOCATION BY INDUSTRIES",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "基本物料 Basic Materials",
+          "percent": 0.67
+        },
+        {
+          "label": "現金及其他 Cash & Others",
+          "percent": 1.7
+        },
+        {
+          "label": "電訊 Telecommunications",
+          "percent": 0.58
+        },
+        {
+          "label": "公用 Utilities",
+          "percent": 1.32
+        },
+        {
+          "label": "健康護理 Health Care",
+          "percent": 2.6
+        },
+        {
+          "label": "能源 Energy",
+          "percent": 2.91
+        },
+        {
+          "label": "房地產 Real Estate",
+          "percent": 4.82
+        },
+        {
+          "label": "金融 Financials",
+          "percent": 28.8
+        },
+        {
+          "label": "生活必需品 Consumer Staples",
+          "percent": 6.75
+        },
+        {
+          "label": "工業 Industrials",
+          "percent": 10.82
+        },
+        {
+          "label": "科技 Technology",
+          "percent": 18.57
+        },
+        {
+          "label": "非必需消費品 Consumer Discretionary",
+          "percent": 20.46
+        }
+      ],
+      "printed": [
+        "0.67%",
+        "1.70%",
+        "0.58%",
+        "1.32%",
+        "2.60%",
+        "2.91%",
+        "4.82%",
+        "28.80%",
+        "6.75%",
+        "10.82%",
+        "18.57%",
+        "20.46%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "fact sheet text layer (pdftohtml -xml)"
+      ]
+    },
+    {
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "MY CHOICE HONG KONG TRACKING FUND",
+      "factSheetFile": "MyChoice.pdf",
+      "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
+      "page": 4,
+      "region": {
+        "left": 15,
+        "right": 595,
+        "top": 191,
+        "bottom": 395
+      },
+      "heading": "ASSET ALLOCATION BY INDUSTRIES",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "生活必需品 Consumer Staples",
+          "percent": 1.79
+        },
+        {
+          "label": "綜合企業 Conglomerates",
+          "percent": 1.58
+        },
+        {
+          "label": "原材料 Materials",
+          "percent": 2.09
+        },
+        {
+          "label": "現金及其他 Cash & Others",
+          "percent": 1.05
+        },
+        {
+          "label": "公用 Utilities",
+          "percent": 2.45
+        },
+        {
+          "label": "工業 Industrials",
+          "percent": 2.46
+        },
+        {
+          "label": "電訊 Telecommunications",
+          "percent": 3.76
+        },
+        {
+          "label": "地產建築 Properties & Construction",
+          "percent": 3.97
+        },
+        {
+          "label": "能源 Energy",
+          "percent": 4.74
+        },
+        {
+          "label": "金融 Financials",
+          "percent": 33.87
+        },
+        {
+          "label": "健康護理 Healthcare",
+          "percent": 5.07
+        },
+        {
+          "label": "資訊科技 Information Technology",
+          "percent": 16.48
+        },
+        {
+          "label": "非必需消費品 Consumer Discretionary",
+          "percent": 20.69
+        }
+      ],
+      "printed": [
+        "1.79%",
+        "1.58%",
+        "2.09%",
+        "1.05%",
+        "2.45%",
+        "2.46%",
+        "3.76%",
+        "3.97%",
+        "4.74%",
+        "33.87%",
+        "5.07%",
+        "16.48%",
+        "20.69%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "fact sheet text layer (pdftohtml -xml)"
+      ]
+    },
+    {
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "MY CHOICE CHINA EQUITY FUND",
+      "factSheetFile": "MyChoice.pdf",
+      "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
+      "page": 6,
+      "region": {
+        "left": 15,
+        "right": 595,
+        "top": 186,
+        "bottom": 404
+      },
+      "heading": "ASSET ALLOCATION BY INDUSTRIES",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "現金及其他 Cash & Others",
+          "percent": 0.84
+        },
+        {
+          "label": "生活必需品 Consumer Staples",
+          "percent": 2.04
+        },
+        {
+          "label": "基本物料 Basic Materials",
+          "percent": 1.99
+        },
+        {
+          "label": "其他行業 Other Industries",
+          "percent": 3.83
+        },
+        {
+          "label": "電訊 Telecommunications",
+          "percent": 1.88
+        },
+        {
+          "label": "工業 Industrials",
+          "percent": 12.64
+        },
+        {
+          "label": "科技 Technology",
+          "percent": 44.53
+        },
+        {
+          "label": "金融 Financials",
+          "percent": 14.38
+        },
+        {
+          "label": "非必需消費品 Consumer Discretionary",
+          "percent": 17.87
+        }
+      ],
+      "printed": [
+        "0.84%",
+        "2.04%",
+        "1.99%",
+        "3.83%",
+        "1.88%",
+        "12.64%",
+        "44.53%",
+        "14.38%",
+        "17.87%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "fact sheet text layer (pdftohtml -xml)"
+      ]
+    },
+    {
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "MY CHOICE AMERICAS EQUITY FUND",
+      "factSheetFile": "MyChoice.pdf",
+      "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
+      "page": 7,
+      "region": {
+        "left": 15,
+        "right": 595,
+        "top": 768,
+        "bottom": 956
+      },
+      "heading": "ASSET ALLOCATION BY COUNTRIES / REGIONS",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "現金及其他 Cash & Others",
+          "percent": 7.65
+        },
+        {
+          "label": "瑞典 Sweden",
+          "percent": 0.09
+        },
+        {
+          "label": "加拿大 Canada",
+          "percent": 4.6
+        },
+        {
+          "label": "美國 United States",
+          "percent": 87.66
+        }
+      ],
+      "printed": ["7.65%", "0.09%", "4.60%", "87.66%"],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "fact sheet text layer (pdftohtml -xml)"
+      ]
+    },
+    {
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "MY CHOICE EUROPEAN QUALITY TRACKER FUND",
+      "factSheetFile": "MyChoice.pdf",
+      "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
+      "page": 8,
+      "region": {
+        "left": 15,
+        "right": 595,
+        "top": 767,
+        "bottom": 964
+      },
+      "heading": "ASSET ALLOCATION BY INDUSTRIES",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "現金及其他 Cash & Others",
+          "percent": 5.86
+        },
+        {
+          "label": "公用 Utilities",
+          "percent": 0.31
+        },
+        {
+          "label": "電訊 Telecommunications",
+          "percent": 1.01
+        },
+        {
+          "label": "原材料 Materials",
+          "percent": 4.8
+        },
+        {
+          "label": "工業 Industrials",
+          "percent": 22.8
+        },
+        {
+          "label": "非必需消費品 Consumer Discretionary",
+          "percent": 9.01
+        },
+        {
+          "label": "金融 Financials",
+          "percent": 9.95
+        },
+        {
+          "label": "健康護理 Healthcare",
+          "percent": 20.98
+        },
+        {
+          "label": "資訊科技 Information Technology",
+          "percent": 11.55
+        },
+        {
+          "label": "生活必需品 Consumer Staples",
+          "percent": 13.73
+        }
+      ],
+      "printed": [
+        "5.86%",
+        "0.31%",
+        "1.01%",
+        "4.80%",
+        "22.80%",
+        "9.01%",
+        "9.95%",
+        "20.98%",
+        "11.55%",
+        "13.73%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "fact sheet text layer (pdftohtml -xml)"
+      ]
+    },
+    {
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "MY CHOICE ASIA EQUITY FUND",
+      "factSheetFile": "MyChoice.pdf",
+      "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
+      "page": 9,
+      "region": {
+        "left": 15,
+        "right": 595,
+        "top": 774,
+        "bottom": 956
+      },
+      "heading": "ASSET ALLOCATION BY COUNTRIES / REGIONS",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "其他國家 Other Countries",
+          "percent": 1.17
+        },
+        {
+          "label": "現金及其他 Cash & Others",
+          "percent": 3.64
+        },
+        {
+          "label": "馬來西亞 Malaysia",
+          "percent": 1.38
+        },
+        {
+          "label": "新加坡 Singapore",
+          "percent": 2.9
+        },
+        {
+          "label": "中國 China",
+          "percent": 7.16
+        },
+        {
+          "label": "台灣 Taiwan",
+          "percent": 25.36
+        },
+        {
+          "label": "印度 India",
+          "percent": 14.87
+        },
+        {
+          "label": "南韓 South Korea",
+          "percent": 29.6
+        },
+        {
+          "label": "澳洲 Australia",
+          "percent": 13.92
+        }
+      ],
+      "printed": [
+        "1.17%",
+        "3.64%",
+        "1.38%",
+        "2.90%",
+        "7.16%",
+        "25.36%",
+        "14.87%",
+        "29.60%",
+        "13.92%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "fact sheet text layer (pdftohtml -xml)"
+      ]
+    },
+    {
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "MY CHOICE GLOBAL EQUITY FUND",
+      "factSheetFile": "MyChoice.pdf",
+      "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
+      "page": 11,
+      "region": {
+        "left": 15,
+        "right": 595,
+        "top": 191,
+        "bottom": 383
+      },
+      "heading": "ASSET ALLOCATION BY GEOGRAPHIC REGIONS",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "其他國家 Other Countries",
+          "percent": 2.17
+        },
+        {
+          "label": "現金及其他 Cash & Others",
+          "percent": 1.55
+        },
+        {
+          "label": "英國 United Kingdom",
+          "percent": 2.89
+        },
+        {
+          "label": "日本 Japan",
+          "percent": 3.82
+        },
+        {
+          "label": "香港 / 中國 Hong Kong / China",
+          "percent": 4.31
+        },
+        {
+          "label": "歐洲不包括英國 Europe EX UK",
+          "percent": 9.24
+        },
+        {
+          "label": "北美洲 North America",
+          "percent": 65.39
+        },
+        {
+          "label": "亞洲不包括日本 Asia Pacific EX Japan",
+          "percent": 10.63
+        }
+      ],
+      "printed": [
+        "2.17%",
+        "1.55%",
+        "2.89%",
+        "3.82%",
+        "4.31%",
+        "9.24%",
+        "65.39%",
+        "10.63%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "fact sheet text layer (pdftohtml -xml)"
+      ]
+    },
+    {
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "MY CHOICE CORE ACCUMULATION FUND",
+      "factSheetFile": "MyChoice.pdf",
+      "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
+      "page": 12,
+      "region": {
+        "left": 15,
+        "right": 595,
+        "top": 788,
+        "bottom": 978
+      },
+      "heading": "ASSET ALLOCATION BY ASSET CLASSES",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "現金及其他 Cash & Others",
+          "percent": 2.31
+        },
+        {
+          "label": "美元債券 USD Bonds",
+          "percent": 14.9
+        },
+        {
+          "label": "國際貨幣債券 (除美元及港元) Global Currencies Bonds ex USD ex HKD",
+          "percent": 19.44
+        },
+        {
+          "label": "北美股票 North America Equities",
+          "percent": 39.56
+        },
+        {
+          "label": "其他股票 Other Equities",
+          "percent": 1.5
+        },
+        {
+          "label": "香港 / 中國股票 Hong Kong / China Equities",
+          "percent": 3.03
+        },
+        {
+          "label": "亞洲不包括日本股票 Asia Pacific ex Japan Equities",
+          "percent": 8.59
+        },
+        {
+          "label": "英國股票 United Kingdom Equities",
+          "percent": 1.49
+        },
+        {
+          "label": "歐洲不包括英國股票 Europe ex UK Equities",
+          "percent": 6.4
+        },
+        {
+          "label": "日本股票 Japan Equities",
+          "percent": 2.78
+        }
+      ],
+      "printed": [
+        "2.31%",
+        "14.90%",
+        "19.44%",
+        "39.56%",
+        "1.50%",
+        "3.03%",
+        "8.59%",
+        "1.49%",
+        "6.40%",
+        "2.78%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "fact sheet text layer (pdftohtml -xml)"
+      ]
+    },
+    {
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "MY CHOICE AGE 65 PLUS FUND",
+      "factSheetFile": "MyChoice.pdf",
+      "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
+      "page": 13,
+      "region": {
+        "left": 15,
+        "right": 595,
+        "top": 801,
+        "bottom": 988
+      },
+      "heading": "ASSET ALLOCATION BY ASSET CLASSES",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "現金及其他 Cash & Others",
+          "percent": 2.7
+        },
+        {
+          "label": "北美股票 North America Equities",
+          "percent": 14.84
+        },
+        {
+          "label": "亞洲不包括日本股票 Asia Pacific ex Japan Equities",
+          "percent": 3.22
+        },
+        {
+          "label": "美元債券 USD Bonds",
+          "percent": 31.91
+        },
+        {
+          "label": "歐洲不包括英國股票 Europe ex UK Equities",
+          "percent": 2.4
+        },
+        {
+          "label": "香港 / 中國股票 Hong Kong / China Equities",
+          "percent": 1.14
+        },
+        {
+          "label": "日本股票 Japan Equities",
+          "percent": 1.04
+        },
+        {
+          "label": "英國股票 United Kingdom Equities",
+          "percent": 0.56
+        },
+        {
+          "label": "國際貨幣債券 (除美元及港元) Global Currencies Bonds ex USD ex HKD",
+          "percent": 41.63
+        },
+        {
+          "label": "其他股票 Other Equities",
+          "percent": 0.56
+        }
+      ],
+      "printed": [
+        "2.70%",
+        "14.84%",
+        "3.22%",
+        "31.91%",
+        "2.40%",
+        "1.14%",
+        "1.04%",
+        "0.56%",
+        "41.63%",
+        "0.56%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "fact sheet text layer (pdftohtml -xml)"
+      ]
+    },
+    {
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "MY CHOICE GROWTH FUND",
+      "factSheetFile": "MyChoice.pdf",
+      "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
+      "page": 14,
+      "region": {
+        "left": 15,
+        "right": 595,
+        "top": 750,
+        "bottom": 956
+      },
+      "heading": "ASSET ALLOCATION BY ASSET CLASSES",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "債券 Bonds",
+          "percent": 3.81
+        },
+        {
+          "label": "現金及其他 Cash & Others",
+          "percent": 1.65
+        },
+        {
+          "label": "其他股票 Other Equities",
+          "percent": 1.53
+        },
+        {
+          "label": "中國股票 China Equities",
+          "percent": 10.88
+        },
+        {
+          "label": "北美股票 North America Equities",
+          "percent": 20.83
+        },
+        {
+          "label": "日本股票 Japan Equities",
+          "percent": 12.22
+        },
+        {
+          "label": "香港股票 Hong Kong Equities",
+          "percent": 17.09
+        },
+        {
+          "label": "歐洲股票 Europe Equities",
+          "percent": 15.57
+        },
+        {
+          "label": "亞太股票 Asia Pacific Equities",
+          "percent": 16.42
+        }
+      ],
+      "printed": [
+        "3.81%",
+        "1.65%",
+        "1.53%",
+        "10.88%",
+        "20.83%",
+        "12.22%",
+        "17.09%",
+        "15.57%",
+        "16.42%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "fact sheet text layer (pdftohtml -xml)"
+      ]
+    },
+    {
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "MY CHOICE BALANCED FUND",
+      "factSheetFile": "MyChoice.pdf",
+      "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
+      "page": 15,
+      "region": {
+        "left": 15,
+        "right": 595,
+        "top": 756,
+        "bottom": 949
+      },
+      "heading": "ASSET ALLOCATION BY ASSET CLASSES",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "現金及其他 Cash & Others",
+          "percent": 4.32
+        },
+        {
+          "label": "美元債券 USD Bonds",
+          "percent": 7.42
+        },
+        {
+          "label": "香港 / 中國股票 Hong Kong / China Equities",
+          "percent": 18.85
+        },
+        {
+          "label": "國際貨幣債券 (除美元及港元) Global Currencies Bonds ex USD ex HKD",
+          "percent": 12.02
+        },
+        {
+          "label": "其他股票 Other Equities",
+          "percent": 2.01
+        },
+        {
+          "label": "北美股票 North America Equities",
+          "percent": 17.65
+        },
+        {
+          "label": "英國股票 United Kingdom Equities",
+          "percent": 4.79
+        },
+        {
+          "label": "日本股票 Japan Equities",
+          "percent": 8.14
+        },
+        {
+          "label": "亞洲不包括日本股票 Asia Pacific ex Japan Equities",
+          "percent": 14.75
+        },
+        {
+          "label": "歐洲不包括英國股票 Europe ex UK Equities",
+          "percent": 10.05
+        }
+      ],
+      "printed": [
+        "4.32%",
+        "7.42%",
+        "18.85%",
+        "12.02%",
+        "2.01%",
+        "17.65%",
+        "4.79%",
+        "8.14%",
+        "14.75%",
+        "10.05%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "fact sheet text layer (pdftohtml -xml)"
+      ]
+    },
+    {
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "MY CHOICE STABLE FUND",
+      "factSheetFile": "MyChoice.pdf",
+      "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
+      "page": 16,
+      "region": {
+        "left": 15,
+        "right": 595,
+        "top": 752,
+        "bottom": 956
+      },
+      "heading": "ASSET ALLOCATION BY ASSET CLASSES",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "港元債券 HKD Bonds",
+          "percent": 0.15
+        },
+        {
+          "label": "現金及其他 Cash & Others",
+          "percent": 4.26
+        },
+        {
+          "label": "香港 / 中國股票 Hong Kong / China Equities",
+          "percent": 13.75
+        },
+        {
+          "label": "美元債券 USD Bonds",
+          "percent": 14.85
+        },
+        {
+          "label": "北美股票 North America Equities",
+          "percent": 13.68
+        },
+        {
+          "label": "國際貨幣債券 (除美元及港元) Global Currencies Bonds ex USD ex HKD",
+          "percent": 24.06
+        },
+        {
+          "label": "亞洲不包括日本股票 Asia Pacific ex Japan Equities",
+          "percent": 11.09
+        },
+        {
+          "label": "其他股票 Other Equities",
+          "percent": 1.76
+        },
+        {
+          "label": "日本股票 Japan Equities",
+          "percent": 5.65
+        },
+        {
+          "label": "英國股票 United Kingdom Equities",
+          "percent": 3.51
+        },
+        {
+          "label": "歐洲不包括英國股票 Europe ex UK Equities",
+          "percent": 7.24
+        }
+      ],
+      "printed": [
+        "0.15%",
+        "4.26%",
+        "13.75%",
+        "14.85%",
+        "13.68%",
+        "24.06%",
+        "11.09%",
+        "1.76%",
+        "5.65%",
+        "3.51%",
+        "7.24%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "fact sheet text layer (pdftohtml -xml)"
+      ]
+    },
+    {
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "MY CHOICE HKD BOND FUND",
+      "factSheetFile": "MyChoice.pdf",
+      "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
+      "page": 18,
+      "region": {
+        "left": 15,
+        "right": 595,
+        "top": 189,
+        "bottom": 412
+      },
+      "heading": "ASSET ALLOCATION BY GEOGRAPHIC REGIONS",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "英國 United Kingdom",
+          "percent": 2.56
+        },
+        {
+          "label": "現金及其他 Cash & Others",
+          "percent": 1
+        },
+        {
+          "label": "美國 United States",
+          "percent": 3.06
+        },
+        {
+          "label": "中國 China",
+          "percent": 4.92
+        },
+        {
+          "label": "新加坡 Singapore",
+          "percent": 5.66
+        },
+        {
+          "label": "澳洲 Australia",
+          "percent": 6.54
+        },
+        {
+          "label": "香港 Hong Kong",
+          "percent": 57.02
+        },
+        {
+          "label": "韓國 Korea",
+          "percent": 7.29
+        },
+        {
+          "label": "其他國家 Other Countries",
+          "percent": 11.95
+        }
+      ],
+      "printed": [
+        "2.56%",
+        "1.00%",
+        "3.06%",
+        "4.92%",
+        "5.66%",
+        "6.54%",
+        "57.02%",
+        "7.29%",
+        "11.95%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "fact sheet text layer (pdftohtml -xml)"
+      ]
+    },
+    {
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "MY CHOICE CHINESE GOVERNMENT AND POLICY BANK BOND INDEX FUND",
+      "factSheetFile": "MyChoice.pdf",
+      "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
+      "page": 19,
+      "region": {
+        "left": 15,
+        "right": 595,
+        "top": 785,
+        "bottom": 969
+      },
+      "heading": "ASSET ALLOCATION BY ASSET CLASSES",
+      "status": "rejected",
+      "reason": "row 1 differs: rapidocr \"現金及其他 Cash & Others 71.99%\" vs text layer \"現金及其他 Cash & Others 1.99%\""
+    },
+    {
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "MY CHOICE GLOBAL BOND FUND",
+      "factSheetFile": "MyChoice.pdf",
+      "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
+      "page": 21,
+      "region": {
+        "left": 15,
+        "right": 595,
+        "top": 190,
+        "bottom": 380
+      },
+      "heading": "ASSET ALLOCATION BY GEOGRAPHIC REGIONS",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "意大利 Italy",
+          "percent": 0.59
+        },
+        {
+          "label": "現金及其他 Cash & Others",
+          "percent": 6.16
+        },
+        {
+          "label": "波蘭 Poland",
+          "percent": 0.62
+        },
+        {
+          "label": "墨西哥 Mexico",
+          "percent": 0.86
+        },
+        {
+          "label": "其他國家 Other Countries",
+          "percent": 1.53
+        },
+        {
+          "label": "澳洲 Australia",
+          "percent": 2.44
+        },
+        {
+          "label": "加拿大 Canada",
+          "percent": 2.71
+        },
+        {
+          "label": "美國 United States",
+          "percent": 36.62
+        },
+        {
+          "label": "英國 United Kingdom",
+          "percent": 5.57
+        },
+        {
+          "label": "日本 Japan",
+          "percent": 9.54
+        },
+        {
+          "label": "中國 China",
+          "percent": 12.06
+        },
+        {
+          "label": "德國 Germany",
+          "percent": 21.3
+        }
+      ],
+      "printed": [
+        "0.59%",
+        "6.16%",
+        "0.62%",
+        "0.86%",
+        "1.53%",
+        "2.44%",
+        "2.71%",
+        "36.62%",
+        "5.57%",
+        "9.54%",
+        "12.06%",
+        "21.30%"
+      ],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "fact sheet text layer (pdftohtml -xml)"
+      ]
+    },
+    {
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "MY CHOICE RMB & HKD MONEY MARKET FUND",
+      "factSheetFile": "MyChoice.pdf",
+      "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
+      "page": 22,
+      "region": {
+        "left": 15,
+        "right": 595,
+        "top": 779,
+        "bottom": 957
+      },
+      "heading": "ASSET ALLOCATION BY ASSET CLASSES",
+      "status": "rejected",
+      "reason": "rapidocr: legend \"港元定息券 Fixed Income - HKD 12.30 人民定息债券 FixedIncome-CNH\" matches no vocabulary entry"
+    },
+    {
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "MY CHOICE MPF CONSERVATIVE FUND",
+      "factSheetFile": "MyChoice.pdf",
+      "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
+      "page": 23,
+      "region": {
+        "left": 15,
+        "right": 595,
+        "top": 770,
+        "bottom": 960
+      },
+      "heading": "ASSET ALLOCATION BY ASSET CLASSES",
+      "status": "ok",
+      "entries": [
+        {
+          "label": "現金及其他 Cash & Others",
+          "percent": 0
+        },
+        {
+          "label": "貨幣市場工具 Money Market Instruments",
+          "percent": 36.66
+        },
+        {
+          "label": "存款 Deposits",
+          "percent": 63.34
+        }
+      ],
+      "printed": ["0.00%", "36.66%", "63.34%"],
+      "total": 100,
+      "reads": [
+        "rapidocr-onnxruntime 1.4.4",
+        "fact sheet text layer (pdftohtml -xml)"
+      ]
+    }
+  ]
+}
