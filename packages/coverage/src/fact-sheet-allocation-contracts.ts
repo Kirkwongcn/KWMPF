@@ -862,6 +862,30 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       fontFamily: /Arial$/,
       fontColor: ["#ffffff"],
     },
+    narrative: {
+      // 投資目標在左欄（left 30–260），右邊同一高度係投資組合分布。冇基金經理評論。
+      investmentObjective: {
+        heading: /^投資目標$/,
+        band: { minLeft: 20, maxLeft: 265 },
+        minFontSize: 10,
+        maxGap: 30,
+        languages: "bilingual",
+      },
+      // 基金資料表：標籤「投資經理 Investment Manager」在 left 349–363，數值在
+      // left 426–580（逐隻基金唔同），垂直置中對住標籤：一行長的中文值比標籤高
+      // 1–3 pt，兩行長的（「宏利投資管理（香港）有限公司投資於由富達基金……管理之
+      // 基金」）第一行高 17 pt。上一格基金類型描述的英文值最低落到標籤上 17 pt，
+      // 所以由第一行中文開始讀。
+      investmentManager: {
+        heading: /^投資經理$/,
+        band: { minLeft: 420, maxLeft: 900 },
+        minDepth: -20,
+        maxDepth: 30,
+        startAt: /\p{Script=Han}/u,
+        maxGap: 18,
+        languages: "bilingual",
+      },
+    },
     allocation: {
       // 環球精選的投資組合分布係向量條形圖，標籤及百分比都唔係可抽取文字
       // （`pdftohtml` 在 left 291–556 這一欄抽唔到任何 text）。欄界照劃在圖表位置：

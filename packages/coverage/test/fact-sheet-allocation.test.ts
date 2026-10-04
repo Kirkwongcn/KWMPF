@@ -542,7 +542,12 @@ describe("Manulife Global Select holdings", () => {
       { rank: 2, security: "GPT RE Ltd 2.2% 18/11/2030", percent: 2.09 },
       { rank: 3, security: "NBN Co. Ltd. 4.8% 07/12/2033", percent: 2.09 },
     ]);
-    expect(disclosure?.unavailableFields).toEqual(["allocation"]);
+    // 呢份測試頁冇投資目標及投資經理，契約聲明咗的文字欄位照樣報官方未提供。
+    expect(disclosure?.unavailableFields).toEqual([
+      "allocation",
+      "investmentObjective",
+      "investmentManager",
+    ]);
   });
 });
 
