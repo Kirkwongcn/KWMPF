@@ -455,6 +455,31 @@ describe("commentary shared across funds", () => {
     expect(disclosures.map((d) => d.narrative?.managerCommentary?.sharedAcrossFunds)).toEqual([2, 2, undefined]);
     expect(disclosures[2]?.narrative?.managerCommentary?.en).toBe("Gamma rose on stock selection.");
   });
+
+  it("reads a one-fund file's front page when the narrative scope is the whole document", () => {
+    const contract = {
+      scheme: "Test Scheme",
+      title: { pattern: /Fund$/, fontSize: [20] },
+      allocation: { heading: /^Portfolio Allocation$/ },
+      holdings: { heading: /^Top 10 Holdings$/ },
+      narrativeScope: "document" as const,
+      narrative: {
+        investmentObjective: { heading: /^Investment Objective$/, band: { minLeft: 0, maxLeft: 900 }, languages: "en" as const },
+      },
+      asOf: { pattern: /As at\s+(\d{1,2}\/\d{1,2}\/\d{4})/ },
+    };
+    const twoPages = (fundsOnPage2: string[]) =>
+      parsePdfXml(
+        `<pdf2xml>${page([
+          { top: 20, left: 40, text: "As at 30/06/2026" },
+          { top: 100, left: 40, text: "Investment Objective" },
+          { top: 120, left: 40, text: "Seeks long-term growth." },
+        ])}${page(fundsOnPage2.map((name, index) => ({ top: 100 + index * 300, left: 40, text: name, size: 20 }))).replace('number="1"', 'number="2"')}</pdf2xml>`,
+      );
+    const [disclosure] = parseFactSheetDisclosures(twoPages(["Alpha Fund"]), contract);
+    expect(disclosure?.narrative?.investmentObjective?.en).toBe("Seeks long-term growth.");
+    expect(() => parseFactSheetDisclosures(twoPages(["Alpha Fund", "Beta Fund"]), contract)).toThrow(/one fund per file/);
+  });
 });
 
 describe("Chinese layout spacing", () => {

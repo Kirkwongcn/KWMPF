@@ -254,6 +254,12 @@ export type FactSheetContract = {
    */
   /** 一個欄位可以由幾份契約合併（中英分頁印），見 `readNarrativeField`。 */
   narrative?: Partial<Record<NarrativeField, TextBlockSelector | TextBlockSelector[]>>;
+  /**
+   * 文字欄位喺邊度搵：`"section"`（預設）只喺基金區段內；`"document"` 即係成份檔，
+   * 只限逐隻基金一份便覽（強積金集成信託的投資目標印喺第一頁，基金標題喺第二頁）。
+   * 一份檔多過一個基金區段而用 `"document"` 係契約錯，直接報錯。
+   */
+  narrativeScope?: "section" | "document";
   /** Explicit temporal evidence tied to a field; never inherit the document date implicitly. */
   fieldScopes?: Partial<
     Record<FactSheetDataField, FactSheetFieldScopeSelector>
@@ -1223,6 +1229,13 @@ export function parseFactSheetDisclosures(
     }
 
     const narrative: Partial<Record<NarrativeField, NarrativeText>> = {};
+    if (contract.narrativeScope === "document" && sections.length > 1) {
+      throw new Error(
+        `${contract.scheme}: narrativeScope "document" needs one fund per file, found ${sections.length} sections`,
+      );
+    }
+    const narrativeItems =
+      contract.narrativeScope === "document" ? pages.flatMap((page) => page.items) : items;
     const narrativeSelectors = Object.entries(contract.narrative ?? {}) as [
       NarrativeField,
       TextBlockSelector | TextBlockSelector[],
@@ -1236,7 +1249,7 @@ export function parseFactSheetDisclosures(
           .flatMap(([, other]) => (Array.isArray(other) ? other : [other]))
           .map((other) => other.heading),
       ];
-      const result = readNarrativeField(items, selector, stopHeadings);
+      const result = readNarrativeField(narrativeItems, selector, stopHeadings);
       if (result.status === "ok") {
         narrative[field] = result.text;
         continue;
