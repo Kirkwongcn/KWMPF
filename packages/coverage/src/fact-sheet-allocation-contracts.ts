@@ -773,6 +773,29 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
     scheme: "Fidelity Retirement Master Trust",
     source: "trustee",
     ...fidelityBlocks,
+    narrative: {
+      // 逐隻基金一份便覽，左欄（left≈43，11 pt）由上而下：基金概要（英文段、
+      // 中文段）、基金資料、基金評論（英文段、中文段）。頁腳 9 pt。「基金經理」
+      // 一欄係個人名，唔係投資經理公司，唔當 `investmentManager`。
+      investmentObjective: {
+        heading: /^About the Fund$/,
+        band: { minLeft: 30, maxLeft: 355 },
+        stopAt: /^(基金資料|Fund Details)/,
+        minFontSize: 10,
+        maxGap: 24,
+        languages: "bilingual",
+      },
+      // 評論長的基金（人民幣債券基金）縮到 9 pt，同頁腳一樣，所以靠頁腳的
+      // 風險聲明停，唔靠字級。
+      managerCommentary: {
+        heading: /^Fund Commentary$/,
+        band: { minLeft: 30, maxLeft: 355 },
+        stopAt: /^(Investment involves risks|投 ?資 ?涉 ?及 ?風 ?險)/,
+        minFontSize: 9,
+        maxGap: 24,
+        languages: "bilingual",
+      },
+    },
     fieldScopes: {
       fer: {
         kind: "financial-period",
