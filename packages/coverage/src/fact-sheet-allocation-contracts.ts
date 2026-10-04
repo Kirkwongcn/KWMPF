@@ -739,6 +739,15 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
         languages: "bilingual",
       },
     },
+    // 基金經理評論集中印喺尾段附錄（第 23 頁起「基金經理評論 MANAGER'S COMMENT」），
+    // 每隻基金一個 20 pt 中英名稱小標題，下面 11 pt 中文段及英文段。
+    narrativeAppendix: {
+      field: "managerCommentary",
+      pageHeading: /^基金經理評論$/,
+      subheadingFontSize: [20],
+      band: { minLeft: 10, maxLeft: 880 },
+      maxFontSize: 11,
+    },
     allocation: {
       // 圓餅圖旁邊的置中標註：中文名、英文名、百分比三段同一個中心 x。
       heading: /^\*? ?Asset Allocation\*?$/,
