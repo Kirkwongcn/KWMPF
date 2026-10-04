@@ -50,7 +50,9 @@ The Fidelity trustee factsheet contract records FER only from the explicit `Year
   嘅舊數）成版疊印上去：標題、截至日期、成張十大持倉逐版重覆一次，只差兩至七 pt，
   有幾行兩份的百分比左界完全一樣。座標分唔開，但 `pdftohtml` 依內容流輸出，而內容流
   一定係先寫本頁自己嗰版。所以 `PdfTextItem.drawIndex` 保住落筆次序，
-  `TitleSelector.overlaidPages` 每頁取最先落筆嗰個標題，並且只讀到下一個標題落筆為止。
+  `TitleSelector.overlaidPages` 每頁取最先落筆嗰個標題。契約有 `layerEnd`（每版最後落筆
+  的固定標題）就按記號切；冇就讀到下一個標題落筆為止（疊上去嗰版會喺自己標題之前已經
+  開始落筆，所以標題切只係後備，見 ADR 0004 補記）。
   實測 27 版全部第一層都係 `As at 30/06/2026`，疊上去嗰啲先係 2025-09-30／2025-03-31。
   `rejectOverlaidRows` 保留做防線：切唔乾淨就會有一行帶兩個百分比，
   嗰陣寧可整塊當抽唔到，都唔靠座標猜邊個數值屬邊隻基金。

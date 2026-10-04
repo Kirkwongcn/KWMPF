@@ -32,7 +32,7 @@ import {
 } from "./fund-features";
 import { interpretFund } from "../../../packages/coverage/src/fund-interpretation";
 import type { ComparisonGroupSourceDates } from "../../../packages/coverage/src/comparison-group-stats";
-import type { FactSheetTemporalScopes } from "../../../packages/coverage/src/fact-sheet-temporal";
+import type { PublishedFactSheetPayload } from "../../../packages/coverage/src/fact-sheet-published";
 
 type Bindings = PublicationBindings & {
   RELEASE_VERSION: string;
@@ -149,45 +149,7 @@ app.get("/fund-classes/:id", async (context) => {
   });
 });
 
-type FactSheetDisclosure = {
-  schemeName: string;
-  constituentFundName: string;
-  factSheetFile: string;
-  factSheetUrl: string;
-  // `trustee` 係受託人官網最新一期，`mpfa-registry` 係退回積金局副本，兩者期別唔同。
-  factSheetSource: "trustee" | "mpfa-registry";
-  // 有抄錄受託人來源但抽唔到，先至退回副本；未抄錄嘅計劃冇呢一欄。
-  trusteeFallback?: true;
-  factSheetAsOf: string;
-  temporalScopes?: FactSheetTemporalScopes;
-  allocations: {
-    heading: string;
-    entries: { label: string; percent: number }[];
-  }[];
-  // 官方只列名次同證券名、冇披露持有量時 `percent` 會缺席，唔可以當成 0。
-  topHoldings: { rank: number; security: string; percent?: number }[];
-  // 便覽官方文字欄位（ADR 0012），原文照錄；未寫契約的計劃冇呢一欄。
-  narrative?: Partial<
-    Record<
-      | "investmentObjective"
-      | "managerCommentary"
-      | "marketForecast"
-      | "investmentManager",
-      { heading: string; zh?: string; en?: string }
-    >
-  >;
-  unavailableFields: string[];
-  unavailableReasons: Record<string, string>;
-  // 原因文字係診斷用的英文長句，網站唔可以靠字串比對反推分類，所以另附代號。
-  unavailableKinds: Record<
-    string,
-    | "not-disclosed"
-    | "chart-only"
-    | "values-without-names"
-    | "overlaid-text-layer"
-    | "unreadable-layout"
-  >;
-};
+type FactSheetDisclosure = PublishedFactSheetPayload;
 
 type BrowseFundClass = {
   id: string;

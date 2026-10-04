@@ -95,6 +95,21 @@ describe("official narrative block", () => {
     );
   });
 
+  it("labels scheme-level commentary as not specific to the fund", () => {
+    render(
+      <NarrativeBlock
+        id="t"
+        title="最新投資方向"
+        text={commentary}
+        missing="未取得"
+        schemeLevel
+      />,
+    );
+    expect(screen.getByRole("note")).toHaveTextContent(
+      "這段是計劃層面的市場評論：便覽只印一次，同一份便覽的所有基金共用，並非這隻基金專屬。",
+    );
+  });
+
   it("states the gap instead of inventing text", () => {
     render(
       <NarrativeBlock

@@ -747,6 +747,8 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
     narrativeAppendix: {
       field: "managerCommentary",
       pageHeading: /^基金經理評論$/,
+      // 附錄最後一隻基金之後係「備註 Remarks」頁，唔係評論續頁。
+      followedBy: /^(備註|Remarks)$/,
       subheadingFontSize: [20],
       band: { minLeft: 10, maxLeft: 880 },
       maxFontSize: 11,
@@ -907,6 +909,22 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       // 逐行讀會拆散成三段獨立、冇法配對嘅碎片。同一列嘅三段最多相差 7 pt，
       // 下一列嘅英文標籤同呢一列最後一段最少相差 14 pt，8 夾喺中間，兩頭都留返容差。
       rowGap: 8,
+    },
+    // 首兩頁嘅基金經理評論係計劃整體嘅市場評論，唔屬任何一隻基金。標題「基金經理評論
+    // MANAGER’S REPORT」喺文字層，但畫面被重要事項框遮住，所以正文唔靠標題定位：
+    // 第一頁由重要事項最後一句之下、第二頁由頁首受託人名之下讀起，讀到頁尾
+    // 「Fund Manager and Issuer」。註腳（§）同頁碼係 10 號字，正文 12 號。
+    schemeNarrative: {
+      field: "managerCommentary",
+      heading: [/^基金經理評論$/, /^MANAGER[’']S REPORT$/],
+      startAfter:
+        /閣下的投資或會承受重大損失。$|^Haitong International Investment Managers Limited 海通國際投資經理有限公司$/,
+      stopAt: /^Fund Manager and Issuer:/,
+      band: { minLeft: 0, maxLeft: 900 },
+      minFontSize: 12,
+      maxFontSize: 12,
+      // 正常行距 14.6 pt，段距 17–20 pt；1.12 倍即 16.4 pt，兩邊各留一 pt 有多。
+      paragraphGap: 1.12,
     },
     holdings: {
       heading: /^TOP TEN HOLDINGS$/,
@@ -1216,9 +1234,9 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       overlaidPages: true,
       maxTop: 160,
     },
-    // 疊上去嗰版會喺自己標題之前已經開始落筆，文字欄位改用每版最後落筆的
-    // 「Manager’s Commentary」標題分層（見 `narrativeLayerEnd`）。
-    narrativeLayerEnd: /^Manager[’']s Commentary$/,
+    // 疊上去嗰版會喺自己標題之前已經開始落筆，配置、持倉同文字欄位都改用每版最後落筆的
+    // 「Manager’s Commentary」標題分層（見 `layerEnd`）。
+    layerEnd: /^Manager[’']s Commentary$/,
     narrative: {
       // 右上角「市場預測 Market Forecast」，值只有英文一個字（Positive／Neutral／
       // Negative），喺標題右邊，比中文標題低 11–19 pt；標題旁的「1」係註腳記號。
