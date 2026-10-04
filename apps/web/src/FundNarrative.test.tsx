@@ -81,6 +81,20 @@ describe("official narrative block", () => {
     ).not.toBeInTheDocument();
   });
 
+  it("labels commentary shared by several funds in the same fact sheet", () => {
+    render(
+      <NarrativeBlock
+        id="t"
+        title="最新投資方向"
+        text={{ ...commentary, sharedAcrossFunds: 3 }}
+        missing="未取得"
+      />,
+    );
+    expect(screen.getByRole("note")).toHaveTextContent(
+      "同一份便覽內 3 隻基金共用這段文字，屬計劃整體的市場評論，並非這隻基金專屬。",
+    );
+  });
+
   it("states the gap instead of inventing text", () => {
     render(
       <NarrativeBlock

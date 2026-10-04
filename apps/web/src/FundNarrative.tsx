@@ -1,7 +1,13 @@
 import { useState } from "react";
 
 /** 便覽官方文字欄位（ADR 0012）：原文照錄，中英各一份，唔由本站翻譯補齊。 */
-export type NarrativeText = { heading: string; zh?: string; en?: string };
+export type NarrativeText = {
+  heading: string;
+  zh?: string;
+  en?: string;
+  /** 同一份便覽有幾多隻基金同一段文字一字不差；多過一隻即係計劃共用。 */
+  sharedAcrossFunds?: number;
+};
 
 export type FundNarrativeFields = Partial<
   Record<
@@ -122,6 +128,12 @@ export function NarrativeBlock({
               </div>
             )}
           </div>
+          {text?.sharedAcrossFunds && text.sharedAcrossFunds > 1 ? (
+            <p className="kw-narrative__shared" role="note">
+              同一份便覽內 {text.sharedAcrossFunds}{" "}
+              隻基金共用這段文字，屬計劃整體的市場評論，並非這隻基金專屬。
+            </p>
+          ) : null}
           <div
             className="kw-narrative__body"
             lang={language === "en" ? "en" : "zh-HK"}

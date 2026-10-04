@@ -1386,3 +1386,11 @@ table,
   color: var(--kw-muted);
   font-size: 0.75rem;
 }
+.kw-narrative__shared {
+  margin: 0 0 10px;
+  padding: 6px 10px;
+  border-left: 1px solid var(--kw-gold-strong);
+  background: var(--kw-soft);
+  color: var(--kw-muted-strong);
+  font-size: 0.85rem;
+}
