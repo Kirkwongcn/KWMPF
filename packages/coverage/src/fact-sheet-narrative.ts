@@ -1,5 +1,6 @@
 import { normalizeFundName } from "./fact-sheet-allocation-pairing";
 import { CJK, joinItems, type PdfPage, type PdfTextItem } from "./pdf-xml";
+import type { NarrativeField, NarrativeText } from "./fact-sheet-published";
 
 /**
  * 便覽的官方文字欄位（ADR 0012）：投資目標、基金經理評論、市場預測、投資經理。
@@ -8,26 +9,8 @@ import { CJK, joinItems, type PdfPage, type PdfTextItem } from "./pdf-xml";
  * 唯一處理係版面空白：兩個中文字之間嘅排版空格（左右對齊撐開的空隙）唔係原文用字，
  * 刪走；英文跨行加一個空格；項目符號開新段。唔刪句、唔摘要、唔改數字。
  */
-export const NARRATIVE_FIELDS = [
-  "investmentObjective",
-  "managerCommentary",
-  "marketForecast",
-  "investmentManager",
-] as const;
-
-export type NarrativeField = (typeof NARRATIVE_FIELDS)[number];
-
-export type NarrativeText = {
-  /** 便覽自己的標題原文（中英對照時連埋兩個語文）。 */
-  heading: string;
-  /**
-   * 同一份便覽有幾多隻基金的同一欄位一字不差（包括本基金）。多過一隻即係計劃
-   * 共用的市場評論，網站要標明，唔可以當成呢隻基金專屬的評論（ADR 0012）。
-   */
-  sharedAcrossFunds?: number;
-  zh?: string;
-  en?: string;
-};
+export { NARRATIVE_FIELDS } from "./fact-sheet-published";
+export type { NarrativeField, NarrativeText } from "./fact-sheet-published";
 
 export type TextBlockSelector = {
   /** 標題；中英分開兩段時，兩段都要配得到，取最上嗰段做錨點。 */
@@ -134,6 +117,8 @@ export type NarrativeReadResult =
   | { status: "unreadable-layout"; reason: string };
 
 const LINE_TOLERANCE = 4;
+/** 一句完結：句號、問號、感嘆號（中英），後面可以跟收引號或括號。 */
+const SENTENCE_END = /[.!?。！？][”’"')）」』]*$/;
 const BULLET = /^[•●▪■◆]\s*/;
 const CJK_CHAR = new RegExp(CJK.source);
 const CJK_SPACE = new RegExp(`(${CJK.source})\\s+(?=${CJK.source})`, "g");
@@ -260,7 +245,7 @@ function joinParagraphs(lines: string[], script: "zh" | "en") {
  * 原文分段：同一區內兩行之間的空隙大過正常行距（區內行距中位數）的 1.6 倍，就當
  * 係段落之間。少過三個行距唔夠判斷正常行距，唔分。
  */
-function markParagraphBreaks(lines: Line[]) {
+function markParagraphBreaks(lines: Line[], ratio = 1.6) {
   const gaps = lines.flatMap((line, index) => {
     const previous = lines[index - 1];
     return previous && previous.segment === line.segment ? [line.top - previous.top] : [];
@@ -270,7 +255,7 @@ function markParagraphBreaks(lines: Line[]) {
   const normal = sorted[Math.floor(sorted.length / 2)]!;
   for (const [index, line] of lines.entries()) {
     const previous = lines[index - 1];
-    if (previous && previous.segment === line.segment && line.top - previous.top > normal * 1.6) {
+    if (previous && previous.segment === line.segment && line.top - previous.top > normal * ratio) {
       line.breakBefore = true;
     }
   }
@@ -498,6 +483,11 @@ export function readNarrativeField(
 export type AppendixNarrativeSpec = {
   /** 附錄頁的頁標題；有呢個標題的頁先搵。 */
   pageHeading: RegExp;
+  /**
+   * 附錄之後可以接嘅其他頁的頁標題（中銀保誠附錄後係「備註／Remarks」）。下一頁冇
+   * 附錄頁標題、又唔係呢度列明的頁，就分唔到係續頁定係其他內容，當跨頁處理。
+   */
+  followedBy?: RegExp;
   /** 基金名稱小標題的字級。 */
   subheadingFontSize: number[];
   band: { minLeft: number; maxLeft: number };
@@ -511,7 +501,8 @@ export type AppendixNarrativeSpec = {
  *
  * - 冇小標題：`not-disclosed`。同名多過一個：報錯，唔揀其中一個。
  * - 讀到頁底都冇下一個小標題，而下一頁第一個小標題之前仲有正文：評論跨頁，
- *   報 `unreadable-layout`，唔出半段。
+ *   報 `unreadable-layout`，唔出半段。下一頁冇附錄頁標題、又唔係 `followedBy` 列明
+ *   的頁亦一樣：分唔到係續頁定係其他內容，有正文格式的字就當跨頁。
  */
 export function readAppendixNarrative(
   pages: PdfPage[],
@@ -551,15 +542,31 @@ export function readAppendixNarrative(
     .filter((other) => other.page === subheading.page && other.top > subheading.top + LINE_TOLERANCE)
     .sort((a, b) => a.top - b.top)[0];
   if (!next) {
-    const following = appendixPages.find((page) => page.number === subheading.page.number + 1);
-    if (following) {
+    // 下一頁唔一定有附錄頁標題：續頁可能冇印。契約冇列明係其他頁，就分唔到係續頁
+    // 定係另一份內容，只要有正文格式的字就當跨頁（寧願報讀唔齊，都唔好出半段；紅線 3）。
+    const following = pages.find((page) => page.number === subheading.page.number + 1);
+    // 列明的頁標題要係嗰頁最先嘅正文格式字之前（或者同一行）；標題之上仲有正文，
+    // 即係評論續落嚟、印喺備註標題之上，一樣當跨頁。
+    const otherHeading =
+      following && !appendixPages.includes(following) && spec.followedBy
+        ? following.items
+            .filter((item) => spec.followedBy!.test(item.text.trim()))
+            .sort((a, b) => a.top - b.top)[0]
+        : undefined;
+    const declaredOther =
+      following !== undefined &&
+      otherHeading !== undefined &&
+      !following.items.some((item) => isBody(item) && item.top < otherHeading.top - LINE_TOLERANCE);
+    if (following && !declaredOther) {
       const firstSubheading = Math.min(
         ...subheadings.filter((other) => other.page === following).map((other) => other.top),
       );
       if (following.items.some((item) => isBody(item) && item.top < firstSubheading)) {
         return {
           status: "unreadable-layout",
-          reason: `the commentary for ${fundName} continues onto page ${following.number}`,
+          reason: appendixPages.includes(following)
+            ? `the commentary for ${fundName} continues onto page ${following.number}`
+            : `the commentary for ${fundName} may continue onto page ${following.number}, which has no appendix heading`,
         };
       }
     }
@@ -585,3 +592,118 @@ export function readAppendixNarrative(
   return { status: "ok", text: composeText(lines, subheading.text, "bilingual") };
 }
 
+
+export type SchemeNarrativeSpec = {
+  /**
+   * 計劃層面文字的標題（文字層原文），每個語文一條，全部都要搵到，而且同一頁、各得一個
+   * 位置（粗體重印唔計）。只用嚟確認呢份便覽有呢段同記低標題；正文唔靠佢定位（海通嘅
+   * 標題喺文字層，但畫面被重要事項框遮住）。
+   */
+  heading: RegExp[];
+  /** 每頁正文由最後一行符合嘅行之下開始（頁首、重要事項框嘅最後一句）。 */
+  startAfter: RegExp;
+  /** 每頁讀到第一行符合嘅行就停（註腳、頁尾）；搵唔到即係版面變咗。 */
+  stopAt: RegExp;
+  band: { minLeft: number; maxLeft: number };
+  minFontSize?: number;
+  maxFontSize?: number;
+  /**
+   * 段距同正常行距之比超過幾多就分段（預設 1.6）。海通段距只大約 1.17 倍（17 對 14.6 pt），
+   * 用預設會成篇接埋一段；只加換行，唔改字。
+   */
+  paragraphGap?: number;
+};
+
+/**
+ * 計劃層面、只印一次而唔屬任何一隻基金的文字（海通首兩頁嘅基金經理評論）。由標題
+ * 所在頁讀到第一隻基金區段之前一頁，逐頁由 `startAfter` 讀到 `stopAt`。
+ *
+ * 任何一頁搵唔到起點或終點、或者第一隻基金標題之上仲有正文（即係評論續落基金頁），
+ * 都報 `unreadable-layout`，唔出半段（紅線 3）。標題出現多過一次報錯。
+ */
+export function readSchemeNarrative(
+  pages: PdfPage[],
+  firstSection: { page: number; top: number },
+  spec: SchemeNarrativeSpec,
+): NarrativeReadResult {
+  const headingItems: PdfTextItem[] = [];
+  for (const pattern of spec.heading) {
+    const found = dropReprints(
+      pages.flatMap((page) => page.items.filter((item) => pattern.test(item.text.trim()))),
+    );
+    if (found.length === 0) {
+      return { status: "not-disclosed", reason: `no scheme-level heading matching ${pattern}` };
+    }
+    if (found.length > 1) {
+      throw new Error(
+        `scheme-level heading ${pattern} appears ${found.length} times; refusing to pick one`,
+      );
+    }
+    headingItems.push(found[0]!);
+  }
+  const headingPages = new Set(headingItems.map((item) => item.page));
+  if (headingPages.size > 1) {
+    throw new Error(`scheme-level heading is split over pages ${[...headingPages].join(", ")}`);
+  }
+  const headingPage = headingItems[0]!.page;
+  if (firstSection.page <= headingPage) {
+    return {
+      status: "unreadable-layout",
+      reason: `the first fund section starts on page ${firstSection.page}, not after the scheme-level text on page ${headingPage}`,
+    };
+  }
+  // 中英標題各自一段文字，按版位先後連埋，中間一個空格。
+  const heading = headingItems
+    .toSorted((a, b) => a.top - b.top || a.left - b.left)
+    .map((item) => item.text.trim())
+    .join(" ");
+  const isBody = (item: PdfTextItem) =>
+    item.text.trim() !== "" &&
+    item.left >= spec.band.minLeft &&
+    item.left < spec.band.maxLeft &&
+    (spec.minFontSize === undefined || item.fontSize >= spec.minFontSize) &&
+    (spec.maxFontSize === undefined || item.fontSize <= spec.maxFontSize);
+
+  const kept: Line[] = [];
+  for (const page of pages) {
+    if (page.number < headingPage || page.number >= firstSection.page) continue;
+    const lines = toLines(dropReprints(page.items.filter(isBody)));
+    const start = lines.findLastIndex((line) => spec.startAfter.test(line.text));
+    if (start < 0) {
+      return { status: "unreadable-layout", reason: `no start marker on page ${page.number}` };
+    }
+    const stop = lines.findIndex((line, index) => index > start && spec.stopAt.test(line.text));
+    if (stop < 0) {
+      return { status: "unreadable-layout", reason: `no end marker on page ${page.number}` };
+    }
+    const body = lines.slice(start + 1, stop);
+    const overlaid = overlapping(body.flatMap((line) => line.items));
+    if (overlaid.length > 0) {
+      return {
+        status: "overlaid",
+        reason: `${overlaid.length} text runs overlap with different wording: ${overlaid.slice(0, 2).join(", ")}`,
+      };
+    }
+    kept.push(...body.map((line) => ({ ...line, segment: page.number })));
+  }
+  const sectionPage = pages.find((page) => page.number === firstSection.page);
+  if (sectionPage?.items.some((item) => isBody(item) && item.top < firstSection.top - LINE_TOLERANCE)) {
+    return {
+      status: "unreadable-layout",
+      reason: `text above the first fund title on page ${firstSection.page}; the scheme-level text may continue there`,
+    };
+  }
+  if (kept.length === 0) {
+    return { status: "not-disclosed", reason: "scheme-level heading found but no text" };
+  }
+  markParagraphBreaks(kept, spec.paragraphGap);
+  // 換頁處冇行距可比：上一頁最後一行以句號作結，就當新一段（只加換行，唔改字）。
+  // 句子喺頁底啱啱完而段落未完，會多咗一個換行，好過成段黐埋。
+  for (const [index, line] of kept.entries()) {
+    const previous = kept[index - 1];
+    if (previous && previous.segment !== line.segment && SENTENCE_END.test(previous.text)) {
+      line.breakBefore = true;
+    }
+  }
+  return { status: "ok", text: composeText(kept, heading, "bilingual") };
+}

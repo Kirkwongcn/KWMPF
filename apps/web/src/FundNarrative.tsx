@@ -1,23 +1,12 @@
 import { useState, type ReactNode } from "react";
 
-/** 便覽官方文字欄位（ADR 0012）：原文照錄，中英各一份，唔由本站翻譯補齊。 */
-export type NarrativeText = {
-  heading: string;
-  zh?: string;
-  en?: string;
-  /** 同一期便覽（一份或逐隻基金一份）有幾多隻基金同一段文字一字不差；多過一隻即係計劃共用。 */
-  sharedAcrossFunds?: number;
-};
+import type { NarrativeText } from "../../../packages/coverage/src/fact-sheet-published";
 
-export type FundNarrativeFields = Partial<
-  Record<
-    | "investmentObjective"
-    | "managerCommentary"
-    | "marketForecast"
-    | "investmentManager",
-    NarrativeText
-  >
->;
+/** 便覽官方文字欄位（ADR 0012）的型別同抽取共用，唔喺網站再聲明一次。 */
+export type {
+  FactSheetNarrative as FundNarrativeFields,
+  NarrativeText,
+} from "../../../packages/coverage/src/fact-sheet-published";
 
 const COLLAPSE_AFTER = 2;
 
@@ -60,6 +49,7 @@ export function NarrativeBlock({
   today = new Date(),
   collapsible = false,
   aside,
+  schemeLevel = false,
 }: {
   id: string;
   title: string;
@@ -73,6 +63,8 @@ export function NarrativeBlock({
   collapsible?: boolean;
   /** 標題下面的附加資料（例如受託人便覽的市場預測），有冇正文都顯示。 */
   aside?: ReactNode;
+  /** 文字屬計劃層面（便覽只印一次、唔屬任何一隻基金），要標明唔係這隻基金專屬。 */
+  schemeLevel?: boolean;
 }) {
   const languages = (["zh", "en"] as const).filter((key) => text?.[key]);
   const [language, setLanguage] = useState<"zh" | "en">(languages[0] ?? "zh");
@@ -132,7 +124,11 @@ export function NarrativeBlock({
               </div>
             )}
           </div>
-          {text?.sharedAcrossFunds && text.sharedAcrossFunds > 1 ? (
+          {schemeLevel ? (
+            <p className="kw-narrative__shared" role="note">
+              這段是計劃層面的市場評論：便覽只印一次，同一份便覽的所有基金共用，並非這隻基金專屬。
+            </p>
+          ) : text?.sharedAcrossFunds && text.sharedAcrossFunds > 1 ? (
             <p className="kw-narrative__shared" role="note">
               受託人同一期便覽內 {text.sharedAcrossFunds}{" "}
               隻基金共用這段文字，屬計劃整體的市場評論，並非這隻基金專屬。

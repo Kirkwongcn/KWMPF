@@ -10,11 +10,11 @@ import {
 } from "./DataCharts";
 import { fundClassLabel, joinFundParts } from "./fundClassLabel";
 import { NarrativeBlock, type FundNarrativeFields } from "./FundNarrative";
-import type { OfficialReturnUnavailable } from "../../../packages/coverage/src/fact-sheet-disclosure-lookup";
-import {
-  pointInTimeAsOf,
-  type FactSheetTemporalScopes,
-} from "../../../packages/coverage/src/fact-sheet-temporal";
+import type {
+  FactSheetUnavailableKind,
+  PublishedFactSheetPayload,
+} from "../../../packages/coverage/src/fact-sheet-published";
+import { pointInTimeAsOf } from "../../../packages/coverage/src/fact-sheet-temporal";
 
 export type PublishedFundClass = {
   snapshotId: string;
@@ -99,35 +99,7 @@ export type PublishedFundClass = {
  * 計劃便覽披露的配置及十大持倉。維度標題、標籤及證券名稱一律原文照錄，
  * 百分比的小數位數沿用披露本身，不固定成兩位小數。
  */
-type FactSheetDisclosure = {
-  factSheetFile: string;
-  /** 帶來源之前發布的快照沒有這兩欄。 */
-  factSheetUrl?: string;
-  factSheetSource?: "trustee" | "mpfa-registry";
-  /** 有抄錄受託人來源但抽不到，才退回副本；未抄錄的計劃沒有這一欄。 */
-  trusteeFallback?: true;
-  factSheetAsOf: string;
-  temporalScopes?: FactSheetTemporalScopes;
-  allocations: {
-    heading: string;
-    entries: { label: string; percent: number }[];
-  }[];
-  topHoldings: { rank: number; security: string; percent?: number }[];
-  /** 官方文字欄位（ADR 0012）；未寫契約的計劃沒有這一欄。 */
-  narrative?: FundNarrativeFields;
-  unavailableFields: string[];
-  returnUnavailable?: Record<string, OfficialReturnUnavailable>;
-  unavailableReasons: Record<string, string>;
-  /** 帶代號之前發布的快照沒有這一欄。 */
-  unavailableKinds?: Record<string, FactSheetUnavailableKind>;
-};
-
-type FactSheetUnavailableKind =
-  | "not-disclosed"
-  | "chart-only"
-  | "values-without-names"
-  | "overlaid-text-layer"
-  | "unreadable-layout";
+type FactSheetDisclosure = PublishedFactSheetPayload;
 
 type InterpretationFactor = {
   status:
@@ -411,7 +383,8 @@ function unavailableNote(field: string, disclosure: FactSheetDisclosure) {
 
 /** 文字欄位的缺口措辭：同表格分開，因為文字冇「圖表」或「名稱畫成圖形」之分。 */
 function narrativeMissing(
-  field: keyof FundNarrativeFields,
+  field:
+    keyof FundNarrativeFields | `schemeNarrative.${keyof FundNarrativeFields}`,
   disclosure: FactSheetDisclosure | undefined,
 ) {
   if (!disclosure) return "未取得：這隻基金未配對到官方便覽。";
@@ -425,6 +398,36 @@ function narrativeMissing(
     return "官方未提供。這份便覽沒有披露這一項。";
   }
   return "未取得：本站暫未抽取這份便覽的文字欄位，可開啟官方便覽查閱。";
+}
+
+/**
+ * 最新投資方向：基金本身的評論優先。基金本身官方未提供（或者契約冇呢個欄位）先用
+ * 計劃層面評論（ADR 0012 第 5 點）；基金本身官方有但讀唔到（疊印、讀唔齊），要講缺口，
+ * 唔可以用計劃層面文字蓋過。
+ */
+function directionText(disclosure: FactSheetDisclosure | undefined) {
+  const own = disclosure?.narrative?.managerCommentary;
+  if (own) return { text: own, schemeLevel: false };
+  const ownKind = disclosure?.unavailableFields.includes("managerCommentary")
+    ? (disclosure.unavailableKinds?.managerCommentary ?? "not-disclosed")
+    : undefined;
+  const scheme =
+    ownKind === undefined || ownKind === "not-disclosed"
+      ? disclosure?.schemeNarrative?.managerCommentary
+      : undefined;
+  if (scheme) return { text: scheme, schemeLevel: true };
+  // 計劃層面讀過但讀唔到，而基金本身冇失敗紀錄，就講計劃層面嗰個原因。
+  const schemeFailed =
+    ownKind === undefined &&
+    disclosure?.unavailableFields.includes("schemeNarrative.managerCommentary");
+  return {
+    text: undefined,
+    schemeLevel: false,
+    missing: narrativeMissing(
+      schemeFailed ? "schemeNarrative.managerCommentary" : "managerCommentary",
+      disclosure,
+    ),
+  };
 }
 
 /**
@@ -636,6 +639,7 @@ export function FundClassPage({
     fundClass.fundSizeAsOf !== fundClass.returnsAsOf,
   );
   const factSheetDisclosure = publication.factSheetDisclosure;
+  const direction = directionText(factSheetDisclosure);
   const periodOf: Record<string, string> = {
     一年: "1",
     三年: "3",
@@ -755,8 +759,12 @@ export function FundClassPage({
             title="最新投資方向"
             collapsible
             aside={<MarketForecast disclosure={factSheetDisclosure} />}
-            text={factSheetDisclosure?.narrative?.managerCommentary}
-            missing={narrativeMissing("managerCommentary", factSheetDisclosure)}
+            text={direction.text}
+            schemeLevel={direction.schemeLevel}
+            missing={
+              direction.missing ??
+              narrativeMissing("managerCommentary", factSheetDisclosure)
+            }
             source={
               factSheetDisclosure?.factSheetUrl
                 ? {

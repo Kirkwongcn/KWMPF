@@ -1,7 +1,9 @@
 import {
   readAppendixNarrative,
   readNarrativeField,
+  readSchemeNarrative,
   type AppendixNarrativeSpec,
+  type SchemeNarrativeSpec,
   type NarrativeReadResult,
   type NarrativeField,
   type NarrativeText,
@@ -17,6 +19,14 @@ import {
   type PdfPage,
   type PdfTextItem,
 } from "./pdf-xml";
+import type {
+  AllocationDimension,
+  AllocationEntry,
+  FactSheetNarrative,
+  FactSheetSource,
+  FactSheetUnavailableKind,
+  TopHolding,
+} from "./fact-sheet-published";
 import type {
   FactSheetTemporalField,
   FactSheetTemporalScope,
@@ -35,31 +45,13 @@ import type {
  *   亦不可靜默略過。
  */
 
-export type FactSheetSource = "trustee" | "mpfa-registry";
-
-
-export type AllocationEntry = { label: string; percent: number };
-
-/** 一個披露維度。`heading` 是便覽自己用的標題原文，不是我們改寫的維度名。 */
-export type AllocationDimension = { heading: string; entries: AllocationEntry[] };
-
-export type TopHolding = { rank: number; security: string; percent?: number };
-
-/**
- * 「點解冇呢一塊」的四種情況。原因文字係診斷用的英文長句，網站唔可以靠字串比對
- * 反推分類——所以喺知道分別嗰一刻就記低代號，畀頁面直接對照措辭。
- *
- * - `not-disclosed`：便覽該區段根本冇呢一塊，即官方未提供。
- * - `chart-only`：契約聲明版面上有，但畫成圖表／向量，唔係文字。
- * - `values-without-names`：有百分比但名稱畫成向量，出局部名單等於改寫官方披露。
- * - `overlaid-text-layer`：文字層把另一隻基金的同一張表疊印上去，分唔清邊個數值屬邊隻。
- */
-export type FactSheetUnavailableKind =
-  | "not-disclosed"
-  | "chart-only"
-  | "values-without-names"
-  | "overlaid-text-layer"
-  | "unreadable-layout";
+export type {
+  AllocationDimension,
+  AllocationEntry,
+  FactSheetSource,
+  FactSheetUnavailableKind,
+  TopHolding,
+} from "./fact-sheet-published";
 
 export type FactSheetDisclosure = {
   schemeName: string;
@@ -71,7 +63,9 @@ export type FactSheetDisclosure = {
   allocations: AllocationDimension[];
   topHoldings: TopHolding[];
   /** 官方文字欄位（ADR 0012），只有契約聲明咗嘅欄位先會出現。 */
-  narrative?: Partial<Record<NarrativeField, NarrativeText>>;
+  narrative?: FactSheetNarrative;
+  /** 計劃層面文字（`FactSheetContract.schemeNarrative`），同一份便覽每隻基金一樣。 */
+  schemeNarrative?: FactSheetNarrative;
   unavailableFields: string[];
   /** 走 `unavailableFields` 的原因，逐項寫明，供配對報告逐份列出。 */
   unavailableReasons: Record<string, string>;
@@ -264,14 +258,19 @@ export type FactSheetContract = {
    */
   narrativeScope?: "section" | "document";
   /**
-   * 整版疊印（`TitleSelector.overlaidPages`）時文字欄位用的分層記號：每一版各印一次、
-   * 而且係嗰版最後落筆的固定標題（永明「Manager’s Commentary」）。每版的文字落筆喺
-   * 上一版記號之後、自己記號或之前；疊上去嗰版會喺佢自己標題之前已經開始落筆，所以
-   * 唔可以用標題切。見 `layerItems`。
+   * 整版疊印（`TitleSelector.overlaidPages`）時的分層記號：每一版各印一次、而且係
+   * 嗰版最後落筆的固定標題（永明「Manager’s Commentary」）。每版的文字落筆喺上一版
+   * 記號之後、自己記號或之前；疊上去嗰版會喺佢自己標題之前已經開始落筆，所以唔可以
+   * 用標題切。配置、持倉同文字欄位一齊用。見 `layerItems`。
    */
-  narrativeLayerEnd?: RegExp;
+  layerEnd?: RegExp;
   /** 評論集中印喺附錄（中銀保誠），按基金名稱小標題讀，見 `readAppendixNarrative`。 */
   narrativeAppendix?: { field: NarrativeField } & AppendixNarrativeSpec;
+  /**
+   * 計劃層面、只印一次而唔屬任何一隻基金的文字（海通首兩頁的基金經理評論），見
+   * `readSchemeNarrative`。每隻基金帶同一份 `schemeNarrative`，網站要標明係計劃整體。
+   */
+  schemeNarrative?: { field: NarrativeField } & SchemeNarrativeSpec;
   /** Explicit temporal evidence tied to a field; never inherit the document date implicitly. */
   fieldScopes?: Partial<
     Record<FactSheetDataField, FactSheetFieldScopeSelector>
@@ -306,6 +305,11 @@ export type FactSheetSection = {
    * 座標同疊上去嗰版完全重疊，只有呢個界分得開。
    */
   layer?: { page: number; endDrawIndex: number; titleDrawIndex: number };
+  /**
+   * 按分層記號切出的本版文字（見 `FactSheetContract.layerEnd`）。有呢一欄就以佢為準，
+   * 配置、持倉同文字欄位讀同一層，唔再靠標題落筆次序。
+   */
+  members?: ReadonlySet<PdfTextItem>;
 };
 
 const PERCENT_ITEM = /^\(?([+-]?\d+(?:\.\d+)?)\s*%\)?$/;
@@ -513,6 +517,7 @@ export function findSections(
 
 /** 疊上去嗰版嘅文字。座標同本頁自己嗰層完全重疊，只有落筆次序分得開。 */
 function overlaid(item: PdfTextItem, section: FactSheetSection) {
+  if (section.members) return !section.members.has(item);
   const layer = section.layer;
   return (
     layer !== undefined && item.page === layer.page && item.drawIndex >= layer.endDrawIndex
@@ -1146,37 +1151,55 @@ function narrativeUnavailableKind(
   return "not-disclosed";
 }
 
+/** 每頁的分層記號（落筆次序）同疊印版數；同一份便覽每個區段共用，只計一次。 */
+type PageLayering = { markers: number[]; titles: number };
+
+function pageLayering(pages: PdfPage[], marker: RegExp, titleSelector: TitleSelector) {
+  return new Map<number, PageLayering>(
+    pages.map((page) => [
+      page.number,
+      {
+        markers: page.items
+          .filter((item) => marker.test(item.text.trim()))
+          .map((item) => item.drawIndex)
+          .sort((a, b) => a - b),
+        titles: page.items.filter((item) => matchesTitle(item, titleSelector)).length,
+      },
+    ]),
+  );
+}
+
 /**
- * 區段內按分層記號切出本版的文字（見 `FactSheetContract.narrativeLayerEnd`）。
+ * 區段內按分層記號切出本版的文字（見 `FactSheetContract.layerEnd`）。
  * 一頁有幾個記號，就有幾版；本版係本區段標題落筆之後第一個記號收尾嗰一段（標題頁），
  * 其他頁用最先落筆嗰版。
+ *
+ * 記號數目要同本頁疊印的版數一樣，本版亦要搵到自己的記號；對唔上就退返用標題落筆
+ * 次序切（`withinSection`）。只得一版的頁冇嘢要分，退返冇問題；有疊印而切唔到就記低
+ * 頁碼（`ambiguousPages`）：標題切可能混入下一版開頭，文字欄位有疊印檢查把關，
+ * 配置同持倉冇，要當疊印處理。
  */
 function layerItems(
   pages: PdfPage[],
   section: FactSheetSection,
-  marker: RegExp,
-  titleSelector: TitleSelector,
+  layering: Map<number, PageLayering>,
 ) {
-  return pages.flatMap((page) => {
-    const inRange = page.items.filter((item) =>
-      withinSectionBounds(item, section),
-    );
-    const markers = page.items
-      .filter((item) => marker.test(item.text.trim()))
-      .map((item) => item.drawIndex)
-      .sort((a, b) => a - b);
-    // 記號數目要同本頁疊印的版數一樣，本版亦要搵到自己的記號；對唔上就退返用標題
-    // 落筆次序切（`withinSection`），令疊印檢查照樣把關，唔會把幾版文字混埋。
-    const layers = page.items.filter((item) => matchesTitle(item, titleSelector)).length;
+  const ambiguousPages: number[] = [];
+  const items = pages.flatMap((page) => {
+    const inRange = page.items.filter((item) => withinSectionBounds(item, section));
+    if (inRange.length === 0) return [];
+    const { markers, titles } = layering.get(page.number) ?? { markers: [], titles: 0 };
     const title = section.layer?.page === page.number ? section.layer.titleDrawIndex : -1;
     const own = markers.findIndex((drawIndex) => drawIndex >= title);
-    if (markers.length <= 1 || own < 0 || (section.layer && markers.length !== layers)) {
+    if (markers.length <= 1 || own < 0 || (section.layer && markers.length !== titles)) {
+      if (markers.length > 1 || titles > 1) ambiguousPages.push(page.number);
       return inRange.filter((item) => withinSection(item, section));
     }
     const start = own === 0 ? -1 : markers[own - 1]!;
     const end = markers[own]!;
     return inRange.filter((item) => item.drawIndex > start && item.drawIndex <= end);
   });
+  return { items, ambiguousPages };
 }
 
 /**
@@ -1220,7 +1243,27 @@ export function parseFactSheetDisclosures(
     throw new Error(`${contract.scheme}: no constituent fund sections found`);
   }
 
-  const disclosures = sections.map((section) => {
+  const scheme = contract.schemeNarrative
+    ? (() => {
+        const { field, ...spec } = contract.schemeNarrative;
+        return { field, result: readSchemeNarrative(pages, sections[0]!.start, spec) };
+      })()
+    : undefined;
+
+  const layering = contract.layerEnd
+    ? pageLayering(pages, contract.layerEnd, contract.title)
+    : undefined;
+
+  const disclosures = sections.map((titleSection) => {
+    const layered = layering ? layerItems(pages, titleSection, layering) : undefined;
+    const layer = layered?.items;
+    const section: FactSheetSection = layer
+      ? { ...titleSection, members: new Set(layer) }
+      : titleSection;
+    const ambiguousLayers =
+      layered && layered.ambiguousPages.length > 0
+        ? `layer markers do not match the overlaid layers on page ${layered.ambiguousPages.join(", ")}; cannot tell which layer belongs to this fund`
+        : undefined;
     const items = sectionItems(pages, section);
     const allocation = contract.allocation.unextractable
       ? { dimensions: [], orphanValues: [], overlaidRows: [] }
@@ -1235,12 +1278,18 @@ export function parseFactSheetDisclosures(
     // 有數值但抽唔到名稱，代表該份便覽把名稱畫成向量而非文字（宏利環球精選）。
     // 靜默丟走這些行會令餘下的名單短一截、排名整體移位，等同改寫官方披露，
     // 所以整塊當作官方未提供，唔出局部名單。
+    // 疊印頁分唔到層：標題切可能混入下一版的配置或持倉，而且唔一定有一行帶兩個
+    // 數值俾 `rejectOverlaidRows` 捉到，所以成塊當疊印（紅線 5）。
+    const allocationLayerProblem = ambiguousLayers !== undefined && allocation.dimensions.length > 0;
+    const holdingsLayerProblem = ambiguousLayers !== undefined && holdings.holdings.length > 0;
     const allocations =
-      allocation.orphanValues.length > 0 || allocation.overlaidRows.length > 0
+      allocation.orphanValues.length > 0 ||
+      allocation.overlaidRows.length > 0 ||
+      allocationLayerProblem
         ? []
         : allocation.dimensions;
     const topHoldings =
-      holdings.orphanValues.length > 0 || holdings.overlaidRows.length > 0
+      holdings.orphanValues.length > 0 || holdings.overlaidRows.length > 0 || holdingsLayerProblem
         ? []
         : holdings.holdings;
     const temporalScopes: FactSheetTemporalScopes = {
@@ -1260,6 +1309,9 @@ export function parseFactSheetDisclosures(
       if (contract.allocation.unextractable) {
         unavailableReasons.allocation = contract.allocation.unextractable;
         unavailableKinds.allocation = "chart-only";
+      } else if (allocationLayerProblem) {
+        unavailableReasons.allocation = ambiguousLayers;
+        unavailableKinds.allocation = "overlaid-text-layer";
       } else if (allocation.overlaidRows.length > 0) {
         unavailableReasons.allocation = overlaidReason(allocation.overlaidRows);
         unavailableKinds.allocation = "overlaid-text-layer";
@@ -1276,6 +1328,9 @@ export function parseFactSheetDisclosures(
       if (contract.holdings.unextractable) {
         unavailableReasons.topHoldings = contract.holdings.unextractable;
         unavailableKinds.topHoldings = "chart-only";
+      } else if (holdingsLayerProblem) {
+        unavailableReasons.topHoldings = ambiguousLayers;
+        unavailableKinds.topHoldings = "overlaid-text-layer";
       } else if (holdings.overlaidRows.length > 0) {
         unavailableReasons.topHoldings = overlaidReason(holdings.overlaidRows);
         unavailableKinds.topHoldings = "overlaid-text-layer";
@@ -1297,9 +1352,7 @@ export function parseFactSheetDisclosures(
     const narrativeItems =
       contract.narrativeScope === "document"
         ? pages.flatMap((page) => page.items)
-        : contract.narrativeLayerEnd
-          ? layerItems(pages, section, contract.narrativeLayerEnd, contract.title)
-          : items;
+        : (layer ?? items);
     const narrativeSelectors = Object.entries(contract.narrative ?? {}) as [
       NarrativeField,
       TextBlockSelector | TextBlockSelector[],
@@ -1323,6 +1376,13 @@ export function parseFactSheetDisclosures(
       unavailableKinds[field] = narrativeUnavailableKind(result.status);
     }
 
+    if (scheme && scheme.result.status !== "ok") {
+      const key = `schemeNarrative.${scheme.field}`;
+      unavailableFields.push(key);
+      unavailableReasons[key] = scheme.result.reason;
+      unavailableKinds[key] = narrativeUnavailableKind(scheme.result.status);
+    }
+
     if (contract.narrativeAppendix) {
       const { field, ...spec } = contract.narrativeAppendix;
       const result = readAppendixNarrative(pages, section.name, spec);
@@ -1344,6 +1404,9 @@ export function parseFactSheetDisclosures(
       allocations,
       topHoldings,
       ...(narrativeSelectors.length > 0 || contract.narrativeAppendix ? { narrative } : {}),
+      ...(scheme?.result.status === "ok"
+        ? { schemeNarrative: { [scheme.field]: scheme.result.text } }
+        : {}),
       unavailableFields,
       unavailableReasons,
       unavailableKinds,

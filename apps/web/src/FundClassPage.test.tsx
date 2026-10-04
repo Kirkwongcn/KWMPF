@@ -859,6 +859,79 @@ describe("cumulative returns", () => {
     expect(dateNote).toHaveTextContent("2026-07-31");
   });
 
+  it("falls back to scheme-level commentary and says so", async () => {
+    renderWithDisclosure({
+      ...disclosure,
+      schemeNarrative: {
+        managerCommentary: {
+          heading: "MANAGER’S REPORT 基金經理評論",
+          zh: "發達市場股市在8月錄得 2.48% 的漲幅。",
+          en: "Developed market equities rose 2.48% in August.",
+        },
+      },
+    });
+
+    const direction = within(
+      await screen.findByRole("region", { name: "最新投資方向" }),
+    );
+    expect(
+      direction.getByText("發達市場股市在8月錄得 2.48% 的漲幅。"),
+    ).toBeVisible();
+    expect(direction.getByRole("note")).toHaveTextContent("計劃層面的市場評論");
+  });
+
+  it("prefers the fund's own commentary over scheme-level text", async () => {
+    renderWithDisclosure({
+      ...disclosure,
+      narrative: {
+        managerCommentary: { heading: "評論", zh: "本基金增持科技股。" },
+      },
+      schemeNarrative: {
+        managerCommentary: { heading: "基金經理評論", zh: "整體市場評論。" },
+      },
+    });
+
+    const direction = within(
+      await screen.findByRole("region", { name: "最新投資方向" }),
+    );
+    expect(direction.getByText("本基金增持科技股。")).toBeVisible();
+    expect(direction.queryByText("整體市場評論。")).not.toBeInTheDocument();
+    expect(direction.queryByRole("note")).not.toBeInTheDocument();
+  });
+
+  it("keeps the gap when the fund's own commentary exists but cannot be read", async () => {
+    renderWithDisclosure({
+      ...disclosure,
+      narrative: {},
+      unavailableFields: ["managerCommentary"],
+      unavailableKinds: { managerCommentary: "overlaid-text-layer" },
+      schemeNarrative: {
+        managerCommentary: { heading: "基金經理評論", zh: "整體市場評論。" },
+      },
+    });
+
+    const direction = within(
+      await screen.findByRole("region", { name: "最新投資方向" }),
+    );
+    expect(direction.queryByText("整體市場評論。")).not.toBeInTheDocument();
+    expect(direction.getByText(/官方文件無法可靠讀取/)).toBeVisible();
+  });
+
+  it("states why scheme-level commentary could not be read", async () => {
+    renderWithDisclosure({
+      ...disclosure,
+      unavailableFields: ["schemeNarrative.managerCommentary"],
+      unavailableKinds: {
+        "schemeNarrative.managerCommentary": "unreadable-layout",
+      },
+    });
+
+    const direction = within(
+      await screen.findByRole("region", { name: "最新投資方向" }),
+    );
+    expect(direction.getByText(/官方有披露，但本站未能完整讀取/)).toBeVisible();
+  });
+
   it("says the trustee source is simply not transcribed yet", async () => {
     renderWithDisclosure(disclosure);
 
