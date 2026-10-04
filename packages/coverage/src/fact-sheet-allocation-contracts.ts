@@ -213,7 +213,7 @@ const hsbcBlocks = {
 } as const;
 
 /**
- * 滙豐逐隻基金一頁：左欄「投資目標及其他詳情」先中文後英文，右欄「評論」先中文要點
+ * 滙豐及恒生（同一受託人、同一版面）逐隻基金一頁：左欄「投資目標及其他詳情」先中文後英文，右欄「評論」先中文要點
  * 後英文要點。評論欄之下係基金表現表，表頭有幾欄落喺同一欄界，所以喺累積回報表頭停。
  * 註腳編號用 6 級字，正文 8 至 11 級（逐隻基金唔同）；環球股票基金評論欄之下仲有一個合併通告，
  * 部分落喺同一欄界，同評論隔咗一大段空白，靠 `maxGap` 排除。
@@ -594,6 +594,7 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       name: (text) => text.replace(/^•\s*/, ""),
     },
     ...hsbcBlocks,
+    narrative: hsbcNarrative,
     asOf: { pattern: /All information as at\s+(\d{1,2}\/\d{1,2}\/\d{4})/i },
   },
   {
