@@ -216,6 +216,9 @@ const series800Narrative: FactSheetContract["narrative"] = {
   managerCommentary: {
     heading: /^(基金評論|Fund Commentary)$/,
     band: { minLeft: 35, maxLeft: 440 },
+    // 債券基金評論下面緊接債券統計數字的註腳（「∞ 其他指…」「~ 加權平均信貸評級」
+    // 「^ 當期收益率」「# 存續期」），行距同正文一樣，靠行首記號停。
+    stopAt: /^[∞~^#]\s/,
     minFontSize: 9,
     maxGap: 16,
     languages: "bilingual",
