@@ -133,6 +133,35 @@ describe("official narrative text", () => {
     });
   });
 
+  it("keeps the source's own spaces but not poppler's word breaks at a font change", () => {
+    const result = readNarrative(
+      [
+        item(100, 40, "Investment Objective"),
+        // 「CSI HK 」「100」「 Tracker」座標黐埋，空格只喺原文段落頭尾。
+        { ...item(120, 40, "The CSI HK", 60), spaceAfter: true },
+        item(120, 100, "100", 18),
+        { ...item(120, 118, "Tracker fund. The Investment Mana", 200), spaceBefore: true },
+        // 另一字款印的「’」令 poppler 開新詞，但原文冇空格。
+        { ...item(120, 318, "ger’s view.", 60), startsWord: true },
+        item(132, 40, "The BOC-"),
+        item(144, 40, "Prudential fund."),
+      ],
+      selector,
+    );
+    expect(result).toMatchObject({
+      status: "ok",
+      text: { en: "The CSI HK 100 Tracker fund. The Investment Manager’s view. The BOC-Prudential fund." },
+    });
+  });
+
+  it("drops layout spaces around full-width punctuation", () => {
+    const result = readNarrative(
+      [item(100, 40, "投資目標"), item(120, 40, "指數升至53.2 、失業率維持3.7% 。（ 註 ）")],
+      selector,
+    );
+    expect(result).toMatchObject({ status: "ok", text: { zh: "指數升至53.2、失業率維持3.7%。（註）" } });
+  });
+
   it("ends the block at a large vertical gap", () => {
     const result = readNarrative(
       [item(100, 40, "Investment Objective"), item(120, 40, "Seeks growth."), item(200, 40, "Unrelated notice.")],

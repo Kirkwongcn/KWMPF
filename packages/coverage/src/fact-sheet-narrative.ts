@@ -96,6 +96,9 @@ const CJK_BRACKET_SPACE = [
   [new RegExp(`([(（])\\s+(?=${CJK.source})`, "g"), "$1"],
   [new RegExp(`(${CJK.source})\\s+(?=[)）])`, "g"), "$1"],
   [new RegExp(`([)）])\\s+(?=${CJK.source})`, "g"), "$1"],
+  // 全形標點本身已佔一格，前後再有空格都係排版（「升至53.2 、」「3.7% 。」）。
+  [/\s+(?=[、。，；：！？）」』〉》])/g, ""],
+  [/([（「『〈《])\s+/g, "$1"],
 ] as const;
 
 type Line = { top: number; items: PdfTextItem[]; text: string };
@@ -151,7 +154,7 @@ function toLines(items: PdfTextItem[]): Line[] {
   }
   for (const line of lines) {
     line.items.sort((a, b) => a.left - b.left);
-    line.text = joinItems(line.items).replace(/\s+/g, " ").trim();
+    line.text = joinItems(line.items, 1, { explicitSpaces: true }).replace(/\s+/g, " ").trim();
   }
   return lines.sort((a, b) => a.top - b.top).filter((line) => line.text !== "");
 }
@@ -179,7 +182,7 @@ function joinParagraphs(lines: string[], script: "zh" | "en") {
     const glue =
       script === "zh" && (CJK_CHAR.test(previous.at(-1) ?? "") || CJK_CHAR.test(line[0] ?? ""))
         ? ""
-        : script === "en" && /-$/.test(previous) && /^[a-z]/.test(line)
+        : script === "en" && /\S-$/.test(previous)
           ? ""
           : " ";
     paragraphs[last] = previous + glue + line;
