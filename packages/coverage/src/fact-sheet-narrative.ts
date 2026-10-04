@@ -339,3 +339,35 @@ export function readNarrative(
   }
   return { status: "ok", text };
 }
+
+/**
+ * 一個欄位由幾份契約分開讀（例如宏利自在人生：英文版一頁、中文版下一頁），再合併成
+ * 一段。任何一份讀唔到，成個欄位都當讀唔到——唔出得一半語文就算數（紅線 3）。
+ * 兩份讀出同一種語文係契約寫錯，直接報錯。
+ */
+export function readNarrativeField(
+  items: PdfTextItem[],
+  selectors: TextBlockSelector | TextBlockSelector[],
+  stopHeadings: RegExp[] = [],
+): NarrativeReadResult {
+  const parts = (Array.isArray(selectors) ? selectors : [selectors]).map((selector) =>
+    readNarrative(items, selector, stopHeadings),
+  );
+  const overlaid = parts.find((part) => part.status === "overlaid");
+  if (overlaid) return overlaid;
+  const missing = parts.find((part) => part.status === "not-disclosed");
+  if (missing) return missing;
+  const texts = parts.flatMap((part) => (part.status === "ok" ? [part.text] : []));
+  if (texts.length === 1) return { status: "ok", text: texts[0]! };
+  const merged: NarrativeText = { heading: texts.map((text) => text.heading).join(" / ") };
+  for (const text of texts) {
+    for (const language of ["zh", "en"] as const) {
+      if (text[language] === undefined) continue;
+      if (merged[language] !== undefined) {
+        throw new Error(`narrative contract reads ${language} twice (${merged.heading})`);
+      }
+      merged[language] = text[language];
+    }
+  }
+  return { status: "ok", text: merged };
+}

@@ -8,7 +8,7 @@ import {
   sectionItems,
 } from "../src/fact-sheet-allocation";
 import { factSheetContract } from "../src/fact-sheet-allocation-contracts";
-import { readNarrative, type TextBlockSelector } from "../src/fact-sheet-narrative";
+import { readNarrative, readNarrativeField, type TextBlockSelector } from "../src/fact-sheet-narrative";
 
 const hsbc = factSheetContract("HSBC Mandatory Provident Fund - SuperTrust Plus", "trustee");
 
@@ -35,7 +35,7 @@ const selector: TextBlockSelector = {
 describe("official narrative text", () => {
   it("reads the HSBC objective verbatim and splits Chinese from English", () => {
     const items = fundItems("hsbc-2026-q2-hk-chinese-equity.xml", "Hong Kong and Chinese Equity Fund");
-    const result = readNarrative(items, hsbc.narrative!.investmentObjective!);
+    const result = readNarrativeField(items, hsbc.narrative!.investmentObjective!);
     expect(result.status).toBe("ok");
     if (result.status !== "ok") return;
     expect(result.text.heading).toBe("投資目標及其他詳情 Investment objectives and other particulars");
@@ -49,7 +49,7 @@ describe("official narrative text", () => {
 
   it("keeps every commentary bullet and its figures exactly as printed", () => {
     const items = fundItems("hsbc-2026-q2-hk-chinese-equity.xml", "Hong Kong and Chinese Equity Fund");
-    const result = readNarrative(items, hsbc.narrative!.managerCommentary!);
+    const result = readNarrativeField(items, hsbc.narrative!.managerCommentary!);
     expect(result.status).toBe("ok");
     if (result.status !== "ok") return;
     expect(result.text.zh?.split("\n")).toHaveLength(4);
@@ -63,7 +63,7 @@ describe("official narrative text", () => {
 
   it("stops before a notice that sits below the commentary column", () => {
     const items = fundItems("hsbc-2026-q2-global-equity.xml", "Global Equity Fund");
-    const result = readNarrative(items, hsbc.narrative!.managerCommentary!);
+    const result = readNarrativeField(items, hsbc.narrative!.managerCommentary!);
     expect(result.status).toBe("ok");
     if (result.status !== "ok") return;
     expect(result.text.en).toMatch(/continued to favour AI supply-chain exposure\.$/);
@@ -172,6 +172,29 @@ describe("official narrative text", () => {
 });
 
 describe("narrative layouts", () => {
+  it("merges English and Chinese printed on separate pages, failing the field if either is missing", () => {
+    const en: TextBlockSelector = {
+      heading: /^Investment Objective$/,
+      band: { minLeft: 0, maxLeft: 400 },
+      languages: "en",
+    };
+    const zh: TextBlockSelector = { heading: /^投資目標$/, band: { minLeft: 0, maxLeft: 400 }, languages: "zh" };
+    const page2 = (top: number, left: number, text: string) => ({ ...item(top, left, text), page: 2 });
+    const both = readNarrativeField(
+      [item(100, 20, "Investment Objective"), item(120, 20, "To achieve growth."), page2(100, 20, "投資目標"), page2(120, 20, "達致增長。")],
+      [en, zh],
+    );
+    expect(both).toEqual({
+      status: "ok",
+      text: { heading: "Investment Objective / 投資目標", en: "To achieve growth.", zh: "達致增長。" },
+    });
+    const englishOnly = readNarrativeField(
+      [item(100, 20, "Investment Objective"), item(120, 20, "To achieve growth.")],
+      [en, zh],
+    );
+    expect(englishOnly.status).toBe("not-disclosed");
+  });
+
   it("continues into another column only below its marker line, skipping chart labels", () => {
     const overflow: TextBlockSelector = {
       heading: /^Commentary$/,

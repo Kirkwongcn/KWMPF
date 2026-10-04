@@ -1,5 +1,5 @@
 import {
-  readNarrative,
+  readNarrativeField,
   type NarrativeField,
   type NarrativeText,
   type TextBlockSelector,
@@ -251,7 +251,8 @@ export type FactSheetContract = {
    * 官方文字欄位（投資目標、基金經理評論、市場預測、投資經理）。聲明咗就一定要讀到，
    * 讀唔到就走 `unavailableFields`；冇聲明即係未做呢個計劃，網站顯示「未取得」。
    */
-  narrative?: Partial<Record<NarrativeField, TextBlockSelector>>;
+  /** 一個欄位可以由幾份契約合併（中英分頁印），見 `readNarrativeField`。 */
+  narrative?: Partial<Record<NarrativeField, TextBlockSelector | TextBlockSelector[]>>;
   /** Explicit temporal evidence tied to a field; never inherit the document date implicitly. */
   fieldScopes?: Partial<
     Record<FactSheetDataField, FactSheetFieldScopeSelector>
@@ -1197,7 +1198,7 @@ export function parseFactSheetDisclosures(
     const narrative: Partial<Record<NarrativeField, NarrativeText>> = {};
     const narrativeSelectors = Object.entries(contract.narrative ?? {}) as [
       NarrativeField,
-      TextBlockSelector,
+      TextBlockSelector | TextBlockSelector[],
     ][];
     for (const [field, selector] of narrativeSelectors) {
       const stopHeadings = [
@@ -1205,9 +1206,10 @@ export function parseFactSheetDisclosures(
         contract.holdings.heading,
         ...narrativeSelectors
           .filter(([other]) => other !== field)
-          .map(([, other]) => other.heading),
+          .flatMap(([, other]) => (Array.isArray(other) ? other : [other]))
+          .map((other) => other.heading),
       ];
-      const result = readNarrative(items, selector, stopHeadings);
+      const result = readNarrativeField(items, selector, stopHeadings);
       if (result.status === "ok") {
         narrative[field] = result.text;
         continue;
