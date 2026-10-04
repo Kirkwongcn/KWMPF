@@ -1213,6 +1213,53 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       overlaidPages: true,
       maxTop: 160,
     },
+    // 疊上去嗰版會喺自己標題之前已經開始落筆，文字欄位改用每版最後落筆的
+    // 「Manager’s Commentary」標題分層（見 `narrativeLayerEnd`）。
+    narrativeLayerEnd: /^Manager[’']s Commentary$/,
+    narrative: {
+      // 右上角「市場預測 Market Forecast」，值只有英文一個字（Positive／Neutral／
+      // Negative），喺標題右邊，比中文標題低 11–19 pt；標題旁的「1」係註腳記號。
+      // 混合資產及保守類基金印「^^ N/A ^^」（「^^」係註腳記號），即係官方冇預測。
+      marketForecast: {
+        heading: /^市場預測$/,
+        band: { minLeft: 760, maxLeft: 900 },
+        minDepth: -6,
+        maxDepth: 22,
+        ignore: /^\^+$/,
+        unavailableValue: /^N\/A(\s*\^+)?$/,
+        languages: "en",
+      },
+      // 右欄投資目標（中文段、英文段），止於「基金表現 Fund Performance」；標題旁
+      // 「▲」係 8 pt 記號。
+      investmentObjective: {
+        heading: /^投資目標$/,
+        band: { minLeft: 465, maxLeft: 900 },
+        stopAt: /^(基金表現|Fund Performance)/,
+        // 正文 9–11 pt；收益基金最後一行同 14 pt「基金表現」標題只差 3 pt，會併成一行，
+        // 所以用字級上限隔開標題。
+        minFontSize: 9,
+        maxFontSize: 12,
+        maxGap: 24,
+        languages: "bilingual",
+      },
+      // 左欄基本資料表：值喺標籤右邊，中文值比標籤低約 5 pt，英文再低 14 pt。
+      investmentManager: {
+        heading: /^投資經理$/,
+        band: { minLeft: 190, maxLeft: 440 },
+        minDepth: -6,
+        maxDepth: 25,
+        maxGap: 18,
+        languages: "bilingual",
+      },
+      // 左欄下半「基金經理評論 Manager's Commentary」，頁腳 9 pt 委任說明遠在下面。
+      managerCommentary: {
+        heading: /^基金經理評論$/,
+        band: { minLeft: 35, maxLeft: 445 },
+        minFontSize: 10,
+        maxGap: 30,
+        languages: "bilingual",
+      },
+    },
     allocation: {
       heading: /^Portfolio Allocation$/,
       headingLabel: () => "Portfolio Allocation 投資組合分佈",
