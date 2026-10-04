@@ -38,8 +38,19 @@ export type TextBlockSelector = {
    * 文字分幾欄並排（東亞的評論：左欄英文、右欄中文，兩欄的行喺同一高度）。
    * 設咗就逐欄各自併行、各自計 `stopAt`／`maxGap`，再按欄次序接駁；
    * 唔分欄的話同一高度的中英兩行會被併成一行。每欄都要喺 `band` 之內。
+   *
+   * `after`：呢一欄只讀最後一行符合式樣的行之後的內容；冇一行符合就成欄唔讀。
+   * 交通銀行的長評論由左欄溢到右欄十大資產的「Source:」來源行之下。
+   *
+   * `lineStart`：只收行首落喺呢個範圍的行，其餘（例如圓餅圖標註）略過；收咗的行
+   * 保留成行所有段落，唔會因為字款不同而切走半行。
    */
-  columns?: { minLeft: number; maxLeft: number }[];
+  columns?: {
+    minLeft: number;
+    maxLeft: number;
+    after?: RegExp;
+    lineStart?: { minLeft: number; maxLeft: number };
+  }[];
   /** 由標題往下最多幾多 pt；預設讀到區段結尾、`stopAt` 或下一個欄位標題。 */
   maxDepth?: number;
   /**
@@ -242,14 +253,26 @@ export function readNarrative(
       (selector.minFontSize === undefined || item.fontSize >= selector.minFontSize) &&
       (selector.maxFontSize === undefined || item.fontSize <= selector.maxFontSize),
   );
-  const columns = selector.columns ?? [selector.band];
+  const columns: NonNullable<TextBlockSelector["columns"]> = selector.columns ?? [selector.band];
   const kept: Line[] = [];
   for (const column of columns) {
-    const lines = toLines(
+    const columnLines = toLines(
       dropReprints(
         below.filter((item) => item.left >= column.minLeft && item.left < column.maxLeft),
       ),
     );
+    const start = column.after
+      ? columnLines.findLastIndex((line) => column.after!.test(line.text)) + 1
+      : 0;
+    if (column.after && start === 0) continue;
+    const lineStart = column.lineStart;
+    const lines = columnLines
+      .slice(start)
+      .filter(
+        (line) =>
+          !lineStart ||
+          (line.items[0]!.left >= lineStart.minLeft && line.items[0]!.left < lineStart.maxLeft),
+      );
     const columnKept: Line[] = [];
     for (const line of lines) {
       const previous = columnKept.at(-1);

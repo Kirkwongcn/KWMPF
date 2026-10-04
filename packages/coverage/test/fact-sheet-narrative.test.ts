@@ -172,6 +172,53 @@ describe("official narrative text", () => {
 });
 
 describe("narrative layouts", () => {
+  it("continues into another column only below its marker line, skipping chart labels", () => {
+    const overflow: TextBlockSelector = {
+      heading: /^Commentary$/,
+      band: { minLeft: 0, maxLeft: 900 },
+      columns: [
+        { minLeft: 0, maxLeft: 375 },
+        { minLeft: 375, maxLeft: 900, after: /\bSource:/, lineStart: { minLeft: 375, maxLeft: 395 } },
+      ],
+      maxGap: 24,
+      languages: "bilingual",
+    };
+    const result = readNarrative(
+      [
+        item(100, 40, "Commentary"),
+        item(120, 40, "Markets rose while demand (e.g. auto"),
+        // 右欄：十大資產及來源行之上的內容唔讀；之下的圓餅圖標註唔由欄邊開始。
+        item(120, 560, "Top 10 Holdings"),
+        item(140, 560, "Source: Asset Manager Limited"),
+        item(142, 450, "22.4%"),
+        item(150, 384, "consumption) stayed weak."),
+        item(160, 400, "Healthcare 1.6%"),
+        item(170, 384, "We stay cautious."),
+      ],
+      overflow,
+    );
+    expect(result).toMatchObject({
+      status: "ok",
+      text: { en: "Markets rose while demand (e.g. auto consumption) stayed weak. We stay cautious." },
+    });
+  });
+
+  it("reads nothing from a marker column whose marker never appears", () => {
+    const result = readNarrative(
+      [item(100, 40, "Commentary"), item(120, 40, "Markets rose."), item(150, 384, "Fund facts table")],
+      {
+        heading: /^Commentary$/,
+        band: { minLeft: 0, maxLeft: 900 },
+        columns: [
+          { minLeft: 0, maxLeft: 375 },
+          { minLeft: 375, maxLeft: 900, after: /\bSource:/ },
+        ],
+        languages: "bilingual",
+      },
+    );
+    expect(result).toMatchObject({ status: "ok", text: { en: "Markets rose." } });
+  });
+
   const commentary: TextBlockSelector = {
     heading: /^Commentary 評論$/,
     band: { minLeft: 0, maxLeft: 900 },
