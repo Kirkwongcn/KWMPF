@@ -5,7 +5,7 @@ export type NarrativeText = {
   heading: string;
   zh?: string;
   en?: string;
-  /** 同一份便覽有幾多隻基金同一段文字一字不差；多過一隻即係計劃共用。 */
+  /** 同一期便覽（一份或逐隻基金一份）有幾多隻基金同一段文字一字不差；多過一隻即係計劃共用。 */
   sharedAcrossFunds?: number;
 };
 
@@ -130,7 +130,7 @@ export function NarrativeBlock({
           </div>
           {text?.sharedAcrossFunds && text.sharedAcrossFunds > 1 ? (
             <p className="kw-narrative__shared" role="note">
-              同一份便覽內 {text.sharedAcrossFunds}{" "}
+              受託人同一期便覽內 {text.sharedAcrossFunds}{" "}
               隻基金共用這段文字，屬計劃整體的市場評論，並非這隻基金專屬。
             </p>
           ) : null}

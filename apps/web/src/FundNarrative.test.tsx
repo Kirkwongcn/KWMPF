@@ -91,7 +91,7 @@ describe("official narrative block", () => {
       />,
     );
     expect(screen.getByRole("note")).toHaveTextContent(
-      "同一份便覽內 3 隻基金共用這段文字，屬計劃整體的市場評論，並非這隻基金專屬。",
+      "受託人同一期便覽內 3 隻基金共用這段文字，屬計劃整體的市場評論，並非這隻基金專屬。",
     );
   });
 
