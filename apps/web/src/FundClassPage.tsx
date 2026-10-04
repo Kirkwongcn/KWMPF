@@ -9,6 +9,7 @@ import {
   isUsableAllocation,
 } from "./DataCharts";
 import { fundClassLabel, joinFundParts } from "./fundClassLabel";
+import { NarrativeBlock, type FundNarrativeFields } from "./FundNarrative";
 import type { OfficialReturnUnavailable } from "../../../packages/coverage/src/fact-sheet-disclosure-lookup";
 import {
   pointInTimeAsOf,
@@ -112,6 +113,8 @@ type FactSheetDisclosure = {
     entries: { label: string; percent: number }[];
   }[];
   topHoldings: { rank: number; security: string; percent?: number }[];
+  /** 官方文字欄位（ADR 0012）；未寫契約的計劃沒有這一欄。 */
+  narrative?: FundNarrativeFields;
   unavailableFields: string[];
   returnUnavailable?: Record<string, OfficialReturnUnavailable>;
   unavailableReasons: Record<string, string>;
@@ -403,6 +406,33 @@ function unavailableNote(field: string, disclosure: FactSheetDisclosure) {
   ];
 }
 
+/** 文字欄位的缺口措辭：同表格分開，因為文字冇「圖表」或「名稱畫成圖形」之分。 */
+function narrativeMissing(
+  field: keyof FundNarrativeFields,
+  disclosure: FactSheetDisclosure | undefined,
+) {
+  if (!disclosure) return "未取得：這隻基金未配對到官方便覽。";
+  if (disclosure.unavailableFields.includes(field)) {
+    return disclosure.unavailableKinds?.[field] === "overlaid-text-layer"
+      ? "官方文件無法可靠讀取。便覽在同一位置疊印了另一版文字，分不清哪段屬這隻基金，所以不顯示。"
+      : "官方未提供。這份便覽沒有披露這一項。";
+  }
+  return "未取得：本站暫未抽取這份便覽的文字欄位，可開啟官方便覽查閱。";
+}
+
+/** 本站計算：成立至今的整年數。 */
+function yearsSince(launchDate: string, today = new Date()) {
+  const [year, month, day] = launchDate.split("-").map(Number);
+  if (!year || !month || !day) return undefined;
+  let years = today.getUTCFullYear() - year;
+  if (
+    today.getUTCMonth() + 1 < month ||
+    (today.getUTCMonth() + 1 === month && today.getUTCDate() < day)
+  )
+    years -= 1;
+  return years >= 0 ? years : undefined;
+}
+
 type FeeField =
   | "managementFee"
   | "trusteeCustodianFee"
@@ -645,12 +675,75 @@ export function FundClassPage({
         </div>
       ) : (
         <div className="kw-page-panel">
+          <NarrativeBlock
+            id="fund-objective-title"
+            title="投資目標"
+            text={factSheetDisclosure?.narrative?.investmentObjective}
+            missing={narrativeMissing(
+              "investmentObjective",
+              factSheetDisclosure,
+            )}
+            source={
+              factSheetDisclosure?.factSheetUrl
+                ? {
+                    url: factSheetDisclosure.factSheetUrl,
+                    label: "開啟官方便覽",
+                  }
+                : undefined
+            }
+            date={
+              factSheetDisclosure
+                ? { asOf: factSheetDisclosure.factSheetAsOf, label: "便覽截至" }
+                : undefined
+            }
+          />
+          <NarrativeBlock
+            id="fund-direction-title"
+            title="最新投資方向"
+            collapsible
+            text={factSheetDisclosure?.narrative?.managerCommentary}
+            missing={narrativeMissing("managerCommentary", factSheetDisclosure)}
+            source={
+              factSheetDisclosure?.factSheetUrl
+                ? {
+                    url: factSheetDisclosure.factSheetUrl,
+                    label: "開啟官方便覽",
+                  }
+                : undefined
+            }
+            date={
+              factSheetDisclosure
+                ? pointInTimeAsOf(
+                    factSheetDisclosure.temporalScopes?.commentary,
+                  )
+                  ? {
+                      asOf: pointInTimeAsOf(
+                        factSheetDisclosure.temporalScopes?.commentary,
+                      ) as string,
+                      label: "評論截至",
+                    }
+                  : {
+                      asOf: factSheetDisclosure.factSheetAsOf,
+                      label: "便覽截至（評論未另註日期）",
+                    }
+                : undefined
+            }
+          />
           <section className="kw-section" aria-labelledby="fund-profile-title">
             <h2 className="kw-section__heading" id="fund-profile-title">
-              基金概況
+              基金特色
             </h2>
             <div className="kw-card">
               <dl className="status-list">
+                {factSheetDisclosure?.narrative?.investmentManager && (
+                  <div>
+                    <dt>投資經理</dt>
+                    <dd>
+                      {factSheetDisclosure.narrative.investmentManager.zh ??
+                        factSheetDisclosure.narrative.investmentManager.en}
+                    </dd>
+                  </div>
+                )}
                 <div>
                   <dt>基金規模</dt>
                   <dd>
@@ -664,7 +757,17 @@ export function FundClassPage({
                 </div>
                 <div>
                   <dt>成立日期</dt>
-                  <dd>{fundClass.launchDate ?? unavailable}</dd>
+                  <dd>
+                    <span>{fundClass.launchDate ?? unavailable}</span>
+                    {fundClass.launchDate &&
+                      yearsSince(fundClass.launchDate) !== undefined && (
+                        <small className="kw-muted">
+                          {" "}
+                          （成立 {yearsSince(fundClass.launchDate)}{" "}
+                          年，本站計算）
+                        </small>
+                      )}
+                  </dd>
                 </div>
                 {fundClass.isDisComponent && (
                   <div>
