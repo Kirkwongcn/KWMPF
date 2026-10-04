@@ -263,7 +263,7 @@ function InterpretationPanel({
       <div className="kw-card kw-interpretation-intro">
         <p>
           以下把基金同 <strong>{result.comparisonGroup}</strong>{" "}
-          組別平均比較。三項因素都固定於同一發布快照，不會隨回報期間改變；基金便覽期別可能與平台快照不同。
+          組別平均比較。兩項因素都固定於同一發布快照，不會隨回報期間改變；基金便覽期別可能與平台快照不同。
         </p>
         <p className="kw-muted" role="note">
           「相若」試用門檻為相差不超過 2 個百分點；規則版本{" "}

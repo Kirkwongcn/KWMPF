@@ -304,6 +304,7 @@ table,
 }
 .kw-gazetteer .kw-control {
   flex: 1;
+  width: 100%;
   min-width: 0;
   border-color: var(--kw-gold-light);
   border-right: 0;
@@ -464,7 +465,8 @@ table,
 }
 .kw-plate__stats .kw-stat__value {
   color: white;
-  font-size: 1.6rem;
+  font-size: clamp(1.15rem, 5.4vw, 1.6rem);
+  overflow-wrap: anywhere;
   font-weight: 600;
   font-stretch: 92%;
   line-height: 1.2;
@@ -962,7 +964,7 @@ table,
     padding-top: 0;
   }
   .kw-plate__inner {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     border-inline: 0;
     margin-inline: 0;
     padding-inline: 0;
