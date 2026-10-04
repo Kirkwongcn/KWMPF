@@ -1,33 +1,34 @@
 ---
-name: "KWMPF"
-description: "沿用原有研究品牌，呈現可查證的強積金原值、日期與來源"
+name: "KWMPF 強積金基金圖冊 / MPF Fund Atlas"
+description: "測繪圖冊：每隻基金類別是一個有座標、有測量日期、有官方基準點的測量點"
 colors:
-  paper: "#f6f5f1"
-  ink: "#16252c"
   navy: "#123b46"
-  action: "#0f414e"
-  teal: "#267786"
   gold: "#c7a66a"
   gold-light: "#d8b774"
+  gold-strong: "#765b24"
+  gold-hover: "#e7cc94"
+  highlight: "#00879f"
+  context: "#b4bfc1"
+  paper: "#f4f3ee"
+  sheet: "#fbfaf7"
+  rule: "#cdd3cf"
+  rule-strong: "#8f9b97"
+  table-head: "#efeee8"
+  ink: "#16252c"
   muted: "#5b666c"
   muted-strong: "#537080"
-  line: "#d9ddd8"
-  control-border: "#7b8681"
+  action: "#0f414e"
+  action-hover: "#0a2f38"
   soft: "#f2f4f1"
-  table-head: "#f5f7fa"
-  white: "#fff"
+  photo-ground: "#0b2a33"
+  header-text: "#c4d5dc"
   nav-link: "#d3e0eb"
-  brand-subtitle: "#b7cbd1"
+  atlas-grid: "#e2e6e2"
+  legend-selected: "#e3efef"
   positive: "#006b37"
   negative: "#9a3b3b"
   warning-bg: "#fff6e8"
-  stale: "#a57837"
-  missing: "#c7cfda"
-  category-ochre: "#a7864e"
-  category-slate: "#536e7b"
-  category-violet: "#81768c"
-  category-green: "#61887a"
-  category-rose: "#a96065"
+  white: "#ffffff"
   viz-1: "#00879f"
   viz-2: "#c07f12"
   viz-3: "#d0577a"
@@ -37,326 +38,343 @@ colors:
   viz-context: "#b8c2c4"
   viz-grid: "#e6e9e6"
   viz-axis: "#9aa39f"
-  risk-1: "#7cc2cb"
-  risk-2: "#55aab5"
-  risk-3: "#33919e"
-  risk-4: "#1c7a88"
-  risk-5: "#106472"
-  risk-6: "#094f5b"
-  risk-7: "#043b45"
-  action-hover: "#0a2f38"
 typography:
-  display:
-    fontFamily: 'Georgia, "Times New Roman", "PMingLiU", serif'
-    fontSize: "clamp(28px, 3.4vw, 50px)"
-    fontWeight: 400
-    lineHeight: 1.3
-    letterSpacing: "-0.02em"
+  plate-title:
+    fontFamily: '"Archivo", "PingFang HK", "Noto Sans HK", "Noto Sans TC", "Microsoft JhengHei", ui-sans-serif, system-ui, sans-serif'
+    fontSize: "clamp(2.1rem, 3.9vw, 3.3rem)"
+    fontWeight: 700
+    lineHeight: 1.05
+    letterSpacing: "0.02em"
+  sheet-title:
+    fontFamily: '"Archivo", "PingFang HK", "Noto Sans HK", "Noto Sans TC", "Microsoft JhengHei", ui-sans-serif, system-ui, sans-serif'
+    fontSize: "clamp(1.7rem, 2.6vw, 2.35rem)"
+    fontWeight: 650
+    lineHeight: 1.2
+    letterSpacing: "-0.01em"
+  headline:
+    fontFamily: '"Archivo", "PingFang HK", "Noto Sans HK", "Noto Sans TC", "Microsoft JhengHei", ui-sans-serif, system-ui, sans-serif'
+    fontSize: "1.5rem"
+    fontWeight: 650
+    letterSpacing: "-0.01em"
   title:
-    fontFamily: 'Georgia, "Times New Roman", "PMingLiU", serif'
-    fontSize: "1.65rem"
-    lineHeight: 1.3
-    letterSpacing: "-0.02em"
-  subheading:
-    fontFamily: 'Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Microsoft JhengHei", sans-serif'
-    fontSize: "1.2rem"
-    lineHeight: 1.3
+    fontFamily: '"Archivo", "PingFang HK", "Noto Sans HK", "Noto Sans TC", "Microsoft JhengHei", ui-sans-serif, system-ui, sans-serif'
+    fontSize: "1.35rem"
+    fontWeight: 650
+    letterSpacing: "-0.01em"
   body:
-    fontFamily: 'Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Microsoft JhengHei", sans-serif'
+    fontFamily: '"Archivo", "PingFang HK", "Noto Sans HK", "Noto Sans TC", "Microsoft JhengHei", ui-sans-serif, system-ui, sans-serif'
     fontSize: "16px"
     fontWeight: 400
     lineHeight: 1.65
-  control:
-    fontFamily: 'Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Microsoft JhengHei", sans-serif'
-    fontSize: "0.95rem"
-    fontWeight: 400
-    lineHeight: 1.65
-  action-label:
-    fontFamily: 'Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Microsoft JhengHei", sans-serif'
-    fontSize: "0.95rem"
-    fontWeight: 600
-    lineHeight: 1.65
-  label:
-    fontSize: "0.9rem"
-    fontWeight: 600
-    lineHeight: 1.65
-  supporting:
-    fontSize: "0.875rem"
-    lineHeight: 1.65
+    fontVariation: '"wdth" 96'
   data:
-    fontSize: "0.95rem"
+    fontFamily: '"Archivo", "PingFang HK", "Noto Sans HK", "Noto Sans TC", "Microsoft JhengHei", ui-sans-serif, system-ui, sans-serif'
+    fontSize: "0.92rem"
     fontWeight: 600
-    lineHeight: 1.65
+    fontFeature: '"tnum" 1'
+  label:
+    fontFamily: '"Archivo", "PingFang HK", "Noto Sans HK", "Noto Sans TC", "Microsoft JhengHei", ui-sans-serif, system-ui, sans-serif'
+    fontSize: "0.72rem"
+    fontWeight: 400
+    letterSpacing: "0.06em"
+  plate-title-mobile:
+    fontFamily: '"Archivo", "PingFang HK", "Noto Sans HK", "Noto Sans TC", "Microsoft JhengHei", ui-sans-serif, system-ui, sans-serif'
+    fontSize: "2rem"
+    fontWeight: 700
+    lineHeight: 1.05
+  stat-value:
+    fontFamily: '"Archivo", "PingFang HK", "Noto Sans HK", "Noto Sans TC", "Microsoft JhengHei", ui-sans-serif, system-ui, sans-serif'
+    fontSize: "1.05rem"
+    fontWeight: 600
+    fontFeature: '"tnum" 1'
+  supporting:
+    fontFamily: '"Archivo", "PingFang HK", "Noto Sans HK", "Noto Sans TC", "Microsoft JhengHei", ui-sans-serif, system-ui, sans-serif'
+    fontSize: "0.85rem"
+    fontWeight: 400
   caption:
-    fontSize: "1.15rem"
-    fontWeight: 650
-    lineHeight: 1.65
-  brand:
-    fontFamily: 'Georgia, "Times New Roman", "PMingLiU", serif'
-    fontSize: "18px"
+    fontFamily: '"Archivo", "PingFang HK", "Noto Sans HK", "Noto Sans TC", "Microsoft JhengHei", ui-sans-serif, system-ui, sans-serif'
+    fontSize: "0.78rem"
+    fontWeight: 400
+    lineHeight: 1.5
+  atlas-label:
+    fontFamily: '"Archivo", ui-sans-serif, system-ui, sans-serif'
+    fontSize: "11px"
+    fontWeight: 400
+  english-subtitle:
+    fontFamily: '"Archivo", ui-sans-serif, system-ui, sans-serif'
+    fontSize: "0.9rem"
+    fontWeight: 400
+    letterSpacing: "0.06em"
+    fontVariation: '"wdth" 118'
+  grid-reference:
+    fontFamily: '"Archivo", ui-sans-serif, system-ui, sans-serif'
+    fontSize: "10px"
     fontWeight: 600
-    lineHeight: 1.3
+    letterSpacing: "0.08em"
+  mark:
+    fontFamily: 'Georgia, "Times New Roman", serif'
+    fontSize: "1.1rem"
+    fontWeight: 600
+    letterSpacing: "0.02em"
 rounded:
-  panel: "6px"
-  control: "8px"
-  table: "10px"
-  badge: "5px"
-  mode-track: "4px"
-  mode-option: "3px"
+  panel: "2px"
+  inner: "1px"
+  none: "0px"
   brand-mark: "50%"
 spacing:
+  "2": "2px"
+  "4": "4px"
   "8": "8px"
   "12": "12px"
   "16": "16px"
-  "20": "20px"
+  "18": "18px"
   "24": "24px"
   "28": "28px"
-  "32": "32px"
   "40": "40px"
-  "48": "48px"
-  "64": "64px"
+  "72": "72px"
 components:
   button-primary:
     backgroundColor: "{colors.action}"
     textColor: "{colors.white}"
-    typography: "{typography.action-label}"
-    rounded: "{rounded.control}"
+    typography: "{typography.data}"
+    rounded: "{rounded.panel}"
     padding: "10px 18px"
+    height: "44px"
+  button-primary-hover:
+    backgroundColor: "{colors.action-hover}"
   button-secondary:
     backgroundColor: "{colors.white}"
     textColor: "{colors.action}"
-    typography: "{typography.action-label}"
-    rounded: "{rounded.control}"
+    rounded: "{rounded.panel}"
     padding: "10px 18px"
-  button-secondary-hover:
-    backgroundColor: "{colors.soft}"
-    textColor: "{colors.action}"
+  button-gazetteer:
+    backgroundColor: "{colors.gold-light}"
+    textColor: "{colors.navy}"
+    rounded: "{rounded.panel}"
+    padding: "10px 18px"
+  button-gazetteer-hover:
+    backgroundColor: "{colors.gold-hover}"
   input:
     backgroundColor: "{colors.white}"
     textColor: "{colors.ink}"
-    typography: "{typography.control}"
-    rounded: "{rounded.control}"
+    typography: "{typography.body}"
+    rounded: "{rounded.panel}"
     padding: "10px 12px"
-  navigation:
+    height: "44px"
+  header:
     backgroundColor: "{colors.navy}"
     textColor: "{colors.nav-link}"
-    typography: "{typography.body}"
-    padding: "20px 0"
-  navigation-current:
-    textColor: "{colors.white}"
-  reading-mode:
-    backgroundColor: "{colors.soft}"
-    rounded: "{rounded.mode-track}"
-    padding: "4px"
-  reading-mode-option:
-    textColor: "{colors.muted-strong}"
-    rounded: "{rounded.mode-option}"
-    padding: "7px 12px"
+    height: "68px"
   reading-mode-selected:
-    backgroundColor: "{colors.white}"
-    textColor: "{colors.action}"
-    rounded: "{rounded.mode-option}"
-  status-badge:
-    backgroundColor: "{colors.soft}"
+    backgroundColor: "{colors.gold-light}"
+    textColor: "{colors.navy}"
+    rounded: "{rounded.inner}"
+    padding: "6px 11px"
+  gazetteer:
+    backgroundColor: "{colors.navy}"
+    textColor: "{colors.white}"
+    padding: "12px 18px"
+  sheet:
+    backgroundColor: "{colors.sheet}"
     textColor: "{colors.ink}"
-    rounded: "{rounded.badge}"
-    padding: "3px 7px"
-  panel:
-    backgroundColor: "{colors.white}"
+    rounded: "{rounded.none}"
+  title-block-cell:
+    backgroundColor: "{colors.sheet}"
     textColor: "{colors.ink}"
-    rounded: "{rounded.panel}"
-    padding: "{spacing.24}"
-  data-table:
-    backgroundColor: "{colors.white}"
+    typography: "{typography.data}"
+    padding: "9px 16px 10px"
+  legend-filter:
+    backgroundColor: "{colors.sheet}"
     textColor: "{colors.ink}"
-    typography: "{typography.control}"
-    rounded: "{rounded.table}"
-  value-chart:
-    backgroundColor: "{colors.white}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.panel}"
-    padding: "{spacing.24}"
-  return-heatmap:
-    backgroundColor: "{colors.white}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.panel}"
-    padding: "{spacing.24}"
-  calendar-columns:
-    backgroundColor: "{colors.white}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.panel}"
-    padding: "{spacing.24}"
-  allocation-composition:
-    textColor: "{colors.ink}"
-    typography: "{typography.supporting}"
-  disclosure:
-    textColor: "{colors.action}"
+    padding: "8px 14px 8px 12px"
+    height: "44px"
+  legend-filter-selected:
+    backgroundColor: "{colors.legend-selected}"
+  table-head:
+    backgroundColor: "{colors.table-head}"
+    textColor: "{colors.muted-strong}"
+    typography: "{typography.label}"
 ---
 
-# Design System: KWMPF
+# Design System: KWMPF 強積金基金圖冊
 
 ## Overview
 
-**Creative North Star: "可查證的資料工作台"**
+**Creative North Star: "測繪圖冊 / The MPF Fund Atlas"**
 
-沿用使用者於 2026-09-30 明確要求恢復的 KWMPF 原有風格：深青色頁首、金色 kW 圓形標記、Kirk Wong Research 名稱、serif KWMPF 字樣，以及既有世界地圖 hero。暖白底與小圓角資料面板承接品牌，不延續先前的鈷藍替代方案。
+強積金市場被當成一張可以實地核對的地政測繪圖來讀。每隻基金類別是一個測量點：有座標（3 年波幅 × 1 年回報）、有測量日期、有基準點（官方來源）；積金局基金類型是圖例與分區。介面由深青圖框、金色測量刻度、測繪紙白底及 1px 細線組成，沒有卡片陰影、沒有儀表板大數字，也不是報紙式編輯排版。
 
-一般強積金成員與專業研究者同等重要。簡潔與深入分析共用資料、選取與來源入口；圖表協助辨認幅度、期間及組成，完整原值表格負責核對。繁體中文、清楚標籤、鍵盤焦點及手機可操作的捲動入口是共同閱讀條件。
+密度偏高而安靜：一個圖框之內放齊地名索引（搜尋）、實景圖帶、標題欄及基金圖；內頁以「圖幅」開頭，標題欄記錄圖名、截至日期、來源與範圍。唯一的強調色是測量高亮青 highlight，其餘一切退為 context 灰。中文以系統字，英文標籤與數字用 Archivo（寬度軸），serif 只屬 kW 標記與 KWMPF 字樣。
 
-此文件由目前 CSS 與元件抽取，記錄已實作的視覺規則。原有風格是使用者指定的方向；這不代表所有資料來源或發布流程已獲完整正確性認證。既有 hero 沿用 repository 圖片，本次沒有新增或生成 raster。
+這套系統是 2026-10 shipped build 的紀錄，來源為 `apps/web/src/atlas.css`（最後載入，覆寫 `styles.css`／`viz.css`／`refresh.css`）、`App.tsx`、`Atlas.tsx`、`SiteChrome.tsx`。方向契約見 `.impeccable/surfaces/src-app-tsx.md`。
 
 **Key Characteristics:**
 
-- 原有深青與金色品牌，暖白閱讀底。
-- serif 品牌與主標題，sans 正文及控制項。
-- 4px 資料面板、8px 控制項及等寬資料數字。
-- 圖表類型按資料語意選擇，原值、日期與來源保留。
-- 兩種閱讀模式均可進入核對資料，手機保留完整表格入口。
+- 深青 1px 圖框外加 4px 偏移細線（neatline），直角（2px）、零陰影。
+- 金色刻度尺（12px 小刻／60px 大刻）只出現在地圖語境：頁首底邊、相片圖框。
+- 圖格固定 A–H × 1–8，中英對照軸標題；坐標同樣印在相片圖框。
+- 標題欄（title block）取代大號統計數字：細線分格、正文級數值、tabular numerals。
+- 單一高亮：選中的積金局基金類別用 highlight，其餘為 context。
+- 每個數值保留官方原文與自己的截至日期；本站衍生數值標明「本站計算」。
 
 ## Colors
 
-暖白、深青與金色延續原有研究品牌；青綠與資料語意色服務比較。
+一個深青圖框、一支金色刻度、一個測量高亮，其餘是紙與細線。
 
 ### Primary
 
-- **深青頁首**（`navy`）與 **深青操作色**（`action`）：前者承載品牌導覽，後者用於連結、按鈕及白色表面的鍵盤焦點。
-- **資料青綠**（`teal`）：點圖、曆年正值柱及配置第一類；負值使用 `negative`。
+- **圖框深青 Survey Navy** (`navy`)：頁首、地名索引帶、圖框及圖幅的 1px neatline、標題欄頂線、表頭底線、內頁分段控制的選中態、基金圖焦點圈。是這個世界的「海域與圖框」。
+- **測量高亮青 Survey Highlight** (`highlight`)：基金圖中被選類別的測量點、四分位分布框（虛線，選中變實）、圖例選中圓點、圖幅索引的點、全站 `:focus-visible` 外框。每屏只有一個被高亮的組別。
 
 ### Secondary
 
-- **品牌金**（`gold`）與 **亮金**（`gold-light`）：沿用的品牌標記、深色表面焦點、當前導覽底線及部分面板識別。
-- **資料狀態色**：`positive`、`negative`、`warning-bg`、`stale`、`missing` 分別協助辨認符合、負值／未核實、警示、過期與缺項；仍須有文字。
-- **配置類別色**：`teal` 配合 `category-ochre`、`category-slate`、`category-violet`、`category-green`、`category-rose` 區分項目，不代表優劣。
+- **刻度金 Survey Gold** (`gold`)：刻度尺、章節標題下的金色基準短刻。只作線，不作面。
+- **淺金 Gold Light** (`gold-light`)：深青底上的文字與控制：頁首 hover／現時頁底線、閱讀模式選中底、地名索引按鈕、相片上的圖格坐標、深青底上的焦點框。
+- **深金 Gold Strong** (`gold-strong`)：淺底上的金色文字：基金圖圖格坐標（A–H／1–8）、tooltip 中的圖格參照、圖幅索引中位數短線。淺底上不用 `gold` 寫字（對比不足）。
 
 ### Neutral
 
-- `paper` 為暖白頁面，`white` 為資料面，`soft` 為圖軌與未著色狀態，`table-head` 為表頭。
-- `ink`、`muted-strong`、`muted` 分別承擔主文字、次要說明及日期來源；深色頁首使用 `nav-link` 與 `brand-subtitle`。
-- `line` 用於分組邊界；`control-border` 讓輸入框與零線清楚可辨。
+- **測繪紙 Survey Paper** (`paper`)：頁面底色、頁尾底、捲軸軌。
+- **圖紙 Sheet** (`sheet`)：所有圖幅、圖框、面板、表格容器、標題欄的底。比 paper 淺一級，層次靠紙色而非陰影。
+- **細線 Rule** (`rule`)：圖幅內分格、標題欄格線、偏移 outline、列表分隔。
+- **重細線 Rule Strong** (`rule-strong`)：圖幅外框（非首頁圖框）、章節標題底線、統計列底線、捲軸拇指。
+- **表頭暖白 Table Head** (`table-head`)：資料表欄頭底色，配 navy 底線。
+- **Context 灰** (`context`)：基金圖中未被選中或被退後的測量點。
+- **墨 Ink / Muted / Muted Strong** (`ink`、`muted`、`muted-strong`)：正文、說明、標籤與軸標題。
+- **相片底 Photo Ground** (`photo-ground`)：實景圖帶載入前的底色與相片上漸層、caption 的底（以透明度疊加）。
+- **深底文字** (`header-text`、`nav-link`)：頁首及地名索引上的次級文字。
 
-### Chart palette（2026-10-01）
+### Inner-page chart series
 
-- 圖表色由 dataviz `validate_palette.js` 驗證（淺色、白底）：類別色 `viz-1`–`viz-5` 次序固定、不循環，相鄰色在紅綠色盲模擬下 ΔE ≥ 8、正常視覺 ≥ 15，對白底對比 ≥ 3:1。舊 `category-*` 色太灰（色度低於 0.10、色盲下不可分），只保留給既有配置圖例，不用於新圖。
-- 配置圓環／堆疊最多六項，用 `viz-1`–`viz-6`；圓環首尾相接，`viz-1`↔`viz-6` 色盲 ΔE 約 7.1（6–8 區間），因此必須保留逐項文字標籤及原值列表作第二辨識。
-- 單一系列一律用 `viz-1`；「本基金」等強調點用 `viz-2`，其餘用 `viz-context` 灰作背景。
-- 風險級別 1–7 用 `risk-1`–`risk-7` 單一青色序列色階（ordinal 檢查通過，淺端對白底 ≥ 2:1）。
-- 網站只有淺色模式，故未建立深色色階。
+內頁圖表（`Charts.tsx`、`DataCharts.tsx`、`PeerPosition.tsx`）沿用既有 `viz-1`…`viz-6` 系列色及 `viz-context`／`viz-grid`／`viz-axis`；`viz-1` 與 highlight 同值。這是上一版沿用下來仍在出貨的系列色，不屬於基金圖。
 
 ### Named Rules
 
-**The 狀態要有文字 Rule.** 顏色只提供第二條辨識線索；過期、未取得、未核實與抽取異常必須同時以文字交代。
+**The Single Highlight Rule.** 基金圖只用一個高亮色（highlight）對比 context 灰；不按六大基金類別各上一色。六色方案在驗證器失敗（一般視力最差 ΔE 8.5、色覺異常最差 3.5），所以類別身份靠圖例篩選，不靠色相。
+
+**The Gold Is a Ruler Rule.** 金色只用於刻度、坐標與基準標記，以及深青底上的互動文字；不作大面積填色，不作淺底正文。
+
+**The Paper Layer Rule.** 深度只靠 paper → sheet 兩級紙色及細線；沒有第三種面板底色。
 
 ## Typography
 
-**Display Font:** `display` 的 Georgia / Times New Roman / PMingLiU serif 組合，承接原有品牌及主標題。
-**Body Font:** `body` 的 Inter 優先、系統 sans 備援組合；記錄的是 CSS 宣告，不宣稱另行安裝或下載字型。
-**Label/Mono Font:** 控制項沿用正文；資料使用 tabular numerals，快照識別碼才使用 code 字體。
+**Display / Body Font:** Archivo（自託管，OFL，`/fonts/archivo-latin.woff2`、`/fonts/archivo-latin-ext.woff2`，weight 400–800，width 62%–125%）配系統中文字（PingFang HK、Noto Sans HK、Noto Sans TC、Microsoft JhengHei）
+**Mark Font:** Georgia serif，只限 kW 標記與 KWMPF 字樣
+
+**Character:** 測繪圖上的工程字：Archivo 的寬度軸讓英文副題與坐標拉寬（112%–118%），正文略收（96%）；中文用使用者系統字，不另載中文網頁字型。serif 只出現在品牌標記，像圖章而非標題字。
 
 ### Hierarchy
 
-- **Display**：hero 主標題使用 `display`，正常字重與平衡換行。
-- **Title / Subheading**：主段使用 serif `title`，手機降至 (1.4rem)；次段使用 sans `subheading`。
-- **Body**：`body` 用於內容；長篇方法說明上限 (72ch)。
-- **Control / Action Label / Label**：控制項共用尺寸，按鈕和欄位標籤以較重文字辨認。
-- **Supporting / Data / Caption**：輔助文字交代日期來源，等寬原值方便核對，圖題直接命名圖表。
-- **Brand**：`brand` 專供 KWMPF 字樣；Kirk Wong Research 是品牌識別文字，不擴張為全站眉題樣式。
+- **Plate Title**（700，clamp(2.1rem, 3.9vw, 3.3rem)，1.05）：首頁實景圖帶上的「強積金基金圖」，只此一處；手機用 Plate Title Mobile（2rem）。
+- **Sheet Title**（650，clamp(1.7rem, 2.6vw, 2.35rem)，1.2）：內頁圖幅標題。
+- **Headline**（650，1.5rem）：頁內 h2。
+- **Title**（650，1.35rem）：圖幅頭（`kw-sheet__head`）標題。
+- **Body**（400，16px，1.65，寬度 96%）：正文；說明段落上限 72–88ch。
+- **Data**（600，0.9–0.92rem，tabular numerals）：標題欄值、圖例計數、表格數字。
+- **Stat Value**（600，1.05rem，tabular numerals）：內頁統計列數值；刻意只比正文大一級，不作儀表板大數字。
+- **Supporting**（400，0.85rem）：圖例計數、圖幅頭腳說明、頁尾標題欄正文。
+- **Label**（400，0.72rem）：標題欄 dt；頁尾標題欄 dt 加 0.06em 字距。
+- **Caption**（400，0.78rem，1.5）：表頭、表格 caption、圖例註、圖幅索引附註。
+- **Atlas Label**（400，11px）：基金圖 SVG 刻度數字與軸標題（中文 11.5px、英文 10.5px 寬體）。
+- **English Subtitle**（0.9rem，寬度 118%，0.06em）：中英對照的英文行，淺金或 muted。
+- **Grid Reference**（600，10px，0.08em，`gold-strong`）：A–H／1–8 圖格坐標。
 
 ### Named Rules
 
-**The 原值先行 Rule.** 官方百分比保留原始精度；零值、尚未取得、官方明示未披露及抽取異常分開呈現。
+**The Tabular Rule.** 所有數字欄、統計值、圖例計數、標題欄值都用 tabular numerals；但數字字串照官方原文輸出，不固定小數位、不補 0。
+
+**The Serif Is a Seal Rule.** Georgia 只用於 kW 標記與 KWMPF 字樣（頁首、頁尾標題欄）；任何標題、數字都不用 serif。
+
+**The Bilingual Label Rule.** 圖名、軸標題、標題欄名稱以中文為主、英文為副（寬體、較小），英文不取代中文。
 
 ## Layout
 
-內容最大寬度 (1520px)，桌面側內距為 `clamp(18px, 4vw, 64px)`；來源在 (1050px) 以下覆寫為 (28px)，在 (700px) 以下覆寫為 (20px)。頁首最小高度為 (72px)，窄螢幕導覽換行，連結保持至少 (44px) 操作高度。
+內容上限 `1520px`，側內距 `clamp(18px, 4vw, 64px)`（中螢幕 28px、手機 20px）。主內容 `28px 72px` 上下內距；圖幅之間 40px。
 
-閱讀模式與資料覆蓋入口位於 hero 下方。內頁主要上下留白為 (40px / 72px)，手機為 (28px / 48px)。篩選列由四欄改為兩欄，再改為單欄；相關資料使用 `spacing.16` 至 `spacing.24`，跨區塊採更大的留白。
+首頁是一個全寬圖版：深青帶（桌面 180px、手機 120px）托起一個圖框，框內由上而下是地名索引（搜尋）→ 實景圖帶（clamp(190px, 16vw, 250px)，手機 168px，標題壓在左側漸層上，圖片來源 caption 在右下；手機移到相片下方）→ 標題欄（1.5fr + 4 × 1fr + 1.6fr；≤1050px 三欄；≤760px 兩欄並移到基金圖之後）→ 基金圖圖幅（左圖例 200–250px、右圖；≤1050px 圖例改橫排在上）。之後是圖幅索引，以及「測量紀錄＋目錄」7:5 雙欄（≤1050px 單欄）。
 
-一般寬表保留完整欄位並在自己的容器水平捲動；回報矩陣最小寬度為 (640px)。捲動提示與可取得焦點的區域一起提供。兩欄費用、配置、曆年表取消一般 (600px) 最小寬度，採固定欄寬與文字換行，首欄約佔 (60%)。
+內頁以圖幅標題開頭：標題與說明左右對齊於一個 neatline 圖框，底部一行標題欄格（auto-fit，最少 150px；手機兩欄）。
 
-點圖與條形圖在手機將標籤、身份及原值置於上列，圖軌移至下列。配置圖例由兩欄改為單欄，圓環由 (200px) 改為 (180px)。標籤保留計劃／類別身份，不能只以同名成分基金名稱辨認。
+斷點：1050px（圖例橫排、頁首換行、頁尾標題欄兩欄）、760px（圖框去掉側邊與 outline、單欄、標題欄兩欄、頁尾單欄）。
+
+**The Fixed Grid Rule.** 基金圖圖格固定 A–H（橫）× 1–8（縱），在任何寬度同一組數據得出同一圖格；相片圖框上的坐標與刻度對齊。
 
 ## Elevation & Depth
 
-資料面以白底、細邊界及表頭分層；2026-10 改版加入一層極淡投影 `0 1px 2px rgb(22 37 44 / 0.06)` 統一卡片、表格、圖表與工具列，tooltip 用 `0 6px 18px rgb(22 37 44 / 0.14)`。閱讀模式選取仍沿用 `0 2px 5px #17223114`，計劃選取使用 `inset 0 0 0 1px var(--kw-action)` 作狀態內框。點圖的外描邊用於辨認資料點，不是容器浮起。
+全站零陰影（`--kw-shadow-1`／`--kw-shadow-2` 設為 none）。深度只有三種手段：paper 與 sheet 兩級紙色；1px 實線框加 4px 偏移 outline 的雙線 neatline；以及深青帶托起白圖框。相片上的文字靠深青漸層（92% → 74% → 0）及 caption 半透明底，不靠投影；圖格坐標在相片上只用 3px 柔光 text-shadow 保讀性。
 
-### Named Rules
-
-**The 平面資料面 Rule.** 資料面板以細邊界分組；投影只用上述兩級，不疊加、不作裝飾性浮起。
+**The Neatline Rule.** 一個可獨立閱讀的圖幅 = 1px 框線（首頁圖框與內頁標題用 navy，一般圖幅用 rule-strong）+ `outline: 1px solid rule; outline-offset: 4px`。手機去掉 outline。
 
 ## Shapes
 
-資料面板、圖表、工具列及組別選擇使用 `rounded.panel`；按鈕與輸入使用 `rounded.control`。表格容器保留 `rounded.table`，狀態標籤使用 `rounded.badge`。品牌 kW 圓形、資料圓點與配置圓環有實際識別或數據用途，並非裝飾遮罩。
+全部直角語言：面板、控制、按鈕 2px；分段控制內鈕 1px；捲軸、可用度條 0。唯一圓形是 kW 標記（34px，淡金 1px 圈）、圖例圓點（9px）及基金圖測量點（r 3，選中 r 4）。
+
+刻度尺用 `repeating-linear-gradient`：金色 1px，每 12px 一小刻（4–5px 高），每 60px 一大刻（7–9px 高），頁首底邊 70% 不透明。章節標題下用兩個 1px × 9px 金色短刻（48px、96px）作基準標記。
 
 ## Components
 
-### Buttons and Fields
+### Buttons
 
-主要按鈕為深青底白字，次要為白底深青字；內距 (10px 18px)，最小高度 (44px)。輸入內距 (10px 12px)，有明確邊界及上方標籤。白色表面焦點為深青外框 (3px)，偏移 (3px)；深色頁首與 hero 焦點使用亮金。背景狀態轉換為 (180ms ease-out)，reduced-motion 時移除。主要按鈕滑入改為較深的品牌青 `action-hover`，舊鈷藍滑入已移除。
+- **Shape:** 直角（2px），最少 44px 高。
+- **Primary:** action 深青底、白字、600，`10px 18px`；hover 轉 action-hover，邊框同步。
+- **Secondary:** 白底 action 字；hover 轉 soft 底。
+- **Gazetteer:** 地名索引內的搜尋按鈕用 gold-light 底、navy 字，hover 轉 gold-hover；與輸入框無縫相連（輸入框去右邊框）。
+- **Focus:** 全站 2px highlight outline、2px offset；深青底上改 gold-light。
 
-### Navigation and Reading Mode
+### Inputs / Fields
 
-頁首保留 kW 圓形、Kirk Wong Research 與 serif KWMPF；導覽為「基金瀏覽／基金排名／計劃比較」。當前頁以白字、較重字及亮金底線共同標示。閱讀模式是帶 `aria-pressed` 的兩個按鈕；深入分析預設展開更多資料，簡潔仍可進入來源、限制與完整表格。頁尾保留方法、覆蓋、官方平台與免責入口。
+- **Style:** 白底、1px control border、2px、`10px 12px`、44px 高；hover 邊框轉 action。地名索引內邊框為 gold-light。
 
-### Page Rhythm（2026-10 改版）
+### Navigation
 
-頁首、kW 標記、serif KWMPF 與 hero 圖片不變；hero 底部加 3px `gold` 線。閱讀工具列改為全寬白帶。段落標題用 1px `line` 底線加 56px 金色短線，取代原 2px 深青粗線。首頁搜尋區與覆蓋圖放在同一張白卡；頁尾改為深青底、金色頂線，與頁首呼應。
+- **Header:** navy 68px，底邊金色刻度尺（`.kw-header::after`）。左 kW 標記 + serif KWMPF + 寬體英文副題；導覽 0.95rem nav-link 色，hover／現時頁轉 gold-light，現時頁 3px 金底線；右側資料狀態連結與閱讀模式（透明底、`#3f6672` 1px 框，選中 gold-light 底 navy 字）。≤1050px 換行。
 
-### Chips and Panels
+### Gazetteer 地名索引
 
-狀態標籤為柔灰底、短文字及 (3px 7px) 內距。資料面板使用白底細邊界、`rounded.panel` 及 `spacing.24`，手機內距為 (18px)。既有 hero 上方小標籤僅記錄為現況，不作新頁的通用標題模式。
+搜尋即「地名索引」：navy 帶，左側 gold-light 粗體名稱（0.08em 字距）＋說明，中間輸入＋按鈕，右側常用捷徑白字；底線 1px gold。手機單欄。
 
-### Tables and Disclosures
+### Photo Band 實景圖帶
 
-表格用柔淡表頭、左對齊、等寬數字及原值旁的日期來源。原生 details / summary 在兩種模式均可操作。過期數值仍可保留在原值表格，但日期及狀態必須在場。「未取得」表示本快照沒有可用值；不自行推論官方未披露。
+全寬維多利亞港實景（`apps/web/public/images/hk-harbour-{1200,2400}.webp`，David Iliff，Wikimedia Commons，CC BY-SA 3.0；`CREDITS.md`），上緣與右緣金色刻度，圖格坐標淺金印在刻度旁；左側漸層上放圖版標題（中文、寬體英文副題、說明）；右下 caption 寫作者與授權連結。列印時隱藏。
 
-### Numeric Comparisons
+### Title Block 標題欄
 
-排名的圖表／完整表格選擇，以及組別、期間與指標保留在網址。點圖／橫條的 chartKind 選擇目前只保存在元件內的本機狀態，不保存在網址。每幅圖共用含零的實際尺度，各指標使用自己的單位；選同一比較組別才作排名圖，跨組只可明示並列。排名圖限制首十個時保留說明與完整入口。基金並列的點圖只繪 verified 期間；過期、未核實及缺失保留狀態文字而不畫數值點。
+取代儀表板統計數字。dt 用 label、muted；dd 用 data 600；格與格之間 1px rule。出現於首頁圖框（圖名、截至日期、來源等）、內頁圖幅標題底、頁尾（navy 框、serif KWMPF、聲明行跨全寬）。內頁 `kw-stats` 統計列同一語言：navy 頂線、rule-strong 底線、1.05rem 數值、無大號數字。
 
-### Return Matrix
+### Fund Atlas 基金圖
 
-四個年率化期間形成回報矩陣，每格保留原值、時效、日期與來源。已核實可用值依絕對幅度使用青綠／負值紅透明度 (0.06–0.28)；過期及未核實值保留文字，使用柔灰底且不參與色階。不同期間不構成時間走勢。
+SVG 散點：3 年波幅 × 1 年回報，navy neatline、`atlas-grid` 格線、rule-strong 虛線零線、gold-strong 圖格坐標、中英軸標題。測量點預設 context，選中類別 highlight（白描邊）；指向顯示 tooltip（基金名、計劃、原值、日期、圖格參照），點擊開該基金頁。圖例即篩選：44px 列、9px 圓點，選中 legend-selected 底 + highlight 圓點；樣本說明點與分布框。下方表列各積金局基金類型的數量與中位數，caption 標明本站計算。
 
-### Calendar Returns
+**Motion:** 唯一動態：選類別時四分位分布框 360ms `cubic-bezier(0.2, 0, 0, 1)` 淡入；測量點 fill／r 220ms 過渡。`prefers-reduced-motion: reduce` 下關閉。
 
-曆年回報使用獨立柱形與共同零線；每柱代表完整曆年，不連線、不推造 NAV。缺失不畫成零，下方緊湊表格保留原值。
+### Sheet Index 圖幅索引
 
-### Allocation
+每個積金局基金類型一行條帶：rule 軌、虛線零點、highlight 點（55% 不透明，hover 全實＋navy 描邊）、gold-strong 2px 中位數短線（本站計算）。按類別分組，組標題下 rule-strong 線。
 
-先經保守的顯示守門核對標籤及有限數值。異常抽取暫不顯示圖表與數值表，提供便覽入口並說明這不代表官方沒有披露。通過守門、非負且合計 (99–101%) 的配置，最多六項用圓環，更多項用堆疊；合計調整只影響圖形長度，原值不改。不完整但可用的配置退回獨立條形。前端守門不能替代來源 parser 修復。
+### Tables and Panels
 
-### Chart Components（`Charts.tsx`）
-
-所有新圖表共用 `ChartFrame`：標題、副題、圖例、圖、註腳及「查看數據表」對照表（打開才渲染）。標記可用滑鼠指向或鍵盤聚焦取得 tooltip；tooltip 只作輔助，數值同時見數據表或列尾文字。
-
-- **StatTiles**：一排 KPI 數字卡（首頁資料範圍、市場概覽摘要、排名摘要）。大數字用比例數字；衍生值標「本站計算」。
-- **Histogram**：官方原值分布；組距由本站按刻度決定，負值區間用 `negative`，中位數用墨色實線標示。
-- **Scatter**：兩項官方指標同一平面（一年／五年等回報對三年波幅），只有一條 y 軸；以最近點（24px 內）取 tooltip，點擊開啟基金詳情。
-- **RangeChart**：每列最低至最高（`viz-context`）、中位數（墨色短線）及可選強調點（`viz-2`）。用於各比較組別並列、基金同組位置、各計劃管理費範圍、DIS 回報；跨組並列必須註明不是排名。
-- **StackedBars**：每列組成（風險級別、官方基金種類大類），2px 白隙分段，列尾印合計。
-- **RiskScale**：官方風險級別 1–7 刻度，當前級別放大並印出數字。
-- 需要額外資料的圖（市場概覽、同組位置）捲動到附近才載入；所有資料必須與頁面同一 `snapshotId`，否則顯示未能取得，不混合快照。
+表頭 table-head 暖白底、navy 底線、label 字級；數字右對齊、tabular。面板（卡片、工具列、圖表容器、表格容器）一律 sheet 底、rule 框、2px、無陰影。分段控制 rule-strong 框，選中 navy 底白字。
 
 ## Do's and Don'ts
 
 ### Do:
 
-- **Do** 把所有費用（管理費、FER、收費）放在每頁、每張卡、每個表及每組圖表選項的最後；首頁不作費用比較（使用者 2026-10-02 決定）。
-
-- **Do** 沿用原有深青頁首、金色品牌標記、serif 品牌字與既有地圖 hero。
-- **Do** 保留官方百分比原值、各欄位日期及來源；非官方分類與本站統計明示身份。
-- **Do** 用點圖或條形比較數值、矩陣比較期間、獨立柱圖呈現曆年回報，完整表格保留核對入口。
-- **Do** 只有有效的非負完整組成使用圓環或堆疊；不完整但可用的配置退回獨立條形。
-- **Do** 保留同名基金的計劃與類別身份，讓簡潔及深入分析都能查看來源與限制。
-- **Do** 使用「未取得」描述未知缺項；只有來源明示沒有披露時，才使用「官方未提供」及原因。
-- **Do** 為寬表提供捲動提示，兩欄費用、配置及曆年表在手機使用緊湊可換行版面。
+- **Do** 照官方原文顯示數字：披露寫 `1.205%` 就顯示 `1.205%`；不固定小數位、不補 0、不四捨五入、不正規化標籤。
+- **Do** 把官方 `n.a.` 顯示為「官方未提供」，與 0 及「未取得」分開；不以風險級別或基金種類補位。
+- **Do** 在每個數值、圖幅標題欄及 tooltip 旁保留該來源自己的截至日期；便覽與平台日期分開標示。
+- **Do** 把中位數、四分位、分布、平均等衍生數值標明「本站計算」。
+- **Do** 只用積金局基金類型（ADR 0011）分類、分組、上圖例；比較與排名只在同一類型內進行。
+- **Do** 用 neatline（1px 框 + 4px 偏移 outline）界定可獨立閱讀的圖幅，用標題欄記錄圖名、日期、來源。
+- **Do** 在地圖語境（頁首底邊、相片圖框）用金色刻度尺；它們是刻意的測繪尺，不是裝飾紋理。
+- **Do** 每一張出貨圖片在 `apps/web/public/images/CREDITS.md` 記錄作者、來源與授權。
 
 ### Don't:
 
-- **Don't** 為了對齊而補零、四捨五入或固定官方百分比的小數位。
-- **Don't** 把過期或未核實回報繪成可用數值圖；矩陣可保留原值但不著色、不參與色階。
-- **Don't** 把跨組別並列當排名，或把回報、費用與風險合成推薦分數。
-- **Don't** 把不同期間或獨立曆年回報連成未披露的 NAV／價格走勢。
-- **Don't** 用同一快照日期覆蓋欄位日期，或讓閱讀模式隱藏來源入口。
-- **Don't** 把被隔離的解析異常當作官方沒有披露，或將前端顯示守門當作來源 parser 已修復。
-- **Don't** 將未驗收的生產資料、遺留滑入色或既有 hero 上方小標籤擴張成新頁的規範。
+- **Don't** 加陰影、圓角卡片（> 2px）或大號儀表板統計數字。
+- **Don't** 在基金圖按類別用多色；保持單一 highlight 對 context。
+- **Don't** 用編輯分類（如三桶資產）或任何非積金局基金類型的分組。
+- **Don't** 把過期或未核實的數值畫入圖或參與排名；原值表可保留原文。
+- **Don't** 用一隻基金的披露或另一來源的截至日期頂替另一隻。
+- **Don't** 把金色刻度或網格紋理用在非地圖的內容面板。
+- **Don't** 把 serif 用於標題或數字；只限 kW 標記與 KWMPF 字樣。
+- **Don't** 把基金圖的「圖格」坐標搬到基金頁：它依賴基金圖由數據決定的軸域，離開基金圖就不成立。

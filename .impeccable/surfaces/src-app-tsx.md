@@ -1,8 +1,13 @@
 ---
 version: 1
 slug: "src-app-tsx"
-primary_target: "src/App.tsx"
-related_targets: ["src/SiteChrome.tsx"]
+primary_target: "apps/web/src/App.tsx"
+related_targets:
+  [
+    "apps/web/src/SiteChrome.tsx",
+    "apps/web/src/Atlas.tsx",
+    "apps/web/src/atlas.css",
+  ]
 ---
 
 # KWMPF 強積金基金圖冊（2026-10 重新設計）
@@ -33,3 +38,28 @@ FINISH：unreviewed and undocumented is unfinished; this build ends with the fin
 - 每個期間及欄位保留自己的來源與截至日期；過期數值不入圖、不排名，原值表保留。
 - 分類只用積金局基金類型；本站計算的中位數、四分位、分布明示「本站計算」。
 - 圖形不合成未披露時間序列；跨類型並列不作排名。
+
+## Finish
+
+Finish review disposition：`fix`。Code-led，roll degraded（impeccable.style 被網絡政策擋住），沒有 QUALITY BAR cards／comps；覆核以出貨程式碼及 `apps/web/.impeccable/review/` 截圖（gitignored）進行。
+
+已套用的八項修正：
+
+1. 首頁第一屏改以圖冊為主體：「地名索引」搜尋置於圖框上緣。
+2. 全寬實景圖帶，圖框坐標與刻度對齊。
+3. 圖框內標題欄取代 hero 統計列。
+4. 目錄移除編號。
+5. 分類文案改稱「積金局基金類型」。
+6. 內頁加入 neatline 圖幅標題及標題欄格。
+7. 表頭改暖白底；統計列改為細線分格的橫行。
+8. 基金圖圖格固定 A–H × 1–8，軸標題中英對照。
+
+接受的調整：
+
+- 基金圖改用單一高亮配色（highlight 對 context），取代六大類別各一色：六色方案驗證不合格（一般視力最差 ΔE 8.5、色覺異常最差 3.5）。
+- C5 式「圖格」參照不帶到基金頁：它依賴基金圖由數據決定的軸域。
+- Detector 對 `.kw-header::after` 的 side-tab，以及相片圖框刻度的 grid-background，屬刻意的地圖刻度尺，不是缺陷。
+
+Shipping raster：`apps/web/public/images/hk-harbour-{1200,2400}.webp`（David Iliff，Wikimedia Commons，CC BY-SA 3.0；出處記錄於 `apps/web/public/images/CREDITS.md`）。
+
+設計系統紀錄：根目錄 `DESIGN.md` 及 `.impeccable/design.json`。
