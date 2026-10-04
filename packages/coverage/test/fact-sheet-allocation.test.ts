@@ -493,8 +493,8 @@ describe("findSections", () => {
     ]);
     // 疊上去嗰版由下一個標題落筆嗰刻開始，本頁自己嗰層讀到嗰度為止。
     expect(sections.map((section) => section.layer)).toEqual([
-      { page: 1, endDrawIndex: 1 },
-      { page: 2, endDrawIndex: 1 },
+      { page: 1, endDrawIndex: 1, titleDrawIndex: 0 },
+      { page: 2, endDrawIndex: 1, titleDrawIndex: 0 },
     ]);
   });
 });

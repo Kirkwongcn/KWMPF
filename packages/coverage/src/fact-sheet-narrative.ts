@@ -98,6 +98,11 @@ export type TextBlockSelector = {
   /** 略過符合呢個式樣的行（例如註腳說明）。 */
   ignore?: RegExp;
   /**
+   * 官方寫明冇值（例如永明市場預測印「N/A」）：成段符合就當官方未提供（紅線 2），
+   * 唔當成一段文字顯示。
+   */
+  unavailableValue?: RegExp;
+  /**
    * 細過呢個字級的段落係註腳標記（滙豐評論入面的上標 `1`、`5`），唔屬原文句子。
    * 剔的係標記本身，唔係用字。
    */
@@ -402,6 +407,10 @@ export function readNarrative(
     .sort((a, b) => a.left - b.left)
     .map((item) => item.text.trim())
     .join(" ");
+  const all = kept.map((line) => line.text).join(" ");
+  if (selector.unavailableValue?.test(all)) {
+    return { status: "not-disclosed", reason: `the official text reads ${JSON.stringify(all)}` };
+  }
   return { status: "ok", text: composeText(kept, heading, selector.languages) };
 }
 

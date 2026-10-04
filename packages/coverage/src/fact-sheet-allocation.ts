@@ -262,6 +262,13 @@ export type FactSheetContract = {
    * 一份檔多過一個基金區段而用 `"document"` 係契約錯，直接報錯。
    */
   narrativeScope?: "section" | "document";
+  /**
+   * 整版疊印（`TitleSelector.overlaidPages`）時文字欄位用的分層記號：每一版各印一次、
+   * 而且係嗰版最後落筆的固定標題（永明「Manager’s Commentary」）。每版的文字落筆喺
+   * 上一版記號之後、自己記號或之前；疊上去嗰版會喺佢自己標題之前已經開始落筆，所以
+   * 唔可以用標題切。見 `layerItems`。
+   */
+  narrativeLayerEnd?: RegExp;
   /** 評論集中印喺附錄（中銀保誠），按基金名稱小標題讀，見 `readAppendixNarrative`。 */
   narrativeAppendix?: { field: NarrativeField } & AppendixNarrativeSpec;
   /** Explicit temporal evidence tied to a field; never inherit the document date implicitly. */
@@ -297,7 +304,7 @@ export type FactSheetSection = {
    * 整版疊印時，本頁自己嗰一層嘅落筆範圍上界（見 `TitleSelector.overlaidPages`）。
    * 座標同疊上去嗰版完全重疊，只有呢個界分得開。
    */
-  layer?: { page: number; endDrawIndex: number };
+  layer?: { page: number; endDrawIndex: number; titleDrawIndex: number };
 };
 
 const PERCENT_ITEM = /^\(?([+-]?\d+(?:\.\d+)?)\s*%\)?$/;
@@ -489,7 +496,7 @@ export function findSections(
         ? { page: next.page, top: next.top }
         : { page: lastPage.number, top: Number.POSITIVE_INFINITY },
       ...(Number.isFinite(endDrawIndex)
-        ? { layer: { page: item.page, endDrawIndex } }
+        ? { layer: { page: item.page, endDrawIndex, titleDrawIndex: item.drawIndex } }
         : {}),
     };
   });
@@ -511,11 +518,15 @@ function overlaid(item: PdfTextItem, section: FactSheetSection) {
   );
 }
 
-function withinSection(item: PdfTextItem, section: FactSheetSection) {
+function withinSectionBounds(item: PdfTextItem, section: FactSheetSection) {
   if (item.page < section.start.page || item.page > section.end.page) return false;
   if (item.page === section.start.page && item.top < section.start.top) return false;
   if (item.page === section.end.page && item.top >= section.end.top) return false;
-  return !overlaid(item, section);
+  return true;
+}
+
+function withinSection(item: PdfTextItem, section: FactSheetSection) {
+  return withinSectionBounds(item, section) && !overlaid(item, section);
 }
 
 export function sectionItems(pages: PdfPage[], section: FactSheetSection) {
@@ -1126,6 +1137,29 @@ function overlaidReason(lines: string[]) {
 }
 
 /**
+ * 區段內按分層記號切出本版的文字（見 `FactSheetContract.narrativeLayerEnd`）。
+ * 一頁有幾個記號，就有幾版；本版係本區段標題落筆之後第一個記號收尾嗰一段（標題頁），
+ * 其他頁用最先落筆嗰版。
+ */
+function layerItems(pages: PdfPage[], section: FactSheetSection, marker: RegExp) {
+  return pages.flatMap((page) => {
+    const inRange = page.items.filter((item) =>
+      withinSectionBounds(item, section),
+    );
+    const markers = page.items
+      .filter((item) => marker.test(item.text.trim()))
+      .map((item) => item.drawIndex)
+      .sort((a, b) => a - b);
+    if (markers.length <= 1) return inRange;
+    const title = section.layer?.page === page.number ? section.layer.titleDrawIndex : -1;
+    const own = Math.max(0, markers.findIndex((drawIndex) => drawIndex >= title));
+    const start = own === 0 ? -1 : markers[own - 1]!;
+    const end = markers[own]!;
+    return inRange.filter((item) => item.drawIndex > start && item.drawIndex <= end);
+  });
+}
+
+/**
  * 同一份便覽（或者同一計劃同一期逐隻基金的便覽）多隻基金的評論或市場預測一字不差，
  * 即係計劃共用的市場評論（ADR 0012），記低共用隻數，網站要標明唔係基金專屬。
  * 每次重新計，唔會累加上一次的結果。
@@ -1152,7 +1186,8 @@ export function markSharedNarrative(disclosures: FactSheetDisclosure[]) {
 }
 
 /** 會被標記為計劃共用的文字欄位。 */
-const SHARED_FIELDS = new Set<string>(["managerCommentary", "marketForecast"]);
+// 市場預測只係一個評級字（永明「Neutral」），多隻基金相同唔代表係共用評論，唔計。
+const SHARED_FIELDS = new Set<string>(["managerCommentary"]);
 
 export function parseFactSheetDisclosures(
   pages: PdfPage[],
@@ -1239,7 +1274,11 @@ export function parseFactSheetDisclosures(
       );
     }
     const narrativeItems =
-      contract.narrativeScope === "document" ? pages.flatMap((page) => page.items) : items;
+      contract.narrativeScope === "document"
+        ? pages.flatMap((page) => page.items)
+        : contract.narrativeLayerEnd
+          ? layerItems(pages, section, contract.narrativeLayerEnd)
+          : items;
     const narrativeSelectors = Object.entries(contract.narrative ?? {}) as [
       NarrativeField,
       TextBlockSelector | TextBlockSelector[],

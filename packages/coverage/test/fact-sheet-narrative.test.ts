@@ -461,6 +461,38 @@ describe("commentary shared across funds", () => {
     expect(disclosures[2]?.narrative?.managerCommentary?.en).toBe("Gamma rose on stock selection.");
   });
 
+  it("reads only the page's own layer when another fund's page is overlaid on it", () => {
+    // 疊上去嗰版（Beta）喺自己標題之前已經開始落筆，座標同本版一樣。
+    const pages = parsePdfXml(
+      `<pdf2xml>${page([
+        { top: 20, left: 40, text: "As at 30/06/2026" },
+        { top: 82, left: 40, text: "Alpha Fund", size: 20 },
+        { top: 700, left: 40, text: "Alpha rates rose." },
+        { top: 680, left: 40, text: "基金經理評論" },
+        { top: 680, left: 140, text: "Manager’s Commentary" },
+        { top: 700, left: 41, text: "Beta stocks fell sharply." },
+        { top: 82, left: 41, text: "Beta Fund", size: 20 },
+        { top: 680, left: 40, text: "基金經理評論" },
+        { top: 680, left: 140, text: "Manager’s Commentary" },
+      ])}</pdf2xml>`,
+    );
+    const contract = {
+      scheme: "Test Scheme",
+      title: { pattern: /Fund$/, fontSize: [20], overlaidPages: true as const, maxTop: 160 },
+      allocation: { heading: /^Portfolio Allocation$/ },
+      holdings: { heading: /^Top 10 Holdings$/ },
+      narrative: {
+        managerCommentary: { heading: /^基金經理評論$/, band: { minLeft: 0, maxLeft: 130 }, languages: "en" as const },
+      },
+      asOf: { pattern: /As at\s+(\d{1,2}\/\d{1,2}\/\d{4})/ },
+    };
+    const [withoutLayers] = parseFactSheetDisclosures(pages, contract);
+    expect(withoutLayers?.unavailableKinds.managerCommentary).toBe("overlaid-text-layer");
+    const [layered] = parseFactSheetDisclosures(pages, { ...contract, narrativeLayerEnd: /^Manager’s Commentary$/ });
+    expect(layered?.constituentFundName).toBe("Alpha Fund");
+    expect(layered?.narrative?.managerCommentary?.en).toBe("Alpha rates rose.");
+  });
+
   it("reads a one-fund file's front page when the narrative scope is the whole document", () => {
     const contract = {
       scheme: "Test Scheme",
@@ -518,6 +550,27 @@ describe("shared commentary across per-fund fact sheets", () => {
     const shared = (d: { narrative: { managerCommentary: { sharedAcrossFunds?: number } } }) =>
       d.narrative.managerCommentary.sharedAcrossFunds;
     expect([shared(a), shared(b), shared(c)]).toEqual([2, 2, undefined]);
+  });
+});
+
+describe("official values that mean nothing was disclosed", () => {
+  it("treats a printed N/A as not disclosed instead of showing it as text", () => {
+    const forecast: TextBlockSelector = {
+      heading: /^市場預測$/,
+      band: { minLeft: 760, maxLeft: 900 },
+      minDepth: -6,
+      maxDepth: 22,
+      ignore: /^\^+$/,
+      unavailableValue: /^N\/A(\s*\^+)?$/,
+      languages: "en",
+    };
+    const na = readNarrative(
+      [item(84, 668, "市場預測"), item(81, 810, "^^"), item(95, 785, "N/A"), item(94, 805, "^^")],
+      forecast,
+    );
+    expect(na.status).toBe("not-disclosed");
+    const neutral = readNarrative([item(84, 668, "市場預測"), item(103, 801, "Neutral")], forecast);
+    expect(neutral).toMatchObject({ status: "ok", text: { en: "Neutral" } });
   });
 });
 
