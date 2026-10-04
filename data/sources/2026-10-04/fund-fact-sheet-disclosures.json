@@ -36388,7 +36388,43 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "港元債券 HKD Bonds",
+              "percent": 86.1,
+              "printed": "86.1%"
+            },
+            {
+              "label": "美元債券 USD Bonds",
+              "percent": 12.1,
+              "printed": "12.1%"
+            },
+            {
+              "label": "現金 Cash",
+              "percent": 1.5,
+              "printed": "1.5%"
+            },
+            {
+              "label": "其他 Others",
+              "percent": 0.3,
+              "printed": "0.3%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 14
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -36453,13 +36489,9 @@
           "en": "Manulife Investment Management (Hong Kong) Limited"
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
       "retrievedAt": "2026-10-04T14:01:38.419929Z"
     },
@@ -36566,7 +36598,63 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "港元債券 HKD Bonds",
+              "percent": 61.2,
+              "printed": "61.2%"
+            },
+            {
+              "label": "國際債券 International Bonds",
+              "percent": 10.7,
+              "printed": "10.7%"
+            },
+            {
+              "label": "北美洲股票 North American Equities",
+              "percent": 8.2,
+              "printed": "8.2%"
+            },
+            {
+              "label": "歐洲股票 European Equities",
+              "percent": 5.6,
+              "printed": "5.6%"
+            },
+            {
+              "label": "香港股票 Hong Kong Equities",
+              "percent": 5.3,
+              "printed": "5.3%"
+            },
+            {
+              "label": "日本股票 Japan Equities",
+              "percent": 5.2,
+              "printed": "5.2%"
+            },
+            {
+              "label": "現金 Cash",
+              "percent": 2.7,
+              "printed": "2.7%"
+            },
+            {
+              "label": "其他亞太股票 Other Asia Pacific Equities",
+              "percent": 1.1,
+              "printed": "1.1%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 15
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -36631,13 +36719,9 @@
           "en": "Manulife Investment Management (Hong Kong) Limited"
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
       "retrievedAt": "2026-10-04T14:01:38.419929Z"
     },
@@ -36655,7 +36739,43 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "港元債券 HKD Bonds",
+              "percent": 81.1,
+              "printed": "81.1%"
+            },
+            {
+              "label": "美元債券 USD Bonds",
+              "percent": 21.7,
+              "printed": "21.7%"
+            },
+            {
+              "label": "其他 Others",
+              "percent": 0.1,
+              "printed": "0.1%"
+            },
+            {
+              "label": "現金 Cash",
+              "percent": -2.9,
+              "printed": "-2.9%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 16
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -36720,13 +36840,9 @@
           "en": "Manulife Investment Management (Hong Kong) Limited"
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
       "retrievedAt": "2026-10-04T14:01:38.419929Z"
     },
@@ -36744,7 +36860,33 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "港元債券 HKD Bonds",
+              "percent": 93.1,
+              "printed": "93.1%"
+            },
+            {
+              "label": "現金及存款 Cash & Deposits",
+              "percent": 6.9,
+              "printed": "6.9%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 15
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -36809,13 +36951,9 @@
           "en": "Manulife Investment Management (Hong Kong) Limited"
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
       "retrievedAt": "2026-10-04T14:01:38.419929Z"
     },
@@ -36922,7 +37060,58 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "北美洲股票 North American Equities",
+              "percent": 58.5,
+              "printed": "58.5%"
+            },
+            {
+              "label": "歐洲股票 European Equities",
+              "percent": 17.2,
+              "printed": "17.2%"
+            },
+            {
+              "label": "其他亞太股票 Other Asia Pacific Equities",
+              "percent": 15.7,
+              "printed": "15.7%"
+            },
+            {
+              "label": "日本股票 Japan Equities",
+              "percent": 5,
+              "printed": "5.0%"
+            },
+            {
+              "label": "現金 Cash",
+              "percent": 3,
+              "printed": "3.0%"
+            },
+            {
+              "label": "香港股票 Hong Kong Equities",
+              "percent": 0.4,
+              "printed": "0.4%"
+            },
+            {
+              "label": "其他 Others",
+              "percent": 0.3,
+              "printed": "0.3%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100.1,
+        "page": 6
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -36987,13 +37176,9 @@
           "en": "Manulife Investment Management (Hong Kong) Limited"
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
       "retrievedAt": "2026-10-04T14:01:38.419929Z"
     },
@@ -37011,7 +37196,78 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "德國 Germany",
+              "percent": 25.2,
+              "printed": "25.2%"
+            },
+            {
+              "label": "英國 United Kingdom",
+              "percent": 23.2,
+              "printed": "23.2%"
+            },
+            {
+              "label": "法國 France",
+              "percent": 18.5,
+              "printed": "18.5%"
+            },
+            {
+              "label": "其他 Others",
+              "percent": 8.2,
+              "printed": "8.2%"
+            },
+            {
+              "label": "荷蘭 Netherlands",
+              "percent": 6.5,
+              "printed": "6.5%"
+            },
+            {
+              "label": "瑞士 Switzerland",
+              "percent": 5.3,
+              "printed": "5.3%"
+            },
+            {
+              "label": "瑞典 Sweden",
+              "percent": 3.5,
+              "printed": "3.5%"
+            },
+            {
+              "label": "丹麥 Denmark",
+              "percent": 3.1,
+              "printed": "3.1%"
+            },
+            {
+              "label": "意大利 Italy",
+              "percent": 3,
+              "printed": "3.0%"
+            },
+            {
+              "label": "現金 Cash",
+              "percent": 2.6,
+              "printed": "2.6%"
+            },
+            {
+              "label": "愛爾蘭 Ireland",
+              "percent": 0.9,
+              "printed": "0.9%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 5
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -37076,13 +37332,9 @@
           "en": "Manulife Investment Management (Hong Kong) Limited"
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
       "retrievedAt": "2026-10-04T14:01:38.419929Z"
     },
@@ -37100,7 +37352,78 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "中國 China",
+              "percent": 24.2,
+              "printed": "24.2%"
+            },
+            {
+              "label": "韓國 Korea",
+              "percent": 21.2,
+              "printed": "21.2%"
+            },
+            {
+              "label": "台灣 Taiwan",
+              "percent": 16.6,
+              "printed": "16.6%"
+            },
+            {
+              "label": "印度 India",
+              "percent": 12.5,
+              "printed": "12.5%"
+            },
+            {
+              "label": "澳洲 Australia",
+              "percent": 10.7,
+              "printed": "10.7%"
+            },
+            {
+              "label": "香港 Hong Kong",
+              "percent": 5.5,
+              "printed": "5.5%"
+            },
+            {
+              "label": "現金 Cash",
+              "percent": 4.2,
+              "printed": "4.2%"
+            },
+            {
+              "label": "其他 Others",
+              "percent": 2.6,
+              "printed": "2.6%"
+            },
+            {
+              "label": "新加坡 Singapore",
+              "percent": 0.9,
+              "printed": "0.9%"
+            },
+            {
+              "label": "印尼 Indonesia",
+              "percent": 0.8,
+              "printed": "0.8%"
+            },
+            {
+              "label": "馬來西亞 Malaysia",
+              "percent": 0.8,
+              "printed": "0.8%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 2
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -37165,13 +37488,9 @@
           "en": "Manulife Investment Management (Hong Kong) Limited"
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
       "retrievedAt": "2026-10-04T14:01:38.419929Z"
     },
@@ -37189,7 +37508,78 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "工業 Industrials",
+              "percent": 25.4,
+              "printed": "25.4%"
+            },
+            {
+              "label": "生活消費品 Consumer Discretionary",
+              "percent": 19.4,
+              "printed": "19.4%"
+            },
+            {
+              "label": "金融 Financials",
+              "percent": 17.2,
+              "printed": "17.2%"
+            },
+            {
+              "label": "科技 Technology",
+              "percent": 16.6,
+              "printed": "16.6%"
+            },
+            {
+              "label": "醫療保健 Healthcare",
+              "percent": 5.2,
+              "printed": "5.2%"
+            },
+            {
+              "label": "現金 Cash",
+              "percent": 4,
+              "printed": "4.0%"
+            },
+            {
+              "label": "生活必需品 Consumer Staples",
+              "percent": 3.9,
+              "printed": "3.9%"
+            },
+            {
+              "label": "原材料 Basic Materials",
+              "percent": 3.6,
+              "printed": "3.6%"
+            },
+            {
+              "label": "電訊 Telecommunications",
+              "percent": 2.4,
+              "printed": "2.4%"
+            },
+            {
+              "label": "地產 Real Estate",
+              "percent": 1.9,
+              "printed": "1.9%"
+            },
+            {
+              "label": "公用事業 Utilities",
+              "percent": 0.5,
+              "printed": "0.5%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100.1,
+        "page": 4
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -37254,13 +37644,9 @@
           "en": "Manulife Investment Management (Hong Kong) Limited"
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
       "retrievedAt": "2026-10-04T14:01:38.419929Z"
     },
@@ -37278,7 +37664,63 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "美元債券 USD Bonds",
+              "percent": 35.6,
+              "printed": "35.6%"
+            },
+            {
+              "label": "歐元債券 EUR Bonds",
+              "percent": 26.2,
+              "printed": "26.2%"
+            },
+            {
+              "label": "其他 Others",
+              "percent": 10.5,
+              "printed": "10.5%"
+            },
+            {
+              "label": "日圓債券 JPY Bonds",
+              "percent": 7.7,
+              "printed": "7.7%"
+            },
+            {
+              "label": "英鎊債券 GBP Bonds",
+              "percent": 6.2,
+              "printed": "6.2%"
+            },
+            {
+              "label": "澳元債券 AUD Bonds",
+              "percent": 6.1,
+              "printed": "6.1%"
+            },
+            {
+              "label": "現金 Cash",
+              "percent": 5.2,
+              "printed": "5.2%"
+            },
+            {
+              "label": "加元債券 CAD Bonds",
+              "percent": 2.5,
+              "printed": "2.5%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 14
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -37343,13 +37785,9 @@
           "en": "Manulife Investment Management (Hong Kong) Limited"
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
       "retrievedAt": "2026-10-04T14:01:38.419929Z"
     },
@@ -37367,7 +37805,68 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "美洲股票 American Equities",
+              "percent": 20.8,
+              "printed": "20.8%"
+            },
+            {
+              "label": "香港股票 Hong Kong Equities",
+              "percent": 17.1,
+              "printed": "17.1%"
+            },
+            {
+              "label": "其他亞太股票 Other Asia Pacific Equities",
+              "percent": 16.4,
+              "printed": "16.4%"
+            },
+            {
+              "label": "歐洲股票 European Equities",
+              "percent": 15.6,
+              "printed": "15.6%"
+            },
+            {
+              "label": "日本股票 Japanese Equities",
+              "percent": 12.2,
+              "printed": "12.2%"
+            },
+            {
+              "label": "中國在岸股票 China Onshore Equities",
+              "percent": 10.9,
+              "printed": "10.9%"
+            },
+            {
+              "label": "債券 Bonds",
+              "percent": 3.8,
+              "printed": "3.8%"
+            },
+            {
+              "label": "現金及其他 Cash and Others",
+              "percent": 2.7,
+              "printed": "2.7%"
+            },
+            {
+              "label": "其他股票 Other Equities",
+              "percent": 0.5,
+              "printed": "0.5%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 7
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -37432,13 +37931,9 @@
           "en": "Manulife Investment Management (Hong Kong) Limited invests in the fund managed by FIL Investment Management (Hong Kong) Limited"
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
       "retrievedAt": "2026-10-04T14:01:38.419929Z"
     },
@@ -37456,7 +37951,68 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "債券 Bonds",
+              "percent": 41.9,
+              "printed": "41.9%"
+            },
+            {
+              "label": "美洲股票 American Equities",
+              "percent": 12.9,
+              "printed": "12.9%"
+            },
+            {
+              "label": "其他亞太股票 Other Asia Pacific Equities",
+              "percent": 9.2,
+              "printed": "9.2%"
+            },
+            {
+              "label": "歐洲股票 European Equities",
+              "percent": 8.6,
+              "printed": "8.6%"
+            },
+            {
+              "label": "香港股票 Hong Kong Equities",
+              "percent": 8,
+              "printed": "8.0%"
+            },
+            {
+              "label": "中國在岸股票 China Onshore Equities",
+              "percent": 7.7,
+              "printed": "7.7%"
+            },
+            {
+              "label": "日本股票 Japanese Equities",
+              "percent": 7.1,
+              "printed": "7.1%"
+            },
+            {
+              "label": "現金及其他 Cash and Others",
+              "percent": 4.1,
+              "printed": "4.1%"
+            },
+            {
+              "label": "其他股票 Other Equities",
+              "percent": 0.5,
+              "printed": "0.5%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 8
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -37521,13 +38077,9 @@
           "en": "Manulife Investment Management (Hong Kong) Limited invests in the fund managed by FIL Investment Management (Hong Kong) Limited"
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
       "retrievedAt": "2026-10-04T14:01:38.419929Z"
     },
@@ -37545,7 +38097,78 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "科技 Technology",
+              "percent": 51.5,
+              "printed": "51.5%"
+            },
+            {
+              "label": "金融 Financials",
+              "percent": 15.8,
+              "printed": "15.8%"
+            },
+            {
+              "label": "生活消費品 Consumer Discretionary",
+              "percent": 9.9,
+              "printed": "9.9%"
+            },
+            {
+              "label": "工業 Industrials",
+              "percent": 6.1,
+              "printed": "6.1%"
+            },
+            {
+              "label": "原材料 Basic Materials",
+              "percent": 4.8,
+              "printed": "4.8%"
+            },
+            {
+              "label": "電訊 Telecommunications",
+              "percent": 3.5,
+              "printed": "3.5%"
+            },
+            {
+              "label": "醫療保健 Healthcare",
+              "percent": 2.5,
+              "printed": "2.5%"
+            },
+            {
+              "label": "能源 Energy",
+              "percent": 2.1,
+              "printed": "2.1%"
+            },
+            {
+              "label": "地產 Real Estate",
+              "percent": 1.5,
+              "printed": "1.5%"
+            },
+            {
+              "label": "現金 Cash",
+              "percent": 1.2,
+              "printed": "1.2%"
+            },
+            {
+              "label": "生活必需品 Consumer Staples",
+              "percent": 1.1,
+              "printed": "1.1%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 3
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -37610,13 +38233,9 @@
           "en": "Manulife Investment Management (Hong Kong) Limited"
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
       "retrievedAt": "2026-10-04T14:01:38.419929Z"
     },
@@ -37634,7 +38253,63 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "其他亞太股票 Other Asia Pacific Equities",
+              "percent": 23.3,
+              "printed": "23.3%"
+            },
+            {
+              "label": "北美洲股票 North American Equities",
+              "percent": 19.6,
+              "printed": "19.6%"
+            },
+            {
+              "label": "歐洲股票 European Equities",
+              "percent": 18.3,
+              "printed": "18.3%"
+            },
+            {
+              "label": "香港股票 Hong Kong Equities",
+              "percent": 17.3,
+              "printed": "17.3%"
+            },
+            {
+              "label": "日本股票 Japan Equities",
+              "percent": 11.7,
+              "printed": "11.7%"
+            },
+            {
+              "label": "現金 Cash",
+              "percent": 6.4,
+              "printed": "6.4%"
+            },
+            {
+              "label": "國際債券 International Bonds",
+              "percent": 2.8,
+              "printed": "2.8%"
+            },
+            {
+              "label": "港元債券 HKD Bonds",
+              "percent": 0.5,
+              "printed": "0.5%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 99.9,
+        "page": 6
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -37699,13 +38374,9 @@
           "en": "Manulife Investment Management (Hong Kong) Limited"
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
       "retrievedAt": "2026-10-04T14:01:38.419929Z"
     },
@@ -37901,7 +38572,58 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "國際債券 International Bonds",
+              "percent": 27.5,
+              "printed": "27.5%"
+            },
+            {
+              "label": "港元債券 HKD Bonds",
+              "percent": 25.1,
+              "printed": "25.1%"
+            },
+            {
+              "label": "其他亞太股票 Other Asia Pacific Equities",
+              "percent": 15.5,
+              "printed": "15.5%"
+            },
+            {
+              "label": "北美洲股票 North American Equities",
+              "percent": 11.7,
+              "printed": "11.7%"
+            },
+            {
+              "label": "香港股票 Hong Kong Equities",
+              "percent": 8.2,
+              "printed": "8.2%"
+            },
+            {
+              "label": "現金 Cash",
+              "percent": 7,
+              "printed": "7.0%"
+            },
+            {
+              "label": "歐洲股票 European Equities",
+              "percent": 5,
+              "printed": "5.0%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 11
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -37966,13 +38688,9 @@
           "en": "Manulife Investment Management (Hong Kong) Limited"
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
       "retrievedAt": "2026-10-04T14:01:38.419929Z"
     },
@@ -37990,7 +38708,63 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "國際債券 International Bonds",
+              "percent": 27.5,
+              "printed": "27.5%"
+            },
+            {
+              "label": "港元債券 HKD Bonds",
+              "percent": 24.8,
+              "printed": "24.8%"
+            },
+            {
+              "label": "其他亞太股票 Other Asia Pacific Equities",
+              "percent": 15.5,
+              "printed": "15.5%"
+            },
+            {
+              "label": "北美洲股票 North American Equities",
+              "percent": 11.7,
+              "printed": "11.7%"
+            },
+            {
+              "label": "香港股票 Hong Kong Equities",
+              "percent": 8.2,
+              "printed": "8.2%"
+            },
+            {
+              "label": "現金 Cash",
+              "percent": 7.2,
+              "printed": "7.2%"
+            },
+            {
+              "label": "歐洲股票 European Equities",
+              "percent": 4.9,
+              "printed": "4.9%"
+            },
+            {
+              "label": "日本股票 Japan Equities",
+              "percent": 0.1,
+              "printed": "0.1%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 99.9,
+        "page": 11
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -38055,13 +38829,9 @@
           "en": "Manulife Investment Management (Hong Kong) Limited"
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
       "retrievedAt": "2026-10-04T14:01:38.419929Z"
     },
@@ -38168,7 +38938,63 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "其他亞太股票 Other Asia Pacific Equities",
+              "percent": 23.9,
+              "printed": "23.9%"
+            },
+            {
+              "label": "香港股票 Hong Kong Equities",
+              "percent": 20.8,
+              "printed": "20.8%"
+            },
+            {
+              "label": "北美洲股票 North American Equities",
+              "percent": 20.4,
+              "printed": "20.4%"
+            },
+            {
+              "label": "歐洲股票 European Equities",
+              "percent": 10.1,
+              "printed": "10.1%"
+            },
+            {
+              "label": "國際債券 International Bonds",
+              "percent": 7.7,
+              "printed": "7.7%"
+            },
+            {
+              "label": "現金 Cash",
+              "percent": 6.8,
+              "printed": "6.8%"
+            },
+            {
+              "label": "日本股票 Japan Equities",
+              "percent": 5.2,
+              "printed": "5.2%"
+            },
+            {
+              "label": "港元債券 HKD Bonds",
+              "percent": 5.1,
+              "printed": "5.1%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 10
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -38233,13 +39059,9 @@
           "en": "Manulife Investment Management (Hong Kong) Limited"
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
       "retrievedAt": "2026-10-04T14:01:38.419929Z"
     },
@@ -38257,7 +39079,63 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "香港股票 Hong Kong Equities",
+              "percent": 26,
+              "printed": "26.0%"
+            },
+            {
+              "label": "其他亞太股票 Other Asia Pacific Equities",
+              "percent": 25.5,
+              "printed": "25.5%"
+            },
+            {
+              "label": "北美洲股票 North American Equities",
+              "percent": 22.4,
+              "printed": "22.4%"
+            },
+            {
+              "label": "歐洲股票 European Equities",
+              "percent": 11.4,
+              "printed": "11.4%"
+            },
+            {
+              "label": "日本股票 Japan Equities",
+              "percent": 7.4,
+              "printed": "7.4%"
+            },
+            {
+              "label": "現金 Cash",
+              "percent": 5,
+              "printed": "5.0%"
+            },
+            {
+              "label": "國際債券 International Bonds",
+              "percent": 1.7,
+              "printed": "1.7%"
+            },
+            {
+              "label": "港元債券 HKD Bonds",
+              "percent": 0.6,
+              "printed": "0.6%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 9
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -38322,13 +39200,9 @@
           "en": "Manulife Investment Management (Hong Kong) Limited"
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
       "retrievedAt": "2026-10-04T14:01:38.419929Z"
     },
@@ -38346,7 +39220,53 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "香港股票 Hong Kong Equities",
+              "percent": 27.1,
+              "printed": "27.1%"
+            },
+            {
+              "label": "其他亞太股票 Other Asia Pacific Equities",
+              "percent": 25.8,
+              "printed": "25.8%"
+            },
+            {
+              "label": "北美洲股票 North American Equities",
+              "percent": 22.7,
+              "printed": "22.7%"
+            },
+            {
+              "label": "歐洲股票 European Equities",
+              "percent": 11.6,
+              "printed": "11.6%"
+            },
+            {
+              "label": "日本股票 Japan Equities",
+              "percent": 7.9,
+              "printed": "7.9%"
+            },
+            {
+              "label": "現金 Cash",
+              "percent": 4.8,
+              "printed": "4.8%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 99.9,
+        "page": 9
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -38411,13 +39331,9 @@
           "en": "Manulife Investment Management (Hong Kong) Limited"
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
       "retrievedAt": "2026-10-04T14:01:38.419929Z"
     },
@@ -38435,7 +39351,58 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "美元債券 USD Bonds",
+              "percent": 87,
+              "printed": "87.0%"
+            },
+            {
+              "label": "現金 Cash",
+              "percent": 3.6,
+              "printed": "3.6%"
+            },
+            {
+              "label": "人民幣債券 RMB Bonds",
+              "percent": 2.4,
+              "printed": "2.4%"
+            },
+            {
+              "label": "印度債券 INR Bonds",
+              "percent": 2.4,
+              "printed": "2.4%"
+            },
+            {
+              "label": "澳元債券 AUD Bonds",
+              "percent": 2.1,
+              "printed": "2.1%"
+            },
+            {
+              "label": "馬幣債券 MYR Bonds",
+              "percent": 1.8,
+              "printed": "1.8%"
+            },
+            {
+              "label": "菲律賓債券 PHP Bonds",
+              "percent": 0.7,
+              "printed": "0.7%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 13
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -38500,13 +39467,9 @@
           "en": "Manulife Investment Management (Hong Kong) Limited"
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
       "retrievedAt": "2026-10-04T14:01:38.419929Z"
     },
@@ -38524,7 +39487,78 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "金融 Financials",
+              "percent": 33.6,
+              "printed": "33.6%"
+            },
+            {
+              "label": "非必需消費 Consumer Discretionary",
+              "percent": 18.3,
+              "printed": "18.3%"
+            },
+            {
+              "label": "電訊 Communication Services",
+              "percent": 17.9,
+              "printed": "17.9%"
+            },
+            {
+              "label": "資訊科技 Information Technology",
+              "percent": 5.2,
+              "printed": "5.2%"
+            },
+            {
+              "label": "醫療保健 Healthcare",
+              "percent": 5,
+              "printed": "5.0%"
+            },
+            {
+              "label": "現金及其他 Cash",
+              "percent": 4.6,
+              "printed": "4.6%"
+            },
+            {
+              "label": "工業 Industrials",
+              "percent": 4.4,
+              "printed": "4.4%"
+            },
+            {
+              "label": "房地產 Real Estate",
+              "percent": 4.2,
+              "printed": "4.2%"
+            },
+            {
+              "label": "公用事業 Utilities",
+              "percent": 2.3,
+              "printed": "2.3%"
+            },
+            {
+              "label": "物料 Materials",
+              "percent": 2.3,
+              "printed": "2.3%"
+            },
+            {
+              "label": "必需消費 Consumer Staples",
+              "percent": 2.2,
+              "printed": "2.2%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 4
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -38589,13 +39623,9 @@
           "en": "Manulife Investment Management (Hong Kong) Limited"
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
       "retrievedAt": "2026-10-04T14:01:38.419929Z"
     },
@@ -38613,7 +39643,43 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "人民幣債券 RMB Bonds",
+              "percent": 85.4,
+              "printed": "85.4%"
+            },
+            {
+              "label": "港元債券 HKD Bonds",
+              "percent": 12,
+              "printed": "12.0%"
+            },
+            {
+              "label": "美元債券 USD Bonds",
+              "percent": 1.7,
+              "printed": "1.7%"
+            },
+            {
+              "label": "現金 Cash",
+              "percent": 0.8,
+              "printed": "0.8%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 99.9,
+        "page": 13
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -38678,13 +39744,9 @@
           "en": "Manulife Investment Management (Hong Kong) Limited"
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
       "retrievedAt": "2026-10-04T14:01:38.419929Z"
     },
@@ -38702,7 +39764,38 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "環球股票 Global Equity",
+              "percent": 60.4,
+              "printed": "60.4%"
+            },
+            {
+              "label": "環球債券 Global Bond",
+              "percent": 36,
+              "printed": "36.0%"
+            },
+            {
+              "label": "現金及其他 Cash and Others",
+              "percent": 3.6,
+              "printed": "3.6%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 12
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -38767,13 +39860,9 @@
           "en": "Manulife Investment Management (Hong Kong) Limited invests in the fund managed by Amundi Hong Kong Limited"
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
       "retrievedAt": "2026-10-04T14:01:38.419929Z"
     },
@@ -38791,7 +39880,38 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "環球債券 Global Bond",
+              "percent": 75.4,
+              "printed": "75.4%"
+            },
+            {
+              "label": "環球股票 Global Equity",
+              "percent": 20.3,
+              "printed": "20.3%"
+            },
+            {
+              "label": "現金及其他 Cash and Others",
+              "percent": 4.3,
+              "printed": "4.3%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 12
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -38856,13 +39976,9 @@
           "en": "Manulife Investment Management (Hong Kong) Limited invests in the fund managed by Amundi Hong Kong Limited"
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
       "retrievedAt": "2026-10-04T14:01:38.419929Z"
     },
@@ -38880,7 +39996,63 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "國際債券 International Bonds",
+              "percent": 33.1,
+              "printed": "33.1%"
+            },
+            {
+              "label": "港元債券 HKD Bonds",
+              "percent": 28.5,
+              "printed": "28.5%"
+            },
+            {
+              "label": "其他亞太股票 Other Asia Pacific Equities",
+              "percent": 9.8,
+              "printed": "9.8%"
+            },
+            {
+              "label": "北美洲股票 North American Equities",
+              "percent": 8.9,
+              "printed": "8.9%"
+            },
+            {
+              "label": "現金 Cash",
+              "percent": 7.5,
+              "printed": "7.5%"
+            },
+            {
+              "label": "歐洲股票 European Equities",
+              "percent": 5,
+              "printed": "5.0%"
+            },
+            {
+              "label": "香港股票 Hong Kong Equities",
+              "percent": 4.2,
+              "printed": "4.2%"
+            },
+            {
+              "label": "日本股票 Japan Equities",
+              "percent": 3,
+              "printed": "3.0%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 8
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -38945,13 +40117,9 @@
           "en": "Manulife Investment Management (Hong Kong) Limited"
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the bar chart's labels and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
       "retrievedAt": "2026-10-04T14:01:38.419929Z"
     },
@@ -42428,7 +43596,68 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "ASSET ALLOCATION BY ASSET CLASSES",
+          "entries": [
+            {
+              "label": "債券 Bonds",
+              "percent": 3.81,
+              "printed": "3.81%"
+            },
+            {
+              "label": "現金及其他 Cash & Others",
+              "percent": 1.65,
+              "printed": "1.65%"
+            },
+            {
+              "label": "其他股票 Other Equities",
+              "percent": 1.53,
+              "printed": "1.53%"
+            },
+            {
+              "label": "中國股票 China Equities",
+              "percent": 10.88,
+              "printed": "10.88%"
+            },
+            {
+              "label": "北美股票 North America Equities",
+              "percent": 20.83,
+              "printed": "20.83%"
+            },
+            {
+              "label": "日本股票 Japan Equities",
+              "percent": 12.22,
+              "printed": "12.22%"
+            },
+            {
+              "label": "香港股票 Hong Kong Equities",
+              "percent": 17.09,
+              "printed": "17.09%"
+            },
+            {
+              "label": "歐洲股票 Europe Equities",
+              "percent": 15.57,
+              "printed": "15.57%"
+            },
+            {
+              "label": "亞太股票 Asia Pacific Equities",
+              "percent": 16.42,
+              "printed": "16.42%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "fact sheet text layer (pdftohtml -xml)"
+        ],
+        "total": 100,
+        "page": 14
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -42493,13 +43722,9 @@
           "en": "Global equities advanced in the second quarter as easing US-Iran tensions, resilient corporate earnings and continued AI optimism supported investor sentiment. Following an earlier uptick raising inflation concerns, oil prices moderated as ceasefire talks in the Middle East reduced fears of supply disruptions. The US Federal Reserve left interest rates unchanged but signalled that further policy tightening is possible if inflationary pressures persist. Regionally, emerging markets advanced strongly on AI-driven semiconductor demand, while US and Japan also posted solid gains. At a sectoral level, IT led the gains despite a late-quarter pullback amid profit-taking and valuation concerns. Global fixed income markets delivered positive performance in the second quarter, although performance was volatile as investors responded to shifting oil prices, geopolitical risks and evolving central bank expectations. The quarter began with renewed concerns over the Iran conflict, which pushed oil prices higher, lifted inflation expectations and revived stagflation fears. Consequently, markets scaled back expectations for monetary policy easing, pushing sovereign bond yields higher. However, sentiment improved as progress in the US-Iran diplomatic standoff, followed by a ceasefire, reduced concerns over a prolonged energy shock. Brent crude declined, reducing inflation risk premia and supporting sovereign and credit markets. The US Federal Reserve kept rates unchanged and maintained a cautious bias, while the European Central Bank raised interest rates despite weak growth, and the Bank of Japan continued policy normalisation. Sovereign bonds recovered later in the quarter, while credit markets remained resilient, supported by firmer risk appetite, resilient demand and easing stagflation concerns."
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
       "retrievedAt": "2026-10-04T14:01:28.360787Z"
     },
@@ -42517,7 +43742,73 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "ASSET ALLOCATION BY ASSET CLASSES",
+          "entries": [
+            {
+              "label": "現金及其他 Cash & Others",
+              "percent": 4.32,
+              "printed": "4.32%"
+            },
+            {
+              "label": "美元債券 USD Bonds",
+              "percent": 7.42,
+              "printed": "7.42%"
+            },
+            {
+              "label": "香港 / 中國股票 Hong Kong / China Equities",
+              "percent": 18.85,
+              "printed": "18.85%"
+            },
+            {
+              "label": "國際貨幣債券 (除美元及港元) Global Currencies Bonds ex USD ex HKD",
+              "percent": 12.02,
+              "printed": "12.02%"
+            },
+            {
+              "label": "其他股票 Other Equities",
+              "percent": 2.01,
+              "printed": "2.01%"
+            },
+            {
+              "label": "北美股票 North America Equities",
+              "percent": 17.65,
+              "printed": "17.65%"
+            },
+            {
+              "label": "英國股票 United Kingdom Equities",
+              "percent": 4.79,
+              "printed": "4.79%"
+            },
+            {
+              "label": "日本股票 Japan Equities",
+              "percent": 8.14,
+              "printed": "8.14%"
+            },
+            {
+              "label": "亞洲不包括日本股票 Asia Pacific ex Japan Equities",
+              "percent": 14.75,
+              "printed": "14.75%"
+            },
+            {
+              "label": "歐洲不包括英國股票 Europe ex UK Equities",
+              "percent": 10.05,
+              "printed": "10.05%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "fact sheet text layer (pdftohtml -xml)"
+        ],
+        "total": 100,
+        "page": 15
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -42583,13 +43874,9 @@
           "sharedAcrossFunds": 4
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
       "retrievedAt": "2026-10-04T14:01:28.360787Z"
     },
@@ -42607,7 +43894,78 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "ASSET ALLOCATION BY ASSET CLASSES",
+          "entries": [
+            {
+              "label": "港元債券 HKD Bonds",
+              "percent": 0.15,
+              "printed": "0.15%"
+            },
+            {
+              "label": "現金及其他 Cash & Others",
+              "percent": 4.26,
+              "printed": "4.26%"
+            },
+            {
+              "label": "香港 / 中國股票 Hong Kong / China Equities",
+              "percent": 13.75,
+              "printed": "13.75%"
+            },
+            {
+              "label": "美元債券 USD Bonds",
+              "percent": 14.85,
+              "printed": "14.85%"
+            },
+            {
+              "label": "北美股票 North America Equities",
+              "percent": 13.68,
+              "printed": "13.68%"
+            },
+            {
+              "label": "國際貨幣債券 (除美元及港元) Global Currencies Bonds ex USD ex HKD",
+              "percent": 24.06,
+              "printed": "24.06%"
+            },
+            {
+              "label": "亞洲不包括日本股票 Asia Pacific ex Japan Equities",
+              "percent": 11.09,
+              "printed": "11.09%"
+            },
+            {
+              "label": "其他股票 Other Equities",
+              "percent": 1.76,
+              "printed": "1.76%"
+            },
+            {
+              "label": "日本股票 Japan Equities",
+              "percent": 5.65,
+              "printed": "5.65%"
+            },
+            {
+              "label": "英國股票 United Kingdom Equities",
+              "percent": 3.51,
+              "printed": "3.51%"
+            },
+            {
+              "label": "歐洲不包括英國股票 Europe ex UK Equities",
+              "percent": 7.24,
+              "printed": "7.24%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "fact sheet text layer (pdftohtml -xml)"
+        ],
+        "total": 100,
+        "page": 16
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -42673,13 +44031,9 @@
           "sharedAcrossFunds": 4
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
       "retrievedAt": "2026-10-04T14:01:28.360787Z"
     },
@@ -42697,7 +44051,63 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "ASSET ALLOCATION BY GEOGRAPHIC REGIONS",
+          "entries": [
+            {
+              "label": "其他國家 Other Countries",
+              "percent": 2.17,
+              "printed": "2.17%"
+            },
+            {
+              "label": "現金及其他 Cash & Others",
+              "percent": 1.55,
+              "printed": "1.55%"
+            },
+            {
+              "label": "英國 United Kingdom",
+              "percent": 2.89,
+              "printed": "2.89%"
+            },
+            {
+              "label": "日本 Japan",
+              "percent": 3.82,
+              "printed": "3.82%"
+            },
+            {
+              "label": "香港 / 中國 Hong Kong / China",
+              "percent": 4.31,
+              "printed": "4.31%"
+            },
+            {
+              "label": "歐洲不包括英國 Europe EX UK",
+              "percent": 9.24,
+              "printed": "9.24%"
+            },
+            {
+              "label": "北美洲 North America",
+              "percent": 65.39,
+              "printed": "65.39%"
+            },
+            {
+              "label": "亞洲不包括日本 Asia Pacific EX Japan",
+              "percent": 10.63,
+              "printed": "10.63%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "fact sheet text layer (pdftohtml -xml)"
+        ],
+        "total": 100,
+        "page": 11
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -42762,13 +44172,9 @@
           "en": "Global equities gained in Q2. The dominant driver was continued momentum in artificial intelligence and related capital investment cycles, which strengthened technology-heavy markets and economies that are embedded in semiconductor and advanced electronics supply chains. This reinforced global leadership in growth-oriented equities, as investors increasingly favoured companies with long-term earnings drivers over cyclical exposure. At the same time, moderating inflation pressures and relatively stable interest rate expectations supported investors’ risk appetite and helped sustain equity valuations.\nGeopolitical tensions in the Middle East added intermittent volatility during the quarter. The announcement of a US–Iran ceasefire framework and a memorandum of understanding eased concerns about a broader regional conflict. Energy prices retreated and investor sentiment improved as fears of a sustained disruption to global energy supplies diminished."
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
       "retrievedAt": "2026-10-04T14:01:28.360787Z"
     },
@@ -42786,7 +44192,68 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "ASSET ALLOCATION BY COUNTRIES / REGIONS",
+          "entries": [
+            {
+              "label": "其他國家 Other Countries",
+              "percent": 1.17,
+              "printed": "1.17%"
+            },
+            {
+              "label": "現金及其他 Cash & Others",
+              "percent": 3.64,
+              "printed": "3.64%"
+            },
+            {
+              "label": "馬來西亞 Malaysia",
+              "percent": 1.38,
+              "printed": "1.38%"
+            },
+            {
+              "label": "新加坡 Singapore",
+              "percent": 2.9,
+              "printed": "2.90%"
+            },
+            {
+              "label": "中國 China",
+              "percent": 7.16,
+              "printed": "7.16%"
+            },
+            {
+              "label": "台灣 Taiwan",
+              "percent": 25.36,
+              "printed": "25.36%"
+            },
+            {
+              "label": "印度 India",
+              "percent": 14.87,
+              "printed": "14.87%"
+            },
+            {
+              "label": "南韓 South Korea",
+              "percent": 29.6,
+              "printed": "29.60%"
+            },
+            {
+              "label": "澳洲 Australia",
+              "percent": 13.92,
+              "printed": "13.92%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "fact sheet text layer (pdftohtml -xml)"
+        ],
+        "total": 100,
+        "page": 9
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -42851,13 +44318,9 @@
           "en": "Asia Pacific ex Japan equities advanced over the second quarter of 2026. South Korean equities rose, supported by optimism around semiconductor and AI-driven rally. Chinese equities fell over the quarter, reflecting persistent weakness in domestic economic activity. Indian equities delivered positive returns underpinned by solid macroeconomic fundamentals and sustained domestic institutional inflows. ASEAN markets saw notable divergence during the quarter. Thai and the Philippines equities rose, while Indonesia and the Malaysia declined. At a stock level, investors remained encouraged by continued strength in AI-related memory demand, particularly for high-bandwidth memory (HBM), alongside growing demand for server DRAM and enterprise SSDs. Consequently, the exposure to SK Hynix contributed to performance. Separately, Cambricon Technology continued to benefit from China's push to strengthen domestic semiconductor capabilities, supported by favourable industrial policy. Taiwan-based copper-clad laminate (CCL) manufacturer Elite Material rose, on the back of strong growth in both revenue and net profit on a quarter-on-quarter and year-on-year basis. Elite continues to invest in capacity expansion at a faster-than-expected pace to support rising demand for high-end materials, reflecting confidence in the durability of AI-related demand. On the flipside, Infosys slid as the information technology sector in India was largely overlooked during the global AI rally amid concerns that AI could disrupt white-collar employment and services exports. Evolution Mining detracted following mixed first quarter update and gold-related weakness as geopolitical risk eased and gold’s defensive appeal diminished."
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
       "retrievedAt": "2026-10-04T14:01:28.360787Z"
     },
@@ -42875,7 +44338,68 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "ASSET ALLOCATION BY INDUSTRIES",
+          "entries": [
+            {
+              "label": "現金及其他 Cash & Others",
+              "percent": 0.84,
+              "printed": "0.84%"
+            },
+            {
+              "label": "生活必需品 Consumer Staples",
+              "percent": 2.04,
+              "printed": "2.04%"
+            },
+            {
+              "label": "基本物料 Basic Materials",
+              "percent": 1.99,
+              "printed": "1.99%"
+            },
+            {
+              "label": "其他行業 Other Industries",
+              "percent": 3.83,
+              "printed": "3.83%"
+            },
+            {
+              "label": "電訊 Telecommunications",
+              "percent": 1.88,
+              "printed": "1.88%"
+            },
+            {
+              "label": "工業 Industrials",
+              "percent": 12.64,
+              "printed": "12.64%"
+            },
+            {
+              "label": "科技 Technology",
+              "percent": 44.53,
+              "printed": "44.53%"
+            },
+            {
+              "label": "金融 Financials",
+              "percent": 14.38,
+              "printed": "14.38%"
+            },
+            {
+              "label": "非必需消費品 Consumer Discretionary",
+              "percent": 17.87,
+              "printed": "17.87%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "fact sheet text layer (pdftohtml -xml)"
+        ],
+        "total": 100,
+        "page": 6
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -42940,13 +44464,9 @@
           "en": "Greater China equities rose by 13.5%, driven by an exceptional performance in Taiwan (+56%). Hong Kong saw a modest increase (+4%), while China declined (-5%). Technology was the best-performing sector (+43.5%), followed by Industrials (+12%) and Telecommunications (+11%). Consumer Discretionary, Energy, and Staples declined by double digits.\nChina’s underperformance was mainly due to weak consumption, which pressured major offshore e-commerce and discretionary companies. In contrast, technology and industrial companies that benefited from AI and China’s localization efforts in semiconductors outperformed, and these sectors have a larger weighting in onshore equities.\nThe overall outlook for the Chinese economy remains unchanged. Growth continues to be led by high-tech industries and exports, while consumption remains weak. Nationwide, the property market remains in a multi-year downturn, but prices and transaction volumes are recovering in select first- and second-tier cities.\nTaiwan’s strong outperformance highlights how Asia is benefiting from the surge in AI capital expenditure originating from the US. Asia supplies the essential components for the AI industry, resulting in a significant transfer of wealth from US companies to Asian firms involved in the AI supply chain, including advanced logic chips, memory, PCBs, passive components, and optical equipment.\nChina remains in an economic trough, reflecting the aftermath of the property unwind and industrial overcapacity. However, the worst is likely over, with early signs of macroeconomic stabilization. At the same time, initial progress in AI is improving confidence in China’s technology capabilities and supporting a tech-led rally less dependent on consumer demand. This has resulted in a two-speed equity market: AI-related areas are outperforming, while much of the broader market, particularly consumer-exposed segments, continues to lag.\nAlthough technology names continue to see earnings upgrades, in China—as in many other markets—the concentration of performance warrants close scrutiny: nine of the top ten positive contributors over the month were in the information technology sector. Fund manager continue to take profits from high performers and rotate into names with asymmetric risk/reward.\nIn Taiwan, Technology remains the largest overweight position, with active rotation within the sector. Outside Technology, fund manager are focusing on domestic consumption proxies to capture potential wealth effects, and areas with idiosyncratic share-gain potential."
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
       "retrievedAt": "2026-10-04T14:01:28.360787Z"
     },
@@ -42964,7 +44484,83 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "ASSET ALLOCATION BY INDUSTRIES",
+          "entries": [
+            {
+              "label": "基本物料 Basic Materials",
+              "percent": 0.67,
+              "printed": "0.67%"
+            },
+            {
+              "label": "現金及其他 Cash & Others",
+              "percent": 1.7,
+              "printed": "1.70%"
+            },
+            {
+              "label": "電訊 Telecommunications",
+              "percent": 0.58,
+              "printed": "0.58%"
+            },
+            {
+              "label": "公用 Utilities",
+              "percent": 1.32,
+              "printed": "1.32%"
+            },
+            {
+              "label": "健康護理 Health Care",
+              "percent": 2.6,
+              "printed": "2.60%"
+            },
+            {
+              "label": "能源 Energy",
+              "percent": 2.91,
+              "printed": "2.91%"
+            },
+            {
+              "label": "房地產 Real Estate",
+              "percent": 4.82,
+              "printed": "4.82%"
+            },
+            {
+              "label": "金融 Financials",
+              "percent": 28.8,
+              "printed": "28.80%"
+            },
+            {
+              "label": "生活必需品 Consumer Staples",
+              "percent": 6.75,
+              "printed": "6.75%"
+            },
+            {
+              "label": "工業 Industrials",
+              "percent": 10.82,
+              "printed": "10.82%"
+            },
+            {
+              "label": "科技 Technology",
+              "percent": 18.57,
+              "printed": "18.57%"
+            },
+            {
+              "label": "非必需消費品 Consumer Discretionary",
+              "percent": 20.46,
+              "printed": "20.46%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "fact sheet text layer (pdftohtml -xml)"
+        ],
+        "total": 100,
+        "page": 2
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -43029,13 +44625,9 @@
           "en": "Chinese equities declined, while gains in Hong Kong moderated amid an artificial intelligence (AI)-led rally, uneven domestic recovery and targeted policy support. Early gains followed easing geopolitical risks and renewed enthusiasm for AI infrastructure, while non-AI areas increasingly came under pressure. Strong stock selection in the information technology sector, positioning in industrials, and an underweight position in materials added value. However, the underweight exposure to financials and the overall exposure to energy partially offset gains.\nThe fund outperformed the index during the quarter. The lack of exposure to BYD and an underweight position in Xiaomi added value. Both companies suffered due to weakness in the electric vehicle space, while Xiaomi also faced smartphone memory cost and pricing pressure. AI/ data-centre-linked names, including Lenovo Group, Zhuzhou CRRC Times Electric, and Weichai Power, added value. Lenovo gained after strong earnings highlighted its re-rating potential. Its core personal computer business delivered a better-than-expected operating margin despite higher memory costs, while market share gains and a return to profitability in its AI-led infrastructure business further supported sentiment. Zhuzhou CRRC Times Electric rose as investors focused on its emerging power semiconductor business, supported by robust demand from AI infrastructure, robotics, autos and industrial applications. Shares of Weichai Power also advanced as investors increasingly viewed the company as a beneficiary of the rising demand for AI data centre power generation equipment. Against the backdrop of a concentrated rally in the AI space, not holding Hua Hong Grace Semiconductor, Kingboard Laminates Holdings, and Kingboard Holdings detracted from relative performance. Fund manager remain disciplined on valuations and selectively assess opportunities with attractive risk-reward profiles."
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
       "retrievedAt": "2026-10-04T14:01:28.360787Z"
     },
@@ -43053,7 +44645,88 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "ASSET ALLOCATION BY INDUSTRIES",
+          "entries": [
+            {
+              "label": "生活必需品 Consumer Staples",
+              "percent": 1.79,
+              "printed": "1.79%"
+            },
+            {
+              "label": "綜合企業 Conglomerates",
+              "percent": 1.58,
+              "printed": "1.58%"
+            },
+            {
+              "label": "原材料 Materials",
+              "percent": 2.09,
+              "printed": "2.09%"
+            },
+            {
+              "label": "現金及其他 Cash & Others",
+              "percent": 1.05,
+              "printed": "1.05%"
+            },
+            {
+              "label": "公用 Utilities",
+              "percent": 2.45,
+              "printed": "2.45%"
+            },
+            {
+              "label": "工業 Industrials",
+              "percent": 2.46,
+              "printed": "2.46%"
+            },
+            {
+              "label": "電訊 Telecommunications",
+              "percent": 3.76,
+              "printed": "3.76%"
+            },
+            {
+              "label": "地產建築 Properties & Construction",
+              "percent": 3.97,
+              "printed": "3.97%"
+            },
+            {
+              "label": "能源 Energy",
+              "percent": 4.74,
+              "printed": "4.74%"
+            },
+            {
+              "label": "金融 Financials",
+              "percent": 33.87,
+              "printed": "33.87%"
+            },
+            {
+              "label": "健康護理 Healthcare",
+              "percent": 5.07,
+              "printed": "5.07%"
+            },
+            {
+              "label": "資訊科技 Information Technology",
+              "percent": 16.48,
+              "printed": "16.48%"
+            },
+            {
+              "label": "非必需消費品 Consumer Discretionary",
+              "percent": 20.69,
+              "printed": "20.69%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "fact sheet text layer (pdftohtml -xml)"
+        ],
+        "total": 100,
+        "page": 4
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -43118,13 +44791,9 @@
           "en": "In Q2 2026, the Hang Seng Index declined 7.7%, with June alone falling 9.1%, reflecting significantly elevated market volatility. Investor concerns centered on global trade policy uncertainty weighing on export-oriented earnings, alongside the Federal Reserve's interest rate trajectory continuing to constrain Hong Kong market liquidity and suppress risk appetite across emerging Asia. The sharp monthly drawdown triggered defensive positioning across institutional portfolios, with tariff escalation fears particularly impacting technology and manufacturing heavyweights.\nDespite the market pressure, Southbound capital flows remained positive throughout the quarter, signaling mainland investors' sustained confidence in valuation recovery. The HSI currently trades at approximately 9.8x forward earnings, near historically low levels, providing a reasonable margin of safety for long-term investors. The index's ongoing inclusion of AI and innovative pharmaceutical leaders further enhances sectoral diversification and long-term representativeness, aligning the benchmark with China's structural growth narratives.\nLooking ahead to Q3, market attention will shift to geopolitical developments, the implementation pace of mainland growth stabilization policies, and companies' ability to deliver interim earnings. Specific focus will be on property sector stabilization measures and consumer demand recovery indicators. While near-term risk appetite may stay cautious amid external headwinds, current valuations and resilient capital flows create favorable conditions for long-term strategic allocation."
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
       "retrievedAt": "2026-10-04T14:01:28.360787Z"
     },
@@ -43142,7 +44811,83 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "ASSET ALLOCATION BY GEOGRAPHIC REGIONS",
+          "entries": [
+            {
+              "label": "意大利 Italy",
+              "percent": 0.59,
+              "printed": "0.59%"
+            },
+            {
+              "label": "現金及其他 Cash & Others",
+              "percent": 6.16,
+              "printed": "6.16%"
+            },
+            {
+              "label": "波蘭 Poland",
+              "percent": 0.62,
+              "printed": "0.62%"
+            },
+            {
+              "label": "墨西哥 Mexico",
+              "percent": 0.86,
+              "printed": "0.86%"
+            },
+            {
+              "label": "其他國家 Other Countries",
+              "percent": 1.53,
+              "printed": "1.53%"
+            },
+            {
+              "label": "澳洲 Australia",
+              "percent": 2.44,
+              "printed": "2.44%"
+            },
+            {
+              "label": "加拿大 Canada",
+              "percent": 2.71,
+              "printed": "2.71%"
+            },
+            {
+              "label": "美國 United States",
+              "percent": 36.62,
+              "printed": "36.62%"
+            },
+            {
+              "label": "英國 United Kingdom",
+              "percent": 5.57,
+              "printed": "5.57%"
+            },
+            {
+              "label": "日本 Japan",
+              "percent": 9.54,
+              "printed": "9.54%"
+            },
+            {
+              "label": "中國 China",
+              "percent": 12.06,
+              "printed": "12.06%"
+            },
+            {
+              "label": "德國 Germany",
+              "percent": 21.3,
+              "printed": "21.30%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "fact sheet text layer (pdftohtml -xml)"
+        ],
+        "total": 100,
+        "page": 21
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -43207,13 +44952,9 @@
           "en": "Global fixed income markets delivered positive returns in the second quarter of 2026 despite heightened volatility driven by oil prices, geopolitical risks and shifting central bank expectations. Early in the quarter, escalating Middle East tensions lifted oil prices, inflation expectations and sovereign yields as markets reduced expectations for policy easing. Sentiment improved through May and June as progress in the US-Iran negotiations and a subsequent ceasefire eased concerns over a prolonged energy shock. Brent crude fell sharply, reducing inflation risk premia, and supporting both sovereign and credit markets. Policy expectations remained data-dependent and divergent across regions. The Federal Reserve left rates unchanged, with resilient labour markets and persistent inflation limiting prospects for near-term policy easing. The European Central Bank (ECB) raised interest rates in June amid energy-related inflation concerns despite weak growth, while the Bank of Japan (BoJ) continued gradual policy normalisation. US Treasuries were volatile, with the 10-year yield ending the quarter higher, although longer maturities recovered as oil prices declined. German Bunds initially weakened before rebounding on the back of lower oil prices and weaker activity data. UK gilts benefited from moderating inflation and easing fiscal concerns, while Japanese government bonds weakened as markets priced in persistent inflation and further BoJ normalisation. Credit markets remained resilient, with investment-grade bonds delivering positive returns as spreads tightened, supported by improving risk sentiment, strong technical demand and easing stagflation concerns.\nThe fund delivered positive returns over the quarter and outperformed the benchmark. Duration positioning was the primary contributor to performance, with the underweight stance in Japanese yen duration contributing the most to relative returns. These gains, however, were partially offset by losses from the fund’s underweight position in Chinese yuan duration. Within credit, the fund’s off-benchmark credit exposures also contributed positively, led by overweight positions in banks and brokers, and technology and communications sectors. Conversely, the fund’s underweight exposure to European peripheral sovereign bonds detracted from performance, as spreads narrowed compared with German Bunds over the period. At an issuer level, there were no material single-name contributors or detractors during the period."
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
       "retrievedAt": "2026-10-04T14:01:28.360787Z"
     },
@@ -43231,7 +44972,68 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "ASSET ALLOCATION BY GEOGRAPHIC REGIONS",
+          "entries": [
+            {
+              "label": "英國 United Kingdom",
+              "percent": 2.56,
+              "printed": "2.56%"
+            },
+            {
+              "label": "現金及其他 Cash & Others",
+              "percent": 1,
+              "printed": "1.00%"
+            },
+            {
+              "label": "美國 United States",
+              "percent": 3.06,
+              "printed": "3.06%"
+            },
+            {
+              "label": "中國 China",
+              "percent": 4.92,
+              "printed": "4.92%"
+            },
+            {
+              "label": "新加坡 Singapore",
+              "percent": 5.66,
+              "printed": "5.66%"
+            },
+            {
+              "label": "澳洲 Australia",
+              "percent": 6.54,
+              "printed": "6.54%"
+            },
+            {
+              "label": "香港 Hong Kong",
+              "percent": 57.02,
+              "printed": "57.02%"
+            },
+            {
+              "label": "韓國 Korea",
+              "percent": 7.29,
+              "printed": "7.29%"
+            },
+            {
+              "label": "其他國家 Other Countries",
+              "percent": 11.95,
+              "printed": "11.95%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "fact sheet text layer (pdftohtml -xml)"
+        ],
+        "total": 100,
+        "page": 18
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -43296,13 +45098,9 @@
           "en": "Asian fixed income delivered a constructive Q2 2026, with performance increasingly driven by developments in China and Hong Kong against a volatile global backdrop of Middle East geopolitics, oil-price swings, persistent inflation concerns, and shifting U.S. rate expectations. After March weakness, risk sentiment improved in April as markets looked through unresolved U.S.–Iran tensions and began to price a potential ceasefire. That rebound extended into May alongside firmer U.S.–China tone and easing energy-market stress, though elevated oil prices and recurring geopolitical headlines kept positioning selective. In June, the macro impulse pivoted again: oil fell sharply on improved prospects for an Iran peace framework, but stronger U.S. data and a hawkish read-through of the June FOMC reinforced “higher-for-longer” U.S. rates and renewed U.S. dollar strength. Against this uneven backdrop, the JACI returned 1.7% for the quarter, supported by carry and spread compression.\nCredit was the primary contributor across the region, with spread tightening reflecting stable fundamentals, constructive technicals, and a gradual rebuilding of risk appetite. The JACI generated 1.05% from spread return and 0.64% from Treasury return, while overall spreads tightened 23 bps. Within investment grade, performance was steady (JACI IG +1.34%; spreads -14 bps) and notably shaped by Greater China exposures—particularly China IG TMT, select financials, and sovereign/quasi-sovereign segments where policy expectations and domestic anchors were comparatively supportive. High yield was the standout (JACI HY +4.15%; spreads -80 bps), aided by improving sentiment toward higher-quality Greater China property names alongside broader EM carry demand.\nRates outcomes were more differentiated and underscored the divergence between China and Hong Kong. U.S. Treasuries delivered modestly positive returns (Bloomberg U.S. Treasury Total Return Index +0.32%) even as yields repriced higher, led by the front end. Hong Kong rates underperformed more clearly, reflecting their tight linkage to U.S. monetary conditions: the Bloomberg Global Treasury – HK Total Return Treasury Index (hedged HKD) fell 1.09%, with HKD yields rising 61.7 bps (2-year) and 40 bps (10-year). China, by contrast, remained comparatively anchored, with the Bloomberg China Treasury Index returning 1.14% in CNY and the China Broad Market Index up 1.37%, alongside a modest bull-flattening in the CNY curve (10-year yield -8 bps; 2-year +2 bps).\nFX was the main headwind into quarter-end as the U.S. dollar strengthened in June and external vulnerabilities became more visible across Asia. Most regional currencies depreciated versus USD, reinforcing the importance of local rate regimes and funding linkages—particularly for Hong Kong, where currency and rate dynamics are structurally tied to U.S. conditions, versus China, where domestic policy settings remained more independent. Overall, Q2 2026 was characterized by constructive Asian credit carry and meaningful spread tightening, tempered by U.S.-driven rate repricing, Hong Kong’s heightened rate sensitivity, and broad regional FX depreciation.\nIn fund manager’s June 2026 Investment Quarterly, fund manager raised the probability of expansion from 60% to 80%, allocating 40% each to Above Trend Growth and Sub-Trend Growth, while reducing the risk of economic contraction to 20%, split evenly between Recession and Crisis at 10% each. The reassessment reflects easing geopolitical risks following de-escalation in the Middle East, the prospect of lower energy prices, and strengthening global capital expenditure driven by AI, energy security, defense, and infrastructure investment. While growth remains resilient, the key debate is whether the expansion ultimately proves productivity-led or inflationary. Policy remains nuanced. Fund manager expect the Fed to hold rates at 3 5/8% through year-end, balancing improving inflation—supported by lower energy costs—against the possibility of labour market tightness as the capex cycle broadens. Other major central banks are largely expected to remain on hold, with only limited scope for further hikes. While fund manager remain mindful of renewed geopolitical volatility and the risk that enthusiasm around AI investment becomes excessive, the resilience of households and businesses, combined with structurally expansionary fiscal policies and a broadening global investment cycle, supports a constructive outlook for growth into 2027.\nLooking ahead, spreads in the China and Hong Kong market are expected to remain broadly range-bound, reflecting a normalization in risk sentiment following the earlier widening driven by Middle East geopolitical escalation. A still-benign default environment, together with generally constructive macro data across key Asian economies, should continue to support a favorable backdrop for carry-led total returns, positioning the asset class as an attractive accrual opportunity for investors. From a strategy standpoint, portfolio positioning remains focused on high-conviction core exposures, while maintaining a deliberate emphasis on China and Hong Kong-related opportunity sets. Core sector allocations include Indian utility credits supported by favorable policy dynamics, Macau consumer cyclicals benefiting from the structural recovery in gaming and hospitality cash flows, and Australian and Japanese investment-grade financials that offer a spread premium versus comparable risk within EM Asia. Portfolio construction continues to prioritize issuers with stronger fundamental credit metrics, defensive balance sheets, and demonstrable free cash flow generation. In addition, the strategy maintains selective tactical exposure to Greater China—particularly China and Hong Kong-linked distressed property credits—targeting situations with credible restructuring pathways, identifiable asset-value support, and risk premia that are asymmetrically attractive relative to intrinsic recovery assumptions."
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
       "retrievedAt": "2026-10-04T14:01:28.360787Z"
     },
@@ -43320,7 +45118,38 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "ASSET ALLOCATION BY ASSET CLASSES",
+          "entries": [
+            {
+              "label": "現金及其他 Cash & Others",
+              "percent": 0,
+              "printed": "0.00%"
+            },
+            {
+              "label": "貨幣市場工具 Money Market Instruments",
+              "percent": 36.66,
+              "printed": "36.66%"
+            },
+            {
+              "label": "存款 Deposits",
+              "percent": 63.34,
+              "printed": "63.34%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "fact sheet text layer (pdftohtml -xml)"
+        ],
+        "total": 100,
+        "page": 23
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -43385,13 +45214,9 @@
           "en": "Interest rate markets were influenced by geopolitical developments and economic data during the quarter. The 10-year U.S. Treasury yield edged higher in April and May as rising oil prices and geopolitical tensions fuelled inflation concerns. Market attention shifted away from the US-Iran conflict in June following the agreed extension of the ceasefire, government bond yields subsequently reversed.\nHong Kong’s exports remained robust in May, extending the strength seen in regional trade flows. Growth was primarily driven by electronics and technology-related shipments, as well as resilient re-export demand. Meanwhile, the unemployment rate remained stable at 3.7%, suggesting a broadly resilient labour market.\nHong Kong’s GDP growth is expected to be supported by external tailwinds, particularly robust demand for high-end semiconductors. As a key regional re-export trading hub, Hong Kong is well positioned to benefit from increased trade flows."
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
       "retrievedAt": "2026-10-04T14:01:28.360787Z"
     },
@@ -43498,7 +45323,73 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "ASSET ALLOCATION BY ASSET CLASSES",
+          "entries": [
+            {
+              "label": "現金及其他 Cash & Others",
+              "percent": 2.31,
+              "printed": "2.31%"
+            },
+            {
+              "label": "美元債券 USD Bonds",
+              "percent": 14.9,
+              "printed": "14.90%"
+            },
+            {
+              "label": "國際貨幣債券 (除美元及港元) Global Currencies Bonds ex USD ex HKD",
+              "percent": 19.44,
+              "printed": "19.44%"
+            },
+            {
+              "label": "北美股票 North America Equities",
+              "percent": 39.56,
+              "printed": "39.56%"
+            },
+            {
+              "label": "其他股票 Other Equities",
+              "percent": 1.5,
+              "printed": "1.50%"
+            },
+            {
+              "label": "香港 / 中國股票 Hong Kong / China Equities",
+              "percent": 3.03,
+              "printed": "3.03%"
+            },
+            {
+              "label": "亞洲不包括日本股票 Asia Pacific ex Japan Equities",
+              "percent": 8.59,
+              "printed": "8.59%"
+            },
+            {
+              "label": "英國股票 United Kingdom Equities",
+              "percent": 1.49,
+              "printed": "1.49%"
+            },
+            {
+              "label": "歐洲不包括英國股票 Europe ex UK Equities",
+              "percent": 6.4,
+              "printed": "6.40%"
+            },
+            {
+              "label": "日本股票 Japan Equities",
+              "percent": 2.78,
+              "printed": "2.78%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "fact sheet text layer (pdftohtml -xml)"
+        ],
+        "total": 100,
+        "page": 12
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -43564,13 +45455,9 @@
           "sharedAcrossFunds": 4
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
       "retrievedAt": "2026-10-04T14:01:28.360787Z"
     },
@@ -43588,7 +45475,73 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "ASSET ALLOCATION BY ASSET CLASSES",
+          "entries": [
+            {
+              "label": "現金及其他 Cash & Others",
+              "percent": 2.7,
+              "printed": "2.70%"
+            },
+            {
+              "label": "北美股票 North America Equities",
+              "percent": 14.84,
+              "printed": "14.84%"
+            },
+            {
+              "label": "亞洲不包括日本股票 Asia Pacific ex Japan Equities",
+              "percent": 3.22,
+              "printed": "3.22%"
+            },
+            {
+              "label": "美元債券 USD Bonds",
+              "percent": 31.91,
+              "printed": "31.91%"
+            },
+            {
+              "label": "歐洲不包括英國股票 Europe ex UK Equities",
+              "percent": 2.4,
+              "printed": "2.40%"
+            },
+            {
+              "label": "香港 / 中國股票 Hong Kong / China Equities",
+              "percent": 1.14,
+              "printed": "1.14%"
+            },
+            {
+              "label": "日本股票 Japan Equities",
+              "percent": 1.04,
+              "printed": "1.04%"
+            },
+            {
+              "label": "英國股票 United Kingdom Equities",
+              "percent": 0.56,
+              "printed": "0.56%"
+            },
+            {
+              "label": "國際貨幣債券 (除美元及港元) Global Currencies Bonds ex USD ex HKD",
+              "percent": 41.63,
+              "printed": "41.63%"
+            },
+            {
+              "label": "其他股票 Other Equities",
+              "percent": 0.56,
+              "printed": "0.56%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "fact sheet text layer (pdftohtml -xml)"
+        ],
+        "total": 100,
+        "page": 13
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -43654,13 +45607,9 @@
           "sharedAcrossFunds": 4
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
       "retrievedAt": "2026-10-04T14:01:28.360787Z"
     },
@@ -43678,7 +45627,73 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "ASSET ALLOCATION BY INDUSTRIES",
+          "entries": [
+            {
+              "label": "現金及其他 Cash & Others",
+              "percent": 5.86,
+              "printed": "5.86%"
+            },
+            {
+              "label": "公用 Utilities",
+              "percent": 0.31,
+              "printed": "0.31%"
+            },
+            {
+              "label": "電訊 Telecommunications",
+              "percent": 1.01,
+              "printed": "1.01%"
+            },
+            {
+              "label": "原材料 Materials",
+              "percent": 4.8,
+              "printed": "4.80%"
+            },
+            {
+              "label": "工業 Industrials",
+              "percent": 22.8,
+              "printed": "22.80%"
+            },
+            {
+              "label": "非必需消費品 Consumer Discretionary",
+              "percent": 9.01,
+              "printed": "9.01%"
+            },
+            {
+              "label": "金融 Financials",
+              "percent": 9.95,
+              "printed": "9.95%"
+            },
+            {
+              "label": "健康護理 Healthcare",
+              "percent": 20.98,
+              "printed": "20.98%"
+            },
+            {
+              "label": "資訊科技 Information Technology",
+              "percent": 11.55,
+              "printed": "11.55%"
+            },
+            {
+              "label": "生活必需品 Consumer Staples",
+              "percent": 13.73,
+              "printed": "13.73%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "fact sheet text layer (pdftohtml -xml)"
+        ],
+        "total": 100,
+        "page": 8
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -43743,13 +45758,9 @@
           "en": "The Eurozone economy lacks broad momentum with clear divergence across economies, and a region-wide synchronized recovery remains absent. Market performance is driven not by GDP recovery, but structural fiscal support from rising defence budgets, ongoing energy transition infrastructure investment and AI-fuelled industrial capital expenditure. Geopolitical volatility keeps energy prices volatile, while sticky core inflation delays monetary easing, reinforcing the higher-for-longer interest rate backdrop.\nPersistent elevated rates cap equity valuations, as European equity multiples have an inverse correlation with Bund yields. Future returns will rely primarily on corporate earnings growth. The current market regime bears similarities to the 2022–2023 energy cycle, with capital flowing steadily toward firms with durable competitive moats. The global reserve framework is undergoing profound shifts, boosting the appeal of euro-denominated assets. Sustained foreign inflows, alongside shrinking free-float stock supply, increase the scarcity of high-quality European assets.\nSector performance will diverge sharply. Fund manager favour HALO heavy-asset sectors, European banks and consumer staples, while turning cautious on consumer discretionary. Against fragmented macro conditions dominated by structural trends, vanilla broad passive investments struggle to capture key themes. Leveraging a Smart Beta framework to select leading franchises with robust moats across sectors underpins the core investment rationale of European Select ETF."
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
       "retrievedAt": "2026-10-04T14:01:28.360787Z"
     },
@@ -43856,7 +45867,43 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "ASSET ALLOCATION BY COUNTRIES / REGIONS",
+          "entries": [
+            {
+              "label": "現金及其他 Cash & Others",
+              "percent": 7.65,
+              "printed": "7.65%"
+            },
+            {
+              "label": "瑞典 Sweden",
+              "percent": 0.09,
+              "printed": "0.09%"
+            },
+            {
+              "label": "加拿大 Canada",
+              "percent": 4.6,
+              "printed": "4.60%"
+            },
+            {
+              "label": "美國 United States",
+              "percent": 87.66,
+              "printed": "87.66%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "fact sheet text layer (pdftohtml -xml)"
+        ],
+        "total": 100,
+        "page": 7
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -43921,13 +45968,9 @@
           "en": "The fund underperformed the benchmark in June. US equities retreated as investors took profits following strong gains earlier in the quarter, while uncertainty around monetary policy and AI-related valuations weighed on market sentiment. As such, stock picking and positioning within IT and communication services detracted from relative performance, partially offset by stock selection in Financials and Materials.\nAt a stock level, Marvell Technology, Applied Materials, AMD and Intel advanced as continued investment in AI infrastructure supported optimism for demand across AI chips, networking technology and semiconductor manufacturing equipment, while improving sentiment around Intel's turnaround also contributed. Underweight exposure to Qualcomm also added value due to slowing demand concerns. Underweight to Palantir also added value.\nThese gains were partly offset by underweight position in Micron Technology as it advanced on continued optimism around AI-related memory demand. Holding in Microsoft weighed on returns as shares eased following strong gains earlier in the quarter. However, is a global leader in software across productivity, infrastructure, cloud, and gaming, with a structural compounder and attractive growth profile. Amazon detracted as investors became more cautious over the pace of returns from AI-related investment. However, it is well positioned for long-term growth in e-commerce and cloud computing."
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "disclosed as scattered pie-chart callouts: several slices share a baseline and some percentages sit apart from their label, so rows cannot be paired"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
       "retrievedAt": "2026-10-04T14:01:28.360787Z"
     },
@@ -45261,7 +47304,68 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "環球股票 Global Equities",
+              "percent": 34.7,
+              "printed": "34.7%"
+            },
+            {
+              "label": "亞洲股票 Asian Equities",
+              "percent": 20.2,
+              "printed": "20.2%"
+            },
+            {
+              "label": "環球債券 Global Bonds",
+              "percent": 18.2,
+              "printed": "18.2%"
+            },
+            {
+              "label": "香港股票 Hong Kong Equities",
+              "percent": 8.4,
+              "printed": "8.4%"
+            },
+            {
+              "label": "亞洲債券 Asian Bonds",
+              "percent": 6.9,
+              "printed": "6.9%"
+            },
+            {
+              "label": "港元債券 HKD Bonds",
+              "percent": 5.9,
+              "printed": "5.9%"
+            },
+            {
+              "label": "其他債券 Other Bonds",
+              "percent": 1.1,
+              "printed": "1.1%"
+            },
+            {
+              "label": "其他股票 Other Equities",
+              "percent": 0.1,
+              "printed": "0.1%"
+            },
+            {
+              "label": "現金及其他 Cash and Others",
+              "percent": 4.5,
+              "printed": "4.5%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 12
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -45332,13 +47436,11 @@
           "sharedAcrossFunds": 3
         }
       },
-      "unavailableFields": ["allocation", "marketForecast"],
+      "unavailableFields": ["marketForecast"],
       "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
         "marketForecast": "the official text reads \"N/A^^\""
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
         "marketForecast": "not-disclosed"
       },
       "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
@@ -45358,7 +47460,73 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "金融 Financials",
+              "percent": 28.5,
+              "printed": "28.5%"
+            },
+            {
+              "label": "消費 Consumer",
+              "percent": 19.5,
+              "printed": "19.5%"
+            },
+            {
+              "label": "資訊科技 Information Technology",
+              "percent": 14.9,
+              "printed": "14.9%"
+            },
+            {
+              "label": "通信服務 Communication Services",
+              "percent": 9.3,
+              "printed": "9.3%"
+            },
+            {
+              "label": "健康護理 Health Care",
+              "percent": 9,
+              "printed": "9.0%"
+            },
+            {
+              "label": "工業 Industrials",
+              "percent": 7.2,
+              "printed": "7.2%"
+            },
+            {
+              "label": "原材料 Materials",
+              "percent": 5,
+              "printed": "5.0%"
+            },
+            {
+              "label": "公用事業 Utilities",
+              "percent": 2.3,
+              "printed": "2.3%"
+            },
+            {
+              "label": "能源 Energy",
+              "percent": 2.3,
+              "printed": "2.3%"
+            },
+            {
+              "label": "現金及其他 Cash and Others",
+              "percent": 2,
+              "printed": "2.0%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 22
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -45432,13 +47600,9 @@
           "en": "MSCI Hong Kong Index and MSCI China Index returned -8.8% and -8.6% respectively in USD total return terms for Q2 2026. Both indices significantly lagged the MSCI Asia Pacific Index over the same period. Compared with the semiconductor and AI-related rallies in Japan, South Korea, and Taiwan, Hong Kong and China were among the very few markets globally to post negative USD returns for the quarter as structural concerns around China's macroeconomics outlook, regulatory headwinds for internet platforms, and commodity sector weakness drove broad-based declines. Tencent and Alibaba — the two largest weightings in MXCN — plunged by 12% and 23% in 2Q 2026, wiping out a combined significant portion of market cap. E-commerce names such as PDD, Meituan and JD faced margin pressure. China A-shares equities were defined by a stark bifurcation. The STAR 50 Index, which is dominated by semiconductor and hardware technology, surged in 2Q 2026. On the contrary, consumer discretionary sector saw broad-based weakness across autos, retail, textiles, tourism, and home appliances, with the majority of stocks posting negative total returns."
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
       "retrievedAt": "2026-10-04T14:01:06.299824Z"
     },
@@ -45456,7 +47620,38 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "港元債券 HKD Bonds",
+              "percent": 90.7,
+              "printed": "90.7%"
+            },
+            {
+              "label": "美元債券 USD Bonds",
+              "percent": 8.1,
+              "printed": "8.1%"
+            },
+            {
+              "label": "現金及其他 Cash and Others",
+              "percent": 1.2,
+              "printed": "1.2%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 6
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -45531,13 +47726,9 @@
           "sharedAcrossFunds": 2
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
       "retrievedAt": "2026-10-04T14:01:06.299824Z"
     },
@@ -45652,7 +47843,68 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "環球股票 Global Equities",
+              "percent": 44.6,
+              "printed": "44.6%"
+            },
+            {
+              "label": "亞洲股票 Asian Equities",
+              "percent": 26.7,
+              "printed": "26.7%"
+            },
+            {
+              "label": "香港股票 Hong Kong Equities",
+              "percent": 12,
+              "printed": "12.0%"
+            },
+            {
+              "label": "環球債券 Global Bonds",
+              "percent": 8.3,
+              "printed": "8.3%"
+            },
+            {
+              "label": "亞洲債券 Asian Bonds",
+              "percent": 3.3,
+              "printed": "3.3%"
+            },
+            {
+              "label": "港元債券 HKD Bonds",
+              "percent": 2.7,
+              "printed": "2.7%"
+            },
+            {
+              "label": "其他債券 Other Bonds",
+              "percent": 0.5,
+              "printed": "0.5%"
+            },
+            {
+              "label": "其他股票 Other Equities",
+              "percent": 0.1,
+              "printed": "0.1%"
+            },
+            {
+              "label": "現金及其他 Cash and Others",
+              "percent": 1.8,
+              "printed": "1.8%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 13
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -45723,13 +47975,11 @@
           "sharedAcrossFunds": 3
         }
       },
-      "unavailableFields": ["allocation", "marketForecast"],
+      "unavailableFields": ["marketForecast"],
       "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
         "marketForecast": "the official text reads \"N/A^^\""
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
         "marketForecast": "not-disclosed"
       },
       "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
@@ -45749,7 +47999,63 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "南韓 South Korea",
+              "percent": 37.8,
+              "printed": "37.8%"
+            },
+            {
+              "label": "台灣 Taiwan",
+              "percent": 32.7,
+              "printed": "32.7%"
+            },
+            {
+              "label": "香港 / 中國 Hong Kong / China",
+              "percent": 16.5,
+              "printed": "16.5%"
+            },
+            {
+              "label": "印度 India",
+              "percent": 7,
+              "printed": "7.0%"
+            },
+            {
+              "label": "澳洲 Australia",
+              "percent": 2.2,
+              "printed": "2.2%"
+            },
+            {
+              "label": "新加坡 Singapore",
+              "percent": 0.9,
+              "printed": "0.9%"
+            },
+            {
+              "label": "泰國 Thailand",
+              "percent": 0.2,
+              "printed": "0.2%"
+            },
+            {
+              "label": "現金及其他 Cash and Others",
+              "percent": 2.7,
+              "printed": "2.7%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 17
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -45823,13 +48129,9 @@
           "en": "The MSCI Asia ex Japan Index gained 22.1% in USD terms during the second quarter 2026, driven by strong AI-related demand, an accelerating semiconductor upcycle, and improving global risk sentiment. Robust first-quarter earnings and positive guidance across the AI supply chain, coupled with increased capital spending plans from major US hyperscalers, propelled semiconductor-heavy markets such as Korea and Taiwan to the record highs. Consequently, regional performance was heavily concentrated in North Asia, underscoring the region's critical role in the global AI value chain. Korea was the standout performer during the quarter, led by memory semiconductor manufacturers and industrial companies benefiting from strong demand for advanced AI infrastructure. Taiwan also delivered strong returns, supported by continued momentum across its semiconductor foundry, chip design, and broader electronics supply chains. Reflecting the favorable operating environment, earnings expectations were revised materially higher for Korea's Information Technology and Industrials sectors, as well as Taiwan's Information Technology and Materials sectors. Investor sentiment towards Korea was further bolstered by the announcement of substantial government-backed AI investment initiatives aimed at enhancing the country's technological competitiveness. India posted modest gains, supported by resilient domestic demand, stable financial sector fundamentals, and early signs of an earnings recovery. However, earnings forecasts were revised lower across most sectors, reflecting ongoing caution regarding the near-term growth outlook. In contrast, China was among the region's weakest performers. Persistent weakness in the property sector, subdued domestic demand, policy uncertainty, and continued underperformance of offshore internet stocks weighed on both market sentiment and economic activity. Indonesia also lagged the broader region, pressured by softer commodity prices, weaker external demand, and limited exposure to the AI-driven technology and export cycle that dominated regional equity market returns during the quarter."
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
       "retrievedAt": "2026-10-04T14:01:06.299824Z"
     },
@@ -45847,7 +48149,83 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "資訊科技 Information Technology",
+              "percent": 43.9,
+              "printed": "43.9%"
+            },
+            {
+              "label": "金融 Financials",
+              "percent": 25.5,
+              "printed": "25.5%"
+            },
+            {
+              "label": "健康護理 Health Care",
+              "percent": 18.2,
+              "printed": "18.2%"
+            },
+            {
+              "label": "主要消費品 Consumer Staples",
+              "percent": 3.5,
+              "printed": "3.5%"
+            },
+            {
+              "label": "工業 Industrials",
+              "percent": 2.5,
+              "printed": "2.5%"
+            },
+            {
+              "label": "非必需消費品 Consumer Discretionary",
+              "percent": 2.1,
+              "printed": "2.1%"
+            },
+            {
+              "label": "通信服務 Communication Services",
+              "percent": 1.8,
+              "printed": "1.8%"
+            },
+            {
+              "label": "原材料 Materials",
+              "percent": 0.8,
+              "printed": "0.8%"
+            },
+            {
+              "label": "能源 Energy",
+              "percent": 0.6,
+              "printed": "0.6%"
+            },
+            {
+              "label": "公用事業 Utilities",
+              "percent": 0.2,
+              "printed": "0.2%"
+            },
+            {
+              "label": "房地產 Real Estate",
+              "percent": 0.2,
+              "printed": "0.2%"
+            },
+            {
+              "label": "現金及其他 Cash and Others",
+              "percent": 0.7,
+              "printed": "0.7%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 15
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -45921,13 +48299,9 @@
           "en": "Global equities posted a strong second quarter of 2026, with the MSCI AC World Index rising sharply 13.0% in US dollar terms as investor sentiment improved on the back of continued momentum in artificial intelligence (AI) and related capital investment cycles. MSCI Emerging Markets outperformed developed markets, led by Korea and Taiwan, which continued to benefit from their critical roles in the global semiconductor and advanced electronics supply chain. Korea remained supported by favorable memory chip fundamentals, particularly in high-bandwidth memory (HBM), where robust AI-related demand and constrained industry capacity supported earnings expectations. In Taiwan, AI-driven demand continued to benefit companies exposed to servers, racks, connectivity, cooling solutions, and other related components. Japan also delivered solid gains, supported by ongoing government initiatives aimed at strengthening the semiconductor and AI sectors. During the quarter, growth-oriented equities continued to lead global markets as investors favored companies with long-term earnings visibility and AI exposure. Moderating inflation pressures and relatively stable interest rate expectations further supported risk appetite and equity valuations. In contrast, commodity-dependent and more domestically focused markets generally lagged. Geopolitical tensions in the Middle East created intermittent market volatility; however, the announcement of a US-Iran ceasefire framework and a memorandum of understanding (MOU) helped alleviate concerns over a broader regional conflict. As fears of prolonged disruptions to global energy supplies receded, energy prices retreated and investor sentiment strengthened. Among sectors, Information Technology and Communication Services outperformed, driven by AI-related beneficiaries, while Energy lagged following the decline in oil prices during the quarter."
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
       "retrievedAt": "2026-10-04T14:01:06.299824Z"
     },
@@ -45945,7 +48319,73 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "資訊科技 Information Technology",
+              "percent": 51.8,
+              "printed": "51.8%"
+            },
+            {
+              "label": "金融 Financials",
+              "percent": 19.6,
+              "printed": "19.6%"
+            },
+            {
+              "label": "消費 Consumer",
+              "percent": 7.3,
+              "printed": "7.3%"
+            },
+            {
+              "label": "通信服務 Communication Services",
+              "percent": 6.4,
+              "printed": "6.4%"
+            },
+            {
+              "label": "工業 Industrials",
+              "percent": 6.3,
+              "printed": "6.3%"
+            },
+            {
+              "label": "原材料 Materials",
+              "percent": 2.9,
+              "printed": "2.9%"
+            },
+            {
+              "label": "健康護理 Health Care",
+              "percent": 2.1,
+              "printed": "2.1%"
+            },
+            {
+              "label": "能源 Energy",
+              "percent": 0.8,
+              "printed": "0.8%"
+            },
+            {
+              "label": "公用事業 Utilities",
+              "percent": 0.7,
+              "printed": "0.7%"
+            },
+            {
+              "label": "現金及其他 Cash and Others",
+              "percent": 2.1,
+              "printed": "2.1%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 20
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -46019,13 +48459,9 @@
           "en": "MSCI Hong Kong Index and MSCI China Index returned -8.8% and -8.6% respectively in USD total return terms for Q2 2026. Both indices significantly lagged the MSCI Asia Pacific Index over the same period. Compared with the semiconductor and AI-related rallies in Japan, South Korea, and Taiwan, Hong Kong and China were among the very few markets globally to post negative USD returns for the quarter as structural concerns around China's macroeconomics outlook, regulatory headwinds for internet platforms, and commodity sector weakness drove broad-based declines. Tencent and Alibaba — the two largest weightings in MXCN — plunged by 12% and 23% in 2Q 2026, wiping out a combined significant portion of market cap. E-commerce names such as PDD, Meituan and JD faced margin pressure. China A-shares equities were defined by a stark bifurcation. The STAR 50 Index, which is dominated by semiconductor and hardware technology, surged in 2Q 2026. On the contrary, consumer discretionary sector saw broad-based weakness across autos, retail, textiles, tourism, and home appliances, with the majority of stocks posting negative total returns. Taiwan's equity market was the clear outperformer of the second quarter, with the MSCI Taiwan Index surging +41.9% in USD terms. The rally was broad-based across the semiconductor value chain, anchored by the island's unrivalled position in advanced logic manufacturing and chip design. Taiwan Semiconductor Manufacturing Company (TSMC) exemplified the moveas investors re-rated the stock in light of an increasingly compelling demand outlook. Performance was overwhelmingly driven by the structural acceleration in AI-related capital expenditure by global hyperscalers, which continued to underpin demand for leading-edge silicon at a pace that outstripped available capacity. Taiwan's server original design manufacturers (ODMs) provided further confirmation of the demand environment, with the majority reporting revenues ahead of consensus expectations in March and across 1Q26 as a whole."
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
       "retrievedAt": "2026-10-04T14:01:06.299824Z"
     },
@@ -46043,7 +48479,58 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "美元債券 USD Bonds",
+              "percent": 31.2,
+              "printed": "31.2%"
+            },
+            {
+              "label": "亞洲債券 Asian Bonds",
+              "percent": 18.5,
+              "printed": "18.5%"
+            },
+            {
+              "label": "港元債券 HKD Bonds",
+              "percent": 15.4,
+              "printed": "15.4%"
+            },
+            {
+              "label": "日本債券 Japanese Bonds",
+              "percent": 4,
+              "printed": "4.0%"
+            },
+            {
+              "label": "歐洲債券 European Bonds",
+              "percent": 11.2,
+              "printed": "11.2%"
+            },
+            {
+              "label": "其他債券 Other Bonds",
+              "percent": 2.9,
+              "printed": "2.9%"
+            },
+            {
+              "label": "現金及其他 Cash and Others",
+              "percent": 16.8,
+              "printed": "16.8%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 8
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -46117,13 +48604,9 @@
           "en": "The second quarter saw the yield on the 10-year U.S. Treasury rose by 26 bps quarter-over-quarter, with the overall U.S. Treasury yield curve shifting higher. The market now expects one rate hike this year. Benchmark 10-year government bond yields diverged across major regions during the quarter, following the decline in oil prices. Over the period, the yield on the 10-year U.S. Treasury increased modestly, while the 10-year Japanese Government Bond (JGB) yield rose significantly. Despite the oil price shock triggered by the Iran-Israel conflict, the U.S. economy demonstrated relative resilience. The market has increasingly embraced the “U.S. exceptionalism” narrative, supporting the U.S. dollar and pushing it toward the stronger side of the Dollar Smile Curve. Meanwhile, concerns over Japan’s fiscal outlook persisted amid expectations of expansionary fiscal policies championed by Sanae Takaichi. The continued weakness of the Japanese yen also provided additional support to the U.S. dollar."
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
       "retrievedAt": "2026-10-04T14:01:06.299824Z"
     },
@@ -46141,7 +48624,53 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "貨幣市場工具 (港元) Money Market Instruments (HKD)",
+              "percent": 28.1,
+              "printed": "28.1%"
+            },
+            {
+              "label": "債券 (人民幣) Bond (RMB)",
+              "percent": 26.7,
+              "printed": "26.7%"
+            },
+            {
+              "label": "現金及存款 (人民幣) Cash & Deposit (RMB)",
+              "percent": 22.1,
+              "printed": "22.1%"
+            },
+            {
+              "label": "現金及存款 (港元) Cash & Deposit (HKD)",
+              "percent": 11.7,
+              "printed": "11.7%"
+            },
+            {
+              "label": "貨幣市場工具 (人民幣) Money Market Instruments (RMB)",
+              "percent": 10.4,
+              "printed": "10.4%"
+            },
+            {
+              "label": "債券 (港元) Bond (HKD)",
+              "percent": 1,
+              "printed": "1.0%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 7
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -46215,13 +48744,9 @@
           "en": "In China, policymakers continued to target 2026 GDP growth of 4.5%–5.0%, while maintaining an accommodative monetary stance and carefully managing liquidity conditions. Inflation dynamics continued to improve, with China's PPI rising 2.8% year-on-year in April after prolonged weakness in 2025, while CPI is expected to average around 1% for 2026. China's May activity data generally disappointed expectations, highlighting ongoing divergence between relatively strong exports and softer domestic demand. In Hong Kong, monetary conditions remained largely driven by the Linked Exchange Rate System and developments in US interest rates. HKD liquidity remained ample, helping to maintain orderly funding conditions despite fluctuations in global markets."
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
       "retrievedAt": "2026-10-04T14:01:06.299824Z"
     },
@@ -46239,7 +48764,78 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "金融 Financials",
+              "percent": 36.3,
+              "printed": "36.3%"
+            },
+            {
+              "label": "非必需性消費 Consumer Discretionary",
+              "percent": 20,
+              "printed": "20.0%"
+            },
+            {
+              "label": "資訊科技 Information Technology",
+              "percent": 16.7,
+              "printed": "16.7%"
+            },
+            {
+              "label": "工業 Industrials",
+              "percent": 7.1,
+              "printed": "7.1%"
+            },
+            {
+              "label": "健康護理 Health Care",
+              "percent": 4.4,
+              "printed": "4.4%"
+            },
+            {
+              "label": "必需性消費 Consumer Staples",
+              "percent": 3.1,
+              "printed": "3.1%"
+            },
+            {
+              "label": "原材料 Basic Materials",
+              "percent": 3,
+              "printed": "3.0%"
+            },
+            {
+              "label": "通信服務 Communication Services",
+              "percent": 2.9,
+              "printed": "2.9%"
+            },
+            {
+              "label": "公用事業 Utilities",
+              "percent": 2.8,
+              "printed": "2.8%"
+            },
+            {
+              "label": "能源 Energy",
+              "percent": 2.7,
+              "printed": "2.7%"
+            },
+            {
+              "label": "現金及現金等價物 Cash & Cash Equivalent",
+              "percent": 1,
+              "printed": "1.0%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 21
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -46313,13 +48909,9 @@
           "en": "For the three months ended 30 June 2026, the iShares Hong Kong Equity Index Fund returned -6.38%. This compared to a FTSE MPF Hong Kong Index return of -6.52% for the corresponding period, so a performance difference of +0.14% for the quarter. The fund delivered returns of +3.90%, -2.27%, and -7.99% for the months of April, May, and June respectively. Among the top positive contributing stocks in the fund during the quarter were HSBC Holdings PLC, Lenovo Group Ltd, Hua Hong Grace Semiconductor Ltd, Kingboard Laminates Holdings Ltd, and NetEase Inc. The biggest detractors of portfolio performance over the quarter were Alibaba Group Holding Ltd, Tencent Holdings Ltd, Xiaomi Corp, AIA Group Ltd and BYD Ltd H."
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
       "retrievedAt": "2026-10-04T14:01:06.299824Z"
     },
@@ -46434,7 +49026,68 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "國際貨幣(除美元及港元)債券 Global Currencies ex USD ex HKD Bond",
+              "percent": 41.8,
+              "printed": "41.8%"
+            },
+            {
+              "label": "美元債券 USD Bond",
+              "percent": 31.9,
+              "printed": "31.9%"
+            },
+            {
+              "label": "美國股票 US equities",
+              "percent": 14.9,
+              "printed": "14.9%"
+            },
+            {
+              "label": "亞洲(不包括香港及日本)股票 Asia ex HK ex Japan equities",
+              "percent": 3.2,
+              "printed": "3.2%"
+            },
+            {
+              "label": "歐洲股票 Europe equities",
+              "percent": 3,
+              "printed": "3.0%"
+            },
+            {
+              "label": "香港股票 Hong Kong equities",
+              "percent": 1.1,
+              "printed": "1.1%"
+            },
+            {
+              "label": "日本股票 Japan equities",
+              "percent": 1,
+              "printed": "1.0%"
+            },
+            {
+              "label": "其他股票 Other Equities",
+              "percent": 0.6,
+              "printed": "0.6%"
+            },
+            {
+              "label": "現金或現金等值 Cash and cash equivalent",
+              "percent": 2.5,
+              "printed": "2.5%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 24
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -46505,13 +49158,11 @@
           "sharedAcrossFunds": 2
         }
       },
-      "unavailableFields": ["allocation", "marketForecast"],
+      "unavailableFields": ["marketForecast"],
       "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text",
         "marketForecast": "the official text reads \"N/A^^\""
       },
       "unavailableKinds": {
-        "allocation": "chart-only",
         "marketForecast": "not-disclosed"
       },
       "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
@@ -46531,7 +49182,83 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "資訊科技 Information Technology",
+              "percent": 51.3,
+              "printed": "51.3%"
+            },
+            {
+              "label": "金融 Financials",
+              "percent": 21.6,
+              "printed": "21.6%"
+            },
+            {
+              "label": "健康護理 Health Care",
+              "percent": 10.5,
+              "printed": "10.5%"
+            },
+            {
+              "label": "通信服務 Communication Services",
+              "percent": 10,
+              "printed": "10.0%"
+            },
+            {
+              "label": "非必需消費品 Consumer Discretionary",
+              "percent": 2.1,
+              "printed": "2.1%"
+            },
+            {
+              "label": "工業 Industrials",
+              "percent": 2,
+              "printed": "2.0%"
+            },
+            {
+              "label": "主要消費品 Consumer Staples",
+              "percent": 0.4,
+              "printed": "0.4%"
+            },
+            {
+              "label": "房地產 Real Estate",
+              "percent": 0.2,
+              "printed": "0.2%"
+            },
+            {
+              "label": "公用事業 Utilities",
+              "percent": 0.2,
+              "printed": "0.2%"
+            },
+            {
+              "label": "能源 Energy",
+              "percent": 0.1,
+              "printed": "0.1%"
+            },
+            {
+              "label": "原材料 Materials",
+              "percent": 0.1,
+              "printed": "0.1%"
+            },
+            {
+              "label": "現金及其他 Cash and Others",
+              "percent": 1.5,
+              "printed": "1.5%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 18
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -46605,13 +49332,9 @@
           "en": "The S&P 500 returned 14.4% in second quarter 2026. As easing geopolitical tensions in the Middle East, declining oil prices, and resilient corporate earnings supported a sharp rebound in US Equities. Investor sentiment improved throughout the quarter as concerns over the Iran conflict subsided following the US-Iran ceasefire, while confidence in the economic outlook remained constructive. Market leadership was driven by growth-oriented sectors, particularly technology, as investors became increasingly comfortable with the balance between economic growth and inflation risks. The AI investment cycle remained the dominant market theme, with strong capital spending on semiconductors, AI infrastructure, data centres, and cloud services underpinning equity performance. Record earnings from leading semiconductor companies reinforced confidence in the sustainability of AI-related demand, while investors increasingly differentiated between companies with tangible AI-driven earnings and those with only thematic exposure. Although inflation and Federal Reserve policy expectations continued to create periods of volatility, markets were supported by resilient economic data and a relatively stable policy outlook. While expectations for rate cuts moderated during the quarter, confidence that monetary policy would remain data-dependent helped sustain equity valuations, particularly across growth and technology sectors."
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
       "retrievedAt": "2026-10-04T14:01:06.299824Z"
     },
@@ -46629,7 +49352,83 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "金融 Financials",
+              "percent": 24.4,
+              "printed": "24.4%"
+            },
+            {
+              "label": "工業 Industrials",
+              "percent": 19.4,
+              "printed": "19.4%"
+            },
+            {
+              "label": "資訊科技 Information Technology",
+              "percent": 11.1,
+              "printed": "11.1%"
+            },
+            {
+              "label": "健康護理 Health Care",
+              "percent": 11,
+              "printed": "11.0%"
+            },
+            {
+              "label": "主要消費品 Consumer Staples",
+              "percent": 7.3,
+              "printed": "7.3%"
+            },
+            {
+              "label": "非必需消費品 Consumer Discretionary",
+              "percent": 6.6,
+              "printed": "6.6%"
+            },
+            {
+              "label": "公用事業 Utilities",
+              "percent": 5.8,
+              "printed": "5.8%"
+            },
+            {
+              "label": "能源 Energy",
+              "percent": 4.6,
+              "printed": "4.6%"
+            },
+            {
+              "label": "原材料 Materials",
+              "percent": 4.3,
+              "printed": "4.3%"
+            },
+            {
+              "label": "通信服務 Communication Services",
+              "percent": 3.2,
+              "printed": "3.2%"
+            },
+            {
+              "label": "房地產 Real Estate",
+              "percent": 0.5,
+              "printed": "0.5%"
+            },
+            {
+              "label": "現金及其他 Cash and Others",
+              "percent": 1.8,
+              "printed": "1.8%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 16
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -46703,13 +49502,9 @@
           "en": "European equities gained 7.6% QoQ in USD terms during the second quarter. Following the sharp correction at the end of March, driven by fears of a prolonged energy shock stemming from Middle East hostilities, markets progressively regained footing as geopolitical tensions eased and energy prices retreated. Brent crude broadly reverted to pre-conflict levels and relieving a key source of macro uncertainty. In the eurozone, the ECB raised its deposit rate by 25 basis points in June to 2.25%, with headline CPI at 3.2% YoY in May. The ECB also raised its outlook for inflation for this year and next and cut its growth projections. Information Technology and Financials outperformed amid some strong corporate earnings and optimism over the outlook for AI. Energy and Telecommunications underperformed during the quarter as with the energy sector bearing the brunt of the oil price decline as the geopolitical risk premium unwound."
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
       "retrievedAt": "2026-10-04T14:01:06.299824Z"
     },
@@ -46727,7 +49522,73 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "資訊科技 Information Technology",
+              "percent": 32.2,
+              "printed": "32.2%"
+            },
+            {
+              "label": "金融 Financials",
+              "percent": 27.4,
+              "printed": "27.4%"
+            },
+            {
+              "label": "消費 Consumer",
+              "percent": 12,
+              "printed": "12.0%"
+            },
+            {
+              "label": "健康護理 Health Care",
+              "percent": 11.8,
+              "printed": "11.8%"
+            },
+            {
+              "label": "通信服務 Communication Services",
+              "percent": 5.1,
+              "printed": "5.1%"
+            },
+            {
+              "label": "工業 Industrials",
+              "percent": 4.2,
+              "printed": "4.2%"
+            },
+            {
+              "label": "原材料 Materials",
+              "percent": 3.9,
+              "printed": "3.9%"
+            },
+            {
+              "label": "公用事業 Utilities",
+              "percent": 2.3,
+              "printed": "2.3%"
+            },
+            {
+              "label": "能源 Energy",
+              "percent": 0.7,
+              "printed": "0.7%"
+            },
+            {
+              "label": "現金及其他 Cash and Others",
+              "percent": 0.4,
+              "printed": "0.4%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 14
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -46801,13 +49662,9 @@
           "en": "For the three months ended 30 June 2026, Sun Life MPF Global Low Carbon Index Fund returned +15.7%. The fund delivered returns of +8.8%, +6.0% and +0.4% for the months of April, May, June, respectively. Among the top positive contributing stocks in the fund during the quarter were Intel, Cisco Systems and Advanced Micro Devices. The biggest detractors from portfolio performance over the quarter were Accenture, Verizon Communication and AT&T INC."
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
       "retrievedAt": "2026-10-04T14:01:06.299824Z"
     },
@@ -46825,7 +49682,38 @@
           "asOf": "2026-06-30"
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "heading": "Portfolio Allocation 投資組合分佈",
+          "entries": [
+            {
+              "label": "美國股票 US equities",
+              "percent": 65.8,
+              "printed": "65.8%"
+            },
+            {
+              "label": "香港股票 Hong Kong equities",
+              "percent": 33.5,
+              "printed": "33.5%"
+            },
+            {
+              "label": "現金及其他 Cash and Others",
+              "percent": 0.7,
+              "printed": "0.7%"
+            }
+          ]
+        }
+      ],
+      "allocationSource": {
+        "method": "chart-read",
+        "readAt": "2026-10-04T17:37:42.592Z",
+        "reads": [
+          "rapidocr-onnxruntime 1.4.4",
+          "tesseract 5.3.4 chi_tra+eng --psm 6; values: colour-masked column, 2x, 3x3 blur, eng --psm 6 digits-only"
+        ],
+        "total": 100,
+        "page": 19
+      },
       "topHoldings": [
         {
           "rank": 1,
@@ -46899,13 +49787,9 @@
           "en": "The S&P 500 returned 14.4% in second quarter 2026, its strongest quarterly gain since 2020, as easing geopolitical tensions in the Middle East, declining oil prices, and resilient corporate earnings supported a sharp rebound in US Equities. Investor sentiment improved throughout the quarter as concerns over the Iran conflict subsided following the US-Iran ceasefire, while confidence in the economic outlook remained constructive. Market leadership was driven by growth-oriented sectors, particularly technology, as investors became increasingly comfortable with the balance between economic growth and inflation risks. The AI investment cycle remained the dominant market theme, with strong capital spending on semiconductors, AI infrastructure, data centres, and cloud services underpinning equity performance. Record earnings from leading semiconductor companies reinforced confidence in the sustainability of AI-related demand, while investors increasingly differentiated between companies with tangible AI-driven earnings and those with only thematic exposure. Although inflation and Federal Reserve policy expectations continued to create periods of volatility, markets were supported by resilient economic data and a relatively stable policy outlook. While expectations for rate cuts moderated during the quarter, confidence that monetary policy would remain data-dependent helped sustain equity valuations, particularly across growth and technology sectors. MSCI Hong Kong Index and MSCI China Index returned -8.8% and -8.6% respectively in USD total return terms for Q2 2026. Both indices significantly lagged the MSCI Asia Pacific Index over the same period. Compared with the semiconductor and AI-related rallies in Japan, South Korea, and Taiwan, Hong Kong and China were among the very few markets globally to post negative USD returns for the quarter as structural concerns around China's macroeconomics outlook, regulatory headwinds for internet platforms, and commodity sector weakness drove broad-based declines."
         }
       },
-      "unavailableFields": ["allocation"],
-      "unavailableReasons": {
-        "allocation": "the donut chart's legend and percentages are drawn as vector art, not text"
-      },
-      "unavailableKinds": {
-        "allocation": "chart-only"
-      },
+      "unavailableFields": [],
+      "unavailableReasons": {},
+      "unavailableKinds": {},
       "sourceSha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
       "retrievedAt": "2026-10-04T14:01:06.299824Z"
     },
