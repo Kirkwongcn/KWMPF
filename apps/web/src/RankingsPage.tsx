@@ -195,6 +195,11 @@ export function RankingsPage({
       eyebrow="同組基金比較"
       title={`${valueLabel}排名`}
       subtitle={subtitle}
+      titleBlock={[
+        { label: "分類", value: "積金局基金類型" },
+        { label: "名次", value: "同一類型內、單一官方指標" },
+        { label: "來源", value: "積金局強積金基金平台、受託人便覽" },
+      ]}
     >
       <section className="kw-section" aria-labelledby="ranking-table-title">
         <h2 className="kw-section__heading" id="ranking-table-title">
@@ -242,7 +247,7 @@ export function RankingsPage({
               </p>
             )}
             <p className="kw-field">
-              <label htmlFor="comparison-group">比較組別</label>
+              <label htmlFor="comparison-group">積金局基金類型</label>
               <select
                 className="kw-control"
                 id="comparison-group"
@@ -255,7 +260,9 @@ export function RankingsPage({
                 }}
               >
                 <option value="all">
-                  {publication ? "全部比較組別" : "正在載入比較組別…"}
+                  {publication
+                    ? "全部積金局基金類型"
+                    : "正在載入積金局基金類型…"}
                 </option>
                 {publication &&
                   comparisonGroups.map((group) => (
@@ -281,10 +288,10 @@ export function RankingsPage({
             </p>
             <p className="kw-muted">
               {publication?.methodology?.classification
-                ? `比較組別即${publication.methodology.classification.provider}的官方基金類型（擷取 ${publication.methodology.classification.capturedAt}），本站不另設分類；數值來自官方平台或受託人便覽，每筆保留自己的日期及來源。`
+                ? `排名只在同一積金局基金類型內比較；類型來自${publication.methodology.classification.provider}（擷取 ${publication.methodology.classification.capturedAt}），本站不另設分類；數值來自官方平台或受託人便覽，每筆保留自己的日期及來源。`
                 : publication
-                  ? "比較組別即積金局的官方基金類型；數值來自官方平台或受託人便覽，每筆保留自己的日期及來源。"
-                  : "比較組別及官方數據載入中。"}
+                  ? "排名只在同一積金局基金類型內比較，本站不另設分類；數值來自官方平台或受託人便覽，每筆保留自己的日期及來源。"
+                  : "積金局基金類型及官方數據載入中。"}
             </p>
           </details>
         </div>
@@ -300,7 +307,7 @@ export function RankingsPage({
           <>
             {retiredGroup ? (
               <p className="kw-status kw-status--warning">
-                {`比較組別已改用同類基金分類，「${retiredGroup}」不再是獨立組別，現顯示全部組別。`}
+                {`分類已改為積金局基金類型，「${retiredGroup}」不是積金局基金類型，現顯示全部類型。`}
               </p>
             ) : null}
             {publication.excludedStaleCount ? (
@@ -366,7 +373,7 @@ export function RankingsPage({
                   </button>
                   <p className="kw-muted">
                     包含目前篩選的全部 {rankings.length}{" "}
-                    筆；附來源、截至日期及快照。不同組別名次分開計算。
+                    筆；附來源、截至日期及快照。不同積金局基金類型的名次分開計算。
                   </p>
                 </div>
                 <div
@@ -433,9 +440,9 @@ export function RankingsPage({
                         valueLabel={valueLabel}
                       />
                       <div className="kw-group-picker">
-                        <h3>先選比較組別，才看圖表</h3>
+                        <h3>先選積金局基金類型，才看圖表</h3>
                         <p className="kw-muted">
-                          下列數量代表各組合資格樣本，並非跨組別優劣排名。
+                          下列數量代表各類型合資格樣本，並非跨類型優劣排名。
                         </p>
                         <div>
                           {comparisonGroups.map((group) => (
@@ -490,7 +497,7 @@ export function RankingsPage({
                 >
                   {effectiveGroup === "all"
                     ? `目前顯示 ${rankings.length} 隻合資格基金。`
-                    : `「${effectiveGroup}」組別目前有 ${rankings.length} 隻合資格基金。`}
+                    : `「${effectiveGroup}」目前有 ${rankings.length} 隻合資格基金。`}
                 </p>
                 {display === "table" && (
                   <>
@@ -550,7 +557,7 @@ export function RankingsPage({
                             </th>
                             <th scope="col">基金</th>
                             <th scope="col">{valueLabel}</th>
-                            <th scope="col">比較組別</th>
+                            <th scope="col">積金局基金類型</th>
                             <th scope="col">截至日期</th>
                             <th scope="col">來源</th>
                           </tr>
@@ -603,11 +610,11 @@ export function RankingsPage({
                 role="status"
                 aria-live="polite"
               >
-                這個比較組別目前沒有合資格的{valueLabel}資料。
+                這個積金局基金類型目前沒有合資格的{valueLabel}資料。
               </p>
             )}
             <p className="disclaimer">
-              排名只反映同一比較組別內的單一官方指標，回報、費用及風險分開排序，不會合成推薦總分；過往表現不代表未來結果。
+              排名只反映同一積金局基金類型內的單一官方指標，回報、費用及風險分開排序，不會合成推薦總分；過往表現不代表未來結果。
             </p>
           </>
         )}
@@ -693,8 +700,8 @@ function GroupSpread({
   };
   return (
     <RangeChart
-      title={`各比較組別的${valueLabel}分布`}
-      subtitle="灰線為組內最低至最高，黑線為中位數；只作並列參考，不是跨組別排名"
+      title={`各積金局基金類型的${valueLabel}分布`}
+      subtitle="灰線為組內最低至最高，黑線為中位數；只作並列參考，不是跨類型排名"
       legend={[
         { label: "組內範圍（官方原值）", color: "var(--kw-viz-context)" },
         { label: "中位數（本站計算）", color: "var(--kw-ink)", shape: "line" },
@@ -708,9 +715,9 @@ function GroupSpread({
         count: item.values.length,
         summary: `${item.group}：${item.values.length} 隻，範圍 ${item.min}% 至 ${item.max}%，中位數 ${formatDerived(item.median)}（本站計算）`,
       }))}
-      note="不同積金局基金類型的投資範圍及風險不同，跨類型並列不代表優劣。點擊組別名稱查看該組完整排名圖表。"
+      note="不同積金局基金類型的投資範圍及風險不同，跨類型並列不代表優劣。點擊類型名稱查看該類型完整排名圖表。"
       table={{
-        caption: `各比較組別的${valueLabel}分布`,
+        caption: `各積金局基金類型的${valueLabel}分布`,
         columns: [
           "積金局基金類型",
           "基金數目",

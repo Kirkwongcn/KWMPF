@@ -332,7 +332,7 @@ describe("fund class page", () => {
       />,
     );
 
-    expect(await screen.findAllByText("未取得")).toHaveLength(28);
+    expect(await screen.findAllByText("未取得")).toHaveLength(29); // 包括圖幅標題欄的積金局基金類型
     expect(screen.getByText(/不足以判定官方沒有披露/)).toBeVisible();
     expect(screen.getByText("官方未提供年度回報。")).toBeVisible();
   });

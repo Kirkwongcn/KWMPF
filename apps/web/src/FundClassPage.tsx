@@ -595,6 +595,27 @@ export function FundClassPage({
         fundClassLabel(fundClass.fundClassName),
         `${fundClass.fundType}／${fundClass.fundCategory}`,
       )}
+      titleBlock={[
+        { label: "計劃", value: fundClass.schemeName },
+        { label: "受託人", value: fundClass.trusteeName },
+        {
+          label: "積金局基金類型",
+          value: publication.comparisonGroupFamily
+            ? comparisonGroup
+            : publication.comparisonGroupFamily === null
+              ? "積金局平台未提供"
+              : "未取得",
+        },
+        { label: "平台資料截至", value: provenance.dataAsOf },
+        {
+          label: "來源",
+          value: (
+            <a href={provenance.sourceUrl} target="_blank" rel="noreferrer">
+              積金局平台原頁
+            </a>
+          ),
+        },
+      ]}
     >
       <div className="kw-tabs" role="group" aria-label="基金頁內容">
         <button

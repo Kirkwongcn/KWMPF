@@ -217,8 +217,12 @@ export function FundsPage({
     <SiteChrome
       eyebrow="基金瀏覽"
       title="按條件瀏覽基金"
-      subtitle="按基金種類、受託人及官方風險級別篩選基金；數值均附官方截至日期。"
+      subtitle="按積金局基金類型、受託人及官方風險級別篩選基金；數值均附官方截至日期。"
       current="funds"
+      titleBlock={[
+        { label: "分類", value: "積金局基金類型" },
+        { label: "來源", value: "積金局強積金基金平台、受託人便覽" },
+      ]}
     >
       <section className="kw-section" aria-labelledby="filters-title">
         <h2 className="kw-section__heading" id="filters-title">

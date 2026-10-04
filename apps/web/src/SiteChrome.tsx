@@ -6,6 +6,7 @@ export function SiteChrome({
   subtitle,
   current,
   isHome,
+  titleBlock,
   children,
 }: {
   /** Retained for callers; the redesign has no eyebrow above headings. */
@@ -14,6 +15,8 @@ export function SiteChrome({
   subtitle?: string;
   current?: NavKey;
   isHome?: boolean;
+  /** 圖幅標題欄：每格一項身份或來源資料，原值照印。 */
+  titleBlock?: { label: string; value: ReactNode }[];
   children: ReactNode;
 }) {
   const [mode, changeMode] = useViewMode();
@@ -93,9 +96,21 @@ export function SiteChrome({
       </header>
       {!isHome && (
         <section className="kw-sheet-title" aria-labelledby="page-title">
-          <div className="kw-shell kw-sheet-title__inner">
-            <h1 id="page-title">{title}</h1>
-            {subtitle && <p>{subtitle}</p>}
+          <div className="kw-shell">
+            <div className="kw-sheet-title__inner">
+              <h1 id="page-title">{title}</h1>
+              {subtitle && <p>{subtitle}</p>}
+              {titleBlock && titleBlock.length > 0 && (
+                <dl className="kw-sheet-title__block" aria-label="圖幅標題欄">
+                  {titleBlock.map((cell) => (
+                    <div key={cell.label}>
+                      <dt>{cell.label}</dt>
+                      <dd>{cell.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
+            </div>
           </div>
         </section>
       )}

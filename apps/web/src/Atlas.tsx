@@ -31,6 +31,8 @@ type RankingRow = {
 };
 type Rankings = { snapshotId: string; rankings: RankingRow[] };
 
+export type { RankingRow };
+
 export type AtlasPoint = {
   id: string;
   label: string;
@@ -70,13 +72,14 @@ function load(url: string, signal: AbortSignal) {
 }
 
 /** 一年回報與三年波幅兩份已發布排名，按基金類別配對；兩項都有已核實數值才入圖。 */
-export function useAtlasData(apiOrigin: string, snapshotId: string) {
+export function useAtlasData(apiOrigin: string, snapshotId: string | null) {
   const [data, setData] = useState<{
     points: AtlasPoint[];
     returns: RankingRow[];
   } | null>(null);
   const [failed, setFailed] = useState(false);
   useEffect(() => {
+    if (!snapshotId) return;
     const controller = new AbortController();
     Promise.all([
       load(`${apiOrigin}/rankings?period=1`, controller.signal),
@@ -133,7 +136,7 @@ export function AtlasPlot({
   const [active, setActive] = useState<string | null>(null);
   const [activeType, setActiveType] = useState<string | null>(null);
   const height = width < 560 ? 340 : Math.min(520, Math.round(width * 0.62));
-  const margin = { top: 26, right: 18, bottom: 50, left: 54 };
+  const margin = { top: 26, right: 18, bottom: 64, left: 54 };
   const plotWidth = Math.max(160, width - margin.left - margin.right);
   const plotHeight = height - margin.top - margin.bottom;
   const xs = points.map((point) => point.risk.value);
@@ -152,8 +155,9 @@ export function AtlasPlot({
     margin.left + ((value - x0) / (x1 - x0 || 1)) * plotWidth;
   const sy = (value: number) =>
     margin.top + plotHeight - ((value - y0) / (y1 - y0 || 1)) * plotHeight;
-  const columns = Math.min(8, Math.max(4, Math.round(plotWidth / 110)));
-  const rows = Math.min(6, Math.max(4, Math.round(plotHeight / 80)));
+  // 圖格固定 A–H × 1–8，與圖框坐標一致；同一組數據在任何寬度都得出同一個圖格。
+  const columns = 8;
+  const rows = 8;
   const gridRef = (point: AtlasPoint) => {
     const column = Math.min(
       columns - 1,
@@ -330,10 +334,19 @@ export function AtlasPlot({
           <text
             className="kw-atlas__axis-title"
             x={margin.left + plotWidth}
-            y={height - 6}
+            y={height - 20}
             textAnchor="end"
           >
             三年波幅（官方基金風險指標）→
+          </text>
+          <text
+            className="kw-atlas__axis-title kw-atlas__axis-title--en"
+            x={margin.left + plotWidth}
+            y={height - 6}
+            textAnchor="end"
+            lang="en"
+          >
+            3-year volatility (MPFA fund risk indicator)
           </text>
           <text
             className="kw-atlas__axis-title"
@@ -342,7 +355,11 @@ export function AtlasPlot({
             textAnchor="middle"
             transform={`rotate(-90 14 ${margin.top + plotHeight / 2})`}
           >
-            一年年率化回報 →
+            一年年率化回報{" "}
+            <tspan className="kw-atlas__axis-title--en" lang="en">
+              1-year annualised return
+            </tspan>{" "}
+            →
           </text>
           {boxes.map((box) => (
             <rect

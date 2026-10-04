@@ -69,7 +69,7 @@ test("詳情頁的同組比較連結會帶著比較組別回到排名", async ({
   await peers.getByRole("link", { name: "查看同組基金排名" }).click();
 
   await expect(page).toHaveURL(/\/rankings\?/);
-  await expect(page.getByLabel("比較組別")).toHaveValue(group);
+  await expect(page.getByLabel("積金局基金類型")).toHaveValue(group);
 
   const rows = page.locator("table.kw-table tbody tr");
   if ((await rows.count()) === 0) {

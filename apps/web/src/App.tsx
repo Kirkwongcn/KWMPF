@@ -1,14 +1,14 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { SiteChrome } from "./SiteChrome";
 import { ArrowIcon } from "./ArrowIcon";
 import { AvailabilityChart, type DataQuality } from "./DataCharts";
-import { StatTiles } from "./Charts";
 import {
   AtlasPlot,
   MPFA_FAMILIES,
   SheetIndex,
   useAtlasData,
   type AtlasPoint,
+  type RankingRow,
 } from "./Atlas";
 type Summary = {
   snapshotId: string | null;
@@ -26,14 +26,54 @@ function dateRange(dates: string[]) {
   return first === last ? first : `${first} 至 ${last}`;
 }
 
-function AtlasSheet({
-  apiOrigin,
-  snapshotId,
+const GRID_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+/** 圖框坐標：上緣每 60px 大刻度之間一個字母，右緣每 60px 一個數字，與刻度對齊。 */
+function FrameRefs() {
+  const [element, setElement] = useState<HTMLDivElement | null>(null);
+  const [size, setSize] = useState({ width: 0, height: 0 });
+  useLayoutEffect(() => {
+    if (!element) return;
+    const measure = () =>
+      setSize({ width: element.clientWidth, height: element.clientHeight });
+    measure();
+    if (typeof ResizeObserver === "undefined") return;
+    const observer = new ResizeObserver(measure);
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [element]);
+  const { width, height } = size;
+  const columns = Math.min(GRID_LETTERS.length, Math.floor(width / 60));
+  const rows = Math.floor(height / 60);
+  return (
+    <div className="kw-plate__refs" ref={setElement} aria-hidden="true">
+      {Array.from({ length: columns }, (_, index) => (
+        <span key={`c${index}`} style={{ left: index * 60 + 30 }}>
+          {GRID_LETTERS[index]}
+        </span>
+      ))}
+      {Array.from({ length: rows }, (_, index) => (
+        <span
+          key={`r${index}`}
+          className="kw-plate__refs-row"
+          style={{ top: index * 60 + 30 }}
+        >
+          {index + 1}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function AtlasSection({
+  data,
+  failed,
+  waiting,
 }: {
-  apiOrigin: string;
-  snapshotId: string;
+  data: { points: AtlasPoint[] } | null;
+  failed: boolean;
+  waiting: boolean;
 }) {
-  const { data, failed } = useAtlasData(apiOrigin, snapshotId);
   const [family, setFamily] = useState<string | null>(null);
   const counts = useMemo(() => {
     const result = new Map<string, number>();
@@ -43,23 +83,20 @@ function AtlasSheet({
   }, [data]);
   const points: AtlasPoint[] = data?.points ?? [];
   return (
-    <>
-      <section
-        className="kw-sheet kw-sheet--atlas"
-        aria-labelledby="atlas-title"
-      >
-        <header className="kw-sheet__head">
-          <h2 id="atlas-title">基金圖</h2>
-          <p>
-            每點是一隻基金類別：向右波幅較大，向上一年回報較高。只有一年回報及三年波幅都是已核實、未過期的官方數值才落點；選一個積金局基金類別，其餘退作背景。
-          </p>
-        </header>
-        <div className="kw-sheet__body">
-          <div
-            className="kw-legend"
-            role="group"
-            aria-label="按積金局基金類別突出"
-          >
+    <section className="kw-sheet kw-sheet--atlas" aria-labelledby="atlas-title">
+      <header className="kw-sheet__head">
+        <h2 id="atlas-title">基金圖</h2>
+        <p>
+          每點是一隻基金類別：向右波幅較大，向上一年回報較高。只有一年回報及三年波幅都是已核實、未過期的官方數值才落點；選一個積金局基金類別，其餘退作背景。
+        </p>
+      </header>
+      <div className="kw-sheet__body">
+        <div
+          className="kw-legend"
+          role="group"
+          aria-label="按積金局基金類別突出"
+        >
+          <div className="kw-legend__chips">
             <button
               type="button"
               aria-pressed={family === null}
@@ -82,95 +119,79 @@ function AtlasSheet({
                 </span>
               </button>
             ))}
-            <p className="kw-legend__note">
-              類別及類型全部來自積金局強積金基金平台；分布框及中位數為本站計算。
-            </p>
           </div>
-          <div className="kw-sheet__plot">
-            {data && points.length > 0 ? (
-              <AtlasPlot points={points} family={family} />
-            ) : (
-              <div className="kw-loading-block" role="status">
-                {failed
-                  ? "暫時未能繪製基金圖；排名及基金頁的已發布資料不受影響。"
-                  : data
-                    ? "目前沒有同時具備一年回報及三年波幅的基金類別。"
-                    : "正在測繪基金圖…"}
-              </div>
-            )}
-          </div>
+          <p className="kw-legend__note">
+            <span className="kw-legend__sample kw-legend__sample--point" />
+            一點＝一隻基金類別（官方原值）
+            <br />
+            <span className="kw-legend__sample kw-legend__sample--box" />
+            虛線框＝該類型四分位範圍（本站計算，少於 3 隻不畫）
+            <br />
+            類別及類型全部來自積金局強積金基金平台。
+          </p>
         </div>
-        <dl className="kw-sheet__key" aria-label="基金圖圖例資料">
-          <div>
-            <dt>測量點</dt>
-            <dd>{data ? `${points.length} 隻基金類別` : "—"}</dd>
-          </div>
-          <div>
-            <dt>一年回報截至</dt>
-            <dd>
-              {data
-                ? dateRange(points.map((point) => point.ret.dataAsOf))
-                : "—"}
-            </dd>
-          </div>
-          <div>
-            <dt>三年波幅截至</dt>
-            <dd>
-              {data
-                ? dateRange(points.map((point) => point.risk.dataAsOf))
-                : "—"}
-            </dd>
-          </div>
-          <div>
-            <dt>來源</dt>
-            <dd>積金局強積金基金平台</dd>
-          </div>
-        </dl>
-      </section>
-      {data && data.returns.length > 0 && (
-        <section
-          className="kw-sheet kw-sheet--index"
-          aria-labelledby="index-title"
-        >
-          <header className="kw-sheet__head">
-            <h2 id="index-title">圖幅索引</h2>
-            <p>
-              按積金局基金類型逐行列出一年回報。每點一隻基金類別，金色短線為該類型中位數（本站計算）；點類型名稱打開同類排名。
-            </p>
-          </header>
-          <SheetIndex returns={data.returns} />
-        </section>
-      )}
-    </>
+        <div className="kw-sheet__plot">
+          {data && points.length > 0 ? (
+            <AtlasPlot points={points} family={family} />
+          ) : (
+            <div className="kw-loading-block" role="status">
+              {failed
+                ? "暫時未能繪製基金圖；排名及基金頁的已發布資料不受影響。"
+                : data
+                  ? "目前沒有同時具備一年回報及三年波幅的基金類別。"
+                  : waiting
+                    ? "正在測繪基金圖…"
+                    : "未取得公開快照，未能繪製基金圖。"}
+            </div>
+          )}
+        </div>
+      </div>
+      <dl className="kw-sheet__key" aria-label="基金圖圖例資料">
+        <div>
+          <dt>測量點</dt>
+          <dd>{data ? `${points.length} 隻基金類別` : "—"}</dd>
+        </div>
+        <div>
+          <dt>一年回報截至</dt>
+          <dd>
+            {data ? dateRange(points.map((point) => point.ret.dataAsOf)) : "—"}
+          </dd>
+        </div>
+        <div>
+          <dt>三年波幅截至</dt>
+          <dd>
+            {data ? dateRange(points.map((point) => point.risk.dataAsOf)) : "—"}
+          </dd>
+        </div>
+        <div>
+          <dt>來源</dt>
+          <dd>積金局強積金基金平台</dd>
+        </div>
+      </dl>
+    </section>
+  );
+}
+
+function IndexSection({ returns }: { returns: RankingRow[] }) {
+  return (
+    <section className="kw-sheet kw-sheet--index" aria-labelledby="index-title">
+      <header className="kw-sheet__head">
+        <h2 id="index-title">圖幅索引</h2>
+        <p>
+          按積金局基金類型逐行列出一年回報。每點一隻基金類別，金色短線為該類型中位數（本站計算）；點類型名稱打開同類排名。
+        </p>
+      </header>
+      <SheetIndex returns={returns} />
+    </section>
   );
 }
 
 const contents = [
-  [
-    "01",
-    "基金瀏覽",
-    "按名稱、受託人、積金局基金類型找出你持有的基金",
-    "/funds",
-  ],
-  [
-    "02",
-    "基金排名",
-    "只在同一積金局基金類型內比較回報、波幅與費用",
-    "/rankings",
-  ],
-  ["03", "計劃比較", "並列最多四個計劃的基金數目、風險級別與收費", "/schemes"],
-  [
-    "04",
-    "資料時效及覆蓋",
-    "每個期間有多少可排名、過期或未取得",
-    "/data-status",
-  ],
-  [
-    "05",
-    "比較方法與來源",
-    "截至日期規則、本站計算的定義及限制",
-    "/methodology",
-  ],
+  ["基金瀏覽", "按名稱、受託人、積金局基金類型找出你持有的基金", "/funds"],
+  ["基金排名", "只在同一積金局基金類型內比較回報、波幅與費用", "/rankings"],
+  ["計劃比較", "並列最多四個計劃的基金數目、風險級別與收費", "/schemes"],
+  ["資料時效及覆蓋", "每個期間有多少可排名、過期或未取得", "/data-status"],
+  ["比較方法與來源", "截至日期規則、本站計算的定義及限制", "/methodology"],
 ] as const;
 
 export function App({ apiUrl }: { apiUrl: string }) {
@@ -179,6 +200,7 @@ export function App({ apiUrl }: { apiUrl: string }) {
     [failed, setFailed] = useState(false),
     [query, setQuery] = useState("");
   const origin = new URL(apiUrl).origin;
+  const atlas = useAtlasData(origin, summary?.snapshotId ?? null);
   useEffect(() => {
     const controller = new AbortController();
     Promise.all([
@@ -206,66 +228,57 @@ export function App({ apiUrl }: { apiUrl: string }) {
     <SiteChrome isHome title="強積金基金圖">
       <section className="kw-plate" aria-labelledby="home-title">
         <div className="kw-shell">
-          <div className="kw-plate__inner">
-            <div className="kw-plate__copy">
-              <h1 id="home-title">強積金基金圖</h1>
-              <p className="kw-plate__en" lang="en">
-                Hong Kong MPF Fund Atlas
-              </p>
-              <p className="kw-plate__lead">
-                以積金局及受託人官方資料，把每隻強積金基金放回同一張圖上；比較只在同一積金局基金類型內進行，每項數值都可追溯來源及截至日期。
-              </p>
-              <form
-                className="kw-gazetteer"
-                action="/funds"
-                method="get"
-                role="search"
-              >
-                <label htmlFor="fund-search">搜尋基金、計劃或受託人</label>
-                <div>
-                  <input
-                    className="kw-control"
-                    id="fund-search"
-                    name="q"
-                    type="search"
-                    value={query}
-                    onChange={(event) => setQuery(event.target.value)}
-                    maxLength={120}
-                    placeholder="例如：滙豐、富達、保守基金"
-                  />
-                  <button className="kw-button" type="submit">
-                    搜尋基金
-                  </button>
-                </div>
-                <p>可用中文常用名稱或英文名稱；結果保留官方名稱。</p>
-              </form>
+          <div className="kw-plate__frame">
+            <form
+              className="kw-gazetteer"
+              action="/funds"
+              method="get"
+              role="search"
+            >
+              <label htmlFor="fund-search">
+                <span className="kw-gazetteer__name">地名索引</span>
+                搜尋基金、計劃或受託人
+              </label>
+              <div>
+                <input
+                  className="kw-control"
+                  id="fund-search"
+                  name="q"
+                  type="search"
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  maxLength={120}
+                  placeholder="例如：滙豐、富達、保守基金"
+                />
+                <button className="kw-button" type="submit">
+                  搜尋基金
+                </button>
+              </div>
               <p className="kw-plate__shortcuts">
                 <a href="/funds">瀏覽全部基金</a>
-                <a href="/rankings">按同類組別比較</a>
+                <a href="/rankings">按積金局基金類型比較</a>
               </p>
-            </div>
+            </form>
             <figure className="kw-plate__photo">
               <img
                 src="/images/hk-harbour-1200.webp"
                 srcSet="/images/hk-harbour-1200.webp 1200w, /images/hk-harbour-2400.webp 2400w"
-                sizes="(max-width: 760px) 100vw, 60vw"
+                sizes="(max-width: 1520px) 100vw, 1520px"
                 width={2400}
                 height={1041}
                 alt="由太平山俯瞰維多利亞港兩岸的夜景"
                 fetchPriority="high"
               />
-              <span
-                className="kw-plate__ref kw-plate__ref--n"
-                aria-hidden="true"
-              >
-                A B C D
-              </span>
-              <span
-                className="kw-plate__ref kw-plate__ref--e"
-                aria-hidden="true"
-              >
-                1 2 3
-              </span>
+              <FrameRefs />
+              <div className="kw-plate__title">
+                <h1 id="home-title">強積金基金圖</h1>
+                <p className="kw-plate__en" lang="en">
+                  Hong Kong MPF Fund Atlas
+                </p>
+                <p className="kw-plate__lead">
+                  以積金局及受託人官方資料，把每隻強積金基金放回同一張圖上；比較只在同一積金局基金類型內進行，每項數值都可追溯來源及截至日期。
+                </p>
+              </div>
               <figcaption>
                 維多利亞港，太平山，2007 年 12 月。相片：David Iliff，
                 <a
@@ -286,37 +299,54 @@ export function App({ apiUrl }: { apiUrl: string }) {
                 </a>
               </figcaption>
             </figure>
-          </div>
-        </div>
-        <div className="kw-shell">
-          {summary ? (
-            <StatTiles
-              label="已發布資料範圍"
-              className="kw-plate__stats"
-              items={[
-                { label: "基金類別", value: summary.fundClassCount },
-                { label: "強積金計劃", value: summary.schemeCount },
-                { label: "受託人", value: summary.trusteeCount },
-                {
-                  label: "平台資料截至",
-                  value: summary.dataAsOf?.latest ?? "官方未提供",
-                },
-              ]}
-            />
-          ) : (
             <section
-              className="kw-stats kw-plate__stats"
+              className="kw-plate__titleblock"
               aria-label="已發布資料範圍"
             >
-              <span>
-                {failed ? "資料範圍暫時無法取得" : "正在讀取公開快照…"}
-              </span>
+              {summary ? (
+                <dl>
+                  <div className="kw-plate__titleblock-name">
+                    <dt>圖名</dt>
+                    <dd>
+                      強積金基金圖{" "}
+                      <span lang="en">Hong Kong MPF Fund Atlas</span>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>基金類別</dt>
+                    <dd>{summary.fundClassCount}</dd>
+                  </div>
+                  <div>
+                    <dt>強積金計劃</dt>
+                    <dd>{summary.schemeCount}</dd>
+                  </div>
+                  <div>
+                    <dt>受託人</dt>
+                    <dd>{summary.trusteeCount}</dd>
+                  </div>
+                  <div>
+                    <dt>平台資料截至</dt>
+                    <dd>{summary.dataAsOf?.latest ?? "官方未提供"}</dd>
+                  </div>
+                  <div>
+                    <dt>來源</dt>
+                    <dd>積金局強積金基金平台、受託人便覽</dd>
+                  </div>
+                </dl>
+              ) : (
+                <p>{failed ? "資料範圍暫時無法取得" : "正在讀取公開快照…"}</p>
+              )}
             </section>
-          )}
+            <AtlasSection
+              data={atlas.data}
+              failed={atlas.failed}
+              waiting={!failed}
+            />
+          </div>
         </div>
       </section>
-      {summary?.snapshotId && (
-        <AtlasSheet apiOrigin={origin} snapshotId={summary.snapshotId} />
+      {atlas.data && atlas.data.returns.length > 0 && (
+        <IndexSection returns={atlas.data.returns} />
       )}
       <div className="kw-ledger">
         <section
@@ -355,10 +385,9 @@ export function App({ apiUrl }: { apiUrl: string }) {
             <h2 id="contents-title">圖冊目錄</h2>
           </header>
           <ol>
-            {contents.map(([number, title, text, href]) => (
+            {contents.map(([title, text, href]) => (
               <li key={href}>
                 <a href={href}>
-                  <span className="kw-contents__no">{number}</span>
                   <span>
                     <strong>{title}</strong>
                     <small>{text}</small>
