@@ -450,10 +450,27 @@ function MarketForecast({
           <small>（受託人原文）</small>
         </>
       ) : (
-        "官方未提供"
+        narrativeGapShort("marketForecast", disclosure)
       )}
     </p>
   );
+}
+
+/**
+ * 短版缺口說明（清單內用）：同 `narrativeMissing` 一樣按代號分，唔可以把讀唔到講成
+ * 官方未提供。
+ */
+function narrativeGapShort(
+  field: keyof FundNarrativeFields,
+  disclosure: FactSheetDisclosure | undefined,
+) {
+  if (!disclosure) return "未取得（未配對官方便覽）";
+  if (!disclosure.unavailableFields.includes(field))
+    return "未取得（本站暫未抽取）";
+  const kind = disclosure.unavailableKinds?.[field];
+  if (kind === "overlaid-text-layer") return "官方文件無法可靠讀取";
+  if (kind === "unreadable-layout") return "官方有披露，本站未能完整讀取";
+  return "官方未提供";
 }
 
 /** 本站計算：成立至今的整年數。 */
@@ -772,15 +789,26 @@ export function FundClassPage({
             </h2>
             <div className="kw-card">
               <dl className="status-list">
-                {factSheetDisclosure?.narrative?.investmentManager && (
-                  <div>
-                    <dt>投資經理</dt>
-                    <dd>
-                      {factSheetDisclosure.narrative.investmentManager.zh ??
-                        factSheetDisclosure.narrative.investmentManager.en}
-                    </dd>
-                  </div>
-                )}
+                <div>
+                  <dt>投資經理</dt>
+                  <dd>
+                    {factSheetDisclosure?.narrative?.investmentManager ? (
+                      <>
+                        {factSheetDisclosure.narrative.investmentManager.zh ??
+                          factSheetDisclosure.narrative.investmentManager.en}
+                        <small className="kw-muted">
+                          {" "}
+                          （便覽截至 {factSheetDisclosure.factSheetAsOf}）
+                        </small>
+                      </>
+                    ) : (
+                      narrativeGapShort(
+                        "investmentManager",
+                        factSheetDisclosure,
+                      )
+                    )}
+                  </dd>
+                </div>
                 <div>
                   <dt>基金規模</dt>
                   <dd>
