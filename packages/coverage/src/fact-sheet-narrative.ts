@@ -1,5 +1,6 @@
 import { normalizeFundName } from "./fact-sheet-allocation-pairing";
 import { CJK, joinItems, type PdfPage, type PdfTextItem } from "./pdf-xml";
+import type { NarrativeField, NarrativeText } from "./fact-sheet-published";
 
 /**
  * 便覽的官方文字欄位（ADR 0012）：投資目標、基金經理評論、市場預測、投資經理。
@@ -8,26 +9,8 @@ import { CJK, joinItems, type PdfPage, type PdfTextItem } from "./pdf-xml";
  * 唯一處理係版面空白：兩個中文字之間嘅排版空格（左右對齊撐開的空隙）唔係原文用字，
  * 刪走；英文跨行加一個空格；項目符號開新段。唔刪句、唔摘要、唔改數字。
  */
-export const NARRATIVE_FIELDS = [
-  "investmentObjective",
-  "managerCommentary",
-  "marketForecast",
-  "investmentManager",
-] as const;
-
-export type NarrativeField = (typeof NARRATIVE_FIELDS)[number];
-
-export type NarrativeText = {
-  /** 便覽自己的標題原文（中英對照時連埋兩個語文）。 */
-  heading: string;
-  /**
-   * 同一份便覽有幾多隻基金的同一欄位一字不差（包括本基金）。多過一隻即係計劃
-   * 共用的市場評論，網站要標明，唔可以當成呢隻基金專屬的評論（ADR 0012）。
-   */
-  sharedAcrossFunds?: number;
-  zh?: string;
-  en?: string;
-};
+export { NARRATIVE_FIELDS } from "./fact-sheet-published";
+export type { NarrativeField, NarrativeText } from "./fact-sheet-published";
 
 export type TextBlockSelector = {
   /** 標題；中英分開兩段時，兩段都要配得到，取最上嗰段做錨點。 */
@@ -498,6 +481,11 @@ export function readNarrativeField(
 export type AppendixNarrativeSpec = {
   /** 附錄頁的頁標題；有呢個標題的頁先搵。 */
   pageHeading: RegExp;
+  /**
+   * 附錄之後可以接嘅其他頁的頁標題（中銀保誠附錄後係「備註／Remarks」）。下一頁冇
+   * 附錄頁標題、又唔係呢度列明的頁，就分唔到係續頁定係其他內容，當跨頁處理。
+   */
+  followedBy?: RegExp;
   /** 基金名稱小標題的字級。 */
   subheadingFontSize: number[];
   band: { minLeft: number; maxLeft: number };
@@ -511,7 +499,8 @@ export type AppendixNarrativeSpec = {
  *
  * - 冇小標題：`not-disclosed`。同名多過一個：報錯，唔揀其中一個。
  * - 讀到頁底都冇下一個小標題，而下一頁第一個小標題之前仲有正文：評論跨頁，
- *   報 `unreadable-layout`，唔出半段。
+ *   報 `unreadable-layout`，唔出半段。下一頁冇附錄頁標題、又唔係 `followedBy` 列明
+ *   的頁亦一樣：分唔到係續頁定係其他內容，有正文格式的字就當跨頁。
  */
 export function readAppendixNarrative(
   pages: PdfPage[],
@@ -551,15 +540,24 @@ export function readAppendixNarrative(
     .filter((other) => other.page === subheading.page && other.top > subheading.top + LINE_TOLERANCE)
     .sort((a, b) => a.top - b.top)[0];
   if (!next) {
-    const following = appendixPages.find((page) => page.number === subheading.page.number + 1);
-    if (following) {
+    // 下一頁唔一定有附錄頁標題：續頁可能冇印。契約冇列明係其他頁，就分唔到係續頁
+    // 定係另一份內容，只要有正文格式的字就當跨頁（寧願報讀唔齊，都唔好出半段；紅線 3）。
+    const following = pages.find((page) => page.number === subheading.page.number + 1);
+    const declaredOther =
+      following !== undefined &&
+      !appendixPages.includes(following) &&
+      spec.followedBy !== undefined &&
+      following.items.some((item) => spec.followedBy!.test(item.text.trim()));
+    if (following && !declaredOther) {
       const firstSubheading = Math.min(
         ...subheadings.filter((other) => other.page === following).map((other) => other.top),
       );
       if (following.items.some((item) => isBody(item) && item.top < firstSubheading)) {
         return {
           status: "unreadable-layout",
-          reason: `the commentary for ${fundName} continues onto page ${following.number}`,
+          reason: appendixPages.includes(following)
+            ? `the commentary for ${fundName} continues onto page ${following.number}`
+            : `the commentary for ${fundName} may continue onto page ${following.number}, which has no appendix heading`,
         };
       }
     }

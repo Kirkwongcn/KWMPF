@@ -747,6 +747,8 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
     narrativeAppendix: {
       field: "managerCommentary",
       pageHeading: /^基金經理評論$/,
+      // 附錄最後一隻基金之後係「備註 Remarks」頁，唔係評論續頁。
+      followedBy: /^(備註|Remarks)$/,
       subheadingFontSize: [20],
       band: { minLeft: 10, maxLeft: 880 },
       maxFontSize: 11,
@@ -1216,9 +1218,9 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       overlaidPages: true,
       maxTop: 160,
     },
-    // 疊上去嗰版會喺自己標題之前已經開始落筆，文字欄位改用每版最後落筆的
-    // 「Manager’s Commentary」標題分層（見 `narrativeLayerEnd`）。
-    narrativeLayerEnd: /^Manager[’']s Commentary$/,
+    // 疊上去嗰版會喺自己標題之前已經開始落筆，配置、持倉同文字欄位都改用每版最後落筆的
+    // 「Manager’s Commentary」標題分層（見 `layerEnd`）。
+    layerEnd: /^Manager[’']s Commentary$/,
     narrative: {
       // 右上角「市場預測 Market Forecast」，值只有英文一個字（Positive／Neutral／
       // Negative），喺標題右邊，比中文標題低 11–19 pt；標題旁的「1」係註腳記號。

@@ -5,6 +5,7 @@ import type {
   FactSheetDisclosure,
   FactSheetSource,
 } from "./fact-sheet-allocation";
+import type { OfficialReturnUnavailable } from "./fact-sheet-published";
 
 /**
  * 便覽的配置及十大持倉由 `coverage:fact-sheet-allocation-report --disclosures` 抽出，
@@ -17,14 +18,7 @@ import type {
 
 export const FACT_SHEET_DISCLOSURES_FILENAME = "fund-fact-sheet-disclosures.json";
 
-/** Explicit N/A in an identified official return cell, never inferred from a gap. */
-export type OfficialReturnUnavailable = {
-  reason: "official-na";
-  dataAsOf: string;
-  sourceUrl: string;
-  sourceSha256: string;
-  page: number;
-};
+export type { OfficialReturnUnavailable } from "./fact-sheet-published";
 
 export type FactSheetDisclosureFund = {
   fundClassIds: string[];

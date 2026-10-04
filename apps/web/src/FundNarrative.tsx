@@ -1,23 +1,12 @@
 import { useState, type ReactNode } from "react";
 
-/** 便覽官方文字欄位（ADR 0012）：原文照錄，中英各一份，唔由本站翻譯補齊。 */
-export type NarrativeText = {
-  heading: string;
-  zh?: string;
-  en?: string;
-  /** 同一期便覽（一份或逐隻基金一份）有幾多隻基金同一段文字一字不差；多過一隻即係計劃共用。 */
-  sharedAcrossFunds?: number;
-};
+import type { NarrativeText } from "../../../packages/coverage/src/fact-sheet-published";
 
-export type FundNarrativeFields = Partial<
-  Record<
-    | "investmentObjective"
-    | "managerCommentary"
-    | "marketForecast"
-    | "investmentManager",
-    NarrativeText
-  >
->;
+/** 便覽官方文字欄位（ADR 0012）的型別同抽取共用，唔喺網站再聲明一次。 */
+export type {
+  FactSheetNarrative as FundNarrativeFields,
+  NarrativeText,
+} from "../../../packages/coverage/src/fact-sheet-published";
 
 const COLLAPSE_AFTER = 2;
 

@@ -499,7 +499,7 @@ describe("commentary shared across funds", () => {
     };
     const [withoutLayers] = parseFactSheetDisclosures(pages, contract);
     expect(withoutLayers?.unavailableKinds.managerCommentary).toBe("overlaid-text-layer");
-    const [layered] = parseFactSheetDisclosures(pages, { ...contract, narrativeLayerEnd: /^Manager’s Commentary$/ });
+    const [layered] = parseFactSheetDisclosures(pages, { ...contract, layerEnd: /^Manager’s Commentary$/ });
     expect(layered?.constituentFundName).toBe("Alpha Fund");
     expect(layered?.narrative?.managerCommentary?.en).toBe("Alpha rates rose.");
     // 記號數目同疊印版數對唔上（Beta 冇印記號），唔可以靠記號切，退返標題切，
@@ -516,8 +516,39 @@ describe("commentary shared across funds", () => {
         { top: 680, left: 40, text: "基金經理評論" },
       ])}</pdf2xml>`,
     );
-    const [fallback] = parseFactSheetDisclosures(oneMarker, { ...contract, narrativeLayerEnd: /^Manager’s Commentary$/ });
+    const [fallback] = parseFactSheetDisclosures(oneMarker, { ...contract, layerEnd: /^Manager’s Commentary$/ });
     expect(fallback?.unavailableKinds.managerCommentary).toBe("overlaid-text-layer");
+  });
+
+  it("reads holdings from the same marker layer as the narrative", () => {
+    // 疊上去嗰版（Beta）嘅持倉喺 Beta 標題之前落筆；按標題切會混入本版（Alpha），
+    // 按記號切就分得開。
+    const pages = parsePdfXml(
+      `<pdf2xml>${page([
+        { top: 20, left: 40, text: "As at 30/06/2026" },
+        { top: 82, left: 40, text: "Alpha Fund", size: 20 },
+        { top: 300, left: 40, text: "Top 10 Holdings" },
+        { top: 320, left: 40, text: "Tencent" },
+        { top: 320, left: 200, text: "9.1%" },
+        { top: 680, left: 140, text: "Manager’s Commentary" },
+        { top: 300, left: 41, text: "Top 10 Holdings" },
+        { top: 340, left: 41, text: "HSBC" },
+        { top: 340, left: 201, text: "8.0%" },
+        { top: 82, left: 41, text: "Beta Fund", size: 20 },
+        { top: 680, left: 140, text: "Manager’s Commentary" },
+      ])}</pdf2xml>`,
+    );
+    const contract = {
+      scheme: "Test Scheme",
+      title: { pattern: /Fund$/, fontSize: [20], overlaidPages: true as const, maxTop: 160 },
+      allocation: { heading: /^Portfolio Allocation$/ },
+      holdings: { heading: /^Top 10 Holdings$/, band: { minLeft: 0, maxLeft: 300 } },
+      asOf: { pattern: /As at\s+(\d{1,2}\/\d{1,2}\/\d{4})/ },
+    };
+    const byTitle = parseFactSheetDisclosures(pages, contract);
+    expect(byTitle[0]?.topHoldings.map((holding) => holding.security)).toContain("HSBC");
+    const layered = parseFactSheetDisclosures(pages, { ...contract, layerEnd: /^Manager’s Commentary$/ });
+    expect(layered.map((d) => d.topHoldings.map((holding) => holding.security))).toEqual([["Tencent"]]);
   });
 
   it("reads a one-fund file's front page when the narrative scope is the whole document", () => {
@@ -654,6 +685,35 @@ describe("appendix commentary", () => {
       { number: 24, width: 900, height: 1200, items: [at(24, 18, "基金經理評論", 21), at(24, 80, "（續）展望審慎。")] },
     ];
     expect(readAppendixNarrative(pages, "BOC-Prudential Asia Equity Fund", spec).status).toBe("unreadable-layout");
+  });
+
+  it("treats a following page without the appendix heading as a possible continuation", () => {
+    const untitled = [
+      ...appendix(),
+      { number: 24, width: 900, height: 1200, items: [at(24, 80, "展望審慎。")] },
+    ];
+    expect(readAppendixNarrative(untitled, "BOC-Prudential Asia Equity Fund", spec)).toMatchObject({
+      status: "unreadable-layout",
+      reason: expect.stringMatching(/no appendix heading/),
+    });
+    // 契約列明附錄之後係備註頁，就唔當續頁。
+    const remarks = [
+      ...appendix(),
+      { number: 24, width: 900, height: 1200, items: [at(24, 54, "備註", 10), at(24, 74, "單位價格均扣除投資管理費。", 10)] },
+    ];
+    expect(readAppendixNarrative(remarks, "BOC-Prudential Asia Equity Fund", spec).status).toBe("unreadable-layout");
+    expect(
+      readAppendixNarrative(remarks, "BOC-Prudential Asia Equity Fund", { ...spec, followedBy: /^(備註|Remarks)$/ }),
+    ).toMatchObject({ status: "ok", text: { zh: "亞洲經濟展現韌性。" } });
+    // 下一頁只得頁碼（字級唔係正文）就唔當續頁；最後一頁亦唔使查。
+    const footerOnly = [
+      ...appendix(),
+      { number: 24, width: 900, height: 1200, items: [at(24, 1136, "24", 12)] },
+    ];
+    expect(readAppendixNarrative(footerOnly, "BOC-Prudential Asia Equity Fund", spec)).toMatchObject({
+      status: "ok",
+      text: { zh: "亞洲經濟展現韌性。" },
+    });
   });
 });
 
