@@ -191,6 +191,37 @@ const bctNarrative: FactSheetContract["narrative"] = {
   },
 };
 
+/**
+ * BCT Series 800：左欄「投資目標 Investment Objective」先中後英，右邊係表現表（left≥444）；
+ * 基金資料表的投資經理標籤（left≈40）同經理名（left≈189）同一行開始；左下「基金評論」
+ * 先中後英，右邊係投資分布，之下隔一格係頁尾客戶服務熱線。
+ */
+const series800Narrative: FactSheetContract["narrative"] = {
+  investmentObjective: {
+    heading: /^(投資目標|Investment Objective)$/,
+    band: { minLeft: 35, maxLeft: 440 },
+    stopAt: /^(基金資料|Fund Information)/,
+    minFontSize: 9,
+    maxGap: 24,
+    languages: "bilingual",
+  },
+  investmentManager: {
+    heading: /^(投資經理|Investment Manager)$/,
+    band: { minLeft: 185, maxLeft: 440 },
+    sameLine: true,
+    maxDepth: 40,
+    maxGap: 18,
+    languages: "bilingual",
+  },
+  managerCommentary: {
+    heading: /^(基金評論|Fund Commentary)$/,
+    band: { minLeft: 35, maxLeft: 440 },
+    minFontSize: 9,
+    maxGap: 16,
+    languages: "bilingual",
+  },
+};
+
 /** BCT Series 800（前信安 800 系列）：左邊十大投資、右邊投資分布，數字不帶 `%`。 */
 const series800Blocks = {
   allocation: {
@@ -499,6 +530,7 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       fontColor: ["#ffffff"],
     },
     ...series800Blocks,
+    narrative: series800Narrative,
     asOf: { pattern: AS_OF_SLASH },
   },
   {
@@ -509,6 +541,30 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       fontFamily: /InvescoEditor/,
       // 便覽的中文版把同一批基金再印一次，只取第一次（英文版）出現的區段。
       dedupeByName: true,
+    },
+    // 右欄「投資目標」先中後英，之下係基金表現；左欄「基金評論」先中後英（中英之間隔一大段
+    // 空白，約 34 pt），之下隔更大一段係「附註 Remarks」。
+    narrative: {
+      investmentObjective: {
+        heading: /^(投資目標|Investment Objective)$/,
+        band: { minLeft: 350, maxLeft: 860 },
+        stopAt: /^(基金表現|Fund Performance)/,
+        minFontSize: 10,
+        maxGap: 24,
+        languages: "bilingual",
+      },
+      managerCommentary: {
+        heading: /^(基金評論|Fund Commentary)$/,
+        band: { minLeft: 30, maxLeft: 345 },
+        // 評論之後可能係「主要風險」、「重要提示」方框，或者預設投資策略基金按法例
+        // 解釋同參考組合重大差異的粗體段（「++」記號只得 6 pt，被字級下限濾走，
+        // 所以認段首句式）；三者都唔係評論。
+        stopAt:
+          /^(附註|Remarks|重要提示|Important Information|主要風險|Key Risks|截至\d{4}年\d{1,2}月底，基金的|As at end of \w+ \d{4}, the fund recorded)/,
+        minFontSize: 10,
+        maxGap: 45,
+        languages: "bilingual",
+      },
     },
     allocation: {
       heading: /^Asset Allocation\* \(%\)$/,
