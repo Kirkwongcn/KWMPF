@@ -117,6 +117,22 @@ describe("official narrative text", () => {
     });
   });
 
+  it("adds no space where a Chinese line wraps onto a number or English word", () => {
+    const result = readNarrative(
+      [
+        item(100, 40, "投資目標"),
+        item(120, 40, "指數跌至47.5，為"),
+        item(132, 40, "2023年以來最低，主要來自"),
+        item(144, 40, "Momentum 及價值因子。"),
+      ],
+      selector,
+    );
+    expect(result).toMatchObject({
+      status: "ok",
+      text: { zh: "指數跌至47.5，為2023年以來最低，主要來自Momentum 及價值因子。" },
+    });
+  });
+
   it("ends the block at a large vertical gap", () => {
     const result = readNarrative(
       [item(100, 40, "Investment Objective"), item(120, 40, "Seeks growth."), item(200, 40, "Unrelated notice.")],

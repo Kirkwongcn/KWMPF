@@ -162,7 +162,11 @@ function scriptOf(text: string): "zh" | "en" | undefined {
   return /[A-Za-z]/.test(text) ? "en" : undefined;
 }
 
-/** 接駁成段：中文行之間唔加空格，英文行之間加一個；項目符號開新段。 */
+/**
+ * 接駁成段：中文段落跨行時，接口任何一邊係中文字（例如「為」接「2023年」）都唔加
+ * 空格，因為原文嗰度冇空格；兩邊都係英文或數字先加一個。英文段落行之間加一個；
+ * 項目符號開新段。
+ */
 function joinParagraphs(lines: string[], script: "zh" | "en") {
   const paragraphs: string[] = [];
   for (const line of lines) {
@@ -173,7 +177,7 @@ function joinParagraphs(lines: string[], script: "zh" | "en") {
     }
     const previous = paragraphs[last]!;
     const glue =
-      script === "zh" && CJK_CHAR.test(previous.at(-1) ?? "") && CJK_CHAR.test(line[0] ?? "")
+      script === "zh" && (CJK_CHAR.test(previous.at(-1) ?? "") || CJK_CHAR.test(line[0] ?? ""))
         ? ""
         : script === "en" && /-$/.test(previous) && /^[a-z]/.test(line)
           ? ""
