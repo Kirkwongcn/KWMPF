@@ -55,7 +55,15 @@ export type TextBlockSelector = {
     minLeft: number;
     maxLeft: number;
     after?: RegExp;
-    lineStart?: { minLeft: number; maxLeft: number };
+    lineStart?: {
+      minLeft: number;
+      maxLeft: number;
+      /**
+       * 行首落喺範圍外點處理：`"skip"`（預設）略過嗰行；`"fail"` 即係版面變咗
+       * （例如中銀保誠人民幣貨幣市場基金頁底改為中英並排），成段報讀唔齊。
+       */
+      otherwise?: "skip" | "fail";
+    };
   }[];
   /** 由標題往下最多幾多 pt；預設讀到區段結尾、`stopAt` 或下一個欄位標題。 */
   maxDepth?: number;
@@ -80,6 +88,12 @@ export type TextBlockSelector = {
   startAt?: RegExp;
   /** 讀到符合呢個式樣的行就停（例如下一塊披露的標題）。 */
   stopAt?: RegExp;
+  /**
+   * 文字一定要以呢個式樣的行收尾（同樣唔包埋嗰行）。讀到頁底都見唔到，即係文字
+   * 續落下一頁，本頁讀到的只係一部分：成段當官方未提供，唔出局部文字。新地計劃
+   * 的評論以「^Sources:」來源行收尾，宏利保證基金的評論跨頁。
+   */
+  endAt?: RegExp;
   /** 略過符合呢個式樣的行（例如註腳說明）。 */
   ignore?: RegExp;
   /**
@@ -109,7 +123,9 @@ export type TextBlockSelector = {
 export type NarrativeReadResult =
   | { status: "ok"; text: NarrativeText }
   | { status: "not-disclosed"; reason: string }
-  | { status: "overlaid"; reason: string };
+  | { status: "overlaid"; reason: string }
+  /** 官方有印，但版面（跨頁、改為並排）令本站讀唔齊；唔出局部文字。 */
+  | { status: "unreadable-layout"; reason: string };
 
 const LINE_TOLERANCE = 4;
 const BULLET = /^[•●▪■◆]\s*/;
@@ -126,7 +142,15 @@ const CJK_BRACKET_SPACE = [
   [/([（「『〈《])\s+/g, "$1"],
 ] as const;
 
-type Line = { top: number; items: PdfTextItem[]; text: string };
+type Line = {
+  top: number;
+  items: PdfTextItem[];
+  text: string;
+  /** 同一頁同一欄的行屬同一段落區（segment），行距只喺區內比較。 */
+  segment?: number;
+  /** 上一行同呢行之間的空隙明顯大過正常行距：原文喺度分段。 */
+  breakBefore?: boolean;
+};
 
 function horizontalOverlap(a: PdfTextItem, b: PdfTextItem) {
   const overlap = Math.min(a.left + a.width, b.left + b.width) - Math.max(a.left, b.left);
@@ -227,6 +251,26 @@ function joinParagraphs(lines: string[], script: "zh" | "en") {
 }
 
 /**
+ * 原文分段：同一區內兩行之間的空隙大過正常行距（區內行距中位數）的 1.6 倍，就當
+ * 係段落之間。少過三個行距唔夠判斷正常行距，唔分。
+ */
+function markParagraphBreaks(lines: Line[]) {
+  const gaps = lines.flatMap((line, index) => {
+    const previous = lines[index - 1];
+    return previous && previous.segment === line.segment ? [line.top - previous.top] : [];
+  });
+  if (gaps.length < 3) return;
+  const sorted = [...gaps].sort((a, b) => a - b);
+  const normal = sorted[Math.floor(sorted.length / 2)]!;
+  for (const [index, line] of lines.entries()) {
+    const previous = lines[index - 1];
+    if (previous && previous.segment === line.segment && line.top - previous.top > normal * 1.6) {
+      line.breakBefore = true;
+    }
+  }
+}
+
+/**
  * 喺一隻基金的區段（已按落筆次序剔走疊印層）入面讀一段官方文字。
  * `items` 係 `sectionItems` 嘅輸出；`stopHeadings` 係同一區段其他欄位的標題，
  * 讀到就停，唔會把下一塊披露當成本段文字。
@@ -261,9 +305,13 @@ export function readNarrative(
   const inBand = (item: PdfTextItem) =>
     item.left >= selector.band.minLeft && item.left < selector.band.maxLeft;
   const kept: Line[] = [];
+  let segment = 0;
+  let ended = false;
+  let layoutProblem: string | undefined;
   for (const anchor of anchors) {
     kept.push(...readBlock(anchor, headingLineOf(anchor)));
   }
+  markParagraphBreaks(kept);
 
   function readBlock(anchor: PdfTextItem, headingLine: PdfTextItem[]): Line[] {
     const headingBottom = Math.max(...headingLine.map((item) => item.top));
@@ -298,20 +346,32 @@ export function readNarrative(
       const first = selector.startAt
         ? sliced.findIndex((line) => selector.startAt!.test(line.text))
         : 0;
-      const lines = (first < 0 ? [] : sliced.slice(first))
-        .filter(
-          (line) =>
-            !lineStart ||
-            (line.items[0]!.left >= lineStart.minLeft && line.items[0]!.left < lineStart.maxLeft),
-        );
+      const startsInside = (line: Line) =>
+        !lineStart ||
+        (line.items[0]!.left >= lineStart.minLeft && line.items[0]!.left < lineStart.maxLeft);
+      const strict = lineStart?.otherwise === "fail";
+      // 略過模式喺讀之前剔走欄外起行的行（佢哋唔計行距）；嚴格模式要等結束標記
+      // 判斷完先睇，頁腳由欄外起行都唔算版面變咗。
+      const lines = (first < 0 ? [] : sliced.slice(first)).filter(
+        (line) => strict || startsInside(line),
+      );
       const columnKept: Line[] = [];
+      segment += 1;
       for (const line of lines) {
         const previous = columnKept.at(-1);
         if (previous && selector.maxGap !== undefined && line.top - previous.top > selector.maxGap) break;
+        if (selector.endAt?.test(line.text)) {
+          ended = true;
+          break;
+        }
         if (selector.stopAt?.test(line.text)) break;
         if (stopHeadings.some((pattern) => pattern.test(line.text))) break;
         if (selector.ignore?.test(line.text)) continue;
-        columnKept.push(line);
+        if (strict && !startsInside(line)) {
+          layoutProblem ??= `a line starts at x=${line.items[0]!.left} on page ${anchor.page}, outside ${lineStart!.minLeft}–${lineStart!.maxLeft}: ${JSON.stringify(line.text.slice(0, 40))}`;
+          break;
+        }
+        columnKept.push({ ...line, segment });
       }
       block.push(...columnKept);
     }
@@ -327,6 +387,15 @@ export function readNarrative(
   if (kept.length === 0) {
     return { status: "not-disclosed", reason: "heading found but no text below it" };
   }
+  if (layoutProblem) {
+    return { status: "unreadable-layout", reason: `layout changes mid-text: ${layoutProblem}` };
+  }
+  if (selector.endAt && !ended) {
+    return {
+      status: "unreadable-layout",
+      reason: `no line matching ${selector.endAt} on the page, so the text continues elsewhere and only part of it was read`,
+    };
+  }
 
   const heading = headingLine
     .sort((a, b) => a.left - b.left)
@@ -341,7 +410,9 @@ export function readNarrative(
     for (const line of kept) {
       const script = scriptOf(line.text) ?? current;
       if (!script) continue;
-      if (script !== current || runs[script].length === 0) runs[script].push([]);
+      if (script !== current || runs[script].length === 0 || line.breakBefore) {
+        runs[script].push([]);
+      }
       runs[script].at(-1)!.push(line.text);
       current = script;
     }
@@ -356,7 +427,12 @@ export function readNarrative(
       selector.languages === "value"
         ? (scriptOf(all.join(" ")) ?? "en")
         : selector.languages;
-    text[script] = joinParagraphs(all, script);
+    const paragraphs: string[][] = [];
+    for (const line of kept) {
+      if (paragraphs.length === 0 || line.breakBefore) paragraphs.push([]);
+      paragraphs.at(-1)!.push(line.text);
+    }
+    text[script] = paragraphs.map((run) => joinParagraphs(run, script)).join("\n");
   }
   return { status: "ok", text };
 }
@@ -376,6 +452,8 @@ export function readNarrativeField(
   );
   const overlaid = parts.find((part) => part.status === "overlaid");
   if (overlaid) return overlaid;
+  const unreadable = parts.find((part) => part.status === "unreadable-layout");
+  if (unreadable) return unreadable;
   const missing = parts.find((part) => part.status === "not-disclosed");
   if (missing) return missing;
   const texts = parts.flatMap((part) => (part.status === "ok" ? [part.text] : []));

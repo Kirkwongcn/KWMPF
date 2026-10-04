@@ -172,6 +172,66 @@ describe("official narrative text", () => {
 });
 
 describe("narrative layouts", () => {
+  it("refuses text whose end marker is not on the page, because it continues elsewhere", () => {
+    const selector: TextBlockSelector = {
+      heading: /^Market Review and Outlook$/,
+      band: { minLeft: 0, maxLeft: 900 },
+      endAt: /^\^?\s*Sources\s*:/,
+      languages: "bilingual",
+    };
+    const complete = readNarrative(
+      [
+        item(100, 40, "Market Review and Outlook"),
+        item(120, 40, "Rates rose. Source: Bloomberg, June 30, 2026."),
+        item(140, 40, "^Sources: Manager Limited"),
+      ],
+      selector,
+    );
+    expect(complete).toMatchObject({ status: "ok", text: { en: "Rates rose. Source: Bloomberg, June 30, 2026." } });
+    const continues = readNarrative(
+      [item(100, 40, "Market Review and Outlook"), item(120, 40, "Rates rose and")],
+      selector,
+    );
+    expect(continues.status).toBe("unreadable-layout");
+  });
+
+  it("refuses text whose layout switches to side-by-side columns", () => {
+    const result = readNarrative(
+      [
+        item(100, 26, "投資政策"),
+        item(120, 26, "本基金投資於貨幣市場。"),
+        item(140, 26, "此成分基金須承受貨幣風險。"),
+        item(146, 383, "This fund is subject to currency risk."),
+        item(200, 60, "計劃詳情請參閱計劃說明書。"),
+      ],
+      {
+        heading: /^投資政策$/,
+        band: { minLeft: 10, maxLeft: 420 },
+        columns: [{ minLeft: 10, maxLeft: 420, lineStart: { minLeft: 10, maxLeft: 45, otherwise: "fail" } }],
+        stopAt: /^計劃詳情/,
+        languages: "bilingual",
+      },
+    );
+    expect(result.status).toBe("unreadable-layout");
+  });
+
+  it("starts a new paragraph where the gap is well above the normal line spacing", () => {
+    const result = readNarrative(
+      [
+        item(100, 40, "Investment Objective"),
+        item(120, 40, "First paragraph line one"),
+        item(134, 40, "line two."),
+        item(148, 40, "line three."),
+        item(176, 40, "Second paragraph."),
+      ],
+      selector,
+    );
+    expect(result).toMatchObject({
+      status: "ok",
+      text: { en: "First paragraph line one line two. line three.\nSecond paragraph." },
+    });
+  });
+
   it("reads every page that repeats the heading, without treating the pages as overlays", () => {
     const page2 = (top: number, left: number, text: string) => ({ ...item(top, left, text), page: 2 });
     const selector: TextBlockSelector = {

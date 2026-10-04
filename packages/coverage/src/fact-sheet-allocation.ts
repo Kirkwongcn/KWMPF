@@ -55,7 +55,8 @@ export type FactSheetUnavailableKind =
   | "not-disclosed"
   | "chart-only"
   | "values-without-names"
-  | "overlaid-text-layer";
+  | "overlaid-text-layer"
+  | "unreadable-layout";
 
 export type FactSheetDisclosure = {
   schemeName: string;
@@ -1217,7 +1218,11 @@ export function parseFactSheetDisclosures(
       unavailableFields.push(field);
       unavailableReasons[field] = result.reason;
       unavailableKinds[field] =
-        result.status === "overlaid" ? "overlaid-text-layer" : "not-disclosed";
+        result.status === "overlaid"
+          ? "overlaid-text-layer"
+          : result.status === "unreadable-layout"
+            ? "unreadable-layout"
+            : "not-disclosed";
     }
 
     return {
