@@ -3,6 +3,7 @@ import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { parsePdfXml, type PdfTextItem } from "../src/pdf-xml";
 import {
+  markSharedNarrative,
   findSections,
   parseFactSheetDisclosures,
   sectionItems,
@@ -473,5 +474,19 @@ describe("Chinese layout spacing", () => {
         en: "Principal Asset Management Company (Asia) Limited",
       },
     });
+  });
+});
+
+describe("shared commentary across per-fund fact sheets", () => {
+  it("counts identical commentary across files and clears stale counts", () => {
+    const disclosure = (en: string, shared?: number) =>
+      ({ narrative: { managerCommentary: { heading: "Fund Commentary", en, ...(shared ? { sharedAcrossFunds: shared } : {}) } } }) as never;
+    const a = disclosure("Global equities rose.");
+    const b = disclosure("Global equities rose.");
+    const c = disclosure("Bonds were steady.", 4);
+    markSharedNarrative([a, b, c]);
+    const shared = (d: { narrative: { managerCommentary: { sharedAcrossFunds?: number } } }) =>
+      d.narrative.managerCommentary.sharedAcrossFunds;
+    expect([shared(a), shared(b), shared(c)]).toEqual([2, 2, undefined]);
   });
 });
