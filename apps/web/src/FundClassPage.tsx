@@ -1150,7 +1150,10 @@ export function FundClassPage({
                 。排名只在同一基金類型內進行，不會與其他類型混合。
               </p>
               <p className="kw-muted">
-                {`分類來自${publication.classification?.provider ?? "積金局強積金基金平台"}（官方，擷取 ${publication.classification?.capturedAt ?? "日期未記錄"}）；平台英文原文為 ${fundClass.fundType}。受託人自述的基金描述「${fundClass.fundCategory}」只作參考，不用作分組。`}
+                {`分類來自${publication.classification?.provider ?? "積金局強積金基金平台"}（官方，擷取 ${publication.classification?.capturedAt ?? "日期未記錄"}）；平台英文原文為 ${fundClass.fundType}。`}
+                {fundClass.fundCategory?.trim()
+                  ? `受託人自述的基金描述「${fundClass.fundCategory.trim()}」只作參考，不用作分組。`
+                  : null}
               </p>
               <p className="kw-home-actions">
                 <a

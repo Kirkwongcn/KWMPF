@@ -871,6 +871,17 @@ describe("publication snapshot", () => {
       )
       .run();
 
+    // 舊快照遺留的 Lipper 組別統計：唔可以以官方分類身份輸出。
+    await bindings.DB.prepare(
+      `INSERT INTO comparison_group_stats (
+         snapshot_id, comparison_group, avg_allocation, avg_top10_concentration,
+         avg_volatility_3y, fund_count, allocation_count, top10_count, volatility_count,
+         insufficient_sample, source_dates
+       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    )
+      .bind(snapshotId, "Hong Kong Equity", null, 30, 18, 9, 0, 9, 9, 0, "{}")
+      .run();
+
     const all = (await (
       await SELF.fetch("https://kwmpf.test/comparison-group-stats")
     ).json()) as { snapshotId: string; groups: unknown[] };

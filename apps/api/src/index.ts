@@ -9,7 +9,10 @@ import {
   comparisonGroupSourceOf,
   UNCLASSIFIED_GROUP,
 } from "./comparison-group";
-import { MPFA_FUND_TYPES } from "../../../packages/coverage/src/mpfa-fund-type";
+import {
+  MPFA_FUND_TYPES,
+  mpfaFundTypeByName,
+} from "../../../packages/coverage/src/mpfa-fund-type";
 import {
   evaluateFreshness,
   fundOverviewGraceDays,
@@ -652,7 +655,9 @@ app.get("/comparison-group-stats", async (context) => {
 
   // 依積金局基金平台的類型次序，而唔係字碼次序。
   const order = new Map(MPFA_FUND_TYPES.map((type, index) => [type.zh, index]));
+  // 舊快照可能仍有 Lipper／「平台分類：」組別的統計；只輸出積金局基金類型，避免把非官方分類標成官方。
   const groups = rows.results
+    .filter((row) => mpfaFundTypeByName(row.comparison_group) !== undefined)
     .map(publishedComparisonGroupStats)
     .sort(
       (left, right) =>
