@@ -1,4 +1,5 @@
-import { CJK, joinItems, type PdfTextItem } from "./pdf-xml";
+import { normalizeFundName } from "./fact-sheet-allocation-pairing";
+import { CJK, joinItems, type PdfPage, type PdfTextItem } from "./pdf-xml";
 
 /**
  * 便覽的官方文字欄位（ADR 0012）：投資目標、基金經理評論、市場預測、投資經理。
@@ -401,8 +402,17 @@ export function readNarrative(
     .sort((a, b) => a.left - b.left)
     .map((item) => item.text.trim())
     .join(" ");
+  return { status: "ok", text: composeText(kept, heading, selector.languages) };
+}
+
+/** 讀好的行變成中英文字：按語文及原文分段接駁（見 `joinParagraphs`）。 */
+function composeText(
+  kept: Line[],
+  heading: string,
+  languages: TextBlockSelector["languages"],
+): NarrativeText {
   const text: NarrativeText = { heading };
-  if (selector.languages === "bilingual") {
+  if (languages === "bilingual") {
     // 同一語文連續嘅行係一段；語文轉咗再轉返嚟就係新一段（BCT 投資目標中英逐句交替，
     // 目標同投資政策係兩段，唔分段就會接成「…capital appreciation Invests in…」）。
     const runs = { zh: [] as string[][], en: [] as string[][] };
@@ -424,9 +434,9 @@ export function readNarrative(
   } else {
     const all = kept.map((line) => line.text);
     const script =
-      selector.languages === "value"
+      languages === "value"
         ? (scriptOf(all.join(" ")) ?? "en")
-        : selector.languages;
+        : languages;
     const paragraphs: string[][] = [];
     for (const line of kept) {
       if (paragraphs.length === 0 || line.breakBefore) paragraphs.push([]);
@@ -434,7 +444,7 @@ export function readNarrative(
     }
     text[script] = paragraphs.map((run) => joinParagraphs(run, script)).join("\n");
   }
-  return { status: "ok", text };
+  return text;
 }
 
 /**
@@ -470,3 +480,98 @@ export function readNarrativeField(
   }
   return { status: "ok", text: merged };
 }
+
+/**
+ * 附錄式評論：所有基金的評論集中印喺便覽尾段（中銀保誠「基金經理評論 MANAGER'S
+ * COMMENT」），每隻基金一個中英名稱小標題，下面係中文段及英文段。
+ */
+export type AppendixNarrativeSpec = {
+  /** 附錄頁的頁標題；有呢個標題的頁先搵。 */
+  pageHeading: RegExp;
+  /** 基金名稱小標題的字級。 */
+  subheadingFontSize: number[];
+  band: { minLeft: number; maxLeft: number };
+  minFontSize?: number;
+  maxFontSize?: number;
+};
+
+/**
+ * 喺附錄搵基金名稱小標題（英文部分同區段基金名稱一致，只正規化大小寫、引號、破折號
+ * 及空格；紅線 4），讀到同一頁下一個小標題為止。
+ *
+ * - 冇小標題：`not-disclosed`。同名多過一個：報錯，唔揀其中一個。
+ * - 讀到頁底都冇下一個小標題，而下一頁第一個小標題之前仲有正文：評論跨頁，
+ *   報 `unreadable-layout`，唔出半段。
+ */
+export function readAppendixNarrative(
+  pages: PdfPage[],
+  fundName: string,
+  spec: AppendixNarrativeSpec,
+): NarrativeReadResult {
+  const appendixPages = pages.filter((page) =>
+    page.items.some((item) => spec.pageHeading.test(item.text.trim())),
+  );
+  const isSubheading = (item: PdfTextItem) =>
+    spec.subheadingFontSize.includes(item.fontSize) && item.text.trim() !== "";
+  const isBody = (item: PdfTextItem) =>
+    item.text.trim() !== "" &&
+    !isSubheading(item) &&
+    item.left >= spec.band.minLeft &&
+    item.left < spec.band.maxLeft &&
+    (spec.minFontSize === undefined || item.fontSize >= spec.minFontSize) &&
+    (spec.maxFontSize === undefined || item.fontSize <= spec.maxFontSize);
+  const subheadings = appendixPages.flatMap((page) =>
+    toLines(page.items.filter(isSubheading)).map((line) => ({ page, ...line })),
+  );
+  const englishPart = (text: string) => text.replace(/^.*\p{Script=Han}/u, "");
+  const target = normalizeFundName(fundName);
+  const matches = subheadings.filter(
+    (subheading) => normalizeFundName(englishPart(subheading.text)) === target,
+  );
+  if (matches.length === 0) {
+    return { status: "not-disclosed", reason: `no appendix subheading for ${fundName}` };
+  }
+  if (matches.length > 1) {
+    throw new Error(
+      `appendix has ${matches.length} subheadings for ${fundName}; refusing to pick one`,
+    );
+  }
+  const subheading = matches[0]!;
+  const next = subheadings
+    .filter((other) => other.page === subheading.page && other.top > subheading.top + LINE_TOLERANCE)
+    .sort((a, b) => a.top - b.top)[0];
+  if (!next) {
+    const following = appendixPages.find((page) => page.number === subheading.page.number + 1);
+    if (following) {
+      const firstSubheading = Math.min(
+        ...subheadings.filter((other) => other.page === following).map((other) => other.top),
+      );
+      if (following.items.some((item) => isBody(item) && item.top < firstSubheading)) {
+        return {
+          status: "unreadable-layout",
+          reason: `the commentary for ${fundName} continues onto page ${following.number}`,
+        };
+      }
+    }
+  }
+  const body = subheading.page.items.filter(
+    (item) =>
+      isBody(item) &&
+      item.top > subheading.top + LINE_TOLERANCE &&
+      (!next || item.top < next.top - LINE_TOLERANCE),
+  );
+  const overlaid = overlapping(body);
+  if (overlaid.length > 0) {
+    return {
+      status: "overlaid",
+      reason: `${overlaid.length} text runs overlap with different wording: ${overlaid.slice(0, 2).join(", ")}`,
+    };
+  }
+  const lines = toLines(dropReprints(body)).map((line) => ({ ...line, segment: 1 }));
+  if (lines.length === 0) {
+    return { status: "not-disclosed", reason: "appendix subheading found but no text below it" };
+  }
+  markParagraphBreaks(lines);
+  return { status: "ok", text: composeText(lines, subheading.text, "bilingual") };
+}
+

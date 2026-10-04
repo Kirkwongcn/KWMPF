@@ -1,5 +1,7 @@
 import {
+  readAppendixNarrative,
   readNarrativeField,
+  type AppendixNarrativeSpec,
   type NarrativeField,
   type NarrativeText,
   type TextBlockSelector,
@@ -260,6 +262,8 @@ export type FactSheetContract = {
    * 一份檔多過一個基金區段而用 `"document"` 係契約錯，直接報錯。
    */
   narrativeScope?: "section" | "document";
+  /** 評論集中印喺附錄（中銀保誠），按基金名稱小標題讀，見 `readAppendixNarrative`。 */
+  narrativeAppendix?: { field: NarrativeField } & AppendixNarrativeSpec;
   /** Explicit temporal evidence tied to a field; never inherit the document date implicitly. */
   fieldScopes?: Partial<
     Record<FactSheetDataField, FactSheetFieldScopeSelector>
@@ -1264,6 +1268,23 @@ export function parseFactSheetDisclosures(
             : "not-disclosed";
     }
 
+    if (contract.narrativeAppendix) {
+      const { field, ...spec } = contract.narrativeAppendix;
+      const result = readAppendixNarrative(pages, section.name, spec);
+      if (result.status === "ok") {
+        narrative[field] = result.text;
+      } else {
+        unavailableFields.push(field);
+        unavailableReasons[field] = result.reason;
+        unavailableKinds[field] =
+          result.status === "overlaid"
+            ? "overlaid-text-layer"
+            : result.status === "unreadable-layout"
+              ? "unreadable-layout"
+              : "not-disclosed";
+      }
+    }
+
     return {
       schemeName: contract.scheme,
       constituentFundName: section.name,
@@ -1272,7 +1293,7 @@ export function parseFactSheetDisclosures(
       temporalScopes,
       allocations,
       topHoldings,
-      ...(narrativeSelectors.length > 0 ? { narrative } : {}),
+      ...(narrativeSelectors.length > 0 || contract.narrativeAppendix ? { narrative } : {}),
       unavailableFields,
       unavailableReasons,
       unavailableKinds,

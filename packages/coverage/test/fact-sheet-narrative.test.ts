@@ -9,7 +9,12 @@ import {
   sectionItems,
 } from "../src/fact-sheet-allocation";
 import { factSheetContract } from "../src/fact-sheet-allocation-contracts";
-import { readNarrative, readNarrativeField, type TextBlockSelector } from "../src/fact-sheet-narrative";
+import {
+  readAppendixNarrative,
+  readNarrative,
+  readNarrativeField,
+  type TextBlockSelector,
+} from "../src/fact-sheet-narrative";
 
 const hsbc = factSheetContract("HSBC Mandatory Provident Fund - SuperTrust Plus", "trustee");
 
@@ -515,3 +520,51 @@ describe("shared commentary across per-fund fact sheets", () => {
     expect([shared(a), shared(b), shared(c)]).toEqual([2, 2, undefined]);
   });
 });
+
+describe("appendix commentary", () => {
+  const spec = { pageHeading: /^基金經理評論$/, subheadingFontSize: [20], band: { minLeft: 0, maxLeft: 900 }, maxFontSize: 11 };
+  const at = (pageNumber: number, top: number, text: string, fontSize = 11) => ({
+    ...item(top, 26, text, text.length * 6, fontSize),
+    page: pageNumber,
+  });
+  const appendix = (extra: PdfTextItem[] = []) => [
+    {
+      number: 23,
+      width: 900,
+      height: 1200,
+      items: [
+        at(23, 18, "基金經理評論", 21),
+        at(23, 60, "中銀保誠日本股票基金 BOC-Prudential Japan Equity Fund", 20),
+        at(23, 100, "日本股市創新高。"),
+        at(23, 120, "Japanese equities hit records."),
+        at(23, 400, "中銀保誠亞洲股票基金 BOC-Prudential Asia Equity Fund", 20),
+        at(23, 440, "亞洲經濟展現韌性。"),
+        ...extra,
+      ],
+    },
+  ];
+
+  it("reads the block under the fund's own subheading up to the next one", () => {
+    const result = readAppendixNarrative(appendix(), "BOC-Prudential Japan Equity Fund", spec);
+    expect(result).toMatchObject({
+      status: "ok",
+      text: { zh: "日本股市創新高。", en: "Japanese equities hit records." },
+    });
+  });
+
+  it("refuses a name printed twice and a block that runs onto the next page", () => {
+    expect(() =>
+      readAppendixNarrative(
+        appendix([at(23, 700, "中銀保誠日本股票基金 BOC-Prudential Japan Equity Fund", 20)]),
+        "BOC-Prudential Japan Equity Fund",
+        spec,
+      ),
+    ).toThrow(/refusing to pick one/);
+    const pages = [
+      ...appendix(),
+      { number: 24, width: 900, height: 1200, items: [at(24, 18, "基金經理評論", 21), at(24, 80, "（續）展望審慎。")] },
+    ];
+    expect(readAppendixNarrative(pages, "BOC-Prudential Asia Equity Fund", spec).status).toBe("unreadable-layout");
+  });
+});
+
