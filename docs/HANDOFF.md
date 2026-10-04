@@ -1,11 +1,11 @@
 # KWMPF → Claude Code 即時交接
 
-## 最新：#366／#367 已合併，正式部署已 dispatch（2026-10-02 15:10 香港；部署結果未核實）
+## 最新：富達三年修正及 2026-10-02 回報已正式發布（2026-10-04 10:12 香港）
 
-**已驗證**：使用者批准後 squash 合併 [Kirkwongcn/KWMPF#366](https://github.com/Kirkwongcn/KWMPF/pull/366)（富達三年按欄位座標讀，main `3566539`）及 [#367](https://github.com/Kirkwongcn/KWMPF/pull/367)（2026-10-02 回報候選，main `f0f5343`）；兩個 PR 合併前 verify／e2e／high-risk-review 全綠，#367 改 base 去 main 後再跑一次全綠。main CI run #830（`f0f5343`）成功後由 Claude dispatch Deploy production（source `2026-09-26/mpf-fund-platform.json`、`allow_older_snapshot=false`；overlay 由 workflow 解析，預期 `2026-10-02-official-return-observations-candidate.json`）。
-**未核實**：讀取部署 run 狀態及正式 API 均被本環境自動權限審查拒絕（分類為 Production Deploy），沒有繞過。`production` 閘門批准、run 結果、snapshot id、正式三年排名（預期 54 行；富達 Age 65 Plus 4.70%、Core Accumulation 12.06%）全部待使用者確認或授權後再查。
-**待使用者**：批准 production 閘門；刪除已合併分支 `claude/relaxed-goldberg-5ytvfk-fidelity-3y-column`、`-returns-2026-10-02`（及之前五條）。11-30 前須有 9 月月度或 Q3 三年便覽。
-
+**已驗證**：#366（main `3566539`）、#367（main `f0f5343`）合併；main CI run #830 成功後 dispatch [Deploy production run #31](https://github.com/Kirkwongcn/KWMPF/actions/runs/36976404988)（source `2026-09-26/mpf-fund-platform.json`、overlay `data/coverage/2026-10-02-official-return-observations-candidate.json`、不容許舊批次）。`production` 閘門由使用者在 GitHub 親自批准（run 喺閘門等咗至 2026-10-04）。全部步驟 success，回復步驟 skipped。
+發布結果：snapshot `snapshot-mpfa-platform-2026-08-31-f0f5343f3316`；451 基金類別；三年排名 54 行；Cache-Control `public, max-age=300, stale-while-revalidate=600`；pre-deploy D1 backup `d1-2026-10-04T02-11-10Z-run-36976404988`，rollback timestamp `1791079870`；release tuple manifest `kwmpf-production-raw/releases/f0f5343…/run-36976404988-attempt-1/manifest.json` 逐 byte 讀回。
+**正式 API 核對（使用者授權讀取並開通 workers.dev 網域後）**：`/rankings?metric=return&period=3` 54 行、excludedStaleCount 241；富達 Age 65 Plus `mpfa-cf-1552` 4.70%（08-31）、Core Accumulation `mpfa-cf-1551` 12.06%（08-31）、Hong Kong Equity `mpfa-cf-273` 10.75%（08-31）、友邦 Greater China Equity `mpfa-cf-102` 17.01%（07-31），與原文一致；舊錯值 3.70%／12.36% 已不在。部署前同一端點係 run #30 snapshot、37 行、錯值仍在線。
+**待辦**：三年合資格 10-30 起 37、**11-30 起 0（正式部署 smoke 會失敗）**——11-30 前要補 9 月月度（富達、海通、友邦）或 Q3 便覽；使用者刪除已合併分支（含 `-fidelity-3y-column`、`-returns-2026-10-02`）。
 ## 富達三年錯值及 2026-10-02 回報候選（2026-10-02 香港；其後已合併，見上節）
 
 **已驗證（正式網站錯值）**：run #30 snapshot 富達 Age 65 Plus（`mpfa-cf-1552`）三年 3.70%、Core Accumulation（`mpfa-cf-1551`）12.36% 其實係一年欄；原文三年 4.31%、10.91%（07-31）。原因係左欄「invest 20%／60% of its NAV」令舊 parser 數錯位；積金局 MT00288 亦把 Americas／European Equity「-」當成立至今回報。詳見 [review](reviews/2026-10-02-fidelity-three-year-column-and-return-refresh.md)。
