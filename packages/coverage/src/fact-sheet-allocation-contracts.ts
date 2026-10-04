@@ -486,6 +486,42 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       fontFamily: /MHei-Xbold/,
       name: (text) => text.replace(/[\^*†]+$/, "").trim(),
     },
+    narrative: {
+      // 左欄（left≈50）由上而下：投資目標、評論；右欄係基金資料及表現。下一隻基金
+      // 的中文名（15 pt）緊接評論之後，靠字級上限隔開。
+      // 右欄標籤（「單位資產淨值」left≈381）同左欄標題同一高度，左欄要收窄到 375。
+      investmentObjective: {
+        heading: /^投資目標 Investment Objective$/,
+        band: { minLeft: 40, maxLeft: 375 },
+        minFontSize: 9,
+        maxFontSize: 11,
+        maxGap: 24,
+        languages: "bilingual",
+      },
+      // 長評論用 8 pt，由左欄溢到右欄十大資產來源行之下（left≈389）。保守基金
+      // 評論之後係收費扣除機制說明，唔屬評論。
+      managerCommentary: {
+        heading: /^評論 Commentary\*?$/,
+        band: { minLeft: 40, maxLeft: 900 },
+        columns: [
+          { minLeft: 40, maxLeft: 375 },
+          // 來源行可能同圓餅圖百分比併成一行（「19.0% Source: …」），唔可以錨定行首。
+          // 溢出的評論行一律由右欄邊（left≈379–393，逐隻基金唔同）開始；圓餅圖
+          // 標註唔係。
+          {
+            minLeft: 375,
+            maxLeft: 900,
+            after: /\bSource:/,
+            lineStart: { minLeft: 375, maxLeft: 395 },
+          },
+        ],
+        stopAt:
+          /^(強積金保守基金收費扣除機制|MPF Conservative Fund Fee Deduction|重要 Important|#)/,
+        maxFontSize: 11,
+        maxGap: 24,
+        languages: "bilingual",
+      },
+    },
     allocation: {
       // 圓餅圖旁邊的置中標註：中文名、英文名、百分比同一個中心 x。
       // 右界 570 把 left≈580 的十大資產隔開。
