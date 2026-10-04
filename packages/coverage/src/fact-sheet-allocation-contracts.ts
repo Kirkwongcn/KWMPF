@@ -708,6 +708,18 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       fontFamily: /ArialNarrow/,
       fontColor: ["#ffffff"],
     },
+    narrative: {
+      // 只有投資目標，冇評論。左欄（left≈45）；右欄（left≥455，逐隻基金唔同）
+      // 係資產分布及風險指標，同一高度。
+      investmentObjective: {
+        heading: /^Investment Objective$/,
+        band: { minLeft: 40, maxLeft: 450 },
+        stopAt: /^(Fund Expense Ratio|基金開支比率|Fund Performance|基金表現)/,
+        minFontSize: 10,
+        maxGap: 24,
+        languages: "bilingual",
+      },
+    },
     allocation: {
       heading: /^Portfolio Allocation$/,
       headingLabel: () => "Portfolio Allocation 投資組合分佈",
