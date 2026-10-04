@@ -1407,3 +1407,71 @@ table,
   margin-left: 4px;
   color: var(--kw-muted);
 }
+
+/* 基金特色：同類位置（本站計算）。四格只表示位置，唔用好壞色。 */
+.kw-features {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--kw-rule);
+}
+.kw-features__title {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  color: var(--kw-ink);
+}
+.kw-features__list {
+  list-style: none;
+  margin: 10px 0;
+  padding: 0;
+}
+.kw-features__row {
+  display: grid;
+  grid-template-columns: minmax(7rem, 1fr) minmax(8rem, 1.2fr) minmax(
+      12rem,
+      2fr
+    );
+  gap: 4px 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--kw-rule);
+}
+.kw-features__label {
+  color: var(--kw-muted-strong);
+}
+.kw-features__value {
+  color: var(--kw-ink);
+  font-variant-numeric: tabular-nums;
+}
+.kw-features__value small,
+.kw-features__position small {
+  display: block;
+}
+.kw-features__position {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.kw-quartile {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: var(--kw-muted);
+}
+.kw-quartile__cells {
+  display: inline-grid;
+  grid-template-columns: repeat(4, 18px);
+  gap: 2px;
+}
+.kw-quartile__cell {
+  height: 8px;
+  border-radius: 2px;
+  background: var(--kw-rule);
+}
+.kw-quartile__cell--on {
+  background: var(--kw-navy);
+}
+@media (max-width: 640px) {
+  .kw-features__row {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { PeerFeatures } from "./PeerFeatures";
 import { PeerPosition } from "./PeerPosition";
 import { RiskScale } from "./Charts";
 import { SiteChrome } from "./SiteChrome";
@@ -868,6 +869,13 @@ export function FundClassPage({
               <p className="kw-muted">
                 成立日期是靜態事實，不設過期；基金規模沿用網站的月度時效門檻。
               </p>
+              {publication.comparisonGroupFamily !== null && (
+                <PeerFeatures
+                  apiBaseUrl={apiBaseUrl}
+                  fundClassId={fundClassId}
+                  snapshotId={snapshotId}
+                />
+              )}
             </div>
           </section>
           <section className="kw-section" aria-labelledby="fund-figures-title">

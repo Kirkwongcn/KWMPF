@@ -45,8 +45,13 @@ test("基金詳情頁顯示逐期回報、費用及可追溯來源", async ({ pa
 
   // 基金特色及年度回報在官方未提供時仍要顯示欄位，不可靜默消失。
   const profile = page.getByRole("region", { name: "基金特色" });
-  await expect(profile.getByText("基金規模", { exact: true })).toBeVisible();
-  await expect(profile.getByText("成立日期", { exact: true })).toBeVisible();
+  // 官方資料清單的欄位名；同類位置（本站計算）亦有「基金規模」，唔係同一樣嘢。
+  await expect(
+    profile.getByRole("term").filter({ hasText: /^基金規模$/ }),
+  ).toBeVisible();
+  await expect(
+    profile.getByRole("term").filter({ hasText: /^成立日期$/ }),
+  ).toBeVisible();
   await expect(page.getByRole("heading", { name: "年度回報" })).toBeVisible();
   await expect(page.getByText(/年度回報是該個曆年的累積回報/)).toBeVisible();
 

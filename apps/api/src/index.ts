@@ -22,6 +22,14 @@ import {
   type PublishedFreshness,
 } from "./freshness";
 import type { PublicationBindings } from "./publication";
+import {
+  FEATURE_KEYS,
+  MIN_PEERS,
+  daysSinceLaunch,
+  featurePosition,
+  type FeatureKey,
+  type FeaturePeer,
+} from "./fund-features";
 import { interpretFund } from "../../../packages/coverage/src/fund-interpretation";
 import type { ComparisonGroupSourceDates } from "../../../packages/coverage/src/comparison-group-stats";
 import type { PublishedFactSheetPayload } from "../../../packages/coverage/src/fact-sheet-published";
@@ -1325,6 +1333,125 @@ app.get("/rankings", async (context) => {
       },
     },
     rankings,
+  });
+});
+
+/**
+ * 基金特色的同類位置（ADR 0012 第 6 點）：規模、成立年期、波幅、管理費喺同一積金局
+ * 基金類型入面的位置。只用同一快照、已核實、未過期的官方數值；全部係本站計算。
+ */
+app.get("/fund-classes/:id/features", async (context) => {
+  const fundClassId = context.req.param("id");
+  const rows = await context.env.DB.prepare(
+    `SELECT c.snapshot_id, f.payload
+     FROM current_publication c
+     JOIN fund_class_versions f ON f.snapshot_id = c.snapshot_id
+     WHERE c.singleton = 1`,
+  ).all<{ snapshot_id: string; payload: string }>();
+  type FeaturePayload = {
+    fundClass: BrowseFundClass & { fundCategory: string };
+    provenance: {
+      dataAsOf: string;
+      verificationStatus?: string;
+      freshnessPolicy?: FreshnessPolicy;
+    };
+  };
+  const parsed = rows.results.map(
+    (row) => JSON.parse(row.payload) as FeaturePayload,
+  );
+  const own = parsed.find(
+    (publication) => publication.fundClass.id === fundClassId,
+  );
+  if (!own) return context.json({ error: "Fund class not found" }, 404);
+  const group = comparisonGroupFor(own.fundClass);
+  const evaluatedAt = new Date();
+
+  // 每隻基金每個項目的官方值同截至日期；過期唔參與比較（同排名一樣），冇值就冇值。
+  type Reading = {
+    value?: number;
+    asOf?: string;
+    excludedReason?: "missing" | "stale" | "unverified";
+  };
+  const read = (publication: FeaturePayload, key: FeatureKey): Reading => {
+    const fund = publication.fundClass;
+    const policy = publication.provenance.freshnessPolicy;
+    const verified =
+      fund.verificationStatus === "verified" &&
+      publication.provenance.verificationStatus === "verified";
+    // 同排名一樣：平台同來源兩邊都要已核實，否則唔入同類，亦唔排位。
+    if (!verified) return { excludedReason: "unverified" };
+    if (key === "fundAge") {
+      // 成立日期是靜態事實，不設過期。
+      const days = fund.launchDate
+        ? daysSinceLaunch(fund.launchDate, evaluatedAt)
+        : undefined;
+      return days === undefined
+        ? { excludedReason: "missing" }
+        : { value: days, asOf: fund.launchDate };
+    }
+    const [value, asOf, graceDays] =
+      key === "fundSize"
+        ? [fund.fundSizeHkdMillion, fund.fundSizeAsOf, returnsGraceDays(policy)]
+        : key === "volatility"
+          ? [
+              fund.fundRiskIndicator,
+              publication.provenance.dataAsOf,
+              fundOverviewGraceDays(policy),
+            ]
+          : [
+              fund.managementFee,
+              publication.provenance.dataAsOf,
+              fundOverviewGraceDays(policy),
+            ];
+    if (typeof value !== "number" || !Number.isFinite(value) || !asOf) {
+      return { excludedReason: "missing" };
+    }
+    if (evaluateFreshness(asOf, graceDays, evaluatedAt).status !== "verified") {
+      return { value, asOf, excludedReason: "stale" };
+    }
+    return { value, asOf };
+  };
+
+  const peers =
+    group.name === UNCLASSIFIED_GROUP
+      ? []
+      : parsed.filter(
+          (publication) =>
+            comparisonGroupFor(publication.fundClass).name === group.name,
+        );
+  const positions = FEATURE_KEYS.map((key) => {
+    const eligible: FeaturePeer[] = peers.flatMap((publication) => {
+      const reading = read(publication, key);
+      return reading.value !== undefined && !reading.excludedReason
+        ? [{ fundClassId: publication.fundClass.id, value: reading.value }]
+        : [];
+    });
+    const ownReading = read(own, key);
+    return {
+      ...featurePosition(key, fundClassId, eligible, ownReading),
+      // 過期的本基金數值照樣交返（連截至日期），網站講明點解唔比較。
+      ...(ownReading.excludedReason === "stale"
+        ? { staleValue: ownReading.value }
+        : {}),
+      ...(key === "managementFee" &&
+      own.fundClass.feeCaps?.includes("managementFee")
+        ? { feeCap: true }
+        : {}),
+    };
+  });
+
+  return context.json({
+    snapshotId: rows.results[0]?.snapshot_id ?? null,
+    fundClassId,
+    comparisonGroup: group.name,
+    comparisonGroupSource: group.source,
+    groupMemberCount: peers.length,
+    methodology: {
+      evaluatedOn: evaluatedAt.toISOString().slice(0, 10),
+      minPeersForQuartile: MIN_PEERS,
+      rule: "本站計算：同一積金局基金類型、同一快照內已核實及未過期的官方數值；同值同名次；四分位按同類隻數計。只表示位置，不代表較佳或較差。",
+    },
+    positions,
   });
 });
 
