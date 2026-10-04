@@ -986,6 +986,32 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       fontFamily: /ITCSymbolStd$/,
       fontColor: ["#ffffff"],
     },
+    narrative: {
+      // 投資目標在左欄（中文段後接英文段），止於「基金資料 FUND DATA」。
+      investmentObjective: {
+        heading: /^投資目標$/,
+        band: { minLeft: 15, maxLeft: 590 },
+        stopAt: /^(基金資料|FUND DATA)/,
+        // 追蹤指數基金的投資目標用 9 pt；註腳記號「(9)」得 5 pt。
+        minFontSize: 8,
+        maxGap: 30,
+        languages: "bilingual",
+      },
+      // 市場評論在右欄（left≈607）。有啲基金中英同一頁，有啲中文一頁、英文
+      // 「(cont'd)」下一頁，兩頁標題一樣，所以每頁都讀。段落之間空 33 pt；頁腳的
+      // 計劃說明書提示（11 pt）遠在 300 pt 以下。投資經理的標籤逐隻基金唔同
+      // （「基礎核准匯集投資基金的投資經理」、「成分基金及核准緊貼指數集體投資計劃
+      // 的投資經理」，有時拆兩行），暫不抽。
+      managerCommentary: {
+        heading: /^市場評論$/,
+        occurrence: "all",
+        band: { minLeft: 600, maxLeft: 900 },
+        // 評論逐隻基金用 11 或 12 pt。
+        minFontSize: 10,
+        maxGap: 40,
+        languages: "bilingual",
+      },
+    },
     allocation: {
       // 圓餅圖的標註散落在 left 22–484，標題自己在 165，自動推欄界會切走最左的標註；
       // 右界 560 是為了把 left≈607 的市場評論隔開。
