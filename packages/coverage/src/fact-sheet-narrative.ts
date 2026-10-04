@@ -390,11 +390,12 @@ export function readNarrative(
       reason: `${overlaid.length} text runs overlap with different wording, so the text layer overlays another version: ${overlaid.slice(0, 2).join(", ")}`,
     };
   }
-  if (kept.length === 0) {
-    return { status: "not-disclosed", reason: "heading found but no text below it" };
-  }
+  // 版面問題要先報：嚴格行首喺第一行已經出事，`kept` 會係空，但唔可以講成官方未提供。
   if (layoutProblem) {
     return { status: "unreadable-layout", reason: `layout changes mid-text: ${layoutProblem}` };
+  }
+  if (kept.length === 0) {
+    return { status: "not-disclosed", reason: "heading found but no text below it" };
   }
   if (selector.endAt && !ended) {
     return {

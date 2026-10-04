@@ -219,6 +219,17 @@ describe("narrative layouts", () => {
       },
     );
     expect(result.status).toBe("unreadable-layout");
+    // 第一行已經喺欄外起行：都係版面問題，唔可以講成官方未提供。
+    const firstLine = readNarrative(
+      [item(100, 26, "投資政策"), item(120, 383, "This fund is subject to currency risk.")],
+      {
+        heading: /^投資政策$/,
+        band: { minLeft: 10, maxLeft: 420 },
+        columns: [{ minLeft: 10, maxLeft: 420, lineStart: { minLeft: 10, maxLeft: 45, otherwise: "fail" } }],
+        languages: "bilingual",
+      },
+    );
+    expect(firstLine.status).toBe("unreadable-layout");
   });
 
   it("starts a new paragraph where the gap is well above the normal line spacing", () => {
@@ -491,6 +502,22 @@ describe("commentary shared across funds", () => {
     const [layered] = parseFactSheetDisclosures(pages, { ...contract, narrativeLayerEnd: /^Manager’s Commentary$/ });
     expect(layered?.constituentFundName).toBe("Alpha Fund");
     expect(layered?.narrative?.managerCommentary?.en).toBe("Alpha rates rose.");
+    // 記號數目同疊印版數對唔上（Beta 冇印記號），唔可以靠記號切，退返標題切，
+    // 疊印檢查照樣拒絕。
+    const oneMarker = parsePdfXml(
+      `<pdf2xml>${page([
+        { top: 20, left: 40, text: "As at 30/06/2026" },
+        { top: 82, left: 40, text: "Alpha Fund", size: 20 },
+        { top: 700, left: 40, text: "Alpha rates rose." },
+        { top: 680, left: 40, text: "基金經理評論" },
+        { top: 680, left: 140, text: "Manager’s Commentary" },
+        { top: 700, left: 41, text: "Beta stocks fell sharply." },
+        { top: 82, left: 41, text: "Beta Fund", size: 20 },
+        { top: 680, left: 40, text: "基金經理評論" },
+      ])}</pdf2xml>`,
+    );
+    const [fallback] = parseFactSheetDisclosures(oneMarker, { ...contract, narrativeLayerEnd: /^Manager’s Commentary$/ });
+    expect(fallback?.unavailableKinds.managerCommentary).toBe("overlaid-text-layer");
   });
 
   it("reads a one-fund file's front page when the narrative scope is the whole document", () => {
@@ -550,6 +577,15 @@ describe("shared commentary across per-fund fact sheets", () => {
     const shared = (d: { narrative: { managerCommentary: { sharedAcrossFunds?: number } } }) =>
       d.narrative.managerCommentary.sharedAcrossFunds;
     expect([shared(a), shared(b), shared(c)]).toEqual([2, 2, undefined]);
+  });
+
+  it("does not count the same text from fact sheets of different dates as shared", () => {
+    const dated = (factSheetAsOf: string) =>
+      ({ factSheetAsOf, narrative: { managerCommentary: { heading: "Fund Commentary", en: "Global equities rose." } } }) as never;
+    const current = dated("2026-06-30");
+    const stale = dated("2026-03-31");
+    markSharedNarrative([current, stale]);
+    expect((current as { narrative: { managerCommentary: { sharedAcrossFunds?: number } } }).narrative.managerCommentary.sharedAcrossFunds).toBeUndefined();
   });
 });
 

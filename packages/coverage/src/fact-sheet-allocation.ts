@@ -2,6 +2,7 @@ import {
   readAppendixNarrative,
   readNarrativeField,
   type AppendixNarrativeSpec,
+  type NarrativeReadResult,
   type NarrativeField,
   type NarrativeText,
   type TextBlockSelector,
@@ -1136,12 +1137,26 @@ function overlaidReason(lines: string[]) {
   return `${lines.length} rows carry more than one value in the value column: the text layer overlays another fund's table, so rows cannot be attributed: ${describe(lines)}`;
 }
 
+/** 文字欄位讀唔到的狀態對應 `unavailableKinds` 代號。 */
+function narrativeUnavailableKind(
+  status: Exclude<NarrativeReadResult["status"], "ok">,
+): FactSheetUnavailableKind {
+  if (status === "overlaid") return "overlaid-text-layer";
+  if (status === "unreadable-layout") return "unreadable-layout";
+  return "not-disclosed";
+}
+
 /**
  * 區段內按分層記號切出本版的文字（見 `FactSheetContract.narrativeLayerEnd`）。
  * 一頁有幾個記號，就有幾版；本版係本區段標題落筆之後第一個記號收尾嗰一段（標題頁），
  * 其他頁用最先落筆嗰版。
  */
-function layerItems(pages: PdfPage[], section: FactSheetSection, marker: RegExp) {
+function layerItems(
+  pages: PdfPage[],
+  section: FactSheetSection,
+  marker: RegExp,
+  titleSelector: TitleSelector,
+) {
   return pages.flatMap((page) => {
     const inRange = page.items.filter((item) =>
       withinSectionBounds(item, section),
@@ -1150,9 +1165,14 @@ function layerItems(pages: PdfPage[], section: FactSheetSection, marker: RegExp)
       .filter((item) => marker.test(item.text.trim()))
       .map((item) => item.drawIndex)
       .sort((a, b) => a - b);
-    if (markers.length <= 1) return inRange;
+    // 記號數目要同本頁疊印的版數一樣，本版亦要搵到自己的記號；對唔上就退返用標題
+    // 落筆次序切（`withinSection`），令疊印檢查照樣把關，唔會把幾版文字混埋。
+    const layers = page.items.filter((item) => matchesTitle(item, titleSelector)).length;
     const title = section.layer?.page === page.number ? section.layer.titleDrawIndex : -1;
-    const own = Math.max(0, markers.findIndex((drawIndex) => drawIndex >= title));
+    const own = markers.findIndex((drawIndex) => drawIndex >= title);
+    if (markers.length <= 1 || own < 0 || (section.layer && markers.length !== layers)) {
+      return inRange.filter((item) => withinSection(item, section));
+    }
     const start = own === 0 ? -1 : markers[own - 1]!;
     const end = markers[own]!;
     return inRange.filter((item) => item.drawIndex > start && item.drawIndex <= end);
@@ -1166,19 +1186,20 @@ function layerItems(pages: PdfPage[], section: FactSheetSection, marker: RegExp)
  */
 export function markSharedNarrative(disclosures: FactSheetDisclosure[]) {
   const textCounts = new Map<string, number>();
-  const textKey = (field: string, text: NarrativeText) =>
-    `${field}\u0000${text.zh ?? ""}\u0000${text.en ?? ""}`;
+  // 同一期先算：逐隻基金一份便覽時，唔同期的檔案即使評論一樣都唔當共用。
+  const textKey = (disclosure: FactSheetDisclosure, field: string, text: NarrativeText) =>
+    `${disclosure.factSheetAsOf}\u0000${field}\u0000${text.zh ?? ""}\u0000${text.en ?? ""}`;
   for (const disclosure of disclosures) {
     for (const [field, text] of Object.entries(disclosure.narrative ?? {})) {
       if (!SHARED_FIELDS.has(field)) continue;
-      const key = textKey(field, text);
+      const key = textKey(disclosure, field, text);
       textCounts.set(key, (textCounts.get(key) ?? 0) + 1);
     }
   }
   for (const disclosure of disclosures) {
     for (const [field, text] of Object.entries(disclosure.narrative ?? {})) {
       if (!SHARED_FIELDS.has(field)) continue;
-      const count = textCounts.get(textKey(field, text)) ?? 1;
+      const count = textCounts.get(textKey(disclosure, field, text)) ?? 1;
       if (count > 1) text.sharedAcrossFunds = count;
       else delete text.sharedAcrossFunds;
     }
@@ -1277,7 +1298,7 @@ export function parseFactSheetDisclosures(
       contract.narrativeScope === "document"
         ? pages.flatMap((page) => page.items)
         : contract.narrativeLayerEnd
-          ? layerItems(pages, section, contract.narrativeLayerEnd)
+          ? layerItems(pages, section, contract.narrativeLayerEnd, contract.title)
           : items;
     const narrativeSelectors = Object.entries(contract.narrative ?? {}) as [
       NarrativeField,
@@ -1299,12 +1320,7 @@ export function parseFactSheetDisclosures(
       }
       unavailableFields.push(field);
       unavailableReasons[field] = result.reason;
-      unavailableKinds[field] =
-        result.status === "overlaid"
-          ? "overlaid-text-layer"
-          : result.status === "unreadable-layout"
-            ? "unreadable-layout"
-            : "not-disclosed";
+      unavailableKinds[field] = narrativeUnavailableKind(result.status);
     }
 
     if (contract.narrativeAppendix) {
@@ -1315,12 +1331,7 @@ export function parseFactSheetDisclosures(
       } else {
         unavailableFields.push(field);
         unavailableReasons[field] = result.reason;
-        unavailableKinds[field] =
-          result.status === "overlaid"
-            ? "overlaid-text-layer"
-            : result.status === "unreadable-layout"
-              ? "unreadable-layout"
-              : "not-disclosed";
+        unavailableKinds[field] = narrativeUnavailableKind(result.status);
       }
     }
 
