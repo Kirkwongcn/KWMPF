@@ -30,7 +30,8 @@ bun packages/coverage/src/build-fact-sheet-allocation-report.ts ... \
 - `cropToImage`：圖表係嵌入圖像而且位置浮動（宏利），按 `pdftohtml` 列出的圖像位置裁。
 - `valuesLeft`：Tesseract 另讀數值的欄界；`"axis"` 即係條形圖軸線右邊（宏利）。
 - `secondRead: "text-layer"`：標註本身係文字（我的強積金），第二次讀取用便覽文字層。
-- `wrap`：冇數值的圖例行屬邊個數值——`below` 接上一行、`nearest` 接中線最近嗰個。
+- `wrap`：冇數值的圖例行屬邊個數值——`below` 接上一行、`nearest` 接中線最近嗰個（條形圖），
+  `nearest-2d` 再計水平距離（散落兩邊的圓餅圖標註）。
 - `splitGap`：同一條基線上左右兩個標註的最少空隙。
 - `vocabulary`：逐張對圖抄錄的圖例（`chartLabels([[中文, 英文], …])`）。英文大細楷、空格照
   原文；英文一樣、中文唔同的分開列，由 RapidOCR 讀到的中文分。
@@ -41,5 +42,7 @@ bun packages/coverage/src/build-fact-sheet-allocation-report.ts ... \
 2. 「matches no vocabulary entry」：渲染裁圖對圖，原文真係新圖例就加入清單；辨識程式拼錯
    （「Utilies」）就由佢拒絕，唔好為遷就錯字加入清單。
 3. 「differs」：兩次讀取唔一致，照舊 `chart-only`，唔好改 Tesseract 參數去遷就。
+   「does not fit the listed」：圖上中文同清單唔同，對圖；「not confirmed by tesseract」：
+   英文一樣而較短的圖例未能確認，照舊拒絕。「touches the crop edge」：範圍太細，對圖放寬。
 4. 抽查通過的圖（每個計劃至少三張）同渲染圖逐個數字對過，先提交。
 5. 重跑一次，輸出（除 `generatedAt`）要一字不差。
