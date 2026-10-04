@@ -1,4 +1,5 @@
 import { execFile } from "node:child_process";
+import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { promisify } from "node:util";
@@ -17,6 +18,8 @@ import {
 } from "./fact-sheet-allocation-pairing";
 import { markWordStarts, parsePdfXml } from "./pdf-xml";
 import type { FactSheetDisclosureFile } from "./fact-sheet-disclosure-lookup";
+import { applyChartAllocations } from "./fact-sheet-chart-merge";
+import type { ChartAllocationFile } from "./fact-sheet-chart-read";
 import { loadTrusteeFactSheetLookup } from "./trustee-fact-sheet-lookup";
 
 /**
@@ -225,10 +228,11 @@ if (import.meta.main) {
   const factSheetDirectory = valuesAfter("--fact-sheets")[0];
   const outputPath = valuesAfter("--output")[0];
   const disclosuresPath = valuesAfter("--disclosures")[0];
+  const chartAllocationsPath = valuesAfter("--chart-allocations")[0];
 
   if (!platformPath || !linksPath || !factSheetDirectory || !outputPath) {
     throw new Error(
-      "Usage: bun --filter @kwmpf/coverage fact-sheet-allocation-report --platform <mpf-fund-platform.json> --links <fund-fact-sheet-links.json> --fact-sheets <directory of PDFs> --output <report.json> [--disclosures <disclosures.json>] [--trustee-sources <data/sources>]",
+      "Usage: bun --filter @kwmpf/coverage fact-sheet-allocation-report --platform <mpf-fund-platform.json> --links <fund-fact-sheet-links.json> --fact-sheets <directory of PDFs> --output <report.json> [--disclosures <disclosures.json>] [--trustee-sources <data/sources>] [--chart-allocations <fund-fact-sheet-chart-allocations.json>]",
     );
   }
 
@@ -366,6 +370,26 @@ if (import.meta.main) {
     }
   }
 
+  // 已覆核的讀圖結果（ADR 0013）：只填 `chart-only`，而且檔案 SHA-256 要同讀圖時一樣。
+  let chartRead: ReturnType<typeof applyChartAllocations> | undefined;
+  if (chartAllocationsPath) {
+    const chart = JSON.parse(await readFile(chartAllocationsPath, "utf8")) as ChartAllocationFile;
+    const hashes = new Map<string, string>();
+    for (const fund of disclosureFunds) {
+      if (hashes.has(fund.factSheetFile)) continue;
+      hashes.set(
+        fund.factSheetFile,
+        createHash("sha256")
+          .update(await readFile(join(factSheetDirectory, fund.factSheetFile)))
+          .digest("hex"),
+      );
+    }
+    chartRead = applyChartAllocations(disclosureFunds, chart, (file) => hashes.get(file));
+    if (chartRead.stale.length > 0) {
+      console.error(`chart-read records skipped, fact sheet changed: ${chartRead.stale.join("; ")}`);
+    }
+  }
+
   const report: FactSheetAllocationReport = {
     generatedAt: new Date().toISOString(),
     platformSnapshot: platformPath,
@@ -386,7 +410,12 @@ if (import.meta.main) {
   }
   console.log(
     JSON.stringify(
-      { outputPath, ...(disclosuresPath ? { disclosuresPath } : {}), ...report.totals },
+      {
+        outputPath,
+        ...(disclosuresPath ? { disclosuresPath } : {}),
+        ...report.totals,
+        ...(chartRead ? { chartReadApplied: chartRead.applied, chartReadStale: chartRead.stale.length } : {}),
+      },
       undefined,
       2,
     ),

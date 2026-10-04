@@ -33,6 +33,7 @@ canonical implementation spec（`docs/specs/2026-08-08-hk-mpf-comparison-v1-impl
 | 便覽來源政策：受託人官網優先、來源檔結構                       | `docs/agents/fact-sheet-sources.md`      |
 | 便覽文字欄位：投資目標、基金經理評論、市場預測                 | `docs/agents/fact-sheet-narrative.md`    |
 | 逐個受託人嘅實戰紀錄：反爬蟲、連結陷阱、換版缺口               | `docs/agents/fact-sheet-source-notes.md` |
+| 圖表式配置：讀圖上印出的數字、兩次讀取核對、圖例清單           | `docs/agents/fact-sheet-chart-read.md`   |
 | 基金分類（積金局基金類型）、比較組別平均                       | `docs/agents/fund-classification.md`     |
 | 官方平台欄位：DIS、規模、成立日期、年度回報、風險指標、費用    | `docs/agents/platform-fields.md`         |
 | 過期政策（財政年結日）                                         | `docs/agents/freshness-policy.md`        |
@@ -57,6 +58,7 @@ canonical implementation spec（`docs/specs/2026-08-08-hk-mpf-comparison-v1-impl
 | `docs/adr/0010-monthly-return-freshness-60-days.md`         | 一、五、十年回報及基金規模 60 日時效       |
 | `docs/adr/0011-mpfa-fund-type-only-classification.md`       | 基金分類只用積金局基金類型                 |
 | `docs/adr/0012-official-narrative-text-fields.md`           | 便覽官方文字欄位（投資目標、評論）原文照錄 |
+| `docs/adr/0013-chart-read-allocations.md`                   | 圖表式配置讀印出的數字，兩次讀取一致先用   |
 
 ## 使用者里程碑偏好
 

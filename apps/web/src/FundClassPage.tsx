@@ -365,7 +365,7 @@ function InterpretationPanel({
 const unavailableWording: Record<FactSheetUnavailableKind, string> = {
   "not-disclosed": "官方未提供。這份便覽沒有披露這一項。",
   "chart-only":
-    "官方以圖表披露。便覽把這一項畫成圖表，文件內沒有可讀取的文字數值，本網站不會靠圖片估算。",
+    "官方以圖表披露。便覽把這一項畫成圖表，文件內沒有可讀取的文字數值；圖上數字未能經兩次讀取核對一致的，本網站不顯示，亦不會靠圖片估算。",
   "values-without-names":
     "官方以圖表披露。便覽有百分比，但項目名稱畫成圖形而非文字；只列出讀得到的部分會令名單短一截，等同改寫官方披露，所以整項不顯示。",
   "overlaid-text-layer":
@@ -1188,6 +1188,19 @@ export function FundClassPage({
                       資產配置截至 {allocationAsOf}。
                     </p>
                   )}
+                  {factSheetDisclosure.allocationSource?.method ===
+                    "chart-read" && (
+                    <p className="kw-status" role="note">
+                      資產配置由官方圖表讀取：便覽只以圖表披露，本站把圖上印出的數字
+                      {factSheetDisclosure.allocationSource.reads.some((read) =>
+                        read.includes("text layer"),
+                      )
+                        ? "用文字辨識程式讀取，再同便覽文字層逐行核對"
+                        : "用兩套文字辨識程式各讀一次，逐個數字核對"}
+                      一致，合計 {factSheetDisclosure.allocationSource.total}
+                      %（本站計算）先顯示。請以官方便覽為準。
+                    </p>
+                  )}
                   {factSheetDisclosure.allocations.map((dimension) => (
                     <AllocationChart
                       key={"chart-" + dimension.heading}
@@ -1223,7 +1236,9 @@ export function FundClassPage({
                             {dimension.entries.map((entry) => (
                               <tr key={entry.label}>
                                 <th scope="row">{entry.label}</th>
-                                <td className="kw-return">{entry.percent}%</td>
+                                <td className="kw-return">
+                                  {entry.printed ?? `${entry.percent}%`}
+                                </td>
                               </tr>
                             ))}
                           </tbody>

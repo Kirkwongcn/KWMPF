@@ -1,0 +1,4 @@
+# coverage:chart-allocations 讀圖用（ADR 0013）；另需 apt 套件 tesseract-ocr、tesseract-ocr-chi-tra。
+rapidocr-onnxruntime==1.4.4
+onnxruntime==1.30.0
+opencv-python==5.0.0.93
