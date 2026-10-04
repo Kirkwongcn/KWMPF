@@ -1,0 +1,304 @@
+[
+  {
+    "scheme": "BCT (MPF) Industry Choice",
+    "factSheetUrl": "https://www.bcthk.com/IS-Fund-Fact-Sheet",
+    "file": "BCT_IS.pdf"
+  },
+  {
+    "scheme": "BCT MPF - Simple Plan",
+    "factSheetUrl": "https://www.bcthk.com/wr/Simple-Fund-Fact-Sheet",
+    "file": "BCT_Simple.pdf"
+  },
+  {
+    "scheme": "BCT MPF - Smart Plan",
+    "factSheetUrl": "https://www.bcthk.com/wr/Smart-Fund-Fact-Sheet",
+    "file": "BCT_Smart.pdf"
+  },
+  {
+    "scheme": "BCT MPF Scheme Series 800",
+    "factSheetUrl": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet",
+    "file": "BCT_S800.pdf"
+  },
+  {
+    "scheme": "Sun Life Rainbow MPF Scheme",
+    "factSheetUrl": "https://www.sunlife.com.hk/content/dam/sunlife/regional/hong-kong/documents/pensions/SLR_MPF_Quarterly_Update.pdf",
+    "file": "SunLife_Rainbow.pdf"
+  },
+  {
+    "scheme": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+    "factSheetUrl": "https://www.hangseng.com/cms/pws/files/pdfs/FFS.pdf",
+    "file": "HangSeng_SuperTrustPlus.pdf"
+  },
+  {
+    "scheme": "AIA MPF - Prime Value Choice",
+    "factSheetUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-may-2026.pdf",
+    "file": "AIA_PrimeValueChoice.pdf"
+  },
+  {
+    "scheme": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+    "factSheetUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+    "file": "BOCPrudential_EasyChoice.pdf"
+  },
+  {
+    "scheme": "BCOM Joyful Retirement MPF Scheme",
+    "factSheetUrl": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf",
+    "file": "BCOM_JoyfulRetirement.pdf"
+  },
+  {
+    "scheme": "BCT Strategic MPF Scheme",
+    "factSheetUrl": "https://www.bcthk.com/wr/ST-Fund-Fact-Sheet",
+    "file": "BCT_Strategic.pdf"
+  },
+  {
+    "scheme": "China Life MPF Master Trust Scheme",
+    "factSheetUrl": "https://www.chinalife.com.hk/sites/default/files/2026-08/2026%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%9F%BA%E9%87%91%E8%A1%A8%E7%8F%BE%E4%BE%BF%E8%A6%BD.pdf",
+    "file": "ChinaLife_Q2_2026.pdf"
+  },
+  {
+    "scheme": "My Choice Mandatory Provident Fund Scheme",
+    "factSheetUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+    "file": "MyChoice.pdf"
+  },
+  {
+    "scheme": "BEA (MPF) Master Trust Scheme",
+    "factSheetUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+    "file": "BEA_MT.pdf"
+  },
+  {
+    "scheme": "BEA (MPF) Industry Scheme",
+    "factSheetUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+    "file": "BEA_IS.pdf"
+  },
+  {
+    "scheme": "BEA (MPF) Value Scheme",
+    "factSheetUrl": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf",
+    "file": "BEA_VS.pdf"
+  },
+  {
+    "scheme": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+    "factSheetUrl": "https://www.hsbc.com.hk/content/dam/hsbc/hk/docs/mpf/2q2026.pdf",
+    "file": "HSBC_SuperTrustPlus.pdf"
+  },
+  {
+    "scheme": "Haitong MPF Retirement Fund",
+    "factSheetUrl": "https://gthtam.com.hk/hti_content/images/mpf/Haitong_MPF_Conservative_Fund/FundDocument/4/en-US/Haitong%20MPF%20Conservative%20Fund%20-%20Fund%20Monitor.pdf",
+    "file": "Haitong_FundMonitor.pdf"
+  },
+  {
+    "scheme": "BCT (MPF) Pro Choice",
+    "factSheetUrl": "https://www.bcthk.com/MTS-Fund-Fact-Sheet",
+    "file": "BCT_ProChoice.pdf"
+  },
+  {
+    "scheme": "Manulife Global Select (MPF) Scheme",
+    "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+    "file": "Manulife_GlobalSelect.pdf"
+  },
+  {
+    "scheme": "Manulife RetireChoice (MPF) Scheme",
+    "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/products/mpf/retirechoice-scheme/fundfact-sheet.pdf",
+    "file": "Manulife_RetireChoice.pdf"
+  },
+  {
+    "scheme": "SHKP MPF Employer Sponsored Scheme",
+    "factSheetUrl": "https://www.shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf",
+    "file": "SHKP_FundPriceFFS.pdf"
+  },
+  {
+    "scheme": "MASS Mandatory Provident Fund Scheme",
+    "factSheetUrl": "https://www.yflife.com/en/product/mpf-hongkong/fund-price-history/",
+    "funds": [
+      {
+        "constituentFund": "Global Stable Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLSF_E.pdf",
+        "file": "MASS_GLSF.pdf"
+      },
+      {
+        "constituentFund": "Global Growth Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLGF_E.pdf",
+        "file": "MASS_GLGF.pdf"
+      },
+      {
+        "constituentFund": "Guaranteed Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GUAF_E.pdf",
+        "file": "MASS_GUAF.pdf"
+      },
+      {
+        "constituentFund": "MPF Conservative Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/CAPF_E.pdf",
+        "file": "MASS_CAPF.pdf"
+      },
+      {
+        "constituentFund": "Global Equity Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLEF_E.pdf",
+        "file": "MASS_GLEF.pdf"
+      },
+      {
+        "constituentFund": "Global Bond Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLBF_E.pdf",
+        "file": "MASS_GLBF.pdf"
+      },
+      {
+        "constituentFund": "Asian Bond Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/ASBF_E.pdf",
+        "file": "MASS_ASBF.pdf"
+      },
+      {
+        "constituentFund": "Asian Pacific Equity Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/APEF_E.pdf",
+        "file": "MASS_APEF.pdf"
+      },
+      {
+        "constituentFund": "US Equity Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/USEF_E.pdf",
+        "file": "MASS_USEF.pdf"
+      },
+      {
+        "constituentFund": "European Equity Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/EUEF_E.pdf",
+        "file": "MASS_EUEF.pdf"
+      },
+      {
+        "constituentFund": "Hong Kong Equities Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/HKEF_E.pdf",
+        "file": "MASS_HKEF.pdf"
+      },
+      {
+        "constituentFund": "Greater China Equity Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GCEF_E.pdf",
+        "file": "MASS_GCEF.pdf"
+      },
+      {
+        "constituentFund": "Core Accumulation Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/CAF2_E.pdf",
+        "file": "MASS_CAF2.pdf"
+      },
+      {
+        "constituentFund": "Age 65 Plus Fund",
+        "factSheetUrl": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/A65F2_E.pdf",
+        "file": "MASS_A65F2.pdf"
+      }
+    ]
+  },
+  {
+    "scheme": "Fidelity Retirement Master Trust",
+    "factSheetUrl": "https://www.fidelity.com.hk/en/our-funds/mpf",
+    "funds": [
+      {
+        "constituentFund": "Age 65 Plus Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-C65P.pdf",
+        "file": "Fidelity_C65P.pdf"
+      },
+      {
+        "constituentFund": "Americas Equity Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CAME.pdf",
+        "file": "Fidelity_CAME.pdf"
+      },
+      {
+        "constituentFund": "European Equity Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CEUR.pdf",
+        "file": "Fidelity_CEUR.pdf"
+      },
+      {
+        "constituentFund": "Core Accumulation Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFAF.pdf",
+        "file": "Fidelity_CFAF.pdf"
+      },
+      {
+        "constituentFund": "Asia Pacific Equity Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFAP.pdf",
+        "file": "Fidelity_CFAP.pdf"
+      },
+      {
+        "constituentFund": "Balanced Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFBF.pdf",
+        "file": "Fidelity_CFBF.pdf"
+      },
+      {
+        "constituentFund": "Capital Stable Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFCF.pdf",
+        "file": "Fidelity_CFCF.pdf"
+      },
+      {
+        "constituentFund": "MPF Conservative Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFCP.pdf",
+        "file": "Fidelity_CFCP.pdf"
+      },
+      {
+        "constituentFund": "Global Equity Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFGE.pdf",
+        "file": "Fidelity_CFGE.pdf"
+      },
+      {
+        "constituentFund": "Growth Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFGF.pdf",
+        "file": "Fidelity_CFGF.pdf"
+      },
+      {
+        "constituentFund": "Hong Kong Bond Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFHB.pdf",
+        "file": "Fidelity_CFHB.pdf"
+      },
+      {
+        "constituentFund": "Hong Kong Equity Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFHK.pdf",
+        "file": "Fidelity_CFHK.pdf"
+      },
+      {
+        "constituentFund": "RMB Bond Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFRB.pdf",
+        "file": "Fidelity_CFRB.pdf"
+      },
+      {
+        "constituentFund": "Stable Growth Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFSF.pdf",
+        "file": "Fidelity_CFSF.pdf"
+      },
+      {
+        "constituentFund": "Fidelity Hong Kong Tracker Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFTF.pdf",
+        "file": "Fidelity_CFTF.pdf"
+      },
+      {
+        "constituentFund": "World Bond Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CFWB.pdf",
+        "file": "Fidelity_CFWB.pdf"
+      },
+      {
+        "constituentFund": "Fidelity SaveEasy 2025 Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS25.pdf",
+        "file": "Fidelity_CS25.pdf"
+      },
+      {
+        "constituentFund": "Fidelity SaveEasy 2030 Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS30.pdf",
+        "file": "Fidelity_CS30.pdf"
+      },
+      {
+        "constituentFund": "Fidelity SaveEasy 2035 Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS35.pdf",
+        "file": "Fidelity_CS35.pdf"
+      },
+      {
+        "constituentFund": "Fidelity SaveEasy 2040 Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS40.pdf",
+        "file": "Fidelity_CS40.pdf"
+      },
+      {
+        "constituentFund": "Fidelity SaveEasy 2045 Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS45.pdf",
+        "file": "Fidelity_CS45.pdf"
+      },
+      {
+        "constituentFund": "Fidelity SaveEasy 2050 Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CS50.pdf",
+        "file": "Fidelity_CS50.pdf"
+      },
+      {
+        "constituentFund": "RetireEasy Fund",
+        "factSheetUrl": "https://www.fidelityinternational.com/legal/documents/HK-zh_en/hffs.HK-zh_en.HK.H-CTEF.pdf",
+        "file": "Fidelity_CTEF.pdf"
+      }
+    ]
+  }
+]
