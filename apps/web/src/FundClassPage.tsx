@@ -1145,31 +1145,43 @@ export function FundClassPage({
               同組比較
             </h2>
             <div className="kw-card">
-              <p>
-                這隻基金的積金局基金類型是 <strong>{comparisonGroup}</strong>
-                。排名只在同一基金類型內進行，不會與其他類型混合。
-              </p>
+              {publication.comparisonGroupFamily === null ? (
+                <p>
+                  積金局平台沒有為這隻基金提供基金類型（平台原文：
+                  {fundClass.fundType || "未提供"}
+                  ），所以不參與任何同組排名或組別平均。
+                </p>
+              ) : (
+                <p>
+                  這隻基金的積金局基金類型是 <strong>{comparisonGroup}</strong>
+                  。排名只在同一基金類型內進行，不會與其他類型混合。
+                </p>
+              )}
               <p className="kw-muted">
                 {`分類來自${publication.classification?.provider ?? "積金局強積金基金平台"}（官方，擷取 ${publication.classification?.capturedAt ?? "日期未記錄"}）；平台英文原文為 ${fundClass.fundType}。`}
                 {fundClass.fundCategory?.trim()
                   ? `受託人自述的基金描述「${fundClass.fundCategory.trim()}」只作參考，不用作分組。`
                   : null}
               </p>
-              <p className="kw-home-actions">
-                <a
-                  className="kw-button"
-                  href={`/rankings?period=1&group=${encodeURIComponent(comparisonGroup)}`}
-                >
-                  查看同組基金排名
-                </a>
-              </p>
+              {publication.comparisonGroupFamily !== null && (
+                <p className="kw-home-actions">
+                  <a
+                    className="kw-button"
+                    href={`/rankings?period=1&group=${encodeURIComponent(comparisonGroup)}`}
+                  >
+                    查看同組基金排名
+                  </a>
+                </p>
+              )}
             </div>
-            <PeerPosition
-              apiBaseUrl={apiBaseUrl}
-              fundClassId={fundClassId}
-              comparisonGroup={comparisonGroup}
-              snapshotId={snapshotId}
-            />
+            {publication.comparisonGroupFamily !== null && (
+              <PeerPosition
+                apiBaseUrl={apiBaseUrl}
+                fundClassId={fundClassId}
+                comparisonGroup={comparisonGroup}
+                snapshotId={snapshotId}
+              />
+            )}
           </section>
           <section className="kw-section" aria-labelledby="fund-fees-title">
             <h2 className="kw-section__heading" id="fund-fees-title">

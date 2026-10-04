@@ -968,6 +968,20 @@ describe("cumulative returns", () => {
     expect(screen.queryByText(/編輯歸類|非官方分類|三桶/)).toBeNull();
   });
 
+  it("tells a fund without an MPFA fund type apart and offers no group ranking", async () => {
+    renderWithDisclosure(undefined, {
+      comparisonGroup: "積金局未提供基金類型",
+      comparisonGroupFamily: null,
+    });
+
+    expect(
+      await screen.findByText(/積金局平台沒有為這隻基金提供基金類型/),
+    ).toBeVisible();
+    expect(
+      screen.queryByRole("link", { name: "查看同組基金排名" }),
+    ).not.toBeInTheDocument();
+  });
+
   it("says so when no fact sheet disclosure pairs with the fund at all", async () => {
     renderWithDisclosure(undefined);
 
