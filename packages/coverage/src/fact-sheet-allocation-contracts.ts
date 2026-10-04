@@ -637,6 +637,20 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       fontColor: ["#ffffff"],
       maxTop: 30,
     },
+    narrative: {
+      // 中銀保誠只披露「投資政策」（包括投資目標），冇基金經理評論；投資經理
+      // 印在封面，屬計劃層面，唔逐隻基金記。註腳上標得 9 pt。
+      investmentObjective: {
+        heading: /^投資政策$/,
+        band: { minLeft: 20, maxLeft: 420 },
+        // 欄底可能緊接行業分類更新註腳及計劃說明書、投資風險聲明。
+        stopAt:
+          /^(\*|此成分基金之|計劃詳情|Please refer to the MPF Scheme Brochure|投資涉及風險|Investment involves risks)/,
+        minFontSize: 12,
+        maxGap: 30,
+        languages: "bilingual",
+      },
+    },
     allocation: {
       // 圓餅圖旁邊的置中標註：中文名、英文名、百分比三段同一個中心 x。
       heading: /^\*? ?Asset Allocation\*?$/,
