@@ -1394,3 +1394,16 @@ table,
   color: var(--kw-muted-strong);
   font-size: 0.85rem;
 }
+.kw-narrative__forecast {
+  margin: 0 0 10px;
+  color: var(--kw-muted-strong);
+  font-size: 0.9rem;
+}
+.kw-narrative__forecast strong {
+  color: var(--kw-ink);
+  font-weight: 600;
+}
+.kw-narrative__forecast small {
+  margin-left: 4px;
+  color: var(--kw-muted);
+}

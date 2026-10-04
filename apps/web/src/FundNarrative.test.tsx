@@ -107,4 +107,19 @@ describe("official narrative block", () => {
       screen.getByText("官方未提供。這份便覽沒有披露這一項。"),
     ).toBeVisible();
   });
+
+  it("shows extra official data such as the market forecast even without commentary", () => {
+    render(
+      <NarrativeBlock
+        id="t"
+        title="最新投資方向"
+        missing="官方未提供。這份便覽沒有披露這一項。"
+        aside={<p>便覽市場預測：Neutral</p>}
+      />,
+    );
+    expect(screen.getByText("便覽市場預測：Neutral")).toBeVisible();
+    expect(
+      screen.getByText("官方未提供。這份便覽沒有披露這一項。"),
+    ).toBeVisible();
+  });
 });

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 
 /** 便覽官方文字欄位（ADR 0012）：原文照錄，中英各一份，唔由本站翻譯補齊。 */
 export type NarrativeText = {
@@ -59,6 +59,7 @@ export function NarrativeBlock({
   date,
   today = new Date(),
   collapsible = false,
+  aside,
 }: {
   id: string;
   title: string;
@@ -70,6 +71,8 @@ export function NarrativeBlock({
   date?: { asOf: string; label: string };
   today?: Date;
   collapsible?: boolean;
+  /** 標題下面的附加資料（例如受託人便覽的市場預測），有冇正文都顯示。 */
+  aside?: ReactNode;
 }) {
   const languages = (["zh", "en"] as const).filter((key) => text?.[key]);
   const [language, setLanguage] = useState<"zh" | "en">(languages[0] ?? "zh");
@@ -83,6 +86,7 @@ export function NarrativeBlock({
       <h2 className="kw-section__heading" id={id}>
         {title}
       </h2>
+      {aside}
       {body ? (
         <div className="kw-narrative__sheet">
           <div className="kw-narrative__meta">

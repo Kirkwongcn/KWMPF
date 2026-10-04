@@ -427,6 +427,35 @@ function narrativeMissing(
   return "未取得：本站暫未抽取這份便覽的文字欄位，可開啟官方便覽查閱。";
 }
 
+/**
+ * 受託人便覽的市場預測（永明：Positive／Neutral／Negative），原文照錄、唔翻譯。
+ * 契約冇聲明呢個欄位的計劃唔顯示；官方印「N/A」就講官方未提供。
+ */
+function MarketForecast({
+  disclosure,
+}: {
+  disclosure: FactSheetDisclosure | undefined;
+}) {
+  const forecast = disclosure?.narrative?.marketForecast;
+  const value = forecast ? (forecast.zh ?? forecast.en) : undefined;
+  if (!value && !disclosure?.unavailableFields.includes("marketForecast")) {
+    return null;
+  }
+  return (
+    <p className="kw-narrative__forecast">
+      便覽市場預測：
+      {value ? (
+        <>
+          <strong lang={forecast?.zh ? "zh-HK" : "en"}>{value}</strong>
+          <small>（受託人原文）</small>
+        </>
+      ) : (
+        "官方未提供"
+      )}
+    </p>
+  );
+}
+
 /** 本站計算：成立至今的整年數。 */
 function yearsSince(launchDate: string, today = new Date()) {
   const [year, month, day] = launchDate.split("-").map(Number);
@@ -708,6 +737,7 @@ export function FundClassPage({
             id="fund-direction-title"
             title="最新投資方向"
             collapsible
+            aside={<MarketForecast disclosure={factSheetDisclosure} />}
             text={factSheetDisclosure?.narrative?.managerCommentary}
             missing={narrativeMissing("managerCommentary", factSheetDisclosure)}
             source={
