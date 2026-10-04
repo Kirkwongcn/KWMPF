@@ -291,7 +291,9 @@ describe("published return rankings", () => {
     );
 
     expect(await screen.findByText(/沒有合資格的十年回報資料/)).toBeVisible();
-    expect(screen.getByLabelText("積金局基金類型")).toHaveValue("Guaranteed Fund");
+    expect(screen.getByLabelText("積金局基金類型")).toHaveValue(
+      "Guaranteed Fund",
+    );
   });
 
   it("falls back to every group when an old link names a retired Lipper or platform category", async () => {
