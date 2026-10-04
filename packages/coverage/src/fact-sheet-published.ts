@@ -51,7 +51,15 @@ export type FactSheetUnavailableKind =
   | "unreadable-layout";
 
 /** 一個披露維度。`heading` 是便覽自己用的標題原文，不是我們改寫的維度名。 */
-export type AllocationEntry = { label: string; percent: number };
+export type AllocationEntry = {
+  label: string;
+  percent: number;
+  /**
+   * 圖上印出的原樣（「28.80%」）。只有由圖表讀出的配置有：`percent` 係數字，會食咗
+   * 尾隨的 0，顯示要用呢個原樣（紅線 1）。
+   */
+  printed?: string;
+};
 export type AllocationDimension = { heading: string; entries: AllocationEntry[] };
 
 /** 官方只列名次同證券名、冇披露持有量時 `percent` 會缺席，唔可以當成 0。 */
@@ -69,6 +77,21 @@ export type OfficialReturnUnavailable = {
 export type FactSheetSource = "trustee" | "mpfa-registry";
 
 /**
+ * 配置由官方圖表讀出（ADR 0013）：便覽只以圖表披露，本站用兩次讀取核對圖上印出的
+ * 數字。網站要標明「由官方圖表讀取」，唔可以當成文字原文抽取。
+ */
+export type AllocationSource = {
+  method: "chart-read";
+  /** 讀圖嗰日（UTC 時間）。 */
+  readAt: string;
+  /** 兩次讀取用咗乜（辨識程式版本、或者便覽文字層）。 */
+  reads: string[];
+  /** 印出數值的合計（本站計算），官方四捨五入未必等於 100。 */
+  total: number;
+  page: number;
+};
+
+/**
  * 讀已發布 payload 用的形狀。標成 optional 的欄位係舊快照冇的（帶來源、帶代號、
  * 文字欄位都係後來先加），讀嘅一方要處理缺席，唔可以假設一定有。
  */
@@ -84,6 +107,8 @@ export type PublishedFactSheetPayload = {
   factSheetAsOf: string;
   temporalScopes?: FactSheetTemporalScopes;
   allocations: AllocationDimension[];
+  /** 配置由官方圖表讀出才有；冇呢一欄即係文字原文抽取。 */
+  allocationSource?: AllocationSource;
   topHoldings: TopHolding[];
   narrative?: FactSheetNarrative;
   /**

@@ -13,6 +13,8 @@ packages/coverage/src/comparison-group.ts
 packages/coverage/src/comparison-group-stats.ts
 packages/coverage/src/build-publication-*.ts
 packages/coverage/src/build-staging-seed.ts
+packages/coverage/src/build-chart-allocations.ts
+scripts/ocr-chart-region.py
 packages/coverage/src/official-return-overlay.ts
 packages/coverage/src/candidate-anomalies.ts
 apps/api/src/comparison-group.ts

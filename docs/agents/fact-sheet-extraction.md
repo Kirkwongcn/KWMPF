@@ -76,8 +76,9 @@ The Fidelity trustee factsheet contract records FER only from the explicit `Year
 （二十三個計劃用受託人官網那期、AMTD 用積金局副本；MASS 佔 14 份、富達佔 23 份）：
 382 隻成分基金中 381 隻配對到，
 310 隻有配置、361 隻有十大持倉。餘下缺口主要是圖表式披露：宏利環球精選的配置畫成條形圖、
-永明畫成圓環圖（受託人版一樣係向量，文字層一個字都冇）、我的強積金的圓餅圖標註共用基線，
-全部走 `unavailableFields` 並寫明原因。
+永明畫成圓環圖（受託人版一樣係嵌入圖像，文字層一個字都冇）、我的強積金的圓餅圖標註共用基線，
+抽取時全部走 `unavailableFields` 並寫明原因；之後再讀圖上印出的數字，兩次讀取一致先合併
+（2026-10-04：54／65 隻，見 `fact-sheet-chart-read.md`、ADR 0013）。
 
 同一條指令加 `--disclosures <fund-fact-sheet-disclosures.json>` 會另出一份披露檔：覆蓋報告
 只收數目，發布要原文，所以兩份各自輸出，不可由報告的數目倒推。披露檔存放在來源批次目錄
