@@ -690,7 +690,18 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       // 印在封面，屬計劃層面，唔逐隻基金記。註腳上標得 9 pt。
       investmentObjective: {
         heading: /^投資政策$/,
-        band: { minLeft: 20, maxLeft: 420 },
+        // 行首的全形括號會凸出欄邊（left≈18），欄界要留位。每行一定由左邊
+        // （left 18–40）開始；人民幣及港元貨幣市場基金的投資政策長，頁底改為中文
+        // 左欄、英文右欄（left≈383）並排，逐行讀會中英交錯，所以見到右邊起行就
+        // 成段報讀唔齊，唔出交錯的文字。
+        band: { minLeft: 10, maxLeft: 420 },
+        columns: [
+          {
+            minLeft: 10,
+            maxLeft: 420,
+            lineStart: { minLeft: 10, maxLeft: 45, otherwise: "fail" },
+          },
+        ],
         // 欄底可能緊接行業分類更新註腳及計劃說明書、投資風險聲明。
         stopAt:
           /^(\*|此成分基金之|計劃詳情|Please refer to the MPF Scheme Brochure|投資涉及風險|Investment involves risks)/,
@@ -876,9 +887,11 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
     },
     narrative: {
       // 投資目標在左欄（left 30–260），右邊同一高度係投資組合分布。冇基金經理評論。
+      // 目標長的基金（2045 退休基金）下面緊接表現表，靠標題停。
       investmentObjective: {
         heading: /^投資目標$/,
         band: { minLeft: 20, maxLeft: 265 },
+        stopAt: /^(累積回報|Cumulative Return)/,
         minFontSize: 10,
         maxGap: 30,
         languages: "bilingual",
@@ -1043,6 +1056,30 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
       maxLeft: 60,
       maxTop: 160,
       name: (text) => text.replace(SHKP_NOTE, "").trim(),
+    },
+    narrative: {
+      // 「Fund Objective 基金投資目標」標題置中，下面英文一段、中文一段，全頁闊。
+      investmentObjective: {
+        heading: /^基金投資目標$/,
+        band: { minLeft: 30, maxLeft: 900 },
+        minFontSize: 11,
+        maxGap: 20,
+        languages: "bilingual",
+      },
+      // 第二頁「評論：市場回顧，市場展望及基金表現」：英文「Market Review and
+      // Outlook」一段，緊接中文「市場回顧及展望」一段，再之後係資料來源、免責聲明
+      // 及備註。中英同頁連續，一個讀取器讀晒，中間的中文標題略過。
+      managerCommentary: {
+        heading: /^Market Review and Outlook$/,
+        band: { minLeft: 30, maxLeft: 900 },
+        // 結束標記係計劃來源行「^Sources: …」（複數；評論內文引用的「Source:
+        // Bloomberg」係單數）、免責聲明或「備註 Notes」（安聯精選均衡基金冇來源行）。
+        // 同一頁見唔到就係評論續落下一頁（宏利保證基金），成段當讀唔齊。
+        endAt: /^(\^?\s*Sources\s*:|Any view or comment|在「評論|Notes\b|備註)/,
+        ignore: /^市場回顧及展望$/,
+        minFontSize: 10,
+        languages: "bilingual",
+      },
     },
     allocation: {
       // 新地披露的是基礎基金而非成分基金本身，標題必須保留這個分別。
