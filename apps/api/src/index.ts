@@ -177,6 +177,7 @@ type FactSheetDisclosure = {
     | "chart-only"
     | "values-without-names"
     | "overlaid-text-layer"
+    | "unreadable-layout"
   >;
 };
 

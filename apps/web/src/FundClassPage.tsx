@@ -126,7 +126,8 @@ type FactSheetUnavailableKind =
   | "not-disclosed"
   | "chart-only"
   | "values-without-names"
-  | "overlaid-text-layer";
+  | "overlaid-text-layer"
+  | "unreadable-layout";
 
 type InterpretationFactor = {
   status:
@@ -396,6 +397,8 @@ const unavailableWording: Record<FactSheetUnavailableKind, string> = {
     "官方以圖表披露。便覽有百分比，但項目名稱畫成圖形而非文字；只列出讀得到的部分會令名單短一截，等同改寫官方披露，所以整項不顯示。",
   "overlaid-text-layer":
     "官方文件無法可靠讀取。便覽的文字層把另一隻基金的同一張表疊印在同一位置，分不清哪個數值屬哪一隻基金。",
+  "unreadable-layout":
+    "官方有披露，但本站未能完整讀取。這段文字在便覽中跨頁或改為中英並排，只顯示讀到的部分等同刪改原文，所以不顯示，請開啟官方便覽查閱。",
 };
 
 function unavailableNote(field: string, disclosure: FactSheetDisclosure) {
@@ -413,9 +416,13 @@ function narrativeMissing(
 ) {
   if (!disclosure) return "未取得：這隻基金未配對到官方便覽。";
   if (disclosure.unavailableFields.includes(field)) {
-    return disclosure.unavailableKinds?.[field] === "overlaid-text-layer"
-      ? "官方文件無法可靠讀取。便覽在同一位置疊印了另一版文字，分不清哪段屬這隻基金，所以不顯示。"
-      : "官方未提供。這份便覽沒有披露這一項。";
+    const kind = disclosure.unavailableKinds?.[field];
+    if (kind === "overlaid-text-layer") {
+      return "官方文件無法可靠讀取。便覽在同一位置疊印了另一版文字，分不清哪段屬這隻基金，所以不顯示。";
+    }
+    if (kind === "unreadable-layout")
+      return unavailableWording["unreadable-layout"];
+    return "官方未提供。這份便覽沒有披露這一項。";
   }
   return "未取得：本站暫未抽取這份便覽的文字欄位，可開啟官方便覽查閱。";
 }
