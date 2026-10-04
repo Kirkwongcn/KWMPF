@@ -1008,6 +1008,33 @@ export const FACT_SHEET_CONTRACTS: FactSheetContract[] = [
     scheme: "MASS Mandatory Provident Fund Scheme",
     source: "trustee",
     ...massBlocks,
+    // 受託人版只有英文。投資目標及投資經理印喺第一頁，基金標題同「Fund Review」
+    // 喺第二頁，一份檔一隻基金，所以文字欄位喺成份檔搵。
+    narrativeScope: "document",
+    narrative: {
+      investmentObjective: {
+        heading: /^Investment Objective$/,
+        band: { minLeft: 20, maxLeft: 900 },
+        stopAt: /^Fund Data/,
+        maxGap: 24,
+        languages: "en",
+      },
+      // 左欄基金資料：「Investment Manager:」下面一至兩行，右邊同一高度係價格表。
+      investmentManager: {
+        heading: /^Investment Manager:$/,
+        band: { minLeft: 20, maxLeft: 220 },
+        maxDepth: 40,
+        maxGap: 18,
+        languages: "en",
+      },
+      managerCommentary: {
+        heading: /^Fund Review$/,
+        band: { minLeft: 20, maxLeft: 900 },
+        stopAt: /^(Fund Performance|[#^]\s)/,
+        maxGap: 30,
+        languages: "en",
+      },
+    },
     asOf: {
       pattern: AS_OF_MONTH_FIRST,
       band: { minLeft: 0, maxLeft: 200 },
