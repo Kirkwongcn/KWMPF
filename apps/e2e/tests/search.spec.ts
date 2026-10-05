@@ -8,7 +8,7 @@ test("首頁顯示同一快照的覆蓋並把搜尋送往基金瀏覽", async ({
   await expect(coverage).toContainText("451");
   await expect(coverage).toContainText("24");
   await expect(coverage).toContainText(/資料截至\s*\d{4}-\d{2}-\d{2}/);
-  await page.getByLabel("搜尋基金、計劃或受託人").fill("BCT");
+  await page.getByLabel(/輸入基金、計劃或受託人名稱/).fill("BCT");
   await page.getByRole("button", { name: "搜尋基金" }).click();
   await expect(page).toHaveURL(/\/funds\?q=BCT/);
   const rows = page.locator("table.kw-table tbody tr");
@@ -40,18 +40,24 @@ test("中文別名、分頁及並列比較可一起使用", async ({ page }) => 
   const rows = page.locator("table.kw-table tbody tr");
   await expect(rows).toHaveCount(50);
   const firstId = await rows.first().locator("th a").getAttribute("href");
-  await rows.first().getByRole("checkbox").check();
+  await rows
+    .first()
+    .getByRole("button", { name: /^加入比較：/ })
+    .click();
   await page.getByRole("button", { name: "下一頁" }).click();
   await expect(page).toHaveURL(/page=2/);
   await expect(rows).toHaveCount(27);
   expect(await rows.first().locator("th a").getAttribute("href")).not.toBe(
     firstId,
   );
-  await rows.first().getByRole("checkbox").check();
-  await page.getByRole("link", { name: "並列比較" }).click();
-  await expect(
-    page.getByRole("heading", { name: "基金並列比較" }),
-  ).toBeVisible();
+  await rows
+    .first()
+    .getByRole("button", { name: /^加入比較：/ })
+    .click();
+  const tray = page.getByRole("complementary", { name: "比較清單" });
+  await expect(tray).toContainText("已選 2/4");
+  await tray.getByRole("link", { name: "並列比較" }).click();
+  await expect(page.getByRole("heading", { name: "比較基金" })).toBeVisible();
   await expect(
     page.getByRole("table", { name: "原始數值與來源（過期值仍保留）" }),
   ).toBeVisible();

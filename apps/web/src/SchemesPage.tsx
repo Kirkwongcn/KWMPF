@@ -3,6 +3,8 @@ import { SiteChrome } from "./SiteChrome";
 import { matchesSearch } from "../../api/src/search";
 import { fundClassLabel, joinFundParts } from "./fundClassLabel";
 import { SchemeOverview } from "./SchemeOverview";
+import { compareUrl } from "./SchemeComparePage";
+import { formatDerived } from "./Charts";
 
 type SchemeFund = {
   id: string;
@@ -22,10 +24,19 @@ type SchemeFund = {
   >;
 };
 
+type FeeSummary = {
+  min: number;
+  median: number;
+  max: number;
+  fundCount: number;
+};
+
 type Scheme = {
   schemeName: string;
   trusteeName: string;
   fundClassCount: number;
+  categories?: string[];
+  latestFer?: FeeSummary | null;
   fundTypes: string[];
   riskClassDistribution: Record<string, number>;
   managementFee: {
@@ -89,6 +100,138 @@ function dataAsOfLabel(dataAsOf: Scheme["dataAsOf"]) {
 }
 
 const COMPARE_LIMIT = 4;
+
+type OverviewSort = "name" | "funds" | "types" | "fee" | "fer";
+
+/** 計劃一覽：一行一個計劃，撳表頭排序；中位數係本站按官方數值計算。 */
+function SchemeTable({
+  schemes,
+  selected,
+  atLimit,
+  onToggle,
+}: {
+  schemes: Scheme[];
+  selected: string[];
+  atLimit: boolean;
+  onToggle: (schemeName: string) => void;
+}) {
+  const [sort, setSort] = useState<OverviewSort>("name");
+  const [descending, setDescending] = useState(false);
+  const valueOf = (scheme: Scheme): number | string | undefined =>
+    sort === "name"
+      ? scheme.schemeName
+      : sort === "funds"
+        ? scheme.fundClassCount
+        : sort === "types"
+          ? (scheme.categories?.length ?? undefined)
+          : sort === "fee"
+            ? scheme.managementFee?.median
+            : scheme.latestFer?.median;
+  const rows = [...schemes].sort((a, b) => {
+    const left = valueOf(a),
+      right = valueOf(b);
+    if (left === undefined || right === undefined)
+      return left === undefined ? (right === undefined ? 0 : 1) : -1;
+    const order =
+      typeof left === "string"
+        ? left.localeCompare(String(right))
+        : left - (right as number);
+    return descending ? -order : order;
+  });
+  const header = (key: OverviewSort, label: string, numeric = true) => {
+    const active = sort === key;
+    return (
+      <th
+        scope="col"
+        className={numeric ? "kw-num" : undefined}
+        aria-sort={
+          active ? (descending ? "descending" : "ascending") : undefined
+        }
+      >
+        <button
+          type="button"
+          className={`kw-sort${active ? " is-active" : ""}`}
+          onClick={() => {
+            if (active) setDescending(!descending);
+            else {
+              setSort(key);
+              setDescending(key === "funds" || key === "types");
+            }
+          }}
+        >
+          {label}
+          <span className="kw-sort__arrow" aria-hidden="true">
+            {active ? (descending ? "▼" : "▲") : "↕"}
+          </span>
+        </button>
+      </th>
+    );
+  };
+  const range = (fee: FeeSummary | null | undefined) =>
+    fee ? (
+      <>
+        {formatDerived(fee.median)}
+        <small>{`${fee.min}% – ${fee.max}%`}</small>
+      </>
+    ) : (
+      "—"
+    );
+  return (
+    <div
+      className="kw-table-wrap kw-scheme-table-wrap"
+      tabIndex={0}
+      role="region"
+      aria-label="計劃一覽"
+    >
+      <table className="kw-table kw-scheme-table">
+        <caption>
+          計劃一覽（勾選最多 {COMPARE_LIMIT} 個計劃比較；中位數為本站計算）
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">
+              <span className="kw-visually-hidden">選取比較</span>
+            </th>
+            {header("name", "計劃／受託人", false)}
+            {header("funds", "基金數目")}
+            {header("types", "涵蓋基金類型")}
+            {header("fee", "管理費中位數")}
+            {header("fer", "開支比率中位數")}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((scheme) => {
+            const checked = selected.includes(scheme.schemeName);
+            return (
+              <tr
+                key={scheme.schemeName}
+                className={checked ? "is-selected" : undefined}
+              >
+                <td>
+                  <input
+                    type="checkbox"
+                    aria-label={`選取 ${scheme.schemeName} 作比較`}
+                    checked={checked}
+                    disabled={atLimit && !checked}
+                    onChange={() => onToggle(scheme.schemeName)}
+                  />
+                </td>
+                <th scope="row">
+                  {scheme.schemeName}
+                  <small>{scheme.trusteeName}</small>
+                </th>
+                <td className="kw-num">{scheme.fundClassCount}</td>
+                <td className="kw-num">{scheme.categories?.length ?? "—"}</td>
+                <td className="kw-num">{range(scheme.managementFee)}</td>
+                <td className="kw-num">{range(scheme.latestFer)}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+}
 
 export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
   const [schemes, setSchemes] = useState<Scheme[] | null>(null);
@@ -180,10 +323,7 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
   }, [sortedSchemes, searchQuery]);
 
   const atLimit = selected.length >= COMPARE_LIMIT;
-  const compareHref =
-    selected.length === 0
-      ? undefined
-      : `/schemes/compare?ids=${selected.map(encodeURIComponent).join(",")}`;
+  const compareHref = selected.length === 0 ? undefined : compareUrl(selected);
 
   function toggleScheme(schemeName: string) {
     setSelected((current) => {
@@ -198,7 +338,7 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
     <SiteChrome
       current="schemes"
       eyebrow="香港強積金比較"
-      title="強積金計劃比較"
+      title="比較計劃"
       subtitle="只統計同一發布快照內已核實的基金類別；每項統計均可追查至基金詳情。"
     >
       <section className="kw-section" aria-labelledby="schemes-title">
@@ -320,7 +460,15 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
           </p>
         )}
         {filteredSchemes && filteredSchemes.length > 0 && (
-          <SchemeOverview schemes={filteredSchemes} />
+          <>
+            <SchemeTable
+              schemes={filteredSchemes}
+              selected={selected}
+              atLimit={atLimit}
+              onToggle={toggleScheme}
+            />
+            <SchemeOverview schemes={filteredSchemes} />
+          </>
         )}
         <div className="kw-grid scheme-list">
           {filteredSchemes?.map((scheme) => {

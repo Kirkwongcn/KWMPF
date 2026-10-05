@@ -18,13 +18,26 @@ async function readRows(page: Page): Promise<Row[]> {
   return Promise.all(
     (await rows.all()).map(async (row) => {
       const cells = await row.locator("td").allTextContents();
+      // 欄位：名次、比較掣、基金、數值、積金局基金類型、截至日期、來源。
       return {
         rank: numeric(cells[0]!),
-        value: numeric(cells[2]!),
-        group: cells[3]!.trim(),
+        value: numeric(cells[3]!),
+        group: cells[4]!.trim(),
       };
     }),
   );
+}
+
+// 未揀類型時排名頁先列出積金局基金類型；揀合資格基金最多的一個。
+async function pickLargestType(page: Page) {
+  const buttons = page.locator(".kw-type-picker button");
+  await expect(buttons.first()).toBeVisible();
+  const counts = await buttons.locator("strong").allTextContents();
+  const largest = counts
+    .map((text, index) => ({ count: Number(text), index }))
+    .sort((a, b) => b.count - a.count)[0]!;
+  await buttons.nth(largest.index).click();
+  await expect(page).toHaveURL(/group=/);
 }
 
 async function expectHonestEmptyReturnState(page: Page, period: string) {
@@ -70,6 +83,11 @@ function rankingResponseFor(
 
 test("回報排名按比較組別排序，過期資料會明確剔除", async ({ page }) => {
   await page.goto("/rankings");
+  await expect(
+    page.getByRole("heading", { name: "先揀一個積金局基金類型" }),
+  ).toBeVisible();
+  await expect(page.locator("table.kw-table tbody tr")).toHaveCount(0);
+  await pickLargestType(page);
 
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
     "一年回報排名",
@@ -101,6 +119,7 @@ function groupBy(rows: Row[]) {
 
 test("排名列出官方截至日期及來源，空排名會交代過期原因", async ({ page }) => {
   await page.goto("/rankings");
+  await pickLargestType(page);
 
   const rows = await readRows(page);
   if (rows.length === 0) {
@@ -109,7 +128,7 @@ test("排名列出官方截至日期及來源，空排名會交代過期原因",
   }
 
   const firstRow = page.locator("table.kw-table tbody tr").first();
-  await expect(firstRow.locator("td").nth(4)).toHaveText(/^\d{4}-\d{2}-\d{2}$/);
+  await expect(firstRow.locator("td").nth(5)).toHaveText(/^\d{4}-\d{2}-\d{2}$/);
   await expect(
     firstRow.getByRole("link", { name: /官方來源$/ }),
   ).toHaveAttribute("href", /^https?:\/\//);
@@ -117,6 +136,7 @@ test("排名列出官方截至日期及來源，空排名會交代過期原因",
 
 test("切換回報期間會更新排名，或說明沒有合資格資料", async ({ page }) => {
   await page.goto("/rankings");
+  await pickLargestType(page);
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
     "一年回報排名",
   );
@@ -140,7 +160,7 @@ test("切換回報期間會更新排名，或說明沒有合資格資料", async
       page.getByRole("columnheader", { name: "一年回報" }),
     ).toHaveCount(0);
     await expect(
-      page.locator("table.kw-table tbody tr").first().locator("td").nth(4),
+      page.locator("table.kw-table tbody tr").first().locator("td").nth(5),
     ).toHaveText(/^\d{4}-\d{2}-\d{2}$/);
   }
 
@@ -162,7 +182,7 @@ test("切換回報期間會更新排名，或說明沒有合資格資料", async
       page.getByRole("columnheader", { name: "一年回報" }),
     ).toHaveCount(0);
     await expect(
-      page.locator("table.kw-table tbody tr").first().locator("td").nth(4),
+      page.locator("table.kw-table tbody tr").first().locator("td").nth(5),
     ).toHaveText(/^\d{4}-\d{2}-\d{2}$/);
   }
 });
@@ -173,6 +193,7 @@ test("切換至管理費指標會改為由低至高排序，並隱藏回報期�
   const feeResponse = rankingResponseFor(page, "metric", "fee");
   await page.getByLabel("排序指標").selectOption("fee");
   await feeResponse;
+  await pickLargestType(page);
 
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
     "管理費排名",
@@ -206,6 +227,7 @@ test("切換至管理費指標會改為由低至高排序，並隱藏回報期�
 
 test("選擇比較組別後，只保留同組基金", async ({ page }) => {
   await page.goto("/rankings?metric=fee");
+  await pickLargestType(page);
 
   const rows = page.locator("table.kw-table tbody tr");
   const allRows = await readRows(page);
@@ -223,13 +245,19 @@ test("選擇比較組別後，只保留同組基金", async ({ page }) => {
     return;
   }
   expect(allRows.length).toBeGreaterThan(0);
-  const group = allRows[0]!.group;
+  for (const row of allRows) expect(row.group).toBe(allRows[0]!.group);
 
-  await page.getByLabel("積金局基金類型").selectOption(group);
+  // 轉去另一個類型，表內只剩該類型基金。
+  const select = page.getByLabel("積金局基金類型");
+  const group = (await select.locator("option").allTextContents())
+    .map((text) => text.trim())
+    .find((text) => text !== allRows[0]!.group && !text.startsWith("全部"))!;
+  await select.selectOption(group);
+  await expect(page).toHaveURL(/group=/);
 
-  await expect(rows.first()).toBeVisible();
   const filtered = await readRows(page);
-  expect(filtered.length).toBeGreaterThan(0);
+  if (filtered.length === 0) return;
+  await expect(rows.first()).toBeVisible();
   for (const row of filtered) {
     expect(row.group).toBe(group);
   }
@@ -239,6 +267,7 @@ test("選擇比較組別後，只保留同組基金", async ({ page }) => {
 test("窄螢幕排名表可用左右方向鍵橫向捲動", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 780 });
   await page.goto("/rankings?metric=return&period=3");
+  await pickLargestType(page);
 
   const tableRegion = page.getByRole("region", { name: "基金排名結果" });
   await expect(tableRegion).toBeVisible();

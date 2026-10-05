@@ -176,7 +176,7 @@ function IndexSection({ returns }: { returns: RankingRow[] }) {
   return (
     <section className="kw-sheet kw-sheet--index" aria-labelledby="index-title">
       <header className="kw-sheet__head">
-        <h2 id="index-title">圖幅索引</h2>
+        <h2 id="index-title">各類基金一年回報分布</h2>
         <p>
           按積金局基金類型逐行列出一年回報。每點一隻基金類別，金色短線為該類型中位數（本站計算）；點類型名稱打開同類排名。
         </p>
@@ -187,10 +187,15 @@ function IndexSection({ returns }: { returns: RankingRow[] }) {
 }
 
 const contents = [
-  ["基金瀏覽", "按名稱、受託人、積金局基金類型找出你持有的基金", "/funds"],
-  ["基金排名", "只在同一積金局基金類型內比較回報、波幅與費用", "/rankings"],
-  ["計劃比較", "並列最多四個計劃的基金數目、風險級別與收費", "/schemes"],
-  ["資料時效及覆蓋", "每個期間有多少可排名、過期或未取得", "/data-status"],
+  ["搵基金", "按名稱、受託人、積金局基金類型篩選，撳欄位排序", "/funds"],
+  ["同類排名", "只在同一積金局基金類型內比較回報、波幅與費用", "/rankings"],
+  [
+    "比較基金",
+    "最多四隻基金並列：回報、曆年表現、波幅及收費",
+    "/funds/compare",
+  ],
+  ["比較計劃", "計劃一覽、收費範圍，以及各計劃同類基金對照", "/schemes"],
+  ["資料說明", "每個期間有多少可排名、過期或未取得", "/data-status"],
   ["比較方法與來源", "截至日期規則、本站計算的定義及限制", "/methodology"],
 ] as const;
 
@@ -236,8 +241,8 @@ export function App({ apiUrl }: { apiUrl: string }) {
               role="search"
             >
               <label htmlFor="fund-search">
-                <span className="kw-gazetteer__name">地名索引</span>
-                搜尋基金、計劃或受託人
+                <span className="kw-gazetteer__name">搵基金</span>
+                輸入基金、計劃或受託人名稱
               </label>
               <div>
                 <input
@@ -257,6 +262,8 @@ export function App({ apiUrl }: { apiUrl: string }) {
               <p className="kw-plate__shortcuts">
                 <a href="/funds">瀏覽全部基金</a>
                 <a href="/rankings">按積金局基金類型比較</a>
+                <a href="/funds/compare">並列比較基金</a>
+                <a href="/schemes">比較計劃／受託人</a>
               </p>
             </form>
             <figure className="kw-plate__photo">
@@ -354,7 +361,7 @@ export function App({ apiUrl }: { apiUrl: string }) {
           aria-labelledby="survey-title"
         >
           <header className="kw-sheet__head">
-            <h2 id="survey-title">測量紀錄</h2>
+            <h2 id="survey-title">資料覆蓋</h2>
             <p>
               過期與未取得分開計算：過期數值仍在基金頁保留原值，但不入圖、不排名。
             </p>
@@ -382,7 +389,7 @@ export function App({ apiUrl }: { apiUrl: string }) {
         </section>
         <nav className="kw-sheet kw-contents" aria-labelledby="contents-title">
           <header className="kw-sheet__head">
-            <h2 id="contents-title">圖冊目錄</h2>
+            <h2 id="contents-title">網站功能</h2>
           </header>
           <ol>
             {contents.map(([title, text, href]) => (

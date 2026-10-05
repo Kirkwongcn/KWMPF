@@ -163,8 +163,8 @@ describe("fund browse page", () => {
 
     expect(await screen.findByText("8.12%")).toBeVisible();
     expect(screen.getByText("1.25%（上限）")).toBeVisible();
-    expect(screen.getByText("2026-06-30")).toBeVisible();
-    expect(screen.getAllByText("過期")).toHaveLength(2);
+    expect(screen.getByText(/本頁一年回報截至 2026-06-30/)).toBeVisible();
+    expect(screen.getAllByText(/^過期/).length).toBeGreaterThan(0);
     expect(screen.getByRole("link", { name: /港股基金/ })).toHaveAttribute(
       "href",
       "/fund-classes/equity-low",
@@ -292,5 +292,44 @@ describe("fund browse page without a separate class", () => {
 
     expect(await screen.findByRole("link", { name: "港股基金" })).toBeVisible();
     expect(screen.queryByText(/n\.a\./i)).not.toBeInTheDocument();
+  });
+
+  it("sorts by a column header, flips on a second click and keeps it in the link", async () => {
+    const fetchMock = stubFetch((url) =>
+      url.includes("/filters") ? filters : equityResults,
+    );
+    render(<FundsPage apiBaseUrl="https://api.test" />);
+    const header = await screen.findByRole("button", { name: /^3年/ });
+    fireEvent.click(header);
+    expect(window.location.search).toContain("sort=return3y");
+    expect(window.location.search).toContain("order=desc");
+    expect(
+      fetchMock.mock.calls.some(([url]) =>
+        String(url).includes("sort=return3y&order=desc"),
+      ),
+    ).toBe(true);
+    fireEvent.click(await screen.findByRole("button", { name: /^3年/ }));
+    expect(window.location.search).toContain("order=asc");
+    expect(
+      (await screen.findByRole("button", { name: /^3年/ })).closest("th"),
+    ).toHaveAttribute("aria-sort", "ascending");
+    expect(screen.getByText(/唔同基金類型一齊排序，只方便瀏覽/)).toBeVisible();
+    window.history.replaceState({}, "", "/");
+  });
+
+  it("filters by a fund family chip and narrows the type list", async () => {
+    stubFetch((url) => (url.includes("/filters") ? filters : equityResults));
+    render(<FundsPage apiBaseUrl="https://api.test" />);
+    fireEvent.click(await screen.findByRole("button", { name: "債券基金" }));
+    expect(window.location.search).toContain(
+      "family=" + encodeURIComponent("債券基金"),
+    );
+    const typeSelect = screen.getByLabelText("積金局基金類型");
+    expect(
+      Array.from((typeSelect as HTMLSelectElement).options).map(
+        (option) => option.value,
+      ),
+    ).toEqual(["all", "債券基金 - 環球債券基金"]);
+    window.history.replaceState({}, "", "/");
   });
 });

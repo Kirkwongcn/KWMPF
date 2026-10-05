@@ -157,7 +157,7 @@ describe("fund class page", () => {
     expect(
       screen.getByRole("navigation", { name: "主要導覽" }),
     ).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "計劃比較" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "比較計劃" })).toHaveAttribute(
       "href",
       "/schemes",
     );

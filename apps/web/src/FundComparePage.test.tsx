@@ -1,4 +1,10 @@
-import { render, screen, cleanup, within } from "@testing-library/react";
+import {
+  render,
+  screen,
+  cleanup,
+  within,
+  fireEvent,
+} from "@testing-library/react";
 import { afterEach, describe, it, expect, vi } from "vitest";
 import { FundComparePage } from "./FundComparePage";
 const fund = {
@@ -26,6 +32,7 @@ const fund = {
 afterEach(() => {
   cleanup();
   vi.unstubAllGlobals();
+  localStorage.clear();
   window.history.replaceState({}, "", "/");
 });
 describe("fund comparison", () => {
@@ -70,5 +77,91 @@ describe("fund comparison", () => {
     render(<FundComparePage apiBaseUrl="https://api.test" />);
     expect(screen.getByText(/請在基金瀏覽頁選取/)).toBeVisible();
     expect(fetch).not.toHaveBeenCalled();
+  });
+  it("marks highest and lowest only when every fund shares one MPFA type", async () => {
+    const make = (name: string, group: string, oneYear: number) => ({
+      ...fund,
+      comparisonGroup: group,
+      fundClass: {
+        ...fund.fundClass,
+        constituentFundName: name,
+        annualizedReturn1y: oneYear,
+      },
+    });
+    window.history.replaceState({}, "", "/funds/compare?ids=a,b");
+    vi.stubGlobal(
+      "fetch",
+      vi.fn((url: string) =>
+        Promise.resolve(
+          Response.json(
+            url.endsWith("/a")
+              ? make("Fund A", "Group A", 4.5)
+              : make("Fund B", "Group A", 2.25),
+          ),
+        ),
+      ),
+    );
+    render(<FundComparePage apiBaseUrl="https://api.test" />);
+    const table = await screen.findByRole("table", {
+      name: "原始數值與來源（過期值仍保留）",
+    });
+    expect(within(table).getByText("最高")).toBeVisible();
+    expect(within(table).getByText("最低")).toBeVisible();
+    cleanup();
+
+    window.history.replaceState({}, "", "/funds/compare?ids=a,b");
+    vi.stubGlobal(
+      "fetch",
+      vi.fn((url: string) =>
+        Promise.resolve(
+          Response.json(
+            url.endsWith("/a")
+              ? make("Fund A", "Group A", 4.5)
+              : make("Fund B", "Group B", 2.25),
+          ),
+        ),
+      ),
+    );
+    render(<FundComparePage apiBaseUrl="https://api.test" />);
+    const mixed = await screen.findByRole("table", {
+      name: "原始數值與來源（過期值仍保留）",
+    });
+    expect(within(mixed).queryByText("最高")).toBeNull();
+    expect(screen.getByText(/不同積金局基金類型/)).toBeVisible();
+  });
+  it("lets the reader add a fund from the page when nothing is selected", async () => {
+    window.history.replaceState({}, "", "/funds/compare");
+    vi.stubGlobal(
+      "fetch",
+      vi.fn((url: string) =>
+        Promise.resolve(
+          Response.json(
+            url.includes("/search")
+              ? [
+                  {
+                    id: "a",
+                    constituentFundName: "Fund A",
+                    fundClassName: "Class A",
+                    schemeName: "Scheme A",
+                    comparisonGroup: "Group A",
+                  },
+                ]
+              : fund,
+          ),
+        ),
+      ),
+    );
+    render(<FundComparePage apiBaseUrl="https://api.test" />);
+    expect(screen.getByText(/未揀基金/)).toBeVisible();
+    fireEvent.change(screen.getByLabelText("加入基金"), {
+      target: { value: "Fund" },
+    });
+    fireEvent.click(await screen.findByRole("button", { name: "加入" }));
+    expect(window.location.search).toBe("?ids=a");
+    expect(
+      await screen.findByRole("table", {
+        name: "原始數值與來源（過期值仍保留）",
+      }),
+    ).toBeVisible();
   });
 });

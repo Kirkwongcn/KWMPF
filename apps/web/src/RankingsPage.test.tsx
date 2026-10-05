@@ -1,4 +1,10 @@
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  within,
+} from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { RankingsPage } from "./RankingsPage";
 
@@ -62,9 +68,22 @@ describe("published return rankings", () => {
     expect(
       await screen.findByRole("heading", { name: "一年回報排名" }),
     ).toBeVisible();
+    // 未揀類型時先揀積金局基金類型，唔會將唔同類型混埋一張排名表。
+    expect(
+      await screen.findByRole("heading", { name: "先揀一個積金局基金類型" }),
+    ).toBeVisible();
+    expect(screen.queryByText("North America Fund")).not.toBeInTheDocument();
+    fireEvent.click(
+      screen.getByRole("button", { name: /Equity Fund \(North America\)/ }),
+    );
+    expect(window.location.search).toContain("group=");
     expect(await screen.findByText("North America Fund")).toBeVisible();
-    expect(screen.getByText("17.21%")).toBeVisible();
-    expect(screen.getAllByText("2026-07-31")).toHaveLength(2);
+    expect(
+      within(screen.getByRole("region", { name: "基金排名結果" })).getByText(
+        "17.21%",
+      ),
+    ).toBeVisible();
+    expect(screen.getAllByText("2026-07-31")).toHaveLength(1);
     expect(
       screen.getByRole("link", { name: "查看 North America Fund 詳情" }),
     ).toHaveAttribute("href", "/fund-classes/fund-a");
@@ -148,7 +167,12 @@ describe("published return rankings", () => {
     });
     vi.stubGlobal("fetch", fetchMock);
 
-    render(<RankingsPage apiBaseUrl="https://api.test" />);
+    render(
+      <RankingsPage
+        apiBaseUrl="https://api.test"
+        initialComparisonGroup="Equity Fund (North America)"
+      />,
+    );
 
     expect(await screen.findByText("17.21%")).toBeVisible();
     expect(fetchMock).toHaveBeenCalledWith(
@@ -161,7 +185,9 @@ describe("published return rankings", () => {
     });
 
     expect(await screen.findByText("8.40%")).toBeVisible();
-    expect(window.location.search).toBe("?period=3");
+    expect(window.location.search).toBe(
+      "?period=3&group=Equity+Fund+%28North+America%29",
+    );
     expect(
       await screen.findByRole("heading", { name: "三年回報排名" }),
     ).toBeVisible();
@@ -346,7 +372,7 @@ describe("published return rankings", () => {
       ),
     ).toBeVisible();
     expect(screen.getByLabelText("積金局基金類型")).toHaveValue("all");
-    expect(screen.getByText("港股基金")).toBeVisible();
+    expect(screen.getByRole("button", { name: /香港股票基金/ })).toBeVisible();
     expect(screen.getByText(/類型來自.*（擷取 2026-10-04）/)).toBeVisible();
   });
 
@@ -435,7 +461,12 @@ describe("published return rankings", () => {
       );
     vi.stubGlobal("fetch", fetchMock);
 
-    render(<RankingsPage apiBaseUrl="https://api.test" />);
+    render(
+      <RankingsPage
+        apiBaseUrl="https://api.test"
+        initialComparisonGroup="Equity Fund (North America)"
+      />,
+    );
 
     expect(await screen.findByText("17.21%")).toBeVisible();
 
@@ -463,7 +494,13 @@ describe("published return rankings", () => {
       );
     vi.stubGlobal("fetch", fetchMock);
 
-    render(<RankingsPage apiBaseUrl="https://api.test" initialMetric="risk" />);
+    render(
+      <RankingsPage
+        apiBaseUrl="https://api.test"
+        initialComparisonGroup="Equity Fund (North America)"
+        initialMetric="risk"
+      />,
+    );
 
     expect(await screen.findByText("4.70%")).toBeVisible();
     expect(fetchMock).toHaveBeenCalledWith(
@@ -486,14 +523,28 @@ describe("published return rankings", () => {
       vi.fn().mockImplementation(() => Promise.resolve(metricResponse("fee"))),
     );
 
-    render(<RankingsPage apiBaseUrl="https://api.test" initialMetric="fee" />);
+    render(
+      <RankingsPage
+        apiBaseUrl="https://api.test"
+        initialComparisonGroup="Equity Fund (North America)"
+        initialMetric="fee"
+      />,
+    );
 
     expect(
       await screen.findByRole("cell", { name: "0.65%（上限）" }),
     ).toBeVisible();
     expect(
       screen.getAllByRole("columnheader").map((cell) => cell.textContent),
-    ).toEqual(["名次", "基金", "管理費", "積金局基金類型", "截至日期", "來源"]);
+    ).toEqual([
+      "名次",
+      "比較",
+      "基金",
+      "管理費",
+      "積金局基金類型",
+      "截至日期",
+      "來源",
+    ]);
   });
 
   it("keeps the return metric link format unchanged", async () => {
@@ -502,7 +553,12 @@ describe("published return rankings", () => {
       .mockImplementation(() => Promise.resolve(metricResponse("return")));
     vi.stubGlobal("fetch", fetchMock);
 
-    render(<RankingsPage apiBaseUrl="https://api.test" />);
+    render(
+      <RankingsPage
+        apiBaseUrl="https://api.test"
+        initialComparisonGroup="Equity Fund (North America)"
+      />,
+    );
 
     expect(await screen.findByText("17.21%")).toBeVisible();
     expect(fetchMock).toHaveBeenCalledWith(
@@ -551,7 +607,12 @@ describe("ranked funds without a separate class", () => {
       ),
     );
 
-    render(<RankingsPage apiBaseUrl="https://api.test" />);
+    render(
+      <RankingsPage
+        apiBaseUrl="https://api.test"
+        initialComparisonGroup="Equity Fund (North America)"
+      />,
+    );
 
     expect(await screen.findByText("Scheme One")).toBeVisible();
     expect(screen.queryByText(/n\.a\./i)).not.toBeInTheDocument();

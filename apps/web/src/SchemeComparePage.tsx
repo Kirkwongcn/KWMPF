@@ -3,6 +3,186 @@ import { SiteChrome } from "./SiteChrome";
 import { ValueBars } from "./DataCharts";
 import { RangeChart, type RangeRow } from "./Charts";
 import { useViewMode } from "./viewMode";
+import { fundClassLabel, joinFundParts } from "./fundClassLabel";
+
+type LineupFund = {
+  id: string;
+  constituentFundName: string;
+  fundClassName: string;
+  comparisonGroup: string;
+  annualizedReturn1y?: number;
+  latestFer?: number;
+  returnsFreshness?: Record<string, { status: string; dataAsOf: string }>;
+};
+
+type LineupScheme = {
+  schemeName: string;
+  trusteeName: string;
+  funds: LineupFund[];
+};
+
+// 只用嚟排次序；官方大類係類型名稱「大類 - 細類」嘅前半，兩個貨幣市場大類各自獨立。
+const LINEUP_FAMILY_ORDER = [
+  "股票基金",
+  "混合資產基金",
+  "債券基金",
+  "保證基金",
+  "貨幣市場基金 — 強積金保守基金",
+  "貨幣市場基金 — 不包括強積金保守基金",
+];
+
+function familyRank(group: string) {
+  const index = LINEUP_FAMILY_ORDER.indexOf(group.split(" - ")[0] ?? group);
+  return index === -1 ? LINEUP_FAMILY_ORDER.length : index;
+}
+
+export function compareUrl(names: string[]) {
+  return names.length === 0
+    ? "/schemes/compare"
+    : `/schemes/compare?ids=${names.map(encodeURIComponent).join(",")}`;
+}
+
+/** 加入／移除計劃：喺比較頁直接改，唔使返去概覽頁。 */
+function SchemePicker({
+  all,
+  selected,
+}: {
+  all: LineupScheme[] | null;
+  selected: string[];
+}) {
+  const available = (all ?? [])
+    .map((scheme) => scheme.schemeName)
+    .filter((name) => !selected.includes(name))
+    .sort((a, b) => a.localeCompare(b));
+  return (
+    <div className="kw-scheme-picker">
+      <ul aria-label="已選計劃">
+        {selected.map((name) => (
+          <li key={name}>
+            <span>{name}</span>
+            <a
+              href={compareUrl(selected.filter((item) => item !== name))}
+              aria-label={`移除：${name}`}
+            >
+              ×
+            </a>
+          </li>
+        ))}
+      </ul>
+      {selected.length < 4 && all && all.length > 0 && (
+        <p className="kw-field">
+          <label htmlFor="scheme-add">加入計劃</label>
+          <select
+            id="scheme-add"
+            className="kw-control"
+            value=""
+            onChange={(event) => {
+              if (event.target.value)
+                window.location.assign(
+                  compareUrl([...selected, event.target.value]),
+                );
+            }}
+          >
+            <option value="">揀一個計劃…</option>
+            {available.map((name) => (
+              <option key={name} value={name}>
+                {name}
+              </option>
+            ))}
+          </select>
+        </p>
+      )}
+    </div>
+  );
+}
+
+/** 同類基金對照：每行一個積金局基金類型，列出各計劃喺該類型提供的基金。 */
+function LineupMatrix({ schemes }: { schemes: LineupScheme[] }) {
+  const groups = [
+    ...new Set(
+      schemes.flatMap((scheme) =>
+        scheme.funds.map((fund) => fund.comparisonGroup),
+      ),
+    ),
+  ].sort((a, b) => familyRank(a) - familyRank(b) || a.localeCompare(b));
+  return (
+    <div
+      className="kw-table-wrap kw-lineup-wrap"
+      tabIndex={0}
+      role="region"
+      aria-label="同類基金對照表"
+    >
+      <table className="kw-table kw-lineup">
+        <thead>
+          <tr>
+            <th scope="col">積金局基金類型</th>
+            {schemes.map((scheme) => (
+              <th scope="col" key={scheme.schemeName}>
+                {scheme.schemeName}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {groups.map((group) => (
+            <tr key={group}>
+              <th scope="row">{group}</th>
+              {schemes.map((scheme) => {
+                const funds = scheme.funds.filter(
+                  (fund) => fund.comparisonGroup === group,
+                );
+                return (
+                  <td key={scheme.schemeName}>
+                    {funds.length === 0 ? (
+                      <span className="kw-lineup__none">沒有此類基金</span>
+                    ) : (
+                      <ul>
+                        {funds.map((fund) => {
+                          const freshness = fund.returnsFreshness?.["1"];
+                          return (
+                            <li key={fund.id}>
+                              <a
+                                href={`/fund-classes/${encodeURIComponent(fund.id)}`}
+                              >
+                                {joinFundParts(
+                                  fund.constituentFundName,
+                                  fundClassLabel(fund.fundClassName),
+                                )}
+                              </a>
+                              <span className="kw-lineup__figures">
+                                <span>
+                                  1年{" "}
+                                  {typeof fund.annualizedReturn1y === "number"
+                                    ? `${fund.annualizedReturn1y}%`
+                                    : "—"}
+                                  {freshness?.status === "stale" && (
+                                    <span className="kw-data-state kw-data-state--stale">
+                                      過期
+                                    </span>
+                                  )}
+                                </span>
+                                <span>
+                                  開支比率{" "}
+                                  {typeof fund.latestFer === "number"
+                                    ? `${fund.latestFer}%`
+                                    : "—"}
+                                </span>
+                              </span>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
 
 type DisObservation = {
   value: number | null;
@@ -273,6 +453,29 @@ export function SchemeComparePage({
   const [result, setResult] = useState<CompareResponse | null>(null);
   const [failed, setFailed] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [schemeList, setSchemeList] = useState<LineupScheme[] | null>(null);
+
+  useEffect(() => {
+    if (ids.length === 0) return;
+    const controller = new AbortController();
+    fetch(`${apiBaseUrl}/schemes`, { signal: controller.signal })
+      .then((response) => {
+        if (!response.ok) throw new Error("Schemes unavailable");
+        return response.json() as Promise<unknown>;
+      })
+      .then((payload) =>
+        setSchemeList(
+          Array.isArray(payload) ? (payload as LineupScheme[]) : [],
+        ),
+      )
+      .catch(() => {
+        if (!controller.signal.aborted) setSchemeList([]);
+      });
+    return () => controller.abort();
+  }, [apiBaseUrl, ids]);
+  const lineup = ids
+    .map((id) => schemeList?.find((scheme) => scheme.schemeName === id))
+    .filter((scheme): scheme is LineupScheme => scheme !== undefined);
 
   useEffect(() => {
     if (ids.length === 0) {
@@ -316,6 +519,7 @@ export function SchemeComparePage({
       <p className="kw-compare-back">
         <a href="/schemes">返回計劃概覽</a>
       </p>
+      {ids.length > 0 && <SchemePicker all={schemeList} selected={ids} />}
 
       {ids.length === 0 && (
         <p className="kw-status kw-status--warning">
@@ -343,10 +547,7 @@ export function SchemeComparePage({
             <h2 className="kw-section__heading" id="scheme-compare-table-title">
               逐項對比
             </h2>
-            <p className="kw-muted">
-              快照 {result.snapshotId ?? "尚未發布"}。行政評分 v1
-              暫不評分，欄位預留為空。
-            </p>
+            <p className="kw-muted">快照 {result.snapshotId ?? "尚未發布"}。</p>
             <p className="kw-table-hint" id="scheme-compare-scroll-hint">
               左右滑動或使用方向鍵查看其餘欄位
             </p>
@@ -408,16 +609,6 @@ export function SchemeComparePage({
                     <th scope="row">基金類別數目</th>
                     {result.schemes.map((scheme) => (
                       <td key={scheme.id}>{scheme.fundClassCount}</td>
-                    ))}
-                  </tr>
-                  <tr>
-                    <th scope="row">行政評分</th>
-                    {result.schemes.map((scheme) => (
-                      <td key={scheme.id}>
-                        {scheme.administrationScore === null
-                          ? "v1 暫不評分"
-                          : scheme.administrationScore}
-                      </td>
                     ))}
                   </tr>
                   <tr>
@@ -540,6 +731,20 @@ export function SchemeComparePage({
 
           <DisSources schemes={result.schemes} />
 
+          {lineup.length > 0 && (
+            <section
+              className="kw-section"
+              aria-labelledby="scheme-lineup-title"
+            >
+              <h2 className="kw-section__heading" id="scheme-lineup-title">
+                同類基金對照
+              </h2>
+              <p className="kw-muted">
+                每行一個積金局基金類型，列出各計劃喺該類型提供的基金；一年回報及開支比率為官方原值，「過期」表示超出網站時效門檻。
+              </p>
+              <LineupMatrix schemes={lineup} />
+            </section>
+          )}
           <section
             className="kw-section"
             aria-labelledby="scheme-compare-radar-title"

@@ -1,6 +1,8 @@
 import { ReactNode, useEffect } from "react";
 import { useViewMode } from "./viewMode";
-type NavKey = "funds" | "rankings" | "schemes" | "data";
+import { CompareTray } from "./CompareTray";
+import { useCompareItems } from "./compareStore";
+type NavKey = "funds" | "rankings" | "compare" | "schemes" | "data";
 export function SiteChrome({
   title,
   subtitle,
@@ -20,6 +22,7 @@ export function SiteChrome({
   children: ReactNode;
 }) {
   const [mode, changeMode] = useViewMode();
+  const compareCount = useCompareItems().length;
   useEffect(() => {
     document.title = isHome ? "KWMPF｜香港強積金比較" : `${title}｜KWMPF`;
     let meta = document.querySelector('meta[name="description"]');
@@ -53,9 +56,10 @@ export function SiteChrome({
           <nav className="kw-nav" aria-label="主要導覽">
             {(
               [
-                ["funds", "基金瀏覽", "/funds"],
-                ["rankings", "基金排名", "/rankings"],
-                ["schemes", "計劃比較", "/schemes"],
+                ["funds", "搵基金", "/funds"],
+                ["rankings", "同類排名", "/rankings"],
+                ["compare", "比較基金", "/funds/compare"],
+                ["schemes", "比較計劃", "/schemes"],
               ] as const
             ).map(([key, label, href]) => (
               <a
@@ -64,6 +68,12 @@ export function SiteChrome({
                 aria-current={current === key ? "page" : undefined}
               >
                 {label}
+                {key === "compare" && compareCount > 0 && (
+                  <span className="kw-nav__badge">
+                    <span className="kw-visually-hidden">，已選 </span>
+                    {compareCount}
+                  </span>
+                )}
               </a>
             ))}
           </nav>
@@ -73,7 +83,7 @@ export function SiteChrome({
               href="/data-status"
               aria-current={current === "data" ? "page" : undefined}
             >
-              資料時效及覆蓋
+              資料說明
             </a>
             <div className="kw-mode" role="group" aria-label="閱讀模式">
               <button
@@ -167,6 +177,7 @@ export function SiteChrome({
           </dl>
         </div>
       </footer>
+      <CompareTray />
     </div>
   );
 }

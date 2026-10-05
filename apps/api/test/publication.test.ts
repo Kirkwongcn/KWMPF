@@ -173,8 +173,12 @@ describe("publication snapshot", () => {
         riskClass: fundFixture.fundClass.riskClass,
         fundRiskIndicator: fundFixture.fundClass.fundRiskIndicator,
         annualizedReturn1y: fundFixture.fundClass.annualizedReturn1y,
+        returnsFreshness: expect.objectContaining({
+          "1": expect.objectContaining({ status: "stale" }),
+        }),
         managementFee: fundFixture.fundClass.managementFee,
         latestFer: fundFixture.fundClass.latestFer,
+        fundSizeHkdMillion: fundFixture.fundClass.fundSizeHkdMillion,
         dataAsOf: fundFixture.fundClass.dataAsOf,
         freshness: expect.objectContaining({
           status: "stale",
@@ -341,6 +345,148 @@ describe("publication snapshot", () => {
     expect(((await response.json()) as unknown[]).length).toBe(50);
   });
 
+  it("sorts by a chosen period, putting stale and unpublished values after current ones", async () => {
+    const snapshotId = "snapshot-screener-test";
+    const recent = new Date(Date.now() - 10 * 86_400_000)
+      .toISOString()
+      .slice(0, 10);
+    await bindings.DB.prepare(
+      "INSERT INTO publication_snapshots (snapshot_id, published_at) VALUES (?, ?)",
+    )
+      .bind(snapshotId, "2026-08-13T00:00:00Z")
+      .run();
+    const funds = [
+      {
+        id: "fresh-low",
+        annualizedReturn3y: 2.5,
+        threeYearAsOf: recent,
+        size: 100,
+        sizeAsOf: recent,
+      },
+      {
+        id: "fresh-high",
+        annualizedReturn3y: 9.25,
+        threeYearAsOf: recent,
+        size: 200,
+        sizeAsOf: recent,
+      },
+      {
+        id: "stale-highest",
+        annualizedReturn3y: 30,
+        threeYearAsOf: "2020-06-30",
+        size: 9999,
+        sizeAsOf: "2020-06-30",
+      },
+      { id: "no-three-year", size: 100, sizeAsOf: recent },
+    ] as {
+      id: string;
+      annualizedReturn3y?: number;
+      threeYearAsOf?: string;
+      size: number;
+      sizeAsOf: string;
+    }[];
+    for (const fund of funds) {
+      await bindings.DB.prepare(
+        "INSERT INTO fund_class_versions (snapshot_id, fund_class_id, payload) VALUES (?, ?, ?)",
+      )
+        .bind(
+          snapshotId,
+          fund.id,
+          JSON.stringify({
+            snapshotId,
+            fundClass: {
+              id: fund.id,
+              constituentFundName: `篩選測試 ${fund.id}`,
+              fundType: "Equity Fund - Hong Kong Equity Fund",
+              trusteeName: "受託人甲",
+              schemeName: "篩選測試計劃",
+              fundClassName: "Class A",
+              annualizedReturn1y: 1,
+              ...(fund.annualizedReturn3y === undefined
+                ? {}
+                : {
+                    annualizedReturn3y: fund.annualizedReturn3y,
+                    returnSources: {
+                      "3": {
+                        dataAsOf: fund.threeYearAsOf,
+                        sourceUrl: "https://example.test/3y",
+                      },
+                    },
+                  }),
+              fundSizeHkdMillion: fund.size,
+              fundSizeAsOf: fund.sizeAsOf,
+              latestFer: 1.2,
+              dataAsOf: recent,
+              returnsAsOf: recent,
+              verificationStatus: "verified",
+            },
+            provenance: { verificationStatus: "verified", dataAsOf: recent },
+          }),
+        )
+        .run();
+    }
+    await bindings.DB.prepare(
+      "INSERT INTO current_publication (singleton, snapshot_id) VALUES (1, ?)",
+    )
+      .bind(snapshotId)
+      .run();
+
+    const descending = (await (
+      await SELF.fetch("https://kwmpf.test/search?sort=return3y")
+    ).json()) as {
+      id: string;
+      annualizedReturn3y?: number;
+      returnsFreshness: Record<string, { status: string; dataAsOf: string }>;
+      fundSizeHkdMillion?: number;
+      latestFer?: number;
+    }[];
+    expect(descending.map((fund) => fund.id)).toEqual([
+      "fresh-high",
+      "fresh-low",
+      "stale-highest",
+      "no-three-year",
+    ]);
+    expect(descending[0]).toMatchObject({
+      annualizedReturn3y: 9.25,
+      fundSizeHkdMillion: 200,
+      latestFer: 1.2,
+      returnsFreshness: { "3": { status: "verified", dataAsOf: recent } },
+    });
+    expect(descending[2]?.returnsFreshness["3"]).toMatchObject({
+      status: "stale",
+      dataAsOf: "2020-06-30",
+    });
+    expect(descending[3]?.returnsFreshness["3"]).toBeUndefined();
+
+    const ascending = (await (
+      await SELF.fetch("https://kwmpf.test/search?sort=return3y&order=asc")
+    ).json()) as { id: string }[];
+    expect(ascending.map((fund) => fund.id)).toEqual([
+      "fresh-low",
+      "fresh-high",
+      "stale-highest",
+      "no-three-year",
+    ]);
+
+    const bySize = (await (
+      await SELF.fetch("https://kwmpf.test/search?sort=size")
+    ).json()) as { id: string; fundSizeFreshness?: { status: string } }[];
+    // 過期規模即使最大，都排喺符合時效的數值之後。
+    expect(bySize.map((fund) => fund.id)).toEqual([
+      "fresh-high",
+      "fresh-low",
+      "no-three-year",
+      "stale-highest",
+    ]);
+    expect(bySize[3]?.fundSizeFreshness?.status).toBe("stale");
+
+    for (const query of ["sort=toString", "sort=return3y&order=up"]) {
+      expect(
+        (await SELF.fetch(`https://kwmpf.test/search?${query}`)).status,
+      ).toBe(400);
+    }
+  });
+
   it("lets a browser on the site origin read the match count header", async () => {
     await publishBrowseFixture();
 
@@ -462,6 +608,12 @@ describe("publication snapshot", () => {
           max: fundFixture.fundClass.managementFee,
           fundCount: 1,
         },
+        latestFer: {
+          min: fundFixture.fundClass.latestFer,
+          median: fundFixture.fundClass.latestFer,
+          max: fundFixture.fundClass.latestFer,
+          fundCount: 1,
+        },
         dataAsOf: {
           earliest: fundFixture.fundClass.dataAsOf,
           latest: fundFixture.fundClass.dataAsOf,
@@ -475,6 +627,9 @@ describe("publication snapshot", () => {
             fundType: fundFixture.fundClass.fundType,
             comparisonGroup: "股票基金 - 香港股票基金",
             riskClass: fundFixture.fundClass.riskClass,
+            fundRiskIndicator: fundFixture.fundClass.fundRiskIndicator,
+            managementFee: fundFixture.fundClass.managementFee,
+            latestFer: fundFixture.fundClass.latestFer,
             dataAsOf: fundFixture.fundClass.dataAsOf,
             sourceUrl: fundFixture.source.url,
             returnsFreshness: {
