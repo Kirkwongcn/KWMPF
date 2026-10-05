@@ -3,6 +3,7 @@ import { SiteChrome } from "./SiteChrome";
 import { matchesSearch } from "../../api/src/search";
 import { fundClassLabel, joinFundParts } from "./fundClassLabel";
 import { SchemeOverview } from "./SchemeOverview";
+import { compareUrl } from "./SchemeComparePage";
 import { formatDerived } from "./Charts";
 
 type SchemeFund = {
@@ -322,10 +323,7 @@ export function SchemesPage({ apiBaseUrl }: { apiBaseUrl: string }) {
   }, [sortedSchemes, searchQuery]);
 
   const atLimit = selected.length >= COMPARE_LIMIT;
-  const compareHref =
-    selected.length === 0
-      ? undefined
-      : `/schemes/compare?ids=${selected.map(encodeURIComponent).join(",")}`;
+  const compareHref = selected.length === 0 ? undefined : compareUrl(selected);
 
   function toggleScheme(schemeName: string) {
     setSelected((current) => {

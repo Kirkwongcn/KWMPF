@@ -21,22 +21,22 @@ type LineupScheme = {
   funds: LineupFund[];
 };
 
+// 只用嚟排次序；官方大類係類型名稱「大類 - 細類」嘅前半，兩個貨幣市場大類各自獨立。
 const LINEUP_FAMILY_ORDER = [
   "股票基金",
   "混合資產基金",
   "債券基金",
   "保證基金",
-  "貨幣市場基金",
+  "貨幣市場基金 — 強積金保守基金",
+  "貨幣市場基金 — 不包括強積金保守基金",
 ];
 
 function familyRank(group: string) {
-  const index = LINEUP_FAMILY_ORDER.findIndex((family) =>
-    group.startsWith(family),
-  );
+  const index = LINEUP_FAMILY_ORDER.indexOf(group.split(" - ")[0] ?? group);
   return index === -1 ? LINEUP_FAMILY_ORDER.length : index;
 }
 
-function compareUrl(names: string[]) {
+export function compareUrl(names: string[]) {
   return names.length === 0
     ? "/schemes/compare"
     : `/schemes/compare?ids=${names.map(encodeURIComponent).join(",")}`;

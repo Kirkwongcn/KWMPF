@@ -13,20 +13,18 @@ import { useViewMode } from "./viewMode";
 import { downloadCsv } from "./downloadCsv";
 import { CompareToggle } from "./CompareTray";
 
+// 只用嚟排次序；分組按官方類型名稱「大類 - 細類」嘅大類，兩個貨幣市場大類各自獨立。
 const FAMILY_ORDER = [
   "股票基金",
   "混合資產基金",
   "債券基金",
   "保證基金",
-  "貨幣市場基金",
+  "貨幣市場基金 — 強積金保守基金",
+  "貨幣市場基金 — 不包括強積金保守基金",
 ];
 
 function familyOf(group: string) {
-  return (
-    FAMILY_ORDER.find((family) => group.startsWith(family)) ??
-    group.split(/\s*[-—]\s*/u)[0] ??
-    group
-  );
+  return group.split(" - ")[0] ?? group;
 }
 
 /** 未揀類型時先揀積金局基金類型；數目係該類型合資格基金，唔係跨類型排名。 */
@@ -64,13 +62,7 @@ function TypePicker({
             {families.get(family)!.map((group) => (
               <li key={group}>
                 <button type="button" onClick={() => onPick(group)}>
-                  <span>
-                    {group.startsWith(family)
-                      ? group
-                          .slice(family.length)
-                          .replace(/^\s*[-—]\s*/u, "") || group
-                      : group}
-                  </span>
+                  <span>{group}</span>
                   <strong>{counts.get(group) ?? 0}</strong>
                 </button>
               </li>

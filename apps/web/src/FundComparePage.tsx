@@ -34,6 +34,7 @@ type ComparedFund = {
   };
   provenance: { sourceUrl: string; dataAsOf: string };
   returnsFreshness?: Record<string, { status: string; dataAsOf: string }>;
+  fundSizeFreshness?: { status: string; dataAsOf: string };
 };
 
 type SearchHit = {
@@ -200,6 +201,27 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
     [failed, setFailed] = useState(false),
     [period, setPeriod] = useState("1");
   const key = ids.join(",");
+  const loadedFunds =
+    funds !== null && funds.length === ids.length && ids.length > 0
+      ? funds
+      : null;
+
+  // 喺本頁加減基金時，比較清單跟住本頁選擇更新；名稱優先用已載入的基金。
+  function itemsFor(next: string[], extra?: CompareItem): CompareItem[] {
+    const stored = readCompareItems();
+    return next.map((id) => {
+      if (extra?.id === id) return extra;
+      const index = ids.indexOf(id);
+      const fund = loadedFunds?.[index];
+      if (fund)
+        return {
+          id,
+          label: joinFundParts(fundLabel(fund), fund.fundClass.schemeName),
+          group: fund.comparisonGroup,
+        };
+      return stored.find((item) => item.id === id) ?? { id, label: id };
+    });
+  }
 
   function updateIds(next: string[], items?: CompareItem[]) {
     const params = new URLSearchParams(window.location.search);
@@ -235,15 +257,8 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
       .then((next) => {
         if (new Set(next.map((fund) => fund.snapshotId)).size !== 1)
           throw new Error("Snapshot changed");
+        // 只讀取，唔改使用者自己嘅比較清單；分享連結唔會覆蓋佢。
         setFunds(next);
-        // 比較欄同頁面同步，方便返去其他頁再加減。
-        writeCompareItems(
-          next.map((fund, index) => ({
-            id: ids[index]!,
-            label: joinFundParts(fundLabel(fund), fund.fundClass.schemeName),
-            group: fund.comparisonGroup,
-          })),
-        );
       })
       .catch(() => {
         if (!controller.signal.aborted) setFailed(true);
@@ -252,10 +267,7 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
     // 以 id 清單作依賴；ids 陣列每次 render 都係新物件。
   }, [apiBaseUrl, key]);
 
-  const loaded =
-    funds !== null && funds.length === ids.length && ids.length > 0
-      ? funds
-      : null;
+  const loaded = loadedFunds;
   const sameGroup =
     loaded !== null &&
     loaded.every(
@@ -298,12 +310,10 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
           apiBaseUrl={apiBaseUrl}
           selected={ids}
           onAdd={(hit) => {
-            const items = readCompareItems().filter((item) =>
-              ids.includes(item.id),
-            );
-            const nextItems = [
-              ...items,
-              {
+            const next = [...ids, hit.id];
+            updateIds(
+              next,
+              itemsFor(next, {
                 id: hit.id,
                 label: joinFundParts(
                   hit.constituentFundName,
@@ -311,9 +321,8 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
                   hit.schemeName,
                 ),
                 group: hit.comparisonGroup,
-              },
-            ];
-            updateIds([...ids, hit.id], nextItems);
+              }),
+            );
           }}
         />
       )}
@@ -322,9 +331,33 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
           未揀基金。用上面搜尋加入，或者喺搵基金頁撳「＋」。
         </p>
       ) : failed ? (
-        <p className="kw-status" role="alert">
-          未能取得同一快照的所有基金。請重新整理，或返回基金瀏覽重新選取。
-        </p>
+        <>
+          <p className="kw-status" role="alert">
+            未能取得同一快照的所有基金。請重新整理，或移除以下其中一隻再試。
+          </p>
+          <ul className="kw-compare-failed" aria-label="目前選取">
+            {ids.map((id) => {
+              const label =
+                readCompareItems().find((item) => item.id === id)?.label ?? id;
+              return (
+                <li key={id}>
+                  <span>{label}</span>
+                  <button
+                    type="button"
+                    className="kw-compare__remove"
+                    aria-label={`移除：${label}`}
+                    onClick={() => {
+                      const next = ids.filter((item) => item !== id);
+                      updateIds(next, itemsFor(next));
+                    }}
+                  >
+                    移除
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </>
       ) : !loaded ? (
         <p className="kw-status" role="status">
           正在載入基金比較…
@@ -367,12 +400,7 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
                         aria-label={`移除：${fundLabel(fund)}`}
                         onClick={() => {
                           const next = ids.filter((_, i) => i !== index);
-                          updateIds(
-                            next,
-                            readCompareItems().filter((item) =>
-                              next.includes(item.id),
-                            ),
-                          );
+                          updateIds(next, itemsFor(next));
                         }}
                       >
                         移除
@@ -408,10 +436,18 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
                 <tr>
                   <th scope="row">基金規模（百萬港元）</th>
                   {loaded.map((fund, index) => (
-                    <td key={index} className="kw-num">
+                    <td
+                      key={index}
+                      className={`kw-num${fund.fundSizeFreshness?.status === "stale" ? " kw-num--stale" : ""}`}
+                    >
                       {fund.fundClass.fundSizeHkdMillion ?? "—"}
                       {fund.fundClass.fundSizeAsOf && (
-                        <small>截至 {fund.fundClass.fundSizeAsOf}</small>
+                        <small>
+                          {fund.fundSizeFreshness?.status === "stale"
+                            ? "過期 · "
+                            : ""}
+                          截至 {fund.fundClass.fundSizeAsOf}
+                        </small>
                       )}
                     </td>
                   ))}
@@ -521,6 +557,16 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
                           ),
                         )}
                       />
+                      <small>
+                        平台截至 {fund.provenance.dataAsOf} ·{" "}
+                        <a
+                          href={fund.provenance.sourceUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          官方來源
+                        </a>
+                      </small>
                     </td>
                   ))}
                 </tr>
@@ -543,9 +589,16 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
                     ["latestFer", "基金開支比率（歷史期別）"],
                   ] as const
                 ).map(([field, label]) => {
-                  const range = rangeOf(
-                    loaded.map((fund) => fund.fundClass[field]),
+                  // 上限同實際費率口徑唔同；有啲係上限、有啲唔係就唔標最高／最低。
+                  const capped = new Set(
+                    loaded.map((fund) =>
+                      Boolean(fund.fundClass.feeCaps?.includes(field)),
+                    ),
                   );
+                  const range =
+                    capped.size === 1
+                      ? rangeOf(loaded.map((fund) => fund.fundClass[field]))
+                      : null;
                   return (
                     <tr key={field}>
                       <th scope="row">{label}</th>

@@ -163,9 +163,7 @@ describe("fund browse page", () => {
 
     expect(await screen.findByText("8.12%")).toBeVisible();
     expect(screen.getByText("1.25%（上限）")).toBeVisible();
-    expect(
-      screen.getByText(/本頁一年、五年及十年回報截至 2026-06-30/),
-    ).toBeVisible();
+    expect(screen.getByText(/本頁一年回報截至 2026-06-30/)).toBeVisible();
     expect(screen.getAllByText(/^過期/).length).toBeGreaterThan(0);
     expect(screen.getByRole("link", { name: /港股基金/ })).toHaveAttribute(
       "href",

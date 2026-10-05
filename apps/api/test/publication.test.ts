@@ -356,15 +356,35 @@ describe("publication snapshot", () => {
       .bind(snapshotId, "2026-08-13T00:00:00Z")
       .run();
     const funds = [
-      { id: "fresh-low", annualizedReturn3y: 2.5, threeYearAsOf: recent },
-      { id: "fresh-high", annualizedReturn3y: 9.25, threeYearAsOf: recent },
+      {
+        id: "fresh-low",
+        annualizedReturn3y: 2.5,
+        threeYearAsOf: recent,
+        size: 100,
+        sizeAsOf: recent,
+      },
+      {
+        id: "fresh-high",
+        annualizedReturn3y: 9.25,
+        threeYearAsOf: recent,
+        size: 200,
+        sizeAsOf: recent,
+      },
       {
         id: "stale-highest",
         annualizedReturn3y: 30,
         threeYearAsOf: "2020-06-30",
+        size: 9999,
+        sizeAsOf: "2020-06-30",
       },
-      { id: "no-three-year" },
-    ];
+      { id: "no-three-year", size: 100, sizeAsOf: recent },
+    ] as {
+      id: string;
+      annualizedReturn3y?: number;
+      threeYearAsOf?: string;
+      size: number;
+      sizeAsOf: string;
+    }[];
     for (const fund of funds) {
       await bindings.DB.prepare(
         "INSERT INTO fund_class_versions (snapshot_id, fund_class_id, payload) VALUES (?, ?, ?)",
@@ -393,7 +413,8 @@ describe("publication snapshot", () => {
                       },
                     },
                   }),
-              fundSizeHkdMillion: 100,
+              fundSizeHkdMillion: fund.size,
+              fundSizeAsOf: fund.sizeAsOf,
               latestFer: 1.2,
               dataAsOf: recent,
               returnsAsOf: recent,
@@ -427,7 +448,7 @@ describe("publication snapshot", () => {
     ]);
     expect(descending[0]).toMatchObject({
       annualizedReturn3y: 9.25,
-      fundSizeHkdMillion: 100,
+      fundSizeHkdMillion: 200,
       latestFer: 1.2,
       returnsFreshness: { "3": { status: "verified", dataAsOf: recent } },
     });
@@ -446,6 +467,18 @@ describe("publication snapshot", () => {
       "stale-highest",
       "no-three-year",
     ]);
+
+    const bySize = (await (
+      await SELF.fetch("https://kwmpf.test/search?sort=size")
+    ).json()) as { id: string; fundSizeFreshness?: { status: string } }[];
+    // 過期規模即使最大，都排喺符合時效的數值之後。
+    expect(bySize.map((fund) => fund.id)).toEqual([
+      "fresh-high",
+      "fresh-low",
+      "no-three-year",
+      "stale-highest",
+    ]);
+    expect(bySize[3]?.fundSizeFreshness?.status).toBe("stale");
 
     for (const query of ["sort=toString", "sort=return3y&order=up"]) {
       expect(

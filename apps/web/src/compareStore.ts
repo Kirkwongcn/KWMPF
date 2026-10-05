@@ -24,7 +24,8 @@ function isCompareItem(value: unknown): value is CompareItem {
   );
 }
 
-export function readCompareItems(): CompareItem[] {
+// 讀取失敗（私密瀏覽、封鎖儲存）時回 null，同「已儲存但係空清單」分開處理。
+function readStored(): CompareItem[] | null {
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return [];
@@ -35,31 +36,30 @@ export function readCompareItems(): CompareItem[] {
       .filter(isCompareItem)
       .filter((item) => !seen.has(item.id) && seen.add(item.id))
       .slice(0, COMPARE_LIMIT);
-  } catch {
-    return [];
+  } catch (error) {
+    return error instanceof SyntaxError ? [] : null;
   }
 }
+
+export function readCompareItems(): CompareItem[] {
+  return readStored() ?? memory;
+}
+
+let memory: CompareItem[] = [];
 
 export function writeCompareItems(items: CompareItem[]) {
   const next = items.slice(0, COMPARE_LIMIT);
+  memory = next;
   try {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
   } catch {
-    // 私密瀏覽或封鎖儲存時，清單只喺今次頁面有效。
+    // 儲存唔到時，清單只喺今次頁面有效（memory）。
   }
-  memory = next;
   window.dispatchEvent(new Event(CHANGE_EVENT));
 }
 
-let memory: CompareItem[] | null = null;
-
-function currentItems() {
-  const stored = readCompareItems();
-  return stored.length > 0 || memory === null ? stored : memory;
-}
-
 export function toggleCompareItem(item: CompareItem) {
-  const items = currentItems();
+  const items = readCompareItems();
   if (items.some((entry) => entry.id === item.id)) {
     writeCompareItems(items.filter((entry) => entry.id !== item.id));
     return;
@@ -69,7 +69,7 @@ export function toggleCompareItem(item: CompareItem) {
 }
 
 export function removeCompareItem(id: string) {
-  writeCompareItems(currentItems().filter((entry) => entry.id !== id));
+  writeCompareItems(readCompareItems().filter((entry) => entry.id !== id));
 }
 
 export function clearCompareItems() {
@@ -81,9 +81,9 @@ export function compareHref(items: { id: string }[]) {
 }
 
 export function useCompareItems(): CompareItem[] {
-  const [items, setItems] = useState<CompareItem[]>(currentItems);
+  const [items, setItems] = useState<CompareItem[]>(readCompareItems);
   useEffect(() => {
-    const refresh = () => setItems(currentItems());
+    const refresh = () => setItems(readCompareItems());
     window.addEventListener(CHANGE_EVENT, refresh);
     window.addEventListener("storage", refresh);
     return () => {

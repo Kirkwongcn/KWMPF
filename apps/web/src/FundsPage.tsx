@@ -32,6 +32,7 @@ type FundSummary = {
   feeCaps?: string[];
   fundSizeHkdMillion?: number;
   fundSizeAsOf?: string;
+  fundSizeFreshness?: Freshness;
   dataAsOf?: string;
   freshness?: Freshness;
 };
@@ -726,9 +727,8 @@ export function FundsPage({
                           </div>
                         </th>
                         <td className="kw-screener__type">
-                          {fund.comparisonGroup ??
-                            fund.fundCategory ??
-                            fund.fundType}
+                          {/* 只顯示積金局基金類型；冇就講明，唔用基金種類補位。 */}
+                          {fund.comparisonGroup ?? unavailable}
                         </td>
                         {RETURN_COLUMNS.map(([period, , field]) => (
                           <ReturnCell
@@ -751,7 +751,7 @@ export function FundsPage({
                         </td>
                         <td className="kw-num">{fund.riskClass ?? "—"}</td>
                         <td
-                          className="kw-num"
+                          className={`kw-num${fund.fundSizeFreshness?.status === "stale" ? " kw-num--stale" : ""}`}
                           title={
                             fund.fundSizeAsOf
                               ? `截至 ${fund.fundSizeAsOf}`
@@ -759,6 +759,14 @@ export function FundsPage({
                           }
                         >
                           {fund.fundSizeHkdMillion ?? "—"}
+                          {fund.fundSizeFreshness?.status === "stale" && (
+                            <span className="kw-data-state kw-data-state--stale">
+                              過期
+                              <span className="kw-visually-hidden">
+                                ，截至 {fund.fundSizeAsOf}
+                              </span>
+                            </span>
+                          )}
                         </td>
                         <td className="kw-num">
                           {typeof fund.latestFer === "number"
@@ -779,9 +787,9 @@ export function FundsPage({
             </div>
             <p className="kw-muted kw-screener__legend">
               {oneYearDates.size === 1 && [...oneYearDates][0]
-                ? `本頁一年、五年及十年回報截至 ${[...oneYearDates][0]}`
-                : "本頁各基金回報截至日期不一，滑鼠停留數值可見"}
-              （「截至」欄為一年回報日期；三年回報來自受託人便覽，各有自己的截至日期，滑鼠停留數值可見）。
+                ? `本頁一年回報截至 ${[...oneYearDates][0]}`
+                : "本頁各基金一年回報截至日期不一"}
+              （見「截至」欄）。其他期間及基金規模各有自己的截至日期，滑鼠停留數值可見；三年回報來自受託人便覽。
               「—」＝未有數值；「過期」＝超出網站時效門檻，只作參考、不入排名。
             </p>
             <nav className="kw-pagination" aria-label="基金結果頁次">

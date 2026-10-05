@@ -369,6 +369,14 @@ app.get("/search", async (context) => {
           published.provenance,
           evaluatedAt,
         ),
+        // 基金規模按月披露，沿用回報的月度寬限期（ADR 0010）。
+        fundSizeFreshness: published.fundClass.fundSizeAsOf
+          ? evaluateFreshness(
+              published.fundClass.fundSizeAsOf,
+              returnsGraceDays(published.provenance?.freshnessPolicy),
+              evaluatedAt,
+            )
+          : undefined,
       };
     })
     .filter(({ fundClass }) => {
@@ -407,6 +415,8 @@ app.get("/search", async (context) => {
   const tierOf = (entry: (typeof matches)[number]) => {
     if (!sortSpec) return 0;
     if (knownReturn(entry.fundClass[sortSpec.field]) === undefined) return 2;
+    if (sortSpec.field === "fundSizeHkdMillion")
+      return entry.fundSizeFreshness?.status === "verified" ? 0 : 1;
     return sortSpec.period !== undefined &&
       entry.returnsFreshness[String(sortSpec.period)]?.status !== "verified"
       ? 1
@@ -430,7 +440,7 @@ app.get("/search", async (context) => {
 
   const results = matches
     .slice((page - 1) * pageSize, page * pageSize)
-    .map(({ fundClass, freshness, returnsFreshness }) => {
+    .map(({ fundClass, freshness, returnsFreshness, fundSizeFreshness }) => {
       const group = comparisonGroupFor(fundClass);
       return {
         id: fundClass.id,
@@ -455,6 +465,7 @@ app.get("/search", async (context) => {
         latestFer: fundClass.latestFer,
         fundSizeHkdMillion: fundClass.fundSizeHkdMillion,
         fundSizeAsOf: fundClass.fundSizeAsOf,
+        ...(fundSizeFreshness ? { fundSizeFreshness } : {}),
         launchDate: fundClass.launchDate,
         dataAsOf: fundClass.dataAsOf,
         ...(freshness ? { freshness } : {}),

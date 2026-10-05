@@ -751,3 +751,20 @@
   color: var(--kw-muted);
   font-size: 0.72rem;
 }
+.kw-compare-failed {
+  display: grid;
+  gap: 8px;
+  max-width: 720px;
+  margin: 0 0 24px;
+  padding: 0;
+  list-style: none;
+}
+.kw-compare-failed li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--kw-rule, #cdd3cf);
+  background: var(--kw-white);
+}
