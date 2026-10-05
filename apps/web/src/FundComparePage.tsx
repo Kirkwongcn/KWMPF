@@ -199,6 +199,7 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
   const tooMany = ids.length > COMPARE_LIMIT;
   const [funds, setFunds] = useState<ComparedFund[] | null>(null),
     [failed, setFailed] = useState(false),
+    [partial, setPartial] = useState<Record<string, string | null>>({}),
     [period, setPeriod] = useState("1");
   const key = ids.join(",");
   const loadedFunds =
@@ -244,7 +245,8 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
     }
     const controller = new AbortController();
     setFailed(false);
-    Promise.all(
+    setPartial({});
+    Promise.allSettled(
       ids.map((id) =>
         fetch(`${apiBaseUrl}/fund-classes/${encodeURIComponent(id)}`, {
           signal: controller.signal,
@@ -253,16 +255,34 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
           return response.json() as Promise<ComparedFund>;
         }),
       ),
-    )
-      .then((next) => {
-        if (new Set(next.map((fund) => fund.snapshotId)).size !== 1)
-          throw new Error("Snapshot changed");
-        // 只讀取，唔改使用者自己嘅比較清單；分享連結唔會覆蓋佢。
+    ).then((settled) => {
+      if (controller.signal.aborted) return;
+      const next = settled.flatMap((result) =>
+        result.status === "fulfilled" ? [result.value] : [],
+      );
+      // 只讀取，唔改使用者自己嘅比較清單；分享連結唔會覆蓋佢。
+      if (
+        next.length === ids.length &&
+        new Set(next.map((fund) => fund.snapshotId)).size === 1
+      ) {
         setFunds(next);
-      })
-      .catch(() => {
-        if (!controller.signal.aborted) setFailed(true);
-      });
+        return;
+      }
+      setPartial(
+        Object.fromEntries(
+          settled.map((result, index) => [
+            ids[index]!,
+            result.status === "fulfilled"
+              ? joinFundParts(
+                  fundLabel(result.value),
+                  result.value.fundClass.schemeName,
+                )
+              : null,
+          ]),
+        ),
+      );
+      setFailed(true);
+    });
     return () => controller.abort();
     // 以 id 清單作依賴；ids 陣列每次 render 都係新物件。
   }, [apiBaseUrl, key]);
@@ -337,8 +357,13 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
           </p>
           <ul className="kw-compare-failed" aria-label="目前選取">
             {ids.map((id) => {
+              const known =
+                partial[id] ??
+                readCompareItems().find((item) => item.id === id)?.label;
               const label =
-                readCompareItems().find((item) => item.id === id)?.label ?? id;
+                partial[id] === null
+                  ? `找不到這隻基金（代號 ${id}）`
+                  : (known ?? id);
               return (
                 <li key={id}>
                   <span>{label}</span>
