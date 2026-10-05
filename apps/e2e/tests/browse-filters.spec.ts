@@ -44,8 +44,9 @@ test("加入風險級別條件後結果收窄且仍全部相符", async ({ page 
   await expect(rows.first()).toBeVisible();
   const beforeCount = await rows.count();
 
-  // 欄位：比較、（基金為 th）、一年回報、風險級別、計劃、比較組別、資料截至、管理費（費用置後）。
-  const riskCell = rows.first().locator("td").nth(2);
+  // 欄位：（基金連比較掣為 th）、基金類型、一年、三年、五年、十年、截至、三年波幅、風險級別、
+  // 規模、開支比率、管理費（費用置後）。
+  const riskCell = rows.first().locator("td").nth(7);
   const riskClass = (await riskCell.textContent())!.trim();
   test.skip(!/^\d+$/.test(riskClass), "首行沒有官方風險級別可用作篩選");
 
@@ -66,7 +67,7 @@ test("加入風險級別條件後結果收窄且仍全部相符", async ({ page 
             .map((element) => ({
               text: element.textContent ?? "",
               riskClass:
-                element.querySelectorAll("td")[2]?.textContent?.trim() ?? "",
+                element.querySelectorAll("td")[7]?.textContent?.trim() ?? "",
             }))
             .filter(
               (row) =>
@@ -86,7 +87,7 @@ test("篩選結果每一行都標示官方截至日期", async ({ page }) => {
 
   const rows = page.locator("table.kw-table tbody tr");
   await expect(rows.first()).toBeVisible();
-  await expect(page.locator("table.kw-table thead th").last()).toHaveText(
+  await expect(page.locator("table.kw-table thead th").last()).toContainText(
     "管理費",
   );
   for (const row of await rows.all()) {

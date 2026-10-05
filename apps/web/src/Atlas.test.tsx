@@ -116,7 +116,9 @@ describe("fund atlas", () => {
   it("indexes every MPFA type and never files an unclassified fund", async () => {
     stub();
     render(<App apiUrl="https://api.test/health" />);
-    const index = await screen.findByRole("heading", { name: "圖幅索引" });
+    const index = await screen.findByRole("heading", {
+      name: "各類基金一年回報分布",
+    });
     const sheet = index.closest("section")!;
     expect(
       within(sheet).getByRole("link", { name: /^日本股票基金/ }),

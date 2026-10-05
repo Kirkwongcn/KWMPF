@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { PeerFeatures } from "./PeerFeatures";
+import { CompareToggle } from "./CompareTray";
 import { PeerPosition } from "./PeerPosition";
 import { RiskScale } from "./Charts";
 import { SiteChrome } from "./SiteChrome";
@@ -701,6 +702,22 @@ export function FundClassPage({
             <a href={provenance.sourceUrl} target="_blank" rel="noreferrer">
               積金局平台原頁
             </a>
+          ),
+        },
+        {
+          label: "比較",
+          value: (
+            <CompareToggle
+              item={{
+                id: fundClassId,
+                label: joinFundParts(
+                  fundClass.constituentFundName,
+                  fundClassLabel(fundClass.fundClassName),
+                  fundClass.schemeName,
+                ),
+                group: publication.comparisonGroup,
+              }}
+            />
           ),
         },
       ]}

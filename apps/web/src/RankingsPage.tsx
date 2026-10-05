@@ -11,6 +11,76 @@ import {
 } from "./Charts";
 import { useViewMode } from "./viewMode";
 import { downloadCsv } from "./downloadCsv";
+import { CompareToggle } from "./CompareTray";
+
+const FAMILY_ORDER = [
+  "股票基金",
+  "混合資產基金",
+  "債券基金",
+  "保證基金",
+  "貨幣市場基金",
+];
+
+function familyOf(group: string) {
+  return (
+    FAMILY_ORDER.find((family) => group.startsWith(family)) ??
+    group.split(/\s*[-—]\s*/u)[0] ??
+    group
+  );
+}
+
+/** 未揀類型時先揀積金局基金類型；數目係該類型合資格基金，唔係跨類型排名。 */
+function TypePicker({
+  groups,
+  rows,
+  onPick,
+}: {
+  groups: string[];
+  rows: RankingRow[];
+  onPick: (group: string) => void;
+}) {
+  const counts = new Map<string, number>();
+  for (const row of rows)
+    counts.set(row.comparisonGroup, (counts.get(row.comparisonGroup) ?? 0) + 1);
+  const families = new Map<string, string[]>();
+  for (const group of groups) {
+    const family = familyOf(group);
+    families.set(family, [...(families.get(family) ?? []), group]);
+  }
+  const ordered = [...families.keys()].sort(
+    (a, b) =>
+      (FAMILY_ORDER.indexOf(a) + 1 || 99) - (FAMILY_ORDER.indexOf(b) + 1 || 99),
+  );
+  return (
+    <div className="kw-type-picker">
+      <h3>先揀一個積金局基金類型</h3>
+      <p className="kw-muted">
+        排名只喺同一類型入面比較。數字係該類型目前合資格的基金數目。
+      </p>
+      {ordered.map((family) => (
+        <section key={family} aria-label={family}>
+          <h4>{family}</h4>
+          <ul>
+            {families.get(family)!.map((group) => (
+              <li key={group}>
+                <button type="button" onClick={() => onPick(group)}>
+                  <span>
+                    {group.startsWith(family)
+                      ? group
+                          .slice(family.length)
+                          .replace(/^\s*[-—]\s*/u, "") || group
+                      : group}
+                  </span>
+                  <strong>{counts.get(group) ?? 0}</strong>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+  );
+}
 
 type RankingRow = {
   fundClassId: string;
@@ -315,7 +385,7 @@ export function RankingsPage({
                 {`有 ${publication.excludedStaleCount} 隻基金的資料已超出網站時效門檻（${publication.methodology?.freshness?.graceDays ?? 45} 日），暫不列入排名。這些數值仍可在各基金詳情頁連同原截至日期查看。`}
               </p>
             ) : null}
-            {rankings?.length ? (
+            {effectiveGroup !== "all" && rankings?.length ? (
               <RankingSummary
                 rows={rankings}
                 metric={metric}
@@ -331,8 +401,42 @@ export function RankingsPage({
                 。期間不同，結果須分開解讀。
               </p>
             )}
-            {rankings?.length ? (
+            {effectiveGroup === "all" ? (
               <>
+                <TypePicker
+                  groups={comparisonGroups}
+                  rows={publication.rankings}
+                  onPick={(group) => {
+                    setComparisonGroup(group);
+                    pushRankingUrl(metric, period, group);
+                  }}
+                />
+                {publication.rankings.length > 0 && (
+                  <GroupSpread
+                    rows={publication.rankings}
+                    metric={metric}
+                    period={period}
+                    valueLabel={valueLabel}
+                  />
+                )}
+              </>
+            ) : rankings?.length ? (
+              <>
+                <p className="kw-type-current">
+                  <span>
+                    積金局基金類型：<strong>{effectiveGroup}</strong>
+                  </span>
+                  <button
+                    type="button"
+                    className="kw-button kw-button--secondary"
+                    onClick={() => {
+                      setComparisonGroup("all");
+                      pushRankingUrl(metric, period, "all");
+                    }}
+                  >
+                    揀其他類型
+                  </button>
+                </p>
                 <div className="kw-advanced kw-export">
                   <button
                     className="kw-button kw-button--secondary"
@@ -431,42 +535,7 @@ export function RankingsPage({
                         note: `截至 ${row.dataAsOf}${row.feeCap ? " · 費率上限" : ""}`,
                       }))}
                     />
-                  ) : (
-                    <>
-                      <GroupSpread
-                        rows={publication.rankings}
-                        metric={metric}
-                        period={period}
-                        valueLabel={valueLabel}
-                      />
-                      <div className="kw-group-picker">
-                        <h3>先選積金局基金類型，才看圖表</h3>
-                        <p className="kw-muted">
-                          下列數量代表各類型合資格樣本，並非跨類型優劣排名。
-                        </p>
-                        <div>
-                          {comparisonGroups.map((group) => (
-                            <button
-                              key={group}
-                              onClick={() => {
-                                setComparisonGroup(group);
-                                pushRankingUrl(metric, period, group);
-                              }}
-                            >
-                              {group}
-                              <strong>
-                                {
-                                  publication.rankings.filter(
-                                    (row) => row.comparisonGroup === group,
-                                  ).length
-                                }
-                              </strong>
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    </>
-                  ))}
+                  ) : null)}
                 {display === "chart" &&
                   effectiveGroup !== "all" &&
                   rankings.length > 2 && (
@@ -555,6 +624,9 @@ export function RankingsPage({
                             >
                               名次
                             </th>
+                            <th scope="col">
+                              <span className="kw-visually-hidden">比較</span>
+                            </th>
                             <th scope="col">基金</th>
                             <th scope="col">{valueLabel}</th>
                             <th scope="col">積金局基金類型</th>
@@ -566,6 +638,20 @@ export function RankingsPage({
                           {rankings.map((row) => (
                             <tr key={row.fundClassId}>
                               <td className="kw-rank">第 {row.rank}</td>
+                              <td>
+                                <CompareToggle
+                                  compact
+                                  item={{
+                                    id: row.fundClassId,
+                                    label: joinFundParts(
+                                      row.constituentFundName,
+                                      fundClassLabel(row.fundClassName),
+                                      row.schemeName,
+                                    ),
+                                    group: row.comparisonGroup,
+                                  }}
+                                />
+                              </td>
                               <td className="kw-table__name">
                                 <a
                                   href={`/fund-classes/${encodeURIComponent(row.fundClassId)}`}
@@ -674,11 +760,15 @@ function GroupSpread({
   valueLabel: string;
 }) {
   const groups = new Map<string, number[]>();
-  for (const row of rows)
+  for (const row of rows) {
+    // 只用有限數值；缺值唔當 0，亦唔令圖表崩潰。
+    if (typeof row.value !== "number" || !Number.isFinite(row.value)) continue;
     groups.set(row.comparisonGroup, [
       ...(groups.get(row.comparisonGroup) ?? []),
       row.value,
     ]);
+  }
+  if (groups.size === 0) return null;
   const spread = [...groups.entries()]
     .map(([group, values]) => ({
       group,

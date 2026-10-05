@@ -1,0 +1,753 @@
+/* 比較流程元件：比較欄、加入比較掣、篩選表、類型揀選。
+   沿用 styles.css／atlas.css 的色票，唔新增品牌色。 */
+
+/* ── 導覽列已選數目 ── */
+.kw-nav__badge {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.35em;
+  height: 1.35em;
+  margin-left: 6px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: var(--kw-gold);
+  color: var(--kw-navy);
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  vertical-align: 1px;
+}
+
+/* ── 加入比較掣 ── */
+.kw-compare-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 4px 10px;
+  border: 1px solid var(--kw-rule-strong, #8f9b97);
+  border-radius: 999px;
+  background: var(--kw-white);
+  color: var(--kw-action);
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.kw-compare-toggle span[aria-hidden="true"] {
+  font-weight: 700;
+}
+.kw-compare-toggle:hover:not(:disabled):not(.is-selected) {
+  border-color: var(--kw-action);
+  background: var(--kw-soft);
+}
+.kw-compare-toggle.is-selected {
+  border-color: var(--kw-action);
+  background: var(--kw-action);
+  color: var(--kw-white);
+}
+.kw-compare-toggle:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.kw-compare-toggle--compact {
+  justify-content: center;
+  width: 32px;
+  padding: 0;
+}
+
+/* ── 頁底比較欄 ── */
+.kw-tray {
+  position: sticky;
+  bottom: 0;
+  z-index: 20;
+  border-top: 2px solid var(--kw-gold);
+  background: var(--kw-navy);
+  color: var(--kw-white);
+  box-shadow: 0 -6px 18px rgb(11 42 51 / 0.18);
+}
+.kw-tray__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 18px;
+  padding-block: 10px;
+}
+.kw-tray__count {
+  display: grid;
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+.kw-tray__note {
+  color: var(--kw-gold-light);
+  font-size: 0.78rem;
+}
+.kw-tray__items {
+  display: flex;
+  flex: 1 1 320px;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.kw-tray__items li {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  border: 1px solid rgb(255 255 255 / 0.28);
+  border-radius: 999px;
+  padding-left: 12px;
+  font-size: 0.82rem;
+}
+.kw-tray__label {
+  overflow: hidden;
+  max-width: 26ch;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.kw-tray__remove {
+  min-width: 32px;
+  min-height: 32px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+.kw-tray__actions {
+  display: flex;
+  gap: 8px;
+}
+.kw-tray .kw-button {
+  min-height: 40px;
+  border-color: var(--kw-gold);
+  background: var(--kw-gold);
+  color: var(--kw-navy);
+}
+.kw-tray .kw-button:hover {
+  background: var(--kw-gold-light);
+  color: var(--kw-navy);
+}
+.kw-tray .kw-button--ghost {
+  border-color: rgb(255 255 255 / 0.4);
+  background: transparent;
+  color: var(--kw-white);
+}
+.kw-tray .kw-button--ghost:hover {
+  background: rgb(255 255 255 / 0.08);
+  color: var(--kw-white);
+}
+@media (max-width: 640px) {
+  .kw-tray__items {
+    display: none;
+  }
+  .kw-tray__actions {
+    margin-left: auto;
+  }
+}
+
+.kw-button--ghost {
+  background: transparent;
+  color: var(--kw-action);
+}
+
+/* ── 搵基金：搜尋列、大類 chips、篩選列 ── */
+.kw-screener-search {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px 12px;
+  margin-bottom: 14px;
+}
+.kw-screener-search label {
+  font-weight: 600;
+}
+.kw-screener-search .kw-control {
+  width: 100%;
+  min-height: 48px;
+  font-size: 1rem;
+}
+@media (max-width: 640px) {
+  .kw-screener-search {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .kw-screener-search label {
+    grid-column: 1 / -1;
+  }
+}
+.kw-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+.kw-chip {
+  min-height: 36px;
+  padding: 6px 14px;
+  border: 1px solid var(--kw-rule, #cdd3cf);
+  border-radius: 999px;
+  background: var(--kw-white);
+  color: var(--kw-ink);
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+.kw-chip:hover {
+  border-color: var(--kw-action);
+}
+.kw-chip[aria-pressed="true"] {
+  border-color: var(--kw-navy);
+  background: var(--kw-navy);
+  color: var(--kw-white);
+  font-weight: 600;
+}
+.kw-chip__count {
+  margin-left: 6px;
+  color: inherit;
+  opacity: 0.7;
+  font-variant-numeric: tabular-nums;
+}
+.kw-filters--row {
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  align-items: end;
+}
+.kw-filters--row .kw-filter:last-child {
+  grid-column: auto;
+}
+.kw-filter--action {
+  align-self: end;
+}
+.kw-results-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+}
+.kw-results-head .kw-section__heading {
+  margin-bottom: 8px;
+}
+
+/* ── 排序表頭 ── */
+.kw-sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 32px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.kw-sort:hover,
+.kw-sort.is-active {
+  color: var(--kw-navy);
+}
+.kw-sort__arrow {
+  font-size: 0.7em;
+  opacity: 0.45;
+}
+.kw-sort.is-active .kw-sort__arrow {
+  opacity: 1;
+  color: var(--kw-gold-strong);
+}
+
+/* ── 數字欄 ── */
+.kw-table .kw-num {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.kw-table th.kw-num .kw-sort {
+  justify-content: flex-end;
+}
+.kw-num--negative {
+  color: var(--kw-negative);
+}
+.kw-num--stale {
+  color: var(--kw-muted);
+}
+.kw-num--empty {
+  color: var(--kw-rule-strong, #8f9b97);
+}
+.kw-num .kw-data-state {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 0 4px;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  font-size: 0.66rem;
+  line-height: 1.4;
+  vertical-align: 1px;
+}
+
+/* ── 篩選表 ── */
+.kw-screener {
+  min-width: 1180px;
+  font-size: 0.9rem;
+}
+.kw-screener th,
+.kw-screener td {
+  padding: 10px 12px;
+  vertical-align: middle;
+}
+.kw-screener thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.kw-screener__groups th {
+  padding-block: 6px;
+  border-bottom: 0 !important;
+  color: var(--kw-gold-strong);
+  font-size: 0.72rem !important;
+  letter-spacing: 0.08em !important;
+  text-align: center;
+}
+.kw-screener__groups th + th {
+  border-left: 1px solid var(--kw-rule, #cdd3cf);
+}
+.kw-screener__fund {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  min-width: 300px;
+  max-width: 340px;
+  background: var(--kw-white);
+  box-shadow: 1px 0 0 var(--kw-rule, #cdd3cf);
+}
+.kw-screener thead .kw-screener__fund {
+  z-index: 3;
+  background: var(--kw-table-head);
+}
+.kw-screener tbody tr:hover .kw-screener__fund {
+  background: #f3f7f6;
+}
+.kw-screener__name {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 10px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+.kw-screener__name a {
+  font-weight: 600;
+}
+.kw-screener__scheme {
+  display: block;
+  margin-top: 2px;
+  color: var(--kw-muted);
+  font-size: 0.78rem;
+  font-weight: 400;
+}
+.kw-screener__type {
+  min-width: 150px;
+  max-width: 190px;
+  color: var(--kw-muted-strong);
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+.kw-screener__legend {
+  margin-top: 10px;
+}
+@media (max-width: 640px) {
+  .kw-screener__fund {
+    min-width: 220px;
+    max-width: 240px;
+  }
+}
+
+/* ── 比較基金：加入基金搜尋 ── */
+.kw-picker {
+  position: relative;
+  max-width: 720px;
+  margin-bottom: 24px;
+}
+.kw-picker > label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.kw-picker .kw-control {
+  width: 100%;
+  min-height: 48px;
+}
+.kw-picker > p {
+  margin: 6px 0 0;
+}
+.kw-picker__results {
+  display: grid;
+  gap: 0;
+  margin: 8px 0 0;
+  padding: 0;
+  border: 1px solid var(--kw-rule, #cdd3cf);
+  background: var(--kw-white);
+  list-style: none;
+}
+.kw-picker__results li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--kw-line);
+}
+.kw-picker__results li:last-child {
+  border-bottom: 0;
+}
+.kw-picker__results small {
+  display: block;
+  color: var(--kw-muted);
+}
+.kw-picker__results .kw-button {
+  min-height: 36px;
+  padding: 6px 14px;
+}
+
+/* ── 比較基金：並列表 ── */
+.kw-compare {
+  min-width: 640px;
+  table-layout: fixed;
+}
+.kw-compare caption {
+  padding: 12px 16px;
+  color: var(--kw-muted-strong);
+  font-size: 0.85rem;
+}
+.kw-compare__label {
+  width: 180px;
+}
+.kw-compare th[scope="row"] {
+  color: var(--kw-muted-strong);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.kw-compare__fund {
+  vertical-align: top !important;
+  white-space: normal !important;
+}
+.kw-compare__fund a {
+  display: block;
+  color: var(--kw-navy);
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+.kw-compare__fund small {
+  display: block;
+  margin: 2px 0 8px;
+  color: var(--kw-muted);
+  font-weight: 400;
+}
+.kw-compare__remove {
+  padding: 2px 10px;
+  border: 1px solid var(--kw-rule, #cdd3cf);
+  border-radius: 999px;
+  background: var(--kw-white);
+  color: var(--kw-muted-strong);
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+.kw-compare__remove:hover {
+  border-color: var(--kw-negative);
+  color: var(--kw-negative);
+}
+.kw-compare td {
+  white-space: normal;
+}
+.kw-compare td small {
+  display: block;
+  color: var(--kw-muted);
+  font-size: 0.74rem;
+  font-weight: 400;
+}
+.kw-compare__section th {
+  padding-top: 18px !important;
+  padding-bottom: 6px !important;
+  background: var(--kw-paper);
+  color: var(--kw-gold-strong) !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.08em;
+}
+.kw-compare .kw-num {
+  text-align: left;
+}
+.kw-mark {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 0 5px;
+  border-radius: 3px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.5;
+  vertical-align: 1px;
+}
+.kw-mark--high {
+  background: #e3efef;
+  color: var(--kw-navy);
+}
+.kw-mark--low {
+  background: #f1ece2;
+  color: var(--kw-gold-strong);
+}
+.kw-compare th[scope="row"],
+.kw-compare .kw-compare__label {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--kw-white);
+  box-shadow: 1px 0 0 var(--kw-line);
+}
+.kw-compare thead .kw-compare__label {
+  background: var(--kw-table-head);
+}
+@media (max-width: 640px) {
+  .kw-compare {
+    min-width: 0;
+    width: auto;
+  }
+  .kw-compare__label,
+  .kw-compare th[scope="row"] {
+    width: 96px;
+    min-width: 96px;
+    font-size: 0.8rem !important;
+  }
+  .kw-compare__fund,
+  .kw-compare td {
+    width: 168px;
+    min-width: 168px;
+  }
+}
+
+/* ── 同類排名：先揀類型 ── */
+.kw-type-picker {
+  margin: 8px 0 28px;
+}
+.kw-type-picker h3 {
+  margin: 0 0 4px;
+  font-size: 1.25rem;
+}
+.kw-type-picker > p {
+  margin: 0 0 16px;
+}
+.kw-type-picker section {
+  margin-bottom: 18px;
+}
+.kw-type-picker h4 {
+  margin: 0 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--kw-rule, #cdd3cf);
+  color: var(--kw-gold-strong);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+}
+.kw-type-picker ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.kw-type-picker button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 1px solid var(--kw-rule, #cdd3cf);
+  background: var(--kw-white);
+  color: var(--kw-ink);
+  font: inherit;
+  font-size: 0.92rem;
+  text-align: left;
+  cursor: pointer;
+}
+.kw-type-picker button:hover {
+  border-color: var(--kw-navy);
+  background: var(--kw-soft);
+}
+.kw-type-picker button strong {
+  min-width: 2.2em;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: var(--kw-soft);
+  color: var(--kw-navy);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+.kw-type-current {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0 0 16px;
+  padding: 12px 16px;
+  border-left: 3px solid var(--kw-gold);
+  background: var(--kw-white);
+}
+.kw-type-current .kw-button {
+  min-height: 36px;
+}
+
+/* ── 比較計劃：計劃一覽 ── */
+.kw-scheme-table-wrap {
+  margin-bottom: 28px;
+}
+.kw-scheme-table {
+  min-width: 760px;
+}
+.kw-scheme-table caption {
+  padding: 12px 16px;
+  color: var(--kw-muted-strong);
+  font-size: 0.85rem;
+}
+.kw-scheme-table th,
+.kw-scheme-table td {
+  padding: 10px 14px;
+  vertical-align: middle;
+}
+.kw-scheme-table th[scope="row"] {
+  font-weight: 600;
+}
+.kw-scheme-table small {
+  display: block;
+  color: var(--kw-muted);
+  font-size: 0.76rem;
+  font-weight: 400;
+}
+.kw-scheme-table tr.is-selected {
+  background: #eef5f4;
+}
+.kw-scheme-table input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+
+/* ── 比較計劃：加入計劃、同類基金對照 ── */
+.kw-scheme-picker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 12px 20px;
+  margin: 0 0 24px;
+}
+.kw-scheme-picker ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.kw-scheme-picker li {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding-left: 12px;
+  border: 1px solid var(--kw-navy);
+  border-radius: 999px;
+  background: var(--kw-white);
+  font-size: 0.85rem;
+}
+.kw-scheme-picker li a {
+  display: inline-grid;
+  place-items: center;
+  min-width: 32px;
+  min-height: 32px;
+  color: var(--kw-muted-strong);
+  text-decoration: none;
+}
+.kw-scheme-picker .kw-field {
+  min-width: 260px;
+}
+.kw-lineup {
+  min-width: 720px;
+  table-layout: fixed;
+}
+.kw-lineup th[scope="col"]:first-child {
+  width: 200px;
+}
+.kw-lineup th,
+.kw-lineup td {
+  padding: 10px 12px;
+  vertical-align: top;
+  white-space: normal;
+}
+.kw-lineup th[scope="row"] {
+  position: sticky;
+  left: 0;
+  background: var(--kw-white);
+  color: var(--kw-muted-strong);
+  font-size: 0.84rem;
+}
+.kw-lineup ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.kw-lineup li a {
+  font-size: 0.86rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.kw-lineup__figures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 12px;
+  color: var(--kw-muted-strong);
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+}
+.kw-lineup__figures .kw-data-state {
+  display: inline;
+  margin-left: 4px;
+}
+.kw-lineup__none {
+  color: var(--kw-rule-strong, #8f9b97);
+  font-size: 0.8rem;
+}
+.kw-screener__date {
+  color: var(--kw-muted-strong);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 表內隱藏輔助文字係 absolute 定位；表格容器要成為定位祖先，先唔會撐闊整頁。 */
+.kw-table-wrap,
+.kw-table-scroll {
+  position: relative;
+}
+
+/* 導覽連結最少 44px 觸控寬度（「搵基金」只得三個字）。 */
+.kw-nav a {
+  min-width: 44px;
+  justify-content: center;
+}
+@media (max-width: 360px) {
+  .kw-nav {
+    gap: 10px;
+  }
+  .kw-nav__badge {
+    margin-left: 3px;
+    min-width: 1.2em;
+    height: 1.2em;
+    font-size: 0.66rem;
+  }
+}
+.kw-screener__trustee {
+  display: block;
+  color: var(--kw-muted);
+  font-size: 0.72rem;
+}

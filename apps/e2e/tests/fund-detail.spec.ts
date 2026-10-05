@@ -85,7 +85,7 @@ test("詳情頁的同組比較連結會帶著比較組別回到排名", async ({
     ).toContainText("目前沒有合資格的一年回報資料。");
   } else {
     for (const row of await rows.all()) {
-      await expect(row.locator("td").nth(3)).toHaveText(group);
+      await expect(row.locator("td").nth(4)).toHaveText(group);
     }
   }
 });

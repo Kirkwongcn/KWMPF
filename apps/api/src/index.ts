@@ -116,26 +116,9 @@ app.get("/fund-classes/:id", async (context) => {
         published.provenance.dataAsOf,
       returnsGraceDays(published.provenance.freshnessPolicy),
     ),
-    returnsFreshness: Object.fromEntries(
-      [1, 3, 5, 10].flatMap((period) => {
-        const field = `annualizedReturn${period}y` as keyof BrowseFundClass;
-        if (typeof published.fundClass[field] !== "number") return [];
-        const source = published.fundClass.returnSources?.[String(period)];
-        return [
-          [
-            String(period),
-            evaluateFreshness(
-              source?.dataAsOf ??
-                published.fundClass.returnsAsOf ??
-                published.provenance.dataAsOf,
-              returnGraceDaysForPeriod(
-                published.provenance.freshnessPolicy,
-                period,
-              ),
-            ),
-          ],
-        ];
-      }),
+    returnsFreshness: returnsFreshnessOf(
+      published.fundClass,
+      published.provenance,
     ),
     // 基金規模按月披露，沿用回報的月度寬限期；成立日期是靜態事實，不設過期。
     ...(fundSizeAsOf
@@ -150,6 +133,42 @@ app.get("/fund-classes/:id", async (context) => {
 });
 
 type FactSheetDisclosure = PublishedFactSheetPayload;
+
+type FundFreshnessProvenance = {
+  dataAsOf?: string;
+  freshnessPolicy?: FreshnessPolicy;
+};
+
+const RETURN_PERIODS = [1, 3, 5, 10] as const;
+
+// 每個回報期間按自己的截至日期及寬限期判斷時效，唔可以用一年期日期代表全部。
+function returnsFreshnessOf(
+  fundClass: BrowseFundClass,
+  provenance: FundFreshnessProvenance | undefined,
+  evaluatedAt?: Date,
+) {
+  return Object.fromEntries(
+    RETURN_PERIODS.flatMap((period) => {
+      const field = `annualizedReturn${period}y` as const;
+      if (typeof fundClass[field] !== "number") return [];
+      const dataAsOf =
+        fundClass.returnSources?.[String(period)]?.dataAsOf ??
+        fundClass.returnsAsOf ??
+        provenance?.dataAsOf;
+      if (!dataAsOf) return [];
+      return [
+        [
+          String(period),
+          evaluateFreshness(
+            dataAsOf,
+            returnGraceDaysForPeriod(provenance?.freshnessPolicy, period),
+            evaluatedAt,
+          ),
+        ],
+      ];
+    }),
+  );
+}
 
 type BrowseFundClass = {
   id: string;
@@ -258,6 +277,34 @@ function knownReturn(value: number | undefined) {
     : undefined;
 }
 
+type NumericFundField =
+  | "annualizedReturn1y"
+  | "annualizedReturn3y"
+  | "annualizedReturn5y"
+  | "annualizedReturn10y"
+  | "managementFee"
+  | "latestFer"
+  | "fundRiskIndicator"
+  | "riskClass"
+  | "fundSizeHkdMillion";
+
+// 每個排序鍵的預設方向：回報及規模由高至低，收費、波幅及風險級別由低至高。
+// 方向只係排列次序，唔代表好壞。
+const SEARCH_SORTS: Record<
+  string,
+  { field: NumericFundField; order: "asc" | "desc"; period?: number }
+> = {
+  return: { field: "annualizedReturn1y", order: "desc", period: 1 },
+  return3y: { field: "annualizedReturn3y", order: "desc", period: 3 },
+  return5y: { field: "annualizedReturn5y", order: "desc", period: 5 },
+  return10y: { field: "annualizedReturn10y", order: "desc", period: 10 },
+  fee: { field: "managementFee", order: "asc" },
+  fer: { field: "latestFer", order: "asc" },
+  volatility: { field: "fundRiskIndicator", order: "asc" },
+  risk: { field: "riskClass", order: "asc" },
+  size: { field: "fundSizeHkdMillion", order: "desc" },
+};
+
 app.get("/search", async (context) => {
   const query = context.req.query("q")?.trim() ?? "";
   const page = positiveInteger(context.req.query("page"), 1, 10000);
@@ -267,11 +314,13 @@ app.get("/search", async (context) => {
     100,
   );
   const sort = context.req.query("sort") ?? "name";
+  const orderParam = context.req.query("order");
   if (
     query.length > 120 ||
     page === null ||
     pageSize === null ||
-    !["name", "return", "fee", "risk"].includes(sort)
+    !(sort === "name" || Object.hasOwn(SEARCH_SORTS, sort)) ||
+    (orderParam !== undefined && orderParam !== "asc" && orderParam !== "desc")
   )
     return context.json(
       {
@@ -315,6 +364,11 @@ app.get("/search", async (context) => {
               evaluatedAt,
             )
           : undefined,
+        returnsFreshness: returnsFreshnessOf(
+          published.fundClass,
+          published.provenance,
+          evaluatedAt,
+        ),
       };
     })
     .filter(({ fundClass }) => {
@@ -345,20 +399,27 @@ app.get("/search", async (context) => {
     });
 
   // 名稱是中性的預設排序；指標排序由使用者選擇，搜尋不構成跨組推薦。
+  // 指標排序：符合時效的數值先排，過期數值其次，官方未提供排最後。
+  const sortSpec = sort === "name" ? undefined : SEARCH_SORTS[sort];
+  const descending =
+    sortSpec !== undefined &&
+    (orderParam ? orderParam === "desc" : sortSpec.order === "desc");
+  const tierOf = (entry: (typeof matches)[number]) => {
+    if (!sortSpec) return 0;
+    if (knownReturn(entry.fundClass[sortSpec.field]) === undefined) return 2;
+    return sortSpec.period !== undefined &&
+      entry.returnsFreshness[String(sortSpec.period)]?.status !== "verified"
+      ? 1
+      : 0;
+  };
   matches.sort((a, b) => {
-    if (sort !== "name") {
-      const field =
-        sort === "return"
-          ? "annualizedReturn1y"
-          : sort === "fee"
-            ? "managementFee"
-            : "riskClass";
-      const left = knownReturn(a.fundClass[field]);
-      const right = knownReturn(b.fundClass[field]);
-      if ((left === undefined) !== (right === undefined))
-        return left === undefined ? 1 : -1;
+    if (sortSpec) {
+      const tier = tierOf(a) - tierOf(b);
+      if (tier !== 0) return tier;
+      const left = knownReturn(a.fundClass[sortSpec.field]);
+      const right = knownReturn(b.fundClass[sortSpec.field]);
       if (left !== undefined && right !== undefined && left !== right)
-        return sort === "return" ? right - left : left - right;
+        return descending ? right - left : left - right;
     }
     const byName = a.fundClass.constituentFundName.localeCompare(
       b.fundClass.constituentFundName,
@@ -369,7 +430,7 @@ app.get("/search", async (context) => {
 
   const results = matches
     .slice((page - 1) * pageSize, page * pageSize)
-    .map(({ fundClass, freshness }) => {
+    .map(({ fundClass, freshness, returnsFreshness }) => {
       const group = comparisonGroupFor(fundClass);
       return {
         id: fundClass.id,
@@ -385,9 +446,16 @@ app.get("/search", async (context) => {
         riskClass: fundClass.riskClass,
         fundRiskIndicator: fundClass.fundRiskIndicator,
         annualizedReturn1y: fundClass.annualizedReturn1y,
+        annualizedReturn3y: fundClass.annualizedReturn3y,
+        annualizedReturn5y: fundClass.annualizedReturn5y,
+        annualizedReturn10y: fundClass.annualizedReturn10y,
+        returnsFreshness,
         managementFee: fundClass.managementFee,
         feeCaps: fundClass.feeCaps,
         latestFer: fundClass.latestFer,
+        fundSizeHkdMillion: fundClass.fundSizeHkdMillion,
+        fundSizeAsOf: fundClass.fundSizeAsOf,
+        launchDate: fundClass.launchDate,
         dataAsOf: fundClass.dataAsOf,
         ...(freshness ? { freshness } : {}),
       };
@@ -734,6 +802,7 @@ app.get("/schemes", async (context) => {
       fundTypes: string[];
       riskClassDistribution: Record<string, number>;
       managementFees: number[];
+      latestFers: number[];
       dataAsOfDates: string[];
       factSheet: {
         url: string;
@@ -747,6 +816,10 @@ app.get("/schemes", async (context) => {
         fundType: string;
         comparisonGroup: string;
         riskClass?: number;
+        fundRiskIndicator?: number;
+        managementFee?: number;
+        feeCaps?: string[];
+        latestFer?: number;
         dataAsOf?: string;
         sourceUrl?: string;
         annualizedReturn1y?: number;
@@ -785,7 +858,10 @@ app.get("/schemes", async (context) => {
         fundType: string;
         fundCategory?: string;
         riskClass?: number;
+        fundRiskIndicator?: number;
         managementFee?: number;
+        feeCaps?: string[];
+        latestFer?: number;
         dataAsOf?: string;
         annualizedReturn1y?: number;
         annualizedReturn3y?: number;
@@ -808,6 +884,7 @@ app.get("/schemes", async (context) => {
       fundTypes: [],
       riskClassDistribution: {},
       managementFees: [],
+      latestFers: [],
       dataAsOfDates: [],
       factSheet:
         schemeFactSheet?.url &&
@@ -834,6 +911,8 @@ app.get("/schemes", async (context) => {
     }
     if (typeof fundClass.managementFee === "number")
       scheme.managementFees.push(fundClass.managementFee);
+    if (typeof fundClass.latestFer === "number")
+      scheme.latestFers.push(fundClass.latestFer);
     if (fundClass.dataAsOf) scheme.dataAsOfDates.push(fundClass.dataAsOf);
     const returnValues = {
       "1": fundClass.annualizedReturn1y,
@@ -874,6 +953,18 @@ app.get("/schemes", async (context) => {
       ...(typeof fundClass.riskClass === "number"
         ? { riskClass: fundClass.riskClass }
         : {}),
+      ...(typeof fundClass.fundRiskIndicator === "number"
+        ? { fundRiskIndicator: fundClass.fundRiskIndicator }
+        : {}),
+      ...(typeof fundClass.managementFee === "number"
+        ? {
+            managementFee: fundClass.managementFee,
+            ...(fundClass.feeCaps ? { feeCaps: fundClass.feeCaps } : {}),
+          }
+        : {}),
+      ...(typeof fundClass.latestFer === "number"
+        ? { latestFer: fundClass.latestFer }
+        : {}),
       ...(fundClass.dataAsOf ? { dataAsOf: fundClass.dataAsOf } : {}),
       ...(provenance?.sourceUrl ? { sourceUrl: provenance.sourceUrl } : {}),
       ...(fundClass.returnSources
@@ -886,9 +977,10 @@ app.get("/schemes", async (context) => {
   }
   return context.json(
     [...schemes.values()].map(
-      ({ managementFees, dataAsOfDates, ...scheme }) => ({
+      ({ managementFees, latestFers, dataAsOfDates, ...scheme }) => ({
         ...scheme,
         managementFee: summarizeFees(managementFees),
+        latestFer: summarizeFees(latestFers),
         dataAsOf: summarizeDates(dataAsOfDates),
       }),
     ),

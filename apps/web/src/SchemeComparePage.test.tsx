@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, render, screen, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { SchemeComparePage } from "./SchemeComparePage";
 
@@ -106,11 +106,14 @@ describe("SchemeComparePage", () => {
   });
 
   it("renders the comparison table and marks incomplete DIS clearly", async () => {
-    const fetchMock = vi.fn().mockResolvedValue(
-      Response.json({
-        snapshotId: "snapshot-compare",
-        schemes: [completeScheme, incompleteScheme],
-      }),
+    // 每次呼叫回一個新 Response：比較頁另外讀 /schemes 做同類基金對照。
+    const fetchMock = vi.fn(() =>
+      Promise.resolve(
+        Response.json({
+          snapshotId: "snapshot-compare",
+          schemes: [completeScheme, incompleteScheme],
+        }),
+      ),
     );
     vi.stubGlobal("fetch", fetchMock);
 
@@ -146,7 +149,8 @@ describe("SchemeComparePage", () => {
     expect(screen.getByText("不完整")).toBeVisible();
     expect(screen.getByText(/缺少65歲後基金/)).toBeVisible();
     expect(screen.getAllByText("不完整，不顯示").length).toBeGreaterThan(0);
-    expect(screen.getAllByText("v1 暫不評分").length).toBe(2);
+    // 行政評分未有方法前唔再顯示空白佔位行。
+    expect(screen.queryByText("v1 暫不評分")).not.toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "逐項數據圖" })).toBeVisible();
     expect(
       screen.getByRole("figure", { name: "FER 中位數（本站統計）" }),
@@ -178,5 +182,80 @@ describe("SchemeComparePage", () => {
     expect(
       screen.getAllByRole("link", { name: "返回計劃概覽" })[0],
     ).toHaveAttribute("href", "/schemes");
+  });
+
+  it("lines up each scheme's funds by MPFA fund type", async () => {
+    const list = [
+      {
+        schemeName: "計劃甲",
+        trusteeName: "受託人甲",
+        funds: [
+          {
+            id: "hk-a",
+            constituentFundName: "港股甲",
+            fundClassName: "n.a.",
+            comparisonGroup: "股票基金 - 香港股票基金",
+            annualizedReturn1y: 3.5,
+            latestFer: 1.2,
+            returnsFreshness: {
+              "1": { status: "verified", dataAsOf: "2026-08-31" },
+            },
+          },
+        ],
+      },
+      {
+        schemeName: "計劃乙",
+        trusteeName: "受託人乙",
+        funds: [
+          {
+            id: "bond-b",
+            constituentFundName: "債券乙",
+            fundClassName: "Class A",
+            comparisonGroup: "債券基金 - 環球債券基金",
+            annualizedReturn1y: 0.5,
+            returnsFreshness: {
+              "1": { status: "stale", dataAsOf: "2026-05-31" },
+            },
+          },
+        ],
+      },
+    ];
+    vi.stubGlobal(
+      "fetch",
+      vi.fn((url: string) =>
+        Promise.resolve(
+          Response.json(
+            url.endsWith("/schemes")
+              ? list
+              : {
+                  snapshotId: "snapshot-compare",
+                  schemes: [completeScheme, incompleteScheme],
+                },
+          ),
+        ),
+      ),
+    );
+    render(
+      <SchemeComparePage
+        apiBaseUrl="https://api.test"
+        search={`?ids=${encodeURIComponent("計劃甲")},${encodeURIComponent("計劃乙")}`}
+      />,
+    );
+    const matrix = await screen.findByRole("region", {
+      name: "同類基金對照表",
+    });
+    const rows = within(matrix).getAllByRole("row");
+    // 股票基金排喺債券基金之前；冇該類型的計劃明確寫出。
+    expect(rows[1]).toHaveTextContent("股票基金 - 香港股票基金");
+    expect(rows[1]).toHaveTextContent("港股甲");
+    expect(rows[1]).toHaveTextContent("1年 3.5%");
+    expect(rows[1]).toHaveTextContent("沒有此類基金");
+    expect(rows[2]).toHaveTextContent("債券乙 · Class A");
+    expect(within(rows[2]!).getByText("過期")).toBeVisible();
+    expect(rows[2]).toHaveTextContent("開支比率 —");
+    expect(screen.getByRole("link", { name: "移除：計劃甲" })).toHaveAttribute(
+      "href",
+      `/schemes/compare?ids=${encodeURIComponent("計劃乙")}`,
+    );
   });
 });

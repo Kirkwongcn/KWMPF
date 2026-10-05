@@ -1,4 +1,10 @@
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  within,
+} from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { SchemesPage } from "./SchemesPage";
 
@@ -58,7 +64,7 @@ describe("scheme comparison page", () => {
     expect(
       screen.getByRole("navigation", { name: "主要導覽" }),
     ).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "基金排名" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "同類排名" })).toHaveAttribute(
       "href",
       "/rankings",
     );
@@ -138,7 +144,7 @@ describe("scheme comparison page", () => {
 
     render(<SchemesPage apiBaseUrl="https://api.test" />);
 
-    expect(document.title).toBe("強積金計劃比較｜KWMPF");
+    expect(document.title).toBe("比較計劃｜KWMPF");
   });
   it("compares official management fees and says how many funds they cover", async () => {
     vi.stubGlobal(
@@ -174,7 +180,8 @@ describe("scheme comparison page", () => {
 
     render(<SchemesPage apiBaseUrl="https://api.test" />);
 
-    expect(await screen.findByText("0.75% – 1.55%")).toBeVisible();
+    // 計劃一覽表同計劃卡都列出範圍。
+    expect((await screen.findAllByText("0.75% – 1.55%"))[0]).toBeVisible();
     expect(screen.getByText("中位數 1.05%")).toBeVisible();
     expect(
       screen.getByText(/4 隻基金中，3 隻有官方管理費（75% 覆蓋）/),
@@ -808,5 +815,63 @@ describe("scheme comparison selection", () => {
       screen.getByRole("checkbox", { name: "選擇 計劃 5 作比較" }),
     );
     expect(screen.getByText("已選 4/4 個計劃比較")).toBeVisible();
+  });
+
+  it("lists every scheme in one sortable table and selects schemes for comparison", async () => {
+    const scheme = (
+      name: string,
+      count: number,
+      median: number,
+      categories: string[],
+    ) => ({
+      schemeName: name,
+      trusteeName: `${name} Trustee`,
+      fundClassCount: count,
+      categories,
+      fundTypes: [],
+      riskClassDistribution: {},
+      managementFee: { min: 0.5, median, max: 1.5, fundCount: count },
+      latestFer: {
+        min: 0.7,
+        median: 1.33401 + 0.0000000000000001,
+        max: 1.9,
+        fundCount: count,
+      },
+      funds: [],
+    });
+    vi.stubGlobal(
+      "fetch",
+      vi
+        .fn()
+        .mockResolvedValue(
+          Response.json([
+            scheme("Alpha Scheme", 10, 1.2, ["甲"]),
+            scheme("Beta Scheme", 30, 0.8, ["甲", "乙", "丙"]),
+          ]),
+        ),
+    );
+    render(<SchemesPage apiBaseUrl="https://api.test" />);
+    const table = await screen.findByRole("table", { name: /計劃一覽/ });
+    const names = () =>
+      within(table)
+        .getAllByRole("rowheader")
+        .map((cell) => cell.firstChild?.textContent);
+    expect(names()).toEqual(["Alpha Scheme", "Beta Scheme"]);
+    fireEvent.click(within(table).getByRole("button", { name: /基金數目/ }));
+    expect(names()).toEqual(["Beta Scheme", "Alpha Scheme"]);
+    fireEvent.click(
+      within(table).getByRole("button", { name: /管理費中位數/ }),
+    );
+    expect(names()).toEqual(["Beta Scheme", "Alpha Scheme"]);
+    // 中位數係本站計算，唔顯示浮點尾數；最低最高照官方原值。
+    expect(within(table).getAllByText("1.33%").length).toBe(2);
+    expect(within(table).getAllByText("0.7% – 1.9%").length).toBe(2);
+    fireEvent.click(
+      within(table).getByRole("checkbox", { name: "選取 Beta Scheme 作比較" }),
+    );
+    expect(screen.getByRole("link", { name: "比較已選計劃" })).toHaveAttribute(
+      "href",
+      "/schemes/compare?ids=Beta%20Scheme",
+    );
   });
 });
