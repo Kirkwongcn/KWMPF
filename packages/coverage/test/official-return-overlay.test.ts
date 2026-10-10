@@ -1,5 +1,13 @@
 import { describe, expect, it } from "vitest";
-import { applyOfficialReturnOverlay, normalizeFundFactSheetReturns, validateOfficialReturnObservations } from "../src/official-return-overlay";
+import {
+  applyOfficialCumulativeReturnOverlay,
+  applyOfficialReturnOverlay,
+  normalizeFundFactSheetReturns,
+  splitReturnObservations,
+  validateOfficialCumulativeReturnObservations,
+  validateOfficialReturnObservations,
+} from "../src/official-return-overlay";
+import { buildPublicationInputs } from "../src/build-publication-input";
 
 const record = {
   fundClassId: "fidelity-1",
@@ -100,5 +108,117 @@ describe("official return overlay", () => {
     expect(result.applied).toHaveLength(0);
     expect(result.conflicts).toHaveLength(1);
     expect(result.records[0]?.returns?.[3]?.annualized).toBe(1.5);
+  });
+});
+
+describe("official cumulative return overlay (ADR 0014)", () => {
+  const sha = "a".repeat(64);
+  const cumulative = (overrides: Record<string, unknown> = {}) => ({
+    fundClassId: "fidelity-1",
+    periodYears: 3 as const,
+    basis: "cumulative" as const,
+    cumulative: 9.2,
+    printed: "9.20",
+    dataAsOf: "2026-08-31",
+    sourceUrl: "https://official.test/monthly.pdf",
+    retrievedAt: "2026-10-05T00:00:00Z",
+    sourceSha256: sha,
+    ...overrides,
+  });
+
+  it("splits a mixed candidate file without changing old annualized rows", () => {
+    const split = splitReturnObservations([observation(3, 3.2), cumulative()]);
+    expect(split.annualized).toEqual([observation(3, 3.2)]);
+    expect(split.cumulative).toEqual([cumulative()]);
+  });
+
+  it("rejects other periods, bad hashes, insecure sources, future dates and duplicates", () => {
+    const result = validateOfficialCumulativeReturnObservations(
+      [
+        cumulative(),
+        cumulative({ fundClassId: "x", periodYears: 5 }),
+        cumulative({ fundClassId: "y", sourceSha256: "abc" }),
+        cumulative({ fundClassId: "z", sourceUrl: "http://insecure.test/a.pdf" }),
+        cumulative({ fundClassId: "w", dataAsOf: "2026-12-31" }),
+        cumulative({ fundClassId: "v", cumulative: Number.NaN }),
+        cumulative({ fundClassId: "u", printed: "9.30" }),
+        cumulative({ fundClassId: "t", cumulative: null, printed: "0.00" }),
+        cumulative({ fundClassId: "s", cumulative: 0, printed: "-" }),
+        cumulative(),
+      ] as never,
+      "2026-10-05",
+    );
+    expect(result.valid).toHaveLength(1);
+    expect(result.invalid).toHaveLength(9);
+  });
+
+  it("accepts the official dash only as a null value", () => {
+    const result = validateOfficialCumulativeReturnObservations(
+      [cumulative({ cumulative: null, printed: "-" })] as never,
+      "2026-10-05",
+    );
+    expect(result.invalid).toEqual([]);
+    expect(result.valid).toHaveLength(1);
+  });
+
+  it("keeps its own source and date apart from the annualized three-year return", () => {
+    const withAnnualized = applyOfficialReturnOverlay([record], [observation(3, 3.2)]).records;
+    const result = applyOfficialCumulativeReturnOverlay(withAnnualized, [cumulative()]);
+    expect(result.applied).toHaveLength(1);
+    const target = result.records[0]!;
+    expect(target.returns?.[3]).toMatchObject({ annualized: 3.2, dataAsOf: "2025-12-31" });
+    expect(target.returns?.[3]?.cumulative).toBeUndefined();
+    expect(target.cumulativeReturns?.[3]).toEqual({
+      cumulative: 9.2,
+      printed: "9.20",
+      dataAsOf: "2026-08-31",
+      sourceUrl: "https://official.test/monthly.pdf",
+      retrievedAt: "2026-10-05T00:00:00Z",
+    });
+    // 原紀錄唔被改動。
+    expect(withAnnualized[0]!.cumulativeReturns).toBeUndefined();
+  });
+
+  it("reports unknown funds and a second value for the same fund instead of guessing", () => {
+    const result = applyOfficialCumulativeReturnOverlay([record], [
+      cumulative(),
+      cumulative({ cumulative: 10 }),
+      cumulative({ fundClassId: "unknown" }),
+    ] as never);
+    expect(result.applied).toHaveLength(1);
+    expect(result.conflicts).toHaveLength(1);
+    expect(result.unmatched).toHaveLength(1);
+  });
+
+  it("publishes the cumulative value with its own source block", () => {
+    const records = applyOfficialCumulativeReturnOverlay([record], [cumulative()]).records;
+    const [input] = buildPublicationInputs(records as never);
+    expect(input!.publicFields).toMatchObject({
+      cumulativeReturn3y: 9.2,
+      cumulativeReturnSources: {
+        "3": {
+          printed: "9.20",
+          dataAsOf: "2026-08-31",
+          sourceUrl: "https://official.test/monthly.pdf",
+          retrievedAt: "2026-10-05T00:00:00Z",
+        },
+      },
+    });
+    expect(input!.publicFields?.annualizedReturn3y).toBeUndefined();
+    expect(input!.publicFields?.returnsAsOf).toBeUndefined();
+  });
+
+  it("publishes the official dash as unavailable with its source, never as zero", () => {
+    const records = applyOfficialCumulativeReturnOverlay(
+      [record],
+      [cumulative({ cumulative: null, printed: "-" })] as never,
+    ).records;
+    const [input] = buildPublicationInputs(records as never);
+    expect(input!.publicFields?.cumulativeReturn3y).toBeUndefined();
+    expect(input!.publicFields?.cumulativeReturnSources?.["3"]).toMatchObject({
+      printed: "-",
+      dataAsOf: "2026-08-31",
+    });
+    expect(input!.unavailableFields).toContain("cumulativeReturn3y");
   });
 });

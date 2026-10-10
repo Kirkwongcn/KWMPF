@@ -1,5 +1,5 @@
 import { readFile, writeFile } from "node:fs/promises";
-import { applyOfficialReturnOverlay, type OfficialReturnObservation, validateOfficialReturnObservations } from "./official-return-overlay";
+import { applyOfficialReturnOverlay, splitReturnObservations, validateOfficialReturnObservations } from "./official-return-overlay";
 
 function argument(name: string) {
   const index = process.argv.indexOf(name);
@@ -14,7 +14,8 @@ if (!coveragePath || !observationsPath || !outputPath) {
 }
 
 const coverage = JSON.parse(await readFile(coveragePath, "utf8")) as { records: Parameters<typeof applyOfficialReturnOverlay>[0] };
-const observations = JSON.parse(await readFile(observationsPath, "utf8")) as OfficialReturnObservation[];
+// 只處理年率化；累積回報（basis: "cumulative"）由 publication seed 另行套用。
+const observations = splitReturnObservations(JSON.parse(await readFile(observationsPath, "utf8")) as unknown[]).annualized;
 const validation = validateOfficialReturnObservations(observations);
 if (validation.invalid.length > 0) {
   throw new Error(`Return observation validation failed for ${validation.invalid.length} observation(s)`);

@@ -29,6 +29,8 @@
 /packages/coverage/src/fact-sheet-chart-merge.ts           @Kirkwongcn
 /scripts/ocr-chart-region.py                               @Kirkwongcn
 /packages/coverage/src/official-return-overlay.ts          @Kirkwongcn
+/packages/coverage/src/monthly-performance-summary-parser.ts @Kirkwongcn
+/packages/coverage/src/build-monthly-summary-returns.ts     @Kirkwongcn
 /packages/coverage/src/candidate-anomalies.ts              @Kirkwongcn
 /apps/api/src/comparison-group.ts                          @Kirkwongcn
 /apps/api/src/freshness.ts                                 @Kirkwongcn

@@ -32,6 +32,15 @@ export type SourceRecord = {
     retrievedAt?: string;
     status?: "verified" | "stale" | "failed_with_last_verified";
   }>>;
+  // 受託人官方累積回報（ADR 0014），同 returns 分開：來源、截至日期各自保留。
+  cumulativeReturns?: Partial<Record<3, {
+    /** `null`：官方印「-」，官方未提供。 */
+    cumulative: number | null;
+    printed: string;
+    dataAsOf: string;
+    sourceUrl: string;
+    retrievedAt: string;
+  }>>;
   // 基金規模按月更新，截至日期由平台獨立標示，未必等於回報的截至日期。
   fundSizeHkdMillion?: number;
   fundSizeAsOf?: string;

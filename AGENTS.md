@@ -59,6 +59,7 @@ canonical implementation spec（`docs/specs/2026-08-08-hk-mpf-comparison-v1-impl
 | `docs/adr/0011-mpfa-fund-type-only-classification.md`       | 基金分類只用積金局基金類型                 |
 | `docs/adr/0012-official-narrative-text-fields.md`           | 便覽官方文字欄位（投資目標、評論）原文照錄 |
 | `docs/adr/0013-chart-read-allocations.md`                   | 圖表式配置讀印出的數字，兩次讀取一致先用   |
+| `docs/adr/0014-official-three-year-cumulative-returns.md`   | 受託人官方三年累積回報另設欄位，唔換算     |
 
 ## 使用者里程碑偏好
 

@@ -1,0 +1,97 @@
+每月基金表現 Monthly Fund Performance
+所 載 資 料 截 至 All information as at 31/08/2026
+                                   最新的風險                                            累積回報                                                     曆年回報
+                                     級數*†     成立日期 單位價格                        Cumulative Return (%)                                  Calendar Year Return (%)
+          成分基金名稱
+                                   The Latest Launch Unit Price                                              成立至今
+     Name of Constituent Funds
+                                     Risk      Date  (港元HK$) 年初至今 6個月         1年       3年        5年   10年
+                                                                                                              Since          2021     2022     2023      2024    2025
+                                    Rating*†                    YTD 6-Months 1-Year 3-Years 5-Years 10-Years
+                                                                                                             Launch
+                                                         貨幣 市場 基金 Money Market Fund
+ 強積金保守基金
+                                      1     01/12/2000 14.4032    1.29    0.94    2.01    9.20    12.09    14.22    44.03    0.00     0.39     3.64      3.89    2.38
+ MPF Conservative Fund
+                                                                     債 券 基金 Bond Fund
+ 環球債券基金
+                                      2     08/10/2009 11.6621   -0.49    -2.69   0.28    6.41    -11.85   -3.30    15.58    -5.84    -15.49   4.49      -2.72   5.68
+ Global Bond Fund
+                                                                 保 證基金 Guaranteed Fund
+ 保證基金§
+                                      2     01/12/2000 10.6056   -0.70    -1.49   0.24    7.78    -0.79     2.47     6.06    -2.78    -6.77     2.15     2.61    4.30
+ Guaranteed Fund§
+                                                          混合 資 產基金 Mixed Assets Fund
+ 65歲後基金
+                                      1     08/10/2009 14.3739    2.38    -0.19   4.61    16.20   3.26     28.11    43.74    1.39     -13.21    7.15     2.56    6.28
+ Age 65 Plus Fund
+ 核心累積基金
+                                      3     01/12/2000 32.1834    8.95    4.84    13.88   41.22   32.66    97.20    221.83   11.28    -14.53   14.29     7.92    14.05
+ Core Accumulation Fund
+ 平穩基金
+                                      2     08/10/2009 14.1485    3.80    -0.40   6.14    20.31   2.60     25.88    41.49    -2.60    -14.03   4.32      1.57    11.08
+ Stable Fund
+ 均衡基金
+                                      4     01/12/2000 29.8727    8.98    1.96    13.84   42.93   24.16    79.63    198.73   1.21     -14.08   5.51      7.16    20.43
+ Balanced Fund
+ 增長基金
+                                      5     01/12/2000 33.9149   12.00    3.34    18.34   55.29   33.73    107.56   239.15   2.93     -14.92   5.54      9.69    24.97
+ Growth Fund
+ 智優逸均衡基金
+（前名稱為自選均衡基金）#^
+ ValueChoice Balanced Fund
+ (the Chinese name of this            4     01/07/2019 21.2112    8.50    2.25    13.49   44.98   25.07      -      56.19     1.11    -15.16   6.89      8.32    21.13
+ Constituent Fund was changed,
+ while the English name
+ remained the same)#^
+                                                                    股 票 基金 Equity Fund
+ 環球股票基金 #
+                                      3     01/07/2019 34.5879   14.45    8.19    22.78   67.50   63.85      -      136.09   21.63    -17.28   22.11    13.97    20.64
+ Global Equity Fund#
+ 北美股票基金
+                                      3     01/12/2000 43.4237   13.64    11.50   20.86   67.79   66.06    240.31   334.24   26.42    -19.04   23.42    21.31    14.95
+ North American Equity Fund
+ 歐洲股票基金
+                                      3     01/12/2000 23.7372   10.92    4.12    21.17   49.86   44.12    105.34   137.37   15.84    -14.76   17.89     -1.57   30.89
+ European Equity Fund
+ 亞太股票基金
+                                      3     01/12/2000 44.1482   15.90    2.88    27.38   58.69   12.22    77.30    341.48   -0.49    -25.41   -1.28     8.43    23.43
+ Asia Pacific Equity Fund
+ 中港股票基金
+ Hong Kong and Chinese Equity         5     01/12/2000 27.2229    0.08    -4.80   2.53    41.27   -0.72    38.33    172.23   -14.49   -16.34   -14.46    15.11   33.20
+ Fund
+ 中國股票基金
+                                      5     08/10/2009 16.0184    -1.12   -4.10   0.74    33.49   -16.13   32.82    60.18    -18.24   -25.60   -18.15   15.75    30.43
+ Chinese Equity Fund
+ 智優逸北美股票追蹤指數基金
+（前名稱為自選美國股票基金）#^
+ ValueChoice North America
+                                      3     01/07/2019 59.0719   12.54    11.84   18.98   69.94   67.77      -      161.61   27.11    -19.81   24.33    22.40    16.57
+ Equity Tracker Fund
+ (formerly known as ValueChoice
+ US Equity Fund)#^
+ 智優逸歐洲股票追蹤指數基金
+（前名稱為自選歐洲股票基金）#^
+ ValueChoice Europe Equity
+                                      3     01/07/2019 27.3305   11.64    3.56    20.66   57.71   53.37      -      96.48    17.44    -13.68   17.59     3.28    29.39
+ Tracker Fund
+ (formerly known as ValueChoice
+ European Equity Fund)#^
+ 智優逸亞太股票追蹤指數基金
+（前名稱為自選亞太股票基金）#^
+ ValueChoice Asia Pacific Equity
+                                      3     01/07/2019 22.3158   23.09    7.19    34.51   80.40   45.95      -      88.80    -0.48    -16.54   5.80     10.50    28.58
+ Tracker Fund
+ (formerly known as ValueChoice
+ Asia Pacific Equity Fund)#^
+ 恒生中國企業指數基金 #
+ Hang Seng China Enterprises          5     01/07/2019 9.0007    -3.22    -2.55   -3.01   43.78   3.93       -      -7.69    -21.99   -16.47   -11.71   29.67    25.17
+ Index Tracking Fund#
+ 恒指基金
+                                      3     01/12/2000 30.2998    1.34    -2.37   4.23    50.67   12.68    43.06    203.00   -12.59   -13.10   -11.29   21.41    31.14
+ Hang Seng Index Tracking Fund
+
+#
+     從2019年7月1日起，滙 豐 強 積 金自選 計 劃（                「自選 計 劃」    ）已合 併入 滙 豐 強 積 金智 選 計 劃（         「合 併」  ）。就 合 併而 言，六 項 成 分基 金，即自選 均 衡 基 金、環 球
+     股 票 基 金、自選 美 國 股 票 基 金、自選 歐 洲 股 票 基 金、自選 亞 太 股 票 基 金 及恒 生中國 企 業 指 數 基 金，已 於 滙 豐 強 積 金智 選 計 劃 下成 立。
+     With effect from 1 July 2019, HSBC Mandatory Provident Fund – ValueChoice (‘ValueChoice’) has been merged with HSBC Mandatory Provident Fund

@@ -120,6 +120,15 @@ app.get("/fund-classes/:id", async (context) => {
       published.fundClass,
       published.provenance,
     ),
+    // 官方印「-」都有來源及截至日期，照樣交代（ADR 0014）。
+    ...(published.fundClass.cumulativeReturnSources?.["3"]
+      ? {
+          cumulativeReturnsFreshness: cumulativeReturnsFreshnessOf(
+            published.fundClass,
+            published.provenance,
+          ),
+        }
+      : {}),
     // 基金規模按月披露，沿用回報的月度寬限期；成立日期是靜態事實，不設過期。
     ...(fundSizeAsOf
       ? {
@@ -170,6 +179,24 @@ function returnsFreshnessOf(
   );
 }
 
+// 三年累積回報按自己的截至日期，沿用三年回報的 90 日規則（ADR 0007、0014）。
+// 官方印「-」（冇數值）都照計，網站要講明「截至某日官方未提供」。
+function cumulativeReturnsFreshnessOf(
+  fundClass: BrowseFundClass,
+  provenance: FundFreshnessProvenance | undefined,
+  evaluatedAt?: Date,
+): Record<string, PublishedFreshness> {
+  const source = fundClass.cumulativeReturnSources?.["3"];
+  if (!source?.dataAsOf) return {};
+  return {
+    "3": evaluateFreshness(
+      source.dataAsOf,
+      returnGraceDaysForPeriod(provenance?.freshnessPolicy, 3),
+      evaluatedAt,
+    ),
+  };
+}
+
 type BrowseFundClass = {
   id: string;
   fundClassName: string;
@@ -192,6 +219,17 @@ type BrowseFundClass = {
   fundSizeAsOf?: string;
   returnsAsOf?: string;
   returnSources?: Record<string, { dataAsOf: string; sourceUrl: string }>;
+  // 受託人官方三年累積回報（ADR 0014），同年率化分開。
+  cumulativeReturn3y?: number;
+  cumulativeReturnSources?: Record<
+    string,
+    {
+      printed: string;
+      dataAsOf: string;
+      sourceUrl: string;
+      retrievedAt?: string;
+    }
+  >;
   launchDate?: string;
   isDisComponent?: "core_accumulation" | "age65_plus";
   verificationStatus: string;
@@ -286,23 +324,61 @@ type NumericFundField =
   | "latestFer"
   | "fundRiskIndicator"
   | "riskClass"
-  | "fundSizeHkdMillion";
+  | "fundSizeHkdMillion"
+  | "cumulativeReturn3y";
+
+type SearchFreshness = {
+  returnsFreshness: Record<string, PublishedFreshness>;
+  cumulativeReturnsFreshness: Record<string, PublishedFreshness>;
+  fundSizeFreshness?: PublishedFreshness;
+};
 
 // 每個排序鍵的預設方向：回報及規模由高至低，收費、波幅及風險級別由低至高。
-// 方向只係排列次序，唔代表好壞。
+// 方向只係排列次序，唔代表好壞。`freshness` 指出該欄用邊個時效判斷過期；
+// 冇 `freshness` 的欄位（收費、風險級別等）唔分過期層。
 const SEARCH_SORTS: Record<
   string,
-  { field: NumericFundField; order: "asc" | "desc"; period?: number }
+  {
+    field: NumericFundField;
+    order: "asc" | "desc";
+    freshness?: (entry: SearchFreshness) => PublishedFreshness | undefined;
+  }
 > = {
-  return: { field: "annualizedReturn1y", order: "desc", period: 1 },
-  return3y: { field: "annualizedReturn3y", order: "desc", period: 3 },
-  return5y: { field: "annualizedReturn5y", order: "desc", period: 5 },
-  return10y: { field: "annualizedReturn10y", order: "desc", period: 10 },
+  return: {
+    field: "annualizedReturn1y",
+    order: "desc",
+    freshness: (entry) => entry.returnsFreshness["1"],
+  },
+  return3y: {
+    field: "annualizedReturn3y",
+    order: "desc",
+    freshness: (entry) => entry.returnsFreshness["3"],
+  },
+  return5y: {
+    field: "annualizedReturn5y",
+    order: "desc",
+    freshness: (entry) => entry.returnsFreshness["5"],
+  },
+  return10y: {
+    field: "annualizedReturn10y",
+    order: "desc",
+    freshness: (entry) => entry.returnsFreshness["10"],
+  },
   fee: { field: "managementFee", order: "asc" },
   fer: { field: "latestFer", order: "asc" },
   volatility: { field: "fundRiskIndicator", order: "asc" },
   risk: { field: "riskClass", order: "asc" },
-  size: { field: "fundSizeHkdMillion", order: "desc" },
+  size: {
+    field: "fundSizeHkdMillion",
+    order: "desc",
+    freshness: (entry) => entry.fundSizeFreshness,
+  },
+  // 三年累積（官方）只同累積口徑排序，唔同年率化混合；只供瀏覽，唔係排名（ADR 0014）。
+  cumulative3y: {
+    field: "cumulativeReturn3y",
+    order: "desc",
+    freshness: (entry) => entry.cumulativeReturnsFreshness["3"],
+  },
 };
 
 app.get("/search", async (context) => {
@@ -369,6 +445,11 @@ app.get("/search", async (context) => {
           published.provenance,
           evaluatedAt,
         ),
+        cumulativeReturnsFreshness: cumulativeReturnsFreshnessOf(
+          published.fundClass,
+          published.provenance,
+          evaluatedAt,
+        ),
         // 基金規模按月披露，沿用回報的月度寬限期（ADR 0010）。
         fundSizeFreshness: published.fundClass.fundSizeAsOf
           ? evaluateFreshness(
@@ -415,12 +496,8 @@ app.get("/search", async (context) => {
   const tierOf = (entry: (typeof matches)[number]) => {
     if (!sortSpec) return 0;
     if (knownReturn(entry.fundClass[sortSpec.field]) === undefined) return 2;
-    if (sortSpec.field === "fundSizeHkdMillion")
-      return entry.fundSizeFreshness?.status === "verified" ? 0 : 1;
-    return sortSpec.period !== undefined &&
-      entry.returnsFreshness[String(sortSpec.period)]?.status !== "verified"
-      ? 1
-      : 0;
+    if (!sortSpec.freshness) return 0;
+    return sortSpec.freshness(entry)?.status === "verified" ? 0 : 1;
   };
   matches.sort((a, b) => {
     if (sortSpec) {
@@ -440,37 +517,58 @@ app.get("/search", async (context) => {
 
   const results = matches
     .slice((page - 1) * pageSize, page * pageSize)
-    .map(({ fundClass, freshness, returnsFreshness, fundSizeFreshness }) => {
-      const group = comparisonGroupFor(fundClass);
-      return {
-        id: fundClass.id,
-        fundClassName: fundClass.fundClassName,
-        constituentFundName: fundClass.constituentFundName,
-        schemeName: fundClass.schemeName,
-        trusteeName: fundClass.trusteeName,
-        fundType: fundClass.fundType,
-        fundCategory: fundClass.fundCategory,
-        comparisonGroup: group.name,
-        comparisonGroupSource: group.source,
-        comparisonGroupFamily: group.family,
-        riskClass: fundClass.riskClass,
-        fundRiskIndicator: fundClass.fundRiskIndicator,
-        annualizedReturn1y: fundClass.annualizedReturn1y,
-        annualizedReturn3y: fundClass.annualizedReturn3y,
-        annualizedReturn5y: fundClass.annualizedReturn5y,
-        annualizedReturn10y: fundClass.annualizedReturn10y,
+    .map(
+      ({
+        fundClass,
+        freshness,
         returnsFreshness,
-        managementFee: fundClass.managementFee,
-        feeCaps: fundClass.feeCaps,
-        latestFer: fundClass.latestFer,
-        fundSizeHkdMillion: fundClass.fundSizeHkdMillion,
-        fundSizeAsOf: fundClass.fundSizeAsOf,
-        ...(fundSizeFreshness ? { fundSizeFreshness } : {}),
-        launchDate: fundClass.launchDate,
-        dataAsOf: fundClass.dataAsOf,
-        ...(freshness ? { freshness } : {}),
-      };
-    });
+        cumulativeReturnsFreshness,
+        fundSizeFreshness,
+      }) => {
+        const group = comparisonGroupFor(fundClass);
+        return {
+          id: fundClass.id,
+          fundClassName: fundClass.fundClassName,
+          constituentFundName: fundClass.constituentFundName,
+          schemeName: fundClass.schemeName,
+          trusteeName: fundClass.trusteeName,
+          fundType: fundClass.fundType,
+          fundCategory: fundClass.fundCategory,
+          comparisonGroup: group.name,
+          comparisonGroupSource: group.source,
+          comparisonGroupFamily: group.family,
+          riskClass: fundClass.riskClass,
+          fundRiskIndicator: fundClass.fundRiskIndicator,
+          annualizedReturn1y: fundClass.annualizedReturn1y,
+          annualizedReturn3y: fundClass.annualizedReturn3y,
+          annualizedReturn5y: fundClass.annualizedReturn5y,
+          annualizedReturn10y: fundClass.annualizedReturn10y,
+          returnsFreshness,
+          // 官方印「-」時冇數值，但照交代原文、截至日期及來源（ADR 0014）。
+          ...(fundClass.cumulativeReturnSources?.["3"]
+            ? {
+                ...(typeof fundClass.cumulativeReturn3y === "number"
+                  ? { cumulativeReturn3y: fundClass.cumulativeReturn3y }
+                  : {}),
+                cumulativeReturn3yPrinted:
+                  fundClass.cumulativeReturnSources["3"].printed,
+                cumulativeReturn3ySourceUrl:
+                  fundClass.cumulativeReturnSources["3"].sourceUrl,
+                cumulativeReturnsFreshness,
+              }
+            : {}),
+          managementFee: fundClass.managementFee,
+          feeCaps: fundClass.feeCaps,
+          latestFer: fundClass.latestFer,
+          fundSizeHkdMillion: fundClass.fundSizeHkdMillion,
+          fundSizeAsOf: fundClass.fundSizeAsOf,
+          ...(fundSizeFreshness ? { fundSizeFreshness } : {}),
+          launchDate: fundClass.launchDate,
+          dataAsOf: fundClass.dataAsOf,
+          ...(freshness ? { freshness } : {}),
+        };
+      },
+    );
 
   return context.json(results, {
     headers: {

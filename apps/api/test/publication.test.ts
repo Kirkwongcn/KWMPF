@@ -487,6 +487,135 @@ describe("publication snapshot", () => {
     }
   });
 
+  it("returns the official three-year cumulative return apart from the annualized one", async () => {
+    const snapshotId = "snapshot-cumulative-test";
+    const recent = new Date(Date.now() - 10 * 86_400_000)
+      .toISOString()
+      .slice(0, 10);
+    await bindings.DB.prepare(
+      "INSERT INTO publication_snapshots (snapshot_id, published_at) VALUES (?, ?)",
+    )
+      .bind(snapshotId, "2026-08-13T00:00:00Z")
+      .run();
+    const funds = [
+      { id: "cum-fresh", cumulative: 9.2, printed: "9.20", asOf: recent },
+      { id: "cum-stale", cumulative: 80, printed: "80.00", asOf: "2020-06-30" },
+      { id: "cum-dash", cumulative: null, printed: "-", asOf: recent },
+      { id: "cum-none" },
+    ] as {
+      id: string;
+      cumulative?: number | null;
+      printed?: string;
+      asOf?: string;
+    }[];
+    for (const fund of funds) {
+      await bindings.DB.prepare(
+        "INSERT INTO fund_class_versions (snapshot_id, fund_class_id, payload) VALUES (?, ?, ?)",
+      )
+        .bind(
+          snapshotId,
+          fund.id,
+          JSON.stringify({
+            snapshotId,
+            fundClass: {
+              id: fund.id,
+              constituentFundName: `累積測試 ${fund.id}`,
+              fundType: "Equity Fund - Hong Kong Equity Fund",
+              trusteeName: "受託人甲",
+              schemeName: "累積測試計劃",
+              fundClassName: "n.a.",
+              annualizedReturn1y: 1,
+              ...(fund.cumulative === undefined
+                ? {}
+                : {
+                    ...(fund.cumulative === null
+                      ? { unavailableFields: ["cumulativeReturn3y"] }
+                      : { cumulativeReturn3y: fund.cumulative }),
+                    cumulativeReturnSources: {
+                      "3": {
+                        printed: fund.printed,
+                        dataAsOf: fund.asOf,
+                        sourceUrl: "https://trustee.test/monthly.pdf",
+                      },
+                    },
+                  }),
+              dataAsOf: recent,
+              returnsAsOf: recent,
+              verificationStatus: "verified",
+            },
+            provenance: { verificationStatus: "verified", dataAsOf: recent },
+          }),
+        )
+        .run();
+    }
+    await bindings.DB.prepare(
+      "INSERT INTO current_publication (singleton, snapshot_id) VALUES (1, ?)",
+    )
+      .bind(snapshotId)
+      .run();
+
+    const sorted = (await (
+      await SELF.fetch("https://kwmpf.test/search?sort=cumulative3y")
+    ).json()) as {
+      id: string;
+      annualizedReturn3y?: number;
+      cumulativeReturn3y?: number;
+      cumulativeReturn3yPrinted?: string;
+      cumulativeReturnsFreshness?: Record<string, { status: string }>;
+    }[];
+    // 過期嘅 80% 即使較高，都排喺符合時效的數值之後；冇數值排最後。
+    expect(sorted.map((fund) => fund.id)).toEqual([
+      "cum-fresh",
+      "cum-stale",
+      "cum-dash",
+      "cum-none",
+    ]);
+    expect(sorted[0]).toMatchObject({
+      cumulativeReturn3y: 9.2,
+      cumulativeReturn3yPrinted: "9.20",
+      cumulativeReturnsFreshness: { "3": { status: "verified" } },
+    });
+    expect(sorted[0]?.annualizedReturn3y).toBeUndefined();
+    expect(sorted[1]?.cumulativeReturnsFreshness?.["3"]?.status).toBe("stale");
+    // 官方印「-」：冇數值，但照交代原文、截至日期及來源，唔當 0。
+    expect(sorted[2]).toMatchObject({
+      cumulativeReturn3yPrinted: "-",
+      cumulativeReturn3ySourceUrl: "https://trustee.test/monthly.pdf",
+      cumulativeReturnsFreshness: { "3": { dataAsOf: recent } },
+    });
+    expect(sorted[2]?.cumulativeReturn3y).toBeUndefined();
+    expect(sorted[3]?.cumulativeReturn3y).toBeUndefined();
+    expect(sorted[3]?.cumulativeReturn3yPrinted).toBeUndefined();
+
+    const detail = (await (
+      await SELF.fetch("https://kwmpf.test/fund-classes/cum-fresh")
+    ).json()) as {
+      fundClass: {
+        cumulativeReturnSources: Record<string, { printed: string }>;
+      };
+      cumulativeReturnsFreshness: Record<
+        string,
+        { status: string; dataAsOf: string }
+      >;
+      returnsFreshness: Record<string, unknown>;
+    };
+    expect(detail.fundClass.cumulativeReturnSources["3"]?.printed).toBe("9.20");
+    expect(detail.cumulativeReturnsFreshness["3"]).toMatchObject({
+      status: "verified",
+      dataAsOf: recent,
+    });
+    expect(detail.returnsFreshness["3"]).toBeUndefined();
+
+    const dash = (await (
+      await SELF.fetch("https://kwmpf.test/fund-classes/cum-dash")
+    ).json()) as {
+      fundClass: { cumulativeReturn3y?: number };
+      cumulativeReturnsFreshness?: Record<string, { dataAsOf: string }>;
+    };
+    expect(dash.fundClass.cumulativeReturn3y).toBeUndefined();
+    expect(dash.cumulativeReturnsFreshness?.["3"]?.dataAsOf).toBe(recent);
+  });
+
   it("lets a browser on the site origin read the match count header", async () => {
     await publishBrowseFixture();
 

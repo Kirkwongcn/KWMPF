@@ -768,3 +768,22 @@
   border: 1px solid var(--kw-rule, #cdd3cf);
   background: var(--kw-white);
 }
+.kw-num--cumulative {
+  background: rgb(199 166 106 / 0.08);
+}
+.kw-screener__cumulative-group {
+  background: rgb(199 166 106 / 0.12);
+}
+/* 累積回報截至日期同年率化唔同，逐格細字印出。 */
+.kw-cell-date,
+.kw-cell-note {
+  display: block;
+  color: var(--kw-muted-strong);
+  font-size: 0.7rem;
+  font-weight: 400;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.kw-cell-note {
+  font-size: 0.78rem;
+}

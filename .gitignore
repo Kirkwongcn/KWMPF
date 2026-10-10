@@ -12,3 +12,6 @@ apps/e2e/.e2e-state/
 .tmp-*/
 .tmp-*
 **/.impeccable/review/
+
+# Python 執行時產生的快取，唔入版本庫。
+__pycache__/

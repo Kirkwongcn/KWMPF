@@ -16,6 +16,8 @@ packages/coverage/src/build-staging-seed.ts
 packages/coverage/src/build-chart-allocations.ts
 scripts/ocr-chart-region.py
 packages/coverage/src/official-return-overlay.ts
+packages/coverage/src/monthly-performance-summary-parser.ts
+packages/coverage/src/build-monthly-summary-returns.ts
 packages/coverage/src/candidate-anomalies.ts
 apps/api/src/comparison-group.ts
 apps/api/src/freshness.ts

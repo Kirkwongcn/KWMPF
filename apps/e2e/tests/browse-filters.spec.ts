@@ -44,9 +44,9 @@ test("加入風險級別條件後結果收窄且仍全部相符", async ({ page 
   await expect(rows.first()).toBeVisible();
   const beforeCount = await rows.count();
 
-  // 欄位：（基金連比較掣為 th）、基金類型、一年、三年、五年、十年、截至、三年波幅、風險級別、
-  // 規模、開支比率、管理費（費用置後）。
-  const riskCell = rows.first().locator("td").nth(7);
+  // 欄位：（基金連比較掣為 th）、基金類型、一年、三年、五年、十年、截至、三年累積（官方）、三年波幅、
+  // 風險級別、規模、開支比率、管理費（費用置後）。
+  const riskCell = rows.first().locator("td").nth(8);
   const riskClass = (await riskCell.textContent())!.trim();
   test.skip(!/^\d+$/.test(riskClass), "首行沒有官方風險級別可用作篩選");
 
@@ -67,7 +67,7 @@ test("加入風險級別條件後結果收窄且仍全部相符", async ({ page 
             .map((element) => ({
               text: element.textContent ?? "",
               riskClass:
-                element.querySelectorAll("td")[7]?.textContent?.trim() ?? "",
+                element.querySelectorAll("td")[8]?.textContent?.trim() ?? "",
             }))
             .filter(
               (row) =>
