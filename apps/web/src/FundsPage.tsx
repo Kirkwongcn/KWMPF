@@ -209,7 +209,7 @@ function CumulativeCell({ fund }: { fund: FundSummary }) {
         className="kw-num kw-num--cumulative kw-num--empty"
         title={
           freshness
-            ? `受託人每月摘要截至 ${freshness.dataAsOf} 未有提供`
+            ? `受託人每月數據截至 ${freshness.dataAsOf} 未有提供`
             : undefined
         }
       >
@@ -852,7 +852,7 @@ export function FundsPage({
               {oneYearDates.size === 1 && [...oneYearDates][0]
                 ? `本頁一年回報截至 ${[...oneYearDates][0]}`
                 : "本頁各基金一年回報截至日期不一"}
-              （見「截至」欄）。其他期間及基金規模各有自己的截至日期，滑鼠停留數值可見；三年年率化回報來自受託人便覽。「官方累積」欄係受託人每月摘要的三年累積回報（非年率化），截至日期印喺每格之下，只同累積數字比較；按此欄排序只供瀏覽，唔係排名，而且會跨基金類型。
+              （見「截至」欄）。其他期間及基金規模各有自己的截至日期，滑鼠停留數值可見；三年年率化回報來自受託人便覽。「官方累積」欄係受託人官方每月數據的三年累積回報（非年率化），截至日期印喺每格之下，只同累積數字比較；按此欄排序只供瀏覽，唔係排名，而且會跨基金類型。
               「—」＝未有數值；「過期」＝超出網站時效門檻，只作參考、不入排名。
             </p>
             <nav className="kw-pagination" aria-label="基金結果頁次">

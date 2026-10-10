@@ -573,7 +573,8 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
                             >
                               {source ? (
                                 <>
-                                  {source.printed === "-"
+                                  {typeof fund.fundClass.cumulativeReturn3y !==
+                                  "number"
                                     ? "官方未提供"
                                     : `${source.printed}%`}
                                   <Marker
@@ -588,7 +589,7 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
                                       target="_blank"
                                       rel="noreferrer"
                                     >
-                                      受託人每月摘要
+                                      受託人每月數據
                                     </a>
                                   </small>
                                 </>

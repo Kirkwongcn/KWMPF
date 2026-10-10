@@ -152,13 +152,17 @@ describe("official cumulative return overlay (ADR 0014)", () => {
     expect(result.invalid).toHaveLength(9);
   });
 
-  it("accepts the official dash only as a null value", () => {
+  it("accepts the official dash or N/A only as a null value", () => {
     const result = validateOfficialCumulativeReturnObservations(
-      [cumulative({ cumulative: null, printed: "-" })] as never,
+      [
+        cumulative({ cumulative: null, printed: "-" }),
+        cumulative({ fundClassId: "bct", cumulative: null, printed: "N/A" }),
+        cumulative({ fundClassId: "bad", cumulative: 0, printed: "N/A" }),
+      ] as never,
       "2026-10-05",
     );
-    expect(result.invalid).toEqual([]);
-    expect(result.valid).toHaveLength(1);
+    expect(result.valid).toHaveLength(2);
+    expect(result.invalid).toHaveLength(1);
   });
 
   it("keeps its own source and date apart from the annualized three-year return", () => {

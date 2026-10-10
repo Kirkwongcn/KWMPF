@@ -396,7 +396,7 @@ describe("fund browse page without a separate class", () => {
     ]);
     // 官方印「-」：寫官方未提供連日期，唔當 0。
     expect(
-      screen.getByTitle("受託人每月摘要截至 2026-08-31 未有提供"),
+      screen.getByTitle("受託人每月數據截至 2026-08-31 未有提供"),
     ).toHaveTextContent("官方未提供截至 2026-08-31");
     expect(
       screen.getByRole("columnheader", { name: "官方累積" }),
