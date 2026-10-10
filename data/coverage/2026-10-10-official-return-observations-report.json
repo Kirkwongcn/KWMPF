@@ -1,0 +1,40 @@
+{
+  "generatedAt": "2026-10-10T02:05:58.960Z",
+  "sourceSnapshot": "data/sources/2026-09-26/mpf-fund-platform.json",
+  "baseCandidate": "data/coverage/2026-10-02-official-return-observations-candidate.json",
+  "method": "Official HSBC / Hang Seng Monthly Fund Performance Summary main table (pdftotext -layout), exact English-name match within the scheme, one-year cumulative cross-checked against the MPFA platform one-year return of the same date; three-year cumulative stored as published (ADR 0014), never converted to annualized.",
+  "sources": [
+    {
+      "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "url": "https://www.hsbc.com.hk/content/dam/hsbc/hk/docs/mpf/monthly-fund-performance-summary/202608.pdf",
+      "retrievedAt": "2026-10-10T01:56:29Z",
+      "sha256": "dee793eea5c7b8da61513ae1f70d8a0899881d873a79541ae4b85118fd55f097",
+      "bytes": 705826,
+      "page": 4,
+      "dataAsOf": "2026-08-31",
+      "rows": 20,
+      "matched": 20,
+      "officialNotDisclosed": [],
+      "schemeFundsNotInSummary": [],
+      "oneYearCrossChecks": 20
+    },
+    {
+      "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "url": "https://cms.hangseng.com/cms/cbd/eMPF/monthly_aug2026.pdf",
+      "retrievedAt": "2026-10-10T01:56:30Z",
+      "sha256": "0e31d10c726d70fdfe0cce1a5b795ca390a02fce6bc74bb3d2e338c3d4f81192",
+      "bytes": 546877,
+      "page": 4,
+      "dataAsOf": "2026-08-31",
+      "rows": 20,
+      "matched": 20,
+      "officialNotDisclosed": [],
+      "schemeFundsNotInSummary": [],
+      "oneYearCrossChecks": 20
+    }
+  ],
+  "annualizedRows": 295,
+  "cumulativeRows": 40,
+  "replacedCumulative": [],
+  "keptNewerCumulative": []
+}
