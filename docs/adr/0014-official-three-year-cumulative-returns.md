@@ -15,15 +15,27 @@
 
 第一批來源係滙豐強積金智選計劃及恒生強積金智選計劃的《每月基金表現摘要》主表（兩個計劃各 20 隻成分基金，每月更新）。
 
+第二批來源（2026-10-10 加入）係銀聯信託（BCT）官網基金表現數據接口 `https://www.bcthk.com/bin/servlet/fundInformation`：Pro Choice、Industry Choice、Strategic、Series 800、Smart Plan、Simple Plan 六個計劃共 116 個基金類別，每個類別有官方 `last3YearPerformance`（累積）同 `performanceDate`。接口只提供最新一期，冇歷史月份，所以只可以喺積金局平台更新到同一個截至日期之後先做一年交叉核對；平台未更新之前，讀取器會拒絕（唔會用唔同日期的平台數字核對）。BCT 單位類別同積金局類別名稱按契約對應（`D` ↔ `Class D`、`A` ↔ `Unit Class A`）；積金局冇寫類別（`n.a.`）而計劃內只得一個同名基金時照名稱配對。原回應 JSON 的 SHA-256 記入候選檔。
+
 ## 實作約束
 
 - 候選檔 `data/coverage/<date>-official-return-observations-candidate.json` 同時載年率化同累積紀錄；累積紀錄帶 `basis: "cumulative"`，舊檔原樣有效（`splitReturnObservations`）。
 - `applyOfficialCumulativeReturnOverlay` 寫入 `SourceRecord.cumulativeReturns[3]`，唔同 `returns[3]` 共用日期或來源；同一基金第二筆、未知基金、或者平台已有三年累積，一律報錯，publication seed 停下。
 - 讀取器只認主表表頭欄位次序一字不差（YTD／6-Months／1-Year／3-Years／5-Years／10-Years）；每格得一行數字；英文名稱喺同一計劃內精確配對（大小寫、引號、破折號正規化），同名多過一個類別或者對唔上即成份文件作廢。
 - 每份文件逐行核對同期一年累積回報 = 積金局平台同期一年回報；任何一行唔一致代表讀錯欄，成份作廢。
-- 官方寫「-」係官方未提供，唔當 0：照出紀錄（`cumulative: null`、`printed: "-"`，連截至日期、來源及 SHA-256），發布時入 `unavailableFields`，頁面寫「官方未提供」並交代截至日期同來源。
+- 官方寫「-」（滙豐／恒生）或者「N/A」（BCT）係官方未提供，唔當 0：照出紀錄（`cumulative: null`，`printed` 照抄原文，連截至日期、來源及 SHA-256），發布時入 `unavailableFields`，頁面寫「官方未提供」並交代截至日期同來源。
 - 同一份文件主表只可以喺一頁；計劃內每隻成分基金都要喺主表出現、每一行都要做到一年交叉核對，否則成份作廢。
 - 合併舊候選檔時，每隻基金只留一筆累積紀錄：截至日期較新先取代；同一截至日期但原文唔同即報錯。
+
+## 每月自動更新
+
+`.github/workflows/refresh-trustee-returns.yml` 每日跑一次：攞最新入庫平台快照的截至日期，用 `scripts/fetch-trustee-monthly-returns.sh` 下載同一截至日期的受託人來源（滙豐／恒生按月份網址；BCT 接口回應日期唔同就略過），再用同一個 CLI 逐行交叉核對。
+
+- 每份文件獨立：一份作廢（讀唔到、對唔上、核對唔一致）只影響自己，原因寫入報告 `rejectedSources`，其他文件照用；全部作廢先算失敗。
+- 交叉核對：一年必須核對到；五年、十年兩邊都有就要一致（同一基金唔同單位類別一年回報可以一樣，多核兩個期間減低類別對調而唔被發現）。官方冇一年回報的行，只有平台都冇而且三年亦係官方未提供先接受。
+- 有新數據而又未有同期資料 PR 先開 PR；作廢、接口異常、或者平台快照入庫超過 10 日 PDF 仍然下載唔到，同一截至日期只開一個跟進 issue（有 `needs-triage` 就貼上）。
+- 每次下載的原檔以 artifact 保留 90 日。BCT 接口只有最新一期，如果平台快照遲咗合併而 BCT 已經轉去下一期，可以用保留的原檔加 `--check-source` 補做。
+- 合併同正式部署仍然要人手批准。
 
 ## 背景
 
@@ -32,5 +44,5 @@
 ## 後果
 
 - 滙豐及恒生 40 隻基金有截至最近月底的官方三年累積回報，頁面另列，唔改變三年年率化排名的覆蓋。
-- 其他受託人如有官方累積披露（例如宏利逐隻基金頁），沿用同一欄位及規則；新讀取器要列入 `scripts/high-risk-paths.txt`。
+- 其他受託人如有官方累積披露，沿用同一欄位及規則；新讀取器要列入 `scripts/high-risk-paths.txt`。2026-10-10 查過：宏利官網基金接口（`/bin/funds/funddetail`）的 `cumulativeReturns` 對強積金基金係空；中銀保誠官網基金頁冇表現數字；兩者暫時冇官方三年來源。
 - 將來如果要做「三年累積」排名，要另行決定，唔可以同年率化排名合併。

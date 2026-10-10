@@ -31,6 +31,9 @@
 /packages/coverage/src/official-return-overlay.ts          @Kirkwongcn
 /packages/coverage/src/monthly-performance-summary-parser.ts @Kirkwongcn
 /packages/coverage/src/build-monthly-summary-returns.ts     @Kirkwongcn
+/packages/coverage/src/bct-fund-performance.ts             @Kirkwongcn
+/scripts/fetch-trustee-monthly-returns.sh                 @Kirkwongcn
+/.github/workflows/refresh-trustee-returns.yml            @Kirkwongcn
 /packages/coverage/src/candidate-anomalies.ts              @Kirkwongcn
 /apps/api/src/comparison-group.ts                          @Kirkwongcn
 /apps/api/src/freshness.ts                                 @Kirkwongcn

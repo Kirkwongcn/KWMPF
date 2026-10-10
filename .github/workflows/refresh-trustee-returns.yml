@@ -1,0 +1,233 @@
+name: Refresh trustee monthly returns
+
+# 受託人每月官方三年累積回報（ADR 0014）。每日跑一次：
+# 1. 攞最新入庫的積金局平台快照日期（例如 2026-09-30）；
+# 2. 下載同一截至日期的受託人每月來源（滙豐／恒生摘要 PDF、BCT 官網接口）；
+# 3. 讀取器逐行同平台累積回報交叉核對，一行唔一致該份文件作廢，其他文件照用；
+# 4. 有新數據而又未有同期資料 PR 就開一個；作廢、接口異常或者 PDF 遲遲未出就開（或沿用）
+#    一個跟進 issue。每次下載的原檔保留 90 日（artifact），BCT 接口只有最新一期，
+#    錯過咗都可以用原檔加 --check-source 補做。
+# 合併同正式部署仍然要人手批准（docs/agents/change-policy.md）。
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: refresh-trustee-returns
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.11
+      - name: Cache Bun's package download store
+        uses: actions/cache@v6
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-install-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-install-
+      - run: bun install --frozen-lockfile
+      - name: Install PDF text tools
+        run: sudo apt-get update && sudo apt-get install --yes poppler-utils
+
+      - name: Resolve the platform snapshot and the current trustee-return candidate
+        id: inputs
+        run: |
+          set -euo pipefail
+          platform="$(scripts/resolve-previous-snapshot.sh)"
+          base="$(scripts/resolve-latest-return-candidate.sh)"
+          {
+            echo "platform=${platform}"
+            echo "data_as_of=$(jq -er '.sourceDataAsOf' "${platform}")"
+            echo "base=${base}"
+            echo "platform_batch=$(basename "$(dirname "${platform}")")"
+            echo "output=data/coverage/$(date -u +%F)-official-return-observations-candidate.json"
+            echo "report=data/coverage/$(date -u +%F)-official-return-observations-report.json"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Skip when a pull request for this date is already open
+        id: open_pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DATA_AS_OF: ${{ steps.inputs.outputs.data_as_of }}
+        run: |
+          set -euo pipefail
+          open="$(gh pr list --state open --limit 100 --json headRefName \
+            --jq "map(select(.headRefName | startswith(\"data/trustee-returns-${DATA_AS_OF}-\"))) | length")"
+          echo "open=${open}" >> "$GITHUB_OUTPUT"
+          if [ "${open}" != "0" ]; then
+            echo "已有截至 ${DATA_AS_OF} 的受託人回報資料 PR 未合併，今次唔再開。" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Fetch trustee sources dated like the platform snapshot
+        id: fetch
+        run: |
+          set -euo pipefail
+          bash scripts/fetch-trustee-monthly-returns.sh "${{ steps.inputs.outputs.data_as_of }}" /tmp/trustee
+          echo "count=$(wc -l < /tmp/trustee/arguments.txt)" >> "$GITHUB_OUTPUT"
+          {
+            echo "### Trustee sources for ${{ steps.inputs.outputs.data_as_of }}"
+            echo
+            echo "Fetched: $(wc -l < /tmp/trustee/arguments.txt)"
+            echo
+            echo '```'
+            cat /tmp/trustee/skipped.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Keep the fetched source files
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: trustee-monthly-sources-${{ github.run_id }}
+          path: /tmp/trustee
+          if-no-files-found: ignore
+          retention-days: 90
+
+      - name: Build the candidate with cross-checks
+        id: build
+        if: steps.fetch.outputs.count != '0' && steps.open_pr.outputs.open == '0'
+        env:
+          OUTPUT: ${{ steps.inputs.outputs.output }}
+          REPORT: ${{ steps.inputs.outputs.report }}
+        run: |
+          set -euo pipefail
+          if [ -e "${OUTPUT}" ]; then
+            echo "::error::${OUTPUT} already exists; a candidate was already built today."
+            exit 1
+          fi
+          arguments=()
+          while IFS=$'\t' read -r flag value; do
+            arguments+=("${flag}" "${value}")
+          done < /tmp/trustee/arguments.txt
+          bun run coverage:monthly-summary-returns \
+            --source "${{ steps.inputs.outputs.platform }}" \
+            --base-candidate "${{ steps.inputs.outputs.base }}" \
+            "${arguments[@]}" \
+            --output "${OUTPUT}" \
+            --report "${REPORT}" 2>&1 | tee /tmp/build.log
+          # 比較內容唔比較排版：舊候選檔格式唔同都唔應該開空 PR。
+          jq -r '.rejectedSources[] | "\(.flag)\t\(.entry | split("|")[0])\t\(.reason)"' "${REPORT}" > /tmp/trustee/rejected.txt
+          if [ "$(jq -S . "${OUTPUT}")" = "$(jq -S . "${{ steps.inputs.outputs.base }}")" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            rm -f "${OUTPUT}" "${REPORT}"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check the publication seed with the new candidate
+        if: steps.build.outputs.changed == 'true'
+        env:
+          KWMPF_PUBLICATION_SEED_RETURN_OBSERVATIONS: ${{ steps.inputs.outputs.output }}
+        run: bash scripts/check-publication-seed.sh
+
+      - name: Open a data pull request
+        if: steps.build.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DATA_AS_OF: ${{ steps.inputs.outputs.data_as_of }}
+          OUTPUT: ${{ steps.inputs.outputs.output }}
+          REPORT: ${{ steps.inputs.outputs.report }}
+        run: |
+          set -euo pipefail
+          branch="data/trustee-returns-${DATA_AS_OF}-${GITHUB_RUN_ID}"
+          {
+            echo "## 做咗咩"
+            echo
+            echo "自動擷取受託人每月官方三年累積回報（ADR 0014），截至 ${DATA_AS_OF}。"
+            echo "每一行都同積金局平台同期一年回報交叉核對一致先收錄。"
+            echo
+            echo "### 來源"
+            echo
+            jq -r '.sources[] | "- \(.schemeName)：\(.matched) 行，一年核對 \(.oneYearCrossChecks) 行，SHA-256 `\(.sha256)`，<\(.url)>"' "${REPORT}"
+            echo
+            echo "### 未收錄"
+            echo
+            echo '```'
+            cat /tmp/trustee/skipped.txt
+            cat /tmp/trustee/rejected.txt
+            echo '```'
+            echo
+            echo "## 收貨條件"
+            echo
+            echo "- [x] 讀取器逐行一年交叉核對通過。"
+            echo "- [x] \`scripts/check-publication-seed.sh\` 用新候選通過。"
+            echo "- [ ] 人手抽三筆同官方原文核對。"
+            echo
+            echo "合併及正式部署需要人手批准。Run：${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          } > /tmp/pr-body.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "${branch}"
+          git add "${OUTPUT}" "${REPORT}"
+          git commit -m "data(returns): 受託人每月官方三年累積回報（截至 ${DATA_AS_OF}）"
+          git push --set-upstream origin "${branch}"
+          if ! gh pr create --base main --head "${branch}" \
+            --title "資料：受託人每月官方三年累積回報（截至 ${DATA_AS_OF}）" \
+            --body-file /tmp/pr-body.md; then
+            echo "::error::GitHub blocked automatic pull request creation. Open: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/pull/new/${branch}"
+            exit 1
+          fi
+
+      - name: Raise one follow-up issue when a source needs attention
+        if: always() && steps.inputs.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DATA_AS_OF: ${{ steps.inputs.outputs.data_as_of }}
+          PLATFORM_BATCH: ${{ steps.inputs.outputs.platform_batch }}
+          JOB_FAILED: ${{ job.status == 'failure' }}
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/trustee
+          touch /tmp/trustee/skipped.txt /tmp/trustee/rejected.txt
+          # 平台快照入庫超過 10 日，受託人 PDF 仍然下載唔到先算異常；未夠 10 日係正常等待。
+          batch_age_days=$(( ( $(date -u +%s) - $(date -u -d "${PLATFORM_BATCH}" +%s) ) / 86400 ))
+          attention="$(awk -F'\t' -v age="${batch_age_days}" \
+            '$3 == "invalid-response" || ($3 == "download-failed" && ($2 ~ /bcthk/ || age > 10))' \
+            /tmp/trustee/skipped.txt)"
+          if [ -z "${attention}" ] && [ ! -s /tmp/trustee/rejected.txt ] && [ "${JOB_FAILED}" != "true" ]; then
+            exit 0
+          fi
+          title="受託人每月回報需要跟進（截至 ${DATA_AS_OF}）"
+          {
+            echo "受託人每月三年累積回報自動擷取有來源需要人手跟進；其他來源照常處理，公開網站未受影響。"
+            echo
+            echo "- 平台快照：\`${{ steps.inputs.outputs.platform }}\`（截至 ${DATA_AS_OF}，入庫 ${batch_age_days} 日）"
+            echo "- Workflow run：${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}（原檔 artifact 保留 90 日）"
+            echo
+            echo "### 作廢文件（讀取器拒絕或者交叉核對唔一致）"
+            echo '```'
+            cat /tmp/trustee/rejected.txt
+            echo '```'
+            echo "### 下載異常"
+            echo '```'
+            echo "${attention}"
+            echo '```'
+            echo "### 建置輸出"
+            echo '```'
+            tail -c 3000 /tmp/build.log 2>/dev/null || echo "（冇建置輸出）"
+            echo '```'
+          } > /tmp/issue-body.md
+          existing="$(gh issue list --state open --search "\"${title}\" in:title" --json number --jq '.[0].number // empty')"
+          # 同一截至日期只開一個跟進 issue；已經有就唔再每日留言。
+          if [ -n "${existing}" ]; then
+            echo "跟進 issue #${existing} 已經開咗。" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          label_args=()
+          if [ "$(gh label list --limit 100 --json name --jq 'any(.[]; .name == "needs-triage")' || true)" = "true" ]; then
+            label_args+=(--label "needs-triage")
+          fi
+          gh issue create --title "${title}" --body-file /tmp/issue-body.md "${label_args[@]}"

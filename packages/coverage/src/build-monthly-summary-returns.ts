@@ -2,6 +2,7 @@ import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { parseSourceSnapshot } from "./input";
+import { matchBctRows, parseBctFundInformation } from "./bct-fund-performance";
 import {
   matchSummaryRows,
   parseMonthlySummary,
@@ -15,20 +16,26 @@ import {
 } from "./official-return-overlay";
 
 /**
- * 由滙豐／恒生《每月基金表現摘要》讀出官方三年累積回報（ADR 0014），併入新一份
- * 受託人回報候選檔。年率化紀錄原樣保留；累積紀錄只會由截至日期較新的取代。
+ * 由受託人官方每月數據讀出三年累積回報（ADR 0014），併入新一份受託人回報候選檔。
+ * 年率化紀錄原樣保留；累積紀錄只會由截至日期較新的取代。
+ *
+ * 來源：
+ * - `--summary`：滙豐／恒生《每月基金表現摘要》PDF 主表；
+ * - `--bct`：銀聯信託官網基金表現數據接口（JSON 回應原檔）。
  *
  * 用法：
  *   bun src/build-monthly-summary-returns.ts --source <platform.json> \
  *     --base-candidate <old-candidate.json> \
- *     --summary "<scheme>|<url>|<pdf>|<retrievedAt>" [--summary …] \
+ *     [--summary "<scheme>|<url>|<pdf>|<retrievedAt>" …] \
+ *     [--bct "<scheme>|<url>|<json>|<retrievedAt>" …] \
  *     --output <new-candidate.json> --report <report.json> \
  *     [--check-source <platform.json>]
  *
- * `--check-source` 係用嚟做一年交叉核對的平台快照（預設同 --source），日期要同摘要一樣。
+ * `--check-source` 係用嚟做一年交叉核對的平台快照（預設同 --source），日期要同來源一樣。
  *
- * 任何一份文件有一行對唔上、同名多過一個類別、或者一年累積回報同積金局平台同期一年回報
- * 唔一致（代表讀錯欄），成份文件作廢並報錯，唔出局部資料。
+ * 任何一份文件有一行對唔上、同名多過一個類別、或者累積回報同積金局平台同期數字唔一致
+ * （代表讀錯欄或者類別對調），成份文件作廢，唔出局部資料；作廢原因寫入報告的
+ * `rejectedSources`，其他文件照用。全部文件都作廢先報錯。
  */
 
 function argument(name: string) {
@@ -47,9 +54,16 @@ const basePath = argument("--base-candidate");
 const outputPath = argument("--output");
 const reportPath = argument("--report");
 const summaries = argumentsNamed("--summary");
-if (!sourcePath || !basePath || !outputPath || !reportPath || summaries.length === 0)
+const bctResponses = argumentsNamed("--bct");
+if (
+  !sourcePath ||
+  !basePath ||
+  !outputPath ||
+  !reportPath ||
+  summaries.length + bctResponses.length === 0
+)
   throw new Error(
-    'Usage: bun src/build-monthly-summary-returns.ts --source <platform.json> --base-candidate <candidate.json> --summary "<scheme>|<url>|<pdf>|<retrievedAt>" --output <candidate.json> --report <report.json>',
+    'Usage: bun src/build-monthly-summary-returns.ts --source <platform.json> --base-candidate <candidate.json> [--summary "<scheme>|<url>|<pdf>|<retrievedAt>"] [--bct "<scheme>|<url>|<json>|<retrievedAt>"] --output <candidate.json> --report <report.json>',
   );
 
 const snapshot = parseSourceSnapshot(JSON.parse(await readFile(sourcePath, "utf8")));
@@ -84,107 +98,254 @@ function summaryPage(pdfPath: string): { page: number; summary: MonthlySummary }
   return { page: found[0]!.page, summary: parseMonthlySummary(found[0]!.text) };
 }
 
-const sources = [];
-const fresh: OfficialCumulativeReturnObservation[] = [];
-for (const entry of summaries) {
-  const [schemeName, url, pdfPath, retrievedAt] = entry.split("|");
-  if (!schemeName || !url || !pdfPath || !retrievedAt)
-    throw new Error(`Bad --summary value: ${entry}`);
-  const bytes = await readFile(pdfPath);
-  if (bytes.subarray(0, 5).toString("latin1") !== "%PDF-")
-    throw new Error(`${pdfPath}: not a PDF`);
-  const sha256 = createHash("sha256").update(bytes).digest("hex");
-  const { page, summary } = summaryPage(pdfPath);
-  const schemeRecords = snapshot.records.filter(
-    (record) => record.identity.schemeName === schemeName,
-  );
-  if (schemeRecords.length === 0) throw new Error(`Unknown scheme: ${schemeName}`);
+type MatchedRow = {
+  fundClassId: string;
+  label: string;
+  oneYear: number | null;
+  threeYears: number | null;
+  fiveYears: number | null;
+  tenYears: number | null;
+  /** 官方原文：數字、「-」（滙豐／恒生）或者「N/A」（BCT）。 */
+  printedThreeYears: string;
+};
+type SourceDocument = {
+  kind: "monthly-summary-pdf" | "bct-fund-information";
+  schemeName: string;
+  url: string;
+  retrievedAt: string;
+  sha256: string;
+  bytes: number;
+  page?: number;
+  dataAsOf: string;
+  rows: number;
+  failed: string[];
+  matched: MatchedRow[];
+};
+
+function splitEntry(entry: string, flag: string) {
+  const [schemeName, url, path, retrievedAt] = entry.split("|");
+  if (!schemeName || !url || !path || !retrievedAt)
+    throw new Error(`Bad ${flag} value: ${entry}`);
+  if (!url.startsWith("https://")) throw new Error(`${flag} source must be https: ${url}`);
+  return { schemeName, url, path, retrievedAt };
+}
+
+function schemeRecordsOf(schemeName: string) {
+  const records = snapshot.records.filter((record) => record.identity.schemeName === schemeName);
+  if (records.length === 0) throw new Error(`Unknown scheme: ${schemeName}`);
+  return records;
+}
+
+async function readSummary(entry: string): Promise<SourceDocument> {
+  const { schemeName, url, path, retrievedAt } = splitEntry(entry, "--summary");
+  const bytes = await readFile(path);
+  if (bytes.subarray(0, 5).toString("latin1") !== "%PDF-") throw new Error(`${path}: not a PDF`);
+  const { page, summary } = summaryPage(path);
   const matches = matchSummaryRows(
     summary.rows,
-    schemeRecords.map((record) => ({
+    schemeRecordsOf(schemeName).map((record) => ({
       fundClassId: record.fundClassId,
       constituentFundName: record.identity.constituentFundName,
     })),
   );
-  const failed = matches.filter((match) => match.status !== "matched");
-  if (failed.length > 0)
-    throw new Error(
-      `${schemeName}: ${failed.length} row(s) not matched exactly: ${failed
-        .map((match) => `${match.row.englishName} (${match.status})`)
-        .join("; ")}`,
-    );
-
-  // 同期一年累積回報 = 一年年率化回報；唔一致即係讀錯欄，成份作廢。
-  const oneYearChecks = matches.flatMap((match) => {
-    if (match.status !== "matched") return [];
-    const record = checkSnapshot.records.find(
-      (item) => item.fundClassId === match.fundClassId,
-    );
-    const platform = record?.returns?.[1];
-    if (!platform || platform.dataAsOf !== summary.dataAsOf || typeof platform.annualized !== "number")
-      return [];
-    return [
-      {
-        fundClassId: match.fundClassId,
-        summary: match.row.cumulative.oneYear,
-        platform: platform.annualized,
-        agrees: match.row.cumulative.oneYear === platform.annualized,
-      },
-    ];
-  });
-  // 每一行都要核對到；平台日期唔同就用 --check-source 提供同期快照，唔可以跳過。
-  if (oneYearChecks.length !== matches.length)
-    throw new Error(
-      `${schemeName}: one-year cross-check covered ${oneYearChecks.length} of ${matches.length} rows; pass --check-source with a platform snapshot dated ${summary.dataAsOf}`,
-    );
-  const disagreements = oneYearChecks.filter((check) => !check.agrees);
-  if (disagreements.length > 0)
-    throw new Error(
-      `${schemeName}: one-year cross-check failed for ${disagreements
-        .map((check) => `${check.fundClassId} summary ${check.summary} vs platform ${check.platform}`)
-        .join("; ")}`,
-    );
-
-  const missing = schemeRecords
-    .filter((record) => !matches.some((match) => match.status === "matched" && match.fundClassId === record.fundClassId))
-    .map((record) => record.fundClassId);
-  if (missing.length > 0)
-    throw new Error(
-      `${schemeName}: ${missing.length} scheme fund(s) not in the summary main table: ${missing.join(", ")}`,
-    );
-  const notDisclosed: string[] = [];
-  for (const match of matches) {
-    if (match.status !== "matched") continue;
-    const printed = match.row.printed[3]!;
-    // 官方印「-」：記錄為官方未提供（唔當 0），網站照講原因。
-    if (match.row.cumulative.threeYears === null) notDisclosed.push(match.fundClassId);
-    fresh.push({
-      fundClassId: match.fundClassId,
-      periodYears: 3,
-      basis: "cumulative",
-      cumulative: match.row.cumulative.threeYears,
-      printed,
-      dataAsOf: summary.dataAsOf,
-      sourceUrl: url,
-      retrievedAt,
-      sourceSha256: sha256,
-    });
-  }
-  sources.push({
+  return {
+    kind: "monthly-summary-pdf",
     schemeName,
     url,
     retrievedAt,
-    sha256,
+    sha256: createHash("sha256").update(bytes).digest("hex"),
     bytes: bytes.length,
     page,
     dataAsOf: summary.dataAsOf,
     rows: summary.rows.length,
-    matched: matches.length,
-    officialNotDisclosed: notDisclosed,
-    schemeFundsNotInSummary: missing,
-    oneYearCrossChecks: oneYearChecks.length,
-  });
+    failed: matches
+      .filter((match) => match.status !== "matched")
+      .map((match) => `${match.row.englishName} (${match.status})`),
+    matched: matches.flatMap((match) =>
+      match.status === "matched"
+        ? [
+            {
+              fundClassId: match.fundClassId,
+              label: match.row.englishName,
+              oneYear: match.row.cumulative.oneYear,
+              threeYears: match.row.cumulative.threeYears,
+              fiveYears: match.row.cumulative.fiveYears,
+              tenYears: match.row.cumulative.tenYears,
+              printedThreeYears: match.row.printed[3]!,
+            },
+          ]
+        : [],
+    ),
+  };
 }
+
+async function readBct(entry: string): Promise<SourceDocument> {
+  const { schemeName, url, path, retrievedAt } = splitEntry(entry, "--bct");
+  const bytes = await readFile(path);
+  const performance = parseBctFundInformation(JSON.parse(bytes.toString("utf8")));
+  const matches = matchBctRows(
+    performance.rows,
+    schemeRecordsOf(schemeName).map((record) => ({
+      fundClassId: record.fundClassId,
+      constituentFundName: record.identity.constituentFundName,
+      fundClassName: record.identity.fundClassName,
+    })),
+  );
+  return {
+    kind: "bct-fund-information",
+    schemeName,
+    url,
+    retrievedAt,
+    sha256: createHash("sha256").update(bytes).digest("hex"),
+    bytes: bytes.length,
+    dataAsOf: performance.performanceDate,
+    rows: performance.rows.length,
+    failed: matches
+      .filter((match) => match.status !== "matched")
+      .map((match) => `${match.row.name} ${match.row.unitClass} (${match.status})`),
+    matched: matches.flatMap((match) =>
+      match.status === "matched"
+        ? [
+            {
+              fundClassId: match.fundClassId,
+              label: `${match.row.name} ${match.row.unitClass}`,
+              oneYear: match.row.oneYear,
+              threeYears: match.row.threeYears,
+              fiveYears: match.row.fiveYears,
+              tenYears: match.row.tenYears,
+              printedThreeYears: match.row.printedThreeYears,
+            },
+          ]
+        : [],
+    ),
+  };
+}
+
+const CROSS_CHECK_PERIODS = [
+  ["oneYear", 1],
+  ["fiveYears", 5],
+  ["tenYears", 10],
+] as const;
+
+/**
+ * 逐行同積金局平台同期累積回報核對（紅線 3）：一年必須核對到，五年、十年兩邊都有就要一致。
+ * 單位類別一年回報可以啱啱一樣（例如 D／I 類），所以多核五年、十年，減低類別對調而唔被發現。
+ * 官方冇一年回報（`N/A` 或「-」）的行，只有平台都冇一年回報而且三年都係官方未提供先接受。
+ * 任何一行唔合格就成份文件作廢；唔影響其他文件。
+ */
+function verifyDocument(document: SourceDocument) {
+  const { schemeName } = document;
+  if (document.failed.length > 0)
+    throw new Error(
+      `${document.failed.length} row(s) not matched exactly: ${document.failed.join("; ")}`,
+    );
+  const matchedIds = document.matched.map((row) => row.fundClassId);
+  if (new Set(matchedIds).size !== matchedIds.length)
+    throw new Error("two source rows matched the same fund class");
+  const missing = schemeRecordsOf(schemeName)
+    .filter((record) => !matchedIds.includes(record.fundClassId))
+    .map((record) => record.fundClassId);
+  if (missing.length > 0)
+    throw new Error(`${missing.length} scheme fund(s) not in the source: ${missing.join(", ")}`);
+
+  let oneYearChecks = 0;
+  let longerChecks = 0;
+  const problems: string[] = [];
+  for (const row of document.matched) {
+    const record = checkSnapshot.records.find((item) => item.fundClassId === row.fundClassId);
+    const platformOneYear = record?.returns?.[1];
+    if (!platformOneYear || platformOneYear.dataAsOf !== document.dataAsOf) {
+      if (row.oneYear === null && row.threeYears === null && record && !platformOneYear) {
+        oneYearChecks += 1;
+        continue;
+      }
+      problems.push(
+        `${row.fundClassId} has no platform one-year return dated ${document.dataAsOf}` +
+          (platformOneYear ? ` (platform is ${platformOneYear.dataAsOf}; pass --check-source)` : ""),
+      );
+      continue;
+    }
+    for (const [field, period] of CROSS_CHECK_PERIODS) {
+      const platform = record?.returns?.[period];
+      const value = row[field];
+      const platformValue = period === 1 ? platform?.annualized : platform?.cumulative;
+      if (period === 1) {
+        if (value === null || typeof platformValue !== "number") {
+          problems.push(`${row.fundClassId} one-year source ${value} vs platform ${platformValue}`);
+          continue;
+        }
+        oneYearChecks += 1;
+      } else if (
+        value === null ||
+        typeof platformValue !== "number" ||
+        platform?.dataAsOf !== document.dataAsOf
+      ) {
+        continue;
+      } else {
+        longerChecks += 1;
+      }
+      if (value !== platformValue)
+        problems.push(`${row.fundClassId} ${period}-year source ${value} vs platform ${platformValue}`);
+    }
+  }
+  if (problems.length > 0) throw new Error(`cross-check failed: ${problems.join("; ")}`);
+
+  const observations: OfficialCumulativeReturnObservation[] = document.matched.map((row) => ({
+    fundClassId: row.fundClassId,
+    periodYears: 3,
+    basis: "cumulative",
+    cumulative: row.threeYears,
+    printed: row.printedThreeYears,
+    dataAsOf: document.dataAsOf,
+    sourceUrl: document.url,
+    retrievedAt: document.retrievedAt,
+    sourceSha256: document.sha256,
+  }));
+  return {
+    observations,
+    source: {
+      kind: document.kind,
+      schemeName,
+      url: document.url,
+      retrievedAt: document.retrievedAt,
+      sha256: document.sha256,
+      bytes: document.bytes,
+      ...(document.page === undefined ? {} : { page: document.page }),
+      dataAsOf: document.dataAsOf,
+      rows: document.rows,
+      matched: document.matched.length,
+      // 官方印「-」或者 `N/A`：記錄為官方未提供（唔當 0），網站照講原因。
+      officialNotDisclosed: document.matched
+        .filter((row) => row.threeYears === null)
+        .map((row) => row.fundClassId),
+      oneYearCrossChecks: oneYearChecks,
+      fiveTenYearCrossChecks: longerChecks,
+    },
+  };
+}
+
+// 每份文件獨立：一份作廢（讀唔到、對唔上、核對唔一致）只影響自己，其他照用（紅線 3 以文件為單位）。
+const sources = [];
+const rejected: { flag: string; entry: string; reason: string }[] = [];
+const fresh: OfficialCumulativeReturnObservation[] = [];
+const inputs = [
+  ...summaries.map((entry) => ({ flag: "--summary", entry, read: () => readSummary(entry) })),
+  ...bctResponses.map((entry) => ({ flag: "--bct", entry, read: () => readBct(entry) })),
+];
+for (const input of inputs) {
+  try {
+    const document = await input.read();
+    const { observations, source } = verifyDocument(document);
+    fresh.push(...observations);
+    sources.push(source);
+  } catch (error) {
+    const reason = error instanceof Error ? error.message : String(error);
+    rejected.push({ flag: input.flag, entry: input.entry, reason });
+    console.error(`REJECTED ${input.flag} ${input.entry.split("|")[0]}: ${reason}`);
+  }
+}
+if (sources.length === 0)
+  throw new Error(`Every source was rejected: ${rejected.map((item) => item.reason).join(" | ")}`);
 
 // 舊候選檔的累積紀錄一定要對得上今次平台快照，否則發布時先爆，喺呢度就停。
 const orphaned = base.cumulative.filter((row) => !knownIds.has(row.fundClassId));
@@ -241,12 +402,13 @@ await writeFile(
       sourceSnapshot: sourcePath,
       baseCandidate: basePath,
       method:
-        "Official HSBC / Hang Seng Monthly Fund Performance Summary main table (pdftotext -layout), exact English-name match within the scheme, one-year cumulative cross-checked against the MPFA platform one-year return of the same date; three-year cumulative stored as published (ADR 0014), never converted to annualized.",
+        "Official trustee monthly data: HSBC / Hang Seng Monthly Fund Performance Summary main table (pdftotext -layout) and BCT website fund performance responses. Exact English-name match within the scheme (BCT unit class by the Class X / Unit Class X contract), one-year cumulative cross-checked against the MPFA platform one-year return of the same date for every row; three-year cumulative stored as published (ADR 0014), never converted to annualized.",
       sources,
       annualizedRows: base.annualized.length,
       cumulativeRows: cumulative.length,
       replacedCumulative: replaced,
       keptNewerCumulative: keptNewer,
+      rejectedSources: rejected,
     },
     null,
     2,
@@ -263,5 +425,6 @@ console.log(
       matched: source.matched,
       oneYearCrossChecks: source.oneYearCrossChecks,
     })),
+    rejected: rejected.length,
   }),
 );

@@ -64,7 +64,8 @@ export function validateOfficialCumulativeReturnObservations(
       observation.periodYears === 3 &&
       typeof observation.fundClassId === "string" &&
       typeof observation.printed === "string" &&
-      (observation.printed === "-"
+      // 官方原文「-」（滙豐／恒生 PDF）或者「N/A」（BCT 官網）都係官方未提供，照原文保留。
+      (observation.printed === "-" || observation.printed === "N/A"
         ? observation.cumulative === null
         : typeof observation.cumulative === "number" &&
           Number.isFinite(observation.cumulative) &&

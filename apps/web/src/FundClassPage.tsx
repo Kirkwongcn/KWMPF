@@ -1048,9 +1048,8 @@ export function FundClassPage({
                         {horizon === "三年" &&
                         fundClass.cumulativeReturnSources?.["3"] ? (
                           <>
-                            {/* 官方印「-」：官方未提供，唔當 0（ADR 0014）。 */}
-                            {fundClass.cumulativeReturnSources["3"].printed ===
-                            "-"
+                            {/* 官方印「-」或「N/A」（冇數值）：官方未提供，唔當 0（ADR 0014）。 */}
+                            {typeof fundClass.cumulativeReturn3y !== "number"
                               ? "官方未提供"
                               : `${fundClass.cumulativeReturnSources["3"].printed}%`}
                             <small>
@@ -1069,7 +1068,7 @@ export function FundClassPage({
                                 target="_blank"
                                 rel="noreferrer"
                               >
-                                受託人每月摘要
+                                受託人每月數據
                               </a>
                             </small>
                           </>
@@ -1084,7 +1083,7 @@ export function FundClassPage({
             </div>
             {fundClass.cumulativeReturnSources?.["3"] && (
               <p className="kw-muted" role="note">
-                三年累積回報來自受託人官方每月摘要，照原文顯示；累積同年率化口徑唔同，唔會互相換算，亦唔入年率化排名。
+                三年累積回報來自受託人官方每月數據（每月摘要或官網基金表現），照原文顯示；累積同年率化口徑唔同，唔會互相換算，亦唔入年率化排名。
               </p>
             )}
             <ValueBars

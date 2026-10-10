@@ -778,7 +778,7 @@ describe("cumulative returns", () => {
     expect(threeYear).toHaveTextContent("9.20%");
     expect(threeYear).toHaveTextContent("截至 2026-08-31");
     expect(
-      within(threeYear).getByRole("link", { name: "受託人每月摘要" }),
+      within(threeYear).getByRole("link", { name: "受託人每月數據" }),
     ).toHaveAttribute("href", "https://trustee.test/202608.pdf");
   });
 
@@ -801,6 +801,26 @@ describe("cumulative returns", () => {
     expect(threeYear).toHaveTextContent("官方未提供");
     expect(threeYear).toHaveTextContent("截至 2026-08-31");
     expect(threeYear).not.toHaveTextContent("-%");
+  });
+
+  it("treats the trustee's printed N/A as officially unavailable too", async () => {
+    renderWithFields({
+      cumulativeReturn3y: undefined,
+      cumulativeReturnSources: {
+        "3": {
+          printed: "N/A",
+          dataAsOf: "2026-09-30",
+          sourceUrl: "https://trustee.test/fund-information.json",
+        },
+      },
+    });
+
+    const table = await screen.findByRole("table", { name: "回報" });
+    const threeYear = within(table)
+      .getAllByRole("row")
+      .find((row) => row.textContent?.startsWith("三年"))!;
+    expect(threeYear).toHaveTextContent("官方未提供");
+    expect(threeYear).not.toHaveTextContent("N/A%");
   });
 
   it("explains how the annualized and cumulative figures differ", async () => {

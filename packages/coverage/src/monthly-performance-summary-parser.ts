@@ -165,6 +165,15 @@ export function parseMonthlySummary(text: string): MonthlySummary {
   };
 }
 
+/** 同一計劃入面英文名稱精確相同（大小寫、引號、破折號正規化）的紀錄；唔做模糊比對。 */
+export function recordsWithSameName<T extends { constituentFundName: string }>(
+  records: T[],
+  name: string,
+): T[] {
+  const wanted = normalizeFundName(name);
+  return records.filter((record) => normalizeFundName(record.constituentFundName) === wanted);
+}
+
 export type SummaryMatch =
   | { status: "matched"; fundClassId: string; row: MonthlySummaryRow }
   | { status: "unmatched" | "ambiguous"; row: MonthlySummaryRow; candidates: string[] };
@@ -178,13 +187,9 @@ export function matchSummaryRows(
   schemeRecords: { fundClassId: string; constituentFundName: string }[],
 ): SummaryMatch[] {
   return rows.map((row) => {
-    const candidates = schemeRecords
-      .filter(
-        (record) =>
-          normalizeFundName(record.constituentFundName) ===
-          normalizeFundName(row.englishName),
-      )
-      .map((record) => record.fundClassId);
+    const candidates = recordsWithSameName(schemeRecords, row.englishName).map(
+      (record) => record.fundClassId,
+    );
     if (candidates.length === 1)
       return { status: "matched", fundClassId: candidates[0]!, row };
     return {

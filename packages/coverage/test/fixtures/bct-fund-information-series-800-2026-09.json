@@ -1,0 +1,80 @@
+{
+  "code": "200",
+  "message": "success",
+  "data": {
+    "fundInformationList": [
+      {
+        "name": "Principal Asian Bond Fund",
+        "unitClass": "N",
+        "launchDate": "2020-10-22",
+        "fundPerformanceDetail": {
+          "fundPerformance": {
+            "performanceDate": "2026-09-30",
+            "ytdPerformance": "-2.44%",
+            "lastMonthPerformance": "-2.34%",
+            "last3MonthPerformance": "-3.29%",
+            "lastYearPerformance": "-1.75%",
+            "last3YearPerformance": "13.18%",
+            "last5YearPerformance": "0.29%",
+            "last10YearPerformance": "N/A",
+            "sinceLaunchPerformance": "1.10%"
+          }
+        }
+      },
+      {
+        "name": "Principal Asian Equity Fund",
+        "unitClass": "D",
+        "launchDate": "2000-12-01",
+        "fundPerformanceDetail": {
+          "fundPerformance": {
+            "performanceDate": "2026-09-30",
+            "ytdPerformance": "22.87%",
+            "lastMonthPerformance": "-1.33%",
+            "last3MonthPerformance": "-3.68%",
+            "lastYearPerformance": "26.06%",
+            "last3YearPerformance": "72.13%",
+            "last5YearPerformance": "35.36%",
+            "last10YearPerformance": "102.65%",
+            "sinceLaunchPerformance": "594.43%"
+          }
+        }
+      },
+      {
+        "name": "Principal Asian Equity Fund",
+        "unitClass": "I",
+        "launchDate": "2000-12-01",
+        "fundPerformanceDetail": {
+          "fundPerformance": {
+            "performanceDate": "2026-09-30",
+            "ytdPerformance": "22.87%",
+            "lastMonthPerformance": "-1.33%",
+            "last3MonthPerformance": "-3.68%",
+            "lastYearPerformance": "26.06%",
+            "last3YearPerformance": "71.52%",
+            "last5YearPerformance": "34.36%",
+            "last10YearPerformance": "98.06%",
+            "sinceLaunchPerformance": "562.77%"
+          }
+        }
+      },
+      {
+        "name": "Principal Core Accumulation Fund",
+        "unitClass": "N",
+        "launchDate": "2017-04-01",
+        "fundPerformanceDetail": {
+          "fundPerformance": {
+            "performanceDate": "2026-09-30",
+            "ytdPerformance": "8.12%",
+            "lastMonthPerformance": "-1.26%",
+            "last3MonthPerformance": "-0.01%",
+            "lastYearPerformance": "10.38%",
+            "last3YearPerformance": "46.49%",
+            "last5YearPerformance": "34.68%",
+            "last10YearPerformance": "N/A",
+            "sinceLaunchPerformance": "91.28%"
+          }
+        }
+      }
+    ]
+  }
+}
