@@ -13,7 +13,11 @@ export function dateAge(asOf, evaluatedOn) {
   return age >= 0 ? age : null;
 }
 /** Candidate hygiene report only. It does not authorize publication or alter source data. */
-export function auditSourceFreshness(source, observations, evaluatedOn) {
+export function auditSourceFreshness(source, allObservations, evaluatedOn) {
+  // 呢份審計只計年率化；受託人累積回報（basis: "cumulative"，ADR 0014）另外處理。
+  const observations = allObservations.filter(
+    (row) => row.basis !== "cumulative",
+  );
   if (dateAge(evaluatedOn, evaluatedOn) !== 0)
     throw new Error("Invalid evaluation date");
   const byId = new Map(

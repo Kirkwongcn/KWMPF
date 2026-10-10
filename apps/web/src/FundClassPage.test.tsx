@@ -693,7 +693,7 @@ describe("cumulative returns", () => {
     vi.unstubAllGlobals();
   });
 
-  const renderWithFields = (extra: Record<string, number | undefined>) => {
+  const renderWithFields = (extra: Record<string, unknown>) => {
     vi.stubGlobal(
       "fetch",
       vi.fn().mockResolvedValue(
@@ -757,6 +757,50 @@ describe("cumulative returns", () => {
     expect(within(fiveYear).getByText("4.2%")).toBeVisible();
     expect(within(fiveYear).getByText("未取得")).toBeVisible();
     expect(screen.queryByText("22.85%")).not.toBeInTheDocument();
+  });
+
+  it("shows the trustee's three-year cumulative figure as printed with its own date and source", async () => {
+    renderWithFields({
+      cumulativeReturn3y: 9.2,
+      cumulativeReturnSources: {
+        "3": {
+          printed: "9.20",
+          dataAsOf: "2026-08-31",
+          sourceUrl: "https://trustee.test/202608.pdf",
+        },
+      },
+    });
+
+    const table = await screen.findByRole("table", { name: "回報" });
+    const threeYear = within(table)
+      .getAllByRole("row")
+      .find((row) => row.textContent?.startsWith("三年"))!;
+    expect(threeYear).toHaveTextContent("9.20%");
+    expect(threeYear).toHaveTextContent("截至 2026-08-31");
+    expect(
+      within(threeYear).getByRole("link", { name: "受託人每月摘要" }),
+    ).toHaveAttribute("href", "https://trustee.test/202608.pdf");
+  });
+
+  it("says the trustee printed no three-year cumulative figure instead of showing zero", async () => {
+    renderWithFields({
+      cumulativeReturn3y: undefined,
+      cumulativeReturnSources: {
+        "3": {
+          printed: "-",
+          dataAsOf: "2026-08-31",
+          sourceUrl: "https://trustee.test/202608.pdf",
+        },
+      },
+    });
+
+    const table = await screen.findByRole("table", { name: "回報" });
+    const threeYear = within(table)
+      .getAllByRole("row")
+      .find((row) => row.textContent?.startsWith("三年"))!;
+    expect(threeYear).toHaveTextContent("官方未提供");
+    expect(threeYear).toHaveTextContent("截至 2026-08-31");
+    expect(threeYear).not.toHaveTextContent("-%");
   });
 
   it("explains how the annualized and cumulative figures differ", async () => {

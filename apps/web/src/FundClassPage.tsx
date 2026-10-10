@@ -37,6 +37,11 @@ export type PublishedFundClass = {
     annualizedReturn1y?: number;
     annualizedReturn3y?: number;
     cumulativeReturn3y?: number;
+    // 受託人官方三年累積回報（ADR 0014）：自己的原文、截至日期及來源。
+    cumulativeReturnSources?: Record<
+      string,
+      { printed: string; dataAsOf: string; sourceUrl: string }
+    >;
     returnSources?: Record<string, { dataAsOf: string; sourceUrl: string }>;
     annualizedReturn5y?: number;
     annualizedReturn10y?: number;
@@ -91,6 +96,10 @@ export type PublishedFundClass = {
     ageDays: number | null;
   };
   returnsFreshness?: Record<
+    string,
+    { status: "verified" | "stale"; dataAsOf: string }
+  >;
+  cumulativeReturnsFreshness?: Record<
     string,
     { status: "verified" | "stale"; dataAsOf: string }
   >;
@@ -1036,13 +1045,48 @@ export function FundClassPage({
                           )}
                       </td>
                       <td className="kw-return">
-                        {formatNumber(cumulative, 2, "%")}
+                        {horizon === "三年" &&
+                        fundClass.cumulativeReturnSources?.["3"] ? (
+                          <>
+                            {/* 官方印「-」：官方未提供，唔當 0（ADR 0014）。 */}
+                            {fundClass.cumulativeReturnSources["3"].printed ===
+                            "-"
+                              ? "官方未提供"
+                              : `${fundClass.cumulativeReturnSources["3"].printed}%`}
+                            <small>
+                              {publication.cumulativeReturnsFreshness?.["3"]
+                                ?.status === "stale"
+                                ? "過期 · "
+                                : ""}
+                              截至{" "}
+                              {fundClass.cumulativeReturnSources["3"].dataAsOf}{" "}
+                              ·{" "}
+                              <a
+                                href={
+                                  fundClass.cumulativeReturnSources["3"]
+                                    .sourceUrl
+                                }
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                受託人每月摘要
+                              </a>
+                            </small>
+                          </>
+                        ) : (
+                          formatNumber(cumulative, 2, "%")
+                        )}
                       </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
+            {fundClass.cumulativeReturnSources?.["3"] && (
+              <p className="kw-muted" role="note">
+                三年累積回報來自受託人官方每月摘要，照原文顯示；累積同年率化口徑唔同，唔會互相換算，亦唔入年率化排名。
+              </p>
+            )}
             <ValueBars
               variant="dot"
               label="各期間年率化回報（獨立披露，非走勢）"

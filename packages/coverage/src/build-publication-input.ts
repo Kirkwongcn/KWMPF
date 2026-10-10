@@ -65,7 +65,11 @@ export function buildPublicationInputs(records: SourceRecord[]): PublicationInpu
     status: record.currentStatus ?? (record.current ? "verified" : "stale"),
     dataAsOf: record.dataAsOf,
     sourceUrl: record.sourceUrl,
-    unavailableFields: record.unavailableFields,
+    unavailableFields:
+      record.cumulativeReturns?.[3] &&
+      record.cumulativeReturns[3].cumulative === null
+        ? [...(record.unavailableFields ?? []), "cumulativeReturn3y"]
+        : record.unavailableFields,
     publicFields: {
       ...(typeof record.returns?.[1]?.annualized === "number"
         ? { annualizedReturn1y: record.returns[1].annualized }
@@ -87,6 +91,23 @@ export function buildPublicationInputs(records: SourceRecord[]): PublicationInpu
         : {}),
       ...(typeof record.returns?.[10]?.cumulative === "number"
         ? { cumulativeReturn10y: record.returns[10].cumulative }
+        : {}),
+      // 受託人官方三年累積（ADR 0014）：有數值先出 cumulativeReturn3y；官方印「-」
+      // 只出來源（printed "-"），並列入 unavailableFields，唔當 0。
+      ...(record.cumulativeReturns?.[3]
+        ? {
+            ...(typeof record.cumulativeReturns[3].cumulative === "number"
+              ? { cumulativeReturn3y: record.cumulativeReturns[3].cumulative }
+              : {}),
+            cumulativeReturnSources: {
+              "3": {
+                printed: record.cumulativeReturns[3].printed,
+                dataAsOf: record.cumulativeReturns[3].dataAsOf,
+                sourceUrl: record.cumulativeReturns[3].sourceUrl,
+                retrievedAt: record.cumulativeReturns[3].retrievedAt,
+              },
+            },
+          }
         : {}),
       ...(typeof record.fundOverview?.riskClass === "number"
         ? { riskClass: record.fundOverview.riskClass }

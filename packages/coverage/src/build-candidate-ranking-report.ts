@@ -1,7 +1,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { buildCandidateRankingReport } from "./candidate-ranking-report";
 import type { ComparisonGroupEvidence } from "./comparison-group";
-import type { OfficialReturnObservation } from "./official-return-overlay";
+import { splitReturnObservations } from "./official-return-overlay";
 import type { SourceRecord } from "./build-coverage";
 
 function argument(name: string) {
@@ -19,7 +19,8 @@ if (!coveragePath || !evidencePath || !observationsPath || !outputPath) {
 
 const coverage = JSON.parse(await readFile(coveragePath, "utf8")) as { records: SourceRecord[] };
 const evidence = JSON.parse(await readFile(evidencePath, "utf8")) as ComparisonGroupEvidence[];
-const observations = JSON.parse(await readFile(observationsPath, "utf8")) as OfficialReturnObservation[];
+// 排名只用年率化；累積回報（basis: "cumulative"）唔入排名（ADR 0014）。
+const observations = splitReturnObservations(JSON.parse(await readFile(observationsPath, "utf8")) as unknown[]).annualized;
 const report = buildCandidateRankingReport(coverage.records, evidence, observations);
 await writeFile(outputPath, `${JSON.stringify({ coveragePath, evidencePath, observationsPath, generatedAt: new Date().toISOString(), ...report }, null, 2)}\n`);
 console.log(JSON.stringify({ outputPath, ...report.report, rankingRows: report.ranking.rankings.length }));

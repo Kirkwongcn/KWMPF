@@ -27,6 +27,9 @@ type FundSummary = {
   annualizedReturn5y?: number;
   annualizedReturn10y?: number;
   returnsFreshness?: Record<string, Freshness>;
+  cumulativeReturn3y?: number;
+  cumulativeReturn3yPrinted?: string;
+  cumulativeReturnsFreshness?: Record<string, Freshness>;
   managementFee?: number;
   latestFer?: number;
   feeCaps?: string[];
@@ -73,6 +76,7 @@ type SortKey =
   | "return3y"
   | "return5y"
   | "return10y"
+  | "cumulative3y"
   | "volatility"
   | "risk"
   | "size"
@@ -85,6 +89,7 @@ const DEFAULT_ORDER: Record<Exclude<SortKey, "name">, "asc" | "desc"> = {
   return3y: "desc",
   return5y: "desc",
   return10y: "desc",
+  cumulative3y: "desc",
   volatility: "asc",
   risk: "asc",
   size: "desc",
@@ -191,6 +196,50 @@ function SortHeader({
         </span>
       </button>
     </th>
+  );
+}
+
+// 受託人官方三年累積回報（ADR 0014）：截至日期同年率化回報唔同，所以每格都印出自己的日期。
+// 官方印「-」就寫官方未提供，唔當 0。
+function CumulativeCell({ fund }: { fund: FundSummary }) {
+  const freshness = fund.cumulativeReturnsFreshness?.["3"];
+  if (typeof fund.cumulativeReturn3y !== "number")
+    return (
+      <td
+        className="kw-num kw-num--cumulative kw-num--empty"
+        title={
+          freshness
+            ? `受託人每月摘要截至 ${freshness.dataAsOf} 未有提供`
+            : undefined
+        }
+      >
+        {freshness ? (
+          <>
+            <span className="kw-cell-note">{unavailable}</span>
+            <span className="kw-cell-date">截至 {freshness.dataAsOf}</span>
+          </>
+        ) : (
+          <>
+            <span aria-hidden="true">—</span>
+            <span className="kw-visually-hidden">未有數值</span>
+          </>
+        )}
+      </td>
+    );
+  const stale = freshness?.status === "stale";
+  return (
+    <td
+      className={`kw-num kw-num--cumulative${stale ? " kw-num--stale" : ""}${fund.cumulativeReturn3y < 0 ? " kw-num--negative" : ""}`}
+      title="受託人官方累積回報（非年率化）"
+    >
+      {fund.cumulativeReturn3yPrinted ?? fund.cumulativeReturn3y}%
+      {stale && (
+        <span className="kw-data-state kw-data-state--stale">過期</span>
+      )}
+      {freshness && (
+        <span className="kw-cell-date">截至 {freshness.dataAsOf}</span>
+      )}
+    </td>
   );
 }
 
@@ -630,6 +679,13 @@ export function FundsPage({
                     <th scope="colgroup" colSpan={5}>
                       年率化回報
                     </th>
+                    <th
+                      scope="colgroup"
+                      className="kw-screener__cumulative-group"
+                      title="受託人官方累積回報，非年率化，只同累積數字比較"
+                    >
+                      官方累積
+                    </th>
                     <th scope="colgroup" colSpan={2}>
                       風險
                     </th>
@@ -663,6 +719,12 @@ export function FundsPage({
                     <th scope="col" className="kw-nowrap">
                       截至
                     </th>
+                    <SortHeader
+                      sortKey="cumulative3y"
+                      label="3年累積"
+                      title="受託人官方三年累積回報（非年率化，唔同年率化比較；只供瀏覽，唔係排名）"
+                      {...sortProps}
+                    />
                     <SortHeader
                       sortKey="volatility"
                       {...sortProps}
@@ -744,6 +806,7 @@ export function FundsPage({
                             fund.dataAsOf ??
                             unavailable}
                         </td>
+                        <CumulativeCell fund={fund} />
                         <td className="kw-num">
                           {typeof fund.fundRiskIndicator === "number"
                             ? `${fund.fundRiskIndicator}%`
@@ -789,7 +852,7 @@ export function FundsPage({
               {oneYearDates.size === 1 && [...oneYearDates][0]
                 ? `本頁一年回報截至 ${[...oneYearDates][0]}`
                 : "本頁各基金一年回報截至日期不一"}
-              （見「截至」欄）。其他期間及基金規模各有自己的截至日期，滑鼠停留數值可見；三年回報來自受託人便覽。
+              （見「截至」欄）。其他期間及基金規模各有自己的截至日期，滑鼠停留數值可見；三年年率化回報來自受託人便覽。「官方累積」欄係受託人每月摘要的三年累積回報（非年率化），截至日期印喺每格之下，只同累積數字比較；按此欄排序只供瀏覽，唔係排名，而且會跨基金類型。
               「—」＝未有數值；「過期」＝超出網站時效門檻，只作參考、不入排名。
             </p>
             <nav className="kw-pagination" aria-label="基金結果頁次">

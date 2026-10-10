@@ -22,8 +22,10 @@ import {
 import { publicationSnapshotId } from "./publication-snapshot-id";
 import { parseSourceSnapshot } from "./input";
 import {
+  applyOfficialCumulativeReturnOverlay,
   applyOfficialReturnOverlay,
-  type OfficialReturnObservation,
+  splitReturnObservations,
+  validateOfficialCumulativeReturnObservations,
   validateOfficialReturnObservations,
 } from "./official-return-overlay";
 
@@ -44,9 +46,10 @@ if (!sourcePath || !outputPath || !returnObservationsPath) {
 const snapshot = parseSourceSnapshot(JSON.parse(await readFile(sourcePath, "utf8")));
 const snapshotId = argument("--snapshot") ?? publicationSnapshotId(snapshot);
 
-const returnObservations = JSON.parse(
-  await readFile(returnObservationsPath, "utf8"),
-) as OfficialReturnObservation[];
+const { annualized: returnObservations, cumulative: cumulativeObservations } =
+  splitReturnObservations(
+    JSON.parse(await readFile(returnObservationsPath, "utf8")) as unknown[],
+  );
 const returnValidation = validateOfficialReturnObservations(returnObservations);
 if (returnValidation.invalid.length > 0) {
   throw new Error(
@@ -62,7 +65,27 @@ if (returnOverlay.unmatched.length > 0 || returnOverlay.conflicts.length > 0) {
     `Official return overlay failed: ${returnOverlay.unmatched.length} unmatched, ${returnOverlay.conflicts.length} conflicts`,
   );
 }
-const sourceRecords = returnOverlay.records;
+// 受託人官方累積回報（ADR 0014）：另一個欄位，任何一筆唔合格就成份發布停下。
+const cumulativeValidation =
+  validateOfficialCumulativeReturnObservations(cumulativeObservations);
+if (cumulativeValidation.invalid.length > 0) {
+  throw new Error(
+    `Official cumulative return validation failed for ${cumulativeValidation.invalid.length} observation(s)`,
+  );
+}
+const cumulativeOverlay = applyOfficialCumulativeReturnOverlay(
+  returnOverlay.records,
+  cumulativeValidation.valid,
+);
+if (
+  cumulativeOverlay.unmatched.length > 0 ||
+  cumulativeOverlay.conflicts.length > 0
+) {
+  throw new Error(
+    `Official cumulative return overlay failed: ${cumulativeOverlay.unmatched.length} unmatched, ${cumulativeOverlay.conflicts.length} conflicts`,
+  );
+}
+const sourceRecords = cumulativeOverlay.records;
 const payload = buildPublicationPayload(buildPublicationInputs(sourceRecords));
 if (!payload.ready) {
   throw new Error(`Publication preflight blocked ${payload.preflight.blocked} records`);
@@ -179,6 +202,7 @@ console.log(
     snapshotId,
     records: payload.records.length,
     officialReturnsApplied: returnOverlay.applied.length,
+    officialCumulativeReturnsApplied: cumulativeOverlay.applied.length,
     comparisonGroups: groupStats.length,
     disComponents: {
       tagged: disTags.size,

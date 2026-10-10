@@ -31,10 +31,19 @@ type ComparedFund = {
     fundSizeAsOf?: string;
     feeCaps?: string[];
     returnSources?: Record<string, { dataAsOf: string; sourceUrl: string }>;
+    cumulativeReturn3y?: number;
+    cumulativeReturnSources?: Record<
+      string,
+      { printed: string; dataAsOf: string; sourceUrl: string }
+    >;
   };
   provenance: { sourceUrl: string; dataAsOf: string };
   returnsFreshness?: Record<string, { status: string; dataAsOf: string }>;
   fundSizeFreshness?: { status: string; dataAsOf: string };
+  cumulativeReturnsFreshness?: Record<
+    string,
+    { status: string; dataAsOf: string }
+  >;
 };
 
 type SearchHit = {
@@ -533,6 +542,66 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
                     </tr>
                   );
                 })}
+                {loaded.some(
+                  (fund) => fund.fundClass.cumulativeReturnSources?.["3"],
+                ) && (
+                  <>
+                    <tr className="kw-compare__section">
+                      <th scope="rowgroup" colSpan={loaded.length + 1}>
+                        累積回報（受託人官方，非年率化）
+                      </th>
+                    </tr>
+                    <tr>
+                      <th scope="row">3 年累積</th>
+                      {(() => {
+                        const verified = (fund: ComparedFund) =>
+                          fund.cumulativeReturnsFreshness?.["3"]?.status ===
+                          "verified"
+                            ? fund.fundClass.cumulativeReturn3y
+                            : undefined;
+                        const range = rangeOf(loaded.map(verified));
+                        return loaded.map((fund, index) => {
+                          const source =
+                            fund.fundClass.cumulativeReturnSources?.["3"];
+                          const stale =
+                            fund.cumulativeReturnsFreshness?.["3"]?.status ===
+                            "stale";
+                          return (
+                            <td
+                              key={index}
+                              className={`kw-num${stale ? " kw-num--stale" : ""}`}
+                            >
+                              {source ? (
+                                <>
+                                  {source.printed === "-"
+                                    ? "官方未提供"
+                                    : `${source.printed}%`}
+                                  <Marker
+                                    value={verified(fund)}
+                                    range={range}
+                                  />
+                                  <small>
+                                    {stale ? "過期 · " : ""}截至{" "}
+                                    {source.dataAsOf} ·{" "}
+                                    <a
+                                      href={source.sourceUrl}
+                                      target="_blank"
+                                      rel="noreferrer"
+                                    >
+                                      受託人每月摘要
+                                    </a>
+                                  </small>
+                                </>
+                              ) : (
+                                "未取得"
+                              )}
+                            </td>
+                          );
+                        });
+                      })()}
+                    </tr>
+                  </>
+                )}
                 {years.length > 0 && (
                   <tr className="kw-compare__section">
                     <th scope="rowgroup" colSpan={loaded.length + 1}>

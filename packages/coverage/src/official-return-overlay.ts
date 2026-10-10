@@ -10,6 +10,126 @@ export type OfficialReturnObservation = {
   retrievedAt: string;
 };
 
+// 受託人官方披露的「累積回報」（ADR 0014）。同年率化分開存放、分開比較，
+// 唔會換算做年率化，亦唔會入年率化排名。
+export type OfficialCumulativeReturnObservation = {
+  fundClassId: string;
+  periodYears: 3;
+  basis: "cumulative";
+  /** `null` 代表官方印「-」：官方未提供，唔當 0（紅線 2）。 */
+  cumulative: number | null;
+  /** 官方印出的原文（例如 "9.20" 或 "-"），顯示時照用，唔補 0、唔四捨五入。 */
+  printed: string;
+  dataAsOf: string;
+  sourceUrl: string;
+  retrievedAt: string;
+  sourceSha256: string;
+};
+
+export type CumulativeReturnOverlayResult = {
+  records: SourceRecord[];
+  applied: OfficialCumulativeReturnObservation[];
+  unmatched: OfficialCumulativeReturnObservation[];
+  conflicts: OfficialCumulativeReturnObservation[];
+};
+
+/**
+ * 候選檔同時載年率化（冇 basis）同累積（basis: "cumulative"）兩類紀錄。
+ * 舊檔只得年率化，原樣歸入 annualized。
+ */
+export function splitReturnObservations(rows: unknown[]): {
+  annualized: OfficialReturnObservation[];
+  cumulative: OfficialCumulativeReturnObservation[];
+} {
+  const annualized: OfficialReturnObservation[] = [];
+  const cumulative: OfficialCumulativeReturnObservation[] = [];
+  for (const row of rows) {
+    if (row && typeof row === "object" && (row as { basis?: unknown }).basis === "cumulative")
+      cumulative.push(row as OfficialCumulativeReturnObservation);
+    else annualized.push(row as OfficialReturnObservation);
+  }
+  return { annualized, cumulative };
+}
+
+export function validateOfficialCumulativeReturnObservations(
+  observations: OfficialCumulativeReturnObservation[],
+  today = new Date().toISOString().slice(0, 10),
+): { valid: OfficialCumulativeReturnObservation[]; invalid: OfficialCumulativeReturnObservation[] } {
+  const valid: OfficialCumulativeReturnObservation[] = [];
+  const invalid: OfficialCumulativeReturnObservation[] = [];
+  const seen = new Set<string>();
+  for (const observation of observations) {
+    const ok =
+      observation.basis === "cumulative" &&
+      observation.periodYears === 3 &&
+      typeof observation.fundClassId === "string" &&
+      typeof observation.printed === "string" &&
+      (observation.printed === "-"
+        ? observation.cumulative === null
+        : typeof observation.cumulative === "number" &&
+          Number.isFinite(observation.cumulative) &&
+          /^-?\d+(?:\.\d+)?$/.test(observation.printed) &&
+          Number(observation.printed) === observation.cumulative) &&
+      /^\d{4}-\d{2}-\d{2}$/.test(observation.dataAsOf) &&
+      observation.dataAsOf <= today &&
+      /^https:\/\//.test(observation.sourceUrl) &&
+      typeof observation.retrievedAt === "string" &&
+      /^[0-9a-f]{64}$/.test(observation.sourceSha256) &&
+      !seen.has(observation.fundClassId);
+    if (ok) {
+      seen.add(observation.fundClassId);
+      valid.push(observation);
+    } else invalid.push(observation);
+  }
+  return { valid, invalid };
+}
+
+/** 累積回報寫入獨立的 cumulativeReturns，唔會同 returns[3] 共用日期或來源。 */
+export function applyOfficialCumulativeReturnOverlay(
+  records: SourceRecord[],
+  observations: OfficialCumulativeReturnObservation[],
+): CumulativeReturnOverlayResult {
+  const byId = new Map(records.map((record) => [record.fundClassId, record]));
+  const applied: OfficialCumulativeReturnObservation[] = [];
+  const unmatched: OfficialCumulativeReturnObservation[] = [];
+  const conflicts: OfficialCumulativeReturnObservation[] = [];
+  const seen = new Set<string>();
+  const next = records.map((record) => ({
+    ...record,
+    cumulativeReturns: record.cumulativeReturns ? { ...record.cumulativeReturns } : undefined,
+  }));
+  const nextById = new Map(next.map((record) => [record.fundClassId, record]));
+  for (const observation of observations) {
+    const record = byId.get(observation.fundClassId);
+    if (!record) {
+      unmatched.push(observation);
+      continue;
+    }
+    if (
+      seen.has(observation.fundClassId) ||
+      record.cumulativeReturns?.[3] !== undefined ||
+      record.returns?.[3]?.cumulative !== undefined
+    ) {
+      conflicts.push(observation);
+      continue;
+    }
+    seen.add(observation.fundClassId);
+    const target = nextById.get(observation.fundClassId)!;
+    target.cumulativeReturns = {
+      ...target.cumulativeReturns,
+      3: {
+        cumulative: observation.cumulative,
+        printed: observation.printed,
+        dataAsOf: observation.dataAsOf,
+        sourceUrl: observation.sourceUrl,
+        retrievedAt: observation.retrievedAt,
+      },
+    };
+    applied.push(observation);
+  }
+  return { records: next, applied, unmatched, conflicts };
+}
+
 export type ReturnOverlayResult = {
   records: SourceRecord[];
   applied: OfficialReturnObservation[];
