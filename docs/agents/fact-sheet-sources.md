@@ -69,6 +69,15 @@ fundfact-sheet.pdf`，2026-06-30，積金局副本 2025-12-31）及新地
 不同期就標示並非完全可比；比重照原值印（披露寫 `11` 就係 `11%`），
 固定成兩位小數等於改寫官方數字。
 
+## 受託人每月摘要：三年累積回報（ADR 0014）
+
+滙豐及恒生強積金智選計劃每月出《每月基金表現摘要》，主表有截至上月底的官方三年**累積**回報。
+用 `packages/coverage/src/build-monthly-summary-returns.ts` 由舊回報候選檔加入新一期累積紀錄
+（`--source`、`--base-candidate`、每份文件一個 `--summary "<計劃>|<網址>|<PDF>|<讀取時間>"`；
+平台快照日期同摘要唔同就加 `--check-source <同期快照>`）。主表唔喺剛好一頁、有一行對唔上、
+計劃有基金唔喺主表、或者一年累積同積金局平台同期一年回報唔一致，成份文件作廢。
+累積紀錄唔會換算成年率化，唔入年率化排名；官方印「-」照出紀錄（`null`／`"-"`），網站寫官方未提供。
+
 ## Preserve trustee PDF source evidence
 
 The manual `Archive trustee fact sheets to R2` workflow saves the source PDFs referenced by a dated trustee-link manifest. It records the link-manifest checksum, source commit, original URLs and filenames, retrieval times, byte counts, checksums, and failed downloads in a private archive index. The workflow does not change the factsheet links, extracted returns, ranking candidates, or publication data.
