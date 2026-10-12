@@ -183,6 +183,17 @@ describe("official fund fact sheet parser", () => {
       expect.objectContaining({ constituentFundName: "My Choice Growth Fund", dataAsOf: "2025-09-30", annualizedReturn3Year: 5.2 }),
     ]);
   });
+  it("reads the MASS trustee date when the year wraps under the narrow left column", () => {
+    const wrapped = massFixture.replace(
+      "Fund Data as at                      December 31, 2025",
+      "Fund Data as at July 31,              Fund Price (HKD)a\n2026",
+    );
+    expect(parseMassFundPerformance(wrapped, "https://example.test/mass.pdf")).toEqual([
+      expect.objectContaining({ constituentFundName: "Asian Pacific Equity Fund", dataAsOf: "2026-07-31", annualizedReturn3Year: 14.34 }),
+    ]);
+    expect(() => parseMassFundPerformance(massFixture.replace("December 31, 2025", "July 31,\nFund Price"), "x")).toThrow("data-as-of date is missing");
+  });
+
   it("parses MASS three-year annualized returns", () => {
     expect(parseMassFundPerformance(massFixture, "https://example.test/mass.pdf")).toEqual([
       expect.objectContaining({ constituentFundName: "Asian Pacific Equity Fund", dataAsOf: "2025-12-31", annualizedReturn3Year: 14.34 }),

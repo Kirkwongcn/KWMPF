@@ -36,8 +36,11 @@ function massReportDataAsOf(text: string): string {
   const match = text.match(
     /Fund Data as at\s+([A-Za-z]+)[^\r\n]*(?:\r?\n[^\r\n]*){0,2}?\b(\d{1,2}),\s*(\d{4})/i,
   );
-  if (!match) throw new Error("MASS fund data-as-of date is missing");
-  return parseMassDate(`${match[1]} ${match[2]}, ${match[3]}`);
+  if (match) return parseMassDate(`${match[1]} ${match[2]}, ${match[3]}`);
+  // 官網逐隻基金版左窄欄斷行：「Fund Data as at July 31,」同一行右邊係「Fund Price (HKD)」，年份落咗下一行行頭。
+  const wrapped = text.match(/Fund Data as at\s+([A-Za-z]+)\s+(\d{1,2}),[^\r\n]*\r?\n[ \t]*(\d{4})\b/i);
+  if (!wrapped) throw new Error("MASS fund data-as-of date is missing");
+  return parseMassDate(`${wrapped[1]} ${wrapped[2]}, ${wrapped[3]}`);
 }
 
 function parseMassDate(value: string): string {
