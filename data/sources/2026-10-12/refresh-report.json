@@ -1,0 +1,3222 @@
+{
+  "generatedAt": "2026-10-12T14:08:28.026Z",
+  "decision": {
+    "previousDataAsOf": "2026-08-31",
+    "candidateDataAsOf": "2026-09-30",
+    "outcome": "needs_review",
+    "publishable": false,
+    "reasons": [
+      "異常核對政策 2026-09-10.v5 標記了 483 項異常，涉及 265 個基金類別；必須人手核對後才可發布。",
+      "費率改變：483 項。"
+    ]
+  },
+  "readiness": {
+    "ready": true,
+    "inputRecords": 451,
+    "acceptedRecords": 451,
+    "blockedRecords": 0,
+    "missingByField": {},
+    "unavailableByField": {
+      "annualizedReturn10y": 93,
+      "annualizedReturn1y": 4,
+      "annualizedReturn5y": 24,
+      "calendarYearReturn2021": 46,
+      "calendarYearReturn2022": 18,
+      "calendarYearReturn2023": 16,
+      "calendarYearReturn2024": 5,
+      "calendarYearReturn2025": 5,
+      "fundRiskIndicator": 12,
+      "latestFer": 5,
+      "oci1yHkd": 32,
+      "oci3yHkd": 32,
+      "oci5yHkd": 32,
+      "riskClass": 12,
+      "sinceLaunchReturn": 4
+    },
+    "blockedDetails": [],
+    "issues": []
+  },
+  "audit": {
+    "batchId": "candidate-38260395116",
+    "policyVersion": "2026-09-10.v5",
+    "requiresReview": true,
+    "inputRecords": 451,
+    "previousRecords": 451,
+    "generatedAt": "2026-10-12T14:08:28.015Z",
+    "anomalies": [
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-147",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 19 改為 16"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-147",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 59 改為 50"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-147",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 101 改為 87"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-148",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 18 改為 16"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-148",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 57 改為 49"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-148",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 98 改為 84"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-149",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 18 改為 16"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-149",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 56 改為 49"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-149",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 97 改為 84"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-150",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 56 改為 55"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-158",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 18 改為 15"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-158",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 55 改為 48"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-158",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 95 改為 83"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-160",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 20 改為 17"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-160",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 63 改為 53"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-160",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 108 改為 91"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-161",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 19 改為 16"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-161",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 59 改為 51"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-161",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 101 改為 88"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-162",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 15"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-162",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 51 改為 46"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-162",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 87 改為 79"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-163",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 18 改為 16"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-163",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 56 改為 49"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-163",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 96 改為 84"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-166",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 19 改為 16"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-166",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 58 改為 49"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-166",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 100 改為 85"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-167",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 18 改為 16"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-167",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 57 改為 49"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-167",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 98 改為 85"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-168",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 19 改為 16"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-168",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 57 改為 49"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-168",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 99 改為 85"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-173",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 17 改為 16"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-173",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 51 改為 50"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-173",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 89 改為 86"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-174",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 18 改為 17"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-174",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 55 改為 53"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-174",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 95 改為 91"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-175",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 53 改為 52"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-175",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 92 改為 89"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-176",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 18 改為 17"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-176",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 55 改為 52"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-176",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 94 改為 90"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-177",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 17"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-177",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 49 改為 54"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-177",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 84 改為 93"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-178",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 57 改為 56"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-178",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 98 改為 97"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-180",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 18 改為 17"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-180",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 55 改為 53"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-180",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 94 改為 91"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-181",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 18 改為 17"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-181",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 55 改為 53"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-181",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 95 改為 91"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-184",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 49 改為 48"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-184",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 85 改為 84"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-185",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 49 改為 48"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-185",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 85 改為 84"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-187",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 90 改為 89"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-188",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 49 改為 48"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-188",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 84 改為 83"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-189",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 44 改為 43"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-189",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 76 改為 75"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-190",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 15"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-190",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 84 改為 83"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-191",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.27011 改為 1.25593"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-192",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.14744 改為 1.13406"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-193",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.68966 改為 0.69207"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-194",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.68831 改為 0.69224"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-195",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.24992 改為 1.24503"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-196",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.12778 改為 1.12327"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-198",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.2876 改為 1.2736"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-199",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.16432 改為 1.15271"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-200",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.29723 改為 1.28344"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-201",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.17397 改為 1.16294"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-202",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.25052 改為 1.2409"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-203",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.12773 改為 1.11926"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-206",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 18 改為 15"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-206",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 56 改為 48"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-206",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 96 改為 83"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-207",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 15"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-207",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 50 改為 46"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-207",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 87 改為 79"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-208",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 17 改為 13"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-208",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 52 改為 41"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-208",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 90 改為 71"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-209",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 15"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-209",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 50 改為 45"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-209",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 87 改為 78"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-210",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 17 改為 14"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-210",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 54 改為 43"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-210",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 93 改為 75"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-212",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.34068 改為 1.35606"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-213",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.80767 改為 0.82427"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-214",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.31067 改為 1.33306"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-215",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.37183 改為 1.37779"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-216",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.34166 改為 1.3313"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-217",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.35966 改為 1.27814"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-218",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.28586 改為 1.25716"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-219",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.0513 改為 1.0494"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-220",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.28325 改為 1.28292"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-221",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.3185 改為 1.27763"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-223",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.31468 改為 1.31572"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-224",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.37488 改為 1.35413"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-225",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.80857 改為 0.81265"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-226",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.66729 改為 1.64192"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-227",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.68228 改為 1.65915"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-228",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.67273 改為 1.65241"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-229",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.66705 改為 1.64839"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-230",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.8144 改為 0.79496"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-231",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.68006 改為 1.65771"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-232",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.67216 改為 1.64408"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-233",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.51145 改為 1.34936"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-234",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.70699 改為 1.67928"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-236",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 14 改為 13"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-236",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 45 改為 41"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-236",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 77 改為 71"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-237",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 14 改為 13"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-237",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 45 改為 41"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-237",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 77 改為 71"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-268",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 15"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-268",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 50 改為 47"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-268",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 86 改為 81"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-270",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 15"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-270",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 49 改為 46"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-270",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 85 改為 79"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-271",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 15"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-271",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 50 改為 47"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-271",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 86 改為 82"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-272",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 15"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-272",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 50 改為 48"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-272",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 86 改為 82"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-273",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 50 改為 49"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-273",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 85 改為 84"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-275",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 15"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-275",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 49 改為 47"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-275",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 85 改為 81"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-278",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 50 改為 49"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-278",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 87 改為 85"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-280",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 15"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-280",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 50 改為 47"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-280",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 86 改為 81"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-362",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.1772 改為 1.14883"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-363",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.78402 改為 1.744"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-364",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.77276 改為 1.73911"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-365",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.76663 改為 1.73747"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-366",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.7679 改為 0.75444"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-367",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.77859 改為 1.74088"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-368",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.77353 改為 1.73823"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-369",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.78999 改為 1.7605"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-370",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.81569 改為 1.77514"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-371",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.764 改為 1.72296"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-372",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.17063 改為 1.14575"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-373",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.7974 改為 1.76512"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-374",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.79073 改為 1.76052"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-375",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.97021 改為 1.91192"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-376",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.79078 改為 1.74556"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-377",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.76261 改為 1.72746"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-383",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 15 改為 12"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-383",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 46 改為 37"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-383",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 79 改為 64"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-384",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 12"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-384",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 49 改為 37"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-384",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 84 改為 64"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-385",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 15 改為 11"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-385",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 46 改為 35"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-385",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 80 改為 61"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-387",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 15 改為 12"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-387",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 48 改為 37"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-387",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 83 改為 64"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-388",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 34 改為 30"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-388",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 104 改為 93"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-388",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 176 改為 157"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-389",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 14 改為 11"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-389",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 44 改為 34"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-389",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 76 改為 59"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-390",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 12"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-390",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 49 改為 37"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-390",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 84 改為 64"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-392",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 12"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-392",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 50 改為 39"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-392",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 87 改為 67"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-394",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 15 改為 11"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-394",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 46 改為 35"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-394",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 80 改為 61"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-426",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 14 改為 12"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-426",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 43 改為 39"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-426",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 74 改為 67"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-427",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 14 改為 12"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-427",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 43 改為 39"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-427",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 74 改為 67"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-428",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 14 改為 13"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-428",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 43 改為 41"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-428",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 74 改為 71"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-429",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 15 改為 14"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-429",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 46 改為 43"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-429",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 80 改為 74"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-430",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 14 改為 13"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-430",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 43 改為 41"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-430",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 74 改為 70"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-431",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 14"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-431",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 49 改為 44"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-431",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 85 改為 76"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-432",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 14 改為 13"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-432",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 44 改為 41"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-432",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 76 改為 71"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-433",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 14"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-433",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 50 改為 45"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-433",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 86 改為 77"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-434",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 14 改為 13"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-434",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 43 改為 40"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-434",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 75 改為 69"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-435",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 14"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-435",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 50 改為 44"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-435",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 86 改為 75"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-438",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 14 改為 13"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-438",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 43 改為 40"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-438",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 74 改為 69"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-440",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 14 改為 13"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-440",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 42 改為 40"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-440",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 73 改為 69"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-441",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 15 改為 14"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-441",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 48 改為 43"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-441",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 83 改為 75"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-446",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 14 改為 13"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-446",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 43 改為 40"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-446",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 75 改為 69"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-447",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 14"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-447",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 50 改為 44"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-447",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 86 改為 75"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-450",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 33 改為 31"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-450",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 57 改為 53"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-451",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 11 改為 10"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-451",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 34 改為 31"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-451",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 59 改為 54"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-459",
+        "field": "latestFer",
+        "detail": "latestFer 由 2.26698 改為 2.14749"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-459",
+        "field": "guaranteeCharge",
+        "detail": "guaranteeCharge 由 1 改為 0.8"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-460",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.87924 改為 0.8673"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-462",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.66262 改為 0.66544"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-463",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.88551 改為 0.88519"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-464",
+        "field": "managementFee",
+        "detail": "managementFee 由 0.875 改為 0.795"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-464",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.9907 改為 0.91335"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-464",
+        "field": "trusteeCustodianFee",
+        "detail": "trusteeCustodianFee 由 0.19 改為 0.16"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-464",
+        "field": "investmentManagementFee",
+        "detail": "investmentManagementFee 由 0.445 改為 0.395"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-466",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.66355 改為 0.6511"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-603",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 22 改為 20"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-603",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 67 改為 62"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-603",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 115 改為 107"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-606",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 13 改為 14"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-606",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 41 改為 42"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-606",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 71 改為 73"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-619",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 14 改為 13"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-619",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 43 改為 41"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-619",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 75 改為 70"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-620",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 14"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-620",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 49 改為 44"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-620",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 85 改為 76"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-627",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.18727 改為 1.15421"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-628",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.31055 改為 1.27631"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-653",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 14"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-653",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 51 改為 43"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-653",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 88 改為 74"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-654",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.75206 改為 1.71173"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-659",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 15"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-659",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 84 改為 83"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-695",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.91298 改為 1.88181"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-696",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 14"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-696",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 49 改為 44"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-696",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 85 改為 75"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-697",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 17 改為 14"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-697",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 53 改為 43"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-697",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 91 改為 74"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-701",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 49 改為 48"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-701",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 85 改為 84"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-703",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 70 改為 69"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-705",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 13"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-705",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 49 改為 40"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-705",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 84 改為 69"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-706",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 14 改為 13"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-706",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 43 改為 41"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-706",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 74 改為 70"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-707",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 15"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-707",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 49 改為 48"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-707",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 84 改為 83"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-708",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 13"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-708",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 51 改為 40"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-708",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 88 改為 69"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-709",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 14"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-709",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 51 改為 44"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-709",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 88 改為 75"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-710",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 15"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-710",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 83 改為 82"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-711",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 14"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-711",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 51 改為 43"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-711",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 87 改為 75"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-798",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 10 改為 9"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-798",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 31 改為 29"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-798",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 54 改為 50"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-800",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 9 改為 8"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-800",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 27 改為 26"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-800",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 47 改為 46"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-811",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.27899 改為 1.30586"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-812",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.29682 改為 1.27923"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-813",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.25072 改為 1.22405"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-814",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.3969 改為 1.32628"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-815",
+        "field": "managementFee",
+        "detail": "managementFee 由 0.875 改為 0.795"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-815",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.98849 改為 0.90406"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-815",
+        "field": "trusteeCustodianFee",
+        "detail": "trusteeCustodianFee 由 0.19 改為 0.16"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-815",
+        "field": "investmentManagementFee",
+        "detail": "investmentManagementFee 由 0.445 改為 0.395"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-816",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.02738 改為 1.01951"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-817",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.04376 改為 1.07284"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-818",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.03342 改為 1.05873"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-819",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.0425 改為 1.06252"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-820",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.09501 改為 1.09056"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-821",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.06687 改為 1.08359"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-822",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.06799 改為 1.06664"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-824",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.73161 改為 0.75869"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-825",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.99802 改為 0.97691"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-826",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.03782 改為 1.02948"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-827",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.74161 改為 0.74297"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-831",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 14"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-831",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 50 改為 43"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-831",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 87 改為 75"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-838",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 20 改為 17"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-838",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 62 改為 52"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-838",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 107 改為 90"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-839",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 14"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-839",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 50 改為 44"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-839",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 85 改為 76"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-841",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 19 改為 16"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-841",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 58 改為 49"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-841",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 99 改為 84"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-842",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.06214 改為 1.04111"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-844",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.07324 改為 1.0607"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-845",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.06336 改為 1.03959"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-846",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.05835 改為 1.03474"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-847",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.06596 改為 1.03913"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-848",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.04687 改為 1.02653"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-874",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 15 改為 11"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-874",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 46 改為 36"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-874",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 79 改為 62"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-895",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 29 改為 28"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-895",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 50 改為 48"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-896",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.24901 改為 1.22975"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-897",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.19223 改為 1.18646"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-898",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.5966 改為 0.58083"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-899",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.2905 改為 1.26915"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-900",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.17257 改為 1.18637"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-901",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.58317 改為 0.58299"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-902",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 10 改為 9"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-902",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 30 改為 29"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-902",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 52 改為 51"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-903",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 34 改為 33"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-903",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 59 改為 58"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-906",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.19787 改為 1.16735"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-907",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.92494 改為 0.89404"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-908",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 34 改為 33"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-908",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 58 改為 57"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-909",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 12 改為 11"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-909",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 36 改為 35"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-909",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 63 改為 61"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-912",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.79543 改為 0.81219"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-913",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.79088 改為 0.80295"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-917",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 17 改為 15"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-917",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 52 改為 45"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-917",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 89 改為 78"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-918",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 15 改為 14"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-918",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 47 改為 42"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-918",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 81 改為 73"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-999",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.14744 改為 0.93656"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1000",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.02335 改為 1.00024"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1001",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.04393 改為 1.0225"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1039",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.78556 改為 0.81472"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1040",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.97939 改為 0.98006"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1041",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.9642 改為 0.96946"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1042",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.955 改為 0.96311"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1043",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.95234 改為 0.93005"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1044",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.97668 改為 0.95624"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1045",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.96335 改為 0.94745"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1047",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.69026 改為 0.6898"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1048",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.92715 改為 0.92635"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1099",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 42 改為 41"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1100",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 70 改為 69"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1101",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.24665 改為 1.23939"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1102",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.12379 改為 1.11718"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1119",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.5605 改為 0.537"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1159",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 25 改為 24"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1219",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.19991 改為 1.16178"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1339",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.79266 改為 0.78383"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1340",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.75084 改為 0.7407"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1359",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.93056 改為 0.92706"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1379",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 11 改為 10"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1379",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 34 改為 32"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1379",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 59 改為 56"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1399",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.83055 改為 0.81218"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1419",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 17 改為 14"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1419",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 53 改為 45"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1419",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 92 改為 78"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1420",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 17 改為 14"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1420",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 52 改為 44"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1420",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 90 改為 76"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1485",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.75345 改為 0.74162"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1486",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.7564 改為 0.74426"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1487",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 26 改為 25"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1487",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 46 改為 43"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1488",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 26 改為 25"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1488",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 46 改為 44"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1491",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 26 改為 25"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1491",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 45 改為 44"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1495",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 45 改為 44"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1497",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.58185 改為 0.55794"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1498",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.60948 改為 0.56189"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1521",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 8 改為 9"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1521",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 26 改為 27"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1522",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 8 改為 9"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1522",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 26 改為 27"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1522",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 46 改為 47"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1531",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 28 改為 27"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1531",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 49 改為 47"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1532",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 28 改為 27"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1532",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 49 改為 47"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1533",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 26 改為 25"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1534",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 26 改為 25"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1535",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.77687 改為 0.78296"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1536",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.77571 改為 0.78526"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1537",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.77948 改為 0.7778"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1538",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.78021 改為 0.77979"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1539",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.82147 改為 0.80014"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1540",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.84302 改為 0.79995"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1541",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.75835 改為 0.75994"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1542",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.76808 改為 0.76959"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1543",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.80511 改為 0.80887"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1544",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.7694 改為 0.74591"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1545",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 47 改為 46"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1546",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 47 改為 46"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1557",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.80026 改為 0.79403"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1558",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.79675 改為 0.79307"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1559",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.80013 改為 0.79691"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1560",
+        "field": "latestFer",
+        "detail": "latestFer 由 0.7993 改為 0.79726"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1719",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.35156 改為 1.32205"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1739",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 14 改為 13"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1739",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 43 改為 40"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1739",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 75 改為 70"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1740",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 14"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1740",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 50 改為 44"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1740",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 85 改為 76"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1741",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 11 改為 10"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1741",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 34 改為 33"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1741",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 59 改為 57"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1799",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 14 改為 12"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1799",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 43 改為 39"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1799",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 74 改為 67"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1819",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 50 改為 49"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1819",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 87 改為 84"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1820",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 15"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1820",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 49 改為 48"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1820",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 85 改為 83"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1839",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 42 改為 40"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1839",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 72 改為 68"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1859",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 16 改為 15"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1859",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 51 改為 48"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1859",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 88 改為 83"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1959",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.49913 改為 1.33224"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-2063",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.30729 改為 1.31623"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-2063",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 13 改為 14"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-2063",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 40 改為 43"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-2063",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 70 改為 74"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-2064",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 13 改為 14"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-2064",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 42 改為 45"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-2064",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 72 改為 78"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-2065",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 13 改為 12"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-2065",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 39 改為 38"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-2065",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 67 改為 66"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-2066",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.15221 改為 1.1552"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-2067",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.14993 改為 1.15741"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-2068",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.04145 改為 1.04518"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-2069",
+        "field": "latestFer",
+        "detail": "latestFer 由 1.03905 改為 1.03982"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-2080",
+        "field": "oci1yHkd",
+        "detail": "oci1yHkd 由 15 改為 16"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-2080",
+        "field": "oci3yHkd",
+        "detail": "oci3yHkd 由 47 改為 50"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-2080",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 80 改為 86"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-2099",
+        "field": "oci5yHkd",
+        "detail": "oci5yHkd 由 63 改為 62"
+      }
+    ],
+    "affectedFundClassIds": [
+      "mpfa-cf-1000",
+      "mpfa-cf-1001",
+      "mpfa-cf-1039",
+      "mpfa-cf-1040",
+      "mpfa-cf-1041",
+      "mpfa-cf-1042",
+      "mpfa-cf-1043",
+      "mpfa-cf-1044",
+      "mpfa-cf-1045",
+      "mpfa-cf-1047",
+      "mpfa-cf-1048",
+      "mpfa-cf-1099",
+      "mpfa-cf-1100",
+      "mpfa-cf-1101",
+      "mpfa-cf-1102",
+      "mpfa-cf-1119",
+      "mpfa-cf-1159",
+      "mpfa-cf-1219",
+      "mpfa-cf-1339",
+      "mpfa-cf-1340",
+      "mpfa-cf-1359",
+      "mpfa-cf-1379",
+      "mpfa-cf-1399",
+      "mpfa-cf-1419",
+      "mpfa-cf-1420",
+      "mpfa-cf-147",
+      "mpfa-cf-148",
+      "mpfa-cf-1485",
+      "mpfa-cf-1486",
+      "mpfa-cf-1487",
+      "mpfa-cf-1488",
+      "mpfa-cf-149",
+      "mpfa-cf-1491",
+      "mpfa-cf-1495",
+      "mpfa-cf-1497",
+      "mpfa-cf-1498",
+      "mpfa-cf-150",
+      "mpfa-cf-1521",
+      "mpfa-cf-1522",
+      "mpfa-cf-1531",
+      "mpfa-cf-1532",
+      "mpfa-cf-1533",
+      "mpfa-cf-1534",
+      "mpfa-cf-1535",
+      "mpfa-cf-1536",
+      "mpfa-cf-1537",
+      "mpfa-cf-1538",
+      "mpfa-cf-1539",
+      "mpfa-cf-1540",
+      "mpfa-cf-1541",
+      "mpfa-cf-1542",
+      "mpfa-cf-1543",
+      "mpfa-cf-1544",
+      "mpfa-cf-1545",
+      "mpfa-cf-1546",
+      "mpfa-cf-1557",
+      "mpfa-cf-1558",
+      "mpfa-cf-1559",
+      "mpfa-cf-1560",
+      "mpfa-cf-158",
+      "mpfa-cf-160",
+      "mpfa-cf-161",
+      "mpfa-cf-162",
+      "mpfa-cf-163",
+      "mpfa-cf-166",
+      "mpfa-cf-167",
+      "mpfa-cf-168",
+      "mpfa-cf-1719",
+      "mpfa-cf-173",
+      "mpfa-cf-1739",
+      "mpfa-cf-174",
+      "mpfa-cf-1740",
+      "mpfa-cf-1741",
+      "mpfa-cf-175",
+      "mpfa-cf-176",
+      "mpfa-cf-177",
+      "mpfa-cf-178",
+      "mpfa-cf-1799",
+      "mpfa-cf-180",
+      "mpfa-cf-181",
+      "mpfa-cf-1819",
+      "mpfa-cf-1820",
+      "mpfa-cf-1839",
+      "mpfa-cf-184",
+      "mpfa-cf-185",
+      "mpfa-cf-1859",
+      "mpfa-cf-187",
+      "mpfa-cf-188",
+      "mpfa-cf-189",
+      "mpfa-cf-190",
+      "mpfa-cf-191",
+      "mpfa-cf-192",
+      "mpfa-cf-193",
+      "mpfa-cf-194",
+      "mpfa-cf-195",
+      "mpfa-cf-1959",
+      "mpfa-cf-196",
+      "mpfa-cf-198",
+      "mpfa-cf-199",
+      "mpfa-cf-200",
+      "mpfa-cf-201",
+      "mpfa-cf-202",
+      "mpfa-cf-203",
+      "mpfa-cf-206",
+      "mpfa-cf-2063",
+      "mpfa-cf-2064",
+      "mpfa-cf-2065",
+      "mpfa-cf-2066",
+      "mpfa-cf-2067",
+      "mpfa-cf-2068",
+      "mpfa-cf-2069",
+      "mpfa-cf-207",
+      "mpfa-cf-208",
+      "mpfa-cf-2080",
+      "mpfa-cf-209",
+      "mpfa-cf-2099",
+      "mpfa-cf-210",
+      "mpfa-cf-212",
+      "mpfa-cf-213",
+      "mpfa-cf-214",
+      "mpfa-cf-215",
+      "mpfa-cf-216",
+      "mpfa-cf-217",
+      "mpfa-cf-218",
+      "mpfa-cf-219",
+      "mpfa-cf-220",
+      "mpfa-cf-221",
+      "mpfa-cf-223",
+      "mpfa-cf-224",
+      "mpfa-cf-225",
+      "mpfa-cf-226",
+      "mpfa-cf-227",
+      "mpfa-cf-228",
+      "mpfa-cf-229",
+      "mpfa-cf-230",
+      "mpfa-cf-231",
+      "mpfa-cf-232",
+      "mpfa-cf-233",
+      "mpfa-cf-234",
+      "mpfa-cf-236",
+      "mpfa-cf-237",
+      "mpfa-cf-268",
+      "mpfa-cf-270",
+      "mpfa-cf-271",
+      "mpfa-cf-272",
+      "mpfa-cf-273",
+      "mpfa-cf-275",
+      "mpfa-cf-278",
+      "mpfa-cf-280",
+      "mpfa-cf-362",
+      "mpfa-cf-363",
+      "mpfa-cf-364",
+      "mpfa-cf-365",
+      "mpfa-cf-366",
+      "mpfa-cf-367",
+      "mpfa-cf-368",
+      "mpfa-cf-369",
+      "mpfa-cf-370",
+      "mpfa-cf-371",
+      "mpfa-cf-372",
+      "mpfa-cf-373",
+      "mpfa-cf-374",
+      "mpfa-cf-375",
+      "mpfa-cf-376",
+      "mpfa-cf-377",
+      "mpfa-cf-383",
+      "mpfa-cf-384",
+      "mpfa-cf-385",
+      "mpfa-cf-387",
+      "mpfa-cf-388",
+      "mpfa-cf-389",
+      "mpfa-cf-390",
+      "mpfa-cf-392",
+      "mpfa-cf-394",
+      "mpfa-cf-426",
+      "mpfa-cf-427",
+      "mpfa-cf-428",
+      "mpfa-cf-429",
+      "mpfa-cf-430",
+      "mpfa-cf-431",
+      "mpfa-cf-432",
+      "mpfa-cf-433",
+      "mpfa-cf-434",
+      "mpfa-cf-435",
+      "mpfa-cf-438",
+      "mpfa-cf-440",
+      "mpfa-cf-441",
+      "mpfa-cf-446",
+      "mpfa-cf-447",
+      "mpfa-cf-450",
+      "mpfa-cf-451",
+      "mpfa-cf-459",
+      "mpfa-cf-460",
+      "mpfa-cf-462",
+      "mpfa-cf-463",
+      "mpfa-cf-464",
+      "mpfa-cf-466",
+      "mpfa-cf-603",
+      "mpfa-cf-606",
+      "mpfa-cf-619",
+      "mpfa-cf-620",
+      "mpfa-cf-627",
+      "mpfa-cf-628",
+      "mpfa-cf-653",
+      "mpfa-cf-654",
+      "mpfa-cf-659",
+      "mpfa-cf-695",
+      "mpfa-cf-696",
+      "mpfa-cf-697",
+      "mpfa-cf-701",
+      "mpfa-cf-703",
+      "mpfa-cf-705",
+      "mpfa-cf-706",
+      "mpfa-cf-707",
+      "mpfa-cf-708",
+      "mpfa-cf-709",
+      "mpfa-cf-710",
+      "mpfa-cf-711",
+      "mpfa-cf-798",
+      "mpfa-cf-800",
+      "mpfa-cf-811",
+      "mpfa-cf-812",
+      "mpfa-cf-813",
+      "mpfa-cf-814",
+      "mpfa-cf-815",
+      "mpfa-cf-816",
+      "mpfa-cf-817",
+      "mpfa-cf-818",
+      "mpfa-cf-819",
+      "mpfa-cf-820",
+      "mpfa-cf-821",
+      "mpfa-cf-822",
+      "mpfa-cf-824",
+      "mpfa-cf-825",
+      "mpfa-cf-826",
+      "mpfa-cf-827",
+      "mpfa-cf-831",
+      "mpfa-cf-838",
+      "mpfa-cf-839",
+      "mpfa-cf-841",
+      "mpfa-cf-842",
+      "mpfa-cf-844",
+      "mpfa-cf-845",
+      "mpfa-cf-846",
+      "mpfa-cf-847",
+      "mpfa-cf-848",
+      "mpfa-cf-874",
+      "mpfa-cf-895",
+      "mpfa-cf-896",
+      "mpfa-cf-897",
+      "mpfa-cf-898",
+      "mpfa-cf-899",
+      "mpfa-cf-900",
+      "mpfa-cf-901",
+      "mpfa-cf-902",
+      "mpfa-cf-903",
+      "mpfa-cf-906",
+      "mpfa-cf-907",
+      "mpfa-cf-908",
+      "mpfa-cf-909",
+      "mpfa-cf-912",
+      "mpfa-cf-913",
+      "mpfa-cf-917",
+      "mpfa-cf-918",
+      "mpfa-cf-999"
+    ],
+    "sourceFailures": [],
+    "sources": [
+      {
+        "url": "https://mfp.mpfa.org.hk/eng/mpp_list.jsp",
+        "dataAsOf": "2026-09-30",
+        "retrievedAt": "2026-10-12T14:08:25.732Z"
+      }
+    ]
+  }
+}
