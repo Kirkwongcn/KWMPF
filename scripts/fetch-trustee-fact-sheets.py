@@ -16,6 +16,8 @@ from urllib.parse import urlsplit
 MAX_PDF_BYTES = 100 * 1024 * 1024
 CHUNK_BYTES = 256 * 1024
 MAX_ATTEMPTS = 3
+# 宏利官網 2026-10 起對 chrome124 指紋回 403，最新 Chrome 指紋就得；其他受託人照用 chrome124。
+IMPERSONATION_PROFILES = ("chrome124", "chrome")
 BATCH_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 SHA_PATTERN = re.compile(r"^[0-9a-f]{40}$")
 
@@ -159,9 +161,10 @@ def download_pdf(url: str, destination: Path) -> tuple[int, str]:
     temporary = destination.with_suffix(destination.suffix + ".part")
     last_error: Exception | None = None
 
+    profile = 0
     for attempt in range(MAX_ATTEMPTS):
         temporary.unlink(missing_ok=True)
-        session = requests.Session(impersonate="chrome124")
+        session = requests.Session(impersonate=IMPERSONATION_PROFILES[profile])
         response = None
         try:
             response = session.get(
@@ -172,6 +175,9 @@ def download_pdf(url: str, destination: Path) -> tuple[int, str]:
                 timeout=(20, 90),
             )
             status = int(response.status_code)
+            if status == 403 and profile + 1 < len(IMPERSONATION_PROFILES):
+                profile += 1
+                raise DownloadFailure("HTTP 403", retryable=True)
             if status != 200:
                 raise DownloadFailure(
                     f"HTTP {status}",

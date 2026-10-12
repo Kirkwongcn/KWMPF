@@ -61,6 +61,61 @@ class TrusteeFactSheetDownloadTests(unittest.TestCase):
                 ]
             )
 
+    def test_retries_a_403_with_the_next_browser_profile_only(self) -> None:
+        import sys
+        import types
+
+        profiles: list[str] = []
+
+        class FakeResponse:
+            def __init__(self, status: int) -> None:
+                self.status_code = status
+                self.url = "https://example.test/a.pdf"
+                self.headers = {"content-length": "8"}
+
+            def iter_content(self, chunk_size: int):
+                yield b"%PDF-1.7"
+
+            def close(self) -> None:
+                pass
+
+        class FakeSession:
+            def __init__(self, impersonate: str) -> None:
+                profiles.append(impersonate)
+                self.profile = impersonate
+
+            def get(self, *args, **kwargs):
+                return FakeResponse(403 if self.profile == "chrome124" else 200)
+
+            def close(self) -> None:
+                pass
+
+        fake = types.ModuleType("curl_cffi")
+        fake.requests = types.SimpleNamespace(Session=FakeSession)
+        previous = sys.modules.get("curl_cffi")
+        sys.modules["curl_cffi"] = fake
+        original_sleep = fetcher.time.sleep
+        fetcher.time.sleep = lambda seconds: None
+        try:
+            with tempfile.TemporaryDirectory(prefix="kwmpf-factsheet-") as temporary:
+                size, _ = fetcher.download_pdf("https://example.test/a.pdf", Path(temporary) / "a.pdf")
+            self.assertEqual(size, 8)
+            self.assertEqual(profiles, ["chrome124", "chrome"])
+
+            # 最後一個指紋都 403 就唔再試，照報失敗。
+            profiles.clear()
+            FakeSession.get = lambda self, *args, **kwargs: FakeResponse(403)
+            with tempfile.TemporaryDirectory(prefix="kwmpf-factsheet-") as temporary:
+                with self.assertRaises(fetcher.DownloadFailure):
+                    fetcher.download_pdf("https://example.test/a.pdf", Path(temporary) / "a.pdf")
+            self.assertEqual(profiles, ["chrome124", "chrome"])
+        finally:
+            fetcher.time.sleep = original_sleep
+            if previous is None:
+                sys.modules.pop("curl_cffi", None)
+            else:
+                sys.modules["curl_cffi"] = previous
+
     def test_records_successes_and_failures_and_resumes_valid_downloads(self) -> None:
         with tempfile.TemporaryDirectory(prefix="kwmpf-factsheet-") as temporary:
             root = Path(temporary)
