@@ -76,10 +76,7 @@
         "oci1yHkd": 18,
         "oci3yHkd": 55,
         "oci5yHkd": 94,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -147,10 +144,7 @@
         "oci1yHkd": 18,
         "oci3yHkd": 55,
         "oci5yHkd": 94,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -218,10 +212,7 @@
         "oci1yHkd": 18,
         "oci3yHkd": 55,
         "oci5yHkd": 94,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -289,10 +280,7 @@
         "oci1yHkd": 18,
         "oci3yHkd": 55,
         "oci5yHkd": 94,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -341,11 +329,7 @@
         "cumulative": 26.96,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "oci1yHkd",
-        "oci3yHkd",
-        "oci5yHkd"
-      ],
+      "unavailableFields": ["oci1yHkd", "oci3yHkd", "oci5yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "fundRiskIndicator": 0,
@@ -362,10 +346,7 @@
         "bidSpread": 0,
         "offerSpread": 0,
         "withdrawalCharge": 0,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -433,10 +414,7 @@
         "oci1yHkd": 18,
         "oci3yHkd": 55,
         "oci5yHkd": 95,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -504,10 +482,7 @@
         "oci1yHkd": 15,
         "oci3yHkd": 46,
         "oci5yHkd": 80,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -575,10 +550,7 @@
         "oci1yHkd": 18,
         "oci3yHkd": 55,
         "oci5yHkd": 94,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -646,10 +618,7 @@
         "oci1yHkd": 17,
         "oci3yHkd": 54,
         "oci5yHkd": 93,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -1726,10 +1695,7 @@
         "oci1yHkd": 16,
         "oci3yHkd": 50,
         "oci5yHkd": 86,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -1797,10 +1763,7 @@
         "oci1yHkd": 17,
         "oci3yHkd": 53,
         "oci5yHkd": 91,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -1868,10 +1831,7 @@
         "oci1yHkd": 17,
         "oci3yHkd": 52,
         "oci5yHkd": 89,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -1939,10 +1899,7 @@
         "oci1yHkd": 17,
         "oci3yHkd": 52,
         "oci5yHkd": 90,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -2010,10 +1967,7 @@
         "oci1yHkd": 17,
         "oci3yHkd": 54,
         "oci5yHkd": 93,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -2081,10 +2035,7 @@
         "oci1yHkd": 18,
         "oci3yHkd": 56,
         "oci5yHkd": 97,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -2221,10 +2172,7 @@
         "oci1yHkd": 17,
         "oci3yHkd": 53,
         "oci5yHkd": 91,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -2292,10 +2240,7 @@
         "oci1yHkd": 17,
         "oci3yHkd": 53,
         "oci5yHkd": 91,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -2778,10 +2723,7 @@
         "oci1yHkd": 14,
         "oci3yHkd": 43,
         "oci5yHkd": 75,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
@@ -3887,10 +3829,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 41,
         "oci5yHkd": 71,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -4211,11 +4150,7 @@
         "cumulative": 45.34,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "oci1yHkd",
-        "oci3yHkd",
-        "oci5yHkd"
-      ],
+      "unavailableFields": ["oci1yHkd", "oci3yHkd", "oci5yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "fundRiskIndicator": 0.27,
@@ -4505,10 +4440,7 @@
         "oci1yHkd": 14,
         "oci3yHkd": 44,
         "oci5yHkd": 77,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ],
+        "feeCaps": ["managementFee", "investmentManagementFee"],
         "feeDisclosures": {
           "trusteeCustodianFee": "0.14% p.a. - 0.22% p.a."
         }
@@ -4970,11 +4902,7 @@
         "cumulative": 48.03,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "oci1yHkd",
-        "oci3yHkd",
-        "oci5yHkd"
-      ],
+      "unavailableFields": ["oci1yHkd", "oci3yHkd", "oci5yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "fundRiskIndicator": 0.26,
@@ -5663,10 +5591,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 41,
         "oci5yHkd": 71,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -5734,10 +5659,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 41,
         "oci5yHkd": 71,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -5873,10 +5795,7 @@
         "oci1yHkd": 15,
         "oci3yHkd": 46,
         "oci5yHkd": 80,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -5946,10 +5865,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 40,
         "oci5yHkd": 69,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -6019,10 +5935,7 @@
         "oci1yHkd": 12,
         "oci3yHkd": 39,
         "oci5yHkd": 67,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -6092,10 +6005,7 @@
         "oci1yHkd": 15,
         "oci3yHkd": 48,
         "oci5yHkd": 82,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -6165,10 +6075,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 41,
         "oci5yHkd": 71,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -6238,10 +6145,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 40,
         "oci5yHkd": 69,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -6311,10 +6215,7 @@
         "oci1yHkd": 16,
         "oci3yHkd": 49,
         "oci5yHkd": 84,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -6384,10 +6285,7 @@
         "oci1yHkd": 14,
         "oci3yHkd": 42,
         "oci5yHkd": 73,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -6457,10 +6355,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 41,
         "oci5yHkd": 71,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -6530,10 +6425,7 @@
         "oci1yHkd": 15,
         "oci3yHkd": 47,
         "oci5yHkd": 81,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -6603,10 +6495,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 41,
         "oci5yHkd": 70,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -6676,10 +6565,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 40,
         "oci5yHkd": 69,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -6749,10 +6635,7 @@
         "oci1yHkd": 16,
         "oci3yHkd": 48,
         "oci5yHkd": 83,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -6822,10 +6705,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 42,
         "oci5yHkd": 72,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -6895,10 +6775,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 41,
         "oci5yHkd": 71,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -6968,10 +6845,7 @@
         "oci1yHkd": 16,
         "oci3yHkd": 48,
         "oci5yHkd": 83,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -7041,10 +6915,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 42,
         "oci5yHkd": 73,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -7114,10 +6985,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 41,
         "oci5yHkd": 71,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -7189,10 +7057,7 @@
         "bidSpread": 0,
         "offerSpread": 0,
         "withdrawalCharge": 0,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -7264,10 +7129,7 @@
         "bidSpread": 0,
         "offerSpread": 0,
         "withdrawalCharge": 0,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -7339,10 +7201,7 @@
         "bidSpread": 0,
         "offerSpread": 0,
         "withdrawalCharge": 0,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -7412,10 +7271,7 @@
         "oci1yHkd": 16,
         "oci3yHkd": 49,
         "oci5yHkd": 85,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -7485,10 +7341,7 @@
         "oci1yHkd": 14,
         "oci3yHkd": 43,
         "oci5yHkd": 74,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -7558,10 +7411,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 42,
         "oci5yHkd": 72,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -7631,10 +7481,7 @@
         "oci1yHkd": 15,
         "oci3yHkd": 47,
         "oci5yHkd": 81,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
@@ -7704,10 +7551,7 @@
         "oci1yHkd": 15,
         "oci3yHkd": 46,
         "oci5yHkd": 79,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
@@ -7777,10 +7621,7 @@
         "oci1yHkd": 15,
         "oci3yHkd": 47,
         "oci5yHkd": 82,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
@@ -7850,10 +7691,7 @@
         "oci1yHkd": 15,
         "oci3yHkd": 48,
         "oci5yHkd": 82,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
@@ -7923,10 +7761,7 @@
         "oci1yHkd": 16,
         "oci3yHkd": 49,
         "oci5yHkd": 84,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
@@ -8067,10 +7902,7 @@
         "oci1yHkd": 15,
         "oci3yHkd": 47,
         "oci5yHkd": 81,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
@@ -8140,10 +7972,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 41,
         "oci5yHkd": 71,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
@@ -8213,10 +8042,7 @@
         "oci1yHkd": 16,
         "oci3yHkd": 49,
         "oci5yHkd": 85,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
@@ -8286,10 +8112,7 @@
         "oci1yHkd": 15,
         "oci3yHkd": 47,
         "oci5yHkd": 81,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
@@ -8817,9 +8640,7 @@
         "cumulative": 28.6,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "calendarYearReturn2021"
-      ],
+      "unavailableFields": ["calendarYearReturn2021"],
       "fundOverview": {
         "riskClass": 3,
         "fundRiskIndicator": 3.16,
@@ -9042,10 +8863,7 @@
         "oci1yHkd": 8,
         "oci3yHkd": 26,
         "oci5yHkd": 45,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -10256,10 +10074,7 @@
         "oci1yHkd": 8,
         "oci3yHkd": 26,
         "oci5yHkd": 45,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -10461,10 +10276,7 @@
         "oci1yHkd": 19,
         "oci3yHkd": 58,
         "oci5yHkd": 100,
-        "feeCaps": [
-          "memberServicingFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["memberServicingFee", "investmentManagementFee"]
       }
     },
     {
@@ -10532,10 +10344,7 @@
         "oci1yHkd": 19,
         "oci3yHkd": 58,
         "oci5yHkd": 99,
-        "feeCaps": [
-          "memberServicingFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["memberServicingFee", "investmentManagementFee"]
       }
     },
     {
@@ -10651,11 +10460,7 @@
         "cumulative": 27.73,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "oci1yHkd",
-        "oci3yHkd",
-        "oci5yHkd"
-      ],
+      "unavailableFields": ["oci1yHkd", "oci3yHkd", "oci5yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "fundRiskIndicator": 0.43,
@@ -10739,10 +10544,7 @@
         "oci1yHkd": 19,
         "oci3yHkd": 58,
         "oci5yHkd": 99,
-        "feeCaps": [
-          "memberServicingFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["memberServicingFee", "investmentManagementFee"]
       }
     },
     {
@@ -10810,10 +10612,7 @@
         "oci1yHkd": 19,
         "oci3yHkd": 58,
         "oci5yHkd": 99,
-        "feeCaps": [
-          "memberServicingFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["memberServicingFee", "investmentManagementFee"]
       }
     },
     {
@@ -10948,10 +10747,7 @@
         "oci1yHkd": 19,
         "oci3yHkd": 59,
         "oci5yHkd": 101,
-        "feeCaps": [
-          "memberServicingFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["memberServicingFee", "investmentManagementFee"]
       }
     },
     {
@@ -11153,10 +10949,7 @@
         "oci1yHkd": 19,
         "oci3yHkd": 58,
         "oci5yHkd": 100,
-        "feeCaps": [
-          "trusteeCustodianFee",
-          "memberServicingFee"
-        ]
+        "feeCaps": ["trusteeCustodianFee", "memberServicingFee"]
       }
     },
     {
@@ -11224,10 +11017,7 @@
         "oci1yHkd": 19,
         "oci3yHkd": 58,
         "oci5yHkd": 100,
-        "feeCaps": [
-          "trusteeCustodianFee",
-          "memberServicingFee"
-        ]
+        "feeCaps": ["trusteeCustodianFee", "memberServicingFee"]
       }
     },
     {
@@ -11295,10 +11085,7 @@
         "oci1yHkd": 21,
         "oci3yHkd": 64,
         "oci5yHkd": 110,
-        "feeCaps": [
-          "memberServicingFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["memberServicingFee", "investmentManagementFee"]
       }
     },
     {
@@ -11366,10 +11153,7 @@
         "oci1yHkd": 19,
         "oci3yHkd": 58,
         "oci5yHkd": 100,
-        "feeCaps": [
-          "memberServicingFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["memberServicingFee", "investmentManagementFee"]
       }
     },
     {
@@ -11437,10 +11221,7 @@
         "oci1yHkd": 19,
         "oci3yHkd": 57,
         "oci5yHkd": 99,
-        "feeCaps": [
-          "memberServicingFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["memberServicingFee", "investmentManagementFee"]
       }
     },
     {
@@ -11641,9 +11422,7 @@
         "oci1yHkd": 11,
         "oci3yHkd": 35,
         "oci5yHkd": 61,
-        "feeCaps": [
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["trusteeCustodianFee"],
         "feeDisclosures": {
           "investmentManagementFee": "0.2% p.a. - 0.3% p.a."
         }
@@ -11849,9 +11628,7 @@
         "oci1yHkd": 30,
         "oci3yHkd": 93,
         "oci5yHkd": 157,
-        "feeCaps": [
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["trusteeCustodianFee"],
         "feeDisclosures": {
           "investmentManagementFee": "0.2% p.a. - 0.3% p.a."
         }
@@ -12189,9 +11966,7 @@
         "oci1yHkd": 11,
         "oci3yHkd": 35,
         "oci5yHkd": 61,
-        "feeCaps": [
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["trusteeCustodianFee"],
         "feeDisclosures": {
           "investmentManagementFee": "0.2% p.a. - 0.3% p.a."
         }
@@ -13784,10 +13559,7 @@
         "oci1yHkd": 10,
         "oci3yHkd": 32,
         "oci5yHkd": 56,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -13836,11 +13608,7 @@
         "cumulative": 27.76,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "oci1yHkd",
-        "oci3yHkd",
-        "oci5yHkd"
-      ],
+      "unavailableFields": ["oci1yHkd", "oci3yHkd", "oci5yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "fundRiskIndicator": 0,
@@ -13924,10 +13692,7 @@
         "oci1yHkd": 19,
         "oci3yHkd": 59,
         "oci5yHkd": 101,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -13995,10 +13760,7 @@
         "oci1yHkd": 17,
         "oci3yHkd": 52,
         "oci5yHkd": 90,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -14066,10 +13828,7 @@
         "oci1yHkd": 19,
         "oci3yHkd": 59,
         "oci5yHkd": 102,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -14137,10 +13896,7 @@
         "oci1yHkd": 17,
         "oci3yHkd": 53,
         "oci5yHkd": 91,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -14208,10 +13964,7 @@
         "oci1yHkd": 19,
         "oci3yHkd": 58,
         "oci5yHkd": 100,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -14279,10 +14032,7 @@
         "oci1yHkd": 17,
         "oci3yHkd": 52,
         "oci5yHkd": 89,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -14350,10 +14100,7 @@
         "oci1yHkd": 18,
         "oci3yHkd": 55,
         "oci5yHkd": 95,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -14421,10 +14168,7 @@
         "oci1yHkd": 16,
         "oci3yHkd": 51,
         "oci5yHkd": 88,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -14494,10 +14238,7 @@
         "bidSpread": 0,
         "offerSpread": 0,
         "withdrawalCharge": 0,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -14567,10 +14308,7 @@
         "bidSpread": 0,
         "offerSpread": 0,
         "withdrawalCharge": 0,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -14638,10 +14376,7 @@
         "oci1yHkd": 19,
         "oci3yHkd": 60,
         "oci5yHkd": 103,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -14709,10 +14444,7 @@
         "oci1yHkd": 17,
         "oci3yHkd": 54,
         "oci5yHkd": 92,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -14847,10 +14579,7 @@
         "oci1yHkd": 14,
         "oci3yHkd": 42,
         "oci5yHkd": 73,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -15328,10 +15057,7 @@
         "oci1yHkd": 10,
         "oci3yHkd": 32,
         "oci5yHkd": 56,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -15399,10 +15125,7 @@
         "oci1yHkd": 9,
         "oci3yHkd": 28,
         "oci5yHkd": 48,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -15608,10 +15331,7 @@
         "oci1yHkd": 22,
         "oci3yHkd": 67,
         "oci5yHkd": 114,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -15679,10 +15399,7 @@
         "oci1yHkd": 19,
         "oci3yHkd": 60,
         "oci5yHkd": 103,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -15750,10 +15467,7 @@
         "oci1yHkd": 19,
         "oci3yHkd": 59,
         "oci5yHkd": 102,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -15821,10 +15535,7 @@
         "oci1yHkd": 17,
         "oci3yHkd": 53,
         "oci5yHkd": 91,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -15892,10 +15603,7 @@
         "oci1yHkd": 22,
         "oci3yHkd": 67,
         "oci5yHkd": 115,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -15963,10 +15671,7 @@
         "oci1yHkd": 20,
         "oci3yHkd": 61,
         "oci5yHkd": 104,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -16034,10 +15739,7 @@
         "oci1yHkd": 20,
         "oci3yHkd": 62,
         "oci5yHkd": 107,
-        "feeCaps": [
-          "memberServicingFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["memberServicingFee", "investmentManagementFee"]
       }
     },
     {
@@ -16241,10 +15943,7 @@
         "oci1yHkd": 15,
         "oci3yHkd": 47,
         "oci5yHkd": 82,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -16380,10 +16079,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 40,
         "oci5yHkd": 69,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
@@ -16453,10 +16149,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 40,
         "oci5yHkd": 69,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
@@ -16526,10 +16219,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 41,
         "oci5yHkd": 70,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
@@ -16599,10 +16289,7 @@
         "oci1yHkd": 15,
         "oci3yHkd": 48,
         "oci5yHkd": 83,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
@@ -16672,10 +16359,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 40,
         "oci5yHkd": 69,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
@@ -16745,10 +16429,7 @@
         "oci1yHkd": 14,
         "oci3yHkd": 44,
         "oci5yHkd": 75,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
@@ -16818,10 +16499,7 @@
         "oci1yHkd": 15,
         "oci3yHkd": 48,
         "oci5yHkd": 82,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
@@ -16891,10 +16569,7 @@
         "oci1yHkd": 14,
         "oci3yHkd": 43,
         "oci5yHkd": 75,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
@@ -16964,10 +16639,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 39,
         "oci5yHkd": 68,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)\nWithdrawal of special voluntary contribution:\nHK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.\nSuch charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
         }
@@ -17037,10 +16709,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 40,
         "oci5yHkd": 69,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)\nWithdrawal of special voluntary contribution:\nHK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.\nSuch charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
         }
@@ -17110,10 +16779,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 39,
         "oci5yHkd": 68,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)\nWithdrawal of special voluntary contribution:\nHK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.\nSuch charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
         }
@@ -17183,10 +16849,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 40,
         "oci5yHkd": 69,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)\nWithdrawal of special voluntary contribution:\nHK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.\nSuch charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
         }
@@ -17256,10 +16919,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 40,
         "oci5yHkd": 69,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "withdrawalCharge": "Currently waived (save for withdrawal of special voluntary contributions)\nWithdrawal of special voluntary contribution:\nHK$200 per redemption will be levied if redemption amount is less than HK$5,000 or the number of withdrawals in any financial year is greater than 4 times.\nSuch charge is not applicable to a Member who has all or part of the accrued benefits invested in the DIS Funds as at the time when the Trustee receives such request from the Member."
         }
@@ -18087,10 +17747,7 @@
         "oci1yHkd": 8,
         "oci3yHkd": 26,
         "oci5yHkd": 46,
-        "feeCaps": [
-          "trusteeCustodianFee",
-          "investmentManagementFee"
-        ],
+        "feeCaps": ["trusteeCustodianFee", "investmentManagementFee"],
         "feeDisclosures": {
           "managementFee": "0.6% p.a. - 0.608% p.a.",
           "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
@@ -18698,10 +18355,7 @@
         "oci1yHkd": 19,
         "oci3yHkd": 58,
         "oci5yHkd": 99,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -18769,10 +18423,7 @@
         "oci1yHkd": 17,
         "oci3yHkd": 51,
         "oci5yHkd": 89,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -19116,10 +18767,7 @@
         "oci1yHkd": 10,
         "oci3yHkd": 32,
         "oci5yHkd": 56,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -19995,10 +19643,7 @@
         "oci1yHkd": 14,
         "oci3yHkd": 43,
         "oci5yHkd": 75,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -20267,10 +19912,7 @@
         "oci1yHkd": 11,
         "oci3yHkd": 35,
         "oci5yHkd": 60,
-        "feeCaps": [
-          "memberServicingFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["memberServicingFee", "investmentManagementFee"]
       }
     },
     {
@@ -20338,10 +19980,7 @@
         "oci1yHkd": 11,
         "oci3yHkd": 35,
         "oci5yHkd": 61,
-        "feeCaps": [
-          "memberServicingFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["memberServicingFee", "investmentManagementFee"]
       }
     },
     {
@@ -20409,10 +20048,7 @@
         "oci1yHkd": 11,
         "oci3yHkd": 35,
         "oci5yHkd": 60,
-        "feeCaps": [
-          "memberServicingFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["memberServicingFee", "investmentManagementFee"]
       }
     },
     {
@@ -20480,10 +20116,7 @@
         "oci1yHkd": 11,
         "oci3yHkd": 35,
         "oci5yHkd": 60,
-        "feeCaps": [
-          "memberServicingFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["memberServicingFee", "investmentManagementFee"]
       }
     },
     {
@@ -20551,10 +20184,7 @@
         "oci1yHkd": 11,
         "oci3yHkd": 35,
         "oci5yHkd": 60,
-        "feeCaps": [
-          "memberServicingFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["memberServicingFee", "investmentManagementFee"]
       }
     },
     {
@@ -20622,10 +20252,7 @@
         "oci1yHkd": 11,
         "oci3yHkd": 34,
         "oci5yHkd": 59,
-        "feeCaps": [
-          "memberServicingFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["memberServicingFee", "investmentManagementFee"]
       }
     },
     {
@@ -20760,10 +20387,7 @@
         "oci1yHkd": 8,
         "oci3yHkd": 26,
         "oci5yHkd": 45,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -20831,10 +20455,7 @@
         "oci1yHkd": 10,
         "oci3yHkd": 30,
         "oci5yHkd": 52,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -20902,10 +20523,7 @@
         "oci1yHkd": 9,
         "oci3yHkd": 28,
         "oci5yHkd": 49,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -20973,10 +20591,7 @@
         "oci1yHkd": 9,
         "oci3yHkd": 27,
         "oci5yHkd": 47,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -21043,10 +20658,7 @@
         "oci1yHkd": 15,
         "oci3yHkd": 48,
         "oci5yHkd": 82,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -21116,10 +20728,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 41,
         "oci5yHkd": 71,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -21189,10 +20798,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 40,
         "oci5yHkd": 70,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -21262,10 +20868,7 @@
         "oci1yHkd": 16,
         "oci3yHkd": 50,
         "oci5yHkd": 87,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -21335,10 +20938,7 @@
         "oci1yHkd": 14,
         "oci3yHkd": 44,
         "oci5yHkd": 76,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -21408,10 +21008,7 @@
         "oci1yHkd": 14,
         "oci3yHkd": 43,
         "oci5yHkd": 74,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -21482,10 +21079,7 @@
         "oci1yHkd": 9,
         "oci3yHkd": 28,
         "oci5yHkd": 48,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -21622,10 +21216,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 39,
         "oci5yHkd": 67,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -21834,10 +21425,7 @@
         "oci1yHkd": 12,
         "oci3yHkd": 38,
         "oci5yHkd": 66,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -22253,10 +21841,7 @@
         "oci1yHkd": 11,
         "oci3yHkd": 33,
         "oci5yHkd": 57,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ],
+        "feeCaps": ["managementFee", "investmentManagementFee"],
         "feeDisclosures": {
           "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
@@ -22326,10 +21911,7 @@
         "oci1yHkd": 11,
         "oci3yHkd": 35,
         "oci5yHkd": 61,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ],
+        "feeCaps": ["managementFee", "investmentManagementFee"],
         "feeDisclosures": {
           "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
@@ -22400,10 +21982,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 40,
         "oci5yHkd": 70,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -22471,10 +22050,7 @@
         "oci1yHkd": 12,
         "oci3yHkd": 39,
         "oci5yHkd": 67,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -22992,11 +22568,7 @@
         "cumulative": 17.81,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "oci1yHkd",
-        "oci3yHkd",
-        "oci5yHkd"
-      ],
+      "unavailableFields": ["oci1yHkd", "oci3yHkd", "oci5yHkd"],
       "fundOverview": {
         "riskClass": 1,
         "fundRiskIndicator": 0.29,
@@ -24035,10 +23607,7 @@
         "oci1yHkd": 12,
         "oci3yHkd": 39,
         "oci5yHkd": 67,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -24108,10 +23677,7 @@
         "oci1yHkd": 12,
         "oci3yHkd": 38,
         "oci5yHkd": 67,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -24181,10 +23747,7 @@
         "oci1yHkd": 12,
         "oci3yHkd": 38,
         "oci5yHkd": 65,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -24255,10 +23818,7 @@
         "oci1yHkd": 10,
         "oci3yHkd": 30,
         "oci5yHkd": 53,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -24326,10 +23886,7 @@
         "oci1yHkd": 10,
         "oci3yHkd": 30,
         "oci5yHkd": 53,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -24612,10 +24169,7 @@
         "oci1yHkd": 10,
         "oci3yHkd": 31,
         "oci5yHkd": 53,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -24821,10 +24375,7 @@
         "oci1yHkd": 14,
         "oci3yHkd": 45,
         "oci5yHkd": 78,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
@@ -24894,10 +24445,7 @@
         "oci1yHkd": 14,
         "oci3yHkd": 44,
         "oci5yHkd": 76,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
@@ -24967,10 +24515,7 @@
         "oci1yHkd": 14,
         "oci3yHkd": 43,
         "oci5yHkd": 74,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
@@ -25017,9 +24562,7 @@
         "cumulative": 89.99,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "fundRiskIndicator": 11.34,
@@ -25082,9 +24625,7 @@
         "cumulative": 22.2,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 7.33,
@@ -25147,9 +24688,7 @@
         "cumulative": 97.49,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 7.46,
@@ -25212,9 +24751,7 @@
         "cumulative": 25.79,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 3,
         "fundRiskIndicator": 4.6,
@@ -25277,9 +24814,7 @@
         "cumulative": 91.28,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 8.75,
@@ -25344,9 +24879,7 @@
         "cumulative": 28.29,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 5.48,
@@ -25411,9 +24944,7 @@
         "cumulative": 87.31,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 8.75,
@@ -25476,9 +25007,7 @@
         "cumulative": 26.16,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 5.42,
@@ -25541,9 +25070,7 @@
         "cumulative": 89.56,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 8.75,
@@ -25606,9 +25133,7 @@
         "cumulative": 27.71,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 5.4,
@@ -25671,9 +25196,7 @@
         "cumulative": 89.81,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 8.29,
@@ -25693,10 +25216,7 @@
         "oci1yHkd": 6,
         "oci3yHkd": 19,
         "oci5yHkd": 33,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -25740,9 +25260,7 @@
         "cumulative": 23.61,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 5.1,
@@ -25762,10 +25280,7 @@
         "oci1yHkd": 6,
         "oci3yHkd": 20,
         "oci5yHkd": 35,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -25809,9 +25324,7 @@
         "cumulative": 86.98,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 8.9,
@@ -25831,10 +25344,7 @@
         "oci1yHkd": 8,
         "oci3yHkd": 25,
         "oci5yHkd": 44,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -25878,9 +25388,7 @@
         "cumulative": 22.36,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 5.27,
@@ -25900,10 +25408,7 @@
         "oci1yHkd": 8,
         "oci3yHkd": 25,
         "oci5yHkd": 44,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -25947,9 +25452,7 @@
         "cumulative": 89.1,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 8.49,
@@ -25969,10 +25472,7 @@
         "oci1yHkd": 8,
         "oci3yHkd": 26,
         "oci5yHkd": 45,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -26016,9 +25516,7 @@
         "cumulative": 21.93,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 5.03,
@@ -26038,10 +25536,7 @@
         "oci1yHkd": 8,
         "oci3yHkd": 26,
         "oci5yHkd": 45,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -26085,9 +25580,7 @@
         "cumulative": 97.45,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 8.61,
@@ -26150,9 +25643,7 @@
         "cumulative": 25.82,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 5.32,
@@ -26215,9 +25706,7 @@
         "cumulative": 89.35,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 7.88,
@@ -26236,10 +25725,7 @@
         "oci1yHkd": 8,
         "oci3yHkd": 25,
         "oci5yHkd": 44,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -26286,9 +25772,7 @@
         "cumulative": 93.9,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 7.88,
@@ -26307,10 +25791,7 @@
         "oci1yHkd": 8,
         "oci3yHkd": 25,
         "oci5yHkd": 44,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -26357,9 +25838,7 @@
         "cumulative": 93.9,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 7.88,
@@ -26378,10 +25857,7 @@
         "oci1yHkd": 8,
         "oci3yHkd": 25,
         "oci5yHkd": 44,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -26428,9 +25904,7 @@
         "cumulative": 21.06,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 5.28,
@@ -26449,10 +25923,7 @@
         "oci1yHkd": 8,
         "oci3yHkd": 24,
         "oci5yHkd": 43,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -26499,9 +25970,7 @@
         "cumulative": 23.43,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 5.28,
@@ -26520,10 +25989,7 @@
         "oci1yHkd": 8,
         "oci3yHkd": 24,
         "oci5yHkd": 43,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -26570,9 +26036,7 @@
         "cumulative": 23.43,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 5.28,
@@ -26591,10 +26055,7 @@
         "oci1yHkd": 8,
         "oci3yHkd": 24,
         "oci5yHkd": 43,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer: up to HKD50,000 *\nSelf-employed person: up to HKD5,000 *\n* Subject to the discretion of the trustee/sponsor to waive from time to time."
         }
@@ -26641,9 +26102,7 @@
         "cumulative": 95.4,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 7.96,
@@ -26708,9 +26167,7 @@
         "cumulative": 24.31,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 5.29,
@@ -26775,9 +26232,7 @@
         "cumulative": 94.88,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 8.6,
@@ -26840,9 +26295,7 @@
         "cumulative": 25.56,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 5.31,
@@ -26905,9 +26358,7 @@
         "cumulative": 97.61,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 8.57,
@@ -26972,9 +26423,7 @@
         "cumulative": 26.28,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 5.28,
@@ -27039,9 +26488,7 @@
         "cumulative": 93.23,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 8.47,
@@ -27104,9 +26551,7 @@
         "cumulative": 25.85,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 5.57,
@@ -27169,9 +26614,7 @@
         "cumulative": 93.97,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 8.47,
@@ -27234,9 +26677,7 @@
         "cumulative": 25.62,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 5.58,
@@ -27299,9 +26740,7 @@
         "cumulative": 94.78,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 8.47,
@@ -27364,9 +26803,7 @@
         "cumulative": 25.4,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 5.56,
@@ -27429,9 +26866,7 @@
         "cumulative": 93.53,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 7.95,
@@ -27494,9 +26929,7 @@
         "cumulative": 23.43,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 3,
         "fundRiskIndicator": 4.97,
@@ -27559,9 +26992,7 @@
         "cumulative": 88.93,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 8.35,
@@ -27624,9 +27055,7 @@
         "cumulative": 22.87,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 5.16,
@@ -27689,9 +27118,7 @@
         "cumulative": 97.06,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 8.6,
@@ -27754,9 +27181,7 @@
         "cumulative": 24.77,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 5.31,
@@ -27819,9 +27244,7 @@
         "cumulative": 86.73,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 8.55,
@@ -27891,9 +27314,7 @@
         "cumulative": 20.43,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 5.1,
@@ -27963,9 +27384,7 @@
         "cumulative": 141.3,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 6,
         "fundRiskIndicator": 16.67,
@@ -28030,9 +27449,7 @@
         "cumulative": 143,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 6,
         "fundRiskIndicator": 16.66,
@@ -28095,9 +27512,7 @@
         "cumulative": 41.5,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 8.26,
@@ -28162,9 +27577,7 @@
         "cumulative": 41.5,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 8.26,
@@ -28227,9 +27640,7 @@
         "cumulative": 98.82,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 8.09,
@@ -28294,9 +27705,7 @@
         "cumulative": 98.82,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 8.09,
@@ -28361,9 +27770,7 @@
         "cumulative": 26.13,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 5.26,
@@ -28428,9 +27835,7 @@
         "cumulative": 26.13,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 5.26,
@@ -28495,9 +27900,7 @@
         "cumulative": 16.86,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "fundRiskIndicator": 11,
@@ -28517,10 +27920,7 @@
         "oci1yHkd": 13,
         "oci3yHkd": 41,
         "oci5yHkd": 71,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -28564,9 +27964,7 @@
         "cumulative": 134.45,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "fundRiskIndicator": 10.5,
@@ -28629,9 +28027,7 @@
         "cumulative": -10.62,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 6,
         "fundRiskIndicator": 22.93,
@@ -28651,10 +28047,7 @@
         "oci1yHkd": 9,
         "oci3yHkd": 29,
         "oci5yHkd": 50,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -28698,9 +28091,7 @@
         "cumulative": 85.74,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "fundRiskIndicator": 12.67,
@@ -28763,9 +28154,7 @@
         "cumulative": 52.68,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 9.34,
@@ -28828,9 +28217,7 @@
         "cumulative": 160.05,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "fundRiskIndicator": 12.21,
@@ -28893,9 +28280,7 @@
         "cumulative": 134.46,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "fundRiskIndicator": 10.5,
@@ -28958,9 +28343,7 @@
         "cumulative": -10.61,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 6,
         "fundRiskIndicator": 22.93,
@@ -28980,10 +28363,7 @@
         "oci1yHkd": 9,
         "oci3yHkd": 29,
         "oci5yHkd": 50,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -29027,9 +28407,7 @@
         "cumulative": 85.75,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "fundRiskIndicator": 12.67,
@@ -29092,9 +28470,7 @@
         "cumulative": 52.69,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 9.34,
@@ -29157,9 +28533,7 @@
         "cumulative": 89.23,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "fundRiskIndicator": 11.63,
@@ -29222,9 +28596,7 @@
         "cumulative": 160.05,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "fundRiskIndicator": 12.21,
@@ -29287,9 +28659,7 @@
         "cumulative": 89.24,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "fundRiskIndicator": 11.63,
@@ -29352,9 +28722,7 @@
         "cumulative": -7.55,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 4,
         "fundRiskIndicator": 9.36,
@@ -29374,10 +28742,7 @@
         "oci1yHkd": 14,
         "oci3yHkd": 44,
         "oci5yHkd": 76,
-        "feeCaps": [
-          "memberServicingFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["memberServicingFee", "investmentManagementFee"]
       }
     },
     {
@@ -29421,9 +28786,7 @@
         "cumulative": 53.53,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "fundRiskIndicator": 11.68,
@@ -29488,9 +28851,7 @@
         "cumulative": 52.03,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 5,
         "fundRiskIndicator": 11.69,
@@ -29555,9 +28916,7 @@
         "cumulative": 1.1,
         "dataAsOf": "2026-09-30"
       },
-      "unavailableFields": [
-        "annualizedReturn10y"
-      ],
+      "unavailableFields": ["annualizedReturn10y"],
       "fundOverview": {
         "riskClass": 3,
         "fundRiskIndicator": 4.25,
@@ -29639,10 +28998,7 @@
         "oci1yHkd": 12,
         "oci3yHkd": 39,
         "oci5yHkd": 67,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
@@ -29706,10 +29062,7 @@
         "oci1yHkd": 16,
         "oci3yHkd": 49,
         "oci5yHkd": 84,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
@@ -29773,10 +29126,7 @@
         "oci1yHkd": 15,
         "oci3yHkd": 48,
         "oci5yHkd": 83,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
@@ -29840,10 +29190,7 @@
         "oci1yHkd": 10,
         "oci3yHkd": 31,
         "oci5yHkd": 54,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ],
+        "feeCaps": ["managementFee", "investmentManagementFee"],
         "feeDisclosures": {
           "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
@@ -29969,10 +29316,7 @@
         "oci1yHkd": 9,
         "oci3yHkd": 29,
         "oci5yHkd": 51,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -30033,10 +29377,7 @@
         "oci1yHkd": 15,
         "oci3yHkd": 48,
         "oci5yHkd": 83,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "Employer and / or employee member / personal account member / TVC member / SVC member: Currently waived\nSelf-employed Person: HK$500 *\n* The Trustee / Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
@@ -30225,10 +29566,7 @@
         "oci1yHkd": 14,
         "oci3yHkd": 43,
         "oci5yHkd": 74,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -30290,10 +29628,7 @@
         "oci1yHkd": 14,
         "oci3yHkd": 45,
         "oci5yHkd": 78,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -30355,10 +29690,7 @@
         "oci1yHkd": 12,
         "oci3yHkd": 38,
         "oci5yHkd": 66,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -30419,10 +29751,7 @@
         "oci1yHkd": 12,
         "oci3yHkd": 38,
         "oci5yHkd": 65,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ],
+        "feeCaps": ["managementFee", "investmentManagementFee"],
         "feeDisclosures": {
           "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
@@ -30486,10 +29815,7 @@
         "oci1yHkd": 12,
         "oci3yHkd": 38,
         "oci5yHkd": 65,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ],
+        "feeCaps": ["managementFee", "investmentManagementFee"],
         "feeDisclosures": {
           "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
@@ -30553,10 +29879,7 @@
         "oci1yHkd": 11,
         "oci3yHkd": 34,
         "oci5yHkd": 59,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ],
+        "feeCaps": ["managementFee", "investmentManagementFee"],
         "feeDisclosures": {
           "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
@@ -30620,10 +29943,7 @@
         "oci1yHkd": 11,
         "oci3yHkd": 34,
         "oci5yHkd": 59,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ],
+        "feeCaps": ["managementFee", "investmentManagementFee"],
         "feeDisclosures": {
           "joiningFee": "Up to $8,000 *\n* The Sponsor shall have full discretion to waive the joining fee for self-employed persons."
         }
@@ -30687,10 +30007,7 @@
         "oci1yHkd": 15,
         "oci3yHkd": 45,
         "oci5yHkd": 78,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
@@ -30754,10 +30071,7 @@
         "oci1yHkd": 16,
         "oci3yHkd": 50,
         "oci5yHkd": 86,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "joiningFee": "N/A for Self-employed Member\nHKD250 per SVC Member\nN/A for TVC Member\nHKD50,000 per Participating Employer or HKD250 per Employee or both"
         }
@@ -30821,10 +30135,7 @@
         "oci1yHkd": 12,
         "oci3yHkd": 36,
         "oci5yHkd": 62,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ],
+        "feeCaps": ["managementFee", "trusteeCustodianFee"],
         "feeDisclosures": {
           "memberServicingFee": "0% p.a. - 0.3% p.a."
         }
@@ -30887,10 +30198,7 @@
         "bidSpread": 0,
         "offerSpread": 0,
         "withdrawalCharge": 0,
-        "feeCaps": [
-          "managementFee",
-          "trusteeCustodianFee"
-        ]
+        "feeCaps": ["managementFee", "trusteeCustodianFee"]
       }
     },
     {
@@ -30941,10 +30249,7 @@
         "bidSpread": 0,
         "offerSpread": 0,
         "withdrawalCharge": 0,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -30995,10 +30300,7 @@
         "bidSpread": 0,
         "offerSpread": 0,
         "withdrawalCharge": 0,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     },
     {
@@ -31099,10 +30401,7 @@
         "bidSpread": 0,
         "offerSpread": 0,
         "withdrawalCharge": 0,
-        "feeCaps": [
-          "managementFee",
-          "investmentManagementFee"
-        ]
+        "feeCaps": ["managementFee", "investmentManagementFee"]
       }
     }
   ]
