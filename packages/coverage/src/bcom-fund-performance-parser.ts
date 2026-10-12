@@ -56,12 +56,12 @@ type PageOutcome = { kind: "return"; row: FundFactSheetReturn } | { kind: "unava
 function readPage(bboxWords: BboxWord[], pageNumber: number, sourceUrl: string): { dataAsOf: string; outcomes: PageOutcome[] } | undefined {
   const words = mergeFragments(bboxWords);
   const headers = columnHeaders(words);
-  if (headers.length === 0) {
-    if (words.some((word) => word.text === "Annualised" && words.some((next) => next.text === "Rate" && Math.abs(next.yMid - word.yMid) < 4))) {
-      throw new Error(`BCOM page ${pageNumber}: annualised return header (1 year … Since Launch) cannot be read`);
-    }
-    return undefined;
+  // 每個「Annualised Rate of Return」都要認到成個表頭；一版兩隻基金，認到一個漏一個都要報錯。
+  const titles = words.filter((word) => word.text === "Annualised" && words.some((next) => next.text === "Rate" && Math.abs(next.yMid - word.yMid) < 4));
+  if (headers.length !== titles.length) {
+    throw new Error(`BCOM page ${pageNumber}: ${titles.length - headers.length} annualised return header(s) (1 year … Since Launch) cannot be read`);
   }
+  if (headers.length === 0) return undefined;
   const text = lines(words)
     .map((line) => line.map((word) => word.text).join(" "))
     .join("\n");
@@ -75,6 +75,7 @@ function readPage(bboxWords: BboxWord[], pageNumber: number, sourceUrl: string):
     if (!name) throw new Error(`${where}: annualised return table has no fund heading`);
     const context = `${name} (${where})`;
     const tableLeft = columns[0]!.x - (columns[1]!.x - columns[0]!.x) / 2;
+    const tableRight = columns.at(-1)!.x + (columns.at(-1)!.x - columns.at(-2)!.x) / 2;
     const end = words
       .filter((word) => /^(曆年回報|Calender-year|Calendar-year)$/.test(word.text) && word.yMid > label.yMid)
       .sort((a, b) => a.yMid - b.yMid)[0];
@@ -89,7 +90,7 @@ function readPage(bboxWords: BboxWord[], pageNumber: number, sourceUrl: string):
       .sort((a, b) => a.yMid - b.yMid)[0];
     const bottom = (nextLabel ?? end).yMin - 1;
     const centres = columns.map((column) => column.x);
-    const band = words.filter((word) => word.xMid > tableLeft && word.yMid >= fundLabel.yMin - SAME_LINE && word.yMid < bottom);
+    const band = words.filter((word) => word.xMid > tableLeft && word.xMid < tableRight && word.yMid >= fundLabel.yMin - SAME_LINE && word.yMid < bottom);
     const cells = new Map<string, string[]>();
     for (const word of band) {
       if (!CELL.test(word.text)) throw new Error(`${context}: unexpected text "${word.text}" in the fund row`);

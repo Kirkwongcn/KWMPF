@@ -183,6 +183,13 @@ describe("official fund fact sheet parser", () => {
     ]);
   });
 
+  it("fails the BCOM document when one of a page's two annualised headers cannot be read", () => {
+    // 第 2 頁有保證基金同環球債券兩個表；第一個表頭的「Launch」讀唔到，唔可以淨係交第二隻出嚟。
+    const broken = bcomPagesFixture.replace(">Launch</word>", ">Lunch</word>");
+    expect(broken).not.toBe(bcomPagesFixture);
+    expect(() => parseBcomFundPerformanceAudit(broken, "https://example.test/bcom.pdf")).toThrow(/BCOM page 1: 1 annualised return header/);
+  });
+
   it("fails the BOC-Prudential document when a return cell cannot be placed", () => {
     // 把核心累積三年「12.02」拆開，模擬碎片併唔返：剩低「.02」唔係數值，整份報錯而唔係讀成 12。
     const broken = bocFixture.replace(/(<word xMin="[\d.]+" yMin="[\d.]+" xMax=")([\d.]+)("[^>]*>12<\/word>)/, (_, a, xMax, b) => `${a}${Number(xMax) - 3}${b}`);

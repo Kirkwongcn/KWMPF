@@ -23,7 +23,8 @@ export function parseMyChoiceFundPerformance(text: string, sourceUrl: string): F
   const threeYearRow = new RegExp(String.raw`^\s*(?:3年\s+)?3 Years\s+` + cell + String.raw`\s+` + cell + String.raw`(?:\s|$)`, "gim");
 
   for (const block of text.split(/\f/)) {
-    const sourceName = block.match(/\bMY CHOICE[ \t]+([A-Z0-9&'/-]+(?:[ \t]+[A-Z0-9&'/-]+)*[ \t]+FUND)\b/i)?.[1];
+    // 基金標題全大寫；分大小寫，免得頁首頁尾「My Choice Mandatory Provident Fund Scheme」當咗基金名。
+    const sourceName = block.match(/\bMY CHOICE[ \t]+([A-Z0-9&'/-]+(?:[ \t]+[A-Z0-9&'/-]+)*[ \t]+FUND)\b/)?.[1];
     const rows = [...block.matchAll(threeYearRow)].map((row) => `${row[1]} ${row[2]}`);
     if (rows.length === 0) continue;
     if (!sourceName) throw new Error("My Choice three-year row has no fund heading on its page");

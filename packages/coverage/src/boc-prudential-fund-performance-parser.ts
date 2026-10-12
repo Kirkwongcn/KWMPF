@@ -1,5 +1,5 @@
 import type { FundFactSheetReturn, FundReturnUnavailable } from "./fund-fact-sheet-parser";
-import { parseBboxWords, type BboxWord } from "./pdf-xml";
+import { parseBboxWords } from "./pdf-xml";
 import { labelled, lines, mergeFragments, nearestColumn, SAME_LINE, type Word } from "./pdf-word-table";
 
 /**
@@ -42,6 +42,12 @@ function columnHeader(words: Word[]) {
   return undefined;
 }
 
+function pageText(words: Word[]) {
+  return lines(words)
+    .map((line) => line.map((word) => word.text).join(" "))
+    .join("\n");
+}
+
 function normalizeCell(text: string) {
   return text === "不適用" ? "N/A" : text;
 }
@@ -66,13 +72,12 @@ function readRow(cells: Word[], centres: number[], label: string) {
 
 type PageOutcome = { kind: "return"; row: FundFactSheetReturn } | { kind: "unavailable"; row: FundReturnUnavailable };
 
-function readPage(bboxWords: BboxWord[], pageNumber: number, dataAsOf: string, sourceUrl: string): PageOutcome | undefined {
-  const words = mergeFragments(bboxWords);
+function readPage(words: Word[], pageNumber: number, dataAsOf: string, sourceUrl: string): PageOutcome | undefined {
   const header = columnHeader(words);
   if (!header) {
     // 有「基金表現按港元計算」（基金本身嘅回報表標題）但認唔到表頭，即係版面變咗：報錯，唔可以
     // 靜靜哋漏咗呢隻基金。預設投資策略第二版嘅參考投資組合表冇呢個標題，唔當基金表。
-    const hasTable = words.some((word) => word.text.startsWith("基金表現按港元計算"));
+    const hasTable = /基金表現\s*按港元計算/.test(pageText(words));
     if (hasTable) throw new Error(`BOC-Prudential page ${pageNumber}: performance table header (3 Months … Inception) is missing`);
     return undefined;
   }
@@ -127,17 +132,14 @@ export function parseBocPrudentialFundPerformanceAudit(
   bboxXml: string,
   sourceUrl: string,
 ): { returns: FundFactSheetReturn[]; unavailable: FundReturnUnavailable[] } {
-  const pages = parseBboxWords(bboxXml);
-  const fullText = pages
-    .map((page) =>
-      lines(mergeFragments(page))
-        .map((line) => line.map((word) => word.text).join(" "))
-        .join("\n"),
-    )
-    .join("\n");
-  const date = fullText.match(/Reporting\s+Date:\s*(\d{1,2})\/(\d{1,2})\/(\d{4})/i);
-  if (!date?.[1] || !date[2] || !date[3]) throw new Error("BOC-Prudential reporting date is missing");
-  const dataAsOf = `${date[3]}-${date[2].padStart(2, "0")}-${date[1].padStart(2, "0")}`;
+  const pages = parseBboxWords(bboxXml).map(mergeFragments);
+  // 每版都可能印「Reporting Date」；全份必須同一日，唔可以攞第一個冚晒。
+  const dates = new Set(
+    pages.flatMap((words) => [...pageText(words).matchAll(/Reporting\s+Date:\s*(\d{1,2})\/(\d{1,2})\/(\d{4})/gi)].map((match) => `${match[3]}-${match[2]!.padStart(2, "0")}-${match[1]!.padStart(2, "0")}`)),
+  );
+  if (dates.size === 0) throw new Error("BOC-Prudential reporting date is missing");
+  if (dates.size > 1) throw new Error(`BOC-Prudential fact sheet mixes reporting dates: ${[...dates].join(", ")}`);
+  const dataAsOf = [...dates][0]!;
   const outcomes = pages.flatMap((words, index) => readPage(words, index + 1, dataAsOf, sourceUrl) ?? []);
   const byFund = new Map<string, PageOutcome>();
   for (const outcome of outcomes) {
