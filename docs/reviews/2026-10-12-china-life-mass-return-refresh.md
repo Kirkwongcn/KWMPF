@@ -28,5 +28,20 @@ MASS 官網便覽已改為每月出（約落後兩個月），唔再係季度。
 
 ## 時效
 
-兩批都超過 60 日排名時限（ADR 0010），只更新基金頁，唔入三年排名。
-`check-publication-seed.sh`（source `2026-10-12/mpf-fund-platform.json`）通過：`rankingRows=68`、`excludedStaleCount=231`。
+三年回報用季度 90 日時限（ADR 0007，publication 凍結 `threeYearReturnGraceDays: 90`），唔係一、五、十年嗰個 60 日。
+
+- MASS 2026-07-31：73 日，重新入三年排名，至 2026-10-29。
+- 中國人壽 2026-06-30：104 日，已過時限，只更新基金頁。
+
+`check-publication-seed.sh`（source `2026-10-12/mpf-fund-platform.json`）新舊候選對比：
+`rankingRows` 54 → 68、`excludedStaleCount` 241 → 231（MASS 14 隻轉回有效；中國人壽新增 4 行計入過期）。
+
+本機 API `/fund-classes/<id>` 抽三筆：
+
+| 基金 | API 三年 | 截至 | 原文 |
+| --- | ---: | --- | --- |
+| 中國人壽 Hong Kong Equity（`mpfa-cf-895`） | 7.72 | 2026-06-30 | 年率化行 `- - -1.17 7.72 -5.61 3.75 3.49` |
+| 中國人壽 US Equity（`mpfa-cf-1840`） | 18.68 | 2026-06-30 | 年率化行 `- - 24.41 18.68 - - 7.50` |
+| MASS Hong Kong Equities（`mpfa-cf-389`） | 10.21 | 2026-07-31 | HKEF：`Annualized Return 11.68% 10.21% 0.89% 4.75% 2.76%` |
+
+三年 `returnSources` 各自帶受託人 URL 同截至日，一年仍係積金局平台 2026-09-30。

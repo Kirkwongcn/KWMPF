@@ -563,6 +563,6 @@
       }
     ],
     "notApplied": [],
-    "freshness": "China Life rows are as at 2026-06-30 and MASS rows as at 2026-07-31; both are older than the 60-day ranking window (ADR 0010), so they update fund pages but are not ranked."
+    "freshness": "Three-year rows use the 90-day quarterly window (ADR 0007, freezes threeYearReturnGraceDays: 90). MASS rows as at 2026-07-31 are inside it until 2026-10-29 and re-enter the three-year ranking; China Life rows as at 2026-06-30 are past it, so they update fund pages only. publication-seed on data/sources/2026-10-12: rankingRows 54 -> 68, excludedStaleCount 241 -> 231."
   }
 }
