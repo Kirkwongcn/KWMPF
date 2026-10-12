@@ -14,7 +14,8 @@ import { parseSunLifeFundFactSheetXmlAudit } from "./sun-life-fund-fact-sheet-pa
 import { parseBeaFundFactSheetXmlAudit } from "./bea-fund-fact-sheet-parser";
 import { parseChinaLifeFundPerformance } from "./china-life-fund-performance-parser";
 import { parseHsbcFundFactSheet } from "./hsbc-fund-fact-sheet-parser";
-import { parseBocPrudentialFundPerformance } from "./boc-prudential-fund-performance-parser";
+import { parseBocPrudentialFundPerformanceAudit } from "./boc-prudential-fund-performance-parser";
+import { parseBcomFundPerformanceAudit } from "./bcom-fund-performance-parser";
 import { parseHaitongFundPerformance } from "./haitong-fund-performance-parser";
 import { parseMyChoiceFundPerformance } from "./my-choice-fund-performance-parser";
 import { parseMassFundPerformance } from "./mass-fund-performance-parser";
@@ -73,7 +74,7 @@ function parser(
   if (scheme.startsWith("China Life")) return parseChinaLifeFundPerformance(text, url);
   if (scheme.startsWith("HSBC")) return parseHsbcFundFactSheet(text, url);
   if (scheme.startsWith("Hang Seng")) return parseHsbcFundFactSheet(text, url, "Hang Seng Mandatory Provident Fund – SuperTrust Plus");
-  if (scheme.startsWith("BOC-Prudential")) return parseBocPrudentialFundPerformance(text, url);
+  if (scheme.startsWith("BOC-Prudential") || scheme.startsWith("BCOM")) throw new Error(`${scheme} fact sheets are read from word boxes, not layout text`);
   if (scheme.startsWith("Haitong")) return parseHaitongFundPerformance(text, url);
   if (scheme.startsWith("My Choice")) return parseMyChoiceFundPerformance(text, url);
   if (scheme.startsWith("MASS")) return parseMassFundPerformance(text, url);
@@ -111,6 +112,10 @@ for (const entry of manifest.entries) {
     }
     const parsed = entry.scheme.startsWith("Fidelity")
       ? parseFidelityFundPerformanceAudit(await pdfWordBoxes(pdfPath), entry.factSheetUrl)
+      : entry.scheme.startsWith("BOC-Prudential")
+        ? parseBocPrudentialFundPerformanceAudit(await pdfWordBoxes(pdfPath), entry.factSheetUrl)
+      : entry.scheme.startsWith("BCOM")
+        ? parseBcomFundPerformanceAudit(await pdfWordBoxes(pdfPath), entry.factSheetUrl)
       : entry.scheme.startsWith("Sun Life")
         ? parseSunLifeFundFactSheetXmlAudit(await pdfXml(pdfPath), entry.factSheetUrl)
         : entry.scheme.startsWith("BEA")

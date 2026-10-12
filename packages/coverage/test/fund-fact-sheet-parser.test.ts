@@ -14,7 +14,8 @@ import {
 } from "../src/sun-life-fund-fact-sheet-parser";
 import { parseChinaLifeFundPerformance } from "../src/china-life-fund-performance-parser";
 import { parseHsbcFundFactSheet } from "../src/hsbc-fund-fact-sheet-parser";
-import { parseBocPrudentialFundPerformance } from "../src/boc-prudential-fund-performance-parser";
+import { parseBocPrudentialFundPerformanceAudit } from "../src/boc-prudential-fund-performance-parser";
+import { parseBcomFundPerformanceAudit } from "../src/bcom-fund-performance-parser";
 import { parseHaitongFundPerformance } from "../src/haitong-fund-performance-parser";
 import { parseMyChoiceFundPerformance } from "../src/my-choice-fund-performance-parser";
 import { parseMassFundPerformance } from "../src/mass-fund-performance-parser";
@@ -49,7 +50,8 @@ const sunLifePage24XmlFixture = readFileSync(join(import.meta.dirname, "fixtures
 const chinaLifeFixture = `\fChina Life Greater China Equity Fund 中國人壽大中華股票基金\nFund Performance 基金表現\nAnnualized 年率化 (%) - - 30.16 8.44 - - 0.13\fChina Life MPF Conservative Fund 中國人壽強積金保守基金\nAnnualized 年率化 (%) - - 2.00 2.88 1.93 1.19 0.76`;
 const hsbcFixture = `所載資料截至 All information as at 31/03/2026\fCore Accumulation Fund\nFund Performance Information (%)\nAnnualised return 1 yr 3 yrs 5 yrs 10 yrs\nThis Fund\n12.30 9.42 5.08 6.38`;
 const hangSengFixture = `所載資料截至 All information as at 31/12/2025\fValueChoice Asia Pacific Equity Tracker Fund\nFund Performance Information (%)\nAnnualised return 1 yr 3 yrs 5 yrs 10 yrs\nThis Fund\n28.58 14.54 4.54 0.00`;
-const bocFixture = `BOC-Prudential Hong Kong Equity Fund ◆\nAnnualized Return N/A N/A 11.01 8.22 -2.37 3.92 6.87\fBOC-Prudential MPF Conservative Fund\nAnnualized Return N/A N/A N/A N/A 0.50 0.60`;
+const bcomPagesFixture = readFileSync(join(import.meta.dirname, "fixtures", "bcom-2026-q2-pages.bbox.html"), "utf8");
+const bocFixture = readFileSync(join(import.meta.dirname, "fixtures", "boc-prudential-2026-q2-pages.bbox.html"), "utf8");
 const haitongIssuePrice = "Issue Price as of 31/08/2026 (Class A) $14.30";
 const haitongHeading = (name: string, issueBeforeName = false) => {
   const title = name + " 海通基金*";
@@ -155,11 +157,62 @@ describe("official fund fact sheet parser", () => {
       expect.objectContaining({ constituentFundName: "ValueChoice Asia Pacific Equity Tracker Fund", dataAsOf: "2025-12-31", annualizedReturn3Year: 14.54 }),
     ]);
   });
-  it("parses BOC-Prudential three-year values and skips N/A", () => {
-    expect(parseBocPrudentialFundPerformance("Reporting Date: 31/3/2026\f" + bocFixture, "https://example.test/boc.pdf")).toEqual([
-      expect.objectContaining({ constituentFundName: "BOC-Prudential Hong Kong Equity Fund", dataAsOf: "2026-03-31", annualizedReturn3Year: 8.22 }),
+  it("reads BOC-Prudential three-year returns by column, not by counting numbers on a layout line", () => {
+    // 2026 Q2 受託人便覽第 1、3、14、18、19 頁（只留標題同回報表）：中國股票一年係負數；香港平穩退休基金表頭
+    // 寫「Inception^」；核心累積下面有參考投資組合行；第 19 頁係參考投資組合自己嘅表，唔係基金表現。
+    const result = parseBocPrudentialFundPerformanceAudit(bocFixture, "https://example.test/boc.pdf");
+    expect(result.unavailable).toEqual([]);
+    expect(result.returns).toEqual([
+      expect.objectContaining({ constituentFundName: "BOC-Prudential China Equity Fund", dataAsOf: "2026-06-30", annualizedReturn3Year: 7.57 }),
+      expect.objectContaining({ constituentFundName: "BOC-Prudential Hong Kong Stable Retirement Fund", annualizedReturn3Year: 5.6 }),
+      expect.objectContaining({ constituentFundName: "BOC-Prudential Core Accumulation Fund", annualizedReturn3Year: 12.02 }),
     ]);
   });
+
+  it("reads BCOM three-year returns by column, with or without a 10-year column", () => {
+    // 2026 Q2 受託人便覽第 2、3、8 頁（只留標題、截至日期同回報表）：保證基金十年格喺 -layout 會擠落下一行；
+    // 核心累積冇十年欄、一年格有「***」、下面有參考組合行；北美股票五年、十年寫「^不適用NA」。
+    const result = parseBcomFundPerformanceAudit(bcomPagesFixture, "https://example.test/bcom.pdf");
+    expect(result.unavailable).toEqual([]);
+    expect(result.returns.map((row) => [row.constituentFundName, row.dataAsOf, row.annualizedReturn3Year])).toEqual([
+      ["BCOM Guaranteed (CF) Fund", "2026-06-30", 4.66],
+      ["BCOM Global Bond (CF) Fund", "2026-06-30", 2.88],
+      ["BCOM Stable Growth (CF) Fund", "2026-06-30", 8.12],
+      ["BCOM Core Accumulation Fund", "2026-06-30", 13.7],
+      ["BCOM North American Equity (CF) Fund", "2026-06-30", 18.04],
+    ]);
+  });
+
+  it("fails the BCOM document when one of a page's two annualised headers cannot be read", () => {
+    // 第 2 頁有保證基金同環球債券兩個表；第一個表頭的「Launch」讀唔到，唔可以淨係交第二隻出嚟。
+    const broken = bcomPagesFixture.replace(">Launch</word>", ">Lunch</word>");
+    expect(broken).not.toBe(bcomPagesFixture);
+    expect(() => parseBcomFundPerformanceAudit(broken, "https://example.test/bcom.pdf")).toThrow(/BCOM page 1: 1 annualised return header/);
+  });
+
+  it("fails the BOC-Prudential document when a return cell cannot be placed", () => {
+    // 把核心累積三年「12.02」拆開，模擬碎片併唔返：剩低「.02」唔係數值，整份報錯而唔係讀成 12。
+    const broken = bocFixture.replace(/(<word xMin="[\d.]+" yMin="[\d.]+" xMax=")([\d.]+)("[^>]*>12<\/word>)/, (_, a, xMax, b) => `${a}${Number(xMax) - 3}${b}`);
+    expect(broken).not.toBe(bocFixture);
+    expect(() => parseBocPrudentialFundPerformanceAudit(broken, "https://example.test/boc.pdf")).toThrow(/Core Accumulation.*unexpected text "\.02"/);
+  });
+  it("reads every My Choice fund's 3 Years row even when the Annualized Return header wraps", () => {
+    const page = (name: string, rows: string[]) =>
+      [`\fMY CHOICE ${name} FUND`, "累積回報(%)       年率化回報(%)", "Cumulative      Annualized", "Return (%)      Return (%)", ...rows].join("\n");
+    const text = [
+      "截至As at 30/6/2026",
+      page("HONG KONG TRACKING", ["3年           3 Years               32.02                9.70                  35.37", "3年          3 Years                32.02                9.70                  35.37"]),
+      page("CORE ACCUMULATION", ["3年         3 Years                 40.50         12.00         39.24       11.67"]),
+      page("AMERICAS EQUITY", ["3年            3 Years                       -                    -"]),
+    ].join("");
+    expect(parseMyChoiceFundPerformance(text, "https://example.test/my-choice.pdf")).toEqual([
+      expect.objectContaining({ constituentFundName: "My Choice Hong Kong Tracking Fund", dataAsOf: "2026-06-30", annualizedReturn3Year: 9.7 }),
+      expect.objectContaining({ constituentFundName: "My Choice Core Accumulation Fund", annualizedReturn3Year: 12 }),
+    ]);
+    const disagreeing = text.replace("3 Years                32.02                9.70", "3 Years                32.02                9.71");
+    expect(() => parseMyChoiceFundPerformance(disagreeing, "x")).toThrow("disagree");
+  });
+
   it("parses all Haitong fund sections across pages and ignores calendar-year rows", () => {
     const result = parseHaitongFundPerformance(haitongFixture, "https://example.test/haitong.pdf");
     expect(result).toHaveLength(14);

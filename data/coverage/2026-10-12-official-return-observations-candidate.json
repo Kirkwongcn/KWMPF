@@ -466,18 +466,18 @@
   {
     "fundClassId": "mpfa-cf-1541",
     "periodYears": 3,
-    "annualized": 3,
+    "annualized": 12.02,
     "dataAsOf": "2026-06-30",
     "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
-    "retrievedAt": "2026-09-26T13:22:06.532Z"
+    "retrievedAt": "2026-10-12T15:38:01.563224Z"
   },
   {
     "fundClassId": "mpfa-cf-1542",
     "periodYears": 3,
-    "annualized": 3,
+    "annualized": 5.06,
     "dataAsOf": "2026-06-30",
     "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
-    "retrievedAt": "2026-09-26T13:22:06.532Z"
+    "retrievedAt": "2026-10-12T15:38:01.563224Z"
   },
   {
     "fundClassId": "mpfa-cf-1543",
@@ -4106,5 +4106,261 @@
     "dataAsOf": "2026-06-30",
     "sourceUrl": "https://www.chinalife.com.hk/sites/default/files/2026-08/2026%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%9F%BA%E9%87%91%E8%A1%A8%E7%8F%BE%E4%BE%BF%E8%A6%BD.pdf",
     "retrievedAt": "2026-10-12T15:15:55.885006Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-654",
+    "periodYears": 3,
+    "annualized": 7.57,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+    "retrievedAt": "2026-10-12T15:38:01.563224Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-226",
+    "periodYears": 3,
+    "annualized": 19.42,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+    "retrievedAt": "2026-10-12T15:38:01.563224Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-234",
+    "periodYears": 3,
+    "annualized": 21.44,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+    "retrievedAt": "2026-10-12T15:38:01.563224Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-231",
+    "periodYears": 3,
+    "annualized": 17.48,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+    "retrievedAt": "2026-10-12T15:38:01.563224Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-999",
+    "periodYears": 3,
+    "annualized": 9.41,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+    "retrievedAt": "2026-10-12T15:38:01.563224Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-1001",
+    "periodYears": 3,
+    "annualized": 14.77,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+    "retrievedAt": "2026-10-12T15:38:01.563224Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-1000",
+    "periodYears": 3,
+    "annualized": 18.57,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+    "retrievedAt": "2026-10-12T15:38:01.563224Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-227",
+    "periodYears": 3,
+    "annualized": 14.85,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+    "retrievedAt": "2026-10-12T15:38:01.563224Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-228",
+    "periodYears": 3,
+    "annualized": 8.93,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+    "retrievedAt": "2026-10-12T15:38:01.563224Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-229",
+    "periodYears": 3,
+    "annualized": 6.01,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+    "retrievedAt": "2026-10-12T15:38:01.563224Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-1959",
+    "periodYears": 3,
+    "annualized": 5.6,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+    "retrievedAt": "2026-10-12T15:38:01.563224Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-233",
+    "periodYears": 3,
+    "annualized": 1.75,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+    "retrievedAt": "2026-10-12T15:38:01.563224Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-1119",
+    "periodYears": 3,
+    "annualized": 3.81,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+    "retrievedAt": "2026-10-12T15:38:01.563224Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-230",
+    "periodYears": 3,
+    "annualized": 3.03,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+    "retrievedAt": "2026-10-12T15:38:01.563224Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-211",
+    "periodYears": 3,
+    "annualized": 2.64,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf",
+    "retrievedAt": "2026-10-12T15:38:11.130765Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-830",
+    "periodYears": 3,
+    "annualized": 2.88,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf",
+    "retrievedAt": "2026-10-12T15:38:11.130765Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-1521",
+    "periodYears": 3,
+    "annualized": 13.7,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf",
+    "retrievedAt": "2026-10-12T15:38:11.130765Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-207",
+    "periodYears": 3,
+    "annualized": 11.02,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf",
+    "retrievedAt": "2026-10-12T15:38:11.130765Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-210",
+    "periodYears": 3,
+    "annualized": 19.42,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf",
+    "retrievedAt": "2026-10-12T15:38:11.130765Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-653",
+    "periodYears": 3,
+    "annualized": 10.32,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf",
+    "retrievedAt": "2026-10-12T15:38:11.130765Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-697",
+    "periodYears": 3,
+    "annualized": 8.59,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf",
+    "retrievedAt": "2026-10-12T15:38:11.130765Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-822",
+    "periodYears": 3,
+    "annualized": 7.46,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+    "retrievedAt": "2026-10-12T15:38:12.966744Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-824",
+    "periodYears": 3,
+    "annualized": 9.7,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+    "retrievedAt": "2026-10-12T15:38:12.966744Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-821",
+    "periodYears": 3,
+    "annualized": 17.3,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+    "retrievedAt": "2026-10-12T15:38:12.966744Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-820",
+    "periodYears": 3,
+    "annualized": 26.12,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+    "retrievedAt": "2026-10-12T15:38:12.966744Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-816",
+    "periodYears": 3,
+    "annualized": 13.41,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+    "retrievedAt": "2026-10-12T15:38:12.966744Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-817",
+    "periodYears": 3,
+    "annualized": 11.46,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+    "retrievedAt": "2026-10-12T15:38:12.966744Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-818",
+    "periodYears": 3,
+    "annualized": 8.57,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+    "retrievedAt": "2026-10-12T15:38:12.966744Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-826",
+    "periodYears": 3,
+    "annualized": 4,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+    "retrievedAt": "2026-10-12T15:38:12.966744Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-825",
+    "periodYears": 3,
+    "annualized": 1.61,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+    "retrievedAt": "2026-10-12T15:38:12.966744Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-1359",
+    "periodYears": 3,
+    "annualized": 3.12,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+    "retrievedAt": "2026-10-12T15:38:12.966744Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-827",
+    "periodYears": 3,
+    "annualized": 2.76,
+    "dataAsOf": "2026-06-30",
+    "sourceUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+    "retrievedAt": "2026-10-12T15:38:12.966744Z"
   }
 ]

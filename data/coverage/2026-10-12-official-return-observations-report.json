@@ -564,5 +564,301 @@
     ],
     "notApplied": [],
     "freshness": "Three-year rows use the 90-day quarterly window (ADR 0007, freezes threeYearReturnGraceDays: 90). MASS rows as at 2026-07-31 are inside it until 2026-10-29 and re-enter the three-year ranking; China Life rows as at 2026-06-30 are past it, so they update fund pages only. publication-seed on data/sources/2026-10-12: rankingRows 54 -> 68, excludedStaleCount 241 -> 231."
+  },
+  "parserColumnRefresh": {
+    "generatedAt": "2026-10-12T15:38:13.620694Z",
+    "sourceSnapshot": "data/sources/2026-10-12/mpf-fund-platform.json",
+    "method": "Re-downloaded the BOC-Prudential, My Choice and BCOM trustee 2026 Q2 fact sheets (curl_cffi chrome124, full GET, %PDF- signature, SHA-256 recorded) and parsed them with packages/coverage/src/parse-fact-sheets.ts after this PR's parser fixes: BOC-Prudential and BCOM now read pdftotext -bbox word coordinates by column (header column centres, row bands bounded by aligned labels, every cell placed in exactly one column, BOC 1-year cumulative must equal 1-year annualized); My Choice reads every \"3 Years\" row per fund and requires agreement. Matched with normalizeFundFactSheetReturns against the 2026-10-12 platform snapshot (exact names). A row is replaced when the new dataAsOf is later; a same-date row from the same source URL whose value differs is a correction and is listed individually; fund classes without a previous annualized row are added and listed. Every value was read independently from pdftotext -layout against the sheet's own column header.",
+    "sourceManifest": [
+      {
+        "scheme": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+        "factSheetUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+        "status": "downloaded",
+        "retrievedAt": "2026-10-12T15:38:01.563224Z",
+        "httpStatus": 200,
+        "lastModified": "Wed, 26 Aug 2026 02:10:59 GMT",
+        "sha256": "3516ffdf96ad288942d8f6ae4b50e08b136cdda4267f0a227bc191f25f09f6bd",
+        "bytes": 2886836
+      },
+      {
+        "scheme": "BCOM Joyful Retirement MPF Scheme",
+        "factSheetUrl": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf",
+        "status": "downloaded",
+        "retrievedAt": "2026-10-12T15:38:11.130765Z",
+        "httpStatus": 200,
+        "lastModified": "Wed, 12 Aug 2026 08:39:56 GMT",
+        "sha256": "03e4f0d65efb040c340ea6b0e9c00436f894bae9f189ae6695aac293010e4864",
+        "bytes": 2077546
+      },
+      {
+        "scheme": "My Choice Mandatory Provident Fund Scheme",
+        "factSheetUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+        "status": "downloaded",
+        "retrievedAt": "2026-10-12T15:38:12.966744Z",
+        "httpStatus": 200,
+        "lastModified": "Wed, 30 Sep 2026 03:41:35 GMT",
+        "sha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
+        "bytes": 3201513
+      }
+    ],
+    "corrected": [
+      {
+        "fundClassId": "mpfa-cf-1541",
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+        "from": 3,
+        "to": 12.02,
+        "fund": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme :: BOC-Prudential Core Accumulation Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1542",
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+        "from": 3,
+        "to": 5.06,
+        "fund": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme :: BOC-Prudential Age 65 Plus Fund"
+      }
+    ],
+    "added": [
+      {
+        "fundClassId": "mpfa-cf-654",
+        "annualized": 7.57,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+        "fund": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme :: BOC-Prudential China Equity Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-226",
+        "annualized": 19.42,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+        "fund": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme :: BOC-Prudential Japan Equity Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-234",
+        "annualized": 21.44,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+        "fund": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme :: BOC-Prudential Asia Equity Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-231",
+        "annualized": 17.48,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+        "fund": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme :: BOC-Prudential Global Equity Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-999",
+        "annualized": 9.41,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+        "fund": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme :: BOC-Prudential CSI HK 100 Tracker Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1001",
+        "annualized": 14.77,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+        "fund": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme :: BOC-Prudential European Index Tracking Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1000",
+        "annualized": 18.57,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+        "fund": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme :: BOC-Prudential North America Index Tracking Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-227",
+        "annualized": 14.85,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+        "fund": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme :: BOC-Prudential Growth Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-228",
+        "annualized": 8.93,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+        "fund": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme :: BOC-Prudential Balanced Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-229",
+        "annualized": 6.01,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+        "fund": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme :: BOC-Prudential Stable Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1959",
+        "annualized": 5.6,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+        "fund": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme :: BOC-Prudential Hong Kong Stable Retirement Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-233",
+        "annualized": 1.75,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+        "fund": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme :: BOC-Prudential Bond Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1119",
+        "annualized": 3.81,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+        "fund": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme :: BOC-Prudential MPF RMB & HKD Money Market Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-230",
+        "annualized": 3.03,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+        "fund": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme :: BOC-Prudential MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-211",
+        "annualized": 2.64,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf",
+        "fund": "BCOM Joyful Retirement MPF Scheme :: BCOM MPF Conservative Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-830",
+        "annualized": 2.88,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf",
+        "fund": "BCOM Joyful Retirement MPF Scheme :: BCOM Global Bond (CF) Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1521",
+        "annualized": 13.7,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf",
+        "fund": "BCOM Joyful Retirement MPF Scheme :: BCOM Core Accumulation Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-207",
+        "annualized": 11.02,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf",
+        "fund": "BCOM Joyful Retirement MPF Scheme :: BCOM Balanced (CF) Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-210",
+        "annualized": 19.42,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf",
+        "fund": "BCOM Joyful Retirement MPF Scheme :: BCOM Asian Dynamic Equity (CF) Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-653",
+        "annualized": 10.32,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf",
+        "fund": "BCOM Joyful Retirement MPF Scheme :: BCOM Hong Kong Dynamic Equity (CF) Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-697",
+        "annualized": 8.59,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf",
+        "fund": "BCOM Joyful Retirement MPF Scheme :: BCOM China Dynamic Equity (CF) Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-822",
+        "annualized": 7.46,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+        "fund": "My Choice Mandatory Provident Fund Scheme :: My Choice Hong Kong Equity Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-824",
+        "annualized": 9.7,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+        "fund": "My Choice Mandatory Provident Fund Scheme :: My Choice Hong Kong Tracking Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-821",
+        "annualized": 17.3,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+        "fund": "My Choice Mandatory Provident Fund Scheme :: My Choice China Equity Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-820",
+        "annualized": 26.12,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+        "fund": "My Choice Mandatory Provident Fund Scheme :: My Choice Asia Equity Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-816",
+        "annualized": 13.41,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+        "fund": "My Choice Mandatory Provident Fund Scheme :: My Choice Growth Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-817",
+        "annualized": 11.46,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+        "fund": "My Choice Mandatory Provident Fund Scheme :: My Choice Balanced Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-818",
+        "annualized": 8.57,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+        "fund": "My Choice Mandatory Provident Fund Scheme :: My Choice Stable Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-826",
+        "annualized": 4,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+        "fund": "My Choice Mandatory Provident Fund Scheme :: My Choice HKD Bond Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-825",
+        "annualized": 1.61,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+        "fund": "My Choice Mandatory Provident Fund Scheme :: My Choice Global Bond Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1359",
+        "annualized": 3.12,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+        "fund": "My Choice Mandatory Provident Fund Scheme :: My Choice RMB & HKD Money Market Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-827",
+        "annualized": 2.76,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+        "fund": "My Choice Mandatory Provident Fund Scheme :: My Choice MPF Conservative Fund"
+      }
+    ],
+    "unchangedSameValue": [
+      "mpfa-cf-232",
+      "mpfa-cf-206",
+      "mpfa-cf-209",
+      "mpfa-cf-208",
+      "mpfa-cf-1522",
+      "mpfa-cf-798",
+      "mpfa-cf-831",
+      "mpfa-cf-1979",
+      "mpfa-cf-819",
+      "mpfa-cf-1543",
+      "mpfa-cf-1544"
+    ],
+    "notApplied": [],
+    "freshness": "All rows are as at 2026-06-30, past the 90-day three-year window (ADR 0007): they update fund pages but are not ranked."
   }
 }
