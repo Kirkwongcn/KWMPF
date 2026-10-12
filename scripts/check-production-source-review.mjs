@@ -46,6 +46,26 @@ function sha256(file) {
   return createHash("sha256").update(fs.readFileSync(file)).digest("hex");
 }
 
+// 同 candidate-anomalies.ts 的 feeFields 一致（唔包括舊式 `fee` 摘要欄；
+// test-check-production-source-review.mjs 有測試防止兩邊走樣）。
+// FER、OCI 之外，費率及收費改變一樣要逐項附積金局官方頁面證據先可以放行。
+// 以文字披露（feeDisclosures）或者官方已唔再披露的費用冇數值候選，仍然會被拒絕。
+const costFields = ["latestFer", "oci1yHkd", "oci3yHkd", "oci5yHkd"];
+const rateFields = [
+  "managementFee",
+  "trusteeCustodianFee",
+  "empfPlatformFee",
+  "memberServicingFee",
+  "investmentManagementFee",
+  "guaranteeCharge",
+  "joiningFee",
+  "annualFee",
+  "contributionCharge",
+  "bidSpread",
+  "offerSpread",
+  "withdrawalCharge",
+];
+
 function anomalyKey(anomaly) {
   return JSON.stringify([anomaly.kind, anomaly.fundClassId, anomaly.field]);
 }
@@ -152,17 +172,11 @@ function validateReviewDisposition({
   }
 
   const reportedByKey = new Map();
-  const supportedFields = new Set([
-    "latestFer",
-    "oci1yHkd",
-    "oci3yHkd",
-    "oci5yHkd",
-  ]);
+  const supportedFields = new Set([...costFields, ...rateFields]);
   for (const anomaly of anomalies) {
     if (
       !anomaly ||
       anomaly.kind !== "fee_changed" ||
-      typeof anomaly.kind !== "string" ||
       typeof anomaly.fundClassId !== "string" ||
       !supportedFields.has(anomaly.field) ||
       typeof anomaly.detail !== "string"
@@ -250,6 +264,17 @@ function validateReviewDisposition({
       fail(
         `review disposition evidence URL is not the official MPFA detail page for ${item.fundClassId}.`,
       );
+    }
+    // 「Up to」係上限唔係實際費率：覆核人要明確寫低候選值係咪上限，而且要同快照的 feeCaps 一致。
+    if (rateFields.includes(item.field)) {
+      const isCap =
+        Array.isArray(record.fundOverview.feeCaps) &&
+        record.fundOverview.feeCaps.includes(item.field);
+      if (item.candidateIsCap !== isCap) {
+        fail(
+          `review disposition candidateIsCap does not match the snapshot's feeCaps for ${item.fundClassId}.${item.field}.`,
+        );
+      }
     }
   }
 
