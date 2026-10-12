@@ -200,13 +200,19 @@ describe("official fund fact sheet parser", () => {
     expect(result.returns.map((row) => [row.constituentFundName, row.dataAsOf, row.annualizedReturn3Year])).toEqual([
       ["Manulife MPF Healthcare Fund", "2026-06-30", 7.65],
       ["Manulife MPF Pacific Asia Equity Fund", "2026-06-30", 22.17],
-      ["Manulife MPF Japan Equity Fund", "2026-06-30", 22.14],
       ["Manulife MPF Hang Seng Index ESG Fund", "2026-06-30", 4.94],
-      ["Manulife MPF Retirement Income Fund", "2026-06-30", 3.04],
+      ["Manulife MPF Japan Equity Fund", "2026-06-30", 22.14],
       ["Manulife MPF Fidelity Stable Growth Fund", "2026-06-30", 7.67],
+      ["Manulife MPF Retirement Income Fund", "2026-06-30", 3.04],
       ["Manulife MPF Core Accumulation Fund", "2026-06-30", 11.82],
       ["Manulife MPF Age 65 Plus Fund", "2026-06-30", 4.79],
     ]);
+  });
+
+  it("fails Manulife Global Select when one of a page's two tables has no readable header", () => {
+    const broken = manulifeGlobalSelectFixture.replace(">Months</word>", ">Monthz</word>");
+    expect(broken).not.toBe(manulifeGlobalSelectFixture);
+    expect(() => parseManulifeGlobalSelectAudit(broken, "https://example.test/manulife.pdf")).toThrow(/page 1: 2 performance table\(s\) but 1 readable header/);
   });
 
   it("fails Manulife Global Select when the annualized 3-year value disagrees with the cumulative one", () => {

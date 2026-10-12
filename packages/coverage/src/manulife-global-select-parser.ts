@@ -13,8 +13,9 @@ import { labelled, lines, mergeFragments, nearestColumn, SAME_LINE, type Word } 
 
 const SCHEME = "Manulife Global Select (MPF) Scheme";
 // 「不適用▲」「N/A▲」係同一格嘅中英對照（例如退休收益基金未滿十年）。
-const CELL = /^(?:-|(?:N\/A|不適用)▲?|[+-]?\d+(?:\.\d+)?)$/;
-const normalizeCell = (text: string) => (/^(?:N\/A|不適用)▲?$/.test(text) ? "N/A" : text);
+const UNAVAILABLE = /^(?:N\/A|不適用)▲?$/;
+const NUMBER = /^[+-]?\d+(?:\.\d+)?$/;
+const isCell = (text: string) => text === "-" || UNAVAILABLE.test(text) || NUMBER.test(text);
 const COLUMNS = ["3M", "YTD", "1Y", "C3Y", "C5Y", "C10Y", "CSI", "A3Y", "A5Y", "A10Y", "ASI"] as const;
 const CALENDAR_YEARS = 5;
 // 便覽兩位小數；累積同年率化各自四捨五入，實測相差最多 0.01。
@@ -51,8 +52,9 @@ function headers(words: Word[]): Header[] {
   });
 }
 
-function heading(words: Word[], above: number) {
-  const titles = lines(words.filter((word) => word.yMid < above && word.xMin < 300))
+/** 基金標題：上一個表頭之下、今個表頭之上；兩個表共用一個標題就會喺名稱重複檢查度報錯。 */
+function heading(words: Word[], below: number, above: number) {
+  const titles = lines(words.filter((word) => word.yMid > below && word.yMid < above && word.xMin < 300))
     .map((line) => line.map((word) => word.text).join(" "))
     .flatMap((text) => {
       const name = text.match(/^(Manulife MPF .+?Fund)\b/)?.[1];
@@ -64,7 +66,7 @@ function heading(words: Word[], above: number) {
 type Outcome = { kind: "return"; row: FundFactSheetReturn } | { kind: "unavailable"; row: FundReturnUnavailable };
 
 function readPage(words: Word[], pageNumber: number, dataAsOf: string, sourceUrl: string): Outcome[] {
-  const found = headers(words);
+  const found = headers(words).sort((a, b) => a.y - b.y);
   // 表嘅標籤「Fund Performance」喺左邊界（x≈15）；附註內文都有呢兩個字，所以要靠左。
   const titles = words.filter(
     (word) =>
@@ -75,8 +77,9 @@ function readPage(words: Word[], pageNumber: number, dataAsOf: string, sourceUrl
   if (found.length !== titles.length) {
     throw new Error(`Manulife Global Select page ${pageNumber}: ${titles.length} performance table(s) but ${found.length} readable header(s)`);
   }
-  return found.map((header): Outcome => {
-    const name = heading(words, header.y);
+  return found.map((header, index): Outcome => {
+    const name = heading(words, found[index - 1]?.y ?? -Infinity, header.y);
+    const nextTable = found[index + 1]?.y ?? Infinity;
     const where = `Manulife Global Select page ${pageNumber}`;
     if (!name) throw new Error(`${where}: performance table has no fund heading`);
     const context = `${name} (${where})`;
@@ -91,7 +94,8 @@ function readPage(words: Word[], pageNumber: number, dataAsOf: string, sourceUrl
     const bottom = words
       .filter((word) => labelColumn(word) && word.yMid > fundLabel.yMid + SAME_LINE && /[A-Za-z\u4e00-\u9fff]/.test(word.text))
       .sort((a, b) => a.yMid - b.yMid)[0];
-    if (!bottom || !words.some((word) => /^(平均成本法|Dollar)/.test(word.text) && word.yMid >= bottom.yMid - SAME_LINE)) {
+    // 平均成本法行必須喺本表之內（下一個表頭之上），唔可以借用同版第二個表嗰行。
+    if (!bottom || !words.some((word) => /^(平均成本法|Dollar)/.test(word.text) && word.yMid >= bottom.yMid - SAME_LINE && word.yMid < nextTable)) {
       throw new Error(`${context}: the row after the fund performance row is missing`);
     }
     const band = words.filter(
@@ -103,21 +107,23 @@ function readPage(words: Word[], pageNumber: number, dataAsOf: string, sourceUrl
     );
     const cells = header.centres.map(() => [] as string[]);
     for (const word of band) {
-      if (!CELL.test(word.text)) throw new Error(`${context}: unexpected text "${word.text}" in the fund row`);
+      if (!isCell(word.text)) throw new Error(`${context}: unexpected text "${word.text}" in the fund row`);
       const column = nearestColumn(word, header.centres);
       if (column === undefined) throw new Error(`${context}: cell "${word.text}" cannot be placed in one column`);
-      cells[column]!.push(normalizeCell(word.text));
+      cells[column]!.push(word.text);
     }
-    cells.forEach((values, index) => {
-      const single = values.length === 1 || (values.length > 1 && values.every((value) => value === "N/A"));
-      if (!single) throw new Error(`${context}: column ${COLUMNS[index] ?? "calendar"} has ${values.length} cells (${values.join(" ")})`);
+    // 每欄一格；唯一例外係同一格嘅中英對照：一個「不適用▲」加一個「N/A▲」。
+    const normalized = cells.map((values, index) => {
+      const bilingualNa = values.length === 2 && values.some((value) => value.startsWith("不適用")) && values.some((value) => value.startsWith("N/A"));
+      if (values.length !== 1 && !bilingualNa) throw new Error(`${context}: column ${COLUMNS[index] ?? "calendar"} has ${values.length} cells (${values.join(" ")})`);
+      return UNAVAILABLE.test(values[0]!) ? "N/A" : values[0]!;
     });
-    const value = (name: (typeof COLUMNS)[number]) => cells[COLUMNS.indexOf(name)]![0]!;
+    const value = (name: (typeof COLUMNS)[number]) => normalized[COLUMNS.indexOf(name)]!;
     const annualized = value("A3Y");
     const cumulative = value("C3Y");
     const base = { schemeName: SCHEME, constituentFundName: name, dataAsOf, sourceUrl };
-    if (!/^[+-]?\d/.test(annualized)) {
-      if (/^[+-]?\d/.test(cumulative)) throw new Error(`${context}: 3-year cumulative ${cumulative} has no annualized value`);
+    if (!NUMBER.test(annualized)) {
+      if (NUMBER.test(cumulative)) throw new Error(`${context}: 3-year cumulative ${cumulative} has no annualized value`);
       return { kind: "unavailable", row: { ...base, periodYears: 3, reason: annualized === "-" ? "official-dash" : "official-na", page: pageNumber } };
     }
     // 讀錯欄嘅核對：年率化三年 ≈ (1 + 累積三年)^(1/3) − 1。

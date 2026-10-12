@@ -66,6 +66,7 @@ class TrusteeFactSheetDownloadTests(unittest.TestCase):
         import types
 
         profiles: list[str] = []
+        responses: list[int] = []
 
         class FakeResponse:
             def __init__(self, status: int) -> None:
@@ -85,7 +86,7 @@ class TrusteeFactSheetDownloadTests(unittest.TestCase):
                 self.profile = impersonate
 
             def get(self, *args, **kwargs):
-                return FakeResponse(403 if self.profile == "chrome124" else 200)
+                return FakeResponse(responses.pop(0) if responses else (403 if self.profile == "chrome124" else 200))
 
             def close(self) -> None:
                 pass
@@ -100,7 +101,15 @@ class TrusteeFactSheetDownloadTests(unittest.TestCase):
             with tempfile.TemporaryDirectory(prefix="kwmpf-factsheet-") as temporary:
                 size, _ = fetcher.download_pdf("https://example.test/a.pdf", Path(temporary) / "a.pdf")
             self.assertEqual(size, 8)
-            self.assertEqual(profiles, ["chrome124", "chrome"])
+            self.assertEqual(profiles, ["chrome124", "chrome150"])
+
+            # 兩次 503 之後先 403：換指紋唔可以食咗最後一次重試。
+            profiles.clear()
+            responses[:] = [503, 503]
+            with tempfile.TemporaryDirectory(prefix="kwmpf-factsheet-") as temporary:
+                size, _ = fetcher.download_pdf("https://example.test/a.pdf", Path(temporary) / "a.pdf")
+            self.assertEqual(size, 8)
+            self.assertEqual(profiles, ["chrome124", "chrome124", "chrome124", "chrome150"])
 
             # 最後一個指紋都 403 就唔再試，照報失敗。
             profiles.clear()
@@ -108,7 +117,8 @@ class TrusteeFactSheetDownloadTests(unittest.TestCase):
             with tempfile.TemporaryDirectory(prefix="kwmpf-factsheet-") as temporary:
                 with self.assertRaises(fetcher.DownloadFailure):
                     fetcher.download_pdf("https://example.test/a.pdf", Path(temporary) / "a.pdf")
-            self.assertEqual(profiles, ["chrome124", "chrome"])
+            # 403 唔屬可重試狀態：換到最後一個指紋仍然 403 就即刻停。
+            self.assertEqual(profiles, ["chrome124", "chrome150"])
         finally:
             fetcher.time.sleep = original_sleep
             if previous is None:
