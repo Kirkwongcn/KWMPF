@@ -18,6 +18,35 @@ const temporaryDirectory = fs.mkdtempSync(
 const sourcesRoot = path.join(temporaryDirectory, "sources");
 const sourceDate = "2026-08-31";
 
+// 支援欄位要同候選異常政策的 feeFields 一致（舊式 `fee` 除外），防止兩邊各自改而走樣。
+{
+  const gateSource = fs.readFileSync(checker, "utf8");
+  const listed = (name) =>
+    [
+      ...new RegExp(`const ${name} = \\[([^\\]]*)\\]`, "u")
+        .exec(gateSource)[1]
+        .matchAll(/"([A-Za-z0-9]+)"/gu),
+    ].map((match) => match[1]);
+  const policySource = fs.readFileSync(
+    path.join(
+      scriptDirectory,
+      "../packages/coverage/src/candidate-anomalies.ts",
+    ),
+    "utf8",
+  );
+  const policyFields = [
+    .../feeFields: \[([^\]]*)\]/u
+      .exec(policySource)[1]
+      .matchAll(/"([A-Za-z0-9]+)"/gu),
+  ]
+    .map((match) => match[1])
+    .filter((field) => field !== "fee");
+  assert.deepEqual(
+    [...listed("costFields"), ...listed("rateFields")].sort(),
+    policyFields.sort(),
+  );
+}
+
 const anomalyFixtures = [
   {
     kind: "fee_changed",
@@ -30,6 +59,12 @@ const anomalyFixtures = [
     fundClassId: "mpfa-cf-1579",
     field: "latestFer",
     detail: "latestFer 由 1.24314 改為 1.24313",
+  },
+  {
+    kind: "fee_changed",
+    fundClassId: "mpfa-cf-464",
+    field: "managementFee",
+    detail: "managementFee 由 0.875 改為 0.795",
   },
 ];
 
@@ -45,6 +80,16 @@ const sourceRecords = [
     dataAsOf: sourceDate,
     sourceUrl: "https://mfp.mpfa.org.hk/eng/cf_detail.jsp?cf_id=1579",
     fundOverview: { latestFer: 1.24313 },
+  },
+  {
+    fundClassId: "mpfa-cf-464",
+    dataAsOf: sourceDate,
+    sourceUrl: "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=464",
+    fundOverview: {
+      managementFee: 0.795,
+      feeCaps: ["managementFee"],
+      fundSizeHkdMillion: 498.92,
+    },
   },
 ];
 
@@ -125,6 +170,13 @@ function makeDisposition(files) {
         field: anomaly.field,
         reportDetail: anomaly.detail,
         candidateValue: record.fundOverview[anomaly.field],
+        ...(anomaly.field.endsWith("Fee") || anomaly.field === "guaranteeCharge"
+          ? {
+              candidateIsCap: (record.fundOverview.feeCaps ?? []).includes(
+                anomaly.field,
+              ),
+            }
+          : {}),
         reviewedAsOf: source.sourceDataAsOf,
         evidenceUrl: record.sourceUrl,
         evidenceNote: `MPFA detail page matches ${anomaly.field} for ${anomaly.fundClassId}.`,
@@ -299,6 +351,91 @@ try {
   assertFails(
     check("2026-09-29/mpf-fund-platform.json"),
     /readiness is not approved/,
+  );
+
+  // 費率改變（例如管理費）同 FER／OCI 一樣，要逐項證據先放行；費用以外的欄位仍然拒絕。
+  const unsupportedFieldFiles = writeBatch("2026-09-29", {
+    outcome: "needs_review",
+    publishable: false,
+    requiresReview: true,
+    anomalies: [
+      ...anomalyFixtures,
+      {
+        kind: "fee_changed",
+        fundClassId: "mpfa-cf-464",
+        field: "fundSizeHkdMillion",
+        detail: "fundSizeHkdMillion 由 500 改為 498.92",
+      },
+    ],
+  });
+  addDisposition(unsupportedFieldFiles);
+  assertFails(
+    check("2026-09-29/mpf-fund-platform.json"),
+    /invalid anomaly record/,
+  );
+
+  // 「Up to」上限：覆核文件要寫明 candidateIsCap，而且要同快照 feeCaps 一致。
+  const capFiles = writeBatch("2026-09-29", {
+    outcome: "needs_review",
+    publishable: false,
+    requiresReview: true,
+  });
+  addDisposition(capFiles, (value) => {
+    delete value.anomalies[2].candidateIsCap;
+    return value;
+  });
+  assertFails(
+    check("2026-09-29/mpf-fund-platform.json"),
+    /candidateIsCap does not match/,
+  );
+  addDisposition(capFiles, (value) => {
+    value.anomalies[2].candidateIsCap = false;
+    return value;
+  });
+  assertFails(
+    check("2026-09-29/mpf-fund-platform.json"),
+    /candidateIsCap does not match/,
+  );
+
+  // 舊式 `fee` 摘要欄刻意唔支援；以文字披露（冇數值候選）的費率改變亦唔可以放行。
+  for (const anomaly of [
+    {
+      kind: "fee_changed",
+      fundClassId: "mpfa-cf-464",
+      field: "fee",
+      detail: "fee 由 0.875 改為 0.795",
+    },
+  ]) {
+    const legacyFiles = writeBatch("2026-09-29", {
+      outcome: "needs_review",
+      publishable: false,
+      requiresReview: true,
+      anomalies: [...anomalyFixtures, anomaly],
+    });
+    addDisposition(legacyFiles);
+    assertFails(
+      check("2026-09-29/mpf-fund-platform.json"),
+      /invalid anomaly record/,
+    );
+  }
+  const textFeeFiles = writeBatch("2026-09-29", {
+    outcome: "needs_review",
+    publishable: false,
+    requiresReview: true,
+    anomalies: [
+      ...anomalyFixtures,
+      {
+        kind: "fee_changed",
+        fundClassId: "mpfa-cf-464",
+        field: "annualFee",
+        detail: "annualFee 由 HKD 3,000 改為 HKD 2,500",
+      },
+    ],
+  });
+  addDisposition(textFeeFiles);
+  assertFails(
+    check("2026-09-29/mpf-fund-platform.json"),
+    /candidateValue does not match mpfa-cf-464.annualFee/,
   );
 
   const noAnomalyFiles = writeBatch("2026-09-29", {
