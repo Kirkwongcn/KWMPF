@@ -92,6 +92,33 @@ describe("official fund fact sheet parser", () => {
     ]);
   });
 
+  it("reads both China Life funds on a page, negative cells and only the fund's own row", () => {
+    const page = [
+      "As at 30 June 2026",
+      "\fChina Life Hong Kong Equity Fund 中國人壽香港股票基金",
+      "Annualized 年率化 (%) - - -1.17 7.72 -5.61 3.75 3.49",
+      "China Life Core Accumulation Fund 中國人壽核心累積基金",
+      "This Fund 本基金",
+      "Annualized 年率化 (%) - - 15.73 13.68 6.78 - 7.58",
+      "Reference Portfolio 參考組合",
+      "Annualized 年率化 (%) - - 13.08 11.67 5.53 - 7.07",
+      "\fChina Life Core Accumulation Fund Equities staged a comeback in the quarter.",
+    ].join("\n");
+    expect(parseChinaLifeFundPerformance(page, "https://example.test/china-life.pdf")).toEqual([
+      expect.objectContaining({ constituentFundName: "China Life Hong Kong Equity Fund", dataAsOf: "2026-06-30", annualizedReturn3Year: 7.72 }),
+      expect.objectContaining({ constituentFundName: "China Life Core Accumulation Fund", annualizedReturn3Year: 13.68 }),
+    ]);
+  });
+
+  it("rejects China Life rows that cannot be placed column by column", () => {
+    const heading = "As at 30 June 2026\fChina Life Growth Fund 中國人壽增長基金\n";
+    expect(() => parseChinaLifeFundPerformance(`${heading}Annualized 年率化 (%) - - 18.17 13.12 2.61 6.92`, "x")).toThrow("incomplete");
+    expect(() => parseChinaLifeFundPerformance(`${heading}Annualized 年率化 (%) - - 18.17 13.12 2.61 6.92 5.54 9.91`, "x")).toThrow("incomplete");
+    expect(() => parseChinaLifeFundPerformance(`${heading}Annualized 年率化 (%) - - 18.17 - 2.61 6.92 5.54`, "x")).toThrow("incomplete");
+    expect(() => parseChinaLifeFundPerformance(`${heading}Annualized 年率化 (%) - - 18.17 13.12 2.61 6.92 5.54\nAnnualized 年率化 (%) - - 1 2 3 4 5`, "x")).toThrow("ambiguous");
+    expect(() => parseChinaLifeFundPerformance("As at 30 June 2026\fChina Life Growth Fund 中國人壽增長基金\nChina Life Balanced Fund 中國人壽平衡基金\nAnnualized 年率化 (%) - - 1 2 3 4 5", "x")).toThrow("missing");
+  });
+
   it("uses the report As at date instead of a historical name-change date", () => {
     expect(parseChinaLifeFundPerformance(`As at 31 December 2025${chinaLifeFixture}\nChina Life Joyful Retirement Guaranteed Fund was formerly known as China Life Retire-Easy Guarantee Fund, with change of name effective on 4 December 2020.`, "https://example.test/china-life.pdf")[0]).toEqual(
       expect.objectContaining({ dataAsOf: "2025-12-31" }),
