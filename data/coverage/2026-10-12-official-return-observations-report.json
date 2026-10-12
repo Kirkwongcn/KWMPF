@@ -860,5 +860,160 @@
     ],
     "notApplied": [],
     "freshness": "All rows are as at 2026-06-30, past the 90-day three-year window (ADR 0007): they update fund pages but are not ranked."
+  },
+  "manulifeGlobalSelectRefresh": {
+    "generatedAt": "2026-10-12T23:49:02.534864Z",
+    "sourceSnapshot": "data/sources/2026-10-12/mpf-fund-platform.json",
+    "method": "Downloaded the Manulife Global Select trustee quarterly fund fact sheet with scripts/fetch-trustee-fact-sheets.py download_pdf (chrome124 returned HTTP 403; the new fallback profile \"chrome150\" returned the PDF; %PDF- signature, SHA-256 recorded) and parsed it with packages/coverage/src/parse-fact-sheets.ts using the new pdftotext -bbox column reader (two tables per page, every cell placed in exactly one of 11 return columns plus 5 calendar-year columns, fund row bounded by the next label, annualized 3-year must agree with cumulative 3-year within 0.05 as a misread check). Matched with normalizeFundFactSheetReturns against the 2026-10-12 platform snapshot (exact names). Fund classes without a previous annualized row are added and listed; the 12 previously published rows re-read identically.",
+    "sourceManifest": [
+      {
+        "scheme": "Manulife Global Select (MPF) Scheme",
+        "factSheetUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+        "status": "downloaded",
+        "retrievedAt": "2026-10-12T23:49:02.534864Z",
+        "httpStatus": 200,
+        "lastModified": "Tue, 25 Aug 2026 02:24:06 GMT",
+        "sha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+        "bytes": 1955967,
+        "impersonation": "chrome (after chrome124 HTTP 403)"
+      }
+    ],
+    "added": [
+      {
+        "fundClassId": "mpfa-cf-370",
+        "annualized": 22.17,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+        "fund": "Manulife Global Select (MPF) Scheme :: Manulife MPF Pacific Asia Equity Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-367",
+        "annualized": 9.69,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+        "fund": "Manulife Global Select (MPF) Scheme :: Manulife MPF Hong Kong Equity Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-371",
+        "annualized": 22.14,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+        "fund": "Manulife Global Select (MPF) Scheme :: Manulife MPF Japan Equity Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-377",
+        "annualized": 15.11,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+        "fund": "Manulife Global Select (MPF) Scheme :: Manulife MPF North American Equity Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-376",
+        "annualized": 13.79,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+        "fund": "Manulife Global Select (MPF) Scheme :: Manulife MPF Aggressive Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-363",
+        "annualized": 11.01,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+        "fund": "Manulife Global Select (MPF) Scheme :: Manulife MPF Growth Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1719",
+        "annualized": 3.04,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+        "fund": "Manulife Global Select (MPF) Scheme :: Manulife MPF Retirement Income Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-848",
+        "annualized": 15.5,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+        "fund": "Manulife Global Select (MPF) Scheme :: Manulife MPF 2045 Retirement Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-847",
+        "annualized": 15.49,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+        "fund": "Manulife Global Select (MPF) Scheme :: Manulife MPF 2040 Retirement Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-846",
+        "annualized": 13.95,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+        "fund": "Manulife Global Select (MPF) Scheme :: Manulife MPF 2035 Retirement Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-845",
+        "annualized": 12.32,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+        "fund": "Manulife Global Select (MPF) Scheme :: Manulife MPF 2030 Retirement Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-844",
+        "annualized": 9.35,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+        "fund": "Manulife Global Select (MPF) Scheme :: Manulife MPF 2025 Retirement Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1485",
+        "annualized": 11.82,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+        "fund": "Manulife Global Select (MPF) Scheme :: Manulife MPF Core Accumulation Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-1486",
+        "annualized": 4.79,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+        "fund": "Manulife Global Select (MPF) Scheme :: Manulife MPF Age 65 Plus Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-906",
+        "annualized": 3.49,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+        "fund": "Manulife Global Select (MPF) Scheme :: Manulife MPF Sustainable Pacific Asia Bond Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-362",
+        "annualized": 4.2,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+        "fund": "Manulife Global Select (MPF) Scheme :: Manulife MPF Hong Kong Bond Fund"
+      },
+      {
+        "fundClassId": "mpfa-cf-364",
+        "annualized": 5.88,
+        "dataAsOf": "2026-06-30",
+        "sourceUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+        "fund": "Manulife Global Select (MPF) Scheme :: Manulife MPF Stable Fund"
+      }
+    ],
+    "unchangedSameValue": [
+      "mpfa-cf-695",
+      "mpfa-cf-375",
+      "mpfa-cf-907",
+      "mpfa-cf-369",
+      "mpfa-cf-368",
+      "mpfa-cf-373",
+      "mpfa-cf-374",
+      "mpfa-cf-842",
+      "mpfa-cf-1219",
+      "mpfa-cf-372",
+      "mpfa-cf-366",
+      "mpfa-cf-365"
+    ],
+    "notApplied": [],
+    "freshness": "All rows are as at 2026-06-30, past the 90-day three-year window (ADR 0007): they update fund pages but are not ranked."
   }
 }

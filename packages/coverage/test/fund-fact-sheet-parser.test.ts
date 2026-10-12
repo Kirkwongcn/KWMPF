@@ -16,6 +16,7 @@ import { parseChinaLifeFundPerformance } from "../src/china-life-fund-performanc
 import { parseHsbcFundFactSheet } from "../src/hsbc-fund-fact-sheet-parser";
 import { parseBocPrudentialFundPerformanceAudit } from "../src/boc-prudential-fund-performance-parser";
 import { parseBcomFundPerformanceAudit } from "../src/bcom-fund-performance-parser";
+import { parseManulifeGlobalSelectAudit } from "../src/manulife-global-select-parser";
 import { parseHaitongFundPerformance } from "../src/haitong-fund-performance-parser";
 import { parseMyChoiceFundPerformance } from "../src/my-choice-fund-performance-parser";
 import { parseMassFundPerformance } from "../src/mass-fund-performance-parser";
@@ -50,6 +51,7 @@ const sunLifePage24XmlFixture = readFileSync(join(import.meta.dirname, "fixtures
 const chinaLifeFixture = `\fChina Life Greater China Equity Fund 中國人壽大中華股票基金\nFund Performance 基金表現\nAnnualized 年率化 (%) - - 30.16 8.44 - - 0.13\fChina Life MPF Conservative Fund 中國人壽強積金保守基金\nAnnualized 年率化 (%) - - 2.00 2.88 1.93 1.19 0.76`;
 const hsbcFixture = `所載資料截至 All information as at 31/03/2026\fCore Accumulation Fund\nFund Performance Information (%)\nAnnualised return 1 yr 3 yrs 5 yrs 10 yrs\nThis Fund\n12.30 9.42 5.08 6.38`;
 const hangSengFixture = `所載資料截至 All information as at 31/12/2025\fValueChoice Asia Pacific Equity Tracker Fund\nFund Performance Information (%)\nAnnualised return 1 yr 3 yrs 5 yrs 10 yrs\nThis Fund\n28.58 14.54 4.54 0.00`;
+const manulifeGlobalSelectFixture = readFileSync(join(import.meta.dirname, "fixtures", "manulife-global-select-2026-q2-pages.bbox.html"), "utf8");
 const bcomPagesFixture = readFileSync(join(import.meta.dirname, "fixtures", "bcom-2026-q2-pages.bbox.html"), "utf8");
 const bocFixture = readFileSync(join(import.meta.dirname, "fixtures", "boc-prudential-2026-q2-pages.bbox.html"), "utf8");
 const haitongIssuePrice = "Issue Price as of 31/08/2026 (Class A) $14.30";
@@ -188,6 +190,36 @@ describe("official fund fact sheet parser", () => {
     const broken = bcomPagesFixture.replace(">Launch</word>", ">Lunch</word>");
     expect(broken).not.toBe(bcomPagesFixture);
     expect(() => parseBcomFundPerformanceAudit(broken, "https://example.test/bcom.pdf")).toThrow(/BCOM page 1: 1 annualised return header/);
+  });
+
+  it("reads every Manulife Global Select table by column, two funds per page", () => {
+    // 2026 Q2 受託人便覽第 2、4、8、12 頁（只留標題、截至日期同回報表）：每版兩個表；恒指 ESG 有指數行；
+    // 退休收益基金十年格係「不適用▲」「N/A▲」中英對照；核心累積下面有參考組合行。
+    const result = parseManulifeGlobalSelectAudit(manulifeGlobalSelectFixture, "https://example.test/manulife.pdf");
+    expect(result.unavailable).toEqual([]);
+    expect(result.returns.map((row) => [row.constituentFundName, row.dataAsOf, row.annualizedReturn3Year])).toEqual([
+      ["Manulife MPF Healthcare Fund", "2026-06-30", 7.65],
+      ["Manulife MPF Pacific Asia Equity Fund", "2026-06-30", 22.17],
+      ["Manulife MPF Hang Seng Index ESG Fund", "2026-06-30", 4.94],
+      ["Manulife MPF Japan Equity Fund", "2026-06-30", 22.14],
+      ["Manulife MPF Fidelity Stable Growth Fund", "2026-06-30", 7.67],
+      ["Manulife MPF Retirement Income Fund", "2026-06-30", 3.04],
+      ["Manulife MPF Core Accumulation Fund", "2026-06-30", 11.82],
+      ["Manulife MPF Age 65 Plus Fund", "2026-06-30", 4.79],
+    ]);
+  });
+
+  it("fails Manulife Global Select when one of a page's two tables has no readable header", () => {
+    const broken = manulifeGlobalSelectFixture.replace(">Months</word>", ">Monthz</word>");
+    expect(broken).not.toBe(manulifeGlobalSelectFixture);
+    expect(() => parseManulifeGlobalSelectAudit(broken, "https://example.test/manulife.pdf")).toThrow(/page 1: 2 performance table\(s\) but 1 readable header/);
+  });
+
+  it("fails Manulife Global Select when the annualized 3-year value disagrees with the cumulative one", () => {
+    // 把康健護理年率化三年 7.65 改成 9.65：同累積 24.73 對唔上，代表讀錯欄，整份報錯。
+    const broken = manulifeGlobalSelectFixture.replace(">7.65</word>", ">9.65</word>");
+    expect(broken).not.toBe(manulifeGlobalSelectFixture);
+    expect(() => parseManulifeGlobalSelectAudit(broken, "https://example.test/manulife.pdf")).toThrow(/Healthcare.*does not match cumulative 24\.73/);
   });
 
   it("fails the BOC-Prudential document when a return cell cannot be placed", () => {

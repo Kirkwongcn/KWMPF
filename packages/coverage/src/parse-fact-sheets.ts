@@ -21,7 +21,7 @@ import { parseMyChoiceFundPerformance } from "./my-choice-fund-performance-parse
 import { parseMassFundPerformance } from "./mass-fund-performance-parser";
 import { parseShkpFundPerformance } from "./shkp-fund-performance-parser";
 import { parseFidelityFundPerformanceAudit } from "./fidelity-fund-performance-parser";
-import { parseManulifeGlobalSelect } from "./manulife-global-select-parser";
+import { parseManulifeGlobalSelectAudit } from "./manulife-global-select-parser";
 import type {
   FundFactSheetReturn,
   FundReturnUnavailable,
@@ -74,12 +74,11 @@ function parser(
   if (scheme.startsWith("China Life")) return parseChinaLifeFundPerformance(text, url);
   if (scheme.startsWith("HSBC")) return parseHsbcFundFactSheet(text, url);
   if (scheme.startsWith("Hang Seng")) return parseHsbcFundFactSheet(text, url, "Hang Seng Mandatory Provident Fund – SuperTrust Plus");
-  if (scheme.startsWith("BOC-Prudential") || scheme.startsWith("BCOM")) throw new Error(`${scheme} fact sheets are read from word boxes, not layout text`);
+  if (scheme.startsWith("BOC-Prudential") || scheme.startsWith("BCOM") || scheme === "Manulife Global Select (MPF) Scheme") throw new Error(`${scheme} fact sheets are read from word boxes, not layout text`);
   if (scheme.startsWith("Haitong")) return parseHaitongFundPerformance(text, url);
   if (scheme.startsWith("My Choice")) return parseMyChoiceFundPerformance(text, url);
   if (scheme.startsWith("MASS")) return parseMassFundPerformance(text, url);
   if (scheme.startsWith("SHKP")) return parseShkpFundPerformance(text, url);
-  if (scheme === "Manulife Global Select (MPF) Scheme") return parseManulifeGlobalSelect(text, url);
   if (scheme.startsWith("AIA")) return parseAiaFundFactSheet(text, url);
   if (scheme.startsWith("AMTD")) return parseAmtdFundFactSheet(text, url);
   if (scheme === "BCT (MPF) Industry Choice") return parseBctFundFactSheet(text, url);
@@ -116,6 +115,8 @@ for (const entry of manifest.entries) {
         ? parseBocPrudentialFundPerformanceAudit(await pdfWordBoxes(pdfPath), entry.factSheetUrl)
       : entry.scheme.startsWith("BCOM")
         ? parseBcomFundPerformanceAudit(await pdfWordBoxes(pdfPath), entry.factSheetUrl)
+      : entry.scheme === "Manulife Global Select (MPF) Scheme"
+        ? parseManulifeGlobalSelectAudit(await pdfWordBoxes(pdfPath), entry.factSheetUrl)
       : entry.scheme.startsWith("Sun Life")
         ? parseSunLifeFundFactSheetXmlAudit(await pdfXml(pdfPath), entry.factSheetUrl)
         : entry.scheme.startsWith("BEA")

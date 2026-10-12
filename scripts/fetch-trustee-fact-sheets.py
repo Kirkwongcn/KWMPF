@@ -16,8 +16,16 @@ from urllib.parse import urlsplit
 MAX_PDF_BYTES = 100 * 1024 * 1024
 CHUNK_BYTES = 256 * 1024
 MAX_ATTEMPTS = 3
+# 先用 chrome124；任何受託人回 403 就換下一個指紋再試一次（唔計入重試次數）。
+# 宏利官網 2026-10 起對 chrome124、chrome131、chrome133a、chrome136 都回 403，chrome150 得。
+# 指紋名寫死（唔用會跟版本變嘅「chrome」別名），配合 requirements-source-archive.txt 鎖定嘅 curl_cffi 版本。
+IMPERSONATION_PROFILES = ("chrome124", "chrome150")
 BATCH_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 SHA_PATTERN = re.compile(r"^[0-9a-f]{40}$")
+
+
+class _SwitchProfile(Exception):
+    """403 後換下一個瀏覽器指紋；唔係失敗，唔消耗重試次數。"""
 
 
 class DownloadFailure(Exception):
@@ -159,9 +167,11 @@ def download_pdf(url: str, destination: Path) -> tuple[int, str]:
     temporary = destination.with_suffix(destination.suffix + ".part")
     last_error: Exception | None = None
 
-    for attempt in range(MAX_ATTEMPTS):
+    profile = 0
+    attempt = 0
+    while attempt < MAX_ATTEMPTS:
         temporary.unlink(missing_ok=True)
-        session = requests.Session(impersonate="chrome124")
+        session = requests.Session(impersonate=IMPERSONATION_PROFILES[profile])
         response = None
         try:
             response = session.get(
@@ -172,6 +182,9 @@ def download_pdf(url: str, destination: Path) -> tuple[int, str]:
                 timeout=(20, 90),
             )
             status = int(response.status_code)
+            if status == 403 and profile + 1 < len(IMPERSONATION_PROFILES):
+                profile += 1
+                raise _SwitchProfile()
             if status != 200:
                 raise DownloadFailure(
                     f"HTTP {status}",
@@ -217,6 +230,8 @@ def download_pdf(url: str, destination: Path) -> tuple[int, str]:
 
             os.replace(temporary, destination)
             return total, digest.hexdigest()
+        except _SwitchProfile:
+            continue
         except DownloadFailure as error:
             last_error = error
             if not error.retryable or attempt + 1 >= MAX_ATTEMPTS:
@@ -233,6 +248,7 @@ def download_pdf(url: str, destination: Path) -> tuple[int, str]:
             session.close()
 
         time.sleep(2**attempt)
+        attempt += 1
 
     raise DownloadFailure(_safe_error(last_error or RuntimeError("download failed")))
 
