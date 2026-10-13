@@ -42,6 +42,14 @@ describe("BOCI-Prudential MPF listing (ADR 0014)", () => {
     const markup = structuredClone(fixture);
     markup.data[0].fundName.nameEn = "BOC-Prudential <b>Global</b> Equity Fund";
     expect(() => parseBociPrudentialListing(markup)).toThrow(/unexpected markup/u);
+
+    const hidden = structuredClone(fixture);
+    hidden.data[1].showCumulative = "N";
+    expect(() => parseBociPrudentialListing(hidden)).toThrow(/ECRF cumulative returns are not shown/u);
+
+    const notApplicable = structuredClone(fixture);
+    notApplicable.data[1].nNA = "Y";
+    expect(() => parseBociPrudentialListing(notApplicable)).toThrow(/not shown/u);
   });
 
   it("rejects a response whose columns change, so a ten-year field is never mistaken for published", () => {

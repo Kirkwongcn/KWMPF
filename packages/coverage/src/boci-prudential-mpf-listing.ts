@@ -10,13 +10,13 @@
  * - 表頭 `header.cumulative` 有「1Y」「3Y」「5Y」，冇「10Y」（`tenY` 永遠留空，唔當官方數字）；
  * - 每隻基金都有同一個 `asOfDate`（YYYY-MM-DD）；
  * - 一年、三年係 `12.34` 格式（官方冇百分號）；五年未滿留空記官方未提供（唔當 0）；
- * - 英文名除咗 `<sup>…</sup>` 註腳標記，冇其他 HTML。
+ * - 英文名除咗 `<sup>…</sup>` 註腳標記，冇其他 HTML（註腳係風險披露同預設投資策略標示，唔關回報計法）；
+ * - 每隻基金 `showCumulative` 係 `"Y"`、`nNA` 係 `null`（網頁照顯示累積回報）。
  */
 
 export type BociPrudentialRow = {
   stockCode: string;
   name: string;
-  listingDate: string;
   oneYear: number;
   threeYears: number;
   /** `null` 代表官方留空（成立未滿五年）。 */
@@ -48,7 +48,9 @@ type RawFund = {
   stockCode?: unknown;
   fundName?: { nameEn?: unknown };
   asOfDate?: unknown;
-  cumulative?: { oneY?: unknown; threeY?: unknown; fiveY?: unknown; listingDate?: unknown };
+  cumulative?: { oneY?: unknown; threeY?: unknown; fiveY?: unknown };
+  showCumulative?: unknown;
+  nNA?: unknown;
 };
 
 export function parseBociPrudentialListing(body: unknown): BociPrudentialListing {
@@ -70,13 +72,17 @@ export function parseBociPrudentialListing(body: unknown): BociPrudentialListing
     if (typeof fund.asOfDate !== "string" || !ISO_DATE.test(fund.asOfDate))
       throw new Error(`BOCI-Prudential MPF listing: ${where} has no as-of date`);
     dates.add(fund.asOfDate);
+    // 網頁唔顯示累積回報（或者標咗唔適用）嘅基金，接口數字唔當官方披露。
+    if (fund.showCumulative !== "Y" || fund.nNA !== null)
+      throw new Error(
+        `BOCI-Prudential MPF listing: ${where} cumulative returns are not shown (showCumulative ${JSON.stringify(fund.showCumulative)}, nNA ${JSON.stringify(fund.nNA)})`,
+      );
     const cumulative = fund.cumulative;
     // 三年留空即係成立未滿三年；呢個計劃暫時冇咁嘅基金，出現就成份停低，等人手確認官方點寫。
     const threeYears = readNumber(cumulative?.threeY, `${where} 3-year`);
     return {
       stockCode: fund.stockCode,
       name,
-      listingDate: typeof cumulative?.listingDate === "string" ? cumulative.listingDate : "",
       oneYear: readNumber(cumulative?.oneY, `${where} 1-year`),
       threeYears,
       fiveYears: cumulative?.fiveY === "" ? null : readNumber(cumulative?.fiveY, `${where} 5-year`),
