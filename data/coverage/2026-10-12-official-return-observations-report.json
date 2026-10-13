@@ -1111,5 +1111,44 @@
       "mpfa-cf-654",
       "mpfa-cf-999"
     ]
+  },
+  "yfLifeMonthlyPerformance": {
+    "generatedAt": "2026-10-13T13:54:19.488Z",
+    "sourceSnapshot": "data/sources/2026-10-12/mpf-fund-platform.json",
+    "checkSnapshot": "data/sources/2026-09-26/mpf-fund-platform.json",
+    "method": "Official trustee monthly data: HSBC / Hang Seng Monthly Fund Performance Summary main table (pdftotext -layout), BCT website fund performance responses, the Manulife Global Select Monthly Fund Summary (pdftotext -bbox columns), the BOCI-Prudential website MPF price and performance listing (JSON), the Sun Life website MPF cumulative performance data (JSON), and the YF Life (MASS) Monthly Fund Performance of the Scheme (pdftotext -bbox columns). Exact English-name match within the scheme (BCT unit class by the Class X / Unit Class X contract), one-year cumulative cross-checked against the MPFA platform one-year return of the same date for every row; three-year cumulative stored as published (ADR 0014), never converted to annualized. This batch adds only the YF Life (MASS) Monthly Fund Performance of the Scheme as at 2026-08-31 (HKIFA - MPF Performance Table, three-year % Growth, data source Lipper as printed), cross-checked against the 2026-08-31 MPFA platform snapshot (--check-source); the 14 cumulative rows are appended to the 2026-10-12 candidate and every existing row is unchanged.",
+    "sources": [
+      {
+        "kind": "yf-life-monthly-performance-pdf",
+        "schemeName": "MASS Mandatory Provident Fund Scheme",
+        "url": "https://www.yflife.com/sites/default/files/mpf/MonthlyFundPrice(E).pdf",
+        "retrievedAt": "2026-10-13T13:54:17Z",
+        "sha256": "6051347a1a81e440320a333c10c6fbc104a4482f6104fac04b5814d000c8b9da",
+        "bytes": 634535,
+        "dataAsOf": "2026-08-31",
+        "rows": 14,
+        "matched": 14,
+        "officialNotDisclosed": [],
+        "oneYearCrossChecks": 14,
+        "fiveTenYearCrossChecks": 0
+      }
+    ],
+    "rejectedSources": [],
+    "addedCumulative": [
+      "mpfa-cf-1487",
+      "mpfa-cf-1488",
+      "mpfa-cf-383",
+      "mpfa-cf-384",
+      "mpfa-cf-385",
+      "mpfa-cf-386",
+      "mpfa-cf-387",
+      "mpfa-cf-388",
+      "mpfa-cf-389",
+      "mpfa-cf-390",
+      "mpfa-cf-391",
+      "mpfa-cf-392",
+      "mpfa-cf-394",
+      "mpfa-cf-874"
+    ]
   }
 }

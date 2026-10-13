@@ -4,7 +4,12 @@
 
 ## 結論
 
-25 個計劃逐個查過。新搵到一個可用來源：**永明官網累積回報接口**（按季，見下）。其餘計劃，要麼已經用緊每月來源，要麼官方冇比季度便覽更新嘅三年數字，要麼網域被本環境網絡政策擋住。
+25 個計劃逐個查過，新搵到兩個可用來源：
+
+- **萬通 MASS 每月表現表**：14 隻基金三年累積，截至 2026-08-31，已加入候選；
+- **永明官網累積回報接口**：按季更新，仍然係 2026-06-30，已加入讀取器，等轉到 9 月底先出數。
+
+其餘計劃，要麼已經用緊每月來源，要麼官方冇比季度便覽更新嘅三年數字，要麼網域被本環境網絡政策擋住。
 
 ## 逐個計劃
 
@@ -13,15 +18,38 @@
 | 滙豐、恒生、BCT 六個計劃、宏利環球精選、中銀保誠簡易 | 每月官方三年累積（8 月底或 9 月底），每日自動更新 | 已完成 |
 | 富達、海通 | 每月便覽三年年率化（2026-08-31） | 官網今日仍然係 8 月底，未出 9 月 |
 | 友邦 | 每月《Fund Performance Review》（2026-07-31） | 目錄有 2023 至 2025 年 8 月版，今年 `aug-2026`／`sep-2026` 仲係 404；3 個缺口：保守、保證組合喺文件冇三年欄，退休收益基金 2026-05 成立 |
-| 萬通 | 每月便覽（2026-07-31） | 官網今日仍然係 7 月底 |
+| 萬通 | 逐隻基金便覽三年年率化（2026-07-31） | **新來源**：受託人每月《Monthly Fund Performance of the Scheme》（`MonthlyFundPrice(E).pdf`，Last-Modified 2026-09-24）右邊「HKIFA - MPF Performance Table」有 14 隻基金 3 年 % Growth（累積，截至 2026-08-31）。已加入候選同每日下載 |
 | 永明彩虹 | 季度便覽（2026-06-30） | **新來源**：官網接口 `MPF_CR_PERFORMANCE` 有 31 個類別三年累積，但仍然係 2026-06-30（按季）。已加入讀取器同每日下載，等轉到 9 月底先核對出數 |
 | 東亞三個計劃 | 季度便覽（2026-06-30） | 《Monthly Investment Summary》`MIS_202608.pdf` 累積只有年初至今、1 個月、3 個月、1 年、成立至今，冇三年；官網價格接口（`mpfcfp`）只係單位價格 |
 | 交通銀行 | 季度便覽（2026-06-30） | 官網表現頁只有年初至今（1/1–30/9/2026）同曆年 |
 | 中國人壽 | 季度《Fund Performance Review》（2026-06-30） | 官網下載區只有季度；每日價格轉去 `onepartner.chinalife.com.hk`（網絡政策擋住），而且只係價格 |
 | 我的強積金 | 季度便覽（2026-06-30） | 受託人 `bocpt.com` 只有單位價格同季度便覽；中銀保誠 `mpfListing` 接口唔包括呢個計劃；分銷商 `www.prudential.com.hk` 被網絡政策擋住 |
 | 新地 | 季度便覽（2026-06-30） | `Fund Price and FFS for SHKPESS.pdf` 今日重新上載，但表現部分仍然係 2026-06-30；受託人 `www.sc.com` 被網絡政策擋住 |
-| AMTD | 積金局副本（2025-12-31） | 營辦機構官網已停更（見 `docs/agents/fact-sheet-source-notes.md`）；積金易 `www.empf.org.hk`、`portal.empf.org.hk` 被網絡政策擋住 |
+| AMTD | 積金局副本（2025-12-31） | 營辦機構官網已停更（見 `docs/agents/fact-sheet-source-notes.md`）。積金易 `www.empf.org.hk`、`portal.empf.org.hk` 本環境連唔到（WebFetch 都解析唔到）；網上搜尋只見積金易站內搜尋頁嘅「Fund Prices Link」轉去各受託人網站，冇自己嘅基金表現頁 |
 | 宏利退休精選 | 冇三年 | 宏利官網 `/bin/funds/fundslist?productLine=mpf`（chrome150 指紋）有 45 個退休精選項目，累積回報截至 2026-09-30，但 **`y3` 全部係 `0.0`**，連五年、十年有數嘅基金都係，即係未公布嘅佔位值，唔可以當 0 用；便覽亦冇三年欄 → 維持官方未提供 |
+
+## 萬通每月表現表核對
+
+`packages/coverage/src/yf-life-monthly-performance-parser.ts`：
+
+- 表頭第二行要有 `Constituent`、`HK$`、四個截至日期（MM/DD/YYYY，必須一致）同三個「Rank」。
+- 每行依次要係 NAV（四位小數）、3 個月、排名、1 年、排名、3 年、排名、組別基金數目；回報要兩位小數或者「N/A」／「-」。
+- 三個回報同排名要喺各自表頭底下（相差 ≤ 6 pt）。
+- 名稱只取表格名欄右邊嘅詞（左邊圖表圖例都係基金名）；名後「#」註腳剔走。
+
+以上任何一項唔啱，整份報錯。
+
+`build-monthly-summary-returns.ts --yflife`，`--check-source data/sources/2026-09-26/mpf-fund-platform.json`（積金局平台 2026-08-31）：14 隻英文名精確配對；一年 14／14 同平台逐行一致。來源 SHA-256 `6051347a…b9da`（634,535 bytes）。
+
+候選追加 14 行 `basis: "cumulative"`，其餘 550 行逐字不變；報告 `yfLifeMonthlyPerformance` 一節記錄來源。`check-publication-seed.sh`：`rankingRows` 68、`excludedStaleCount` 280 不變。本機 API 抽三筆：
+
+| 基金 | 三年累積（官方） | 截至 | 原文 |
+| --- | ---: | --- | --- |
+| 香港股票（`mpfa-cf-389`） | 43.10 | 2026-08-31 | `Hong Kong Equities Fund 16.5622 1.12 3 3.85 4 43.10 3 21` |
+| 核心累積（`mpfa-cf-1487`） | 48.20 | 2026-08-31 | `Core Accumulation Fund 19.9440 1.01 2 15.37 2 48.20 3 23` |
+| 強積金保守（`mpfa-cf-386`） | 7.93 | 2026-08-31 | `MPF Conservative Fund 12.2111 0.48 8 1.77 11 7.93 15 23` |
+
+同基金逐隻便覽嘅三年年率化（2026-07-31）保留，兩者分欄並存。
 
 ## 永明接口核對
 
@@ -58,7 +86,7 @@
 
 以下網域如果加入允許清單，可以再查：
 
-- `www.empf.org.hk`、`portal.empf.org.hk`：積金易，可能有 AMTD 同其他計劃嘅基金表現；
+- `www.empf.org.hk`、`portal.empf.org.hk`：積金易（公開搜尋結果顯示只轉介受託人網站，機會唔大）；
 - `www.prudential.com.hk`：我的強積金；
 - `www.sc.com`：新地計劃受託人；
 - `onepartner.chinalife.com.hk`：中國人壽。
