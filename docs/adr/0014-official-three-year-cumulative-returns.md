@@ -25,6 +25,8 @@
 
 第六批來源（2026-10-13 加入）係萬通信託每月《Monthly Fund Performance of the Scheme》（`https://www.yflife.com/sites/default/files/mpf/MonthlyFundPrice(E).pdf`，固定網址只得最新一個月）：MASS 強積金計劃 14 隻基金嘅「HKIFA - MPF Performance Table」，有 3 個月、1 年、3 年 % Growth（累積）同排名，受託人註明數據來源係 Lipper。用 `pdftotext -bbox` 按欄位讀：名稱只取表格名欄（左邊圖表圖例都係基金名）；每行依次要係 NAV、3 個月、排名、1 年、排名、3 年、排名、組別基金數目，三個回報同排名要喺各自表頭底下；表頭四個截至日期要一致。一年同積金局平台同期逐行核對（表冇五年、十年）。同計劃逐隻基金便覽有三年年率化（較舊月份），兩者分欄並存，唔互相換算。
 
+受託人冇每月三年數字嘅基金，由 ADR 0015 用 HKIFA 轉載嘅 Lipper 表補位，標明第三方，受託人數字優先。
+
 ## 實作約束
 
 - 候選檔 `data/coverage/<date>-official-return-observations-candidate.json` 同時載年率化同累積紀錄；累積紀錄帶 `basis: "cumulative"`，舊檔原樣有效（`splitReturnObservations`）。

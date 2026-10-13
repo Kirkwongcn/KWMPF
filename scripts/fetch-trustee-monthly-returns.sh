@@ -14,11 +14,15 @@ set -euo pipefail
 #   同目標日期唔一樣就唔用。
 # - 萬通 MASS《Monthly Fund Performance of the Scheme》：固定網址只得最新一期，表頭日期（MM/DD/YYYY）
 #   同目標日期唔一樣就唔用。
+# - 香港投資基金公會轉載嘅 Lipper《MPF Performance Table》（第三方，ADR 0015）：檔名月份係刊出月份
+#   （例如 8 月底數據喺 `HKMPF_English_092026.pdf`），表頭日期同目標日期唔一樣就唔用；用嗰陣連
+#   `--hkifa-map` 對照表一齊交俾讀取器。
 # - 永明彩虹強積金官網累積回報接口（POST）：按季更新，只提供最新一期，VALUATION_DT 同目標日期
 #   唔一樣就唔用。
 #
 # 每份成功下載而且日期對得上的來源，喺 <output-dir>/arguments.txt 寫一行
-# `--summary <值>`、`--bct <值>`、`--manulife <值>`、`--bocpru <值>`、`--sunlife <值>` 或 `--yflife <值>`。其餘寫入 <output-dir>/skipped.txt（以 tab 分隔：
+# `--summary <值>`、`--bct <值>`、`--manulife <值>`、`--bocpru <值>`、`--sunlife <值>`、`--yflife <值>` 或
+# `--hkifa <值>`（連 `--hkifa-map <對照表>`）。其餘寫入 <output-dir>/skipped.txt（以 tab 分隔：
 # 計劃、網址、原因代號、說明），原因代號：
 #   download-failed   下載失敗或者唔係 PDF；
 #   invalid-response  BCT／中銀保誠／永明回應唔係有效基金表現資料，或宏利摘要讀唔到唯一「As at」日期，或萬通月報讀唔到唯一表頭日期；
@@ -198,6 +202,30 @@ else
     printf '%s\t%s\t%s\theader date %s, not %s\n' "$yflife_scheme" "$yflife_url" "$reason" "$dates" "$data_as_of" >>"$output_dir/skipped.txt"
   else
     printf -- '--yflife\t%s|%s|%s|%s\n' "$yflife_scheme" "$yflife_url" "$yflife_target" "$retrieved_at" >>"$output_dir/arguments.txt"
+  fi
+fi
+
+# HKIFA／Lipper：檔名月份＝目標月份下一個月。日期只由「FUND NAME」表頭行讀（文件入面有其他日期，
+# 例如基金開支比率日期），必須唯一。
+hkifa_month="$(date -u -d "${year}-${month}-01 +1 month" +%m%Y)"
+hkifa_url="https://hkifa.org.hk/data/mpf/orso/english/HKMPF_English_${hkifa_month}.pdf"
+hkifa_target="$output_dir/hkifa-lipper-mpf-${hkifa_month}.pdf"
+hkifa_scheme="HKIFA Lipper MPF Performance Table"
+retrieved_at="$(now)"
+if ! fetch "$hkifa_url" "$hkifa_target" || [ "$(head -c 5 "$hkifa_target")" != "%PDF-" ]; then
+  printf '%s\t%s\tdownload-failed\tdownload failed or not a PDF\n' "$hkifa_scheme" "$hkifa_url" >>"$output_dir/skipped.txt"
+  rm -f "$hkifa_target"
+else
+  dates="$(pdftotext -layout "$hkifa_target" - 2>/dev/null | grep 'FUND NAME' | grep -oE '\b[0-9]{2}/[0-9]{2}/[0-9]{4}\b' | sort -u | awk -F/ '{print $3 "-" $1 "-" $2}' | paste -sd, - || true)"
+  if [[ ! "$dates" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
+    printf '%s\t%s\tinvalid-response\theader dates "%s"\n' "$hkifa_scheme" "$hkifa_url" "$dates" >>"$output_dir/skipped.txt"
+  elif [ "$dates" != "$data_as_of" ]; then
+    reason="source-behind"
+    [[ "$dates" > "$data_as_of" ]] && reason="source-ahead"
+    printf '%s\t%s\t%s\theader date %s, not %s\n' "$hkifa_scheme" "$hkifa_url" "$reason" "$dates" "$data_as_of" >>"$output_dir/skipped.txt"
+  else
+    printf -- '--hkifa\t%s|%s|%s\n' "$hkifa_url" "$hkifa_target" "$retrieved_at" >>"$output_dir/arguments.txt"
+    printf -- '--hkifa-map\t%s\n' "data/reference/hkifa-lipper-fund-map.json" >>"$output_dir/arguments.txt"
   fi
 fi
 

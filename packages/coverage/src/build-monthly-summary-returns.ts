@@ -13,7 +13,10 @@ import {
 import { parseManulifeMonthlySummary } from "./manulife-monthly-summary-parser";
 import { matchSunLifeRows, parseSunLifeCumulativePerformance } from "./sun-life-mpf-performance";
 import { parseYfLifeMonthlyPerformance } from "./yf-life-monthly-performance-parser";
+import { parseHkifaLipperMpfTable, readGrowth } from "./hkifa-lipper-mpf-table-parser";
+import type { HkifaLipperMapEntry } from "./hkifa-lipper-fund-map";
 import {
+  mergeCumulativeObservations,
   splitReturnObservations,
   validateOfficialCumulativeReturnObservations,
   validateOfficialReturnObservations,
@@ -30,7 +33,10 @@ import {
  * - `--manulife`：宏利環球精選《每月摘要 Monthly Fund Summary》PDF（`pdftotext -bbox` 按欄位讀）；
  * - `--bocpru`：中銀國際英國保誠信託官網強積金價格及表現數據接口（JSON 回應原檔）；
  * - `--sunlife`：永明金融官網強積金基金價格及表現累積回報數據接口（JSON 回應原檔）；
- * - `--yflife`：萬通信託每月《Monthly Fund Performance of the Scheme》PDF（`pdftotext -bbox` 按欄位讀）。
+ * - `--yflife`：萬通信託每月《Monthly Fund Performance of the Scheme》PDF（`pdftotext -bbox` 按欄位讀）；
+ * - `--hkifa "<url>|<pdf>|<retrievedAt>"` 加 `--hkifa-map <對照表>`：香港投資基金公會轉載嘅 Lipper
+ *   《MPF Performance Table》（第三方，ADR 0015）。只用對照表有嘅行，每行一年同平台同期核對；
+ *   紀錄帶 `publisher: "hkifa-lipper"`，受託人數字優先（見下面合併規則）。
  *
  * 用法：
  *   bun src/build-monthly-summary-returns.ts --source <platform.json> \
@@ -72,12 +78,15 @@ const manulifeSummaries = argumentsNamed("--manulife");
 const bocPruListings = argumentsNamed("--bocpru");
 const sunLifeResponses = argumentsNamed("--sunlife");
 const yfLifeSummaries = argumentsNamed("--yflife");
+const hkifaTables = argumentsNamed("--hkifa");
+const hkifaMapPath = argument("--hkifa-map");
+if (hkifaTables.length > 0 && !hkifaMapPath) throw new Error("--hkifa needs --hkifa-map <data/reference/hkifa-lipper-fund-map.json>");
 if (
   !sourcePath ||
   !basePath ||
   !outputPath ||
   !reportPath ||
-  summaries.length + bctResponses.length + manulifeSummaries.length + bocPruListings.length + sunLifeResponses.length + yfLifeSummaries.length === 0
+  summaries.length + bctResponses.length + manulifeSummaries.length + bocPruListings.length + sunLifeResponses.length + yfLifeSummaries.length + hkifaTables.length === 0
 )
   throw new Error(
     'Usage: bun src/build-monthly-summary-returns.ts --source <platform.json> --base-candidate <candidate.json> [--summary "<scheme>|<url>|<pdf>|<retrievedAt>"] [--bct "<scheme>|<url>|<json>|<retrievedAt>"] [--manulife "<scheme>|<url>|<pdf>|<retrievedAt>"] [--bocpru "<scheme>|<url>|<json>|<retrievedAt>"] [--sunlife "<scheme>|<url>|<json>|<retrievedAt>"] [--yflife "<scheme>|<url>|<pdf>|<retrievedAt>"] --output <candidate.json> --report <report.json>',
@@ -517,6 +526,92 @@ function verifyDocument(document: SourceDocument) {
   };
 }
 
+/**
+ * Lipper 表（第三方，ADR 0015）：只按對照表精確查行名；對照表每一行都要喺表入面剛好出現一次，
+ * 一年要同積金局平台同期一年回報完全相等。有任何一行唔啱，成份作廢（紅線 3）。三年空格（成立未滿
+ * 三年）唔出紀錄。
+ */
+async function readHkifa(entry: string) {
+  const [url, path, retrievedAt] = entry.split("|");
+  if (!url || !path || !retrievedAt) throw new Error(`Bad --hkifa value: ${entry}`);
+  if (!url.startsWith("https://")) throw new Error(`--hkifa source must be https: ${url}`);
+  const bytes = await readFile(path);
+  if (bytes.subarray(0, 5).toString("latin1") !== "%PDF-") throw new Error(`${path}: not a PDF`);
+  const bbox = execFileSync("pdftotext", ["-bbox", path, "-"], {
+    encoding: "utf8",
+    maxBuffer: 64 * 1024 * 1024,
+    stdio: ["ignore", "pipe", "ignore"],
+  });
+  const table = parseHkifaLipperMpfTable(bbox);
+  const map = JSON.parse(await readFile(hkifaMapPath!, "utf8")) as { entries: HkifaLipperMapEntry[] };
+  const sha256 = createHash("sha256").update(bytes).digest("hex");
+  const problems: string[] = [];
+  const observations: OfficialCumulativeReturnObservation[] = [];
+  let noThreeYear = 0;
+  for (const mapped of map.entries) {
+    const rows = table.rows.filter((row) => row.name === mapped.lipperName);
+    if (rows.length !== 1) {
+      problems.push(`"${mapped.lipperName}" appears ${rows.length} time(s)`);
+      continue;
+    }
+    if (!knownIds.has(mapped.fundClassId)) {
+      problems.push(`${mapped.fundClassId} is not in the platform snapshot`);
+      continue;
+    }
+    const row = rows[0]!;
+    const where = `"${row.name}"`;
+    let oneYear: number | null;
+    let threeYears: { value: number | null; printed: string };
+    try {
+      oneYear = readGrowth(row.oneYear, `${where} 1-year`).value;
+      threeYears = readGrowth(row.threeYears, `${where} 3-year`);
+    } catch (error) {
+      problems.push(error instanceof Error ? error.message : String(error));
+      continue;
+    }
+    const platform = checkSnapshot.records.find((record) => record.fundClassId === mapped.fundClassId)?.returns?.[1];
+    if (!platform || platform.dataAsOf !== table.dataAsOf || oneYear === null || platform.cumulative !== oneYear) {
+      problems.push(
+        `${mapped.fundClassId} ${where} one-year ${oneYear} vs platform ${platform?.cumulative} (${platform?.dataAsOf ?? "none"})`,
+      );
+      continue;
+    }
+    if (threeYears.value === null) {
+      noThreeYear += 1;
+      continue;
+    }
+    observations.push({
+      fundClassId: mapped.fundClassId,
+      periodYears: 3,
+      basis: "cumulative",
+      cumulative: threeYears.value,
+      printed: threeYears.printed,
+      dataAsOf: table.dataAsOf,
+      sourceUrl: url,
+      retrievedAt,
+      sourceSha256: sha256,
+      publisher: "hkifa-lipper",
+    });
+  }
+  if (problems.length > 0) throw new Error(`HKIFA Lipper table rejected: ${problems.join("; ")}`);
+  return {
+    observations,
+    source: {
+      kind: "hkifa-lipper-mpf-table-pdf",
+      publisher: "hkifa-lipper",
+      url,
+      retrievedAt,
+      sha256,
+      bytes: bytes.length,
+      dataAsOf: table.dataAsOf,
+      rows: table.rows.length,
+      mapped: map.entries.length,
+      oneYearCrossChecks: map.entries.length,
+      noThreeYear,
+    },
+  };
+}
+
 // 每份文件獨立：一份作廢（讀唔到、對唔上、核對唔一致）只影響自己，其他照用（紅線 3 以文件為單位）。
 const sources = [];
 const rejected: { flag: string; entry: string; reason: string }[] = [];
@@ -541,7 +636,20 @@ for (const input of inputs) {
     console.error(`REJECTED ${input.flag} ${input.entry.split("|")[0]}: ${reason}`);
   }
 }
-if (sources.length === 0)
+const thirdParty: OfficialCumulativeReturnObservation[] = [];
+const thirdPartySources: Awaited<ReturnType<typeof readHkifa>>["source"][] = [];
+for (const entry of hkifaTables) {
+  try {
+    const { observations, source } = await readHkifa(entry);
+    thirdParty.push(...observations);
+    thirdPartySources.push(source);
+  } catch (error) {
+    const reason = error instanceof Error ? error.message : String(error);
+    rejected.push({ flag: "--hkifa", entry, reason });
+    console.error(`REJECTED --hkifa ${entry.split("|")[0]}: ${reason}`);
+  }
+}
+if (sources.length + thirdPartySources.length === 0)
   throw new Error(`Every source was rejected: ${rejected.map((item) => item.reason).join(" | ")}`);
 
 // 舊候選檔的累積紀錄一定要對得上今次平台快照，否則發布時先爆，喺呢度就停。
@@ -550,35 +658,11 @@ if (orphaned.length > 0)
   throw new Error(
     `Base candidate has cumulative rows for unknown fund classes: ${orphaned.map((row) => row.fundClassId).join(", ")}`,
   );
-// 同一份批次入面同一隻基金唔可以有兩份披露（紅線 5）。
-const freshIds = new Set<string>();
-for (const row of fresh) {
-  if (freshIds.has(row.fundClassId))
-    throw new Error(`More than one summary disclosed ${row.fundClassId}`);
-  freshIds.add(row.fundClassId);
-}
-// 每隻基金只留一筆累積：新文件截至日期較新先取代；同日但原文唔同即報錯。
-const byFund = new Map(base.cumulative.map((row) => [row.fundClassId, row]));
-const replaced: string[] = [];
-const keptNewer: string[] = [];
-for (const row of fresh) {
-  const existing = byFund.get(row.fundClassId);
-  if (existing && existing.dataAsOf > row.dataAsOf) {
-    keptNewer.push(row.fundClassId);
-    continue;
-  }
-  if (existing && existing.dataAsOf === row.dataAsOf) {
-    if (existing.printed !== row.printed)
-      throw new Error(
-        `${row.fundClassId}: two disclosures dated ${row.dataAsOf} disagree (${existing.printed} vs ${row.printed})`,
-      );
-    continue;
-  }
-  if (existing) replaced.push(row.fundClassId);
-  byFund.set(row.fundClassId, row);
-}
-const cumulative = [...byFund.values()].sort((a, b) =>
-  a.fundClassId.localeCompare(b.fundClassId),
+// 受託人優先、同日原文要一致等合併規則見 mergeCumulativeObservations（ADR 0014、0015）。
+const { cumulative, replaced, keptNewer, keptTrustee } = mergeCumulativeObservations(
+  base.cumulative,
+  fresh,
+  thirdParty,
 );
 const annualizedCheck = validateOfficialReturnObservations(base.annualized);
 const cumulativeCheck = validateOfficialCumulativeReturnObservations(cumulative);
@@ -601,10 +685,12 @@ await writeFile(
       method:
         "Official trustee monthly data: HSBC / Hang Seng Monthly Fund Performance Summary main table (pdftotext -layout), BCT website fund performance responses, the Manulife Global Select Monthly Fund Summary (pdftotext -bbox columns), the BOCI-Prudential website MPF price and performance listing (JSON), the Sun Life website MPF cumulative performance data (JSON), and the YF Life (MASS) Monthly Fund Performance of the Scheme (pdftotext -bbox columns). Exact English-name match within the scheme (BCT unit class by the Class X / Unit Class X contract), one-year cumulative cross-checked against the MPFA platform one-year return of the same date for every row; three-year cumulative stored as published (ADR 0014), never converted to annualized.",
       sources,
+      thirdPartySources,
       annualizedRows: base.annualized.length,
       cumulativeRows: cumulative.length,
       replacedCumulative: replaced,
       keptNewerCumulative: keptNewer,
+      keptTrusteeOverThirdParty: keptTrustee,
       rejectedSources: rejected,
     },
     null,

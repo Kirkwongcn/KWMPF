@@ -29,6 +29,8 @@ type FundSummary = {
   returnsFreshness?: Record<string, Freshness>;
   cumulativeReturn3y?: number;
   cumulativeReturn3yPrinted?: string;
+  /** 冇＝受託人官方；`"hkifa-lipper"`＝香港投資基金公會轉載嘅 Lipper 表（第三方，ADR 0015）。 */
+  cumulativeReturn3yPublisher?: "hkifa-lipper";
   cumulativeReturnsFreshness?: Record<string, Freshness>;
   managementFee?: number;
   latestFer?: number;
@@ -199,8 +201,8 @@ function SortHeader({
   );
 }
 
-// 受託人官方三年累積回報（ADR 0014）：截至日期同年率化回報唔同，所以每格都印出自己的日期。
-// 官方印「-」就寫官方未提供，唔當 0。
+// 三年累積回報（ADR 0014）：截至日期同年率化回報唔同，所以每格都印出自己的日期。
+// 官方印「-」就寫官方未提供，唔當 0。受託人冇每月數字嘅基金用 Lipper 表（第三方，ADR 0015），格內標明。
 function CumulativeCell({ fund }: { fund: FundSummary }) {
   const freshness = fund.cumulativeReturnsFreshness?.["3"];
   if (typeof fund.cumulativeReturn3y !== "number")
@@ -227,12 +229,18 @@ function CumulativeCell({ fund }: { fund: FundSummary }) {
       </td>
     );
   const stale = freshness?.status === "stale";
+  const thirdParty = fund.cumulativeReturn3yPublisher === "hkifa-lipper";
   return (
     <td
       className={`kw-num kw-num--cumulative${stale ? " kw-num--stale" : ""}${fund.cumulativeReturn3y < 0 ? " kw-num--negative" : ""}`}
-      title="受託人官方累積回報（非年率化）"
+      title={
+        thirdParty
+          ? "第三方：香港投資基金公會轉載嘅 Lipper 三年累積回報（非年率化）"
+          : "受託人官方累積回報（非年率化）"
+      }
     >
       {fund.cumulativeReturn3yPrinted ?? fund.cumulativeReturn3y}%
+      {thirdParty && <span className="kw-cell-note">Lipper（第三方）</span>}
       {stale && (
         <span className="kw-data-state kw-data-state--stale">過期</span>
       )}
@@ -270,6 +278,10 @@ export function FundsPage({
   const [query, setQuery] = useState(initialQuery);
   const [submittedQuery, setSubmittedQuery] = useState(initialQuery);
   const [results, setResults] = useState<FundSummary[] | null>(null);
+  // 結果有 Lipper（第三方，ADR 0015）數字先改表頭同說明，冇就照舊寫「官方累積」。
+  const thirdPartyShown = (results ?? []).some(
+    (fund) => fund.cumulativeReturn3yPublisher === "hkifa-lipper",
+  );
   const [totalMatches, setTotalMatches] = useState(0);
   const [failed, setFailed] = useState(false);
   const [page, setPage] = useState(
@@ -682,9 +694,13 @@ export function FundsPage({
                     <th
                       scope="colgroup"
                       className="kw-screener__cumulative-group"
-                      title="受託人官方累積回報，非年率化，只同累積數字比較"
+                      title={
+                        thirdPartyShown
+                          ? "受託人官方累積回報優先，冇就用 Lipper 第三方數字（格內標明）；非年率化，只同累積數字比較"
+                          : "受託人官方累積回報，非年率化，只同累積數字比較"
+                      }
                     >
-                      官方累積
+                      {thirdPartyShown ? "累積（受託人／第三方）" : "官方累積"}
                     </th>
                     <th scope="colgroup" colSpan={2}>
                       風險
@@ -722,7 +738,7 @@ export function FundsPage({
                     <SortHeader
                       sortKey="cumulative3y"
                       label="3年累積"
-                      title="受託人官方三年累積回報（非年率化，唔同年率化比較；只供瀏覽，唔係排名）"
+                      title="三年累積回報（非年率化，唔同年率化比較；只供瀏覽，唔係排名）：受託人官方優先，冇就用 Lipper 第三方數字並標明"
                       {...sortProps}
                     />
                     <SortHeader
@@ -852,7 +868,11 @@ export function FundsPage({
               {oneYearDates.size === 1 && [...oneYearDates][0]
                 ? `本頁一年回報截至 ${[...oneYearDates][0]}`
                 : "本頁各基金一年回報截至日期不一"}
-              （見「截至」欄）。其他期間及基金規模各有自己的截至日期，滑鼠停留數值可見；三年年率化回報來自受託人便覽。「官方累積」欄係受託人官方每月數據的三年累積回報（非年率化），截至日期印喺每格之下，只同累積數字比較；按此欄排序只供瀏覽，唔係排名，而且會跨基金類型。
+              （見「截至」欄）。其他期間及基金規模各有自己的截至日期，滑鼠停留數值可見；三年年率化回報來自受託人便覽。「3年累積」欄係三年累積回報（非年率化），受託人官方每月數據優先
+              {thirdPartyShown
+                ? "；受託人冇提供嘅基金用香港投資基金公會轉載嘅 Lipper 表，格內標「Lipper（第三方）」"
+                : ""}
+              。截至日期印喺每格之下，只同累積數字比較；按此欄排序只供瀏覽，唔係排名，而且會跨基金類型。
               「—」＝未有數值；「過期」＝超出網站時效門檻，只作參考、不入排名。
             </p>
             <nav className="kw-pagination" aria-label="基金結果頁次">

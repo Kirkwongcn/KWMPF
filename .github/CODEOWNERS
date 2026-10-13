@@ -36,6 +36,9 @@
 /packages/coverage/src/boci-prudential-mpf-listing.ts     @Kirkwongcn
 /packages/coverage/src/sun-life-mpf-performance.ts        @Kirkwongcn
 /packages/coverage/src/yf-life-monthly-performance-parser.ts @Kirkwongcn
+/packages/coverage/src/hkifa-lipper-mpf-table-parser.ts   @Kirkwongcn
+/packages/coverage/src/hkifa-lipper-fund-map.ts           @Kirkwongcn
+/packages/coverage/src/build-hkifa-lipper-map.ts          @Kirkwongcn
 /scripts/fetch-trustee-monthly-returns.sh                 @Kirkwongcn
 /.github/workflows/refresh-trustee-returns.yml            @Kirkwongcn
 /packages/coverage/src/candidate-anomalies.ts              @Kirkwongcn

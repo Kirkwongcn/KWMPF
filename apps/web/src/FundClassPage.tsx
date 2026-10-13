@@ -37,10 +37,15 @@ export type PublishedFundClass = {
     annualizedReturn1y?: number;
     annualizedReturn3y?: number;
     cumulativeReturn3y?: number;
-    // 受託人官方三年累積回報（ADR 0014）：自己的原文、截至日期及來源。
+    // 三年累積回報（ADR 0014）：自己的原文、截至日期及來源；publisher 係 Lipper 就係第三方（ADR 0015）。
     cumulativeReturnSources?: Record<
       string,
-      { printed: string; dataAsOf: string; sourceUrl: string }
+      {
+        printed: string;
+        dataAsOf: string;
+        sourceUrl: string;
+        publisher?: "hkifa-lipper";
+      }
     >;
     returnSources?: Record<string, { dataAsOf: string; sourceUrl: string }>;
     annualizedReturn5y?: number;
@@ -1068,7 +1073,10 @@ export function FundClassPage({
                                 target="_blank"
                                 rel="noreferrer"
                               >
-                                受託人每月數據
+                                {fundClass.cumulativeReturnSources["3"]
+                                  .publisher === "hkifa-lipper"
+                                  ? "Lipper（經 HKIFA，第三方）"
+                                  : "受託人每月數據"}
                               </a>
                             </small>
                           </>
@@ -1083,7 +1091,11 @@ export function FundClassPage({
             </div>
             {fundClass.cumulativeReturnSources?.["3"] && (
               <p className="kw-muted" role="note">
-                三年累積回報來自受託人官方每月數據（每月摘要或官網基金表現），照原文顯示；累積同年率化口徑唔同，唔會互相換算，亦唔入年率化排名。
+                {fundClass.cumulativeReturnSources["3"].publisher ===
+                "hkifa-lipper"
+                  ? "受託人未有提供每月三年數字，三年累積回報用香港投資基金公會轉載嘅 Lipper 表（第三方，唔係受託人官方披露），照原文顯示；受託人日後提供就會取代。"
+                  : "三年累積回報來自受託人官方每月數據（每月摘要或官網基金表現），照原文顯示。"}
+                累積同年率化口徑唔同，唔會互相換算，亦唔入年率化排名。
               </p>
             )}
             <ValueBars
