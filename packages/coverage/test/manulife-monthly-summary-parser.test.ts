@@ -22,6 +22,13 @@ describe("Manulife Global Select monthly fund summary", () => {
     ]);
   });
 
+  it("does not accept a lone N/A label as a not-applicable cell", () => {
+    // 退休收益基金十年：拎走下面英文「N/A」，剩低上面中文「不適用▲」一個，唔可以當官方未提供。
+    const broken = fixture.replace(/\s*<word [^>]*>N\/A<\/word>/, "");
+    expect(broken).not.toBe(fixture);
+    expect(() => parseManulifeMonthlySummary(broken)).toThrow(/SHK150: column 10Y has 1 cells \(不適用▲\)/);
+  });
+
   it("fails the whole summary when a return cell is missing", () => {
     // 刪走康健護理三年「28.01」：嗰欄冇格，唔可以出其他欄或者其他基金。
     const broken = fixture.replace(/\s*<word [^>]*>28\.01<\/word>/, "");

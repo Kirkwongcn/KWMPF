@@ -110,8 +110,9 @@ else
   if [ "$(printf '%s\n' "$as_at" | grep -c .)" != "1" ]; then
     printf '%s\t%s\tinvalid-response\tAs at dates "%s"\n' "$manulife_scheme" "$manulife_url" "$(printf '%s' "$as_at" | tr '\n' ';')" >>"$output_dir/skipped.txt"
   else
-    manulife_date="$(date -u -d "$as_at" +%F)"
-    if [ "$manulife_date" != "$data_as_of" ]; then
+    if ! manulife_date="$(date -u -d "$as_at" +%F 2>/dev/null)"; then
+      printf '%s\t%s\tinvalid-response\tAs at "%s" is not a date\n' "$manulife_scheme" "$manulife_url" "$as_at" >>"$output_dir/skipped.txt"
+    elif [ "$manulife_date" != "$data_as_of" ]; then
       reason="source-behind"
       [[ "$manulife_date" > "$data_as_of" ]] && reason="source-ahead"
       printf '%s\t%s\t%s\tAs at %s, not %s\n' "$manulife_scheme" "$manulife_url" "$reason" "$manulife_date" "$data_as_of" >>"$output_dir/skipped.txt"

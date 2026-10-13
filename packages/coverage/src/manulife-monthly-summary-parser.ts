@@ -28,8 +28,9 @@ const COLUMNS = ["6M", "YTD", "1Y", "3Y", "5Y", "10Y", "SI", "Y1", "Y2", "Y3", "
 const CELL = /^(?:-|[+-]?\d+(?:\.\d+)?)$/;
 // 「不適用▲」「N/A▲」：未滿嗰期，中英對照分別印喺數字行上下（例如退休收益基金十年）。
 const NOT_APPLICABLE = /^(?:N\/A|不適用)▲?$/;
+// 實測：中文「不適用▲」喺數字行上面 3 至 4 pt，英文「N/A▲」喺下面 4 至 5 pt；相鄰基金行距約 25 pt。
 const NA_ABOVE = 6;
-const NA_BELOW = 8;
+const NA_BELOW = 6;
 const CODE = /^(?:SHK|DHK|DIS)\d+\/?$/;
 // 英文名喺編號同一行，或者下面最多兩行（約 14 pt 內）。
 const NAME_BELOW = 14;
@@ -84,7 +85,8 @@ function englishName(words: Word[], date: Word, codeRight: number) {
     .replace(/\s+/g, " ")
     .trim();
   // 「Manulife MPF Stable Fund 2」「Manulife MPF Conservative Fund ^」：註腳喺最後一個「Fund」之後。
-  return text.match(/^(Manulife MPF .*\bFund)\b(?:\s*[\^\d]+)?$/)?.[1];
+  // 註腳有時緊貼「Fund」（併成「Fund2」），所以「Fund」之後唔要求字界，只准接註腳。
+  return text.match(/^(Manulife MPF .*\bFund)(?:\s*[\^\d]+)?$/)?.[1];
 }
 
 export function parseManulifeMonthlySummary(bboxXml: string): ManulifeMonthlySummary {
@@ -126,7 +128,9 @@ export function parseManulifeMonthlySummary(bboxXml: string): ManulifeMonthlySum
       const band = words.filter((item) => item.xMid > tableLeft && item.yMid >= code.yMid - NA_ABOVE && item.yMid <= code.yMid + NA_BELOW);
       for (const word of band) {
         const onRow = Math.abs(word.yMid - code.yMid) <= 3;
-        if (!NOT_APPLICABLE.test(word.text) && !(onRow && CELL.test(word.text))) {
+        const notApplicableAbove = word.text.startsWith("不適用") && word.yMid < code.yMid;
+        const notApplicableBelow = word.text.startsWith("N/A") && word.yMid > code.yMid;
+        if (NOT_APPLICABLE.test(word.text) ? !(notApplicableAbove || notApplicableBelow) : !(onRow && CELL.test(word.text))) {
           if (!onRow) continue;
           throw new Error(`${context}: unexpected text "${word.text}" in the return row`);
         }
@@ -135,9 +139,11 @@ export function parseManulifeMonthlySummary(bboxXml: string): ManulifeMonthlySum
         cells[column]!.push(word.text);
       }
       cells.forEach((values, column) => {
-        const notApplicable = values.length > 0 && values.length <= 2 && values.every((value) => NOT_APPLICABLE.test(value)) && new Set(values.map((value) => value.startsWith("N/A"))).size === values.length;
-        if (values.length !== 1 && !notApplicable) throw new Error(`${context}: column ${COLUMNS[column]} has ${values.length} cells (${values.join(" ")})`);
-        if (values.length === 1 && NOT_APPLICABLE.test(values[0]!) === false && !CELL.test(values[0]!)) throw new Error(`${context}: column ${COLUMNS[column]} is not a return`);
+        // 唔適用一定係一對：上面中文「不適用▲」、下面英文「N/A▲」；單獨一個可能係隔籬行嘅標註，唔接受。
+        const notApplicable =
+          values.length === 2 && values.some((value) => value.startsWith("不適用")) && values.some((value) => value.startsWith("N/A"));
+        const singleReturn = values.length === 1 && CELL.test(values[0]!);
+        if (!notApplicable && !singleReturn) throw new Error(`${context}: column ${COLUMNS[column]} has ${values.length} cells (${values.join(" ")})`);
       });
       const cell = (column: (typeof COLUMNS)[number]) => {
         const value = cells[COLUMNS.indexOf(column)]![0]!;
