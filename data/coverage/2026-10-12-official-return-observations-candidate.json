@@ -2360,6 +2360,22 @@
     "retrievedAt": "2026-09-26T13:17:26.159Z"
   },
   {
+    "fundClassId": "mpfa-cf-134",
+    "periodYears": 3,
+    "annualized": 2.65,
+    "dataAsOf": "2026-07-31",
+    "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-jul-2026.pdf",
+    "retrievedAt": "2026-10-13T14:53:28Z"
+  },
+  {
+    "fundClassId": "mpfa-cf-146",
+    "periodYears": 3,
+    "annualized": 1.27,
+    "dataAsOf": "2026-07-31",
+    "sourceUrl": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-jul-2026.pdf",
+    "retrievedAt": "2026-10-13T14:53:28Z"
+  },
+  {
     "fundClassId": "mpfa-cf-1099",
     "periodYears": 3,
     "basis": "cumulative",
