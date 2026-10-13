@@ -89,7 +89,7 @@ if (
   summaries.length + bctResponses.length + manulifeSummaries.length + bocPruListings.length + sunLifeResponses.length + yfLifeSummaries.length + hkifaTables.length === 0
 )
   throw new Error(
-    'Usage: bun src/build-monthly-summary-returns.ts --source <platform.json> --base-candidate <candidate.json> [--summary "<scheme>|<url>|<pdf>|<retrievedAt>"] [--bct "<scheme>|<url>|<json>|<retrievedAt>"] [--manulife "<scheme>|<url>|<pdf>|<retrievedAt>"] [--bocpru "<scheme>|<url>|<json>|<retrievedAt>"] [--sunlife "<scheme>|<url>|<json>|<retrievedAt>"] [--yflife "<scheme>|<url>|<pdf>|<retrievedAt>"] --output <candidate.json> --report <report.json>',
+    'Usage: bun src/build-monthly-summary-returns.ts --source <platform.json> --base-candidate <candidate.json> [--summary "<scheme>|<url>|<pdf>|<retrievedAt>"] [--bct "<scheme>|<url>|<json>|<retrievedAt>"] [--manulife "<scheme>|<url>|<pdf>|<retrievedAt>"] [--bocpru "<scheme>|<url>|<json>|<retrievedAt>"] [--sunlife "<scheme>|<url>|<json>|<retrievedAt>"] [--yflife "<scheme>|<url>|<pdf>|<retrievedAt>"] [--hkifa "<url>|<pdf>|<retrievedAt>" --hkifa-map <map.json>] --output <candidate.json> --report <report.json>',
   );
 
 const snapshot = parseSourceSnapshot(JSON.parse(await readFile(sourcePath, "utf8")));
@@ -683,7 +683,7 @@ await writeFile(
       sourceSnapshot: sourcePath,
       baseCandidate: basePath,
       method:
-        "Official trustee monthly data: HSBC / Hang Seng Monthly Fund Performance Summary main table (pdftotext -layout), BCT website fund performance responses, the Manulife Global Select Monthly Fund Summary (pdftotext -bbox columns), the BOCI-Prudential website MPF price and performance listing (JSON), the Sun Life website MPF cumulative performance data (JSON), and the YF Life (MASS) Monthly Fund Performance of the Scheme (pdftotext -bbox columns). Exact English-name match within the scheme (BCT unit class by the Class X / Unit Class X contract), one-year cumulative cross-checked against the MPFA platform one-year return of the same date for every row; three-year cumulative stored as published (ADR 0014), never converted to annualized.",
+        "Official trustee monthly data: HSBC / Hang Seng Monthly Fund Performance Summary main table (pdftotext -layout), BCT website fund performance responses, the Manulife Global Select Monthly Fund Summary (pdftotext -bbox columns), the BOCI-Prudential website MPF price and performance listing (JSON), the Sun Life website MPF cumulative performance data (JSON), the YF Life (MASS) Monthly Fund Performance of the Scheme (pdftotext -bbox columns); plus, for funds without a trustee figure, the third-party HKIFA-published Lipper MPF Performance Table via a reviewed name map (ADR 0015, rows carry publisher hkifa-lipper; trustee rows always take precedence). Exact English-name match within the scheme (BCT unit class by the Class X / Unit Class X contract), one-year cumulative cross-checked against the MPFA platform one-year return of the same date for every row; three-year cumulative stored as published (ADR 0014), never converted to annualized.",
       sources,
       thirdPartySources,
       annualizedRows: base.annualized.length,

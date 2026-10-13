@@ -565,9 +565,12 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
                     <tr>
                       <th scope="row">3 年累積</th>
                       {(() => {
+                        // 最高／最低標記只喺受託人官方數字之間比；Lipper 第三方（ADR 0015）唔參與。
                         const verified = (fund: ComparedFund) =>
                           fund.cumulativeReturnsFreshness?.["3"]?.status ===
-                          "verified"
+                            "verified" &&
+                          fund.fundClass.cumulativeReturnSources?.["3"]
+                            ?.publisher !== "hkifa-lipper"
                             ? fund.fundClass.cumulativeReturn3y
                             : undefined;
                         const range = rangeOf(loaded.map(verified));

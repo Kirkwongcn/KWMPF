@@ -138,7 +138,14 @@ export function proposeHkifaLipperMap(
   const rejected: HkifaLipperMapRejection[] = [];
   for (const row of rows) {
     const prefixes = Object.keys(HKIFA_LIPPER_SCHEME_PREFIXES).filter((prefix) => row.name.startsWith(prefix));
-    if (prefixes.length !== 1) continue; // 組別標題、平均、基準：唔係基金行。
+    if (prefixes.length !== 1) {
+      // 組別標題、平均、基準唔係基金行；其餘有數值嘅行（例如前綴表未有嘅計劃）要記低，唔好靜靜跌咗。
+      const hasValues = row.oneYear.length > 0 || row.threeYears.length > 0;
+      const notFund = /Average \(\d+\)$/u.test(row.name) || !row.name.includes("-");
+      if (hasValues && !notFund)
+        rejected.push({ lipperName: row.name, reason: `${prefixes.length} scheme prefixes match` });
+      continue;
+    }
     const schemeName = HKIFA_LIPPER_SCHEME_PREFIXES[prefixes[0]!]!;
     const fund = row.name.slice(prefixes[0]!.length);
     if (row.oneYear.length !== 1 || !/^-?\d+\.\d{2}$/u.test(row.oneYear[0]!)) {

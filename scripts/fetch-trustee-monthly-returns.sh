@@ -223,10 +223,14 @@ else
     reason="source-behind"
     [[ "$dates" > "$data_as_of" ]] && reason="source-ahead"
     printf '%s\t%s\t%s\theader date %s, not %s\n' "$hkifa_scheme" "$hkifa_url" "$reason" "$dates" "$data_as_of" >>"$output_dir/skipped.txt"
+  elif [ ! -f "data/reference/hkifa-lipper-fund-map.json" ]; then
+    # 對照表喺資料 PR 先加入；未有對照表就唔用，唔好令成份文件作廢。
+    printf '%s\t%s\tno-map\tdata/reference/hkifa-lipper-fund-map.json is missing\n' "$hkifa_scheme" "$hkifa_url" >>"$output_dir/skipped.txt"
   else
     printf -- '--hkifa\t%s|%s|%s\n' "$hkifa_url" "$hkifa_target" "$retrieved_at" >>"$output_dir/arguments.txt"
     printf -- '--hkifa-map\t%s\n' "data/reference/hkifa-lipper-fund-map.json" >>"$output_dir/arguments.txt"
   fi
 fi
 
-echo "Fetched $(wc -l <"$output_dir/arguments.txt") source(s); skipped $(wc -l <"$output_dir/skipped.txt")."
+# `--hkifa-map` 係 `--hkifa` 嘅附帶參數，唔計做來源。
+echo "Fetched $(grep -vc '^--hkifa-map' "$output_dir/arguments.txt" || true) source(s); skipped $(wc -l <"$output_dir/skipped.txt")."

@@ -20,6 +20,9 @@ describe("HKIFA Lipper MPF Performance Table (ADR 0015)", () => {
       oneYear: ["12.48"],
       threeYears: ["43.02"],
     });
+    // 呢行開頭喺 PDF 入面有 BOM（pdftotext 出「∩╗┐」），要剔走先對到對照表。
+    expect(table.rows.some((row) => row.name === "AIA MPF-Prime Value Choice-Age 65 Plus")).toBe(true);
+    expect(table.rows.some((row) => /^\W/u.test(row.name))).toBe(false);
     // 組別標題冇數值，照讀出嚟但唔會喺對照表出現。
     expect(table.rows.find((row) => row.name === "Default Investment Strategy - Core Accumulation Fund")).toMatchObject({
       oneYear: [],
@@ -32,6 +35,13 @@ describe("HKIFA Lipper MPF Performance Table (ADR 0015)", () => {
     expect(readGrowth([], "x")).toEqual({ value: null, printed: "" });
     expect(() => readGrowth(["18.4"], "x")).toThrow(/unexpected cell/u);
     expect(() => readGrowth(["1.00", "2.00"], "x")).toThrow(/unexpected cell/u);
+  });
+
+  it("checks each column's printed period, not just its position", () => {
+    // 三年欄（y≈100）左邊嗰條嘅「3」改做「5」：欄位次序冇變，但期間唔啱就要報錯。
+    const relabelled = page1.replace(/(yMin="99\.[^"]*"[^>]*>)3</u, "$15<");
+    expect(relabelled).not.toBe(page1);
+    expect(() => parseHkifaLipperMpfTable(relabelled)).toThrow(/period labels/u);
   });
 
   it("rejects a table whose return columns carry different dates", () => {
@@ -69,6 +79,11 @@ describe("Lipper name map (ADR 0015)", () => {
     );
     expect(entries.map((entry) => entry.fundClassId)).toEqual(["cf-a"]);
     expect(rejected).toEqual([]);
+  });
+
+  it("lists fund rows whose scheme prefix is unknown instead of dropping them", () => {
+    const { rejected } = proposeHkifaLipperMap([row("SHKP MPF ES-SHKP MPF Fund", "5.00")], [], "2026-08-31");
+    expect(rejected).toEqual([{ lipperName: "SHKP MPF ES-SHKP MPF Fund", reason: "0 scheme prefixes match" }]);
   });
 
   it("rejects a row whose one-year value matches no class or whose name does not fit", () => {
@@ -118,6 +133,15 @@ describe("merging trustee and third-party cumulative rows", () => {
     const later = mergeCumulativeObservations([row("cf-1", "2026-08-31", "12.00", "hkifa-lipper")], [row("cf-1", "2026-08-31", "12.01")], []);
     expect(later.cumulative).toEqual([row("cf-1", "2026-08-31", "12.01")]);
     expect(later.replaced).toEqual(["cf-1"]);
+  });
+
+  it("lets a newer third-party row through when this batch's trustee row lost to an even newer base row", () => {
+    const result = mergeCumulativeObservations(
+      [row("cf-1", "2026-08-31", "12.00", "hkifa-lipper")],
+      [row("cf-1", "2026-07-31", "11.00")],
+      [row("cf-1", "2026-09-30", "13.00", "hkifa-lipper")],
+    );
+    expect(result.cumulative).toEqual([row("cf-1", "2026-09-30", "13.00", "hkifa-lipper")]);
   });
 
   it("fills only funds without a trustee row, and rejects two same-date third-party values that differ", () => {

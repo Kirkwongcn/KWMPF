@@ -38,15 +38,27 @@ function columns(words: Word[], page: number): Columns | undefined {
   const header = words.filter((word) => Math.abs(word.xMid - headerX) < BAND);
   const lipper = header.find((word) => word.text === "LIPPER");
   if (!lipper) throw new Error(`HKIFA MPF table page ${page}: LIPPER GLOBAL CLASSIFICATIONS header is missing`);
-  // 「As of 08/31/2026 (monthly updated)」喺 Lipper 評級欄，唔係回報欄；回報欄全部喺分類欄之前（y 細過佢）。
+  // 回報欄全部喺 Lipper 分類欄同開支比率（Value）之前（y 細過佢哋）；評級欄「As of 08/31/2026 (monthly
+  // updated)」喺 Value 之後，所以唔會入嚟。
+  const value = header.find((word) => word.text === "Value");
+  if (!value) throw new Error(`HKIFA MPF table page ${page}: expense ratio Value header is missing`);
   const cells = header
-    .filter((word) => (word.text === "Rank" || DATE.test(word.text)) && word.yMax < lipper.yMin && !/As/u.test(word.text))
-    .filter((word) => word.yMax < (header.find((item) => item.text === "Value")?.yMin ?? Infinity))
+    .filter((word) => (word.text === "Rank" || DATE.test(word.text)) && word.yMax < value.yMin)
     .sort((a, b) => a.yMid - b.yMid);
   const kinds = cells.map((word) => (word.text === "Rank" ? "rank" : "date"));
   // 10 年、3 年、1 年、3 個月：每組「Rank」然後日期。
   if (kinds.join(",") !== "rank,date,rank,date,rank,date,rank,date")
     throw new Error(`HKIFA MPF table page ${page}: unexpected return header ${cells.map((word) => word.text).join(" ")}`);
+  // 唔單靠次序：每個日期欄左邊嗰條（約 8 pt）要印住期間（「10 Years」「3 Years」「1 Year」「3 Months」）。
+  const labels = words.filter((word) => word.xMid > headerX - 12 && word.xMid < headerX - 2);
+  const periods = cells
+    .filter((word) => DATE.test(word.text))
+    .map((date) => {
+      const inColumn = labels.filter((word) => word.yMid > date.yMin && word.yMid < date.yMax + 8).map((word) => word.text);
+      return [inColumn.find((text) => /^\d+$/u.test(text)), inColumn.find((text) => /^(?:Years?|Months)$/u.test(text))].join(" ");
+    });
+  if (periods.join(",") !== "10 Years,3 Years,1 Year,3 Months")
+    throw new Error(`HKIFA MPF table page ${page}: unexpected period labels ${periods.join(", ")}`);
   const dates = new Set(
     cells
       .filter((word) => DATE.test(word.text))
@@ -82,13 +94,14 @@ export function parseHkifaLipperMpfTable(bboxXml: string): HkifaLipperTable {
       else bands.push([word]);
     }
     for (const band of bands) {
-      // 文字由下而上：y 大嘅先讀。名稱開頭有時有 BOM。
+      // 文字由下而上：y 大嘅先讀。
       const name = band
         .filter((word) => word.yMin > table.nameFrom)
         .sort((a, b) => b.yMid - a.yMid)
         .map((word) => word.text)
         .join(" ")
-        .replace(/^﻿/u, "")
+        // 有一行開頭有 BOM：pdftotext 有時出 U+FEFF，有時出「∩╗┐」（UTF-8 位元組當 CP437 讀）。
+        .replace(/^(?:\uFEFF|\u2229\u2557\u2510)/u, "")
         .trim();
       const inRange = (range: { yMin: number; yMax: number }) =>
         band.filter((word) => word.yMid > range.yMin && word.yMid < range.yMax).map((word) => word.text);

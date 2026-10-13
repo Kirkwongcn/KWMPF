@@ -111,7 +111,7 @@ export function mergeCumulativeObservations(
     }
     return ids;
   };
-  const trusteeIds = once(trustee, "More than one summary");
+  once(trustee, "More than one summary");
   once(thirdParty, "The third-party table");
   const byFund = new Map(base.map((row) => [row.fundClassId, row]));
   const replaced: string[] = [];
@@ -135,8 +135,9 @@ export function mergeCumulativeObservations(
   };
   for (const row of trustee) place(row);
   for (const row of thirdParty) {
+    // 受託人紀錄已經喺度（舊候選或者今批）先保留；今批受託人紀錄輸咗畀較新第三方就唔算。
     const existing = byFund.get(row.fundClassId);
-    if (trusteeIds.has(row.fundClassId) || (existing && !existing.publisher)) {
+    if (existing && !existing.publisher) {
       keptTrustee.push(row.fundClassId);
       continue;
     }
