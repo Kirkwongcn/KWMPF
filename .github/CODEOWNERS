@@ -32,6 +32,7 @@
 /packages/coverage/src/monthly-performance-summary-parser.ts @Kirkwongcn
 /packages/coverage/src/build-monthly-summary-returns.ts     @Kirkwongcn
 /packages/coverage/src/bct-fund-performance.ts             @Kirkwongcn
+/packages/coverage/src/manulife-monthly-summary-parser.ts  @Kirkwongcn
 /scripts/fetch-trustee-monthly-returns.sh                 @Kirkwongcn
 /.github/workflows/refresh-trustee-returns.yml            @Kirkwongcn
 /packages/coverage/src/candidate-anomalies.ts              @Kirkwongcn

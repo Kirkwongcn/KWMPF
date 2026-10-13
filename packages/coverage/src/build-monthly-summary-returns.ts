@@ -6,8 +6,10 @@ import { matchBctRows, parseBctFundInformation } from "./bct-fund-performance";
 import {
   matchSummaryRows,
   parseMonthlySummary,
+  recordsWithSameName,
   type MonthlySummary,
 } from "./monthly-performance-summary-parser";
+import { parseManulifeMonthlySummary } from "./manulife-monthly-summary-parser";
 import {
   splitReturnObservations,
   validateOfficialCumulativeReturnObservations,
@@ -21,13 +23,15 @@ import {
  *
  * 來源：
  * - `--summary`：滙豐／恒生《每月基金表現摘要》PDF 主表；
- * - `--bct`：銀聯信託官網基金表現數據接口（JSON 回應原檔）。
+ * - `--bct`：銀聯信託官網基金表現數據接口（JSON 回應原檔）；
+ * - `--manulife`：宏利環球精選《每月摘要 Monthly Fund Summary》PDF（`pdftotext -bbox` 按欄位讀）。
  *
  * 用法：
  *   bun src/build-monthly-summary-returns.ts --source <platform.json> \
  *     --base-candidate <old-candidate.json> \
  *     [--summary "<scheme>|<url>|<pdf>|<retrievedAt>" …] \
  *     [--bct "<scheme>|<url>|<json>|<retrievedAt>" …] \
+ *     [--manulife "<scheme>|<url>|<pdf>|<retrievedAt>" …] \
  *     --output <new-candidate.json> --report <report.json> \
  *     [--check-source <platform.json>]
  *
@@ -55,15 +59,16 @@ const outputPath = argument("--output");
 const reportPath = argument("--report");
 const summaries = argumentsNamed("--summary");
 const bctResponses = argumentsNamed("--bct");
+const manulifeSummaries = argumentsNamed("--manulife");
 if (
   !sourcePath ||
   !basePath ||
   !outputPath ||
   !reportPath ||
-  summaries.length + bctResponses.length === 0
+  summaries.length + bctResponses.length + manulifeSummaries.length === 0
 )
   throw new Error(
-    'Usage: bun src/build-monthly-summary-returns.ts --source <platform.json> --base-candidate <candidate.json> [--summary "<scheme>|<url>|<pdf>|<retrievedAt>"] [--bct "<scheme>|<url>|<json>|<retrievedAt>"] --output <candidate.json> --report <report.json>',
+    'Usage: bun src/build-monthly-summary-returns.ts --source <platform.json> --base-candidate <candidate.json> [--summary "<scheme>|<url>|<pdf>|<retrievedAt>"] [--bct "<scheme>|<url>|<json>|<retrievedAt>"] [--manulife "<scheme>|<url>|<pdf>|<retrievedAt>"] --output <candidate.json> --report <report.json>',
   );
 
 const snapshot = parseSourceSnapshot(JSON.parse(await readFile(sourcePath, "utf8")));
@@ -105,11 +110,11 @@ type MatchedRow = {
   threeYears: number | null;
   fiveYears: number | null;
   tenYears: number | null;
-  /** 官方原文：數字、「-」（滙豐／恒生）或者「N/A」（BCT）。 */
+  /** 官方原文：數字、「-」（滙豐／恒生、宏利）或者「N/A」（BCT、宏利）。 */
   printedThreeYears: string;
 };
 type SourceDocument = {
-  kind: "monthly-summary-pdf" | "bct-fund-information";
+  kind: "monthly-summary-pdf" | "bct-fund-information" | "manulife-monthly-summary-pdf";
   schemeName: string;
   url: string;
   retrievedAt: string;
@@ -214,6 +219,51 @@ async function readBct(entry: string): Promise<SourceDocument> {
               fiveYears: match.row.fiveYears,
               tenYears: match.row.tenYears,
               printedThreeYears: match.row.printedThreeYears,
+            },
+          ]
+        : [],
+    ),
+  };
+}
+
+async function readManulife(entry: string): Promise<SourceDocument> {
+  const { schemeName, url, path, retrievedAt } = splitEntry(entry, "--manulife");
+  const bytes = await readFile(path);
+  if (bytes.subarray(0, 5).toString("latin1") !== "%PDF-") throw new Error(`${path}: not a PDF`);
+  const bbox = execFileSync("pdftotext", ["-bbox", path, "-"], {
+    encoding: "utf8",
+    maxBuffer: 64 * 1024 * 1024,
+    stdio: ["ignore", "pipe", "ignore"],
+  });
+  const summary = parseManulifeMonthlySummary(bbox);
+  const records = schemeRecordsOf(schemeName).map((record) => ({
+    fundClassId: record.fundClassId,
+    constituentFundName: record.identity.constituentFundName,
+  }));
+  const matches = summary.rows.map((row) => ({ row, candidates: recordsWithSameName(records, row.englishName) }));
+  return {
+    kind: "manulife-monthly-summary-pdf",
+    schemeName,
+    url,
+    retrievedAt,
+    sha256: createHash("sha256").update(bytes).digest("hex"),
+    bytes: bytes.length,
+    dataAsOf: summary.dataAsOf,
+    rows: summary.rows.length,
+    failed: matches
+      .filter((match) => match.candidates.length !== 1)
+      .map((match) => `${match.row.englishName} (${match.candidates.length === 0 ? "unmatched" : "ambiguous"})`),
+    matched: matches.flatMap(({ row, candidates }) =>
+      candidates.length === 1
+        ? [
+            {
+              fundClassId: candidates[0]!.fundClassId,
+              label: `${row.code} ${row.englishName}`,
+              oneYear: row.oneYear,
+              threeYears: row.threeYears,
+              fiveYears: row.fiveYears,
+              tenYears: row.tenYears,
+              printedThreeYears: row.printedThreeYears,
             },
           ]
         : [],
@@ -331,6 +381,7 @@ const fresh: OfficialCumulativeReturnObservation[] = [];
 const inputs = [
   ...summaries.map((entry) => ({ flag: "--summary", entry, read: () => readSummary(entry) })),
   ...bctResponses.map((entry) => ({ flag: "--bct", entry, read: () => readBct(entry) })),
+  ...manulifeSummaries.map((entry) => ({ flag: "--manulife", entry, read: () => readManulife(entry) })),
 ];
 for (const input of inputs) {
   try {
@@ -402,7 +453,7 @@ await writeFile(
       sourceSnapshot: sourcePath,
       baseCandidate: basePath,
       method:
-        "Official trustee monthly data: HSBC / Hang Seng Monthly Fund Performance Summary main table (pdftotext -layout) and BCT website fund performance responses. Exact English-name match within the scheme (BCT unit class by the Class X / Unit Class X contract), one-year cumulative cross-checked against the MPFA platform one-year return of the same date for every row; three-year cumulative stored as published (ADR 0014), never converted to annualized.",
+        "Official trustee monthly data: HSBC / Hang Seng Monthly Fund Performance Summary main table (pdftotext -layout), BCT website fund performance responses, and the Manulife Global Select Monthly Fund Summary (pdftotext -bbox columns). Exact English-name match within the scheme (BCT unit class by the Class X / Unit Class X contract), one-year cumulative cross-checked against the MPFA platform one-year return of the same date for every row; three-year cumulative stored as published (ADR 0014), never converted to annualized.",
       sources,
       annualizedRows: base.annualized.length,
       cumulativeRows: cumulative.length,
