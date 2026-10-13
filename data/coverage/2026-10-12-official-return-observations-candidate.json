@@ -5004,5 +5004,159 @@
     "sourceUrl": "https://www.boci-pru.com.hk/en/mpf/mpf-prices",
     "retrievedAt": "2026-10-13T08:05:07Z",
     "sourceSha256": "11cb6af3843deca139a64d88116941eee8c7c982df6ab1298ea86b783868af0e"
+  },
+  {
+    "fundClassId": "mpfa-cf-1487",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 48.2,
+    "printed": "48.20",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.yflife.com/sites/default/files/mpf/MonthlyFundPrice(E).pdf",
+    "retrievedAt": "2026-10-13T13:54:17Z",
+    "sourceSha256": "6051347a1a81e440320a333c10c6fbc104a4482f6104fac04b5814d000c8b9da"
+  },
+  {
+    "fundClassId": "mpfa-cf-1488",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 18.56,
+    "printed": "18.56",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.yflife.com/sites/default/files/mpf/MonthlyFundPrice(E).pdf",
+    "retrievedAt": "2026-10-13T13:54:17Z",
+    "sourceSha256": "6051347a1a81e440320a333c10c6fbc104a4482f6104fac04b5814d000c8b9da"
+  },
+  {
+    "fundClassId": "mpfa-cf-383",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 6.99,
+    "printed": "6.99",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.yflife.com/sites/default/files/mpf/MonthlyFundPrice(E).pdf",
+    "retrievedAt": "2026-10-13T13:54:17Z",
+    "sourceSha256": "6051347a1a81e440320a333c10c6fbc104a4482f6104fac04b5814d000c8b9da"
+  },
+  {
+    "fundClassId": "mpfa-cf-384",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 12.74,
+    "printed": "12.74",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.yflife.com/sites/default/files/mpf/MonthlyFundPrice(E).pdf",
+    "retrievedAt": "2026-10-13T13:54:17Z",
+    "sourceSha256": "6051347a1a81e440320a333c10c6fbc104a4482f6104fac04b5814d000c8b9da"
+  },
+  {
+    "fundClassId": "mpfa-cf-385",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 32.52,
+    "printed": "32.52",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.yflife.com/sites/default/files/mpf/MonthlyFundPrice(E).pdf",
+    "retrievedAt": "2026-10-13T13:54:17Z",
+    "sourceSha256": "6051347a1a81e440320a333c10c6fbc104a4482f6104fac04b5814d000c8b9da"
+  },
+  {
+    "fundClassId": "mpfa-cf-386",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 7.93,
+    "printed": "7.93",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.yflife.com/sites/default/files/mpf/MonthlyFundPrice(E).pdf",
+    "retrievedAt": "2026-10-13T13:54:17Z",
+    "sourceSha256": "6051347a1a81e440320a333c10c6fbc104a4482f6104fac04b5814d000c8b9da"
+  },
+  {
+    "fundClassId": "mpfa-cf-387",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 64.9,
+    "printed": "64.90",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.yflife.com/sites/default/files/mpf/MonthlyFundPrice(E).pdf",
+    "retrievedAt": "2026-10-13T13:54:17Z",
+    "sourceSha256": "6051347a1a81e440320a333c10c6fbc104a4482f6104fac04b5814d000c8b9da"
+  },
+  {
+    "fundClassId": "mpfa-cf-388",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 14.2,
+    "printed": "14.20",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.yflife.com/sites/default/files/mpf/MonthlyFundPrice(E).pdf",
+    "retrievedAt": "2026-10-13T13:54:17Z",
+    "sourceSha256": "6051347a1a81e440320a333c10c6fbc104a4482f6104fac04b5814d000c8b9da"
+  },
+  {
+    "fundClassId": "mpfa-cf-389",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 43.1,
+    "printed": "43.10",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.yflife.com/sites/default/files/mpf/MonthlyFundPrice(E).pdf",
+    "retrievedAt": "2026-10-13T13:54:17Z",
+    "sourceSha256": "6051347a1a81e440320a333c10c6fbc104a4482f6104fac04b5814d000c8b9da"
+  },
+  {
+    "fundClassId": "mpfa-cf-390",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 56.35,
+    "printed": "56.35",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.yflife.com/sites/default/files/mpf/MonthlyFundPrice(E).pdf",
+    "retrievedAt": "2026-10-13T13:54:17Z",
+    "sourceSha256": "6051347a1a81e440320a333c10c6fbc104a4482f6104fac04b5814d000c8b9da"
+  },
+  {
+    "fundClassId": "mpfa-cf-391",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 69.02,
+    "printed": "69.02",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.yflife.com/sites/default/files/mpf/MonthlyFundPrice(E).pdf",
+    "retrievedAt": "2026-10-13T13:54:17Z",
+    "sourceSha256": "6051347a1a81e440320a333c10c6fbc104a4482f6104fac04b5814d000c8b9da"
+  },
+  {
+    "fundClassId": "mpfa-cf-392",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 80.42,
+    "printed": "80.42",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.yflife.com/sites/default/files/mpf/MonthlyFundPrice(E).pdf",
+    "retrievedAt": "2026-10-13T13:54:17Z",
+    "sourceSha256": "6051347a1a81e440320a333c10c6fbc104a4482f6104fac04b5814d000c8b9da"
+  },
+  {
+    "fundClassId": "mpfa-cf-394",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 44.22,
+    "printed": "44.22",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.yflife.com/sites/default/files/mpf/MonthlyFundPrice(E).pdf",
+    "retrievedAt": "2026-10-13T13:54:17Z",
+    "sourceSha256": "6051347a1a81e440320a333c10c6fbc104a4482f6104fac04b5814d000c8b9da"
+  },
+  {
+    "fundClassId": "mpfa-cf-874",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 74.11,
+    "printed": "74.11",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.yflife.com/sites/default/files/mpf/MonthlyFundPrice(E).pdf",
+    "retrievedAt": "2026-10-13T13:54:17Z",
+    "sourceSha256": "6051347a1a81e440320a333c10c6fbc104a4482f6104fac04b5814d000c8b9da"
   }
 ]
