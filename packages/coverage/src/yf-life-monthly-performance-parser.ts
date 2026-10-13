@@ -26,7 +26,7 @@ const DATE = /^(\d{2})\/(\d{2})\/(\d{4})$/u;
 const RETURN = /^(?:-?\d+\.\d{2}|N\/A|-)$/u;
 const NAV = /^\d+\.\d{4}$/u;
 const RANK = /^(?:\d+|N\/A|-)$/u;
-const COUNT = /^\d+$/u;
+const COUNT = /^(?:\d+|N\/A|-)$/u;
 // 實測：數值中心同表頭日期中心相差 0 pt；容許 6 pt（相鄰欄相距約 27 pt）。
 const COLUMN_TOLERANCE = 6;
 
@@ -72,11 +72,13 @@ export function parseYfLifeMonthlyPerformance(bboxXml: string): YfLifeMonthlyPer
   const words = mergeFragments(pages[0]!);
   const table = header(words);
   const navLeft = table.navX - (table.dates[0]! - table.navX) / 2;
-  // 組別基金數目之後係組別名（括號）、風險同曆年回報；只讀到組別日期欄之前。
-  const right = table.dates[3]!;
-  const noteY = words.filter((word) => /^Note/u.test(word.text) && word.yMid > table.y).sort((a, b) => a.yMid - b.yMid)[0]?.yMid;
-  if (noteY === undefined) throw new Error("YF Life monthly performance: notes below the table are missing");
-  const inTable = (word: Word) => word.yMid > table.y + 3 && word.yMid < noteY - 3 && word.xMin >= table.nameLeft - 1;
+  // 組別基金數目之後係組別名（括號）、風險同曆年回報；只讀到組別日期欄為止（數目同組別名一齊置中，
+  // 組別名短嘅時候數目會貼近表頭）。
+  const right = table.dates[3]! + COLUMN_TOLERANCE;
+  // 表格喺名欄起計、表頭以下；每行由 NAV（四位小數）開始，第一行唔係嘅（附註「The constituent fund
+  // is subject to…」橫跨成個版面）就係表尾。
+  // 唔靠左邊「Note」字樣定表尾，因為左邊圖表區有咩字都唔關事。
+  const inTable = (word: Word) => word.yMid > table.y + 3 && word.xMin >= table.nameLeft - 1;
   const rows: YfLifeMonthlyRow[] = [];
   for (const line of lines(words.filter((word) => inTable(word) && word.xMid < right))) {
     const y = line[0]!.yMid;
@@ -84,12 +86,16 @@ export function parseYfLifeMonthlyPerformance(bboxXml: string): YfLifeMonthlyPer
     const afterName = line.filter((word) => word.xMin >= navLeft);
     const categoryStart = afterName.findIndex((word) => word.text.startsWith("("));
     const cells = categoryStart === -1 ? afterName : afterName.slice(0, categoryStart);
-    if (cells.length === 0) continue;
+    if (cells.length === 0 || !NAV.test(cells[0]!.text)) {
+      if (rows.length > 0) break;
+      continue;
+    }
     const name = lines(raw.filter((word) => inTable(word) && word.xMax < navLeft && Math.abs(word.yMid - y) <= 2.5))
       .flat()
       .map((word) => word.text)
       .join(" ")
-      .replace(/\s*#\s*$/u, "")
+      // 名後註腳（「#」「*」「^」）唔屬基金名。
+      .replace(/\s*[#*^]+\s*$/u, "")
       .trim();
     const context = `YF Life monthly performance row "${name}"`;
     if (!/Fund$/u.test(name)) throw new Error(`${context}: fund name is missing`);
@@ -108,6 +114,9 @@ export function parseYfLifeMonthlyPerformance(bboxXml: string): YfLifeMonthlyPer
     const expected = [table.dates[0]!, table.ranks[0]!, table.dates[1]!, table.ranks[1]!, table.dates[2]!, table.ranks[2]!];
     if (positions.some((x, index) => Math.abs(x - expected[index]!) > COLUMN_TOLERANCE))
       throw new Error(`${context}: cells are not under their headers`);
+    // NAV 要喺 3 個月欄左邊；組別基金數目要喺三年排名右邊。
+    if (cells[0]!.xMid >= table.dates[0]! - COLUMN_TOLERANCE || cells[7]!.xMid <= table.ranks[2]! + COLUMN_TOLERANCE)
+      throw new Error(`${context}: NAV or category count is out of place`);
     rows.push({ englishName: name, oneYear: parseReturn(oneYear!), threeYears: parseReturn(threeYears!), printedThreeYears: threeYears! });
   }
   if (rows.length === 0) throw new Error("YF Life monthly performance has no fund rows");

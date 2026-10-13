@@ -179,7 +179,8 @@ else
   fi
 fi
 
-# 萬通 MASS：固定網址，只得最新一個月。日期由表頭「08/31/2026」讀，必須全份唯一。
+# 萬通 MASS：固定網址，只得最新一個月。日期只由表頭有「Rank」嗰行嘅「08/31/2026」讀（同讀取器一樣），
+# 必須唯一；頁面其他日期唔理。
 yflife_scheme="MASS Mandatory Provident Fund Scheme"
 yflife_url="https://www.yflife.com/sites/default/files/mpf/MonthlyFundPrice(E).pdf"
 yflife_target="$output_dir/yf-life-mass-monthly-performance.pdf"
@@ -188,7 +189,7 @@ if ! fetch "$yflife_url" "$yflife_target" || [ "$(head -c 5 "$yflife_target")" !
   printf '%s\t%s\tdownload-failed\tdownload failed or not a PDF\n' "$yflife_scheme" "$yflife_url" >>"$output_dir/skipped.txt"
   rm -f "$yflife_target"
 else
-  dates="$(pdftotext "$yflife_target" - 2>/dev/null | grep -oE '\b[0-9]{2}/[0-9]{2}/[0-9]{4}\b' | sort -u | awk -F/ '{print $3 "-" $1 "-" $2}' | paste -sd, - || true)"
+  dates="$(pdftotext -layout "$yflife_target" - 2>/dev/null | grep -E 'Constituent.*Rank' | grep -oE '\b[0-9]{2}/[0-9]{2}/[0-9]{4}\b' | sort -u | awk -F/ '{print $3 "-" $1 "-" $2}' | paste -sd, - || true)"
   if [[ ! "$dates" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
     printf '%s\t%s\tinvalid-response\theader dates "%s"\n' "$yflife_scheme" "$yflife_url" "$dates" >>"$output_dir/skipped.txt"
   elif [ "$dates" != "$data_as_of" ]; then

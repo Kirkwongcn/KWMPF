@@ -34,6 +34,12 @@ describe("YF Life MASS monthly fund performance (ADR 0014)", () => {
     expect(row).toMatchObject({ threeYears: null, printedThreeYears: "N/A" });
   });
 
+  it("drops other footnote markers after a name", () => {
+    const starred = fixture.replace(/>#</u, ">*<");
+    expect(starred).not.toBe(fixture);
+    expect(parseYfLifeMonthlyPerformance(starred).rows.map((row) => row.englishName)).toContain("Asian Bond Fund");
+  });
+
   it("rejects the whole document when a cell or a header date does not fit", () => {
     expect(() => parseYfLifeMonthlyPerformance(replaceWord(fixture, "69.02", "69.0"))).toThrow(/unexpected cells/u);
     // 表頭第二行（y≈379）其中一個截至日期改咗。
