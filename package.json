@@ -26,6 +26,7 @@
     "coverage:fact-sheet-allocation-report": "bun packages/coverage/src/build-fact-sheet-allocation-report.ts",
     "coverage:refresh-report": "bun packages/coverage/src/build-refresh-report.ts",
     "coverage:monthly-summary-returns": "bun packages/coverage/src/build-monthly-summary-returns.ts",
+    "coverage:hkifa-lipper-map": "bun packages/coverage/src/build-hkifa-lipper-map.ts",
     "coverage:fetch-platform": "bun packages/coverage/src/fetch-platform.ts",
     "coverage:retry-platform": "bun packages/coverage/src/retry-platform.ts",
     "format": "prettier --write .",

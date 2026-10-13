@@ -105,6 +105,9 @@ export function buildPublicationInputs(records: SourceRecord[]): PublicationInpu
                 dataAsOf: record.cumulativeReturns[3].dataAsOf,
                 sourceUrl: record.cumulativeReturns[3].sourceUrl,
                 retrievedAt: record.cumulativeReturns[3].retrievedAt,
+                ...(record.cumulativeReturns[3].publisher
+                  ? { publisher: record.cumulativeReturns[3].publisher }
+                  : {}),
               },
             },
           }

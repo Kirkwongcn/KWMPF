@@ -105,7 +105,7 @@ export type BctMatch =
   | { status: "unmatched" | "ambiguous"; row: BctPerformanceRow; candidates: string[] };
 
 // 積金局類別名稱同 BCT 單位類別的對應（契約）：`Class D`／`Unit Class A` ↔ `D`／`A`。
-function classLabelMatches(fundClassName: string, unitClass: string) {
+export function classLabelMatches(fundClassName: string, unitClass: string) {
   if (!unitClass || unitClass === "-") return false;
   return (
     fundClassName === `Class ${unitClass}` || fundClassName === `Unit Class ${unitClass}`

@@ -10,7 +10,14 @@ type PublicFields = {
   cumulativeReturn3y?: number;
   cumulativeReturnSources?: Record<
     string,
-    { printed: string; dataAsOf: string; sourceUrl: string; retrievedAt: string }
+    {
+      printed: string;
+      dataAsOf: string;
+      sourceUrl: string;
+      retrievedAt: string;
+      /** 冇＝受託人官方；`"hkifa-lipper"`＝第三方（ADR 0015）。 */
+      publisher?: "hkifa-lipper";
+    }
   >;
   riskClass?: number;
   // 官方的基金風險指標（年度化標準差）。成立不足三年的基金官方寫 `n.a.`，

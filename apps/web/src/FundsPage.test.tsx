@@ -408,4 +408,40 @@ describe("fund browse page without a separate class", () => {
       screen.getByRole("button", { name: "3年累積" }).closest("th"),
     ).toBeInTheDocument();
   });
+
+  it("labels a Lipper three-year cumulative return as third-party, never as official", async () => {
+    stubFetch((url) =>
+      url.includes("/filters")
+        ? filters
+        : [
+            {
+              ...equityResults[0],
+              id: "lipper-a",
+              constituentFundName: "第三方基金甲",
+              cumulativeReturn3y: 43.02,
+              cumulativeReturn3yPrinted: "43.02",
+              cumulativeReturn3yPublisher: "hkifa-lipper",
+              cumulativeReturnsFreshness: {
+                "3": {
+                  status: "verified",
+                  dataAsOf: "2026-08-31",
+                  graceDays: 90,
+                  ageDays: 10,
+                },
+              },
+            },
+          ],
+    );
+    render(<FundsPage apiBaseUrl="https://api.test" />);
+    await screen.findByText("第三方基金甲");
+    expect(
+      screen.getByTitle(
+        "第三方：香港投資基金公會轉載嘅 Lipper 三年累積回報（非年率化）",
+      ),
+    ).toHaveTextContent("43.02%Lipper（第三方）截至 2026-08-31");
+    expect(
+      screen.getByRole("columnheader", { name: "累積（受託人／第三方）" }),
+    ).toBeInTheDocument();
+    expect(screen.queryByTitle("受託人官方累積回報（非年率化）")).toBeNull();
+  });
 });

@@ -40,6 +40,8 @@ export type SourceRecord = {
     dataAsOf: string;
     sourceUrl: string;
     retrievedAt: string;
+    /** 冇＝受託人官方；`"hkifa-lipper"`＝第三方（ADR 0015）。 */
+    publisher?: "hkifa-lipper";
   }>>;
   // 基金規模按月更新，截至日期由平台獨立標示，未必等於回報的截至日期。
   fundSizeHkdMillion?: number;

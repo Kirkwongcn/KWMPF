@@ -21,6 +21,12 @@
 
 第四批來源（2026-10-13 加入）係中銀國際英國保誠信託官網「強積金價格及表現」（`https://www.boci-pru.com.hk/en/mpf/mpf-prices`）累積回報分頁背後嘅數據接口 `POST https://www.boci-pru.com.hk/en/api/mpf/MpfFund/mpfListing`（body `{"Lang":"en"}`）：中銀保誠簡易強積金計劃 17 隻成分基金，每隻有 `asOfDate` 同累積回報（3 個月、年初至今、1、3、5 年、成立至今）。接口只提供最新一期；冇十年欄（`tenY` 永遠留空），唔核對十年。英文名去掉 `<sup>…</sup>` 註腳標記後精確配對；一年、五年同積金局平台同期數字逐行核對。五年留空（成立未滿五年）記官方未提供；三年留空暫時未見過，出現就成份作廢，等人手確認官方點寫。候選檔 `sourceUrl` 記公開網頁，SHA-256 係接口回應原檔。同一受託人嘅「我的強積金計劃」唔喺呢個接口。
 
+第五批來源（2026-10-13 加入）係永明金融官網「強積金基金價格及表現」（`https://www.sunlife.com.hk/en/investments/mpf-orso-fund-prices-performance/mpf-fund-prices-performance.type-MPF/`）累積回報分頁背後嘅數據接口 `POST https://www.sunlife.com.hk/webservice/getmpforsofunddata`（`sqlKey` `MPF_CR_PERFORMANCE`）：永明彩虹強積金計劃 31 個基金類別，有 `VALUATION_DT` 同累積回報（年初至今、3 個月、1、3、5、10 年、成立至今）。接口**按季**更新，只提供最新一季；加入時仍然係 2026-06-30，未有同期積金局平台快照可以核對，所以未出數，等接口轉到 2026-09-30 先由每日工作流程核對後加入。類別按契約對應（`A` ↔ `Class A`、`B` ↔ `Class B`、官方 `--` ↔ 積金局 `n.a.`）。接口 `null` 喺網頁印成「N/A」，照記 `N/A`（官方未提供，唔當 0）。2026-06-30 一期 29 個三年累積值換算後同季度便覽三年年率化逐個相差 ≤ 0.05（只作讀錯欄核對）。
+
+第六批來源（2026-10-13 加入）係萬通信託每月《Monthly Fund Performance of the Scheme》（`https://www.yflife.com/sites/default/files/mpf/MonthlyFundPrice(E).pdf`，固定網址只得最新一個月）：MASS 強積金計劃 14 隻基金嘅「HKIFA - MPF Performance Table」，有 3 個月、1 年、3 年 % Growth（累積）同排名，受託人註明數據來源係 Lipper。用 `pdftotext -bbox` 按欄位讀：名稱只取表格名欄（左邊圖表圖例都係基金名）；每行依次要係 NAV、3 個月、排名、1 年、排名、3 年、排名、組別基金數目，三個回報同排名要喺各自表頭底下；表頭四個截至日期要一致。一年同積金局平台同期逐行核對（表冇五年、十年）。同計劃逐隻基金便覽有三年年率化（較舊月份），兩者分欄並存，唔互相換算。
+
+受託人冇每月三年數字嘅基金，由 ADR 0015 用 HKIFA 轉載嘅 Lipper 表補位，標明第三方，受託人數字優先。
+
 ## 實作約束
 
 - 候選檔 `data/coverage/<date>-official-return-observations-candidate.json` 同時載年率化同累積紀錄；累積紀錄帶 `basis: "cumulative"`，舊檔原樣有效（`splitReturnObservations`）。
@@ -33,12 +39,12 @@
 
 ## 每月自動更新
 
-`.github/workflows/refresh-trustee-returns.yml` 每日跑一次：攞最新入庫平台快照的截至日期，用 `scripts/fetch-trustee-monthly-returns.sh` 下載同一截至日期的受託人來源（滙豐／恒生按月份網址；BCT 接口回應日期、宏利摘要「As at」日期、中銀保誠接口 `asOfDate` 唔同就略過），再用同一個 CLI 逐行交叉核對。
+`.github/workflows/refresh-trustee-returns.yml` 每日跑一次：攞最新入庫平台快照的截至日期，用 `scripts/fetch-trustee-monthly-returns.sh` 下載同一截至日期的受託人來源（滙豐／恒生按月份網址；BCT 接口回應日期、宏利摘要「As at」日期、中銀保誠接口 `asOfDate`、永明接口 `VALUATION_DT`、萬通月報表頭日期唔同就略過），再用同一個 CLI 逐行交叉核對。
 
 - 每份文件獨立：一份作廢（讀唔到、對唔上、核對唔一致）只影響自己，原因寫入報告 `rejectedSources`，其他文件照用；全部作廢先算失敗。
 - 交叉核對：一年必須核對到；五年、十年兩邊都有就要一致（同一基金唔同單位類別一年回報可以一樣，多核兩個期間減低類別對調而唔被發現）。官方冇一年回報的行，只有平台都冇而且三年亦係官方未提供先接受。
 - 有新數據而又未有同期資料 PR 先開 PR；作廢、接口異常、或者平台快照入庫超過 10 日 PDF 仍然下載唔到，同一截至日期只開一個跟進 issue（有 `needs-triage` 就貼上）。
-- 每次下載的原檔以 artifact 保留 90 日。BCT、宏利、中銀保誠只有最新一期，如果平台快照遲咗合併而來源已經轉去下一期，可以用保留的原檔加 `--check-source` 補做。
+- 每次下載的原檔以 artifact 保留 90 日。BCT、宏利、中銀保誠、永明、萬通只有最新一期，如果平台快照遲咗合併而來源已經轉去下一期，可以用保留的原檔加 `--check-source` 補做。
 - 合併同正式部署仍然要人手批准。
 
 ## 背景

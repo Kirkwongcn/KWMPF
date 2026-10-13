@@ -2,10 +2,10 @@ name: Refresh trustee monthly returns
 
 # 受託人每月官方三年累積回報（ADR 0014）。每日跑一次：
 # 1. 攞最新入庫的積金局平台快照日期（例如 2026-09-30）；
-# 2. 下載同一截至日期的受託人每月來源（滙豐／恒生摘要 PDF、BCT 官網接口、宏利環球精選每月摘要、中銀保誠官網接口）；
+# 2. 下載同一截至日期的受託人每月來源（滙豐／恒生摘要 PDF、BCT 官網接口、宏利環球精選每月摘要、中銀保誠及永明官網接口、萬通每月表現；另有 HKIFA 轉載嘅 Lipper 表，第三方，ADR 0015）；
 # 3. 讀取器逐行同平台累積回報交叉核對，一行唔一致該份文件作廢，其他文件照用；
 # 4. 有新數據而又未有同期資料 PR 就開一個；作廢、接口異常或者 PDF 遲遲未出就開（或沿用）
-#    一個跟進 issue。每次下載的原檔保留 90 日（artifact），BCT、中銀保誠接口同宏利摘要
+#    一個跟進 issue。每次下載的原檔保留 90 日（artifact），BCT、中銀保誠、永明接口、宏利摘要同萬通月報
 #    只有最新一期，錯過咗都可以用原檔加 --check-source 補做。
 # 合併同正式部署仍然要人手批准（docs/agents/change-policy.md）。
 on:
@@ -84,11 +84,13 @@ jobs:
         run: |
           set -euo pipefail
           bash scripts/fetch-trustee-monthly-returns.sh "${{ steps.inputs.outputs.data_as_of }}" /tmp/trustee
-          echo "count=$(wc -l < /tmp/trustee/arguments.txt)" >> "$GITHUB_OUTPUT"
+          # `--hkifa-map` 係 `--hkifa` 嘅附帶參數，唔計做來源。
+          sources="$(grep -vc '^--hkifa-map' /tmp/trustee/arguments.txt || true)"
+          echo "count=${sources}" >> "$GITHUB_OUTPUT"
           {
             echo "### Trustee sources for ${{ steps.inputs.outputs.data_as_of }}"
             echo
-            echo "Fetched: $(wc -l < /tmp/trustee/arguments.txt)"
+            echo "Fetched: ${sources}"
             echo
             echo '```'
             cat /tmp/trustee/skipped.txt
@@ -154,12 +156,21 @@ jobs:
           {
             echo "## 做咗咩"
             echo
-            echo "自動擷取受託人每月官方三年累積回報（ADR 0014），截至 ${DATA_AS_OF}。"
+            echo "自動擷取受託人每月官方三年累積回報（ADR 0014），截至 ${DATA_AS_OF}；受託人冇提供嘅基金另用 HKIFA 轉載嘅 Lipper 表（第三方，ADR 0015，如有）。"
             echo "每一行都同積金局平台同期一年回報交叉核對一致先收錄。"
             echo
             echo "### 來源"
             echo
             jq -r '.sources[] | "- \(.schemeName)：\(.matched) 行，一年核對 \(.oneYearCrossChecks) 行，SHA-256 `\(.sha256)`，<\(.url)>"' "${REPORT}"
+            # 第三方（ADR 0015）分開列，唔好當受託人官方數據。
+            if [ "$(jq '.thirdPartySources // [] | length' "${REPORT}")" != "0" ]; then
+              echo
+              echo "### 第三方來源（ADR 0015，網站標「Lipper（第三方）」，受託人數字優先）"
+              echo
+              jq -r '.thirdPartySources[] | "- HKIFA 轉載 Lipper 表：對照表 \(.mapped) 行，一年核對 \(.oneYearCrossChecks) 行，SHA-256 `\(.sha256)`，<\(.url)>"' "${REPORT}"
+              echo
+              echo "受託人已有紀錄而保留受託人數字：$(jq '.keptTrusteeOverThirdParty | length' "${REPORT}") 隻。"
+            fi
             echo
             echo "### 未收錄"
             echo
@@ -180,10 +191,10 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch -c "${branch}"
           git add "${OUTPUT}" "${REPORT}"
-          git commit -m "data(returns): 受託人每月官方三年累積回報（截至 ${DATA_AS_OF}）"
+          git commit -m "data(returns): 每月三年累積回報（受託人官方；第三方 Lipper 另標）（截至 ${DATA_AS_OF}）"
           git push --set-upstream origin "${branch}"
           if ! gh pr create --base main --head "${branch}" \
-            --title "資料：受託人每月官方三年累積回報（截至 ${DATA_AS_OF}）" \
+            --title "資料：每月三年累積回報（受託人官方；第三方 Lipper 另標）（截至 ${DATA_AS_OF}）" \
             --body-file /tmp/pr-body.md; then
             echo "::error::GitHub blocked automatic pull request creation. Open: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/pull/new/${branch}"
             exit 1
@@ -201,11 +212,16 @@ jobs:
           mkdir -p /tmp/trustee
           touch /tmp/trustee/skipped.txt /tmp/trustee/rejected.txt
           # 平台快照入庫超過 10 日，受託人 PDF 仍然下載唔到先算異常；未夠 10 日係正常等待。
-          # BCT 接口、宏利摘要同中銀保誠接口只得最新一期：下載失敗，或者宏利、中銀保誠已經去咗下一期
+          # BCT 接口、宏利摘要、中銀保誠、永明接口同萬通月報只得最新一期：下載失敗，或者宏利、中銀保誠、永明、萬通已經去咗下一期
           # （source-ahead），即刻跟進，否則固定網址一轉期，嗰個月就攞唔返。
+          # 永明按季更新：目標係季末而平台快照入庫超過 14 日仍然 source-behind 都要跟進，
+          # 否則平台去咗下個月，嗰季就冇同期快照核對（要用 artifact 原檔加 --check-source 補做）。
+          # 萬通月報約下月下旬先出，固定網址只得最新一個月：快照入庫超過 20 日仍然 source-behind 都要跟進。
           batch_age_days=$(( ( $(date -u +%s) - $(date -u -d "${PLATFORM_BATCH}" +%s) ) / 86400 ))
-          attention="$(awk -F'\t' -v age="${batch_age_days}" \
-            '$3 == "invalid-response" || ($3 == "source-ahead" && $2 ~ /manulife|boci-pru/) || ($3 == "download-failed" && ($2 ~ /bcthk|manulife|boci-pru/ || age > 10))' \
+          quarter_end=0
+          [[ "${DATA_AS_OF:5:2}" =~ ^(03|06|09|12)$ ]] && quarter_end=1
+          attention="$(awk -F'\t' -v age="${batch_age_days}" -v quarter="${quarter_end}" \
+            '$3 == "invalid-response" || ($3 == "source-ahead" && $2 ~ /manulife|boci-pru|sunlife|yflife/) || ($3 == "download-failed" && ($2 ~ /bcthk|manulife|boci-pru|sunlife|yflife/ || age > 10)) || ($3 == "source-behind" && $2 ~ /sunlife/ && quarter == 1 && age > 14) || ($3 == "source-behind" && $2 ~ /yflife/ && age > 20)' \
             /tmp/trustee/skipped.txt)"
           if [ -z "${attention}" ] && [ ! -s /tmp/trustee/rejected.txt ] && [ "${JOB_FAILED}" != "true" ]; then
             exit 0

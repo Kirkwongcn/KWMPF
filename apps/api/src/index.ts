@@ -228,6 +228,8 @@ type BrowseFundClass = {
       dataAsOf: string;
       sourceUrl: string;
       retrievedAt?: string;
+      /** 冇＝受託人官方；`"hkifa-lipper"`＝第三方（ADR 0015）。 */
+      publisher?: "hkifa-lipper";
     }
   >;
   launchDate?: string;
@@ -554,6 +556,12 @@ app.get("/search", async (context) => {
                   fundClass.cumulativeReturnSources["3"].printed,
                 cumulativeReturn3ySourceUrl:
                   fundClass.cumulativeReturnSources["3"].sourceUrl,
+                ...(fundClass.cumulativeReturnSources["3"].publisher
+                  ? {
+                      cumulativeReturn3yPublisher:
+                        fundClass.cumulativeReturnSources["3"].publisher,
+                    }
+                  : {}),
                 cumulativeReturnsFreshness,
               }
             : {}),

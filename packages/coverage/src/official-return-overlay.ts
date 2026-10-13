@@ -24,6 +24,11 @@ export type OfficialCumulativeReturnObservation = {
   sourceUrl: string;
   retrievedAt: string;
   sourceSha256: string;
+  /**
+   * 發布者。冇呢個欄位＝受託人官方披露（ADR 0014）；`"hkifa-lipper"`＝香港投資基金公會轉載嘅 Lipper 表，
+   * 屬第三方（ADR 0015），網站要標明，受託人數字優先。
+   */
+  publisher?: "hkifa-lipper";
 };
 
 export type CumulativeReturnOverlayResult = {
@@ -76,6 +81,7 @@ export function validateOfficialCumulativeReturnObservations(
       /^https:\/\//.test(observation.sourceUrl) &&
       typeof observation.retrievedAt === "string" &&
       /^[0-9a-f]{64}$/.test(observation.sourceSha256) &&
+      (observation.publisher === undefined || observation.publisher === "hkifa-lipper") &&
       !seen.has(observation.fundClassId);
     if (ok) {
       seen.add(observation.fundClassId);
@@ -83,6 +89,62 @@ export function validateOfficialCumulativeReturnObservations(
     } else invalid.push(observation);
   }
   return { valid, invalid };
+}
+
+/**
+ * 合併新一批累積紀錄入舊候選（每隻基金只留一筆）：
+ *
+ * - 受託人紀錄（冇 publisher）：截至日期較新先取代；同日原文唔同即報錯；同一批同一基金兩份即報錯（紅線 5）。
+ * - 受託人優先（ADR 0015）：受託人紀錄截至日期同第三方一樣或者較新，取代第三方；第三方永遠唔取代受託人紀錄，
+ *   同一批有受託人紀錄嘅基金亦唔用第三方。第三方之間同樣係較新先取代、同日原文要一致。
+ */
+export function mergeCumulativeObservations(
+  base: OfficialCumulativeReturnObservation[],
+  trustee: OfficialCumulativeReturnObservation[],
+  thirdParty: OfficialCumulativeReturnObservation[],
+) {
+  const once = (rows: OfficialCumulativeReturnObservation[], label: string) => {
+    const ids = new Set<string>();
+    for (const row of rows) {
+      if (ids.has(row.fundClassId)) throw new Error(`${label} disclosed ${row.fundClassId} twice`);
+      ids.add(row.fundClassId);
+    }
+    return ids;
+  };
+  once(trustee, "More than one summary");
+  once(thirdParty, "The third-party table");
+  const byFund = new Map(base.map((row) => [row.fundClassId, row]));
+  const replaced: string[] = [];
+  const keptNewer: string[] = [];
+  const keptTrustee: string[] = [];
+  const place = (row: OfficialCumulativeReturnObservation) => {
+    const existing = byFund.get(row.fundClassId);
+    if (existing && existing.dataAsOf > row.dataAsOf) {
+      keptNewer.push(row.fundClassId);
+      return;
+    }
+    if (existing && existing.dataAsOf === row.dataAsOf && Boolean(existing.publisher) === Boolean(row.publisher)) {
+      if (existing.printed !== row.printed)
+        throw new Error(
+          `${row.fundClassId}: two disclosures dated ${row.dataAsOf} disagree (${existing.printed} vs ${row.printed})`,
+        );
+      return;
+    }
+    if (existing) replaced.push(row.fundClassId);
+    byFund.set(row.fundClassId, row);
+  };
+  for (const row of trustee) place(row);
+  for (const row of thirdParty) {
+    // 受託人紀錄已經喺度（舊候選或者今批）先保留；今批受託人紀錄輸咗畀較新第三方就唔算。
+    const existing = byFund.get(row.fundClassId);
+    if (existing && !existing.publisher) {
+      keptTrustee.push(row.fundClassId);
+      continue;
+    }
+    place(row);
+  }
+  const cumulative = [...byFund.values()].sort((a, b) => a.fundClassId.localeCompare(b.fundClassId));
+  return { cumulative, replaced, keptNewer, keptTrustee };
 }
 
 /** 累積回報寫入獨立的 cumulativeReturns，唔會同 returns[3] 共用日期或來源。 */
@@ -124,6 +186,7 @@ export function applyOfficialCumulativeReturnOverlay(
         dataAsOf: observation.dataAsOf,
         sourceUrl: observation.sourceUrl,
         retrievedAt: observation.retrievedAt,
+        ...(observation.publisher ? { publisher: observation.publisher } : {}),
       },
     };
     applied.push(observation);

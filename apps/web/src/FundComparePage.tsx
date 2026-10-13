@@ -34,7 +34,12 @@ type ComparedFund = {
     cumulativeReturn3y?: number;
     cumulativeReturnSources?: Record<
       string,
-      { printed: string; dataAsOf: string; sourceUrl: string }
+      {
+        printed: string;
+        dataAsOf: string;
+        sourceUrl: string;
+        publisher?: "hkifa-lipper";
+      }
     >;
   };
   provenance: { sourceUrl: string; dataAsOf: string };
@@ -548,15 +553,24 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
                   <>
                     <tr className="kw-compare__section">
                       <th scope="rowgroup" colSpan={loaded.length + 1}>
-                        累積回報（受託人官方，非年率化）
+                        {loaded.some(
+                          (fund) =>
+                            fund.fundClass.cumulativeReturnSources?.["3"]
+                              ?.publisher === "hkifa-lipper",
+                        )
+                          ? "累積回報（非年率化；受託人官方優先，部分係 Lipper 第三方）"
+                          : "累積回報（受託人官方，非年率化）"}
                       </th>
                     </tr>
                     <tr>
                       <th scope="row">3 年累積</th>
                       {(() => {
+                        // 最高／最低標記只喺受託人官方數字之間比；Lipper 第三方（ADR 0015）唔參與。
                         const verified = (fund: ComparedFund) =>
                           fund.cumulativeReturnsFreshness?.["3"]?.status ===
-                          "verified"
+                            "verified" &&
+                          fund.fundClass.cumulativeReturnSources?.["3"]
+                            ?.publisher !== "hkifa-lipper"
                             ? fund.fundClass.cumulativeReturn3y
                             : undefined;
                         const range = rangeOf(loaded.map(verified));
@@ -589,7 +603,9 @@ export function FundComparePage({ apiBaseUrl }: { apiBaseUrl: string }) {
                                       target="_blank"
                                       rel="noreferrer"
                                     >
-                                      受託人每月數據
+                                      {source.publisher === "hkifa-lipper"
+                                        ? "Lipper（經 HKIFA，第三方）"
+                                        : "受託人每月數據"}
                                     </a>
                                   </small>
                                 </>
