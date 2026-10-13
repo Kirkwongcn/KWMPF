@@ -53,6 +53,7 @@ describe("Sun Life MPF cumulative performance (ADR 0014)", () => {
     expect(() => parseSunLifeCumulativePerformance(unitClass)).toThrow(/unexpected class/u);
 
     expect(() => parseSunLifeCumulativePerformance([])).toThrow(/no fund list/u);
+    expect(() => parseSunLifeCumulativePerformance([null, ...fixture])).toThrow(/not an object/u);
   });
 
   it("matches each class to its own MPFA fund class and never guesses", () => {
@@ -64,5 +65,9 @@ describe("Sun Life MPF cumulative performance (ADR 0014)", () => {
     // 積金局冇寫類別而官方分 A／B：對唔上，唔可以揀一個。
     const unlabelled = rainbow.map((record) => ({ ...record, fundClassName: "n.a." }));
     expect(matchSunLifeRows(rows, unlabelled)[0]).toMatchObject({ status: "unmatched" });
+
+    // 積金局寫「Unit Class A」都係同一個類別契約（同 BCT 一樣）。
+    const unitLabelled = rainbow.map((record) => ({ ...record, fundClassName: record.fundClassName.replace(/^Class /u, "Unit Class ") }));
+    expect(matchSunLifeRows(rows, unitLabelled)[1]).toMatchObject({ status: "matched", fundClassId: "cf-cons-b" });
   });
 });

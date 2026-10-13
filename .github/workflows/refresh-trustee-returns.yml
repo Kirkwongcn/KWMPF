@@ -203,9 +203,13 @@ jobs:
           # 平台快照入庫超過 10 日，受託人 PDF 仍然下載唔到先算異常；未夠 10 日係正常等待。
           # BCT 接口、宏利摘要、中銀保誠同永明接口只得最新一期：下載失敗，或者宏利、中銀保誠、永明已經去咗下一期
           # （source-ahead），即刻跟進，否則固定網址一轉期，嗰個月就攞唔返。
+          # 永明按季更新：目標係季末而平台快照入庫超過 14 日仍然 source-behind 都要跟進，
+          # 否則平台去咗下個月，嗰季就冇同期快照核對（要用 artifact 原檔加 --check-source 補做）。
           batch_age_days=$(( ( $(date -u +%s) - $(date -u -d "${PLATFORM_BATCH}" +%s) ) / 86400 ))
-          attention="$(awk -F'\t' -v age="${batch_age_days}" \
-            '$3 == "invalid-response" || ($3 == "source-ahead" && $2 ~ /manulife|boci-pru|sunlife/) || ($3 == "download-failed" && ($2 ~ /bcthk|manulife|boci-pru|sunlife/ || age > 10))' \
+          quarter_end=0
+          [[ "${DATA_AS_OF:5:2}" =~ ^(03|06|09|12)$ ]] && quarter_end=1
+          attention="$(awk -F'\t' -v age="${batch_age_days}" -v quarter="${quarter_end}" \
+            '$3 == "invalid-response" || ($3 == "source-ahead" && $2 ~ /manulife|boci-pru|sunlife/) || ($3 == "download-failed" && ($2 ~ /bcthk|manulife|boci-pru|sunlife/ || age > 10)) || ($3 == "source-behind" && $2 ~ /sunlife/ && quarter == 1 && age > 14)' \
             /tmp/trustee/skipped.txt)"
           if [ -z "${attention}" ] && [ ! -s /tmp/trustee/rejected.txt ] && [ "${JOB_FAILED}" != "true" ]; then
             exit 0

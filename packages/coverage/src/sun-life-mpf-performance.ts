@@ -12,6 +12,7 @@
  * - 類別係 `A`、`B`，或者單一類別基金寫 `--`。
  */
 
+import { classLabelMatches } from "./bct-fund-performance";
 import { recordsWithSameName } from "./monthly-performance-summary-parser";
 
 export type SunLifePerformanceRow = {
@@ -53,7 +54,9 @@ type RawRow = {
 export function parseSunLifeCumulativePerformance(body: unknown): SunLifePerformance {
   if (!Array.isArray(body) || body.length === 0) throw new Error("Sun Life MPF performance: response has no fund list");
   const dates = new Set<string>();
-  const rows = (body as RawRow[]).map((raw) => {
+  const rows = (body as unknown[]).map((item) => {
+    if (typeof item !== "object" || item === null) throw new Error("Sun Life MPF performance: fund entry is not an object");
+    const raw = item as RawRow;
     if (typeof raw.FUND_CD !== "string" || !raw.FUND_CD) throw new Error("Sun Life MPF performance: fund without a code");
     const where = raw.FUND_CD;
     if (typeof raw.FUND_DESCRIPTION_EN !== "string" || !raw.FUND_DESCRIPTION_EN.trim())
@@ -86,7 +89,7 @@ export type SunLifeMatch =
   | { status: "unmatched" | "ambiguous"; row: SunLifePerformanceRow; candidates: string[] };
 
 /**
- * 喺同一計劃入面按英文名精確配對，再按類別契約揀：`A` ↔ `Class A`、`B` ↔ `Class B`、
+ * 喺同一計劃入面按英文名精確配對，再按同 BCT 一樣嘅類別契約揀：`A` ↔ `Class A`／`Unit Class A`、
  * 官方 `--` ↔ 積金局 `n.a.`。揀唔到剛好一個就唔配（紅線 4）。
  */
 export function matchSunLifeRows(
@@ -95,8 +98,10 @@ export function matchSunLifeRows(
 ): SunLifeMatch[] {
   return rows.map((row) => {
     const sameName = recordsWithSameName(schemeRecords, row.name);
-    const expected = row.unitClass === null ? "n.a." : `Class ${row.unitClass}`;
-    const candidates = sameName.filter((record) => record.fundClassName === expected);
+    const unitClass = row.unitClass;
+    const candidates = sameName.filter((record) =>
+      unitClass === null ? record.fundClassName === "n.a." : classLabelMatches(record.fundClassName, unitClass),
+    );
     if (candidates.length === 1) return { status: "matched", fundClassId: candidates[0]!.fundClassId, row };
     return {
       status: candidates.length > 1 ? "ambiguous" : "unmatched",

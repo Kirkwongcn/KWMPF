@@ -41,6 +41,19 @@
 
 `fetch-trustee-monthly-returns.sh`：目標 2026-06-30 得 `--sunlife`；目標 2026-09-30 記 `source-behind`。下載失敗或者 source-ahead 即刻開跟進 issue。
 
+## Code review
+
+`/code-review medium` 8 項發現，修 4 項：
+
+- 永明按季更新，平台每月轉期，所以目標係季末而平台快照入庫超過 14 日仍然 source-behind，都會開跟進 issue；錯過咗可以用 artifact 原檔加 `--check-source` 補做。
+- 回應陣列有非物件元素時，明確報錯。
+- 類別配對改用 BCT 同一個契約（`Class X`／`Unit Class X`），唔再另寫一套。
+
+未改 4 項：
+
+- 同期資料 PR 未合併時工作流程唔再建候選：所有來源都係咁，屬工作流程設計，唔係永明獨有。
+- `readPercent`、下載片段、讀取器同其他來源相似：屬可選整理。
+
 ## 網絡政策
 
 以下網域如果加入允許清單，可以再查：
