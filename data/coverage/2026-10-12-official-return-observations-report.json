@@ -1015,5 +1015,59 @@
     ],
     "notApplied": [],
     "freshness": "All rows are as at 2026-06-30, past the 90-day three-year window (ADR 0007): they update fund pages but are not ranked."
+  },
+  "manulifeMonthlySummary": {
+    "generatedAt": "2026-10-13T01:08:47.748Z",
+    "sourceSnapshot": "data/sources/2026-10-12/mpf-fund-platform.json",
+    "checkSnapshot": "data/sources/2026-09-26/mpf-fund-platform.json",
+    "method": "Official trustee monthly data: HSBC / Hang Seng Monthly Fund Performance Summary main table (pdftotext -layout), BCT website fund performance responses, and the Manulife Global Select Monthly Fund Summary (pdftotext -bbox columns). Exact English-name match within the scheme (BCT unit class by the Class X / Unit Class X contract), one-year cumulative cross-checked against the MPFA platform one-year return of the same date for every row; three-year cumulative stored as published (ADR 0014), never converted to annualized. This batch adds only the Manulife Global Select summary as at 2026-08-31, cross-checked against the 2026-08-31 MPFA platform snapshot (--check-source); the 29 cumulative rows are appended to the 2026-10-12 candidate and every existing row is unchanged.",
+    "sources": [
+      {
+        "kind": "manulife-monthly-summary-pdf",
+        "schemeName": "Manulife Global Select (MPF) Scheme",
+        "url": "https://www.manulife.com.hk/content/dam/insurance/hk/zh-hk/documents/fund-price/mpf-monthly-summary.pdf",
+        "retrievedAt": "2026-10-13T01:08:47.554526Z",
+        "sha256": "8bd7e3c763a4fcabbf2c38d8605d14ea27caeec1c3f9446c8b646d80ec606288",
+        "bytes": 2435399,
+        "dataAsOf": "2026-08-31",
+        "rows": 29,
+        "matched": 29,
+        "officialNotDisclosed": [],
+        "oneYearCrossChecks": 29,
+        "fiveTenYearCrossChecks": 55
+      }
+    ],
+    "rejectedSources": [],
+    "addedCumulative": [
+      "mpfa-cf-1219",
+      "mpfa-cf-1485",
+      "mpfa-cf-1486",
+      "mpfa-cf-1719",
+      "mpfa-cf-362",
+      "mpfa-cf-363",
+      "mpfa-cf-364",
+      "mpfa-cf-365",
+      "mpfa-cf-366",
+      "mpfa-cf-367",
+      "mpfa-cf-368",
+      "mpfa-cf-369",
+      "mpfa-cf-370",
+      "mpfa-cf-371",
+      "mpfa-cf-372",
+      "mpfa-cf-373",
+      "mpfa-cf-374",
+      "mpfa-cf-375",
+      "mpfa-cf-376",
+      "mpfa-cf-377",
+      "mpfa-cf-695",
+      "mpfa-cf-842",
+      "mpfa-cf-844",
+      "mpfa-cf-845",
+      "mpfa-cf-846",
+      "mpfa-cf-847",
+      "mpfa-cf-848",
+      "mpfa-cf-906",
+      "mpfa-cf-907"
+    ]
   }
 }
