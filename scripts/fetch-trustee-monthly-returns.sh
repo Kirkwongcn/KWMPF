@@ -12,14 +12,16 @@ set -euo pipefail
 #   官網擋普通 curl，要用 curl_cffi 瀏覽器指紋（scripts/download-pdf-impersonated.py）。
 # - 中銀國際英國保誠信託官網強積金價格及表現接口（POST）：只提供最新一期，每隻基金的 asOfDate
 #   同目標日期唔一樣就唔用。
+# - 永明彩虹強積金官網累積回報接口（POST）：按季更新，只提供最新一期，VALUATION_DT 同目標日期
+#   唔一樣就唔用。
 #
 # 每份成功下載而且日期對得上的來源，喺 <output-dir>/arguments.txt 寫一行
-# `--summary <值>`、`--bct <值>`、`--manulife <值>` 或 `--bocpru <值>`。其餘寫入 <output-dir>/skipped.txt（以 tab 分隔：
+# `--summary <值>`、`--bct <值>`、`--manulife <值>`、`--bocpru <值>` 或 `--sunlife <值>`。其餘寫入 <output-dir>/skipped.txt（以 tab 分隔：
 # 計劃、網址、原因代號、說明），原因代號：
 #   download-failed   下載失敗或者唔係 PDF；
-#   invalid-response  BCT／中銀保誠回應唔係有效基金表現資料，或宏利摘要讀唔到唯一「As at」日期；
-#   source-behind     BCT／宏利／中銀保誠仲未更新到目標日期（正常，等下次）；
-#   source-ahead      BCT／宏利／中銀保誠已經去咗下一期，目標日期嗰期再攞唔返（要跟進）。
+#   invalid-response  BCT／中銀保誠／永明回應唔係有效基金表現資料，或宏利摘要讀唔到唯一「As at」日期；
+#   source-behind     BCT／宏利／中銀保誠／永明仲未更新到目標日期（正常，等下次）；
+#   source-ahead      BCT／宏利／中銀保誠／永明已經去咗下一期，目標日期嗰期再攞唔返（要跟進）。
 # 呢度唔讀數字，數字全部交由讀取器同交叉核對把關。
 
 data_as_of="${1:-}"
@@ -145,6 +147,33 @@ else
     printf '%s\t%s\t%s\tas-of date %s, not %s\n' "$bocpru_scheme" "$bocpru_api" "$reason" "$dates" "$data_as_of" >>"$output_dir/skipped.txt"
   else
     printf -- '--bocpru\t%s|%s|%s|%s\n' "$bocpru_scheme" "$bocpru_page" "$bocpru_target" "$retrieved_at" >>"$output_dir/arguments.txt"
+  fi
+fi
+
+# 永明彩虹強積金：網頁「強積金基金價格及表現」累積回報分頁由呢個 POST 接口提供；sqlParams 嘅日期
+# 只影響價格，回報永遠係最新一季。記錄網頁網址，原檔係接口回應。
+sunlife_scheme="Sun Life Rainbow MPF Scheme"
+sunlife_page="https://www.sunlife.com.hk/en/investments/mpf-orso-fund-prices-performance/mpf-fund-prices-performance.type-MPF/"
+sunlife_api="https://www.sunlife.com.hk/webservice/getmpforsofunddata"
+sunlife_target="$output_dir/sun-life-rainbow-cumulative.json"
+retrieved_at="$(now)"
+if ! curl --fail --silent --show-error --location --max-time 120 --user-agent "$user_agent" \
+  --request POST --header 'Content-Type: application/json' --header "Referer: $sunlife_page" \
+  --data "{\"domainAndUserName\":\"hkportal\",\"sqlKey\":\"MPF_CR_PERFORMANCE\",\"sqlParams\":[\"$price_date\",\"MPF\"]}" \
+  --output "$sunlife_target" "$sunlife_api"; then
+  printf '%s\t%s\tdownload-failed\tdownload failed\n' "$sunlife_scheme" "$sunlife_api" >>"$output_dir/skipped.txt"
+  rm -f "$sunlife_target"
+else
+  # dd/mm/yyyy → yyyy-mm-dd；唔係唯一一個日期就當回應無效。
+  dates="$(jq -r '[.[]?.VALUATION_DT] | unique | map(split("/") | .[2] + "-" + .[1] + "-" + .[0]) | join(",")' "$sunlife_target" 2>/dev/null || true)"
+  if [[ ! "$dates" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
+    printf '%s\t%s\tinvalid-response\tvaluation dates "%s"\n' "$sunlife_scheme" "$sunlife_api" "$dates" >>"$output_dir/skipped.txt"
+  elif [ "$dates" != "$data_as_of" ]; then
+    reason="source-behind"
+    [[ "$dates" > "$data_as_of" ]] && reason="source-ahead"
+    printf '%s\t%s\t%s\tvaluation date %s, not %s\n' "$sunlife_scheme" "$sunlife_api" "$reason" "$dates" "$data_as_of" >>"$output_dir/skipped.txt"
+  else
+    printf -- '--sunlife\t%s|%s|%s|%s\n' "$sunlife_scheme" "$sunlife_page" "$sunlife_target" "$retrieved_at" >>"$output_dir/arguments.txt"
   fi
 fi
 

@@ -2,10 +2,10 @@ name: Refresh trustee monthly returns
 
 # 受託人每月官方三年累積回報（ADR 0014）。每日跑一次：
 # 1. 攞最新入庫的積金局平台快照日期（例如 2026-09-30）；
-# 2. 下載同一截至日期的受託人每月來源（滙豐／恒生摘要 PDF、BCT 官網接口、宏利環球精選每月摘要、中銀保誠官網接口）；
+# 2. 下載同一截至日期的受託人每月來源（滙豐／恒生摘要 PDF、BCT 官網接口、宏利環球精選每月摘要、中銀保誠及永明官網接口）；
 # 3. 讀取器逐行同平台累積回報交叉核對，一行唔一致該份文件作廢，其他文件照用；
 # 4. 有新數據而又未有同期資料 PR 就開一個；作廢、接口異常或者 PDF 遲遲未出就開（或沿用）
-#    一個跟進 issue。每次下載的原檔保留 90 日（artifact），BCT、中銀保誠接口同宏利摘要
+#    一個跟進 issue。每次下載的原檔保留 90 日（artifact），BCT、中銀保誠、永明接口同宏利摘要
 #    只有最新一期，錯過咗都可以用原檔加 --check-source 補做。
 # 合併同正式部署仍然要人手批准（docs/agents/change-policy.md）。
 on:
@@ -201,11 +201,11 @@ jobs:
           mkdir -p /tmp/trustee
           touch /tmp/trustee/skipped.txt /tmp/trustee/rejected.txt
           # 平台快照入庫超過 10 日，受託人 PDF 仍然下載唔到先算異常；未夠 10 日係正常等待。
-          # BCT 接口、宏利摘要同中銀保誠接口只得最新一期：下載失敗，或者宏利、中銀保誠已經去咗下一期
+          # BCT 接口、宏利摘要、中銀保誠同永明接口只得最新一期：下載失敗，或者宏利、中銀保誠、永明已經去咗下一期
           # （source-ahead），即刻跟進，否則固定網址一轉期，嗰個月就攞唔返。
           batch_age_days=$(( ( $(date -u +%s) - $(date -u -d "${PLATFORM_BATCH}" +%s) ) / 86400 ))
           attention="$(awk -F'\t' -v age="${batch_age_days}" \
-            '$3 == "invalid-response" || ($3 == "source-ahead" && $2 ~ /manulife|boci-pru/) || ($3 == "download-failed" && ($2 ~ /bcthk|manulife|boci-pru/ || age > 10))' \
+            '$3 == "invalid-response" || ($3 == "source-ahead" && $2 ~ /manulife|boci-pru|sunlife/) || ($3 == "download-failed" && ($2 ~ /bcthk|manulife|boci-pru|sunlife/ || age > 10))' \
             /tmp/trustee/skipped.txt)"
           if [ -z "${attention}" ] && [ ! -s /tmp/trustee/rejected.txt ] && [ "${JOB_FAILED}" != "true" ]; then
             exit 0
