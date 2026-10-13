@@ -20,6 +20,7 @@ packages/coverage/src/monthly-performance-summary-parser.ts
 packages/coverage/src/build-monthly-summary-returns.ts
 packages/coverage/src/bct-fund-performance.ts
 packages/coverage/src/manulife-monthly-summary-parser.ts
+packages/coverage/src/boci-prudential-mpf-listing.ts
 scripts/fetch-trustee-monthly-returns.sh
 .github/workflows/refresh-trustee-returns.yml
 packages/coverage/src/candidate-anomalies.ts

@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { parseSourceSnapshot } from "./input";
 import { matchBctRows, parseBctFundInformation } from "./bct-fund-performance";
+import { parseBociPrudentialListing } from "./boci-prudential-mpf-listing";
 import {
   matchSummaryRows,
   parseMonthlySummary,
@@ -24,7 +25,8 @@ import {
  * 來源：
  * - `--summary`：滙豐／恒生《每月基金表現摘要》PDF 主表；
  * - `--bct`：銀聯信託官網基金表現數據接口（JSON 回應原檔）；
- * - `--manulife`：宏利環球精選《每月摘要 Monthly Fund Summary》PDF（`pdftotext -bbox` 按欄位讀）。
+ * - `--manulife`：宏利環球精選《每月摘要 Monthly Fund Summary》PDF（`pdftotext -bbox` 按欄位讀）；
+ * - `--bocpru`：中銀國際英國保誠信託官網強積金價格及表現數據接口（JSON 回應原檔）。
  *
  * 用法：
  *   bun src/build-monthly-summary-returns.ts --source <platform.json> \
@@ -32,6 +34,7 @@ import {
  *     [--summary "<scheme>|<url>|<pdf>|<retrievedAt>" …] \
  *     [--bct "<scheme>|<url>|<json>|<retrievedAt>" …] \
  *     [--manulife "<scheme>|<url>|<pdf>|<retrievedAt>" …] \
+ *     [--bocpru "<scheme>|<url>|<json>|<retrievedAt>" …] \
  *     --output <new-candidate.json> --report <report.json> \
  *     [--check-source <platform.json>]
  *
@@ -60,15 +63,16 @@ const reportPath = argument("--report");
 const summaries = argumentsNamed("--summary");
 const bctResponses = argumentsNamed("--bct");
 const manulifeSummaries = argumentsNamed("--manulife");
+const bocPruListings = argumentsNamed("--bocpru");
 if (
   !sourcePath ||
   !basePath ||
   !outputPath ||
   !reportPath ||
-  summaries.length + bctResponses.length + manulifeSummaries.length === 0
+  summaries.length + bctResponses.length + manulifeSummaries.length + bocPruListings.length === 0
 )
   throw new Error(
-    'Usage: bun src/build-monthly-summary-returns.ts --source <platform.json> --base-candidate <candidate.json> [--summary "<scheme>|<url>|<pdf>|<retrievedAt>"] [--bct "<scheme>|<url>|<json>|<retrievedAt>"] [--manulife "<scheme>|<url>|<pdf>|<retrievedAt>"] --output <candidate.json> --report <report.json>',
+    'Usage: bun src/build-monthly-summary-returns.ts --source <platform.json> --base-candidate <candidate.json> [--summary "<scheme>|<url>|<pdf>|<retrievedAt>"] [--bct "<scheme>|<url>|<json>|<retrievedAt>"] [--manulife "<scheme>|<url>|<pdf>|<retrievedAt>"] [--bocpru "<scheme>|<url>|<json>|<retrievedAt>"] --output <candidate.json> --report <report.json>',
   );
 
 const snapshot = parseSourceSnapshot(JSON.parse(await readFile(sourcePath, "utf8")));
@@ -110,11 +114,11 @@ type MatchedRow = {
   threeYears: number | null;
   fiveYears: number | null;
   tenYears: number | null;
-  /** 官方原文：數字、「-」（滙豐／恒生、宏利）或者「N/A」（BCT、宏利）。 */
+  /** 官方原文：數字、「-」（滙豐／恒生、宏利）或者「N/A」（BCT、宏利）；中銀保誠一定係數字。 */
   printedThreeYears: string;
 };
 type SourceDocument = {
-  kind: "monthly-summary-pdf" | "bct-fund-information" | "manulife-monthly-summary-pdf";
+  kind: "monthly-summary-pdf" | "bct-fund-information" | "manulife-monthly-summary-pdf" | "boci-prudential-mpf-listing";
   schemeName: string;
   url: string;
   retrievedAt: string;
@@ -271,6 +275,47 @@ async function readManulife(entry: string): Promise<SourceDocument> {
   };
 }
 
+// 接口係 POST（body `{"Lang":"en"}`），`url` 記公開網頁「強積金價格及表現」，原檔 SHA-256 記接口回應。
+async function readBocPru(entry: string): Promise<SourceDocument> {
+  const { schemeName, url, path, retrievedAt } = splitEntry(entry, "--bocpru");
+  const bytes = await readFile(path);
+  const listing = parseBociPrudentialListing(JSON.parse(bytes.toString("utf8")));
+  const records = schemeRecordsOf(schemeName).map((record) => ({
+    fundClassId: record.fundClassId,
+    constituentFundName: record.identity.constituentFundName,
+  }));
+  const matches = listing.rows.map((row) => ({ row, candidates: recordsWithSameName(records, row.name) }));
+  return {
+    kind: "boci-prudential-mpf-listing",
+    schemeName,
+    url,
+    retrievedAt,
+    sha256: createHash("sha256").update(bytes).digest("hex"),
+    bytes: bytes.length,
+    dataAsOf: listing.asOfDate,
+    rows: listing.rows.length,
+    failed: matches
+      .filter((match) => match.candidates.length !== 1)
+      .map((match) => `${match.row.name} (${match.candidates.length === 0 ? "unmatched" : "ambiguous"})`),
+    matched: matches.flatMap(({ row, candidates }) =>
+      candidates.length === 1
+        ? [
+            {
+              fundClassId: candidates[0]!.fundClassId,
+              label: `${row.stockCode} ${row.name}`,
+              oneYear: row.oneYear,
+              threeYears: row.threeYears,
+              fiveYears: row.fiveYears,
+              // 接口冇十年欄（`tenY` 永遠留空），唔核對十年。
+              tenYears: null,
+              printedThreeYears: row.printedThreeYears,
+            },
+          ]
+        : [],
+    ),
+  };
+}
+
 const CROSS_CHECK_PERIODS = [
   ["oneYear", 1],
   ["fiveYears", 5],
@@ -382,6 +427,7 @@ const inputs = [
   ...summaries.map((entry) => ({ flag: "--summary", entry, read: () => readSummary(entry) })),
   ...bctResponses.map((entry) => ({ flag: "--bct", entry, read: () => readBct(entry) })),
   ...manulifeSummaries.map((entry) => ({ flag: "--manulife", entry, read: () => readManulife(entry) })),
+  ...bocPruListings.map((entry) => ({ flag: "--bocpru", entry, read: () => readBocPru(entry) })),
 ];
 for (const input of inputs) {
   try {
@@ -453,7 +499,7 @@ await writeFile(
       sourceSnapshot: sourcePath,
       baseCandidate: basePath,
       method:
-        "Official trustee monthly data: HSBC / Hang Seng Monthly Fund Performance Summary main table (pdftotext -layout), BCT website fund performance responses, and the Manulife Global Select Monthly Fund Summary (pdftotext -bbox columns). Exact English-name match within the scheme (BCT unit class by the Class X / Unit Class X contract), one-year cumulative cross-checked against the MPFA platform one-year return of the same date for every row; three-year cumulative stored as published (ADR 0014), never converted to annualized.",
+        "Official trustee monthly data: HSBC / Hang Seng Monthly Fund Performance Summary main table (pdftotext -layout), BCT website fund performance responses, the Manulife Global Select Monthly Fund Summary (pdftotext -bbox columns), and the BOCI-Prudential website MPF price and performance listing (JSON). Exact English-name match within the scheme (BCT unit class by the Class X / Unit Class X contract), one-year cumulative cross-checked against the MPFA platform one-year return of the same date for every row; three-year cumulative stored as published (ADR 0014), never converted to annualized.",
       sources,
       annualizedRows: base.annualized.length,
       cumulativeRows: cumulative.length,

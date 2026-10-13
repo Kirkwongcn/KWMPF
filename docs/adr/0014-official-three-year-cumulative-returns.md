@@ -19,6 +19,8 @@
 
 第三批來源（2026-10-13 加入）係宏利環球精選（強積金）計劃《每月摘要 Monthly Fund Summary》（`https://www.manulife.com.hk/content/dam/insurance/hk/zh-hk/documents/fund-price/mpf-monthly-summary.pdf`，固定網址只得最新一期，約每月中更新上月底數據）：29 隻成分基金的累積回報（六個月至十年、推出至今）。用 `pdftotext -bbox` 按欄位讀，英文名精確配對；一年、五年、十年同積金局平台同期數字逐行核對。官網擋普通 curl，要 curl_cffi 瀏覽器指紋（`scripts/download-pdf-impersonated.py`）。退休收益、核心累積、65 歲後的十年格寫「不適用▲」「N/A▲」。同計劃的季度便覽有三年年率化（截至季末），兩者分欄並存，唔互相換算。
 
+第四批來源（2026-10-13 加入）係中銀國際英國保誠信託官網「強積金價格及表現」（`https://www.boci-pru.com.hk/en/mpf/mpf-prices`）累積回報分頁背後嘅數據接口 `POST https://www.boci-pru.com.hk/en/api/mpf/MpfFund/mpfListing`（body `{"Lang":"en"}`）：中銀保誠簡易強積金計劃 17 隻成分基金，每隻有 `asOfDate` 同累積回報（3 個月、年初至今、1、3、5 年、成立至今）。接口只提供最新一期；冇十年欄（`tenY` 永遠留空），唔核對十年。英文名去掉 `<sup>…</sup>` 註腳標記後精確配對；一年、五年同積金局平台同期數字逐行核對。五年留空（成立未滿五年）記官方未提供；三年留空暫時未見過，出現就成份作廢，等人手確認官方點寫。候選檔 `sourceUrl` 記公開網頁，SHA-256 係接口回應原檔。同一受託人嘅「我的強積金計劃」唔喺呢個接口。
+
 ## 實作約束
 
 - 候選檔 `data/coverage/<date>-official-return-observations-candidate.json` 同時載年率化同累積紀錄；累積紀錄帶 `basis: "cumulative"`，舊檔原樣有效（`splitReturnObservations`）。
@@ -31,12 +33,12 @@
 
 ## 每月自動更新
 
-`.github/workflows/refresh-trustee-returns.yml` 每日跑一次：攞最新入庫平台快照的截至日期，用 `scripts/fetch-trustee-monthly-returns.sh` 下載同一截至日期的受託人來源（滙豐／恒生按月份網址；BCT 接口回應日期、宏利摘要「As at」日期唔同就略過），再用同一個 CLI 逐行交叉核對。
+`.github/workflows/refresh-trustee-returns.yml` 每日跑一次：攞最新入庫平台快照的截至日期，用 `scripts/fetch-trustee-monthly-returns.sh` 下載同一截至日期的受託人來源（滙豐／恒生按月份網址；BCT 接口回應日期、宏利摘要「As at」日期、中銀保誠接口 `asOfDate` 唔同就略過），再用同一個 CLI 逐行交叉核對。
 
 - 每份文件獨立：一份作廢（讀唔到、對唔上、核對唔一致）只影響自己，原因寫入報告 `rejectedSources`，其他文件照用；全部作廢先算失敗。
 - 交叉核對：一年必須核對到；五年、十年兩邊都有就要一致（同一基金唔同單位類別一年回報可以一樣，多核兩個期間減低類別對調而唔被發現）。官方冇一年回報的行，只有平台都冇而且三年亦係官方未提供先接受。
 - 有新數據而又未有同期資料 PR 先開 PR；作廢、接口異常、或者平台快照入庫超過 10 日 PDF 仍然下載唔到，同一截至日期只開一個跟進 issue（有 `needs-triage` 就貼上）。
-- 每次下載的原檔以 artifact 保留 90 日。BCT 接口只有最新一期，如果平台快照遲咗合併而 BCT 已經轉去下一期，可以用保留的原檔加 `--check-source` 補做。
+- 每次下載的原檔以 artifact 保留 90 日。BCT、宏利、中銀保誠只有最新一期，如果平台快照遲咗合併而來源已經轉去下一期，可以用保留的原檔加 `--check-source` 補做。
 - 合併同正式部署仍然要人手批准。
 
 ## 背景

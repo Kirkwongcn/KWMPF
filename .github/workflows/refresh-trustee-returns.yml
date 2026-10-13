@@ -201,11 +201,11 @@ jobs:
           mkdir -p /tmp/trustee
           touch /tmp/trustee/skipped.txt /tmp/trustee/rejected.txt
           # 平台快照入庫超過 10 日，受託人 PDF 仍然下載唔到先算異常；未夠 10 日係正常等待。
-          # BCT 接口同宏利摘要只得最新一期：下載失敗或者已經去咗下一期（source-ahead）即刻跟進，
-          # 否則固定網址一轉期，嗰個月就攞唔返。
+          # BCT 接口、宏利摘要同中銀保誠接口只得最新一期：下載失敗，或者宏利、中銀保誠已經去咗下一期
+          # （source-ahead），即刻跟進，否則固定網址一轉期，嗰個月就攞唔返。
           batch_age_days=$(( ( $(date -u +%s) - $(date -u -d "${PLATFORM_BATCH}" +%s) ) / 86400 ))
           attention="$(awk -F'\t' -v age="${batch_age_days}" \
-            '$3 == "invalid-response" || ($3 == "source-ahead" && $2 ~ /manulife/) || ($3 == "download-failed" && ($2 ~ /bcthk|manulife/ || age > 10))' \
+            '$3 == "invalid-response" || ($3 == "source-ahead" && $2 ~ /manulife|boci-pru/) || ($3 == "download-failed" && ($2 ~ /bcthk|manulife|boci-pru/ || age > 10))' \
             /tmp/trustee/skipped.txt)"
           if [ -z "${attention}" ] && [ ! -s /tmp/trustee/rejected.txt ] && [ "${JOB_FAILED}" != "true" ]; then
             exit 0
