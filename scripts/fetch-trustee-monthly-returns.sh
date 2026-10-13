@@ -12,16 +12,18 @@ set -euo pipefail
 #   官網擋普通 curl，要用 curl_cffi 瀏覽器指紋（scripts/download-pdf-impersonated.py）。
 # - 中銀國際英國保誠信託官網強積金價格及表現接口（POST）：只提供最新一期，每隻基金的 asOfDate
 #   同目標日期唔一樣就唔用。
+# - 萬通 MASS《Monthly Fund Performance of the Scheme》：固定網址只得最新一期，表頭日期（MM/DD/YYYY）
+#   同目標日期唔一樣就唔用。
 # - 永明彩虹強積金官網累積回報接口（POST）：按季更新，只提供最新一期，VALUATION_DT 同目標日期
 #   唔一樣就唔用。
 #
 # 每份成功下載而且日期對得上的來源，喺 <output-dir>/arguments.txt 寫一行
-# `--summary <值>`、`--bct <值>`、`--manulife <值>`、`--bocpru <值>` 或 `--sunlife <值>`。其餘寫入 <output-dir>/skipped.txt（以 tab 分隔：
+# `--summary <值>`、`--bct <值>`、`--manulife <值>`、`--bocpru <值>`、`--sunlife <值>` 或 `--yflife <值>`。其餘寫入 <output-dir>/skipped.txt（以 tab 分隔：
 # 計劃、網址、原因代號、說明），原因代號：
 #   download-failed   下載失敗或者唔係 PDF；
-#   invalid-response  BCT／中銀保誠／永明回應唔係有效基金表現資料，或宏利摘要讀唔到唯一「As at」日期；
-#   source-behind     BCT／宏利／中銀保誠／永明仲未更新到目標日期（正常，等下次）；
-#   source-ahead      BCT／宏利／中銀保誠／永明已經去咗下一期，目標日期嗰期再攞唔返（要跟進）。
+#   invalid-response  BCT／中銀保誠／永明回應唔係有效基金表現資料，或宏利摘要讀唔到唯一「As at」日期，或萬通月報讀唔到唯一表頭日期；
+#   source-behind     BCT／宏利／中銀保誠／永明／萬通仲未更新到目標日期（正常，等下次）；
+#   source-ahead      BCT／宏利／中銀保誠／永明／萬通已經去咗下一期，目標日期嗰期再攞唔返（要跟進）。
 # 呢度唔讀數字，數字全部交由讀取器同交叉核對把關。
 
 data_as_of="${1:-}"
@@ -174,6 +176,27 @@ else
     printf '%s\t%s\t%s\tvaluation date %s, not %s\n' "$sunlife_scheme" "$sunlife_api" "$reason" "$dates" "$data_as_of" >>"$output_dir/skipped.txt"
   else
     printf -- '--sunlife\t%s|%s|%s|%s\n' "$sunlife_scheme" "$sunlife_page" "$sunlife_target" "$retrieved_at" >>"$output_dir/arguments.txt"
+  fi
+fi
+
+# 萬通 MASS：固定網址，只得最新一個月。日期由表頭「08/31/2026」讀，必須全份唯一。
+yflife_scheme="MASS Mandatory Provident Fund Scheme"
+yflife_url="https://www.yflife.com/sites/default/files/mpf/MonthlyFundPrice(E).pdf"
+yflife_target="$output_dir/yf-life-mass-monthly-performance.pdf"
+retrieved_at="$(now)"
+if ! fetch "$yflife_url" "$yflife_target" || [ "$(head -c 5 "$yflife_target")" != "%PDF-" ]; then
+  printf '%s\t%s\tdownload-failed\tdownload failed or not a PDF\n' "$yflife_scheme" "$yflife_url" >>"$output_dir/skipped.txt"
+  rm -f "$yflife_target"
+else
+  dates="$(pdftotext "$yflife_target" - 2>/dev/null | grep -oE '\b[0-9]{2}/[0-9]{2}/[0-9]{4}\b' | sort -u | awk -F/ '{print $3 "-" $1 "-" $2}' | paste -sd, - || true)"
+  if [[ ! "$dates" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
+    printf '%s\t%s\tinvalid-response\theader dates "%s"\n' "$yflife_scheme" "$yflife_url" "$dates" >>"$output_dir/skipped.txt"
+  elif [ "$dates" != "$data_as_of" ]; then
+    reason="source-behind"
+    [[ "$dates" > "$data_as_of" ]] && reason="source-ahead"
+    printf '%s\t%s\t%s\theader date %s, not %s\n' "$yflife_scheme" "$yflife_url" "$reason" "$dates" "$data_as_of" >>"$output_dir/skipped.txt"
+  else
+    printf -- '--yflife\t%s|%s|%s|%s\n' "$yflife_scheme" "$yflife_url" "$yflife_target" "$retrieved_at" >>"$output_dir/arguments.txt"
   fi
 fi
 

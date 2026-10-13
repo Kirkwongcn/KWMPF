@@ -12,6 +12,7 @@ import {
 } from "./monthly-performance-summary-parser";
 import { parseManulifeMonthlySummary } from "./manulife-monthly-summary-parser";
 import { matchSunLifeRows, parseSunLifeCumulativePerformance } from "./sun-life-mpf-performance";
+import { parseYfLifeMonthlyPerformance } from "./yf-life-monthly-performance-parser";
 import {
   splitReturnObservations,
   validateOfficialCumulativeReturnObservations,
@@ -28,7 +29,8 @@ import {
  * - `--bct`：銀聯信託官網基金表現數據接口（JSON 回應原檔）；
  * - `--manulife`：宏利環球精選《每月摘要 Monthly Fund Summary》PDF（`pdftotext -bbox` 按欄位讀）；
  * - `--bocpru`：中銀國際英國保誠信託官網強積金價格及表現數據接口（JSON 回應原檔）；
- * - `--sunlife`：永明金融官網強積金基金價格及表現累積回報數據接口（JSON 回應原檔）。
+ * - `--sunlife`：永明金融官網強積金基金價格及表現累積回報數據接口（JSON 回應原檔）；
+ * - `--yflife`：萬通信託每月《Monthly Fund Performance of the Scheme》PDF（`pdftotext -bbox` 按欄位讀）。
  *
  * 用法：
  *   bun src/build-monthly-summary-returns.ts --source <platform.json> \
@@ -38,6 +40,7 @@ import {
  *     [--manulife "<scheme>|<url>|<pdf>|<retrievedAt>" …] \
  *     [--bocpru "<scheme>|<url>|<json>|<retrievedAt>" …] \
  *     [--sunlife "<scheme>|<url>|<json>|<retrievedAt>" …] \
+ *     [--yflife "<scheme>|<url>|<pdf>|<retrievedAt>" …] \
  *     --output <new-candidate.json> --report <report.json> \
  *     [--check-source <platform.json>]
  *
@@ -68,15 +71,16 @@ const bctResponses = argumentsNamed("--bct");
 const manulifeSummaries = argumentsNamed("--manulife");
 const bocPruListings = argumentsNamed("--bocpru");
 const sunLifeResponses = argumentsNamed("--sunlife");
+const yfLifeSummaries = argumentsNamed("--yflife");
 if (
   !sourcePath ||
   !basePath ||
   !outputPath ||
   !reportPath ||
-  summaries.length + bctResponses.length + manulifeSummaries.length + bocPruListings.length + sunLifeResponses.length === 0
+  summaries.length + bctResponses.length + manulifeSummaries.length + bocPruListings.length + sunLifeResponses.length + yfLifeSummaries.length === 0
 )
   throw new Error(
-    'Usage: bun src/build-monthly-summary-returns.ts --source <platform.json> --base-candidate <candidate.json> [--summary "<scheme>|<url>|<pdf>|<retrievedAt>"] [--bct "<scheme>|<url>|<json>|<retrievedAt>"] [--manulife "<scheme>|<url>|<pdf>|<retrievedAt>"] [--bocpru "<scheme>|<url>|<json>|<retrievedAt>"] [--sunlife "<scheme>|<url>|<json>|<retrievedAt>"] --output <candidate.json> --report <report.json>',
+    'Usage: bun src/build-monthly-summary-returns.ts --source <platform.json> --base-candidate <candidate.json> [--summary "<scheme>|<url>|<pdf>|<retrievedAt>"] [--bct "<scheme>|<url>|<json>|<retrievedAt>"] [--manulife "<scheme>|<url>|<pdf>|<retrievedAt>"] [--bocpru "<scheme>|<url>|<json>|<retrievedAt>"] [--sunlife "<scheme>|<url>|<json>|<retrievedAt>"] [--yflife "<scheme>|<url>|<pdf>|<retrievedAt>"] --output <candidate.json> --report <report.json>',
   );
 
 const snapshot = parseSourceSnapshot(JSON.parse(await readFile(sourcePath, "utf8")));
@@ -123,7 +127,8 @@ type MatchedRow = {
 };
 type SourceDocument = {
   kind: "monthly-summary-pdf" | "bct-fund-information" | "manulife-monthly-summary-pdf" | "boci-prudential-mpf-listing"
-    | "sun-life-mpf-cumulative-performance";
+    | "sun-life-mpf-cumulative-performance"
+    | "yf-life-monthly-performance-pdf";
   schemeName: string;
   url: string;
   retrievedAt: string;
@@ -321,6 +326,52 @@ async function readBocPru(entry: string): Promise<SourceDocument> {
   };
 }
 
+async function readYfLife(entry: string): Promise<SourceDocument> {
+  const { schemeName, url, path, retrievedAt } = splitEntry(entry, "--yflife");
+  const bytes = await readFile(path);
+  if (bytes.subarray(0, 5).toString("latin1") !== "%PDF-") throw new Error(`${path}: not a PDF`);
+  const bbox = execFileSync("pdftotext", ["-bbox", path, "-"], {
+    encoding: "utf8",
+    maxBuffer: 64 * 1024 * 1024,
+    stdio: ["ignore", "pipe", "ignore"],
+  });
+  const performance = parseYfLifeMonthlyPerformance(bbox);
+  const records = schemeRecordsOf(schemeName).map((record) => ({
+    fundClassId: record.fundClassId,
+    constituentFundName: record.identity.constituentFundName,
+  }));
+  const matches = performance.rows.map((row) => ({ row, candidates: recordsWithSameName(records, row.englishName) }));
+  return {
+    kind: "yf-life-monthly-performance-pdf",
+    schemeName,
+    url,
+    retrievedAt,
+    sha256: createHash("sha256").update(bytes).digest("hex"),
+    bytes: bytes.length,
+    dataAsOf: performance.dataAsOf,
+    rows: performance.rows.length,
+    failed: matches
+      .filter((match) => match.candidates.length !== 1)
+      .map((match) => `${match.row.englishName} (${match.candidates.length === 0 ? "unmatched" : "ambiguous"})`),
+    matched: matches.flatMap(({ row, candidates }) =>
+      candidates.length === 1
+        ? [
+            {
+              fundClassId: candidates[0]!.fundClassId,
+              label: row.englishName,
+              oneYear: row.oneYear,
+              threeYears: row.threeYears,
+              // 表只有 3 個月、1 年、3 年；五年、十年唔核對。
+              fiveYears: null,
+              tenYears: null,
+              printedThreeYears: row.printedThreeYears,
+            },
+          ]
+        : [],
+    ),
+  };
+}
+
 // 接口係 POST，`url` 記公開網頁「強積金基金價格及表現」，原檔 SHA-256 記接口回應。
 async function readSunLife(entry: string): Promise<SourceDocument> {
   const { schemeName, url, path, retrievedAt } = splitEntry(entry, "--sunlife");
@@ -476,6 +527,7 @@ const inputs = [
   ...manulifeSummaries.map((entry) => ({ flag: "--manulife", entry, read: () => readManulife(entry) })),
   ...bocPruListings.map((entry) => ({ flag: "--bocpru", entry, read: () => readBocPru(entry) })),
   ...sunLifeResponses.map((entry) => ({ flag: "--sunlife", entry, read: () => readSunLife(entry) })),
+  ...yfLifeSummaries.map((entry) => ({ flag: "--yflife", entry, read: () => readYfLife(entry) })),
 ];
 for (const input of inputs) {
   try {
@@ -547,7 +599,7 @@ await writeFile(
       sourceSnapshot: sourcePath,
       baseCandidate: basePath,
       method:
-        "Official trustee monthly data: HSBC / Hang Seng Monthly Fund Performance Summary main table (pdftotext -layout), BCT website fund performance responses, the Manulife Global Select Monthly Fund Summary (pdftotext -bbox columns), the BOCI-Prudential website MPF price and performance listing (JSON), and the Sun Life website MPF cumulative performance data (JSON). Exact English-name match within the scheme (BCT unit class by the Class X / Unit Class X contract), one-year cumulative cross-checked against the MPFA platform one-year return of the same date for every row; three-year cumulative stored as published (ADR 0014), never converted to annualized.",
+        "Official trustee monthly data: HSBC / Hang Seng Monthly Fund Performance Summary main table (pdftotext -layout), BCT website fund performance responses, the Manulife Global Select Monthly Fund Summary (pdftotext -bbox columns), the BOCI-Prudential website MPF price and performance listing (JSON), the Sun Life website MPF cumulative performance data (JSON), and the YF Life (MASS) Monthly Fund Performance of the Scheme (pdftotext -bbox columns). Exact English-name match within the scheme (BCT unit class by the Class X / Unit Class X contract), one-year cumulative cross-checked against the MPFA platform one-year return of the same date for every row; three-year cumulative stored as published (ADR 0014), never converted to annualized.",
       sources,
       annualizedRows: base.annualized.length,
       cumulativeRows: cumulative.length,
