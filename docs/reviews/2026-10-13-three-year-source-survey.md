@@ -41,7 +41,20 @@
 
 `build-monthly-summary-returns.ts --yflife`，`--check-source data/sources/2026-09-26/mpf-fund-platform.json`（積金局平台 2026-08-31）：14 隻英文名精確配對；一年 14／14 同平台逐行一致。來源 SHA-256 `6051347a…b9da`（634,535 bytes）。
 
-候選追加 14 行 `basis: "cumulative"`，其餘 550 行逐字不變；報告 `yfLifeMonthlyPerformance` 一節記錄來源。`check-publication-seed.sh`：`rankingRows` 68、`excludedStaleCount` 280 不變。本機 API 抽三筆：
+候選追加 14 行 `basis: "cumulative"`，其餘 550 行逐字不變；報告 `yfLifeMonthlyPerformance` 一節記錄來源。Lipper 部分 `/code-review medium` 10 項發現，全部修正：
+
+- 欄位要核對印出嘅期間標籤；
+- BOM 變體；
+- 冇前綴嘅行記入 rejected；
+- 合併嘅邊緣情況；
+- 比較頁標記只比受託人數字；
+- 未有對照表時略過；
+- 資料 PR 標題同內文分開列第三方；
+- 來源數目計法；
+- 用法說明同 method 文字；
+- 冇用嘅過濾。
+
+`check-publication-seed.sh`：`rankingRows` 68、`excludedStaleCount` 280 不變。本機 API 抽三筆：
 
 | 基金 | 三年累積（官方） | 截至 | 原文 |
 | --- | ---: | --- | --- |
@@ -102,26 +115,64 @@
 - 中國人壽：只見歷年季度《Fund Performance Review》，冇每月版。
 - 保誠（我的強積金）：冇搜到表現頁，只有積金局平台頁同第三方舊報告。
 
-## HKIFA／Lipper「MPF Performance Table」（待使用者決定）
+## HKIFA／Lipper「MPF Performance Table」（使用者決定採用，標明第三方，ADR 0015）
 
-香港投資基金公會（HKIFA）每月轉載 Lipper 嘅強積金表現表。萬通月報右邊個表就係轉載佢：
+香港投資基金公會（HKIFA）每月轉載 Lipper 嘅強積金表現表；萬通月報右邊個表就係轉載佢。
 
-- 網址：`https://hkifa.org.hk/data/mpf/orso/english/HKMPF_English_092026.pdf`，10 頁，截至 2026-08-31；
-- 同頁嘅 `YC704_YYYYMM.csv` 只係兩個 DIS 參考組合；
-- 內容係 3 個月、1 年、3 年、10 年 % Growth（累積）。
+- 網址：`https://hkifa.org.hk/data/mpf/orso/english/HKMPF_English_092026.pdf`，10 頁，截至 2026-08-31，SHA-256 `04d70bc9…cfe8b`。
+- 同頁嘅 `YC704_YYYYMM.csv` 只係兩個 DIS 參考組合，唔用。
+- 讀取：`hkifa-lipper-mpf-table-parser.ts`。每頁打橫印，每隻基金係一條 x 帶，欄位範圍由表頭帶嘅「Rank」同截至日期定。
+- 量度：已有受託人 8 月底三年累積嘅 99 隻基金，98 隻同 Lipper 一樣；宏利 MPF 利息基金受託人 2.66、Lipper 2.65。
 
-量度結果：
+使用者 2026-10-13 揀咗採用，條件係標明第三方。實作：
 
-- 共 391 行基金。AMTD 16、交通銀行 14、東亞三個計劃 40、中國人壽 10、我的強積金 14 都有三年值；宏利退休精選得 13 行（積金局有 39 個類別），永明得 19 行（31 個類別）。
-- 同已用受託人數字嘅基金一致：宏利環球精選核心累積 41.17、中銀保誠核心累積 41.80、萬通核心累積 48.20，都同受託人原文一樣。
+1. **對照表** `data/reference/hkifa-lipper-fund-map.json`，由 `build-hkifa-lipper-map.ts` 產生：
+   - 330 行對上，48 行唔用（原因逐行記低）；
+   - 37 行嘅一年同積金局平台唔一樣，例如交通銀行好幾隻、友邦保守、BCT 簡易／Smart 計劃；
+   - 4 行冇一年數字；
+   - 6 行係基準或者附註（例如 Willis Towers Watson、FTSE 基準），冇計劃前綴；
+   - 1 行名同類別對唔上（海通核心累積 A 對到平台 T 類）。
+   - 友邦 65 歲後基金嗰行開頭有 BOM（pdftotext 出「∩╗┐」），code review 之後先剔走並對上。
+   - 已逐行覆核宏利退休精選、永明、AMTD、中國人壽、交通銀行等嘅類別對應。
+2. **候選**：
+   - 330 行逐行一年核對全部通過；
+   - 170 隻已經有受託人紀錄，保留受託人數字；
+   - 158 隻冇受託人紀錄，加入 Lipper 三年累積（`publisher: "hkifa-lipper"`）；
+   - 2 行冇三年值（成立未滿三年），唔出數。
+3. **網站**：
+   - 基金頁、比較頁寫「Lipper（經 HKIFA，第三方）」；
+   - 搵基金表格內標「Lipper（第三方）」，有第三方數字時表頭改為「累積（受託人／第三方）」；
+   - Lipper 冇列嘅類別（例如宏利退休精選 B、T 類）唔借用。
+4. **每日工作流程**：按目標日期下載下一個月份嘅檔，表頭日期要同目標日期一樣。
 
-今次唔用，原因：
+Lipper 部分 `/code-review medium` 10 項發現，全部修正：
 
-1. 佢係業界組織轉載第三方（Lipper）數據，唔係受託人自己嘅披露，同「只用受託人官方來源」嘅做法唔同。
-2. 基金名係 Lipper 縮寫（例如「Allianz MPF Core Acc A」「Haitong MPF Retire Fd-…」），要逐行寫配對表，接近紅線 4 唔准嘅模糊配對。
-3. 好多計劃只列部分類別，其餘類別唔可以借用（紅線 5）。
+- 欄位要核對印出嘅期間標籤；
+- BOM 變體；
+- 冇前綴嘅行記入 rejected；
+- 合併嘅邊緣情況；
+- 比較頁標記只比受託人數字；
+- 未有對照表時略過；
+- 資料 PR 標題同內文分開列第三方；
+- 來源數目計法；
+- 用法說明同 method 文字；
+- 冇用嘅過濾。
 
-要用嘅話，要先改 ADR 0014 嘅來源範圍，再寫一份逐行、有版本嘅名稱對照表，冇列嘅類別記官方未提供。
+`check-publication-seed.sh`：`rankingRows` 68、`excludedStaleCount` 280 不變。本機 API 抽三筆：
+
+| 基金 | 三年累積 | 截至 | 發布者 |
+| --- | ---: | --- | --- |
+| 宏利退休精選安聯核心累積 A 類（`Manulife RC (MPF)-Allianz MPF Core Acc A`） | 43.02 | 2026-08-31 | hkifa-lipper |
+| AMTD 景順核心累積（`AMTD MPF-AMTD Invesco Core Acc`） | 46.89 | 2026-08-31 | hkifa-lipper |
+| 東亞（強積金）核心累積（`BEA (MPF) MT-BEA (MPF) Core Accumulation`） | 42.42 | 2026-08-31 | hkifa-lipper |
+
+加入第三方之後，仲冇三年累積嘅基金：
+
+- 新地 10／10（Lipper 表冇呢個計劃）；
+- 宏利退休精選 26／39（Lipper 只列 A 類）；
+- 永明 14／31（主要係 B 類）；
+- 海通 12／14、交通銀行 9／14（一年核對唔過）；
+- 友邦 3／21、我的強積金 3／17。
 
 ## 網絡政策
 

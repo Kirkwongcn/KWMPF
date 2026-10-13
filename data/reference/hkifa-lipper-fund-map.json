@@ -1,0 +1,3200 @@
+{
+  "generatedFrom": {
+    "url": "https://hkifa.org.hk/data/mpf/orso/english/HKMPF_English_092026.pdf",
+    "sha256": "04d70bc9294647971d798f4ef5a31eca64dca01fafa9f1bff3279e42319cfe8b",
+    "dataAsOf": "2026-08-31",
+    "checkSource": "../../data/sources/2026-09-26/mpf-fund-platform.json"
+  },
+  "rules": "Scheme by the fixed Lipper prefix table; a row maps to a fund class only when exactly one class in that scheme has an MPFA platform one-year cumulative return equal to the Lipper one-year % Growth on the same date AND every word of the Lipper fund name (after the fixed abbreviation table) appears in that class's English fund and class name. Classes Lipper does not list stay unmapped (never borrowed from another class).",
+  "schemePrefixes": {
+    "AIA MPF-Prime Value Choice-": "AIA MPF - Prime Value Choice",
+    "AMTD MPF-": "AMTD MPF Scheme",
+    "BCOM Joyful Ret MPF-": "BCOM Joyful Retirement MPF Scheme",
+    "BCT (MPF) Industry Choice-": "BCT (MPF) Industry Choice",
+    "BCT (MPF) Pro Choice-": "BCT (MPF) Pro Choice",
+    "BCT MPF-Simple-": "BCT MPF - Simple Plan",
+    "BCT MPF-Smart-": "BCT MPF - Smart Plan",
+    "BCT MPF S800-": "BCT MPF Scheme Series 800",
+    "BCT Strategic MPF-": "BCT Strategic MPF Scheme",
+    "BEA (MPF) Industry-": "BEA (MPF) Industry Scheme",
+    "BEA (MPF) MT-": "BEA (MPF) Master Trust Scheme",
+    "BEA (MPF) Value-": "BEA (MPF) Value Scheme",
+    "BOC-Pru Easy-Choice MPF-": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+    "China Life MPF MT-": "China Life MPF Master Trust Scheme",
+    "Fidelity Retirement MT-": "Fidelity Retirement Master Trust",
+    "HSBC MPF-SuperTrust Plus-": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+    "Hang Seng MPF-SuperTrust Plus-": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+    "Haitong MPF Retire Fd-": "Haitong MPF Retirement Fund",
+    "MASS MPF-": "MASS Mandatory Provident Fund Scheme",
+    "Manulife GS (MPF)-": "Manulife Global Select (MPF) Scheme",
+    "Manulife RC (MPF)-": "Manulife RetireChoice (MPF) Scheme",
+    "My Choice MPF-": "My Choice Mandatory Provident Fund Scheme",
+    "Sun Life Rainbow MPF-": "Sun Life Rainbow MPF Scheme"
+  },
+  "entries": [
+    {
+      "lipperName": "MASS MPF-Core Accumulation",
+      "fundClassId": "mpfa-cf-1487",
+      "schemeName": "MASS Mandatory Provident Fund Scheme",
+      "constituentFundName": "Core Accumulation Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 15.37,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) Core Accumulation",
+      "fundClassId": "mpfa-cf-1533",
+      "schemeName": "BCT (MPF) Pro Choice",
+      "constituentFundName": "BCT (Pro) Core Accumulation Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 15.35,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT Strategic MPF-Invesco Core Accumulation A",
+      "fundClassId": "mpfa-cf-1557",
+      "schemeName": "BCT Strategic MPF Scheme",
+      "constituentFundName": "Invesco Core Accumulation Fund",
+      "fundClassName": "Unit Class A",
+      "verifiedOneYear": 15.33,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCOM Joyful Ret MPF-BCOM Core Accumulation",
+      "fundClassId": "mpfa-cf-1521",
+      "schemeName": "BCOM Joyful Retirement MPF Scheme",
+      "constituentFundName": "BCOM Core Accumulation Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 15.32,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "China Life MPF MT-China Life Core Accumulation",
+      "fundClassId": "mpfa-cf-1545",
+      "schemeName": "China Life MPF Master Trust Scheme",
+      "constituentFundName": "China Life Core Accumulation Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 15.28,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Industry Choice-BCT (Ind) Core Acc",
+      "fundClassId": "mpfa-cf-1531",
+      "schemeName": "BCT (MPF) Industry Choice",
+      "constituentFundName": "BCT (Industry) Core Accumulation Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 15.26,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AMTD MPF-AMTD Invesco Core Acc",
+      "fundClassId": "mpfa-cf-1529",
+      "schemeName": "AMTD MPF Scheme",
+      "constituentFundName": "AMTD Invesco Core Accumulation Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 14.98,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF-Simple-Principal Core Accumulation",
+      "fundClassId": "mpfa-cf-1493",
+      "schemeName": "BCT MPF - Simple Plan",
+      "constituentFundName": "Principal Core Accumulation Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 14.35,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF S800-Principal Core Accumulation N",
+      "fundClassId": "mpfa-cf-1491",
+      "schemeName": "BCT MPF Scheme Series 800",
+      "constituentFundName": "Principal Core Accumulation Fund",
+      "fundClassName": "Class N",
+      "verifiedOneYear": 14.31,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "HSBC MPF-SuperTrust Plus-Core Accumulation",
+      "fundClassId": "mpfa-cf-318",
+      "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Core Accumulation Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 13.88,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Hang Seng MPF-SuperTrust Plus-Core Accumulation",
+      "fundClassId": "mpfa-cf-304",
+      "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Core Accumulation Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 13.87,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AIA MPF-Prime Value Choice-Core Accumulation",
+      "fundClassId": "mpfa-cf-1519",
+      "schemeName": "AIA MPF - Prime Value Choice",
+      "constituentFundName": "Core Accumulation Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 13.44,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BOC-Pru Easy-Choice MPF-BOC-Pru Core Acc",
+      "fundClassId": "mpfa-cf-1541",
+      "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "BOC-Prudential Core Accumulation Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 13.15,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Sun Life Rainbow MPF-Sun Life MPF Core Acc",
+      "fundClassId": "mpfa-cf-1503",
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Core Accumulation Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 13.1,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "My Choice MPF-My Choice Core Accumulation",
+      "fundClassId": "mpfa-cf-1543",
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "My Choice Core Accumulation Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 13.09,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Fidelity Retirement MT-Core Accumulation",
+      "fundClassId": "mpfa-cf-1551",
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Core Accumulation Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 13.03,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) MT-BEA (MPF) Core Accumulation",
+      "fundClassId": "mpfa-cf-1537",
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) Core Accumulation Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 12.89,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) Value-BEA Core Accumulation",
+      "fundClassId": "mpfa-cf-1539",
+      "schemeName": "BEA (MPF) Value Scheme",
+      "constituentFundName": "BEA Core Accumulation Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 12.87,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) Industry-BEA (Ind S) Core Accumulation",
+      "fundClassId": "mpfa-cf-1535",
+      "schemeName": "BEA (MPF) Industry Scheme",
+      "constituentFundName": "BEA (Industry Scheme) Core Accumulation Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 12.86,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF Core Accumulation",
+      "fundClassId": "mpfa-cf-1485",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Core Accumulation Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 12.64,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife RC (MPF)-Allianz MPF Core Acc A",
+      "fundClassId": "mpfa-cf-1523",
+      "schemeName": "Manulife RetireChoice (MPF) Scheme",
+      "constituentFundName": "Allianz MPF Core Accumulation Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": 12.48,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF S800-Principal Age 65 Plus N",
+      "fundClassId": "mpfa-cf-1492",
+      "schemeName": "BCT MPF Scheme Series 800",
+      "constituentFundName": "Principal Age 65 Plus Fund",
+      "fundClassName": "Class N",
+      "verifiedOneYear": 5.71,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) Age 65 Plus",
+      "fundClassId": "mpfa-cf-1534",
+      "schemeName": "BCT (MPF) Pro Choice",
+      "constituentFundName": "BCT (Pro) Age 65 Plus Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 4.89,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "MASS MPF-Age 65 Plus",
+      "fundClassId": "mpfa-cf-1488",
+      "schemeName": "MASS Mandatory Provident Fund Scheme",
+      "constituentFundName": "Age 65 Plus Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 4.81,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT Strategic MPF-Invesco Age 65 Plus A",
+      "fundClassId": "mpfa-cf-1559",
+      "schemeName": "BCT Strategic MPF Scheme",
+      "constituentFundName": "Invesco Age 65 Plus Fund",
+      "fundClassName": "Unit Class A",
+      "verifiedOneYear": 4.76,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "China Life MPF MT-China Life Age 65 Plus",
+      "fundClassId": "mpfa-cf-1546",
+      "schemeName": "China Life MPF Master Trust Scheme",
+      "constituentFundName": "China Life Age 65 Plus Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 4.74,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Industry Choice-BCT (Ind) Age 65 Plus",
+      "fundClassId": "mpfa-cf-1532",
+      "schemeName": "BCT (MPF) Industry Choice",
+      "constituentFundName": "BCT (Industry) Age 65 Plus Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 4.71,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "HSBC MPF-SuperTrust Plus-Age 65 Plus",
+      "fundClassId": "mpfa-cf-802",
+      "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Age 65 Plus Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 4.61,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Hang Seng MPF-SuperTrust Plus-Age 65 Plus",
+      "fundClassId": "mpfa-cf-806",
+      "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Age 65 Plus Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 4.61,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Sun Life Rainbow MPF-Sun Life MPF Age 65 Plus",
+      "fundClassId": "mpfa-cf-1505",
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Age 65 Plus Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 4.57,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "My Choice MPF-My Choice Age 65 Plus",
+      "fundClassId": "mpfa-cf-1544",
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "My Choice Age 65 Plus Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 4.54,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) MT-BEA (MPF) Age 65 Plus",
+      "fundClassId": "mpfa-cf-1538",
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) Age 65 Plus Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 4.46,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AMTD MPF-AMTD Invesco Age 65 Plus",
+      "fundClassId": "mpfa-cf-1530",
+      "schemeName": "AMTD MPF Scheme",
+      "constituentFundName": "AMTD Invesco Age 65 Plus Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 4.46,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) Industry-BEA (Ind S) Age 65 Plus",
+      "fundClassId": "mpfa-cf-1536",
+      "schemeName": "BEA (MPF) Industry Scheme",
+      "constituentFundName": "BEA (Industry Scheme) Age 65 Plus Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 4.44,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) Value-BEA Age 65 Plus",
+      "fundClassId": "mpfa-cf-1540",
+      "schemeName": "BEA (MPF) Value Scheme",
+      "constituentFundName": "BEA Age 65 Plus Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 4.43,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AIA MPF-Prime Value Choice-Age 65 Plus",
+      "fundClassId": "mpfa-cf-1520",
+      "schemeName": "AIA MPF - Prime Value Choice",
+      "constituentFundName": "Age 65 Plus Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 4.14,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BOC-Pru Easy-Choice MPF-BOC-Pru Age 65 Plus",
+      "fundClassId": "mpfa-cf-1542",
+      "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "BOC-Prudential Age 65 Plus Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 4.14,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife RC (MPF)-Allianz MPF Age 65 Plus A",
+      "fundClassId": "mpfa-cf-1526",
+      "schemeName": "Manulife RetireChoice (MPF) Scheme",
+      "constituentFundName": "Allianz MPF Age 65 Plus Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": 4.08,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Fidelity Retirement MT-Age 65 Plus",
+      "fundClassId": "mpfa-cf-1552",
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Age 65 Plus Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 3.86,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF Age 65 Plus",
+      "fundClassId": "mpfa-cf-1486",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Age 65 Plus Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 3.75,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Sun Life Rainbow MPF-Sun Life MPF Stable A",
+      "fundClassId": "mpfa-cf-498",
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Stable Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": 9.83,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF-Smart-Principal Stable",
+      "fundClassId": "mpfa-cf-158",
+      "schemeName": "BCT MPF - Smart Plan",
+      "constituentFundName": "Principal Stable Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 8.61,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF S800-Principal Stable Yield I",
+      "fundClassId": "mpfa-cf-696",
+      "schemeName": "BCT MPF Scheme Series 800",
+      "constituentFundName": "Principal Stable Yield Fund",
+      "fundClassName": "Class I",
+      "verifiedOneYear": 8.58,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) Value-BEA Stable",
+      "fundClassId": "mpfa-cf-1042",
+      "schemeName": "BEA (MPF) Value Scheme",
+      "constituentFundName": "BEA Stable Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 7.51,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) E30 Mixed Asset",
+      "fundClassId": "mpfa-cf-188",
+      "schemeName": "BCT (MPF) Pro Choice",
+      "constituentFundName": "BCT (Pro) E30 Mixed Asset Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 6.78,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BOC-Pru Easy-Choice MPF-BOC-Pru Stable",
+      "fundClassId": "mpfa-cf-229",
+      "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "BOC-Prudential Stable Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 6.67,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) MT-BEA (MPF) Stable",
+      "fundClassId": "mpfa-cf-223",
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) Stable Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 6.63,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Industry Choice-BCT (Ind) E30 Mixed Asst",
+      "fundClassId": "mpfa-cf-180",
+      "schemeName": "BCT (MPF) Industry Choice",
+      "constituentFundName": "BCT (Industry) E30 Mixed Asset Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 6.55,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) Industry-BEA (Ind S) Stable",
+      "fundClassId": "mpfa-cf-214",
+      "schemeName": "BEA (MPF) Industry Scheme",
+      "constituentFundName": "BEA (Industry Scheme) Stable Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 6.51,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT Strategic MPF-Invesco Capital Stable A",
+      "fundClassId": "mpfa-cf-191",
+      "schemeName": "BCT Strategic MPF Scheme",
+      "constituentFundName": "Invesco Capital Stable Fund",
+      "fundClassName": "Unit Class A",
+      "verifiedOneYear": 6.23,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AIA MPF-Prime Value Choice-Capital Stable Pf",
+      "fundClassId": "mpfa-cf-131",
+      "schemeName": "AIA MPF - Prime Value Choice",
+      "constituentFundName": "Capital Stable Portfolio",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 6.15,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "HSBC MPF-SuperTrust Plus-Stable",
+      "fundClassId": "mpfa-cf-803",
+      "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Stable Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 6.14,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Hang Seng MPF-SuperTrust Plus-Stable",
+      "fundClassId": "mpfa-cf-807",
+      "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Stable Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 6.14,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AMTD MPF-AMTD Allianz Choice Capital Stable",
+      "fundClassId": "mpfa-cf-770",
+      "schemeName": "AMTD MPF Scheme",
+      "constituentFundName": "AMTD Allianz Choice Capital Stable Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 5.57,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife RC (MPF)-Allianz Capital Stable A",
+      "fundClassId": "mpfa-cf-259",
+      "schemeName": "Manulife RetireChoice (MPF) Scheme",
+      "constituentFundName": "Allianz Capital Stable Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": 5.33,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Fidelity Retirement MT-Capital Stable",
+      "fundClassId": "mpfa-cf-272",
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Capital Stable Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 4.67,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Sun Life Rainbow MPF-Sun Life MPF Balanced A",
+      "fundClassId": "mpfa-cf-500",
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Balanced Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": 16.02,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF S800-Principal Long Term Acc I",
+      "fundClassId": "mpfa-cf-435",
+      "schemeName": "BCT MPF Scheme Series 800",
+      "constituentFundName": "Principal Long Term Accumulation Fund",
+      "fundClassName": "Class I",
+      "verifiedOneYear": 12.45,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) Value-BEA Balanced",
+      "fundClassId": "mpfa-cf-1041",
+      "schemeName": "BEA (MPF) Value Scheme",
+      "constituentFundName": "BEA Balanced Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 11.29,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) E50 Mixed Asset",
+      "fundClassId": "mpfa-cf-185",
+      "schemeName": "BCT (MPF) Pro Choice",
+      "constituentFundName": "BCT (Pro) E50 Mixed Asset Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 11.26,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "My Choice MPF-My Choice Stable",
+      "fundClassId": "mpfa-cf-818",
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "My Choice Stable Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 11.03,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Industry Choice-BCT (Ind) E50 Mixed Asst",
+      "fundClassId": "mpfa-cf-181",
+      "schemeName": "BCT (MPF) Industry Choice",
+      "constituentFundName": "BCT (Industry) E50 Mixed Asset Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 10.8,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AIA MPF-Prime Value Choice-Balanced Portfolio",
+      "fundClassId": "mpfa-cf-132",
+      "schemeName": "AIA MPF - Prime Value Choice",
+      "constituentFundName": "Balanced Portfolio",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 10.5,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) MT-BEA (MPF) Balanced",
+      "fundClassId": "mpfa-cf-216",
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) Balanced Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 10.26,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) Industry-BEA (Ind S) Balanced",
+      "fundClassId": "mpfa-cf-212",
+      "schemeName": "BEA (MPF) Industry Scheme",
+      "constituentFundName": "BEA (Industry Scheme) Balanced Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 10.19,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BOC-Pru Easy-Choice MPF-BOC-Pru Balanced",
+      "fundClassId": "mpfa-cf-228",
+      "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "BOC-Prudential Balanced Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 10.16,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "MASS MPF-Global Stable",
+      "fundClassId": "mpfa-cf-385",
+      "schemeName": "MASS Mandatory Provident Fund Scheme",
+      "constituentFundName": "Global Stable Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 9.9,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AMTD MPF-AMTD Allianz Choice Stable Growth",
+      "fundClassId": "mpfa-cf-771",
+      "schemeName": "AMTD MPF Scheme",
+      "constituentFundName": "AMTD Allianz Choice Stable Growth Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 9.64,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife RC (MPF)-Allianz Stable Growth A",
+      "fundClassId": "mpfa-cf-256",
+      "schemeName": "Manulife RetireChoice (MPF) Scheme",
+      "constituentFundName": "Allianz Stable Growth Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": 9.35,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Fidelity Retirement MT-Stable Growth",
+      "fundClassId": "mpfa-cf-271",
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Stable Growth Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 8.13,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF Fidelity Stb Gr",
+      "fundClassId": "mpfa-cf-374",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Fidelity Stable Growth Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 7.89,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Sun Life Rainbow MPF-Sun Life MPF Growth A",
+      "fundClassId": "mpfa-cf-508",
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Growth Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": 22.03,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF S800-Principal Global Growth I",
+      "fundClassId": "mpfa-cf-447",
+      "schemeName": "BCT MPF Scheme Series 800",
+      "constituentFundName": "Principal Global Growth Fund",
+      "fundClassName": "Class I",
+      "verifiedOneYear": 16.49,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) Value-BEA Growth",
+      "fundClassId": "mpfa-cf-1040",
+      "schemeName": "BEA (MPF) Value Scheme",
+      "constituentFundName": "BEA Growth Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 15.87,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) E70 Mixed Asset",
+      "fundClassId": "mpfa-cf-184",
+      "schemeName": "BCT (MPF) Pro Choice",
+      "constituentFundName": "BCT (Pro) E70 Mixed Asset Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 15.73,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Industry Choice-BCT (Ind) E70 Mixed Asst",
+      "fundClassId": "mpfa-cf-174",
+      "schemeName": "BCT (MPF) Industry Choice",
+      "constituentFundName": "BCT (Industry) E70 Mixed Asset Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 15.17,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) MT-BEA (MPF) Growth",
+      "fundClassId": "mpfa-cf-224",
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) Growth Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 15.08,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "My Choice MPF-My Choice Balanced",
+      "fundClassId": "mpfa-cf-817",
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "My Choice Balanced Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 15.08,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) Industry-BEA (Ind S) Growth",
+      "fundClassId": "mpfa-cf-215",
+      "schemeName": "BEA (MPF) Industry Scheme",
+      "constituentFundName": "BEA (Industry Scheme) Growth Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 14.91,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCOM Joyful Ret MPF-BCOM Balanced (CF)",
+      "fundClassId": "mpfa-cf-207",
+      "schemeName": "BCOM Joyful Retirement MPF Scheme",
+      "constituentFundName": "BCOM Balanced (CF) Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 14.7,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT Strategic MPF-Invesco Balanced A",
+      "fundClassId": "mpfa-cf-198",
+      "schemeName": "BCT Strategic MPF Scheme",
+      "constituentFundName": "Invesco Balanced Fund",
+      "fundClassName": "Unit Class A",
+      "verifiedOneYear": 14.56,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "MASS MPF-Global Growth",
+      "fundClassId": "mpfa-cf-394",
+      "schemeName": "MASS Mandatory Provident Fund Scheme",
+      "constituentFundName": "Global Growth Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 14.08,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF Growth",
+      "fundClassId": "mpfa-cf-363",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Growth Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 14.06,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "HSBC MPF-SuperTrust Plus-Balanced",
+      "fundClassId": "mpfa-cf-322",
+      "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Balanced Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 13.84,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Hang Seng MPF-SuperTrust Plus-Balanced",
+      "fundClassId": "mpfa-cf-310",
+      "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Balanced Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 13.83,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AMTD MPF-AMTD Allianz Choice Balanced",
+      "fundClassId": "mpfa-cf-772",
+      "schemeName": "AMTD MPF Scheme",
+      "constituentFundName": "AMTD Allianz Choice Balanced Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 13.78,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Hang Seng MPF-SuperTrust Plus-ValChce Balanced",
+      "fundClassId": "mpfa-cf-1628",
+      "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "ValueChoice Balanced Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 13.49,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "HSBC MPF-SuperTrust Plus-ValueChoice Balanced",
+      "fundClassId": "mpfa-cf-1622",
+      "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "ValueChoice Balanced Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 13.49,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife RC (MPF)-Allianz Balanced A",
+      "fundClassId": "mpfa-cf-250",
+      "schemeName": "Manulife RetireChoice (MPF) Scheme",
+      "constituentFundName": "Allianz Balanced Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": 13.48,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "China Life MPF MT-China Life Balanced",
+      "fundClassId": "mpfa-cf-236",
+      "schemeName": "China Life MPF Master Trust Scheme",
+      "constituentFundName": "China Life Balanced Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 11.8,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Fidelity Retirement MT-Balanced",
+      "fundClassId": "mpfa-cf-280",
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Balanced Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 11.68,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF S800-Principal Aggressive Strategy I",
+      "fundClassId": "mpfa-cf-1740",
+      "schemeName": "BCT MPF Scheme Series 800",
+      "constituentFundName": "Principal Aggressive Strategy Fund",
+      "fundClassName": "Class I",
+      "verifiedOneYear": 20.97,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) E90 Mixed Asset",
+      "fundClassId": "mpfa-cf-701",
+      "schemeName": "BCT (MPF) Pro Choice",
+      "constituentFundName": "BCT (Pro) E90 Mixed Asset Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 20.59,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT Strategic MPF-Invesco Growth A",
+      "fundClassId": "mpfa-cf-200",
+      "schemeName": "BCT Strategic MPF Scheme",
+      "constituentFundName": "Invesco Growth Fund",
+      "fundClassName": "Unit Class A",
+      "verifiedOneYear": 19.88,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AIA MPF-Prime Value Choice-Growth Portfolio",
+      "fundClassId": "mpfa-cf-133",
+      "schemeName": "AIA MPF - Prime Value Choice",
+      "constituentFundName": "Growth Portfolio",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 19.24,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AMTD MPF-AMTD Allianz Choice Growth",
+      "fundClassId": "mpfa-cf-773",
+      "schemeName": "AMTD MPF Scheme",
+      "constituentFundName": "AMTD Allianz Choice Growth Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 18.59,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "HSBC MPF-SuperTrust Plus-Growth",
+      "fundClassId": "mpfa-cf-317",
+      "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Growth Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 18.34,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Hang Seng MPF-SuperTrust Plus-Growth",
+      "fundClassId": "mpfa-cf-311",
+      "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Growth Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 18.32,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF Aggressive",
+      "fundClassId": "mpfa-cf-376",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Aggressive Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 18.32,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife RC (MPF)-Allianz Growth A",
+      "fundClassId": "mpfa-cf-265",
+      "schemeName": "Manulife RetireChoice (MPF) Scheme",
+      "constituentFundName": "Allianz Growth Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": 18.28,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BOC-Pru Easy-Choice MPF-BOC-Pru Growth",
+      "fundClassId": "mpfa-cf-227",
+      "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "BOC-Prudential Growth Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 17.24,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "My Choice MPF-My Choice Growth",
+      "fundClassId": "mpfa-cf-816",
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "My Choice Growth Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 15.78,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "China Life MPF MT-China Life Growth",
+      "fundClassId": "mpfa-cf-237",
+      "schemeName": "China Life MPF Master Trust Scheme",
+      "constituentFundName": "China Life Growth Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 15.53,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Fidelity Retirement MT-Growth",
+      "fundClassId": "mpfa-cf-268",
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Growth Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 15.46,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF Fidelity Growth",
+      "fundClassId": "mpfa-cf-373",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Fidelity Growth Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 15.19,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF S800-Principal Hong Kong Equity I",
+      "fundClassId": "mpfa-cf-429",
+      "schemeName": "BCT MPF Scheme Series 800",
+      "constituentFundName": "Principal Hong Kong Equity Fund",
+      "fundClassName": "Class I",
+      "verifiedOneYear": 6.95,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCOM Joyful Ret MPF-BCOM HK Dynamic Equity (CF)",
+      "fundClassId": "mpfa-cf-653",
+      "schemeName": "BCOM Joyful Retirement MPF Scheme",
+      "constituentFundName": "BCOM Hong Kong Dynamic Equity (CF) Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 6.73,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF Hong Kong Equity",
+      "fundClassId": "mpfa-cf-367",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Hong Kong Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 6.62,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "MASS MPF-Hong Kong Equities",
+      "fundClassId": "mpfa-cf-389",
+      "schemeName": "MASS Mandatory Provident Fund Scheme",
+      "constituentFundName": "Hong Kong Equities Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 3.85,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT Strategic MPF-Invesco HK and China Equity A",
+      "fundClassId": "mpfa-cf-195",
+      "schemeName": "BCT Strategic MPF Scheme",
+      "constituentFundName": "Invesco Hong Kong and China Equity Fund",
+      "fundClassName": "Unit Class A",
+      "verifiedOneYear": 3.82,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife RC (MPF)-Allianz Hong Kong A",
+      "fundClassId": "mpfa-cf-244",
+      "schemeName": "Manulife RetireChoice (MPF) Scheme",
+      "constituentFundName": "Allianz Hong Kong Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": 3.8,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AMTD MPF-AMTD Invesco HK and China",
+      "fundClassId": "mpfa-cf-780",
+      "schemeName": "AMTD MPF Scheme",
+      "constituentFundName": "AMTD Invesco Hong Kong and China Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 3.8,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "HSBC MPF-SuperTrust Plus-HK & Chinese Equity",
+      "fundClassId": "mpfa-cf-321",
+      "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Hong Kong and Chinese Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 2.53,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Hang Seng MPF-SuperTrust Plus-HK & Chinese Equity",
+      "fundClassId": "mpfa-cf-309",
+      "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Hong Kong and Chinese Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 2.53,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) China & HK Equity",
+      "fundClassId": "mpfa-cf-659",
+      "schemeName": "BCT (MPF) Pro Choice",
+      "constituentFundName": "BCT (Pro) China and Hong Kong Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 2.25,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Industry Choice-BCT (Ind) China & HK Eq",
+      "fundClassId": "mpfa-cf-176",
+      "schemeName": "BCT (MPF) Industry Choice",
+      "constituentFundName": "BCT (Industry) China and Hong Kong Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 2.15,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Sun Life Rainbow MPF-Sun Life MPF Hong Kong Eq A",
+      "fundClassId": "mpfa-cf-502",
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Hong Kong Equity Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": 1.81,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) MT-BEA (MPF) Hong Kong Equity",
+      "fundClassId": "mpfa-cf-220",
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) Hong Kong Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 1.26,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) Industry-BEA (Ind S) Hong Kong Equity",
+      "fundClassId": "mpfa-cf-811",
+      "schemeName": "BEA (MPF) Industry Scheme",
+      "constituentFundName": "BEA (Industry Scheme) Hong Kong Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 1.22,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "China Life MPF MT-China Life Hong Kong Equity",
+      "fundClassId": "mpfa-cf-895",
+      "schemeName": "China Life MPF Master Trust Scheme",
+      "constituentFundName": "China Life Hong Kong Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 1.03,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "My Choice MPF-My Choice Hong Kong Equity",
+      "fundClassId": "mpfa-cf-822",
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "My Choice Hong Kong Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 0.89,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Fidelity Retirement MT-Hong Kong Equity",
+      "fundClassId": "mpfa-cf-273",
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Hong Kong Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 0.65,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BOC-Pru Easy-Choice MPF-BOC-Pru Hong Kong Equity",
+      "fundClassId": "mpfa-cf-232",
+      "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "BOC-Prudential Hong Kong Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 0.51,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Haitong MPF Retire Fd-Haitong Hong Kong SAR A",
+      "fundClassId": "mpfa-cf-290",
+      "schemeName": "Haitong MPF Retirement Fund",
+      "constituentFundName": "Haitong Hong Kong SAR Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": -0.29,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "China Life MPF MT-China Life US Equity",
+      "fundClassId": "mpfa-cf-1840",
+      "schemeName": "China Life MPF Master Trust Scheme",
+      "constituentFundName": "China Life US Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 21.04,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "HSBC MPF-SuperTrust Plus-North American Equity",
+      "fundClassId": "mpfa-cf-323",
+      "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "North American Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 20.86,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Hang Seng MPF-SuperTrust Plus-North American Eq",
+      "fundClassId": "mpfa-cf-308",
+      "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "North American Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 20.84,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Sun Life Rainbow MPF-Sun Life MPF US Equity",
+      "fundClassId": "mpfa-cf-2063",
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF US Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 20.15,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT Strategic MPF-Invesco US Index Tracking A",
+      "fundClassId": "mpfa-cf-2068",
+      "schemeName": "BCT Strategic MPF Scheme",
+      "constituentFundName": "Invesco US Index Tracking Fund",
+      "fundClassName": "Unit Class A",
+      "verifiedOneYear": 19.92,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) U.S. Equity",
+      "fundClassId": "mpfa-cf-1821",
+      "schemeName": "BCT (MPF) Pro Choice",
+      "constituentFundName": "BCT (Pro) U.S. Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 19.09,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) MT-BEA (MPF) North American Equity",
+      "fundClassId": "mpfa-cf-896",
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) North American Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 19.04,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "HSBC MPF-SuperTrust Plus-ValueChoice N Am Eq Trkr",
+      "fundClassId": "mpfa-cf-1624",
+      "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "ValueChoice North America Equity Tracker Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 18.98,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Hang Seng MPF-SuperTrust Plus-ValChce NAm Eq Trkr",
+      "fundClassId": "mpfa-cf-1630",
+      "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "ValueChoice North America Equity Tracker Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 18.98,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "MASS MPF-US Equity",
+      "fundClassId": "mpfa-cf-391",
+      "schemeName": "MASS Mandatory Provident Fund Scheme",
+      "constituentFundName": "US Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 18.86,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AIA MPF-Prime Value Choice-American",
+      "fundClassId": "mpfa-cf-878",
+      "schemeName": "AIA MPF - Prime Value Choice",
+      "constituentFundName": "American Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 18.77,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BOC-Pru Easy-Choice MPF-BOC-Pru N Amer Idx Trkg",
+      "fundClassId": "mpfa-cf-1000",
+      "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "BOC-Prudential North America Index Tracking Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 18.69,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AIA MPF-Prime Value Choice-North American Equity",
+      "fundClassId": "mpfa-cf-142",
+      "schemeName": "AIA MPF - Prime Value Choice",
+      "constituentFundName": "North American Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 17.26,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Fidelity Retirement MT-Americas Equity",
+      "fundClassId": "mpfa-cf-2079",
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Americas Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 16.6,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF S800-Principal US Equity I",
+      "fundClassId": "mpfa-cf-441",
+      "schemeName": "BCT MPF Scheme Series 800",
+      "constituentFundName": "Principal US Equity Fund",
+      "fundClassName": "Class I",
+      "verifiedOneYear": 15.25,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF North American Eq",
+      "fundClassId": "mpfa-cf-377",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF North American Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 9.88,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BOC-Pru Easy-Choice MPF-BOC-Pru Japan Equity",
+      "fundClassId": "mpfa-cf-226",
+      "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "BOC-Prudential Japan Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 30.49,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF Japan Equity",
+      "fundClassId": "mpfa-cf-371",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Japan Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 27.41,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) MT-BEA (MPF) Japan Equity",
+      "fundClassId": "mpfa-cf-217",
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) Japan Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 26.79,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) MT-BEA (MPF) Asian Equity",
+      "fundClassId": "mpfa-cf-221",
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) Asian Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 54.15,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) Industry-BEA (Ind S) Asian Equity",
+      "fundClassId": "mpfa-cf-899",
+      "schemeName": "BEA (MPF) Industry Scheme",
+      "constituentFundName": "BEA (Industry Scheme) Asian Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 53.88,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) Value-BEA Asian Equity",
+      "fundClassId": "mpfa-cf-1044",
+      "schemeName": "BEA (MPF) Value Scheme",
+      "constituentFundName": "BEA Asian Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 53.4,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Sun Life Rainbow MPF-Sun Life MPF Asian Equity A",
+      "fundClassId": "mpfa-cf-689",
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Asian Equity Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": 48.45,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife RC (MPF)-Allianz Asian A",
+      "fundClassId": "mpfa-cf-247",
+      "schemeName": "Manulife RetireChoice (MPF) Scheme",
+      "constituentFundName": "Allianz Asian Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": 42.71,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT Strategic MPF-Invesco Asian Equity A",
+      "fundClassId": "mpfa-cf-628",
+      "schemeName": "BCT Strategic MPF Scheme",
+      "constituentFundName": "Invesco Asian Equity Fund",
+      "fundClassName": "Unit Class A",
+      "verifiedOneYear": 35.33,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AMTD MPF-AMTD Invesco Asia",
+      "fundClassId": "mpfa-cf-778",
+      "schemeName": "AMTD MPF Scheme",
+      "constituentFundName": "AMTD Invesco Asia Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 35.32,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Industry Choice-BCT (Ind) Asian Equity",
+      "fundClassId": "mpfa-cf-178",
+      "schemeName": "BCT (MPF) Industry Choice",
+      "constituentFundName": "BCT (Industry) Asian Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 35.16,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "MASS MPF-Asian Pacific Equity",
+      "fundClassId": "mpfa-cf-392",
+      "schemeName": "MASS Mandatory Provident Fund Scheme",
+      "constituentFundName": "Asian Pacific Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 35.01,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) Asian Equity",
+      "fundClassId": "mpfa-cf-187",
+      "schemeName": "BCT (MPF) Pro Choice",
+      "constituentFundName": "BCT (Pro) Asian Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 34.91,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "My Choice MPF-My Choice Asia Equity",
+      "fundClassId": "mpfa-cf-820",
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "My Choice Asia Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 47.36,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Fidelity Retirement MT-Asia Pacific Equity",
+      "fundClassId": "mpfa-cf-278",
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Asia Pacific Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 47.05,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF Pacific Asia Eq",
+      "fundClassId": "mpfa-cf-370",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Pacific Asia Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 43.34,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AIA MPF-Prime Value Choice-Asian Equity",
+      "fundClassId": "mpfa-cf-137",
+      "schemeName": "AIA MPF - Prime Value Choice",
+      "constituentFundName": "Asian Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 42.64,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF-Simple-Principal Dynamic AsiaPac Eq",
+      "fundClassId": "mpfa-cf-160",
+      "schemeName": "BCT MPF - Simple Plan",
+      "constituentFundName": "Principal Dynamic Asia Pacific Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 37.31,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Hang Seng MPF-SuperTrust Plus-ValChce AsPc Eq Trkr",
+      "fundClassId": "mpfa-cf-1627",
+      "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "ValueChoice Asia Pacific Equity Tracker Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 34.51,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "HSBC MPF-SuperTrust Plus-ValueChoice AsPac Eq Trkr",
+      "fundClassId": "mpfa-cf-1621",
+      "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "ValueChoice Asia Pacific Equity Tracker Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 34.51,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BOC-Pru Easy-Choice MPF-BOC-Pru Asia Equity",
+      "fundClassId": "mpfa-cf-234",
+      "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "BOC-Prudential Asia Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 34.41,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF S800-Principal Asian Equity I",
+      "fundClassId": "mpfa-cf-433",
+      "schemeName": "BCT MPF Scheme Series 800",
+      "constituentFundName": "Principal Asian Equity Fund",
+      "fundClassName": "Class I",
+      "verifiedOneYear": 33.44,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "HSBC MPF-SuperTrust Plus-Asia Pacific Equity",
+      "fundClassId": "mpfa-cf-324",
+      "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Asia Pacific Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 27.38,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Hang Seng MPF-SuperTrust Plus-Asia Pacific Equity",
+      "fundClassId": "mpfa-cf-303",
+      "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Asia Pacific Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 27.36,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife RC (MPF)-Allianz Oriental Pacific A",
+      "fundClassId": "mpfa-cf-892",
+      "schemeName": "Manulife RetireChoice (MPF) Scheme",
+      "constituentFundName": "Allianz Oriental Pacific Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": 23.29,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AMTD MPF-AMTD Invesco Europe",
+      "fundClassId": "mpfa-cf-779",
+      "schemeName": "AMTD MPF Scheme",
+      "constituentFundName": "AMTD Invesco Europe Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 23.26,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) European Equity",
+      "fundClassId": "mpfa-cf-660",
+      "schemeName": "BCT (MPF) Pro Choice",
+      "constituentFundName": "BCT (Pro) European Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 22.79,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "HSBC MPF-SuperTrust Plus-European Equity",
+      "fundClassId": "mpfa-cf-326",
+      "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "European Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 21.17,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Hang Seng MPF-SuperTrust Plus-European Equity",
+      "fundClassId": "mpfa-cf-307",
+      "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "European Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 21.13,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "HSBC MPF-SuperTrust Plus-ValueChoice Eu Eqty Trkr",
+      "fundClassId": "mpfa-cf-1631",
+      "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "ValueChoice Europe Equity Tracker Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 20.66,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Hang Seng MPF-SuperTrust Plus-ValChce Euro Eq Trkr",
+      "fundClassId": "mpfa-cf-1629",
+      "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "ValueChoice Europe Equity Tracker Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 20.66,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BOC-Pru Easy-Choice MPF-BOC-Pru Europn Idx Trkg",
+      "fundClassId": "mpfa-cf-1001",
+      "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "BOC-Prudential European Index Tracking Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 20.1,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AIA MPF-Prime Value Choice-European Equity",
+      "fundClassId": "mpfa-cf-145",
+      "schemeName": "AIA MPF - Prime Value Choice",
+      "constituentFundName": "European Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 19.9,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Sun Life Rainbow MPF-Sun Life MPF European Equity",
+      "fundClassId": "mpfa-cf-2064",
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF European Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 17.8,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Fidelity Retirement MT-European Equity",
+      "fundClassId": "mpfa-cf-2080",
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "European Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 17.33,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) MT-BEA (MPF) European Equity",
+      "fundClassId": "mpfa-cf-814",
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) European Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 16.92,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "MASS MPF-European Equity",
+      "fundClassId": "mpfa-cf-390",
+      "schemeName": "MASS Mandatory Provident Fund Scheme",
+      "constituentFundName": "European Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 16.63,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF European Equity",
+      "fundClassId": "mpfa-cf-369",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF European Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 14.61,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AIA MPF-Prime Value Choice-Green",
+      "fundClassId": "mpfa-cf-141",
+      "schemeName": "AIA MPF - Prime Value Choice",
+      "constituentFundName": "Green Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 25.08,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Sun Life Rainbow MPF-Sun Life MPF Gl Low Crbon Idx",
+      "fundClassId": "mpfa-cf-2065",
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Global Low Carbon Index Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 24.18,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Sun Life Rainbow MPF-Sun Life MPF Multi-Sec Eq A",
+      "fundClassId": "mpfa-cf-691",
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Multi-Sector Equity Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": 23.1,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Hang Seng MPF-SuperTrust Plus-Global Equity",
+      "fundClassId": "mpfa-cf-1625",
+      "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Global Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 22.79,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "HSBC MPF-SuperTrust Plus-Global Equity",
+      "fundClassId": "mpfa-cf-1619",
+      "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Global Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 22.78,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) Global Equity",
+      "fundClassId": "mpfa-cf-190",
+      "schemeName": "BCT (MPF) Pro Choice",
+      "constituentFundName": "BCT (Pro) Global Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 22.44,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) World Equity",
+      "fundClassId": "mpfa-cf-908",
+      "schemeName": "BCT (MPF) Pro Choice",
+      "constituentFundName": "BCT (Pro) World Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 21.82,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Industry Choice-BCT (Ind) Global Equity",
+      "fundClassId": "mpfa-cf-177",
+      "schemeName": "BCT (MPF) Industry Choice",
+      "constituentFundName": "BCT (Industry) Global Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 21.76,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AIA MPF-Prime Value Choice-World",
+      "fundClassId": "mpfa-cf-658",
+      "schemeName": "AIA MPF - Prime Value Choice",
+      "constituentFundName": "World Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 21.38,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "My Choice MPF-My Choice Global Equity",
+      "fundClassId": "mpfa-cf-819",
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "My Choice Global Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 21.32,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BOC-Pru Easy-Choice MPF-BOC-Pru Global Equity",
+      "fundClassId": "mpfa-cf-231",
+      "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "BOC-Prudential Global Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 20.94,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) Value-BEA Global Equity",
+      "fundClassId": "mpfa-cf-1043",
+      "schemeName": "BEA (MPF) Value Scheme",
+      "constituentFundName": "BEA Global Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 20.81,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT Strategic MPF-Invesco Global Index Tracking A",
+      "fundClassId": "mpfa-cf-2066",
+      "schemeName": "BCT Strategic MPF Scheme",
+      "constituentFundName": "Invesco Global Index Tracking Fund",
+      "fundClassName": "Unit Class A",
+      "verifiedOneYear": 20.65,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) MT-BEA (MPF) Global Equity",
+      "fundClassId": "mpfa-cf-813",
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) Global Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 20.49,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "MASS MPF-Global Equity",
+      "fundClassId": "mpfa-cf-387",
+      "schemeName": "MASS Mandatory Provident Fund Scheme",
+      "constituentFundName": "Global Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 20.24,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Fidelity Retirement MT-Global Equity",
+      "fundClassId": "mpfa-cf-275",
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Global Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 19.65,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "China Life MPF MT-China Life Retire-Easy Glbl Eq",
+      "fundClassId": "mpfa-cf-606",
+      "schemeName": "China Life MPF Master Trust Scheme",
+      "constituentFundName": "China Life Retire-Easy Global Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 18.89,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF International Eq",
+      "fundClassId": "mpfa-cf-368",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF International Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 16.64,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF S800-Principal International Equity I",
+      "fundClassId": "mpfa-cf-431",
+      "schemeName": "BCT MPF Scheme Series 800",
+      "constituentFundName": "Principal International Equity Fund",
+      "fundClassName": "Class I",
+      "verifiedOneYear": 13.43,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF China Value",
+      "fundClassId": "mpfa-cf-375",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF China Value Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 34.21,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "MASS MPF-Greater China Equity",
+      "fundClassId": "mpfa-cf-874",
+      "schemeName": "MASS Mandatory Provident Fund Scheme",
+      "constituentFundName": "Greater China Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 31.08,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) Value-BEA Greater China Equity",
+      "fundClassId": "mpfa-cf-1045",
+      "schemeName": "BEA (MPF) Value Scheme",
+      "constituentFundName": "BEA Greater China Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 30.97,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Sun Life Rainbow MPF-Sun Life MPF Gr China Eq A",
+      "fundClassId": "mpfa-cf-693",
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Greater China Equity Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": 29.7,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AIA MPF-Prime Value Choice-Greater China Equity",
+      "fundClassId": "mpfa-cf-102",
+      "schemeName": "AIA MPF - Prime Value Choice",
+      "constituentFundName": "Greater China Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 28.57,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) MT-BEA (MPF) Greater China Equity",
+      "fundClassId": "mpfa-cf-218",
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) Greater China Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 28.09,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCOM Joyful Ret MPF-BCOM Greater China Equity (CF)",
+      "fundClassId": "mpfa-cf-831",
+      "schemeName": "BCOM Joyful Retirement MPF Scheme",
+      "constituentFundName": "BCOM Greater China Equity (CF) Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 28.01,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) Industry-BEA (Ind S) Grtr China Equity",
+      "fundClassId": "mpfa-cf-812",
+      "schemeName": "BEA (MPF) Industry Scheme",
+      "constituentFundName": "BEA (Industry Scheme) Greater China Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 27.99,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife RC (MPF)-Allianz Greater China A",
+      "fundClassId": "mpfa-cf-889",
+      "schemeName": "Manulife RetireChoice (MPF) Scheme",
+      "constituentFundName": "Allianz Greater China Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": 27.78,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "My Choice MPF-My Choice China Equity",
+      "fundClassId": "mpfa-cf-821",
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "My Choice China Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 26.04,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "China Life MPF MT-China Life Greater China Eq",
+      "fundClassId": "mpfa-cf-1839",
+      "schemeName": "China Life MPF Master Trust Scheme",
+      "constituentFundName": "China Life Greater China Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 25.74,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) Greater China Eq",
+      "fundClassId": "mpfa-cf-909",
+      "schemeName": "BCT (MPF) Pro Choice",
+      "constituentFundName": "BCT (Pro) Greater China Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 23,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) Global Bond",
+      "fundClassId": "mpfa-cf-183",
+      "schemeName": "BCT (MPF) Pro Choice",
+      "constituentFundName": "BCT (Pro) Global Bond Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 0.39,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF S800-Principal International Bond I",
+      "fundClassId": "mpfa-cf-427",
+      "schemeName": "BCT MPF Scheme Series 800",
+      "constituentFundName": "Principal International Bond Fund",
+      "fundClassName": "Class I",
+      "verifiedOneYear": 0.36,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT Strategic MPF-Invesco Global Bond A",
+      "fundClassId": "mpfa-cf-202",
+      "schemeName": "BCT Strategic MPF Scheme",
+      "constituentFundName": "Invesco Global Bond Fund",
+      "fundClassName": "Unit Class A",
+      "verifiedOneYear": 0.31,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "HSBC MPF-SuperTrust Plus-Global Bond",
+      "fundClassId": "mpfa-cf-801",
+      "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Global Bond Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 0.28,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Hang Seng MPF-SuperTrust Plus-Global Bond",
+      "fundClassId": "mpfa-cf-805",
+      "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Global Bond Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 0.27,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Industry Choice-BCT (Ind) Global Bond",
+      "fundClassId": "mpfa-cf-173",
+      "schemeName": "BCT (MPF) Industry Choice",
+      "constituentFundName": "BCT (Industry) Global Bond Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 0.24,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "MASS MPF-Global Bond",
+      "fundClassId": "mpfa-cf-383",
+      "schemeName": "MASS Mandatory Provident Fund Scheme",
+      "constituentFundName": "Global Bond Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 0.2,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BOC-Pru Easy-Choice MPF-BOC-Pru Bond",
+      "fundClassId": "mpfa-cf-233",
+      "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "BOC-Prudential Bond Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 0.15,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AMTD MPF-AMTD Invesco Global Bond",
+      "fundClassId": "mpfa-cf-782",
+      "schemeName": "AMTD MPF Scheme",
+      "constituentFundName": "AMTD Invesco Global Bond Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 0.09,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF-Simple-Principal Dynamic Global Bd",
+      "fundClassId": "mpfa-cf-162",
+      "schemeName": "BCT MPF - Simple Plan",
+      "constituentFundName": "Principal Dynamic Global Bond Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": -0.1,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) Value-BEA Global Bond",
+      "fundClassId": "mpfa-cf-1048",
+      "schemeName": "BEA (MPF) Value Scheme",
+      "constituentFundName": "BEA Global Bond Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": -0.34,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) MT-BEA (MPF) Global Bond",
+      "fundClassId": "mpfa-cf-219",
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) Global Bond Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": -0.37,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AIA MPF-Prime Value Choice-Global Bond",
+      "fundClassId": "mpfa-cf-657",
+      "schemeName": "AIA MPF - Prime Value Choice",
+      "constituentFundName": "Global Bond Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": -0.45,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "My Choice MPF-My Choice Global Bond",
+      "fundClassId": "mpfa-cf-825",
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "My Choice Global Bond Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": -0.5,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Sun Life Rainbow MPF-Sun Life MPF Global Bond A",
+      "fundClassId": "mpfa-cf-809",
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Global Bond Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": -0.76,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF International Bd",
+      "fundClassId": "mpfa-cf-372",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF International Bond Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": -0.78,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Fidelity Retirement MT-World Bond",
+      "fundClassId": "mpfa-cf-270",
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "World Bond Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": -0.81,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Fidelity Retirement MT-Hong Kong Bond",
+      "fundClassId": "mpfa-cf-276",
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Hong Kong Bond Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 0.84,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "My Choice MPF-My Choice HKD Bond",
+      "fundClassId": "mpfa-cf-826",
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "My Choice HKD Bond Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 0.44,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF Hong Kong Bond",
+      "fundClassId": "mpfa-cf-362",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Hong Kong Bond Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 0.4,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF S800-Principal Hong Kong Bond N",
+      "fundClassId": "mpfa-cf-903",
+      "schemeName": "BCT MPF Scheme Series 800",
+      "constituentFundName": "Principal Hong Kong Bond Fund",
+      "fundClassName": "Class N",
+      "verifiedOneYear": 0.36,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) HK Dollar Bond",
+      "fundClassId": "mpfa-cf-799",
+      "schemeName": "BCT (MPF) Pro Choice",
+      "constituentFundName": "BCT (Pro) Hong Kong Dollar Bond Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 0.34,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Sun Life Rainbow MPF-Sun Life MPF HK Dollar Bd A",
+      "fundClassId": "mpfa-cf-504",
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Hong Kong Dollar Bond Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": -0.02,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF S800-Principal HK Dollar Savings I",
+      "fundClassId": "mpfa-cf-451",
+      "schemeName": "BCT MPF Scheme Series 800",
+      "constituentFundName": "Principal HK Dollar Savings Fund",
+      "fundClassName": "Class I",
+      "verifiedOneYear": 1.86,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF Conservative",
+      "fundClassId": "mpfa-cf-366",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Conservative Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 2.09,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Hang Seng MPF-SuperTrust Plus-MPF Conservative",
+      "fundClassId": "mpfa-cf-306",
+      "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "MPF Conservative Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 2.01,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "HSBC MPF-SuperTrust Plus-MPF Conservative",
+      "fundClassId": "mpfa-cf-319",
+      "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "MPF Conservative Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 2.01,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BOC-Pru Easy-Choice MPF-BOC-Pru MPF Conservative",
+      "fundClassId": "mpfa-cf-230",
+      "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "BOC-Prudential MPF Conservative Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 1.91,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Fidelity Retirement MT-MPF Conservative",
+      "fundClassId": "mpfa-cf-274",
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "MPF Conservative Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 1.88,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "My Choice MPF-My Choice MPF Conservative",
+      "fundClassId": "mpfa-cf-827",
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "My Choice MPF Conservative Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 1.79,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Sun Life Rainbow MPF-Sun Life MPF Conservative A",
+      "fundClassId": "mpfa-cf-506",
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF Conservative Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": 1.77,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "MASS MPF-MPF Conservative",
+      "fundClassId": "mpfa-cf-386",
+      "schemeName": "MASS Mandatory Provident Fund Scheme",
+      "constituentFundName": "MPF Conservative Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 1.77,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT Strategic MPF-Invesco MPF Conservative A",
+      "fundClassId": "mpfa-cf-193",
+      "schemeName": "BCT Strategic MPF Scheme",
+      "constituentFundName": "Invesco MPF Conservative Fund",
+      "fundClassName": "Unit Class A",
+      "verifiedOneYear": 1.76,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "China Life MPF MT-China Life MPF Conservative",
+      "fundClassId": "mpfa-cf-238",
+      "schemeName": "China Life MPF Master Trust Scheme",
+      "constituentFundName": "China Life MPF Conservative Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 1.73,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF-Simple-Principal-MPF Conservative",
+      "fundClassId": "mpfa-cf-165",
+      "schemeName": "BCT MPF - Simple Plan",
+      "constituentFundName": "Principal - MPF Conservative Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 1.7,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) MPF Conservative",
+      "fundClassId": "mpfa-cf-182",
+      "schemeName": "BCT (MPF) Pro Choice",
+      "constituentFundName": "BCT (Pro) MPF Conservative Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 1.57,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Industry Choice-BCT (Ind) MPF Consv",
+      "fundClassId": "mpfa-cf-179",
+      "schemeName": "BCT (MPF) Industry Choice",
+      "constituentFundName": "BCT (Industry) MPF Conservative Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 1.54,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife RC (MPF)-Allianz MPF Conservative A",
+      "fundClassId": "mpfa-cf-262",
+      "schemeName": "Manulife RetireChoice (MPF) Scheme",
+      "constituentFundName": "Allianz MPF Conservative Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": 1.53,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) MT-BEA (MPF) Conservative",
+      "fundClassId": "mpfa-cf-225",
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) Conservative Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 1.53,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) Value-BEA MPF Conservative",
+      "fundClassId": "mpfa-cf-1039",
+      "schemeName": "BEA (MPF) Value Scheme",
+      "constituentFundName": "BEA MPF Conservative Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 1.52,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) Industry-BEA (Ind S) MPF Conservative",
+      "fundClassId": "mpfa-cf-213",
+      "schemeName": "BEA (MPF) Industry Scheme",
+      "constituentFundName": "BEA (Industry Scheme) MPF Conservative Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 1.5,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AMTD MPF-AMTD Invesco MPF Conservative",
+      "fundClassId": "mpfa-cf-781",
+      "schemeName": "AMTD MPF Scheme",
+      "constituentFundName": "AMTD Invesco MPF Conservative Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 1.37,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "MASS MPF-Guaranteed",
+      "fundClassId": "mpfa-cf-388",
+      "schemeName": "MASS Mandatory Provident Fund Scheme",
+      "constituentFundName": "Guaranteed Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 3.87,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF Stable",
+      "fundClassId": "mpfa-cf-364",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Stable Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 2.91,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "China Life MPF MT-China Life Joyful Retire Gteed",
+      "fundClassId": "mpfa-cf-603",
+      "schemeName": "China Life MPF Master Trust Scheme",
+      "constituentFundName": "China Life Joyful Retirement Guaranteed Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 2.53,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF Interest",
+      "fundClassId": "mpfa-cf-365",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Interest Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 0.88,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "HSBC MPF-SuperTrust Plus-Guaranteed",
+      "fundClassId": "mpfa-cf-320",
+      "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Guaranteed Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 0.24,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Hang Seng MPF-SuperTrust Plus-Guaranteed",
+      "fundClassId": "mpfa-cf-305",
+      "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Guaranteed Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 0.24,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Haitong MPF Retire Fd-Haitong Korea A",
+      "fundClassId": "mpfa-cf-284",
+      "schemeName": "Haitong MPF Retirement Fund",
+      "constituentFundName": "Haitong Korea Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": 109.61,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AIA MPF-Prime Value Choice-Eurasia",
+      "fundClassId": "mpfa-cf-876",
+      "schemeName": "AIA MPF - Prime Value Choice",
+      "constituentFundName": "Eurasia Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 26.88,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF Healthcare",
+      "fundClassId": "mpfa-cf-695",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Healthcare Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 24.4,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF 2045 Retirement",
+      "fundClassId": "mpfa-cf-848",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF 2045 Retirement Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 20.3,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF 2040 Retirement",
+      "fundClassId": "mpfa-cf-847",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF 2040 Retirement Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 20.06,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF 2035 Retirement",
+      "fundClassId": "mpfa-cf-846",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF 2035 Retirement Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 18.07,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Fidelity Retirement MT-Fidelity SaveEasy 2050",
+      "fundClassId": "mpfa-cf-1420",
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Fidelity SaveEasy 2050 Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 16.21,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Fidelity Retirement MT-Fidelity SaveEasy 2045",
+      "fundClassId": "mpfa-cf-1419",
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Fidelity SaveEasy 2045 Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 16.06,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Fidelity Retirement MT-Fidelity SaveEasy 2040",
+      "fundClassId": "mpfa-cf-711",
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Fidelity SaveEasy 2040 Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 15.87,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) SaveEasy 2050",
+      "fundClassId": "mpfa-cf-1820",
+      "schemeName": "BCT (MPF) Pro Choice",
+      "constituentFundName": "BCT (Pro) SaveEasy 2050 Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 15.68,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF 2030 Retirement",
+      "fundClassId": "mpfa-cf-845",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF 2030 Retirement Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 15.49,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) SaveEasy 2045",
+      "fundClassId": "mpfa-cf-1819",
+      "schemeName": "BCT (MPF) Pro Choice",
+      "constituentFundName": "BCT (Pro) SaveEasy 2045 Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 15.45,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) SaveEasy 2040",
+      "fundClassId": "mpfa-cf-710",
+      "schemeName": "BCT (MPF) Pro Choice",
+      "constituentFundName": "BCT (Pro) SaveEasy 2040 Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 15.42,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AIA MPF-Prime Value Choice-Manager's Choice",
+      "fundClassId": "mpfa-cf-699",
+      "schemeName": "AIA MPF - Prime Value Choice",
+      "constituentFundName": "Manager's Choice Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 15.41,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Fidelity Retirement MT-Fidelity SaveEasy 2035",
+      "fundClassId": "mpfa-cf-709",
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Fidelity SaveEasy 2035 Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 15.04,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AMTD MPF-AMTD Invesco Target 2048 Retirement",
+      "fundClassId": "mpfa-cf-777",
+      "schemeName": "AMTD MPF Scheme",
+      "constituentFundName": "AMTD Invesco Target 2048 Retirement Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 14.94,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) SaveEasy 2035",
+      "fundClassId": "mpfa-cf-707",
+      "schemeName": "BCT (MPF) Pro Choice",
+      "constituentFundName": "BCT (Pro) SaveEasy 2035 Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 14.63,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Fidelity Retirement MT-Fidelity SaveEasy 2030",
+      "fundClassId": "mpfa-cf-708",
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Fidelity SaveEasy 2030 Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 13.41,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) SaveEasy 2030",
+      "fundClassId": "mpfa-cf-705",
+      "schemeName": "BCT (MPF) Pro Choice",
+      "constituentFundName": "BCT (Pro) SaveEasy 2030 Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 13.25,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Sun Life Rainbow MPF-Sun Life MPF US&Hong Kong Eq",
+      "fundClassId": "mpfa-cf-2099",
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF US & Hong Kong Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 13.13,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AMTD MPF-AMTD Invesco Target 2038 Retirement",
+      "fundClassId": "mpfa-cf-776",
+      "schemeName": "AMTD MPF Scheme",
+      "constituentFundName": "AMTD Invesco Target 2038 Retirement Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 11.4,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF Smart Retirement",
+      "fundClassId": "mpfa-cf-842",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Smart Retirement Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 10.76,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF 2025 Retirement",
+      "fundClassId": "mpfa-cf-844",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF 2025 Retirement Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 10.76,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AMTD MPF-AMTD Invesco Target 2028 Retirement",
+      "fundClassId": "mpfa-cf-775",
+      "schemeName": "AMTD MPF Scheme",
+      "constituentFundName": "AMTD Invesco Target 2028 Retirement Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 7.65,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AMTD MPF-AMTD Allianz Choice Dynamic Allocation",
+      "fundClassId": "mpfa-cf-769",
+      "schemeName": "AMTD MPF Scheme",
+      "constituentFundName": "AMTD Allianz Choice Dynamic Allocation Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 7.55,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) Flexi Mixed Asset",
+      "fundClassId": "mpfa-cf-189",
+      "schemeName": "BCT (MPF) Pro Choice",
+      "constituentFundName": "BCT (Pro) Flexi Mixed Asset Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 7.54,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife RC (MPF)-Allianz Flexi Balanced A",
+      "fundClassId": "mpfa-cf-253",
+      "schemeName": "Manulife RetireChoice (MPF) Scheme",
+      "constituentFundName": "Allianz Flexi Balanced Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": 7.33,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Industry Choice-BCT (Ind) Flexi Mix Asst",
+      "fundClassId": "mpfa-cf-175",
+      "schemeName": "BCT (MPF) Industry Choice",
+      "constituentFundName": "BCT (Industry) Flexi Mixed Asset Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 7.28,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Fidelity Retirement MT-RetireEasy",
+      "fundClassId": "mpfa-cf-1799",
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "RetireEasy Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 6.8,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AMTD MPF-AMTD Invesco Target Retirement Now",
+      "fundClassId": "mpfa-cf-774",
+      "schemeName": "AMTD MPF Scheme",
+      "constituentFundName": "AMTD Invesco Target Retirement Now Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 6.18,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AIA MPF-Prime Value Choice-China HK Dyn Asset Allo",
+      "fundClassId": "mpfa-cf-1579",
+      "schemeName": "AIA MPF - Prime Value Choice",
+      "constituentFundName": "China HK Dynamic Asset Allocation Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 5.71,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Fidelity Retirement MT-Fidelity SaveEasy 2025",
+      "fundClassId": "mpfa-cf-706",
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Fidelity SaveEasy 2025 Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 5.27,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) SaveEasy 2025",
+      "fundClassId": "mpfa-cf-703",
+      "schemeName": "BCT (MPF) Pro Choice",
+      "constituentFundName": "BCT (Pro) SaveEasy 2025 Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 5.12,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife RC (MPF)-Allianz RMB Money Market A",
+      "fundClassId": "mpfa-cf-1179",
+      "schemeName": "Manulife RetireChoice (MPF) Scheme",
+      "constituentFundName": "Allianz RMB Money Market Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": 4.84,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BOC-Pru Easy-Choice MPF-BOC-Pru HK Stable Retire",
+      "fundClassId": "mpfa-cf-1959",
+      "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "BOC-Prudential Hong Kong Stable Retirement Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 3.33,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BOC-Pru Easy-Choice MPF-BOC-Pru MPF RMB & HKD MMkt",
+      "fundClassId": "mpfa-cf-1119",
+      "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "BOC-Prudential MPF RMB & HKD Money Market Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 5.28,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "My Choice MPF-My Choice RMB & HKD Money Market",
+      "fundClassId": "mpfa-cf-1359",
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "My Choice RMB & HKD Money Market Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 5.12,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) Industry-BEA (Ind S) RMB & HKD Mny Mkt",
+      "fundClassId": "mpfa-cf-913",
+      "schemeName": "BEA (MPF) Industry Scheme",
+      "constituentFundName": "BEA (Industry Scheme) RMB & HKD Money Market Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 4.74,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Sun Life Rainbow MPF-Sun Life MPF RMB and HKD A",
+      "fundClassId": "mpfa-cf-910",
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life MPF RMB and HKD Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": 4.64,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) MT-BEA (MPF) RMB & HKD Money Market",
+      "fundClassId": "mpfa-cf-912",
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA (MPF) RMB & HKD Money Market Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 4.6,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "HSBC MPF-SuperTrust Plus-Hang Seng Index Tracking",
+      "fundClassId": "mpfa-cf-325",
+      "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Hang Seng Index Tracking Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 4.23,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Hang Seng MPF-SuperTrust Plus-HS Index Tracking",
+      "fundClassId": "mpfa-cf-302",
+      "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Hang Seng Index Tracking Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 4.23,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) MT-BEA Hong Kong Tracker",
+      "fundClassId": "mpfa-cf-898",
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA Hong Kong Tracker Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 4.11,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) Industry-BEA Hong Kong Tracker",
+      "fundClassId": "mpfa-cf-901",
+      "schemeName": "BEA (MPF) Industry Scheme",
+      "constituentFundName": "BEA Hong Kong Tracker Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 4.1,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "My Choice MPF-My Choice Hong Kong Tracking",
+      "fundClassId": "mpfa-cf-824",
+      "schemeName": "My Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "My Choice Hong Kong Tracking Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 4.05,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Fidelity Retirement MT-Fidelity Hong Kong Tracker",
+      "fundClassId": "mpfa-cf-1159",
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "Fidelity Hong Kong Tracker Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 3.93,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF S800-Principal HS Index Tracking N",
+      "fundClassId": "mpfa-cf-902",
+      "schemeName": "BCT MPF Scheme Series 800",
+      "constituentFundName": "Principal Hang Seng Index Tracking Fund",
+      "fundClassName": "Class N",
+      "verifiedOneYear": 3.78,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AIA MPF-Prime Value Choice-Hong Kong and China",
+      "fundClassId": "mpfa-cf-877",
+      "schemeName": "AIA MPF - Prime Value Choice",
+      "constituentFundName": "Hong Kong and China Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 3.76,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) HS Index Tracking",
+      "fundClassId": "mpfa-cf-800",
+      "schemeName": "BCT (MPF) Pro Choice",
+      "constituentFundName": "BCT (Pro) Hang Seng Index Tracking Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 3.73,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) Value-BEA Hong Kong Tracker",
+      "fundClassId": "mpfa-cf-1047",
+      "schemeName": "BEA (MPF) Value Scheme",
+      "constituentFundName": "BEA Hong Kong Tracker Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 3.71,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT Strategic MPF-Invesco Hang Seng Index Trkg A",
+      "fundClassId": "mpfa-cf-1339",
+      "schemeName": "BCT Strategic MPF Scheme",
+      "constituentFundName": "Invesco Hang Seng Index Tracking Fund",
+      "fundClassName": "Unit Class A",
+      "verifiedOneYear": 3.67,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF-Smart-Principal-Hang Seng Idx Track",
+      "fundClassId": "mpfa-cf-1379",
+      "schemeName": "BCT MPF - Smart Plan",
+      "constituentFundName": "Principal - Hang Seng Index Tracking Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 3.61,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BOC-Pru Easy-Choice MPF-BOC-Pru CSI HK 100 Trk",
+      "fundClassId": "mpfa-cf-999",
+      "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "BOC-Prudential CSI HK 100 Tracker Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 3.18,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Sun Life Rainbow MPF-Sun Life FTSE MPF HK Idx A",
+      "fundClassId": "mpfa-cf-1199",
+      "schemeName": "Sun Life Rainbow MPF Scheme",
+      "constituentFundName": "Sun Life FTSE MPF Hong Kong Index Fund",
+      "fundClassName": "Class A",
+      "verifiedOneYear": 1.84,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCOM Joyful Ret MPF-BCOM HSI ESG Tracking (CF)",
+      "fundClassId": "mpfa-cf-798",
+      "schemeName": "BCOM Joyful Retirement MPF Scheme",
+      "constituentFundName": "BCOM HSI ESG Tracking (CF) Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": -0.18,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF HS Index ESG",
+      "fundClassId": "mpfa-cf-907",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Hang Seng Index ESG Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": -0.79,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "AIA MPF-Prime Value Choice-Asian Bond",
+      "fundClassId": "mpfa-cf-875",
+      "schemeName": "AIA MPF - Prime Value Choice",
+      "constituentFundName": "Asian Bond Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 1.69,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF Sust Pac Asia Bd",
+      "fundClassId": "mpfa-cf-906",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF Sustainable Pacific Asia Bond Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 1.34,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF S800-Principal Asian Bond N",
+      "fundClassId": "mpfa-cf-1741",
+      "schemeName": "BCT MPF Scheme Series 800",
+      "constituentFundName": "Principal Asian Bond Fund",
+      "fundClassName": "Class N",
+      "verifiedOneYear": 1.27,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "MASS MPF-Asian Bond",
+      "fundClassId": "mpfa-cf-384",
+      "schemeName": "MASS Mandatory Provident Fund Scheme",
+      "constituentFundName": "Asian Bond Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 1.12,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF S800-Principal China Equity I",
+      "fundClassId": "mpfa-cf-620",
+      "schemeName": "BCT MPF Scheme Series 800",
+      "constituentFundName": "Principal China Equity Fund",
+      "fundClassName": "Class I",
+      "verifiedOneYear": 1.46,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "HSBC MPF-SuperTrust Plus-Chinese Equity",
+      "fundClassId": "mpfa-cf-804",
+      "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Chinese Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 0.74,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Hang Seng MPF-SuperTrust Plus-Chinese Equity",
+      "fundClassId": "mpfa-cf-808",
+      "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Chinese Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 0.73,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Hang Seng MPF-SuperTrust Plus-HS CN Etprs Idx Trck",
+      "fundClassId": "mpfa-cf-1626",
+      "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Hang Seng China Enterprises Index Tracking Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": -3,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "HSBC MPF-SuperTrust Plus-HS China Entpr Idx Trkg",
+      "fundClassId": "mpfa-cf-1620",
+      "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "constituentFundName": "Hang Seng China Enterprises Index Tracking Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": -3.01,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) Industry-BEA China Tracker",
+      "fundClassId": "mpfa-cf-900",
+      "schemeName": "BEA (MPF) Industry Scheme",
+      "constituentFundName": "BEA China Tracker Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": -3.63,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BEA (MPF) MT-BEA China Tracker",
+      "fundClassId": "mpfa-cf-897",
+      "schemeName": "BEA (MPF) Master Trust Scheme",
+      "constituentFundName": "BEA China Tracker Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": -3.74,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BOC-Pru Easy-Choice MPF-BOC-Pru China Equity",
+      "fundClassId": "mpfa-cf-654",
+      "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+      "constituentFundName": "BOC-Prudential China Equity Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": -4.33,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Fidelity Retirement MT-RMB Bond",
+      "fundClassId": "mpfa-cf-1439",
+      "schemeName": "Fidelity Retirement Master Trust",
+      "constituentFundName": "RMB Bond Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 7.36,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT Strategic MPF-Invesco RMB Bond A",
+      "fundClassId": "mpfa-cf-1101",
+      "schemeName": "BCT Strategic MPF Scheme",
+      "constituentFundName": "Invesco RMB Bond Fund",
+      "fundClassName": "Unit Class A",
+      "verifiedOneYear": 7.2,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) RMB Bond",
+      "fundClassId": "mpfa-cf-1100",
+      "schemeName": "BCT (MPF) Pro Choice",
+      "constituentFundName": "BCT (Pro) RMB Bond Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 7.13,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Industry Choice-BCT (Ind) RMB Bond",
+      "fundClassId": "mpfa-cf-1099",
+      "schemeName": "BCT (MPF) Industry Choice",
+      "constituentFundName": "BCT (Industry) RMB Bond Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 7.08,
+      "verifiedAsOf": "2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF RMB Bond",
+      "fundClassId": "mpfa-cf-1219",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "constituentFundName": "Manulife MPF RMB Bond Fund",
+      "fundClassName": "n.a.",
+      "verifiedOneYear": 7.05,
+      "verifiedAsOf": "2026-08-31"
+    }
+  ],
+  "rejected": [
+    {
+      "lipperName": "Haitong MPF Retire Fd-Haitong Core Accumulation A",
+      "reason": "1 class(es) share one-year 27.80, 0 match the name"
+    },
+    {
+      "lipperName": "BCT MPF-Smart-Principal Core Acc",
+      "reason": "no BCT MPF - Smart Plan class has platform one-year 14.29 at 2026-08-31"
+    },
+    {
+      "lipperName": "Haitong MPF Retire Fd-Haitong Age 65 Plus A",
+      "reason": "no Haitong MPF Retirement Fund class has platform one-year 10.45 at 2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF-Smart-Principal Age 65 Plus",
+      "reason": "no BCT MPF - Smart Plan class has platform one-year 5.62 at 2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF-Simple-Principal Age 65 Plus",
+      "reason": "no BCT MPF - Simple Plan class has platform one-year 5.61 at 2026-08-31"
+    },
+    {
+      "lipperName": "BCOM Joyful Ret MPF-BCOM Age 65 Plus",
+      "reason": "no BCOM Joyful Retirement MPF Scheme class has platform one-year 4.74 at 2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF-Simple-Principal Stable",
+      "reason": "no BCT MPF - Simple Plan class has platform one-year 8.59 at 2026-08-31"
+    },
+    {
+      "lipperName": "Willis Towers Watson Composite Benchmark (>20% - 40% Equity)",
+      "reason": "0 scheme prefixes match"
+    },
+    {
+      "lipperName": "BCOM Joyful Ret MPF-BCOM Stable Growth (CF)",
+      "reason": "no BCOM Joyful Retirement MPF Scheme class has platform one-year 10.63 at 2026-08-31"
+    },
+    {
+      "lipperName": "Willis Towers Watson Composite Benchmark (>40% - 60% Equity)",
+      "reason": "0 scheme prefixes match"
+    },
+    {
+      "lipperName": "BCT MPF-Simple-Principal Balanced",
+      "reason": "no BCT MPF - Simple Plan class has platform one-year 17.07 at 2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF-Smart-Principal Balanced",
+      "reason": "no BCT MPF - Smart Plan class has platform one-year 17.01 at 2026-08-31"
+    },
+    {
+      "lipperName": "Willis Towers Watson Composite Benchmark (>60% - 80% Equity)",
+      "reason": "0 scheme prefixes match"
+    },
+    {
+      "lipperName": "BCT MPF-Simple-Principal Growth",
+      "reason": "no BCT MPF - Simple Plan class has platform one-year 21.37 at 2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF-Smart-Principal Growth",
+      "reason": "no BCT MPF - Smart Plan class has platform one-year 21.34 at 2026-08-31"
+    },
+    {
+      "lipperName": "BCOM Joyful Ret MPF-BCOM Dynamic Growth (CF)",
+      "reason": "no BCOM Joyful Retirement MPF Scheme class has platform one-year 18.42 at 2026-08-31"
+    },
+    {
+      "lipperName": "Willis Towers Watson Composite Benchmark (>80% - 100% Equity)",
+      "reason": "0 scheme prefixes match"
+    },
+    {
+      "lipperName": "BCT MPF-Smart-Principal Dynamic HK Equity",
+      "reason": "no BCT MPF - Smart Plan class has platform one-year 2.51 at 2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF-Simple-Principal Dynamic HK Equity",
+      "reason": "no BCT MPF - Simple Plan class has platform one-year 2.12 at 2026-08-31"
+    },
+    {
+      "lipperName": "BCOM Joyful Ret MPF-BCOM North American Eq (CF)",
+      "reason": "no BCOM Joyful Retirement MPF Scheme class has platform one-year 18.45 at 2026-08-31"
+    },
+    {
+      "lipperName": "My Choice MPF-My Choice Americas Equity",
+      "reason": "no two-decimal one-year cell"
+    },
+    {
+      "lipperName": "Haitong MPF Retire Fd-Haitong Asia Pacific A",
+      "reason": "no Haitong MPF Retirement Fund class has platform one-year 58.01 at 2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF-Smart-Principal Dynamic AsiaPac Eq",
+      "reason": "no BCT MPF - Smart Plan class has platform one-year 37.68 at 2026-08-31"
+    },
+    {
+      "lipperName": "BCOM Joyful Ret MPF-BCOM Asian Dynamic Equity (CF)",
+      "reason": "no BCOM Joyful Retirement MPF Scheme class has platform one-year 33.31 at 2026-08-31"
+    },
+    {
+      "lipperName": "My Choice MPF-My Choice European Quality Tracker",
+      "reason": "no two-decimal one-year cell"
+    },
+    {
+      "lipperName": "Haitong MPF Retire Fd-Haitong Global Diversif A",
+      "reason": "no Haitong MPF Retirement Fund class has platform one-year 42.95 at 2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF-Simple-Principal Dynamic Global Eq",
+      "reason": "no BCT MPF - Simple Plan class has platform one-year 23.29 at 2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF-Smart-Principal Dynamic Global Eq",
+      "reason": "no BCT MPF - Smart Plan class has platform one-year 23.17 at 2026-08-31"
+    },
+    {
+      "lipperName": "FTSE MPF All-World (35% HK$ hedged)",
+      "reason": "0 scheme prefixes match"
+    },
+    {
+      "lipperName": "BCT MPF-Smart-Principal Dynamic Gr China Eq",
+      "reason": "no BCT MPF - Smart Plan class has platform one-year 30.96 at 2026-08-31"
+    },
+    {
+      "lipperName": "BCOM Joyful Ret MPF-BCOM Global Bond (CF)",
+      "reason": "no BCOM Joyful Retirement MPF Scheme class has platform one-year 0.36 at 2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF-Smart-Principal Dynamic Global Bd",
+      "reason": "no BCT MPF - Smart Plan class has platform one-year -0.12 at 2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF-Smart-Principal Cash",
+      "reason": "no BCT MPF - Smart Plan class has platform one-year 1.58 at 2026-08-31"
+    },
+    {
+      "lipperName": "AIA MPF-Prime Value Choice-MPF Conservative",
+      "reason": "no AIA MPF - Prime Value Choice class has platform one-year 1.98 at 2026-08-31"
+    },
+    {
+      "lipperName": "Haitong MPF Retire Fd-Haitong MPF Conservative A",
+      "reason": "no Haitong MPF Retirement Fund class has platform one-year 1.92 at 2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF S800-Principal MPF Conservative N",
+      "reason": "no BCT MPF Scheme Series 800 class has platform one-year 1.81 at 2026-08-31"
+    },
+    {
+      "lipperName": "BCT MPF-Smart-Principal-MPF Conservative",
+      "reason": "no BCT MPF - Smart Plan class has platform one-year 1.65 at 2026-08-31"
+    },
+    {
+      "lipperName": "BCOM Joyful Ret MPF-BCOM MPF Conservative",
+      "reason": "no BCOM Joyful Retirement MPF Scheme class has platform one-year 1.63 at 2026-08-31"
+    },
+    {
+      "lipperName": "BCOM Joyful Ret MPF-BCOM Guaranteed (CF)",
+      "reason": "no BCOM Joyful Retirement MPF Scheme class has platform one-year 2.80 at 2026-08-31"
+    },
+    {
+      "lipperName": "AIA MPF-Prime Value Choice-Guaranteed Portfolio",
+      "reason": "no AIA MPF - Prime Value Choice class has platform one-year 1.61 at 2026-08-31"
+    },
+    {
+      "lipperName": "Manulife GS (MPF)-Manulife MPF Retire Income",
+      "reason": "no Manulife Global Select (MPF) Scheme class has platform one-year 7.95 at 2026-08-31"
+    },
+    {
+      "lipperName": "Sun Life Rainbow MPF-Sun Life MPF Income",
+      "reason": "no Sun Life Rainbow MPF Scheme class has platform one-year 6.81 at 2026-08-31"
+    },
+    {
+      "lipperName": "BCT (MPF) Pro Choice-BCT (Pro) Asian Inc Retire",
+      "reason": "no BCT (MPF) Pro Choice class has platform one-year 6.60 at 2026-08-31"
+    },
+    {
+      "lipperName": "AIA MPF-Prime Value Choice-Retirement Income",
+      "reason": "no two-decimal one-year cell"
+    },
+    {
+      "lipperName": "My Choice MPF-My Choice Chinese Gv & Pol Bk Bd Idx",
+      "reason": "no two-decimal one-year cell"
+    },
+    {
+      "lipperName": "BCT MPF-Smart-Principal Dynamic Asian Bd",
+      "reason": "no BCT MPF - Smart Plan class has platform one-year 0.68 at 2026-08-31"
+    },
+    {
+      "lipperName": "BCOM Joyful Ret MPF-BCOM China Dynamic Equity (CF)",
+      "reason": "no BCOM Joyful Retirement MPF Scheme class has platform one-year 1.32 at 2026-08-31"
+    },
+    {
+      "lipperName": "and are based on an equal-weighted average of percentile ranks for",
+      "reason": "0 scheme prefixes match"
+    }
+  ]
+}
