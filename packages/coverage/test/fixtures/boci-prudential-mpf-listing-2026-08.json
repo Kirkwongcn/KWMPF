@@ -1,0 +1,383 @@
+{
+  "data": [
+    {
+      "stockCode": "ECGE",
+      "mpfFundMasterID": 22,
+      "fundName": {
+        "name": "BOC-Prudential Global Equity Fund",
+        "nameEn": "BOC-Prudential Global Equity Fund",
+        "nameTc": "中銀保誠環球股票基金",
+        "nameSc": "中銀保誠環球股票基金",
+        "remark": "",
+        "tooltip": "",
+        "link": "/en/mpf/mpf-prices/ECGE",
+        "desc": "",
+        "disclaimer": "Offer/Bid Price"
+      },
+      "currency": "HKD",
+      "currencyCode": "HKD",
+      "fundPrice": {
+        "value": "64.6441",
+        "exDiv": false,
+        "date": "2026-10-09"
+      },
+      "daily": "+0.64",
+      "priceLink": "/en/mpf/mpf-prices/ECGE",
+      "distribution": "",
+      "asOfDate": "2026-08-31",
+      "cumulative": {
+        "threeM": "1.37",
+        "YTD": "13.52",
+        "oneY": "20.94",
+        "threeY": "64.88",
+        "fiveY": "58.13",
+        "tenY": "",
+        "since": "546.50",
+        "listingDate": "2003-04-15"
+      },
+      "inceptionDate": "04/15/2003",
+      "yearData": [
+        {
+          "year": "2025",
+          "data": "19.77"
+        },
+        {
+          "year": "2024",
+          "data": "15.06"
+        },
+        {
+          "year": "2023",
+          "data": "19.93"
+        },
+        {
+          "year": "2022",
+          "data": "-17.89"
+        },
+        {
+          "year": "2021",
+          "data": "18.08"
+        }
+      ],
+      "pdf": {
+        "fp": "",
+        "kfs": "",
+        "pp": "",
+        "ar": "",
+        "ir": "",
+        "fs": "",
+        "fdc": "",
+        "dai": "",
+        "fr": {
+          "annual": "",
+          "interim": ""
+        }
+      },
+      "nNA": null,
+      "showListingLink": "Y",
+      "showCumulative": "Y",
+      "showCalendar": "Y",
+      "showDocument": "Y",
+      "riskClass": "5",
+      "riskClassId": 14,
+      "riskLv": {
+        "level": 1,
+        "link": "/en/uploads/images/Marketing/ic_risk_high.svg",
+        "text": "High"
+      },
+      "riskLevelId": 10,
+      "assetsClassId": 6,
+      "investmentId": 3
+    },
+    {
+      "stockCode": "ECRF",
+      "mpfFundMasterID": 29,
+      "fundName": {
+        "name": "BOC-Prudential Hong Kong Stable Retirement Fund",
+        "nameEn": "BOC-Prudential Hong Kong Stable Retirement Fund",
+        "nameTc": "中銀保誠香港平穩退休基金",
+        "nameSc": "中銀保誠香港平穩退休基金",
+        "remark": "",
+        "tooltip": "",
+        "link": "/en/mpf/mpf-prices/ECRF",
+        "desc": "",
+        "disclaimer": "<p>Offer/Bid Price</p>"
+      },
+      "currency": "HKD",
+      "currencyCode": "HKD",
+      "fundPrice": {
+        "value": "12.0911",
+        "exDiv": false,
+        "date": "2026-10-09"
+      },
+      "daily": "+0.19",
+      "priceLink": "/en/mpf/mpf-prices/ECRF",
+      "distribution": "",
+      "asOfDate": "2026-08-31",
+      "cumulative": {
+        "threeM": "-0.15",
+        "YTD": "1.55",
+        "oneY": "3.33",
+        "threeY": "17.19",
+        "fiveY": "",
+        "tenY": "",
+        "since": "21.74",
+        "listingDate": "2022-11-21"
+      },
+      "inceptionDate": "11/21/2022",
+      "yearData": [
+        {
+          "year": "2025",
+          "data": "7.38"
+        },
+        {
+          "year": "2024",
+          "data": "4.76"
+        },
+        {
+          "year": "2023",
+          "data": "6.57"
+        },
+        {
+          "year": "2022",
+          "data": "-0.01"
+        },
+        {
+          "year": "2021",
+          "data": ""
+        }
+      ],
+      "pdf": {
+        "fp": "",
+        "kfs": "",
+        "pp": "",
+        "ar": "",
+        "ir": "",
+        "fs": "",
+        "fdc": "",
+        "dai": "",
+        "fr": {
+          "annual": "",
+          "interim": ""
+        }
+      },
+      "nNA": null,
+      "showListingLink": "Y",
+      "showCumulative": "Y",
+      "showCalendar": "Y",
+      "showDocument": "",
+      "riskClass": "3",
+      "riskClassId": 12,
+      "riskLv": {
+        "level": 1,
+        "link": "/en/uploads/images/Marketing/ic_risk_midtolow.svg",
+        "text": "Low to Medium"
+      },
+      "riskLevelId": 7,
+      "assetsClassId": 7,
+      "investmentId": 3
+    },
+    {
+      "stockCode": "RMHKM",
+      "mpfFundMasterID": 31,
+      "fundName": {
+        "name": "BOC-Prudential MPF RMB & HKD Money Market Fund<sup>* ^</sup>",
+        "nameEn": "BOC-Prudential MPF RMB & HKD Money Market Fund<sup>* ^</sup>",
+        "nameTc": "中銀保誠強積金人民幣及港元貨幣市場基金<sup>* ^</sup>",
+        "nameSc": "中銀保誠強積金人民幣及港元貨幣市場基金<sup>* ^</sup>",
+        "remark": "",
+        "tooltip": "",
+        "link": "/en/mpf/mpf-prices/RMHKM",
+        "desc": "",
+        "disclaimer": "<p>Offer/Bid Price</p>"
+      },
+      "currency": "HKD",
+      "currencyCode": "HKD",
+      "fundPrice": {
+        "value": "12.8069",
+        "exDiv": false,
+        "date": "2026-10-09"
+      },
+      "daily": "+0.09",
+      "priceLink": "/en/mpf/mpf-prices/RMHKM",
+      "distribution": "",
+      "asOfDate": "2026-08-31",
+      "cumulative": {
+        "threeM": "0.76",
+        "YTD": "3.68",
+        "oneY": "5.28",
+        "threeY": "12.20",
+        "fiveY": "10.08",
+        "tenY": "",
+        "since": "27.54",
+        "listingDate": "2013-04-02"
+      },
+      "inceptionDate": "04/02/2013",
+      "yearData": [
+        {
+          "year": "2025",
+          "data": "4.86"
+        },
+        {
+          "year": "2024",
+          "data": "1.02"
+        },
+        {
+          "year": "2023",
+          "data": "1.43"
+        },
+        {
+          "year": "2022",
+          "data": "-2.75"
+        },
+        {
+          "year": "2021",
+          "data": "3.25"
+        }
+      ],
+      "pdf": {
+        "fp": "",
+        "kfs": "",
+        "pp": "",
+        "ar": "",
+        "ir": "",
+        "fs": "",
+        "fdc": "",
+        "dai": "",
+        "fr": {
+          "annual": "",
+          "interim": ""
+        }
+      },
+      "nNA": null,
+      "showListingLink": "Y",
+      "showCumulative": "Y",
+      "showCalendar": "Y",
+      "showDocument": "",
+      "riskClass": "2",
+      "riskClassId": 11,
+      "riskLv": {
+        "level": 1,
+        "link": "/en/uploads/images/Marketing/ic_risk_midtolow.svg",
+        "text": "Low to Medium"
+      },
+      "riskLevelId": 7,
+      "assetsClassId": 8,
+      "investmentId": 3
+    },
+    {
+      "stockCode": "CPE",
+      "mpfFundMasterID": 32,
+      "fundName": {
+        "name": "BOC-Prudential MPF Conservative Fund<sup>^</sup>",
+        "nameEn": "BOC-Prudential MPF Conservative Fund<sup>^</sup>",
+        "nameTc": "中銀保誠強積金保守基金<sup>^</sup>",
+        "nameSc": "中銀保誠強積金保守基金<sup>^</sup>",
+        "remark": "",
+        "tooltip": "",
+        "link": "/en/mpf/mpf-prices/CPE",
+        "desc": "",
+        "disclaimer": "Offer/Bid Price"
+      },
+      "currency": "HKD",
+      "currencyCode": "HKD",
+      "fundPrice": {
+        "value": "13.6001",
+        "exDiv": false,
+        "date": "2026-10-09"
+      },
+      "daily": "+0.01",
+      "priceLink": "/en/mpf/mpf-prices/CPE",
+      "distribution": "",
+      "asOfDate": "2026-08-31",
+      "cumulative": {
+        "threeM": "0.50",
+        "YTD": "1.25",
+        "oneY": "1.91",
+        "threeY": "9.03",
+        "fiveY": "12.19",
+        "tenY": "",
+        "since": "35.68",
+        "listingDate": "2000-12-13"
+      },
+      "inceptionDate": "12/13/2000",
+      "yearData": [
+        {
+          "year": "2025",
+          "data": "2.32"
+        },
+        {
+          "year": "2024",
+          "data": "3.82"
+        },
+        {
+          "year": "2023",
+          "data": "3.74"
+        },
+        {
+          "year": "2022",
+          "data": "0.55"
+        },
+        {
+          "year": "2021",
+          "data": "0.00"
+        }
+      ],
+      "pdf": {
+        "fp": "",
+        "kfs": "",
+        "pp": "",
+        "ar": "",
+        "ir": "",
+        "fs": "",
+        "fdc": "",
+        "dai": "",
+        "fr": {
+          "annual": "",
+          "interim": ""
+        }
+      },
+      "nNA": null,
+      "showListingLink": "Y",
+      "showCumulative": "Y",
+      "showCalendar": "Y",
+      "showDocument": "Y",
+      "riskClass": "1",
+      "riskClassId": 10,
+      "riskLv": {
+        "level": 1,
+        "link": "/en/uploads/images/Marketing/ic_risk_low.svg",
+        "text": "Low"
+      },
+      "riskLevelId": 6,
+      "assetsClassId": 8,
+      "investmentId": 3
+    }
+  ],
+  "header": {
+    "price": [
+      "Constituent Fund",
+      "Currency",
+      "Offer/Bid Price",
+      "Daily Change (%)",
+      "Risk Class<sup>#</sup>",
+      "Launch Date"
+    ],
+    "cumulative": [
+      "Constituent Fund",
+      "Currency",
+      "As of",
+      "3M",
+      "YTD",
+      "1Y",
+      "3Y",
+      "5Y",
+      "Since Inception",
+      "Launch Date"
+    ],
+    "calendar": [
+      "Constituent Fund",
+      "Currency"
+    ],
+    "doc": []
+  }
+}

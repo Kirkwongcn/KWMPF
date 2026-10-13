@@ -1069,5 +1069,47 @@
       "mpfa-cf-906",
       "mpfa-cf-907"
     ]
+  },
+  "bociPrudentialListing": {
+    "generatedAt": "2026-10-13T08:06:25.576Z",
+    "sourceSnapshot": "data/sources/2026-10-12/mpf-fund-platform.json",
+    "checkSnapshot": "data/sources/2026-09-26/mpf-fund-platform.json",
+    "method": "Official trustee monthly data: HSBC / Hang Seng Monthly Fund Performance Summary main table (pdftotext -layout), BCT website fund performance responses, the Manulife Global Select Monthly Fund Summary (pdftotext -bbox columns), and the BOCI-Prudential website MPF price and performance listing (JSON). Exact English-name match within the scheme (BCT unit class by the Class X / Unit Class X contract), one-year cumulative cross-checked against the MPFA platform one-year return of the same date for every row; three-year cumulative stored as published (ADR 0014), never converted to annualized. This batch adds only the BOCI-Prudential Easy-Choice listing as at 2026-08-31 (POST https://www.boci-pru.com.hk/en/api/mpf/MpfFund/mpfListing with body {\"Lang\":\"en\"}, the data behind the cumulative-return tab of the recorded page URL; sha256 is of the API response), cross-checked against the 2026-08-31 MPFA platform snapshot (--check-source); the 17 cumulative rows are appended to the 2026-10-12 candidate and every existing row is unchanged.",
+    "sources": [
+      {
+        "kind": "boci-prudential-mpf-listing",
+        "schemeName": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+        "url": "https://www.boci-pru.com.hk/en/mpf/mpf-prices",
+        "retrievedAt": "2026-10-13T08:05:07Z",
+        "sha256": "11cb6af3843deca139a64d88116941eee8c7c982df6ab1298ea86b783868af0e",
+        "bytes": 23527,
+        "dataAsOf": "2026-08-31",
+        "rows": 17,
+        "matched": 17,
+        "officialNotDisclosed": [],
+        "oneYearCrossChecks": 17,
+        "fiveTenYearCrossChecks": 16
+      }
+    ],
+    "rejectedSources": [],
+    "addedCumulative": [
+      "mpfa-cf-1000",
+      "mpfa-cf-1001",
+      "mpfa-cf-1119",
+      "mpfa-cf-1541",
+      "mpfa-cf-1542",
+      "mpfa-cf-1959",
+      "mpfa-cf-226",
+      "mpfa-cf-227",
+      "mpfa-cf-228",
+      "mpfa-cf-229",
+      "mpfa-cf-230",
+      "mpfa-cf-231",
+      "mpfa-cf-232",
+      "mpfa-cf-233",
+      "mpfa-cf-234",
+      "mpfa-cf-654",
+      "mpfa-cf-999"
+    ]
   }
 }

@@ -10,14 +10,16 @@ set -euo pipefail
 #   同目標日期唔一樣（例如受託人未更新，或者已經去咗下一個月）就唔用。
 # - 宏利環球精選《每月摘要》：固定網址只得最新一期，「As at」日期同目標日期唔一樣就唔用；
 #   官網擋普通 curl，要用 curl_cffi 瀏覽器指紋（scripts/download-pdf-impersonated.py）。
+# - 中銀國際英國保誠信託官網強積金價格及表現接口（POST）：只提供最新一期，每隻基金的 asOfDate
+#   同目標日期唔一樣就唔用。
 #
 # 每份成功下載而且日期對得上的來源，喺 <output-dir>/arguments.txt 寫一行
-# `--summary <值>`、`--bct <值>` 或 `--manulife <值>`。其餘寫入 <output-dir>/skipped.txt（以 tab 分隔：
+# `--summary <值>`、`--bct <值>`、`--manulife <值>` 或 `--bocpru <值>`。其餘寫入 <output-dir>/skipped.txt（以 tab 分隔：
 # 計劃、網址、原因代號、說明），原因代號：
 #   download-failed   下載失敗或者唔係 PDF；
-#   invalid-response  BCT 回應唔係有效基金表現資料，或宏利摘要讀唔到唯一「As at」日期；
-#   source-behind     BCT／宏利仲未更新到目標日期（正常，等下次）；
-#   source-ahead      BCT／宏利已經去咗下一期，目標日期嗰期再攞唔返（要跟進）。
+#   invalid-response  BCT／中銀保誠回應唔係有效基金表現資料，或宏利摘要讀唔到唯一「As at」日期；
+#   source-behind     BCT／宏利／中銀保誠仲未更新到目標日期（正常，等下次）；
+#   source-ahead      BCT／宏利／中銀保誠已經去咗下一期，目標日期嗰期再攞唔返（要跟進）。
 # 呢度唔讀數字，數字全部交由讀取器同交叉核對把關。
 
 data_as_of="${1:-}"
@@ -119,6 +121,30 @@ else
     else
       printf -- '--manulife\t%s|%s|%s|%s\n' "$manulife_scheme" "$manulife_url" "$manulife_target" "$retrieved_at" >>"$output_dir/arguments.txt"
     fi
+  fi
+fi
+
+# 中銀保誠簡易強積金：網頁「強積金價格及表現」嘅累積回報由呢個 POST 接口提供；記錄網頁網址，原檔係接口回應。
+bocpru_scheme="BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme"
+bocpru_page="https://www.boci-pru.com.hk/en/mpf/mpf-prices"
+bocpru_api="https://www.boci-pru.com.hk/en/api/mpf/MpfFund/mpfListing"
+bocpru_target="$output_dir/boci-prudential-easy-choice.json"
+retrieved_at="$(now)"
+if ! curl --fail --silent --show-error --location --max-time 120 --user-agent "$user_agent" \
+  --request POST --header 'Content-Type: application/json' --header 'X-Requested-With: XMLHttpRequest' \
+  --header 'Referer: https://www.boci-pru.com.hk/' --data '{"Lang":"en"}' --output "$bocpru_target" "$bocpru_api"; then
+  printf '%s\t%s\tdownload-failed\tdownload failed\n' "$bocpru_scheme" "$bocpru_api" >>"$output_dir/skipped.txt"
+  rm -f "$bocpru_target"
+else
+  dates="$(jq -r '[.data[]?.asOfDate] | unique | join(",")' "$bocpru_target" 2>/dev/null || true)"
+  if [[ ! "$dates" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
+    printf '%s\t%s\tinvalid-response\tas-of dates "%s"\n' "$bocpru_scheme" "$bocpru_api" "$dates" >>"$output_dir/skipped.txt"
+  elif [ "$dates" != "$data_as_of" ]; then
+    reason="source-behind"
+    [[ "$dates" > "$data_as_of" ]] && reason="source-ahead"
+    printf '%s\t%s\t%s\tas-of date %s, not %s\n' "$bocpru_scheme" "$bocpru_api" "$reason" "$dates" "$data_as_of" >>"$output_dir/skipped.txt"
+  else
+    printf -- '--bocpru\t%s|%s|%s|%s\n' "$bocpru_scheme" "$bocpru_page" "$bocpru_target" "$retrieved_at" >>"$output_dir/arguments.txt"
   fi
 fi
 

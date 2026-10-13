@@ -4817,5 +4817,192 @@
     "sourceUrl": "https://www.manulife.com.hk/content/dam/insurance/hk/zh-hk/documents/fund-price/mpf-monthly-summary.pdf",
     "retrievedAt": "2026-10-13T01:08:47.554526Z",
     "sourceSha256": "8bd7e3c763a4fcabbf2c38d8605d14ea27caeec1c3f9446c8b646d80ec606288"
+  },
+  {
+    "fundClassId": "mpfa-cf-1000",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 68.82,
+    "printed": "68.82",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.boci-pru.com.hk/en/mpf/mpf-prices",
+    "retrievedAt": "2026-10-13T08:05:07Z",
+    "sourceSha256": "11cb6af3843deca139a64d88116941eee8c7c982df6ab1298ea86b783868af0e"
+  },
+  {
+    "fundClassId": "mpfa-cf-1001",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 56.35,
+    "printed": "56.35",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.boci-pru.com.hk/en/mpf/mpf-prices",
+    "retrievedAt": "2026-10-13T08:05:07Z",
+    "sourceSha256": "11cb6af3843deca139a64d88116941eee8c7c982df6ab1298ea86b783868af0e"
+  },
+  {
+    "fundClassId": "mpfa-cf-1119",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 12.2,
+    "printed": "12.20",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.boci-pru.com.hk/en/mpf/mpf-prices",
+    "retrievedAt": "2026-10-13T08:05:07Z",
+    "sourceSha256": "11cb6af3843deca139a64d88116941eee8c7c982df6ab1298ea86b783868af0e"
+  },
+  {
+    "fundClassId": "mpfa-cf-1541",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 41.8,
+    "printed": "41.80",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.boci-pru.com.hk/en/mpf/mpf-prices",
+    "retrievedAt": "2026-10-13T08:05:07Z",
+    "sourceSha256": "11cb6af3843deca139a64d88116941eee8c7c982df6ab1298ea86b783868af0e"
+  },
+  {
+    "fundClassId": "mpfa-cf-1542",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 15.85,
+    "printed": "15.85",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.boci-pru.com.hk/en/mpf/mpf-prices",
+    "retrievedAt": "2026-10-13T08:05:07Z",
+    "sourceSha256": "11cb6af3843deca139a64d88116941eee8c7c982df6ab1298ea86b783868af0e"
+  },
+  {
+    "fundClassId": "mpfa-cf-1959",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 17.19,
+    "printed": "17.19",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.boci-pru.com.hk/en/mpf/mpf-prices",
+    "retrievedAt": "2026-10-13T08:05:07Z",
+    "sourceSha256": "11cb6af3843deca139a64d88116941eee8c7c982df6ab1298ea86b783868af0e"
+  },
+  {
+    "fundClassId": "mpfa-cf-226",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 74.68,
+    "printed": "74.68",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.boci-pru.com.hk/en/mpf/mpf-prices",
+    "retrievedAt": "2026-10-13T08:05:07Z",
+    "sourceSha256": "11cb6af3843deca139a64d88116941eee8c7c982df6ab1298ea86b783868af0e"
+  },
+  {
+    "fundClassId": "mpfa-cf-227",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 56.83,
+    "printed": "56.83",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.boci-pru.com.hk/en/mpf/mpf-prices",
+    "retrievedAt": "2026-10-13T08:05:07Z",
+    "sourceSha256": "11cb6af3843deca139a64d88116941eee8c7c982df6ab1298ea86b783868af0e"
+  },
+  {
+    "fundClassId": "mpfa-cf-228",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 32.27,
+    "printed": "32.27",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.boci-pru.com.hk/en/mpf/mpf-prices",
+    "retrievedAt": "2026-10-13T08:05:07Z",
+    "sourceSha256": "11cb6af3843deca139a64d88116941eee8c7c982df6ab1298ea86b783868af0e"
+  },
+  {
+    "fundClassId": "mpfa-cf-229",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 20.95,
+    "printed": "20.95",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.boci-pru.com.hk/en/mpf/mpf-prices",
+    "retrievedAt": "2026-10-13T08:05:07Z",
+    "sourceSha256": "11cb6af3843deca139a64d88116941eee8c7c982df6ab1298ea86b783868af0e"
+  },
+  {
+    "fundClassId": "mpfa-cf-230",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 9.03,
+    "printed": "9.03",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.boci-pru.com.hk/en/mpf/mpf-prices",
+    "retrievedAt": "2026-10-13T08:05:07Z",
+    "sourceSha256": "11cb6af3843deca139a64d88116941eee8c7c982df6ab1298ea86b783868af0e"
+  },
+  {
+    "fundClassId": "mpfa-cf-231",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 64.88,
+    "printed": "64.88",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.boci-pru.com.hk/en/mpf/mpf-prices",
+    "retrievedAt": "2026-10-13T08:05:07Z",
+    "sourceSha256": "11cb6af3843deca139a64d88116941eee8c7c982df6ab1298ea86b783868af0e"
+  },
+  {
+    "fundClassId": "mpfa-cf-232",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 41.5,
+    "printed": "41.50",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.boci-pru.com.hk/en/mpf/mpf-prices",
+    "retrievedAt": "2026-10-13T08:05:07Z",
+    "sourceSha256": "11cb6af3843deca139a64d88116941eee8c7c982df6ab1298ea86b783868af0e"
+  },
+  {
+    "fundClassId": "mpfa-cf-233",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 5.29,
+    "printed": "5.29",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.boci-pru.com.hk/en/mpf/mpf-prices",
+    "retrievedAt": "2026-10-13T08:05:07Z",
+    "sourceSha256": "11cb6af3843deca139a64d88116941eee8c7c982df6ab1298ea86b783868af0e"
+  },
+  {
+    "fundClassId": "mpfa-cf-234",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 78.86,
+    "printed": "78.86",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.boci-pru.com.hk/en/mpf/mpf-prices",
+    "retrievedAt": "2026-10-13T08:05:07Z",
+    "sourceSha256": "11cb6af3843deca139a64d88116941eee8c7c982df6ab1298ea86b783868af0e"
+  },
+  {
+    "fundClassId": "mpfa-cf-654",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 32.47,
+    "printed": "32.47",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.boci-pru.com.hk/en/mpf/mpf-prices",
+    "retrievedAt": "2026-10-13T08:05:07Z",
+    "sourceSha256": "11cb6af3843deca139a64d88116941eee8c7c982df6ab1298ea86b783868af0e"
+  },
+  {
+    "fundClassId": "mpfa-cf-999",
+    "periodYears": 3,
+    "basis": "cumulative",
+    "cumulative": 46.62,
+    "printed": "46.62",
+    "dataAsOf": "2026-08-31",
+    "sourceUrl": "https://www.boci-pru.com.hk/en/mpf/mpf-prices",
+    "retrievedAt": "2026-10-13T08:05:07Z",
+    "sourceSha256": "11cb6af3843deca139a64d88116941eee8c7c982df6ab1298ea86b783868af0e"
   }
 ]
