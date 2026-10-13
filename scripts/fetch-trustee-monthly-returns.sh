@@ -8,14 +8,16 @@ set -euo pipefail
 # - 滙豐／恒生《每月基金表現摘要》：網址按月份命名，只下載目標月份那一份。
 # - 銀聯信託（BCT）官網基金表現接口：只提供最新一期；回應的 performanceDate
 #   同目標日期唔一樣（例如受託人未更新，或者已經去咗下一個月）就唔用。
+# - 宏利環球精選《每月摘要》：固定網址只得最新一期，「As at」日期同目標日期唔一樣就唔用；
+#   官網擋普通 curl，要用 curl_cffi 瀏覽器指紋（scripts/download-pdf-impersonated.py）。
 #
 # 每份成功下載而且日期對得上的來源，喺 <output-dir>/arguments.txt 寫一行
-# `--summary <值>` 或 `--bct <值>`。其餘寫入 <output-dir>/skipped.txt（以 tab 分隔：
+# `--summary <值>`、`--bct <值>` 或 `--manulife <值>`。其餘寫入 <output-dir>/skipped.txt（以 tab 分隔：
 # 計劃、網址、原因代號、說明），原因代號：
 #   download-failed   下載失敗或者唔係 PDF；
-#   invalid-response  BCT 回應唔係有效基金表現資料；
-#   source-behind     BCT 仲未更新到目標日期（正常，等下次）；
-#   source-ahead      BCT 已經去咗下一期，目標日期嗰期接口再攞唔返（要跟進）。
+#   invalid-response  BCT 回應唔係有效基金表現資料，或宏利摘要讀唔到唯一「As at」日期；
+#   source-behind     BCT／宏利仲未更新到目標日期（正常，等下次）；
+#   source-ahead      BCT／宏利已經去咗下一期，目標日期嗰期再攞唔返（要跟進）。
 # 呢度唔讀數字，數字全部交由讀取器同交叉核對把關。
 
 data_as_of="${1:-}"
@@ -93,5 +95,31 @@ for entry in "${bct_schemes[@]}"; do
   fi
   printf -- '--bct\t%s|%s|%s|%s\n' "$scheme" "$url" "$target" "$retrieved_at" >>"$output_dir/arguments.txt"
 done
+
+# 宏利環球精選：固定網址，只得最新一期。日期由 PDF「As at <Month> <d>, <yyyy>」讀，必須全份唯一。
+manulife_scheme="Manulife Global Select (MPF) Scheme"
+manulife_url="https://www.manulife.com.hk/content/dam/insurance/hk/zh-hk/documents/fund-price/mpf-monthly-summary.pdf"
+manulife_target="$output_dir/manulife-global-select-monthly-summary.pdf"
+retrieved_at="$(now)"
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if ! python3 "$script_dir/download-pdf-impersonated.py" "$manulife_url" "$manulife_target" >/dev/null; then
+  printf '%s\t%s\tdownload-failed\tdownload failed or not a PDF\n' "$manulife_scheme" "$manulife_url" >>"$output_dir/skipped.txt"
+  rm -f "$manulife_target"
+else
+  as_at="$(pdftotext "$manulife_target" - 2>/dev/null | grep -oE 'As at [A-Z][a-z]+ [0-9]{1,2}, [0-9]{4}' | sed 's/^As at //' | sort -u || true)"
+  if [ "$(printf '%s\n' "$as_at" | grep -c .)" != "1" ]; then
+    printf '%s\t%s\tinvalid-response\tAs at dates "%s"\n' "$manulife_scheme" "$manulife_url" "$(printf '%s' "$as_at" | tr '\n' ';')" >>"$output_dir/skipped.txt"
+  else
+    if ! manulife_date="$(date -u -d "$as_at" +%F 2>/dev/null)"; then
+      printf '%s\t%s\tinvalid-response\tAs at "%s" is not a date\n' "$manulife_scheme" "$manulife_url" "$as_at" >>"$output_dir/skipped.txt"
+    elif [ "$manulife_date" != "$data_as_of" ]; then
+      reason="source-behind"
+      [[ "$manulife_date" > "$data_as_of" ]] && reason="source-ahead"
+      printf '%s\t%s\t%s\tAs at %s, not %s\n' "$manulife_scheme" "$manulife_url" "$reason" "$manulife_date" "$data_as_of" >>"$output_dir/skipped.txt"
+    else
+      printf -- '--manulife\t%s|%s|%s|%s\n' "$manulife_scheme" "$manulife_url" "$manulife_target" "$retrieved_at" >>"$output_dir/arguments.txt"
+    fi
+  fi
+fi
 
 echo "Fetched $(wc -l <"$output_dir/arguments.txt") source(s); skipped $(wc -l <"$output_dir/skipped.txt")."

@@ -17,6 +17,8 @@
 
 第二批來源（2026-10-10 加入）係銀聯信託（BCT）官網基金表現數據接口 `https://www.bcthk.com/bin/servlet/fundInformation`：Pro Choice、Industry Choice、Strategic、Series 800、Smart Plan、Simple Plan 六個計劃共 116 個基金類別，每個類別有官方 `last3YearPerformance`（累積）同 `performanceDate`。接口只提供最新一期，冇歷史月份，所以只可以喺積金局平台更新到同一個截至日期之後先做一年交叉核對；平台未更新之前，讀取器會拒絕（唔會用唔同日期的平台數字核對）。BCT 單位類別同積金局類別名稱按契約對應（`D` ↔ `Class D`、`A` ↔ `Unit Class A`）；積金局冇寫類別（`n.a.`）而計劃內只得一個同名基金時照名稱配對。原回應 JSON 的 SHA-256 記入候選檔。
 
+第三批來源（2026-10-13 加入）係宏利環球精選（強積金）計劃《每月摘要 Monthly Fund Summary》（`https://www.manulife.com.hk/content/dam/insurance/hk/zh-hk/documents/fund-price/mpf-monthly-summary.pdf`，固定網址只得最新一期，約每月中更新上月底數據）：29 隻成分基金的累積回報（六個月至十年、推出至今）。用 `pdftotext -bbox` 按欄位讀，英文名精確配對；一年、五年、十年同積金局平台同期數字逐行核對。官網擋普通 curl，要 curl_cffi 瀏覽器指紋（`scripts/download-pdf-impersonated.py`）。退休收益、核心累積、65 歲後的十年格寫「不適用▲」「N/A▲」。同計劃的季度便覽有三年年率化（截至季末），兩者分欄並存，唔互相換算。
+
 ## 實作約束
 
 - 候選檔 `data/coverage/<date>-official-return-observations-candidate.json` 同時載年率化同累積紀錄；累積紀錄帶 `basis: "cumulative"`，舊檔原樣有效（`splitReturnObservations`）。
@@ -29,7 +31,7 @@
 
 ## 每月自動更新
 
-`.github/workflows/refresh-trustee-returns.yml` 每日跑一次：攞最新入庫平台快照的截至日期，用 `scripts/fetch-trustee-monthly-returns.sh` 下載同一截至日期的受託人來源（滙豐／恒生按月份網址；BCT 接口回應日期唔同就略過），再用同一個 CLI 逐行交叉核對。
+`.github/workflows/refresh-trustee-returns.yml` 每日跑一次：攞最新入庫平台快照的截至日期，用 `scripts/fetch-trustee-monthly-returns.sh` 下載同一截至日期的受託人來源（滙豐／恒生按月份網址；BCT 接口回應日期、宏利摘要「As at」日期唔同就略過），再用同一個 CLI 逐行交叉核對。
 
 - 每份文件獨立：一份作廢（讀唔到、對唔上、核對唔一致）只影響自己，原因寫入報告 `rejectedSources`，其他文件照用；全部作廢先算失敗。
 - 交叉核對：一年必須核對到；五年、十年兩邊都有就要一致（同一基金唔同單位類別一年回報可以一樣，多核兩個期間減低類別對調而唔被發現）。官方冇一年回報的行，只有平台都冇而且三年亦係官方未提供先接受。
