@@ -15,6 +15,9 @@ export type MatchedRow = {
   tenYears: number | null;
   /** 官方原文：數字、「-」（滙豐／恒生、宏利）或者「N/A」（BCT、宏利、永明）；中銀保誠一定係數字。 */
   printedThreeYears: string;
+  /** 五年／十年格原文，照錄，供官方來源衝突登記（ADR 0016）；讀者的資料源冇原文就不提供。 */
+  printedFiveYears?: string;
+  printedTenYears?: string;
 };
 
 export type SourceDocument = {
@@ -42,14 +45,42 @@ export type CrossCheckPlatformRecord = {
 
 /** 官方來源衝突登記（ADR 0016）：兩個數字連各自日期照錄，唔平均、唔揀邊。 */
 export type OfficialSourceConflict = {
+  schemeName: string;
   fundClassId: string;
   label: string;
   periodYears: number;
   trusteeValue: number;
+  /** 受託人文件印出嘅原文（例如「3.70」）；讀者嘅資料源冇格原文時為 null（未能確認，唔可以用序列化數字頂替，紅線 1）。 */
+  trusteePrinted: string | null;
   trusteeDataAsOf: string;
   platformValue: number;
   platformDataAsOf: string;
+  /** 受託人文件來源（ADR 0016：每條衝突要可追溯返去文件本體）。 */
+  sourceUrl: string;
+  sourceSha256: string;
 };
+
+/**
+ * 文件被拒（結構失敗、一年核對失敗、全部行隔離）。ADR 0016：擲出前已登記嘅官方來源衝突
+ * 要隨錯誤一併交返出嚟——整份作廢唔可以丟失兩個官方數字，CLI 會將佢哋記入報告嘅
+ * officialConflicts，同時數字亦已嵌入 `message`（rejectedSources 嘅 reason 照錄）。
+ */
+export class DocumentRejectedError extends Error {
+  readonly conflicts: readonly OfficialSourceConflict[];
+  constructor(message: string, conflicts: readonly OfficialSourceConflict[] = []) {
+    super(message);
+    this.name = "DocumentRejectedError";
+    this.conflicts = conflicts;
+  }
+}
+
+function formatConflict(conflict: OfficialSourceConflict): string {
+  const printed = conflict.trusteePrinted === null ? "" : ` printed "${conflict.trusteePrinted}"`;
+  return (
+    `${conflict.fundClassId} ${conflict.periodYears}-year trustee ${conflict.trusteeValue}${printed}` +
+    ` (as of ${conflict.trusteeDataAsOf}) vs platform ${conflict.platformValue} (as of ${conflict.platformDataAsOf})`
+  );
+}
 
 const CROSS_CHECK_PERIODS = [
   ["oneYear", 1],
@@ -150,23 +181,33 @@ export function verifyDocument(
           problems.push(`${row.fundClassId} ${period}-year source ${value} vs platform ${platformValue}`);
         } else {
           conflicts.push({
+            schemeName,
             fundClassId: row.fundClassId,
             label: row.label,
             periodYears: period,
             trusteeValue: value,
+            trusteePrinted: period === 5 ? (row.printedFiveYears ?? null) : (row.printedTenYears ?? null),
             trusteeDataAsOf: document.dataAsOf,
             platformValue,
             platformDataAsOf: platform!.dataAsOf,
+            sourceUrl: document.url,
+            sourceSha256: document.sha256,
           });
           quarantined.add(row.fundClassId);
         }
       }
     }
   }
-  if (problems.length > 0) throw new Error(`cross-check failed: ${problems.join("; ")}`);
+  if (problems.length > 0)
+    throw new DocumentRejectedError(
+      `cross-check failed: ${problems.join("; ")}` +
+        (conflicts.length > 0 ? `; official-source conflicts recorded: ${conflicts.map(formatConflict).join("; ")}` : ""),
+      conflicts,
+    );
   if (document.matched.length > 0 && quarantined.size === document.matched.length)
-    throw new Error(
-      `official-source conflict quarantine covers all ${quarantined.size} matched row(s) of ${schemeName} dated ${document.dataAsOf}: ${[...quarantined].join(", ")}; treating the whole document as conflicted (ADR 0016)`,
+    throw new DocumentRejectedError(
+      `official-source conflict quarantine covers all ${quarantined.size} matched row(s) of ${schemeName} dated ${document.dataAsOf}: ${[...quarantined].join(", ")}; treating the whole document as conflicted (ADR 0016); official-source conflicts recorded: ${conflicts.map(formatConflict).join("; ")}`,
+      conflicts,
     );
 
   const observations: OfficialCumulativeReturnObservation[] = document.matched

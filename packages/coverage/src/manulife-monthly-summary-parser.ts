@@ -19,6 +19,9 @@ export type ManulifeMonthlySummaryRow = {
   tenYears: number | null;
   /** 原文三年格，照錄（數字、「-」或「N/A」）。 */
   printedThreeYears: string;
+  /** 原文五年／十年格，照錄，供官方來源衝突登記（ADR 0016）。 */
+  printedFiveYears: string;
+  printedTenYears: string;
   page: number;
 };
 
@@ -157,6 +160,8 @@ export function parseManulifeMonthlySummary(bboxXml: string): ManulifeMonthlySum
         fiveYears: parseNumber(cell("5Y")),
         tenYears: parseNumber(cell("10Y")),
         printedThreeYears: cell("3Y"),
+        printedFiveYears: cell("5Y"),
+        printedTenYears: cell("10Y"),
         page,
       });
     }

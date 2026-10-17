@@ -14,6 +14,7 @@ import { parseManulifeMonthlySummary } from "./manulife-monthly-summary-parser";
 import { matchSunLifeRows, parseSunLifeCumulativePerformance } from "./sun-life-mpf-performance";
 import { parseYfLifeMonthlyPerformance } from "./yf-life-monthly-performance-parser";
 import {
+  DocumentRejectedError,
   verifyDocument,
   type MatchedRow,
   type OfficialSourceConflict,
@@ -273,6 +274,8 @@ async function readManulife(entry: string): Promise<SourceDocument> {
               fiveYears: row.fiveYears,
               tenYears: row.tenYears,
               printedThreeYears: row.printedThreeYears,
+              printedFiveYears: row.printedFiveYears,
+              printedTenYears: row.printedTenYears,
             },
           ]
         : [],
@@ -498,7 +501,7 @@ async function readHkifa(entry: string) {
 // 每份文件獨立：一份作廢（讀唔到、對唔上、核對唔一致）只影響自己，其他照用（紅線 3 以文件為單位）。
 const sources = [];
 const rejected: { flag: string; entry: string; reason: string }[] = [];
-const officialConflicts: (OfficialSourceConflict & { schemeName: string })[] = [];
+const officialConflicts: OfficialSourceConflict[] = [];
 const fresh: OfficialCumulativeReturnObservation[] = [];
 const inputs = [
   ...summaries.map((entry) => ({ flag: "--summary", entry, read: () => readSummary(entry) })),
@@ -517,13 +520,15 @@ for (const input of inputs) {
     });
     fresh.push(...observations);
     sources.push(source);
-    for (const conflict of conflicts) officialConflicts.push({ schemeName: source.schemeName, ...conflict });
+    for (const conflict of conflicts) officialConflicts.push(conflict);
     if (source.quarantinedRows.length > 0)
       console.error(
         `QUARANTINED ${input.flag} rows (official-source conflict, ADR 0016): ${source.quarantinedRows.join(", ")}; both official numbers recorded in the report's officialConflicts`,
       );
   } catch (error) {
     const reason = error instanceof Error ? error.message : String(error);
+    // 整份作廢前已登記嘅官方來源衝突唔可以隨 throw 丟失（ADR 0016）：數字連來源記入報告登記表。
+    if (error instanceof DocumentRejectedError) for (const conflict of error.conflicts) officialConflicts.push(conflict);
     rejected.push({ flag: input.flag, entry: input.entry, reason });
     console.error(`REJECTED ${input.flag} ${input.entry.split("|")[0]}: ${reason}`);
   }
@@ -544,6 +549,20 @@ for (const entry of hkifaTables) {
 if (sources.length + thirdPartySources.length === 0)
   throw new Error(`Every source was rejected: ${rejected.map((item) => item.reason).join(" | ")}`);
 
+// ADR 0016 第 2 節：衝突隔離嘅行唔可以用第三方補位——Lipper 表如有本次受託人衝突隔離嘅行，
+// 剔走並記入報告（衝突未喺兩間官方之間澄清前，唔發布任何一方補出嚟嘅數字）。
+const quarantinedIds = new Set(sources.flatMap((source) => source.quarantinedRows as string[]));
+const thirdPartySuppressedForConflicts: string[] = [];
+const usableThirdParty = thirdParty.filter((observation) => {
+  if (!quarantinedIds.has(observation.fundClassId)) return true;
+  thirdPartySuppressedForConflicts.push(observation.fundClassId);
+  return false;
+});
+if (thirdPartySuppressedForConflicts.length > 0)
+  console.error(
+    `SUPPRESSED --hkifa rows for official-source conflict quarantine (ADR 0016): ${thirdPartySuppressedForConflicts.join(", ")}`,
+  );
+
 // 舊候選檔的累積紀錄一定要對得上今次平台快照，否則發布時先爆，喺呢度就停。
 const orphaned = base.cumulative.filter((row) => !knownIds.has(row.fundClassId));
 if (orphaned.length > 0)
@@ -554,7 +573,7 @@ if (orphaned.length > 0)
 const { cumulative, replaced, keptNewer, keptTrustee } = mergeCumulativeObservations(
   base.cumulative,
   fresh,
-  thirdParty,
+  usableThirdParty,
 );
 const annualizedCheck = validateOfficialReturnObservations(base.annualized);
 const cumulativeCheck = validateOfficialCumulativeReturnObservations(cumulative);
@@ -585,6 +604,8 @@ await writeFile(
       keptTrusteeOverThirdParty: keptTrustee,
       // 官方來源衝突登記（ADR 0016）：受託人同平台兩個數字連各自日期照錄，唔揀邊。
       officialConflicts,
+      // ADR 0016：衝突隔離行對應嘅 Lipper 第三方行已剔走，冇頂位。
+      thirdPartySuppressedForConflicts,
       rejectedSources: rejected,
     },
     null,
