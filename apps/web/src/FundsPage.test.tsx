@@ -62,8 +62,9 @@ describe("fund browse page", () => {
     render(<FundsPage apiBaseUrl="https://api.test" />);
 
     const fundType = await screen.findByLabelText("官方基金種類");
+    // 篩選值係非同步讀入：下拉選單一開始只有「全部」，要等選項出現先檢查。
     expect(
-      screen.getByRole("option", { name: "Equity Fund" }),
+      await screen.findByRole("option", { name: "Equity Fund" }),
     ).toBeInTheDocument();
     expect(fundType).toHaveValue("all");
     expect(
