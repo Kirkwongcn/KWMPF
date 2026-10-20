@@ -16,7 +16,8 @@ canonical implementation spec（`docs/specs/2026-08-08-hk-mpf-comparison-v1-impl
 2. **官方寫 `n.a.` 唔等於 0。** 一律走 `unavailableFields`，唔可以用另一個
    欄位（風險級別、基金種類）補位。
 3. **抽唔到就明講，唔出局部資料。** 一張表有一行對唔上，整塊當官方未提供，
-   並記低原因同代號（`unavailableKinds`）。
+   並記低原因同代號（`unavailableKinds`）。唯一例外見 ADR 0016：一年核對通過、
+   只係五／十年同積金局平台唔等嘅官方來源衝突，只隔離嗰一行，兩個數字照錄。
 4. **配對唔做模糊比對。** 只做大小寫／引號／破折號正規化加契約聲明嘅前綴。
    同名兩個就報錯，唔可以隨便揀一個。
 5. **唔可以拿另一隻基金嘅披露頂上。** 一個基金類別對多過一份披露要報錯。
@@ -61,6 +62,7 @@ canonical implementation spec（`docs/specs/2026-08-08-hk-mpf-comparison-v1-impl
 | `docs/adr/0013-chart-read-allocations.md`                   | 圖表式配置讀印出的數字，兩次讀取一致先用   |
 | `docs/adr/0014-official-three-year-cumulative-returns.md`   | 受託人官方三年累積回報另設欄位，唔換算     |
 | `docs/adr/0015-third-party-lipper-three-year-cumulative.md` | 受託人冇提供時用 Lipper 三年累積，標第三方 |
+| `docs/adr/0016-official-source-conflict-quarantine.md`      | 官方來源長年期衝突只隔離該行，兩個數字照錄 |
 
 ## 使用者里程碑偏好
 
