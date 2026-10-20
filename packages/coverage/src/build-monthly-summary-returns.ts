@@ -13,6 +13,13 @@ import {
 import { parseManulifeMonthlySummary } from "./manulife-monthly-summary-parser";
 import { matchSunLifeRows, parseSunLifeCumulativePerformance } from "./sun-life-mpf-performance";
 import { parseYfLifeMonthlyPerformance } from "./yf-life-monthly-performance-parser";
+import {
+  DocumentRejectedError,
+  verifyDocument,
+  type MatchedRow,
+  type OfficialSourceConflict,
+  type SourceDocument,
+} from "./monthly-return-cross-check";
 import { parseHkifaLipperMpfTable, readGrowth } from "./hkifa-lipper-mpf-table-parser";
 import type { HkifaLipperMapEntry } from "./hkifa-lipper-fund-map";
 import {
@@ -52,9 +59,13 @@ import {
  *
  * `--check-source` 係用嚟做一年交叉核對的平台快照（預設同 --source），日期要同來源一樣。
  *
- * 任何一份文件有一行對唔上、同名多過一個類別、或者累積回報同積金局平台同期數字唔一致
+ * 任何一份文件有一行對唔上、同名多過一個類別、或者一年回報同積金局平台同期數字唔一致
  * （代表讀錯欄或者類別對調），成份文件作廢，唔出局部資料；作廢原因寫入報告的
  * `rejectedSources`，其他文件照用。全部文件都作廢先報錯。
+ * 例外（ADR 0016）：一行一年通過而 5／10 年累積同平台同期（`dataAsOf` 相同）嚴格比較唔等，
+ * 屬官方來源衝突：只隔離該行（該行連三年都唔發布，見 `monthly-return-cross-check.ts`），
+ * 兩個官方數字連各自日期記入報告 `officialConflicts`；該文件其餘行照用。全部行都衝突
+ * 即視同整份作廢。
  */
 
 function argument(name: string) {
@@ -124,31 +135,7 @@ function summaryPage(pdfPath: string): { page: number; summary: MonthlySummary }
   return { page: found[0]!.page, summary: parseMonthlySummary(found[0]!.text) };
 }
 
-type MatchedRow = {
-  fundClassId: string;
-  label: string;
-  oneYear: number | null;
-  threeYears: number | null;
-  fiveYears: number | null;
-  tenYears: number | null;
-  /** 官方原文：數字、「-」（滙豐／恒生、宏利）或者「N/A」（BCT、宏利、永明）；中銀保誠一定係數字。 */
-  printedThreeYears: string;
-};
-type SourceDocument = {
-  kind: "monthly-summary-pdf" | "bct-fund-information" | "manulife-monthly-summary-pdf" | "boci-prudential-mpf-listing"
-    | "sun-life-mpf-cumulative-performance"
-    | "yf-life-monthly-performance-pdf";
-  schemeName: string;
-  url: string;
-  retrievedAt: string;
-  sha256: string;
-  bytes: number;
-  page?: number;
-  dataAsOf: string;
-  rows: number;
-  failed: string[];
-  matched: MatchedRow[];
-};
+// `MatchedRow`／`SourceDocument`／`verifyDocument` 見 monthly-return-cross-check.ts（ADR 0016 抽出）。
 
 function splitEntry(entry: string, flag: string) {
   const [schemeName, url, path, retrievedAt] = entry.split("|");
@@ -287,6 +274,8 @@ async function readManulife(entry: string): Promise<SourceDocument> {
               fiveYears: row.fiveYears,
               tenYears: row.tenYears,
               printedThreeYears: row.printedThreeYears,
+              printedFiveYears: row.printedFiveYears,
+              printedTenYears: row.printedTenYears,
             },
           ]
         : [],
@@ -423,109 +412,6 @@ async function readSunLife(entry: string): Promise<SourceDocument> {
   };
 }
 
-const CROSS_CHECK_PERIODS = [
-  ["oneYear", 1],
-  ["fiveYears", 5],
-  ["tenYears", 10],
-] as const;
-
-/**
- * 逐行同積金局平台同期累積回報核對（紅線 3）：一年必須核對到，五年、十年兩邊都有就要一致。
- * 單位類別一年回報可以啱啱一樣（例如 D／I 類），所以多核五年、十年，減低類別對調而唔被發現。
- * 官方冇一年回報（`N/A` 或「-」）的行，只有平台都冇一年回報而且三年都係官方未提供先接受。
- * 任何一行唔合格就成份文件作廢；唔影響其他文件。
- */
-function verifyDocument(document: SourceDocument) {
-  const { schemeName } = document;
-  if (document.failed.length > 0)
-    throw new Error(
-      `${document.failed.length} row(s) not matched exactly: ${document.failed.join("; ")}`,
-    );
-  const matchedIds = document.matched.map((row) => row.fundClassId);
-  if (new Set(matchedIds).size !== matchedIds.length)
-    throw new Error("two source rows matched the same fund class");
-  const missing = schemeRecordsOf(schemeName)
-    .filter((record) => !matchedIds.includes(record.fundClassId))
-    .map((record) => record.fundClassId);
-  if (missing.length > 0)
-    throw new Error(`${missing.length} scheme fund(s) not in the source: ${missing.join(", ")}`);
-
-  let oneYearChecks = 0;
-  let longerChecks = 0;
-  const problems: string[] = [];
-  for (const row of document.matched) {
-    const record = checkSnapshot.records.find((item) => item.fundClassId === row.fundClassId);
-    const platformOneYear = record?.returns?.[1];
-    if (!platformOneYear || platformOneYear.dataAsOf !== document.dataAsOf) {
-      if (row.oneYear === null && row.threeYears === null && record && !platformOneYear) {
-        oneYearChecks += 1;
-        continue;
-      }
-      problems.push(
-        `${row.fundClassId} has no platform one-year return dated ${document.dataAsOf}` +
-          (platformOneYear ? ` (platform is ${platformOneYear.dataAsOf}; pass --check-source)` : ""),
-      );
-      continue;
-    }
-    for (const [field, period] of CROSS_CHECK_PERIODS) {
-      const platform = record?.returns?.[period];
-      const value = row[field];
-      const platformValue = period === 1 ? platform?.annualized : platform?.cumulative;
-      if (period === 1) {
-        if (value === null || typeof platformValue !== "number") {
-          problems.push(`${row.fundClassId} one-year source ${value} vs platform ${platformValue}`);
-          continue;
-        }
-        oneYearChecks += 1;
-      } else if (
-        value === null ||
-        typeof platformValue !== "number" ||
-        platform?.dataAsOf !== document.dataAsOf
-      ) {
-        continue;
-      } else {
-        longerChecks += 1;
-      }
-      if (value !== platformValue)
-        problems.push(`${row.fundClassId} ${period}-year source ${value} vs platform ${platformValue}`);
-    }
-  }
-  if (problems.length > 0) throw new Error(`cross-check failed: ${problems.join("; ")}`);
-
-  const observations: OfficialCumulativeReturnObservation[] = document.matched.map((row) => ({
-    fundClassId: row.fundClassId,
-    periodYears: 3,
-    basis: "cumulative",
-    cumulative: row.threeYears,
-    printed: row.printedThreeYears,
-    dataAsOf: document.dataAsOf,
-    sourceUrl: document.url,
-    retrievedAt: document.retrievedAt,
-    sourceSha256: document.sha256,
-  }));
-  return {
-    observations,
-    source: {
-      kind: document.kind,
-      schemeName,
-      url: document.url,
-      retrievedAt: document.retrievedAt,
-      sha256: document.sha256,
-      bytes: document.bytes,
-      ...(document.page === undefined ? {} : { page: document.page }),
-      dataAsOf: document.dataAsOf,
-      rows: document.rows,
-      matched: document.matched.length,
-      // 官方印「-」或者 `N/A`：記錄為官方未提供（唔當 0），網站照講原因。
-      officialNotDisclosed: document.matched
-        .filter((row) => row.threeYears === null)
-        .map((row) => row.fundClassId),
-      oneYearCrossChecks: oneYearChecks,
-      fiveTenYearCrossChecks: longerChecks,
-    },
-  };
-}
-
 /**
  * Lipper 表（第三方，ADR 0015）：只按對照表精確查行名；對照表每一行都要喺表入面剛好出現一次，
  * 一年要同積金局平台同期一年回報完全相等。有任何一行唔啱，成份作廢（紅線 3）。三年空格（成立未滿
@@ -615,6 +501,7 @@ async function readHkifa(entry: string) {
 // 每份文件獨立：一份作廢（讀唔到、對唔上、核對唔一致）只影響自己，其他照用（紅線 3 以文件為單位）。
 const sources = [];
 const rejected: { flag: string; entry: string; reason: string }[] = [];
+const officialConflicts: OfficialSourceConflict[] = [];
 const fresh: OfficialCumulativeReturnObservation[] = [];
 const inputs = [
   ...summaries.map((entry) => ({ flag: "--summary", entry, read: () => readSummary(entry) })),
@@ -627,11 +514,21 @@ const inputs = [
 for (const input of inputs) {
   try {
     const document = await input.read();
-    const { observations, source } = verifyDocument(document);
+    const { observations, source, conflicts } = verifyDocument(document, {
+      schemeRecords: schemeRecordsOf(document.schemeName),
+      checkRecords: checkSnapshot.records,
+    });
     fresh.push(...observations);
     sources.push(source);
+    for (const conflict of conflicts) officialConflicts.push(conflict);
+    if (source.quarantinedRows.length > 0)
+      console.error(
+        `QUARANTINED ${input.flag} rows (official-source conflict, ADR 0016): ${source.quarantinedRows.join(", ")}; both official numbers recorded in the report's officialConflicts`,
+      );
   } catch (error) {
     const reason = error instanceof Error ? error.message : String(error);
+    // 整份作廢前已登記嘅官方來源衝突唔可以隨 throw 丟失（ADR 0016）：數字連來源記入報告登記表。
+    if (error instanceof DocumentRejectedError) for (const conflict of error.conflicts) officialConflicts.push(conflict);
     rejected.push({ flag: input.flag, entry: input.entry, reason });
     console.error(`REJECTED ${input.flag} ${input.entry.split("|")[0]}: ${reason}`);
   }
@@ -652,6 +549,20 @@ for (const entry of hkifaTables) {
 if (sources.length + thirdPartySources.length === 0)
   throw new Error(`Every source was rejected: ${rejected.map((item) => item.reason).join(" | ")}`);
 
+// ADR 0016 第 2 節：衝突隔離嘅行唔可以用第三方補位——Lipper 表如有本次受託人衝突隔離嘅行，
+// 剔走並記入報告（衝突未喺兩間官方之間澄清前，唔發布任何一方補出嚟嘅數字）。
+const quarantinedIds = new Set(sources.flatMap((source) => source.quarantinedRows as string[]));
+const thirdPartySuppressedForConflicts: string[] = [];
+const usableThirdParty = thirdParty.filter((observation) => {
+  if (!quarantinedIds.has(observation.fundClassId)) return true;
+  thirdPartySuppressedForConflicts.push(observation.fundClassId);
+  return false;
+});
+if (thirdPartySuppressedForConflicts.length > 0)
+  console.error(
+    `SUPPRESSED --hkifa rows for official-source conflict quarantine (ADR 0016): ${thirdPartySuppressedForConflicts.join(", ")}`,
+  );
+
 // 舊候選檔的累積紀錄一定要對得上今次平台快照，否則發布時先爆，喺呢度就停。
 const orphaned = base.cumulative.filter((row) => !knownIds.has(row.fundClassId));
 if (orphaned.length > 0)
@@ -662,7 +573,7 @@ if (orphaned.length > 0)
 const { cumulative, replaced, keptNewer, keptTrustee } = mergeCumulativeObservations(
   base.cumulative,
   fresh,
-  thirdParty,
+  usableThirdParty,
 );
 const annualizedCheck = validateOfficialReturnObservations(base.annualized);
 const cumulativeCheck = validateOfficialCumulativeReturnObservations(cumulative);
@@ -691,6 +602,10 @@ await writeFile(
       replacedCumulative: replaced,
       keptNewerCumulative: keptNewer,
       keptTrusteeOverThirdParty: keptTrustee,
+      // 官方來源衝突登記（ADR 0016）：受託人同平台兩個數字連各自日期照錄，唔揀邊。
+      officialConflicts,
+      // ADR 0016：衝突隔離行對應嘅 Lipper 第三方行已剔走，冇頂位。
+      thirdPartySuppressedForConflicts,
       rejectedSources: rejected,
     },
     null,
@@ -707,7 +622,9 @@ console.log(
       dataAsOf: source.dataAsOf,
       matched: source.matched,
       oneYearCrossChecks: source.oneYearCrossChecks,
+      ...(source.quarantinedRows.length > 0 ? { quarantined: source.quarantinedRows.length } : {}),
     })),
+    officialConflicts: officialConflicts.length,
     rejected: rejected.length,
   }),
 );

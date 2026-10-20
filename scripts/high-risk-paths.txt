@@ -18,6 +18,7 @@ scripts/ocr-chart-region.py
 packages/coverage/src/official-return-overlay.ts
 packages/coverage/src/monthly-performance-summary-parser.ts
 packages/coverage/src/build-monthly-summary-returns.ts
+packages/coverage/src/monthly-return-cross-check.ts
 packages/coverage/src/bct-fund-performance.ts
 packages/coverage/src/manulife-monthly-summary-parser.ts
 packages/coverage/src/boci-prudential-mpf-listing.ts
