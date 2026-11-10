@@ -1,0 +1,104 @@
+{
+  "generatedAt": "2026-11-10T23:59:45.951Z",
+  "decision": {
+    "previousDataAsOf": "2026-09-30",
+    "candidateDataAsOf": "2026-10-31",
+    "outcome": "needs_review",
+    "publishable": false,
+    "reasons": [
+      "異常核對政策 2026-09-10.v5 標記了 7 項異常，涉及 3 個基金類別；必須人手核對後才可發布。",
+      "費率改變：7 項。"
+    ]
+  },
+  "readiness": {
+    "ready": true,
+    "inputRecords": 451,
+    "acceptedRecords": 451,
+    "blockedRecords": 0,
+    "missingByField": {},
+    "unavailableByField": {
+      "annualizedReturn10y": 93,
+      "annualizedReturn1y": 4,
+      "annualizedReturn5y": 24,
+      "calendarYearReturn2021": 46,
+      "calendarYearReturn2022": 18,
+      "calendarYearReturn2023": 16,
+      "calendarYearReturn2024": 5,
+      "calendarYearReturn2025": 5,
+      "fundRiskIndicator": 12,
+      "latestFer": 5,
+      "oci1yHkd": 32,
+      "oci3yHkd": 32,
+      "oci5yHkd": 32,
+      "riskClass": 12,
+      "sinceLaunchReturn": 4
+    },
+    "blockedDetails": [],
+    "issues": []
+  },
+  "audit": {
+    "batchId": "candidate-42927409530",
+    "policyVersion": "2026-09-10.v5",
+    "requiresReview": true,
+    "inputRecords": 451,
+    "previousRecords": 451,
+    "generatedAt": "2026-11-10T23:59:45.942Z",
+    "anomalies": [
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-799",
+        "field": "managementFee",
+        "detail": "managementFee 由 0.9995 改為 0.92"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-799",
+        "field": "trusteeCustodianFee",
+        "detail": "trusteeCustodianFee 由 0.1695 改為 0.14"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-799",
+        "field": "investmentManagementFee",
+        "detail": "investmentManagementFee 由 0.4 改為 0.35"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-908",
+        "field": "managementFee",
+        "detail": "managementFee 由 0.86 改為 0.85"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-908",
+        "field": "investmentManagementFee",
+        "detail": "investmentManagementFee 由 0.61 改為 0.6"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1821",
+        "field": "managementFee",
+        "detail": "managementFee 由 0.96 改為 0.94"
+      },
+      {
+        "kind": "fee_changed",
+        "fundClassId": "mpfa-cf-1821",
+        "field": "investmentManagementFee",
+        "detail": "investmentManagementFee 由 0.19 改為 0.17"
+      }
+    ],
+    "affectedFundClassIds": [
+      "mpfa-cf-1821",
+      "mpfa-cf-799",
+      "mpfa-cf-908"
+    ],
+    "sourceFailures": [],
+    "sources": [
+      {
+        "url": "https://mfp.mpfa.org.hk/eng/mpp_list.jsp",
+        "dataAsOf": "2026-10-31",
+        "retrievedAt": "2026-11-10T23:59:44.306Z"
+      }
+    ]
+  }
+}
