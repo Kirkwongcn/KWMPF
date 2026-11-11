@@ -169,6 +169,7 @@ jobs:
           mkdir -p "${directory}"
           cp /tmp/candidate/mpf-fund-platform.json "${directory}/mpf-fund-platform.json"
           cp /tmp/candidate/refresh-report.json "${directory}/refresh-report.json"
+          bunx --no-install prettier --write "${directory}/mpf-fund-platform.json" "${directory}/refresh-report.json"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch -c "${branch}"
