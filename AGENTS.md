@@ -7,6 +7,10 @@ canonical implementation spec（`docs/specs/2026-08-08-hk-mpf-comparison-v1-impl
 本檔案曾經長到 31 KB 而被截斷，尾段的紅線根本傳唔到執行者手上**。任何一份超過
 10 KB 就再拆，唔好塞返落嚟。
 
+跨工具接手入口是 `docs/HANDOFF.md`；優先待辦讀 `docs/NEXT_TASKS.md`，路徑與決定讀
+`docs/PROJECT_MAP.md`／`docs/DECISIONS.md`。歷史交接、已發布知識及舊批准不是本次執行權限；
+未經使用者對該次操作批准，不得合併正式分支、觸發部署或修改正式資源。秘密不得提交。
+
 ## 不可繞過的紅線
 
 呢七條凌駕一切效率考慮。做唔到就報錯或者標示「官方未提供」，唔好估。
