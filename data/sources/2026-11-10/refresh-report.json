@@ -87,11 +87,7 @@
         "detail": "investmentManagementFee 由 0.19 改為 0.17"
       }
     ],
-    "affectedFundClassIds": [
-      "mpfa-cf-1821",
-      "mpfa-cf-799",
-      "mpfa-cf-908"
-    ],
+    "affectedFundClassIds": ["mpfa-cf-1821", "mpfa-cf-799", "mpfa-cf-908"],
     "sourceFailures": [],
     "sources": [
       {
