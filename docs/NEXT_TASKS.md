@@ -6,25 +6,11 @@
 
 | ID | 工作／目前證據 | 具體下一步／完成條件 |
 | --- | --- | --- |
-| DATA-402 | [PR402](https://github.com/Kirkwongcn/KWMPF/pull/402)截至10月31，但report仍needs_review／publishable=false | 對799、908、1821三類別的7項費率逐一核對官方原文、日期、類別及精度；依repo政策處理精確source/report blob的審查/disposition，再做最新source＋適用overlay seed及三筆原文。另請使用者批准合併／發布 |
+| DATA-402 | 七項官方費率及四個上限全部核實；精確檔案的 disposition 已通過發布前檢查 | 發布狀態及驗收記錄見 [#402 跟進](reviews/2026-11-12-pr402.md) |
 | DATA-400 | [PR400](https://github.com/Kirkwongcn/KWMPF/pull/400)已有MASS 14行9月資料，人工三筆未勾 | 與main2026-10-20候選做逐key差異，確認真實增量、沿用值及來源；重讀三筆原文及精確head CI。若先採用402的10月平台，9月一年交叉核對需保留對應9月snapshot，不可硬配新期；是否重建／取代舊PR待審查 |
 | DATA-CONFLICT | [Issue396](https://github.com/Kirkwongcn/KWMPF/issues/396)仍open；ADR0016 reader隔離已合併，但workflow只由rejectedSources產生跟進檔 | 將officialConflicts／quarantinedRows獨立納入跟進與去重；候選沒有增量時亦保留衝突證據。用隔離fixture覆蓋全文件reject／部分隔離／無候選變動。待使用者批准code範圍；不放寬數字比較、不借第三方補位 |
 | DATA-DISCOVERY | BOC-Prudential在400下載失敗，Sun Life Rainbow仍2026-06-30；三年年率化線上37行／313 stale | 查最新官方入口及可取得原件，保留URL／抓取時間／hash／各欄位日期；區分403／保護頁、source-behind、無披露及parser失敗。MASS改列待400審查，不能重複稱未取得。資料變更另獨立候選，逐基金驗收 |
 | OPS-QUEUE | production backup #7 waiting／#8 pending；staging #17及source archive #11 waiting | 唯讀查清review／concurrency鎖／artifact到期；核對最後成功備份及是否仍可還原。列每個run的具體approve／cancel／rerun建議後等用戶批准；本輪不替gate放行。最後observed production backup success為10月25日#6，不把pending說成備份已成功 |
-
-### 402的7項異常（候選報告，尚未逐筆原文重核）
-
-| 基金類別 | 欄位 | 舊→新（保留報告原值） |
-| --- | --- | --- |
-| mpfa-cf-799 | managementFee | 0.9995 → 0.92 |
-| mpfa-cf-799 | trusteeCustodianFee | 0.1695 → 0.14 |
-| mpfa-cf-799 | investmentManagementFee | 0.4 → 0.35 |
-| mpfa-cf-908 | managementFee | 0.86 → 0.85 |
-| mpfa-cf-908 | investmentManagementFee | 0.61 → 0.6 |
-| mpfa-cf-1821 | managementFee | 0.96 → 0.94 |
-| mpfa-cf-1821 | investmentManagementFee | 0.19 → 0.17 |
-
-來源是PR402 exact head的`data/sources/2026-11-10/refresh-report.json`；不是本輪已確認官方調費的結論。
 
 ## P2：在上述資料／操作風險後跟進
 
