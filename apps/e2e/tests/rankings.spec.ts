@@ -266,8 +266,33 @@ test("選擇比較組別後，只保留同組基金", async ({ page }) => {
 
 test("窄螢幕排名表可用左右方向鍵橫向捲動", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 780 });
-  // Fee rows remain available when the fixed return fixture ages beyond its freshness window.
-  await page.goto("/rankings?metric=fee");
+  // This interaction requires a table on any test date. Separate ranking tests
+  // exercise the actual Worker, including its empty and stale responses.
+  await page.route("**/rankings?**", async (route) => {
+    if (route.request().resourceType() !== "fetch") return route.continue();
+    await route.fulfill({
+      json: {
+        snapshotId: "keyboard-fixture",
+        periodYears: 3,
+        rankings: [
+          {
+            fundClassId: "keyboard-test-fund",
+            fundClassName: "Class A",
+            constituentFundName: "Keyboard test fund",
+            schemeName: "Test scheme",
+            trusteeName: "Test trustee",
+            comparisonGroup: "Bond Fund",
+            value: 1.25,
+            displayValue: "1.25%",
+            rank: 1,
+            dataAsOf: "2026-07-31",
+            sourceUrl: "https://example.test/fund",
+          },
+        ],
+      },
+    });
+  });
+  await page.goto("/rankings?metric=return&period=3");
   await pickLargestType(page);
 
   const tableRegion = page.getByRole("region", { name: "基金排名結果" });
