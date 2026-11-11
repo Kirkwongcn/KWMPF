@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "batchId": "candidate-42927409530",
+  "sourceSnapshotSha256": "24db01b66688cc6c8081e5aa32faa2c7c1113e507388e849278888b468833f59",
+  "refreshReportSha256": "2e902afd2d134da519ba00df997efca34441be414f8d4a3e41b0f45d8441db5a",
+  "reviewer": "Codex, under repository owner conditional release authorization",
+  "reviewedAt": "2026-11-11T16:56:46.000Z",
+  "decision": "accept",
+  "decisionReasons": [
+    "異常核對政策 2026-09-10.v5 標記了 7 項異常，涉及 3 個基金類別；必須人手核對後才可發布。",
+    "費率改變：7 項。"
+  ],
+  "reason": "All seven changes match the exact rate, unit and ceiling qualifier on the three official MPFA detail pages for the October snapshot. Prior values checked against the September snapshot. This accepts the seven fee observations only.",
+  "anomalies": [
+    {
+      "kind": "fee_changed",
+      "fundClassId": "mpfa-cf-799",
+      "field": "managementFee",
+      "reportDetail": "managementFee 由 0.9995 改為 0.92",
+      "candidateValue": 0.92,
+      "candidateIsCap": false,
+      "reviewedAsOf": "2026-10-31",
+      "evidenceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=799",
+      "evidenceNote": "MPFA BCT (Pro) Hong Kong Dollar Bond Fund, page reference date 31 October 2026. Management Fee: 0.92% p.a. (exact printed rate). No separate effective date is printed in the fee row. Retrieved HTML SHA-256 1e63741171d0150d699f0f3d5b661ab6507f562de50de19e07d4a30230223cf6."
+    },
+    {
+      "kind": "fee_changed",
+      "fundClassId": "mpfa-cf-799",
+      "field": "trusteeCustodianFee",
+      "reportDetail": "trusteeCustodianFee 由 0.1695 改為 0.14",
+      "candidateValue": 0.14,
+      "candidateIsCap": false,
+      "reviewedAsOf": "2026-10-31",
+      "evidenceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=799",
+      "evidenceNote": "MPFA BCT (Pro) Hong Kong Dollar Bond Fund, page reference date 31 October 2026. Trustee Fee/ Custodian Fee: 0.14% p.a. (exact printed rate). No separate effective date is printed in the fee row. Retrieved HTML SHA-256 1e63741171d0150d699f0f3d5b661ab6507f562de50de19e07d4a30230223cf6."
+    },
+    {
+      "kind": "fee_changed",
+      "fundClassId": "mpfa-cf-799",
+      "field": "investmentManagementFee",
+      "reportDetail": "investmentManagementFee 由 0.4 改為 0.35",
+      "candidateValue": 0.35,
+      "candidateIsCap": false,
+      "reviewedAsOf": "2026-10-31",
+      "evidenceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=799",
+      "evidenceNote": "MPFA BCT (Pro) Hong Kong Dollar Bond Fund, page reference date 31 October 2026. Investment Management Fee: 0.35% p.a. (exact printed rate). No separate effective date is printed in the fee row. Retrieved HTML SHA-256 1e63741171d0150d699f0f3d5b661ab6507f562de50de19e07d4a30230223cf6."
+    },
+    {
+      "kind": "fee_changed",
+      "fundClassId": "mpfa-cf-908",
+      "field": "managementFee",
+      "reportDetail": "managementFee 由 0.86 改為 0.85",
+      "candidateValue": 0.85,
+      "candidateIsCap": true,
+      "reviewedAsOf": "2026-10-31",
+      "evidenceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=908",
+      "evidenceNote": "MPFA BCT (Pro) World Equity Fund, page reference date 31 October 2026. Management Fee: Up to 0.85% p.a. (exact printed rate). No separate effective date is printed in the fee row. Retrieved HTML SHA-256 ee10a3e969c47f219fc07cb4da363642cca6a070ab257e734e25a577db346f6a."
+    },
+    {
+      "kind": "fee_changed",
+      "fundClassId": "mpfa-cf-908",
+      "field": "investmentManagementFee",
+      "reportDetail": "investmentManagementFee 由 0.61 改為 0.6",
+      "candidateValue": 0.6,
+      "candidateIsCap": true,
+      "reviewedAsOf": "2026-10-31",
+      "evidenceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=908",
+      "evidenceNote": "MPFA BCT (Pro) World Equity Fund, page reference date 31 October 2026. Investment Management Fee: Up to 0.6% p.a. (exact printed rate). No separate effective date is printed in the fee row. Retrieved HTML SHA-256 ee10a3e969c47f219fc07cb4da363642cca6a070ab257e734e25a577db346f6a."
+    },
+    {
+      "kind": "fee_changed",
+      "fundClassId": "mpfa-cf-1821",
+      "field": "managementFee",
+      "reportDetail": "managementFee 由 0.96 改為 0.94",
+      "candidateValue": 0.94,
+      "candidateIsCap": true,
+      "reviewedAsOf": "2026-10-31",
+      "evidenceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1821",
+      "evidenceNote": "MPFA BCT (Pro) U.S. Equity Fund, page reference date 31 October 2026. Management Fee: Up to 0.94% p.a. (exact printed rate). No separate effective date is printed in the fee row. Retrieved HTML SHA-256 87b58cc5b66e209f1a1095c48216c64463105d9ed7c3bdd1d8425fd07dc4c84b."
+    },
+    {
+      "kind": "fee_changed",
+      "fundClassId": "mpfa-cf-1821",
+      "field": "investmentManagementFee",
+      "reportDetail": "investmentManagementFee 由 0.19 改為 0.17",
+      "candidateValue": 0.17,
+      "candidateIsCap": true,
+      "reviewedAsOf": "2026-10-31",
+      "evidenceUrl": "https://mfp.mpfa.org.hk/mobile/eng/cf_detail.jsp?cf_id=1821",
+      "evidenceNote": "MPFA BCT (Pro) U.S. Equity Fund, page reference date 31 October 2026. Investment Management Fee: Up to 0.17% p.a. (exact printed rate). No separate effective date is printed in the fee row. Retrieved HTML SHA-256 87b58cc5b66e209f1a1095c48216c64463105d9ed7c3bdd1d8425fd07dc4c84b."
+    }
+  ]
+}
