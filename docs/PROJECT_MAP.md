@@ -1,6 +1,6 @@
 # KWMPF 接手地圖
 
-核對基線：2026-11-12、main11750936e88f697b54dca40d0c58afeac5ea3bac；即時狀態讀[HANDOFF](HANDOFF.md)，工作次序讀[NEXT_TASKS](NEXT_TASKS.md)。
+核對基線：2026-11-12、架構核對於 main 1175093。#402 後的程式及資料基線為 248c46e；即時狀態讀[HANDOFF](HANDOFF.md)，工作次序讀[NEXT_TASKS](NEXT_TASKS.md)。
 
 ## 目錄與流程
 

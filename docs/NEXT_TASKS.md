@@ -1,6 +1,6 @@
 # KWMPF 未完成工作及優先次序
 
-核對基線：2026-11-12香港時間；main `11750936e88f697b54dca40d0c58afeac5ea3bac`。依據[獨立查核](reviews/2026-11-12-independent-status-audit.md)；以下是待辦，不代表已授權實作／合併／遠端操作。
+核對基線：2026-11-12香港時間；main `248c46e6bbf5b7433a06c97c53c9c2ee2727abe1`。依據[獨立查核](reviews/2026-11-12-independent-status-audit.md)；以下是待辦，不代表已授權實作／合併／遠端操作。
 
 ## P1：下一輪先做
 
@@ -10,7 +10,7 @@
 | DATA-400 | [PR400](https://github.com/Kirkwongcn/KWMPF/pull/400)已有MASS 14行9月資料，人工三筆未勾 | 與main2026-10-20候選做逐key差異，確認真實增量、沿用值及來源；重讀三筆原文及精確head CI。若先採用402的10月平台，9月一年交叉核對需保留對應9月snapshot，不可硬配新期；是否重建／取代舊PR待審查 |
 | DATA-CONFLICT | [Issue396](https://github.com/Kirkwongcn/KWMPF/issues/396)仍open；ADR0016 reader隔離已合併，但workflow只由rejectedSources產生跟進檔 | 將officialConflicts／quarantinedRows獨立納入跟進與去重；候選沒有增量時亦保留衝突證據。用隔離fixture覆蓋全文件reject／部分隔離／無候選變動。待使用者批准code範圍；不放寬數字比較、不借第三方補位 |
 | DATA-DISCOVERY | BOC-Prudential在400下載失敗，Sun Life Rainbow仍2026-06-30；三年年率化線上37行／313 stale | 查最新官方入口及可取得原件，保留URL／抓取時間／hash／各欄位日期；區分403／保護頁、source-behind、無披露及parser失敗。MASS改列待400審查，不能重複稱未取得。資料變更另獨立候選，逐基金驗收 |
-| OPS-QUEUE | production backup #7 waiting／#8 pending；staging #17及source archive #11 waiting | 唯讀查清review／concurrency鎖／artifact到期；核對最後成功備份及是否仍可還原。列每個run的具體approve／cancel／rerun建議後等用戶批准；本輪不替gate放行。最後observed production backup success為10月25日#6，不把pending說成備份已成功 |
+| OPS-QUEUE | 正式備份 #7 與 #8 已放行、成功並釋放共用鎖。舊記錄的 staging #17、原件封存 #11 狀態待重驗 | 查明原件是否已歸檔及 artifact 到期日，再處理 staging 排隊 |
 
 ## P2：在上述資料／操作風險後跟進
 
@@ -30,6 +30,6 @@
 ## 不應重做或誤報的事情
 
 - #397隔離reader及#399宏利28行更新已合併且正式版本一致；不重開同一修復。
-- 10月20日70／280是當時publication-seed；現在37／313是UTC11月11日線上三年**年率化**排名，不是資料消失或三年累積被改寫的證據。
+- 10月20日70／280是當時publication-seed；37／313是#51發布前UTC11月11日線上三年**年率化**排名，不是資料消失或三年累積被改寫的證據。
 - main／Pages／Worker已對齊；沒有發現「399尚未部署」的缺口。下一次新資料發布仍需新批准。
 - 現行ADR0010是一／五／十年及規模60日；三年90日；分類只用積金局（0011）。不要依10月1舊交接復原45日或Lipper分類。
