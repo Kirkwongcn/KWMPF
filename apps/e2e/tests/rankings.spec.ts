@@ -266,7 +266,8 @@ test("選擇比較組別後，只保留同組基金", async ({ page }) => {
 
 test("窄螢幕排名表可用左右方向鍵橫向捲動", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 780 });
-  await page.goto("/rankings?metric=return&period=3");
+  // Fee rows remain available when the fixed return fixture ages beyond its freshness window.
+  await page.goto("/rankings?metric=fee");
   await pickLargestType(page);
 
   const tableRegion = page.getByRole("region", { name: "基金排名結果" });
