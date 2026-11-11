@@ -64,7 +64,7 @@ jobs:
   e2e:
     # Pull-request CI is the pre-merge E2E gate; main pushes keep the post-merge verify job only.
     if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v6
