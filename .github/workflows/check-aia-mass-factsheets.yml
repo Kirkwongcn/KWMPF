@@ -1,0 +1,49 @@
+name: Check AIA and MASS annualized factsheets
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.11
+      - uses: actions/cache@v6
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-install-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-install-
+      - run: bun install --frozen-lockfile
+      - name: Ensure PDF text extraction is available
+        run: command -v pdftotext || (sudo apt-get update && sudo apt-get install --yes poppler-utils)
+      - name: Check the latest official PDFs against the current candidate
+        run: |
+          base="$(scripts/resolve-latest-return-candidate.sh)"
+          bun packages/coverage/src/check-aia-mass-factsheets.ts "$base" "$RUNNER_TEMP/factsheet-review"
+      - name: Summarize differences requiring review
+        if: always()
+        run: |
+          report="$RUNNER_TEMP/factsheet-review/review.json"
+          if [[ -f "$report" ]]; then
+            jq -r '.summary | "Checked \(.checked)/34, newer \(.newer), same-date revisions \(.revisions), older \(.older), source errors \(.failures)."' "$report" >> "$GITHUB_STEP_SUMMARY"
+            jq -r '.reports[].rows[] | select(.status != "unchanged") | "- \(.fundClassId) \(.status): \(.previousDate) → \(.dataAsOf)"' "$report" >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Keep the audit and changed or unreadable PDFs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: annualized-factsheet-review-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/factsheet-review
+          if-no-files-found: warn
+          retention-days: 90
