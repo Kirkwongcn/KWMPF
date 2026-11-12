@@ -23,6 +23,11 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  annualized-factsheets:
+    permissions:
+      contents: read
+    uses: ./.github/workflows/check-aia-mass-factsheets.yml
+
   refresh:
     runs-on: ubuntu-latest
     timeout-minutes: 30
