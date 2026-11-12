@@ -1,9 +1,9 @@
 import type { FundFactSheetReturn } from "./fund-fact-sheet-parser";
 
-function parseDate(text: string) {
-  const matches = [...text.matchAll(/截至(\d{4})年(\d{1,2})月(\d{1,2})日/g)];
-  const match = matches.at(-1);
-  if (!match) throw new Error("AIA fund fact sheet date is missing");
+function performanceDate(page: string) {
+  const header = page.split("基金資料 | FUND FACTS", 1)[0]!;
+  const match = header.match(/AIA MPF - PRIME VALUE CHOICE[^\S\n]+截至(\d{4})年(\d{1,2})月(\d{1,2})日/);
+  if (!match) throw new Error("AIA fund performance page header date is missing");
   return `${match[1]}-${match[2]!.padStart(2, "0")}-${match[3]!.padStart(2, "0")}`;
 }
 
@@ -27,10 +27,10 @@ function fundName(lines: string[]) {
 
 export function parseAiaFundFactSheet(text: string, sourceUrl: string): FundFactSheetReturn[] {
   const normalized = text.replace(/\r/g, "");
-  const dataAsOf = parseDate(normalized);
   const results: FundFactSheetReturn[] = [];
   for (const rawPage of normalized.split(/\f/)) {
     if (!rawPage.includes("基金資料 | FUND FACTS") || !rawPage.includes("年度化回報 Annualised Return")) continue;
+    const dataAsOf = performanceDate(rawPage);
     const lines = rawPage.split("\n");
     const name = fundName(lines);
     const annualizedIndex = lines.findIndex((line) => line.includes("年度化回報 Annualised Return"));

@@ -349,6 +349,18 @@ describe("official fund fact sheet parser", () => {
     expect(result.every((item) => item.dataAsOf === "2025-11-30")).toBe(true);
   });
 
+  it("reads the return date from each AIA fund header independently of holdings", () => {
+    const dated = aiaFixture.replace(/(AIA MPF - PRIME VALUE CHOICE\s+)截至2025年11月30日 As at 30 November 2025/, "$1截至2025年12月31日 As at 31 December 2025");
+    const rows = parseAiaFundFactSheet(dated, "https://example.test/aia.pdf");
+    expect(rows[0]?.dataAsOf).toBe("2025-12-31");
+    expect(rows.slice(1).every(row => row.dataAsOf === "2025-11-30")).toBe(true);
+  });
+
+  it("rejects an AIA performance page with only a holdings date", () => {
+    const missing = aiaFixture.replace(/(AIA MPF - PRIME VALUE CHOICE\s+)截至2025年11月30日 As at 30 November 2025/, "$1");
+    expect(() => parseAiaFundFactSheet(missing, "https://example.test/aia.pdf")).toThrow(/page header date is missing/);
+  });
+
   it("keeps other AIA funds when one fund lacks a three-year value", () => {
     const incomplete = aiaFixture.replace("基金 Fund                           1.13 0.23 0.15 0.15 0.15", "基金 Fund                           -");
     const result = parseAiaFundFactSheet(incomplete, "https://example.test/aia.pdf");
