@@ -1,0 +1,2909 @@
+{
+  "baseline": "ac72c13fa1e4c00799b13c06f5a7159ac604514e",
+  "staleByTrustee": {
+    "AIA Company (Trustee) Limited": 20,
+    "Bank of East Asia (Trustees) Limited": 40,
+    "Bank Consortium Trust Company Limited": 100,
+    "Sun Life Trustee Company Limited": 29,
+    "Manulife Provident Funds Trust Company Limited": 29,
+    "Standard Chartered Trustee (Hong Kong) Limited": 8,
+    "YF Life Trustees Limited": 14,
+    "Bank of Communications Trustee Limited": 14,
+    "BOCI-Prudential Trustee Limited": 31,
+    "China Life Trustees Limited": 10,
+    "HSBC Provident Fund Trustee (Hong Kong) Limited": 18
+  },
+  "verified": [
+    {
+      "id": "mpfa-cf-815",
+      "name": "Allianz Choice Balanced Fund",
+      "scheme": "SHKP MPF Employer Sponsored Scheme",
+      "page": 18,
+      "previous": 12.44,
+      "oldDate": "2026-06-30",
+      "printed": "13.59",
+      "date": "2026-09-30",
+      "url": "https://www.shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf",
+      "sha256": "3451bf3bf38ed88134b4c04b902ca727c10767c9e84a2868b82c556db8a94ca5"
+    },
+    {
+      "id": "mpfa-cf-464",
+      "name": "Allianz Choice Stable Growth Fund",
+      "scheme": "SHKP MPF Employer Sponsored Scheme",
+      "page": 20,
+      "previous": 9.5,
+      "oldDate": "2026-06-30",
+      "printed": "10.37",
+      "date": "2026-09-30",
+      "url": "https://www.shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf",
+      "sha256": "3451bf3bf38ed88134b4c04b902ca727c10767c9e84a2868b82c556db8a94ca5"
+    },
+    {
+      "id": "mpfa-cf-460",
+      "name": "Fidelity Balanced Fund",
+      "scheme": "SHKP MPF Employer Sponsored Scheme",
+      "page": 22,
+      "previous": 10.98,
+      "oldDate": "2026-06-30",
+      "printed": "12.26",
+      "date": "2026-09-30",
+      "url": "https://www.shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf",
+      "sha256": "3451bf3bf38ed88134b4c04b902ca727c10767c9e84a2868b82c556db8a94ca5"
+    },
+    {
+      "id": "mpfa-cf-463",
+      "name": "Fidelity Stable Growth Fund",
+      "scheme": "SHKP MPF Employer Sponsored Scheme",
+      "page": 24,
+      "previous": 8.51,
+      "oldDate": "2026-06-30",
+      "printed": "9.43",
+      "date": "2026-09-30",
+      "url": "https://www.shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf",
+      "sha256": "3451bf3bf38ed88134b4c04b902ca727c10767c9e84a2868b82c556db8a94ca5"
+    },
+    {
+      "id": "mpfa-cf-1399",
+      "name": "Invesco Global Stable Fund",
+      "scheme": "SHKP MPF Employer Sponsored Scheme",
+      "page": 26,
+      "previous": 6.94,
+      "oldDate": "2026-06-30",
+      "printed": "7.57",
+      "date": "2026-09-30",
+      "url": "https://www.shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf",
+      "sha256": "3451bf3bf38ed88134b4c04b902ca727c10767c9e84a2868b82c556db8a94ca5"
+    },
+    {
+      "id": "mpfa-cf-1498",
+      "name": "Schroder MPF Age 65 Plus Fund",
+      "scheme": "SHKP MPF Employer Sponsored Scheme",
+      "page": 34,
+      "previous": 5.29,
+      "oldDate": "2026-06-30",
+      "printed": "5.56",
+      "date": "2026-09-30",
+      "url": "https://www.shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf",
+      "sha256": "3451bf3bf38ed88134b4c04b902ca727c10767c9e84a2868b82c556db8a94ca5"
+    },
+    {
+      "id": "mpfa-cf-1497",
+      "name": "Schroder MPF Core Accumulation Fund",
+      "scheme": "SHKP MPF Employer Sponsored Scheme",
+      "page": 36,
+      "previous": 12.11,
+      "oldDate": "2026-06-30",
+      "printed": "13.20",
+      "date": "2026-09-30",
+      "url": "https://www.shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf",
+      "sha256": "3451bf3bf38ed88134b4c04b902ca727c10767c9e84a2868b82c556db8a94ca5"
+    },
+    {
+      "id": "mpfa-cf-462",
+      "name": "SHKP MPF Fund",
+      "scheme": "SHKP MPF Employer Sponsored Scheme",
+      "page": 38,
+      "previous": 13.57,
+      "oldDate": "2026-06-30",
+      "printed": "15.34",
+      "date": "2026-09-30",
+      "url": "https://www.shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf",
+      "sha256": "3451bf3bf38ed88134b4c04b902ca727c10767c9e84a2868b82c556db8a94ca5"
+    },
+    {
+      "id": "mpfa-cf-390",
+      "name": "European Equity Fund",
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "page": 2,
+      "previous": 14.24,
+      "oldDate": "2026-07-31",
+      "printed": "16.05",
+      "date": "2026-08-31",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/EUEF_E.pdf",
+      "sha256": "e869459fc3605dd8cca9625cda3d4ee2ac3599598da94dbfa41b87196ab5ea07"
+    },
+    {
+      "id": "mpfa-cf-389",
+      "name": "Hong Kong Equities Fund",
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "page": 2,
+      "previous": 10.21,
+      "oldDate": "2026-07-31",
+      "printed": "12.67",
+      "date": "2026-08-31",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/HKEF_E.pdf",
+      "sha256": "b46a223fcc9ed620b8877725c6db1f1771f8cd0da05baaa42b29f62668a2eca7"
+    },
+    {
+      "id": "mpfa-cf-874",
+      "name": "Greater China Equity Fund",
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "page": 2,
+      "previous": 16.04,
+      "oldDate": "2026-07-31",
+      "printed": "20.28",
+      "date": "2026-08-31",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GCEF_E.pdf",
+      "sha256": "9eb2fc3ecd8a8119e083eec6e1c06154bc9e51c36fd2e1beb13b16a433063e79"
+    },
+    {
+      "id": "mpfa-cf-387",
+      "name": "Global Equity Fund",
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "page": 2,
+      "previous": 15.96,
+      "oldDate": "2026-07-31",
+      "printed": "18.12",
+      "date": "2026-08-31",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLEF_E.pdf",
+      "sha256": "f8327e9063c496736fbe3e06865e825bf6424051cab02b53dd1e7f840d2d9a6e"
+    },
+    {
+      "id": "mpfa-cf-383",
+      "name": "Global Bond Fund",
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "page": 2,
+      "previous": 1.77,
+      "oldDate": "2026-07-31",
+      "printed": "2.28",
+      "date": "2026-08-31",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLBF_E.pdf",
+      "sha256": "331ef3cbaaf459d4e65f4d606cbc3b7d0934371163434e7d9261637040b39c9e"
+    },
+    {
+      "id": "mpfa-cf-1488",
+      "name": "Age 65 Plus Fund",
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "page": 2,
+      "previous": 5.49,
+      "oldDate": "2026-07-31",
+      "printed": "5.83",
+      "date": "2026-08-31",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/A65F2_E.pdf",
+      "sha256": "f1829112f95e31d7224118642aef20dd60c27f205ae9593f32c2bf6198b7b13f"
+    },
+    {
+      "id": "mpfa-cf-1487",
+      "name": "Core Accumulation Fund",
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "page": 2,
+      "previous": 12.98,
+      "oldDate": "2026-07-31",
+      "printed": "14.00",
+      "date": "2026-08-31",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/CAF2_E.pdf",
+      "sha256": "0ce8b14df3908042a7d773922ef32088604959fb33d32a723ede07770a60bf29"
+    },
+    {
+      "id": "mpfa-cf-391",
+      "name": "US Equity Fund",
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "page": 2,
+      "previous": 17.53,
+      "oldDate": "2026-07-31",
+      "printed": "19.10",
+      "date": "2026-08-31",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/USEF_E.pdf",
+      "sha256": "d4d3b4cb6c0137a96a6b13ddd418fbeab708bd350f8e986088858ce0d31a37f3"
+    },
+    {
+      "id": "mpfa-cf-388",
+      "name": "Guaranteed Fund",
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "page": 2,
+      "previous": 3.65,
+      "oldDate": "2026-07-31",
+      "printed": "4.52",
+      "date": "2026-08-31",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GUAF_E.pdf",
+      "sha256": "aa51fed4309883956c1b3ae2cad1eda28b7f22f2a183032d3e2435bf628af8f6"
+    },
+    {
+      "id": "mpfa-cf-392",
+      "name": "Asian Pacific Equity Fund",
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "page": 2,
+      "previous": 17.91,
+      "oldDate": "2026-07-31",
+      "printed": "21.71",
+      "date": "2026-08-31",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/APEF_E.pdf",
+      "sha256": "53b66fadbc0cedd5441719ea24dcc4c59c54bd54d2ee96fea0f251a89c625dac"
+    },
+    {
+      "id": "mpfa-cf-384",
+      "name": "Asian Bond Fund",
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "page": 2,
+      "previous": 3.86,
+      "oldDate": "2026-07-31",
+      "printed": "4.08",
+      "date": "2026-08-31",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/ASBF_E.pdf",
+      "sha256": "68c828b42ba0cb35e8a443882c5df0bd4f3379b87affd298d88e8768cc524760"
+    },
+    {
+      "id": "mpfa-cf-386",
+      "name": "MPF Conservative Fund",
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "page": 2,
+      "previous": 2.62,
+      "oldDate": "2026-07-31",
+      "printed": "2.57",
+      "date": "2026-08-31",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/CAPF_E.pdf",
+      "sha256": "71a47b13fdb09156e77bd5c5541da6599d6103d8442db68825be140ba8820152"
+    },
+    {
+      "id": "mpfa-cf-1519",
+      "name": "Core Accumulation Fund",
+      "scheme": "AIA MPF - Prime Value Choice",
+      "page": 7,
+      "previous": 11.23,
+      "oldDate": "2026-07-31",
+      "printed": "12.35",
+      "date": "2026-08-31",
+      "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-aug-2026.pdf",
+      "sha256": "616b3c95b4b55e7c3d24c8e1d7f8422e3b8b6e2e1a9035f9b9571a89e67429bd"
+    },
+    {
+      "id": "mpfa-cf-1520",
+      "name": "Age 65 Plus Fund",
+      "scheme": "AIA MPF - Prime Value Choice",
+      "page": 8,
+      "previous": 4.48,
+      "oldDate": "2026-07-31",
+      "printed": "4.89",
+      "date": "2026-08-31",
+      "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-aug-2026.pdf",
+      "sha256": "616b3c95b4b55e7c3d24c8e1d7f8422e3b8b6e2e1a9035f9b9571a89e67429bd"
+    },
+    {
+      "id": "mpfa-cf-878",
+      "name": "American Fund",
+      "scheme": "AIA MPF - Prime Value Choice",
+      "page": 9,
+      "previous": 17.37,
+      "oldDate": "2026-07-31",
+      "printed": "18.91",
+      "date": "2026-08-31",
+      "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-aug-2026.pdf",
+      "sha256": "616b3c95b4b55e7c3d24c8e1d7f8422e3b8b6e2e1a9035f9b9571a89e67429bd"
+    },
+    {
+      "id": "mpfa-cf-876",
+      "name": "Eurasia Fund",
+      "scheme": "AIA MPF - Prime Value Choice",
+      "page": 10,
+      "previous": 15.74,
+      "oldDate": "2026-07-31",
+      "printed": "18.45",
+      "date": "2026-08-31",
+      "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-aug-2026.pdf",
+      "sha256": "616b3c95b4b55e7c3d24c8e1d7f8422e3b8b6e2e1a9035f9b9571a89e67429bd"
+    },
+    {
+      "id": "mpfa-cf-877",
+      "name": "Hong Kong and China Fund",
+      "scheme": "AIA MPF - Prime Value Choice",
+      "page": 11,
+      "previous": 11.87,
+      "oldDate": "2026-07-31",
+      "printed": "14.47",
+      "date": "2026-08-31",
+      "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-aug-2026.pdf",
+      "sha256": "616b3c95b4b55e7c3d24c8e1d7f8422e3b8b6e2e1a9035f9b9571a89e67429bd"
+    },
+    {
+      "id": "mpfa-cf-658",
+      "name": "World Fund",
+      "scheme": "AIA MPF - Prime Value Choice",
+      "page": 12,
+      "previous": 16.76,
+      "oldDate": "2026-07-31",
+      "printed": "18.71",
+      "date": "2026-08-31",
+      "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-aug-2026.pdf",
+      "sha256": "616b3c95b4b55e7c3d24c8e1d7f8422e3b8b6e2e1a9035f9b9571a89e67429bd"
+    },
+    {
+      "id": "mpfa-cf-875",
+      "name": "Asian Bond Fund",
+      "scheme": "AIA MPF - Prime Value Choice",
+      "page": 13,
+      "previous": 3.59,
+      "oldDate": "2026-07-31",
+      "printed": "4.07",
+      "date": "2026-08-31",
+      "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-aug-2026.pdf",
+      "sha256": "616b3c95b4b55e7c3d24c8e1d7f8422e3b8b6e2e1a9035f9b9571a89e67429bd"
+    },
+    {
+      "id": "mpfa-cf-657",
+      "name": "Global Bond Fund",
+      "scheme": "AIA MPF - Prime Value Choice",
+      "page": 14,
+      "previous": 1.95,
+      "oldDate": "2026-07-31",
+      "printed": "2.32",
+      "date": "2026-08-31",
+      "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-aug-2026.pdf",
+      "sha256": "616b3c95b4b55e7c3d24c8e1d7f8422e3b8b6e2e1a9035f9b9571a89e67429bd"
+    },
+    {
+      "id": "mpfa-cf-134",
+      "name": "MPF Conservative Fund",
+      "scheme": "AIA MPF - Prime Value Choice",
+      "page": 15,
+      "previous": 2.65,
+      "oldDate": "2026-07-31",
+      "printed": "2.63",
+      "date": "2026-08-31",
+      "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-aug-2026.pdf",
+      "sha256": "616b3c95b4b55e7c3d24c8e1d7f8422e3b8b6e2e1a9035f9b9571a89e67429bd"
+    },
+    {
+      "id": "mpfa-cf-1579",
+      "name": "China HK DynamicAssetAllocation Fund",
+      "scheme": "AIA MPF - Prime Value Choice",
+      "page": 16,
+      "previous": 8.88,
+      "oldDate": "2026-05-31",
+      "printed": "9.04",
+      "date": "2026-08-31",
+      "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-aug-2026.pdf",
+      "sha256": "616b3c95b4b55e7c3d24c8e1d7f8422e3b8b6e2e1a9035f9b9571a89e67429bd"
+    },
+    {
+      "id": "mpfa-cf-699",
+      "name": "Manager’s Choice Fund",
+      "scheme": "AIA MPF - Prime Value Choice",
+      "page": 17,
+      "previous": 9.63,
+      "oldDate": "2026-07-31",
+      "printed": "11.82",
+      "date": "2026-08-31",
+      "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-aug-2026.pdf",
+      "sha256": "616b3c95b4b55e7c3d24c8e1d7f8422e3b8b6e2e1a9035f9b9571a89e67429bd"
+    },
+    {
+      "id": "mpfa-cf-137",
+      "name": "Asian Equity Fund",
+      "scheme": "AIA MPF - Prime Value Choice",
+      "page": 18,
+      "previous": 20.9,
+      "oldDate": "2026-07-31",
+      "printed": "24.50",
+      "date": "2026-08-31",
+      "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-aug-2026.pdf",
+      "sha256": "616b3c95b4b55e7c3d24c8e1d7f8422e3b8b6e2e1a9035f9b9571a89e67429bd"
+    },
+    {
+      "id": "mpfa-cf-145",
+      "name": "European Equity Fund",
+      "scheme": "AIA MPF - Prime Value Choice",
+      "page": 19,
+      "previous": 14.9,
+      "oldDate": "2026-07-31",
+      "printed": "16.64",
+      "date": "2026-08-31",
+      "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-aug-2026.pdf",
+      "sha256": "616b3c95b4b55e7c3d24c8e1d7f8422e3b8b6e2e1a9035f9b9571a89e67429bd"
+    },
+    {
+      "id": "mpfa-cf-102",
+      "name": "Greater China Equity Fund",
+      "scheme": "AIA MPF - Prime Value Choice",
+      "page": 20,
+      "previous": 17.01,
+      "oldDate": "2026-07-31",
+      "printed": "21.38",
+      "date": "2026-08-31",
+      "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-aug-2026.pdf",
+      "sha256": "616b3c95b4b55e7c3d24c8e1d7f8422e3b8b6e2e1a9035f9b9571a89e67429bd"
+    },
+    {
+      "id": "mpfa-cf-142",
+      "name": "North American Equity Fund",
+      "scheme": "AIA MPF - Prime Value Choice",
+      "page": 21,
+      "previous": 15.89,
+      "oldDate": "2026-07-31",
+      "printed": "17.45",
+      "date": "2026-08-31",
+      "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-aug-2026.pdf",
+      "sha256": "616b3c95b4b55e7c3d24c8e1d7f8422e3b8b6e2e1a9035f9b9571a89e67429bd"
+    },
+    {
+      "id": "mpfa-cf-141",
+      "name": "Green Fund",
+      "scheme": "AIA MPF - Prime Value Choice",
+      "page": 22,
+      "previous": 18.11,
+      "oldDate": "2026-07-31",
+      "printed": "20.12",
+      "date": "2026-08-31",
+      "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-aug-2026.pdf",
+      "sha256": "616b3c95b4b55e7c3d24c8e1d7f8422e3b8b6e2e1a9035f9b9571a89e67429bd"
+    },
+    {
+      "id": "mpfa-cf-146",
+      "name": "Guaranteed Portfolio",
+      "scheme": "AIA MPF - Prime Value Choice",
+      "page": 23,
+      "previous": 1.27,
+      "oldDate": "2026-07-31",
+      "printed": "1.31",
+      "date": "2026-08-31",
+      "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-aug-2026.pdf",
+      "sha256": "616b3c95b4b55e7c3d24c8e1d7f8422e3b8b6e2e1a9035f9b9571a89e67429bd"
+    },
+    {
+      "id": "mpfa-cf-133",
+      "name": "Growth Portfolio",
+      "scheme": "AIA MPF - Prime Value Choice",
+      "page": 24,
+      "previous": 13.99,
+      "oldDate": "2026-07-31",
+      "printed": "16.44",
+      "date": "2026-08-31",
+      "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-aug-2026.pdf",
+      "sha256": "616b3c95b4b55e7c3d24c8e1d7f8422e3b8b6e2e1a9035f9b9571a89e67429bd"
+    },
+    {
+      "id": "mpfa-cf-132",
+      "name": "Balanced Portfolio",
+      "scheme": "AIA MPF - Prime Value Choice",
+      "page": 25,
+      "previous": 8.3,
+      "oldDate": "2026-07-31",
+      "printed": "9.87",
+      "date": "2026-08-31",
+      "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-aug-2026.pdf",
+      "sha256": "616b3c95b4b55e7c3d24c8e1d7f8422e3b8b6e2e1a9035f9b9571a89e67429bd"
+    },
+    {
+      "id": "mpfa-cf-131",
+      "name": "Capital Stable Portfolio",
+      "scheme": "AIA MPF - Prime Value Choice",
+      "page": 26,
+      "previous": 5.81,
+      "oldDate": "2026-07-31",
+      "printed": "6.82",
+      "date": "2026-08-31",
+      "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-aug-2026.pdf",
+      "sha256": "616b3c95b4b55e7c3d24c8e1d7f8422e3b8b6e2e1a9035f9b9571a89e67429bd"
+    },
+    {
+      "id": "mpfa-cf-385",
+      "name": "Global Stable Fund",
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "page": 2,
+      "previous": 8.46,
+      "oldDate": "2026-07-31",
+      "printed": "9.83",
+      "date": "2026-08-31",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLSF_E.pdf",
+      "sha256": "ecc172f6fdcecbb79f28de2925f651183c4fc69902525943141506e42a58589a"
+    },
+    {
+      "id": "mpfa-cf-394",
+      "name": "Global Growth Fund",
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "page": 2,
+      "previous": 11.08,
+      "oldDate": "2026-07-31",
+      "printed": "12.97",
+      "date": "2026-08-31",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLGF_E.pdf",
+      "sha256": "a16f79f04d3512435a7bb460f2a523e66b1daf84e9b7a71e258788b0b374a389"
+    }
+  ],
+  "remaining": [
+    {
+      "id": "mpfa-cf-1039",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-1040",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-1041",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-1042",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-1043",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-1044",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-1045",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-1047",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-1048",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-1099",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/IS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-1100",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-1199",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-1200",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-1219",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-1379",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/Smart-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-147",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/Smart-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-148",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/Smart-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-149",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/Smart-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-1493",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/Simple-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-1494",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/Simple-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-1495",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/Smart-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-1496",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/Smart-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-150",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/Smart-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-1503",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-1505",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-151",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/Smart-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-1522",
+      "trustee": "Bank of Communications Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf"
+    },
+    {
+      "id": "mpfa-cf-1529",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2025-12-31",
+      "lastSource": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf"
+    },
+    {
+      "id": "mpfa-cf-1530",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2025-12-31",
+      "lastSource": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf"
+    },
+    {
+      "id": "mpfa-cf-1531",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/IS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-1532",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/IS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-1533",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-1534",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-1535",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-1536",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-1537",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-1538",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-1539",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-1540",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-1541",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf"
+    },
+    {
+      "id": "mpfa-cf-1542",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf"
+    },
+    {
+      "id": "mpfa-cf-1543",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf"
+    },
+    {
+      "id": "mpfa-cf-1544",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf"
+    },
+    {
+      "id": "mpfa-cf-1545",
+      "trustee": "China Life Trustees Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.chinalife.com.hk/sites/default/files/2026-08/2026%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%9F%BA%E9%87%91%E8%A1%A8%E7%8F%BE%E4%BE%BF%E8%A6%BD.pdf"
+    },
+    {
+      "id": "mpfa-cf-158",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/Smart-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-160",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/Simple-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-161",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/Simple-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-162",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/Simple-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-1620",
+      "trustee": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hsbc.com.hk/content/dam/hsbc/hk/docs/mpf/2q2026.pdf"
+    },
+    {
+      "id": "mpfa-cf-1621",
+      "trustee": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hsbc.com.hk/content/dam/hsbc/hk/docs/mpf/2q2026.pdf"
+    },
+    {
+      "id": "mpfa-cf-1622",
+      "trustee": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hsbc.com.hk/content/dam/hsbc/hk/docs/mpf/2q2026.pdf"
+    },
+    {
+      "id": "mpfa-cf-1624",
+      "trustee": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hsbc.com.hk/content/dam/hsbc/hk/docs/mpf/2q2026.pdf"
+    },
+    {
+      "id": "mpfa-cf-1626",
+      "trustee": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hangseng.com/cms/pws/files/pdfs/FFS.pdf"
+    },
+    {
+      "id": "mpfa-cf-1627",
+      "trustee": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hangseng.com/cms/pws/files/pdfs/FFS.pdf"
+    },
+    {
+      "id": "mpfa-cf-1628",
+      "trustee": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hangseng.com/cms/pws/files/pdfs/FFS.pdf"
+    },
+    {
+      "id": "mpfa-cf-1629",
+      "trustee": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hangseng.com/cms/pws/files/pdfs/FFS.pdf"
+    },
+    {
+      "id": "mpfa-cf-163",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/Simple-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-1630",
+      "trustee": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hangseng.com/cms/pws/files/pdfs/FFS.pdf"
+    },
+    {
+      "id": "mpfa-cf-1631",
+      "trustee": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hsbc.com.hk/content/dam/hsbc/hk/docs/mpf/2q2026.pdf"
+    },
+    {
+      "id": "mpfa-cf-165",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/Simple-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-166",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/Simple-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-167",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/Simple-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-168",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/Simple-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-173",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/IS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-1739",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-174",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/IS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-1740",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-175",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/IS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-176",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/IS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-177",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/IS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-178",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/IS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-179",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/IS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-180",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/IS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-181",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/IS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-1819",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-182",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-1820",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-1821",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-183",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-1839",
+      "trustee": "China Life Trustees Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.chinalife.com.hk/sites/default/files/2026-08/2026%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%9F%BA%E9%87%91%E8%A1%A8%E7%8F%BE%E4%BE%BF%E8%A6%BD.pdf"
+    },
+    {
+      "id": "mpfa-cf-184",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-185",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-1859",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-187",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-188",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-189",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-190",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-1979",
+      "trustee": "Bank of Communications Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf"
+    },
+    {
+      "id": "mpfa-cf-206",
+      "trustee": "Bank of Communications Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf"
+    },
+    {
+      "id": "mpfa-cf-2063",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-2064",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-2065",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-208",
+      "trustee": "Bank of Communications Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf"
+    },
+    {
+      "id": "mpfa-cf-209",
+      "trustee": "Bank of Communications Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf"
+    },
+    {
+      "id": "mpfa-cf-212",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-213",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-214",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-215",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-216",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-217",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-218",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-219",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-220",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-221",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-223",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-224",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-225",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-232",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf"
+    },
+    {
+      "id": "mpfa-cf-237",
+      "trustee": "China Life Trustees Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.chinalife.com.hk/sites/default/files/2026-08/2026%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%9F%BA%E9%87%91%E8%A1%A8%E7%8F%BE%E4%BE%BF%E8%A6%BD.pdf"
+    },
+    {
+      "id": "mpfa-cf-238",
+      "trustee": "China Life Trustees Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.chinalife.com.hk/sites/default/files/2026-08/2026%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%9F%BA%E9%87%91%E8%A1%A8%E7%8F%BE%E4%BE%BF%E8%A6%BD.pdf"
+    },
+    {
+      "id": "mpfa-cf-304",
+      "trustee": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hangseng.com/cms/pws/files/pdfs/FFS.pdf"
+    },
+    {
+      "id": "mpfa-cf-306",
+      "trustee": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hangseng.com/cms/pws/files/pdfs/FFS.pdf"
+    },
+    {
+      "id": "mpfa-cf-310",
+      "trustee": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hangseng.com/cms/pws/files/pdfs/FFS.pdf"
+    },
+    {
+      "id": "mpfa-cf-318",
+      "trustee": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hsbc.com.hk/content/dam/hsbc/hk/docs/mpf/2q2026.pdf"
+    },
+    {
+      "id": "mpfa-cf-319",
+      "trustee": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hsbc.com.hk/content/dam/hsbc/hk/docs/mpf/2q2026.pdf"
+    },
+    {
+      "id": "mpfa-cf-322",
+      "trustee": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hsbc.com.hk/content/dam/hsbc/hk/docs/mpf/2q2026.pdf"
+    },
+    {
+      "id": "mpfa-cf-365",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-366",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-368",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-369",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-372",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-373",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-374",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-375",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-426",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-427",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-428",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-429",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-430",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-431",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-432",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-433",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-434",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-435",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-438",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-440",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-441",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-446",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-447",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-450",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-451",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-498",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-499",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-500",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-501",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-502",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-503",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-504",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-505",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-506",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-507",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-508",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-509",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-603",
+      "trustee": "China Life Trustees Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.chinalife.com.hk/sites/default/files/2026-08/2026%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%9F%BA%E9%87%91%E8%A1%A8%E7%8F%BE%E4%BE%BF%E8%A6%BD.pdf"
+    },
+    {
+      "id": "mpfa-cf-619",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-620",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-659",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-660",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-689",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-690",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-691",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-692",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-693",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-694",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-695",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-696",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-701",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-703",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-705",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-707",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-710",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-769",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2025-12-31",
+      "lastSource": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf"
+    },
+    {
+      "id": "mpfa-cf-770",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2025-12-31",
+      "lastSource": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf"
+    },
+    {
+      "id": "mpfa-cf-771",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2025-12-31",
+      "lastSource": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf"
+    },
+    {
+      "id": "mpfa-cf-772",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2025-12-31",
+      "lastSource": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf"
+    },
+    {
+      "id": "mpfa-cf-773",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2025-12-31",
+      "lastSource": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf"
+    },
+    {
+      "id": "mpfa-cf-774",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2025-12-31",
+      "lastSource": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf"
+    },
+    {
+      "id": "mpfa-cf-775",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2025-12-31",
+      "lastSource": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf"
+    },
+    {
+      "id": "mpfa-cf-776",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2025-12-31",
+      "lastSource": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf"
+    },
+    {
+      "id": "mpfa-cf-777",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2025-12-31",
+      "lastSource": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf"
+    },
+    {
+      "id": "mpfa-cf-778",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2025-12-31",
+      "lastSource": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf"
+    },
+    {
+      "id": "mpfa-cf-779",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2025-12-31",
+      "lastSource": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf"
+    },
+    {
+      "id": "mpfa-cf-780",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2025-12-31",
+      "lastSource": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf"
+    },
+    {
+      "id": "mpfa-cf-781",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2025-12-31",
+      "lastSource": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf"
+    },
+    {
+      "id": "mpfa-cf-782",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2025-12-31",
+      "lastSource": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf"
+    },
+    {
+      "id": "mpfa-cf-798",
+      "trustee": "Bank of Communications Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf"
+    },
+    {
+      "id": "mpfa-cf-799",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-800",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-802",
+      "trustee": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hsbc.com.hk/content/dam/hsbc/hk/docs/mpf/2q2026.pdf"
+    },
+    {
+      "id": "mpfa-cf-806",
+      "trustee": "HSBC Provident Fund Trustee (Hong Kong) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hangseng.com/cms/pws/files/pdfs/FFS.pdf"
+    },
+    {
+      "id": "mpfa-cf-809",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-810",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-811",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-812",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-813",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-814",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-819",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf"
+    },
+    {
+      "id": "mpfa-cf-831",
+      "trustee": "Bank of Communications Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf"
+    },
+    {
+      "id": "mpfa-cf-838",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/Smart-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-839",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/Smart-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-841",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/Smart-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-842",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-895",
+      "trustee": "China Life Trustees Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.chinalife.com.hk/sites/default/files/2026-08/2026%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%9F%BA%E9%87%91%E8%A1%A8%E7%8F%BE%E4%BE%BF%E8%A6%BD.pdf"
+    },
+    {
+      "id": "mpfa-cf-896",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-897",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-898",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-899",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-900",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-901",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-907",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-908",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-909",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/MTS-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-910",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-911",
+      "trustee": "Sun Life Trustee Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf"
+    },
+    {
+      "id": "mpfa-cf-912",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-913",
+      "trustee": "Bank of East Asia (Trustees) Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf"
+    },
+    {
+      "id": "mpfa-cf-917",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/Smart-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-918",
+      "trustee": "Bank Consortium Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bcthk.com/wr/Smart-Fund-Fact-Sheet"
+    },
+    {
+      "id": "mpfa-cf-1840",
+      "trustee": "China Life Trustees Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.chinalife.com.hk/sites/default/files/2026-08/2026%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%9F%BA%E9%87%91%E8%A1%A8%E7%8F%BE%E4%BE%BF%E8%A6%BD.pdf"
+    },
+    {
+      "id": "mpfa-cf-606",
+      "trustee": "China Life Trustees Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.chinalife.com.hk/sites/default/files/2026-08/2026%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%9F%BA%E9%87%91%E8%A1%A8%E7%8F%BE%E4%BE%BF%E8%A6%BD.pdf"
+    },
+    {
+      "id": "mpfa-cf-236",
+      "trustee": "China Life Trustees Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.chinalife.com.hk/sites/default/files/2026-08/2026%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%9F%BA%E9%87%91%E8%A1%A8%E7%8F%BE%E4%BE%BF%E8%A6%BD.pdf"
+    },
+    {
+      "id": "mpfa-cf-1546",
+      "trustee": "China Life Trustees Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.chinalife.com.hk/sites/default/files/2026-08/2026%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%9F%BA%E9%87%91%E8%A1%A8%E7%8F%BE%E4%BE%BF%E8%A6%BD.pdf"
+    },
+    {
+      "id": "mpfa-cf-654",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf"
+    },
+    {
+      "id": "mpfa-cf-226",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf"
+    },
+    {
+      "id": "mpfa-cf-234",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf"
+    },
+    {
+      "id": "mpfa-cf-231",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf"
+    },
+    {
+      "id": "mpfa-cf-999",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf"
+    },
+    {
+      "id": "mpfa-cf-1001",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf"
+    },
+    {
+      "id": "mpfa-cf-1000",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf"
+    },
+    {
+      "id": "mpfa-cf-227",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf"
+    },
+    {
+      "id": "mpfa-cf-228",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf"
+    },
+    {
+      "id": "mpfa-cf-229",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf"
+    },
+    {
+      "id": "mpfa-cf-1959",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf"
+    },
+    {
+      "id": "mpfa-cf-233",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf"
+    },
+    {
+      "id": "mpfa-cf-1119",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf"
+    },
+    {
+      "id": "mpfa-cf-230",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf"
+    },
+    {
+      "id": "mpfa-cf-211",
+      "trustee": "Bank of Communications Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf"
+    },
+    {
+      "id": "mpfa-cf-830",
+      "trustee": "Bank of Communications Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf"
+    },
+    {
+      "id": "mpfa-cf-1521",
+      "trustee": "Bank of Communications Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf"
+    },
+    {
+      "id": "mpfa-cf-207",
+      "trustee": "Bank of Communications Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf"
+    },
+    {
+      "id": "mpfa-cf-210",
+      "trustee": "Bank of Communications Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf"
+    },
+    {
+      "id": "mpfa-cf-653",
+      "trustee": "Bank of Communications Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf"
+    },
+    {
+      "id": "mpfa-cf-697",
+      "trustee": "Bank of Communications Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf"
+    },
+    {
+      "id": "mpfa-cf-822",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf"
+    },
+    {
+      "id": "mpfa-cf-824",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf"
+    },
+    {
+      "id": "mpfa-cf-821",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf"
+    },
+    {
+      "id": "mpfa-cf-820",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf"
+    },
+    {
+      "id": "mpfa-cf-816",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf"
+    },
+    {
+      "id": "mpfa-cf-817",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf"
+    },
+    {
+      "id": "mpfa-cf-818",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf"
+    },
+    {
+      "id": "mpfa-cf-826",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf"
+    },
+    {
+      "id": "mpfa-cf-825",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf"
+    },
+    {
+      "id": "mpfa-cf-1359",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf"
+    },
+    {
+      "id": "mpfa-cf-827",
+      "trustee": "BOCI-Prudential Trustee Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf"
+    },
+    {
+      "id": "mpfa-cf-370",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-367",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-371",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-377",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-376",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-363",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-1719",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-848",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-847",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-846",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-845",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-844",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-1485",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-1486",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-906",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-362",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    },
+    {
+      "id": "mpfa-cf-364",
+      "trustee": "Manulife Provident Funds Trust Company Limited",
+      "oldDate": "2026-06-30",
+      "lastSource": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf"
+    }
+  ],
+  "sourceChecks": [
+    {
+      "scheme": "BEA (MPF) Industry Scheme",
+      "url": "https://www.mpfa.org.hk/assets/FF/IS00025.pdf",
+      "sha256": "d4391ec60b88ab57ef20180d85d77e70b19298c5801bffa3a8ab6c695b276589",
+      "retrievedAt": "2026-11-12T08:18:58.751893+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-03-31"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "Fidelity Retirement Master Trust",
+      "url": "https://www.mpfa.org.hk/assets/FF/MT00288.pdf",
+      "sha256": "e5640f39445e5a37147dfdf4559ff0c3e852a73b6e04a18fe7ecd0211114fbce",
+      "retrievedAt": "2026-11-12T08:19:00.939119+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "Manulife Global Select (MPF) Scheme",
+      "url": "https://www.manulife.com.hk/content/dam/insurance/hk/en/documents/services/forms/quarterly-fund-fact-sheet.pdf",
+      "sha256": "0f370a5162fe608020a898796528e23d87cb81a861f6dbdea908b31da0dadf3c",
+      "retrievedAt": "2026-11-12T08:21:13.234362+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "url": "https://www.mpfa.org.hk/assets/FF/MT00245.pdf",
+      "sha256": "7d42806321ab76848e0a6bcf731e62d74f163b96c196e1a6eafb91d0e0360085",
+      "retrievedAt": "2026-11-12T08:19:01.998534+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "url": "https://www.hsbc.com.hk/content/dam/hsbc/hk/docs/mpf/2q2026.pdf",
+      "sha256": "7d42806321ab76848e0a6bcf731e62d74f163b96c196e1a6eafb91d0e0360085",
+      "retrievedAt": "2026-11-12T08:19:01.839059+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "BEA (MPF) Industry Scheme",
+      "url": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-3rd.pdf",
+      "sha256": null,
+      "retrievedAt": "2026-11-12T08:21:12.355821+00:00",
+      "download": "failed",
+      "error": "HTTP Error 404: ",
+      "parserDates": [],
+      "parseIssues": []
+    },
+    {
+      "scheme": "BCT Strategic MPF Scheme",
+      "url": "https://www.mpfa.org.hk/assets/FF/MT00075.pdf",
+      "sha256": "bca691117e8f9d88c80810e57c96d2b485d967b68218bd00dd7c18a3965a0782",
+      "retrievedAt": "2026-11-12T08:18:57.796952+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [],
+      "parseIssues": [
+        "No 3-year official return parser for this BCT scheme"
+      ]
+    },
+    {
+      "scheme": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "url": "https://www.hangseng.com/cms/pws/files/pdfs/FFS.pdf",
+      "sha256": "f45affbe095b69c4300210fdf58b6bd7af5cea2b515d27f1a170a75ac1e6343c",
+      "retrievedAt": "2026-11-12T08:19:03.027136+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "BCT MPF Scheme Series 800",
+      "url": "https://www.mpfa.org.hk/assets/FF/MT00059.pdf",
+      "sha256": "c7bd331ddf0ffbc1da6dfc162fbadb3a40a37a1bd6b36088e3df98b45e367939",
+      "retrievedAt": "2026-11-12T08:18:57.310318+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "SHKP MPF Employer Sponsored Scheme",
+      "url": "https://www.shkp.com/Html/MPF/Fund%20Price%20and%20FFS%20for%20SHKPESS.pdf",
+      "sha256": "3451bf3bf38ed88134b4c04b902ca727c10767c9e84a2868b82c556db8a94ca5",
+      "retrievedAt": "2026-11-12T08:19:10.513206+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-09-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "BCT (MPF) Industry Choice",
+      "url": "https://www.mpfa.org.hk/assets/FF/IS00017.pdf",
+      "sha256": "dbb187a1edc3a6b842b8c549f80af31334761f8485df718da4c1d68b9029e4cd",
+      "retrievedAt": "2026-11-12T08:18:52.843695+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "BEA (MPF) Value Scheme",
+      "url": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-2nd.pdf",
+      "sha256": "90f1c4d143d8dde176e530f893c65f4068d9f42c03a40f21174e23bcc85db649",
+      "retrievedAt": "2026-11-12T08:18:59.625018+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/EUEF_E.pdf",
+      "sha256": "e869459fc3605dd8cca9625cda3d4ee2ac3599598da94dbfa41b87196ab5ea07",
+      "retrievedAt": "2026-11-12T08:19:06.209591+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-08-31"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "AIA MPF - Prime Value Choice",
+      "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-sep-2026.pdf",
+      "sha256": null,
+      "retrievedAt": "2026-11-12T08:21:12.354818+00:00",
+      "download": "failed",
+      "error": "HTTP Error 404: ",
+      "parserDates": [],
+      "parseIssues": []
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/HKEF_E.pdf",
+      "sha256": "b46a223fcc9ed620b8877725c6db1f1771f8cd0da05baaa42b29f62668a2eca7",
+      "retrievedAt": "2026-11-12T08:19:08.533448+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-08-31"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GCEF_E.pdf",
+      "sha256": "9eb2fc3ecd8a8119e083eec6e1c06154bc9e51c36fd2e1beb13b16a433063e79",
+      "retrievedAt": "2026-11-12T08:19:07.047581+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-08-31"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "url": "https://www.hsbc.com.hk/content/dam/hsbc/hk/docs/mpf/3q2026.pdf",
+      "sha256": null,
+      "retrievedAt": "2026-11-12T08:21:13.157235+00:00",
+      "download": "failed",
+      "error": "HTTP Error 404: ",
+      "parserDates": [],
+      "parseIssues": []
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLEF_E.pdf",
+      "sha256": "f8327e9063c496736fbe3e06865e825bf6424051cab02b53dd1e7f840d2d9a6e",
+      "retrievedAt": "2026-11-12T08:19:07.570330+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-08-31"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "BCT MPF Scheme Series 800",
+      "url": "https://www.bcthk.com/wr/S800-Fund-Fact-Sheet",
+      "sha256": "c7bd331ddf0ffbc1da6dfc162fbadb3a40a37a1bd6b36088e3df98b45e367939",
+      "retrievedAt": "2026-11-12T08:18:56.755783+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "BEA (MPF) Value Scheme",
+      "url": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-vs-2026-3rd.pdf",
+      "sha256": null,
+      "retrievedAt": "2026-11-12T08:21:12.354818+00:00",
+      "download": "failed",
+      "error": "HTTP Error 404: ",
+      "parserDates": [],
+      "parseIssues": []
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLBF_E.pdf",
+      "sha256": "331ef3cbaaf459d4e65f4d606cbc3b7d0934371163434e7d9261637040b39c9e",
+      "retrievedAt": "2026-11-12T08:19:07.196370+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-08-31"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/A65F2_E.pdf",
+      "sha256": "f1829112f95e31d7224118642aef20dd60c27f205ae9593f32c2bf6198b7b13f",
+      "retrievedAt": "2026-11-12T08:19:03.994419+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-08-31"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/CAF2_E.pdf",
+      "sha256": "0ce8b14df3908042a7d773922ef32088604959fb33d32a723ede07770a60bf29",
+      "retrievedAt": "2026-11-12T08:19:05.516352+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-08-31"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "China Life MPF Master Trust Scheme",
+      "url": "https://www.chinalife.com.hk/sites/default/files/2026-08/2026%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%9F%BA%E9%87%91%E8%A1%A8%E7%8F%BE%E4%BE%BF%E8%A6%BD.pdf",
+      "sha256": "aa02dd277e9a51bc17c2b3172791fdaad9b1956bbc2d161507b135bea1c4e5a4",
+      "retrievedAt": "2026-11-12T08:19:00.844468+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-23"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "My Choice Mandatory Provident Fund Scheme",
+      "url": "https://www.mpfa.org.hk/assets/FF/MT00547.pdf",
+      "sha256": "95757e1629d16bef0c080cf2cf65a0a7048985f832bd86cd8a2fb21d7b8999c8",
+      "retrievedAt": "2026-11-12T08:19:10.337953+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2025-12-31"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "BEA (MPF) Master Trust Scheme",
+      "url": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-3rd.pdf",
+      "sha256": null,
+      "retrievedAt": "2026-11-12T08:21:12.355821+00:00",
+      "download": "failed",
+      "error": "HTTP Error 404: ",
+      "parserDates": [],
+      "parseIssues": []
+    },
+    {
+      "scheme": "BCT MPF - Smart Plan",
+      "url": "https://www.bcthk.com/wr/Smart-Fund-Fact-Sheet",
+      "sha256": "9f179b0289aca3b2e1125156bacebc2eabe1ae12bf4e52808818a169722843fa",
+      "retrievedAt": "2026-11-12T08:18:56.050067+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/USEF_E.pdf",
+      "sha256": "d4d3b4cb6c0137a96a6b13ddd418fbeab708bd350f8e986088858ce0d31a37f3",
+      "retrievedAt": "2026-11-12T08:19:09.021811+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-08-31"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "AMTD MPF Scheme",
+      "url": "https://www.mpfa.org.hk/assets/FF/MT00539.pdf",
+      "sha256": "905ecfffccb544346f314988ef2ca7002055ed3692b24e65c979eaf2cb98a316",
+      "retrievedAt": "2026-11-12T08:18:50.323422+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "China Life MPF Master Trust Scheme",
+      "url": "https://www.mpfa.org.hk/assets/FF/MT00083.pdf",
+      "sha256": "aa02dd277e9a51bc17c2b3172791fdaad9b1956bbc2d161507b135bea1c4e5a4",
+      "retrievedAt": "2026-11-12T08:19:00.876467+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-23"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GUAF_E.pdf",
+      "sha256": "aa51fed4309883956c1b3ae2cad1eda28b7f22f2a183032d3e2435bf628af8f6",
+      "retrievedAt": "2026-11-12T08:19:07.874735+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-08-31"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "BEA (MPF) Value Scheme",
+      "url": "https://www.mpfa.org.hk/assets/FF/MT00571.pdf",
+      "sha256": "06eb7c41ff02889d4d40680e851a66210a1764ecff43184bd1f9ab8d35298b48",
+      "retrievedAt": "2026-11-12T08:18:59.694158+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-03-31"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+      "url": "https://www.mpfa.org.hk/assets/FF/MT00091.pdf",
+      "sha256": "ae73c3ed5c031d1d2e1bd80eeeec1be709ce4b16cf4d348080e43b90d04d0a0a",
+      "retrievedAt": "2026-11-12T08:19:00.617371+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-03-31"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "AIA MPF - Prime Value Choice",
+      "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-jul-2026.pdf",
+      "sha256": "b1bd6ed0f474251054b2a4ee35744dd0e4b7e4b85470ed1a8d825777dccfaea7",
+      "retrievedAt": "2026-11-12T08:18:50.322421+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-07-31"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "BCT (MPF) Pro Choice",
+      "url": "https://www.bcthk.com/MTS-Fund-Fact-Sheet",
+      "sha256": "26b2b813c83e5bc29307e45d1a043ca95b25a6e1773e2806f9a346654e6e81fd",
+      "retrievedAt": "2026-11-12T08:18:53.164004+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "AIA MPF - Prime Value Choice",
+      "url": "https://www.mpfa.org.hk/assets/FF/MT00172.pdf",
+      "sha256": "17bb20a2781687acf2ed67adba8a0768187c5c7523073d4e6c7c64cf6f591ac8",
+      "retrievedAt": "2026-11-12T08:18:50.322421+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-05-31"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "BCT MPF - Smart Plan",
+      "url": "https://www.mpfa.org.hk/assets/FF/MT00180.pdf",
+      "sha256": "e1a5a6bb5a3e7c0e23390696bc8ac4b6f611b7e472e6f323cf4e711b9f507096",
+      "retrievedAt": "2026-11-12T08:18:56.061072+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "BCT MPF - Simple Plan",
+      "url": "https://www.mpfa.org.hk/assets/FF/MT00504.pdf",
+      "sha256": "685c2c606f15633e4529af16696857f57f26e4ec0cbdfc64254f1a025f7b3990",
+      "retrievedAt": "2026-11-12T08:18:55.579133+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "BCT (MPF) Pro Choice",
+      "url": "https://www.mpfa.org.hk/assets/FF/MT00016.pdf",
+      "sha256": "26b2b813c83e5bc29307e45d1a043ca95b25a6e1773e2806f9a346654e6e81fd",
+      "retrievedAt": "2026-11-12T08:18:53.450082+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "Manulife Global Select (MPF) Scheme",
+      "url": "https://www.mpfa.org.hk/assets/FF/MT00482.pdf",
+      "sha256": "28dfd1cd537d580018144d1c483826f10b3bde67918b6001eadb71c4eec8f257",
+      "retrievedAt": "2026-11-12T08:19:09.333961+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-03-31"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "BCOM Joyful Retirement MPF Scheme",
+      "url": "https://www.bocomtrust.com.hk/BankCommSite/upload/infos/202608/12/7060271/20260812163956_MPF_FFS(2026Q2)_Final.pdf",
+      "sha256": "03e4f0d65efb040c340ea6b0e9c00436f894bae9f189ae6695aac293010e4864",
+      "retrievedAt": "2026-11-12T08:18:50.323422+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "My Choice Mandatory Provident Fund Scheme",
+      "url": "https://www.bocpt.com/media/2718/my-choice-fund-factsheet-2q26.pdf",
+      "sha256": "26c97b4869e24db2c48260dd58ad5d4dc003cfbae3200bb1e2c12233f6c2afe5",
+      "retrievedAt": "2026-11-12T08:19:09.990448+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/APEF_E.pdf",
+      "sha256": "53b66fadbc0cedd5441719ea24dcc4c59c54bd54d2ee96fea0f251a89c625dac",
+      "retrievedAt": "2026-11-12T08:19:04.001972+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-08-31"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "BOC-Prudential Easy-Choice Mandatory Provident Fund Scheme",
+      "url": "https://www.bocpt.com/media/2717/boci-mpf-factsheet-2026-q2-_r3.pdf",
+      "sha256": "3516ffdf96ad288942d8f6ae4b50e08b136cdda4267f0a227bc191f25f09f6bd",
+      "retrievedAt": "2026-11-12T08:19:00.167188+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/ASBF_E.pdf",
+      "sha256": "68c828b42ba0cb35e8a443882c5df0bd4f3379b87affd298d88e8768cc524760",
+      "retrievedAt": "2026-11-12T08:19:05.335993+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-08-31"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "SHKP MPF Employer Sponsored Scheme",
+      "url": "https://www.mpfa.org.hk/assets/FF/ES00020.pdf",
+      "sha256": "0533533e69beaca13ae42a0eb9f78a548c880232b768c75657534f13928227bc",
+      "retrievedAt": "2026-11-12T08:19:10.354951+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-03-31"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/CAPF_E.pdf",
+      "sha256": "71a47b13fdb09156e77bd5c5541da6599d6103d8442db68825be140ba8820152",
+      "retrievedAt": "2026-11-12T08:19:05.552351+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-08-31"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "AIA MPF - Prime Value Choice",
+      "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-may-2026.pdf",
+      "sha256": "17bb20a2781687acf2ed67adba8a0768187c5c7523073d4e6c7c64cf6f591ac8",
+      "retrievedAt": "2026-11-12T08:18:50.322421+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-05-31"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "AIA MPF - Prime Value Choice",
+      "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-aug-2026.pdf",
+      "sha256": "616b3c95b4b55e7c3d24c8e1d7f8422e3b8b6e2e1a9035f9b9571a89e67429bd",
+      "retrievedAt": "2026-11-12T08:21:16.921119+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-07-31"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "AIA MPF - Prime Value Choice",
+      "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-oct-2026.pdf",
+      "sha256": null,
+      "retrievedAt": "2026-11-12T08:21:12.354818+00:00",
+      "download": "failed",
+      "error": "HTTP Error 404: ",
+      "parserDates": [],
+      "parseIssues": []
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLSF_E.pdf",
+      "sha256": "ecc172f6fdcecbb79f28de2925f651183c4fc69902525943141506e42a58589a",
+      "retrievedAt": "2026-11-12T08:19:07.871499+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-08-31"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "Manulife RetireChoice (MPF) Scheme",
+      "url": "https://www.mpfa.org.hk/assets/FF/MT00490.pdf",
+      "sha256": "1e3ad33384a338acc3a7013d5e26b6810057a86fd7a07a3b3597adc8daeb9dfa",
+      "retrievedAt": "2026-11-12T08:19:09.386473+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [],
+      "parseIssues": [
+        "Fund fact sheet header is missing"
+      ]
+    },
+    {
+      "scheme": "Sun Life Rainbow MPF Scheme",
+      "url": "https://cdn.sunlife.com/static/hk/Investment/MPF%20&%20ORSO%20fund%20prices%20&%20performance/MPF%20fund%20prices%20&%20performance/Rainbow_MPF_Quarterly_Update.pdf",
+      "sha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+      "retrievedAt": "2026-11-12T08:19:10.556900+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "BCOM Joyful Retirement MPF Scheme",
+      "url": "https://www.mpfa.org.hk/assets/FF/MT00393.pdf",
+      "sha256": "03e4f0d65efb040c340ea6b0e9c00436f894bae9f189ae6695aac293010e4864",
+      "retrievedAt": "2026-11-12T08:18:50.324421+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLGF_E.pdf",
+      "sha256": "a16f79f04d3512435a7bb460f2a523e66b1daf84e9b7a71e258788b0b374a389",
+      "retrievedAt": "2026-11-12T08:19:07.700970+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-08-31"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "BEA (MPF) Master Trust Scheme",
+      "url": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-mt-2026-2nd.pdf",
+      "sha256": "0e3b5b731bccf242c8517684568702265a8fb5d56d82e53ca5463420406e6473",
+      "retrievedAt": "2026-11-12T08:18:58.784077+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "BEA (MPF) Industry Scheme",
+      "url": "https://www.hkbea.com/pdf/fund-fact-sheet/2026/mpf-is-2026-2nd.pdf",
+      "sha256": "598833c402d1a047832cb9a324fbaadde6546362c30bda6b5187026a3b9f4308",
+      "retrievedAt": "2026-11-12T08:18:58.554329+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "Sun Life Rainbow MPF Scheme",
+      "url": "https://www.mpfa.org.hk/assets/FF/MT00067.pdf",
+      "sha256": "76b62bf6a5d80afb51c44997db8744d985c829ef1a613b9f4c6290243174b293",
+      "retrievedAt": "2026-11-12T08:19:11.361696+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "BEA (MPF) Master Trust Scheme",
+      "url": "https://www.mpfa.org.hk/assets/FF/MT00202.pdf",
+      "sha256": "577a9d92eec8af030477f963a63cb6411581ffac789f2ef9b990b560dfbcb706",
+      "retrievedAt": "2026-11-12T08:18:58.850621+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-03-31"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "MASS Mandatory Provident Fund Scheme",
+      "url": "https://www.mpfa.org.hk/assets/FF/MT00350.pdf",
+      "sha256": "4647eb97c2814c7003e50f0d74affeeac42bc319bba4de40840a458802b49ca9",
+      "retrievedAt": "2026-11-12T08:19:09.124413+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "Haitong MPF Retirement Fund",
+      "url": "https://www.mpfa.org.hk/assets/FF/MT00121.pdf",
+      "sha256": "295a35c196ef3948d2f6da8f6572e743d3bdc533acdcfe77c3055065786f42c5",
+      "retrievedAt": "2026-11-12T08:19:02.696479+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [],
+      "parseIssues": [
+        "No Haitong three-year returns found"
+      ]
+    },
+    {
+      "scheme": "BCT MPF - Simple Plan",
+      "url": "https://www.bcthk.com/wr/Simple-Fund-Fact-Sheet",
+      "sha256": "945affee33cef21569464b5e648c8ed6f44007939391e6257df975670e9fc342",
+      "retrievedAt": "2026-11-12T08:18:55.462133+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "url": "https://www.mpfa.org.hk/assets/FF/MT00253.pdf",
+      "sha256": "f45affbe095b69c4300210fdf58b6bd7af5cea2b515d27f1a170a75ac1e6343c",
+      "retrievedAt": "2026-11-12T08:19:03.850902+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    },
+    {
+      "scheme": "BCT (MPF) Industry Choice",
+      "url": "https://www.bcthk.com/IS-Fund-Fact-Sheet",
+      "sha256": "dbb187a1edc3a6b842b8c549f80af31334761f8485df718da4c1d68b9029e4cd",
+      "retrievedAt": "2026-11-12T08:18:51.978842+00:00",
+      "download": "downloaded",
+      "error": null,
+      "parserDates": [
+        "2026-06-30"
+      ],
+      "parseIssues": []
+    }
+  ],
+  "dateReview": "AIA August: each fund page heading As at 31 August 2026 applies to performance. Separate 31 July date is under TOP TEN HOLDINGS. The generic parser picks the latter; the 20 page headings and printed annualised three-year cells were checked separately for this batch. Remaining IDs have no verified eligible replacement in the checked documents."
+}
