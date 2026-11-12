@@ -1,6 +1,6 @@
 # KWMPF 未完成工作及優先次序
 
-核對基線：2026-11-12香港時間；main `5a83c329c94dd2d9b0f07e3af4c72f154517433b`。依據[獨立查核](reviews/2026-11-12-independent-status-audit.md)；以下是待辦，不代表已授權實作／合併／遠端操作。
+核對基線：2026-11-12香港時間；main `183da56a4e095fba1f4e637613c03c0cf7d3354e`。依據[獨立查核](reviews/2026-11-12-independent-status-audit.md)；以下是待辦，不代表已授權實作／合併／遠端操作。
 
 ## P1：下一輪先做
 
@@ -9,7 +9,7 @@
 | DATA-402 | 七項官方費率及四個上限全部核實；精確檔案的 disposition 已通過發布前檢查 | 發布狀態及驗收記錄見 [#402 跟進](reviews/2026-11-12-pr402.md) |
 | DATA-400 | 已核對、測試及合併，14 筆更新，0 筆新增 | 已完成 #52 發布，14 筆公開詳情及完整排名已核對，見 [逐項記錄](reviews/2026-11-12-pr400.md) |
 | DATA-CONFLICT | [Issue396](https://github.com/Kirkwongcn/KWMPF/issues/396)仍open；ADR0016 reader隔離已合併，但workflow只由rejectedSources產生跟進檔 | 將officialConflicts／quarantinedRows獨立納入跟進與去重；候選沒有增量時亦保留衝突證據。用隔離fixture覆蓋全文件reject／部分隔離／無候選變動。待使用者批准code範圍；不放寬數字比較、不借第三方補位 |
-| DATA-DISCOVERY | #53 正式站 79 隻入榜、271 筆過期，詳見[逐項來源及名次](reviews/2026-11-12-annualized-factsheets.md) | 優先核對銀聯信託、東亞及中銀保誠第三季便覽，共 171 筆。修正友邦持倉日期混入表現日期的通用解析邏輯並加入雙日期測試。 |
+| DATA-DISCOVERY | #54 友邦頁首日期修正已部署。171 筆均有六月便覽，未核實第三季年率化值；其餘 100 筆的已知來源未見更新。[本輪逐項核對](reviews/2026-11-12-q3-priority-review.md) | 下次來源刷新先比對 PDF 指紋或新發布連結，再覆核年率化欄。追蹤友邦及 MASS 的 34 筆八月資料（11 月 30 日起超過 90 日）。AMTD 有 16 筆六月原文可用於後續歷史資料維護。 |
 | OPS-QUEUE | 正式備份 #7 與 #8 已放行、成功並釋放共用鎖。舊記錄的 staging #17、原件封存 #11 狀態待重驗 | 查明原件是否已歸檔及 artifact 到期日，再處理 staging 排隊 |
 
 ## P2：在上述資料／操作風險後跟進
