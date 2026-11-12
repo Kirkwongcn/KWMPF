@@ -7,7 +7,7 @@
 | ID | 工作／目前證據 | 具體下一步／完成條件 |
 | --- | --- | --- |
 | DATA-402 | 七項官方費率及四個上限全部核實；精確檔案的 disposition 已通過發布前檢查 | 發布狀態及驗收記錄見 [#402 跟進](reviews/2026-11-12-pr402.md) |
-| DATA-400 | [PR400](https://github.com/Kirkwongcn/KWMPF/pull/400)已有MASS 14行9月資料，人工三筆未勾 | 與main2026-10-20候選做逐key差異，確認真實增量、沿用值及來源；重讀三筆原文及精確head CI。若先採用402的10月平台，9月一年交叉核對需保留對應9月snapshot，不可硬配新期；是否重建／取代舊PR待審查 |
+| DATA-400 | 已核對、測試及合併，14 筆更新，0 筆新增 | 放行 #52 後核對公開詳情及排名，見 [逐項記錄](reviews/2026-11-12-pr400.md) |
 | DATA-CONFLICT | [Issue396](https://github.com/Kirkwongcn/KWMPF/issues/396)仍open；ADR0016 reader隔離已合併，但workflow只由rejectedSources產生跟進檔 | 將officialConflicts／quarantinedRows獨立納入跟進與去重；候選沒有增量時亦保留衝突證據。用隔離fixture覆蓋全文件reject／部分隔離／無候選變動。待使用者批准code範圍；不放寬數字比較、不借第三方補位 |
 | DATA-DISCOVERY | BOC-Prudential在400下載失敗，Sun Life Rainbow仍2026-06-30；三年年率化線上37行／313 stale | 查最新官方入口及可取得原件，保留URL／抓取時間／hash／各欄位日期；區分403／保護頁、source-behind、無披露及parser失敗。MASS改列待400審查，不能重複稱未取得。資料變更另獨立候選，逐基金驗收 |
 | OPS-QUEUE | 正式備份 #7 與 #8 已放行、成功並釋放共用鎖。舊記錄的 staging #17、原件封存 #11 狀態待重驗 | 查明原件是否已歸檔及 artifact 到期日，再處理 staging 排隊 |
