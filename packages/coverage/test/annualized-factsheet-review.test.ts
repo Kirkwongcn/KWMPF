@@ -70,3 +70,20 @@ it("rejects mismatched funds, partial sets and invalid or future dates", () => {
     ).toThrow();
   }
 });
+
+it("still checks watched funds when a combined PDF adds another fund, rejecting duplicate matches", () => {
+  const second = { ...target, id: "second", name: "Second Fund" };
+  const targets = [target, second];
+  const baseline = [prior, { ...prior, fundClassId: second.id }];
+  const rows = [
+    observation,
+    { ...observation, constituentFundName: second.name },
+    { ...observation, constituentFundName: "Additional Fund" },
+  ];
+  expect(compareAnnualized(targets, rows, baseline, "2026-11-12")).toHaveLength(
+    2,
+  );
+  expect(() =>
+    compareAnnualized(targets, [...rows, observation], baseline, "2026-11-12"),
+  ).toThrow(/ambiguous/);
+});

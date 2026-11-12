@@ -94,8 +94,17 @@ for (const group of [aia, ...mass.map((row) => [row])]) {
       baseline,
       retrievedAt.slice(0, 10),
     );
-    reports.push({ url, sha256, retrievedAt, rows });
-    if (rows.every((row) => row.status === "unchanged")) await unlink(pdf);
+    const additionalFundNames = returns
+      .filter(
+        (r) => !group.some((target) => target.name === r.constituentFundName),
+      )
+      .map((r) => r.constituentFundName);
+    reports.push({ url, sha256, retrievedAt, additionalFundNames, rows });
+    if (
+      additionalFundNames.length === 0 &&
+      rows.every((row) => row.status === "unchanged")
+    )
+      await unlink(pdf);
   } catch (error) {
     errors.push({
       url,
