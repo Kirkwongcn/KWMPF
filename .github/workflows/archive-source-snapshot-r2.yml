@@ -79,6 +79,14 @@ jobs:
 
           artifact_name="raw-source-archive-${SOURCE_RUN_ID}"
           response="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${SOURCE_RUN_ID}/artifacts?per_page=100")"
+          # Preserve the original artifact when available. If only a rerun fetched
+          # the raw files, select the earliest retained attempt of this exact run.
+          artifact_name="$(jq -r --arg name "$artifact_name" '
+            [.artifacts[] | select(.expired == false) | .name |
+              if . == $name then {name: ., attempt: 1}
+              elif test("^" + $name + "-attempt-[1-9][0-9]*$") then
+                {name: ., attempt: (split("-") | last | tonumber)}
+              else empty end] | min_by(.attempt) | .name // ""' <<<"$response")"
           match_count="$(jq --arg name "${artifact_name}" '[.artifacts[] | select(.name == $name and .expired == false)] | length' <<<"${response}")"
           if [[ "${match_count}" == "0" ]]; then
             echo "available=false" >>"${GITHUB_OUTPUT}"
