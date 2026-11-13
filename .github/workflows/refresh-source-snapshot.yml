@@ -152,6 +152,7 @@ jobs:
           cat /tmp/candidate/refresh-summary.md >> "$GITHUB_STEP_SUMMARY"
 
       - name: Open a candidate batch pull request
+        id: open_candidate
         if: steps.report.outputs.outcome != 'no_new_data'
         env:
           GH_TOKEN: ${{ github.token }}
@@ -190,6 +191,17 @@ jobs:
             echo "::error::GitHub blocked automatic pull request creation. Candidate branch: ${branch}. Open: ${candidate_pr_url}"
             exit 1
           fi
+
+          git rev-parse HEAD > "$RUNNER_TEMP/candidate-head.txt"
+          echo 'created=true' >> "$GITHUB_OUTPUT"
+
+      - name: Bind the producer run to the exact candidate commit
+        if: steps.open_candidate.outputs.created == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: official-data-pr-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/candidate-head.txt
+          if-no-files-found: error
 
       - name: Record that no new batch was published
         if: steps.report.outputs.outcome == 'no_new_data'

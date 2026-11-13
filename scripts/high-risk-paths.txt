@@ -39,3 +39,14 @@ data/reference/*
 .github/workflows/deploy-production.yml
 .github/workflows/restore-r2-d1.yml
 scripts/check-production-source-review.mjs
+
+.github/workflows/auto-official-data.yml
+.github/workflows/publish-official-data.yml
+.github/workflows/check-data-connection.yml
+.github/workflows/refresh-source-snapshot.yml
+.github/workflows/check-aia-mass-factsheets.yml
+.github/workflows/ci.yml
+scripts/auto-official-*
+scripts/publish-official-*
+packages/coverage/src/merge-reviewed-factsheets.ts
+packages/coverage/src/stage-return-candidate.ts

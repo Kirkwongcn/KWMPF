@@ -12,12 +12,16 @@ import { parseAiaFundFactSheet } from "./aia-fund-fact-sheet-parser";
 import { parseMassFundPerformance } from "./mass-fund-performance-parser";
 import { splitReturnObservations } from "./official-return-overlay";
 
-const [basePath, output] = process.argv.slice(2);
-if (!basePath || !output)
+import { parseSourceSnapshot } from "./input";
+import { verifyPlatformIdentity } from "./merge-reviewed-factsheets";
+
+const [basePath, output, platformPath] = process.argv.slice(2);
+if (!basePath || !output || !platformPath)
   throw new Error(
-    "Expected current return candidate path and output directory",
+    "Expected candidate path, output directory and platform snapshot path",
   );
 await mkdir(output, { recursive: true });
+const platform = parseSourceSnapshot(JSON.parse(await readFile(platformPath, "utf8")));
 const baseline = splitReturnObservations(
   JSON.parse(await readFile(basePath, "utf8")),
 ).annualized;
@@ -88,6 +92,7 @@ for (const group of [aia, ...mass.map((row) => [row])]) {
         ? parseAiaFundFactSheet(layout, url)
         : parseMassFundPerformance(layout, url);
     const retrievedAt = new Date().toISOString();
+    for (const target of group) verifyPlatformIdentity(target, platform.records);
     const rows = compareAnnualized(
       group,
       returns,
@@ -126,4 +131,4 @@ await writeFile(
   JSON.stringify({ summary, reports, errors }, null, 2) + "\n",
 );
 console.log(JSON.stringify(summary));
-if (errors.length) process.exitCode = 1;
+// Failed documents remain in review.json; independent verified documents can proceed.

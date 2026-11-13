@@ -2,6 +2,10 @@ name: Check AIA and MASS annualized factsheets
 
 on:
   workflow_call:
+    outputs:
+      artifact:
+        description: Name of the checked PDF evidence artifact
+        value: ${{ jobs.review.outputs.artifact }}
   workflow_dispatch:
 
 permissions:
@@ -10,6 +14,8 @@ permissions:
 jobs:
   review:
     runs-on: ubuntu-latest
+    outputs:
+      artifact: ${{ steps.evidence.outputs.name }}
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v6
@@ -30,7 +36,7 @@ jobs:
       - name: Check the latest official PDFs against the current candidate
         run: |
           base="$(scripts/resolve-latest-return-candidate.sh)"
-          bun packages/coverage/src/check-aia-mass-factsheets.ts "$base" "$RUNNER_TEMP/factsheet-review"
+          bun packages/coverage/src/check-aia-mass-factsheets.ts "$base" "$RUNNER_TEMP/factsheet-review" "$(scripts/resolve-previous-snapshot.sh)"
       - name: Summarize differences requiring review
         if: always()
         run: |
@@ -39,11 +45,14 @@ jobs:
             jq -r '.summary | "Checked \(.checked)/34, newer \(.newer), same-date revisions \(.revisions), older \(.older), source errors \(.failures)."' "$report" >> "$GITHUB_STEP_SUMMARY"
             jq -r '.reports[].rows[] | select(.status != "unchanged") | "- \(.fundClassId) \(.status): \(.previousDate) → \(.dataAsOf)"' "$report" >> "$GITHUB_STEP_SUMMARY"
           fi
+      - name: Identify this run attempt's audit
+        id: evidence
+        run: echo "name=annualized-factsheet-review-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" >> "$GITHUB_OUTPUT"
       - name: Keep the audit and changed or unreadable PDFs
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: annualized-factsheet-review-${{ github.run_id }}-${{ github.run_attempt }}
+          name: ${{ steps.evidence.outputs.name || format('annualized-factsheet-review-{0}-{1}', github.run_id, github.run_attempt) }}
           path: ${{ runner.temp }}/factsheet-review
           if-no-files-found: warn
           retention-days: 90

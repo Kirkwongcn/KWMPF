@@ -5,6 +5,7 @@ export type OfficialReturnObservation = {
   fundClassId: string;
   periodYears: 1 | 3 | 5 | 10;
   annualized: number;
+  sourceSha256?: string;
   dataAsOf: string;
   sourceUrl: string;
   retrievedAt: string;

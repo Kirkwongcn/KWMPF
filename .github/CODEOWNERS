@@ -52,3 +52,14 @@
 /.github/workflows/deploy-production.yml                   @Kirkwongcn
 /.github/workflows/restore-r2-d1.yml                        @Kirkwongcn
 /scripts/check-production-source-review.mjs                 @Kirkwongcn
+
+/.github/workflows/auto-official-data.yml @Kirkwongcn
+/.github/workflows/publish-official-data.yml @Kirkwongcn
+/.github/workflows/check-data-connection.yml @Kirkwongcn
+/.github/workflows/refresh-source-snapshot.yml @Kirkwongcn
+/.github/workflows/check-aia-mass-factsheets.yml @Kirkwongcn
+/.github/workflows/ci.yml @Kirkwongcn
+/scripts/auto-official-* @Kirkwongcn
+/scripts/publish-official-* @Kirkwongcn
+/packages/coverage/src/merge-reviewed-factsheets.ts @Kirkwongcn
+/packages/coverage/src/stage-return-candidate.ts @Kirkwongcn

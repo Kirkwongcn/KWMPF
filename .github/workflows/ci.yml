@@ -2,6 +2,12 @@ name: CI
 
 on:
   pull_request:
+  workflow_dispatch:
+    inputs:
+      base_sha:
+        description: Exact protected main base of an attested data candidate
+        required: true
+        type: string
   push:
     branches: [main]
 
@@ -29,10 +35,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-bun-install-
       - run: bun install --frozen-lockfile
+      - run: python3 scripts/auto-official-test.py
       - run: bun run check
 
   high-risk-review:
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -41,8 +48,8 @@ jobs:
           fetch-depth: 0
       - name: Require review evidence for high-risk paths
         env:
-          BASE_REF: ${{ github.event.pull_request.base.ref }}
-          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          BASE_REF: ${{ github.event.pull_request.base.ref || 'main' }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
           PR_BODY: ${{ github.event.pull_request.body }}
         run: |
           set -euo pipefail
@@ -53,8 +60,8 @@ jobs:
           scripts/check-high-risk-review.sh /tmp/changed-files.txt /tmp/pr-body.md
       - name: Keep source data reviewable separately from code
         env:
-          BASE_REF: ${{ github.event.pull_request.base.ref }}
-          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          BASE_REF: ${{ github.event.pull_request.base.ref || 'main' }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           set -euo pipefail
           git fetch --no-tags origin "refs/heads/${BASE_REF}:refs/remotes/origin/${BASE_REF}"
@@ -63,7 +70,7 @@ jobs:
 
   e2e:
     # Pull-request CI is the pre-merge E2E gate; main pushes keep the post-merge verify job only.
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
     timeout-minutes: 25
     steps:
@@ -72,8 +79,8 @@ jobs:
         id: e2e-scope
         env:
           EVENT_NAME: ${{ github.event_name }}
-          BASE_REF: ${{ github.event.pull_request.base.ref }}
-          BEFORE_SHA: ${{ github.event.before }}
+          BASE_REF: ${{ github.event.pull_request.base.ref || 'main' }}
+          BEFORE_SHA: ${{ inputs.base_sha || github.event.before }}
           CHECKED_OUT_SHA: ${{ github.sha }}
         run: |
           set -euo pipefail
@@ -87,6 +94,11 @@ jobs:
             else
               git fetch --no-tags --depth=1 origin "$base_sha"
             fi
+          fi
+
+          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
+            [[ "$BEFORE_SHA" =~ ^[a-f0-9]{40}$ ]]
+            python3 scripts/auto-official-policy.py "$BEFORE_SHA" "$CHECKED_OUT_SHA" "$GITHUB_REF_NAME"
           fi
 
           changed_paths=()
