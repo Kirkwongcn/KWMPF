@@ -104,6 +104,7 @@ describe("official fund fact sheet parser", () => {
     ].join("\n");
     const parse = (raw: string) => parseChinaLifeFundPerformance(layout + chinaLifeFixture, "x", raw);
     expect(parse(cover).map((row) => row.dataAsOf)).toEqual(["2026-06-30", "2026-06-30"]);
+    expect(() => parse(cover + "\n截至 2026年6月23日")).toThrow();
     expect(() => parse(cover.replace("2026年6月30日", "2026年6月23日"))).toThrow();
     expect(() => parse(cover.replace("2026 2nd Quarter", "2nd Quarter"))).toThrow();
     expect(() => parse(cover.replace("2nd Quarter", "3rd Quarter"))).toThrow();

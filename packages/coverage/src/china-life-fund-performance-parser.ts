@@ -26,12 +26,14 @@ function parseDate(cover: string) {
     chinese.add(dateString(Number(match[1]), Number(match[2]), Number(match[3])));
   }
   const quarters = new Set(Array.from(cover.matchAll(/\b(\d{4})[ \t]+([1-4])(?:st|nd|rd|th)[ \t]+Quarter\b/gi), (m) => m[1] + "-" + m[2]));
-  const candidates = [...dates].filter((date) => {
+  const inReportQuarter = (date: string) => {
     const quarter = date.slice(0, 4) + "-" + Math.ceil(Number(date.slice(5, 7)) / 3);
     return !quarters.size || quarters.has(quarter);
-  });
+  };
+  const candidates = [...dates].filter(inReportQuarter);
+  const translated = [...chinese].filter(inReportQuarter);
   const selected = candidates[0];
-  if (candidates.length !== 1 || !selected || (chinese.size && !chinese.has(selected))) {
+  if (candidates.length !== 1 || !selected || (chinese.size && (translated.length !== 1 || translated[0] !== selected))) {
     throw new Error("China Life report date is missing or ambiguous");
   }
   return selected;
