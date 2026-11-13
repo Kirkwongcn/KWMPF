@@ -1,0 +1,48 @@
+name: Check data publishing connection
+on:
+  workflow_dispatch:
+  workflow_call:
+permissions:
+  contents: read
+jobs:
+  connection:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: production-data
+    steps:
+      - name: Verify the configured D1 and archived source with read-only API calls
+        env:
+          TOKEN: ${{ secrets.DATA_PUBLISH_CF_TOKEN }}
+          ACCOUNT: ${{ secrets.DATA_PUBLISH_ACCOUNT_ID }}
+          DATABASE: ${{ secrets.DATA_PUBLISH_D1_ID }}
+        run: |
+          set -euo pipefail
+          : "${TOKEN:?Set DATA_PUBLISH_CF_TOKEN in production-data}"
+          [[ "$ACCOUNT" =~ ^[[:xdigit:]]{32}$ && "$DATABASE" =~ ^[[:xdigit:]-]{36}$ ]]
+          api="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT"
+          auth="Authorization: Bearer $TOKEN"
+          curl -fsS --retry 2 -H "$auth" "$api/d1/database/$DATABASE" | jq -e '.success and .result.name == "kwmpf-production"' >/dev/null
+          curl -fsS --retry 2 -H "$auth" -H 'Content-Type: application/json' --data '{"sql":"SELECT snapshot_id FROM current_publication WHERE singleton=1"}' "$api/d1/database/$DATABASE/query" |
+            jq -er 'select(.success) | .result[0].results[0].snapshot_id | select(startswith("snapshot-mpfa-platform-"))' > "$RUNNER_TEMP/snapshot"
+          curl -fsS --retry 2 -H "$auth" "$api/r2/buckets/kwmpf-production-raw/objects?prefix=backups%2F&limit=1" |
+            jq -e '.success and (.result | length > 0)' >/dev/null
+          printf 'Production D1 and backup bucket readable. Current snapshot: %s\n' "$(cat "$RUNNER_TEMP/snapshot")" >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/checkout@v6
+        if: github.workflow == 'Check data publishing connection'
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: oven-sh/setup-bun@v2
+        if: github.workflow == 'Check data publishing connection'
+        with:
+          bun-version: 1.3.11
+      - run: bun install --frozen-lockfile
+        if: github.workflow == 'Check data publishing connection'
+      - name: Rehearse current main against production and all public rankings
+        if: github.workflow == 'Check data publishing connection'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.DATA_PUBLISH_CF_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.DATA_PUBLISH_ACCOUNT_ID }}
+          D1_DATABASE_ID: ${{ secrets.DATA_PUBLISH_D1_ID }}
+        run: bash scripts/publish-official-data.sh baseline

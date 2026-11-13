@@ -55,6 +55,8 @@ export function compareAnnualized(
   // A combined AIA PDF may add other funds. Each watched identity still has to match exactly once.
   if (targets.length === 1 && rows.length !== 1)
     throw new Error("Unexpected number of disclosed fund rows");
+  if (new Set(rows.map((row) => row.dataAsOf)).size !== 1)
+    throw new Error("Missing or mixed performance dates in one document");
   return targets.map((target) => {
     const matches = rows.filter(
       (row) =>

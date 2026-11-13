@@ -7,6 +7,10 @@ canonical implementation spec（`docs/specs/2026-08-08-hk-mpf-comparison-v1-impl
 本檔案曾經長到 31 KB 而被截斷，尾段的紅線根本傳唔到執行者手上**。任何一份超過
 10 KB 就再拆，唔好塞返落嚟。
 
+例行官方資料更新已有持續授權。指定的來源擷取 workflow 所建立的純資料 PR，按
+[自動發布規則](docs/official-data-publication.md) 核對來源、完整差異及必要 CI 後，可自動合併與發布資料。
+程式、資料庫結構、權限及須覆核的來源變更，沿用各自的批准流程。
+
 ## 不可繞過的紅線
 
 呢七條凌駕一切效率考慮。做唔到就報錯或者標示「官方未提供」，唔好估。

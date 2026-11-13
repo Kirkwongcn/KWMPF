@@ -29,6 +29,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-bun-install-
       - run: bun install --frozen-lockfile
+      - run: python3 scripts/auto-official-test.py
+      - run: python3 scripts/auto-official-producer-test.py
       - run: bun run check
 
   high-risk-review:
@@ -182,6 +184,11 @@ jobs:
         env:
           KWMPF_PUBLICATION_SEED_RETURN_OBSERVATIONS: ${{ steps.e2e-scope.outputs.return_observations }}
         run: bash scripts/check-publication-seed.sh
+      - name: Rehearse data-only publication and rollback on local SQLite
+        if: steps.e2e-scope.outputs.run_publication_seed == 'true'
+        run: |
+          bun packages/coverage/src/build-staging-seed.ts --source "$(bash scripts/resolve-previous-snapshot.sh)" --return-observations "$(bash scripts/resolve-latest-return-candidate.sh)" --output "$RUNNER_TEMP/rehearsal.sql"
+          python3 scripts/publish-official-rehearse.py "$RUNNER_TEMP/rehearsal.sql"
       - uses: actions/upload-artifact@v4
         if: always() && steps.playwright-e2e.outcome == 'failure'
         with:

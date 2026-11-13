@@ -1,0 +1,77 @@
+name: Publish official data
+run-name: Publish official data ${{ inputs.expected_sha }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_sha:
+        description: Exact main squash commit of the admitted official-data PR
+        required: true
+        type: string
+
+permissions:
+  actions: read
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: production-d1-mutations
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: vars.OFFICIAL_DATA_AUTOPUBLISH == '1' && github.ref == 'refs/heads/main' && github.sha == inputs.expected_sha
+    environment: production-data
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: bash
+    env:
+      WRANGLER_SEND_METRICS: "false"
+      PUBLIC_API: https://kwmpf-api-production.kw-screener.workers.dev
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify admitted change and exact candidate CI
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OFFICIAL_DATA_APP_LOGIN: ${{ vars.OFFICIAL_DATA_APP_LOGIN }}
+        run: bash scripts/publish-official-admission.sh
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.11
+      - run: bun install --frozen-lockfile
+      - name: Build and validate the admitted publication
+        run: bash scripts/publish-official-data.sh prepare
+      - name: Check production compatibility, backup and archive with readback
+        id: backup
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.DATA_PUBLISH_CF_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.DATA_PUBLISH_ACCOUNT_ID }}
+          D1_DATABASE_ID: ${{ secrets.DATA_PUBLISH_D1_ID }}
+        run: bash scripts/publish-official-data.sh backup
+      - name: Confirm main still selects this exact publication
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: test "$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/main" --jq .object.sha)" = "$GITHUB_SHA"
+      - name: Import publication data
+        id: publish
+        if: steps.backup.outputs.changed == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.DATA_PUBLISH_CF_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.DATA_PUBLISH_ACCOUNT_ID }}
+        run: bash scripts/publish-official-data.sh apply
+      - name: Verify D1, public snapshot and publication receipt
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.DATA_PUBLISH_CF_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.DATA_PUBLISH_ACCOUNT_ID }}
+        run: bash scripts/publish-official-data.sh verify
+      - name: Recover previous D1 and verify public readback
+        if: (failure() || cancelled()) && steps.backup.outcome == 'success' && steps.publish.outcome != 'skipped'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.DATA_PUBLISH_CF_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.DATA_PUBLISH_ACCOUNT_ID }}
+        run: bash scripts/publish-official-data.sh recover

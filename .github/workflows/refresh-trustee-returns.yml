@@ -7,13 +7,14 @@ name: Refresh trustee monthly returns
 # 4. 有新數據而又未有同期資料 PR 就開一個；作廢、接口異常或者 PDF 遲遲未出就開（或沿用）
 #    一個跟進 issue。每次下載的原檔保留 90 日（artifact），BCT、中銀保誠、永明接口、宏利摘要同萬通月報
 #    只有最新一期，錯過咗都可以用原檔加 --check-source 補做。
-# 合併同正式部署仍然要人手批准（docs/agents/change-policy.md）。
+# 例行官方資料經驗證後進入自動合併及發布流程；例外項目留待跟進。
 on:
   schedule:
     - cron: "17 3 * * *"
   workflow_dispatch:
 
 permissions:
+  actions: read
   contents: write
   pull-requests: write
   issues: write
@@ -29,10 +30,19 @@ jobs:
     uses: ./.github/workflows/check-aia-mass-factsheets.yml
 
   refresh:
+    needs: annualized-factsheets
+    if: ${{ !cancelled() && github.ref == 'refs/heads/main' }}
+    environment: official-data-pr
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v6
+      - name: Recover previously prepared commit on rerun
+        id: prior_plan
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/auto-official-producer.py recover
+
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: 1.3.11
@@ -57,6 +67,7 @@ jobs:
 
       - name: Resolve the platform snapshot and the current trustee-return candidate
         id: inputs
+        if: steps.prior_plan.outputs.recovered != 'true'
         run: |
           set -euo pipefail
           platform="$(scripts/resolve-previous-snapshot.sh)"
@@ -70,15 +81,26 @@ jobs:
             echo "report=data/coverage/$(date -u +%F)-official-return-observations-report.json"
           } >> "$GITHUB_OUTPUT"
 
-      - name: Skip when a pull request for this date is already open
+      - name: Skip an open data PR based on this main commit
         id: open_pr
+        if: steps.prior_plan.outputs.recovered != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           DATA_AS_OF: ${{ steps.inputs.outputs.data_as_of }}
+          APP_LOGIN: ${{ vars.OFFICIAL_DATA_APP_LOGIN }}
+          AUTOPUBLISH: ${{ vars.OFFICIAL_DATA_AUTOPUBLISH }}
         run: |
           set -euo pipefail
-          open="$(gh pr list --state open --limit 100 --json headRefName \
-            --jq "map(select(.headRefName | startswith(\"data/trustee-returns-${DATA_AS_OF}-\"))) | length")"
+          expected='github-actions[bot]'
+          if [[ "$AUTOPUBLISH" == 1 ]]; then expected="${APP_LOGIN:?Set OFFICIAL_DATA_APP_LOGIN}"; fi
+          open=0
+          gh api --paginate "repos/$GITHUB_REPOSITORY/pulls?state=open&base=main&per_page=100" |
+            jq -r --arg repo "$GITHUB_REPOSITORY" --arg author "$expected" --arg prefix "data/trustee-returns-${DATA_AS_OF}-" '
+              .[] | select(.head.repo.full_name == $repo and .user.login == $author and (.head.ref | startswith($prefix))) | .head.sha' > /tmp/trustee-open-heads
+          while read -r head; do
+            parent="$(gh api "repos/${GITHUB_REPOSITORY}/git/commits/${head}" --jq '.parents | select(length==1) | .[0].sha')"
+            if [[ "$parent" == "$GITHUB_SHA" ]]; then open=1; break; fi
+          done < /tmp/trustee-open-heads
           echo "open=${open}" >> "$GITHUB_OUTPUT"
           if [ "${open}" != "0" ]; then
             echo "已有截至 ${DATA_AS_OF} 的受託人回報資料 PR 未合併，今次唔再開。" >> "$GITHUB_STEP_SUMMARY"
@@ -86,6 +108,7 @@ jobs:
 
       - name: Fetch trustee sources dated like the platform snapshot
         id: fetch
+        if: steps.prior_plan.outputs.recovered != 'true'
         run: |
           set -euo pipefail
           bash scripts/fetch-trustee-monthly-returns.sh "${{ steps.inputs.outputs.data_as_of }}" /tmp/trustee
@@ -106,24 +129,33 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: trustee-monthly-sources-${{ github.run_id }}
+          name: trustee-monthly-sources-${{ github.run_id }}-${{ github.run_attempt }}
           path: /tmp/trustee
           if-no-files-found: ignore
           retention-days: 90
 
+      - name: Retrieve annualized source evidence
+        if: steps.prior_plan.outputs.recovered != 'true' && needs.annualized-factsheets.result == 'success'
+        uses: actions/download-artifact@v8
+        with:
+          name: ${{ needs.annualized-factsheets.outputs.artifact }}
+          path: /tmp/annualized-review
+
       - name: Build the candidate with cross-checks
         id: build
-        if: steps.fetch.outputs.count != '0' && steps.open_pr.outputs.open == '0'
+        if: steps.prior_plan.outputs.recovered != 'true' && steps.open_pr.outputs.open == '0'
         env:
           OUTPUT: ${{ steps.inputs.outputs.output }}
           REPORT: ${{ steps.inputs.outputs.report }}
         run: |
           set -euo pipefail
-          if [ -e "${OUTPUT}" ]; then
-            echo "::error::${OUTPUT} already exists; a candidate was already built today."
+          arguments=(--official-only)
+          if [[ -f /tmp/annualized-review/review.json ]]; then
+            arguments+=(--annualized-review /tmp/annualized-review/review.json)
+          elif [[ "${{ steps.fetch.outputs.count }}" == "0" ]]; then
+            echo "::error::No monthly sources or annualized review available"
             exit 1
           fi
-          arguments=()
           while IFS=$'\t' read -r flag value; do
             arguments+=("${flag}" "${value}")
           done < /tmp/trustee/arguments.txt
@@ -131,16 +163,32 @@ jobs:
             --source "${{ steps.inputs.outputs.platform }}" \
             --base-candidate "${{ steps.inputs.outputs.base }}" \
             "${arguments[@]}" \
-            --output "${OUTPUT}" \
-            --report "${REPORT}" 2>&1 | tee /tmp/build.log
+            --output /tmp/trustee/candidate.json \
+            --report /tmp/trustee/report.json 2>&1 | tee /tmp/build.log
           # 比較內容唔比較排版：舊候選檔格式唔同都唔應該開空 PR。
-          jq -r '.rejectedSources[] | "\(.flag)\t\(.entry | split("|")[0])\t\(.reason)"' "${REPORT}" > /tmp/trustee/rejected.txt
-          if [ "$(jq -S . "${OUTPUT}")" = "$(jq -S . "${{ steps.inputs.outputs.base }}")" ]; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            rm -f "${OUTPUT}" "${REPORT}"
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          fi
+          jq -r '
+            (.rejectedSources[] | "\(.flag)\t\(.entry | split("|")[0])\t\(.reason)"),
+            (.officialConflicts[] | "official conflict: \(.fundClassId) \(.periodYears)y"),
+            (.cumulativeExceptions[] | "\(.reason): \(.observation.fundClassId)"),
+            (.pendingThirdParty[] | "third-party update for manual review: \(.fundClassId)"),
+            (.annualizedFactsheets.errors[]? | "annualized PDF: \(.url) \(.error)"),
+            (.annualizedFactsheets.quarantined[]? | "annualized quarantine: \(.fundClassId) \(.reason)"),
+            (.annualizedFactsheets.reports[]? | select(.additionalFundNames | length > 0) | "additional PDF identities: \(.additionalFundNames | join(", "))"),
+            (.annualizedFactsheets.reports[]?.rows[] | select(.status == "same-date-revision" or .status == "older") | "\(.fundClassId): \(.status)")
+          ' /tmp/trustee/report.json > /tmp/trustee/rejected.txt
+          bun packages/coverage/src/stage-return-candidate.ts "${{ steps.inputs.outputs.base }}" \
+            /tmp/trustee/candidate.json /tmp/trustee/report.json "${OUTPUT}" "${REPORT}" >> "$GITHUB_OUTPUT"
+
+      - name: Archive the reconciliation even when no data changed
+        if: always() && steps.build.outcome != 'skipped'
+        uses: actions/upload-artifact@v7
+        with:
+          name: trustee-reconciliation-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            /tmp/trustee/report.json
+            /tmp/trustee/rejected.txt
+          if-no-files-found: warn
+          retention-days: 90
 
       - name: Check the publication seed with the new candidate
         if: steps.build.outputs.changed == 'true'
@@ -148,8 +196,9 @@ jobs:
           KWMPF_PUBLICATION_SEED_RETURN_OBSERVATIONS: ${{ steps.inputs.outputs.output }}
         run: bash scripts/check-publication-seed.sh
 
-      - name: Open a data pull request
-        if: steps.build.outputs.changed == 'true'
+      - name: Prepare the exact trustee-return PR commit
+        id: plan
+        if: steps.build.outputs.changed == 'true' && steps.prior_plan.outputs.recovered != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           DATA_AS_OF: ${{ steps.inputs.outputs.data_as_of }}
@@ -161,21 +210,12 @@ jobs:
           {
             echo "## 做咗咩"
             echo
-            echo "自動擷取受託人每月官方三年累積回報（ADR 0014），截至 ${DATA_AS_OF}；受託人冇提供嘅基金另用 HKIFA 轉載嘅 Lipper 表（第三方，ADR 0015，如有）。"
-            echo "每一行都同積金局平台同期一年回報交叉核對一致先收錄。"
+            echo "受託人每月累積回報與積金局同期數字核對。AIA／MASS 三年年率化回報按官方 PDF 的基金身分、日期及來源 SHA-256 核實。第三方更新見人工覆核報告。"
+            jq -r '.annualizedFactsheets.applied[]? | "- 年率化回報更新：\(.)"' "${REPORT}"
             echo
             echo "### 來源"
             echo
             jq -r '.sources[] | "- \(.schemeName)：\(.matched) 行，一年核對 \(.oneYearCrossChecks) 行，SHA-256 `\(.sha256)`，<\(.url)>"' "${REPORT}"
-            # 第三方（ADR 0015）分開列，唔好當受託人官方數據。
-            if [ "$(jq '.thirdPartySources // [] | length' "${REPORT}")" != "0" ]; then
-              echo
-              echo "### 第三方來源（ADR 0015，網站標「Lipper（第三方）」，受託人數字優先）"
-              echo
-              jq -r '.thirdPartySources[] | "- HKIFA 轉載 Lipper 表：對照表 \(.mapped) 行，一年核對 \(.oneYearCrossChecks) 行，SHA-256 `\(.sha256)`，<\(.url)>"' "${REPORT}"
-              echo
-              echo "受託人已有紀錄而保留受託人數字：$(jq '.keptTrusteeOverThirdParty | length' "${REPORT}") 隻。"
-            fi
             echo
             echo "### 未收錄"
             echo
@@ -188,22 +228,54 @@ jobs:
             echo
             echo "- [x] 讀取器逐行一年交叉核對通過。"
             echo "- [x] \`scripts/check-publication-seed.sh\` 用新候選通過。"
-            echo "- [ ] 人手抽三筆同官方原文核對。"
+            echo "例外項目見報告及跟進 issue。"
             echo
-            echo "合併及正式部署需要人手批准。Run：${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+            echo "自動合併及正式發布按官方資料驗證流程處理。Run：${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
           } > /tmp/pr-body.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch -c "${branch}"
           git add "${OUTPUT}" "${REPORT}"
-          git commit -m "data(returns): 每月三年累積回報（受託人官方；第三方 Lipper 另標）（截至 ${DATA_AS_OF}）"
-          git push --set-upstream origin "${branch}"
-          if ! gh pr create --base main --head "${branch}" \
-            --title "資料：每月三年累積回報（受託人官方；第三方 Lipper 另標）（截至 ${DATA_AS_OF}）" \
-            --body-file /tmp/pr-body.md; then
-            echo "::error::GitHub blocked automatic pull request creation. Open: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/pull/new/${branch}"
-            exit 1
-          fi
+          git commit -m "data(returns): 受託人官方回報更新（截至 ${DATA_AS_OF}）"
+          python3 scripts/auto-official-producer.py prepare "$branch" "資料：受託人官方回報更新（截至 ${DATA_AS_OF}）" /tmp/pr-body.md
+          echo "prepared=true" >> "$GITHUB_OUTPUT"
+
+      - name: Preserve original candidate before pushing
+        if: steps.plan.outputs.prepared == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: official-pr-plan-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/official-pr-plan
+          if-no-files-found: error
+
+      - name: Create a repository-scoped PR token
+        id: app
+        if: vars.OFFICIAL_DATA_AUTOPUBLISH == '1' && (steps.plan.outputs.prepared == 'true' || steps.prior_plan.outputs.recovered == 'true')
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.OFFICIAL_DATA_APP_ID }}
+          private-key: ${{ secrets.OFFICIAL_DATA_APP_PRIVATE_KEY }}
+          permission-contents: read
+          permission-pull-requests: write
+
+      - name: Open or verify the exact producer PR
+        id: opened
+        if: steps.plan.outputs.prepared == 'true' || steps.prior_plan.outputs.recovered == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          AUTOPUBLISH: ${{ vars.OFFICIAL_DATA_AUTOPUBLISH }}
+          APP_LOGIN: ${{ vars.OFFICIAL_DATA_APP_LOGIN }}
+          APP_SLUG: ${{ steps.app.outputs.app-slug }}
+          APP_TOKEN: ${{ steps.app.outputs.token }}
+        run: python3 scripts/auto-official-producer.py open
+
+      - name: Attest the created data PR head
+        if: steps.opened.outcome == 'success'
+        uses: actions/upload-artifact@v7
+        with:
+          name: official-data-pr-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/candidate-head.txt
+          if-no-files-found: error
 
       - name: Raise one follow-up issue when a source needs attention
         if: always() && steps.inputs.outcome == 'success'
@@ -216,6 +288,9 @@ jobs:
           set -euo pipefail
           mkdir -p /tmp/trustee
           touch /tmp/trustee/skipped.txt /tmp/trustee/rejected.txt
+          if [[ "${{ needs.annualized-factsheets.result }}" != "success" ]]; then
+            echo "Annualized factsheet monitor failed." >> /tmp/trustee/rejected.txt
+          fi
           # 平台快照入庫超過 10 日，受託人 PDF 仍然下載唔到先算異常；未夠 10 日係正常等待。
           # BCT 接口、宏利摘要、中銀保誠、永明接口同萬通月報只得最新一期：下載失敗，或者宏利、中銀保誠、永明、萬通已經去咗下一期
           # （source-ahead），即刻跟進，否則固定網址一轉期，嗰個月就攞唔返。

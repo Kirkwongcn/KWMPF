@@ -1,6 +1,7 @@
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
+import { mergeReviewedFactsheets, type FactsheetReview } from "./merge-reviewed-factsheets";
 import { parseSourceSnapshot } from "./input";
 import { matchBctRows, parseBctFundInformation } from "./bct-fund-performance";
 import { parseBociPrudentialListing } from "./boci-prudential-mpf-listing";
@@ -83,6 +84,8 @@ const sourcePath = argument("--source");
 const basePath = argument("--base-candidate");
 const outputPath = argument("--output");
 const reportPath = argument("--report");
+const reviewPath = argument("--annualized-review");
+const officialOnly = process.argv.includes("--official-only");
 const summaries = argumentsNamed("--summary");
 const bctResponses = argumentsNamed("--bct");
 const manulifeSummaries = argumentsNamed("--manulife");
@@ -97,7 +100,7 @@ if (
   !basePath ||
   !outputPath ||
   !reportPath ||
-  summaries.length + bctResponses.length + manulifeSummaries.length + bocPruListings.length + sunLifeResponses.length + yfLifeSummaries.length + hkifaTables.length === 0
+  (!reviewPath && summaries.length + bctResponses.length + manulifeSummaries.length + bocPruListings.length + sunLifeResponses.length + yfLifeSummaries.length + hkifaTables.length === 0)
 )
   throw new Error(
     'Usage: bun src/build-monthly-summary-returns.ts --source <platform.json> --base-candidate <candidate.json> [--summary "<scheme>|<url>|<pdf>|<retrievedAt>"] [--bct "<scheme>|<url>|<json>|<retrievedAt>"] [--manulife "<scheme>|<url>|<pdf>|<retrievedAt>"] [--bocpru "<scheme>|<url>|<json>|<retrievedAt>"] [--sunlife "<scheme>|<url>|<json>|<retrievedAt>"] [--yflife "<scheme>|<url>|<pdf>|<retrievedAt>"] [--hkifa "<url>|<pdf>|<retrievedAt>" --hkifa-map <map.json>] --output <candidate.json> --report <report.json>',
@@ -546,12 +549,12 @@ for (const entry of hkifaTables) {
     console.error(`REJECTED --hkifa ${entry.split("|")[0]}: ${reason}`);
   }
 }
-if (sources.length + thirdPartySources.length === 0)
+if (!reviewPath && sources.length + thirdPartySources.length === 0)
   throw new Error(`Every source was rejected: ${rejected.map((item) => item.reason).join(" | ")}`);
 
 // ADR 0016 第 2 節：衝突隔離嘅行唔可以用第三方補位——Lipper 表如有本次受託人衝突隔離嘅行，
 // 剔走並記入報告（衝突未喺兩間官方之間澄清前，唔發布任何一方補出嚟嘅數字）。
-const quarantinedIds = new Set(sources.flatMap((source) => source.quarantinedRows as string[]));
+const quarantinedIds = new Set(officialConflicts.map((conflict) => conflict.fundClassId));
 const thirdPartySuppressedForConflicts: string[] = [];
 const usableThirdParty = thirdParty.filter((observation) => {
   if (!quarantinedIds.has(observation.fundClassId)) return true;
@@ -570,12 +573,34 @@ if (orphaned.length > 0)
     `Base candidate has cumulative rows for unknown fund classes: ${orphaned.map((row) => row.fundClassId).join(", ")}`,
   );
 // 受託人優先、同日原文要一致等合併規則見 mergeCumulativeObservations（ADR 0014、0015）。
+const cumulativeExceptions: { observation: OfficialCumulativeReturnObservation; previous?: OfficialCumulativeReturnObservation; reason: string }[] = [];
+const priorById = new Map(base.cumulative.map((row) => [row.fundClassId, row]));
+const incomingCounts = new Map<string, number>();
+for (const row of fresh) incomingCounts.set(row.fundClassId, (incomingCounts.get(row.fundClassId) ?? 0) + 1);
+const eligible = officialOnly ? fresh.filter((row) => {
+  const previous = priorById.get(row.fundClassId);
+  const reason = incomingCounts.get(row.fundClassId)! > 1 ? "duplicate-official-disclosure"
+    : previous && !previous.publisher && previous.dataAsOf === row.dataAsOf && previous.printed !== row.printed
+      ? "same-date-revision" : null;
+  if (reason) cumulativeExceptions.push({ observation: row, previous, reason });
+  return !reason && !quarantinedIds.has(row.fundClassId);
+}) : fresh;
+const pendingThirdParty = officialOnly ? usableThirdParty.filter((row) => {
+  const old = priorById.get(row.fundClassId);
+  return !eligible.some((x) => x.fundClassId === row.fundClassId) &&
+    (!old || (old.publisher && (row.dataAsOf > old.dataAsOf ||
+      (row.dataAsOf === old.dataAsOf && row.printed !== old.printed))));
+}) : [];
+const conflictedFunds = new Set([...quarantinedIds, ...cumulativeExceptions.map((row) => row.observation.fundClassId)]);
+const factsheets = reviewPath ? mergeReviewedFactsheets(base.annualized,
+  JSON.parse(await readFile(reviewPath, "utf8")) as FactsheetReview, snapshot.records, conflictedFunds) : undefined;
+const annualized = factsheets?.annualized ?? base.annualized;
 const { cumulative, replaced, keptNewer, keptTrustee } = mergeCumulativeObservations(
   base.cumulative,
-  fresh,
-  usableThirdParty,
+  eligible,
+  officialOnly ? [] : usableThirdParty,
 );
-const annualizedCheck = validateOfficialReturnObservations(base.annualized);
+const annualizedCheck = validateOfficialReturnObservations(annualized);
 const cumulativeCheck = validateOfficialCumulativeReturnObservations(cumulative);
 if (annualizedCheck.invalid.length > 0 || cumulativeCheck.invalid.length > 0)
   throw new Error(
@@ -584,7 +609,7 @@ if (annualizedCheck.invalid.length > 0 || cumulativeCheck.invalid.length > 0)
 
 await writeFile(
   outputPath,
-  `${JSON.stringify([...base.annualized, ...cumulative], null, 2)}\n`,
+  `${JSON.stringify([...annualized, ...cumulative], null, 2)}\n`,
 );
 await writeFile(
   reportPath,
@@ -595,6 +620,8 @@ await writeFile(
       baseCandidate: basePath,
       method:
         "Official trustee monthly data: HSBC / Hang Seng Monthly Fund Performance Summary main table (pdftotext -layout), BCT website fund performance responses, the Manulife Global Select Monthly Fund Summary (pdftotext -bbox columns), the BOCI-Prudential website MPF price and performance listing (JSON), the Sun Life website MPF cumulative performance data (JSON), the YF Life (MASS) Monthly Fund Performance of the Scheme (pdftotext -bbox columns); plus, for funds without a trustee figure, the third-party HKIFA-published Lipper MPF Performance Table via a reviewed name map (ADR 0015, rows carry publisher hkifa-lipper; trustee rows always take precedence). Exact English-name match within the scheme (BCT unit class by the Class X / Unit Class X contract), one-year cumulative cross-checked against the MPFA platform one-year return of the same date for every row; three-year cumulative stored as published (ADR 0014), never converted to annualized.",
+      ...(factsheets && { annualizedFactsheets: factsheets.report }),
+      ...(officialOnly && { pendingThirdParty, cumulativeExceptions }),
       sources,
       thirdPartySources,
       annualizedRows: base.annualized.length,
