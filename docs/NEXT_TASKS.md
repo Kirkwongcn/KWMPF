@@ -6,7 +6,7 @@
 
 | ID | 工作／目前證據 | 具體下一步／完成條件 |
 | --- | --- | --- |
-| DATA-409 | [69 筆核對完成，CI 通過](reviews/2026-11-13-pr409.md) | 正式寫入暫停。開通時重查版本；發布後讀回 69 筆基金詳情及四個年期排名。 |
+| DATA-409 | [正式資料與 69 頁驗收完成](reviews/2026-11-13-pr409.md) | 日常寫入關閉。Pages 上游恢復後核實前端部署與 release manifest；目前公開頁面已通過資料驗收。 |
 | DATA-402 | 七項官方費率及四個上限全部核實；精確檔案的 disposition 已通過發布前檢查 | 發布狀態及驗收記錄見 [#402 跟進](reviews/2026-11-12-pr402.md) |
 | DATA-400 | 已核對、測試及合併，14 筆更新，0 筆新增 | 已完成 #52 發布，14 筆公開詳情及完整排名已核對，見 [逐項記錄](reviews/2026-11-12-pr400.md) |
 | DATA-CONFLICT | [Issue396](https://github.com/Kirkwongcn/KWMPF/issues/396)仍open；ADR0016 reader隔離已合併，但workflow只由rejectedSources產生跟進檔 | 將officialConflicts／quarantinedRows獨立納入跟進與去重；候選沒有增量時亦保留衝突證據。用隔離fixture覆蓋全文件reject／部分隔離／無候選變動。待使用者批准code範圍；不放寬數字比較、不借第三方補位 |
