@@ -1,0 +1,576 @@
+{
+  "generatedAt": "2026-11-13T10:29:54.655Z",
+  "sourceSnapshot": "data/sources/2026-11-10/mpf-fund-platform.json",
+  "baseCandidate": "data/coverage/2026-11-12-official-return-observations-candidate.json",
+  "method": "Official trustee monthly data: HSBC / Hang Seng Monthly Fund Performance Summary main table (pdftotext -layout), BCT website fund performance responses, the Manulife Global Select Monthly Fund Summary (pdftotext -bbox columns), the BOCI-Prudential website MPF price and performance listing (JSON), the Sun Life website MPF cumulative performance data (JSON), the YF Life (MASS) Monthly Fund Performance of the Scheme (pdftotext -bbox columns); plus, for funds without a trustee figure, the third-party HKIFA-published Lipper MPF Performance Table via a reviewed name map (ADR 0015, rows carry publisher hkifa-lipper; trustee rows always take precedence). Exact English-name match within the scheme (BCT unit class by the Class X / Unit Class X contract), one-year cumulative cross-checked against the MPFA platform one-year return of the same date for every row; three-year cumulative stored as published (ADR 0014), never converted to annualized.",
+  "annualizedFactsheets": {
+    "summary": {
+      "checked": 34,
+      "newer": 0,
+      "revisions": 0,
+      "older": 0,
+      "failures": 0
+    },
+    "reports": [
+      {
+        "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-aug-2026.pdf",
+        "sha256": "616b3c95b4b55e7c3d24c8e1d7f8422e3b8b6e2e1a9035f9b9571a89e67429bd",
+        "retrievedAt": "2026-11-13T10:28:57.182Z",
+        "additionalFundNames": [],
+        "rows": [
+          {
+            "fundClassId": "mpfa-cf-1519",
+            "name": "Core Accumulation Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 12.35,
+            "dataAsOf": "2026-08-31",
+            "annualized": 12.35
+          },
+          {
+            "fundClassId": "mpfa-cf-1520",
+            "name": "Age 65 Plus Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 4.89,
+            "dataAsOf": "2026-08-31",
+            "annualized": 4.89
+          },
+          {
+            "fundClassId": "mpfa-cf-878",
+            "name": "American Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 18.91,
+            "dataAsOf": "2026-08-31",
+            "annualized": 18.91
+          },
+          {
+            "fundClassId": "mpfa-cf-876",
+            "name": "Eurasia Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 18.45,
+            "dataAsOf": "2026-08-31",
+            "annualized": 18.45
+          },
+          {
+            "fundClassId": "mpfa-cf-877",
+            "name": "Hong Kong and China Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 14.47,
+            "dataAsOf": "2026-08-31",
+            "annualized": 14.47
+          },
+          {
+            "fundClassId": "mpfa-cf-658",
+            "name": "World Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 18.71,
+            "dataAsOf": "2026-08-31",
+            "annualized": 18.71
+          },
+          {
+            "fundClassId": "mpfa-cf-875",
+            "name": "Asian Bond Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 4.07,
+            "dataAsOf": "2026-08-31",
+            "annualized": 4.07
+          },
+          {
+            "fundClassId": "mpfa-cf-657",
+            "name": "Global Bond Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 2.32,
+            "dataAsOf": "2026-08-31",
+            "annualized": 2.32
+          },
+          {
+            "fundClassId": "mpfa-cf-134",
+            "name": "MPF Conservative Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 2.63,
+            "dataAsOf": "2026-08-31",
+            "annualized": 2.63
+          },
+          {
+            "fundClassId": "mpfa-cf-1579",
+            "name": "China HK DynamicAssetAllocation Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 9.04,
+            "dataAsOf": "2026-08-31",
+            "annualized": 9.04
+          },
+          {
+            "fundClassId": "mpfa-cf-699",
+            "name": "Manager’s Choice Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 11.82,
+            "dataAsOf": "2026-08-31",
+            "annualized": 11.82
+          },
+          {
+            "fundClassId": "mpfa-cf-137",
+            "name": "Asian Equity Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 24.5,
+            "dataAsOf": "2026-08-31",
+            "annualized": 24.5
+          },
+          {
+            "fundClassId": "mpfa-cf-145",
+            "name": "European Equity Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 16.64,
+            "dataAsOf": "2026-08-31",
+            "annualized": 16.64
+          },
+          {
+            "fundClassId": "mpfa-cf-102",
+            "name": "Greater China Equity Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 21.38,
+            "dataAsOf": "2026-08-31",
+            "annualized": 21.38
+          },
+          {
+            "fundClassId": "mpfa-cf-142",
+            "name": "North American Equity Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 17.45,
+            "dataAsOf": "2026-08-31",
+            "annualized": 17.45
+          },
+          {
+            "fundClassId": "mpfa-cf-141",
+            "name": "Green Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 20.12,
+            "dataAsOf": "2026-08-31",
+            "annualized": 20.12
+          },
+          {
+            "fundClassId": "mpfa-cf-146",
+            "name": "Guaranteed Portfolio",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 1.31,
+            "dataAsOf": "2026-08-31",
+            "annualized": 1.31
+          },
+          {
+            "fundClassId": "mpfa-cf-133",
+            "name": "Growth Portfolio",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 16.44,
+            "dataAsOf": "2026-08-31",
+            "annualized": 16.44
+          },
+          {
+            "fundClassId": "mpfa-cf-132",
+            "name": "Balanced Portfolio",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 9.87,
+            "dataAsOf": "2026-08-31",
+            "annualized": 9.87
+          },
+          {
+            "fundClassId": "mpfa-cf-131",
+            "name": "Capital Stable Portfolio",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 6.82,
+            "dataAsOf": "2026-08-31",
+            "annualized": 6.82
+          }
+        ]
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/EUEF_E.pdf",
+        "sha256": "e869459fc3605dd8cca9625cda3d4ee2ac3599598da94dbfa41b87196ab5ea07",
+        "retrievedAt": "2026-11-13T10:28:59.189Z",
+        "additionalFundNames": [],
+        "rows": [
+          {
+            "fundClassId": "mpfa-cf-390",
+            "name": "European Equity Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 16.05,
+            "dataAsOf": "2026-08-31",
+            "annualized": 16.05
+          }
+        ]
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/HKEF_E.pdf",
+        "sha256": "b46a223fcc9ed620b8877725c6db1f1771f8cd0da05baaa42b29f62668a2eca7",
+        "retrievedAt": "2026-11-13T10:28:59.578Z",
+        "additionalFundNames": [],
+        "rows": [
+          {
+            "fundClassId": "mpfa-cf-389",
+            "name": "Hong Kong Equities Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 12.67,
+            "dataAsOf": "2026-08-31",
+            "annualized": 12.67
+          }
+        ]
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GCEF_E.pdf",
+        "sha256": "9eb2fc3ecd8a8119e083eec6e1c06154bc9e51c36fd2e1beb13b16a433063e79",
+        "retrievedAt": "2026-11-13T10:29:00.232Z",
+        "additionalFundNames": [],
+        "rows": [
+          {
+            "fundClassId": "mpfa-cf-874",
+            "name": "Greater China Equity Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 20.28,
+            "dataAsOf": "2026-08-31",
+            "annualized": 20.28
+          }
+        ]
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLEF_E.pdf",
+        "sha256": "f8327e9063c496736fbe3e06865e825bf6424051cab02b53dd1e7f840d2d9a6e",
+        "retrievedAt": "2026-11-13T10:29:00.691Z",
+        "additionalFundNames": [],
+        "rows": [
+          {
+            "fundClassId": "mpfa-cf-387",
+            "name": "Global Equity Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 18.12,
+            "dataAsOf": "2026-08-31",
+            "annualized": 18.12
+          }
+        ]
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLBF_E.pdf",
+        "sha256": "331ef3cbaaf459d4e65f4d606cbc3b7d0934371163434e7d9261637040b39c9e",
+        "retrievedAt": "2026-11-13T10:29:01.043Z",
+        "additionalFundNames": [],
+        "rows": [
+          {
+            "fundClassId": "mpfa-cf-383",
+            "name": "Global Bond Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 2.28,
+            "dataAsOf": "2026-08-31",
+            "annualized": 2.28
+          }
+        ]
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/A65F2_E.pdf",
+        "sha256": "f1829112f95e31d7224118642aef20dd60c27f205ae9593f32c2bf6198b7b13f",
+        "retrievedAt": "2026-11-13T10:29:01.384Z",
+        "additionalFundNames": [],
+        "rows": [
+          {
+            "fundClassId": "mpfa-cf-1488",
+            "name": "Age 65 Plus Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 5.83,
+            "dataAsOf": "2026-08-31",
+            "annualized": 5.83
+          }
+        ]
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/CAF2_E.pdf",
+        "sha256": "0ce8b14df3908042a7d773922ef32088604959fb33d32a723ede07770a60bf29",
+        "retrievedAt": "2026-11-13T10:29:01.772Z",
+        "additionalFundNames": [],
+        "rows": [
+          {
+            "fundClassId": "mpfa-cf-1487",
+            "name": "Core Accumulation Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 14,
+            "dataAsOf": "2026-08-31",
+            "annualized": 14
+          }
+        ]
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/USEF_E.pdf",
+        "sha256": "d4d3b4cb6c0137a96a6b13ddd418fbeab708bd350f8e986088858ce0d31a37f3",
+        "retrievedAt": "2026-11-13T10:29:02.138Z",
+        "additionalFundNames": [],
+        "rows": [
+          {
+            "fundClassId": "mpfa-cf-391",
+            "name": "US Equity Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 19.1,
+            "dataAsOf": "2026-08-31",
+            "annualized": 19.1
+          }
+        ]
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GUAF_E.pdf",
+        "sha256": "aa51fed4309883956c1b3ae2cad1eda28b7f22f2a183032d3e2435bf628af8f6",
+        "retrievedAt": "2026-11-13T10:29:02.509Z",
+        "additionalFundNames": [],
+        "rows": [
+          {
+            "fundClassId": "mpfa-cf-388",
+            "name": "Guaranteed Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 4.52,
+            "dataAsOf": "2026-08-31",
+            "annualized": 4.52
+          }
+        ]
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/APEF_E.pdf",
+        "sha256": "53b66fadbc0cedd5441719ea24dcc4c59c54bd54d2ee96fea0f251a89c625dac",
+        "retrievedAt": "2026-11-13T10:29:02.854Z",
+        "additionalFundNames": [],
+        "rows": [
+          {
+            "fundClassId": "mpfa-cf-392",
+            "name": "Asian Pacific Equity Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 21.71,
+            "dataAsOf": "2026-08-31",
+            "annualized": 21.71
+          }
+        ]
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/ASBF_E.pdf",
+        "sha256": "68c828b42ba0cb35e8a443882c5df0bd4f3379b87affd298d88e8768cc524760",
+        "retrievedAt": "2026-11-13T10:29:03.282Z",
+        "additionalFundNames": [],
+        "rows": [
+          {
+            "fundClassId": "mpfa-cf-384",
+            "name": "Asian Bond Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 4.08,
+            "dataAsOf": "2026-08-31",
+            "annualized": 4.08
+          }
+        ]
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/CAPF_E.pdf",
+        "sha256": "71a47b13fdb09156e77bd5c5541da6599d6103d8442db68825be140ba8820152",
+        "retrievedAt": "2026-11-13T10:29:03.612Z",
+        "additionalFundNames": [],
+        "rows": [
+          {
+            "fundClassId": "mpfa-cf-386",
+            "name": "MPF Conservative Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 2.57,
+            "dataAsOf": "2026-08-31",
+            "annualized": 2.57
+          }
+        ]
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLSF_E.pdf",
+        "sha256": "ecc172f6fdcecbb79f28de2925f651183c4fc69902525943141506e42a58589a",
+        "retrievedAt": "2026-11-13T10:29:03.955Z",
+        "additionalFundNames": [],
+        "rows": [
+          {
+            "fundClassId": "mpfa-cf-385",
+            "name": "Global Stable Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 9.83,
+            "dataAsOf": "2026-08-31",
+            "annualized": 9.83
+          }
+        ]
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLGF_E.pdf",
+        "sha256": "a16f79f04d3512435a7bb460f2a523e66b1daf84e9b7a71e258788b0b374a389",
+        "retrievedAt": "2026-11-13T10:29:04.417Z",
+        "additionalFundNames": [],
+        "rows": [
+          {
+            "fundClassId": "mpfa-cf-394",
+            "name": "Global Growth Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 12.97,
+            "dataAsOf": "2026-08-31",
+            "annualized": 12.97
+          }
+        ]
+      }
+    ],
+    "errors": [],
+    "applied": [],
+    "quarantined": []
+  },
+  "pendingThirdParty": [],
+  "cumulativeExceptions": [],
+  "sources": [
+    {
+      "kind": "monthly-summary-pdf",
+      "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "url": "https://www.hsbc.com.hk/content/dam/hsbc/hk/docs/mpf/monthly-fund-performance-summary/202610.pdf",
+      "retrievedAt": "2026-11-13T10:29:32Z",
+      "sha256": "6676c8b6330755938f429cc19b5de222b9a8c4c34b6187df0a028b9635b0734d",
+      "bytes": 707062,
+      "page": 4,
+      "dataAsOf": "2026-10-31",
+      "rows": 20,
+      "matched": 20,
+      "quarantinedRows": [],
+      "officialNotDisclosed": [],
+      "oneYearCrossChecks": 20,
+      "fiveTenYearCrossChecks": 34
+    },
+    {
+      "kind": "monthly-summary-pdf",
+      "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "url": "https://cms.hangseng.com/cms/cbd/eMPF/monthly_oct2026.pdf",
+      "retrievedAt": "2026-11-13T10:29:32Z",
+      "sha256": "54cfd16bc7a3b6aa02af488b02d0de20d4622e2dae6d906c7f59dea7ada8942a",
+      "bytes": 554389,
+      "page": 4,
+      "dataAsOf": "2026-10-31",
+      "rows": 20,
+      "matched": 20,
+      "quarantinedRows": [],
+      "officialNotDisclosed": [],
+      "oneYearCrossChecks": 20,
+      "fiveTenYearCrossChecks": 34
+    },
+    {
+      "kind": "manulife-monthly-summary-pdf",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "url": "https://www.manulife.com.hk/content/dam/insurance/hk/zh-hk/documents/fund-price/mpf-monthly-summary.pdf",
+      "retrievedAt": "2026-11-13T10:29:47Z",
+      "sha256": "277e1fa130d70cc6be9dcb9a2272b9ebec98e17eff97ae3890a65e2ab9cd9266",
+      "bytes": 2434447,
+      "dataAsOf": "2026-10-31",
+      "rows": 29,
+      "matched": 29,
+      "quarantinedRows": [],
+      "officialNotDisclosed": [],
+      "oneYearCrossChecks": 29,
+      "fiveTenYearCrossChecks": 55
+    }
+  ],
+  "thirdPartySources": [],
+  "annualizedRows": 350,
+  "cumulativeRows": 374,
+  "replacedCumulative": [
+    "mpfa-cf-319",
+    "mpfa-cf-801",
+    "mpfa-cf-320",
+    "mpfa-cf-802",
+    "mpfa-cf-318",
+    "mpfa-cf-803",
+    "mpfa-cf-322",
+    "mpfa-cf-317",
+    "mpfa-cf-1622",
+    "mpfa-cf-1619",
+    "mpfa-cf-323",
+    "mpfa-cf-326",
+    "mpfa-cf-324",
+    "mpfa-cf-321",
+    "mpfa-cf-804",
+    "mpfa-cf-1624",
+    "mpfa-cf-1631",
+    "mpfa-cf-1621",
+    "mpfa-cf-1620",
+    "mpfa-cf-325",
+    "mpfa-cf-306",
+    "mpfa-cf-805",
+    "mpfa-cf-305",
+    "mpfa-cf-806",
+    "mpfa-cf-304",
+    "mpfa-cf-807",
+    "mpfa-cf-310",
+    "mpfa-cf-311",
+    "mpfa-cf-1628",
+    "mpfa-cf-1625",
+    "mpfa-cf-308",
+    "mpfa-cf-307",
+    "mpfa-cf-303",
+    "mpfa-cf-309",
+    "mpfa-cf-808",
+    "mpfa-cf-1630",
+    "mpfa-cf-1629",
+    "mpfa-cf-1627",
+    "mpfa-cf-1626",
+    "mpfa-cf-302",
+    "mpfa-cf-695",
+    "mpfa-cf-370",
+    "mpfa-cf-375",
+    "mpfa-cf-367",
+    "mpfa-cf-907",
+    "mpfa-cf-371",
+    "mpfa-cf-369",
+    "mpfa-cf-377",
+    "mpfa-cf-368",
+    "mpfa-cf-376",
+    "mpfa-cf-373",
+    "mpfa-cf-363",
+    "mpfa-cf-374",
+    "mpfa-cf-1719",
+    "mpfa-cf-848",
+    "mpfa-cf-847",
+    "mpfa-cf-846",
+    "mpfa-cf-845",
+    "mpfa-cf-844",
+    "mpfa-cf-842",
+    "mpfa-cf-1485",
+    "mpfa-cf-1486",
+    "mpfa-cf-1219",
+    "mpfa-cf-906",
+    "mpfa-cf-372",
+    "mpfa-cf-362",
+    "mpfa-cf-366",
+    "mpfa-cf-364",
+    "mpfa-cf-365"
+  ],
+  "keptNewerCumulative": [],
+  "keptTrusteeOverThirdParty": [],
+  "officialConflicts": [],
+  "thirdPartySuppressedForConflicts": [],
+  "rejectedSources": []
+}
