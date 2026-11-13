@@ -1,10 +1,12 @@
 # KWMPF 即時交接
 
-2026-11-14 中國人壽解析器修正已存功能分支。10/10 與官方六月底原件及正式數值吻合，79 筆排名不變。見[修正、測試及逐項證據](reviews/2026-11-14-china-life-date-fix.md)。
+2026-11-14 香港時間。[PR #410](https://github.com/Kirkwongcn/KWMPF/pull/410) 已 squash-merge，main commit 為 `47d0f6d7598a7539f8e66d562ef4daf66a590e49`。[PR CI](https://github.com/Kirkwongcn/KWMPF/actions/runs/43469205797) 的 verify、high-risk-review、e2e 均通過；[main CI](https://github.com/Kirkwongcn/KWMPF/actions/runs/43469606697) 的 verify 通過。 合併後以官方 PDF 核對 10/10 筆日期及回報，正式三年排名全部 79 筆不變；自動寫入關閉，正式 Worker 仍是 9d7d550。詳見[逐基金數值及合併後驗收](reviews/2026-11-14-china-life-date-fix.md)。
+
+合併前驗收：中國人壽解析器修正已存功能分支。10/10 與官方六月底原件及正式數值吻合，79 筆排名不變。見[修正、測試及逐項證據](reviews/2026-11-14-china-life-date-fix.md)。
 
 2026-11-14 香港時間。已核對全部 271 筆過期三年年率化回報及 17 個計劃的原件。銀聯 100、東亞 40、中銀保誠 31 筆均只核實到六月底，其他 100 筆亦同。AMTD 16 筆有較新的歷史數值，仍超過 90 日。新增入榜 0 筆，正式 79 筆排名及次序維持。中國人壽十筆的封面日期與解析日期有差異，詳見[逐項核對及跟進](reviews/2026-11-14-annualized-271.md)。日常自動寫入關閉。
 
-#409 已上線，main、正式 Worker 及 Pages 均為 `9d7d5509c3393e79d53d2d1e14576d488a52ac09`。#56 的 Pages 及私有 R2 release manifest 已獨立補發及讀回；修復沒有寫入 D1。69 頁及四期排名已核對，日常自動寫入關閉。[發布回執及驗收](reviews/2026-11-13-pr409.md)
+上次 #409 發布時，main、正式 Worker 及 Pages 均為 `9d7d5509c3393e79d53d2d1e14576d488a52ac09`。#56 的 Pages 及私有 R2 release manifest 已獨立補發及讀回；修復沒有寫入 D1。69 頁及四期排名已核對，日常自動寫入關閉。[發布回執及驗收](reviews/2026-11-13-pr409.md)
 
 2026-11-12 香港時間。main 與正式部署 #55 版本為 c296c42a173ef03bbde99a3df6db3810fcf30724。友邦 20 筆及萬通 14 筆均已核對官方原件，最新表現日仍是 2026-08-31。每日工作已加入年率化便覽擷取及差異報告，獨立 GitHub run 的 34 筆及所有 PDF 指紋已驗證。0 筆新期回報。正式 API 完整 79 筆排名與 #54 相同，過期排除 271 筆。[逐項來源、每日流程及發布驗收](reviews/2026-11-12-aia-mass-expiry.md)
 
@@ -16,7 +18,7 @@
 
 ## 取得目前工作
 
-- Repo 為 https://github.com/Kirkwongcn/KWMPF.git 。交接分支 `docs/status-audit-20261112` 已納入上述 main。取得該分支並核對遠端完整 SHA；最新文件 commit 由交付回執提供。
+- Repo 為 https://github.com/Kirkwongcn/KWMPF.git 。文件取自交接分支 `docs/status-audit-20261112`；執行程式請取 main 的 #410 合併版本 `47d0f6d7598a7539f8e66d562ef4daf66a590e49`。取得該分支並核對遠端完整 SHA；最新文件 commit 由交付回執提供。
 - 本次 checkout 在 C:/Users/user/Documents/Codex/2026-09-26/kwmpf/work/kwmpf-review-redesign。官方原頁網址、原印值、資料日期、來源 HTML 與批次 SHA-256 均在 GitHub 的 [覆核記錄](../data/sources/2026-11-10/review-disposition.json)。本機抓取 HTML 與隔離測試 SQL 放在工作區 outputs/pr402-review，未上傳到 R2；重建請用 repo 的候選與已記錄的來源。私有 R2 歷史交接指標本次未改。
 - [原獨立審計](reviews/2026-11-12-independent-status-audit.md) 保存 #399、#396 及部署 #50 的歷史證據。其 main、部署、#402 待辦已由 #51 更新。歷史的跨工具／R2 資料見[上一版交接](https://github.com/Kirkwongcn/KWMPF/blob/ca48b181283b225d33ff33fe502854d5c7034f70/docs/HANDOFF.md)。
 

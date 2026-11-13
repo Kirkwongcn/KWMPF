@@ -23,4 +23,10 @@
 
 - 新回歸測試先在舊程式重現 6 月 23 日，修正後通過。涵蓋舊文字層、季度不符、日期矛盾、缺少判別資料。覆核 47/47 項解析器測試通過，coverage TypeScript 檢查通過。Windows 首輪另有一項 Fidelity 測試受 CRLF 影響，重跑採用 Git 的 LF fixture，之後已還原本機換行。
 - 以正式命令 parse-fact-sheets.ts 讀取同一原件，10 筆成功；再以 merge-fact-sheet-returns.ts 對十月名冊，10 筆唯一匹配，未匹配及歧義均為 0。
-- 全部十筆已超過 90 日，修正不增加合資格基金。正式三年排名完整回應與先前基線一致：79 筆入榜、271 筆過期、0 筆名次改動。正式 API 和 main 版本 9d7d5509c3393e79d53d2d1e14576d488a52ac09。日常自動寫入開關未設定，維持關閉。修正只在功能分支，未合併及部署。
+- 全部十筆已超過 90 日，修正不增加合資格基金。正式三年排名完整回應與先前基線一致：79 筆入榜、271 筆過期、0 筆名次改動。正式 API 和 main 版本 9d7d5509c3393e79d53d2d1e14576d488a52ac09。日常自動寫入開關未設定，維持關閉。此為合併前驗收，合併後結果如下。
+
+## 合併後驗收
+
+[PR #410](https://github.com/Kirkwongcn/KWMPF/pull/410) 已 squash-merge，main commit 為 `47d0f6d7598a7539f8e66d562ef4daf66a590e49`。[PR CI](https://github.com/Kirkwongcn/KWMPF/actions/runs/43469205797) 的 verify、high-risk-review、e2e 均通過；[main CI](https://github.com/Kirkwongcn/KWMPF/actions/runs/43469606697) 的 verify 通過。 獨立覆核發現同季度出現兩個中文日期仍可能通過，已加入拒絕條件及回歸案例。
+
+已在上述 main commit 重新下載官方原件並核對 SHA-256，以正式解析入口及積金局名冊重跑，上表十個基金類別皆唯一匹配；原印回報、正式候選值及本機 publication seed 逐筆相同，截至日均為 2026-06-30。解析器測試 47/47 及 coverage TypeScript 通過。正式三年排名完整回應與合併前一致，79 筆入榜、271 筆過期；日常自動寫入開關仍未設定。本次沒有正式部署，線上 Worker 仍為 9d7d5509c3393e79d53d2d1e14576d488a52ac09。
