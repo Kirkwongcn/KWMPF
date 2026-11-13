@@ -1,0 +1,70 @@
+scheme,fund_id,fund,pdf_page,official_1y_pct,mpfa_1y_pct,previous_as_of,previous_3y_cumulative_pct,as_of,official_and_candidate_3y_cumulative_pct
+HSBC,mpfa-cf-1619,Global Equity Fund,4,13.07,13.07,2026-09-30,71.91,2026-10-31,72.77
+HSBC,mpfa-cf-1620,Hang Seng China Enterprises Index Tracking Fund,4,-12.46,-12.46,2026-09-30,42.62,2026-10-31,43.49
+HSBC,mpfa-cf-1621,ValueChoice Asia Pacific Equity Tracker Fund,4,13.51,13.51,2026-09-30,82.81,2026-10-31,77.93
+HSBC,mpfa-cf-1622,ValueChoice Balanced Fund,4,4.35,4.35,2026-09-30,46.53,2026-10-31,47.63
+HSBC,mpfa-cf-1624,ValueChoice North America Equity Tracker Fund,4,11.04,11.04,2026-09-30,77.30,2026-10-31,80.18
+HSBC,mpfa-cf-1631,ValueChoice Europe Equity Tracker Fund,4,13.32,13.32,2026-09-30,56.78,2026-10-31,63.33
+HSBC,mpfa-cf-317,Growth Fund,4,5.78,5.78,2026-09-30,56.72,2026-10-31,56.12
+HSBC,mpfa-cf-318,Core Accumulation Fund,4,7.26,7.26,2026-09-30,43.29,2026-10-31,44.83
+HSBC,mpfa-cf-319,MPF Conservative Fund,4,2.02,2.02,2026-09-30,9.06,2026-10-31,8.86
+HSBC,mpfa-cf-320,Guaranteed Fund,4,-1.03,-1.03,2026-09-30,6.78,2026-10-31,7.68
+HSBC,mpfa-cf-321,Hong Kong and Chinese Equity Fund,4,-12.39,-12.39,2026-09-30,40.17,2026-10-31,35.69
+HSBC,mpfa-cf-322,Balanced Fund,4,4.07,4.07,2026-09-30,44.06,2026-10-31,44.32
+HSBC,mpfa-cf-323,North American Equity Fund,4,14.39,14.39,2026-09-30,74.60,2026-10-31,77.62
+HSBC,mpfa-cf-324,Asia Pacific Equity Fund,4,6.95,6.95,2026-09-30,62.96,2026-10-31,57.52
+HSBC,mpfa-cf-325,Hang Seng Index Tracking Fund,4,-8.03,-8.03,2026-09-30,49.54,2026-10-31,47.42
+HSBC,mpfa-cf-326,European Equity Fund,4,13.37,13.37,2026-09-30,48.66,2026-10-31,55.26
+HSBC,mpfa-cf-801,Global Bond Fund,4,-0.96,-0.96,2026-09-30,7.51,2026-10-31,10.58
+HSBC,mpfa-cf-802,Age 65 Plus Fund,4,1.42,1.42,2026-09-30,17.22,2026-10-31,19.47
+HSBC,mpfa-cf-803,Stable Fund,4,1.39,1.39,2026-09-30,21.40,2026-10-31,22.83
+HSBC,mpfa-cf-804,Chinese Equity Fund,4,-17.77,-17.77,2026-09-30,31.41,2026-10-31,24.32
+Hang Seng,mpfa-cf-1625,Global Equity Fund,4,13.07,13.07,2026-09-30,71.91,2026-10-31,72.77
+Hang Seng,mpfa-cf-1626,Hang Seng China Enterprises Index Tracking Fund,4,-12.45,-12.45,2026-09-30,42.64,2026-10-31,43.51
+Hang Seng,mpfa-cf-1627,ValueChoice Asia Pacific Equity Tracker Fund,4,13.51,13.51,2026-09-30,82.81,2026-10-31,77.94
+Hang Seng,mpfa-cf-1628,ValueChoice Balanced Fund,4,4.35,4.35,2026-09-30,46.54,2026-10-31,47.63
+Hang Seng,mpfa-cf-1629,ValueChoice Europe Equity Tracker Fund,4,13.32,13.32,2026-09-30,56.77,2026-10-31,63.33
+Hang Seng,mpfa-cf-1630,ValueChoice North America Equity Tracker Fund,4,11.04,11.04,2026-09-30,77.29,2026-10-31,80.18
+Hang Seng,mpfa-cf-302,Hang Seng Index Tracking Fund,4,-8.03,-8.03,2026-09-30,49.54,2026-10-31,47.42
+Hang Seng,mpfa-cf-303,Asia Pacific Equity Fund,4,6.94,6.94,2026-09-30,62.94,2026-10-31,57.51
+Hang Seng,mpfa-cf-304,Core Accumulation Fund,4,7.25,7.25,2026-09-30,43.27,2026-10-31,44.82
+Hang Seng,mpfa-cf-305,Guaranteed Fund,4,-1.04,-1.04,2026-09-30,6.77,2026-10-31,7.68
+Hang Seng,mpfa-cf-306,MPF Conservative Fund,4,2.03,2.03,2026-09-30,9.07,2026-10-31,8.86
+Hang Seng,mpfa-cf-307,European Equity Fund,4,13.34,13.34,2026-09-30,48.62,2026-10-31,55.21
+Hang Seng,mpfa-cf-308,North American Equity Fund,4,14.37,14.37,2026-09-30,74.58,2026-10-31,77.59
+Hang Seng,mpfa-cf-309,Hong Kong and Chinese Equity Fund,4,-12.40,-12.4,2026-09-30,40.16,2026-10-31,35.68
+Hang Seng,mpfa-cf-310,Balanced Fund,4,4.06,4.06,2026-09-30,44.04,2026-10-31,44.31
+Hang Seng,mpfa-cf-311,Growth Fund,4,5.77,5.77,2026-09-30,56.70,2026-10-31,56.10
+Hang Seng,mpfa-cf-805,Global Bond Fund,4,-0.96,-0.96,2026-09-30,7.51,2026-10-31,10.58
+Hang Seng,mpfa-cf-806,Age 65 Plus Fund,4,1.41,1.41,2026-09-30,17.21,2026-10-31,19.46
+Hang Seng,mpfa-cf-807,Stable Fund,4,1.39,1.39,2026-09-30,21.39,2026-10-31,22.83
+Hang Seng,mpfa-cf-808,Chinese Equity Fund,4,-17.78,-17.78,2026-09-30,31.39,2026-10-31,24.30
+Manulife,mpfa-cf-1219,Manulife MPF RMB Bond Fund,4,7.62,7.62,2026-09-30,17.79,2026-10-31,19.67
+Manulife,mpfa-cf-1485,Manulife MPF Core Accumulation Fund,3,6.91,6.91,2026-09-30,44.15,2026-10-31,46.71
+Manulife,mpfa-cf-1486,Manulife MPF Age 65 Plus Fund,3,1.09,1.09,2026-09-30,16.17,2026-10-31,18.58
+Manulife,mpfa-cf-1719,Manulife MPF Retirement Income Fund,3,-0.56,-0.56,2026-09-30,12.01,2026-10-31,14.17
+Manulife,mpfa-cf-362,Manulife MPF Hong Kong Bond Fund,4,-0.36,-0.36,2026-09-30,11.79,2026-10-31,13.65
+Manulife,mpfa-cf-363,Manulife MPF Growth Fund,3,4.97,4.97,2026-09-30,42.93,2026-10-31,43.38
+Manulife,mpfa-cf-364,Manulife MPF Stable Fund,4,0.42,0.42,2026-09-30,20.40,2026-10-31,22.48
+Manulife,mpfa-cf-365,Manulife MPF Interest Fund,4,0.88,0.88,2026-08-31,2.66,2026-10-31,2.66
+Manulife,mpfa-cf-366,Manulife MPF Conservative Fund,4,2.22,2.22,2026-09-30,9.07,2026-10-31,8.91
+Manulife,mpfa-cf-367,Manulife MPF Hong Kong Equity Fund,3,-11.81,-11.81,2026-09-30,40.02,2026-10-31,32.81
+Manulife,mpfa-cf-368,Manulife MPF International Equity Fund,3,9.06,9.06,2026-09-30,61.49,2026-10-31,63.34
+Manulife,mpfa-cf-369,Manulife MPF European Equity Fund,3,8.91,8.91,2026-09-30,34.01,2026-10-31,41.21
+Manulife,mpfa-cf-370,Manulife MPF Pacific Asia Equity Fund,3,16.52,16.52,2026-09-30,84.27,2026-10-31,77.00
+Manulife,mpfa-cf-371,Manulife MPF Japan Equity Fund,3,22.45,22.45,2026-09-30,89.92,2026-10-31,95.91
+Manulife,mpfa-cf-372,Manulife MPF International Bond Fund,4,-1.89,-1.89,2026-09-30,5.88,2026-10-31,8.97
+Manulife,mpfa-cf-373,Manulife MPF Fidelity Growth Fund,3,4.18,4.18,2026-09-30,49.95,2026-10-31,50.28
+Manulife,mpfa-cf-374,Manulife MPF Fidelity Stable Growth Fund,3,1.51,1.51,2026-09-30,28.14,2026-10-31,29.71
+Manulife,mpfa-cf-375,Manulife MPF China Value Fund,3,8.55,8.55,2026-09-30,88.81,2026-10-31,77.16
+Manulife,mpfa-cf-376,Manulife MPF Aggressive Fund,3,6.66,6.66,2026-09-30,54.87,2026-10-31,54.54
+Manulife,mpfa-cf-377,Manulife MPF North American Equity Fund,3,3.39,3.39,2026-09-30,60.83,2026-10-31,61.24
+Manulife,mpfa-cf-695,Manulife MPF Healthcare Fund,3,25.01,25.01,2026-09-30,29.81,2026-10-31,46.33
+Manulife,mpfa-cf-842,Manulife MPF Smart Retirement Fund,3,3.90,3.9,2026-09-30,32.74,2026-10-31,34.01
+Manulife,mpfa-cf-844,Manulife MPF 2025 Retirement Fund,3,3.91,3.91,2026-09-30,34.44,2026-10-31,36.40
+Manulife,mpfa-cf-845,Manulife MPF 2030 Retirement Fund,3,5.71,5.71,2026-09-30,47.16,2026-10-31,48.37
+Manulife,mpfa-cf-846,Manulife MPF 2035 Retirement Fund,3,6.35,6.35,2026-09-30,55.18,2026-10-31,55.62
+Manulife,mpfa-cf-847,Manulife MPF 2040 Retirement Fund,3,6.87,6.87,2026-09-30,62.94,2026-10-31,62.13
+Manulife,mpfa-cf-848,Manulife MPF 2045 Retirement Fund,3,6.80,6.8,2026-09-30,63.38,2026-10-31,62.27
+Manulife,mpfa-cf-906,Manulife MPF Sustainable Pacific Asia Bond Fund,4,-0.84,-0.84,2026-09-30,11.20,2026-10-31,14.59
+Manulife,mpfa-cf-907,Manulife MPF Hang Seng Index ESG Fund,3,-12.21,-12.21,2026-09-30,30.90,2026-10-31,27.15
