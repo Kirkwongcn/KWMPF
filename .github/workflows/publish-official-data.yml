@@ -38,6 +38,7 @@ jobs:
       - name: Verify admitted change and exact candidate CI
         env:
           GH_TOKEN: ${{ github.token }}
+          OFFICIAL_DATA_APP_LOGIN: ${{ vars.OFFICIAL_DATA_APP_LOGIN }}
         run: bash scripts/publish-official-admission.sh
       - uses: oven-sh/setup-bun@v2
         with:

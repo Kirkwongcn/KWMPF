@@ -40,6 +40,7 @@ jobs:
           persist-credentials: false
       - name: Admit exact official data candidates and reconcile outstanding publication
         env:
+          OFFICIAL_DATA_APP_LOGIN: ${{ vars.OFFICIAL_DATA_APP_LOGIN }}
           GH_TOKEN: ${{ github.token }}
           GIT_CONFIG_COUNT: 1
           GIT_CONFIG_KEY_0: credential.helper

@@ -14,6 +14,7 @@ on:
   workflow_dispatch:
 
 permissions:
+  actions: read
   contents: write
   pull-requests: write
   issues: write
@@ -30,11 +31,18 @@ jobs:
 
   refresh:
     needs: annualized-factsheets
-    if: ${{ !cancelled() }}
+    if: ${{ !cancelled() && github.ref == 'refs/heads/main' }}
+    environment: official-data-pr
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v6
+      - name: Recover previously prepared commit on rerun
+        id: prior_plan
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/auto-official-producer.py recover
+
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: 1.3.11
@@ -59,6 +67,7 @@ jobs:
 
       - name: Resolve the platform snapshot and the current trustee-return candidate
         id: inputs
+        if: steps.prior_plan.outputs.recovered != 'true'
         run: |
           set -euo pipefail
           platform="$(scripts/resolve-previous-snapshot.sh)"
@@ -74,14 +83,20 @@ jobs:
 
       - name: Skip an open data PR based on this main commit
         id: open_pr
+        if: steps.prior_plan.outputs.recovered != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           DATA_AS_OF: ${{ steps.inputs.outputs.data_as_of }}
+          APP_LOGIN: ${{ vars.OFFICIAL_DATA_APP_LOGIN }}
+          AUTOPUBLISH: ${{ vars.OFFICIAL_DATA_AUTOPUBLISH }}
         run: |
           set -euo pipefail
+          expected='github-actions[bot]'
+          if [[ "$AUTOPUBLISH" == 1 ]]; then expected="${APP_LOGIN:?Set OFFICIAL_DATA_APP_LOGIN}"; fi
           open=0
-          gh pr list --base main --state open --limit 100 --json headRefName,headRefOid,author,isCrossRepository \
-            | jq -r --arg prefix "data/trustee-returns-${DATA_AS_OF}-" '.[] | select(.isCrossRepository == false and (.author.login == "app/github-actions" or .author.login == "github-actions[bot]")) | select(.headRefName | startswith($prefix)) | .headRefOid' > /tmp/trustee-open-heads
+          gh api --paginate "repos/$GITHUB_REPOSITORY/pulls?state=open&base=main&per_page=100" |
+            jq -r --arg repo "$GITHUB_REPOSITORY" --arg author "$expected" --arg prefix "data/trustee-returns-${DATA_AS_OF}-" '
+              .[] | select(.head.repo.full_name == $repo and .user.login == $author and (.head.ref | startswith($prefix))) | .head.sha' > /tmp/trustee-open-heads
           while read -r head; do
             parent="$(gh api "repos/${GITHUB_REPOSITORY}/git/commits/${head}" --jq '.parents | select(length==1) | .[0].sha')"
             if [[ "$parent" == "$GITHUB_SHA" ]]; then open=1; break; fi
@@ -93,6 +108,7 @@ jobs:
 
       - name: Fetch trustee sources dated like the platform snapshot
         id: fetch
+        if: steps.prior_plan.outputs.recovered != 'true'
         run: |
           set -euo pipefail
           bash scripts/fetch-trustee-monthly-returns.sh "${{ steps.inputs.outputs.data_as_of }}" /tmp/trustee
@@ -113,13 +129,13 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: trustee-monthly-sources-${{ github.run_id }}
+          name: trustee-monthly-sources-${{ github.run_id }}-${{ github.run_attempt }}
           path: /tmp/trustee
           if-no-files-found: ignore
           retention-days: 90
 
       - name: Retrieve annualized source evidence
-        if: needs.annualized-factsheets.result == 'success'
+        if: steps.prior_plan.outputs.recovered != 'true' && needs.annualized-factsheets.result == 'success'
         uses: actions/download-artifact@v8
         with:
           name: ${{ needs.annualized-factsheets.outputs.artifact }}
@@ -127,7 +143,7 @@ jobs:
 
       - name: Build the candidate with cross-checks
         id: build
-        if: steps.open_pr.outputs.open == '0'
+        if: steps.prior_plan.outputs.recovered != 'true' && steps.open_pr.outputs.open == '0'
         env:
           OUTPUT: ${{ steps.inputs.outputs.output }}
           REPORT: ${{ steps.inputs.outputs.report }}
@@ -180,8 +196,9 @@ jobs:
           KWMPF_PUBLICATION_SEED_RETURN_OBSERVATIONS: ${{ steps.inputs.outputs.output }}
         run: bash scripts/check-publication-seed.sh
 
-      - name: Open a data pull request
-        if: steps.build.outputs.changed == 'true'
+      - name: Prepare the exact trustee-return PR commit
+        id: plan
+        if: steps.build.outputs.changed == 'true' && steps.prior_plan.outputs.recovered != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           DATA_AS_OF: ${{ steps.inputs.outputs.data_as_of }}
@@ -220,17 +237,40 @@ jobs:
           git switch -c "${branch}"
           git add "${OUTPUT}" "${REPORT}"
           git commit -m "data(returns): 受託人官方回報更新（截至 ${DATA_AS_OF}）"
-          git push --set-upstream origin "${branch}"
-          if ! gh pr create --base main --head "${branch}" \
-            --title "資料：受託人官方回報更新（截至 ${DATA_AS_OF}）" \
-            --body-file /tmp/pr-body.md; then
-            echo "::error::GitHub blocked automatic pull request creation. Open: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/pull/new/${branch}"
-            exit 1
-          fi
-          git rev-parse HEAD > "$RUNNER_TEMP/candidate-head.txt"
+          python3 scripts/auto-official-producer.py prepare "$branch" "資料：受託人官方回報更新（截至 ${DATA_AS_OF}）" /tmp/pr-body.md
+          echo "prepared=true" >> "$GITHUB_OUTPUT"
+
+      - name: Preserve original candidate before pushing
+        if: steps.plan.outputs.prepared == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: official-pr-plan-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/official-pr-plan
+          if-no-files-found: error
+
+      - name: Create a repository-scoped PR token
+        id: app
+        if: vars.OFFICIAL_DATA_AUTOPUBLISH == '1' && (steps.plan.outputs.prepared == 'true' || steps.prior_plan.outputs.recovered == 'true')
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.OFFICIAL_DATA_APP_ID }}
+          private-key: ${{ secrets.OFFICIAL_DATA_APP_PRIVATE_KEY }}
+          permission-contents: read
+          permission-pull-requests: write
+
+      - name: Open or verify the exact producer PR
+        id: opened
+        if: steps.plan.outputs.prepared == 'true' || steps.prior_plan.outputs.recovered == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          AUTOPUBLISH: ${{ vars.OFFICIAL_DATA_AUTOPUBLISH }}
+          APP_LOGIN: ${{ vars.OFFICIAL_DATA_APP_LOGIN }}
+          APP_SLUG: ${{ steps.app.outputs.app-slug }}
+          APP_TOKEN: ${{ steps.app.outputs.token }}
+        run: python3 scripts/auto-official-producer.py open
 
       - name: Attest the created data PR head
-        if: steps.build.outputs.changed == 'true'
+        if: steps.opened.outcome == 'success'
         uses: actions/upload-artifact@v7
         with:
           name: official-data-pr-${{ github.run_id }}-${{ github.run_attempt }}

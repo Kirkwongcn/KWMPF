@@ -17,3 +17,13 @@
 4. 程式、workflow、資料庫遷移、權限變動，以及無法按現有官方口徑解決的異常，交由維護者決定。正式程式部署繼續使用 production 環境及其獨立審批。
 
 GitHub 設定入口：[production-data 與其他環境](https://github.com/Kirkwongcn/KWMPF/settings/environments)、[Actions variables](https://github.com/Kirkwongcn/KWMPF/settings/variables/actions)、[自動作業紀錄](https://github.com/Kirkwongcn/KWMPF/actions)。
+
+## 開通前的 GitHub 設定及驗收
+
+維護者於 2026-11-13 選擇先完成自動化及測試，暫緩正式寫入。開關未設定與設為 0 效果相同。
+
+- 建立只安裝於 KWMPF 的 GitHub App，授予拉取請求寫入及內容讀取。設定 repository variables `OFFICIAL_DATA_APP_ID` 及 `OFFICIAL_DATA_APP_LOGIN`（完整的 `slug[bot]`），將 `OFFICIAL_DATA_APP_PRIVATE_KEY` 放在限制 main 的 `official-data-pr` environment。Actions token 推送候選，App 建立 PR，讓 GitHub 執行 main 規則接受的 pull_request 檢查。
+- 設定 App 及 Cloudflare 憑證後，可手動執行 Check data publishing connection，於 runner 本機重建資料並與正式 D1 匯出、公開摘要及四個年期的完整排名比對。決定啟用時才將開關設為 1。
+- 首次遇到真實的合資格更新時，核對來源 run、PR 必要檢查、合併版本及 Publish official data 的備份與公開讀回紀錄。平台排程為香港時間逢星期三凌晨 3 時；受託人每天上午 11 時 17 分。實際開始時間受 GitHub 排程影響。
+
+[GitHub 自動觸發 PR 檢查](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow) · [GitHub 必要檢查接受的事件](https://docs.github.com/en/enterprise-cloud@latest/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks)

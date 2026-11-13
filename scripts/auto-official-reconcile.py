@@ -4,6 +4,7 @@ import json
 import os
 import re
 import subprocess
+import sys
 import time
 import zipfile
 from pathlib import Path
@@ -13,13 +14,25 @@ policy = run_path(str(Path(__file__).with_name("auto-official-policy.py")))
 git, require, validate = (policy[k] for k in ("git", "require", "validate"))
 REPO = os.environ["GITHUB_REPOSITORY"]
 BOT = "github-actions[bot]"
+APP = os.environ.get("OFFICIAL_DATA_APP_LOGIN", "")
 CI = "ci.yml"
 PUBLISH = "publish-official-data.yml"
 PREFIX = "Automatic official data PR #"
 
 
+class GitHubError(RuntimeError):
+    def __init__(self, status, message):
+        super().__init__(message)
+        self.status = status
+
+
 def gh(*args):
-    return subprocess.check_output(["gh", *map(str, args)])
+    result = subprocess.run(["gh", *map(str, args)], capture_output=True)
+    if result.returncode:
+        message = result.stderr.decode("utf-8", errors="replace").strip()
+        status = re.search(r"\bHTTP(?:/\S+)?\s+(\d{3})\b", message)
+        raise GitHubError(int(status[1]) if status else None, message)
+    return result.stdout
 
 
 def api(path, method="GET", **fields):
@@ -56,16 +69,19 @@ def note(pr, message):
 
 def attest(pr, match):
     branch, head = pr["head"]["ref"], pr["head"]["sha"]
-    require(pr["user"]["login"] == BOT and pr["head"]["repo"]["full_name"] == REPO
+    require(pr["user"]["login"] == APP and pr["head"]["repo"]["full_name"] == REPO
             and pr["base"]["ref"] == "main" and not pr["draft"], "PR provenance or target mismatch")
     producer = "refresh-source-snapshot.yml" if match[1] == "source-snapshot" else "refresh-trustee-returns.yml"
     run = api(f"actions/runs/{match[3]}")
     require(run["head_branch"] == "main" and run["head_repository"]["full_name"] == REPO
             and run["path"] == ".github/workflows/" + producer and run["conclusion"] == "success"
             and run["event"] in ("workflow_dispatch", "schedule"), "Missing successful trusted main producer run")
-    name = f"official-data-pr-{run['id']}-{run['run_attempt']}"
-    receipts = items(f"actions/runs/{run['id']}/artifacts?name={name}", "artifacts")
-    require(len(receipts) == 1 and not receipts[0]["expired"], "Missing immutable producer receipt")
+    # A failed-jobs rerun can reuse the producer job's earlier successful upload.
+    receipts = items(f"actions/runs/{run['id']}/artifacts?per_page=100", "artifacts")
+    valid_names = {f"official-data-pr-{run['id']}-{attempt}" for attempt in range(1, run["run_attempt"] + 1)}
+    receipts = [r for r in receipts if not r["expired"] and r["name"] in valid_names]
+    require(receipts, "Missing immutable producer receipt")
+    receipts.sort(key=lambda r: int(r["name"].rsplit("-", 1)[1]), reverse=True)
     archive = gh("api", f"repos/{REPO}/actions/artifacts/{receipts[0]['id']}/zip")
     with zipfile.ZipFile(io.BytesIO(archive)) as z:
         require(z.namelist() == ["candidate-head.txt"] and z.getinfo("candidate-head.txt").file_size <= 42,
@@ -78,28 +94,82 @@ def attest(pr, match):
     return original
 
 
-def diff_signature(base, head):
-    # Full blob IDs, modes and paths prevent content substitutions during branch updates.
-    return git("diff", "--raw", "--no-abbrev", "--no-renames", base, head)
+def transient_ci(run, jobs):
+    interrupted = {"cancelled", "timed_out", "stale", "startup_failure"}
+    if run["conclusion"] in interrupted:
+        return True
+    failed = [j for j in jobs if j["conclusion"] not in {"success", "skipped", "neutral"}]
+    return bool(failed) and all(j["conclusion"] in interrupted or
+                                (j["conclusion"] == "failure" and not j["steps"]) for j in failed)
 
 
-def ci(branch, head, base):
-    path = f"actions/workflows/{CI}/runs?event=workflow_dispatch&head_sha={head}&per_page=100"
+def matches_pr(run, number, branch, head, base, merged_receipt=False):
+    metadata = (run["event"] == "pull_request" and run["path"] == ".github/workflows/ci.yml"
+                and run["head_repository"]["full_name"] == REPO and run["head_branch"] == branch
+                and run["head_sha"] == head)
+    associations = run["pull_requests"]
+    if associations == [] and merged_receipt:
+        return metadata
+    return metadata and any(pr["number"] == number and pr["head"]["sha"] == head and pr["head"]["ref"] == branch
+                            and pr["base"]["sha"] == base and pr["base"]["ref"] == "main" for pr in associations)
+
+
+def merge_message(number, head, base, run_id, attempt):
+    return f"Official data CI: PR={number} head={head} base={base} run={run_id} attempt={attempt}"
+
+
+def verify_merged_ci(number, branch, head, base):
+    # Caller verifies merged_by, exact main release SHA, candidate tree equality and data-only policy.
+    require(git("show", "-s", "--format=%P", "HEAD") == base and
+            git("show", "-s", "--format=%s", "HEAD") == PREFIX + str(number), "Squash target or parent mismatch")
+    body = git("show", "-s", "--format=%b", "HEAD")
+    pattern = (rf"Official data CI: PR={number} head={re.escape(head)} base={re.escape(base)} "
+               r"run=([1-9][0-9]*) attempt=([1-9][0-9]*)")
+    receipt = re.fullmatch(pattern, body)
+    require(receipt, "Missing exact premerge CI receipt in the release commit")
+    run_id, attempt = map(int, receipt.groups())
+    run = api(f"actions/runs/{run_id}/attempts/{attempt}")
+    require(run["id"] == run_id and run["run_attempt"] == attempt and run["status"] == "completed"
+            and matches_pr(run, number, branch, head, base, merged_receipt=True), "Recorded CI attempt does not match release")
+    verify_jobs(run)
+
+
+def attempt_jobs(run_id, attempt):
+    return items(f"actions/runs/{run_id}/attempts/{attempt}/jobs?per_page=100", "jobs")
+
+
+def verify_jobs(run):
+    jobs = {}
+    for attempt in range(run["run_attempt"], 0, -1):
+        for job in attempt_jobs(run["id"], attempt):
+            jobs.setdefault(job["name"], job)
+    passed = {name for name, job in jobs.items() if job["conclusion"] == "success"}
+    seed = any(step["name"] == "Validate the latest publication seed through the local API"
+               and step["conclusion"] == "success" for step in jobs.get("e2e", {}).get("steps", []))
+    require(run["conclusion"] == "success" and passed >= {"verify", "e2e", "high-risk-review"} and seed,
+            f"Exact pull-request CI and publication seed require review: {run['html_url']}")
+
+
+def ci(number, branch, head, base):
+    path = f"actions/workflows/{CI}/runs?event=pull_request&head_sha={head}&per_page=100"
     def matching():
-        return [r for r in api(path)["workflow_runs"] if r["head_branch"] == branch]
+        return [r for r in api(path)["workflow_runs"] if matches_pr(r, number, branch, head, base)]
 
-    runs = matching()
-    if not runs:
-        dispatch(CI, branch, base_sha=base)
+    requested_attempts = set()
     for _ in range(100):
         runs = matching()
         if runs and runs[0]["status"] == "completed":
             run = runs[0]
             checks = items(f"actions/runs/{run['id']}/attempts/{run['run_attempt']}/jobs?per_page=100", "jobs")
-            require(run["conclusion"] == "success" and
-                    {j["name"] for j in checks if j["conclusion"] == "success"} >= {"verify", "e2e", "high-risk-review"},
-                    f"Exact candidate checks require review: {run['html_url']}")
-            return
+            attempt = (run["id"], run["run_attempt"])
+            if run["run_attempt"] < 3 and transient_ci(run, checks):
+                if attempt not in requested_attempts:
+                    api(f"actions/runs/{run['id']}/rerun", "POST")
+                    requested_attempts.add(attempt)
+                time.sleep(15)
+                continue
+            verify_jobs(run)
+            return attempt
         time.sleep(15)
     raise ValueError("Timed out waiting for exact candidate CI; reconciliation will retry")
 
@@ -144,45 +214,21 @@ def reconcile(pr, match):
     original = attest(pr, match)
     git("fetch", "--no-tags", "origin", "+refs/heads/main:refs/remotes/origin/main")
     main = git("rev-parse", "origin/main")
-    old_base = git("rev-parse", original + "^")
-    current_base = git("merge-base", main, head)
-    require(subprocess.run(["git", "merge-base", "--is-ancestor", original, head]).returncode == 0
-            and diff_signature(old_base, original) == diff_signature(current_base, head),
-            "Candidate differs from the producer's attested changes")
-    validate(current_base, head, branch)
-    # Even a prior update-branch merge cannot carry evidence across changed canonical inputs.
-    if old_base != main:
-        for pattern in (policy["SOURCE"], policy["OVERLAY"]):
-            old, new = (policy["latest"](ref, pattern) for ref in (old_base, main))
-            require(old == new and git("rev-parse", old_base + ":" + old) == git("rev-parse", main + ":" + new),
-                    "Canonical data advanced; rebuild the producer candidate")
-    if current_base != main:
-        api(f"pulls/{number}/update-branch", "PUT", expected_head_sha=head)
-        print(f"Updated PR #{number} to main; checking the resulting exact tree")
-        for _ in range(20):
-            time.sleep(3)
-            updated = api(f"pulls/{number}")
-            if updated["head"]["sha"] != head:
-                return reconcile_current(updated, original, main, old_base)
-        raise ValueError("Branch update pending; the next reconciliation will retry")
-    return reconcile_current(pr, original, main, old_base)
-
-
-def reconcile_current(pr, original, main, old_base):
-    number, head, branch = pr["number"], pr["head"]["sha"], pr["head"]["ref"]
-    git("fetch", "--no-tags", "origin", f"refs/pull/{number}/head")
-    require(git("rev-parse", "FETCH_HEAD") == head and git("merge-base", main, head) == main
-            and diff_signature(main, head) == diff_signature(old_base, original), "Updated candidate changed")
+    require(head == original, "PR head differs from immutable producer receipt")
+    require(git("show", "-s", "--format=%P", head) == main,
+            "Candidate is behind main; waiting for a fresh producer PR")
     validate(main, head, branch)
-    ci(branch, head, main)
+    run_id, attempt = ci(number, branch, head, main)
     require(api("git/ref/heads/main")["object"]["sha"] == main, "Main advanced during CI; retrying on the next reconciliation")
     result = api(f"pulls/{number}/merge", "PUT", sha=head, merge_method="squash",
-                 commit_title=PREFIX + str(number), commit_message=f"Official source producer: {original}")
+                 commit_title=PREFIX + str(number), commit_message=merge_message(number, head, main, run_id, attempt))
     require(result["merged"], "Protected branch refused merge")
-    publish(result["sha"], number)
+    return result["sha"]
 
 
 def main():
+    require(APP != BOT and re.fullmatch(r"[a-z0-9][a-z0-9-]*\[bot\]", APP),
+            "Set OFFICIAL_DATA_APP_LOGIN to the dedicated pull-request App login")
     # The squash commit is a durable outbox entry even if the runner dies before dispatch.
     last = git("log", "origin/main", "--first-parent", "-1", "--grep=^" + PREFIX + "[0-9][0-9]*$",
                "--format=%H %s")
@@ -190,21 +236,32 @@ def main():
         sha, subject = last.split(" ", 1)
         number = int(subject.removeprefix(PREFIX))
         pr = api(f"pulls/{number}")
-        require(pr["merged"] and pr["merge_commit_sha"] == sha and pr["user"]["login"] == BOT,
+        require(pr["merged"] and pr["merge_commit_sha"] == sha and pr["user"]["login"] == APP,
                 "Invalid official release history")
         if not publish(sha, number):
             return
     for pr in items("pulls?state=open&base=main&sort=created&direction=asc&per_page=100"):
         match = policy["BRANCH"].fullmatch(pr["head"]["ref"])
-        if not match or pr["user"]["login"] != BOT or pr["head"]["repo"]["full_name"] != REPO:
+        if not match or pr["user"]["login"] != APP or pr["head"]["repo"]["full_name"] != REPO:
             continue
         try:
-            reconcile(pr, match)
+            merged_sha = reconcile(pr, match)
+        except GitHubError as e:
+            if e.status not in {404, 409, 422}:
+                raise
+            note(pr["number"], f"Automatic admission held at {pr['head']['sha']}. GitHub declined the candidate request ({e}).")
+            continue
         except (ValueError, KeyError) as e:
             note(pr["number"], f"Automatic admission held for review at {pr['head']['sha']}. {e}")
             continue
+        publish(merged_sha, pr["number"])
         return
 
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) == 6 and sys.argv[1] == "verify-ci":
+        verify_merged_ci(int(sys.argv[2]), *sys.argv[3:])
+    elif len(sys.argv) == 1:
+        main()
+    else:
+        sys.exit("Usage: auto-official-reconcile.py [verify-ci PR BRANCH HEAD BASE]")

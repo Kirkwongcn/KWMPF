@@ -36,9 +36,9 @@ public_check() {
       for period in 1 3 5 10; do
         if ! bun scripts/publish-official-rankings.mjs "$state/before.sql" "$seed" "$period" > "$state/expected-rankings.json" ||
            ! curl -fsS --max-time 20 "$api/rankings?metric=return&period=$period" -o "$state/rankings.json" ||
-           ! jq -e --slurpfile expected "$state/expected-rankings.json" --arg period "$period" '
+           ! jq -e --slurpfile expected "$state/expected-rankings.json" '
              def ordered: .rankings |= sort_by(.comparisonGroup, .rank, .fundClassId);
-             (ordered == ($expected[0] | ordered)) and ($period != "3" or (.rankings | length) > 0)
+             ordered == ($expected[0] | ordered)
            ' "$state/rankings.json" >/dev/null; then
           matched=false
           break

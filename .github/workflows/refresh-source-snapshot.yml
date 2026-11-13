@@ -23,6 +23,7 @@ on:
         type: string
 
 permissions:
+  actions: read
   contents: write
   pull-requests: write
   issues: write
@@ -33,10 +34,18 @@ concurrency:
 
 jobs:
   refresh:
+    if: github.ref == 'refs/heads/main'
+    environment: official-data-pr
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v6
+      - name: Recover previously prepared commit on rerun
+        id: prior_plan
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/auto-official-producer.py recover
+
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: 1.3.11
@@ -51,6 +60,7 @@ jobs:
 
       - name: Resolve the previous published source snapshot
         id: previous
+        if: steps.prior_plan.outputs.recovered != 'true'
         run: |
           set -euo pipefail
           snapshot="$(scripts/resolve-previous-snapshot.sh)"
@@ -66,6 +76,7 @@ jobs:
 
       - name: Fetch a candidate snapshot from the official fund platform
         id: fetch
+        if: steps.prior_plan.outputs.recovered != 'true'
         continue-on-error: true
         env:
           EXPECTED_FUND_CLASSES: ${{ inputs.expected_fund_classes || steps.previous.outputs.previous_fund_classes }}
@@ -89,10 +100,10 @@ jobs:
           exit "${PIPESTATUS[0]}"
 
       - name: Upload the raw source archive
-        if: always()
+        if: always() && steps.prior_plan.outputs.recovered != 'true'
         uses: actions/upload-artifact@v7
         with:
-          name: raw-source-archive-${{ github.run_id }}
+          name: ${{ github.run_attempt == 1 && format('raw-source-archive-{0}', github.run_id) || format('raw-source-archive-{0}-attempt-{1}', github.run_id, github.run_attempt) }}
           path: /tmp/raw
           if-no-files-found: ignore
           retention-days: 30
@@ -135,6 +146,7 @@ jobs:
 
       - name: Build the readiness and anomaly reports
         id: report
+        if: steps.prior_plan.outputs.recovered != 'true'
         run: |
           set -euo pipefail
           batch_directory="$(date -u +%F)"
@@ -151,9 +163,9 @@ jobs:
           jq -r 'to_entries[] | "\(.key)=\(.value)"' /tmp/refresh-outcome.json >> "$GITHUB_OUTPUT"
           cat /tmp/candidate/refresh-summary.md >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Open a candidate batch pull request
-        id: open_candidate
-        if: steps.report.outputs.outcome != 'no_new_data'
+      - name: Prepare the exact platform PR commit
+        id: plan
+        if: steps.report.outputs.outcome != 'no_new_data' && steps.prior_plan.outputs.recovered != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           OUTCOME: ${{ steps.report.outputs.outcome }}
@@ -161,11 +173,6 @@ jobs:
         run: |
           set -euo pipefail
           branch="data/source-snapshot-${CANDIDATE_DATA_AS_OF}-${GITHUB_RUN_ID}"
-          if gh pr view "${branch}" --json number >/dev/null 2>&1; then
-            gh pr comment "${branch}" --body \
-              "另一次擷取再次產生 ${CANDIDATE_DATA_AS_OF} 的候選批次。此 PR 的分支未被覆寫，請繼續在這裡核對。Run：${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
-            exit 0
-          fi
           directory="data/sources/${{ steps.report.outputs.batch_directory }}"
           mkdir -p "${directory}"
           cp /tmp/candidate/mpf-fund-platform.json "${directory}/mpf-fund-platform.json"
@@ -176,27 +183,40 @@ jobs:
           git switch -c "${branch}"
           git add "${directory}"
           git commit -m "data: add the ${CANDIDATE_DATA_AS_OF} official source snapshot candidate"
-          git push --set-upstream origin "${branch}"
-          if ! gh pr create \
-            --base main \
-            --head "${branch}" \
-            --title "data: ${CANDIDATE_DATA_AS_OF} 官方來源候選批次（${OUTCOME}）" \
-            --body-file /tmp/candidate/refresh-summary.md; then
-            candidate_pr_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/pull/new/${branch}"
-            {
-              echo
-              echo "Candidate data was pushed, but GitHub blocked automatic pull request creation."
-              echo "Review the candidate branch and open a PR manually: ${candidate_pr_url}"
-            } >> "$GITHUB_STEP_SUMMARY"
-            echo "::error::GitHub blocked automatic pull request creation. Candidate branch: ${branch}. Open: ${candidate_pr_url}"
-            exit 1
-          fi
+          python3 scripts/auto-official-producer.py prepare "$branch" "data: ${CANDIDATE_DATA_AS_OF} 官方來源候選批次（${OUTCOME}）" /tmp/candidate/refresh-summary.md
+          echo "prepared=true" >> "$GITHUB_OUTPUT"
 
-          git rev-parse HEAD > "$RUNNER_TEMP/candidate-head.txt"
-          echo 'created=true' >> "$GITHUB_OUTPUT"
+      - name: Preserve original candidate before pushing
+        if: steps.plan.outputs.prepared == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: official-pr-plan-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/official-pr-plan
+          if-no-files-found: error
+
+      - name: Create a repository-scoped PR token
+        id: app
+        if: vars.OFFICIAL_DATA_AUTOPUBLISH == '1' && (steps.plan.outputs.prepared == 'true' || steps.prior_plan.outputs.recovered == 'true')
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.OFFICIAL_DATA_APP_ID }}
+          private-key: ${{ secrets.OFFICIAL_DATA_APP_PRIVATE_KEY }}
+          permission-contents: read
+          permission-pull-requests: write
+
+      - name: Open or verify the exact producer PR
+        id: opened
+        if: steps.plan.outputs.prepared == 'true' || steps.prior_plan.outputs.recovered == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          AUTOPUBLISH: ${{ vars.OFFICIAL_DATA_AUTOPUBLISH }}
+          APP_LOGIN: ${{ vars.OFFICIAL_DATA_APP_LOGIN }}
+          APP_SLUG: ${{ steps.app.outputs.app-slug }}
+          APP_TOKEN: ${{ steps.app.outputs.token }}
+        run: python3 scripts/auto-official-producer.py open
 
       - name: Bind the producer run to the exact candidate commit
-        if: steps.open_candidate.outputs.created == 'true'
+        if: steps.opened.outcome == 'success'
         uses: actions/upload-artifact@v7
         with:
           name: official-data-pr-${{ github.run_id }}-${{ github.run_attempt }}
@@ -204,5 +224,5 @@ jobs:
           if-no-files-found: error
 
       - name: Record that no new batch was published
-        if: steps.report.outputs.outcome == 'no_new_data'
+        if: steps.report.outputs.outcome == 'no_new_data' && steps.prior_plan.outputs.recovered != 'true'
         run: echo "官方來源截至日期仍然是 ${{ steps.report.outputs.candidateDataAsOf }}，沒有開新的候選批次。"
