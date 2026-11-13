@@ -4,13 +4,39 @@ function normalize(value: string) {
   return value.replace(/\s+/g, " ").trim();
 }
 
-function parseDate(text: string) {
-  const matches = [...text.matchAll(/(?:As at\s+)?(\d{1,2})\s+(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{4})/gi)];
-  const asAt = matches.filter((candidate) => /^As at\s+/i.test(candidate[0]));
-  const match = asAt.at(0) ?? matches.find((candidate) => Number(candidate[3]) >= 2025) ?? matches.at(-1);
-  if (!match?.[1] || !match[2] || !match[3]) throw new Error("China Life report date is missing");
-  const month = new Date(`${match[2]} 1, 2000`).getMonth() + 1;
-  return `${match[3]}-${String(month).padStart(2, "0")}-${match[1].padStart(2, "0")}`;
+const MONTHS = "January February March April May June July August September October November December".toLowerCase().split(" ");
+
+function dateString(year: number, month: number, day: number) {
+  const date = new Date(Date.UTC(year, month - 1, day));
+  if (date.getUTCFullYear() !== year || date.getUTCMonth() + 1 !== month || date.getUTCDate() !== day) {
+    throw new Error("China Life report date is invalid");
+  }
+  return date.toISOString().slice(0, 10);
+}
+
+function parseDate(cover: string) {
+  // Raw page-one text preserves each cover layer. Layout mode can join the last
+  // digits of a hidden year to the visible month across two unrelated lines.
+  const dates = new Set<string>();
+  for (const match of cover.matchAll(/\bAs at[ \t]+(\d{1,2})[ \t]+([A-Za-z]+)[ \t]+(\d{4})\b/gi)) {
+    dates.add(dateString(Number(match[3]), MONTHS.indexOf(match[2]!.toLowerCase()) + 1, Number(match[1])));
+  }
+  const chinese = new Set<string>();
+  for (const match of cover.matchAll(/截至\s*(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日/g)) {
+    chinese.add(dateString(Number(match[1]), Number(match[2]), Number(match[3])));
+  }
+  const quarters = new Set(Array.from(cover.matchAll(/\b(\d{4})[ \t]+([1-4])(?:st|nd|rd|th)[ \t]+Quarter\b/gi), (m) => m[1] + "-" + m[2]));
+  const inReportQuarter = (date: string) => {
+    const quarter = date.slice(0, 4) + "-" + Math.ceil(Number(date.slice(5, 7)) / 3);
+    return !quarters.size || quarters.has(quarter);
+  };
+  const candidates = [...dates].filter(inReportQuarter);
+  const translated = [...chinese].filter(inReportQuarter);
+  const selected = candidates[0];
+  if (candidates.length !== 1 || !selected || (chinese.size && (translated.length !== 1 || translated[0] !== selected))) {
+    throw new Error("China Life report date is missing or ambiguous");
+  }
+  return selected;
 }
 
 // 一版兩隻基金：標題係「英文名 + 中文名」，同版內評論、更名註腳唔會跟中文名，所以唔會當成標題。
@@ -40,8 +66,8 @@ function annualizedThreeYear(fundName: string, sectionLines: string[]) {
   return value;
 }
 
-export function parseChinaLifeFundPerformance(text: string, sourceUrl: string): FundFactSheetReturn[] {
-  const dataAsOf = parseDate(text);
+export function parseChinaLifeFundPerformance(text: string, sourceUrl: string, cover = text.split("\f")[0] ?? ""): FundFactSheetReturn[] {
+  const dataAsOf = parseDate(cover);
   const results: FundFactSheetReturn[] = [];
   for (const rawBlock of text.replace(/\r/g, "").split(/\f/).slice(1)) {
     const lines = rawBlock.split("\n").map(normalize).filter(Boolean);

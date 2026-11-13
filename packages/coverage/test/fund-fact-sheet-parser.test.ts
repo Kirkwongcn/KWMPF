@@ -96,6 +96,21 @@ describe("official fund fact sheet parser", () => {
     ]);
   });
 
+  it("resolves the overlapping China Life cover using the bilingual reporting quarter", () => {
+    const layout = "As at\nAs30 September\nat 30 2023\nJune 2026";
+    const cover = [
+      "As at 30 September 2023", "截至 2023年9月30日", "3rd Quarter",
+      "2026 2nd Quarter", "第二季", "As at 30 June 2026", "截至 2026年6月30日",
+    ].join("\n");
+    const parse = (raw: string) => parseChinaLifeFundPerformance(layout + chinaLifeFixture, "x", raw);
+    expect(parse(cover).map((row) => row.dataAsOf)).toEqual(["2026-06-30", "2026-06-30"]);
+    expect(() => parse(cover + "\n截至 2026年6月23日")).toThrow();
+    expect(() => parse(cover.replace("2026年6月30日", "2026年6月23日"))).toThrow();
+    expect(() => parse(cover.replace("2026 2nd Quarter", "2nd Quarter"))).toThrow();
+    expect(() => parse(cover.replace("2nd Quarter", "3rd Quarter"))).toThrow();
+    expect(() => parseChinaLifeFundPerformance(layout + chinaLifeFixture, "x")).toThrow();
+  });
+
   it("reads both China Life funds on a page, negative cells and only the fund's own row", () => {
     const page = [
       "As at 30 June 2026",

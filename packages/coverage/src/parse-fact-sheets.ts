@@ -71,7 +71,6 @@ function parser(
   text: string,
   url: string,
 ): FundFactSheetReturn[] {
-  if (scheme.startsWith("China Life")) return parseChinaLifeFundPerformance(text, url);
   if (scheme.startsWith("HSBC")) return parseHsbcFundFactSheet(text, url);
   if (scheme.startsWith("Hang Seng")) return parseHsbcFundFactSheet(text, url, "Hang Seng Mandatory Provident Fund – SuperTrust Plus");
   if (scheme.startsWith("BOC-Prudential") || scheme.startsWith("BCOM") || scheme === "Manulife Global Select (MPF) Scheme") throw new Error(`${scheme} fact sheets are read from word boxes, not layout text`);
@@ -132,7 +131,12 @@ for (const entry of manifest.entries) {
       );
     } else {
       const { stdout } = await exec("pdftotext", ["-layout", pdfPath, "-"]);
-      returns.push(...parser(entry.scheme, stdout, entry.factSheetUrl));
+      if (entry.scheme.startsWith("China Life")) {
+        const cover = await exec("pdftotext", ["-f", "1", "-l", "1", "-raw", pdfPath, "-"]);
+        returns.push(...parseChinaLifeFundPerformance(stdout, entry.factSheetUrl, cover.stdout));
+      } else {
+        returns.push(...parser(entry.scheme, stdout, entry.factSheetUrl));
+      }
     }
   } catch (error) {
     const failure: FactSheetParseDiagnostic = {
