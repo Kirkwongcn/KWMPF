@@ -10,7 +10,7 @@
 | DATA-402 | 七項官方費率及四個上限全部核實；精確檔案的 disposition 已通過發布前檢查 | 發布狀態及驗收記錄見 [#402 跟進](reviews/2026-11-12-pr402.md) |
 | DATA-400 | 已核對、測試及合併，14 筆更新，0 筆新增 | 已完成 #52 發布，14 筆公開詳情及完整排名已核對，見 [逐項記錄](reviews/2026-11-12-pr400.md) |
 | DATA-CONFLICT | [Issue396](https://github.com/Kirkwongcn/KWMPF/issues/396)仍open；ADR0016 reader隔離已合併，但workflow只由rejectedSources產生跟進檔 | 將officialConflicts／quarantinedRows獨立納入跟進與去重；候選沒有增量時亦保留衝突證據。用隔離fixture覆蓋全文件reject／部分隔離／無候選變動。待使用者批准code範圍；不放寬數字比較、不借第三方補位 |
-| DATA-DISCOVERY | #54 友邦頁首日期修正已部署。171 筆均有六月便覽，未核實第三季年率化值；其餘 100 筆的已知來源未見更新。[本輪逐項核對](reviews/2026-11-12-q3-priority-review.md) | 下次來源刷新先比對 PDF 指紋或新發布連結，再覆核年率化欄。追蹤友邦及 MASS 的 34 筆八月資料（11 月 30 日起超過 90 日）。AMTD 有 16 筆六月原文可用於後續歷史資料維護。 |
+| DATA-DISCOVERY | 11 月 14 日[全部 271 筆及來源](reviews/2026-11-14-annualized-271.md)已逐項配對，0 筆恢復。 | 跟進優先三家新季度便覽及固定連結指紋，核對 AMTD 16 筆歷史資料；修正並測試中國人壽 PDF 封面日期差異。另追蹤友邦、萬通 34 筆八月資料（11 月 30 日起超過 90 日）。 |
 | DATA-AUG-EXPIRY | #406 已把 34 筆年率化原件接入每日排程。首個 main 手動 run 已完整核對，最新仍為八月底。 | 讀取每日 run 摘要及 annualized-factsheet-review artifact。有新版就核對原件與資料 PR；若仍無新版，11 月 30 日起這 34 筆須按現行 90 日規則排除。[來源及操作](reviews/2026-11-12-aia-mass-expiry.md) |
 | OPS-QUEUE | 正式備份 #7 與 #8 已放行、成功並釋放共用鎖。舊記錄的 staging #17、原件封存 #11 狀態待重驗 | 查明原件是否已歸檔及 artifact 到期日，再處理 staging 排隊 |
 
