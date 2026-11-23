@@ -1,0 +1,403 @@
+{
+  "generatedAt": "2026-11-23T12:42:17.152Z",
+  "sourceSnapshot": "data/sources/2026-11-10/mpf-fund-platform.json",
+  "baseCandidate": "data/coverage/2026-11-13-official-return-observations-candidate.json",
+  "method": "Official trustee monthly data: HSBC / Hang Seng Monthly Fund Performance Summary main table (pdftotext -layout), BCT website fund performance responses, the Manulife Global Select Monthly Fund Summary (pdftotext -bbox columns), the BOCI-Prudential website MPF price and performance listing (JSON), the Sun Life website MPF cumulative performance data (JSON), the YF Life (MASS) Monthly Fund Performance of the Scheme (pdftotext -bbox columns); plus, for funds without a trustee figure, the third-party HKIFA-published Lipper MPF Performance Table via a reviewed name map (ADR 0015, rows carry publisher hkifa-lipper; trustee rows always take precedence). Exact English-name match within the scheme (BCT unit class by the Class X / Unit Class X contract), one-year cumulative cross-checked against the MPFA platform one-year return of the same date for every row; three-year cumulative stored as published (ADR 0014), never converted to annualized.",
+  "annualizedFactsheets": {
+    "summary": {
+      "checked": 20,
+      "newer": 0,
+      "revisions": 0,
+      "older": 0,
+      "failures": 14
+    },
+    "reports": [
+      {
+        "url": "https://www.aia.com.hk/content/dam/hk-wise/pdf/form-library/form-and-guides/employer/forms/aia-mpf-prime-value-choice-fund-performance-review-aug-2026.pdf",
+        "sha256": "616b3c95b4b55e7c3d24c8e1d7f8422e3b8b6e2e1a9035f9b9571a89e67429bd",
+        "retrievedAt": "2026-11-23T12:41:11.243Z",
+        "additionalFundNames": [],
+        "rows": [
+          {
+            "fundClassId": "mpfa-cf-1519",
+            "name": "Core Accumulation Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 12.35,
+            "dataAsOf": "2026-08-31",
+            "annualized": 12.35
+          },
+          {
+            "fundClassId": "mpfa-cf-1520",
+            "name": "Age 65 Plus Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 4.89,
+            "dataAsOf": "2026-08-31",
+            "annualized": 4.89
+          },
+          {
+            "fundClassId": "mpfa-cf-878",
+            "name": "American Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 18.91,
+            "dataAsOf": "2026-08-31",
+            "annualized": 18.91
+          },
+          {
+            "fundClassId": "mpfa-cf-876",
+            "name": "Eurasia Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 18.45,
+            "dataAsOf": "2026-08-31",
+            "annualized": 18.45
+          },
+          {
+            "fundClassId": "mpfa-cf-877",
+            "name": "Hong Kong and China Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 14.47,
+            "dataAsOf": "2026-08-31",
+            "annualized": 14.47
+          },
+          {
+            "fundClassId": "mpfa-cf-658",
+            "name": "World Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 18.71,
+            "dataAsOf": "2026-08-31",
+            "annualized": 18.71
+          },
+          {
+            "fundClassId": "mpfa-cf-875",
+            "name": "Asian Bond Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 4.07,
+            "dataAsOf": "2026-08-31",
+            "annualized": 4.07
+          },
+          {
+            "fundClassId": "mpfa-cf-657",
+            "name": "Global Bond Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 2.32,
+            "dataAsOf": "2026-08-31",
+            "annualized": 2.32
+          },
+          {
+            "fundClassId": "mpfa-cf-134",
+            "name": "MPF Conservative Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 2.63,
+            "dataAsOf": "2026-08-31",
+            "annualized": 2.63
+          },
+          {
+            "fundClassId": "mpfa-cf-1579",
+            "name": "China HK DynamicAssetAllocation Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 9.04,
+            "dataAsOf": "2026-08-31",
+            "annualized": 9.04
+          },
+          {
+            "fundClassId": "mpfa-cf-699",
+            "name": "Manager’s Choice Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 11.82,
+            "dataAsOf": "2026-08-31",
+            "annualized": 11.82
+          },
+          {
+            "fundClassId": "mpfa-cf-137",
+            "name": "Asian Equity Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 24.5,
+            "dataAsOf": "2026-08-31",
+            "annualized": 24.5
+          },
+          {
+            "fundClassId": "mpfa-cf-145",
+            "name": "European Equity Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 16.64,
+            "dataAsOf": "2026-08-31",
+            "annualized": 16.64
+          },
+          {
+            "fundClassId": "mpfa-cf-102",
+            "name": "Greater China Equity Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 21.38,
+            "dataAsOf": "2026-08-31",
+            "annualized": 21.38
+          },
+          {
+            "fundClassId": "mpfa-cf-142",
+            "name": "North American Equity Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 17.45,
+            "dataAsOf": "2026-08-31",
+            "annualized": 17.45
+          },
+          {
+            "fundClassId": "mpfa-cf-141",
+            "name": "Green Fund",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 20.12,
+            "dataAsOf": "2026-08-31",
+            "annualized": 20.12
+          },
+          {
+            "fundClassId": "mpfa-cf-146",
+            "name": "Guaranteed Portfolio",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 1.31,
+            "dataAsOf": "2026-08-31",
+            "annualized": 1.31
+          },
+          {
+            "fundClassId": "mpfa-cf-133",
+            "name": "Growth Portfolio",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 16.44,
+            "dataAsOf": "2026-08-31",
+            "annualized": 16.44
+          },
+          {
+            "fundClassId": "mpfa-cf-132",
+            "name": "Balanced Portfolio",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 9.87,
+            "dataAsOf": "2026-08-31",
+            "annualized": 9.87
+          },
+          {
+            "fundClassId": "mpfa-cf-131",
+            "name": "Capital Stable Portfolio",
+            "status": "unchanged",
+            "previousDate": "2026-08-31",
+            "previousAnnualized": 6.82,
+            "dataAsOf": "2026-08-31",
+            "annualized": 6.82
+          }
+        ]
+      }
+    ],
+    "errors": [
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/EUEF_E.pdf",
+        "fundClassIds": [
+          "mpfa-cf-390"
+        ],
+        "error": "Error: Unsupported MASS report date: Fund 30, 2026"
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/HKEF_E.pdf",
+        "fundClassIds": [
+          "mpfa-cf-389"
+        ],
+        "error": "Error: Unsupported MASS report date: Fund 30, 2026"
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GCEF_E.pdf",
+        "fundClassIds": [
+          "mpfa-cf-874"
+        ],
+        "error": "Error: Unsupported MASS report date: Fund 30, 2026"
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLEF_E.pdf",
+        "fundClassIds": [
+          "mpfa-cf-387"
+        ],
+        "error": "Error: Unsupported MASS report date: Fund 30, 2026"
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLBF_E.pdf",
+        "fundClassIds": [
+          "mpfa-cf-383"
+        ],
+        "error": "Error: Unsupported MASS report date: Fund 30, 2026"
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/A65F2_E.pdf",
+        "fundClassIds": [
+          "mpfa-cf-1488"
+        ],
+        "error": "Error: Unsupported MASS report date: Fund 30, 2026"
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/CAF2_E.pdf",
+        "fundClassIds": [
+          "mpfa-cf-1487"
+        ],
+        "error": "Error: Unsupported MASS report date: Fund 30, 2026"
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/USEF_E.pdf",
+        "fundClassIds": [
+          "mpfa-cf-391"
+        ],
+        "error": "Error: Unsupported MASS report date: Fund 30, 2026"
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GUAF_E.pdf",
+        "fundClassIds": [
+          "mpfa-cf-388"
+        ],
+        "error": "Error: Unsupported MASS report date: Fund 30, 2026"
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/APEF_E.pdf",
+        "fundClassIds": [
+          "mpfa-cf-392"
+        ],
+        "error": "Error: Unsupported MASS report date: Fund 30, 2026"
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/ASBF_E.pdf",
+        "fundClassIds": [
+          "mpfa-cf-384"
+        ],
+        "error": "Error: Unsupported MASS report date: Fund 30, 2026"
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/CAPF_E.pdf",
+        "fundClassIds": [
+          "mpfa-cf-386"
+        ],
+        "error": "Error: Unsupported MASS report date: Fund 30, 2026"
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLSF_E.pdf",
+        "fundClassIds": [
+          "mpfa-cf-385"
+        ],
+        "error": "Error: Unsupported MASS report date: Fund 30, 2026"
+      },
+      {
+        "url": "https://app2.yflife.com/MPFWeb/pdf/fact_sheet/GLGF_E.pdf",
+        "fundClassIds": [
+          "mpfa-cf-394"
+        ],
+        "error": "Error: Unsupported MASS report date: Fund 30, 2026"
+      }
+    ],
+    "applied": [],
+    "quarantined": []
+  },
+  "pendingThirdParty": [],
+  "cumulativeExceptions": [],
+  "sources": [
+    {
+      "kind": "monthly-summary-pdf",
+      "schemeName": "HSBC Mandatory Provident Fund - SuperTrust Plus",
+      "url": "https://www.hsbc.com.hk/content/dam/hsbc/hk/docs/mpf/monthly-fund-performance-summary/202610.pdf",
+      "retrievedAt": "2026-11-23T12:41:54Z",
+      "sha256": "6676c8b6330755938f429cc19b5de222b9a8c4c34b6187df0a028b9635b0734d",
+      "bytes": 707062,
+      "page": 4,
+      "dataAsOf": "2026-10-31",
+      "rows": 20,
+      "matched": 20,
+      "quarantinedRows": [],
+      "officialNotDisclosed": [],
+      "oneYearCrossChecks": 20,
+      "fiveTenYearCrossChecks": 34
+    },
+    {
+      "kind": "monthly-summary-pdf",
+      "schemeName": "Hang Seng Mandatory Provident Fund - SuperTrust Plus",
+      "url": "https://cms.hangseng.com/cms/cbd/eMPF/monthly_oct2026.pdf",
+      "retrievedAt": "2026-11-23T12:41:54Z",
+      "sha256": "54cfd16bc7a3b6aa02af488b02d0de20d4622e2dae6d906c7f59dea7ada8942a",
+      "bytes": 554389,
+      "page": 4,
+      "dataAsOf": "2026-10-31",
+      "rows": 20,
+      "matched": 20,
+      "quarantinedRows": [],
+      "officialNotDisclosed": [],
+      "oneYearCrossChecks": 20,
+      "fiveTenYearCrossChecks": 34
+    },
+    {
+      "kind": "manulife-monthly-summary-pdf",
+      "schemeName": "Manulife Global Select (MPF) Scheme",
+      "url": "https://www.manulife.com.hk/content/dam/insurance/hk/zh-hk/documents/fund-price/mpf-monthly-summary.pdf",
+      "retrievedAt": "2026-11-23T12:42:08Z",
+      "sha256": "277e1fa130d70cc6be9dcb9a2272b9ebec98e17eff97ae3890a65e2ab9cd9266",
+      "bytes": 2434447,
+      "dataAsOf": "2026-10-31",
+      "rows": 29,
+      "matched": 29,
+      "quarantinedRows": [],
+      "officialNotDisclosed": [],
+      "oneYearCrossChecks": 29,
+      "fiveTenYearCrossChecks": 55
+    },
+    {
+      "kind": "yf-life-monthly-performance-pdf",
+      "schemeName": "MASS Mandatory Provident Fund Scheme",
+      "url": "https://www.yflife.com/sites/default/files/mpf/MonthlyFundPrice(E).pdf",
+      "retrievedAt": "2026-11-23T12:42:12Z",
+      "sha256": "1f3fd6dfc51dcf1b6bb06d92533eac7f989143a70bb535c32176b4ddd75fb0ec",
+      "bytes": 636402,
+      "dataAsOf": "2026-10-31",
+      "rows": 14,
+      "matched": 14,
+      "quarantinedRows": [],
+      "officialNotDisclosed": [],
+      "oneYearCrossChecks": 14,
+      "fiveTenYearCrossChecks": 0
+    }
+  ],
+  "thirdPartySources": [],
+  "annualizedRows": 350,
+  "cumulativeRows": 374,
+  "replacedCumulative": [
+    "mpfa-cf-389",
+    "mpfa-cf-391",
+    "mpfa-cf-392",
+    "mpfa-cf-390",
+    "mpfa-cf-387",
+    "mpfa-cf-874",
+    "mpfa-cf-394",
+    "mpfa-cf-385",
+    "mpfa-cf-384",
+    "mpfa-cf-388",
+    "mpfa-cf-383",
+    "mpfa-cf-386",
+    "mpfa-cf-1487",
+    "mpfa-cf-1488"
+  ],
+  "keptNewerCumulative": [],
+  "keptTrusteeOverThirdParty": [],
+  "officialConflicts": [],
+  "thirdPartySuppressedForConflicts": [],
+  "rejectedSources": [
+    {
+      "flag": "--hkifa",
+      "entry": "https://hkifa.org.hk/data/mpf/orso/english/HKMPF_English_112026.pdf|/tmp/trustee/hkifa-lipper-mpf-112026.pdf|2026-11-23T12:42:13Z",
+      "reason": "HKIFA Lipper table rejected: mpfa-cf-207 \"BCOM Joyful Ret MPF-BCOM Balanced (CF)\" one-year 5.01 vs platform 5 (2026-10-31); mpfa-cf-799 \"BCT (MPF) Pro Choice-BCT (Pro) HK Dollar Bond\" one-year null vs platform -0.32 (2026-10-31); mpfa-cf-365 \"Manulife GS (MPF)-Manulife MPF Interest\" one-year 0.87 vs platform 0.88 (2026-10-31)"
+    }
+  ]
+}
